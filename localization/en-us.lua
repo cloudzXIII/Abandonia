@@ -66,6 +66,16 @@ return {
           "{C:inactive}(Ex: 4, 3, 5, 3, 4)"
         }
       },
+      j_abn_melty_joker = {
+        name = "Melty Joker",
+        text = {
+          "{C:attention}Leftmost{} played card",
+          "permanently gains",
+          "the rank of {C:attention}rightmost{}",
+          "card as {C:chips}Chips{}, then",
+          "destroy the {C:attention}rightmost{} card"
+        }
+      }
     },
     Other = {
     },

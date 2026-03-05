@@ -7,28 +7,22 @@ SMODS.Joker {
 
   rarity = 3,
   atlas = 'AbandoniaJokers',
-  pos = { x = 5, y = 0 },
-  cost = 14,
+  pos = { x = 6, y = 0 },
+  cost = 8,
   discovered = true,
   blueprint_compat = false,
 
   config = { extra = {} },
 
   calculate = function(self, card, context)
-    if context.before and context.cardarea == G.play then
-      local pos = ABN.get_pos(card, context.scoring_hand)
-      if pos then
-        local left = context.scoring_hand[pos - 1]
-        if left then
-          card.ability.change = left.base.nominal / 2
-          SMODS.destroy_cards(left)
-          SMODS.scale_card(card, {
-            ref_table = card.ability,
-            ref_value = "mult",
-            scalar_value = "change",
-            operation = '+',
-          })
-        end
+    if context.before then
+      local leftmost = context.scoring_hand[1]
+      local rightmost = context.scoring_hand[#context.scoring_hand]
+      if leftmost and rightmost and #context.scoring_hand >= 2 then
+        leftmost.ability.perma_bonus = (leftmost.ability.perma_bonus or 0)
+            + rightmost.base.nominal
+        SMODS.destroy_cards(rightmost)
+        SMODS.calculate_effect({ message = localize('k_upgrade_ex'), colour = G.C.FILTER }, leftmost)
       end
     end
   end,
