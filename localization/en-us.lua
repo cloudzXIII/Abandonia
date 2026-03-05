@@ -75,7 +75,17 @@ return {
           "card as {C:chips}Chips{}, then",
           "destroy the {C:attention}rightmost{} card"
         }
-      }
+      },
+      j_abn_sharpshooter = {
+        name = "Sharpshooter",
+        text = {
+          "Retrigger all played",
+          "{C:attention}Wild Cards{} for every",
+          "{C:attention}Wild Card{} in scoring hand,",
+          "{C:green}#1# in #2#{} chance",
+          "to destroy played {C:attention}Wild Cards{}"
+        }
+      },
     },
     Other = {
     },
@@ -88,6 +98,10 @@ return {
           "Welcome to {C:attention}Abandonia{}!",
           "a mod to celebrate the many creative minds",
           "and artists of Balatro!!",
+          " ",
+          " ",
+          "Brought to you by {C:dark_edition}Bunnet{}!",
+          "{C:inactive}and coded by {C:attention}cloudzXIII{}"
         }
       },
     },
@@ -98,6 +112,7 @@ return {
     challenge_names = {
     },
     dictionary = {
+      k_abn_destroyed = "Destroyed!"
     },
     labels = {
     },

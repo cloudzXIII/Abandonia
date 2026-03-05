@@ -5,7 +5,7 @@ SMODS.Joker {
     return { vars = {} }
   end,
 
-  rarity = 3,
+  rarity = 2,
   atlas = 'AbandoniaJokers',
   pos = { x = 6, y = 0 },
   cost = 8,
