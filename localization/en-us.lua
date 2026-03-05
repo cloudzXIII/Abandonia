@@ -86,6 +86,14 @@ return {
           "to destroy played {C:attention}Wild Cards{}"
         }
       },
+      j_abn_superhero = {
+        name = "Superhero",
+        text = {
+          "Each played {C:attention}number{} card",
+          "gives their rank",
+          "as {C:chips}Chips{} when scored",
+        }
+      },
     },
     Other = {
     },
