@@ -94,6 +94,21 @@ return {
           "as {C:chips}Chips{} when scored",
         }
       },
+      j_abn_mardi_gras = {
+        name = "Mardi Gras Joker",
+        text = {
+          "Choose {C:attention}1{} additional",
+          "card from {C:tarot}Arcana{} Packs",
+        }
+      },
+      j_abn_elevator = {
+        name = "Elevator",
+        text = {
+          "Played cards",
+          "increase in rank by {C:attention}1{}",
+          "after scoring",
+        }
+      },
     },
     Other = {
     },
