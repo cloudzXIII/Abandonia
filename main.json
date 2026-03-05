@@ -1,0 +1,13 @@
+{
+	"id": "abandonia",
+	"name": "Abandonia",
+	"display_name": "Abandonia",
+	"author": ["Bunnet","cloudzXIII"],
+	"description": "Balatro Mod",
+	"prefix": "abn",
+	"main_file": "main.lua",
+	"priority": 0,
+	"badge_colour": "5d5e8d",
+	"badge_text_colour": "FFFFFF",
+	"version": "0.0.0"
+}
