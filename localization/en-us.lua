@@ -109,6 +109,16 @@ return {
           "after scoring",
         }
       },
+      j_abn_square_rekoj = {
+        name = "Square Rekoj",
+        text = {
+          "This Joker gains {C:chips}+#2#{} Chips",
+          "and {C:white,X:mult}X#4#{} Mult",
+          "if played hand has exactly",
+          "{C:attention}4{} scoring cards",
+          "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips, {C:white,X:mult}X#3#{C:inactive} Mult)",
+        }
+      },
     },
     Other = {
     },
