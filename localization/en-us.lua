@@ -116,7 +116,7 @@ return {
     },
     Mod = {
       abandonia = {
-        name = "Abanadonia",
+        name = "Abandonia",
         text = {
           "Welcome to {C:attention}Abandonia{}!",
           "a mod to celebrate the many creative minds",
