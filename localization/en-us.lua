@@ -129,7 +129,49 @@ return {
       j_abn_bios_joker = {
         name = "BIOS JOKER",
         text = {
+          "{C:inactive}Does... nothing?"
         }
+      },
+      j_abn_braile_joker = {
+        name = "Braile Joker",
+        text = {
+          "{C:green}#1# in #2#{} chance for",
+          "cards to be drawn face down",
+          "Face down cards give",
+          "{X:mult,C:white}X#3#{} Mult when scored"
+        }
+      },
+      j_abn_digital_currency = {
+        name = "Digital Currency",
+        text = {
+          "Every played {C:attention}card{}",
+          "permanently gains",
+          "{C:money}+$#1#{} when scored",
+        }
+      },
+      j_abn_odd_couple = {
+        name = "Odd Couple",
+        text = {
+          "Each played {C:attention}number{} card",
+          "gives their rank",
+          "as {C:mult}Mult{} when scored",
+        }
+      },
+      j_abn_haunted_recording = {
+        name = "Haunted Recording",
+        text = {
+          "This Joker gains {X:mult,C:white} X#1# {} Mult",
+          "per {C:attention}consecutive{} hand played",
+          "without playing a {C:attention}#3#",
+          "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+        },
+      },
+      j_abn_j_for_joker = {
+        name = "J is for Joker",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult if ",
+          "Joker slots are {C:attention}full",
+        },
       },
     },
     Other = {

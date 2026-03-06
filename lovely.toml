@@ -1,0 +1,17 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 10
+
+# Thank you bunco :)
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = '''--check the hand first'''
+position = 'after'
+payload = '''
+if G.jokers ~= nil then
+    SMODS.calculate_context({abn_play_cards = true})
+end
+'''
+match_indent = true
