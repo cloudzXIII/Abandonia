@@ -119,6 +119,13 @@ return {
           "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips, {C:white,X:mult}X#3#{C:inactive} Mult)",
         }
       },
+      j_abn_colour_vortex = {
+        name = "Colour Vortex",
+        text = {
+          "{C:white,X:mult}X#1#{} Mult if {C:attention}first poker hand{}",
+          "of round is a {C:attention}#2#{},",
+        }
+      }
     },
     Other = {
     },
