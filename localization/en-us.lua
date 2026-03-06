@@ -125,9 +125,22 @@ return {
           "{C:white,X:mult}X#1#{} Mult if {C:attention}first poker hand{}",
           "of round is a {C:attention}#2#{},",
         }
-      }
+      },
+      j_abn_bios_joker = {
+        name = "BIOS JOKER",
+        text = {
+        }
+      },
     },
     Other = {
+      abn_credits = {
+        text = {
+          "{C:blue,s:2}Programmers",
+          "{C:attention}cloudzXIII{}, {C:attention}Mills-44",
+          "{C:blue,s:2}Art",
+          "{C:attention,s:1}Balatro Discord!",
+        }
+      }
     },
     Stake = {
     },
@@ -141,7 +154,6 @@ return {
           " ",
           " ",
           "Brought to you by {C:dark_edition}Bunnet{}!",
-          "{C:inactive}and coded by {C:attention}cloudzXIII{}"
         }
       },
     },
