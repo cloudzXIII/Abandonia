@@ -1,3 +1,4 @@
+--[[ (no effect yet)
 SMODS.Joker {
     key = 'bios_joker',
 
@@ -20,3 +21,4 @@ SMODS.Joker {
         artist = "lolhappy909_lol"
     },
 }
+--]]
