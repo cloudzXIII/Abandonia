@@ -160,10 +160,10 @@ return {
       j_abn_haunted_recording = {
         name = "Haunted Recording",
         text = {
-          "This Joker gains {X:mult,C:white} X#1# {} Mult",
+          "This Joker gains {X:mult,C:white} X#2# {} Mult",
           "per {C:attention}consecutive{} hand played",
           "without playing a {C:attention}#3#",
-          "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+          "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
         },
       },
       j_abn_j_for_joker = {
