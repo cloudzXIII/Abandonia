@@ -264,10 +264,18 @@ return {
       },
       abn_credits = {
         text = {
-          "{C:blue,s:2}Programmers",
-          "{C:attention}cloudzXIII{}, {C:attention}Mills-44",
-          "{C:blue,s:2}Art",
-          "{C:attention,s:1}Balatro Discord!",
+          "{C:dark_edition,s:2}Founded by:",
+          " ",
+          "{C:dark_edition,s:1.3}Bunnet",
+          " ",
+          "{C:blue,s:2}Programmed by:",
+          " ",
+          "{C:blue,s:1.3}cloudzXIII{}",
+          " ",
+          "{C:green,s:2}Art by:",
+          " ",
+          "{C:green,s:1.2}People from the Balatro Discord!",
+          "{C:inactive,s:1.1}(look under the Jokers :>)"
         }
       }
     },
@@ -278,8 +286,8 @@ return {
         name = "Abandonia",
         text = {
           "Welcome to {C:attention}Abandonia{}!",
-          "a mod to celebrate the many creative minds",
-          "and artists of Balatro!!",
+          "a mod to celebrate the many creative",
+          "{C:blue}minds{} and {C:green}artists{} of Balatro!!",
           " ",
           " ",
           "Brought to you by {C:dark_edition}Bunnet{}!",
