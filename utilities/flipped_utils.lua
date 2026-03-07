@@ -45,6 +45,7 @@ function Card:flip(bypass_perma_flipped)
   end
 end
 
+--[[ wait nevermind
 local has_no_suit_ref = SMODS.has_no_suit
 function SMODS.has_no_suit(card)
   if card.ability.abn_perma_flipped then
@@ -68,6 +69,7 @@ function SMODS.always_scores(card)
   end
   return always_scores_ref(card)
 end
+--]]
 
 SMODS.Atlas {
   key = "flipped_indicator",
