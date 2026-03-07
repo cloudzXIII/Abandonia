@@ -152,7 +152,7 @@ return {
       j_abn_odd_couple = {
         name = "Odd Couple",
         text = {
-          "Each played {C:attention}number{} card",
+          "Each played {C:attention}Ace{} and {C:attention}number{} card",
           "gives their rank",
           "as {C:mult}Mult{} when scored",
         }

@@ -18,7 +18,7 @@ SMODS.Joker {
     if context.debuff_card and context.debuff_card:is_face() then
       return { debuff = true }
     end
-    if context.repetition and context.cardarea == G.play and not context.other_card:is_face() then
+    if context.repetition and context.cardarea == G.play and not context.other_card:is_face() and not context.other_card:get_id() == 14 then
       return {
         repetitions = card.ability.extra.repetitions
       }

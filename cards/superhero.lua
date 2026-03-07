@@ -15,7 +15,7 @@ SMODS.Joker {
   config = { extra = {} },
 
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and not context.other_card:is_face() then
+    if context.individual and context.cardarea == G.play and not context.other_card:is_face() and not context.other_card:get_id() == 14 then
       return {
         chips = context.other_card.base.nominal,
       }
