@@ -256,7 +256,7 @@ return {
         name = "Construction Joker",
         text = {
           "{C:attention}Steel Cards{} are also ",
-          "considered {C:attention}Gold Cards{}"
+          "considered {C:attention}Stone Cards{}"
         }
       },
     },

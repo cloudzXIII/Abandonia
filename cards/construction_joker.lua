@@ -3,7 +3,7 @@ SMODS.Joker {
 
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_gold
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
     return { vars = { card.ability.extra.mult, card.ability.extra.dollars } }
   end,
 
@@ -19,7 +19,7 @@ SMODS.Joker {
   calculate = function(self, card, context)
     if context.check_enhancement then
       if context.other_card.config.center.key == "m_steel" then
-        return { m_gold = true }
+        return { m_stone = true }
       end
     end
   end,
