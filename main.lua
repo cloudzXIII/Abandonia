@@ -6,6 +6,7 @@ end
 
 ABN.optional_features = {
   retrigger_joker = true,
+  quantum_enhancements = true
 }
 
 SMODS.Atlas({
