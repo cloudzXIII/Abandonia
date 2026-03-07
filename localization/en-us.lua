@@ -243,13 +243,20 @@ return {
           "when purchased"
         }
       },
-      j_abn_construction_joker = {
-        name = "Construction Joker",
+      j_abn_making_statue = {
+        name = "Making Statue",
         text = {
           "Every played {C:attention}Stone Card{}",
           "permanently gains",
           "{C:mult}+#1#{} Mult and",
           "{C:money}+$#2#{} when scored",
+        }
+      },
+      j_abn_construction_joker = {
+        name = "Construction Joker",
+        text = {
+          "{C:attention}Steel Cards{} are also ",
+          "considered {C:attention}Gold Cards{}"
         }
       },
     },
