@@ -184,7 +184,7 @@ return {
         },
       },
       j_abn_shadowy_joker = {
-        name = "Shadowy Joker",
+        name = "Shadowy Joker (BUGGY)",
         text = {
           "All cards and packs in",
           "shop are {C:attention}#1#%{} off",
@@ -225,15 +225,13 @@ return {
           "{C:mult}+#1#{} Mult when scored",
         }
       },
-    },
-    Enhanced = {
-      m_abn_flipped = {
-        name = "Flipped Card",
+      j_abn_dorcelessness = {
+        name = "Dorcelessness",
         text = {
-          "{C:white,X:mult}X#1#{} Mult",
-          "no rank or suit",
+          "Retrigger {C:attention}adjacent{}",
+          "{C:attention}Flipped{} Jokers"
         }
-      },
+      }
     },
 
     Spectral = {
@@ -246,6 +244,13 @@ return {
       },
     },
     Other = {
+      abn_flipped_card = {
+        name = "Flipped",
+        text = {
+          "{C:white,X:mult}X#1#{} Mult",
+          "no rank or suit",
+        }
+      },
       abn_credits = {
         text = {
           "{C:blue,s:2}Programmers",
