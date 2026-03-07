@@ -15,7 +15,7 @@ SMODS.Joker {
   config = { extra = { mult = 0, mult_gain = 1 } },
 
   calculate = function(self, card, context)
-    if context.after and context.main_eval and not context.blueprint then
+    if context.final_scoring_step then
       local faces = 0
       for _, scored_card in ipairs(context.scoring_hand) do
         if scored_card:is_face() then
