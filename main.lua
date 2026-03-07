@@ -43,7 +43,7 @@ ABN.calculate = function(self, context)
     for _, area in ipairs(card_areas) do
       if area and area.cards then
         for _, v in ipairs(area.cards) do
-          if not v.shadowy_flipped then
+          if v.facing == "front" then
             v:flip()
             v.shadowy_flipped = true
           end
