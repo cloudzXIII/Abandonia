@@ -242,7 +242,16 @@ return {
           "or {C:dark_edition}Polychrome{} edition",
           "when purchased"
         }
-      }
+      },
+      j_abn_construction_joker = {
+        name = "Construction Joker",
+        text = {
+          "Every played {C:attention}Stone Card{}",
+          "permanently gains",
+          "{C:mult}+#1#{} Mult and",
+          "{C:money}+$#2#{} when scored",
+        }
+      },
     },
 
     Spectral = {

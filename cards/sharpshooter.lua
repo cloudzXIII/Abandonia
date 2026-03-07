@@ -2,6 +2,7 @@ SMODS.Joker {
   key = 'sharpshooter',
 
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
     local numerator, denominator = SMODS.get_probability_vars(card, card.ability.extra.base, card.ability.extra.odds,
       'sharpshooter')
     return { vars = { numerator, denominator } }
