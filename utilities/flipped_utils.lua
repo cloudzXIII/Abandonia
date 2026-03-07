@@ -61,6 +61,14 @@ function SMODS.has_no_rank(card)
   return has_no_rank_ref(card)
 end
 
+local always_scores_ref = SMODS.always_scores
+function SMODS.always_scores(card)
+  if card.ability.abn_perma_flipped then
+    return true
+  end
+  return always_scores_ref(card)
+end
+
 SMODS.Atlas {
   key = "flipped_indicator",
   path = "flipped_indicator.png",
