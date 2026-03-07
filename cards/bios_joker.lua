@@ -1,24 +1,35 @@
---[[ (no effect yet)
 SMODS.Joker {
-    key = 'bios_joker',
+  key = 'bios_joker',
 
-    loc_vars = function(self, info_queue, card)
-        return { vars = {} }
-    end,
+  loc_vars = function(self, info_queue, card)
+    return { vars = {} }
+  end,
 
-    rarity = 1,
-    atlas = 'AbandoniaJokers',
-    pos = { x = 0, y = 3 },
-    cost = 4,
-    discovered = true,
-    blueprint_compat = true,
+  rarity = 1,
+  atlas = 'AbandoniaJokers',
+  pos = { x = 0, y = 3 },
+  cost = 4,
+  discovered = true,
+  blueprint_compat = true,
 
-    config = { extra = {} },
+  config = { extra = {} },
 
-    calculate = function(self, card, context)
-    end,
-    abn_artist_credits = {
-        artist = "lolhappy909_lol"
-    },
+  calculate = function(self, card, context)
+  end,
+  abn_artist_credits = {
+    artist = "lolhappy909_lol"
+  },
 }
---]]
+local use_consumeable_ref = Card.use_consumeable
+function Card:use_consumeable(area, copier)
+  local g = use_consumeable_ref(self, area, copier)
+  if next(SMODS.find_card('j_abn_bios_joker')) then
+    for k, v in pairs(SMODS.find_card('j_abn_bios_joker')) do
+      for i = 1, 2 do
+        SMODS.calculate_effect({ message = localize('k_again_ex') }, self)
+        use_consumeable_ref(self, area, copier)
+      end
+    end
+  end
+  return g
+end

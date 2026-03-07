@@ -129,7 +129,8 @@ return {
       j_abn_bios_joker = {
         name = "BIOS JOKER",
         text = {
-          "{C:inactive}Does... nothing?"
+          "{C:planet}Planet{} cards retrigger",
+          "twice when used"
         }
       },
       j_abn_braile_joker = {
