@@ -15,8 +15,19 @@ SMODS.Atlas({
   py = 95,
 })
 
-SMODS.load_file("utilities/credits.lua")()
-SMODS.load_file("utilities/functions.lua")()
+SMODS.Atlas({
+  key = "AbandoniaSpectrals",
+  path = "spectrals.png",
+  px = 71,
+  py = 95,
+})
+
+-- Utilities
+local subdir = "utilities"
+local cards = NFS.getDirectoryItems(SMODS.current_mod.path .. subdir)
+for _, filename in pairs(cards) do
+  assert(SMODS.load_file(subdir .. "/" .. filename))()
+end
 
 -- Jokers
 local subdir = "cards"

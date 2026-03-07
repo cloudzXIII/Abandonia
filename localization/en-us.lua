@@ -247,8 +247,9 @@ return {
       abn_flipped_card = {
         name = "Flipped",
         text = {
-          "{C:white,X:mult}X#1#{} Mult",
-          "no rank or suit",
+          "{C:white,X:mult}X1.25{} Mult",
+          "rank and suit",
+          "are not visible",
         }
       },
       abn_credits = {
