@@ -173,6 +173,77 @@ return {
           "Joker slots are {C:attention}full",
         },
       },
+      j_abn_communist_bear = {
+        name = "Communist Bear",
+        text = {
+          "Debuffs played {C:attention}Face{} cards",
+          "after scoring, This Joker",
+          "gains {C:mult}+#2#{} Mult",
+          "per {C:attention}Face{} card debuffed",
+          "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+        },
+      },
+      j_abn_shadowy_joker = {
+        name = "Shadowy Joker",
+        text = {
+          "All cards and packs in",
+          "shop are {C:attention}#1#%{} off",
+          "All {C:attention}Cards{} and {C:attention}Jokers{}",
+          "are flipped"
+        }
+      },
+      j_abn_eye_exam = {
+        name = "Eye Exam",
+        text = {
+          "Pay {C:money}$#1#{}",
+          "to unflip all",
+          "{C:attention}flipped{} cards in hand",
+        }
+      },
+      j_abn_yharman_joker = {
+        name = "Yharman Joker",
+        text = {
+          "Destroy played {C:attention}flipped{} cards",
+          "after scoring and gain {C:white,X:mult}X#2#{} Mult",
+          "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
+        }
+      },
+      j_abn_negative_suit = {
+        name = "Negative Suit",
+        text = {
+          "Gives {C:chips}+#1#{} Chips",
+          "for each {C:dark_edition}Negative Card",
+          "in your {C:attention}full deck",
+          "{C:inactive}(Currently {C:chips}#2#{C:inactive} Chips)",
+        }
+      },
+      j_abn_mindflayer = {
+        name = "Mindflayer",
+        text = {
+          "Every played {C:attention}flipped card{}",
+          "permanently gains",
+          "{C:mult}+#1#{} Mult when scored",
+        }
+      },
+    },
+    Enhanced = {
+      m_abn_flipped = {
+        name = "Flipped Card",
+        text = {
+          "{C:white,X:mult}X#1#{} Mult",
+          "no rank or suit",
+        }
+      },
+    },
+
+    Spectral = {
+      c_abn_flipside = {
+        name = "Flipside",
+        text = {
+          "Flips up to {C:attention}#1#{}",
+          "selected cards"
+        },
+      },
     },
     Other = {
       abn_credits = {
@@ -206,7 +277,8 @@ return {
     challenge_names = {
     },
     dictionary = {
-      k_abn_destroyed = "Destroyed!"
+      k_abn_destroyed = "Destroyed!",
+      k_abn_unflipped = "Unflipped!"
     },
     labels = {
     },
