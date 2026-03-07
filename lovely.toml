@@ -15,3 +15,29 @@ if G.jokers ~= nil then
 end
 '''
 match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = "self.facing='back'"
+position = "after"
+payload = '''
+if self.ability.set == "Joker" then
+    self.ability.joker_flipped = true
+    self:set_cost()
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = "self.facing='front'"
+position = "after"
+payload = '''
+if self.ability.set == "Joker" then
+    self.ability.joker_flipped = nil
+    self:set_cost()
+end
+'''
+match_indent = true

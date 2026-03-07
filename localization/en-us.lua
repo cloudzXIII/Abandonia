@@ -184,7 +184,7 @@ return {
         },
       },
       j_abn_shadowy_joker = {
-        name = "Shadowy Joker (BUGGY)",
+        name = "Shadowy Joker",
         text = {
           "All cards and packs in",
           "shop are {C:attention}#1#%{} off",
@@ -230,6 +230,16 @@ return {
         text = {
           "Retrigger {C:attention}adjacent{}",
           "{C:attention}Flipped{} Jokers"
+        }
+      },
+      j_abn_void_joker = {
+        name = "Void Joker",
+        text = {
+          "All {C:attention}Flip{} Jokers in",
+          "the shop are {C:attention}free",
+          "and gain a {C:dark_edition}Foil{}, {C:dark_edition}Holographic{},",
+          "or {C:dark_edition}Polychrome{} edition",
+          "when purchased"
         }
       }
     },
