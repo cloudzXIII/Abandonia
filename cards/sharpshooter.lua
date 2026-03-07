@@ -37,12 +37,14 @@ SMODS.Joker {
           wild_cards[#wild_cards + 1] = playing_card
         end
       end
-      SMODS.destroy_cards(wild_cards)
+      if #wild_cards > 0 then
+        SMODS.destroy_cards(wild_cards)
 
-      return {
-        message = localize('k_abn_destroyed'),
-        colour = G.C.MULT
-      }
+        return {
+          message = localize('k_abn_destroyed'),
+          colour = G.C.MULT
+        }
+      end
     end
   end,
   abn_artist_credits = {
