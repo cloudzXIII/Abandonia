@@ -41,3 +41,24 @@ if self.ability.set == "Joker" then
 end
 '''
 match_indent = true
+
+# For Inkblot Test/ Joker AI
+[[patches]]
+[patches.pattern]
+target = 'cardarea.lua'
+pattern = "if self.highlighted[i].ability.forced_selection and self == G.hand then"
+position = "after"
+payload = '''
+elseif (self.highlighted[i].ability.abn_forced_selection or self.highlighted[i].ability.abn_inkblot_forced_selection) and self == G.hand then
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'cardarea.lua'
+pattern = "if (not force) and  card and card.ability.forced_selection and self == G.hand then return end"
+position = "after"
+payload = '''
+if (not force) and card and (card.ability.abn_forced_selection or card.ability.abn_inkblot_forced_selection) and self == G.hand then return end
+'''
+match_indent = true

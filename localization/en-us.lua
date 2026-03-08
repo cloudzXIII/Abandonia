@@ -348,6 +348,19 @@ return {
             "{C:mult}+#2#{} Mult when scored"
           }
         }
+      },
+      j_abn_inkblot_test = {
+        name = "Inkblot Test",
+        text = {
+          {
+            "Forces {C:attention}lowest{} ranked card",
+            "to always be selected",
+          },
+          {
+            "{C:attention}Force-selected{} cards",
+            "always score"
+          }
+        }
       }
     },
 

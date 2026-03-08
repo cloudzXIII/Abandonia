@@ -40,13 +40,6 @@ SMODS.Joker {
         colour = G.C.FILTER
       }
     end
-    if context.after and context.main_eval and not context.blueprint then
-      for _, v in ipairs(context.full_hand) do
-        if v.ability.abn_forced_selection then
-          v.ability.abn_forced_selection = nil
-        end
-      end
-    end
   end,
   abn_artist_credits = {
     artist = "Fridgemancer"
