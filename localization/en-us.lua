@@ -259,15 +259,6 @@ return {
           "considered {C:attention}Stone Cards{}"
         }
       },
-      j_abn_hangman = {
-        name = "Hangman",
-        text = {
-          "This Joker gains {C:chips}+#2#{} Chips",
-          "when a {C:attention}face{} card",
-          "is destroyed",
-          "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
-        }
-      },
       j_abn_van_joker = {
         name = "Van Joker",
         text = {
