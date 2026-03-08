@@ -447,6 +447,15 @@ return {
           "and Jokers give {X:mult,C:white}X#1#{} Mult"
         }
       },
+      j_abn_polychameleon = {
+        name = "Polychameleon",
+        text = {
+          "Gives {C:white,X:mult}X#1#{} Mult",
+          "for per {C:dark_edition}Holographic{}",
+          "or {C:dark_edition}Polychrome{} Joker owned",
+          "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+        }
+      },
     },
 
     Spectral = {
