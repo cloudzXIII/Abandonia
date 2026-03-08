@@ -361,6 +361,20 @@ return {
             "always score"
           }
         }
+      },
+      j_abn_terminator = {
+        name = "Terminator Joker",
+        text = {
+          {
+            "{C:attention}Steel Cards{} permanently",
+            "gain {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+            "when held in hand"
+          },
+          {
+            "Destroy all scoring",
+            "{C:attention}Steel Cards{}",
+          }
+        }
       }
     },
 
