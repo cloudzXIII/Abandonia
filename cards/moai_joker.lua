@@ -1,5 +1,5 @@
 SMODS.Joker {
-  key = 'making_statue',
+  key = 'moai_joker',
 
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
@@ -8,7 +8,7 @@ SMODS.Joker {
 
   rarity = 2,
   atlas = 'AbandoniaJokers',
-  pos = { x = 9, y = 3 },
+  pos = { x = 0, y = 4 },
   cost = 6,
   discovered = true,
   blueprint_compat = true,

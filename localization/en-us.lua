@@ -243,8 +243,8 @@ return {
           "when purchased"
         }
       },
-      j_abn_making_statue = {
-        name = "Making Statue",
+      j_abn_moai_joker = {
+        name = "Moai Joker",
         text = {
           "Every played {C:attention}Stone Card{}",
           "permanently gains",
