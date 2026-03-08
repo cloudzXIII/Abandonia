@@ -426,6 +426,20 @@ return {
           "and Jokers give {X:chips,C:whie}X#1#{} Chips"
         }
       },
+      j_abn_melted_joker = {
+        name = "Melted Joker",
+        text = {
+          {
+            "When {C:attention}Blind{} is selected,",
+            "apply {C:attention}Rental{} sticker",
+            "to leftmost Joker",
+          },
+          {
+            "{C:attention}Rental{} Jokers each give",
+            "{X:mult,C:white}X#2#{} Mult and {C:money}$#1#{}"
+          }
+        }
+      }
     },
 
     Spectral = {
@@ -487,7 +501,8 @@ return {
     },
     dictionary = {
       k_abn_destroyed = "Destroyed!",
-      k_abn_unflipped = "Unflipped!"
+      k_abn_unflipped = "Unflipped!",
+      k_abn_rental = "Rental!"
     },
     labels = {
     },
