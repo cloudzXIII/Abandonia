@@ -334,6 +334,21 @@ return {
           "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
         }
       },
+      j_abn_joker_ai = {
+        name = "Joker AI",
+        text = {
+          {
+            "Forces {C:attention}1{} card to",
+            "always be selected",
+          },
+          {
+            "{C:attention}Force-selected{} cards",
+            "permanently gain",
+            "{C:chips}+#1#{} Chips and",
+            "{C:mult}+#2#{} Mult when scored"
+          }
+        }
+      }
     },
 
     Spectral = {
