@@ -404,6 +404,15 @@ return {
           "{C:dark_edition}Polychrome{} to it",
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
         }
+      },
+      j_abn_gallows_joker = {
+        name = "Gallows Joker",
+        text = {
+          "This Joker has a {C:green}#1# in #2#{} chance",
+          "to create {C:tarot}The Hanged Man{}",
+          "when a {C:attention}face{} card",
+          "is destroyed",
+        }
       }
     },
 
