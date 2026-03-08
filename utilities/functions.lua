@@ -49,3 +49,23 @@ function ABN.count_rarities()
   end
   return count
 end
+
+-- Count stickers
+function ABN.count_stickers()
+  if not G.jokers then
+    return 0
+  end
+  local count = 0
+  local stickers = {}
+  for key, _ in pairs(SMODS.Sticker.obj_table) do
+    for _, joker in pairs(G.jokers.cards) do
+      if joker.ability and joker.ability[key] then
+        if not stickers[key] then
+          stickers[key] = true
+          count = count + 1
+        end
+      end
+    end
+  end
+  return count
+end

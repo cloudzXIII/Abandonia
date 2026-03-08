@@ -329,7 +329,7 @@ return {
         name = "Meta Joker",
         text = {
           "Gives {C:white,X:mult}X#1#{} Mult",
-          "for every {C:attention}unique rarity{}",
+          "for each {C:attention}unique rarity{}",
           "{C:attention}Joker{} in your possession",
           "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
         }
@@ -384,6 +384,15 @@ return {
           "earn {C:money}$#3#{} and",
           "This Joker gains {C:attention}+#2#{} Chips",
           "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
+        }
+      },
+      j_abn_escuderia_joker = {
+        name = "Escuderia Joker",
+        text = {
+          "Gives {C:white,X:mult}X#1#{} Mult",
+          "for each {C:attention}unique sticker{}",
+          "among your {C:attention}Jokers{}",
+          "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
         }
       },
     },
