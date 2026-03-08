@@ -29,6 +29,6 @@ SMODS.Joker { -- This currently excludes when a flush is levelled up otherwise i
     end
   end,
   abn_artist_credits = {
-    artist = "Skittleskitty"
+    artist = "Szymii"
   },
 }
