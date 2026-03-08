@@ -395,6 +395,16 @@ return {
           "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
         }
       },
+      j_abn_statue_joker = {
+        name = "Statue Joker",
+        text = {
+          "This Joker gains {C:mult}+#2#{} Mult",
+          "when a {C:attention}rankless{} card",
+          "is scored, then add",
+          "{C:dark_edition}Polychrome{} to it",
+          "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+        }
+      }
     },
 
     Spectral = {
