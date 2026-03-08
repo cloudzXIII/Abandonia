@@ -1,3 +1,5 @@
+ABANDONIA = {}
+
 ABN = SMODS.current_mod
 
 ABN.description_loc_vars = function()

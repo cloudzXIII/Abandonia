@@ -282,6 +282,13 @@ return {
           "Currently: {C:white,X:mult}X#1#{} Mult"
         }
       },
+      j_abn_feline_joker = {
+        name = "Feline Joker",
+        text = {
+          "Randomly gives {C:blue}100{} chips",
+          " {C:white,X:mult}X2{} Mult or {C:money}$1{}"
+        }
+      },
     },
 
     Spectral = {
