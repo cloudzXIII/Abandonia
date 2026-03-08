@@ -271,22 +271,22 @@ return {
       j_abn_van_joker = {
         name = "Van Joker",
         text = {
-          "{C:attention}+1{} extra vouchers in the shop"
+          "{C:attention}+#1#{} extra vouchers in the shop"
         }
       },
       j_abn_best_employ = {
         name = "Best Employ",
         text = {
-          "This {C:attention}Joker{} gains {C:white,X:mult}X1{} Mult",
-          "For every {C:attention}Big Boss{} beaten",
-          "Currently: {C:white,X:mult}X#1#{} Mult"
+          "This Joker gains {C:white,X:mult}X#2#{} Mult",
+          "For every {C:attention}Boss Blind{} beaten",
+          "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
         }
       },
       j_abn_feline_joker = {
         name = "Feline Joker",
         text = {
-          "Randomly gives {C:blue}100{} chips",
-          " {C:white,X:mult}X2{} Mult or {C:money}$1{}"
+          "Randomly gives {C:blue}#2#{} chips",
+          " {C:white,X:mult}X#1#{} Mult or {C:money}$#3#{}"
         }
       },
     },

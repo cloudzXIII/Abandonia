@@ -1,47 +1,46 @@
 SMODS.Joker {
-    key = 'feline_joker',
-    atlas = 'AbandoniaJokers',
-    pos = {
-        x = 9,
-        y = 4
-    },
-    config = {
-        extra = {
-            xmult = 2,
-            chips = 100,
-            money = 1
-        },
-    },
-    rarity = 1,
-    cost = 4,
-    unlocked = true,
-    discovered = false, 
-    blueprint_compat = true,
-    eternal_compat = true,
-    perishable_compat = true,
-    
-    loc_vars = function(self, info_queue, card)
-        return {
-            vars = {
+  key = 'feline_joker',
 
-            }
-        }  
-    end,
-    calculate = function(self, card, context)
-        if context.joker_main then
-            if ABANDONIA.random_chance(.3) then
-              return
-            {
-                xmult = card.ability.extra.xmult
-            }  
-            elseif ABANDONIA.random_chance(.6) then
-                return
-            {
-                chips = card.ability.extra.chips
-            }
-            else 
-                ease_dollars(card.ability.extra.money)
-            end
-        end
-    end,
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+        card.ability.extra.xmult,
+        card.ability.extra.chips,
+        card.ability.extra.dollars
+      }
+    }
+  end,
+
+  rarity = 1,
+  atlas = 'AbandoniaJokers',
+  pos = { x = 9, y = 4 },
+  cost = 4,
+  discovered = true,
+  blueprint_compat = true,
+
+  config = {
+    extra = {
+      xmult = 2,
+      chips = 100,
+      dollars = 1
+    },
+  },
+
+  calculate = function(self, card, context)
+    if context.joker_main then
+      if ABANDONIA.random_chance(.3) then
+        return {
+          xmult = card.ability.extra.xmult
+        }
+      elseif ABANDONIA.random_chance(.6) then
+        return {
+          chips = card.ability.extra.chips
+        }
+      else
+        return {
+          dollars = card.ability.extra.dollars
+        }
+      end
+    end
+  end,
 }
