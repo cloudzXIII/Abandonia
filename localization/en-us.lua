@@ -318,6 +318,13 @@ return {
           "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
         }
       },
+      j_abn_faded_graffiti = {
+        name = "Faded Graffiti",
+        text = {
+          "When a hand is {C:attention}levelled up{},",
+          "also level up {C:attention}Flush{}",
+        }
+      },
     },
 
     Spectral = {
