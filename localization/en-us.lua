@@ -274,6 +274,14 @@ return {
           "{C:attention}+1{} extra vouchers in the shop"
         }
       },
+      j_abn_best_employ = {
+        name = "Best Employ",
+        text = {
+          "This {C:attention}Joker{} gains {C:white,X:mult}X1{} Mult",
+          "For every {C:attention}Big Boss{} beaten",
+          "Currently: {C:white,X:mult}X#1#{} Mult"
+        }
+      },
     },
 
     Spectral = {
