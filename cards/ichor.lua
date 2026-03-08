@@ -31,7 +31,7 @@ SMODS.Joker {
   end,
   in_pool = function(self, args)
     for _, joker in ipairs(G.jokers and G.jokers.cards or {}) do
-      if joker.edition and joker.edition.key == "e_foil" then
+      if joker.edition and joker.edition.key == "e_negative" then
         return true
       end
     end

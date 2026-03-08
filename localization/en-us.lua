@@ -404,7 +404,21 @@ return {
           "when a {C:attention}face{} card",
           "is destroyed",
         }
-      }
+      },
+      j_abn_recycled_joker = {
+        name = "Recycled Joker",
+        text = {
+          "{C:attention}discarded{} cards",
+          "are returned to deck"
+        }
+      },
+      j_abn_vaporwave_joker = {
+        name = "Vaporwave Joker",
+        text = {
+          "{C:dark_edition}Polychrome{} cards",
+          "and Jokers give {C:mult}+#1#{} Mult"
+        }
+      },
     },
 
     Spectral = {
