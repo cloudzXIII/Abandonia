@@ -267,7 +267,13 @@ return {
           "is destroyed",
           "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
         }
-      }
+      },
+      j_abn_van_joker = {
+        name = "Van Joker",
+        text = {
+          "{C:attention}+1{} extra vouchers in the shop"
+        }
+      },
     },
 
     Spectral = {
