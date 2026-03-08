@@ -408,7 +408,7 @@ return {
       j_abn_recycled_joker = {
         name = "Recycled Joker",
         text = {
-          "{C:attention}discarded{} cards",
+          "{C:attention}Discarded{} cards",
           "are returned to deck"
         }
       },
