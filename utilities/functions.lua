@@ -32,3 +32,20 @@ function ABN.get_resource_by_key(prefix)
   end
   return results
 end
+
+-- Count Rarities
+function ABN.count_rarities()
+  if not G.jokers then
+    return 0
+  end
+  local count = 0
+  local rarities = {}
+  for _, v in ipairs(G.jokers.cards) do
+    local rarity = v.config.center.rarity
+    if not rarities[rarity] then
+      rarities[rarity] = true
+      count = count + 1
+    end
+  end
+  return count
+end

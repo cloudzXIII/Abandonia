@@ -325,6 +325,15 @@ return {
           "also level up {C:attention}Flush{}",
         }
       },
+      j_abn_meta_joker = {
+        name = "Meta Joker",
+        text = {
+          "Gives {C:white,X:mult}X#1#{} Mult",
+          "for every {C:attention}unique rarity{}",
+          "{C:attention}Joker{} in your possession",
+          "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+        }
+      },
     },
 
     Spectral = {
