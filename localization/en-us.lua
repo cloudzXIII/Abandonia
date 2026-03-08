@@ -299,6 +299,16 @@ return {
           "is destroyed",
         }
       },
+      j_abn_menacing_clown = {
+        name = "Menacing Clown",
+        text = {
+          "When {C:attention}Blind{} is selected,",
+          "destroy Joker to the right",
+          "and add a {C:dark_edition}Foil{}, {C:dark_edition}Holographic{},",
+          "or {C:dark_edition}Polychrome{} edition",
+          "to Joker to the left",
+        },
+      },
     },
 
     Spectral = {
@@ -328,6 +338,7 @@ return {
           "{C:blue,s:2}Programmed by:",
           " ",
           "{C:blue,s:1.3}cloudzXIII{}",
+          "{C:blue,s:1.3}Mills-44{}",
           " ",
           "{C:green,s:2}Art by:",
           " ",
