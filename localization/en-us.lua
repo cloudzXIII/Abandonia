@@ -309,6 +309,15 @@ return {
           "to Joker to the left",
         },
       },
+      j_abn_malicious_entity = {
+        name = "Malicious Entity",
+        text = {
+          "If {C:attention}first hand{} of round",
+          "destroy leftmost scoring card",
+          "and gain {C:white,X:mult}X#2#{} Mult",
+          "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
+        }
+      },
     },
 
     Spectral = {
