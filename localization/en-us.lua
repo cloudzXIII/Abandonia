@@ -419,6 +419,13 @@ return {
           "and Jokers give {C:mult}+#1#{} Mult"
         }
       },
+      j_abn_maxwell_joker = {
+        name = "Maxwell Joker",
+        text = {
+          "{C:dark_edition}Foil{} cards",
+          "and Jokers give {X:chips,C:whie}X#1#{} Chips"
+        }
+      },
     },
 
     Spectral = {
