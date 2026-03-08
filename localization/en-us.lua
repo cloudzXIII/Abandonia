@@ -423,7 +423,7 @@ return {
         name = "Maxwell Joker",
         text = {
           "{C:dark_edition}Foil{} cards",
-          "and Jokers give {X:chips,C:whie}X#1#{} Chips"
+          "and Jokers give {X:chips,C:white}X#1#{} Chips"
         }
       },
       j_abn_melted_joker = {
@@ -439,7 +439,14 @@ return {
             "{X:mult,C:white}X#2#{} Mult and {C:money}$#1#{}"
           }
         }
-      }
+      },
+      j_abn_xenon_joker = {
+        name = "Xenon Joker",
+        text = {
+          "{C:dark_edition}Holographic{} cards",
+          "and Jokers give {X:mult,C:white}X#1#{} Mult"
+        }
+      },
     },
 
     Spectral = {

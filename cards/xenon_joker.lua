@@ -1,19 +1,19 @@
 SMODS.Joker {
-  key = 'maxwell_joker',
+  key = 'xenon_joker',
 
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
-    return { vars = { card.ability.extra.x_chips } }
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
+    return { vars = { card.ability.extra.x_mult } }
   end,
 
   rarity = 3,
   atlas = 'AbandoniaJokers',
-  pos = { x = 4, y = 10 },
+  pos = { x = 0, y = 8 },
   cost = 8,
   discovered = true,
   blueprint_compat = true,
 
-  config = { extra = { x_chips = 2 } },
+  config = { extra = { x_mult = 1.5 } },
 
   calculate = function(self, card, context)
     if context.other_joker and context.other_joker.edition and context.other_joker.edition.polychrome == true and card ~= context.other_joker
@@ -25,26 +25,26 @@ SMODS.Joker {
         end,
       }))
       return {
-        x_chips = card.ability.extra.x_chips
+        x_mult = card.ability.extra.x_mult
       }
     end
     if context.individual and context.cardarea == G.play then
-      if context.other_card.edition and context.other_card.edition.key == "e_foil" then
+      if context.other_card.edition and context.other_card.edition.key == "e_holo" then
         return {
-          x_chips = card.ability.extra.x_chips
+          x_mult = card.ability.extra.x_mult
         }
       end
     end
   end,
   in_pool = function(self, args)
     for _, joker in ipairs(G.jokers and G.jokers.cards or {}) do
-      if joker.edition and joker.edition.key == "e_foil" then
+      if joker.edition and joker.edition.key == "e_holo" then
         return true
       end
     end
     return false
   end,
   abn_artist_credits = {
-    artist = "Stellarblue",
+    artist = "Iwas_nevergood",
   },
 }
