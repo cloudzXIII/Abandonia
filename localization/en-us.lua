@@ -375,7 +375,17 @@ return {
             "{C:attention}Steel Cards{}",
           }
         }
-      }
+      },
+      j_abn_assassin_joker = {
+        name = "Assassin Joker",
+        text = {
+          "When a hand is played,",
+          "destroy the {C:attention}lowest{} ranked card and",
+          "earn {C:money}$#3#{} and",
+          "This Joker gains {C:attention}+#2#{} Chips",
+          "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
+        }
+      },
     },
 
     Spectral = {
