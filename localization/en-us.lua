@@ -289,6 +289,16 @@ return {
           " {C:white,X:mult}X#1#{} Mult or {C:money}$#3#{}"
         }
       },
+      j_abn_executioner = {
+        name = 'Executioner',
+        text = {
+          "Cards held in hand",
+          "permanently gain",
+          "{C:chips}+#1#{} Chips",
+          "when a {C:attention}playing card{}",
+          "is destroyed",
+        }
+      },
     },
 
     Spectral = {
