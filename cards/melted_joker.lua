@@ -2,7 +2,7 @@ SMODS.Joker {
   key = 'melted_joker',
 
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.chips, card.ability.extra.dollars } }
+    return { vars = { card.ability.extra.dollars, card.ability.extra.x_mult } }
   end,
 
   rarity = 3,
@@ -40,6 +40,6 @@ SMODS.Joker {
     SMODS.Stickers["rental"]:apply(card, true)
   end,
   abn_artist_credits = {
-    artist = "Stellarblue",
+    artist = "Thingie",
   },
 }
