@@ -553,6 +553,15 @@ return {
           "and {C:chips}+#4#{} Chips",
           "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult, {C:chips}#2#{} {C:inactive}Chips)"
         }
+      },
+      j_abn_insomniac_joker = {
+        name = "Insomniac Joker",
+        text = {
+          "This Joker gains",
+          "{C:chips}+#2#{} Chips every time",
+          "a {C:planet}Planet{} card is used",
+          "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
+        }
       }
     },
 
