@@ -503,7 +503,14 @@ return {
           "a {C:attention}Bonus Card{} and",
           "a {C:attention}Mult Card{}"
         }
-      }
+      },
+      j_abn_portal_joker = {
+        name = "Portal Joker",
+        text = {
+          "{C:attention}Straights{} can wrap around",
+          "{C:inactive}(Ex: Q, K, A, 2, 3)"
+        }
+      },
     },
 
     Spectral = {
