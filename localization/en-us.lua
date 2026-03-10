@@ -456,6 +456,14 @@ return {
           "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
         }
       },
+      j_abn_dark_magokert = {
+        name = "Dark Magokert",
+        text = {
+          "Cards with a {C:attention}dark suit{}",
+          "are moved to the top of",
+          "your {C:attention}full deck{}",
+        }
+      }
     },
 
     Spectral = {
@@ -468,6 +476,12 @@ return {
       },
     },
     Other = {
+      abn_dark_suit = {
+        name = "Dark Suit",
+        text = {
+          "{C:spades}Spades{}, {C:clubs}Clubs{}"
+        }
+      },
       abn_flipped_card = {
         name = "Flipped",
         text = {

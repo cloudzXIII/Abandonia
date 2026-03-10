@@ -12,6 +12,13 @@ ABN.is_odd = function(card)
   return false
 end
 
+ABN.is_dark = function(card)
+  if card:is_suit("Spades") or card:is_suit("Clubs") then
+    return true
+  end
+  return false
+end
+
 -- Find position of card
 ABN.get_pos = function(card, area)
   for i, v in ipairs(area) do
