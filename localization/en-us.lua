@@ -518,6 +518,14 @@ return {
           "{C:attention}First{} hand is",
           "drawn {C:attention}face down{}"
         }
+      },
+      j_abn_dryeraser_board = {
+        name = "Dryeraser Board J",
+        text = {
+          "{X:red,C:white} X#1# {} Mult if all",
+          "cards played and held in hand",
+          "are {C:spades}#2#{}",
+        }
       }
     },
 
