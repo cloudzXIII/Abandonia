@@ -19,6 +19,21 @@ ABN.is_dark = function(card)
   return false
 end
 
+ABN.is_light = function(card)
+  if card:is_suit("Diamonds") or card:is_suit("Hearts") then
+    return true
+  end
+  return false
+end
+
+ABN.is_number = function(card)
+  if not card:is_face() and not card:get_id() == 14 then
+    return true
+  end
+  return false
+end
+
+
 -- Find position of card
 ABN.get_pos = function(card, area)
   for i, v in ipairs(area) do

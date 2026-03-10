@@ -479,6 +479,22 @@ return {
           "and {C:chips}+#2#{} Chips"
         },
       },
+      j_abn_wee_mult = {
+        name = "Wee Mult",
+        text = {
+          "Scored {C:attention}number",
+          "{C:attention}Mult Cards{} permanently",
+          "gain {C:white,X:mult}X#1#{} Mult"
+        }
+      },
+      j_abn_wee_bonus = {
+        name = "Wee Bonus",
+        text = {
+          "Scored {C:attention}number",
+          "{C:attention}Bonus Cards{} permanently",
+          "gain {C:chipd}+#1#{} Chips"
+        }
+      }
     },
 
     Spectral = {
