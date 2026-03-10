@@ -463,7 +463,22 @@ return {
           "are moved to the top of",
           "your {C:attention}full deck{}",
         }
-      }
+      },
+      j_abn_joe_kert = {
+        name = "Joe Kert",
+        text = {
+          "Scored {C:attention}unenhanced{}",
+          "cards give {C:mult}+#1#{} Mult"
+        },
+      },
+      j_abn_totally_naked = {
+        name = "Totally Naked",
+        text = {
+          "Scored {C:attention}unenhanced{}",
+          "cards give {C:mult}+#1#{} Mult",
+          "and {C:chips}+#2#{} Chips"
+        },
+      },
     },
 
     Spectral = {
