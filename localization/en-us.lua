@@ -526,7 +526,17 @@ return {
           "cards played and held in hand",
           "are {C:spades}#2#{}",
         }
-      }
+      },
+      j_abn_respectable = {
+        name = "Respectable Joker",
+        text = {
+          "When first {C:attention}unenhanced{}",
+          "card is scored,",
+          "this Joker gains their rank",
+          "as {C:mult}Mult{}",
+          "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult)"
+        }
+      },
     },
 
     Spectral = {
