@@ -511,6 +511,14 @@ return {
           "{C:inactive}(Ex: Q, K, A, 2, 3)"
         }
       },
+      j_abn_daredevil = {
+        name = "Daredevil",
+        text = {
+          "{C:white,X:mult}X#1#{} Mult",
+          "{C:attention}First{} hand is",
+          "drawn {C:attention}face down{}"
+        }
+      }
     },
 
     Spectral = {
