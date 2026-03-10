@@ -537,6 +537,14 @@ return {
           "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult)"
         }
       },
+      j_abn_turf_graffiti = {
+        name = "Turf Graffiti",
+        text = {
+          "Played cards with",
+          "{C:attention}Dark{} suit give",
+          "{X:mult,C:white}X#1#{} Mult when scored",
+        }
+      }
     },
 
     Spectral = {
