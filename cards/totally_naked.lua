@@ -5,6 +5,7 @@ SMODS.Joker {
         return {
             vars = {
                 card.ability.extra.mult,
+                card.ability.extra.chips
             }
         }
     end,

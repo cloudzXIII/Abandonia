@@ -492,7 +492,7 @@ return {
         text = {
           "Scored {C:attention}number",
           "{C:attention}Bonus Cards{} permanently",
-          "gain {C:chipd}+#1#{} Chips"
+          "gain {C:chips}+#1#{} Chips"
         }
       },
       j_abn_union_jack = {
@@ -500,8 +500,8 @@ return {
         text = {
           "Retrigger all played cards",
           "if played hand contains",
-          "a {C:attention}Bonus Card{}",
-          "and a {C:attention}Mult Card{}"
+          "a {C:attention}Bonus Card{} and",
+          "a {C:attention}Mult Card{}"
         }
       }
     },
