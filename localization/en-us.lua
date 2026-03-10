@@ -494,6 +494,15 @@ return {
           "{C:attention}Bonus Cards{} permanently",
           "gain {C:chipd}+#1#{} Chips"
         }
+      },
+      j_abn_union_jack = {
+        name = "Union Jack Joker",
+        text = {
+          "Retrigger all played cards",
+          "if played hand contains",
+          "a {C:attention}Bonus Card{}",
+          "and a {C:attention}Mult Card{}"
+        }
       }
     },
 
