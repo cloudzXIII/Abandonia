@@ -544,6 +544,15 @@ return {
           "{C:attention}Dark{} suit give",
           "{X:mult,C:white}X#1#{} Mult when scored",
         }
+      },
+      j_abn_newground_joker = {
+        name = "Newground Joker",
+        text = {
+          "When {C:attention}Blind{} is selected,",
+          "This Joker gains {C:mult}+#3#{} Mult",
+          "and {C:chips}+#4#{} Chips",
+          "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult, {C:chips}#2#{} {C:inactive}Chips)"
+        }
       }
     },
 
