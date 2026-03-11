@@ -639,6 +639,21 @@ return {
           "when scored",
         }
       },
+      j_abn_inferno_comedian = {
+        name = "Inferno Comedian",
+        text = {
+          {
+            "Played cards give {C:white,X:mult}X#1#{} Mult",
+            "when scored",
+          },
+          {
+            "If score {C:attention}catches on fire{},",
+            "This Joker gains chips equal",
+            "to last played hand",
+            "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
+          }
+        }
+      }
     },
 
     Spectral = {
@@ -705,9 +720,12 @@ return {
     challenge_names = {
     },
     dictionary = {
+      k_abn_superrare = "Super Rare",
       k_abn_destroyed = "Destroyed!",
       k_abn_unflipped = "Unflipped!",
-      k_abn_rental = "Rental!"
+      k_abn_rental = "Rental!",
+      k_abn_oneshot = "Fire!",
+      k_abn_comedian = "Comedian"
     },
     labels = {
     },
