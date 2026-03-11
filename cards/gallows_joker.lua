@@ -12,7 +12,7 @@ SMODS.Joker {
   atlas = 'AbandoniaJokers',
   pos = { x = 8, y = 3 },
   cost = 4,
-  discovered = true,
+  discovered = false,
   blueprint_compat = true,
 
   config = { extra = { base = 1, odds = 4, tarot = "c_hanged_man" } },

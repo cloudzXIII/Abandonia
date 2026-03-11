@@ -9,7 +9,7 @@ SMODS.Joker {
   pos = { x = 7, y = 6 },
   cost = 4,
 
-  discovered = true,
+  discovered = false,
   blueprint_compat = false,
 
   config = { extra = {} },

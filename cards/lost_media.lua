@@ -12,7 +12,7 @@ SMODS.Joker {
   atlas = 'AbandoniaJokers',
   pos = { x = 3, y = 10 },
   cost = 8,
-  discovered = true,
+  discovered = false,
   blueprint_compat = true,
 
   config = { extra = { x_mult_gain = 0.75, missing_ranks = "None" } },

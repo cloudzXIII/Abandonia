@@ -17,7 +17,7 @@ SMODS.Joker { -- This currently excludes when a flush is levelled up otherwise i
   atlas = 'AbandoniaJokers',
   pos = { x = 7, y = 4 },
   cost = 4,
-  discovered = true,
+  discovered = false,
   blueprint_compat = false,
 
   config = { extra = { dollars = 1 } },

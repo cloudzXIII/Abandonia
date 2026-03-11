@@ -11,7 +11,7 @@ SMODS.Joker {
   pos = { x = 8, y = 5 },
   soul_pos = { x = 9, y = 5 },
   cost = 8,
-  discovered = true,
+  discovered = false,
   blueprint_compat = true,
 
   config = { extra = { mult = 8 } },
