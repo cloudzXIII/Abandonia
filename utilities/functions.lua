@@ -91,3 +91,25 @@ function ABN.count_stickers()
   end
   return count
 end
+
+-- Get Missing ranks in deck (used in lost media)
+function ABN.get_missing_ranks()
+  if G.GAME and G.playing_cards and #G.playing_cards > 0 then
+    local current_ranks = {}
+    local missing_ranks = {}
+
+    for _, playing_card in ipairs(G.playing_cards) do
+      if not SMODS.has_no_rank(playing_card) then
+        current_ranks[playing_card.base.value] = true
+      end
+    end
+
+    for _, rank in ipairs(SMODS.Rank.obj_buffer) do
+      if not current_ranks[rank] then
+        table.insert(missing_ranks, rank)
+      end
+    end
+
+    return missing_ranks
+  end
+end

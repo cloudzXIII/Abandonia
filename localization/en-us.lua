@@ -188,7 +188,7 @@ return {
         name = "Shadowy Joker",
         text = {
           "All cards and packs in",
-          "shop are {C:attention}#1#%{} off",
+          "shop are {C:attention}#1#%{} off,",
           "All {C:attention}Cards{} and {C:attention}Jokers{}",
           "are flipped"
         }
@@ -570,6 +570,15 @@ return {
           "played cards",
           "with {V:1}#1#{} suit",
           "{s:0.8}suit changes at end of round",
+        }
+      },
+      j_abn_lost_media = {
+        name = "Lost Media",
+        text = {
+          "This Joker gains {X:mult,C:white} X#2# {} Mult for",
+          "every {C:attention}rank{} missing from your deck",
+          "{C:inactive}(Currently{} {X:mult,C:white} X#1# {} {C:inactive}Mult){}",
+          "{C:inactive,s:0.8}(Missing: #3#){}",
         }
       }
     },
