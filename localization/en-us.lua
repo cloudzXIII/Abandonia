@@ -602,6 +602,7 @@ return {
           "This Joker gains {C:white,X:mult}X#2#{} Mult",
           "hand contains a scoring",
           "{C:attention}odd{} and {C:attention}even{} card",
+          "{C:inactive}(Currently {X:mult,C:white} X#1# {} {C:inactive}Mult){}",
         }
       }
     },
