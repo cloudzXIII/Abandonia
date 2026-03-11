@@ -551,7 +551,7 @@ return {
           "When {C:attention}Blind{} is selected,",
           "This Joker gains {C:mult}+#3#{} Mult",
           "and {C:chips}+#4#{} Chips",
-          "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult, {C:chips}#2#{} {C:inactive}Chips)"
+          "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult, {C:chips}+#2#{} {C:inactive}Chips)"
         }
       },
       j_abn_insomniac_joker = {
@@ -560,7 +560,7 @@ return {
           "This Joker gains",
           "{C:chips}+#2#{} Chips every time",
           "a {C:planet}Planet{} card is used",
-          "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
         }
       },
       j_abn_gerrymandering = {
@@ -612,6 +612,15 @@ return {
           "if all suits played",
           "are {C:spades}Dark{}",
           "{C:inactive}(Currently {X:mult,C:white} X#1# {} {C:inactive}Mult){}",
+        }
+      },
+      j_abn_synergy_joker = {
+        name = "Synergy Joker",
+        text = {
+          "When another Joker gains",
+          "{C:chips}+Chips{}or {C:mult}+Mult{},",
+          "add that amount to This Joker",
+          "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult, {C:chips}+#2#{} {C:inactive}Chips)"
         }
       }
     },
