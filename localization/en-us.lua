@@ -562,6 +562,15 @@ return {
           "a {C:planet}Planet{} card is used",
           "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
         }
+      },
+      j_abn_gerrymandering = {
+        name = "Gerrymandering",
+        text = {
+          "Retrigger all",
+          "played cards",
+          "with {V:1}#1#{} suit",
+          "{s:0.8}suit changes at end of round",
+        }
       }
     },
 

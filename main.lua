@@ -72,3 +72,12 @@ ABN.calculate = function(self, context)
     end
   end
 end
+
+SMODS.Rarity {
+  key = "SuperRare",
+  default_weight = 0,
+  badge_colour = HEX("d59fcd"),
+  get_weight = function(self, weight, object_type)
+    return weight
+  end,
+}
