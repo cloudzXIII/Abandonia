@@ -622,6 +622,13 @@ return {
           "add that amount to This Joker",
           "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult, {C:chips}+#2#{} {C:inactive}Chips)"
         }
+      },
+      j_abn_fairytale_book = {
+        name = "Fairytale Book",
+        text = {
+          '{C:legendary,E:1}Legendary{} Jokers may',
+          'appear in the {C:attention}Shop',
+        }
       }
     },
 
