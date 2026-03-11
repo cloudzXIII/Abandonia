@@ -577,8 +577,23 @@ return {
         text = {
           "This Joker gains {X:mult,C:white} X#2# {} Mult for",
           "every {C:attention}rank{} missing from your deck",
-          "{C:inactive}(Currently{} {X:mult,C:white} X#1# {} {C:inactive}Mult){}",
+          "{C:inactive}(Currently {X:mult,C:white} X#1# {} {C:inactive}Mult){}",
           "{C:inactive,s:0.8}(Missing: #3#){}",
+        }
+      },
+      j_abn_sailor_joker = {
+        name = "Sailor Joker",
+        text = {
+          {
+            "Played {C:attention}Wild Cards{} and {C:attention}Bonus Cards",
+            "give {C:chips}+#1#{} Chips when scored",
+          },
+          {
+            "This Joker gains {C:mult}+#2#{} Mult",
+            "if played hand contains a {C:attention}Wild Card",
+            "or {C:attention}Bonus Card",
+            "{C:inactive}(Currently {C:mult}+#3#{} {C:inactive}Mult){}",
+          }
         }
       }
     },
