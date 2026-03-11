@@ -604,6 +604,15 @@ return {
           "{C:attention}odd{} and {C:attention}even{} card",
           "{C:inactive}(Currently {X:mult,C:white} X#1# {} {C:inactive}Mult){}",
         }
+      },
+      j_abn_goth_gabe = {
+        name = "Goth Gabe",
+        text = {
+          "This Joker gains {X:red,C:white}X#2#{} Mult",
+          "if all suits played",
+          "are {C:spades}Dark{}",
+          "{C:inactive}(Currently {X:mult,C:white} X#1# {} {C:inactive}Mult){}",
+        }
       }
     },
 
