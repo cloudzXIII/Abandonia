@@ -595,6 +595,14 @@ return {
             "{C:inactive}(Currently {C:mult}+#3#{} {C:inactive}Mult){}",
           }
         }
+      },
+      j_abn_couple_goals = {
+        name = "Couple Goals",
+        text = {
+          "This Joker gains {C:white,X:mult}X#2#{} Mult",
+          "hand contains a scoring",
+          "{C:attention}odd{} and {C:attention}even{} card",
+        }
       }
     },
 

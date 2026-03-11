@@ -7,10 +7,10 @@ SMODS.Joker {
     return { vars = { card.ability.extra.chips, card.ability.extra.mult_gain, card.ability.extra.mult } }
   end,
 
-  rarity = 3,
+  rarity = 2,
   atlas = 'AbandoniaJokers',
   pos = { x = 9, y = 1 },
-  cost = 8,
+  cost = 6,
   discovered = true,
   blueprint_compat = true,
 
@@ -19,7 +19,7 @@ SMODS.Joker {
   calculate = function(self, card, context)
     if context.before then
       local condition = false
-      for _, playing_card in ipairs(context.full_hand) do
+      for _, playing_card in ipairs(context.scoring_hand) do
         if SMODS.has_enhancement(playing_card, "m_bonus") or SMODS.has_enhancement(playing_card, "m_wild") then
           condition = true
         end
