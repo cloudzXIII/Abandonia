@@ -629,7 +629,16 @@ return {
           '{C:legendary,E:1}Legendary{} Jokers may',
           'appear in the {C:attention}Shop',
         }
-      }
+      },
+      j_abn_joe_weatherman = {
+        name = "Joe Weatherman",
+        text = {
+          "Each played {C:attention}number{} card has",
+          "a {C:green}#1# in #2#{} chance to",
+          "create a {C:tarot}Tarot{} card",
+          "when scored",
+        }
+      },
     },
 
     Spectral = {

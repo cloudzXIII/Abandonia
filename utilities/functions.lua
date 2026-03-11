@@ -27,10 +27,7 @@ ABN.is_light = function(card)
 end
 
 ABN.is_number = function(card)
-  if not card:is_face() and not card:get_id() == 14 then
-    return true
-  end
-  return false
+  return not card:is_face() and card:get_id() ~= 14
 end
 
 
