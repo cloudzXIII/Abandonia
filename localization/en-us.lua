@@ -713,6 +713,15 @@ return {
         }
       },
     },
+    Edition = {
+      e_abn_chthonian = {
+        name = "Chthonian",
+        text = {
+          "{C:attention}X2{} Joker Values",
+          "{C:attention}+5%{} Blind size",
+        },
+      }
+    },
   },
   misc = {
     quips = {
@@ -728,6 +737,7 @@ return {
       k_abn_comedian = "Comedian"
     },
     labels = {
+      abn_chthonian = "Chthonian"
     },
     ranks = {
     },
