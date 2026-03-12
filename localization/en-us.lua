@@ -674,6 +674,15 @@ return {
           "per sticker removed",
           "{C:inactive}(Currently {X:mult,C:white} X#1# {} {C:inactive}Mult){}",
         }
+      },
+      j_abn_ruin_bastion = {
+        name = "Ruin Bastion",
+        text = {
+          "When {C:attention}Blind{} is selected,",
+          "add {C:dark_edition}Abandoned{} to",
+          "rightmost Joker"
+
+        }
       }
     },
 
