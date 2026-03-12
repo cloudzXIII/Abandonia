@@ -735,6 +735,12 @@ return {
           "{C:red}-$#2#{} per retrigger"
         },
       },
+      e_abn_khroma = {
+        name = "Khroma",
+        text = {
+          ""
+        }
+      }
     },
     Planet = {
       c_abn_supernova = {
@@ -773,7 +779,8 @@ return {
     labels = {
       abn_chthonian = "Chthonian",
       abn_iridescent = "Iridescent",
-      abn_abandond = "Abandoned"
+      abn_abandond = "Abandoned",
+      abn_khroma = "Khroma"
     },
     ranks = {
     },

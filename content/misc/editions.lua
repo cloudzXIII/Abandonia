@@ -66,3 +66,22 @@ SMODS.Edition {
     artist = "Bro-Fly"
   },
 }
+
+SMODS.Shader {
+  key = 'khroma',
+  path = 'khroma.fs',
+}
+SMODS.Edition {
+  key = 'abn_khroma',
+  shader = "khroma",
+  discovered = true,
+  config = { extra = {} },
+  loc_vars = function(self, info_queue, card)
+    return { vars = {} }
+  end,
+  calculate = function(self, card, context)
+  end,
+  abn_artist_credits = {
+    artist = "Bro-Fly"
+  },
+}
