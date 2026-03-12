@@ -720,7 +720,20 @@ return {
           "{C:attention}X2{} Joker Values",
           "{C:attention}+5%{} Blind size",
         },
-      }
+      },
+      e_abn_iridescent = {
+        name = "Iridescent",
+        text = {
+          "{C:white,X:mult}X#1#{} Mult",
+          "{C:money}$#2#{}",
+        },
+      },
+      e_abn_abandond = {
+        name = "Abandoned",
+        text = {
+          "{C:inactive}Does... nothing?"
+        },
+      },
     },
     Planet = {
       c_abn_supernova = {
@@ -757,7 +770,9 @@ return {
       k_abn_comedian = "Comedian"
     },
     labels = {
-      abn_chthonian = "Chthonian"
+      abn_chthonian = "Chthonian",
+      abn_iridescent = "Iridescent",
+      abn_abandond = "Abandoned"
     },
     ranks = {
     },
