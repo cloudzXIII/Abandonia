@@ -50,13 +50,17 @@ SMODS.Edition {
   key = 'abn_abandond',
   shader = "abandond",
   discovered = true,
-  config = {},
+  config = { extra = { repetitions = 1, dollars = 3 } },
   loc_vars = function(self, info_queue, card)
-    return { vars = {} }
+    return { vars = { self.config.extra.repetitions, self.config.extra.dollars } }
   end,
   calculate = function(self, card, context)
-  end,
-  on_apply = function(card)
+    if ((context.repetition and context.cardarea == G.play) or context.retrigger_joker_check) and context.other_card == card then
+      ease_dollars(-self.config.extra.dollars)
+      return {
+        repetitions = self.config.extra.repetitions
+      }
+    end
   end,
   abn_artist_credits = {
     artist = "Bro-Fly"

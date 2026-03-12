@@ -731,7 +731,8 @@ return {
       e_abn_abandond = {
         name = "Abandoned",
         text = {
-          "{C:inactive}Does... nothing?"
+          "{C:attention}+#1#{} Retrigger",
+          "{C:red}-$#2#{} per retrigger"
         },
       },
     },
