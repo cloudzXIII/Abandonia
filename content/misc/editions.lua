@@ -68,18 +68,43 @@ SMODS.Edition {
 }
 
 SMODS.Shader {
-  key = 'khroma',
-  path = 'khroma.fs',
+  key = 'sunscourge',
+  path = 'sunscourge.fs',
 }
 SMODS.Edition {
-  key = 'abn_khroma',
-  shader = "khroma",
+  key = 'abn_sunscourge',
+  shader = "sunscourge",
   discovered = true,
-  config = { extra = {} },
+  config = { chips = 5, mult = 5, multiplier = 2 },
   loc_vars = function(self, info_queue, card)
-    return { vars = {} }
+    return { vars = { card.edition.chips, card.edition.mult } }
   end,
   calculate = function(self, card, context)
+    if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+      return {
+        chips = card.edition.chips,
+        mult = card.edition.mult
+      }
+    end
+    if context.after and context.main_eval and not context.blueprint and SMODS.last_hand_oneshot then
+      SMODS.scale_card(card, {
+        ref_table = card.edition,
+        ref_value = "chips",
+        scalar_value = "multiplier",
+        operation = 'X',
+        no_message = true
+      })
+      SMODS.scale_card(card, {
+        ref_table = card.edition,
+        ref_value = "mult",
+        scalar_value = "multiplier",
+        operation = 'X',
+        scaling_message = {
+          message = localize("k_abn_oneshot"),
+          colour = G.C.FILTER
+        }
+      })
+    end
   end,
   abn_artist_credits = {
     artist = "Bro-Fly"

@@ -736,16 +736,16 @@ return {
     },
     Edition = {
       e_abn_chthonian = {
-        name = "Chthonian",
+        name = "Chthonian (UNIMPLEMENTED)",
         text = {
-          "{C:attention}X2{} Joker Values",
+          "{C:attention}X2{} Joker Values,",
           "{C:attention}+5%{} Blind size",
         },
       },
       e_abn_iridescent = {
         name = "Iridescent",
         text = {
-          "{C:white,X:mult}X#1#{} Mult",
+          "{C:white,X:mult}X#1#{} Mult,",
           "{C:money}$#2#{}",
         },
       },
@@ -756,10 +756,13 @@ return {
           "{C:red}-$#2#{} per retrigger"
         },
       },
-      e_abn_khroma = {
-        name = "Khroma",
+      e_abn_sunscourge = {
+        name = "Sunscourge",
         text = {
-          ""
+          "{C:mult}+#1#{} Mult,",
+          "{C:chips}+#2#{} Chips,",
+          "{C:attention}Doubles{} when",
+          "score {C:attention}catches on fire{}"
         }
       }
     },
@@ -801,7 +804,7 @@ return {
       abn_chthonian = "Chthonian",
       abn_iridescent = "Iridescent",
       abn_abandond = "Abandoned",
-      abn_khroma = "Khroma"
+      abn_sunscourge = "Sunscourge"
     },
     ranks = {
     },

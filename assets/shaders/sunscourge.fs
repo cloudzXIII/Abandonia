@@ -4,7 +4,7 @@
 	#define PRECISION mediump
 #endif
 
-extern PRECISION vec2 khroma;
+extern PRECISION vec2 sunscourge;
 extern PRECISION float dissolve;
 extern PRECISION float time;
 extern PRECISION vec4 texture_details;
@@ -43,7 +43,7 @@ vec4 effect(vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords)
 
     if (tex.a == 0.0) return vec4(0.0);
 
-    float t = khroma.x * 0.0001;
+    float t = sunscourge.x * 0.0001;
 
     float lum = dot(tex.rgb, vec3(0.299, 0.587, 0.114));
 
