@@ -681,9 +681,26 @@ return {
           "When {C:attention}Blind{} is selected,",
           "add {C:dark_edition}Abandoned{} to",
           "rightmost Joker"
-
         }
-      }
+      },
+      j_abn_joker_midnight = {
+        name = "Joker by Midnight",
+        text = {
+          {
+            "Debuff all {C:diamonds}Light{} cards"
+          },
+          { "When {C:attention}Blind{} is selected,",
+            "add {C:dark_edition}Sunscourge{} to",
+            "leftmost Joker"
+          },
+          {
+            "Gives {C:mult}+#1#{} Mult",
+            "for each {C:dark_edition}Sunscourge{} Joker",
+            "or card in your {C:attention}full deck{}",
+            "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+          }
+        }
+      },
     },
 
     Spectral = {
