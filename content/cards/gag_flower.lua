@@ -54,4 +54,7 @@ SMODS.Joker {
   abn_artist_credits = {
     artist = "SmoliconBoi"
   },
+  in_pool = function(self, args)
+    return G.GAME.hands["Four of a Kind"].played >= 1
+  end
 }
