@@ -722,6 +722,26 @@ return {
         },
       }
     },
+    Planet = {
+      c_abn_supernova = {
+        name = "Supernova",
+        text = {
+          "({V:1}lvl.#1#{}) Level up",
+          "{C:attention}#2#",
+          "{C:mult}+#3#{} Mult and",
+          "{C:chips}+#4#{} chips",
+        },
+      },
+      c_abn_grandcross = {
+        name = "Grandcross",
+        text = {
+          "({V:1}lvl.#1#{}) Level up",
+          "{C:attention}#2#",
+          "{C:mult}+#3#{} Mult and",
+          "{C:chips}+#4#{} chips",
+        },
+      },
+    }
   },
   misc = {
     quips = {
@@ -743,5 +763,13 @@ return {
     },
     v_text = {
     },
+    poker_hands = {
+      ["abn_triple_pair"] = "Triple Pair",
+      ["abn_6oak"] = "Six of a Kind"
+    },
+    poker_hand_descriptions = {
+      ["abn_triple_pair"] = { "3 pairs of cards with different ranks", },
+      ["abn_6oak"] = { "6 cards with the same rank", }
+    }
   }
 }

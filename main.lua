@@ -25,6 +25,13 @@ SMODS.Atlas({
   py = 95,
 })
 
+SMODS.Atlas({
+  key = "AbandoniaPlanets",
+  path = "planets.png",
+  px = 71,
+  py = 95,
+})
+
 -- Utilities
 local subdir = "utilities"
 local cards = NFS.getDirectoryItems(SMODS.current_mod.path .. subdir)
@@ -33,12 +40,17 @@ for _, filename in pairs(cards) do
 end
 
 -- Jokers
-local subdir = "cards"
+local subdir = "content/cards"
 local cards = NFS.getDirectoryItems(SMODS.current_mod.path .. subdir)
 for _, filename in pairs(cards) do
   assert(SMODS.load_file(subdir .. "/" .. filename))()
 end
 
+local subdir = "content/misc"
+local cards = NFS.getDirectoryItems(SMODS.current_mod.path .. subdir)
+for _, filename in pairs(cards) do
+  assert(SMODS.load_file(subdir .. "/" .. filename))()
+end
 ABN.calculate = function(self, context)
   -- Shadowy Joker
   if #SMODS.find_card("j_abn_shadowy_joker", true) > 0 then
@@ -79,25 +91,5 @@ SMODS.Rarity {
   badge_colour = HEX("d59fcd"),
   get_weight = function(self, weight, object_type)
     return weight
-  end,
-}
-
-
-SMODS.Shader {
-  key = 'chthonian',
-  path = 'chthonian.fs',
-}
--- NOT FUNCTIONAL YET, WILL DO IT LATER
-SMODS.Edition {
-  key = 'abn_chthonian',
-  shader = "chthonian",
-  discovered = true,
-  config = { extra = { percent = 1.05 } },
-  loc_vars = function(self, info_queue, card)
-    return { vars = { self.config.extra.percent } }
-  end,
-  calculate = function(self, card, context)
-  end,
-  on_apply = function(card)
   end,
 }
