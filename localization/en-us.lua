@@ -664,6 +664,16 @@ return {
           "a {C:attention}#1#",
           "{C:inactive}(Currently {C:mult}+#3#{}{C:inactive} Mult, {C:chips}+#2#{} {C:inactive}Chips)"
         }
+      },
+      j_abn_peel_off = {
+        name = "Peel Off",
+        text = {
+          "When {C:attention}Blind{} is selected,",
+          "remove all {C:attention}stickers{} from",
+          "Jokers, Gains {C:white,X:mult}X#2#{} Mult",
+          "per sticker removed",
+          "{C:inactive}(Currently {X:mult,C:white} X#1# {} {C:inactive}Mult){}",
+        }
       }
     },
 

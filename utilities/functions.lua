@@ -70,7 +70,7 @@ function ABN.count_rarities()
 end
 
 -- Count stickers
-function ABN.count_stickers()
+function ABN.count_unique_stickers()
   if not G.jokers then
     return 0
   end
@@ -87,6 +87,25 @@ function ABN.count_stickers()
     end
   end
   return count
+end
+
+function ABN.count_stickers()
+  if not G.jokers then
+    return 0
+  end
+  local count = 0
+  local jokers = {}
+  for key, _ in pairs(SMODS.Sticker.obj_table) do
+    for _, joker in pairs(G.jokers.cards) do
+      if joker.ability and joker.ability[key] then
+        count = count + 1
+        if not jokers[key] then
+          table.insert(jokers, joker)
+        end
+      end
+    end
+  end
+  return count, jokers
 end
 
 -- Get Missing ranks in deck (used in lost media)
