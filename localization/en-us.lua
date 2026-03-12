@@ -653,6 +653,17 @@ return {
             "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
           }
         }
+      },
+      j_abn_gag_flower = {
+        name = "Gag Flower",
+        text = {
+          "This Joker gains {C:mult}+#5#{} Mult",
+          "and {C:chips}+#4#{} Chips per",
+          "card scored if played",
+          "hand contains",
+          "a {C:attention}#1#",
+          "{C:inactive}(Currently {C:mult}+#3#{}{C:inactive} Mult, {C:chips}+#2#{} {C:inactive}Chips)"
+        }
       }
     },
 
