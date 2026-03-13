@@ -742,6 +742,13 @@ return {
           "selected cards"
         },
       },
+      c_abn_abyss = {
+        name = "Abyss",
+        text = {
+          "Add {C:dark_edition}Chthonian{} effect to",
+          "{C:attention}#1#{} selected card in hand",
+        }
+      }
     },
     Other = {
       abn_dark_suit = {
