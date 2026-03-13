@@ -90,6 +90,10 @@ ABN.calculate = function(self, context)
       end
     end
   end
+
+  if context.joker_type_destroyed and context.card.config.center.key == "j_cavendish" then
+    G.GAME.pool_flags.abn_cavendish_extinct = true
+  end
 end
 
 SMODS.Rarity {

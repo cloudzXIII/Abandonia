@@ -701,6 +701,21 @@ return {
           }
         }
       },
+      j_abn_devil_fruit = {
+        name = "Devil Fruit",
+        text = {
+          {
+            "When {C:attention}Blind{} is selected,",
+            "add {C:dark_edition}Chthonian{} to",
+            "rightmost Joker",
+          },
+          {
+            "{C:green}#1# in #2#{} chance this",
+            "card is destroyed",
+            "at end of round",
+          },
+        }
+      },
     },
 
     Spectral = {
