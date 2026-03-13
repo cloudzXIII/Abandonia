@@ -810,7 +810,8 @@ return {
         name = "Iridescent",
         text = {
           "{C:white,X:mult}X#1#{} Mult,",
-          "{C:money}$#2#{}",
+          "Earn {C:money}$#2#{}",
+          "when triggered"
         },
       },
       e_abn_abandond = {
@@ -827,6 +828,21 @@ return {
           "{C:chips}+#2#{} Chips,",
           "{C:attention}Doubles{} when",
           "score {C:attention}catches on fire{}"
+        }
+      },
+      e_abn_gloss = {
+        name = "Gloss",
+        text = {
+          "{C:white,X:chips}X#1#{} Chips,",
+          "Earn {C:money}$#2#{}",
+          "when triggered"
+        }
+      },
+      e_abn_pearlenscene = {
+        name = "Pearlenscene",
+        text = {
+          "{C:mult}+#1#{} Mult,",
+          "{C:chips}+#2#{} Chips,",
         }
       }
     },
@@ -851,26 +867,26 @@ return {
       },
     },
     Enhanced = {
-			m_abn_petroleum = {
-				name = "Petroleum",
-				text = {
-					"{C:chips}+#1#{} Chips",
+      m_abn_petroleum = {
+        name = "Petroleum",
+        text = {
+          "{C:chips}+#1#{} Chips",
           "{C:money}+$#2#{}",
           "Turns into {C:attention}Oilfire{}",
           "if the score catches fire",
           "no rank or suit"
-				},
-			},
+        },
+      },
       m_abn_oilfire = {
-				name = "Oilfire",
-				text = {
-					"{C:mult}+#1#{} Mult",
+        name = "Oilfire",
+        text = {
+          "{C:mult}+#1#{} Mult",
           "{C:red}-$#2#{}",
           "{C:green}#3# in #4#{} Chance",
           "to {C:red}self-destruct{}",
           "no rank or suit",
-				},
-			},
+        },
+      },
     },
   },
   misc = {
@@ -892,7 +908,9 @@ return {
       abn_chthonian = "Chthonian",
       abn_iridescent = "Iridescent",
       abn_abandond = "Abandoned",
-      abn_sunscourge = "Sunscourge"
+      abn_sunscourge = "Sunscourge",
+      abn_gloss = "Gloss",
+      abn_pearlenscene = "Pearlenscene",
     },
     ranks = {
     },

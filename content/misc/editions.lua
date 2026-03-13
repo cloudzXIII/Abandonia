@@ -7,9 +7,9 @@ SMODS.Edition {
   key = 'abn_chthonian',
   shader = "chthonian",
   discovered = true,
-  config = { extra = { percent = 1.05 } },
+  config = { percent = 1.05 },
   loc_vars = function(self, info_queue, card)
-    return { vars = { self.config.extra.percent } }
+    return { vars = { card.edition.percent } }
   end,
   calculate = function(self, card, context)
   end,
@@ -29,11 +29,17 @@ SMODS.Edition {
   key = 'abn_iridescent',
   shader = "iridescent",
   discovered = true,
-  config = { x_mult = 2, p_dollars = 3, },
+  config = { x_mult = 2, dollars = 3, },
   loc_vars = function(self, info_queue, card)
-    return { vars = { self.config.x_mult, self.config.p_dollars } }
+    return { vars = { card.edition.x_mult, card.edition.dollars } }
   end,
   calculate = function(self, card, context)
+    if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+      return {
+        x_mult = card.edition.x_mult,
+        dollars = card.edition.dollars
+      }
+    end
   end,
   on_apply = function(card)
   end,
@@ -50,15 +56,15 @@ SMODS.Edition {
   key = 'abn_abandond',
   shader = "abandond",
   discovered = true,
-  config = { extra = { repetitions = 1, dollars = 3 } },
+  config = { repetitions = 1, dollars = 3 },
   loc_vars = function(self, info_queue, card)
-    return { vars = { self.config.extra.repetitions, self.config.extra.dollars } }
+    return { vars = { card.edition.repetitions, card.edition.dollars } }
   end,
   calculate = function(self, card, context)
     if ((context.repetition and context.cardarea == G.play) or context.retrigger_joker_check) and context.other_card == card then
-      ease_dollars(-self.config.extra.dollars)
+      ease_dollars(-card.edition.dollars)
       return {
-        repetitions = self.config.extra.repetitions
+        repetitions = card.edition.repetitions
       }
     end
   end,
@@ -104,6 +110,56 @@ SMODS.Edition {
           colour = G.C.FILTER
         }
       })
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Bro-Fly"
+  },
+}
+
+SMODS.Shader {
+  key = 'gloss',
+  path = 'gloss.fs',
+}
+SMODS.Edition {
+  key = 'abn_gloss',
+  shader = "gloss",
+  discovered = true,
+  config = { x_chips = 2, dollars = 5, },
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.edition.x_chips, card.edition.dollars } }
+  end,
+  calculate = function(self, card, context)
+    if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+      return {
+        x_chips = card.edition.x_chips,
+        dollars = card.edition.dollars
+      }
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Bro-Fly"
+  },
+}
+
+SMODS.Shader {
+  key = 'pearlenscene',
+  path = 'pearlenscene.fs',
+}
+SMODS.Edition {
+  key = 'abn_pearlenscene',
+  shader = "pearlenscene",
+  discovered = true,
+  config = { chips = 100, mult = 20, },
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.edition.mult, card.edition.chips } }
+  end,
+  calculate = function(self, card, context)
+    if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+      return {
+        chips = card.edition.chips,
+        mult = card.edition.mult
+      }
     end
   end,
   abn_artist_credits = {
