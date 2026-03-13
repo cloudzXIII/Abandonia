@@ -20,7 +20,7 @@ SMODS.Joker {
   rarity = 3,
   atlas = 'AbandoniaJokers',
   pos = { x = 4, y = 14 },
-  cost = 8,
+  cost = 10,
   discovered = false,
   blueprint_compat = true,
 
@@ -62,6 +62,6 @@ SMODS.Joker {
     end
   end,
   abn_artist_credits = {
-    artist = "AmaibleYak"
+    artist = "Null"
   },
 }
