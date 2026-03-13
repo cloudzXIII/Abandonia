@@ -716,6 +716,22 @@ return {
           },
         }
       },
+      j_abn_polyolic_joker = {
+        name = "Polyolic Joker",
+        text = {
+          {
+            "All played {C:diamonds}Light{} cards",
+            "become {C:dark_edition}Polychrome{}",
+            "when scored",
+          },
+          {
+            "Gives {X:mult,C:white} X#1# {} Mult",
+            "for each {C:dark_edition}Polychrome{} card",
+            "in your {C:attention}full deck",
+            "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+          }
+        }
+      }
     },
 
     Spectral = {
@@ -839,7 +855,8 @@ return {
       k_abn_unflipped = "Unflipped!",
       k_abn_rental = "Rental!",
       k_abn_oneshot = "Fire!",
-      k_abn_comedian = "Comedian"
+      k_abn_comedian = "Comedian",
+      k_abn_polychrome = "Polychrome!"
     },
     labels = {
       abn_chthonian = "Chthonian",
