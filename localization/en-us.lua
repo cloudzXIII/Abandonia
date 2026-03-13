@@ -849,7 +849,29 @@ return {
           "{C:chips}+#4#{} chips",
         },
       },
-    }
+    },
+    Enhanced = {
+			m_abn_petroleum = {
+				name = "Petroleum",
+				text = {
+					"{C:chips}+#1#{} Chips",
+          "{C:money}+$#2#{}",
+          "Turns into {C:attention}Oilfire{}",
+          "if the score catches fire",
+          "no rank or suit"
+				},
+			},
+      m_abn_oilfire = {
+				name = "Oilfire",
+				text = {
+					"{C:mult}+#1#{} Mult",
+          "{C:red}-$#2#{}",
+          "{C:green}#3# in #4#{} Chance",
+          "to {C:red}self-destruct{}",
+          "no rank or suit",
+				},
+			},
+    },
   },
   misc = {
     quips = {
@@ -863,7 +885,8 @@ return {
       k_abn_rental = "Rental!",
       k_abn_oneshot = "Fire!",
       k_abn_comedian = "Comedian",
-      k_abn_polychrome = "Polychrome!"
+      k_abn_polychrome = "Polychrome!",
+      k_abn_onfire = "On Fire!",
     },
     labels = {
       abn_chthonian = "Chthonian",
