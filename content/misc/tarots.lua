@@ -77,6 +77,7 @@ SMODS.Consumable({
         for k, v in pairs(G.jokers.highlighted)do
             v:add_sticker("eternal", true)
             v:juice_up()
+            G.jokers:unhighlight_all()
         end
 	end,
     abn_artist_credits = {
