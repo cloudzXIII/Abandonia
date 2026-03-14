@@ -19,7 +19,7 @@ SMODS.Joker {
 
   config = {
     extra = {
-      xmult = 1,
+      x_mult = 1,
       x_mult_gain = 1
     },
   },
@@ -27,13 +27,13 @@ SMODS.Joker {
   calculate = function(self, card, context)
     if context.joker_main then
       return {
-        x_mult = card.ability.extra.xmult
+        x_mult = card.ability.extra.x_mult
       }
     end
     if context.end_of_round and context.game_over == false and context.main_eval and context.beat_boss then
       SMODS.scale_card(card, {
         ref_table = card.ability.extra,
-        ref_value = "xmult",
+        ref_value = "x_mult",
         scalar_value = "x_mult_gain",
         operation = '+',
       })

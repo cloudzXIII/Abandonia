@@ -2,7 +2,7 @@ SMODS.Joker {
   key = 'daredevil',
 
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.x_mult } }
+    return { vars = { card.ability.extra.xmult } }
   end,
 
   rarity = 3,
@@ -12,7 +12,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { x_mult = 4 } },
+  config = { extra = { xmult = 4 } },
 
   calculate = function(self, card, context)
     if context.stay_flipped and context.to_area == G.hand and G.GAME.current_round.hands_played == 0 and G.GAME.current_round.discards_used == 0 then
@@ -22,7 +22,7 @@ SMODS.Joker {
     end
     if context.joker_main then
       return {
-        x_mult = card.ability.extra.x_mult
+        x_mult = card.ability.extra.xmult
       }
     end
   end,

@@ -2,7 +2,7 @@ SMODS.Joker {
   key = 'melted_joker',
 
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.dollars, card.ability.extra.x_mult } }
+    return { vars = { card.ability.extra.dollars, card.ability.extra.xmult } }
   end,
 
   rarity = 3,
@@ -12,7 +12,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { x_mult = 1.25, dollars = 1 } },
+  config = { extra = { xmult = 1.25, dollars = 1 } },
 
   calculate = function(self, card, context)
     if context.setting_blind and not context.blueprint then
@@ -31,7 +31,7 @@ SMODS.Joker {
         end,
       }))
       return {
-        x_mult = card.ability.extra.x_mult,
+        x_mult = card.ability.extra.xmult,
         dollars = card.ability.extra.dollars
       }
     end

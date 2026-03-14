@@ -2,7 +2,7 @@ SMODS.Joker {
   key = 'dryeraser_board',
 
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.x_mult, localize('Spades', 'suits_plural') } }
+    return { vars = { card.ability.extra.xmult, localize('Spades', 'suits_plural') } }
   end,
 
   rarity = 2,
@@ -12,7 +12,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { x_mult = 3 } },
+  config = { extra = { xmult = 3 } },
 
   calculate = function(self, card, context)
     if context.joker_main then
@@ -31,7 +31,7 @@ SMODS.Joker {
       end
       if all_spades then
         return {
-          x_mult = card.ability.extra.x_mult
+          x_mult = card.ability.extra.xmult
         }
       end
     end

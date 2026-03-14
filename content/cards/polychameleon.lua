@@ -13,7 +13,7 @@ SMODS.Joker {
         count = count + 1
       end
     end
-    return { vars = { card.ability.extra.x_mult, 1 + (card.ability.extra.x_mult * count) } }
+    return { vars = { card.ability.extra.xmult, 1 + (card.ability.extra.xmult * count) } }
   end,
 
   rarity = 3,
@@ -23,7 +23,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { x_mult = 0.5 } },
+  config = { extra = { xmult = 0.5 } },
 
   calculate = function(self, card, context)
     if context.joker_main then
@@ -37,7 +37,7 @@ SMODS.Joker {
         end
       end
       return {
-        x_mult = 1 + (card.ability.extra.x_mult * count)
+        x_mult = 1 + (card.ability.extra.xmult * count)
       }
     end
   end,

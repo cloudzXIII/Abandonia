@@ -2,7 +2,7 @@ SMODS.Joker {
   key = 'inferno_comedian',
 
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.x_mult, card.ability.extra.chips } }
+    return { vars = { card.ability.extra.xmult, card.ability.extra.chips } }
   end,
 
   set_badges = function(self, card, badges)
@@ -16,12 +16,12 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { x_mult = 1.7, chips = 0, hand_chips = 0 } },
+  config = { extra = { xmult = 1.7, chips = 0, hand_chips = 0 } },
 
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
       return {
-        x_mult = card.ability.extra.x_mult,
+        xmult = card.ability.extra.xmult,
       }
     end
     if context.joker_main then

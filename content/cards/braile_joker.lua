@@ -4,7 +4,7 @@ SMODS.Joker {
   loc_vars = function(self, info_queue, card)
     local numerator, denominator = SMODS.get_probability_vars(card, card.ability.extra.base, card.ability.extra.odds,
       'abn_braile_joker')
-    return { vars = { numerator, denominator, card.ability.extra.x_mult } }
+    return { vars = { numerator, denominator, card.ability.extra.xmult } }
   end,
 
   rarity = 3,
@@ -14,7 +14,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { x_mult = 1.5, base = 1, odds = 2 } },
+  config = { extra = { xmult = 1.5, base = 1, odds = 2 } },
 
   calculate = function(self, card, context)
     if context.stay_flipped and context.to_area == G.hand and SMODS.pseudorandom_probability(card, 'braile_joker', card.ability.extra.base, card.ability.extra.odds, "abn_braile_joker") then
@@ -32,7 +32,7 @@ SMODS.Joker {
     if context.individual and context.cardarea == G.play and context.other_card and context.other_card.brail_flipped then
       context.other_card.brail_flipped = false
       return {
-        x_mult = card.ability.extra.x_mult,
+        x_mult = card.ability.extra.xmult,
         card = card
       }
     end

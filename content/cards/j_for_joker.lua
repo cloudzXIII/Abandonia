@@ -2,7 +2,7 @@ SMODS.Joker {
   key = 'j_for_joker',
 
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.x_mult } }
+    return { vars = { card.ability.extra.xmult } }
   end,
 
   rarity = 1,
@@ -12,12 +12,12 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { x_mult = 4, } },
+  config = { extra = { xmult = 4, } },
 
   calculate = function(self, card, context)
     if G.jokers and #G.jokers.cards >= G.jokers.config.card_limit and context.joker_main then
       return {
-        xmult = card.ability.extra.x_mult
+        xmult = card.ability.extra.xmult
       }
     end
   end,
