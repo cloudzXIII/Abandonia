@@ -21,26 +21,26 @@ local unkeywords = {
     x_chips = true
 }
 
-local function multiply_table_values(tbl, multiplier, skip_key)
+local function multiply_table_values(tbl, multiplier)
     for key, value in pairs(tbl) do
-        if skip_key and unkeywords[key] then
+        if unkeywords[key] then
         elseif type(value) == "number" then
             if value ~= 0 and value ~= 1 then
                 tbl[key] = value * multiplier
             end
         elseif type(value) == "table" then
-            multiply_table_values(value, multiplier, true)
+            multiply_table_values(value, multiplier)
         end
     end
 end
 
 ABN.mod_card_values = function(card, args)
     if card.ability then
-        multiply_table_values(card.ability, args.multiplier, true)
+        multiply_table_values(card.ability, args.multiplier)
     end
 
     if card.base then
-        multiply_table_values(card.base, args.multiplier, true)
+        multiply_table_values(card.base, args.multiplier)
     end
     return true
 end
