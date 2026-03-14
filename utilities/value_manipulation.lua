@@ -25,7 +25,7 @@ local function multiply_table_values(tbl, multiplier)
     for key, value in pairs(tbl) do
         if unkeywords[key] then
         elseif type(value) == "number" then
-            if value ~= 0 and value ~= 1 then
+            if value ~= 1 then
                 tbl[key] = value * multiplier
             end
         elseif type(value) == "table" then
