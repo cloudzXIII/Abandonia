@@ -871,6 +871,24 @@ return {
           "no rank or suit",
 				},
 			},
+      m_abn_fossil = {
+				name = "Fossil",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+          "{C:money}+$#2#{}",
+          "has a {C:green}#3# in #4#{} chance",
+          "to {C:red}self-destruct{}"
+				},
+			},
+      m_abn_mercurial = {
+				name = "Mercurial",
+				text = {
+					"Gains {C:chips}+#2#{} Chips",
+          "for each unique suit",
+          "in scoring hand.",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive})"
+				},
+			},
     },
   },
   misc = {

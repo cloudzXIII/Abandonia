@@ -78,3 +78,69 @@ SMODS.Enhancement({
         return false
     end
 })
+
+SMODS.Enhancement({
+	key = "fossil",
+	pos = { x = 1, y = 0 },
+	atlas = "AbandoniaEnhancements",
+	config = { extra = { xmult = 3, dollars = 10, odds = 2 } },
+	loc_vars = function(self, info_queue, card)
+		local cae = card.ability.extra		
+        local num, den = SMODS.get_probability_vars(card,1,cae.odds,"oilfire_abn")
+		return { vars = { cae.xmult, cae.dollars, num, den } }
+	end,
+	calculate = function(self, card, context, effect)
+        local cae = card.ability.extra
+		if context.main_scoring and context.cardarea == G.play then
+			return {
+				xmult = cae.xmult,
+                dollars = cae.dollars
+			}
+		end
+		if
+			context.destroying_card
+			and SMODS.pseudorandom_probability(card,"oilfire_abn",1,card.ability.extra.odds)
+            and not card.getting_sliced
+            and context.destroying_card == card
+		then
+			return{
+                remove = true
+            }
+		end
+	end,
+})
+
+SMODS.Enhancement({
+	key = "mercurial",
+	pos = { x = 0, y = 0 },
+	atlas = "AbandoniaEnhancements",
+	config = { extra = { chips = 0, chip_gain = 10 } },
+	loc_vars = function(self, info_queue, card)
+		local cae = card.ability.extra		
+		return { vars = { cae.chips, cae.chip_gain } }
+	end,
+	calculate = function(self, card, context, effect)
+        local cae = card.ability.extra
+		if context.main_scoring and context.cardarea == G.play then
+			return {
+				chips = cae.chips
+			}
+		end
+		if context.before then
+			local suits, num = {}, 0
+			for k, v in pairs(context.scoring_hand) do
+				if not suits[v.base.suit] then
+					suits[v.base.suit] = true
+					num = num + 1
+				end
+			end
+			for i = 1, num do
+				SMODS.scale_card(card, {
+					ref_table = cae,
+					ref_value = "chips",
+					scalar_value = "chip_gain"
+				})
+			end
+		end
+	end,
+})
