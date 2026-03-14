@@ -850,6 +850,27 @@ return {
         },
       },
     },
+    Tarot = {
+      c_abn_crown = {
+        name = "Crown",
+        text = {
+          "Select {C:attention}1{} number card",
+          "and {C:red}destroy{} all",
+          "held face cards,",
+          "the selected card",
+          "gains {C:chips}chips{} equal",
+          "to the {C:attention}value{} the destroyed cards"
+        }
+      },
+      c_abn_eon = {
+        name = "Eon",
+        text = {
+          "Apply {C:attention}Eternal{} to",
+          "up to {C:attention}#1#{} selected",
+          "Jokers"
+        }
+      }
+    },
     Enhanced = {
 			m_abn_petroleum = {
 				name = "Petroleum",
