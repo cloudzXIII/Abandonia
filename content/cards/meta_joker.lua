@@ -2,7 +2,7 @@ SMODS.Joker {
   key = 'meta_joker',
 
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.x_mult, 1 + (card.ability.extra.x_mult * ABN.count_rarities()) } }
+    return { vars = { card.ability.extra.xmult, 1 + (card.ability.extra.xmult * ABN.count_rarities()) } }
   end,
 
   rarity = 1,
@@ -12,12 +12,12 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { x_mult = 0.25 } },
+  config = { extra = { xmult = 0.25 } },
 
   calculate = function(self, card, context)
     if context.joker_main then
       return {
-        x_mult = 1 + (card.ability.extra.x_mult * ABN.count_rarities())
+        x_mult = 1 + (card.ability.extra.xmult * ABN.count_rarities())
       }
     end
   end,

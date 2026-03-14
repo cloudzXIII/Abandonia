@@ -11,8 +11,8 @@ SMODS.Joker {
     end
     return {
       vars = {
-        card.ability.extra.x_mult,
-        1 + (card.ability.extra.x_mult * tally)
+        card.ability.extra.xmult,
+        1 + (card.ability.extra.xmult * tally)
       }
     }
   end,
@@ -26,7 +26,7 @@ SMODS.Joker {
 
   config = {
     extra = {
-      x_mult = 0.1
+      xmult = 0.1
     },
   },
   calculate = function(self, card, context)
@@ -57,7 +57,7 @@ SMODS.Joker {
         if c.edition and c.edition.key == "e_polychrome" then tally = tally + 1 end
       end
       return {
-        x_mult = 1 + (card.ability.extra.x_mult * tally)
+        x_mult = 1 + (card.ability.extra.xmult * tally)
       }
     end
   end,

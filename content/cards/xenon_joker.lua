@@ -3,7 +3,7 @@ SMODS.Joker {
 
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
-    return { vars = { card.ability.extra.x_mult } }
+    return { vars = { card.ability.extra.xmult } }
   end,
 
   rarity = 3,
@@ -13,7 +13,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { x_mult = 1.5 } },
+  config = { extra = { xmult = 1.5 } },
 
   calculate = function(self, card, context)
     if context.other_joker and context.other_joker.edition and context.other_joker.edition.polychrome == true and card ~= context.other_joker
@@ -25,13 +25,13 @@ SMODS.Joker {
         end,
       }))
       return {
-        x_mult = card.ability.extra.x_mult
+        x_mult = card.ability.extra.xmult
       }
     end
     if context.individual and context.cardarea == G.play then
       if context.other_card.edition and context.other_card.edition.key == "e_holo" then
         return {
-          x_mult = card.ability.extra.x_mult
+          x_mult = card.ability.extra.xmult
         }
       end
     end

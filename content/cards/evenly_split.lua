@@ -2,7 +2,7 @@ SMODS.Joker {
   key = 'evenly_split',
 
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.chips, card.ability.extra.x_mult } }
+    return { vars = { card.ability.extra.chips, card.ability.extra.xmult } }
   end,
 
   rarity = 3,
@@ -12,7 +12,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { x_mult = 1.5, chips = 20 } },
+  config = { extra = { xmult = 1.5, chips = 20 } },
 
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
@@ -23,7 +23,7 @@ SMODS.Joker {
       end
       if ABN.is_even(context.other_card) then
         return {
-          x_mult = card.ability.extra.x_mult
+          x_mult = card.ability.extra.xmult
         }
       end
     end

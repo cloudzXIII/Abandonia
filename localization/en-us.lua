@@ -618,7 +618,7 @@ return {
         name = "Synergy Joker",
         text = {
           "When another Joker gains",
-          "{C:chips}+Chips{}or {C:mult}+Mult{},",
+          "{C:chips}+Chips{} or {C:mult}+Mult{},",
           "add that amount to This Joker",
           "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult, {C:chips}+#2#{} {C:inactive}Chips)"
         }
@@ -800,10 +800,11 @@ return {
     },
     Edition = {
       e_abn_chthonian = {
-        name = "Chthonian (UNIMPLEMENTED)",
+        name = "Chthonian",
         text = {
-          "{C:attention}X2{} Joker Values,",
-          "{C:attention}+5%{} Blind size",
+          "{C:attention}X2{} Joker Values*,",
+          "{C:attention}+2%{} blind requirements",
+          "{C:inactive,s:0.7}*where possible"
         },
       },
       e_abn_iridescent = {

@@ -2,7 +2,7 @@ SMODS.Joker {
   key = 'escuderia_joker',
 
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.x_mult, 1 + (card.ability.extra.x_mult * ABN.count_unique_stickers()) } }
+    return { vars = { card.ability.extra.xmult, 1 + (card.ability.extra.xmult * ABN.count_unique_stickers()) } }
   end,
 
   rarity = 1,
@@ -12,12 +12,12 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { x_mult = 1 } },
+  config = { extra = { xmult = 1 } },
 
   calculate = function(self, card, context)
     if context.joker_main then
       return {
-        x_mult = 1 + (card.ability.extra.x_mult * ABN.count_unique_stickers())
+        x_mult = 1 + (card.ability.extra.xmult * ABN.count_unique_stickers())
       }
     end
   end,

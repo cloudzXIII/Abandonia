@@ -2,7 +2,8 @@ SMODS.Shader {
   key = 'chthonian',
   path = 'chthonian.fs',
 }
--- NOT FUNCTIONAL YET, WILL DO IT LATER
+
+-- Check utilities/value_manipulation.lua (If anyone finds a better implementation, feel free to change it)
 SMODS.Edition {
   key = 'abn_chthonian',
   shader = "chthonian",
@@ -14,6 +15,11 @@ SMODS.Edition {
   calculate = function(self, card, context)
   end,
   on_apply = function(card)
+    ABN.mod_card_values(card, { multiplier = 2 })
+    G.GAME.abn.cthonian = true
+  end,
+  on_remove = function(card)
+    ABN.mod_card_values(card, { multiplier = 0.5 })
   end,
   abn_artist_credits = {
     artist = "Bro-Fly"

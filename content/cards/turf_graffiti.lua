@@ -3,7 +3,7 @@ SMODS.Joker {
 
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = { key = "abn_dark_suit", set = "Other" }
-    return { vars = { card.ability.extra.x_mult } }
+    return { vars = { card.ability.extra.xmult } }
   end,
 
   rarity = 2,
@@ -13,13 +13,13 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { x_mult = 1.7 } },
+  config = { extra = { xmult = 1.7 } },
 
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
       if ABN.is_dark(context.other_card) then
         return {
-          x_mult = card.ability.extra.x_mult
+          x_mult = card.ability.extra.xmult
         }
       end
     end
