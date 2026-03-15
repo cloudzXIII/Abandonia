@@ -741,6 +741,21 @@ return {
           "{C:inactive}(Currently {X:mult,C:white} X#4# {C:inactive} Mult)",
         },
       },
+      j_abn_bloody_comedian = {
+        name = "Bloody Comedian",
+        text = {
+          {
+            "When {C:attention}Blind{} is selected,",
+            "destroy Joker to the left",
+            "and create a random",
+            "{C:orange}Comedian{} Joker",
+          },
+          {
+            "{C:orange}Comedian{} Jokers",
+            "each give {X:mult,C:white} X#1# {} Mult",
+          }
+        },
+      },
     },
 
     Spectral = {
@@ -916,26 +931,26 @@ return {
           "{C:green}#3# in #4#{} Chance",
           "to {C:red}self-destruct{}",
           "no rank or suit",
-				},
-			},
+        },
+      },
       m_abn_fossil = {
-				name = "Fossil",
-				text = {
-					"{X:mult,C:white}X#1#{} Mult",
+        name = "Fossil",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult",
           "{C:money}+$#2#{}",
           "has a {C:green}#3# in #4#{} chance",
           "to {C:red}self-destruct{}"
-				},
-			},
+        },
+      },
       m_abn_mercurial = {
-				name = "Mercurial",
-				text = {
-					"Gains {C:chips}+#2#{} Chips",
+        name = "Mercurial",
+        text = {
+          "Gains {C:chips}+#2#{} Chips",
           "for each unique suit",
           "in scoring hand.",
           "{C:inactive}(Currently {C:chips}+#1#{C:inactive})"
-				},
-			},
+        },
+      },
     },
   },
   misc = {
