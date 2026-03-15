@@ -748,14 +748,24 @@ return {
             "When {C:attention}Blind{} is selected,",
             "destroy Joker to the left",
             "and create a random",
-            "{C:orange}Comedian{} Joker",
+            "{C:attention}Comedian{} Joker",
           },
           {
-            "{C:orange}Comedian{} Jokers",
+            "{C:attention}Comedian{} Jokers",
             "each give {X:mult,C:white} X#1# {} Mult",
           }
         },
       },
+      j_abn_bubbly_comedian = {
+        name = "Bubbly Comedian",
+        text = {
+          "This Joker gains {C:mult}+#4#{} Mult,",
+          "{C:chips}+#5#{} Chips and {C:money}+$#6#{}",
+          "when a {C:attention}Comedian{} Joker is triggered",
+          "{C:inactive,s:0.8}(Excluding Bubbly Comedian)",
+          "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive}, {C:chips}+#2#{} {C:inactive}, {C:money}$#3#{}{C:inactive})"
+        }
+      }
     },
 
     Spectral = {
