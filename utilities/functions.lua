@@ -13,14 +13,14 @@ ABN.is_odd = function(card)
 end
 
 ABN.is_dark = function(card)
-  if card:is_suit("Spades") or card:is_suit("Clubs") then
+  if card:is_suit("Spades") or card:is_suit("Clubs") or card:is_suit('bunc_Halberds') or card:is_suit('paperback_Crowns') then
     return true
   end
   return false
 end
 
 ABN.is_light = function(card)
-  if card:is_suit("Diamonds") or card:is_suit("Hearts") then
+  if card:is_suit("Diamonds") or card:is_suit("Hearts") or card:is_suit('bunc_Fleurons') or card:is_suit('paperback_Stars') then
     return true
   end
   return false
