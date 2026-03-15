@@ -37,6 +37,6 @@ SMODS.Joker {
     end
   end,
   abn_artist_credits = {
-    artist = "???",
+    artist = "Olsberg",
   },
 }

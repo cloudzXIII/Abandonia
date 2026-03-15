@@ -23,5 +23,8 @@ SMODS.Consumable {
   can_use = function(self, card)
     return G.hand and #G.hand.highlighted <= card.ability.max_highlighted and #G.hand.highlighted > 0 and
         (not G.hand.highlighted[1].edition)
-  end
+  end,
+  abn_artist_credits = {
+    artist = "L'"
+  },
 }
