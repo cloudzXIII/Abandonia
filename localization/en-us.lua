@@ -1,5 +1,47 @@
 return {
   descriptions = {
+    Blind = {
+      bl_abn_hazard_heart = {
+        name = "Hazard Heart",
+        text = {
+          "2 random Jokers",
+          "and 1 card",
+          "disabled every hand",
+        },
+      },
+      bl_abn_hazard_bell = {
+        name = "Hazard Bell",
+        text = {
+          "Forces 2 cards to",
+          "always be selected",
+          "Debuffs the leftmost Joker",
+        },
+      },
+      bl_abn_hazard_acorn = {
+        name = "Hazard Acorn",
+        text = {
+          "Flips and shuffles",
+          "all Joker cards",
+          "every hand,",
+          "Debuffs the rightmost Joker",
+        },
+      },
+      bl_abn_hazard_leaf = {
+        name = "Hazard Leaf",
+        text = {
+          "All cards debuffed",
+          "until 2 Jokers sold",
+        },
+      },
+      bl_abn_hazard_vessel = {
+        name = "Hazard Vessel",
+        text = {
+          "Very Large blind,",
+          "leftmost card in",
+          "hand is debuffed",
+        },
+      },
+    },
     Joker = {
       j_abn_ichor = {
         name = "Ichor Joker",
