@@ -17,6 +17,13 @@ SMODS.Atlas({
   px = 71,
   py = 95,
 })
+SMODS.Atlas({
+  key = "AbandoniaReverse",
+  path = "reverse_legendary.png",
+  px = 71,
+  py = 95,
+})
+
 
 SMODS.Atlas({
   key = "AbandoniaSpectrals",

@@ -731,7 +731,16 @@ return {
             "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
           }
         }
-      }
+      },
+      j_abn_jorick = {
+        name = "Jorik",
+        text = {
+          "This Joker gains",
+          "{X:mult,C:white} X#1# {} Mult every {C:attention}#2#{C:inactive} [#3#]{}",
+          "cards drawn to hand",
+          "{C:inactive}(Currently {X:mult,C:white} X#4# {C:inactive} Mult)",
+        },
+      },
     },
 
     Spectral = {
@@ -943,6 +952,7 @@ return {
       k_abn_comedian = "Comedian",
       k_abn_polychrome = "Polychrome!",
       k_abn_onfire = "On Fire!",
+      k_abn_yradnegel = "yradnegeL"
     },
     labels = {
       abn_chthonian = "Chthonian",
