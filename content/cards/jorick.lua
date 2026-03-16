@@ -1,15 +1,11 @@
 SMODS.Joker {
   key = 'jorick',
 
-  set_card_type_badge = function(self, card, badges)
-    badges[#badges + 1] = create_badge(localize("k_abn_yradnegel"), G.C.RARITY[4], G.C.WHITE, 1.2)
-  end,
-
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.x_mult_gain, card.ability.extra.draws, card.ability.extra.draws_remaining, card.ability.extra.x_mult } }
   end,
 
-  rarity = 4,
+  rarity = "abn_ParallelRare",
   atlas = 'AbandoniaReverse',
   pos = { x = 1, y = 0 },
   soul_pos = { x = 0, y = 0 },

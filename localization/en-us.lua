@@ -1,5 +1,102 @@
 return {
   descriptions = {
+    Tag = {
+      tag_abn_hazard_super = {
+        name = "Super Hazard",
+        text = {
+          "Shop has a free",
+          "{C:red}Super Rare Joker",
+        }
+      },
+      tag_abn_hazard_parallel = {
+        name = "Parallel Hazard",
+        text = {
+          "Shop has a free",
+          "{C:dark_edition}Parallel Rare Joker",
+        }
+      },
+      tag_abn_hazard_legendary = {
+        name = "Legendary Hazard",
+        text = {
+          "Shop has a free",
+          "{C:legendary}Legendary Joker",
+        }
+      },
+
+      tag_abn_hazard_negative = {
+        name = "Negative Hazard",
+        text = {
+          "Add {C:dark_edition}Negative{} to",
+          "{C:attention}1 Joker{} and {C:attention}#1# cards{}",
+          "in your deck"
+        }
+      },
+      tag_abn_hazard_foil = {
+        name = "Foil Hazard",
+        text = {
+          "Add {C:dark_edition}Foil{} to",
+          "a random {C:attention}Joker{} and {C:attention}#1#{}",
+          "cards in your {C:attention}full deck"
+        }
+      },
+      tag_abn_hazard_holo = {
+        name = "Holographic Hazard",
+        text = {
+          "Add {C:dark_edition}Holographic{} to",
+          "a random {C:attention}Joker{} and {C:attention}#1#{}",
+          "cards in your {C:attention}full deck"
+        }
+      },
+      tag_abn_hazard_polychrome = {
+        name = "Polychrome Hazard",
+        text = {
+          "Add {C:dark_edition}Polychrome{} to",
+          "a random {C:attention}Joker{} and {C:attention}#1#{}",
+          "cards in your {C:attention}full deck"
+        }
+      },
+
+      tag_abn_hazard_gloss = {
+        name = "Gloss Hazard",
+        text = {
+          "Add {C:dark_edition}Gloss{} to",
+          "a random {C:attention}Joker{} and {C:attention}1{}",
+          "card in your {C:attention}full deck"
+        }
+      },
+      tag_abn_hazard_pearlenscene = {
+        name = "Pearlenscene Hazard",
+        text = {
+          "Add {C:dark_edition}Pearlenscene{} to",
+          "a random {C:attention}Joker{} and {C:attention}1{}",
+          "card in your {C:attention}full deck"
+        }
+      },
+      tag_abn_hazard_iridescent = {
+        name = "Iridescent Hazard",
+        text = {
+          "Add {C:dark_edition}Iridescent{} to",
+          "a random {C:attention}Joker{} and {C:attention}1{}",
+          "card in your {C:attention}full deck"
+        }
+      },
+      tag_abn_hazard_abandon = {
+        name = "Abandon Hazard",
+        text = {
+          "Add {C:dark_edition}Abandoned{} to",
+          "a random {C:attention}Joker{} and {C:attention}1{}",
+          "card in your {C:attention}full deck"
+        }
+      },
+      tag_abn_hazard_sunscourge = {
+        name = "Sunscourge Hazard",
+        text = {
+          "Add {C:dark_edition}Sunscourge{} to",
+          "a random {C:attention}Joker{} and {C:attention}1{}",
+          "card in your {C:attention}full deck"
+        }
+      },
+    },
     Blind = {
       bl_abn_hazard_heart = {
         name = "Hazard Heart",
@@ -1012,6 +1109,7 @@ return {
     },
     dictionary = {
       k_abn_superrare = "Super Rare",
+      k_abn_parallelrare = "Parallel Rare",
       k_abn_destroyed = "Destroyed!",
       k_abn_unflipped = "Unflipped!",
       k_abn_rental = "Rental!",
@@ -1019,7 +1117,6 @@ return {
       k_abn_comedian = "Comedian",
       k_abn_polychrome = "Polychrome!",
       k_abn_onfire = "On Fire!",
-      k_abn_yradnegel = "yradnegeL"
     },
     labels = {
       abn_chthonian = "Chthonian",

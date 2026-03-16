@@ -1,0 +1,524 @@
+SMODS.Tag {
+  key = "hazard_super",
+
+  atlas = "AbandoniaTags",
+  pos = { x = 2, y = 0 },
+  apply = function(self, tag, context)
+    if context.type == 'store_joker_create' then
+      local card = SMODS.create_card {
+        set = "Joker",
+        rarity = "abn_SuperRare",
+        area = context.area,
+      }
+      create_shop_card_ui(card, 'Joker', context.area)
+      card.states.visible = false
+      tag:yep('+', G.C.PURPLE, function()
+        card:start_materialize()
+        card.ability.couponed = true
+        card:set_cost()
+        return true
+      end)
+      tag.triggered = true
+      return card
+    end
+  end,
+  in_pool = function(self, args)
+    if pseudorandom("seed") > 0.9 then
+      return true
+    end
+  end
+}
+
+SMODS.Tag {
+  key = "hazard_parallel",
+
+  atlas = "AbandoniaTags",
+  pos = { x = 3, y = 0 },
+  apply = function(self, tag, context)
+    if context.type == 'store_joker_create' then
+      local card = SMODS.create_card {
+        set = "Joker",
+        rarity = "abn_ParallelRare",
+        area = context.area,
+      }
+      create_shop_card_ui(card, 'Joker', context.area)
+      card.states.visible = false
+      tag:yep('+', G.C.PURPLE, function()
+        card:start_materialize()
+        card.ability.couponed = true
+        card:set_cost()
+        return true
+      end)
+      tag.triggered = true
+      return card
+    end
+  end,
+  in_pool = function(self, args)
+    if pseudorandom("seed") > 1 then
+      return true
+    end
+  end
+}
+
+SMODS.Tag {
+  key = "hazard_legendary",
+
+  atlas = "AbandoniaTags",
+  pos = { x = 4, y = 0 },
+  apply = function(self, tag, context)
+    if context.type == 'store_joker_create' then
+      local card = SMODS.create_card {
+        set = "Joker",
+        rarity = "Legendary",
+        area = context.area,
+      }
+      create_shop_card_ui(card, 'Joker', context.area)
+      card.states.visible = false
+      tag:yep('+', G.C.PURPLE, function()
+        card:start_materialize()
+        card.ability.couponed = true
+        card:set_cost()
+        return true
+      end)
+      tag.triggered = true
+      return card
+    end
+  end,
+  in_pool = function(self, args)
+    if pseudorandom("seed") > 0.7 then
+      return true
+    end
+  end
+}
+
+SMODS.Tag {
+  key = "hazard_negative",
+
+  atlas = "AbandoniaTags",
+  pos = { x = 0, y = 1 },
+  config = { edition = "e_negative", count = 3 },
+  loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+    return { vars = { tag.config.count } }
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'immediate' then
+      local lock = tag.ID
+      G.CONTROLLER.locks[lock] = true
+
+      tag:yep('++', G.C.DARK_EDITION, function()
+        return true
+      end)
+
+      if G.jokers and #G.jokers.cards > 0 then
+        local filtered = {}
+        for _, v in ipairs(G.jokers.cards) do
+          if not v.edition then
+            table.insert(filtered, v)
+          end
+        end
+        local joker = pseudorandom_element(filtered)
+
+        if joker then
+          joker:set_edition(tag.config.edition, true)
+        end
+      end
+
+      local cards_applied = 0
+      for _, card in ipairs(G.playing_cards) do
+        if cards_applied < tag.config.count and not card.edition then
+          card:set_edition(tag.config.edition, true)
+          cards_applied = cards_applied + 1
+        end
+      end
+
+      G.CONTROLLER.locks[lock] = nil
+      tag.triggered = true
+      return true
+    end
+  end
+}
+
+SMODS.Tag {
+  key = "hazard_foil",
+
+  atlas = "AbandoniaTags",
+  pos = { x = 1, y = 1 },
+  config = { edition = "e_foil", count = 3 },
+  loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
+    return { vars = { tag.config.count } }
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'immediate' then
+      local lock = tag.ID
+      G.CONTROLLER.locks[lock] = true
+
+      tag:yep('++', G.C.DARK_EDITION, function()
+        return true
+      end)
+
+      if G.jokers and #G.jokers.cards > 0 then
+        local filtered = {}
+        for _, v in ipairs(G.jokers.cards) do
+          if not v.edition then
+            table.insert(filtered, v)
+          end
+        end
+        local joker = pseudorandom_element(filtered)
+
+        if joker then
+          joker:set_edition(tag.config.edition, true)
+        end
+      end
+
+      local cards_applied = 0
+      for _, card in ipairs(G.playing_cards) do
+        if cards_applied < tag.config.count and not card.edition then
+          card:set_edition(tag.config.edition, true)
+          cards_applied = cards_applied + 1
+        end
+      end
+
+      G.CONTROLLER.locks[lock] = nil
+      tag.triggered = true
+      return true
+    end
+  end
+}
+
+SMODS.Tag {
+  key = "hazard_holo",
+
+  atlas = "AbandoniaTags",
+  pos = { x = 2, y = 1 },
+  config = { edition = "e_holo", count = 3 },
+  loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
+    return { vars = { tag.config.count } }
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'immediate' then
+      local lock = tag.ID
+      G.CONTROLLER.locks[lock] = true
+
+      tag:yep('++', G.C.DARK_EDITION, function()
+        return true
+      end)
+
+      if G.jokers and #G.jokers.cards > 0 then
+        local filtered = {}
+        for _, v in ipairs(G.jokers.cards) do
+          if not v.edition then
+            table.insert(filtered, v)
+          end
+        end
+        local joker = pseudorandom_element(filtered)
+
+        if joker then
+          joker:set_edition(tag.config.edition, true)
+        end
+      end
+
+      local cards_applied = 0
+      for _, card in ipairs(G.playing_cards) do
+        if cards_applied < tag.config.count and not card.edition then
+          card:set_edition(tag.config.edition, true)
+          cards_applied = cards_applied + 1
+        end
+      end
+
+      G.CONTROLLER.locks[lock] = nil
+      tag.triggered = true
+      return true
+    end
+  end
+}
+
+SMODS.Tag {
+  key = "hazard_polychrome",
+
+  atlas = "AbandoniaTags",
+  pos = { x = 3, y = 1 },
+  config = { edition = "e_polychrome", count = 3 },
+  loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
+    return { vars = { tag.config.count } }
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'immediate' then
+      local lock = tag.ID
+      G.CONTROLLER.locks[lock] = true
+
+      tag:yep('++', G.C.DARK_EDITION, function()
+        return true
+      end)
+
+      if G.jokers and #G.jokers.cards > 0 then
+        local filtered = {}
+        for _, v in ipairs(G.jokers.cards) do
+          if not v.edition then
+            table.insert(filtered, v)
+          end
+        end
+        local joker = pseudorandom_element(filtered)
+
+        if joker then
+          joker:set_edition(tag.config.edition, true)
+        end
+      end
+
+      local cards_applied = 0
+      for _, card in ipairs(G.playing_cards) do
+        if cards_applied < tag.config.count and not card.edition then
+          card:set_edition(tag.config.edition, true)
+          cards_applied = cards_applied + 1
+        end
+      end
+
+      G.CONTROLLER.locks[lock] = nil
+      tag.triggered = true
+      return true
+    end
+  end
+}
+
+SMODS.Tag {
+  key = "hazard_gloss",
+
+  atlas = "AbandoniaTags",
+  pos = { x = 4, y = 1 },
+  config = { edition = "e_abn_gloss", count = 1 },
+  loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_gloss
+    return { vars = {} }
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'immediate' then
+      local lock = tag.ID
+      G.CONTROLLER.locks[lock] = true
+
+      tag:yep('++', G.C.DARK_EDITION, function()
+        return true
+      end)
+
+      if G.jokers and #G.jokers.cards > 0 then
+        local filtered = {}
+        for _, v in ipairs(G.jokers.cards) do
+          if not v.edition then
+            table.insert(filtered, v)
+          end
+        end
+        local joker = pseudorandom_element(filtered)
+
+        if joker then
+          joker:set_edition(tag.config.edition, true)
+        end
+      end
+
+      local cards_applied = 0
+      for _, card in ipairs(G.playing_cards) do
+        if cards_applied < tag.config.count and not card.edition then
+          card:set_edition(tag.config.edition, true)
+          cards_applied = cards_applied + 1
+        end
+      end
+
+      G.CONTROLLER.locks[lock] = nil
+      tag.triggered = true
+      return true
+    end
+  end
+}
+
+SMODS.Tag {
+  key = "hazard_pearlenscene",
+
+  atlas = "AbandoniaTags",
+  pos = { x = 0, y = 2 },
+  config = { edition = "e_abm_pearlenscene", count = 1 },
+  loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abm_pearlenscene
+    return { vars = {} }
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'immediate' then
+      local lock = tag.ID
+      G.CONTROLLER.locks[lock] = true
+
+      tag:yep('++', G.C.DARK_EDITION, function()
+        return true
+      end)
+
+      if G.jokers and #G.jokers.cards > 0 then
+        local filtered = {}
+        for _, v in ipairs(G.jokers.cards) do
+          if not v.edition then
+            table.insert(filtered, v)
+          end
+        end
+        local joker = pseudorandom_element(filtered)
+
+        if joker then
+          joker:set_edition(tag.config.edition, true)
+        end
+      end
+
+      local cards_applied = 0
+      for _, card in ipairs(G.playing_cards) do
+        if cards_applied < tag.config.count and not card.edition then
+          card:set_edition(tag.config.edition, true)
+          cards_applied = cards_applied + 1
+        end
+      end
+
+      G.CONTROLLER.locks[lock] = nil
+      tag.triggered = true
+      return true
+    end
+  end
+}
+
+SMODS.Tag {
+  key = "hazard_iridescent",
+
+  atlas = "AbandoniaTags",
+  pos = { x = 1, y = 2 },
+  config = { edition = "e_abn_iridescent", count = 1 },
+  loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_iridescent
+    return { vars = {} }
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'immediate' then
+      local lock = tag.ID
+      G.CONTROLLER.locks[lock] = true
+
+      tag:yep('++', G.C.DARK_EDITION, function()
+        return true
+      end)
+
+      if G.jokers and #G.jokers.cards > 0 then
+        local filtered = {}
+        for _, v in ipairs(G.jokers.cards) do
+          if not v.edition then
+            table.insert(filtered, v)
+          end
+        end
+        local joker = pseudorandom_element(filtered)
+
+        if joker then
+          joker:set_edition(tag.config.edition, true)
+        end
+      end
+
+      local cards_applied = 0
+      for _, card in ipairs(G.playing_cards) do
+        if cards_applied < tag.config.count and not card.edition then
+          card:set_edition(tag.config.edition, true)
+          cards_applied = cards_applied + 1
+        end
+      end
+
+      G.CONTROLLER.locks[lock] = nil
+      tag.triggered = true
+      return true
+    end
+  end
+}
+
+SMODS.Tag {
+  key = "hazard_abandon",
+
+  atlas = "AbandoniaTags",
+  pos = { x = 2, y = 2 },
+  config = { edition = "e_abn_abandond", count = 1 },
+  loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_abandond
+    return { vars = {} }
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'immediate' then
+      local lock = tag.ID
+      G.CONTROLLER.locks[lock] = true
+
+      tag:yep('++', G.C.DARK_EDITION, function()
+        return true
+      end)
+
+      if G.jokers and #G.jokers.cards > 0 then
+        local filtered = {}
+        for _, v in ipairs(G.jokers.cards) do
+          if not v.edition then
+            table.insert(filtered, v)
+          end
+        end
+        local joker = pseudorandom_element(filtered)
+
+        if joker then
+          joker:set_edition(tag.config.edition, true)
+        end
+      end
+
+      local cards_applied = 0
+      for _, card in ipairs(G.playing_cards) do
+        if cards_applied < tag.config.count and not card.edition then
+          card:set_edition(tag.config.edition, true)
+          cards_applied = cards_applied + 1
+        end
+      end
+
+      G.CONTROLLER.locks[lock] = nil
+      tag.triggered = true
+      return true
+    end
+  end
+}
+
+SMODS.Tag {
+  key = "hazard_sunscourge",
+
+  atlas = "AbandoniaTags",
+  pos = { x = 3, y = 2 },
+  config = { edition = "e_abn_sunscourge", count = 1 },
+  loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_sunscourge
+    return { vars = {} }
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'immediate' then
+      local lock = tag.ID
+      G.CONTROLLER.locks[lock] = true
+
+      tag:yep('++', G.C.DARK_EDITION, function()
+        return true
+      end)
+
+      if G.jokers and #G.jokers.cards > 0 then
+        local filtered = {}
+        for _, v in ipairs(G.jokers.cards) do
+          if not v.edition then
+            table.insert(filtered, v)
+          end
+        end
+        local joker = pseudorandom_element(filtered)
+
+        if joker then
+          joker:set_edition(tag.config.edition, true)
+        end
+      end
+
+      local cards_applied = 0
+      for _, card in ipairs(G.playing_cards) do
+        if cards_applied < tag.config.count and not card.edition then
+          card:set_edition(tag.config.edition, true)
+          cards_applied = cards_applied + 1
+        end
+      end
+
+      G.CONTROLLER.locks[lock] = nil
+      tag.triggered = true
+      return true
+    end
+  end
+}

@@ -13,6 +13,13 @@ ABN.optional_features = {
 }
 
 SMODS.Atlas({
+  key = "AbandoniaTags",
+  path = "tags.png",
+  px = 34,
+  py = 34,
+})
+
+SMODS.Atlas({
   key = "AbandoniaJokers",
   path = "jokers_1.png",
   px = 71,
@@ -124,6 +131,15 @@ SMODS.Rarity {
   key = "SuperRare",
   default_weight = 0,
   badge_colour = HEX("d59fcd"),
+  get_weight = function(self, weight, object_type)
+    return weight
+  end,
+}
+
+SMODS.Rarity {
+  key = "ParallelRare",
+  default_weight = 0,
+  badge_colour = HEX("b26cbb"),
   get_weight = function(self, weight, object_type)
     return weight
   end,
