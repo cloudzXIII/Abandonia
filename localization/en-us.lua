@@ -933,6 +933,13 @@ return {
           "per card drawn face down",
           "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
         }
+      },
+      j_abn_funambulist = {
+        name = "Funambulist",
+        text = {
+          "{C:chips}+#1#{} Chips per Joker to the {C:attention}right{},",
+          "{C:mult}+#2#{} Mult per Joker to the {C:attention}left{}"
+        }
       }
     },
 
