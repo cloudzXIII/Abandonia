@@ -1078,6 +1078,14 @@ return {
       },
     },
     Tarot = {
+      c_abn_wheel_of_fate = {
+        name = "Wheel of Fate",
+        text = {
+          "{C:green}#1# in #2#{} chance to apply",
+          "a random {C:attention}Sticker{}",
+          "to a random {C:attention}Joker",
+        }
+      },
       c_abn_crown = {
         name = "Crown",
         text = {
