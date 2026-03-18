@@ -420,7 +420,7 @@ return {
         }
       },
       j_abn_executioner = {
-        name = 'Executioner',
+        name = "Executioner",
         text = {
           "Cards held in hand",
           "permanently gain",
@@ -765,8 +765,8 @@ return {
       j_abn_fairytale_book = {
         name = "Fairytale Book",
         text = {
-          '{C:legendary,E:1}Legendary{} Jokers may',
-          'appear in the {C:attention}Shop',
+          "{C:legendary,E:1}Legendary{} Jokers may",
+          "appear in the {C:attention}Shop",
         }
       },
       j_abn_joe_weatherman = {
@@ -904,6 +904,35 @@ return {
           "{C:inactive,s:0.8}(Excluding Bubbly Comedian)",
           "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive}, {C:chips}+#2#{} {C:inactive}, {C:money}$#3#{}{C:inactive})"
         }
+      },
+      j_abn_gimbo = {
+        name = "Gimbo",
+        text = {
+          "Each played {C:attention}2{},",
+          "{C:attention}3{}, or {C:attention}5{} gives",
+          "{C:white,X:mult}X#1#{} Mult when scored",
+        }
+      },
+      j_abn_boozy_joker = {
+        name = "Boozy Joker",
+        text = {
+          {
+            "Can {C:blue}play{} and {C:red}discard{}",
+            "up to {C:attention}6{} cards"
+          },
+          {
+            "{C:attention}6{} card hands",
+            "give {C:money}$#1#{}"
+          }
+        }
+      },
+      j_abn_witching_hour = {
+        name = "Witching Hour",
+        text = {
+          "This Joker gains {X:mult,C:white}X#2#{} Mult",
+          "per card drawn face down",
+          "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+        }
       }
     },
 
@@ -947,6 +976,7 @@ return {
           "{C:blue,s:2}Programmed by:",
           " ",
           "{C:blue,s:1.3}cloudzXIII{}",
+          "{C:blue,s:1.3}Revo{}",
           "{C:blue,s:1.3}Mills-44{}",
           " ",
           "{C:green,s:2}Art by:",
@@ -1117,6 +1147,7 @@ return {
       k_abn_comedian = "Comedian",
       k_abn_polychrome = "Polychrome!",
       k_abn_onfire = "On Fire!",
+      abn_hazard_tags = "Hazard Tags",
     },
     labels = {
       abn_chthonian = "Chthonian",
