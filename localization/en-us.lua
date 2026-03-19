@@ -940,7 +940,15 @@ return {
           "{C:chips}+#1#{} Chips per Joker to the {C:attention}right{},",
           "{C:mult}+#2#{} Mult per Joker to the {C:attention}left{}"
         }
-      }
+      },
+      j_abn_marques_the_joker={
+        name="Marques the Joker",
+        text={
+          "Played gold cards permanently gains {X:mult,C:white}+X#1#{} {C:mult}Mult{}",
+          "and {C:chips}+#2# chips{} when scored",
+          "Non-gold cards gets debuffed when scored",
+        },
+      },
     },
 
     Spectral = {
