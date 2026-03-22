@@ -336,9 +336,9 @@ SMODS.Tag {
 
   atlas = "AbandoniaTags",
   pos = { x = 0, y = 2 },
-  config = { edition = "e_abm_pearlenscene", count = 1 },
+  config = { edition = "e_abn_pearlenscene", count = 1 },
   loc_vars = function(self, info_queue, tag)
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_abm_pearlenscene
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_pearlenscene
     return { vars = {} }
   end,
   apply = function(self, tag, context)
