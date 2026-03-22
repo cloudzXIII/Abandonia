@@ -249,6 +249,7 @@ SMODS.Voucher({
         return{vars={cae.lim}}
 	end,
 	redeem = function(self, card)
+		local cae = card.ability.extra
         G.GAME.modifiers.abn_guarantee_spectral_in_tarot = true
 	end,
 })
@@ -272,6 +273,7 @@ SMODS.Voucher({
         return{vars={cae.lim}}
 	end,
 	redeem = function(self, card)
+		local cae = card.ability.extra
 	end,
     calculate = function(self,card,context)
         if context.end_of_round and context.main_eval then
@@ -301,6 +303,7 @@ SMODS.Voucher({
 		local cae = card.ability.extra
 	end,
     redeem = function(self,card)
+		local cae = card.ability.extra
         G.GAME.abn_guarantee_double_modif = true
     end
 })
@@ -324,6 +327,7 @@ SMODS.Voucher({
         return{vars={cae.ante}}
 	end,
 	redeem = function(self, card)
+		local cae = card.ability.extra
         ease_ante(-cae.ante)
 	end,
 })
@@ -347,6 +351,7 @@ SMODS.Voucher({
         return{vars={cae.cost}}
 	end,
 	redeem = function(self, card)
+		local cae = card.ability.extra
        	G.GAME.abn_boss_reroll_cost = cae.cost
 	end,
 })
@@ -370,6 +375,7 @@ SMODS.Voucher({
         return{vars={cae.inc}}
 	end,
 	redeem = function(self, card)
+		local cae = card.ability.extra
        	G.hand:change_size(cae.inc)
 	end,
 })
