@@ -2,7 +2,7 @@ SMODS.Joker {
   key = 'lost_media',
 
   loc_vars = function(self, info_queue, card)
-    local missing_ranks = ABN.get_missing_ranks()
+    local missing_ranks = ABN.get_missing_ranks() or {}
     local ranks = (#missing_ranks > 0) and table.concat(missing_ranks, ", ") or "None"
     local xmult = 1 + (#missing_ranks * card.ability.extra.x_mult_gain)
     return { vars = { xmult, card.ability.extra.x_mult_gain, ranks } }
