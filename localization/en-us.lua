@@ -950,6 +950,30 @@ return {
           "Non-gold cards gets debuffed when scored",
         },
       },
+      j_abn_alchemical_joker={
+        name="Alchemical Joker",
+        text={
+          "{X:mult,C:white}X#1#{} {C:mult}Mult",
+          "for each unique",
+          "{C:attention}Enhancement{},{C:attention}Edition{},{C:attention}Seal{} and {C:attention}Sticker",
+          "in scoring {C:chips}hand",
+        },
+      },
+      j_abn_sanguine_treasure={
+        name="Sanguine Treasure",
+        text={
+          "Scoring {C:attention}Gold cards",
+          "gives double their {C:chips}chips{} and {C:money}money",
+        },
+      },
+      j_abn_vitamin_joker={
+        name="Vitamin Joker",
+        text={
+          "{C:attention}Scoring cards with seal",
+          "permanently gains {C:chips}#1# chips{} and {C:mult}#2# mult",
+          "{C:green}#3# in #4#{} chance this card is eaten after played {C:chips}hand"
+        },
+      },
     },
 
     Spectral = {
