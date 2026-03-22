@@ -1125,6 +1125,16 @@ return {
           "{C:dark_edition}Editions{}",
         }
       },
+      c_abn_eruption = {
+        name = "Eruption",
+        text = {
+          "{C:red}Destroy{} all cards",
+          "in your deck and",
+          "add {C:attention}10 Fossil numbered",
+          "cards with {C:dark_edition}Sunscourge{} edition",
+          "to your hand",
+        }
+      }
     },
     Enhanced = {
       m_abn_petroleum = {

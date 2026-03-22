@@ -76,3 +76,55 @@ SMODS.Consumable {
     artist = "Grass",
   },
 }
+
+SMODS.Consumable {
+  key = "eruption",
+  set = "calamity_cards",
+  config = { extra = { amount = 10 } },
+  pos = { x = 0, y = 0 },
+  --atlas = "AbandoniaTarots",
+  cost = 4,
+  discovered = false,
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_fossil
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_sunscourge
+    return { vars = { card.ability.extra.amount } }
+  end,
+  can_use = function(self, card)
+    return true
+  end,
+  use = function(self, card, area, copier)
+    local used_tarot = copier or card
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        used_tarot:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+    for _, v in ipairs(G.playing_cards) do
+      SMODS.destroy_cards(v)
+    end
+    for i = 1, card.ability.extra.amount do
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.4,
+        func = function()
+          local numbers = {}
+          for _, rank_key in ipairs(SMODS.Rank.obj_buffer) do
+            local rank = SMODS.Ranks[rank_key]
+            if rank_key ~= 'Ace' and not rank.face then table.insert(numbers, rank) end
+          end
+          local _rank = pseudorandom_element(numbers, 'eruption').card_key
+          SMODS.calculate_context({ playing_card_added = true, cards = SMODS.add_card { set = "Base", rank = _rank, enhancement = "m_abn_fossil", edition = "e_abn_sunscourge" } })
+          return true
+        end
+      }))
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Grass",
+  },
+}
