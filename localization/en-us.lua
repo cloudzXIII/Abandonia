@@ -1290,7 +1290,7 @@ return {
           "{C:attention}+#1#{} hand size"
         }
       },
-    }
+    },
   },
   misc = {
     quips = {
@@ -1307,11 +1307,8 @@ return {
       k_abn_comedian = "Comedian",
       k_abn_polychrome = "Polychrome!",
       k_abn_onfire = "On Fire!",
-<<<<<<< Updated upstream
       abn_hazard_tags = "Hazard Tags",
-=======
       abn_kept = "Kept!"
->>>>>>> Stashed changes
     },
     labels = {
       abn_chthonian = "Chthonian",

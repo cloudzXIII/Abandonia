@@ -130,7 +130,6 @@ function ABN.get_missing_ranks()
   end
 end
 
-<<<<<<< Updated upstream
 function ABN.random_sticker(card, seed)
   local compatible = {}
 
@@ -162,11 +161,9 @@ function ABN.can_apply_sticker(sticker, card)
   end
   return false
 end
-=======
 function ABN.msg(card, message, type)
 	if not type then
 		type = "extra"
 	end
 	card_eval_status_text(card, type, nil, nil, nil, { message = message })
 end
->>>>>>> Stashed changes
