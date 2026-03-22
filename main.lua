@@ -70,6 +70,14 @@ SMODS.Atlas({
   py = 95,
 })
 
+
+SMODS.Atlas({
+  key = "AbandoniaVouchers",
+  path = "vouchers.png",
+  px = 71,
+  py = 95,
+})
+
 -- Utilities
 local subdir = "utilities"
 local cards = NFS.getDirectoryItems(SMODS.current_mod.path .. subdir)

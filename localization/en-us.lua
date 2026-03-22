@@ -1176,6 +1176,121 @@ return {
         },
       },
     },
+    Voucher = {
+      v_abn_overstock_maximum = {
+        name = "Overstock Maximum",
+        text = {
+          "{C:attention}+#1#{} card slot",
+          "available in shop"
+        }
+      },
+      v_abn_tarot_master= {
+        name = "Tarot Master",
+        text = {
+          "{C:green}1 in 6{} chance for",
+          "used {C:tarot}Tarots{} to",
+          "not get consumed"
+        }
+      },
+      v_abn_planet_master = {
+        name = "Planet Master",
+        text = {
+          "{C:green}1 in 6{} chance for",
+          "used {C:planet}Planets{} to",
+          "not get consumed"
+        }
+      },
+      v_abn_money_master = {
+        name = "Money Master",
+        text = {
+          "All cards and packs in",
+          "shop are {C:attention}#1#%{} off"
+        }
+      },
+      v_abn_glow_master = {
+        name = "Glow Master",
+        text = {
+          "All {C:attention}Jokers",
+          "have editions"
+        }
+      },
+      v_abn_food_master = {
+        name = "Food Master",
+        text = {
+          "{C:blue}+#1#{} hand selection"
+        }
+      },
+      v_abn_recycle_master = {
+        name = "Recycle Master",
+        text = {
+          "{C:red}+#1#{} discard selection"
+        }
+      },
+      v_abn_negative_master = {
+        name = "Negative Master",
+        text = {
+          "{C:dark_edition}+#1#{} Joker slots"
+        }
+      },
+      v_abn_reroll_master = {
+        name = "Reroll Master",
+        text = {
+          "Reroll cost",
+          "does not increase"
+        }
+      },
+      v_abn_gold_tree = {
+        name = "Gold Tree",
+        text = {
+          "Raise the cap on",
+          "interest earned in",
+          "each round to {C:money}$#1#{}"
+        }
+      },
+      v_abn_cataclysm_globe  = {
+        name = "Cataclysm Globe",
+        text = {
+          "{C:dark_edition}Spectral{} cards always",
+          "show up in {C:tarot}Tarot{} packs"
+        }
+      },
+      v_abn_satelite  = {
+        name = "Satellite",
+        text = {
+          "{C:planet}Planet{} cards in possession",
+          "turn {C:dark_edition}Negative{} at",
+          "the end of the round"
+        }
+      },
+      v_abn_illusion_master  = {
+        name = "Illusion Master",
+        text = {
+          "{C:attention}Playing cards{} in shop",
+          "are guaranteed to spawn",
+          "with either an {C:dark_edition}Edition{} and a {C:attention}Seal{}",
+          "or with an {C:dark_edition}Edition{} and an {C:dark_edition}Enhancement{}"
+        }
+      },
+      v_abn_forget_fossil  = {
+        name = "Forget Fossil",
+        text = {
+          "{C:attention}-#1#{} antes"
+        }
+      },
+      v_abn_fan_edit  = {
+        name = "Fan Edit",
+        text = {
+          "Boss Rerolls",
+          "cost {C:money}$#1#{}"
+        }
+      },
+      v_abn_industrial_brush  = {
+        name = "Industrial Brush",
+        text = {
+          "{C:attention}+#1#{} hand size"
+        }
+      },
+    }
   },
   misc = {
     quips = {
@@ -1192,7 +1307,11 @@ return {
       k_abn_comedian = "Comedian",
       k_abn_polychrome = "Polychrome!",
       k_abn_onfire = "On Fire!",
+<<<<<<< Updated upstream
       abn_hazard_tags = "Hazard Tags",
+=======
+      abn_kept = "Kept!"
+>>>>>>> Stashed changes
     },
     labels = {
       abn_chthonian = "Chthonian",

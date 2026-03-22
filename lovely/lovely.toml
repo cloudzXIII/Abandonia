@@ -167,3 +167,66 @@ if G.GAME.abn.cthonian then
 end
 '''
 match_indent = true
+
+# G.FUNCS.use_card()
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+match_indent = true
+position = 'before'
+pattern = "if not dont_dissolve then card:start_dissolve() end"
+payload = '''
+local abnmove = false
+if not dont_dissolve and card.ability.set == "Tarot" then
+    if G.GAME.used_vouchers["v_abn_tarot_master"] and pseudorandom("vccc") < 1/6 then
+        dont_dissolve = true
+        abnmove = true
+    end
+elseif not dont_dissolve and card.ability.set == "Planet" then
+    if G.GAME.used_vouchers["v_abn_planet_master"] and pseudorandom("vccc") < 1/6 then
+        dont_dissolve = true
+        abnmove = true
+    end
+end
+
+if dont_dissolve and abnmove then
+    G.E_MANAGER:add_event(Event{
+        func = function()
+            draw_card(G.play, G.consumeables, 100, 'up', true, card)
+            ABN.msg(card, localize("abn_kept"))
+            return true
+        end
+    })
+end
+'''
+
+# G.FUNCS.reroll_boss()
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+match_indent = true
+position = 'at'
+pattern = "    if ((G.GAME.dollars-G.GAME.bankrupt_at) - 10 >= 0) and"
+payload = '''
+    if ((G.GAME.dollars-G.GAME.bankrupt_at) - (G.GAME.abn_boss_reroll_cost or 10) >= 0) and
+'''
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+match_indent = true
+position = 'at'
+pattern = "if not G.from_boss_tag then ease_dollars(-10) end"
+payload = '''
+if not G.from_boss_tag then ease_dollars(-(G.GAME.abn_boss_reroll_cost or 10)) end
+'''
+
+# UI Definitions Blind Reroll button
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+match_indent = true
+position = 'at'
+pattern = '''        UIBox_button({label = {localize('b_reroll_boss'), localize('$')..'10'}, button = "reroll_boss", func = 'reroll_boss_button'}) or nil''' 
+payload = '''
+        UIBox_button({label = {localize('b_reroll_boss'), localize('$')..(G.GAME.abn_boss_reroll_cost or 10)}, button = "reroll_boss", func = 'reroll_boss_button'}) or nil
+'''
