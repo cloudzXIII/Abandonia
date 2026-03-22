@@ -941,11 +941,12 @@ return {
           "{C:mult}+#2#{} Mult per Joker to the {C:attention}left{}"
         }
       },
-      j_abn_marques_the_joker={
-        name="Marques the Joker",
-        text={
-          "Played gold cards permanently gains {X:mult,C:white}+X#1#{} {C:mult}Mult{}",
-          "and {C:chips}+#2# chips{} when scored",
+      j_abn_marques_the_joker = {
+        name = "Marques the Joker",
+        text = {
+          "Played {C:attention}Gold Cards{}",
+          "permanently gain {X:mult,C:white}+X#1#{} Mult",
+          "and {C:chips}+#2#{} chips when scored",
           "Non-gold cards gets debuffed when scored",
         },
       },
@@ -1113,6 +1114,17 @@ return {
           "Jokers"
         }
       }
+    },
+    calamity_cards = {
+      c_abn_cyclone = {
+        name = "Cyclone",
+        text = {
+          "Doubles money,",
+          "{C:red}Destroy{} all {C:attention}Jokers{}",
+          "and {C:attention}playing cards{} with",
+          "{C:dark_edition}Editions{}",
+        }
+      },
     },
     Enhanced = {
       m_abn_petroleum = {
