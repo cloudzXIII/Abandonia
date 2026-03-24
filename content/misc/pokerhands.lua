@@ -4,7 +4,7 @@ SMODS.PokerHand {
   chips = 160,
   l_chips = 35,
   l_mult = 3,
-  visible = true,
+  visible = false,
   above_hand = 'Five of a Kind',
   example = {
 
@@ -27,7 +27,7 @@ SMODS.Consumable {
   cost = 4,
   atlas = "AbandoniaPlanets",
   pos = { x = 0, y = 0 },
-  config = { hand_type = "abn_6oak" },
+  config = { hand_type = "abn_6oak", softlock = true },
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
@@ -50,7 +50,7 @@ SMODS.PokerHand {
   chips = 20,
   l_mult = 2,
   l_chips = 20,
-  visible = true,
+  visible = false,
   above_hand = 'Two Pair',
   example = {
     { 'H_Q', true },
@@ -76,7 +76,7 @@ SMODS.Consumable {
   cost = 4,
   atlas = "AbandoniaPlanets",
   pos = { x = 1, y = 0 },
-  config = { hand_type = "abn_triple_pair" },
+  config = { hand_type = "abn_triple_pair", softlock = true },
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
