@@ -1,0 +1,209 @@
+# HUGE Thank you to All In Jest (https://github.com/survovoaneend/All-In-Jest) borrowed from them ^-^
+
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 10
+
+# Filter tag collection so Hazard Tags only show on the Hazard Tag page
+# create_UIBox_your_collection_tags_content()
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = 'for k, v in ipairs(tag_tab) do'
+position = "before"
+payload = '''
+for i = #tag_tab, 1, -1 do
+    local v = tag_tab[i]
+    local is_hazard = v.config and v.config.hazard
+
+    if G.GAME.abn_hazard_tag_tab then
+        if not is_hazard then
+            table.remove(tag_tab, i)
+        end
+    else
+        if is_hazard then
+            table.remove(tag_tab, i)
+        end
+    end
+end
+'''
+match_indent = true
+
+# Add a button to access Hazard Tag collection (compatible with all in jest)
+# create_UIBox_your_collection_tags_content()
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = '''
+{
+	n = G.UIT.R,
+	config = { align = 'cm' },
+	nodes = {
+		create_option_cycle({
+			options = page_options,
+			w = 4.5,
+			cycle_shoulders = true,
+			opt_callback = 'your_collection_tags_page',
+			focus_args = { snap_to = true, nav = 'wide' },
+			current_option = page,
+			colour = G.ACTIVE_MOD_UI and (G.ACTIVE_MOD_UI.ui_config or {}).collection_option_cycle_colour or G.C.RED,
+			no_pips = true
+		})
+	}
+}
+'''
+position = "after"
+payload = '''
+,
+{n=G.UIT.R, config={align = "cm", r = 0.1, w = 0.2, minh = 0.9, hover = true, colour = HEX("8f3131"), button = "abn_hazard_tags", shadow = true, focus_args = {nav = 'wide', snap_to = true}}, nodes={
+{n=G.UIT.R, config={align = "cm", padding = 0, no_fill = true, maxw = 4.8}, nodes={
+{n=G.UIT.T, config={text = localize('abn_hazard_tags'), scale = 0.5, colour = G.C.UI.TEXT_LIGHT}}
+}}
+}},
+'''
+match_indent = true
+
+# Set collection page to page 1 if entering/exiting a Hazard tags page
+# Game:update()
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "for k, v in pairs(self.ANIMATIONS) do"
+position = "before"
+payload = '''
+if G.GAME.previous_abn_hazard_tag_tab ~= G.GAME.abn_hazard_tag_tab then
+    G.FUNCS.your_collection_tags_page({cycle_config = {current_option = 1}})
+    G.GAME.previous_abn_hazard_tag_tab = G.GAME.abn_hazard_tag_tab
+end
+'''
+match_indent = true
+
+# Set pool to return pool of Hazarden tags when type "Abandonia Hazard Tag" is given
+# get_current_pool()
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''local _pool, _starting_pool, _pool_key, _pool_size = G.ARGS.TEMP_POOL, nil, '', 0'''
+position = "after"
+payload = '''
+local abn_hazard = false
+if _type == 'Abandonia Hazard Tag' then
+    abn_hazard = true
+    _type = 'Tag'
+end
+'''
+match_indent = true
+
+# Include or exclude Hazard tags from pool depending on if regular or Hazard tags were requested
+# get_current_pool()
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''
+if (not v.requires or (G.P_CENTERS[v.requires] and G.P_CENTERS[v.requires].discovered)) and 
+(not v.min_ante or v.min_ante <= G.GAME.round_resets.ante) then
+    add = true
+end
+'''
+position = "after"
+payload = '''
+if v.config and v.config.hazard then
+    if not abn_hazard then 
+      add = nil 
+    end
+else
+    if abn_hazard then
+      add = nil 
+    end
+end
+'''
+match_indent = true
+
+# Generate a pool of Hazard tags separate from the other tags
+# get_next_tag_key()
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "local _pool, _pool_key = get_current_pool('Tag', nil, nil, append)"
+position = "before"
+payload = '''
+local _temp_hazard_pool, _hazard_pool_key = get_current_pool('Abandonia Hazard Tag', nil, nil, append and append..'_hazard' or '_hazard')
+_hazard_pool = {}
+for i = 1, #_temp_hazard_pool do
+    _hazard_pool[i] = _temp_hazard_pool[i]
+end
+'''
+match_indent = true
+
+# Determines whether or not to generate a Hazard tag
+# get_next_tag_key()
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "local _tag = pseudorandom_element(_pool, pseudoseed(_pool_key))"
+position = "after"
+payload = '''
+if #_hazard_pool == #_pool and #_hazard_pool ~= 1 then
+    for i = 1, #_pool do
+        if _hazard_pool[i] ~= 'UNAVAILABLE' and _pool[i] == 'UNAVAILABLE' then
+            _pool[i] = _hazard_pool[i]
+        end
+    end
+end
+
+if #_hazard_pool > 0 and _hazard_pool[1] ~= 'tag_handy' then
+    if Tag(_tag).config and Tag(_tag).config.hazard then
+        local ht = 1
+        local hazard = false
+        while Tag(_tag).config and Tag(_tag).config.hazard and not hazard do
+            if not (pseudorandom('abn_hazard_tag_rate') < (1 * (G.GAME.abn_hazard_tag_rate or 0)) / 30) then
+                ht = ht + 1
+                _tag = pseudorandom_element(_pool, pseudoseed(_pool_key..'_resample_hazard'..ht))
+            else
+                hazard = true
+            end
+        end
+    else
+        if pseudorandom('abn_hazard_tag_rate') < (1 * (G.GAME.abn_hazard_tag_rate or 0)) / 30 then
+            _tag = pseudorandom_element(_hazard_pool, pseudoseed(_hazard_pool_key..'_resample_hazard'))
+        end
+    end
+    if append and append == 'abn_guaranteed_hazard_tag' then
+        _tag = pseudorandom_element(_hazard_pool, pseudoseed(_hazard_pool_key..'_resample_hazard'))
+    end
+end
+'''
+match_indent = true
+
+# Determines whether or not to generate a Hazard tag again, if first tag happened to be UNAVAILABLE
+# get_next_tag_key()
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "_tag = pseudorandom_element(_pool, pseudoseed(_pool_key..'_resample'..it))"
+position = "after"
+payload = '''
+if #_hazard_pool > 0 and _hazard_pool[1] ~= 'tag_handy' then
+    if Tag(_tag).config and Tag(_tag).config.hazard then
+        local ht = 1
+        local hazard = false
+        while Tag(_tag).config and Tag(_tag).config.hazard and not hazard do
+            if not (pseudorandom('abn_hazard_tag_rate') < (1 * (G.GAME.abn_hazard_tag_rate or 0)) / 30) then
+                ht = ht + 1
+                _tag = pseudorandom_element(_pool, pseudoseed(_pool_key..'_resample_hazard'..ht))
+            else
+                hazard = true
+            end
+        end
+    else
+        if pseudorandom('abn_hazard_tag_rate') < (1 * (G.GAME.abn_hazard_tag_rate or 0)) / 30 then
+            _tag = pseudorandom_element(_hazard_pool, pseudoseed(_hazard_pool_key..'_resample_hazard'))
+        end
+    end
+    if append and append == 'abn_guaranteed_hazard_tag' then
+        _tag = pseudorandom_element(_hazard_pool, pseudoseed(_hazard_pool_key..'_resample_hazard'))
+    end
+end
+'''
+match_indent = true

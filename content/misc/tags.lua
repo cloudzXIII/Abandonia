@@ -1,8 +1,30 @@
+--#region Setup
+G.FUNCS.abn_hazard_tags = function(e)
+  if G.GAME.abn_hazard_tag_tab then
+    G.GAME.abn_hazard_tag_tab = false
+  else
+    G.GAME.abn_hazard_tag_tab = true
+  end
+end
+
+local abn_game_init_game_object_ref = Game.init_game_object
+function Game:init_game_object()
+  local t = abn_game_init_game_object_ref(self)
+  t.abn_hazard_tag_tab = false
+  t.previous_abn_hazard_tag_tab = false
+  t.abn_hazard_tag_rate = t.abn_hazard_tag_rate or 2
+  return t
+end
+
+--#endregion
+
 SMODS.Tag {
   key = "hazard_super",
 
   atlas = "AbandoniaTags",
   pos = { x = 2, y = 0 },
+  config = { hazard = true },
+
   apply = function(self, tag, context)
     if context.type == 'store_joker_create' then
       local card = SMODS.create_card {
@@ -34,6 +56,7 @@ SMODS.Tag {
 
   atlas = "AbandoniaTags",
   pos = { x = 3, y = 0 },
+  config = { hazard = true },
   apply = function(self, tag, context)
     if context.type == 'store_joker_create' then
       local card = SMODS.create_card {
@@ -65,6 +88,7 @@ SMODS.Tag {
 
   atlas = "AbandoniaTags",
   pos = { x = 4, y = 0 },
+  config = { hazard = true },
   apply = function(self, tag, context)
     if context.type == 'store_joker_create' then
       local card = SMODS.create_card {
@@ -96,7 +120,7 @@ SMODS.Tag {
 
   atlas = "AbandoniaTags",
   pos = { x = 0, y = 1 },
-  config = { edition = "e_negative", count = 3 },
+  config = { hazard = true, edition = "e_negative", count = 3 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
     return { vars = { tag.config.count } }
@@ -144,7 +168,7 @@ SMODS.Tag {
 
   atlas = "AbandoniaTags",
   pos = { x = 1, y = 1 },
-  config = { edition = "e_foil", count = 3 },
+  config = { hazard = true, edition = "e_foil", count = 3 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
     return { vars = { tag.config.count } }
@@ -192,7 +216,7 @@ SMODS.Tag {
 
   atlas = "AbandoniaTags",
   pos = { x = 2, y = 1 },
-  config = { edition = "e_holo", count = 3 },
+  config = { hazard = true, edition = "e_holo", count = 3 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
     return { vars = { tag.config.count } }
@@ -240,7 +264,7 @@ SMODS.Tag {
 
   atlas = "AbandoniaTags",
   pos = { x = 3, y = 1 },
-  config = { edition = "e_polychrome", count = 3 },
+  config = { hazard = true, edition = "e_polychrome", count = 3 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
     return { vars = { tag.config.count } }
@@ -288,7 +312,7 @@ SMODS.Tag {
 
   atlas = "AbandoniaTags",
   pos = { x = 4, y = 1 },
-  config = { edition = "e_abn_gloss", count = 1 },
+  config = { hazard = true, edition = "e_abn_gloss", count = 1 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_gloss
     return { vars = {} }
@@ -336,7 +360,7 @@ SMODS.Tag {
 
   atlas = "AbandoniaTags",
   pos = { x = 0, y = 2 },
-  config = { edition = "e_abn_pearlenscene", count = 1 },
+  config = { hazard = true, edition = "e_abn_pearlenscene", count = 1 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_pearlenscene
     return { vars = {} }
@@ -384,7 +408,7 @@ SMODS.Tag {
 
   atlas = "AbandoniaTags",
   pos = { x = 1, y = 2 },
-  config = { edition = "e_abn_iridescent", count = 1 },
+  config = { hazard = true, edition = "e_abn_iridescent", count = 1 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_iridescent
     return { vars = {} }
@@ -432,7 +456,7 @@ SMODS.Tag {
 
   atlas = "AbandoniaTags",
   pos = { x = 2, y = 2 },
-  config = { edition = "e_abn_abandond", count = 1 },
+  config = { hazard = true, edition = "e_abn_abandond", count = 1 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_abandond
     return { vars = {} }
@@ -480,7 +504,7 @@ SMODS.Tag {
 
   atlas = "AbandoniaTags",
   pos = { x = 3, y = 2 },
-  config = { edition = "e_abn_sunscourge", count = 1 },
+  config = { hazard = true, edition = "e_abn_sunscourge", count = 1 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_sunscourge
     return { vars = {} }

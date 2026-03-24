@@ -1332,7 +1332,7 @@ return {
       k_abn_polychrome = "Polychrome!",
       k_abn_onfire = "On Fire!",
       abn_hazard_tags = "Hazard Tags",
-      abn_kept = "Kept!"
+      abn_kept = "Kept!",
     },
     labels = {
       abn_chthonian = "Chthonian",
