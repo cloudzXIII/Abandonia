@@ -13,6 +13,14 @@ ABN.optional_features = {
 }
 
 SMODS.Atlas({
+  key = "AbandoniaStickers",
+  path = "stickers.png",
+  px = 71,
+  py = 95,
+})
+
+
+SMODS.Atlas({
   key = "AbandoniaTags",
   path = "tags.png",
   px = 34,
