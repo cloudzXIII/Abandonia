@@ -269,7 +269,7 @@ return {
         name = "BIOS JOKER",
         text = {
           "{C:planet}Planet{} cards retrigger",
-          "twice when used"
+          "once when used"
         }
       },
       j_abn_braile_joker = {
@@ -950,25 +950,25 @@ return {
           "Non-gold cards gets debuffed when scored",
         },
       },
-      j_abn_alchemical_joker={
-        name="Alchemical Joker",
-        text={
+      j_abn_alchemical_joker = {
+        name = "Alchemical Joker",
+        text = {
           "{X:mult,C:white}X#1#{} {C:mult}Mult",
           "for each unique",
           "{C:attention}Enhancement{},{C:attention}Edition{},{C:attention}Seal{} and {C:attention}Sticker",
           "in scoring {C:chips}hand",
         },
       },
-      j_abn_sanguine_treasure={
-        name="Sanguine Treasure",
-        text={
+      j_abn_sanguine_treasure = {
+        name = "Sanguine Treasure",
+        text = {
           "Scoring {C:attention}Gold cards",
           "gives double their {C:chips}chips{} and {C:money}money",
         },
       },
-      j_abn_vitamin_joker={
-        name="Vitamin Joker",
-        text={
+      j_abn_vitamin_joker = {
+        name = "Vitamin Joker",
+        text = {
           "{C:attention}Scoring cards with seal",
           "permanently gains {C:chips}#1# chips{} and {C:mult}#2# mult",
           "{C:green}#3# in #4#{} chance this card is eaten after played {C:chips}hand"
@@ -1208,7 +1208,7 @@ return {
           "available in shop"
         }
       },
-      v_abn_tarot_master= {
+      v_abn_tarot_master = {
         name = "Tarot Master",
         text = {
           "{C:green}1 in 6{} chance for",
@@ -1271,14 +1271,14 @@ return {
           "each round to {C:money}$#1#{}"
         }
       },
-      v_abn_cataclysm_globe  = {
+      v_abn_cataclysm_globe = {
         name = "Cataclysm Globe",
         text = {
           "{C:dark_edition}Spectral{} cards always",
           "show up in {C:tarot}Tarot{} packs"
         }
       },
-      v_abn_satelite  = {
+      v_abn_satelite = {
         name = "Satellite",
         text = {
           "{C:planet}Planet{} cards in possession",
@@ -1286,7 +1286,7 @@ return {
           "the end of the round"
         }
       },
-      v_abn_illusion_master  = {
+      v_abn_illusion_master = {
         name = "Illusion Master",
         text = {
           "{C:attention}Playing cards{} in shop",
@@ -1295,20 +1295,20 @@ return {
           "or with an {C:dark_edition}Edition{} and an {C:dark_edition}Enhancement{}"
         }
       },
-      v_abn_forget_fossil  = {
+      v_abn_forget_fossil = {
         name = "Forget Fossil",
         text = {
           "{C:attention}-#1#{} antes"
         }
       },
-      v_abn_fan_edit  = {
+      v_abn_fan_edit = {
         name = "Fan Edit",
         text = {
           "Boss Rerolls",
           "cost {C:money}$#1#{}"
         }
       },
-      v_abn_industrial_brush  = {
+      v_abn_industrial_brush = {
         name = "Industrial Brush",
         text = {
           "{C:attention}+#1#{} hand size"
