@@ -32,4 +32,12 @@ SMODS.Joker {
   abn_artist_credits = {
     artist = "IPreferCheddar"
   },
+  in_pool = function(self, args)
+    for _, playing_card in ipairs(G.playing_cards or {}) do
+      if SMODS.has_enhancement(playing_card, 'm_stone') then
+        return true
+      end
+    end
+    return false
+  end
 }
