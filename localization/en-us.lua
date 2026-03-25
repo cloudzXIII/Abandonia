@@ -953,10 +953,10 @@ return {
       j_abn_alchemical_joker = {
         name = "Alchemical Joker",
         text = {
-          "{X:mult,C:white}X#1#{} {C:mult}Mult",
-          "for each unique",
-          "{C:attention}Enhancement{},{C:attention}Edition{},{C:attention}Seal{} and {C:attention}Sticker",
-          "in scoring {C:chips}hand",
+          "This Joker gives {X:mult,C:white}X#1#{} Mult",
+          "for each unique {C:attention}Enhancement{},",
+          "{C:dark_edition}Edition{}, {C:attention}Seal{} and {C:attention}Sticker",
+          "in scored hand",
         },
       },
       j_abn_sanguine_treasure = {
