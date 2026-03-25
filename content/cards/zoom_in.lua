@@ -1,58 +1,57 @@
 SMODS.Joker {
-  key = 'combo_maker',
+  key = 'zoom_in',
 
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
-        card.ability.extra.x_mult,
-        card.ability.extra.x_mult_gain
+        card.ability.extra.mult,
+        card.ability.extra.mult_gain
       }
     }
   end,
 
-  rarity = 3,
+  rarity = 2,
   atlas = 'AbandoniaJokers',
   pos = { x = 0, y = 0 },
-  cost = 8,
+  cost = 6,
   discovered = false,
   blueprint_compat = true,
 
   config = {
     extra = {
-      x_mult = 1,
-      x_mult_gain = 0.25
+      mult = 0,
+      mult_gain = 4
     },
   },
 
   calculate = function(self, card, context)
     if context.before and not context.blueprint then
       local has_number = false
+      local has_ace = false
       for _, v in ipairs(context.scoring_hand) do
         if ABN.is_number(v) then
           has_number = true
         end
+        if v:get_id() == 14 then
+          has_ace = true
+        end
       end
-      if has_number then
+      if has_number and has_ace then
         SMODS.scale_card(card, {
           ref_table = card.ability.extra,
-          ref_value = "x_mult",
-          scalar_value = "x_mult_gain",
+          ref_value = "mult",
+          scalar_value = "mult_gain",
           operation = '+',
         })
-      else
-        if card.ability.extra.x_mult > 1 then
-          card.ability.extra.x_mult = 1
-          SMODS.calculate_effect({ message = localize('k_reset'), colour = G.C.FILTER }, card)
-        end
       end
     end
     if context.joker_main then
       return {
-        x_mult = card.ability.extra.x_mult
+        mult = card.ability.extra.mult
       }
     end
   end,
   abn_artist_credits = {
-    artist = "Adumbasswaffle"
+    artist = "70unik"
   },
 }

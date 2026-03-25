@@ -20,7 +20,7 @@ ABN.is_dark = function(card)
 end
 
 ABN.is_light = function(card)
-  if card:is_suit("Diamonds") or card:is_suit("Hearts") or card:is_suit('bunc_Fleurons') or card:is_suit('paperback_Stars') then
+  if card:is_suit("Diamonds") or card:is_suit("Hearts") or card:is_suit('bunc_Fleurons') or card:is_suit('paperback_Stars') or card:is_suit("abn_Snow") then
     return true
   end
   return false
@@ -150,7 +150,7 @@ function ABN.can_apply_sticker(sticker, card)
   end
   local center = card.config.center
   if (center[sticker.key .. '_compat'] or (center[sticker.key .. '_compat'] == nil and ((sticker.default_compat and not sticker.compat_exceptions[center.key]) or -- default yes with no exception
-        (not sticker.default_compat and sticker.compat_exceptions[center.key])))) then                                                                            --default no with exceptions
+    (not sticker.default_compat and sticker.compat_exceptions[center.key])))) then                                                                                --default no with exceptions
     if not card.ability[sticker.key] then
       if card.pinned and sticker.key == 'pinned' then
         --#JUSTICEFORPINNED
@@ -161,9 +161,10 @@ function ABN.can_apply_sticker(sticker, card)
   end
   return false
 end
+
 function ABN.msg(card, message, type)
-	if not type then
-		type = "extra"
-	end
-	card_eval_status_text(card, type, nil, nil, nil, { message = message })
+  if not type then
+    type = "extra"
+  end
+  card_eval_status_text(card, type, nil, nil, nil, { message = message })
 end

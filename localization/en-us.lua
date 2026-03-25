@@ -1001,7 +1001,16 @@ return {
           "of played {C:attention}poker hand{}",
           "{C:inactive}(Must Have Room)"
         }
-      }
+      },
+      j_abn_zoom_in = {
+        name = 'Zoom In',
+        text = {
+          "This Joker gains {C:mult}+#2#{} Mult",
+          "if hand played contains",
+          "an {C:attention}Ace{} and a {C:attention}number card{}",
+          "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+        },
+      },
     },
 
     Spectral = {
