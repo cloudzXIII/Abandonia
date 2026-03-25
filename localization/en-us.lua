@@ -974,6 +974,34 @@ return {
           "{C:green}#3# in #4#{} chance this card is eaten after played {C:chips}hand"
         },
       },
+      j_abn_combo_maker = {
+        name = 'Combo Maker',
+        text = {
+          "This Joker gains {C:white,X:mult}X#2#{} Mult",
+          "per {C:attention}consecutive{} hand played",
+          "with at least {C:attention}1 number card{}",
+          "{C:inactive}(Currently {C:white,X:mult}X#1#{C:inactive} Mult)",
+        },
+      },
+      j_abn_the_mule = {
+        name = "The Mule",
+        text = {
+          "{C:chips}+#1#{} Chips,",
+          "{C:red}-#2#{} chips for",
+          "each {C:money}$1{} you have",
+          "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)",
+        }
+      },
+      j_abn_artistic_difference = {
+        name = "Artistic Difference",
+        text = {
+          "If {C:attention}first hand{} of round",
+          "contains no {C:attention}face{} cards,",
+          "create the {C:planet}Planet{} card",
+          "of played {C:attention}poker hand{}",
+          "{C:inactive}(Must Have Room)"
+        }
+      }
     },
 
     Spectral = {
