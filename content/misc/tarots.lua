@@ -145,3 +145,17 @@ SMODS.Consumable {
     artist = "Grass",
   },
 }
+
+SMODS.Consumable {
+  key = 'snowflake',
+  set = 'Tarot',
+  atlas = "AbandoniaTarots",
+  pos = { x = 3, y = 0 },
+  config = { max_highlighted = 3, suit_conv = 'abn_Snow' },
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] } } }
+  end,
+  abn_artist_credits = {
+    artist = "camostar34",
+  },
+}

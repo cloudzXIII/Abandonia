@@ -1137,7 +1137,15 @@ return {
           "up to {C:attention}#1#{} selected",
           "Jokers"
         }
-      }
+      },
+      c_abn_snowflake = {
+        name = "Snowflake",
+        text = {
+          "Converts up to",
+          "{C:attention}#1#{} selected cards",
+          "to {V:1}#2#{}",
+        },
+      },
     },
     calamity_cards = {
       c_abn_cyclone = {
@@ -1345,6 +1353,13 @@ return {
     ranks = {
     },
     v_text = {
+    },
+    suits_singular = {
+      abn_Snow = "Snow",
+    },
+
+    suits_plural = {
+      abn_Snow = "Snows"
     },
     poker_hands = {
       ["abn_triple_pair"] = "Triple Pair",
