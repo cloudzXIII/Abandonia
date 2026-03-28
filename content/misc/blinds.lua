@@ -1,6 +1,6 @@
 -- Showdown Blinds
 
--- art by Meladaptive 
+-- art by Meladaptive
 SMODS.Blind({
 	key = "magenta_magnet",
 	boss = {
@@ -10,11 +10,13 @@ SMODS.Blind({
 	pos = { x = 0, y = 9 },
 	boss_colour = HEX("9e4d6e"),
 	debuff_hand = function(self, cards, hand, handname, check)
+		local no = true
 		for k, v in pairs(cards) do
-			if not SMODS.has_enhancement(v, "m_gold") and not SMODS.has_enhancement(v, "m_steel") then
-				return true
+			if SMODS.has_enhancement(v, "m_gold") or SMODS.has_enhancement(v, "m_steel") then
+				no = false
 			end
 		end
+		return no
 	end,
 	abn_artist_credits = { -- jst realized this doesnt work :D
 		artist = "Meladaptive",
@@ -48,11 +50,13 @@ SMODS.Blind({
 	pos = { x = 0, y = 11 },
 	boss_colour = HEX("a79475"),
 	debuff_hand = function(self, cards, hand, handname, check)
+		local no = true
 		for k, v in pairs(cards) do
-			if not SMODS.has_enhancement(v, "m_lucky") then
-				return true
+			if SMODS.has_enhancement(v, "m_lucky") then
+				no = false
 			end
 		end
+		return no
 	end,
 })
 
@@ -78,7 +82,7 @@ SMODS.Blind({
 		G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 		self.triggered = true
 	end,
-	defeat = function(self) 
+	defeat = function(self)
 		self.triggered = false
 		self.old_chips = nil
 	end,
@@ -103,7 +107,6 @@ SMODS.Blind({
 	boss_colour = HEX("c78bb3"),
 })
 
-
 SMODS.Blind({
 	key = "slate_slab",
 	boss = {
@@ -113,11 +116,13 @@ SMODS.Blind({
 	pos = { x = 0, y = 14 },
 	boss_colour = HEX("4f6c74"),
 	debuff_hand = function(self, cards, hand, handname, check)
+		local no = true
 		for k, v in pairs(cards) do
-			if not SMODS.has_enhancement(v, "m_stone") then
-				return true
+			if SMODS.has_enhancement(v, "m_stone") then
+				no = false
 			end
 		end
+		return no
 	end,
 })
 
@@ -139,24 +144,24 @@ SMODS.Blind({
 	atlas = "AbandoniaBlinds",
 	pos = { x = 0, y = 16 },
 	boss_colour = HEX("e0483e"),
-  loc_vars = function(self,card)
-    print("hovering hovering")
-    G.P_BLINDS["bl_abn_rainbow_oracle"].boss_colour = SMODS.Gradients["abn_rainbow"]
-  end,
+	loc_vars = function(self, card)
+		print("hovering hovering")
+		G.P_BLINDS["bl_abn_rainbow_oracle"].boss_colour = SMODS.Gradients["abn_rainbow"]
+	end,
 	debuff_hand = function(self, cards, hand, handname, check)
-    local suits = {}
+		local suits = {}
 		for k, v in pairs(cards) do
-      if not suits[v.base.suit] then
-          suits[v.base.suit] = true
-      end
-    end
-    local a = 0
-    for k, v in pairs(suits) do
-      a = a + 1
-    end
-    if a < 4 then
-      return true
-    end
+			if not suits[v.base.suit] then
+				suits[v.base.suit] = true
+			end
+		end
+		local a = 0
+		for k, v in pairs(suits) do
+			a = a + 1
+		end
+		if a < 4 then
+			return true
+		end
 	end,
 })
 -- art by Grass
@@ -167,14 +172,16 @@ SMODS.Blind({
 		showdown = true,
 	},
 	atlas = "AbandoniaBlinds",
-	pos = { x = 0, y = 5},
+	pos = { x = 0, y = 5 },
 	boss_colour = HEX("ce54cc"),
 	debuff_hand = function(self, cards, hand, handname, check)
+	local no = true
 		for k, v in pairs(cards) do
-			if not SMODS.has_enhancement(v, "m_wild") then
-				return true
+			if SMODS.has_enhancement(v, "m_wild") then
+				no = false
 			end
 		end
+		return no
 	end,
 })
 
@@ -182,7 +189,7 @@ SMODS.Blind({
 	key = "teal_tear",
 	debuff = {
 		h_size_le = 4,
-    h_size_ge  = 4
+		h_size_ge = 4,
 	},
 	atlas = "AbandoniaBlinds",
 	pos = { x = 0, y = 6 },
@@ -214,16 +221,16 @@ SMODS.Blind({
 		showdown = true,
 	},
 	atlas = "AbandoniaBlinds",
-	pos = { x = 0, y = 8},
+	pos = { x = 0, y = 8 },
 	boss_colour = HEX("db6e3b"),
 	debuff_hand = function(self, cards, hand, handname, check)
-    local no = false
+		local no = false
 		for k, v in pairs(cards) do
-			if  v:is_face() then
-				 no = true
+			if v:is_face() then
+				no = true
 			end
 		end
-    return no
+		return no
 	end,
 })
 
