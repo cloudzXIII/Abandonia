@@ -77,3 +77,9 @@ function Card:get_chip_bonus()
     end
     return (self.base.nominal + self.ability.bonus + (self.ability.perma_bonus or 0) )/ 4
 end
+
+local get_blind_amount_ref = get_blind_amount
+function get_blind_amount(ante)
+    local amount = get_blind_amount_ref(ante)
+    return ABN:calculate_blind_size_modify(amount,ante)
+end
