@@ -172,3 +172,23 @@ SMODS.Rarity {
     return weight
   end,
 }
+
+
+SMODS.Gradient{
+  key = "rainbow",
+  colours = {
+    HEX("a79475"),
+    HEX("e0483e"),
+    HEX("fda200"),
+    HEX("8dae5f"),
+    HEX("33966e"),
+    HEX("4f6c74"),
+    HEX("403fb2"),
+    HEX("726ca0"),
+    HEX("ae6c98"),
+    HEX("7a4158"),
+    HEX("9facc4"),
+
+  },
+  cycle = 10
+}

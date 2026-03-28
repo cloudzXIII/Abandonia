@@ -64,3 +64,16 @@ function calculate_reroll_cost(skip_increment)
 		calc_reroll_cost_old(skip_increment)
 	end
 end
+
+local get_chip_bonus_old = Card.get_chip_bonus
+function Card:get_chip_bonus()
+	if G.GAME.blind and (G.GAME.blind.config.blind.key ~= "bl_abn_azure_circle" or G.GAME.blind.disabled )then
+		return get_chip_bonus_old(self)
+	end
+    if self.ability.extra_enhancement then return self.ability.bonus end
+
+    if self.ability.effect == 'Stone Card' or self.config.center.replace_base_card then
+        return self.ability.bonus + (self.ability.perma_bonus or 0)
+    end
+    return (self.base.nominal + self.ability.bonus + (self.ability.perma_bonus or 0) )/ 4
+end

@@ -98,6 +98,92 @@ return {
       },
     },
     Blind = {
+      bl_abn_magenta_magnet = {
+        name = "Magenta Magnet",
+        text = {
+          "Hand must contain",
+          "a Gold or Steel card"
+        },
+      },
+       bl_abn_silver_star  = {
+        name = "Silver Star",
+        text = {
+          "Cards with light suits",
+          "are debuffed"
+        },
+      },
+       bl_abn_gold_belt  = {
+        name = "Gold Belt",
+       text = {
+          "Hand must contain",
+          "a Lucky card"
+        },
+      },
+       bl_abn_lime_lock = {
+        name = "Lime Lock",
+       text = {
+          "Increase requirement",
+          "by 5% for each debuffed",
+          "card in your deck"
+        },
+      },
+      bl_abn_pink_pin = {
+        name =  "Pink Pin",
+       text = {
+          "Must play 3 cards",
+          "or less"
+        },
+      },
+       bl_abn_wild_cherry  = {
+        name = "Wild Cherry",
+       text = {
+          "Hand must contain",
+          "a Wild card"
+        },
+      },
+      bl_abn_teal_tear  = {
+        name = "Teal Tear",
+       text = {
+          "Hand must contain",
+          "exactly 4 cards"
+        },
+      },
+      bl_abn_dark_shield  = {
+        name = "Dark Shield",
+        text = {
+          "Cards with dark suits",
+          "are debuffed"
+        },
+      },
+      bl_abn_the_crown  = {
+        name = "The Crown",
+        text = {
+          "Hand must contain",
+          "a face card"
+        },
+      },
+      bl_abn_slate_slab  = {
+        name = "Slate Slab",
+        text = {
+          "Hand must contain",
+          "a Stone card"
+        },
+      },
+       bl_abn_azure_circle  = {
+        name = "Azure Circle",
+        text = {
+          "Scored cards only",
+          "give 1/4 of their chips"
+        },
+      },
+      bl_abn_rainbow_oracle  = {
+        name = "Rainbow Oracle",
+        text = {
+          "Hand must contain",
+          "atleast different suits"
+        },
+      },
+      -- Hazzard
       bl_abn_hazard_heart = {
         name = "Hazard Heart",
         text = {
