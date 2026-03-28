@@ -28,3 +28,62 @@ SMODS.Consumable {
     artist = "L'"
   },
 }
+
+SMODS.Consumable {
+  key = 'body',
+  set = 'Spectral',
+  atlas = "AbandoniaSpectrals",
+  pos = { x = 5, y = 0 },
+  soul_pos = { x = 6, y = 0 },
+  hidden = true,
+  soul_set = 'Tarot',
+  use = function(self, card, area, copier)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('timpani')
+        SMODS.add_card({ set = 'Joker', rarity = "abn_SuperRare" })
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+    delay(0.6)
+  end,
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
+  end,
+  abn_artist_credits = {
+    artist = "?"
+  },
+}
+
+
+SMODS.Consumable {
+  key = 'mind',
+  set = 'Spectral',
+  atlas = "AbandoniaSpectrals",
+  pos = { x = 4, y = 0 },
+  soul_pos = { x = 7, y = 0 },
+  hidden = true,
+  soul_set = 'Tarot',
+  use = function(self, card, area, copier)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('timpani')
+        SMODS.add_card({ set = 'Joker', rarity = "abn_ParallelRare" })
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+    delay(0.6)
+  end,
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
+  end,
+  abn_artist_credits = {
+    artist = "?"
+  },
+}

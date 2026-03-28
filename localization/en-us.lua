@@ -1011,6 +1011,77 @@ return {
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
         },
       },
+
+      j_abn_abandonia = {
+        name = "Abandonia",
+        text = {
+          "Scored cards",
+          "give {C:white,X:mult}X#1#{} Mult",
+          "and {C:white,X:chips}X#2#{} Chips"
+        },
+      },
+      j_abn_felix_joker = {
+        name = 'Felix Joker',
+        text = {
+          "{C:attention}Wild Cards{} also ",
+          "count as {C:attention}#1#s{}",
+          "{s:0.8}Enhancement changes at end of each round"
+        }
+      },
+      j_abn_gris_gris_joker = {
+        name = 'Gris Gris Joker',
+        text = {
+          "{C:blue}Blue{} and {C:purple}Purple{} {C:attention}seals{}",
+          "can {C:attention}activate{} when played"
+        }
+      },
+      j_abn_misplaced_texture = {
+        name = 'Misplaced Texture',
+        text = {
+          "All {C:attention}face{} cards",
+          "are considered",
+          "{C:attention}number{} cards",
+        },
+      },
+      j_abn_missing_texture = {
+        name = 'Missing Texture',
+        text = {
+          "Turns every scored card into an {C:attention}Ace{}"
+        },
+      },
+      j_abn_mult_speed = {
+        name = 'Mult Speed',
+        text = {
+          "Scoring cards in {C:attention}even hands{} permanently gain {C:mult}+#1#{} mult",
+          "Scoring cards in {C:attention}odd hands{} permanently gain {C:chips}+#2#{} chips",
+          "Scoring cards in {C:attention}final hands{} permanently gain {C:money}$#3#",
+        }
+      },
+      j_abn_old_as_dirt = {
+        name = 'Old as Dirt',
+        text = {
+          "This Joker gains {C:white,X:mult}X#1# {} Mult for",
+          "each {C:money}$1{} below {C:red}$0{}",
+          "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
+        }
+      },
+
+      j_abn_transvestite_joker = {
+        name = 'Transvestite Joker',
+        text = {
+          "Any cards that have had their",
+          "rank or suit changed gain",
+          "{C:mult}+#1# {}Mult and {C:chips}+#2# {}Chips"
+        }
+      },
+
+      j_abn_double_entendre = {
+        name = "Double Entendre",
+        text = {
+          "{C:white,X:mult}X#1#{} on {C:attention}even hands{},",
+          "{C:white,X:chips}X#2#{} on {C:attention}odd hands{}",
+        }
+      }
     },
 
     Spectral = {
@@ -1027,7 +1098,23 @@ return {
           "Add {C:dark_edition}Chthonian{} effect to",
           "{C:attention}#1#{} selected card in hand",
         }
-      }
+      },
+      c_abn_body = {
+        name = "The Body",
+        text = {
+          "Creates a",
+          "{C:orange,E:1}Comedian{} Joker",
+          "{C:inactive}(Must have room)",
+        }
+      },
+      c_abn_mind = {
+        name = "The Mind",
+        text = {
+          "Creates a",
+          "{C:pink,E:1}Parallel Rare{} Joker",
+          "{C:inactive}(Must have room)",
+        }
+      },
     },
     Other = {
       abn_dark_suit = {
