@@ -1582,6 +1582,8 @@ return {
       k_abn_onfire = "On Fire!",
       abn_hazard_tags = "Hazard Tags",
       abn_kept = "Kept!",
+      k_abn_even="Even",
+      k_abn_odd="Odd",
     },
     labels = {
       abn_chthonian = "Chthonian",
