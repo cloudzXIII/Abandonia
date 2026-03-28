@@ -224,10 +224,10 @@ SMODS.Blind({
 	pos = { x = 0, y = 8 },
 	boss_colour = HEX("db6e3b"),
 	debuff_hand = function(self, cards, hand, handname, check)
-		local no = false
+		local no = true
 		for k, v in pairs(cards) do
 			if v:is_face() then
-				no = true
+				no = false
 			end
 		end
 		return no
