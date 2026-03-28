@@ -168,3 +168,23 @@ function ABN.msg(card, message, type)
   end
   card_eval_status_text(card, type, nil, nil, nil, { message = message })
 end
+
+function ABN:calculate_blind_size_modify(blind_amount,ante)
+local calculate_tbl = {
+  amount=blind_amount,
+  ante=ante,
+  original_amount=blind_amount,
+}
+local this_amount=blind_amount
+local cards = ABN.get_all_cards()
+for i,v in pairs(cards) do
+  local config = v.config or v.effect
+  local center = config.center
+  if center.abn_modify_blind_size then
+    calculate_tbl.amount = this_amount
+    calculate_tbl.card = v
+    this_amount = center:abn_modify_blind_size(v,calculate_tbl) or this_amount
+  end
+end
+return this_amount
+end
