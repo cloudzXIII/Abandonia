@@ -169,6 +169,18 @@ function ABN.msg(card, message, type)
   card_eval_status_text(card, type, nil, nil, nil, { message = message })
 end
 
+function ABN.get_all_cards()
+local cards = {}
+for i,v in pairs(G.jokers.cards) do
+  table.insert(cards,v)
+end
+for i,v in pairs(G.consumeables.cards) do
+  table.insert(cards,v)
+end
+table.insert(cards,G.GAME.selected_back)
+return cards
+end
+
 function ABN:calculate_blind_size_modify(blind_amount,ante)
 local calculate_tbl = {
   amount=blind_amount,
