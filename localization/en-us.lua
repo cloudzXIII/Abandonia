@@ -1167,7 +1167,38 @@ return {
           "{C:white,X:mult}X#1#{} on {C:attention}even hands{},",
           "{C:white,X:chips}X#2#{} on {C:attention}odd hands{}",
         }
-      }
+      },
+      j_abn_tronie_joker={
+        name="Tronie Joker",
+        text={
+          "{C:chips}+#3#{} Joker Slots",
+          "{X:mult,C:white}#1#X{} {C:attention}Blind requirement{}",
+          "Increases by {X:mult,C:white}#2#X{} when {C:attention}Ante{} is defeated",
+        },
+      },
+      j_abn_garden_gnome={
+        name="Garden Gnome",
+        text={
+          "{C:attention}Scored{} {C:spades}Spades{} and {C:clubs}Clubs",
+          "have a {C:green}#1#{} in {C:green}#2#",
+          "to become {C:dark_edition}Negative",
+        }
+      },
+      j_abn_interminable_joker={
+        name="Interminable Joker",
+        text={
+          "If you have 6 or more {C:attention}Jokers",
+          "each one gives {X:mult,C:white}X#1#{} {C:mult}Mult",
+        }
+      },
+      j_abn_codding_error={
+        name="Codding Error",
+        text={
+          "{C:attention}Retrigger{} cards with {C:red}even{} ranks",
+          "{C:attention}flips{} between {C:red}even and {C:blue}odd each round",
+          "{C:inactive}[Currently:#1#]"
+        }
+      },
     },
 
     Spectral = {
