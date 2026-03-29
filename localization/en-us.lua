@@ -180,11 +180,84 @@ return {
         name = "Rainbow Oracle",
         text = {
           "Hand must contain",
-          "atleast different suits"
+          "atleast 4 different suits"
         },
       },
-      -- Hazzard
-      bl_abn_hazard_heart = {
+      -- hazard
+      bl_abn_hazard_magnet = {
+        name  = "Hazard Magnet",
+         text = {
+          "Hand must contain",
+          "a Gold and a Steel card",
+          "Debuff a random Joker",
+          "after each hand"
+        },
+      },
+      bl_abn_hazard_star  = {
+        name = "Hazard Star",
+        text = {
+          "Cards with light suits",
+          "are debuffed",
+          "Can only discard 1",
+          "card at a time"
+        },
+      },
+      bl_abn_hazard_belt = {
+        name = "Hazard Belt",
+       text = {
+          "Hand must contain",
+          "a Lucky card",
+          "Increase blind requirement",
+          "by 5% when a card is triggered"
+        },
+      },
+      bl_abn_hazard_pin = {
+        name = "Hazard Pin",
+        text = {
+          "Must play 2 cards",
+          "or less",
+          "Debuff the rightmost Joker",
+          "every hand"
+        },
+      },
+      bl_abn_hazard_lock = {
+        name = "Hazard Lock",
+        text = {
+          "Debuff 12 random playing cards",
+          "when blind is set",
+          "Increase requirement",
+          "by 7% for each debuffed",
+          "card in your deck"
+        },
+      },
+      bl_abn_hazard_slab = {
+        name = "Hazard Slab",
+        text = {
+          "Hand must contain",
+          "a Stone card",
+          "Debuff the leftmost Joker",
+          "every hand"
+        },
+      },
+      bl_abn_hazard_circle = {
+        name = "Hazard Circle",
+        text = {
+          "Scored cards do not",
+          "give any chips",
+          "A random card is debuffed",
+          "before scoring"
+        }
+      },
+      bl_abn_hazard_oracle = {
+        name = "Hazard Oracle",
+        text = {
+          "Hand must contain",
+          "atleast 5 different suits",
+          "Debuff the rightmost Joker",
+          "every hand"
+        },
+      },
+       bl_abn_hazard_heart = {
         name = "Hazard Heart",
         text = {
           "2 random Jokers",

@@ -18,19 +18,15 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
 		delay = 0.1,
 		func = function()
 			if SMODS.OPENED_BOOSTER and SMODS.OPENED_BOOSTER.config.center.kind == "Arcana" and G.GAME.modifiers.abn_guarantee_spectral_in_tarot then
-				print("trig")
 				local go, av = true, 0
 				for k, v in pairs(G.pack_cards.cards) do
 					if v.ability.set == "Spectral" then
 						go = false
-						print("nogo")
 					end
 				end
 
 				local to_replace  = pseudorandom_element(G.pack_cards.cards, pseudoseed("brr"))
-				print(to_replace)
 				if go and to_replace then
-					print("replacing")
 					if #SMODS.get_clean_pool("Spectral") > 0 then
 						to_replace:set_ability(
 							pseudorandom_element(SMODS.get_clean_pool("Spectral"), pseudoseed("brr"))
@@ -67,7 +63,7 @@ end
 
 local get_chip_bonus_old = Card.get_chip_bonus
 function Card:get_chip_bonus()
-	if G.GAME.blind and (G.GAME.blind.config.blind.key ~= "bl_abn_azure_circle" or G.GAME.blind.disabled )then
+	if G.GAME.blind and (G.GAME.blind.config.blind.key ~= "bl_abn_hazard_circle"  and G.GAME.blind.config.blind.key ~= "bl_abn_azure_circle" or G.GAME.blind.disabled )then
 		return get_chip_bonus_old(self)
 	end
     if self.ability.extra_enhancement then return self.ability.bonus end
@@ -75,7 +71,11 @@ function Card:get_chip_bonus()
     if self.ability.effect == 'Stone Card' or self.config.center.replace_base_card then
         return self.ability.bonus + (self.ability.perma_bonus or 0)
     end
-    return (self.base.nominal + self.ability.bonus + (self.ability.perma_bonus or 0) )/ 4
+    if  G.GAME.blind.config.blind.key == "bl_abn_azure_circle" then
+    	return (self.base.nominal + self.ability.bonus + (self.ability.perma_bonus or 0) )/ 4
+	else
+		return 0
+	end
 end
 
 local get_blind_amount_ref = get_blind_amount
