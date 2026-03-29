@@ -725,10 +725,6 @@ SMODS.Blind({
 
 SMODS.Blind({
 	key = "hazard_shield",
-	debuff = {
-		h_size_le = 3,
-		h_size_ge = 3,
-	},
 	atlas = "AbandoniaBlinds",
 	pos = { x = 0, y = 19 },
 	boss = { showdown = true,    hazard_blind = true },
