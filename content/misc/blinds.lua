@@ -35,7 +35,7 @@ SMODS.Blind({
 		if G.GAME.blind.disabled then
 			return false
 		end
-		if card:is_suit("Diamonds") or card:is_suit("Hearts") and not card.debuffed then -- <- add hre for more debuffs
+		if card:is_suit("Diamonds") or card:is_suit("Hearts") and not card.debuff then -- <- add hre for more debuffs
 			return true
 		end
 	end,
@@ -205,7 +205,7 @@ SMODS.Blind({
 		if G.GAME.blind.disabled then
 			return false
 		end
-		if card:is_suit("Clubs") or card:is_suit("Spades") and not card.debuffed then --- <- add hre for more debuffs
+		if card:is_suit("Clubs") or card:is_suit("Spades") and not card.debuff then --- <- add hre for more debuffs
 			return true
 		end
 	end,
@@ -335,7 +335,7 @@ SMODS.Blind({
 		if G.GAME.blind.disabled then
 			return false
 		end
-		if card:is_suit("Diamonds") or card:is_suit("Hearts") and not card.debuffed then -- <- add hre for more debuffs
+		if card:is_suit("Diamonds") or card:is_suit("Hearts") and not card.debuff then -- <- add hre for more debuffs
 			return true
 		end
 	end,
@@ -697,6 +697,121 @@ SMODS.Blind({
 		if context.hand_drawn then
 			blind.prepped = nil
 		end
+	end,
+})
+
+SMODS.Blind({
+	key = "hazard_cherry",
+	boss = {
+		showdown = true,
+    hazard_blind = true
+	},
+  debuff = {
+		h_size_ge = 5,
+	},
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 17 },
+	boss_colour = HEX("ce54cc"),
+	debuff_hand = function(self, cards, hand, handname, check)
+		local no = true
+		for k, v in pairs(cards) do
+			if SMODS.has_enhancement(v, "m_wild") then
+				no = false
+			end
+		end
+		return no
+	end,
+})
+
+SMODS.Blind({
+	key = "hazard_tear",
+	debuff = {
+		h_size_le = 3,
+		h_size_ge = 3,
+	},
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 18 },
+	boss = { showdown = true,    hazard_blind = true },
+	boss_colour = HEX("4bdbcb"),
+  recalc_debuff = function(self, card, from_blind)
+		if G.GAME.blind.disabled then
+			return false
+		end
+		if card:is_suit("Clubs") or card:is_suit("Spades") and not card.debuff then --- <- add hre for more debuffs
+			return true
+		end
+	end,
+  calculate = function(self,blind,context)
+    if context.after and not self.triggered and not G.GAME.blind.disabled then
+      self.triggered = true
+      for k, v in pairs(G.jokers.cards) do
+        SMODS.debuff_card(v, true, "hazard_tear_debuff")
+      end
+    end
+  end,
+  disable = function(self)
+    self.triggered = false
+    for k, v in pairs(G.jokers.cards) do
+        SMODS.debuff_card(v, false, "hazard_tear_debuff")
+      end
+  end,
+  defeat = function(self)
+    self.triggered = false
+    for k, v in pairs(G.jokers.cards) do
+        SMODS.debuff_card(v, false, "hazard_tear_debuff")
+      end
+  end
+})
+
+SMODS.Blind({
+	key = "hazard_shield",
+	debuff = {
+		h_size_le = 3,
+		h_size_ge = 3,
+	},
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 19 },
+	boss = { showdown = true,    hazard_blind = true },
+	boss_colour = HEX("9facc4"),
+  calculate = function(self,blind,context)
+    if context.after and not self.triggered and not G.GAME.blind.disabled then
+      self.triggered = true
+      for k, v in pairs(G.jokers.cards) do
+        SMODS.debuff_card(v, true, "hazard_shield")
+      end
+    end
+  end,
+  disable = function(self)
+    self.triggered = false
+    for k, v in pairs(G.jokers.cards) do
+        SMODS.debuff_card(v, false, "hazard_shield")
+      end
+  end,
+  defeat = function(self)
+    self.triggered = false
+    for k, v in pairs(G.jokers.cards) do
+        SMODS.debuff_card(v, false, "hazard_shield")
+      end
+  end
+})
+
+SMODS.Blind({
+	key = "hazard_crown",
+	boss = {
+		showdown = true,
+    hazard_blind = true
+	},
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 20},
+	boss_colour = HEX("db6e3b"),
+	debuff_hand = function(self, cards, hand, handname, check)
+		local no = true
+		for k, v in pairs(cards) do
+			if v:get_id() == 12 or v:get_id() == 13 then
+				no = false
+			end
+		end
+		return no
 	end,
 })
 

@@ -257,6 +257,42 @@ return {
           "every hand"
         },
       },
+      bl_abn_hazard_cherry = {
+        name = "Hazard Cherry",
+        text = {
+          "Hand must contain",
+          "a Wild card",
+          "Played hand must contain",
+          "5 cards or less" -- confusion??
+        },
+      },
+      bl_abn_hazard_tear  = {
+        name = "Hazard Tear",
+        text = {
+          "Hand must contain",
+          "exactly 3 cards",
+          "All jokers are Debuffed",
+          "after the first hand"
+        },
+      },
+       bl_abn_hazard_shield  = {
+        name = "Hazard Shield",
+        text = {
+          "Cards with dark suits",
+          "are debuffed",
+          "All jokers are Debuffed",
+          "after the first hand"
+        },
+      },
+        bl_abn_hazard_crown  = {
+        name = "Hazard Crown",
+         text = {
+          "Hand must contain",
+          "a King or a Queen",
+          "Face cards only",
+          "give half of their chips"
+        },
+      },
        bl_abn_hazard_heart = {
         name = "Hazard Heart",
         text = {
