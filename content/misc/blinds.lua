@@ -724,13 +724,13 @@ SMODS.Blind({
 })
 
 SMODS.Blind({
-	key = "hazard_tear",
+	key = "hazard_shield",
 	debuff = {
 		h_size_le = 3,
 		h_size_ge = 3,
 	},
 	atlas = "AbandoniaBlinds",
-	pos = { x = 0, y = 18 },
+	pos = { x = 0, y = 19 },
 	boss = { showdown = true,    hazard_blind = true },
 	boss_colour = HEX("4bdbcb"),
   recalc_debuff = function(self, card, from_blind)
@@ -764,13 +764,13 @@ SMODS.Blind({
 })
 
 SMODS.Blind({
-	key = "hazard_shield",
+	key = "hazard_tear",
 	debuff = {
 		h_size_le = 3,
 		h_size_ge = 3,
 	},
 	atlas = "AbandoniaBlinds",
-	pos = { x = 0, y = 19 },
+	pos = { x = 0, y = 18 },
 	boss = { showdown = true,    hazard_blind = true },
 	boss_colour = HEX("9facc4"),
   calculate = function(self,blind,context)
