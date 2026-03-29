@@ -63,9 +63,6 @@ end
 
 local get_chip_bonus_old = Card.get_chip_bonus
 function Card:get_chip_bonus()
-	if G.GAME.blind and (G.GAME.blind.config.blind.key ~= "bl_abn_hazard_crown"  and G.GAME.blind.config.blind.key ~= "bl_abn_hazard_circle"  and G.GAME.blind.config.blind.key ~= "bl_abn_azure_circle" or G.GAME.blind.disabled )then
-		return get_chip_bonus_old(self)
-	end
     if self.ability.extra_enhancement then return self.ability.bonus end
 
     if self.ability.effect == 'Stone Card' or self.config.center.replace_base_card then
@@ -75,8 +72,10 @@ function Card:get_chip_bonus()
     	return (self.base.nominal + self.ability.bonus + (self.ability.perma_bonus or 0) )/ 4
 	elseif G.GAME.blind.config.blind.key == "bl_abn_hazard_crown" and self:is_face() then
 		return (self.base.nominal + self.ability.bonus + (self.ability.perma_bonus or 0) ) / 2
-	else
+	elseif G.GAME.blind.config.blind.key ~= "bl_abn_hazard_circle" then
 		return 0
+	else
+		return get_chip_bonus_old(self)
 	end
 end
 

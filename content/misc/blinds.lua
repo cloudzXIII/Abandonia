@@ -724,6 +724,38 @@ SMODS.Blind({
 })
 
 SMODS.Blind({
+	key = "hazard_tear",
+	debuff = {
+		h_size_le = 3,
+		h_size_ge = 3,
+	},
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 18 },
+	boss = { showdown = true,    hazard_blind = true },
+	boss_colour = HEX("9facc4"),
+  calculate = function(self,blind,context)
+    if context.after and not self.triggered and not G.GAME.blind.disabled then
+      self.triggered = true
+      for k, v in pairs(G.jokers.cards) do
+        SMODS.debuff_card(v, true, "hazard_shield")
+      end
+    end
+  end,
+  disable = function(self)
+    self.triggered = false
+    for k, v in pairs(G.jokers.cards) do
+        SMODS.debuff_card(v, false, "hazard_shield")
+      end
+  end,
+  defeat = function(self)
+    self.triggered = false
+    for k, v in pairs(G.jokers.cards) do
+        SMODS.debuff_card(v, false, "hazard_shield")
+      end
+  end
+})
+
+SMODS.Blind({
 	key = "hazard_shield",
 	atlas = "AbandoniaBlinds",
 	pos = { x = 0, y = 19 },
@@ -755,38 +787,6 @@ SMODS.Blind({
     self.triggered = false
     for k, v in pairs(G.jokers.cards) do
         SMODS.debuff_card(v, false, "hazard_tear_debuff")
-      end
-  end
-})
-
-SMODS.Blind({
-	key = "hazard_tear",
-	debuff = {
-		h_size_le = 3,
-		h_size_ge = 3,
-	},
-	atlas = "AbandoniaBlinds",
-	pos = { x = 0, y = 18 },
-	boss = { showdown = true,    hazard_blind = true },
-	boss_colour = HEX("9facc4"),
-  calculate = function(self,blind,context)
-    if context.after and not self.triggered and not G.GAME.blind.disabled then
-      self.triggered = true
-      for k, v in pairs(G.jokers.cards) do
-        SMODS.debuff_card(v, true, "hazard_shield")
-      end
-    end
-  end,
-  disable = function(self)
-    self.triggered = false
-    for k, v in pairs(G.jokers.cards) do
-        SMODS.debuff_card(v, false, "hazard_shield")
-      end
-  end,
-  defeat = function(self)
-    self.triggered = false
-    for k, v in pairs(G.jokers.cards) do
-        SMODS.debuff_card(v, false, "hazard_shield")
       end
   end
 })
