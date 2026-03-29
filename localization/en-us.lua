@@ -1247,6 +1247,20 @@ return {
           "for each {C:attention}consumable{} held",
           "{C:inactive}(Currently {C:white,X:mult}X#2#{} {C:inactive}Mult)"
         }
+      },
+      j_abn_final_showdown = {
+        name = "Final Showdown",
+        text = {
+          {
+            "{C:attention}Boss Blinds{} are replaced",
+            "with {C:legendary,E:1}Showdown{}{C:attention} Boss Blinds{}",
+          },
+          {
+            "Gains {C:attention}+#1#{} Joker Slot",
+            "when a {C:legendary,E:1}Showdown{}{C:attention} Boss Blind{}",
+            "is defeated"
+          }
+        }
       }
     },
 
