@@ -155,6 +155,11 @@ ABN.calculate = function(self, context)
   end
 end
 
+function ABN.reset_game_globals(run_start)
+  ABN.reset_abn_gerrymandering()
+  ABN.reset_felix_joker()
+end
+
 SMODS.Rarity {
   key = "SuperRare",
   default_weight = 0,
@@ -173,8 +178,7 @@ SMODS.Rarity {
   end,
 }
 
-
-SMODS.Gradient{
+SMODS.Gradient {
   key = "rainbow",
   colours = {
     HEX("a79475"),

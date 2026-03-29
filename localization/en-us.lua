@@ -105,78 +105,78 @@ return {
           "a Gold or Steel card"
         },
       },
-       bl_abn_silver_star  = {
+      bl_abn_silver_star = {
         name = "Silver Star",
         text = {
           "Cards with light suits",
           "are debuffed"
         },
       },
-       bl_abn_gold_belt  = {
+      bl_abn_gold_belt = {
         name = "Gold Belt",
-       text = {
+        text = {
           "Hand must contain",
           "a Lucky card"
         },
       },
-       bl_abn_lime_lock = {
+      bl_abn_lime_lock = {
         name = "Lime Lock",
-       text = {
+        text = {
           "Increase requirement",
           "by 5% for each debuffed",
           "card in your deck"
         },
       },
       bl_abn_pink_pin = {
-        name =  "Pink Pin",
-       text = {
+        name = "Pink Pin",
+        text = {
           "Must play 3 cards",
           "or less"
         },
       },
-       bl_abn_wild_cherry  = {
+      bl_abn_wild_cherry = {
         name = "Wild Cherry",
-       text = {
+        text = {
           "Hand must contain",
           "a Wild card"
         },
       },
-      bl_abn_teal_tear  = {
+      bl_abn_teal_tear = {
         name = "Teal Tear",
-       text = {
+        text = {
           "Hand must contain",
           "exactly 4 cards"
         },
       },
-      bl_abn_dark_shield  = {
+      bl_abn_dark_shield = {
         name = "Dark Shield",
         text = {
           "Cards with dark suits",
           "are debuffed"
         },
       },
-      bl_abn_the_crown  = {
+      bl_abn_the_crown = {
         name = "The Crown",
         text = {
           "Hand must contain",
           "a face card"
         },
       },
-      bl_abn_slate_slab  = {
+      bl_abn_slate_slab = {
         name = "Slate Slab",
         text = {
           "Hand must contain",
           "a Stone card"
         },
       },
-       bl_abn_azure_circle  = {
+      bl_abn_azure_circle = {
         name = "Azure Circle",
         text = {
           "Scored cards only",
           "give 1/4 of their chips"
         },
       },
-      bl_abn_rainbow_oracle  = {
+      bl_abn_rainbow_oracle = {
         name = "Rainbow Oracle",
         text = {
           "Hand must contain",
@@ -1168,37 +1168,44 @@ return {
           "{C:white,X:chips}X#2#{} on {C:attention}odd hands{}",
         }
       },
-      j_abn_tronie_joker={
-        name="Tronie Joker",
-        text={
+      j_abn_tronie_joker = {
+        name = "Tronie Joker",
+        text = {
           "{C:chips}+#3#{} Joker Slots",
           "{X:mult,C:white}#1#X{} {C:attention}Blind requirement{}",
           "Increases by {X:mult,C:white}#2#X{} when {C:attention}Ante{} is defeated",
         },
       },
-      j_abn_garden_gnome={
-        name="Garden Gnome",
-        text={
+      j_abn_garden_gnome = {
+        name = "Garden Gnome",
+        text = {
           "{C:attention}Scored{} {C:spades}Spades{} and {C:clubs}Clubs",
           "have a {C:green}#1#{} in {C:green}#2#",
           "to become {C:dark_edition}Negative",
         }
       },
-      j_abn_interminable_joker={
-        name="Interminable Joker",
-        text={
+      j_abn_interminable_joker = {
+        name = "Interminable Joker",
+        text = {
           "If you have 6 or more {C:attention}Jokers",
           "each one gives {X:mult,C:white}X#1#{} {C:mult}Mult",
         }
       },
-      j_abn_codding_error={
-        name="Codding Error",
-        text={
+      j_abn_codding_error = {
+        name = "Codding Error",
+        text = {
           "{C:attention}Retrigger{} cards with {C:red}even{} ranks",
           "{C:attention}flips{} between {C:red}even and {C:blue}odd each round",
           "{C:inactive}[Currently:#1#]"
         }
       },
+      j_abn_figurehead = {
+        name = "Figurehead",
+        text = {
+          "Retrigger all",
+          "{C:legendary,E:1}Legendary{} Jokers"
+        }
+      }
     },
 
     Spectral = {
@@ -1582,8 +1589,8 @@ return {
       k_abn_onfire = "On Fire!",
       abn_hazard_tags = "Hazard Tags",
       abn_kept = "Kept!",
-      k_abn_even="Even",
-      k_abn_odd="Odd",
+      k_abn_even = "Even",
+      k_abn_odd = "Odd",
     },
     labels = {
       abn_chthonian = "Chthonian",
