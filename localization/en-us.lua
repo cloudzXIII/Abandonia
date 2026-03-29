@@ -1239,6 +1239,14 @@ return {
           "{X:mult,C:white} X#1# {} Mult,",
           "{C:red,E:1}self-destructs{}"
         }
+      },
+      j_abn_pankert = {
+        name = "Pankert",
+        text = {
+          "This Joker gains {C:white,X:mult}X#1#{}",
+          "for each {C:attention}consumable{} held",
+          "{C:inactive}(Currently {C:white,X:mult}X#2#{} {C:inactive}Mult)"
+        }
       }
     },
 
