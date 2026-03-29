@@ -72,7 +72,7 @@ function Card:get_chip_bonus()
     	return (self.base.nominal + self.ability.bonus + (self.ability.perma_bonus or 0) )/ 4
 	elseif G.GAME.blind.config.blind.key == "bl_abn_hazard_crown" and self:is_face() then
 		return (self.base.nominal + self.ability.bonus + (self.ability.perma_bonus or 0) ) / 2
-	elseif G.GAME.blind.config.blind.key ~= "bl_abn_hazard_circle" then
+	elseif G.GAME.blind.config.blind.key == "bl_abn_hazard_circle" then
 		return 0
 	else
 		return get_chip_bonus_old(self)
