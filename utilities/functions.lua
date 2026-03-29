@@ -170,33 +170,37 @@ function ABN.msg(card, message, type)
 end
 
 function ABN.get_all_cards()
-local cards = {}
-for i,v in pairs(G.jokers.cards) do
-  table.insert(cards,v)
-end
-for i,v in pairs(G.consumeables.cards) do
-  table.insert(cards,v)
-end
-table.insert(cards,G.GAME.selected_back)
-return cards
+  local cards = {}
+  if G.jokers then
+    for i, v in pairs(G.jokers.cards) do
+      table.insert(cards, v)
+    end
+  end
+  if G.consumeables then
+    for i, v in pairs(G.consumeables.cards or {}) do
+      table.insert(cards, v)
+    end
+  end
+  table.insert(cards, G.GAME.selected_back)
+  return cards
 end
 
-function ABN:calculate_blind_size_modify(blind_amount,ante)
-local calculate_tbl = {
-  amount=blind_amount,
-  ante=ante,
-  original_amount=blind_amount,
-}
-local this_amount=blind_amount
-local cards = ABN.get_all_cards()
-for i,v in pairs(cards) do
-  local config = v.config or v.effect
-  local center = config.center
-  if center.abn_modify_blind_size then
-    calculate_tbl.amount = this_amount
-    calculate_tbl.card = v
-    this_amount = center:abn_modify_blind_size(v,calculate_tbl) or this_amount
+function ABN:calculate_blind_size_modify(blind_amount, ante)
+  local calculate_tbl = {
+    amount = blind_amount,
+    ante = ante,
+    original_amount = blind_amount,
+  }
+  local this_amount = blind_amount
+  local cards = ABN.get_all_cards()
+  for i, v in pairs(cards) do
+    local config = v.config or v.effect
+    local center = config.center
+    if center.abn_modify_blind_size then
+      calculate_tbl.amount = this_amount
+      calculate_tbl.card = v
+      this_amount = center:abn_modify_blind_size(v, calculate_tbl) or this_amount
+    end
   end
-end
-return this_amount
+  return this_amount
 end
