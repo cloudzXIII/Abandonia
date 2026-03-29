@@ -83,7 +83,7 @@ SMODS.Joker {
         G.FUNCS.reroll_boss()
       end
     end
-    if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and (G.P_BLINDS[G.GAME.round_resets.blind_choices.Boss].boss or {}).showdown then
+    if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and context.beat_boss and (G.P_BLINDS[G.GAME.round_resets.blind_choices.Boss].boss or {}).showdown then
       card.ability.extra.joker_slots = card.ability.extra.joker_slots + card.ability.extra.amount
       G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.amount
       SMODS.calculate_effect({ message = localize('k_upgrade_ex'), colour = G.C.FILTER }, card)
