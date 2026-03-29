@@ -1223,6 +1223,15 @@ return {
           "{C:money}$#2#{} or more"
         }
       },
+      j_abn_fatal_silhouette = {
+        name = "Fatal Silhouette",
+        text = {
+          "Retrigger all",
+          "played {C:attention}face{} cards",
+          "and destroy them",
+          "{C:attention}after{} scoring"
+        }
+      }
     },
 
     Spectral = {
