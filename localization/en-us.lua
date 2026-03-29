@@ -1283,7 +1283,7 @@ return {
         name = "The Body",
         text = {
           "Creates a",
-          "{C:orange,E:1}Comedian{} Joker",
+          "{C:attention,E:1}Comedian{} Joker",
           "{C:inactive}(Must have room)",
         }
       },
@@ -1291,7 +1291,7 @@ return {
         name = "The Mind",
         text = {
           "Creates a",
-          "{C:pink,E:1}Parallel Rare{} Joker",
+          "{C:legendary,E:1}Parallel Rare{} Joker",
           "{C:inactive}(Must have room)",
         }
       },
