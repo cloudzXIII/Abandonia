@@ -1205,7 +1205,24 @@ return {
           "Retrigger all",
           "{C:legendary,E:1}Legendary{} Jokers"
         }
-      }
+      },
+      j_abn_joker_invoice = {
+        name = "Joker Invoice",
+        text = {
+          "{C:mult}+#1#{} Mult",
+          "if hand is played with",
+          "{C:money}$#2#{} or less"
+        }
+      },
+      j_abn_daddy_warbucks = {
+        name = "Daddy Warbucks",
+        text = {
+          "Played cards give",
+          "{C:chips}+#1#{} Chips when scored",
+          "if hand is played with",
+          "{C:money}$#2#{} or more"
+        }
+      },
     },
 
     Spectral = {
