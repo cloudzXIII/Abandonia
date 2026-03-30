@@ -1370,7 +1370,22 @@ return {
             "is defeated"
           }
         }
-      }
+      },
+	  j_abn_dead_or_alive = {
+        name = "Dead or Alive",
+        text = {
+          "When a {C:attention}#1# of #2#{} is played",
+		  "Permanently double it's {C:chips}chips{} and gain {C:money}${} equal to it's rank",
+          "{C:inactive}(Changes every round){}",
+        },
+      },
+	  j_abn_getter_robo = {
+        name = "Getter Robo!",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult {X:attention,C:white}X#2#{} {C:attention}Boss requirement{}",
+		  "{C:attention}Double{} these values after {C:attention}boss blind{} is defeated",
+        },
+      },
     },
 
     Spectral = {
