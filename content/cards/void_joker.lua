@@ -43,6 +43,15 @@ SMODS.Joker {
   abn_artist_credits = {
     artist = "Cybertsarbomba",
   },
+  in_pool = function()
+    for _, joker in ipairs(G.jokers.cards or {}) do
+      if joker.facing == "back" or joker.ability.abn_perma_flipped or joker.ability.joker_flipped then
+        return true
+      end
+    end
+    return false
+  end,
+
 }
 
 local card_set_cost_ref = Card.set_cost
