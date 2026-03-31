@@ -1382,7 +1382,7 @@ return {
 	  j_abn_getter_robo = {
         name = "Getter Robo!",
         text = {
-          "{X:mult,C:white}X#1#{} Mult {X:attention,C:white}X#2#{} {C:attention}Boss requirement{}",
+          "{X:mult,C:white}X#1#{} Mult {X:chips,C:white}X#2#{} Chips {X:attention,C:white}X#3#{} {C:attention}Boss requirement{}",
 		  "{C:attention}Double{} these values after {C:attention}boss blind{} is defeated",
         },
       },
@@ -1590,11 +1590,32 @@ return {
         text = {
           "{C:red}Destroy{} all cards",
           "in your deck and",
-          "add {C:attention}10 Fossil numbered",
+          "add {C:attention}#1# Fossil numbered",
           "cards with {C:dark_edition}Sunscourge{} edition",
           "to your hand",
         }
-      }
+      },
+	  c_abn_avalanche = {
+        name = "Avalanche",
+        text = {
+          "Add {C:attention}#1#{} {C:abn_snow}Snow{} Cards to your deck",
+		  "each has random {C:dark_edition}edition{}",
+        }
+      },
+	  c_abn_flood = {
+        name = "Flood",
+        text = {
+          "{C:attention}Copy{} all cards in your deck",
+		  "Gain {C:attention}#1#{} random {C:abn_hazard}hazard tags{}",
+        }
+      },
+	  c_abn_tsunami = {
+        name = "Tsunami",
+        text = {
+          "Create {C:attention}#1#{} random {C:abn_hazard}hazard tag",
+		  "All cards in the deck gain {C:attention}flipped{}",
+        }
+      },
     },
     Enhanced = {
       m_abn_petroleum = {
@@ -1771,6 +1792,9 @@ return {
       abn_kept = "Kept!",
       k_abn_even = "Even",
       k_abn_odd = "Odd",
+	  abn_calamitybooster = "Calamity Pack",
+	  abn_calamitybooster_j = "Jumbo Calamity Pack",
+	  abn_calamitybooster_m = "Mega Calamity Pack",
     },
     labels = {
       abn_chthonian = "Chthonian",

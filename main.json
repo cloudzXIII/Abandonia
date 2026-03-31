@@ -2,7 +2,7 @@
 	"id": "abandonia",
 	"name": "Abandonia",
 	"display_name": "Abandonia",
-	"author": ["Bunnet","cloudzXIII","Mills-44"],
+	"author": ["Bunnet","cloudzXIII","Mills-44","EricTheToon"],
 	"description": "Balatro Mod",
 	"prefix": "abn",
 	"main_file": "main.lua",

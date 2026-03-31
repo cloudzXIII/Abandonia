@@ -12,6 +12,19 @@ ABN.optional_features = {
   post_trigger = true,
 }
 
+local abn = loc_colour
+function loc_colour(_c, _default)
+    if not G.ARGS.LOC_COLOURS then
+        abn()
+    end
+
+	G.ARGS.LOC_COLOURS.abn_snow = HEX("5dc6e2")
+	G.ARGS.LOC_COLOURS.abn_hazard = HEX("831717")
+	G.ARGS.LOC_COLOURS.abn_calamity = HEX("c3a37a")
+	
+    return abn(_c, _default)
+end
+
 SMODS.Atlas({
   key = "AbandoniaStickers",
   path = "stickers.png",
@@ -94,6 +107,20 @@ SMODS.Atlas({
 SMODS.Atlas({
   key = "AbandoniaVouchers",
   path = "vouchers.png",
+  px = 71,
+  py = 95,
+})
+
+SMODS.Atlas({
+  key = "AbandoniaCalamity",
+  path = "calamity.png",
+  px = 64.2,
+  py = 94,
+})
+
+SMODS.Atlas({
+  key = "AbandoniaBoosters",
+  path = "boosters.png",
   px = 71,
   py = 95,
 })
