@@ -1616,6 +1616,30 @@ return {
 		  "All cards in the deck gain {C:attention}flipped{}",
         }
       },
+	  c_abn_drought = {
+        name = "Drought",
+        text = {
+          "{C:mult}Debuff{} all Jokers and set money to {C:money}$0{}",
+		  "Summon {C:attention}#1#{} {C:red}super rare Joker{} and {C:attention}#1#{} {C:dark_edition}parallel rare Joker",
+		  "{C:inactive}(Must have room)",
+        }
+      },
+	  c_abn_heatwave = {
+        name = "Heatwave",
+        text = {
+          "{C:mult}Debuff{} all {C:spades}Spades{}, {C:clubs}Clubs{}, and {C:abn_snow}Snows{}",
+		  "{C:diamonds}Diamonds{} and {C:hearts}Hearts{} gain {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+        }
+      },
+	  c_abn_plague = {
+        name = "Plague",
+        text = {
+          "All jokers gain {C:abn_perishable}Perishable{}",
+		  "Summon {C:attention}#1#{} {C:red}super rare Joker{} with a random {C:dark_edition}edition{}",
+		  "{C:inactive}(Must have room)",
+        }
+      },
+	  
     },
     Enhanced = {
       m_abn_petroleum = {
