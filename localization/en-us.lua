@@ -26,7 +26,7 @@ return {
       tag_abn_hazard_negative = {
         name = "Negative Hazard",
         text = {
-          "Add {C:dark_edition}Negative{} to",
+          "Add {C:dark_edition}#2#{} to",
           "{C:attention}1 Joker{} and {C:attention}#1# cards{}",
           "in your deck"
         }
@@ -34,7 +34,7 @@ return {
       tag_abn_hazard_foil = {
         name = "Foil Hazard",
         text = {
-          "Add {C:dark_edition}Foil{} to",
+          "Add {C:dark_edition}#2#{} to",
           "a random {C:attention}Joker{} and {C:attention}#1#{}",
           "cards in your {C:attention}full deck"
         }
@@ -42,7 +42,7 @@ return {
       tag_abn_hazard_holo = {
         name = "Holographic Hazard",
         text = {
-          "Add {C:dark_edition}Holographic{} to",
+          "Add {C:dark_edition}#2#{} to",
           "a random {C:attention}Joker{} and {C:attention}#1#{}",
           "cards in your {C:attention}full deck"
         }
@@ -50,7 +50,7 @@ return {
       tag_abn_hazard_polychrome = {
         name = "Polychrome Hazard",
         text = {
-          "Add {C:dark_edition}Polychrome{} to",
+          "Add {C:dark_edition}#2#{} to",
           "a random {C:attention}Joker{} and {C:attention}#1#{}",
           "cards in your {C:attention}full deck"
         }
@@ -59,7 +59,7 @@ return {
       tag_abn_hazard_gloss = {
         name = "Gloss Hazard",
         text = {
-          "Add {C:dark_edition}Gloss{} to",
+          "Add {C:dark_edition}#1#{} to",
           "a random {C:attention}Joker{} and {C:attention}1{}",
           "card in your {C:attention}full deck"
         }
@@ -67,7 +67,7 @@ return {
       tag_abn_hazard_pearlenscene = {
         name = "Pearlenscene Hazard",
         text = {
-          "Add {C:dark_edition}Pearlenscene{} to",
+          "Add {C:dark_edition}#1#{} to",
           "a random {C:attention}Joker{} and {C:attention}1{}",
           "card in your {C:attention}full deck"
         }
@@ -75,7 +75,7 @@ return {
       tag_abn_hazard_iridescent = {
         name = "Iridescent Hazard",
         text = {
-          "Add {C:dark_edition}Iridescent{} to",
+          "Add {C:dark_edition}#1#{} to",
           "a random {C:attention}Joker{} and {C:attention}1{}",
           "card in your {C:attention}full deck"
         }
@@ -83,7 +83,7 @@ return {
       tag_abn_hazard_abandon = {
         name = "Abandon Hazard",
         text = {
-          "Add {C:dark_edition}Abandoned{} to",
+          "Add {C:dark_edition}#1#{} to",
           "a random {C:attention}Joker{} and {C:attention}1{}",
           "card in your {C:attention}full deck"
         }
@@ -91,7 +91,7 @@ return {
       tag_abn_hazard_sunscourge = {
         name = "Sunscourge Hazard",
         text = {
-          "Add {C:dark_edition}Sunscourge{} to",
+          "Add {C:dark_edition}#1#{} to",
           "a random {C:attention}Joker{} and {C:attention}1{}",
           "card in your {C:attention}full deck"
         }

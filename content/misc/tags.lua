@@ -123,7 +123,10 @@ SMODS.Tag {
   config = { hazard = true, edition = "e_negative", count = 3 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
-    return { vars = { tag.config.count } }
+    return {
+      vars = { tag.config.count,
+        localize({ type = 'name_text', key = "e_negative", set = "Edition" }) }
+    }
   end,
   apply = function(self, tag, context)
     if context.type == 'immediate' then
@@ -171,7 +174,10 @@ SMODS.Tag {
   config = { hazard = true, edition = "e_foil", count = 3 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
-    return { vars = { tag.config.count } }
+    return {
+      vars = { tag.config.count,
+        localize({ type = 'name_text', key = "e_foil", set = "Edition" }) }
+    }
   end,
   apply = function(self, tag, context)
     if context.type == 'immediate' then
@@ -219,7 +225,10 @@ SMODS.Tag {
   config = { hazard = true, edition = "e_holo", count = 3 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
-    return { vars = { tag.config.count } }
+    return {
+      vars = { tag.config.count,
+        localize({ type = 'name_text', key = "e_holo", set = "Edition" }) }
+    }
   end,
   apply = function(self, tag, context)
     if context.type == 'immediate' then
@@ -267,7 +276,10 @@ SMODS.Tag {
   config = { hazard = true, edition = "e_polychrome", count = 3 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
-    return { vars = { tag.config.count } }
+    return {
+      vars = { tag.config.count,
+        localize({ type = 'name_text', key = "e_polychrome", set = "Edition" }) }
+    }
   end,
   apply = function(self, tag, context)
     if context.type == 'immediate' then
@@ -315,7 +327,10 @@ SMODS.Tag {
   config = { hazard = true, edition = "e_abn_gloss", count = 1 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_gloss
-    return { vars = {} }
+    return {
+      vars = {
+        localize({ type = 'name_text', key = "e_abn_gloss", set = "Edition" }) }
+    }
   end,
   apply = function(self, tag, context)
     if context.type == 'immediate' then
@@ -363,7 +378,10 @@ SMODS.Tag {
   config = { hazard = true, edition = "e_abn_pearlenscene", count = 1 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_pearlenscene
-    return { vars = {} }
+    return {
+      vars = {
+        localize({ type = 'name_text', key = "e_abn_pearlenscene", set = "Edition" }) }
+    }
   end,
   apply = function(self, tag, context)
     if context.type == 'immediate' then
@@ -411,7 +429,10 @@ SMODS.Tag {
   config = { hazard = true, edition = "e_abn_iridescent", count = 1 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_iridescent
-    return { vars = {} }
+    return {
+      vars = {
+        localize({ type = 'name_text', key = "e_abn_iridescent", set = "Edition" }) }
+    }
   end,
   apply = function(self, tag, context)
     if context.type == 'immediate' then
@@ -459,7 +480,10 @@ SMODS.Tag {
   config = { hazard = true, edition = "e_abn_abandond", count = 1 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_abandond
-    return { vars = {} }
+    return {
+      vars = {
+        localize({ type = 'name_text', key = "e_abn_abandond", set = "Edition" }) }
+    }
   end,
   apply = function(self, tag, context)
     if context.type == 'immediate' then
@@ -507,7 +531,10 @@ SMODS.Tag {
   config = { hazard = true, edition = "e_abn_sunscourge", count = 1 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_sunscourge
-    return { vars = {} }
+    return {
+      vars = {
+        localize({ type = 'name_text', key = "e_abn_sunscourge", set = "Edition" }) }
+    }
   end,
   apply = function(self, tag, context)
     if context.type == 'immediate' then
