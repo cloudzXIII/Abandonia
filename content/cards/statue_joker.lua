@@ -2,7 +2,7 @@ SMODS.Joker {
   key = 'statue_joker',
 
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.mult, card.ability.extra.mult_gain } }
+    return { vars = { card.ability.extra.mult, card.ability.extra.mult_gain, localize("k_abn_rankless"), localize({ type = 'name_text', key = "e_polychrome", set = "Edition" }) } }
   end,
 
   rarity = 3,

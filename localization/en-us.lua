@@ -105,21 +105,21 @@ return {
           "a Gold or Steel card"
         },
       },
-      bl_abn_silver_star = {
+      bl_abn_silver_star    = {
         name = "Silver Star",
         text = {
           "Cards with light suits",
           "are debuffed"
         },
       },
-      bl_abn_gold_belt = {
+      bl_abn_gold_belt      = {
         name = "Gold Belt",
         text = {
           "Hand must contain",
           "a Lucky card"
         },
       },
-      bl_abn_lime_lock = {
+      bl_abn_lime_lock      = {
         name = "Lime Lock",
         text = {
           "Increase requirement",
@@ -127,49 +127,49 @@ return {
           "card in your deck"
         },
       },
-      bl_abn_pink_pin = {
+      bl_abn_pink_pin       = {
         name = "Pink Pin",
         text = {
           "Must play 3 cards",
           "or less"
         },
       },
-      bl_abn_wild_cherry = {
+      bl_abn_wild_cherry    = {
         name = "Wild Cherry",
         text = {
           "Hand must contain",
           "a Wild card"
         },
       },
-      bl_abn_teal_tear = {
+      bl_abn_teal_tear      = {
         name = "Teal Tear",
         text = {
           "Hand must contain",
           "exactly 4 cards"
         },
       },
-      bl_abn_dark_shield = {
+      bl_abn_dark_shield    = {
         name = "Dark Shield",
         text = {
           "Cards with dark suits",
           "are debuffed"
         },
       },
-      bl_abn_the_crown = {
+      bl_abn_the_crown      = {
         name = "The Crown",
         text = {
           "Hand must contain",
           "a face card"
         },
       },
-      bl_abn_slate_slab = {
+      bl_abn_slate_slab     = {
         name = "Slate Slab",
         text = {
           "Hand must contain",
           "a Stone card"
         },
       },
-      bl_abn_azure_circle = {
+      bl_abn_azure_circle   = {
         name = "Azure Circle",
         text = {
           "Scored cards only",
@@ -184,16 +184,16 @@ return {
         },
       },
       -- hazard
-      bl_abn_hazard_magnet = {
-        name  = "Hazard Magnet",
-         text = {
+      bl_abn_hazard_magnet  = {
+        name = "Hazard Magnet",
+        text = {
           "Hand must contain",
           "a Gold and a Steel card",
           "Debuff a random Joker",
           "after each hand"
         },
       },
-      bl_abn_hazard_star  = {
+      bl_abn_hazard_star    = {
         name = "Hazard Star",
         text = {
           "Cards with light suits",
@@ -202,16 +202,16 @@ return {
           "card at a time"
         },
       },
-      bl_abn_hazard_belt = {
+      bl_abn_hazard_belt    = {
         name = "Hazard Belt",
-       text = {
+        text = {
           "Hand must contain",
           "a Lucky card",
           "Increase blind requirement",
           "by 5% when a card is triggered"
         },
       },
-      bl_abn_hazard_pin = {
+      bl_abn_hazard_pin     = {
         name = "Hazard Pin",
         text = {
           "Must play 2 cards",
@@ -220,7 +220,7 @@ return {
           "every hand"
         },
       },
-      bl_abn_hazard_lock = {
+      bl_abn_hazard_lock    = {
         name = "Hazard Lock",
         text = {
           "Debuff 12 random playing cards",
@@ -230,7 +230,7 @@ return {
           "card in your deck"
         },
       },
-      bl_abn_hazard_slab = {
+      bl_abn_hazard_slab    = {
         name = "Hazard Slab",
         text = {
           "Hand must contain",
@@ -239,7 +239,7 @@ return {
           "every hand"
         },
       },
-      bl_abn_hazard_circle = {
+      bl_abn_hazard_circle  = {
         name = "Hazard Circle",
         text = {
           "Scored cards do not",
@@ -248,7 +248,7 @@ return {
           "before scoring"
         }
       },
-      bl_abn_hazard_oracle = {
+      bl_abn_hazard_oracle  = {
         name = "Hazard Oracle",
         text = {
           "Hand must contain",
@@ -257,7 +257,7 @@ return {
           "every hand"
         },
       },
-      bl_abn_hazard_cherry = {
+      bl_abn_hazard_cherry  = {
         name = "Hazard Cherry",
         text = {
           "Hand must contain",
@@ -266,7 +266,7 @@ return {
           "5 cards or less" -- confusion??
         },
       },
-      bl_abn_hazard_tear  = {
+      bl_abn_hazard_tear    = {
         name = "Hazard Tear",
         text = {
           "Hand must contain",
@@ -275,7 +275,7 @@ return {
           "after the first hand"
         },
       },
-       bl_abn_hazard_shield  = {
+      bl_abn_hazard_shield  = {
         name = "Hazard Shield",
         text = {
           "Cards with dark suits",
@@ -284,16 +284,16 @@ return {
           "after the first hand"
         },
       },
-        bl_abn_hazard_crown  = {
+      bl_abn_hazard_crown   = {
         name = "Hazard Crown",
-         text = {
+        text = {
           "Hand must contain",
           "a King or a Queen",
           "Face cards only",
           "give half of their chips"
         },
       },
-       bl_abn_hazard_heart = {
+      bl_abn_hazard_heart   = {
         name = "Hazard Heart",
         text = {
           "2 random Jokers",
@@ -301,7 +301,7 @@ return {
           "disabled every hand",
         },
       },
-      bl_abn_hazard_bell = {
+      bl_abn_hazard_bell    = {
         name = "Hazard Bell",
         text = {
           "Forces 2 cards to",
@@ -309,7 +309,7 @@ return {
           "Debuffs the leftmost Joker",
         },
       },
-      bl_abn_hazard_acorn = {
+      bl_abn_hazard_acorn   = {
         name = "Hazard Acorn",
         text = {
           "Flips and shuffles",
@@ -318,14 +318,14 @@ return {
           "Debuffs the rightmost Joker",
         },
       },
-      bl_abn_hazard_leaf = {
+      bl_abn_hazard_leaf    = {
         name = "Hazard Leaf",
         text = {
           "All cards debuffed",
           "until 2 Jokers sold",
         },
       },
-      bl_abn_hazard_vessel = {
+      bl_abn_hazard_vessel  = {
         name = "Hazard Vessel",
         text = {
           "Very Large blind,",
@@ -724,9 +724,9 @@ return {
         name = "Statue Joker",
         text = {
           "This Joker gains {C:mult}+#2#{} Mult",
-          "when a {C:attention}rankless{} card",
+          "when a {C:attention}#3#{} card",
           "is scored, then add",
-          "{C:dark_edition}Polychrome{} to it",
+          "{C:dark_edition}#4#{} to it",
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
         }
       },
@@ -1371,20 +1371,95 @@ return {
           }
         }
       },
-	  j_abn_dead_or_alive = {
+      j_abn_dead_or_alive = {
         name = "Dead or Alive",
         text = {
           "When a {C:attention}#1# of #2#{} is played",
-		  "Permanently double it's {C:chips}chips{} and gain {C:money}${} equal to it's rank",
+          "Permanently double it's {C:chips}chips{} and gain {C:money}${} equal to it's rank",
           "{C:inactive}(Changes every round){}",
         },
       },
-	  j_abn_getter_robo = {
+      j_abn_getter_robo = {
         name = "Getter Robo!",
         text = {
           "{X:mult,C:white}X#1#{} Mult {X:chips,C:white}X#2#{} Chips {X:attention,C:white}X#3#{} {C:attention}Boss requirement{}",
-		  "{C:attention}Double{} these values after {C:attention}boss blind{} is defeated",
+          "{C:attention}Double{} these values after {C:attention}boss blind{} is defeated",
         },
+      },
+      j_abn_joker_blast = {
+        name = "Joker Blast",
+        text = {
+          "This Joker gains",
+          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+          "for each consecutive",
+          "{C:attention}Blind{} beaten in {C:attention}1{} hand",
+          "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips and {C:mult}+#4#{C:inactive} Mult){}"
+        },
+      },
+      j_abn_metropolitan_joker = {
+        name = "Metropolitan Joker",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult for each {C:attention}#2#{}",
+          "card in your {C:attention}full deck{}",
+          "{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)"
+        }
+      },
+      j_abn_telejoker = {
+        name = "TeleJoker",
+        text = {
+          "Retrigger all cards played if",
+          "hand is a {C:attention}#1#{} or {C:attention}#2#{}",
+          "only containing {C:attention}#3#{} cards"
+        }
+      },
+      j_abn_spice_melange = {
+        name = "Spice Melange",
+        text = {
+          "Retrigger Joker to the {C:attention}left{}",
+          "for the next {C:attention}#1#{} hands"
+        }
+      },
+      j_abn_electrocuted_joker = {
+        name = "Electrocuted Joker",
+        text = {
+          {
+            "Retrigger all {C:attention}#1#s{} and {C:attention}#2#s{}",
+          },
+          {
+            "{C:green}#3# in #4#{} chance to {C:red}destroy{}",
+            "{C:attention}#1#s{} and {C:attention}#2#s{} when scored"
+          }
+        }
+      },
+      j_abn_demolition_expert = {
+        name = "Demolition Expert",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult",
+          "{C:red}Destroy{} leftmost Joker",
+          "after each hand played",
+          "{s:0.8}#2# excluded"
+        }
+      },
+      j_abn_prime_paul = {
+        name = "Prime Paul",
+        text = {
+          "Each played {C:attention}#1#{}, {C:attention}#2#{}, {C:attention}#3#{} or {C:attention}#4#{}",
+          "gives {X:mult,C:white}X#5#{} Mult when scored"
+        }
+      },
+      j_abn_composite_charles = {
+        name = "Composite Charles",
+        text = {
+          "Each played {C:attention}#1#{}, {C:attention}#2#{}, {C:attention}#3#{}, {C:attention}#4#{} or {C:attention}#5#{}",
+          "gives {X:chips,C:white}X#6#{} Chips when scored"
+        }
+      },
+      j_abn_certified_joker = {
+        name = "Certified Joker",
+        text = {
+          "Each played {C:attention}#1#{} gives {X:mult,C:white}X#2#{} Mult",
+          "and {X:chips,C:white}X#3#{} Chips when scored"
+        }
       },
     },
 
@@ -1446,6 +1521,7 @@ return {
           "{C:blue,s:1.3}cloudzXIII{}",
           "{C:blue,s:1.3}Revo{}",
           "{C:blue,s:1.3}Mills-44{}",
+          "{C:blue,s:1.3}J8-Bit{}",
           " ",
           "{C:green,s:2}Art by:",
           " ",
@@ -1595,51 +1671,51 @@ return {
           "to your hand",
         }
       },
-	  c_abn_avalanche = {
+      c_abn_avalanche = {
         name = "Avalanche",
         text = {
           "Add {C:attention}#1#{} {C:abn_snow}Snow{} Cards to your deck",
-		  "each has random {C:dark_edition}edition{}",
+          "each has random {C:dark_edition}edition{}",
         }
       },
-	  c_abn_flood = {
+      c_abn_flood = {
         name = "Flood",
         text = {
           "{C:attention}Copy{} all cards in your deck",
-		  "Gain {C:attention}#1#{} random {C:abn_hazard}hazard tags{}",
+          "Gain {C:attention}#1#{} random {C:abn_hazard}hazard tags{}",
         }
       },
-	  c_abn_tsunami = {
+      c_abn_tsunami = {
         name = "Tsunami",
         text = {
           "Create {C:attention}#1#{} random {C:abn_hazard}hazard tag",
-		  "All cards in the deck gain {C:attention}flipped{}",
+          "All cards in the deck gain {C:attention}flipped{}",
         }
       },
-	  c_abn_drought = {
+      c_abn_drought = {
         name = "Drought",
         text = {
           "{C:mult}Debuff{} all Jokers and set money to {C:money}$0{}",
-		  "Summon {C:attention}#1#{} {C:red}super rare Joker{} and {C:attention}#1#{} {C:dark_edition}parallel rare Joker",
-		  "{C:inactive}(Must have room)",
+          "Summon {C:attention}#1#{} {C:red}super rare Joker{} and {C:attention}#1#{} {C:dark_edition}parallel rare Joker",
+          "{C:inactive}(Must have room)",
         }
       },
-	  c_abn_heatwave = {
+      c_abn_heatwave = {
         name = "Heatwave",
         text = {
           "{C:mult}Debuff{} all {C:spades}Spades{}, {C:clubs}Clubs{}, and {C:abn_snow}Snows{}",
-		  "{C:diamonds}Diamonds{} and {C:hearts}Hearts{} gain {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+          "{C:diamonds}Diamonds{} and {C:hearts}Hearts{} gain {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
         }
       },
-	  c_abn_plague = {
+      c_abn_plague = {
         name = "Plague",
         text = {
           "All jokers gain {C:abn_perishable}Perishable{}",
-		  "Summon {C:attention}#1#{} {C:red}super rare Joker{} with a random {C:dark_edition}edition{}",
-		  "{C:inactive}(Must have room)",
+          "Summon {C:attention}#1#{} {C:red}super rare Joker{} with a random {C:dark_edition}edition{}",
+          "{C:inactive}(Must have room)",
         }
       },
-	  
+
     },
     Enhanced = {
       m_abn_petroleum = {
@@ -1816,10 +1892,12 @@ return {
       abn_kept = "Kept!",
       k_abn_even = "Even",
       k_abn_odd = "Odd",
-	  abn_calamitybooster = "Calamity Pack",
-	  abn_calamitybooster_j = "Jumbo Calamity Pack",
-	  abn_calamitybooster_m = "Mega Calamity Pack",
-    abn_joker_chip = "Bonus Chips",
+      k_abn_rankless = "Rankless",
+      k_abn_numbered = "numbered",
+      abn_calamitybooster = "Calamity Pack",
+      abn_calamitybooster_j = "Jumbo Calamity Pack",
+      abn_calamitybooster_m = "Mega Calamity Pack",
+      abn_joker_chip = "Bonus Chips",
     },
     labels = {
       abn_chthonian = "Chthonian",

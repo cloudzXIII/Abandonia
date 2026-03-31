@@ -14,16 +14,16 @@ ABN.optional_features = {
 
 local abn = loc_colour
 function loc_colour(_c, _default)
-    if not G.ARGS.LOC_COLOURS then
-        abn()
-    end
+  if not G.ARGS.LOC_COLOURS then
+    abn()
+  end
 
-	G.ARGS.LOC_COLOURS.abn_snow = HEX("5dc6e2")
-	G.ARGS.LOC_COLOURS.abn_hazard = HEX("831717")
-	G.ARGS.LOC_COLOURS.abn_calamity = HEX("c3a37a")
-	G.ARGS.LOC_COLOURS.abn_perishable = HEX("687ee7")
-	
-    return abn(_c, _default)
+  G.ARGS.LOC_COLOURS.abn_snow = HEX("5dc6e2")
+  G.ARGS.LOC_COLOURS.abn_hazard = HEX("831717")
+  G.ARGS.LOC_COLOURS.abn_calamity = HEX("c3a37a")
+  G.ARGS.LOC_COLOURS.abn_perishable = HEX("687ee7")
+
+  return abn(_c, _default)
 end
 
 SMODS.Atlas({
@@ -182,13 +182,13 @@ ABN.calculate = function(self, context)
     G.GAME.pool_flags.abn_cavendish_extinct = true
   end
 
-  if context.other_joker and (context.other_joker.ability.abn_perma_bonus > 0 or context.other_joker.ability.abn_perma_bonus < 0) then
-		return {
-			chips = context.other_joker.ability.abn_perma_bonus,
-			message_card = context.other_joker,
-			no_juice = true,
-		}
-	end
+  if context.other_joker and (context.other_joker.ability.abn_perma_bonus and (context.other_joker.ability.abn_perma_bonus > 0 or context.other_joker.ability.abn_perma_bonus < 0)) then
+    return {
+      chips = context.other_joker.ability.abn_perma_bonus,
+      message_card = context.other_joker,
+      no_juice = true,
+    }
+  end
 end
 
 function ABN.reset_game_globals(run_start)

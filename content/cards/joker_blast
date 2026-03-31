@@ -1,0 +1,73 @@
+-- Joker Blast
+-- Coded by J8-Bit
+-- Gains +40 Chips and +7 Mult for each consecutive Blind beaten in one hand
+
+
+SMODS.Joker {
+    key = 'joker_blast',
+
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = true,
+    config = {
+        extra = {
+            chips = 0,
+            mult = 0,
+            chips_inc = 40,
+            mult_inc = 7,
+        },
+    },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.chips_inc,
+                card.ability.extra.mult_inc,
+                card.ability.extra.chips,
+                card.ability.extra.mult
+            }
+        }
+    end,
+    rarity = 3,
+    atlas = 'AbandoniaJokers',
+    pos = { x = 8, y = 11 },
+    cost = 12,
+    discovered = false,
+    calculate = function(self, card, context)
+        -- add chips/mult
+        if context.joker_main then
+            return {
+                chips = card.ability.extra.chips,
+                mult = card.ability.extra.mult
+            }
+        end
+        -- scale joker
+        if context.after and not context.blueprint and G.GAME.current_round.hands_played == 0 then
+            if SMODS.last_hand_oneshot then
+                --print("Last hand oneshot!")
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra, -- the table that has the value you are changing in
+                    ref_value = "chips",            -- the key to the value in the ref_table
+                    scalar_value = "chips_inc",     -- the key to the value to scale by, in the ref_table by default
+                    operation = '+',
+                    no_message = true,
+                })
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra, -- the table that has the value you are changing in
+                    ref_value = "mult",             -- the key to the value in the ref_table
+                    operation = '+',
+                    scalar_value = "mult_inc",      -- the key to the value to scale by, in the ref_table by default
+                })
+            else
+                --print("Last hand didn't oneshot!")
+                card.ability.extra.chips = 0
+                card.ability.extra.mult = 0
+                return {
+                    message = localize("k_reset"),
+                }
+            end
+        end
+    end,
+    abn_artist_credits = {
+        artist = "Grass"
+    },
+}
