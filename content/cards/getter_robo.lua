@@ -1,4 +1,4 @@
---[[SMODS.Sound({
+SMODS.Sound({
     key = 'music_shin',
     path = 'music_shin.ogg',
 	pitch = 1,
@@ -15,7 +15,7 @@
 		end
     end
 })
---]]
+
 -- Getter Robo Joker
 SMODS.Joker {
   key = 'getter_robo',
