@@ -1718,6 +1718,14 @@ return {
 
     },
     Enhanced = {
+      m_abn_polkadot = {
+        name = "Polkadot",
+        text = {
+          "{C:chips}+#1#{} Chips, gains",
+          "{C:chips}+#2#{} Chips when scored",
+          "no rank or suit"
+        }
+      },
       m_abn_petroleum = {
         name = "Petroleum",
         text = {

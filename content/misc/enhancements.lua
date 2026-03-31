@@ -144,3 +144,34 @@ SMODS.Enhancement({
     end
   end,
 })
+
+SMODS.Enhancement({
+  key = "polkadot",
+  pos = { x = 3, y = 0 },
+  atlas = "AbandoniaEnhancements",
+  replace_base_card = true,
+  no_rank = true,
+  no_suit = true,
+  always_scores = true,
+  config = { extra = { chips = 10, chips_gain = 5 } },
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    return { vars = { cae.chips, cae.chips_gain } }
+  end,
+  calculate = function(self, card, context, effect)
+    local cae = card.ability.extra
+    if context.main_scoring and context.cardarea == G.play then
+      return {
+        chips = cae.chips,
+      }
+    end
+
+    if context.final_scoring_step and context.cardarea == G.play then
+      SMODS.scale_card(card, {
+        ref_table = cae,
+        ref_value = "chips",
+        scalar_value = "chips_gain"
+      })
+    end
+  end,
+})
