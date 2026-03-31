@@ -1819,6 +1819,7 @@ return {
 	  abn_calamitybooster = "Calamity Pack",
 	  abn_calamitybooster_j = "Jumbo Calamity Pack",
 	  abn_calamitybooster_m = "Mega Calamity Pack",
+    abn_joker_chip = "Bonus Chips",
     },
     labels = {
       abn_chthonian = "Chthonian",

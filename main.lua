@@ -182,9 +182,9 @@ ABN.calculate = function(self, context)
     G.GAME.pool_flags.abn_cavendish_extinct = true
   end
 
-  if context.other_joker and (context.other_joker.ability.perma_bonus > 0 or context.other_joker.ability.perma_bonus < 0) then
+  if context.other_joker and (context.other_joker.ability.abn_perma_bonus > 0 or context.other_joker.ability.abn_perma_bonus < 0) then
 		return {
-			chips = context.other_joker.ability.perma_bonus,
+			chips = context.other_joker.ability.abn_perma_bonus,
 			message_card = context.other_joker,
 			no_juice = true,
 		}

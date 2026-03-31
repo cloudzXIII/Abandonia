@@ -33,15 +33,15 @@ position = 'after'
 pattern = '''if self.sticker or ((self.sticker_run and self.sticker_run~='NONE') and G.SETTINGS.run_stake_stickers)  then loc_vars = loc_vars or {}; loc_vars.sticker=(self.sticker or self.sticker_run) end'''
 payload = '''
 local abn_extra_chips = nil
-if self.ability.perma_bonus and (self.ability.perma_bonus>0 or self.ability.perma_bonus<0) then 
+if self.ability.abn_perma_bonus and (self.ability.abn_perma_bonus>0 or self.ability.abn_perma_bonus<0) then 
 local operation = ""
-if self.ability.perma_bonus>0 then
+if self.ability.abn_perma_bonus>0 then
     operation = "+"
 end
 abn_extra_chips = (self.area and self.area == G.jokers) and {
                 {n=G.UIT.C, config={align = "bm", minh = 0.4}, nodes={
                     {n=G.UIT.C, config={ref_table = self, align = "m", colour = G.C.CLEAR, r = 0.05, padding = 0.06}, nodes={
-                        {n=G.UIT.T, config={text = operation .. self.ability.perma_bonus ,colour = G.C.BLUE, scale = 0.32}},
+                        {n=G.UIT.T, config={text = operation .. self.ability.abn_perma_bonus ,colour = G.C.BLUE, scale = 0.32}},
                         {n=G.UIT.T, config={text = "", colour = G.C.BLUE, scale = 0.1}},
                         {n=G.UIT.T, config={text = localize("abn_joker_chip") ,colour = G.C.L_BLACK, scale = 0.32,padding = 0.1}},
                     }}
