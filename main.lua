@@ -181,6 +181,14 @@ ABN.calculate = function(self, context)
   if context.joker_type_destroyed and context.card.config.center.key == "j_cavendish" then
     G.GAME.pool_flags.abn_cavendish_extinct = true
   end
+
+  if context.other_joker and (context.other_joker.ability.perma_bonus > 0 or context.other_joker.ability.perma_bonus < 0) then
+		return {
+			chips = context.other_joker.ability.perma_bonus,
+			message_card = context.other_joker,
+			no_juice = true,
+		}
+	end
 end
 
 function ABN.reset_game_globals(run_start)
