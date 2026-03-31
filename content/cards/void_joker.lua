@@ -1,7 +1,7 @@
 SMODS.Joker {
   key = 'void_joker',
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.percent } }
+    return { vars = { localize({ type = 'name_text', key = "e_foil", set = "Edition" }), localize({ type = 'name_text', key = "e_holo", set = "Edition" }), localize({ type = 'name_text', key = "e_polychrome", set = "Edition" }) } }
   end,
 
   rarity = 1,

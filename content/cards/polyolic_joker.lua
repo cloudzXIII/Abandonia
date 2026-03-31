@@ -12,7 +12,8 @@ SMODS.Joker {
     return {
       vars = {
         card.ability.extra.xmult,
-        1 + (card.ability.extra.xmult * tally)
+        1 + (card.ability.extra.xmult * tally),
+        localize({ type = 'name_text', key = "e_polychrome", set = "Edition" })
       }
     }
   end,

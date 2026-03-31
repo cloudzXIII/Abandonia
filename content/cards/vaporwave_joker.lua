@@ -3,7 +3,7 @@ SMODS.Joker {
 
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
-    return { vars = { card.ability.extra.mult } }
+    return { vars = { card.ability.extra.mult, localize({ type = 'name_text', key = "e_polychrome", set = "Edition" }) } }
   end,
 
   rarity = 3,

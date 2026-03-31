@@ -3,7 +3,7 @@ SMODS.Joker {
 
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
-    return { vars = { card.ability.extra.x_chips } }
+    return { vars = { card.ability.extra.x_chips, localize({ type = 'name_text', key = "e_foil", set = "Edition" }) } }
   end,
 
   rarity = 3,

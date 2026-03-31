@@ -11,7 +11,7 @@ SMODS.Joker {
         end
       end
     end
-    return { vars = { card.ability.extra.chips, card.ability.extra.chips * negative_tally } }
+    return { vars = { card.ability.extra.chips, card.ability.extra.chips * negative_tally, localize({ type = 'name_text', key = "e_negative", set = "Edition" }) } }
   end,
 
   rarity = 1,

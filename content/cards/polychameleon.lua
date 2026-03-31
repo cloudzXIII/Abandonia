@@ -13,7 +13,7 @@ SMODS.Joker {
         count = count + 1
       end
     end
-    return { vars = { card.ability.extra.xmult, 1 + (card.ability.extra.xmult * count) } }
+    return { vars = { card.ability.extra.xmult, 1 + (card.ability.extra.xmult * count), localize({ type = 'name_text', key = "e_polychrome", set = "Edition" }), localize({ type = 'name_text', key = "e_holo", set = "Edition" }) } }
   end,
 
   rarity = 3,

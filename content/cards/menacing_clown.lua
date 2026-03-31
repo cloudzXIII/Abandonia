@@ -2,7 +2,7 @@ SMODS.Joker {
   key = 'menacing_clown',
 
   loc_vars = function(self, info_queue, card)
-    return { vars = {} }
+    return { vars = { localize({ type = 'name_text', key = "e_foil", set = "Edition" }), localize({ type = 'name_text', key = "e_holo", set = "Edition" }), localize({ type = 'name_text', key = "e_polychrome", set = "Edition" }) } }
   end,
 
   rarity = 2,

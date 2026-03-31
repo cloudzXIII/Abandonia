@@ -9,6 +9,7 @@ SMODS.Joker {
       vars = {
         numerator,
         denominator,
+        localize({ type = 'name_text', key = "e_abn_chthonian", set = "Edition" })
       }
     }
   end,

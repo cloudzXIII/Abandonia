@@ -17,7 +17,8 @@ SMODS.Joker {
     return {
       vars = {
         card.ability.extra.mult,
-        card.ability.extra.mult * tally
+        card.ability.extra.mult * tally,
+        localize({ type = 'name_text', key = "e_abn_sunscourge", set = "Edition" })
       }
     }
   end,

@@ -5,6 +5,7 @@ SMODS.Joker {
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_abandond
     return {
       vars = {
+        localize({ type = 'name_text', key = "e_abn_abandond", set = "Edition" })
       }
     }
   end,

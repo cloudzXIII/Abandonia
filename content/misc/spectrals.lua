@@ -6,7 +6,7 @@ SMODS.Consumable {
   config = { max_highlighted = 1 },
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_chthonian
-    return { vars = { card.ability.max_highlighted } }
+    return { vars = { card.ability.max_highlighted, localize({ type = 'name_text', key = "e_abn_chthonian", set = "Edition" }) } }
   end,
   use = function(self, card, area, copier)
     G.E_MANAGER:add_event(Event({

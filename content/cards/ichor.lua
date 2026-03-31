@@ -3,7 +3,10 @@ SMODS.Joker {
 
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
-    return { vars = { card.ability.extra.xmult } }
+    return {
+      vars = { card.ability.extra.xmult, localize({ type = 'name_text', key = "e_negative", set = "Edition" })
+      }
+    }
   end,
 
   rarity = 3,
