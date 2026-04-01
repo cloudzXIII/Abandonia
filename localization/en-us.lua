@@ -1715,6 +1715,13 @@ return {
           "{C:diamonds}Diamonds{} and {C:hearts}Hearts{} gain {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
         }
       },
+	  c_abn_blizzard = {
+        name = "Blizzard",
+        text = {
+          "{C:mult}Debuff{} all {C:diamonds}Diamonds{} and {C:hearts}Hearts{}",
+          "{C:spades}Spades{}, {C:clubs}Clubs{}, and {C:abn_snow}Snows{} gain {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+        }
+      },
       c_abn_plague = {
         name = "Plague",
         text = {
