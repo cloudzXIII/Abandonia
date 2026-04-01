@@ -408,6 +408,40 @@ SMODS.Consumable {
   },
 }
 
+SMODS.Consumable {
+    key = "blizzard",
+    set = "calamity_cards",
+    config = { extra = { chips = 10, mult = 5 } },
+    pos = { x = 2, y = 1 },
+    atlas = "AbandoniaCalamity",
+    cost = 4,
+    discovered = false,
+    
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chips, card.ability.extra.mult } }
+    end,  
+    
+    abn_artist_credits = {
+        artist = "Grass",
+    },
+    
+    can_use = function(self, card)
+        return true
+    end,
+
+    use = function(self, card, area, copier)
+        for _, v in ipairs(G.playing_cards) do
+			if v:is_suit("Diamonds") or v:is_suit("Hearts") then
+				v.permadebuff = true
+			elseif v:is_suit("Spades") or v:is_suit("Clubs") or v:is_suit("abn_Snow") then
+				v.ability.perma_bonus = (v.ability.perma_bonus or 0) + card.ability.extra.chips
+				v.ability.perma_mult = (v.ability.perma_mult or 0) + card.ability.extra.mult
+			end
+		end
+    end
+}
+
+
 local original_game_update = Game.update
 function Game:update(dt)
     original_game_update(self, dt)
@@ -718,8 +752,8 @@ local disabled = {
 
 SMODS.Booster({
     key = 'calamitybooster',
-    atlas = 'AbandoniaBoosters',
-    pos = { x = 0, y = 0 },
+    atlas = 'AbandoniaCalamity',
+    pos = { x = 0, y = 3 },
     loc_txt = {
         name = 'Calamity Pack',
         text = {
@@ -765,8 +799,8 @@ local disabled = {
 
 SMODS.Booster({
     key = 'calamitybooster2',
-    atlas = 'AbandoniaBoosters',
-    pos = { x = 1, y = 0 },
+    atlas = 'AbandoniaCalamity',
+    pos = { x = 1, y = 3 },
     loc_txt = {
         name = 'Calamity Pack',
         text = {
@@ -812,8 +846,8 @@ local disabled = {
 
 SMODS.Booster({
     key = 'calamitybooster_j',
-    atlas = 'AbandoniaBoosters',
-    pos = { x = 2, y = 0 },
+    atlas = 'AbandoniaCalamity',
+    pos = { x = 2, y = 3 },
     loc_txt = {
         name = 'Jumbo Calamity Pack',
         text = {
@@ -859,8 +893,8 @@ local disabled = {
 
 SMODS.Booster({
     key = 'calamitybooster_m',
-    atlas = 'AbandoniaBoosters',
-    pos = { x = 3, y = 0 },
+    atlas = 'AbandoniaCalamity',
+    pos = { x = 3, y = 3 },
     loc_txt = {
         name = 'Mega Calamity Pack',
         text = {
