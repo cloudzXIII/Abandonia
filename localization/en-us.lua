@@ -1437,7 +1437,7 @@ return {
           "{X:mult,C:white}X#1#{} Mult",
           "{C:red}Destroy{} leftmost Joker",
           "after each hand played",
-          "{s:0.8}#2# excluded"
+          --"{s:0.8}#2# excluded"
         }
       },
       j_abn_prime_paul = {
