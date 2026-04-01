@@ -3,7 +3,10 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
-# generate_card_ui
+# ---------------------------------------------------------
+# generate_card_ui Updates
+# ---------------------------------------------------------
+
 [[patches]]
 [patches.pattern]
 target = 'functions/common_events.lua'
@@ -13,19 +16,26 @@ payload = '''
 if abn_extra_chips then
     desc_nodes[#desc_nodes+1] = abn_extra_chips 
 end
+if abn_extra_mult then
+    desc_nodes[#desc_nodes+1] = abn_extra_mult
+end
 '''
 match_indent = true
+
 [[patches]]
 [patches.pattern]
 target = 'functions/common_events.lua'
 position = 'at'
 pattern = '''function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)'''
 payload = '''
-function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card, abn_extra_chips)
+function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card, abn_extra_chips, abn_extra_mult)
 '''
 match_indent = true
 
-# generate_UIBox_ability_table
+# ---------------------------------------------------------
+# generate_UIBox_ability_table Updates
+# ---------------------------------------------------------
+
 [[patches]]
 [patches.pattern]
 target = 'card.lua'
@@ -33,29 +43,44 @@ position = 'after'
 pattern = '''if self.sticker or ((self.sticker_run and self.sticker_run~='NONE') and G.SETTINGS.run_stake_stickers)  then loc_vars = loc_vars or {}; loc_vars.sticker=(self.sticker or self.sticker_run) end'''
 payload = '''
 local abn_extra_chips = nil
-if self.ability.abn_perma_bonus and (self.ability.abn_perma_bonus>0 or self.ability.abn_perma_bonus<0) then 
-local operation = ""
-if self.ability.abn_perma_bonus>0 then
-    operation = "+"
+local abn_extra_mult = nil
+
+-- Chips Logic
+if self.ability.abn_perma_bonus and self.ability.abn_perma_bonus ~= 0 then 
+    local chip_op = self.ability.abn_perma_bonus > 0 and "+" or ""
+    abn_extra_chips = (self.area and self.area == G.jokers) and {
+        {n=G.UIT.C, config={align = "bm", minh = 0.4}, nodes={
+            {n=G.UIT.C, config={ref_table = self, align = "m", colour = G.C.CLEAR, r = 0.05, padding = 0.06}, nodes={
+                {n=G.UIT.T, config={text = chip_op .. self.ability.abn_perma_bonus, colour = G.C.BLUE, scale = 0.32}},
+                {n=G.UIT.T, config={text = "", colour = G.C.BLUE, scale = 0.1}},
+                {n=G.UIT.T, config={text = localize("abn_joker_chip"), colour = G.C.L_BLACK, scale = 0.32, padding = 0.1}},
+            }}
+        }}
+    } or nil
 end
-abn_extra_chips = (self.area and self.area == G.jokers) and {
-                {n=G.UIT.C, config={align = "bm", minh = 0.4}, nodes={
-                    {n=G.UIT.C, config={ref_table = self, align = "m", colour = G.C.CLEAR, r = 0.05, padding = 0.06}, nodes={
-                        {n=G.UIT.T, config={text = operation .. self.ability.abn_perma_bonus ,colour = G.C.BLUE, scale = 0.32}},
-                        {n=G.UIT.T, config={text = "", colour = G.C.BLUE, scale = 0.1}},
-                        {n=G.UIT.T, config={text = localize("abn_joker_chip") ,colour = G.C.L_BLACK, scale = 0.32,padding = 0.1}},
-                    }}
-                }}
-            } or nil
+
+-- Mult Logic
+if self.ability.abn_perma_mult and self.ability.abn_perma_mult ~= 0 then 
+    local mult_op = self.ability.abn_perma_mult > 0 and "+" or ""
+    abn_extra_mult = (self.area and self.area == G.jokers) and {
+        {n=G.UIT.C, config={align = "bm", minh = 0.4}, nodes={
+            {n=G.UIT.C, config={ref_table = self, align = "m", colour = G.C.CLEAR, r = 0.05, padding = 0.06}, nodes={
+                {n=G.UIT.T, config={text = mult_op .. self.ability.abn_perma_mult, colour = G.C.RED, scale = 0.32}},
+                {n=G.UIT.T, config={text = "", colour = G.C.RED, scale = 0.1}},
+                {n=G.UIT.T, config={text = localize("abn_joker_mult"), colour = G.C.L_BLACK, scale = 0.32, padding = 0.1}},
+            }}
+        }}
+    } or nil
 end
 '''
 match_indent = true
+
 [[patches]]
 [patches.pattern]
 target = 'card.lua'
 position = 'at'
 pattern = '''return generate_card_ui(self.config.center, nil, loc_vars, card_type, badges, hide_desc, main_start, main_end, self)'''
 payload = '''
-   return generate_card_ui(self.config.center, nil, loc_vars, card_type, badges, hide_desc, main_start, main_end, self, abn_extra_chips)
+return generate_card_ui(self.config.center, nil, loc_vars, card_type, badges, hide_desc, main_start, main_end, self, abn_extra_chips, abn_extra_mult)
 '''
 match_indent = true
