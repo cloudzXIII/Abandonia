@@ -189,6 +189,16 @@ ABN.calculate = function(self, context)
       no_juice = true,
     }
   end
+  
+  if context.other_joker and (context.other_joker.ability.abn_perma_mult and (context.other_joker.ability.abn_perma_mult > 0 or context.other_joker.ability.abn_perma_mult < 0)) then
+    return {
+      mult = context.other_joker.ability.abn_perma_mult,
+      message_card = context.other_joker,
+      no_juice = true,
+    }
+  end
+  
+  
 end
 
 function ABN.reset_game_globals(run_start)
