@@ -1723,7 +1723,33 @@ return {
           "{C:inactive}(Must have room)",
         }
       },
-
+	  c_abn_humans = {
+        name = "Humans",
+        text = {
+          "{C:mult}Destroy{} all Jokers and set money to {C:money}$-20{}",
+		  "Gain {C:attention}#1#{} Joker Slots",
+        }
+      },
+	  c_abn_rapture = {
+        name = "Rapture",
+        text = {
+          "All Jokers gain random {C:dark_edition}editions{} and {C:abn_perishable}stickers{}",
+        }
+      },
+	  c_abn_heatdeath = {
+        name = "Heat Death",
+        text = {
+          "Reduce all hands levels to {C:attention}1{}",
+		  "All cards gain {C:mult}+#1#{} mult and double {C:chips}chips{}",
+        }
+      },
+	  c_abn_tremor = {
+        name = "Tremor",
+        text = {
+          "{C:mult}Destroy{} all {C:common}Common{} and {C:uncommon}Uncommon{} Jokers",
+		  "{C:rare}Rare{} Jokers gain {C:mult}+#1#{} mult for each destroyed Joker"
+        }
+      },
     },
     Enhanced = {
       m_abn_polkadot = {
@@ -1914,6 +1940,7 @@ return {
       abn_calamitybooster_j = "Jumbo Calamity Pack",
       abn_calamitybooster_m = "Mega Calamity Pack",
       abn_joker_chip = "Bonus Chips",
+	  abn_joker_mult = "Bonus Mult",
     },
     labels = {
       abn_chthonian = "Chthonian",
