@@ -763,7 +763,7 @@ SMODS.Booster({
         }
     },
     config = { extra = 3, choose = 1 },
-    weight = 1,
+    weight = 0.2,
     cost = 4,
     group_key = 'abn_calamitybooster',
     draw_hand = true,
@@ -810,7 +810,7 @@ SMODS.Booster({
         }
     },
     config = { extra = 3, choose = 1 },
-    weight = 1,
+    weight = 0.2,
     cost = 4,
     group_key = 'abn_calamitybooster',
     draw_hand = true,
@@ -857,7 +857,7 @@ SMODS.Booster({
         }
     },
     config = { extra = 5, choose = 1 },
-    weight = 1,
+    weight = 0.2,
     cost = 6,
     group_key = 'abn_calamitybooster_j',
     draw_hand = true,
@@ -904,7 +904,7 @@ SMODS.Booster({
         }
     },
     config = { extra = 5, choose = 2 },
-    weight = 1,
+    weight = 0.06,
     cost = 8,
     group_key = 'abn_calamitybooster_m',
     draw_hand = true,
