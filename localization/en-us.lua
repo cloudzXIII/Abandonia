@@ -1522,6 +1522,7 @@ return {
           "{C:blue,s:1.3}Revo{}",
           "{C:blue,s:1.3}Mills-44{}",
           "{C:blue,s:1.3}J8-Bit{}",
+		  "{C:blue,s:1.3}EricTheToon{}",
           " ",
           "{C:green,s:2}Art by:",
           " ",
