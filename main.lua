@@ -22,7 +22,9 @@ function loc_colour(_c, _default)
   G.ARGS.LOC_COLOURS.abn_hazard = HEX("831717")
   G.ARGS.LOC_COLOURS.abn_calamity = HEX("c3a37a")
   G.ARGS.LOC_COLOURS.abn_perishable = HEX("687ee7")
-
+  G.ARGS.LOC_COLOURS.abn_sigil = HEX("fd5f55")
+  
+  
   return abn(_c, _default)
 end
 
@@ -117,6 +119,13 @@ SMODS.Atlas({
   path = "calamity.png",
   px = 67,
   py = 98,
+})
+
+SMODS.Atlas({
+  key = "AbandoniaSigils",
+  path = "sigils.png",
+  px = 71,
+  py = 95,
 })
 
 -- Utilities

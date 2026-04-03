@@ -1758,6 +1758,92 @@ return {
         }
       },
     },
+	sigils = {
+      c_abn_bael = {
+        name = "Bael",
+        text = {
+          "Next elligible hand is transformed into {C:attention}High Card{}",
+		  "{C:attention}High Card{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_botis = {
+        name = "Botis",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Pair{}",
+		  "{C:attention}Pair{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_vinea = {
+        name = "Vinea",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Two Pair{}",
+		  "{C:attention}Two Pair{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_morax = {
+        name = "Morax",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Three Of A Kind{}",
+		  "{C:attention}Three Of A Kind{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_bune = {
+        name = "Bune",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Four Of A Kind{}",
+		  "{C:attention}Four Of A Kind{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_furfur = {
+        name = "Furfur",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Straight{}",
+		  "{C:attention}Straight{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_bifrons = {
+        name = "Bifrons",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Flush{}",
+		  "{C:attention}Flush{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_crocell = {
+        name = "Crocell",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Full House{}",
+		  "{C:attention}Full House{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_belial = {
+        name = "Belial",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Straight Flush{}",
+		  "{C:attention}Straight Flush{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_astaroth = {
+        name = "Astaroth",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Five Of A Kind{}",
+		  "{C:attention}Five Of A Kind{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_asmodeus = {
+        name = "Asmodeus",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Flush House{}",
+		  "{C:attention}Flush House{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_camio = {
+        name = "Camio",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Flush Five{}",
+		  "{C:attention}Flush Five{} gains {C:attention}1{} level",
+        }
+      },
+    },
     Enhanced = {
       m_abn_polkadot = {
         name = "Polkadot",
@@ -1946,6 +2032,7 @@ return {
       abn_calamitybooster = "Calamity Pack",
       abn_calamitybooster_j = "Jumbo Calamity Pack",
       abn_calamitybooster_m = "Mega Calamity Pack",
+	  abn_sigilbooster = "Sigil Booster",
       abn_joker_chip = "Bonus Chips",
 	  abn_joker_mult = "Bonus Mult",
     },
