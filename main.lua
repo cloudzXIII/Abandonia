@@ -23,6 +23,7 @@ function loc_colour(_c, _default)
   G.ARGS.LOC_COLOURS.abn_calamity = HEX("c3a37a")
   G.ARGS.LOC_COLOURS.abn_perishable = HEX("687ee7")
   G.ARGS.LOC_COLOURS.abn_sigil = HEX("fd5f55")
+  G.ARGS.LOC_COLOURS.abn_nightshift = HEX("1a6a5f")
   
   
   return abn(_c, _default)
@@ -128,6 +129,13 @@ SMODS.Atlas({
   py = 95,
 })
 
+SMODS.Atlas({
+  key = "AbandoniaNightshift",
+  path = "nightshift.png",
+  px = 71,
+  py = 95,
+})
+
 -- Utilities
 local subdir = "utilities"
 local cards = NFS.getDirectoryItems(SMODS.current_mod.path .. subdir)
@@ -184,21 +192,22 @@ ABN.calculate = function(self, context)
     G.GAME.pool_flags.abn_cavendish_extinct = true
   end
 
-  if context.other_joker and (context.other_joker.ability.abn_perma_bonus and (context.other_joker.ability.abn_perma_bonus > 0 or context.other_joker.ability.abn_perma_bonus < 0)) then
-    return {
-      chips = context.other_joker.ability.abn_perma_bonus,
-      message_card = context.other_joker,
-      no_juice = true,
-    }
+  if context.other_joker then
+    local ability = context.other_joker.ability
+    local has_chips = ability.abn_perma_bonus and ability.abn_perma_bonus ~= 0
+    local has_mult = ability.abn_perma_mult and ability.abn_perma_mult ~= 0
+
+    if has_chips or has_mult then
+        return {
+            chips = has_chips and ability.abn_perma_bonus or nil,
+            mult = has_mult and ability.abn_perma_mult or nil,
+            message_card = context.other_joker,
+            no_juice = true,
+        }
+    end
   end
   
-  if context.other_joker and (context.other_joker.ability.abn_perma_mult and (context.other_joker.ability.abn_perma_mult > 0 or context.other_joker.ability.abn_perma_mult < 0)) then
-    return {
-      mult = context.other_joker.ability.abn_perma_mult,
-      message_card = context.other_joker,
-      no_juice = true,
-    }
-  end
+  
   
   
 end

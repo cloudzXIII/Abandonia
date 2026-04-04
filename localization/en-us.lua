@@ -1494,6 +1494,13 @@ return {
           "{C:inactive}(Must have room)",
         }
       },
+	  c_abn_baphomet = {
+        name = "Baphomet",
+        text = {
+          "Create a {C:abn_sigil}Sigil",
+		  "For your {C:attention}most played{} hand",
+        }
+      },
     },
     Other = {
       abn_dark_suit = {
@@ -1842,6 +1849,28 @@ return {
         text = {
           "Next elligible hand is transformed into {C:attention}Flush Five{}",
 		  "{C:attention}Flush Five{} gains {C:attention}1{} level",
+        }
+      },
+    },
+	nightshift_cards = {
+      c_abn_furtive = {
+        name = "Furtive",
+        text = {
+          "Create a {C:dark_edition}Negative{} {C:legendary}Legendary{} {C:attention}Flipped{} Joker",
+        }
+      },
+	  c_abn_intrusion = {
+        name = "Intrusion",
+        text = {
+          "All Jokers become {C:attention}Flipped{} and",
+		  "gain {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+        }
+      },
+	  c_abn_aparition = {
+        name = "Aparition",
+        text = {
+          "Fill consumable slots with {C:spectral}Spectral{} cards",
+		  "{C:green}#1# in #2#{} chance to gain {C:attention}+1{} Joker slot"
         }
       },
     },
