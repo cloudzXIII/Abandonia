@@ -1,0 +1,84 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 10
+
+# G.GAME.abn_rank_upgrades
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''hands = {'''
+position = 'before'
+payload = '''
+    abn_rank_upgrades = {
+        _2 = {name = "2", value = G.P_CARDS.H_2.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3},
+        _3 = {name = "3", value = G.P_CARDS.H_3.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3},
+        _4 = {name = "4", value = G.P_CARDS.H_4.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3},
+        _5 = {name = "5", value = G.P_CARDS.H_5.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3},
+        _6 = {name = "6", value = G.P_CARDS.H_6.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3},
+        _7 = {name = "7", value = G.P_CARDS.H_7.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3},
+        _8 = {name = "8", value = G.P_CARDS.H_8.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3},
+        _9 = {name = "9", value = G.P_CARDS.H_9.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3},
+        _1 = {name = "10", value = G.P_CARDS.H_T.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3},
+        _J = {name = "Jack", value = G.P_CARDS.H_J.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3},
+        _Q = {name = "Queen", value = G.P_CARDS.H_Q.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3},
+        _K = {name = "King", value = G.P_CARDS.H_K.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3},
+        _A = {name = "Ace", value = G.P_CARDS.H_A.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3},
+    },
+'''
+match_indent = true
+
+# Show chips/mult under card
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''
+        if specific_vars.bonus_chips then
+            localize{type = 'other', key = 'card_extra_chips', nodes = desc_nodes, vars = {SMODS.signed(specific_vars.bonus_chips)}}
+        end
+'''
+position = 'after'
+payload = '''
+if card and card:get_abn_rank_chips() ~= 0 then
+    localize{type = 'other', key = 'card_abn_rank_chips', nodes = desc_nodes, vars = {SMODS.signed(card:get_abn_rank_chips())}}
+end
+if card and card:get_abn_rank_mult() ~= 0 then
+    localize{type = 'other', key = 'card_abn_rank_mult', nodes = desc_nodes, vars = {SMODS.signed(card:get_abn_rank_mult())}}
+end
+'''
+match_indent = true
+
+# Show chips/mult under card
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''
+        if _c.name ~= 'Stone Card' and ((specific_vars and specific_vars.bonus_chips) or (cfg.bonus ~= 0 and cfg.bonus)) then
+            localize{type = 'other', key = 'card_extra_chips', nodes = desc_nodes, vars = {SMODS.signed((specific_vars and specific_vars.bonus_chips) or cfg.bonus)}}
+        end
+'''
+position = 'after'
+payload = '''
+if card and card:get_abn_rank_chips() ~= 0 then
+    localize{type = 'other', key = 'card_abn_rank_chips', nodes = desc_nodes, vars = {SMODS.signed(card:get_abn_rank_chips())}}
+end
+if card and card:get_abn_rank_mult() ~= 0 then
+    localize{type = 'other', key = 'card_abn_rank_mult', nodes = desc_nodes, vars = {SMODS.signed(card:get_abn_rank_mult())}}
+end
+'''
+match_indent = true
+
+# Ranks Tab in Run Info
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """tab_definition_function = create_UIBox_current_hands,
+},"""
+position = "after"
+payload = '''
+{
+	label = localize('b_abn_ranks'),
+	tab_definition_function = create_UIBox_current_ranks,
+},
+'''
+match_indent = true
