@@ -24,6 +24,7 @@ function loc_colour(_c, _default)
   G.ARGS.LOC_COLOURS.abn_perishable = HEX("687ee7")
   G.ARGS.LOC_COLOURS.abn_sigil = HEX("fd5f55")
   G.ARGS.LOC_COLOURS.abn_nightshift = HEX("1a6a5f")
+  G.ARGS.LOC_COLOURS.abn_astro = HEX("5204ff")
 
 
   return abn(_c, _default)
@@ -132,6 +133,13 @@ SMODS.Atlas({
 SMODS.Atlas({
   key = "AbandoniaNightshift",
   path = "nightshift.png",
+  px = 71,
+  py = 95,
+})
+
+SMODS.Atlas({
+  key = "AbandoniaAstro",
+  path = "astro.png",
   px = 71,
   py = 95,
 })
