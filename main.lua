@@ -206,6 +206,14 @@ ABN.calculate = function(self, context)
       }
     end
   end
+  if context.mod_probability and not context.blueprint and G.GAME.abn_possibility_sticker then
+    return {
+      numerator = context.numerator * 2,
+    }
+  end
+  if context.after and context.main_eval and not context.blueprint and G.GAME.abn_possibility_sticker then
+    G.GAME.abn_possibility_sticker = false
+  end
 end
 
 function ABN.reset_game_globals(run_start)
