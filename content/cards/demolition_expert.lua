@@ -17,8 +17,7 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.x_mult,
-                localize({ type = 'name_text', set = "Joker", key = "j_abn_demolition_expert" }) or 'Demolition Expert'
+                card.ability.extra.x_mult
             }
         }
     end,
@@ -34,8 +33,7 @@ SMODS.Joker {
             }
         end
         if context.after and not context.blueprint_compat then
-            local compatible = G.jokers.cards[1] and G.jokers.cards[1] ~= card and
-                G.jokers.cards[1].config.center.key ~= card.config.center.key
+            local compatible = G.jokers.cards[1]
             if compatible then
                 return {
                     message = localize("k_abn_destroyed"),

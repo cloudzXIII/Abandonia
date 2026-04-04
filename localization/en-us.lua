@@ -1437,7 +1437,7 @@ return {
           "{X:mult,C:white}X#1#{} Mult",
           "{C:red}Destroy{} leftmost Joker",
           "after each hand played",
-          "{s:0.8}#2# excluded"
+          --"{s:0.8}#2# excluded"
         }
       },
       j_abn_prime_paul = {
@@ -1492,6 +1492,13 @@ return {
           "Creates a",
           "{C:legendary,E:1}Parallel Rare{} Joker",
           "{C:inactive}(Must have room)",
+        }
+      },
+	  c_abn_baphomet = {
+        name = "Baphomet",
+        text = {
+          "Create a {C:abn_sigil}Sigil",
+		  "For your {C:attention}most played{} hand",
         }
       },
     },
@@ -1672,6 +1679,7 @@ return {
           "{C:blue,s:1.3}Revo{}",
           "{C:blue,s:1.3}Mills-44{}",
           "{C:blue,s:1.3}J8-Bit{}",
+		  "{C:blue,s:1.3}EricTheToon{}",
           " ",
           "{C:green,s:2}Art by:",
           " ",
@@ -2038,6 +2046,114 @@ return {
         }
       },
     },
+	sigils = {
+      c_abn_bael = {
+        name = "Bael",
+        text = {
+          "Next elligible hand is transformed into {C:attention}High Card{}",
+		  "{C:attention}High Card{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_botis = {
+        name = "Botis",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Pair{}",
+		  "{C:attention}Pair{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_vinea = {
+        name = "Vinea",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Two Pair{}",
+		  "{C:attention}Two Pair{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_morax = {
+        name = "Morax",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Three Of A Kind{}",
+		  "{C:attention}Three Of A Kind{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_bune = {
+        name = "Bune",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Four Of A Kind{}",
+		  "{C:attention}Four Of A Kind{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_furfur = {
+        name = "Furfur",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Straight{}",
+		  "{C:attention}Straight{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_bifrons = {
+        name = "Bifrons",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Flush{}",
+		  "{C:attention}Flush{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_crocell = {
+        name = "Crocell",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Full House{}",
+		  "{C:attention}Full House{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_belial = {
+        name = "Belial",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Straight Flush{}",
+		  "{C:attention}Straight Flush{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_astaroth = {
+        name = "Astaroth",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Five Of A Kind{}",
+		  "{C:attention}Five Of A Kind{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_asmodeus = {
+        name = "Asmodeus",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Flush House{}",
+		  "{C:attention}Flush House{} gains {C:attention}1{} level",
+        }
+      },
+	  c_abn_camio = {
+        name = "Camio",
+        text = {
+          "Next elligible hand is transformed into {C:attention}Flush Five{}",
+		  "{C:attention}Flush Five{} gains {C:attention}1{} level",
+        }
+      },
+    },
+	nightshift_cards = {
+      c_abn_furtive = {
+        name = "Furtive",
+        text = {
+          "Create a {C:dark_edition}Negative{} {C:legendary}Legendary{} {C:attention}Flipped{} Joker",
+        }
+      },
+	  c_abn_intrusion = {
+        name = "Intrusion",
+        text = {
+          "All Jokers become {C:attention}Flipped{} and",
+		  "gain {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+        }
+      },
+	  c_abn_aparition = {
+        name = "Aparition",
+        text = {
+          "Fill consumable slots with {C:spectral}Spectral{} cards",
+		  "{C:green}#1# in #2#{} chance to gain {C:attention}+1{} Joker slot"
+        }
+      },
+    },
     Enhanced = {
       m_abn_polkadot = {
         name = "Polkadot",
@@ -2226,6 +2342,7 @@ return {
       abn_calamitybooster = "Calamity Pack",
       abn_calamitybooster_j = "Jumbo Calamity Pack",
       abn_calamitybooster_m = "Mega Calamity Pack",
+	  abn_sigilbooster = "Sigil Booster",
       abn_joker_chip = "Bonus Chips",
       abn_joker_mult = "Bonus Mult",
       k_abn_increased = "Increased!",
