@@ -1180,6 +1180,87 @@ SMODS.Consumable {
     abn_artist_credits = { artist = "Robnnuy" },
 }
 
+SMODS.Consumable {
+    key = "baphomet",
+    set = "Spectral",
+    config = { extra = { cards = 1 } },
+    pos = { x = 0, y = 0 },
+	soul_pos = { x = 1, y = 0 },
+    atlas = "AbandoniaSigils",
+    cost = 4,
+    discovered = false,
+
+    can_use = function(self, card)
+        return #G.consumeables.cards < G.consumeables.config.card_limit + 1
+    end,
+
+    use = function(self, card, area, copier)
+        -- 1. Find the highest play count
+        local max_plays = 0
+        for k, v in pairs(G.GAME.hands) do
+            if v.visible and v.played > max_plays then
+                max_plays = v.played
+            end
+        end
+
+        -- 2. Collect all hands that share that play count (or all hands if max is 0)
+        local eligible_hands = {}
+        for k, v in pairs(G.GAME.hands) do
+            if v.visible and (v.played == max_plays or max_plays == 0) then
+                table.insert(eligible_hands, k)
+            end
+        end
+
+        -- 3. Pick a random hand from the eligible ones
+        local chosen_hand = pseudorandom_element(eligible_hands, pseudoseed('baphomet_hand_pick'))
+
+        -- SIGIL MAPPING
+        local sigil_mapping = {
+            ["High Card"]       = "c_abn_bael",
+            ["Pair"]            = "c_abn_botis",
+            ["Three of a Kind"] = "c_abn_morax",
+            ["Two Pair"]        = "c_abn_vinea",
+            ["Straight"]        = "c_abn_furfur",
+            ["Flush"]           = "c_abn_bifrons",
+            ["Full House"]      = "c_abn_crocell",
+            ["Four of a Kind"]  = "c_abn_bune",
+            ["Straight Flush"]  = "c_abn_belial",
+            ["Five of a Kind"]  = "c_abn_astaroth",
+            ["Flush House"]     = "c_abn_asmodeus",
+            ["Flush Five"]      = "c_abn_camio"
+        }
+
+        local target_sigil = sigil_mapping[chosen_hand]
+        local amount = self.config.extra.cards or 1
+
+        for i = 1, amount do
+            if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    func = function()
+                        local _sigil = target_sigil
+                        
+                        -- Fallback for unmapped hands or empty hands
+                        if not _sigil then
+                            local pool = {}
+                            for _, v in pairs(sigil_mapping) do table.insert(pool, v) end
+                            _sigil = pseudorandom_element(pool, pseudoseed('baphomet_fallback'))
+                        end
+
+                        local new_card = create_card('sigils', G.consumeables, nil, nil, nil, nil, _sigil, nil)
+                        new_card:add_to_deck()
+                        G.consumeables:emplace(new_card)
+                        G.GAME.consumeable_buffer = G.GAME.consumeable_buffer - 1
+                        return true
+                    end
+                }))
+            end
+        end
+    end,
+
+    abn_artist_credits = { artist = "Robnnuy" },
+}
 
 local can_skip_booster_ref = G.FUNCS.can_skip_booster
 G.FUNCS.can_skip_booster = function(e)
