@@ -34,7 +34,11 @@ SMODS.Consumable {
     discovered = false,
     
     loc_vars = function(self, info_queue, card)
-        return {unpack(SMODS.get_probability_vars(card,1,card.ability.extra.odds))
+       return {
+vars={
+SMODS.get_probability_vars(card,1,card.ability.extra.odds)
+},
+
 }
     end,
     
@@ -196,7 +200,11 @@ SMODS.Consumable {
     discovered = false,
     
     loc_vars = function(self, info_queue, card)
-        return {unpack(SMODS.get_probability_vars(card,1,card.ability.extra.odds))
+       return {
+vars={
+SMODS.get_probability_vars(card,1,card.ability.extra.odds)
+},
+
 }
     end,
     
@@ -270,7 +278,11 @@ SMODS.Consumable {
     discovered = false,
     
     loc_vars = function(self, info_queue, card)
-        return {unpack(SMODS.get_probability_vars(card,1,card.ability.extra.odds))
+       return {
+vars={
+SMODS.get_probability_vars(card,1,card.ability.extra.odds)
+},
+
 }
     end,
     
@@ -472,7 +484,11 @@ SMODS.Consumable {
     
     loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_TAGS.tag_double
-        return {unpack(SMODS.get_probability_vars(card,1,card.ability.extra.odds))
+       return {
+vars={
+SMODS.get_probability_vars(card,1,card.ability.extra.odds)
+},
+
 }
     end,
     
@@ -594,7 +610,11 @@ SMODS.Consumable {
     discovered = false,
     
     loc_vars = function(self, info_queue, card)
-        return {unpack(SMODS.get_probability_vars(card,1,card.ability.extra.odds))
+       return {
+vars={
+SMODS.get_probability_vars(card,1,card.ability.extra.odds)
+},
+
 }
     end,
     
