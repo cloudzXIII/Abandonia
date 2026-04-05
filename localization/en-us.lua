@@ -1461,6 +1461,19 @@ return {
           "and {X:chips,C:white}X#3#{} Chips when scored"
         }
       },
+	  j_abn_ante_up = {
+        name = "Ante Up!",
+        text = {
+          "Cards {C:attention}held in hand{} give {C:attention}double{} their ranks as mult",
+		  "Winning ante is {C:attention}doubled{}",
+        }
+      },
+	  j_abn_the_joker = {
+        name = "The Joker",
+        text = {
+          "Scored cards reduce {C:attention}blind requirement{} by {C:attention}10%{}",
+        }
+      },
     },
 
     Spectral = {

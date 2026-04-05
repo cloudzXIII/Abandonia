@@ -1,0 +1,55 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = -1
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "G.GAME.round_resets.blind_choices.Boss = get_new_boss()"
+position = "at"
+payload = '''
+local current_ante = G.GAME.round_resets.ante
+local is_honor = G.GAME.modifiers.Honor
+local is_menacing = G.GAME.modifiers.Menacing
+local is_toxic = G.GAME.modifiers.Toxic
+
+-- Define Hazard Schedule
+local is_hazard_ante = (is_honor and current_ante > 0 and current_ante % 10 == 0) or 
+                       (is_menacing and (current_ante == 10 or current_ante == 12)) or
+                       (is_toxic and (current_ante == 10 or current_ante == 12 or current_ante == 14))
+
+-- Define Showdown Schedule (Excluded Hazards)
+local is_showdown_ante = (is_honor and current_ante > 0 and current_ante % 4 == 0) or 
+                         ((is_menacing or is_toxic) and (current_ante == 4 or current_ante == 6))
+
+if (is_honor or is_menacing or is_toxic) and (is_hazard_ante or is_showdown_ante) then
+    local pool = {}
+    if is_hazard_ante then
+        -- Force Hazard
+        for k, v in pairs(G.P_BLINDS) do
+            if k:find("bl_abn_hazard") then pool[#pool + 1] = k end
+        end
+    elseif is_showdown_ante then
+        -- Force Showdown, explicitly EXCLUDE Hazards
+        for k, v in pairs(G.P_BLINDS) do
+            local v_is_showdown = v.boss and (v.boss.showdown or v.showdown or k:find("bl_final"))
+            local v_is_hazard = k:find("bl_abn_hazard")
+            if v_is_showdown and not v_is_hazard then
+                pool[#pool + 1] = k
+            end
+        end
+    end
+
+    if #pool > 0 then
+        -- Use specific seeds to maintain consistency with the update logic
+        local seed_type = is_hazard_ante and 'Honor_hazard' or 'Honor_showdown'
+        G.GAME.round_resets.blind_choices.Boss = pool[pseudorandom(seed_type..current_ante, 1, #pool)]
+    else
+        G.GAME.round_resets.blind_choices.Boss = get_new_boss()
+    end
+else
+    G.GAME.round_resets.blind_choices.Boss = get_new_boss()
+end
+'''
+match_indent = true
