@@ -1474,6 +1474,24 @@ return {
           "Scored cards reduce {C:attention}blind requirement{} by {C:attention}10%{}",
         }
       },
+	j_abn_annihilated_joker = {
+        name="Annihilated Joker",
+        text={
+          "Every {C:attention}#1# Jokers Destroyed{}",
+          "Create a random {C:abn_Calamity}Calamity Card",
+          "{C:inactive}[Must Have Room]",
+          "{C:inactive}[Currently:#2# Jokers Destroyed]",
+        }
+      },
+      j_abn_astro_joker={
+        name="Astro Joker",
+        text={
+          "All {C:abn_Astro}Astro Cards{} always {C:green}succeed",
+          "{C:green}#1# in #2# chance{} this {C:attention}Joker is destroyed at end of round.",
+        }
+      },
+      },
+		
     },
 
     Spectral = {
