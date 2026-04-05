@@ -84,3 +84,14 @@ function get_blind_amount(ante)
     local amount = get_blind_amount_ref(ante)
     return ABN:calculate_blind_size_modify(amount,ante)
 end
+
+local card_remove_ref = Card.remove
+function Card:remove()
+if (self.added_to_deck or (self.area and (self.area == G.hand or self.area == G.deck))) then
+SMODS.calculate_context{
+abn_card_destroyed=true,
+card=self,
+}
+end
+return card_remove_ref(self)
+end
