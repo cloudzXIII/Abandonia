@@ -1672,6 +1672,119 @@ return {
           "{C:spades}Spades{}, {C:clubs}Clubs{}"
         }
       },
+	  
+      abn_flipped_card = {
+        name = "Flipped",
+        text = {
+          "{C:white,X:mult}X1.25{} Mult",
+          "rank and suit",
+          "are not visible",
+        }
+      },
+      abn_credits = {
+        text = {
+          "{C:dark_edition,s:2}Founded by:",
+          " ",
+          "{C:dark_edition,s:1.3}Bunnet",
+          " ",
+          "{C:blue,s:2}Programmed by:",
+          " ",
+          "{C:blue,s:1.3}cloudzXIII{}",
+          "{C:blue,s:1.3}Revo{}",
+          "{C:blue,s:1.3}Mills-44{}",
+          "{C:blue,s:1.3}J8-Bit{}",
+		  "{C:blue,s:1.3}EricTheToon{}",
+          " ",
+          "{C:green,s:2}Art by:",
+          " ",
+          "{C:green,s:1.2}People from the Balatro Discord!",
+          "{C:inactive,s:1.1}(look under the Jokers :>)"
+        }
+      }
+    },
+    Stake = {
+    },
+    Mod = {
+      abandonia = {
+        name = "Abandonia",
+        text = {
+          "Welcome to {C:attention}Abandonia{}!",
+          "a mod to celebrate the many creative",
+          "{C:blue}minds{} and {C:green}artists{} of Balatro!!",
+          " ",
+          " ",
+          "Brought to you by {C:dark_edition}Bunnet{}!",
+        }
+      },
+    },
+    Edition = {
+      e_abn_chthonian = {
+        name = "Chthonian",
+        text = {
+          "{C:attention}X2{} Joker Values*,",
+          "{C:attention}+2%{} blind requirements",
+          "{C:inactive,s:0.7}*where possible"
+        },
+      },
+      e_abn_iridescent = {
+        name = "Iridescent",
+        text = {
+          "{C:white,X:mult}X#1#{} Mult,",
+          "Earn {C:money}$#2#{}",
+          "when triggered"
+        },
+      },
+      e_abn_abandond = {
+        name = "Abandoned",
+        text = {
+          "{C:attention}+#1#{} Retrigger",
+          "{C:red}-$#2#{} per retrigger"
+        },
+      },
+      e_abn_sunscourge = {
+        name = "Sunscourge",
+        text = {
+          "{C:mult}+#1#{} Mult,",
+          "{C:chips}+#2#{} Chips,",
+          "{C:attention}Doubles{} when",
+          "score {C:attention}catches on fire{}"
+        }
+      },
+      e_abn_gloss = {
+        name = "Gloss",
+        text = {
+          "{C:white,X:chips}X#1#{} Chips,",
+          "Earn {C:money}$#2#{}",
+          "when triggered"
+        }
+      },
+      e_abn_pearlenscene = {
+        name = "Pearlenscene",
+        text = {
+          "{C:mult}+#1#{} Mult,",
+          "{C:chips}+#2#{} Chips,",
+        }
+      }
+    },
+    Planet = {
+      c_abn_supernova = {
+        name = "Supernova",
+        text = {
+          "({V:1}lvl.#1#{}) Level up",
+          "{C:attention}#2#",
+          "{C:mult}+#3#{} Mult and",
+          "{C:chips}+#4#{} chips",
+        },
+      },
+      c_abn_grandcross = {
+        name = "Grandcross",
+        text = {
+          "({V:1}lvl.#1#{}) Level up",
+          "{C:attention}#2#",
+          "{C:mult}+#3#{} Mult and",
+          "{C:chips}+#4#{} chips",
+        },
+      },
 	  -- Rank Planets
       c_abn_lauto = {
         name = "Lauto",
@@ -1801,118 +1914,6 @@ return {
           "{C:mult}+#3#{} Mult and",
           "{C:chips}+#4#{} chips"
         }
-      },
-      abn_flipped_card = {
-        name = "Flipped",
-        text = {
-          "{C:white,X:mult}X1.25{} Mult",
-          "rank and suit",
-          "are not visible",
-        }
-      },
-      abn_credits = {
-        text = {
-          "{C:dark_edition,s:2}Founded by:",
-          " ",
-          "{C:dark_edition,s:1.3}Bunnet",
-          " ",
-          "{C:blue,s:2}Programmed by:",
-          " ",
-          "{C:blue,s:1.3}cloudzXIII{}",
-          "{C:blue,s:1.3}Revo{}",
-          "{C:blue,s:1.3}Mills-44{}",
-          "{C:blue,s:1.3}J8-Bit{}",
-		  "{C:blue,s:1.3}EricTheToon{}",
-          " ",
-          "{C:green,s:2}Art by:",
-          " ",
-          "{C:green,s:1.2}People from the Balatro Discord!",
-          "{C:inactive,s:1.1}(look under the Jokers :>)"
-        }
-      }
-    },
-    Stake = {
-    },
-    Mod = {
-      abandonia = {
-        name = "Abandonia",
-        text = {
-          "Welcome to {C:attention}Abandonia{}!",
-          "a mod to celebrate the many creative",
-          "{C:blue}minds{} and {C:green}artists{} of Balatro!!",
-          " ",
-          " ",
-          "Brought to you by {C:dark_edition}Bunnet{}!",
-        }
-      },
-    },
-    Edition = {
-      e_abn_chthonian = {
-        name = "Chthonian",
-        text = {
-          "{C:attention}X2{} Joker Values*,",
-          "{C:attention}+2%{} blind requirements",
-          "{C:inactive,s:0.7}*where possible"
-        },
-      },
-      e_abn_iridescent = {
-        name = "Iridescent",
-        text = {
-          "{C:white,X:mult}X#1#{} Mult,",
-          "Earn {C:money}$#2#{}",
-          "when triggered"
-        },
-      },
-      e_abn_abandond = {
-        name = "Abandoned",
-        text = {
-          "{C:attention}+#1#{} Retrigger",
-          "{C:red}-$#2#{} per retrigger"
-        },
-      },
-      e_abn_sunscourge = {
-        name = "Sunscourge",
-        text = {
-          "{C:mult}+#1#{} Mult,",
-          "{C:chips}+#2#{} Chips,",
-          "{C:attention}Doubles{} when",
-          "score {C:attention}catches on fire{}"
-        }
-      },
-      e_abn_gloss = {
-        name = "Gloss",
-        text = {
-          "{C:white,X:chips}X#1#{} Chips,",
-          "Earn {C:money}$#2#{}",
-          "when triggered"
-        }
-      },
-      e_abn_pearlenscene = {
-        name = "Pearlenscene",
-        text = {
-          "{C:mult}+#1#{} Mult,",
-          "{C:chips}+#2#{} Chips,",
-        }
-      }
-    },
-    Planet = {
-      c_abn_supernova = {
-        name = "Supernova",
-        text = {
-          "({V:1}lvl.#1#{}) Level up",
-          "{C:attention}#2#",
-          "{C:mult}+#3#{} Mult and",
-          "{C:chips}+#4#{} chips",
-        },
-      },
-      c_abn_grandcross = {
-        name = "Grandcross",
-        text = {
-          "({V:1}lvl.#1#{}) Level up",
-          "{C:attention}#2#",
-          "{C:mult}+#3#{} Mult and",
-          "{C:chips}+#4#{} chips",
-        },
       },
     },
     Tarot = {
