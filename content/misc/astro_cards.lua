@@ -342,7 +342,8 @@ SMODS.Consumable {
     discovered = false,
     
     loc_vars = function(self, info_queue, card)
-        return {vars = {G.GAME.probabilities.normal, card.ability.extra.odds, card.ability.extra.chips }}
+        local numerator,denominator = SMODS.get_probability_vars(card,1,card.ability.extra.odds)
+        return {vars = {numerator,denominator, card.ability.extra.odds, card.ability.extra.chips }}
     end,
     
     can_use = function(self, card)
@@ -412,7 +413,8 @@ SMODS.Consumable {
     discovered = false,
     
     loc_vars = function(self, info_queue, card)
-        return {vars = {G.GAME.probabilities.normal, card.ability.extra.odds, card.ability.extra.chips }}
+        local numerator,denominator = SMODS.get_probability_vars(card,1,card.ability.extra.odds)
+        return {vars = {numerator,denominator, card.ability.extra.odds, card.ability.extra.chips }}
     end,
     
     can_use = function(self, card)
@@ -749,7 +751,8 @@ SMODS.Consumable {
     discovered = false,
     
     loc_vars = function(self, info_queue, card)
-        return {vars = {SMODS.get_probability_vars(card,1,card.ability.extra.odds), card.ability.extra.chips, card.ability.extra.mult}}
+        local numerator,denominator = SMODS.get_probability_vars(card,1,card.ability.extra.odds)
+        return {vars = {numerator,denominator, card.ability.extra.chips, card.ability.extra.mult}}
     end,
     
     can_use = function(self, card)
@@ -927,7 +930,8 @@ SMODS.Consumable {
     
     loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.c_black_hole
-        return {vars = {SMODS.get_probability_vars(card,1,card.ability.extra.odds), card.ability.extra.cards}}
+        local numerator,denominator = SMODS.get_probability_vars(card,1,card.ability.extra.odds)
+        return {vars = {numerator,denominator, card.ability.extra.cards}}
     end,
     
     can_use = function(self, card)
