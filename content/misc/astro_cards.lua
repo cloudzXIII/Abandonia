@@ -34,7 +34,8 @@ SMODS.Consumable {
     discovered = false,
     
     loc_vars = function(self, info_queue, card)
-        return {vars = {G.GAME.probabilities.normal, card.ability.extra.odds}}
+        return {unpack(SMODS.get_probability_vars(card,1,card.ability.extra.odds))
+}
     end,
     
     add_to_deck = function(self, card)
@@ -84,7 +85,7 @@ SMODS.Consumable {
                 if old_level and v.level ~= old_level then
 
                     -- Check Odds
-                    if pseudorandom('aquar') < G.GAME.probabilities.normal / card.ability.extra.odds then
+                    if SMODS.pseudorandom_probability(card,'aquar',1,card.ability.extra.odds) then
                         -- SUCCESS CASE ("Level Up!")
                         update_hand_text(
                             {sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3},
@@ -195,7 +196,8 @@ SMODS.Consumable {
     discovered = false,
     
     loc_vars = function(self, info_queue, card)
-        return {vars = {G.GAME.probabilities.normal, card.ability.extra.odds}}
+        return {unpack(SMODS.get_probability_vars(card,1,card.ability.extra.odds))
+}
     end,
     
     can_use = function(self, card)
@@ -203,7 +205,7 @@ SMODS.Consumable {
     end,
     
     use = function(self, card, area, copier)
-		if pseudorandom('aquar') < G.GAME.probabilities.normal / card.ability.extra.odds then
+		if SMODS.pseudorandom_probability(card,"aquar",1,card.ability.extra.odds) then
 			G.GAME.round_resets.discards = G.GAME.round_resets.discards + 1
 			ease_discard(1)
 			local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_aries')
@@ -268,7 +270,8 @@ SMODS.Consumable {
     discovered = false,
     
     loc_vars = function(self, info_queue, card)
-        return {vars = {G.GAME.probabilities.normal, card.ability.extra.odds}}
+        return {unpack(SMODS.get_probability_vars(card,1,card.ability.extra.odds))
+}
     end,
     
     can_use = function(self, card)
@@ -276,7 +279,7 @@ SMODS.Consumable {
     end,
     
     use = function(self, card, area, copier)
-		if pseudorandom('cancer') < G.GAME.probabilities.normal / card.ability.extra.odds then
+		if SMODS.pseudorandom_probability(card,'cancer',1,card.ability.extra.odds) then
 			ease_dollars(G.GAME.dollars*2)
 		else
 			-- Failure case: show Nope! 
@@ -335,7 +338,7 @@ SMODS.Consumable {
     end,
     
     use = function(self, card, area, copier)
-		if pseudorandom('caprisun') < G.GAME.probabilities.normal / card.ability.extra.odds then
+		if SMODS.pseudorandom_probability(card,'caprisun',1,card.ability.extra.odds) then
 			for i = 1, #G.jokers.cards do
 				local j = G.jokers.cards[i]
 				-- Gain chips 
@@ -409,7 +412,7 @@ SMODS.Consumable {
     end,
     
     use = function(self, card, area, copier)
-		if pseudorandom('gemini') < G.GAME.probabilities.normal / card.ability.extra.odds then
+		if SMODS.pseudorandom_probability(card,'gemini',1,card.ability.extra.odds) then
 			if G.jokers and G.jokers.highlighted then
 				for _, j in ipairs(G.jokers.highlighted) do
 					--create a copy
@@ -469,7 +472,8 @@ SMODS.Consumable {
     
     loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_TAGS.tag_double
-        return {vars = {G.GAME.probabilities.normal, card.ability.extra.odds}}
+        return {unpack(SMODS.get_probability_vars(card,1,card.ability.extra.odds))
+}
     end,
     
     can_use = function(self, card)
@@ -477,7 +481,7 @@ SMODS.Consumable {
     end,
     
     use = function(self, card, area, copier)
-		if pseudorandom('leo') < G.GAME.probabilities.normal / card.ability.extra.odds then
+		if SMODS.pseudorandom_probability(card,'leo',1,card.ability.extra.odds) then
 			add_tag(Tag('tag_double'))
 		else
 			-- Failure case: show Nope! 
@@ -536,7 +540,7 @@ SMODS.Consumable {
     end,
     
     use = function(self, card, area, copier)
-		if pseudorandom('libral') < G.GAME.probabilities.normal / card.ability.extra.odds then
+		if SMODS.pseudorandom_probability(card,'libral',1,card.ability.extra.odds) then
 			for _, v in ipairs(G.playing_cards) do
 				v.ability.perma_bonus = (v.ability.perma_bonus or 0) + card.ability.extra.chips
 				v.ability.perma_mult = (v.ability.perma_mult or 0) + card.ability.extra.mult
@@ -590,7 +594,8 @@ SMODS.Consumable {
     discovered = false,
     
     loc_vars = function(self, info_queue, card)
-        return {vars = {G.GAME.probabilities.normal, card.ability.extra.odds}}
+        return {unpack(SMODS.get_probability_vars(card,1,card.ability.extra.odds))
+}
     end,
     
     can_use = function(self, card)
@@ -598,7 +603,7 @@ SMODS.Consumable {
     end,
     
     use = function(self, card, area, copier)
-		if pseudorandom('pisces') < G.GAME.probabilities.normal / card.ability.extra.odds then
+		if SMODS.pseudorandom_probability(card,'pisces',1,card.ability.extra.odds) then
 			G.GAME.round_resets.hands = G.GAME.round_resets.hands + 1
 			ease_hands_played(1)
 			local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_pisces')
@@ -671,7 +676,7 @@ SMODS.Consumable {
     end,
     
     use = function(self, card, area, copier)
-		if pseudorandom('sagitt') < G.GAME.probabilities.normal / card.ability.extra.odds then
+		if SMODS.pseudorandom_probability(card,'sagitt',1,card.ability.extra.odds) then
 			G.jokers.config.card_limit = G.jokers.config.card_limit + 1
 		else
 			-- Failure case: show Nope! 
@@ -730,7 +735,7 @@ SMODS.Consumable {
     end,
     
     use = function(self, card, area, copier)
-		if pseudorandom('scorpio') < G.GAME.probabilities.normal / card.ability.extra.odds then
+		if SMODS.pseudorandom_probability(card,'scorpio',1,card.ability.extra.odds) then
 			for _, v in ipairs(G.consumeables.cards) do
 				if v.scopied ~= true then
 					local copy = copy_card(v)
@@ -799,7 +804,7 @@ SMODS.Consumable {
     
     use = function(self, card, area, copier)
         -- Probability check (affected by Oops! All 6s)
-        if pseudorandom('taurus') < G.GAME.probabilities.normal / card.ability.extra.odds then
+        if SMODS.pseudorandom_probability(card,'taurus',1,card.ability.extra.odds) then
             
             -- Success Case: Create and redeem the number of vouchers specified in config
             for i = 1, card.ability.extra.cards do
@@ -908,7 +913,7 @@ SMODS.Consumable {
     
     use = function(self, card, area, copier)
         -- Probability check (affected by Oops! All 6s)
-        if pseudorandom('virgo') < G.GAME.probabilities.normal / card.ability.extra.odds then
+        if SMODS.pseudorandom_probability(card,'virgo',1,card.ability.extra.odds) then
 			local _card = create_card('Tarot', G.consumeables, nil, nil, nil, nil, 'c_black_hole')
 			_card:add_to_deck()
 			_card:set_edition({negative = true}, true)
