@@ -1461,37 +1461,35 @@ return {
           "and {X:chips,C:white}X#3#{} Chips when scored"
         }
       },
-	  j_abn_ante_up = {
+      j_abn_ante_up = {
         name = "Ante Up!",
         text = {
           "Cards {C:attention}held in hand{} give {C:attention}double{} their ranks as mult",
-		  "Winning ante is {C:attention}doubled{}",
+          "Winning ante is {C:attention}doubled{}",
         }
       },
-	  j_abn_the_joker = {
+      j_abn_the_joker = {
         name = "The Joker",
         text = {
           "Scored cards reduce {C:attention}blind requirement{} by {C:attention}10%{}",
         }
       },
-	j_abn_annihilated_joker = {
-        name="Annihilated Joker",
-        text={
+      j_abn_annihilated_joker = {
+        name = "Annihilated Joker",
+        text = {
           "Every {C:attention}#1# Jokers Destroyed{}",
           "Create a random {C:abn_Calamity}Calamity Card",
           "{C:inactive}[Must Have Room]",
           "{C:inactive}[Currently:#2# Jokers Destroyed]",
         }
       },
-      j_abn_astro_joker={
-        name="Astro Joker",
-        text={
+      j_abn_astro_joker = {
+        name = "Astro Joker",
+        text = {
           "All {C:abn_Astro}Astro Cards{} always {C:green}succeed",
           "{C:green}#1# in #2# chance{} this {C:attention}Joker is destroyed at end of round.",
         }
       },
-      },
-		
     },
 
     Spectral = {
@@ -1525,16 +1523,16 @@ return {
           "{C:inactive}(Must have room)",
         }
       },
-	  c_abn_baphomet = {
+      c_abn_baphomet = {
         name = "Baphomet",
         text = {
           "Create a {C:abn_sigil}Sigil",
-		  "For your {C:attention}most played{} hand",
+          "For your {C:attention}most played{} hand",
         }
       },
     },
     Other = {
-	  card_abn_rank_chips = {
+      card_abn_rank_chips = {
         text = {
           "{C:planet}#1#{} chips",
         },
@@ -1690,7 +1688,7 @@ return {
           "{C:spades}Spades{}, {C:clubs}Clubs{}"
         }
       },
-	  
+
       abn_flipped_card = {
         name = "Flipped",
         text = {
@@ -1711,7 +1709,7 @@ return {
           "{C:blue,s:1.3}Revo{}",
           "{C:blue,s:1.3}Mills-44{}",
           "{C:blue,s:1.3}J8-Bit{}",
-		  "{C:blue,s:1.3}EricTheToon{}",
+          "{C:blue,s:1.3}EricTheToon{}",
           " ",
           "{C:green,s:2}Art by:",
           " ",
@@ -1803,7 +1801,7 @@ return {
           "{C:chips}+#4#{} chips",
         },
       },
-	  -- Rank Planets
+      -- Rank Planets
       c_abn_lauto = {
         name = "Lauto",
         text = {
@@ -2035,7 +2033,7 @@ return {
           "{C:diamonds}Diamonds{} and {C:hearts}Hearts{} gain {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
         }
       },
-	  c_abn_blizzard = {
+      c_abn_blizzard = {
         name = "Blizzard",
         text = {
           "{C:mult}Debuff{} all {C:diamonds}Diamonds{} and {C:hearts}Hearts{}",
@@ -2050,220 +2048,220 @@ return {
           "{C:inactive}(Must have room)",
         }
       },
-	  c_abn_humans = {
+      c_abn_humans = {
         name = "Humans",
         text = {
           "{C:mult}Destroy{} all Jokers and set money to {C:money}$-20{}",
-		  "Gain {C:attention}#1#{} Joker Slots",
+          "Gain {C:attention}#1#{} Joker Slots",
         }
       },
-	  c_abn_rapture = {
+      c_abn_rapture = {
         name = "Rapture",
         text = {
           "All Jokers gain random {C:dark_edition}editions{} and {C:abn_perishable}stickers{}",
         }
       },
-	  c_abn_heatdeath = {
+      c_abn_heatdeath = {
         name = "Heat Death",
         text = {
           "Reduce all hands levels to {C:attention}1{}",
-		  "All cards gain {C:mult}+#1#{} mult and double {C:chips}chips{}",
+          "All cards gain {C:mult}+#1#{} mult and double {C:chips}chips{}",
         }
       },
-	  c_abn_tremor = {
+      c_abn_tremor = {
         name = "Tremor",
         text = {
           "{C:mult}Destroy{} all {C:common}Common{} and {C:uncommon}Uncommon{} Jokers",
-		  "{C:rare}Rare{} Jokers gain {C:mult}+#1#{} mult for each destroyed Joker"
+          "{C:rare}Rare{} Jokers gain {C:mult}+#1#{} mult for each destroyed Joker"
         }
       },
     },
-	sigils = {
+    sigils = {
       c_abn_bael = {
         name = "Bael",
         text = {
           "Next elligible hand is transformed into {C:attention}High Card{}",
-		  "{C:attention}High Card{} gains {C:attention}1{} level",
+          "{C:attention}High Card{} gains {C:attention}1{} level",
         }
       },
-	  c_abn_botis = {
+      c_abn_botis = {
         name = "Botis",
         text = {
           "Next elligible hand is transformed into {C:attention}Pair{}",
-		  "{C:attention}Pair{} gains {C:attention}1{} level",
+          "{C:attention}Pair{} gains {C:attention}1{} level",
         }
       },
-	  c_abn_vinea = {
+      c_abn_vinea = {
         name = "Vinea",
         text = {
           "Next elligible hand is transformed into {C:attention}Two Pair{}",
-		  "{C:attention}Two Pair{} gains {C:attention}1{} level",
+          "{C:attention}Two Pair{} gains {C:attention}1{} level",
         }
       },
-	  c_abn_morax = {
+      c_abn_morax = {
         name = "Morax",
         text = {
           "Next elligible hand is transformed into {C:attention}Three Of A Kind{}",
-		  "{C:attention}Three Of A Kind{} gains {C:attention}1{} level",
+          "{C:attention}Three Of A Kind{} gains {C:attention}1{} level",
         }
       },
-	  c_abn_bune = {
+      c_abn_bune = {
         name = "Bune",
         text = {
           "Next elligible hand is transformed into {C:attention}Four Of A Kind{}",
-		  "{C:attention}Four Of A Kind{} gains {C:attention}1{} level",
+          "{C:attention}Four Of A Kind{} gains {C:attention}1{} level",
         }
       },
-	  c_abn_furfur = {
+      c_abn_furfur = {
         name = "Furfur",
         text = {
           "Next elligible hand is transformed into {C:attention}Straight{}",
-		  "{C:attention}Straight{} gains {C:attention}1{} level",
+          "{C:attention}Straight{} gains {C:attention}1{} level",
         }
       },
-	  c_abn_bifrons = {
+      c_abn_bifrons = {
         name = "Bifrons",
         text = {
           "Next elligible hand is transformed into {C:attention}Flush{}",
-		  "{C:attention}Flush{} gains {C:attention}1{} level",
+          "{C:attention}Flush{} gains {C:attention}1{} level",
         }
       },
-	  c_abn_crocell = {
+      c_abn_crocell = {
         name = "Crocell",
         text = {
           "Next elligible hand is transformed into {C:attention}Full House{}",
-		  "{C:attention}Full House{} gains {C:attention}1{} level",
+          "{C:attention}Full House{} gains {C:attention}1{} level",
         }
       },
-	  c_abn_belial = {
+      c_abn_belial = {
         name = "Belial",
         text = {
           "Next elligible hand is transformed into {C:attention}Straight Flush{}",
-		  "{C:attention}Straight Flush{} gains {C:attention}1{} level",
+          "{C:attention}Straight Flush{} gains {C:attention}1{} level",
         }
       },
-	  c_abn_astaroth = {
+      c_abn_astaroth = {
         name = "Astaroth",
         text = {
           "Next elligible hand is transformed into {C:attention}Five Of A Kind{}",
-		  "{C:attention}Five Of A Kind{} gains {C:attention}1{} level",
+          "{C:attention}Five Of A Kind{} gains {C:attention}1{} level",
         }
       },
-	  c_abn_asmodeus = {
+      c_abn_asmodeus = {
         name = "Asmodeus",
         text = {
           "Next elligible hand is transformed into {C:attention}Flush House{}",
-		  "{C:attention}Flush House{} gains {C:attention}1{} level",
+          "{C:attention}Flush House{} gains {C:attention}1{} level",
         }
       },
-	  c_abn_camio = {
+      c_abn_camio = {
         name = "Camio",
         text = {
           "Next elligible hand is transformed into {C:attention}Flush Five{}",
-		  "{C:attention}Flush Five{} gains {C:attention}1{} level",
+          "{C:attention}Flush Five{} gains {C:attention}1{} level",
         }
       },
     },
-	nightshift_cards = {
+    nightshift_cards = {
       c_abn_furtive = {
         name = "Furtive",
         text = {
           "Create a {C:dark_edition}Negative{} {C:legendary}Legendary{} {C:attention}Flipped{} Joker",
         }
       },
-	  c_abn_intrusion = {
+      c_abn_intrusion = {
         name = "Intrusion",
         text = {
           "All Jokers become {C:attention}Flipped{} and",
-		  "gain {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+          "gain {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
         }
       },
-	  c_abn_aparition = {
+      c_abn_aparition = {
         name = "Aparition",
         text = {
           "Fill consumable slots with {C:spectral}Spectral{} cards",
-		  "{C:green}#1# in #2#{} chance to gain {C:attention}+1{} Joker slot"
+          "{C:green}#1# in #2#{} chance to gain {C:attention}+1{} Joker slot"
         }
       },
     },
-	astro_cards = {
+    astro_cards = {
       c_abn_aquar = {
         name = "Aquar",
         text = {
           "{C:green}#1# in #2#{} chance to",
-		  "retrigger {C:attention}next{} {C:planet}Planet{} card",
+          "retrigger {C:attention}next{} {C:planet}Planet{} card",
         }
       },
-	  c_abn_aries = {
+      c_abn_aries = {
         name = "Aries",
         text = {
           "{C:green}#1# in #2#{} chance to",
-		  "gain {C:attention}+1{} {C:mult}discard{} until next blind",
+          "gain {C:attention}+1{} {C:mult}discard{} until next blind",
         }
       },
-	  c_abn_cancer = {
+      c_abn_cancer = {
         name = "Cancer",
         text = {
           "{C:green}#1# in #2#{} chance to {C:attention}triple{} {C:money}money{}",
         }
       },
-	  c_abn_capri = {
+      c_abn_capri = {
         name = "Capri",
         text = {
           "{C:green}#1# in #2#{} chance to",
-		  "add {C:chips}+#3#{} Chips to all Jokers",
+          "add {C:chips}+#3#{} Chips to all Jokers",
         }
       },
-	  c_abn_gemini = {
+      c_abn_gemini = {
         name = "Gemini",
         text = {
           "{C:green}#1# in #2#{} chance to copy selected Joker",
         }
       },
-	  c_abn_leo = {
+      c_abn_leo = {
         name = "Leo",
         text = {
           "{C:green}#1# in #2#{} chance to gain {C:attention}Double Tag{}",
         }
       },
-	  c_abn_libra = {
+      c_abn_libra = {
         name = "Libra",
         text = {
           "{C:green}#1# in #2#{} chance to add",
-		  "{C:chips}+#3#{} Chips and {C:mult}+#4#{} Mult to all cards",
+          "{C:chips}+#3#{} Chips and {C:mult}+#4#{} Mult to all cards",
         }
       },
-	  c_abn_pisces = {
+      c_abn_pisces = {
         name = "Pisces",
         text = {
           "{C:green}#1# in #2#{} chance to",
-		  "gain {C:attention}+1{} {C:chips}hand{} until next blind",
+          "gain {C:attention}+1{} {C:chips}hand{} until next blind",
         }
       },
-	  c_abn_sagitt = {
+      c_abn_sagitt = {
         name = "Sagitt",
         text = {
           "{C:green}#1# in #2#{} chance to add {C:attention}+1{} Joker slot",
         }
       },
-	  c_abn_scorpio = {
+      c_abn_scorpio = {
         name = "Scorpio",
         text = {
           "{C:green}#1# in #2#{} chance to create",
-		  "a {C:dark_edition}negative{} copy of all held consumables",
+          "a {C:dark_edition}negative{} copy of all held consumables",
         }
       },
-	  c_abn_taurus = {
+      c_abn_taurus = {
         name = "Taurus",
         text = {
           "{C:green}#1# in #2#{} chance to redeem {C:attention}#3#{} random vouchers",
         }
       },
-	  c_abn_virgo = {
+      c_abn_virgo = {
         name = "Virgo",
         text = {
           "{C:green}#1# in #2#{} chance to create",
-		  "a {C:dark_edition}negative{} {C:attention}Black Hole{}",
+          "a {C:dark_edition}negative{} {C:attention}Black Hole{}",
         }
       },
     },
@@ -2429,18 +2427,18 @@ return {
           "{C:attention}+#1#{} hand size"
         }
       },
-	  v_abn_chaos = {
+      v_abn_chaos = {
         name = "Pendulum of Chaos",
         text = {
           "{C:abn_sigil}Sigil{}, {C:abn_astro}Astro{}, {C:abn_calamity}Calamity{} and {C:abn_nightshift}Nightshift{}",
-		  "cards can appear in {C:tarot}Tarot{} packs",
+          "cards can appear in {C:tarot}Tarot{} packs",
         }
       },
-	  v_abn_invasion = {
+      v_abn_invasion = {
         name = "Parallel Invasion",
         text = {
           "{C:abn_sigil}Sigil{}, {C:abn_astro}Astro{}, {C:abn_calamity}Calamity{} and {C:abn_nightshift}Nightshift{}",
-		  "cards can appear in the shop",
+          "cards can appear in the shop",
         }
       },
     },
@@ -2469,10 +2467,10 @@ return {
       abn_calamitybooster = "Calamity Pack",
       abn_calamitybooster_j = "Jumbo Calamity Pack",
       abn_calamitybooster_m = "Mega Calamity Pack",
-	  abn_sigilbooster = "Sigil Booster",
-	  abn_astrobooster = "Astro Booster",
+      abn_sigilbooster = "Sigil Booster",
+      abn_astrobooster = "Astro Booster",
       abn_joker_chip = "Bonus Chips",
-	  abn_joker_mult = "Bonus Mult",
+      abn_joker_mult = "Bonus Mult",
     },
     labels = {
       abn_chthonian = "Chthonian",
@@ -2481,6 +2479,26 @@ return {
       abn_sunscourge = "Sunscourge",
       abn_gloss = "Gloss",
       abn_pearlenscene = "Pearlenscene",
+      -- STICKERS
+      abn_pump_up = "Pump Up",
+      abn_immortal = "Immortal",
+      abn_bullseye = "Bullseye",
+      abn_shovel = "Shovel",
+      abn_downgrade = "Downgrade",
+      abn_violet = "Violet",
+      abn_weight = "Weight",
+      abn_crown = "Crown",
+      abn_flip = "Flip",
+      abn_fragile = "Fragile",
+      abn_possibility = "Possibility",
+      abn_question_mark = "Question Mark?",
+      abn_square = "Square",
+      abn_lightning_bolt = "Lightning Bolt",
+      abn_top_hat = "Top Hat",
+      abn_cat_eye = "Cat Eye",
+      abn_eraser = "Eraser",
+      abn_lucky = "Lucky",
+      abn_negative_plus = "Negative+"
     },
     ranks = {
     },
