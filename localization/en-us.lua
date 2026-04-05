@@ -2471,6 +2471,8 @@ return {
       abn_astrobooster = "Astro Booster",
       abn_joker_chip = "Bonus Chips",
       abn_joker_mult = "Bonus Mult",
+      k_abn_increased = "Increased!",
+      b_abn_ranks = "Ranks"
     },
     labels = {
       abn_chthonian = "Chthonian",
