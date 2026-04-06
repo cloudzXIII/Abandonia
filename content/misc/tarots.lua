@@ -57,6 +57,7 @@ SMODS.Consumable({
   unlocked = true,
   discovered = true,
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = 'abn_immortal', set = 'Other' }
     return { vars = { card.ability.extra.max } }
   end,
   can_use = function(self, card)
@@ -76,7 +77,7 @@ SMODS.Consumable({
   end,
   use = function(self, card)
     for k, v in pairs(G.jokers.highlighted) do
-      v:add_sticker("eternal", true)
+      v:add_sticker("abn_immortal", true)
       v:juice_up()
       G.jokers:unhighlight_all()
     end

@@ -1989,7 +1989,7 @@ return {
       c_abn_eon = {
         name = "Eon",
         text = {
-          "Apply {C:attention}Eternal{} to",
+          "Apply {C:attention}Immortal{} to",
           "up to {C:attention}#1#{} selected",
           "Jokers"
         }
