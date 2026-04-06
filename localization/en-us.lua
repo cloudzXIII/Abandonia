@@ -1490,6 +1490,40 @@ return {
           "{C:green}#1# in #2# chance{} this {C:attention}Joker is destroyed at end of round.",
         }
       },
+	  j_abn_archaic_joker = {
+        name = "Archaic Joker",
+        text = {
+          "This Joker gains {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+		  "When a blind is defeated with an {C:attention}odd{} number of cards",
+		  "{C:inactive}Currently {C:chips}+#3#{} {C:inactive}Chips{} {C:mult}+#4#{} {C:inactive}Mult{}",
+        }
+      },
+	  j_abn_outdated_joker = {
+        name = "Outdated Joker",
+        text = {
+          "This Joker gains {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+		  "When a blind is defeated with an {C:attention}even{} number of cards",
+		  "{C:inactive}Currently {C:chips}+#3#{} {C:inactive}Chips{} {C:mult}+#4#{} {C:inactive}Mult{}",
+        }
+      },
+	  j_abn_haphazard_joker = {
+        name = "Haphazard Joker",
+        text = {
+          "Enhanced {C:attention}Even{} cards give {X:mult,C:white}X#4#{} Mult",
+		  "Increase this by {X:mult,C:white}X#3#{} for each card scored",
+		  "{C:green}#1# in #2#{} chance for a {C:abn_hazard}Hazard Tag{}",
+		  "to be created when {C:attention}Even{} cards score",
+        }
+      },
+	  j_abn_prenatural_joker = {
+        name = "Prenatural Joker",
+        text = {
+          "Enhanced {C:attention}Odd{} cards give {X:chips,C:white}X#4#{} Chips",
+		  "Increase this by {X:chips,C:white}X#3#{} for each card scored",
+		  "{C:green}#1# in #2#{} chance for a {C:attention}Voucher{}",
+		  "to be created when {C:attention}Odd{} cards score",
+        }
+      },
     },
 
     Spectral = {
