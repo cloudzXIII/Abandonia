@@ -230,6 +230,380 @@ SMODS.Blind({
 	end,
 })
 
+SMODS.Blind({
+	key = "lima_anchor",
+	boss = {
+		showdown = true,
+	},
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 29 },
+	boss_colour = HEX("bde35b"),
+	
+	defeat = function(self)
+		G.GAME.EdgingHands = 0
+	end,
+		
+	calculate = function(self, card, context)
+		if context.final_scoring_step and not G.GAME.blind.disabled then
+			G.GAME.EdgingHands = (G.GAME.EdgingHands or 0) + 1
+			if G.GAME.EdgingHands % 2 == 1 then
+				return { xchips = -1 }
+			end
+		end
+    end,
+})
+
+-- =========================
+-- PinkR failure popup helper
+-- =========================
+local function show_pinkr_fail_text()
+    local triggered = G.GAME.PinkRTriggers or 0
+    local total = G.jokers and #G.jokers.cards or 0
+    local disp_text = triggered .. " / " .. total .. " Jokers triggered"
+
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = G.SETTINGS.GAMESPEED * 0.05,
+        blockable = false,
+        func = function()
+            play_sound('whoosh1', 0.6, 0.7)
+            attention_text({
+                scale = 0.75,
+                text = disp_text,
+                maxw = 14,
+                hold = G.SETTINGS.GAMESPEED * (#disp_text * 0.04 + 1.2),
+                align = 'cm',
+                offset = { x = 0, y = -1 },
+                major = G.play
+            })
+            return true
+        end
+    }))
+end
+
+-- =========================
+-- Blind Definition
+-- =========================
+SMODS.Blind({
+    key = "pink_r",
+    boss = {
+        showdown = true,
+    },
+    atlas = "AbandoniaBlinds",
+    pos = { x = 0, y = 37 },
+    boss_colour = HEX("e074a2"),
+    
+    in_pool = function(self)
+        return G.jokers and #G.jokers.cards > 0
+    end,
+
+    calculate = function(self, card, context)
+        -- Before scoring: reset counters
+        if context.before then
+            G.GAME.PinkRTriggers = 0
+            G.GAME.PinkRFailed = false
+            G.GAME.PinkRPenalty = 0
+        end
+
+        -- Each Joker trigger
+        if context.post_trigger and not context.blueprint then
+            G.GAME.PinkRTriggers = (G.GAME.PinkRTriggers or 0) + 1
+        end
+
+        -- After scoring: check success
+        if context.after then
+            local total_jokers = #G.jokers.cards
+            local triggered = G.GAME.PinkRTriggers or 0
+            G.GAME.PinkRFailed = (triggered < total_jokers)
+        end
+
+        -- Final scoring step: record the score to potentially subtract it later
+        if context.final_scoring_step then
+            local result = SMODS.calculate_round_score()
+            G.GAME.PinkRPenalty = result
+        end
+    end,
+	abn_artist_credits = {
+		artist = "smoliconboi",
+	},
+})
+
+-- =========================
+-- Hook into Game.update
+-- =========================
+local old_update = Game.update
+function Game:update(dt)
+    old_update(self, dt)
+
+    -- Apply penalty if trigger check failed during scoring states
+    if (G.STATE == 3 or G.STATE == 19) and G.GAME.PinkRFailed and not G.GAME.blind.disabled then
+        show_pinkr_fail_text()
+        G.GAME.chips = G.GAME.chips - (G.GAME.PinkRPenalty or 0)
+        G.GAME.PinkRFailed = true
+        G.GAME.PinkRPenalty = 0
+    end
+end
+
+-- =========================
+-- Game Over Override
+-- =========================
+local old_update_game_over = Game.update_game_over
+function Game:update_game_over(dt)
+    -- Handle the specific PinkR failure scenario
+    if G.GAME.PinkRFailed and G.GAME.current_round.hands_left > 0 then
+        if G.deck and #G.deck.cards > 0 then
+            local draw_count = G.hand.config.card_limit - #G.hand.cards
+            if draw_count > 0 then
+                SMODS.draw_cards(draw_count)
+            end
+        end
+        -- Reset state so player can try again
+        G.STATE = G.STATES.SELECTING_HAND
+        G.GAME.PinkRFailed = false 
+        return
+    else
+        -- Fall back to standard game over logic
+        old_update_game_over(self, dt)
+    end
+end
+
+SMODS.Blind({
+    key = "mint_£",
+    boss = {
+        showdown = true,
+    },
+    atlas = "AbandoniaBlinds",
+    pos = { x = 0, y = 33 },
+    boss_colour = HEX("66cb94"),
+
+	abn_artist_credits = {
+		artist = "smoliconboi",
+	},
+})
+
+SMODS.Blind({
+    key = "notequal_teal",
+    boss = {
+        showdown = true,
+    },
+    atlas = "AbandoniaBlinds",
+    pos = { x = 0, y = 31 },
+    boss_colour = HEX("64d5d4"),
+	
+	-- Only appears if the player has Jokers
+    in_pool = function(self)
+        return G.jokers and #G.jokers.cards > 0
+    end,
+
+    ---------------------------------------------------------------------
+    -- APPLY EFFECT
+    ---------------------------------------------------------------------
+    apply_to_joker = function(self, joker)
+        -- Use a unique key for the debuff flag to prevent conflicts with other mods
+        if not joker.ability or joker.ability.tealed then return end
+        
+        local changed_extra = false
+
+        -- 1. MODIFY extra FIRST (often used for scaling jokers)
+        if type(joker.ability.extra) == "table" then
+            for k, v in pairs(joker.ability.extra) do
+                if type(v) == "number" then
+                    joker.ability.extra[k] = v / 2
+                    changed_extra = true
+                end
+            end
+        elseif type(joker.ability.extra) == "number" then
+            joker.ability.extra = joker.ability.extra / 2
+            changed_extra = true
+        end
+
+        -- 2. ONLY MODIFY base ability IF EXTRA WAS NOT CHANGED
+        if not changed_extra then
+            for k, v in pairs(joker.ability) do
+                if type(v) == "number" and k ~= 'id' and k ~= 'groups' then
+                    if (k == "h_x_chips" or k == "x_mult" or k == "x_chips") then
+                        if v > 1 then joker.ability[k] = v / 2 end
+                    elseif v > 0 then
+                        joker.ability[k] = v / 2
+                    end
+                end
+            end
+        end
+
+        joker.ability.tealed = true
+        joker.sell_cost = math.max(1, math.floor(joker.sell_cost / 2))
+        joker:juice_up()
+    end,
+
+    ---------------------------------------------------------------------
+    -- REVERT EFFECT
+    ---------------------------------------------------------------------
+    remove_from_joker = function(self, joker)
+        if not joker.ability or not joker.ability.tealed then return end
+        
+        local reverted_extra = false
+
+        -- 1. REVERT extra FIRST
+        if type(joker.ability.extra) == "table" then
+            for k, v in pairs(joker.ability.extra) do
+                if type(v) == "number" then
+                    joker.ability.extra[k] = v * 2
+                    reverted_extra = true
+                end
+            end
+        elseif type(joker.ability.extra) == "number" then
+            joker.ability.extra = joker.ability.extra * 2
+            reverted_extra = true
+        end
+
+        -- 2. ONLY REVERT base ability IF EXTRA WAS NOT REVERTED
+        if not reverted_extra then
+            for k, v in pairs(joker.ability) do
+                if type(v) == "number" and k ~= 'id' and k ~= 'groups' then
+                    if (k == "h_x_chips" or k == "x_mult" or k == "x_chips") then
+                        if v > 0.5 then joker.ability[k] = v * 2 end
+                    elseif v > 0 then
+                        joker.ability[k] = v * 2
+                    end
+                end
+            end
+        end
+
+        joker.ability.tealed = nil
+        joker.sell_cost = joker.sell_cost * 2
+        joker:juice_up()
+    end,
+
+    ---------------------------------------------------------------------
+    -- BLIND TRIGGERS
+    ---------------------------------------------------------------------
+    calculate = function(self, blind, context)
+        -- Triggers when the blind is selected
+        if context.setting_blind and not G.GAME.blind.disabled then
+            for _, joker in ipairs(G.jokers.cards) do
+                self:apply_to_joker(joker)
+            end
+        end
+    end,
+
+    disable = function(self)
+        for _, joker in ipairs(G.jokers.cards) do
+            self:remove_from_joker(joker)
+        end
+    end,
+
+    defeat = function(self)
+        if G.GAME.blind.disabled then return end
+        for _, joker in ipairs(G.jokers.cards) do
+            self:remove_from_joker(joker)
+        end
+    end,
+	
+	abn_artist_credits = {
+		artist = "smoliconboi",
+	},
+})
+
+
+local old_insert = SMODS.insert_repetitions
+
+SMODS.insert_repetitions = function(repeat_table, value, source, tag)
+    if G.GAME and G.GAME.blind and G.GAME.blind.name == 'Orange ±' and not G.GAME.blind.disabled then
+        -- Block ALL retriggers
+        return
+    end
+
+    -- Otherwise do normal retrigger behavior
+    return old_insert(repeat_table, value, source, tag)
+end
+
+local old_insert = SMODS.insert_repetitions
+
+SMODS.insert_repetitions = function(repeat_table, value, source, tag)
+    if G.GAME and G.GAME.blind and G.GAME.blind.name == 'Hazard ±' and not G.GAME.blind.disabled then
+        -- Block ALL retriggers
+        return
+    end
+
+    -- Otherwise do normal retrigger behavior
+    return old_insert(repeat_table, value, source, tag)
+end
+
+
+SMODS.Blind {
+    key = 'orange_±',
+    config = {},
+    boss = {
+        showdown = true,
+    },
+	name = 'Orange ±',
+    boss_colour = HEX("fd9e57"),
+    atlas = "AbandoniaBlinds",
+    pos = { x = 0, y = 35 },
+}
+
+SMODS.Blind {
+    key = 'turquoise_yot',
+    config = {},
+    boss = {
+        showdown = true,
+    },
+    boss_colour = HEX("57aabd"),
+    atlas = "AbandoniaBlinds",
+    pos = { x = 0, y = 39 },
+
+    press_play = function(self)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                local hand = G.hand.cards
+                local count = #hand
+
+                if count > 0 then
+                    -- destroy_count = ceil(25% of held cards)
+                    local destroy_count = math.ceil(count * 0.25)
+
+                    if destroy_count > 0 then
+                        -- copy hand to a temporary table
+                        local temp = {}
+                        for i, c in ipairs(hand) do 
+                            temp[i] = c 
+                        end
+
+                        -- shuffle table
+                        for i = #temp, 2, -1 do
+                            local j = math.random(i)
+                            temp[i], temp[j] = temp[j], temp[i]
+                        end
+
+                        -- destroy N random cards
+                        for i = 1, destroy_count do
+                            local selected_card = temp[i]
+                            if selected_card then
+                                -- In Balatro, it's safer to use the standard removal flow 
+                                -- so things like Glass Card breaks or Sixth Sense trigger correctly
+                                selected_card:start_dissolve()
+
+                                -- trigger joker callbacks if applicable
+                                if selected_card.playing_card then
+                                    for j = 1, #G.jokers.cards do
+                                        eval_card(G.jokers.cards[j], {
+                                            cardarea = G.jokers,
+                                            remove_playing_cards = true,
+                                            removed = { selected_card }
+                                        })
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+                return true
+            end
+        }))
+    end,
+}
+
+
 -- Hazard Blinds
 -- Hazard Heart
 
@@ -1186,3 +1560,305 @@ SMODS.Blind({
 		end
 	end,
 })
+
+SMODS.Blind({
+	key = "hazard_anchor",
+	boss = { showdown = true, hazard_blind = true },
+	debuff = { h_size_ge = 5 },
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 30 },
+	boss_colour = HEX("bde35b"),
+	
+	defeat = function(self)
+		G.GAME.EdgingHands = 0
+	end,
+	
+	
+		
+	calculate = function(self, card, context)
+		if context.final_scoring_step and not G.GAME.blind.disabled then
+			G.GAME.EdgingHands = (G.GAME.EdgingHands or 0) + 1
+			if G.GAME.EdgingHands % 2 == 1 then
+				return { xchips = -1 }
+			end
+		end
+    end,
+})
+
+SMODS.Blind({
+    key = "hazard_r",
+    boss = { showdown = true, hazard_blind = true },
+    atlas = "AbandoniaBlinds",
+    pos = { x = 0, y = 38 },
+    boss_colour = HEX("e074a2"),
+    
+    in_pool = function(self)
+        return G.jokers and #G.jokers.cards > 0
+    end,
+
+    calculate = function(self, blind, context)
+		
+		if not blind.disabled and context.debuff_hand then
+            -- context.scoring_name is the internal key of the played hand (e.g., 'Flush')
+            local hand_level = G.GAME.hands[context.scoring_name].level
+            if hand_level >= 3 then
+                blind.triggered = true
+                return {
+                    debuff = true
+                }
+            end
+        end
+		
+        -- Before scoring: reset counters
+        if context.before then
+            G.GAME.PinkRTriggers = 0
+            G.GAME.PinkRFailed = false
+            G.GAME.PinkRPenalty = 0
+        end
+
+        -- Each Joker trigger
+        if context.post_trigger and not context.blueprint then
+            G.GAME.PinkRTriggers = (G.GAME.PinkRTriggers or 0) + 1
+        end
+
+        -- After scoring: check success
+        if context.after then
+            local total_jokers = #G.jokers.cards
+            local triggered = G.GAME.PinkRTriggers or 0
+            G.GAME.PinkRFailed = (triggered < total_jokers)
+        end
+
+        -- Final scoring step: record the score to potentially subtract it later
+        if context.final_scoring_step then
+            local result = SMODS.calculate_round_score()
+            G.GAME.PinkRPenalty = result
+        end
+    end,
+	abn_artist_credits = {
+		artist = "smoliconboi",
+	},
+})
+
+SMODS.Blind({
+    key = "hazard_£",
+    boss = { showdown = true, hazard_blind = true },
+    atlas = "AbandoniaBlinds",
+    pos = { x = 0, y = 34 },
+    boss_colour = HEX("66cb94"),
+	
+	calculate = function(self, blind, context)
+        if not blind.disabled and context.debuff_hand then
+            if #context.scoring_hand == 2 then
+                blind.triggered = true
+                return {
+                    debuff = true
+                }
+            end
+        end
+    end,
+	
+	abn_artist_credits = {
+		artist = "smoliconboi",
+	},
+})
+
+SMODS.Blind({
+    key = "hazard_notequal",
+    boss = { showdown = true, hazard_blind = true },
+    atlas = "AbandoniaBlinds",
+    pos = { x = 0, y = 32 },
+    boss_colour = HEX("64d5d4"),
+	
+	-- Only appears if the player has Jokers
+    in_pool = function(self)
+        return G.jokers and #G.jokers.cards > 0
+    end,
+
+    ---------------------------------------------------------------------
+    -- APPLY EFFECT
+    ---------------------------------------------------------------------
+    apply_to_joker = function(self, joker)
+        -- Use a unique key for the debuff flag to prevent conflicts with other mods
+        if not joker.ability or joker.ability.tealed then return end
+        
+        local changed_extra = false
+
+        -- 1. MODIFY extra FIRST (often used for scaling jokers)
+        if type(joker.ability.extra) == "table" then
+            for k, v in pairs(joker.ability.extra) do
+                if type(v) == "number" then
+                    joker.ability.extra[k] = v / 2
+                    changed_extra = true
+                end
+            end
+        elseif type(joker.ability.extra) == "number" then
+            joker.ability.extra = joker.ability.extra / 2
+            changed_extra = true
+        end
+
+        -- 2. ONLY MODIFY base ability IF EXTRA WAS NOT CHANGED
+        if not changed_extra then
+            for k, v in pairs(joker.ability) do
+                if type(v) == "number" and k ~= 'id' and k ~= 'groups' then
+                    if (k == "h_x_chips" or k == "x_mult" or k == "x_chips") then
+                        if v > 1 then joker.ability[k] = v / 2 end
+                    elseif v > 0 then
+                        joker.ability[k] = v / 2
+                    end
+                end
+            end
+        end
+
+        joker.ability.tealed = true
+        joker.sell_cost = math.max(1, math.floor(joker.sell_cost / 2))
+        joker:juice_up()
+    end,
+
+    ---------------------------------------------------------------------
+    -- REVERT EFFECT
+    ---------------------------------------------------------------------
+    remove_from_joker = function(self, joker)
+        if not joker.ability or not joker.ability.tealed then return end
+        
+        local reverted_extra = false
+
+        -- 1. REVERT extra FIRST
+        if type(joker.ability.extra) == "table" then
+            for k, v in pairs(joker.ability.extra) do
+                if type(v) == "number" then
+                    joker.ability.extra[k] = v * 2
+                    reverted_extra = true
+                end
+            end
+        elseif type(joker.ability.extra) == "number" then
+            joker.ability.extra = joker.ability.extra * 2
+            reverted_extra = true
+        end
+
+        -- 2. ONLY REVERT base ability IF EXTRA WAS NOT REVERTED
+        if not reverted_extra then
+            for k, v in pairs(joker.ability) do
+                if type(v) == "number" and k ~= 'id' and k ~= 'groups' then
+                    if (k == "h_x_chips" or k == "x_mult" or k == "x_chips") then
+                        if v > 0.5 then joker.ability[k] = v * 2 end
+                    elseif v > 0 then
+                        joker.ability[k] = v * 2
+                    end
+                end
+            end
+        end
+
+        joker.ability.tealed = nil
+        joker.sell_cost = joker.sell_cost * 2
+        joker:juice_up()
+    end,
+
+    ---------------------------------------------------------------------
+    -- BLIND TRIGGERS
+    ---------------------------------------------------------------------
+    calculate = function(self, blind, context)
+        -- Triggers when the blind is selected
+        if context.setting_blind and not G.GAME.blind.disabled then
+            for _, joker in ipairs(G.jokers.cards) do
+                self:apply_to_joker(joker)
+            end
+        end
+		
+		if not blind.disabled and context.debuff_hand then
+            if #context.scoring_hand == 3 then
+                blind.triggered = true
+                return {
+                    debuff = true
+                }
+            end
+        end
+    end,
+
+    disable = function(self)
+        for _, joker in ipairs(G.jokers.cards) do
+            self:remove_from_joker(joker)
+        end
+    end,
+
+    defeat = function(self)
+        if G.GAME.blind.disabled then return end
+        for _, joker in ipairs(G.jokers.cards) do
+            self:remove_from_joker(joker)
+        end
+    end,
+	
+	abn_artist_credits = {
+		artist = "smoliconboi",
+	},
+})
+
+SMODS.Blind {
+    key = 'hazard_±',
+    config = {},
+    boss = { showdown = true, hazard_blind = true },
+	debuff = { suit = "Hearts" },
+	name = 'Hazard ±',
+    boss_colour = HEX("fd9e57"),
+    atlas = "AbandoniaBlinds",
+    pos = { x = 0, y = 36 },
+}
+
+SMODS.Blind {
+    key = 'hazard_yot',
+    config = {},
+    boss = { showdown = true, hazard_blind = true },
+	debuff = { suit = "Spades" },
+    boss_colour = HEX("57aabd"),
+    atlas = "AbandoniaBlinds",
+    pos = { x = 0, y = 40 },
+
+    press_play = function(self)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                local hand = G.hand.cards
+                local count = #hand
+
+                if count > 0 then
+                    -- destroy_count = ceil(50% of held cards)
+                    local destroy_count = math.ceil(count * 0.50)
+
+                    if destroy_count > 0 then
+                        -- copy hand to a temporary table
+                        local temp = {}
+                        for i, c in ipairs(hand) do 
+                            temp[i] = c 
+                        end
+
+                        -- shuffle table
+                        for i = #temp, 2, -1 do
+                            local j = math.random(i)
+                            temp[i], temp[j] = temp[j], temp[i]
+                        end
+
+                        -- destroy N random cards
+                        for i = 1, destroy_count do
+                            local selected_card = temp[i]
+                            if selected_card then
+                                -- In Balatro, it's safer to use the standard removal flow 
+                                -- so things like Glass Card breaks or Sixth Sense trigger correctly
+                                selected_card:start_dissolve()
+
+                                -- trigger joker callbacks if applicable
+                                if selected_card.playing_card then
+                                    for j = 1, #G.jokers.cards do
+                                        eval_card(G.jokers.cards[j], {
+                                            cardarea = G.jokers,
+                                            remove_playing_cards = true,
+                                            removed = { selected_card }
+                                        })
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+                return true
+            end
+        }))
+    end,
+}
