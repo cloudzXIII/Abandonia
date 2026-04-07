@@ -162,6 +162,20 @@ return {
           "a face card"
         },
       },
+	  bl_abn_lima_anchor = {
+        name = "Lima Anchor",
+        text = {
+          "1st, 3rd, 5th,",
+		  "and subsequent odd hands",
+		  "decrease score",
+        },
+      },
+	  bl_abn_pink_r = {
+        name = "Pink Ya",
+        text = {
+          "All Jokers must trigger",
+        },
+      },
       bl_abn_slate_slab = {
         name = "Slate Slab",
         text = {
@@ -181,6 +195,30 @@ return {
         text = {
           "Hand must contain",
           "atleast 4 different suits"
+        },
+      },
+	  bl_abn_mint_£ = {
+        name = "Mint £",
+        text = {
+          "Mult can't go above 3X $"
+        },
+      },
+	  bl_abn_notequal_teal = {
+        name = "Not Equal Teal",
+        text = {
+          "All Joker values are halved"
+        },
+      },
+	  bl_abn_orange_± = {
+        name = "Orange ±",
+        text = {
+          "Retriggers are disabled"
+        },
+      },
+	  bl_abn_turquoise_yot = {
+        name = "Turquoise Yot",
+        text = {
+          "25% of held cards are destroyed",
         },
       },
       -- hazard
@@ -331,6 +369,50 @@ return {
           "Very Large blind,",
           "leftmost card in",
           "hand is debuffed",
+        },
+      },
+	  bl_abn_hazard_anchor = {
+        name = "Hazard Anchor",
+        text = {
+          "1st, 3rd, 5th,",
+		  "and subsequent odd hands",
+		  "decrease score",
+		  "must play 5 cards",
+        },
+      },
+	  bl_abn_hazard_r = {
+        name = "Hazard Ya",
+        text = {
+          "All Jokers must trigger",
+		  "Hands above level 3 are debuffed",
+        },
+      },
+	  bl_abn_hazard_£ = {
+        name = "Hazard £",
+        text = {
+          "Mult can't go above 2X $",
+		  "2 card Hands are debuffed",
+        },
+      },
+	  bl_abn_hazard_notequal = {
+        name = "Not Equal Hazard",
+        text = {
+          "All Joker values are halved",
+		  "3 card Hands are debuffed",
+        },
+      },
+	  bl_abn_hazard_± = {
+        name = "Hazard ±",
+        text = {
+          "Retriggers are disabled",
+		  "Hearts are debuffed",
+        },
+      },
+	  bl_abn_hazard_yot = {
+        name = "Hazard Yot",
+        text = {
+          "50% of held cards are destroyed",
+		  "Spades are debuffed",
         },
       },
     },
@@ -1522,6 +1604,26 @@ return {
 		  "Increase this by {X:chips,C:white}X#3#{} for each card scored",
 		  "{C:green}#1# in #2#{} chance for a {C:attention}Voucher{}",
 		  "to be created when {C:attention}Odd{} cards score",
+        }
+      },
+	  j_abn_jokerge = {
+        name = "Jokerge",
+        text = {
+          "{C:attention}Double{} all Joker values",
+        }
+      },
+	  j_abn_hunter_license = {
+        name = "Hunter License",
+        text = {
+          "Gain {C:money}$#1#{} when this obtained",
+		  "{C:mult}self-destruct{} if {C:money}money{} reaches {C:attention}0{}",
+        }
+      },
+	  j_abn_triple_star_license = {
+        name = "Triple Star License",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult {X:chips,C:white}X#2#{} Chips",
+		  "{C:mult}self-destruct{} if a Joker is sold",
         }
       },
     },
