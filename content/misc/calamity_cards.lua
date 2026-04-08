@@ -681,8 +681,7 @@ SMODS.Consumable {
 		
 		--get hands
 		for hand_name, hand_data in pairs(G.GAME.hands) do
-			-- Use to_number to safely compare with Talisman BigNums
-			local current_level = to_number(hand_data.level)
+			local current_level = hand_data.level
         
 			if current_level > 1 then
             
