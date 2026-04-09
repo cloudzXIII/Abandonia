@@ -1626,6 +1626,60 @@ return {
 		  "{C:mult}self-destruct{} if a Joker is sold",
         }
       },
+	  j_abn_patient_zero = {
+        name = "Patient Zero",
+        text = {
+          "When Blind is selected",
+		  "apply a sticker to the {C:attention}rightmost Joker",
+        }
+      },
+	  j_abn_melnibone_comedian = {
+        name = "Melnibone Comedian",
+        text = {
+          "Gain {X:mult,C:white}X#3#{} Mult when a Joker is {C:attention}sold{}",
+		  "Gain {C:chips}+#4#{} Chips when a Joker is {C:mult}destroyed{}",
+		  "{C:inactive}Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}",
+		  "{C:attention}Sold{} and {C:mult}destroyed{} Jokers cannot reappear", 
+        }
+      },
+	  j_abn_camorrista = {
+        name = "Camorrista",
+        text = {
+          "When blind is selected steal {C:money}$#3#{} sell value from other Jokers", 
+		  "Gain {X:mult,C:white}X#2#{} Mult for every {C:money}$#3#{} stolen",
+		  "{C:inactive}Currently {X:mult,C:white}X#1#{C:inactive} Mult",
+        }
+      },
+	  j_abn_watermelon = {
+        name = "Watermelon",
+        text = {
+          "Whenever a Joker triggers adds {C:mult}+#3#{} Mult to it",
+		  "{C:green}#1# in #2#{} chance to be {C:attention}consumed{} at end of round",
+        }
+      },
+	  j_abn_jakdos = {
+        name = "Jakdos",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult",
+		  "Scoring cards without {C:dark_edition}Chthonian{} are {C:mult}Debuffed{}"
+        }
+      },
+	  j_abn_power_four = {
+        name = "Power Four",
+        text = {
+          "Retrigger all cards in hands composed of {C:attention}4{} or more {C:attention}suits{}",
+		  "This Joker gains {X:mult,C:white}X#2#{} Mult per different suits used",
+		  "{C:inactive}Currently {X:mult,C:white}X#1#{C:inactive} Mult",
+        }
+      },
+	  j_abn_daybreak_aurora = {
+        name = "Daybreak Aurora",
+        text = {
+          "Scoring cards with {C:dark_edition}Holographic{} give {C:chips}+#2#{} Chips",
+		  "Jokers with {C:dark_edition}Holographic{} give {C:chips}+#1#{} Chips",
+		  "If this Joker has {C:dark_edition}Holographic{} double the chip amount",
+        }
+      },
     },
 
     Spectral = {
