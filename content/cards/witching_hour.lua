@@ -12,9 +12,14 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { x_mult = 1, x_mult_gain = 0.4 } },
+  config = { extra = { x_mult = 1, x_mult_gain = 0.1 } },
 
   calculate = function(self, card, context)
+    if context.stay_flipped and context.to_area == G.hand and ABN.is_dark(context.other_card) then
+      return {
+        stay_flipped = true
+      }
+    end
     if context.hand_drawn then
       for i = 1, #context.hand_drawn do
         if context.hand_drawn[i].facing == "back" then

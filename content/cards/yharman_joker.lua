@@ -12,7 +12,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { x_mult = 1, x_mult_gain = 0.5, } },
+  config = { extra = { x_mult = 1, x_mult_gain = 0.1, } },
 
   calculate = function(self, card, context)
     if context.abn_play_cards then
