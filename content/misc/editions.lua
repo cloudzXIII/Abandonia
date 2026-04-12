@@ -87,7 +87,7 @@ SMODS.Edition {
   key = 'abn_sunscourge',
   shader = "sunscourge",
   discovered = true,
-  config = { chips = 5, mult = 5, multiplier = 2 },
+  config = { chips = 2, mult = 2, multiplier = 2 },
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.chips, card.edition.mult } }
   end,
