@@ -648,7 +648,7 @@ return {
         name = "Yharman Joker",
         text = {
           "Destroy played {C:attention}flipped{} cards",
-          "after scoring and gain {C:white,X:mult}X#2#{} Mult",
+          "after scoring and gain {C:white,X:mult}X#2#{} Mult per card",
           "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
         }
       },

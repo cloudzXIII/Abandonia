@@ -36,7 +36,9 @@ SMODS.Joker {
           ref_table = card.ability.extra,
           ref_value = "x_mult",
           scalar_value = "x_mult_gain",
-          operation = '+',
+          operation = function(ref_table, ref_value, initial, change)
+            ref_table[ref_value] = initial + cards_to_destroy * change
+          end,
         })
       end
     end
