@@ -25,7 +25,7 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
 					end
 				end
 
-				local to_replace  = pseudorandom_element(G.pack_cards.cards, pseudoseed("brr"))
+				local to_replace = pseudorandom_element(G.pack_cards.cards, pseudoseed("brr"))
 				if go and to_replace then
 					if #SMODS.get_clean_pool("Spectral") > 0 then
 						to_replace:set_ability(
@@ -39,12 +39,12 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
 	}))
 
 	if G.GAME.abn_guarantee_double_modif and (ret.ability.set == "Default" or ret.ability.set == "Enhanced") then
-		local a = pseudorandom_element({1,2}, pseudoseed("shuf"))
+		local a = pseudorandom_element({ 1, 2 }, pseudoseed("shuf"))
 		if a == 1 then
-			ret:set_seal(SMODS.poll_seal({ guaranteed = true}))
+			ret:set_seal(SMODS.poll_seal({ guaranteed = true }))
 			ret:set_edition(poll_edition(nil, nil, nil, true))
 		else
-			ret:set_ability(SMODS.poll_enhancement({ guaranteed = true}))
+			ret:set_ability(SMODS.poll_enhancement({ guaranteed = true }))
 			ret:set_edition(poll_edition(nil, nil, nil, true))
 		end
 	end
@@ -54,7 +54,7 @@ end
 
 local calc_reroll_cost_old = calculate_reroll_cost
 function calculate_reroll_cost(skip_increment)
-    if G.GAME.modifiers.abn_no_reroll_increase then
+	if G.GAME.modifiers.abn_no_reroll_increase then
 		calc_reroll_cost_old(true)
 	else
 		calc_reroll_cost_old(skip_increment)
@@ -63,15 +63,15 @@ end
 
 local get_chip_bonus_old = Card.get_chip_bonus
 function Card:get_chip_bonus()
-    if self.ability.extra_enhancement then return self.ability.bonus end
+	if self.ability.extra_enhancement then return self.ability.bonus end
 
-    if self.ability.effect == 'Stone Card' or self.config.center.replace_base_card then
-        return self.ability.bonus + (self.ability.perma_bonus or 0)
-    end
-    if  G.GAME.blind.config.blind.key == "bl_abn_azure_circle" then
-    	return (self.base.nominal + self.ability.bonus + (self.ability.perma_bonus or 0) )/ 4
+	if self.ability.effect == 'Stone Card' or self.config.center.replace_base_card then
+		return self.ability.bonus + (self.ability.perma_bonus or 0)
+	end
+	if G.GAME.blind.config.blind.key == "bl_abn_azure_circle" then
+		return (self.base.nominal + self.ability.bonus + (self.ability.perma_bonus or 0)) / 4
 	elseif G.GAME.blind.config.blind.key == "bl_abn_hazard_crown" and self:is_face() then
-		return (self.base.nominal + self.ability.bonus + (self.ability.perma_bonus or 0) ) / 2
+		return (self.base.nominal + self.ability.bonus + (self.ability.perma_bonus or 0)) / 2
 	elseif G.GAME.blind.config.blind.key == "bl_abn_hazard_circle" then
 		return 0
 	else
@@ -81,17 +81,17 @@ end
 
 local get_blind_amount_ref = get_blind_amount
 function get_blind_amount(ante)
-    local amount = get_blind_amount_ref(ante)
-    return ABN:calculate_blind_size_modify(amount,ante)
+	local amount = get_blind_amount_ref(ante)
+	return ABN:calculate_blind_size_modify(amount, ante)
 end
 
 local card_remove_ref = Card.remove
 function Card:remove()
-if (self.added_to_deck or (self.area and (self.area == G.hand or self.area == G.deck))) then
-SMODS.calculate_context{
-abn_card_destroyed=true,
-card=self,
-}
-end
-return card_remove_ref(self)
+	if (self.added_to_deck or (self.area and (self.area == G.hand or self.area == G.deck))) then
+		SMODS.calculate_context {
+			abn_card_destroyed = true,
+			card = self,
+		}
+	end
+	return card_remove_ref(self)
 end
