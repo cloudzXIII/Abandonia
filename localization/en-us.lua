@@ -417,7 +417,15 @@ return {
       },
     },
     Joker = {
-
+      j_abn_trojan_joker = {
+        name = "Trojan Joker",
+        text = {
+          "When {C:attention}Blind{} is selected, {C:red}destroys{} both",
+          "{C:attention}adjacent Jokers{}, and gains their",
+          "accumulated {C:chips}Chips{}, {C:mult}Mult{}, and {X:mult,C:white}XMult{}",
+          '{C:inactive}(Currently {C:chips}+#1#{}/{C:mult}+#2#{}/{X:mult,C:white}X#3#{C:inactive})',
+        }
+      },
       j_abn_sacred_bleu = {
         name = 'Sacred Bleu',
         text = {
@@ -2682,7 +2690,8 @@ return {
       abn_joker_chip = "Bonus Chips",
       abn_joker_mult = "Bonus Mult",
       k_abn_increased = "Increased!",
-      b_abn_ranks = "Ranks"
+      b_abn_ranks = "Ranks",
+      k_abn_merged = "Merged!"
     },
     labels = {
       abn_chthonian = "Chthonian",

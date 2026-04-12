@@ -76,5 +76,8 @@ SMODS.Joker {
         x_mult = card.ability.extra.x_mult
       }
     end
-  end
+  end,
+  abn_artist_credits = {
+    artist = "Bunnet"
+  },
 }
