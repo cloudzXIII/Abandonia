@@ -211,3 +211,130 @@ SMODS.Consumable {
         artist = "Inky",
     },
 }
+
+SMODS.Consumable {
+    key = "smirk",
+    set = "nightshift_cards",
+    pos = { x = 3, y = 0 },
+    atlas = "AbandoniaNightshift",
+    cost = 4,
+    discovered = false,
+    hidden = false,
+    soul_set = "Spectral",
+    soul_rate = 0.35,
+    
+    loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_chthonian
+		info_queue[#info_queue + 1] = { key = "abn_violet", set = "Other", vars = {} }
+        info_queue[#info_queue + 1] = { key = "eternal", set = "Other", vars = { 5 } }
+        return { vars = {} }
+    end,
+    
+    can_use = function(self, card)
+        return #G.jokers.cards < G.jokers.config.card_limit
+    end,
+
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('timpani')
+                -- Create the card and assign it to a local variable 'joker'
+                local joker = SMODS.add_card({ 
+                    set = 'Joker', 
+                    rarity = "abn_SuperRare" 
+                })
+                
+                -- Apply the Chthonian edition
+                joker:set_edition({ abn_chthonian = true }, true)
+                
+                -- Apply the stickers
+                joker:set_eternal(true) -- Standard method for eternal
+                joker:add_sticker("abn_violet", true)
+                
+                -- Visual feedback
+                joker:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+    end,
+
+    abn_artist_credits = {
+        artist = "Inky",
+    },
+}
+
+SMODS.Consumable {
+    key = "observer",
+    set = "nightshift_cards",
+    config = { extra = { mult = 10, chips = 50 } },
+    pos = { x = 4, y = 0 },
+    atlas = "AbandoniaNightshift",
+    cost = 4,
+    discovered = false,
+    hidden = false,
+    soul_set = "Spectral",
+    soul_rate = 0.35,
+    
+    loc_vars = function(self, info_queue, card)
+        -- Fixed: vars should be a flat list, not a nested tuple-style table
+        return { vars = { card.ability.extra.mult, card.ability.extra.chips } }
+    end,
+    
+    can_use = function(self, card)
+        return true
+    end,
+
+    use = function(self, card, area, copier)
+        for i = 1, #G.jokers.cards do
+            local j = G.jokers.cards[i]
+            local rarity = j.config.center.rarity
+            
+            -- Handle perma-flip removal
+            if j.ability.abn_perma_flipped then
+                j.ability.abn_perma_flipped = false
+            end
+
+            -- Ensure card faces front if it was hidden/flipped
+            if j.facing == 'back' then
+                j:flip()
+            end
+            
+            -- Remove all stickers
+            for _, sticker in ipairs(SMODS.Sticker.obj_buffer) do
+                if j.ability[sticker] then j:remove_sticker(sticker) end
+            end
+            
+            -- Apply permanent buffs if rarity matches
+            if rarity == "abn_SuperRare" then
+                j.ability.abn_perma_mult = (j.ability.abn_perma_mult or 0) + card.ability.extra.mult
+                j.ability.abn_perma_bonus = (j.ability.abn_perma_bonus or 0) + card.ability.extra.chips
+            end
+        end
+		
+		for i = 1, #G.playing_cards do
+            local c = G.playing_cards[i]
+            
+            -- Handle perma-flip removal
+            if c.ability.abn_perma_flipped then
+                c.ability.abn_perma_flipped = false
+            end
+
+            -- Ensure card faces front if it was hidden/flipped
+            if c.facing == 'back' then
+                c:flip()
+            end
+            
+            -- Remove all stickers
+            for _, sticker in ipairs(SMODS.Sticker.obj_buffer) do
+                if c.ability[sticker] then c:remove_sticker(sticker) end
+            end
+
+        end
+    end,
+
+    abn_artist_credits = {
+        artist = "Inky",
+    },
+}
