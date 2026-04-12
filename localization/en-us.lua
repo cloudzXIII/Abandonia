@@ -162,15 +162,15 @@ return {
           "a face card"
         },
       },
-      bl_abn_lima_anchor = {
+	  bl_abn_lima_anchor = {
         name = "Lima Anchor",
         text = {
           "1st, 3rd, 5th,",
-          "and subsequent odd hands",
-          "decrease score",
+		  "and subsequent odd hands",
+		  "decrease score",
         },
       },
-      bl_abn_pink_r = {
+	  bl_abn_pink_r = {
         name = "Pink Ya",
         text = {
           "All Jokers must trigger",
@@ -197,25 +197,25 @@ return {
           "atleast 4 different suits"
         },
       },
-      bl_abn_mint_£ = {
+	  bl_abn_mint_£ = {
         name = "Mint £",
         text = {
           "Mult can't go above 3X $"
         },
       },
-      bl_abn_notequal_teal = {
+	  bl_abn_notequal_teal = {
         name = "Not Equal Teal",
         text = {
           "All Joker values are halved"
         },
       },
-      bl_abn_orange_± = {
+	  bl_abn_orange_± = {
         name = "Orange ±",
         text = {
           "Retriggers are disabled"
         },
       },
-      bl_abn_turquoise_yot = {
+	  bl_abn_turquoise_yot = {
         name = "Turquoise Yot",
         text = {
           "25% of held cards are destroyed",
@@ -371,48 +371,48 @@ return {
           "hand is debuffed",
         },
       },
-      bl_abn_hazard_anchor = {
+	  bl_abn_hazard_anchor = {
         name = "Hazard Anchor",
         text = {
           "1st, 3rd, 5th,",
-          "and subsequent odd hands",
-          "decrease score",
-          "must play 5 cards",
+		  "and subsequent odd hands",
+		  "decrease score",
+		  "must play 5 cards",
         },
       },
-      bl_abn_hazard_r = {
+	  bl_abn_hazard_r = {
         name = "Hazard Ya",
         text = {
           "All Jokers must trigger",
-          "Hands above level 3 are debuffed",
+		  "Hands above level 3 are debuffed",
         },
       },
-      bl_abn_hazard_£ = {
+	  bl_abn_hazard_£ = {
         name = "Hazard £",
         text = {
           "Mult can't go above 2X $",
-          "2 card Hands are debuffed",
+		  "2 card Hands are debuffed",
         },
       },
-      bl_abn_hazard_notequal = {
+	  bl_abn_hazard_notequal = {
         name = "Not Equal Hazard",
         text = {
           "All Joker values are halved",
-          "3 card Hands are debuffed",
+		  "3 card Hands are debuffed",
         },
       },
-      bl_abn_hazard_± = {
+	  bl_abn_hazard_± = {
         name = "Hazard ±",
         text = {
           "Retriggers are disabled",
-          "Hearts are debuffed",
+		  "Hearts are debuffed",
         },
       },
-      bl_abn_hazard_yot = {
+	  bl_abn_hazard_yot = {
         name = "Hazard Yot",
         text = {
           "50% of held cards are destroyed",
-          "Spades are debuffed",
+		  "Spades are debuffed",
         },
       },
     },
@@ -444,8 +444,7 @@ return {
           "{C:attention}matching rank{} scores {C:mult}+#2#{} Mult"
         }
       },
-
-      j_abn_ichor = {
+	  j_abn_ichor = {
         name = "Ichor Joker",
         text = {
           "{C:dark_edition}#2#{} Jokers",
@@ -1600,112 +1599,192 @@ return {
           "{C:green}#1# in #2# chance{} this {C:attention}Joker is destroyed at end of round.",
         }
       },
-      j_abn_archaic_joker = {
+	  j_abn_archaic_joker = {
         name = "Archaic Joker",
         text = {
           "This Joker gains {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
-          "When a blind is defeated with an {C:attention}odd{} number of cards",
-          "{C:inactive}Currently {C:chips}+#3#{} {C:inactive}Chips{} {C:mult}+#4#{} {C:inactive}Mult{}",
+		  "When a blind is defeated with an {C:attention}odd{} number of cards",
+		  "{C:inactive}Currently {C:chips}+#3#{} {C:inactive}Chips{} {C:mult}+#4#{} {C:inactive}Mult{}",
         }
       },
-      j_abn_outdated_joker = {
+	  j_abn_outdated_joker = {
         name = "Outdated Joker",
         text = {
           "This Joker gains {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
-          "When a blind is defeated with an {C:attention}even{} number of cards",
-          "{C:inactive}Currently {C:chips}+#3#{} {C:inactive}Chips{} {C:mult}+#4#{} {C:inactive}Mult{}",
+		  "When a blind is defeated with an {C:attention}even{} number of cards",
+		  "{C:inactive}Currently {C:chips}+#3#{} {C:inactive}Chips{} {C:mult}+#4#{} {C:inactive}Mult{}",
         }
       },
-      j_abn_haphazard_joker = {
+	  j_abn_haphazard_joker = {
         name = "Haphazard Joker",
         text = {
           "Enhanced {C:attention}Even{} cards give {X:mult,C:white}X#4#{} Mult",
-          "Increase this by {X:mult,C:white}X#3#{} for each card scored",
-          "{C:green}#1# in #2#{} chance for a {C:abn_hazard}Hazard Tag{}",
-          "to be created when {C:attention}Even{} cards score",
+		  "Increase this by {X:mult,C:white}X#3#{} for each card scored",
+		  "{C:green}#1# in #2#{} chance for a {C:abn_hazard}Hazard Tag{}",
+		  "to be created when {C:attention}Even{} cards score",
         }
       },
-      j_abn_prenatural_joker = {
+	  j_abn_prenatural_joker = {
         name = "Prenatural Joker",
         text = {
           "Enhanced {C:attention}Odd{} cards give {X:chips,C:white}X#4#{} Chips",
-          "Increase this by {X:chips,C:white}X#3#{} for each card scored",
-          "{C:green}#1# in #2#{} chance for a {C:attention}Voucher{}",
-          "to be created when {C:attention}Odd{} cards score",
+		  "Increase this by {X:chips,C:white}X#3#{} for each card scored",
+		  "{C:green}#1# in #2#{} chance for a {C:attention}Voucher{}",
+		  "to be created when {C:attention}Odd{} cards score",
         }
       },
-      j_abn_jokerge = {
+	  j_abn_jokerge = {
         name = "Jokerge",
         text = {
           "{C:attention}Double{} all Joker values",
         }
       },
-      j_abn_hunter_license = {
+	  j_abn_hunter_license = {
         name = "Hunter License",
         text = {
           "Gain {C:money}$#1#{} when this obtained",
-          "{C:mult}self-destruct{} if {C:money}money{} reaches {C:attention}0{}",
+		  "{C:mult}self-destruct{} if {C:money}money{} reaches {C:attention}0{}",
         }
       },
-      j_abn_triple_star_license = {
+	  j_abn_triple_star_license = {
         name = "Triple Star License",
         text = {
           "{X:mult,C:white}X#1#{} Mult {X:chips,C:white}X#2#{} Chips",
-          "{C:mult}self-destruct{} if a Joker is sold",
+		  "{C:mult}self-destruct{} if a Joker is sold",
         }
       },
-      j_abn_patient_zero = {
+	  j_abn_patient_zero = {
         name = "Patient Zero",
         text = {
           "When Blind is selected",
-          "apply a sticker to the {C:attention}rightmost Joker",
+		  "apply a sticker to the {C:attention}rightmost Joker",
         }
       },
-      j_abn_melnibone_comedian = {
+	  j_abn_melnibone_comedian = {
         name = "Melnibone Comedian",
         text = {
           "Gain {X:mult,C:white}X#3#{} Mult when a Joker is {C:attention}sold{}",
-          "Gain {C:chips}+#4#{} Chips when a Joker is {C:mult}destroyed{}",
-          "{C:inactive}Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}",
-          "{C:attention}Sold{} and {C:mult}destroyed{} Jokers cannot reappear",
+		  "Gain {C:chips}+#4#{} Chips when a Joker is {C:mult}destroyed{}",
+		  "{C:inactive}Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}",
+		  "{C:attention}Sold{} and {C:mult}destroyed{} Jokers cannot reappear", 
         }
       },
-      j_abn_camorrista = {
+	  j_abn_camorrista = {
         name = "Camorrista",
         text = {
-          "When blind is selected steal {C:money}$#3#{} sell value from other Jokers",
-          "Gain {X:mult,C:white}X#2#{} Mult for every {C:money}$#3#{} stolen",
-          "{C:inactive}Currently {X:mult,C:white}X#1#{C:inactive} Mult",
+          "When blind is selected steal {C:money}$#3#{} sell value from other Jokers", 
+		  "Gain {X:mult,C:white}X#2#{} Mult for every {C:money}$#3#{} stolen",
+		  "{C:inactive}Currently {X:mult,C:white}X#1#{C:inactive} Mult",
         }
       },
-      j_abn_watermelon = {
+	  j_abn_watermelon = {
         name = "Watermelon",
         text = {
           "Whenever a Joker triggers adds {C:mult}+#3#{} Mult to it",
-          "{C:green}#1# in #2#{} chance to be {C:attention}consumed{} at end of round",
+		  "{C:green}#1# in #2#{} chance to be {C:attention}consumed{} at end of round",
         }
       },
-      j_abn_jakdos = {
+	  j_abn_jakdos = {
         name = "Jakdos",
         text = {
           "{X:mult,C:white}X#1#{} Mult",
-          "Scoring cards without {C:dark_edition}Chthonian{} are {C:mult}Debuffed{}"
+		  "Scoring cards without {C:dark_edition}Chthonian{} are {C:mult}Debuffed{}"
         }
       },
-      j_abn_power_four = {
+	  j_abn_power_four = {
         name = "Power Four",
         text = {
           "Retrigger all cards in hands composed of {C:attention}4{} or more {C:attention}suits{}",
-          "This Joker gains {X:mult,C:white}X#2#{} Mult per different suits used",
-          "{C:inactive}Currently {X:mult,C:white}X#1#{C:inactive} Mult",
+		  "This Joker gains {X:mult,C:white}X#2#{} Mult per different suits used",
+		  "{C:inactive}Currently {X:mult,C:white}X#1#{C:inactive} Mult",
         }
       },
-      j_abn_daybreak_aurora = {
+	  j_abn_daybreak_aurora = {
         name = "Daybreak Aurora",
         text = {
           "Scoring cards with {C:dark_edition}Holographic{} give {C:chips}+#2#{} Chips",
-          "Jokers with {C:dark_edition}Holographic{} give {C:chips}+#1#{} Chips",
-          "If this Joker has {C:dark_edition}Holographic{} double the chip amount",
+		  "Jokers with {C:dark_edition}Holographic{} give {C:chips}+#1#{} Chips",
+		  "If this Joker has {C:dark_edition}Holographic{} double the chip amount",
+        }
+      },
+	  j_abn_bowie = {
+        name = "Bowie",
+        text = {
+          "Jokers with {C:dark_edition}Editions{} each give {X:mult,C:white}X#1#{} Mult",
+        }
+      },
+	  j_abn_blackmore_joker = {
+        name = "Blackmore Joker",
+        text = {
+          "{C:attention}First scoring card{} gives its {C:attention}rank{} as {C:mult}Xmult{}",
+        }
+      },
+	  j_abn_feste = {
+        name = "Feste",
+        text = {
+          "When Blind is selected",
+		  "create a {C:dark_edition}Negative{} {C:abn_nightshift}Nightshift{} card",
+        }
+      },
+	  j_abn_aliasing_joker = {
+        name = "Aliasing Joker",
+        text = {
+          "Adds {C:dark_edition}Gloss{}, {C:dark_edition}Pearlescene{}, or {C:dark_edition}Iridescendent{}",
+		  "to first scoring {C:attention}number{} card of the {C:attention}first{} and {C:attention}final{} hand",
+		  "Scoring cards with editions give {C:money}$#1#{}"
+        }
+      },
+	  j_abn_ponzi = {
+        name = "Ponzi",
+        text = {
+          "All cards gain {C:mult}+#1#{} Mult {C:chips}+#2#{} Chips when {C:money}money{} is lost",
+		  "Lose {C:money}$#3#{} per {C:attention}scoring{} card"
+        }
+      },
+	  j_abn_forsake_joker = {
+        name = "Forsake Joker",
+        text = {
+          "When {C:dark_edition}Abandoned edition{} triggers gain {C:money}$#1#{}",
+		  "If triggered on a {C:attention}Card{} gain Chips equal to {C:attention}double{} its rank",
+		  "If triggered on a {C:attention}Joker{} gain {C:mult}+#4#{} Mult",
+		  "{C:inactive}Currently{} {C:mult}+#3#{} {C:inactive}Mult {C:chips}+#2# {C:inactive}Chips",
+        }
+      },
+	  j_abn_conspiracy_joker = {
+        name = "Conspiracy Joker",
+        text = {
+          "On {C:attention}Even{} turns flip all and shuffle all Jokers",
+		  "If a Joker triggers while flipped gain {C:mult}+#3#{} Mult",
+		  "On {C:attention}Odd{} turns flip all Jokers face up",
+		  "If a Joker triggers while face up gain {C:chips}+#4#{} Chips",
+		  "{C:inactive}Currently{} {C:mult}+#2#{} {C:inactive}Mult {C:chips}+#1# {C:inactive}Chips",
+        }
+      },
+	  j_abn_mana = {
+        name = "Mana",
+        text = {
+          "Applies {C:dark_edition}Sunscourge{} to the first scoring",
+		  "{C:attention}Ace{} and {C:attention}2{} of your first hand",
+        }
+      },
+	  j_abn_streetart_joker = {
+        name = "Streetart Joker",
+        text = {
+          "Stone Cards and Polkadot Cards count as {C:hearts}Wild Cards{}",
+        }
+      },
+	  j_abn_ill_gotten_gains = {
+        name = "Ill-gotten Gains",
+        text = {
+          "Scoring Glass Cards give {C:money}$#1#{}",
+		  "If Glass Card breaks give {C:money}$#2#{}",
+        }
+      },
+	  j_abn_forgemaster_joker = {
+        name = "Forgemaster Joker",
+        text = {
+          "{C:attention}Unscoring{} cards turn into {C:attention}Hot Iron{} cards",
+		  "{C:attention}Hot Iron{} cards can score when played",
         }
       },
     },
@@ -2401,6 +2480,20 @@ return {
           "{C:green}#1# in #2#{} chance to gain {C:attention}+1{} Joker slot"
         }
       },
+	  c_abn_smirk = {
+        name = "Smirk",
+        text = {
+          "Create a {C:attention}Comedian{} with {C:dark_edition}Chthonian{}, {C:purple}Violet{}, and {C:abn_eternal}Eternal"
+        }
+      },
+	  c_abn_observer = {
+        name = "Observer",
+        text = {
+          "Flip all {C:attention}face down{} cards and Jokers {C:attention}face up{}",
+		  "Remove all stickers",
+		  "Super Rare Jokers gain {C:chips}+#2#{} Chips {C:mult}+#1#{} Mult",
+        }
+      },
     },
     astro_cards = {
       c_abn_aquar = {
@@ -2528,6 +2621,32 @@ return {
           "for each unique suit",
           "in scoring hand.",
           "{C:inactive}(Currently {C:chips}+#1#{C:inactive})"
+        },
+      },
+	  m_abn_hot_iron = {
+        name = "Hot Iron",
+        text = {
+          "{X:mult,C:white}X#2#{} Mult if held in hand",
+		  "{C:green}#4# in #5#{} chance to give {C:chips}+#1#{} Chips",
+		  "{C:green}#6# in #7#{} chance to gain {X:mult,C:white}X#3#{} Mult",
+		  "{C:inactive}Does not score when played{}"
+        },
+      },
+	  m_abn_infra = {
+        name = "Infra",
+        text = {
+          "Gain {C:mult}+#2#{} Mult and {C:chips}+#4#{} Chips per scoring card",
+		  "{C:mult}Self-destruct{} if played with {C:attention}3{} or less scoring cards",
+		  "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#3# {C:inactive}Chips)",
+        },
+      },
+	  m_abn_hazard = {
+        name = "Hazard",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult",
+		  "Add {X:mult,C:white}+X#2#{} Mult for each other scoring Hazard card",
+		  "{C:green}#3# in #4#{} chance to {C:attention}retrigger{}",
+		  "Increase {C:attention}blind requirement{} by {C:attention}10%{}",
         },
       },
     },
@@ -2691,7 +2810,8 @@ return {
       abn_joker_mult = "Bonus Mult",
       k_abn_increased = "Increased!",
       b_abn_ranks = "Ranks",
-      k_abn_merged = "Merged!"
+	  k_abn_merged = "Merged!",
+	  
     },
     labels = {
       abn_chthonian = "Chthonian",
