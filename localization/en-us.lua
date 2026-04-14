@@ -1233,15 +1233,9 @@ return {
       j_abn_witching_hour = {
         name = "Witching Hour",
         text = {
-          {
-          "All cards with a {C:attention}dark suit{}",
-          "are drawn face down",
-          },
-          {
           "This Joker gains {X:mult,C:white}X#2#{} Mult",
           "per card drawn face down",
           "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
-          }
         }
       },
       j_abn_funambulist = {
@@ -1793,6 +1787,70 @@ return {
 		  "{C:attention}Hot Iron{} cards can score when played",
         }
       },
+	  j_abn_carnival_comedian = {
+        name = "Carnival Comedian",
+        text = {
+          "Super Rare Jokers can appear in the shop",
+		  "This Joker gains {X:mult,C:white}X#2#{} Mult each time you purchase a Super Rare Joker",
+		  "{C:inactive}Currently {X:mult,C:white}X#1#{C:inactive} Mult",
+        }
+      },
+	  j_abn_malefactor_comedian = {
+        name = "Malefactor Comedian",
+        text = {
+          "Gains {C:chips}Chips{} {C:attention}equal{} to the the ranks of scoring Light Suits",
+		  "Gains {C:mult}Mult{} {C:attention}equal{} to the the ranks of scoring Dark Suits",
+		  "{C:inactive}Currently{} {C:mult}+#1#{} {C:inactive}Mult {C:chips}+#2# {C:inactive}Chips",
+        }
+      },
+	  j_abn_insolvent_comedian = {
+        name = "Insolvent Comedian",
+        text = {
+          "If hand contains an {C:attention}even{} number of scoring cards",
+		  "Gain {C:chips}Chips{} equal to {C:attention}twice{} the {C:money}sell value{} of current Jokers",
+		  "If hand contains an {C:attention}odd{} number of scoring cards",
+		  "Gain {C:mult}Mult{} equal to {C:attention}twice{} the {C:money}sell value{} of current Jokers",
+		  "{C:inactive}Currently{} {C:mult}+#1#{} {C:inactive}Mult {C:chips}+#2# {C:inactive}Chips",
+        }
+      },
+	  j_abn_coercive_comedian = {
+        name = "Coercive Comedian",
+        text = {
+          "Card {C:chips}play{} and {C:mult}discard{} limit {C:attention}+1{}",
+		  "Gain {X:mult,C:white}X#2#{} Mult per {C:attention}Unique{} number card scored",
+		  "Gain {C:chips}+#4#{} Chips per hand played",
+		  "{C:inactive}Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult {C:chips}+#3# {C:inactive}Chips",
+        }
+      },
+	  j_abn_night_comedian = {
+        name = "Night Comedian",
+        text = {
+          "Each scored {C:attention}Enhanced{} card gains {C:chips}+#5#{} Chips and {C:mult}+#6#{} Mult for each matching {C:attention}Enhancement{}",
+		  "This Joker gains {C:chips}+#4#{} Chips per scoring Enhanced card",
+		  "Each scored {C:dark_edition}Editioned{} card gains {C:chips}+#6#{} Chips and {C:mult}+#5#{} Mult for each matching {C:dark_edition}Edition{}",
+		  "This Joker gains {X:mult,C:white}X#3#{} Mult per scoring {C:dark_edition}Edition{}",
+		  "{C:inactive}Currently{} {X:mult,C:white}X#2#{} {C:inactive}Mult {C:chips}+#1# {C:inactive}Chips",
+        }
+      },
+	  j_abn_minimus = {
+        name = "Minimus",
+        text = {
+          "Scoring number cards below {C:attention}5{}",
+		  "Give {X:mult,C:white}X#1#{} Mult and {X:chips,C:white}X#2#{} Chips",
+        }
+      },
+	  j_abn_claus = {
+        name = "Claus",
+        text = {
+          "Retrigger the {C:attention}first scoring card{} per remaining {C:mult}discards{}",
+        }
+      },
+	  j_abn_jamie = {
+        name = "Jamie",
+        text = {
+          "Level up hand before it scores",
+        }
+      },
     },
 
     Spectral = {
@@ -1984,6 +2042,32 @@ return {
           "give {C:mult}+#3#{} Mult",
         }
       },
+	  abn_honor_sticker = {
+        name = "Honor Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Honor",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  abn_menacing_sticker = {
+        name = "Menacing Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Menacing",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
+	  abn_toxic_sticker = {
+        name = "Toxic Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Toxic",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
       --#endregion
       abn_dark_suit = {
         name = "Dark Suit",
