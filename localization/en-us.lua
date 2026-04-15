@@ -1851,6 +1851,27 @@ return {
           "Level up hand before it scores",
         }
       },
+	  j_abn_richard = {
+        name = "Richard",
+        text = {
+          "Force Select a card in your hand",
+		  "Force selected cards give {X:mult,C:white}X#1#{} Mult",
+		  "Retrigger force selected cards for every {C:attention}held{} card that shares a {C:attention}suit{} with it",
+        }
+      },
+	  j_abn_tom = {
+        name = "Tom",
+        text = {
+          "Retrigger the {C:attention}last scoring card{} per remaining {C:chips}hands{}",
+        }
+      },
+	  j_abn_goldcartridge_joker = {
+        name = "Goldcartridge Joker",
+        text = {
+          "Jokers worth less than this Joker give {X:mult,C:white}X#1#{} Mult",
+		  "At end of the round increase Joker value by {C:money}$#2#",
+        }
+      },
     },
 
     Spectral = {
