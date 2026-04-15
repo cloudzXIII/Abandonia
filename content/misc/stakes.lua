@@ -9,6 +9,11 @@ end
 local original_game_update = Game.update
 function Game:update(dt)
     original_game_update(self, dt)
+	
+	--i have no idea why this wasn't working right but this should force it
+	if G.GAME.modifiers.Menacing and G.GAME.win_ante < 12 and G.jokers then
+		G.GAME.win_ante = 12
+	end
 
     if G.STATE == G.STATES.BLIND_SELECT then
         local is_honor = G.GAME.modifiers.Honor
@@ -156,6 +161,8 @@ SMODS.Stake({
     },
 
     modifiers = function()
+		G.GAME.win_ante = 12
+		G.GAME.win_ante = 12
 		G.GAME.win_ante = 12
 		G.GAME.modifiers.Menacing = true
 		G.GAME.modifiers.enable_eternals_in_shop = true
