@@ -19,13 +19,6 @@ SMODS.Joker {
 
   config = { extra = { mult = 0, chips = 0, dollars = 0, mult_gain = 10, chips_gain = 100, dollars_gain = 5 } },
   
-  -- cannot appear in shop
-  in_pool = function(self, args)
-    if G.STATE == G.STATES.SHOP and not next(SMODS.find_card("j_abn_carnival_comedian")) then
-        return false
-    end
-  end,
-  
   update = function(self, card)
     if card.area == G.shop_jokers then
 		card.cost = 30

@@ -18,6 +18,12 @@ SMODS.Joker {
   blueprint_compat = true,
 
   config = { extra = { x_mult = 2, x_chips = 2 } },
+  
+  update = function(self, card)
+    if card.area == G.shop_jokers then
+		card.cost = 30
+	end
+  end,
 
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then

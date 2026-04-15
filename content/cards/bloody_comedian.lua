@@ -18,12 +18,6 @@ SMODS.Joker {
 
   config = { extra = { xmult = 1.5 } },
   
-  -- cannot appear in shop
-  in_pool = function(self, args)
-    if G.STATE == G.STATES.SHOP and not next(SMODS.find_card("j_abn_carnival_comedian")) then
-        return false
-    end
-  end,
   
   update = function(self, card)
     if card.area == G.shop_jokers then

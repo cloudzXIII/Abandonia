@@ -17,14 +17,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { mult = 0, chips = 0, } },
-  
-  -- cannot appear in shop
-  in_pool = function(self, args)
-    if G.STATE == G.STATES.SHOP and not next(SMODS.find_card("j_abn_carnival_comedian")) then
-        return false
-    end
-  end,
+  config = { extra = { mult = 0, chips = 0, } }, 
   
   update = function(self, card)
     if card.area == G.shop_jokers then
