@@ -18,9 +18,22 @@ SMODS.Joker {
   blueprint_compat = true,
 
   config = { extra = { mult = 0, chips = 0, dollars = 0, mult_gain = 10, chips_gain = 100, dollars_gain = 5 } },
+  
+  -- cannot appear in shop
+  in_pool = function(self, args)
+    if G.STATE == G.STATES.SHOP and not next(SMODS.find_card("j_abn_carnival_comedian")) then
+        return false
+    end
+  end,
+  
+  update = function(self, card)
+    if card.area == G.shop_jokers then
+		card.cost = 30
+	end
+  end,
 
   calculate = function(self, card, context)
-    if context.post_trigger and context.cardarea == G.jokers and context.other_card.config.center.rarity == "abn_SuperRare" then
+    if context.post_trigger and context.cardarea == G.jokers and context.other_card.config and context.other_card.config.center and context.other_card.config.center.rarity and context.other_card.config.center.rarity == "abn_SuperRare" then
       SMODS.scale_card(card, {
         ref_table = card.ability.extra,
         ref_value = "mult",
