@@ -109,9 +109,12 @@ SMODS.Stake({
     key = "honor",
     applied_stakes = {},
     above_stake = "gold",
-    prefix_config = {above_stake = {mod = false}, applied_stakes = {mod = false}},
+	unlocked_stake = "abn_menacing",
     atlas = "AbandoniaStakes",
     pos = {x = 0, y = 0},
+	sticker_atlas = "AbandoniaStickers",
+	sticker_pos = { x = 5, y = 6 },
+	colour = G.C.WHITE,
     shiny = false,
 
     loc_txt = {
@@ -131,11 +134,15 @@ SMODS.Stake({
 
 SMODS.Stake({
     key = "menacing",
-    applied_stakes = {},
+    applied_stakes = { "abn_honor" },
     above_stake = "abn_honor",
+	unlocked_stake = "abn_toxic",
     prefix_config = {above_stake = {mod = false}, applied_stakes = {mod = false}},
     atlas = "AbandoniaStakes",
     pos = {x = 1, y = 0},
+	sticker_atlas = "AbandoniaStickers",
+	sticker_pos = { x = 0, y = 7 },
+	colour = G.C.WHITE,
     shiny = false,
 
     loc_txt = {
@@ -185,11 +192,14 @@ end
 
 SMODS.Stake({
     key = "toxic",
-    applied_stakes = {},
+    applied_stakes = { "abn_menacing" },
     above_stake = "abn_menacing",
     prefix_config = {above_stake = {mod = false}, applied_stakes = {mod = false}},
     atlas = "AbandoniaStakes",
     pos = {x = 2, y = 0},
+	sticker_atlas = "AbandoniaStickers",
+	sticker_pos = { x = 1, y = 7 },
+	colour = G.C.WHITE,
     shiny = false,
 
     loc_txt = {
