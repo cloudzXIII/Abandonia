@@ -1,5 +1,12 @@
 SMODS.Joker {
     key = 'richard',
+	loc_txt = {
+        ['en-us'] = {
+			unlock = {
+				"?????",
+			},
+        }
+    },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -15,6 +22,11 @@ SMODS.Joker {
     discovered = false,
     blueprint_compat = true,
     config = { extra = { xmult = 4 } },
+	unlocked = false,
+  
+	add_to_deck = function(self, card)
+		unlock_card(self)
+	end,
 
     calculate = function(self, card, context)
         -- Logic to force a selection when cards are drawn

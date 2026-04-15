@@ -1,5 +1,12 @@
 SMODS.Joker {
   key = 'minimus',
+  loc_txt = {
+    ['en-us'] = {
+		unlock = {
+			"?????",
+		},
+    }
+  },
 
   loc_vars = function(self, info_queue, card)
     return {
@@ -17,6 +24,11 @@ SMODS.Joker {
   cost = 20,
   discovered = false,
   blueprint_compat = true,
+  unlocked = false,
+  
+  add_to_deck = function(self, card)
+	unlock_card(self)
+  end,
 
   config = { extra = { xmult = 2, xchips = 2 } },
 

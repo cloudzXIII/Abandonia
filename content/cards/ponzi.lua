@@ -1,5 +1,12 @@
 SMODS.Joker {
     key = 'ponzi',
+	loc_txt = {
+        ['en-us'] = {
+			unlock = {
+				"?????",
+			},
+        }
+    },
     rarity = 4,
     atlas = 'AbandoniaJokers',
     pos = { x = 1, y = 26 },
@@ -7,6 +14,7 @@ SMODS.Joker {
     cost = 20,
     discovered = false,
     blueprint_compat = true, 
+	unlocked = false,
     
 	config = { extra = { mult = 3, chips = 10, loss = 1, money = 99999999 } },
 
@@ -16,6 +24,7 @@ SMODS.Joker {
 	
 	add_to_deck = function(self, card)
 		card.ability.extra.money = G.GAME.dollars
+		unlock_card(self)
 	end,
 	
 	update = function(self, card)

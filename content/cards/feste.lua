@@ -1,5 +1,12 @@
 SMODS.Joker {
     key = 'feste',
+	loc_txt = {
+        ['en-us'] = {
+			unlock = {
+				"?????",
+			},
+        }
+    },
     rarity = 4,
     atlas = 'AbandoniaJokers',
     pos = { x = 9, y = 34 },
@@ -7,7 +14,11 @@ SMODS.Joker {
     cost = 20,
     discovered = false,
     blueprint_compat = true, 
+	unlocked = false,
     
+	add_to_deck = function(self, card)
+        unlock_card(self)
+    end,
 
     calculate = function(self, card, context)
 		if context.setting_blind then

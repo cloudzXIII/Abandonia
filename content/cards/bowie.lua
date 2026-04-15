@@ -1,5 +1,12 @@
 SMODS.Joker {
     key = 'bowie',
+	loc_txt = {
+        ['en-us'] = {
+			unlock = {
+				"?????",
+			},
+        }
+    },
     rarity = 4,
     atlas = 'AbandoniaJokers',
     pos = { x = 3, y = 27 },
@@ -7,11 +14,16 @@ SMODS.Joker {
     cost = 20,
     discovered = false,
     blueprint_compat = true, 
+	unlocked = false,
     
     config = { extra = { xmult = 2 } },
 
     loc_vars = function(self, info_queue, card)
         return {vars = { card.ability.extra.xmult }}
+    end,
+	
+	add_to_deck = function(self, card)
+        unlock_card(self)
     end,
 
     calculate = function(self, card, context)

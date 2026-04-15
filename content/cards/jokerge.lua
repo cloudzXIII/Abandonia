@@ -1,5 +1,12 @@
 SMODS.Joker {
     key = 'jokerge',
+	loc_txt = {
+        ['en-us'] = {
+			unlock = {
+				"?????",
+			},
+        }
+    },
     rarity = 4,
     atlas = 'AbandoniaJokers',
     pos = { x = 7, y = 34 },
@@ -7,6 +14,11 @@ SMODS.Joker {
     cost = 20,
     discovered = false,
     blueprint_compat = false,
+	unlocked = false,
+	
+	add_to_deck = function(self, card)
+        unlock_card(self)
+    end,
 
     update = function(self, card)
         if card.area == G.jokers then
@@ -36,8 +48,10 @@ SMODS.Joker {
                     j:juice_up()
                 end
             end
-
-            for _, j in ipairs(G.shop_jokers.cards) do double_joker_values(j) end
+			
+			if G.shop_jokers then
+				for _, j in ipairs(G.shop_jokers.cards) do double_joker_values(j) end
+			end
             for _, j in ipairs(G.jokers.cards) do if j ~= card then double_joker_values(j) end end
         end
     end,

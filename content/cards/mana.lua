@@ -1,5 +1,12 @@
 SMODS.Joker {
     key = 'mana',
+	loc_txt = {
+        ['en-us'] = {
+			unlock = {
+				"?????",
+			},
+        }
+    },
     rarity = 4,
     atlas = 'AbandoniaJokers',
     pos = { x = 3, y = 26 },
@@ -7,12 +14,17 @@ SMODS.Joker {
     cost = 20,
     discovered = false,
     blueprint_compat = true, 
+	unlocked = false,
     
     config = { extra = { dollars = 5 } },
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_sunscourge    
         return { vars = { card.ability.extra.dollars } }
+    end,
+	
+	add_to_deck = function(self, card)
+        unlock_card(self)
     end,
     
     calculate = function(self, card, context)

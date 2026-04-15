@@ -1,5 +1,12 @@
 SMODS.Joker {
   key = 'tom',
+  loc_txt = {
+    ['en-us'] = {
+		unlock = {
+			"?????",
+		},
+	}
+  },
   rarity = 4,
   atlas = 'AbandoniaJokers',
   pos = { x = 3, y = 34 },
@@ -7,6 +14,11 @@ SMODS.Joker {
   cost = 20,
   discovered = false,
   blueprint_compat = true,
+  unlocked = false,
+  
+  add_to_deck = function(self, card)
+	unlock_card(self)
+  end,
 
   calculate = function(self, card, context)
     -- target the rightmost card
