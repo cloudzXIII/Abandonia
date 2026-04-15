@@ -38,14 +38,30 @@ SMODS.Joker {
                         trigger = 'before',
                         delay = 0.4,
                         func = function()
-                            local _pool, _ = get_current_pool('Voucher', nil, nil, nil)
+                            local _pool = get_current_pool('Voucher')
                             local _voucher_key = nil
-                            local iv = 1
-                            _voucher_key = pseudorandom_element(_pool, pseudoseed('prenatural_vouch'))
                             
-                            while _voucher_key == 'UNAVAILABLE' or (G.P_CENTERS[_voucher_key] and G.P_CENTERS[_voucher_key].requires and not G.P_CENTERS[G.P_CENTERS[_voucher_key].requires].redeemed) do
-                                iv = iv + 1
-                                _voucher_key = pseudorandom_element(_pool, pseudoseed('prenatural_vouch' .. '_resample' .. iv))
+                            -- Check if pool is empty or only contains UNAVAILABLE
+                            if #_pool > 0 then
+                                local iv = 1
+                                _voucher_key = pseudorandom_element(_pool, pseudoseed('prenatural_vouch'))
+                                
+                                -- Safety loop for Tier 2 requirements
+                                while _voucher_key == 'UNAVAILABLE' or (
+                                    G.P_CENTERS[_voucher_key] and 
+                                    G.P_CENTERS[_voucher_key].requires and 
+                                    (not G.P_CENTERS[G.P_CENTERS[_voucher_key].requires] or not G.P_CENTERS[G.P_CENTERS[_voucher_key].requires].redeemed)
+                                ) do
+                                    iv = iv + 1
+                                    _voucher_key = pseudorandom_element(_pool, pseudoseed('prenatural_vouch' .. '_resample' .. iv))
+                                    -- If we've tried too many times, break to avoid infinite loop
+                                    if iv > 100 then _voucher_key = 'v_blank'; break end
+                                end
+                            end
+
+                            -- Fallback to Blank if nothing valid was found
+                            if not _voucher_key or _voucher_key == 'UNAVAILABLE' then 
+                                _voucher_key = 'v_blank' 
                             end
 
                             local voucher_card = create_card('Voucher', G.play, nil, nil, nil, nil, _voucher_key, 'pre')
