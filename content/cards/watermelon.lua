@@ -2,7 +2,7 @@ SMODS.Joker {
     key = 'watermelon',
     rarity = 1,
     atlas = 'AbandoniaJokers',
-    pos = { x = 4, y = 28 },
+    pos = { x = 4, y = 30 },
     cost = 6,
     discovered = false,
     blueprint_compat = true, 

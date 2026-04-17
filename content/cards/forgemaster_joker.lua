@@ -2,7 +2,7 @@ SMODS.Joker {
     key = 'forgemaster_joker',
     rarity = 2,
     atlas = 'AbandoniaJokers',
-    pos = { x = 3, y = 30 },
+    pos = { x = 3, y = 32 },
     cost = 6,
     discovered = false,
     blueprint_compat = true, 

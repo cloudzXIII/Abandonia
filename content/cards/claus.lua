@@ -9,8 +9,8 @@ SMODS.Joker{
         }
     },
     atlas = 'AbandoniaJokers',
-    pos = { x = 7, y = 33 },
-    soul_pos = { x = 8, y = 33 },
+    pos = { x = 7, y = 35 },
+    soul_pos = { x = 8, y = 35 },
     cost = 20,
     config = {
         extra = { dollars = 2 } 
