@@ -1,0 +1,116 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 214748365
+
+# Hard and Dry - Hide Boss Info (1/6)
+[[patches]] 
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "if not run_info then G.GAME.round_resets.blind_states[G.GAME.blind_on_deck] = 'Select' end"
+position = "after"
+payload = '''
+local abn_hide_blind = next(SMODS.find_card("j_abn_hard_and_dry")) and type == 'Boss'
+'''
+match_indent = true
+
+# Hard and Dry - Hide Description (2/6)
+[[patches]] 
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''
+for k, v in ipairs(text_table) do
+    blind_desc_nodes[#blind_desc_nodes+1] = {n=G.UIT.R, config={align = "cm", maxw = 2.8}, nodes=SMODS.localize_box(v, {default_col = disabled and G.C.UI.TEXT_INACTIVE or target.text_colour or G.C.WHITE, shadow = not disabled, vars = target.vars, scale = target.scale})}
+end
+'''
+position = "at"
+payload = '''
+if abn_hide_blind then
+    blind_desc_nodes[#blind_desc_nodes+1] = {n=G.UIT.R, config={align = "cm", maxw = 2.8}, nodes={
+        {n=G.UIT.T, config={text = "???", scale = 0.32, colour = disabled and G.C.UI.TEXT_INACTIVE or G.C.WHITE, shadow = not disabled}}
+    }}
+    blind_col = G.C.UI.TEXT_INACTIVE
+else
+    for k, v in ipairs(text_table) do
+        blind_desc_nodes[#blind_desc_nodes+1] = {n=G.UIT.R, config={align = "cm", maxw = 2.8}, nodes=SMODS.localize_box(v, {default_col = disabled and G.C.UI.TEXT_INACTIVE or target.text_colour or G.C.WHITE, shadow = not disabled, vars = target.vars, scale = target.scale})}
+    end
+end
+'''
+match_indent = true
+
+# Hard and Dry - Hide Name (3/6)
+[[patches]] 
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = ''' {n=G.UIT.R, config={id = 'blind_name',align = "cm", padding = 0.07}, nodes={
+    {n=G.UIT.R, config={align = "cm", r = 0.1, outline = 1, outline_colour = blind_col, colour = darken(blind_col, 0.3), minw = 2.9, emboss = 0.1, padding = 0.07, line_emboss = 1}, nodes={
+        {n=G.UIT.O, config={object = DynaText({string = loc_name, colours = {disabled and G.C.UI.TEXT_INACTIVE or G.C.WHITE}, shadow = not disabled, float = not disabled, y_offset = -4, scale = 0.45, maxw =2.8})}},
+    }},
+}},
+'''
+position = "before"
+payload = '''
+abn_hide_blind and {n=G.UIT.R, config={id = 'blind_name',align = "cm", padding = 0.07}, nodes={
+    {n=G.UIT.R, config={align = "cm", r = 0.1, outline = 1, outline_colour = G.C.UI.TEXT_INACTIVE, colour = darken(G.C.UI.TEXT_INACTIVE, 0.3), minw = 2.9, emboss = 0.1, padding = 0.07, line_emboss = 1}, nodes={
+        {n=G.UIT.O, config={object = DynaText({string = "???", colours = {disabled and G.C.UI.TEXT_INACTIVE or G.C.WHITE}, shadow = not disabled, float = not disabled, y_offset = -4, scale = 0.45, maxw =2.8})}},
+    }},
+}} or
+'''
+match_indent = true
+
+# Hard and Dry - Hide Score Requirement (4/6)
+[[patches]] 
+[patches.regex]
+target = "functions/UI_definitions.lua"
+pattern = '''(?<pre>function create_UIBox_blind_choice(?:.|\n)*?)
+(?<indent>[\t ]*)*\{n=G\.UIT\.T, config=\{text = (?<post>number_format\(blind_amt\),.*?)
+'''
+position = "at"
+payload = '''$pre
+$indent{n=G.UIT.T, config={text = abn_hide_blind and "???" or $post
+'''
+
+# Hard and Dry - Hide Money Reward (5/6)
+[[patches]] 
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = ''' _reward and {n=G.UIT.R, config={align = "cm"}, nodes={
+    {n=G.UIT.T, config={text = localize('ph_blind_reward'), scale = 0.35, colour = disabled and G.C.UI.TEXT_INACTIVE or G.C.WHITE, shadow = not disabled}},
+    {n=G.UIT.T, config={text = string.rep(localize("$"), blind_choice.config.dollars)..'+', scale = 0.35, colour = disabled and G.C.UI.TEXT_INACTIVE or G.C.MONEY, shadow = not disabled}}
+}} or nil,
+'''
+position = "before"
+payload = '''
+abn_hide_blind and _reward and {n=G.UIT.R, config={align = "cm"}, nodes={
+    {n=G.UIT.T, config={text = localize('ph_blind_reward'), scale = 0.35, colour = disabled and G.C.UI.TEXT_INACTIVE or G.C.WHITE, shadow = not disabled}},
+    {n=G.UIT.T, config={text = "???", scale = 0.35, colour = disabled and G.C.UI.TEXT_INACTIVE or G.C.MONEY, shadow = not disabled}}
+}} or
+'''
+match_indent = true
+
+# Hard and Dry - Override Blind Sprite (6/6)
+[[patches]] 
+[patches.regex]
+target = "functions/UI_definitions.lua"
+pattern = '''
+(?<indent>[\t ]*)function create_UIBox_blind_choice\(.*
+(?:.|\n)*?
+[\t ]*blind_choice\.animation = .*
+'''
+position = "after"
+line_prepend = '$indent'
+payload = '''
+  if abn_hide_blind then
+      -- Replace "abn_hidden_blind" with your actual atlas key for the mystery sprite
+      blind_choice.animation = SMODS.create_sprite(0,0, 1.4, 1.4, "abn_hidden_blind",  { x = 0, y = 0 })
+      if blind_choice.config.boss_colour ~= G.C.UI.TEXT_INACTIVE then
+          blind_choice.config.abn_old_boss_colour = blind_choice.config.boss_colour
+          blind_choice.config.boss_colour = G.C.UI.TEXT_INACTIVE
+      end
+  else
+      if blind_choice.config.abn_old_boss_colour ~= nil then
+          blind_choice.config.boss_colour = blind_choice.config.abn_old_boss_colour
+          blind_choice.config.abn_old_boss_colour = nil
+      end
+  end
+'''
