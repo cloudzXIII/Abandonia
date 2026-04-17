@@ -1803,8 +1803,8 @@ return {
 		  "{C:inactive}Currently{} {C:mult}+#1#{} {C:inactive}Mult {C:chips}+#2# {C:inactive}Chips",
         }
       },
-	  j_abn_insolvent_comedian = {
-        name = "Insolvent Comedian",
+	  j_abn_basiquat_joker = {
+        name = "Basiquat Joker",
         text = {
           "If hand contains an {C:attention}even{} number of scoring cards",
 		  "Gain {C:chips}Chips{} equal to {C:attention}twice{} the {C:money}sell value{} of current Jokers",
@@ -1870,6 +1870,42 @@ return {
         text = {
           "Jokers worth less than this Joker give {X:mult,C:white}X#1#{} Mult",
 		  "At end of the round increase Joker value by {C:money}$#2#",
+        }
+      },
+	  j_abn_insolvent_comedian = {
+        name = "Insolvent Comedian",
+        text = {
+          "All Jokers gain {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult{}",
+		  "If {C:attention}played hand{} is the same as the {C:attention}final hand{} of the {C:attention}previous round",
+		  "{C:inactive}Currently {C:attention}#4#",
+        }
+      },
+	  j_abn_inescapable_encounter = {
+        name = "Inescapable Encounter",
+        text = {
+          "Scored cards gain {C:chips}Chips{} equal to their {C:attention}ranks{}",
+		  "{C:mult}Skips{} are disabled",
+        }
+      },
+	  j_abn_joker_of_destruction = {
+        name = "Joker Of Destruction",
+        text = {
+          "If {C:attention}first hand{} is composed of {C:attention}4{} cards",
+		  "{C:mult}Destroy{} them and create a summoning {C:spectral}spectral{} card",
+        }
+      },
+	  j_abn_tier_list = {
+        name = "Tier List",
+        text = {
+          "Based on the rarity of the last obtained Joker grant the following:",
+		  "{C:common}Common{}: {C:chips}+#6#{} Chips",
+		  "{C:uncommon}Uncommon{}: {C:mult}+#7#{} Mult",
+		  "{C:rare}Rare{}: {X:mult,C:white}+X#8#{} Mult",
+		  "{C:abn_superrare}Super Rare: {X:chips,C:white}+X#9#{} Chips ",
+		  "{C:purple}Parallel Rare: {C:attention}+#10#{} Retriggers",
+		  "{C:legendary}Legendary{}: Double all values",
+		  "{C:inactive}Currently {C:attention}#5#{} {C:inactive}Retriggers{} {X:mult,C:white}X#3#{} {C:inactive}Mult{} {X:chips,C:white}X#4#{} {C:inactive}Chips{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#1#{} {C:inactive}Chips ",
+		  "Last Rarity: {C:attention}#11#{}",
         }
       },
     },
