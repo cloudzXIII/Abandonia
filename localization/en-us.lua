@@ -1908,6 +1908,13 @@ return {
 		  "Last Rarity: {C:attention}#11#{}",
         }
       },
+	  j_abn_hard_and_dry = {
+        name = "Hard and Dry",
+        text = {
+          "{C:attention}Double{} the values of the {C:attention}Leftmost{} Joker after defeating a blind",
+		  "Blinds are obscured",
+        }
+      },
     },
 
     Spectral = {
