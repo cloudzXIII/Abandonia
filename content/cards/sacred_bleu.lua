@@ -30,9 +30,8 @@ SMODS.Joker {
 
   rarity = 2,
   atlas = "AbandoniaJokers",
-  -- TODO: Add art to the atlas
-  pos = { x = 0, y = 0 },
-  soul_pos = { x = 0, y = 0 },
+  pos = { x = 6, y = 28 },
+  soul_pos = { x = 7, y = 28 },
   cost = 7,
 
   discovered = false,
