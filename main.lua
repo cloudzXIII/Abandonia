@@ -26,10 +26,19 @@ function loc_colour(_c, _default)
   G.ARGS.LOC_COLOURS.abn_sigil = HEX("fd5f55")
   G.ARGS.LOC_COLOURS.abn_nightshift = HEX("1a6a5f")
   G.ARGS.LOC_COLOURS.abn_astro = HEX("5204ff")
+  G.ARGS.LOC_COLOURS.abn_superrare = HEX("d59fcd")
+  G.ARGS.LOC_COLOURS.abn_parallelrare = HEX("b26cbb")
 
 
   return abn(_c, _default)
 end
+
+SMODS.Atlas({
+    key = 'modicon',
+    path = 'modicon.png',
+    px = '34',
+    py = '34'
+})
 
 SMODS.Atlas({
   key = "AbandoniaStickers",
@@ -150,6 +159,20 @@ SMODS.Atlas({
   path = "stakes.png",
   px = 29,
   py = 29,
+})
+
+SMODS.Atlas({
+  key = "AbandoniaDecks",
+  path = "decks.png",
+  px = 71,
+  py = 95,
+})
+
+SMODS.Atlas({
+  key = "abn_hidden_blind",
+  path = "hidden_blind.png",
+  px = 34,
+  py = 34,
 })
 
 -- Utilities
