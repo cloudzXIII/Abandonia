@@ -17,12 +17,12 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { mult = 0, chips = 0, dollars = 0, mult_gain = 10, chips_gain = 100, dollars_gain = 5 } },
-  
+  config = { extra = { mult = 0, chips = 0, dollars = 0, mult_gain = 3, chips_gain = 20, dollars_gain = 2 } },
+
   update = function(self, card)
     if card.area == G.shop_jokers then
-		card.cost = 30
-	end
+      card.cost = 30
+    end
   end,
 
   calculate = function(self, card, context)

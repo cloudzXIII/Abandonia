@@ -5,14 +5,14 @@ SMODS.Joker {
     return { vars = { card.ability.extra.xmult } }
   end,
 
-  rarity = 3,
+  rarity = 2,
   atlas = 'AbandoniaJokers',
   pos = { x = 6, y = 11 },
   cost = 8,
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { xmult = 4 } },
+  config = { extra = { xmult = 5 } },
 
   calculate = function(self, card, context)
     if context.stay_flipped and context.to_area == G.hand and G.GAME.current_round.hands_played == 0 and G.GAME.current_round.discards_used == 0 then

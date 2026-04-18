@@ -5,10 +5,10 @@ SMODS.Joker {
     return { vars = { card.ability.extra.mult, card.ability.extra.chips } }
   end,
 
-  rarity = 3,
+  rarity = 2,
   atlas = 'AbandoniaJokers',
   pos = { x = 0, y = 5 },
-  cost = 10,
+  cost = 7,
   discovered = false,
   blueprint_compat = true,
 
