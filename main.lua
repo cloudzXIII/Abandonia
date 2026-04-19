@@ -235,14 +235,19 @@ ABN.calculate = function(self, context)
     local ability = context.other_joker.ability
     local has_chips = ability.abn_perma_bonus and ability.abn_perma_bonus ~= 0
     local has_mult = ability.abn_perma_mult and ability.abn_perma_mult ~= 0
+    -- Adding checks for XMult and XChips
+    local has_x_mult = ability.abn_perma_xmult and ability.abn_perma_xmult ~= 1
+    local has_x_chips = ability.abn_perma_xchips and ability.abn_perma_xchips ~= 1
 
-    if has_chips or has_mult then
-      return {
-        chips = has_chips and ability.abn_perma_bonus or nil,
-        mult = has_mult and ability.abn_perma_mult or nil,
-        message_card = context.other_joker,
-        no_juice = true,
-      }
+    if has_chips or has_mult or has_x_mult or has_x_chips then
+        return {
+            chips = has_chips and ability.abn_perma_bonus or nil,
+            mult = has_mult and ability.abn_perma_mult or nil,
+            x_mult = has_x_mult and ability.abn_perma_xmult or nil,
+            x_chips = has_x_chips and ability.abn_perma_xchips or nil,
+            message_card = context.other_joker,
+            no_juice = true,
+        }
     end
   end
   if context.mod_probability and not context.blueprint and G.GAME.abn_possibility_sticker then
