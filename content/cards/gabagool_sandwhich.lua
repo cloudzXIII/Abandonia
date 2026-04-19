@@ -1,19 +1,19 @@
 SMODS.Joker {
-    key = 'watermelon',
+    key = 'gabagool_sandwhich',
     rarity = 1,
     atlas = 'AbandoniaJokers',
-    pos = { x = 4, y = 30 },
-    cost = 6,
+    pos = { x = 1, y = 33 },
+    cost = 4,
     discovered = false,
     blueprint_compat = true, 
 	pools = { ["Food"] = true,},
 	
-	config = { extra = { mult = 1, odds = 6} },
+	config = { extra = { chips = 10, odds = 8} },
 
 	
 	loc_vars = function(self, info_queue, card)
         local numerator,denominator = SMODS.get_probability_vars(card,1,card.ability.extra.odds)
-        return {vars = {numerator,denominator, card.ability.extra.mult }}
+        return {vars = {numerator,denominator, card.ability.extra.chips }}
     end,
 
 
@@ -26,15 +26,15 @@ SMODS.Joker {
             -- Ensure the target is actually a Joker
             if target ~= card and type(target) == 'table' and target.ability and target.ability.set == 'Joker' and target.config.center.key and target.config.center.key ~= 'j_abn_voracity_joker' and target.config.center.key ~= 'j_abn_busybee' then
                 
-                -- Apply the permanent mult
-                target.ability.abn_perma_mult = (target.ability.abn_perma_mult or 0) + card.ability.extra.mult
+                -- Apply the permanent chips
+                target.ability.abn_perma_bonus = (target.ability.abn_perma_bonus or 0) + card.ability.extra.chips
 				
                 card:juice_up()
 				
                 -- Visual Feedback
                 return {
-                    message = ("Yummy!"),
-                    colour = G.C.GREEN
+                    message = ("Delicious!"),
+                    colour = G.C.ATTENTION
                 }
                 
                 
@@ -42,11 +42,11 @@ SMODS.Joker {
         end
 		
         if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
-			if SMODS.pseudorandom_probability(card,'abn_watermelon',1,card.ability.extra.odds) then
+			if SMODS.pseudorandom_probability(card,'abn_gabagool',1,card.ability.extra.odds) then
 				SMODS.destroy_cards(card, nil, nil, true)
 				return {
-                    message = ("Yummy!"),
-                    colour = G.C.GREEN
+                    message = ("Delicious!"),
+                    colour = G.C.ATTENTION
                 }
 			else
                 return {
@@ -57,6 +57,6 @@ SMODS.Joker {
     end,
 
     abn_artist_credits = {
-        artist = "Mallory",
+        artist = "Gup",
     },
 }
