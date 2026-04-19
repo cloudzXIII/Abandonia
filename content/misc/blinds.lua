@@ -603,6 +603,118 @@ SMODS.Blind {
     end,
 }
 
+SMODS.Blind({
+	key = "bloody_chain",
+	boss = {
+		showdown = true,
+	},
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 41 },
+	boss_colour = HEX("f70000"),
+	recalc_debuff = function(self, card, from_blind)
+		if G.GAME.blind.disabled then
+			return false
+		end
+		if (card.area == G.jokers) and card.config.center and card.config.center.rarity and card.config.center.rarity == 3 then
+			return true
+		end
+	end,
+})
+
+SMODS.Blind({
+	key = "ocean_rook",
+	boss = {
+		showdown = true,
+	},
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 43 },
+	boss_colour = HEX("009eff"),
+	recalc_debuff = function(self, card, from_blind)
+		if G.GAME.blind.disabled then
+			return false
+		end
+		if card:get_id() and card:get_id() < 5 then
+			return true
+		end
+	end,
+})
+
+SMODS.Blind({
+	key = "murex_antisigma",
+	boss = {
+		showdown = true,
+	},
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 45 },
+	boss_colour = HEX("6d00db"),
+	recalc_debuff = function(self, card, from_blind)
+		if G.GAME.blind.disabled then
+			return false
+		end
+		if card:get_id() and card:get_id() > 5 then
+			return true
+		end
+	end,
+})
+
+SMODS.Blind({
+	key = "belphegors_prime",
+	boss = {
+		showdown = true,
+	},
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 47 },
+	boss_colour = HEX("e18171"),
+	recalc_debuff = function(self, card, from_blind)
+		if G.GAME.blind.disabled then
+			return false
+		end
+		
+		-- Define the target ranks
+		local primes = { [2] = true, [3] = true, [5] = true, [7] = true }
+		local id = card:get_id()
+
+		-- Debuff 2 3 5 and 7
+		if id and primes[id] then
+			return true
+		end
+	end,
+})
+
+SMODS.Blind({
+	key = "tumeric_chakra",
+	boss = {
+		showdown = true,
+	},
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 49 },
+	boss_colour = HEX("efc03c"),
+	debuff_hand = function(self, cards, hand, handname, check)
+		if G.GAME.blind.disabled then return end
+		
+		-- Count unique suits in the current selection
+		local suits_found = {}
+		local count = 0
+		for i = 1, #cards do
+			local suit = cards[i].base.suit
+			if not suits_found[suit] then
+				suits_found[suit] = true
+				count = count + 1
+			end
+		end
+
+		-- Disallow the hand if it has fewer than 3 different suits
+		if count < 3 then
+			return true
+		end
+	end,
+	get_loc_debuff_text = function(self)
+		return "Must have 3 suits!"
+	end,
+	loc_vars = function(self)
+		return { vars = { 3 } }
+	end
+})
 
 -- Hazard Blinds
 -- Hazard Heart
@@ -1862,3 +1974,184 @@ SMODS.Blind {
         }))
     end,
 }
+
+SMODS.Blind({
+	key = "hazard_chain",
+	boss = { showdown = true, hazard_blind = true },
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 42 },
+	boss_colour = HEX("f70000"),
+	recalc_debuff = function(self, card, from_blind)
+		if G.GAME.blind.disabled then
+			return false
+		end
+		if (card.area == G.jokers) and card.config.center and card.config.center.rarity and card.config.center.rarity == 3 then
+			return true
+		end
+	end,
+	
+	calculate = function(self, blind, context)
+		if not blind.disabled then
+			-- modify_hand is called right when the hand is played to determine base Chips/Mult
+			if context.modify_hand then
+				-- chips and mult are the base values for the poker hand played
+				blind.triggered = true
+				mult = mod_mult(math.max(math.floor(mult * 0.5 + 0.5), 1))
+				hand_chips = mod_chips(math.max(math.floor(hand_chips * 0.5 + 0.5), 0))
+				update_hand_text({ sound = 'chips2', modded = true }, { chips = hand_chips, mult = mult })
+			end
+        end
+    end,
+})
+SMODS.Blind({
+	key = "hazard_rook",
+	boss = { showdown = true, hazard_blind = true },
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 44 },
+	boss_colour = HEX("009eff"),
+	recalc_debuff = function(self, card, from_blind)
+		if G.GAME.blind.disabled then
+			return false
+		end
+		if card:get_id() and card:get_id() < 5 then
+			return true
+		end
+	end,
+	
+	calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.setting_blind then
+                blind.hands = {}
+                for _, poker_hand in ipairs(G.handlist) do
+                    blind.hands[poker_hand] = false
+                end
+            end
+            if context.debuff_hand then
+                if blind.hands[context.scoring_name] then
+                    blind.triggered = true
+                    return {
+                        debuff = true
+                    }
+                end
+                if not context.check then
+                    blind.hands[context.scoring_name] = true
+                end
+            end
+        end
+    end
+})
+SMODS.Blind({
+	key = "hazard_antisigma",
+	boss = { showdown = true, hazard_blind = true },
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 46 },
+	boss_colour = HEX("6d00db"),
+	recalc_debuff = function(self, card, from_blind)
+		if G.GAME.blind.disabled then
+			return false
+		end
+		if card:get_id() and card:get_id() > 5 then
+			return true
+		end
+	end,
+	calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.hand_drawn then
+                local any_forced = nil
+                for _, playing_card in ipairs(G.hand.cards) do
+                    if playing_card.ability.forced_selection then
+                        any_forced = true
+                    end
+                end
+                if not any_forced then
+                    G.hand:unhighlight_all()
+                    local forced_card = pseudorandom_element(G.hand.cards, 'vremade_cerulean_bell')
+                    forced_card.ability.forced_selection = true
+                    G.hand:add_to_highlighted(forced_card)
+                end
+            end
+        end
+    end,
+    disable = function(self)
+        for _, playing_card in ipairs(G.playing_cards) do
+            playing_card.ability.forced_selection = nil
+        end
+    end
+})
+
+SMODS.Blind({
+	key = "hazard_belphegor",
+	boss = { showdown = true, hazard_blind = true },
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 48 },
+	boss_colour = HEX("e18171"),
+	recalc_debuff = function(self, card, from_blind)
+		if G.GAME.blind.disabled then
+			return false
+		end
+		
+		-- Define the target ranks
+		local primes = { [2] = true, [3] = true, [5] = true, [7] = true }
+		local id = card:get_id()
+
+		-- Debuff 2 3 5 and 7
+		if id and primes[id] then
+			return true
+		end
+	end,
+	get_loc_debuff_text = function(self)
+        return G.GAME.blind.loc_debuff_text ..
+            (G.GAME.blind.only_hand and ' [' .. localize(G.GAME.blind.only_hand, 'poker_hands') .. ']' or '')
+    end,
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.setting_blind then
+                blind.only_hand = false
+            end
+            if context.debuff_hand then
+                if blind.only_hand and blind.only_hand ~= context.scoring_name then
+                    blind.triggered = true
+                    return {
+                        debuff = true
+                    }
+                end
+                if not context.check then
+                    blind.only_hand = context.scoring_name
+                end
+            end
+        end
+    end
+})
+
+SMODS.Blind({
+	key = "hazard_chakra",
+	boss = { showdown = true, hazard_blind = true },
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 50 },
+	boss_colour = HEX("efc03c"),
+	debuff_hand = function(self, cards, hand, handname, check)
+		if G.GAME.blind.disabled then return end
+		
+		-- Count unique suits in the current selection
+		local suits_found = {}
+		local count = 0
+		for i = 1, #cards do
+			local suit = cards[i].base.suit
+			if not suits_found[suit] then
+				suits_found[suit] = true
+				count = count + 1
+			end
+		end
+
+		-- Disallow the hand if it has fewer than 3 different suits
+		if count < 3 or G.GAME.current_round.discards_left > 0 then
+			return true
+		end
+	end,
+	get_loc_debuff_text = function(self)
+		return "Must have 3 suits and 0 discards!"
+	end,
+	loc_vars = function(self)
+		return { vars = { 3 } }
+	end
+})
