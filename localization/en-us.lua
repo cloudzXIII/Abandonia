@@ -836,7 +836,7 @@ return {
         }
       },
       j_abn_best_employ = {
-        name = "Best Employ",
+        name = "Best Employee",
         text = {
           "This Joker gains {C:white,X:mult}X#2#{} Mult",
           "for every {C:attention}Boss Blind{} beaten",
@@ -1718,6 +1718,15 @@ return {
           "Create a random {C:abn_Calamity}Calamity Card",
           "{C:inactive,s:0.8}[Currently: #2# Jokers Destroyed]",
           "{C:inactive}[Must Have Room]",
+        }
+      },
+      j_abn_ancient_prophet = {
+        name = "Ancient Prophet",
+        text = {
+          "Retrigger any {C:red}Debuffed{} and",
+          "{C:attention}Flipped{} card, {C:red}Debuffed{}",
+          "and {C:attention}Flipped{} cards give",
+          "{C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips when scored",
         }
       },
       j_abn_astro_joker = {
