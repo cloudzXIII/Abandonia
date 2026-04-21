@@ -716,6 +716,149 @@ SMODS.Blind({
 	end
 })
 
+SMODS.Blind({
+	key = "azurite_axe",
+	boss = {
+		showdown = true,
+	},
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 51 },
+	boss_colour = HEX("4b71e4"),
+	recalc_debuff = function(self, card, from_blind)
+		if G.GAME.blind.disabled then
+			return false
+		end
+		if (card.area == G.jokers) and card.config.center and card.config.center.rarity and card.config.center.rarity == 4 then
+			return true
+		end
+	end,
+})
+
+SMODS.Blind({
+    key = "amaranth_chalice",
+    boss = {
+        showdown = true,
+    },
+    atlas = "AbandoniaBlinds",
+    pos = { x = 0, y = 53 },
+    boss_colour = HEX("e65495"),
+	mult = 1,
+
+    calculate = function(self, blind, context)
+        if not blind.disabled and context.hand_drawn then
+            -- Clear the old target first
+            G.GAME.blind.amaranth_target = nil
+            
+            -- Pick a new random card from the current hand
+            if G.hand and G.hand.cards[1] then
+                local random_card = pseudorandom_element(G.hand.cards, pseudoseed('amaranth'))
+                G.GAME.blind.amaranth_target = random_card
+				SMODS.recalc_debuff(random_card)
+            end
+        end
+		
+		-- Blind Score Increase + Popup
+        if context.first_hand_drawn and not blind.disabled then
+            -- Display the popup message
+            G.E_MANAGER:add_event(Event({
+                trigger = 'immediate',
+                func = function()
+                    play_sound('whoosh1', 0.8, 0.7)
+                    attention_text({
+                        scale = 0.8,
+                        text = "X8 blind requirement",
+                        hold = 10,
+                        align = 'cm',
+                        offset = { x = 0, y = 0 },
+                        major = G.play
+                    })
+                        
+                    -- Update the actual score
+                    G.GAME.blind.chips = G.GAME.blind.chips * 8
+                    G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+                        
+                    return true
+                end
+            }))
+        end
+    end,
+
+    recalc_debuff = function(self, card, from_blind)
+        if G.GAME.blind.disabled then
+            return false
+        end
+        
+        -- Check if this card is the current target
+        if card.area == G.hand and G.GAME.blind.amaranth_target and card == G.GAME.blind.amaranth_target then
+            return true
+        end
+    end,
+})
+
+SMODS.Blind({
+	key = "inversion_arrow",
+	boss = {
+		showdown = true,
+	},
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 55 },
+	boss_colour = HEX("d4e3e5"),
+	debuff_hand = function(self, cards, hand, handname, spec)
+		if G.GAME.blind.disabled then return end
+
+		local has_even = false
+		local has_odd = false
+
+		for i = 1, #cards do
+			local id = cards[i]:get_id()
+			
+			if id == 14 then 
+				-- Treat Ace as Odd
+				has_odd = true
+			elseif id < 11 then 
+				-- Check numeric cards 2 through 10
+				if id % 2 == 0 then
+					has_even = true
+				else
+					has_odd = true
+				end
+			end
+		end
+
+		-- Hand is debuffed if it doesn't have at least one of each
+		if not (has_even and has_odd) then
+			return true
+		end
+	end,
+})
+
+SMODS.Blind({
+    key = "acid_tower",
+    boss = {
+        showdown = true,
+    },
+    atlas = "AbandoniaBlinds",
+    pos = { x = 0, y = 57 },
+    boss_colour = HEX("ccff33"),
+
+    press_play = function(self)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                -- Iterate backwards when removing items from a list to avoid indexing issues
+                for i = #G.jokers.cards, 1, -1 do
+                    local joker = G.jokers.cards[i]
+                    -- Check if the joker has an edition (Foil, Holo, Poly, Neg)
+                    if joker.edition then
+                        -- Dissolve the card
+                        joker:start_dissolve()
+                    end
+                end
+                return true
+            end
+        }))
+    end,
+})
+
 -- Hazard Blinds
 -- Hazard Heart
 
@@ -2154,4 +2297,220 @@ SMODS.Blind({
 	loc_vars = function(self)
 		return { vars = { 3 } }
 	end
+})
+
+
+SMODS.Blind({
+	key = "hazard_axe",
+	boss = { showdown = true, hazard_blind = true },
+	atlas = "AbandoniaBlinds",
+	pos = { x = 0, y = 52 },
+	boss_colour = HEX("4b71e4"),
+	recalc_debuff = function(self, card, from_blind)
+		if G.GAME.blind.disabled then
+			return false
+		end
+		if (card.area == G.jokers) and card.config.center and card.config.center.rarity and card.config.center.rarity == 4 then
+			return true
+		end
+	end,
+	debuff_hand = function(self, cards, hand, handname, check)
+		if G.GAME.blind.disabled then return end
+		
+		-- Check if any card in the hand is a Spade
+		local has_spade = false
+		for i = 1, #cards do
+			if cards[i]:is_suit("Spades") then
+				has_spade = true
+				break
+			end
+		end
+
+		-- Debuff the hand if it doesn't contain a Spade
+		if not has_spade then
+			return true
+		end
+	end,
+	get_loc_debuff_text = function(self)
+		return "Must include a Spade!"
+	end
+})
+
+SMODS.Blind({
+    key = "hazard_chalice",
+    boss = { showdown = true, hazard_blind = true },
+    atlas = "AbandoniaBlinds",
+    pos = { x = 0, y = 54 },
+    boss_colour = HEX("e65495"),
+    mult = 1,
+
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+            -- Refresh targets every time a hand is drawn
+            if context.hand_drawn then
+                -- Joker Debuff Logic
+                for i = 1, #G.jokers.cards do
+                    if G.jokers.cards[i].ability.hazard_chalice_joker then
+                        G.jokers.cards[i].ability.hazard_chalice_joker = nil
+						G.jokers.cards[i].wasdebuffed = false
+						G.jokers.cards[i]:set_debuff(false)
+                        SMODS.recalc_debuff(G.jokers.cards[i])
+                    end
+                end
+
+                if G.jokers.cards[1] then
+                    local random_joker = pseudorandom_element(G.jokers.cards, pseudoseed('hazard_joker'))
+                    random_joker.ability.hazard_chalice_joker = true
+                    SMODS.recalc_debuff(random_joker)
+                    random_joker:juice_up()
+                end
+
+                -- Playing Card Debuff Logic
+                G.GAME.blind.amaranth_target = nil
+                if G.hand and G.hand.cards[1] then
+                    local random_card = pseudorandom_element(G.hand.cards, pseudoseed('amaranth'))
+                    G.GAME.blind.amaranth_target = random_card
+                end
+                blind:wiggle()
+            end
+
+            -- Blind Score Increase + Popup
+            if context.first_hand_drawn then
+                -- Display the popup message
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'immediate',
+                    func = function()
+                        play_sound('whoosh1', 0.8, 0.7)
+                        attention_text({
+                            scale = 0.8,
+                            text = "X9 blind requirement",
+                            hold = 10,
+                            align = 'cm',
+                            offset = { x = 0, y = 0 },
+                            major = G.play
+                        })
+                        
+                        -- Update the actual score
+                        G.GAME.blind.chips = G.GAME.blind.chips * 9
+                        G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+                        
+                        return true
+                    end
+                }))
+            end
+        end
+    end,
+
+    recalc_debuff = function(self, card, from_blind)
+        if G.GAME.blind.disabled then return false end
+        if card.area == G.hand and G.GAME.blind.amaranth_target and card == G.GAME.blind.amaranth_target then
+            return true
+        end
+        if card.area == G.jokers and card.ability.hazard_chalice_joker then
+            return true
+        end
+    end,
+
+    disable = function(self)
+        for _, joker in ipairs(G.jokers.cards) do
+            joker.ability.hazard_chalice_joker = nil
+        end
+        G.GAME.blind.amaranth_target = nil
+    end,
+
+    defeat = function(self)
+        for _, joker in ipairs(G.jokers.cards) do
+            joker.ability.hazard_chalice_joker = nil
+        end
+        G.GAME.blind.amaranth_target = nil
+    end
+})
+
+SMODS.Blind({
+    key = "hazard_arrow",
+    boss = { showdown = true, hazard_blind = true },
+    atlas = "AbandoniaBlinds",
+    pos = { x = 0, y = 56 },
+    boss_colour = HEX("d4e3e5"),
+    
+    -- Localization variables for the UI to show the 1 in 5 chance
+    loc_vars = function(self)
+        local numerator, denominator = SMODS.get_probability_vars(self, 1, 5, 'hazard_arrow_flip')
+        return { vars = { numerator, denominator } }
+    end,
+
+    -- Debuff Logic: Hand is debuffed if it doesn't have both an Even and an Odd card
+    debuff_hand = function(self, cards, hand, handname, spec)
+        if G.GAME.blind.disabled then return end
+
+        local has_even = false
+        local has_odd = false
+
+        for i = 1, #cards do
+            local id = cards[i]:get_id()
+            
+            if id == 14 then 
+                -- Treat Ace as Odd
+                has_odd = true
+            elseif id < 11 then 
+                -- Check numeric cards 2 through 10
+                if id % 2 == 0 then
+                    has_even = true
+                else
+                    has_odd = true
+                end
+            end
+        end
+
+        if not (has_even and has_odd) then
+            return true
+        end
+    end,
+
+    -- Flipping Logic: 1/5 cards stay flipped when drawn to hand
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.stay_flipped and context.to_area == G.hand and
+                SMODS.pseudorandom_probability(blind, 'hazard_arrow_flip', 1, 5) then
+                return {
+                    stay_flipped = true
+                }
+            end
+        end
+    end,
+
+    -- Cleanup Logic: Flip cards back over when the blind is defeated or disabled
+    disable = function(self)
+        for i = 1, #G.hand.cards do
+            if G.hand.cards[i].facing == 'back' then
+                G.hand.cards[i]:flip()
+            end
+        end
+    end,
+})
+
+SMODS.Blind({
+    key = "hazard_tower",
+    boss = { showdown = true, hazard_blind = true },
+    atlas = "AbandoniaBlinds",
+	debuff = { h_size_ge = 5 },
+    pos = { x = 0, y = 58 },
+    boss_colour = HEX("ccff33"),
+
+    press_play = function(self)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                -- Iterate backwards when removing items from a list to avoid indexing issues
+                for i = #G.jokers.cards, 1, -1 do
+                    local joker = G.jokers.cards[i]
+                    -- Check if the joker has an edition (Foil, Holo, Poly, Neg)
+                    if joker.edition then
+                        -- Dissolve the card
+                        joker:start_dissolve()
+                    end
+                end
+                return true
+            end
+        }))
+    end,
 })
