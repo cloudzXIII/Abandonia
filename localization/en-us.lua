@@ -703,6 +703,15 @@ return {
           "{X:mult,C:white}X#3#{} Mult when scored"
         }
       },
+      j_abn_attack_777 = {
+        name = "Attack 777",
+        text = {
+          "{X:mult,C:white}X#3#{} Mult if played hand",
+          "contains only {C:hearts}Hearts{} and {C:diamonds}Diamonds{}",
+          "{C:green}#1# in #2#{} chance to",
+          "retrigger each played card"
+        }
+      },
       j_abn_digital_currency = {
         name = "Digital Currency",
         text = {
