@@ -251,7 +251,59 @@ return {
           "Hand must have atleast 3 suits",
         },
       },
+	  bl_abn_azurite_axe = {
+        name = "Azurite Axe",
+        text = {
+          "Legendary Jokers are debuffed",
+        },
+      },
+	  bl_abn_amaranth_chalice = {
+        name = "Amaranth Chalice",
+        text = {
+          "Debuff 1 card in hand and...",
+        },
+      },
+	  bl_abn_inversion_arrow = {
+        name = "Inversion Arrow",
+        text = {
+          "Must contain odd and even cards",
+        },
+      },
+	  bl_abn_acid_tower = {
+        name = "Acid Tower",
+        text = {
+          "Jokers with editions are destroyed",
+        },
+      },
       -- hazard
+	  bl_abn_hazard_tower = {
+        name = "Hazard Tower",
+        text = {
+          "Jokers with editions are destroyed",
+		  "Must play 5 cards",
+        },
+      },
+	  bl_abn_hazard_arrow = {
+        name = "Hazard Arrow",
+        text = {
+          "Must contain odd and even cards",
+		  "#1# in 5 cards are flipped",
+        },
+      },
+	  bl_abn_hazard_chalice = {
+        name = "Hazard Chalice",
+        text = {
+          "Debuff 1 card in hand",
+		  "1 random Joker and...",
+        },
+      },
+	  bl_abn_hazard_axe = {
+        name = "Hazard Axe",
+        text = {
+          "Legendary Jokers are debuffed",
+		  "Hand must contain a Spade",
+        },
+      },
 	  bl_abn_hazard_chakra = {
         name = "Hazard Chakra",
         text = {
