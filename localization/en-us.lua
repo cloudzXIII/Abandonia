@@ -3315,7 +3315,7 @@ return {
       ["abn_Straight Specflush"] = "Straight Specflush",
 
       ["abn_triple_pair"] = "Triple Pair",
-      ["abn_double_triple"] = "Triple Pair",
+      ["abn_double_triple"] = "Double Triple",
       ["abn_6oak"] = "Six of a Kind"
     },
     poker_hand_descriptions = {
