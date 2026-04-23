@@ -2444,6 +2444,15 @@ return {
       }
     },
     Planet = {
+      c_abn_queaor = {
+        name = "Queaor",
+        text = {
+          "({V:1}lvl.#1#{}) Level up",
+          "{C:attention}#2#",
+          "{C:mult}+#3#{} Mult and",
+          "{C:chips}+#4#{} chips",
+        },
+      },
       c_abn_itea = {
         name = "Itea",
         text = {
@@ -2517,7 +2526,7 @@ return {
         },
       },
       c_abn_grandcross = {
-        name = "Grandcross",
+        name = "Grand Cross",
         text = {
           "({V:1}lvl.#1#{}) Level up",
           "{C:attention}#2#",

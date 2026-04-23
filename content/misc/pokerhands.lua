@@ -45,6 +45,55 @@ SMODS.Consumable {
 }
 
 SMODS.PokerHand {
+  key = 'double_triple',
+  mult = 6,
+  chips = 60,
+  l_mult = 4,
+  l_chips = 40,
+  visible = false,
+  above_hand = 'Three of a Kind',
+  example = {
+    { 'H_Q', true },
+    { 'C_Q', true },
+    { 'D_Q', true },
+    { 'H_7', true },
+    { 'D_7', true },
+    { 'S_7', true },
+  },
+  evaluate = function(parts, hand)
+    if #hand == 6 then
+      if #parts._3 < 3 then
+        return {}
+      end
+      return parts._all_pairs
+    end
+  end
+}
+
+SMODS.Consumable {
+  key = "queaor",
+  set = "Planet",
+  cost = 4,
+  atlas = "AbandoniaPlanets",
+  pos = { x = 0, y = 0 },
+  config = { hand_type = "abn_double_triple", softlock = true },
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+        G.GAME.hands[card.ability.hand_type].level,
+        localize(card.ability.hand_type, 'poker_hands'),
+        G.GAME.hands[card.ability.hand_type].l_mult,
+        G.GAME.hands[card.ability.hand_type].l_chips,
+        colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+      }
+    }
+  end,
+  abn_artist_credits = {
+    artist = "Bunnet"
+  },
+}
+
+SMODS.PokerHand {
   key = 'triple_pair',
   mult = 3,
   chips = 20,
