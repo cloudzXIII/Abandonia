@@ -235,3 +235,14 @@ SMODS.Consumable {
     artist = "???",
   },
 }
+
+SMODS.Consumable {
+    key = 'orbit',
+    set = 'Tarot',
+    pos = { x = 5, y = 0 },
+	atlas = "AbandoniaTarots",
+    config = { max_highlighted = 3, suit_conv = 'abn_Penumbra' },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] } } }
+    end,
+}
