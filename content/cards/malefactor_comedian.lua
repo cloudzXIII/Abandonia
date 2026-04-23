@@ -31,23 +31,32 @@ SMODS.Joker {
 
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
-      local currentCard = context.other_card
-      if currentCard and ABN.is_light(currentCard) then
-        card.ability.extra.chips = card.ability.extra.chips + currentCard.base.nominal
-        return {
-          message = localize('k_upgrade_ex'),
-          colour = G.C.BLUE,
-          card = card
-        }
-      elseif currentCard and ABN.is_dark(currentCard) then
-        card.ability.extra.mult = card.ability.extra.mult + currentCard.base.nominal
-        return {
-          message = localize('k_upgrade_ex'),
-          colour = G.C.RED,
-          card = card
-        }
-      end
-    end
+        local currentCard = context.other_card
+        if currentCard then
+            local triggered = false
+
+            -- Check for light suit
+            if ABN.is_light(currentCard) then
+                card.ability.extra.chips = card.ability.extra.chips + currentCard.base.nominal
+                triggered = true
+            end
+
+            -- Check for dark suit
+            if ABN.is_dark(currentCard) then
+                card.ability.extra.mult = card.ability.extra.mult + currentCard.base.nominal
+                triggered = true
+            end
+
+            -- Return trigger animation
+            if triggered then
+                return {
+                    message = localize('k_upgrade_ex'),
+                    colour = (ABN.is_light(currentCard) and ABN.is_dark(currentCard)) and G.C.PURPLE or (ABN.is_light(currentCard) and G.C.BLUE or G.C.RED),
+                    card = card
+                }
+            end
+		end
+	end
 
 
     -- Scoring logic
