@@ -448,7 +448,7 @@ if not (next(SMODS.find_mod('Bunco')) or next(SMODS.find_mod("SixSuits")) or nex
     set = "Planet",
     cost = 4,
     atlas = "AbandoniaPlanets",
-    pos = { x = 1, y = 3 },
+    pos = { x = 2, y = 3 },
     config = { hand_type = "abn_Specflush Five", softlock = true },
     loc_vars = function(self, info_queue, card)
       return {
@@ -493,7 +493,7 @@ SMODS.Consumable {
   set = "Planet",
   cost = 4,
   atlas = "AbandoniaPlanets",
-  pos = { x = 2, y = 3 },
+  pos = { x = 3, y = 3 },
   config = { hand_type = "abn_Specflush Six", softlock = true },
   loc_vars = function(self, info_queue, card)
     return {
