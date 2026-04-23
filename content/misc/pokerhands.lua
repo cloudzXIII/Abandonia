@@ -75,7 +75,7 @@ SMODS.Consumable {
   set = "Planet",
   cost = 4,
   atlas = "AbandoniaPlanets",
-  pos = { x = 0, y = 0 },
+  pos = { x = 4, y = 3 },
   config = { hand_type = "abn_double_triple", softlock = true },
   loc_vars = function(self, info_queue, card)
     return {
