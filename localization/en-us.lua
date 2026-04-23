@@ -535,6 +535,24 @@ return {
       },
     },
     Joker = {
+      j_abn_attack_777 = {
+        name = "Attack 777",
+        text = {
+          "{X:mult,C:white}X#3#{} Mult if played hand contains",
+          "only {C:hearts}Hearts{} and {C:diamonds}Diamonds{}.",
+          "{C:green}#1# in #2#{} chance to retrigger",
+          "each {C:attention}played{} card",
+        }
+      },
+      j_abn_ancient_prophet = {
+        name = "Ancient Prophet",
+        text = {
+          "Retrigger any {C:red}Debuffed{} and",
+          "{C:attention}Flipped{} card, {C:red}Debuffed{}",
+          "and {C:attention}Flipped{} cards give",
+          "{C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips when scored",
+        }
+      },
       j_abn_trojan_joker = {
         name = "Trojan Joker",
         text = {
@@ -622,8 +640,8 @@ return {
         name = "Ambigram",
         text = {
           "Each played card gives",
-          "{C:mult}+#1#{} Mult when scored",
-          "if played hand is {C:attention}symmetrical{}",
+          "{C:mult}+#1#{} Mult when scored if",
+          "played hand is {C:attention}symmetrical{}",
           "{C:inactive}(Ex: 4, 3, 5, 3, 4)"
         }
       },
@@ -827,10 +845,10 @@ return {
         }
       },
       j_abn_best_employ = {
-        name = "Best Employ",
+        name = "Best Employee",
         text = {
           "This Joker gains {C:white,X:mult}X#2#{} Mult",
-          "For every {C:attention}Boss Blind{} beaten",
+          "for every {C:attention}Boss Blind{} beaten",
           "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
         }
       },
@@ -932,9 +950,9 @@ return {
         name = "Assassin Joker",
         text = {
           "When a hand is played,",
-          "destroy the {C:attention}lowest{} ranked card and",
-          "earn {C:money}$#3#{} and",
-          "This Joker gains {C:attention}+#2#{} Chips",
+          "destroy the {C:attention}lowest{} ranked",
+          "card and earn {C:money}$#3#{} and",
+          "This Joker gains {C:chips}+#2#{} Chips",
           "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
         }
       },
@@ -1691,7 +1709,8 @@ return {
       j_abn_ante_up = {
         name = "Ante Up!",
         text = {
-          "Cards {C:attention}held in hand{} give {C:attention}double{} their ranks as mult",
+          "Cards {C:attention}held in hand{} give",
+          "{C:attention}double{} their ranks as {C:red}Mult{}.",
           "Winning ante is {C:attention}doubled{}",
         }
       },
@@ -1706,23 +1725,25 @@ return {
         text = {
           "Every {C:attention}#1# Jokers Destroyed{}",
           "Create a random {C:abn_Calamity}Calamity Card",
+          "{C:inactive,s:0.8}[Currently: #2# Jokers Destroyed]",
           "{C:inactive}[Must Have Room]",
-          "{C:inactive}[Currently:#2# Jokers Destroyed]",
         }
       },
       j_abn_astro_joker = {
         name = "Astro Joker",
         text = {
           "All {C:abn_Astro}Astro Cards{} always {C:green}succeed",
-          "{C:green}#1# in #2# chance{} this {C:attention}Joker is destroyed at end of round.",
+          "{C:green}#1# in #2# chance{} this {C:attention}Joker{} is",
+          "{C:red}destroyed{} at end of round.",
         }
       },
       j_abn_archaic_joker = {
         name = "Archaic Joker",
         text = {
           "This Joker gains {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
-          "When a blind is defeated with an {C:attention}odd{} number of cards",
-          "{C:inactive}Currently {C:chips}+#3#{} {C:inactive}Chips{} {C:mult}+#4#{} {C:inactive}Mult{}",
+          "When a blind is defeated with",
+          "an {C:attention}odd{} number of cards",
+          "{C:inactive}(Currently {C:chips}+#3#{} {C:inactive}Chips{} {C:mult}+#4#{} {C:inactive}Mult{}{C:inactive})",
         }
       },
       j_abn_outdated_joker = {
@@ -1834,7 +1855,8 @@ return {
       j_abn_blackmore_joker = {
         name = "Blackmore Joker",
         text = {
-          "{C:attention}First scoring card{} gives its {C:attention}rank{} as {C:mult}Xmult{}",
+          "The first {C:attention}scoring card{} gives",
+          "its {C:attention}Rank{} as {X:mult,C:white} XMULT {}",
         }
       },
       j_abn_feste = {
@@ -1847,9 +1869,10 @@ return {
       j_abn_aliasing_joker = {
         name = "Aliasing Joker",
         text = {
-          "Adds {C:dark_edition}Gloss{}, {C:dark_edition}Pearlescene{}, or {C:dark_edition}Iridescendent{}",
-          "to first scoring {C:attention}number{} card of the {C:attention}first{} and {C:attention}final{} hand",
-          "Scoring cards with editions give {C:money}$#1#{}"
+          "Adds {C:dark_edition}Gloss{}, {C:dark_edition}Pearlescene{},",
+          "or {C:dark_edition}Iridescendent{} to first scoring",
+          "{C:attention}number{} card of the {C:attention}first{} and {C:attention}final{} hand",
+          "Scoring cards with editions give {C:money}$#1#{}",
         }
       },
       j_abn_ponzi = {
