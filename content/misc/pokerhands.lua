@@ -157,29 +157,6 @@ if not (next(SMODS.find_mod('Bunco')) or next(SMODS.find_mod("SixSuits")) or nex
         return parts.abn_spectrum
       end
     }
-    SMODS.Consumable {
-      key = "korim",
-      set = "Planet",
-      cost = 4,
-      atlas = "AbandoniaPlanets",
-      pos = { x = 3, y = 2 },
-      config = { hand_type = "abn_Spectrum", softlock = true },
-      loc_vars = function(self, info_queue, card)
-        return {
-          vars = {
-            G.GAME.hands[card.ability.hand_type].level,
-            localize(card.ability.hand_type, 'poker_hands'),
-            G.GAME.hands[card.ability.hand_type].l_mult,
-            G.GAME.hands[card.ability.hand_type].l_chips,
-            colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
-          }
-        }
-      end,
-      abn_artist_credits = {
-        artist = "Dallan"
-      },
-    }
-
 
     SMODS.PokerHand { -- Straight Spectrum (Copied from Paperback who referenced it from SixSuits, thanks!)
       key = 'Straight Spectrum',
@@ -213,28 +190,7 @@ if not (next(SMODS.find_mod('Bunco')) or next(SMODS.find_mod("SixSuits")) or nex
         end
       end
     }
-    SMODS.Consumable {
-      key = "malin",
-      set = "Planet",
-      cost = 4,
-      atlas = "AbandoniaPlanets",
-      pos = { x = 4, y = 2 },
-      config = { hand_type = "abn_Straight Spectrum", softlock = true },
-      loc_vars = function(self, info_queue, card)
-        return {
-          vars = {
-            G.GAME.hands[card.ability.hand_type].level,
-            localize(card.ability.hand_type, 'poker_hands'),
-            G.GAME.hands[card.ability.hand_type].l_mult,
-            G.GAME.hands[card.ability.hand_type].l_chips,
-            colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
-          }
-        }
-      end,
-      abn_artist_credits = {
-        artist = "Dallan"
-      },
-    }
+
     SMODS.PokerHand { -- Spectrum House (Copied from Paperback who referenced it from SixSuits, thanks!)
       key = 'Spectrum House',
       above_hand = 'Flush House',
@@ -256,28 +212,7 @@ if not (next(SMODS.find_mod('Bunco')) or next(SMODS.find_mod("SixSuits")) or nex
         return { SMODS.merge_lists(parts._all_pairs, parts.abn_spectrum) }
       end
     }
-    SMODS.Consumable {
-      key = "thaeton",
-      set = "Planet",
-      cost = 4,
-      atlas = "AbandoniaPlanets",
-      pos = { x = 5, y = 2 },
-      config = { hand_type = "abn_Spectrum House", softlock = true },
-      loc_vars = function(self, info_queue, card)
-        return {
-          vars = {
-            G.GAME.hands[card.ability.hand_type].level,
-            localize(card.ability.hand_type, 'poker_hands'),
-            G.GAME.hands[card.ability.hand_type].l_mult,
-            G.GAME.hands[card.ability.hand_type].l_chips,
-            colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
-          }
-        }
-      end,
-      abn_artist_credits = {
-        artist = "Dallan"
-      },
-    }
+
     SMODS.PokerHand { -- Spectrum Five (Copied from Paperback who referenced it from SixSuits, thanks!)
       key = 'Spectrum Five',
       above_hand = 'Flush Five',
@@ -300,28 +235,6 @@ if not (next(SMODS.find_mod('Bunco')) or next(SMODS.find_mod("SixSuits")) or nex
       end
     }
   end
-  SMODS.Consumable {
-    key = "muroth",
-    set = "Planet",
-    cost = 4,
-    atlas = "AbandoniaPlanets",
-    pos = { x = 0, y = 3 },
-    config = { hand_type = "abn_Spectrum Five", softlock = true },
-    loc_vars = function(self, info_queue, card)
-      return {
-        vars = {
-          G.GAME.hands[card.ability.hand_type].level,
-          localize(card.ability.hand_type, 'poker_hands'),
-          G.GAME.hands[card.ability.hand_type].l_mult,
-          G.GAME.hands[card.ability.hand_type].l_chips,
-          colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
-        }
-      }
-    end,
-    abn_artist_credits = {
-      artist = "Dallan"
-    },
-  }
   SMODS.PokerHand { -- Spectrum Six
     key = 'Spectrum Six',
     above_hand = 'Spectrum Five',
@@ -331,12 +244,12 @@ if not (next(SMODS.find_mod('Bunco')) or next(SMODS.find_mod("SixSuits")) or nex
     l_chips = 55,
     l_mult = 3,
     example = {
-      { 'S_7', true },
-      { 'D_7', true },
+      { 'S_7',      true },
+      { 'D_7',      true },
       { 'abn_SN_7', true },
-      { 'H_7', true },
-      { 'C_7', true },
-      { 'H_7', true, enhancement = "m_wild" },
+      { 'H_7',      true },
+      { 'C_7',      true },
+      { 'H_7',      true, enhancement = "m_wild" },
     },
 
     evaluate = function(parts, hand)
@@ -425,14 +338,14 @@ if not (next(SMODS.find_mod('Bunco')) or next(SMODS.find_mod("SixSuits")) or nex
     end,
   }
 
-  SMODS.PokerHand { -- Specflush Six
+  SMODS.PokerHand {
     key = 'Specflush Six',
     visible = false,
     chips = 200,
     mult = 20,
     l_chips = 80,
     l_mult = 5,
-    example = {
+	example = {
       { 'S_8', true },
       { 'D_8', true, enhancement = "m_wild" },
       { 'H_8', true, enhancement = "m_wild" },
@@ -440,9 +353,11 @@ if not (next(SMODS.find_mod('Bunco')) or next(SMODS.find_mod("SixSuits")) or nex
       { 'C_8', true, enhancement = "m_wild" },
       { 'S_8', true, enhancement = "m_wild" },
     },
-    evaluate = function(parts)
-      if not next(parts._5) or not next(parts.abn_spectrum) or not next(parts._flush) then return {} end
-      return { SMODS.merge_lists(parts.abn_spectrum, parts._flush, get_X_same(6, hand)) }
-    end,
+    evaluate = function(parts, hand)
+      local six_oak = get_X_same(6, hand)
+      if #hand == 6 and next(six_oak) and next(parts.abn_spectrum) and next(parts._flush) then
+        return { SMODS.merge_lists(six_oak, parts.abn_spectrum, parts._flush) }
+      end
+    end
   }
 end
