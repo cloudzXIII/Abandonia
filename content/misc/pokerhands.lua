@@ -362,7 +362,28 @@ if not (next(SMODS.find_mod('Bunco')) or next(SMODS.find_mod("SixSuits")) or nex
       return { SMODS.merge_lists(parts.abn_spectrum, parts._flush) }
     end,
   }
-
+  SMODS.Consumable {
+    key = "itea",
+    set = "Planet",
+    cost = 4,
+    atlas = "AbandoniaPlanets",
+    pos = { x = 1, y = 3 },
+    config = { hand_type = "abn_Specflush", softlock = true },
+    loc_vars = function(self, info_queue, card)
+      return {
+        vars = {
+          G.GAME.hands[card.ability.hand_type].level,
+          localize(card.ability.hand_type, 'poker_hands'),
+          G.GAME.hands[card.ability.hand_type].l_mult,
+          G.GAME.hands[card.ability.hand_type].l_chips,
+          colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+        }
+      }
+    end,
+    abn_artist_credits = {
+      artist = "Dallan"
+    },
+  }
   SMODS.PokerHand { -- Straight Specflush
     key = 'Straight Specflush',
     visible = false,
@@ -422,7 +443,28 @@ if not (next(SMODS.find_mod('Bunco')) or next(SMODS.find_mod("SixSuits")) or nex
       return { SMODS.merge_lists(parts.abn_spectrum, parts._flush, parts._5) }
     end,
   }
-
+  SMODS.Consumable {
+    key = "zakerna",
+    set = "Planet",
+    cost = 4,
+    atlas = "AbandoniaPlanets",
+    pos = { x = 1, y = 3 },
+    config = { hand_type = "abn_Specflush Five", softlock = true },
+    loc_vars = function(self, info_queue, card)
+      return {
+        vars = {
+          G.GAME.hands[card.ability.hand_type].level,
+          localize(card.ability.hand_type, 'poker_hands'),
+          G.GAME.hands[card.ability.hand_type].l_mult,
+          G.GAME.hands[card.ability.hand_type].l_chips,
+          colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+        }
+      }
+    end,
+    abn_artist_credits = {
+      artist = "Dallan"
+    },
+  }
   SMODS.PokerHand {
     key = 'Specflush Six',
     visible = false,
@@ -446,3 +488,25 @@ if not (next(SMODS.find_mod('Bunco')) or next(SMODS.find_mod("SixSuits")) or nex
     end
   }
 end
+SMODS.Consumable {
+  key = "veuv",
+  set = "Planet",
+  cost = 4,
+  atlas = "AbandoniaPlanets",
+  pos = { x = 2, y = 3 },
+  config = { hand_type = "abn_Specflush Six", softlock = true },
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+        G.GAME.hands[card.ability.hand_type].level,
+        localize(card.ability.hand_type, 'poker_hands'),
+        G.GAME.hands[card.ability.hand_type].l_mult,
+        G.GAME.hands[card.ability.hand_type].l_chips,
+        colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+      }
+    }
+  end,
+  abn_artist_credits = {
+    artist = "Dallan"
+  },
+}
