@@ -204,3 +204,22 @@ function ABN:calculate_blind_size_modify(blind_amount, ante)
   end
   return this_amount
 end
+
+function ABN:get_non_editioned_cards_in_deck()
+local non_editioned = {}
+for i,card in ipairs(G.deck.cards) do
+  if not card.edition then
+    table.insert(non_editioned,card)
+  end
+end
+return non_editioned
+end
+
+function ABN:update_non_editioned_cards_table(tabl,new_editioned_cards)
+for i,card in ipairs(new_editioned_cards) do
+  local result = table.find(tabl,card)
+  if result ~= nil then
+    table.remove(tabl,result)
+  end
+end
+end
