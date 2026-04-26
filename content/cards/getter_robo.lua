@@ -8,7 +8,7 @@ SMODS.Sound({
         if G.jokers then
 			for i = 1, #G.jokers.cards do
 				local j = G.jokers.cards[i]
-				if j.config.center.key and j.config.center.key == 'j_abn_getter_robo' then
+				if j.config.center.key and j.config.center.key == 'j_abn_getter_robo' and config.Music ~= false then
 					return 1e10
 				end
 			end

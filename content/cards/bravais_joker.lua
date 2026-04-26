@@ -19,14 +19,38 @@ SMODS.Joker {
     end,
 	
 	in_pool = function(self)
-		if not G.playing_cards then return false end
-            
-		for _, card in ipairs(G.playing_cards) do
-			if card and card.config and card.config.center and card.config.center == G.P_CENTERS.m_wild or card and card.config and card.config.center and card.config.center == G.P_CENTERS.m_abn_mercurial then
-				return true
-			end
-		end
-        return false
+        -- check for Wild or Mercurial cards in the deck
+        local has_card = false
+        if G.playing_cards then 
+            for _, card in ipairs(G.playing_cards) do
+                if card and card.config and card.config.center and (card.config.center == G.P_CENTERS.m_wild or card.config.center == G.P_CENTERS.m_abn_mercurial) then
+                    has_card = true
+                    break
+                end
+            end
+        end
+
+        -- check run data for played Spectrum hands
+        local hand_played = false
+        local spectrum_hands = {
+            "abn_Spectrum", 
+            "abn_Specflush", 
+            "abn_Straight Specflush", 
+            "abn_Specflush House", 
+            "abn_Specflush Five", 
+            "abn_Specflush Six"
+        }
+
+        if G.GAME and G.GAME.hands then
+            for _, hand_name in ipairs(spectrum_hands) do
+                if G.GAME.hands[hand_name] and G.GAME.hands[hand_name].played > 0 then
+                    hand_played = true
+                    break
+                end
+            end
+        end
+
+        return has_card and hand_played
     end,
 
     calculate = function(self, card, context)
