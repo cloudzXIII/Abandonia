@@ -35,10 +35,10 @@ function loc_colour(_c, _default)
 end
 
 SMODS.Atlas({
-    key = 'modicon',
-    path = 'modicon.png',
-    px = '34',
-    py = '34'
+  key = 'modicon',
+  path = 'modicon.png',
+  px = '34',
+  py = '34'
 })
 
 SMODS.Atlas({
@@ -60,6 +60,13 @@ SMODS.Atlas({
   path = "icons.png",
   px = 71,
   py = 95,
+})
+
+SMODS.Atlas({
+  key = "AbandoniaHazardTags",
+  path = "hazard_tags.png",
+  px = 34,
+  py = 34,
 })
 
 SMODS.Atlas({
@@ -241,14 +248,14 @@ ABN.calculate = function(self, context)
     local has_x_chips = ability.abn_perma_xchips and ability.abn_perma_xchips ~= 1
 
     if has_chips or has_mult or has_x_mult or has_x_chips then
-        return {
-            chips = has_chips and ability.abn_perma_bonus or nil,
-            mult = has_mult and ability.abn_perma_mult or nil,
-            x_mult = has_x_mult and ability.abn_perma_xmult or nil,
-            x_chips = has_x_chips and ability.abn_perma_xchips or nil,
-            message_card = context.other_joker,
-            no_juice = true,
-        }
+      return {
+        chips = has_chips and ability.abn_perma_bonus or nil,
+        mult = has_mult and ability.abn_perma_mult or nil,
+        x_mult = has_x_mult and ability.abn_perma_xmult or nil,
+        x_chips = has_x_chips and ability.abn_perma_xchips or nil,
+        message_card = context.other_joker,
+        no_juice = true,
+      }
     end
   end
   if context.mod_probability and not context.blueprint and G.GAME.abn_possibility_sticker then

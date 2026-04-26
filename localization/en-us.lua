@@ -1,6 +1,7 @@
 return {
   descriptions = {
     Tag = {
+      --#region Hazard Tags
       tag_abn_hazard_super = {
         name = "Super Hazard",
         text = {
@@ -96,6 +97,70 @@ return {
           "card in your {C:attention}full deck"
         }
       },
+      --#endregion
+      --#region Normal Tags
+      tag_abn_gloss = {
+        name = "Gloss Tag",
+        text = {
+          "Next base edition shop",
+          "Joker is free and",
+          "becomes {C:dark_edition}#1#",
+        },
+      },
+      tag_abn_pearlenscene = {
+        name = "Pearlenscene Tag",
+        text = {
+          "Next base edition shop",
+          "Joker is free and",
+          "becomes {C:dark_edition}#1#",
+        },
+      },
+      tag_abn_iridescent = {
+        name = "Iridescent Tag",
+        text = {
+          "Next base edition shop",
+          "Joker is free and",
+          "becomes {C:dark_edition}#1#",
+        },
+      },
+      tag_abn_abandon = {
+        name = "Abandon Tag",
+        text = {
+          "Next base edition shop",
+          "Joker is free and",
+          "becomes {C:dark_edition}#1#",
+        },
+      },
+      tag_abn_sunscourge = {
+        name = "Sunscourge Tag",
+        text = {
+          "Next base edition shop",
+          "Joker is free and",
+          "becomes {C:dark_edition}#1#",
+        },
+      },
+      tag_abn_calamity = {
+        name = "Calamity Tag",
+        text = {
+          "Gives a free",
+          "{C:attention}Calamity Pack",
+        }
+      },
+      tag_abn_sigil = {
+        name = "Sigil Tag",
+        text = {
+          "Gives a free",
+          "{C:attention}Sigil Pack",
+        }
+      },
+      tag_abn_astro = {
+        name = "Astro Tag",
+        text = {
+          "Gives a free",
+          "{C:attention}Astro Pack",
+        }
+      },
+      --#endregion
     },
     Blind = {
       bl_abn_magenta_magnet = {
