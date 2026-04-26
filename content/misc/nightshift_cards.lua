@@ -78,15 +78,25 @@ SMODS.Consumable {
     atlas = "AbandoniaNightshift",
     cost = 4,
     discovered = false,
-	hidden = false,
+	hidden = true,
 	soul_set = "Spectral",
-	soul_rate = 0.35,
+	soul_rate = 0.035,
+	
 	
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = { key = "abn_flipped_card", set = "Other" }
 		info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
 		return { vars = { (card and card.ability.extra.tags or self.config.extra.tags) } }
 	end,
+	
+	-- Use this hook to change the rate after the card object is created
+    set_ability = function(self, card, initial, delay_sprites)
+        if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect.center.key == 'b_abn_PoltergiestDeck' then
+            card.soul_rate = 0.1 -- Set the specialized rate
+        else
+            card.soul_rate = 0.035 -- Ensure it stays at default otherwise
+        end
+    end,
 	
     can_use = function(self, card)
         return true
@@ -134,9 +144,9 @@ SMODS.Consumable {
     atlas = "AbandoniaNightshift",
     cost = 4,
     discovered = false,
-	hidden = false,
+	hidden = true,
 	soul_set = "Spectral",
-	soul_rate = 0.35,
+	soul_rate = 0.035,
 	
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = { key = "abn_flipped_card", set = "Other" }
@@ -177,9 +187,9 @@ SMODS.Consumable {
     atlas = "AbandoniaNightshift",
     cost = 4,
     discovered = false,
-    hidden = false,
+    hidden = true,
     soul_set = "Spectral",
-    soul_rate = 0.35,
+    soul_rate = 0.035,
     
     loc_vars = function(self, info_queue, card)
         return { vars = { G.GAME.probabilities.normal, card.ability.extra.odds } }
@@ -219,9 +229,9 @@ SMODS.Consumable {
     atlas = "AbandoniaNightshift",
     cost = 4,
     discovered = false,
-    hidden = false,
+    hidden = true,
     soul_set = "Spectral",
-    soul_rate = 0.35,
+    soul_rate = 0.035,
     
     loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_chthonian
@@ -273,9 +283,9 @@ SMODS.Consumable {
     atlas = "AbandoniaNightshift",
     cost = 4,
     discovered = false,
-    hidden = false,
+    hidden = true,
     soul_set = "Spectral",
-    soul_rate = 0.35,
+    soul_rate = 0.035,
     
     loc_vars = function(self, info_queue, card)
         -- Fixed: vars should be a flat list, not a nested tuple-style table
