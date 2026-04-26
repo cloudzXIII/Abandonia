@@ -2,6 +2,26 @@ ABANDONIA = {}
 
 ABN = SMODS.current_mod
 
+SMODS.current_mod.config_tab = function()
+    local scale = 5/6
+    return {n=G.UIT.ROOT, config = {align = "cl", minh = G.ROOM.T.h*0.25, padding = 0.0, r = 0.1, colour = G.C.GREY}, nodes = {
+        {n = G.UIT.R, config = { padding = 0.05 }, nodes = {
+            {n = G.UIT.C, config = { minw = G.ROOM.T.w*0.25, padding = 0.05 }, nodes = {
+                create_toggle{ label = "Toggle Music", info = {"Enable Custom Music"}, active_colour = ABN.badge_colour, ref_table = ABN.config, ref_value = "Music" },
+            }}
+        }}
+    }}
+end
+
+
+ABN = SMODS.current_mod
+-- Load Options
+ABN_config = ABN.config
+-- This will save the current state even when settings are modified
+ABN.enabled = copy_table(ABN_config)
+
+local config = SMODS.current_mod.config
+
 ABN.description_loc_vars = function()
   return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2, shadow = true }
 end
@@ -35,10 +55,10 @@ function loc_colour(_c, _default)
 end
 
 SMODS.Atlas({
-  key = 'modicon',
-  path = 'modicon.png',
-  px = '34',
-  py = '34'
+    key = 'modicon',
+    path = 'modicon.png',
+    px = '34',
+    py = '34'
 })
 
 SMODS.Atlas({
@@ -183,6 +203,32 @@ SMODS.Atlas({
   py = 34,
 })
 
+SMODS.Sound({
+    key = 'music_title',
+    path = 'music_title.ogg',
+	pitch = 1,
+	speed = 1,
+    select_music_track = function(self)
+        -- If it's title play music
+        if G.STAGE == G.STAGES.MAIN_MENU and config.Music ~= false then
+            return 1e10
+        end
+    end
+})
+
+SMODS.Sound({
+    key = 'music_stakes',
+    path = 'music_stakes.ogg',
+	pitch = 1,
+	speed = 1,
+    select_music_track = function(self)
+        -- If it's stakes play music
+        if G.GAME.modifiers.Honor and config.Music ~= false then
+            return 1e10
+        end
+    end
+})
+
 -- Utilities
 local subdir = "utilities"
 local cards = NFS.getDirectoryItems(SMODS.current_mod.path .. subdir)
@@ -248,14 +294,14 @@ ABN.calculate = function(self, context)
     local has_x_chips = ability.abn_perma_xchips and ability.abn_perma_xchips ~= 1
 
     if has_chips or has_mult or has_x_mult or has_x_chips then
-      return {
-        chips = has_chips and ability.abn_perma_bonus or nil,
-        mult = has_mult and ability.abn_perma_mult or nil,
-        x_mult = has_x_mult and ability.abn_perma_xmult or nil,
-        x_chips = has_x_chips and ability.abn_perma_xchips or nil,
-        message_card = context.other_joker,
-        no_juice = true,
-      }
+        return {
+            chips = has_chips and ability.abn_perma_bonus or nil,
+            mult = has_mult and ability.abn_perma_mult or nil,
+            x_mult = has_x_mult and ability.abn_perma_xmult or nil,
+            x_chips = has_x_chips and ability.abn_perma_xchips or nil,
+            message_card = context.other_joker,
+            no_juice = true,
+        }
     end
   end
   if context.mod_probability and not context.blueprint and G.GAME.abn_possibility_sticker then
