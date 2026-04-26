@@ -1450,9 +1450,15 @@ return {
       j_abn_witching_hour = {
         name = "Witching Hour",
         text = {
-          "This Joker gains {X:mult,C:white}X#2#{} Mult",
-          "per card drawn face down",
-          "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+          {
+            "All cards with a {C:attention}dark suit{}",
+            "are drawn face down",
+          },
+          {
+            "This Joker gains {X:mult,C:white}X#2#{} Mult",
+            "per card drawn face down",
+            "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+          }
         }
       },
       j_abn_funambulist = {
