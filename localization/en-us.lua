@@ -2,7 +2,7 @@ return {
   descriptions = {
     Tag = {
       --#region Hazard Tags
-      tag_abn_hazard_super = {
+	  tag_abn_hazard_super = {
         name = "Super Hazard",
         text = {
           "Shop has a free",
@@ -97,7 +97,7 @@ return {
           "card in your {C:attention}full deck"
         }
       },
-      --#endregion
+	  --#endregion
       --#region Normal Tags
       tag_abn_gloss = {
         name = "Gloss Tag",
@@ -1376,6 +1376,15 @@ return {
           }
         }
       },
+      j_abn_jorick = {
+        name = "Jorik",
+        text = {
+          "This Joker gains",
+          "{X:mult,C:white} X#1# {} Mult every {C:attention}#2#{C:inactive} [#3#]{}",
+          "cards drawn to hand",
+          "{C:inactive}(Currently {X:mult,C:white} X#4# {C:inactive} Mult)",
+        },
+      },
       j_abn_nightstalker = {
         name = "Nightstalker Joker",
         text = {
@@ -1389,18 +1398,11 @@ return {
             "for each {C:dark_edition}#3#{} card",
             "in your {C:attention}full deck",
             "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
-          }
-        }
-      },
-      j_abn_jorick = {
-        name = "Jorik",
-        text = {
-          "This Joker gains",
-          "{X:mult,C:white} X#1# {} Mult every {C:attention}#2#{C:inactive} [#3#]{}",
-          "cards drawn to hand",
-          "{C:inactive}(Currently {X:mult,C:white} X#4# {C:inactive} Mult)",
+          },
         },
-      },
+	  },
+		
+	  
       j_abn_bloody_comedian = {
         name = "Bloody Comedian",
         text = {
@@ -1450,7 +1452,7 @@ return {
       j_abn_witching_hour = {
         name = "Witching Hour",
         text = {
-          {
+           {
             "All cards with a {C:attention}dark suit{}",
             "are drawn face down",
           },
@@ -1460,6 +1462,42 @@ return {
             "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
           }
         }
+      },
+	  j_abn_bitcoin_joker = {
+        name="Bitcoin Joker",
+        text={
+          "Whenever an {C:abn_Astro}Astro card{} {C:red}fails",
+          "gain {C:chips}+#1# chips{} and {C:dollars}+#2#$ sell value",
+          "Whenever an {C:abn_Astro}Astro card{} {C:green}succeeds",
+          "gain {C:mult}+#3# mult{}",
+          "{C:inactive}[Currently:{C:chips}+#4# chips {C:inactive}and {C:mult}+#5# mult{C:inactive}]",
+        },
+      },
+      j_abn_joker_form={
+        name="Joker Form",
+        text={
+          "Each played {C:attention}8{} or {C:attention}2 gives {C:chips}+#1#{} Chips",
+          "and {C:mult}+#2#{} Mult when scored",
+        },
+      },
+	  j_abn_10_4_joker={
+        name="10-4 Joker",
+        text={
+         "Each played {C:attention}10{} gains {C:mult}+#1#{} Mult",
+         "Each played {C:attention}4{} gains {C:chips}+#2#{} Chips"
+        },
+      },
+	  j_abn_light_collage={
+        name="Light Collage",
+        text={
+          "Gains {C:chips}+#1#{} Chips when a {C:edition}Foil{} card scores",
+          "Gains {C:mult}+#2#{} Mult when a {C:edition}Gloss{} card scores",
+          "{C:green}#3# in {C:green}#4#{} chance to convert 1 random non edition card",
+          "in the deck into a {C:edition}Foil{} card when {C:abn_sigil}Sigil card{} is used",
+          "{C:green}#5# in {C:green}#6#{} chance to convert 1 random non edition card",
+          "in the deck into a {C:edition}Gloss{} card when {C:abn_sigil}Sigil card{} is used",
+          "{C:inactive}[Currently:{C:chips}#7# chips{C:inactive} and {C:mult}#8# mult{C:inactive}]"
+        },
       },
       j_abn_funambulist = {
         name = "Funambulist",
@@ -2212,41 +2250,31 @@ return {
           "{C:inactive}Currently{} {C:mult}+#2#{} {C:inactive}mult{} {C:chips}+#1#{} {C:inactive}Chips",
         }
       },
-      j_abn_bitcoin_joker = {
-        name="Bitcoin Joker",
-        text={
-          "Whenever an {C:abn_Astro}Astro card{} {C:red}fails",
-          "gain {C:chips}+#1# chips{} and {C:dollars}+#2#$ sell value",
-          "Whenever an {C:abn_Astro}Astro card{} {C:green}succeeds",
-          "gain {C:mult}+#3# mult{}",
-          "{C:inactive}[Currently:{C:chips}+#4# chips {C:inactive}and {C:mult}+#5# mult{C:inactive}]",
-        },
+	  j_abn_photodegradation = {
+        name = "Photodegredation",
+        text = {
+          "When played hand contains a {C:attention}Spectrum{}",
+		  "Gain {C:chips}+#4#{} Chips and {C:mult}+#5#{} Mult for each card held in hand with matching suits",
+		  "If this Joker has an {C:dark_edition}edition{} gain {X:mult,C:white}X#6#{} Mult for matching suits",
+		  "{C:inactive}Currently:{} {X:mult,C:white}X#3#{} {C:inactive}Mult{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#1#{} {C:inactive}Chips{}"
+        }
       },
-      j_abn_joker_form={
-        name="Joker Form",
-        text={
-          "Each played {C:attention}8{} or {C:attention}2 gives {C:chips}+#1#{} Chips",
-          "and {C:mult}+#2#{} Mult when scored",
-        },
+	  j_abn_ulam_joker = {
+        name = "Ulam Joker",
+        text = {
+		  "Gains {C:mult}Mult{} and {C:chips}Chips{} equal to the rank difference",
+		  "between {C:attention}first{} and {C:attention}last{} scored cards in a {C:attention}Spectrum{} hand",
+		  "If this Joker has an {C:dark_edition}edition{} gains twice the difference",
+		  "{C:inactive}Currently:{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#1#{} {C:inactive}Chips{}"
+        }
       },
-      j_abn_10_4_joker={
-        name="10-4 Joker",
-        text={
-         "Each played {C:attention}10{} gains {C:mult}+#1#{} Mult",
-         "Each played {C:attention}4{} gains {C:chips}+#2#{} Chips"
-        },
-      },
-      j_abn_light_collage={
-        name="Light Collage",
-        text={
-          "Gains {C:chips}+#1#{} Chips when a {C:edition}Foil{} card scores",
-          "Gains {C:mult}+#2#{} Mult when a {C:edition}Gloss{} card scores",
-          "{C:green}#3# in {C:green}#4#{} chance to convert 1 random non edition card",
-          "in the deck into a {C:edition}Foil{} card when {C:abn_sigil}Sigil card{} is used",
-          "{C:green}#5# in {C:green}#6#{} chance to convert 1 random non edition card",
-          "in the deck into a {C:edition}Gloss{} card when {C:abn_sigil}Sigil card{} is used",
-          "{C:inactive}[Currently:{C:chips}#7# chips{C:inactive} and {C:mult}#8# mult{C:inactive}]"
-        },
+	  j_abn_beyond_the_rainbow = {
+        name = "Beyond The Rainbow",
+        text = {
+		  "Gain {X:mult,C:white}X#2#{} Mult for each different {C:attention}suit{} in {C:attention}Spectrum{} hands",
+		  "If this Joker has an {C:dark_edition}edition{} {C:green}#3# in #4#{} scoring cards create {C:attention}Double Tags{}",
+		  "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{}"
+        }
       },
     },
 
@@ -2495,6 +2523,11 @@ return {
           "{C:blue,s:1.3}J8-Bit{}",
           "{C:blue,s:1.3}EricTheToon{}",
           " ",
+		  "{C:red,s:2}Music by:",
+		  " ",
+		  "{C:red,s:1.3}Rkart{}",
+		  "{C:red,s:1.3}Firch{}",
+		  " ",
           "{C:green,s:2}Art by:",
           " ",
           "{C:green,s:1.2}People from the Balatro Discord!",
@@ -2567,15 +2600,6 @@ return {
       }
     },
     Planet = {
-      c_abn_queaor = {
-        name = "Queaor",
-        text = {
-          "({V:1}lvl.#1#{}) Level up",
-          "{C:attention}#2#",
-          "{C:mult}+#3#{} Mult and",
-          "{C:chips}+#4#{} chips",
-        },
-      },
       c_abn_itea = {
         name = "Itea",
         text = {
@@ -2786,6 +2810,15 @@ return {
           "{C:mult}+#3#{} Mult and",
           "{C:chips}+#4#{} chips"
         }
+      },
+	  c_abn_queaor = {
+        name = "Queaor",
+        text = {
+          "({V:1}lvl.#1#{}) Level up",
+          "{C:attention}#2#",
+          "{C:mult}+#3#{} Mult and",
+          "{C:chips}+#4#{} chips",
+        },
       },
     },
     Tarot = {
@@ -3380,7 +3413,7 @@ return {
       k_abn_increased = "Increased!",
       b_abn_ranks = "Ranks",
       k_abn_merged = "Merged!",
-      k_abn_holo = "Holographic!",
+	  k_abn_holo = "Holographic!",
 
     },
     labels = {
@@ -3439,7 +3472,7 @@ return {
       ["abn_Straight Specflush"] = "Straight Specflush",
 
       ["abn_triple_pair"] = "Triple Pair",
-      ["abn_double_triple"] = "Double Triple",
+	  ["abn_double_triple"] = "Double Triple",
       ["abn_6oak"] = "Six of a Kind"
     },
     poker_hand_descriptions = {
@@ -3485,7 +3518,7 @@ return {
       },
 
       ["abn_triple_pair"] = { "3 pairs of cards with different ranks", },
-      ["abn_double_triple"] = { "2 pairs of 3 cards with the same rank.", },
+	  ["abn_double_triple"] = { "2 pairs of 3 cards with the same rank.", },
       ["abn_6oak"] = { "6 cards with the same rank", }
     },
   }
