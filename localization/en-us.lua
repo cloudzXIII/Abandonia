@@ -2212,6 +2212,42 @@ return {
           "{C:inactive}Currently{} {C:mult}+#2#{} {C:inactive}mult{} {C:chips}+#1#{} {C:inactive}Chips",
         }
       },
+      j_abn_bitcoin_joker = {
+        name="Bitcoin Joker",
+        text={
+          "Whenever an {C:abn_Astro}Astro card{} {C:red}fails",
+          "gain {C:chips}+#1# chips{} and {C:dollars}+#2#$ sell value",
+          "Whenever an {C:abn_Astro}Astro card{} {C:green}succeeds",
+          "gain {C:mult}+#3# mult{}",
+          "{C:inactive}[Currently:{C:chips}+#4# chips {C:inactive}and {C:mult}+#5# mult{C:inactive}]",
+        },
+      },
+      j_abn_joker_form={
+        name="Joker Form",
+        text={
+          "Each played {C:attention}8{} or {C:attention}2 gives {C:chips}+#1#{} Chips",
+          "and {C:mult}+#2#{} Mult when scored",
+        },
+      },
+      j_abn_10_4_joker={
+        name="10-4 Joker",
+        text={
+         "Each played {C:attention}10{} gains {C:mult}+#1#{} Mult",
+         "Each played {C:attention}4{} gains {C:chips}+#2#{} Chips"
+        },
+      },
+      j_abn_light_collage={
+        name="Light Collage",
+        text={
+          "Gains {C:chips}+#1#{} Chips when a {C:edition}Foil{} card scores",
+          "Gains {C:mult}+#2#{} Mult when a {C:edition}Gloss{} card scores",
+          "{C:green}#3# in {C:green}#4#{} chance to convert 1 random non edition card",
+          "in the deck into a {C:edition}Foil{} card when {C:abn_sigil}Sigil card{} is used",
+          "{C:green}#5# in {C:green}#6#{} chance to convert 1 random non edition card",
+          "in the deck into a {C:edition}Gloss{} card when {C:abn_sigil}Sigil card{} is used",
+          "{C:inactive}[Currently:{C:chips}#7# chips{C:inactive} and {C:mult}#8# mult{C:inactive}]"
+        },
+      },
     },
 
     Spectral = {
