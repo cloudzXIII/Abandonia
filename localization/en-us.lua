@@ -1311,6 +1311,22 @@ return {
           }
         }
       },
+      j_abn_nightstalker = {
+        name = "Nightstalker Joker",
+        text = {
+          {
+            "All played {C:spades}Dark{} cards",
+            "become {C:dark_edition}#3#{}",
+            "when scored",
+          },
+          {
+            "Gives {X:mult,C:white} X#1# {} Mult",
+            "for each {C:dark_edition}#3#{} card",
+            "in your {C:attention}full deck",
+            "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+          }
+        }
+      },
       j_abn_jorick = {
         name = "Jorik",
         text = {
@@ -3257,6 +3273,7 @@ return {
       k_abn_increased = "Increased!",
       b_abn_ranks = "Ranks",
       k_abn_merged = "Merged!",
+      k_abn_holo = "Holographic!",
 
     },
     labels = {
