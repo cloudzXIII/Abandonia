@@ -1,3 +1,6 @@
+local config = SMODS.current_mod.config
+
+
 SMODS.Sound({
     key = 'music_bluff',
     path = 'music_bluff.ogg',

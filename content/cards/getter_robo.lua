@@ -1,3 +1,5 @@
+local config = SMODS.current_mod.config
+
 SMODS.Sound({
     key = 'music_shin',
     path = 'music_shin.ogg',
