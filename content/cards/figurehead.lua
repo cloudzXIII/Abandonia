@@ -15,7 +15,7 @@ SMODS.Joker {
   config = { extra = { repetitions = 1 } },
 
   calculate = function(self, card, context)
-    if context.retrigger_joker_check and context.other_card:is_rarity(4) then
+    if context.retrigger_joker_check and context.other_card.config.center and context.other_card.config.center.rarity and context.other_card.config.center.rarity == 4 then
       return { repetitions = 1 }
     end
   end,
