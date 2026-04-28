@@ -2276,6 +2276,37 @@ return {
 		  "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{}"
         }
       },
+	  j_abn_perfidious_comedian = {
+        name = "Perfidious Comedian",
+        text = {
+		  "{C:attention}Even{} scoring cards with {C:red}seals{} give {X:mult,C:white}X#1#{} Mult",
+		  "{C:attention}Odd{} scoring cards with {C:red}seals{} give {X:chips,C:white}X#2#{} Chips",
+        }
+      },
+	  j_abn_venom_comedian = {
+        name = "Venom Comedian",
+        text = {
+		  "Gain {X:mult,C:white}X#3#{} Mult per scoring {C:abn_snow}Snow{} card in {C:attention}Spectrum{} hands",
+		  "Gain {C:chips}+#4#{} Chips per scoring {C:abn_penumbra}Penumbra{} card in {C:attention}Spectrum{} hands",
+		  "If this Joker has an {C:dark_edition}edition{} played {C:attention}Spectrum{} hands gain {C:attention}2{} levels",
+		  "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips"
+        }
+      },
+	  j_abn_marmalize_joker = {
+        name = "Marmalize Joker",
+        text = {
+		  "Jokers can’t be {C:mult}debuffed{} or have {C:abn_perishable}stickers{}",
+		  "When {C:attention}Blind is selected{} all Jokers gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
+        }
+      },
+	  j_abn_backrooms_joker = {
+        name = "Backrooms Joker",
+        text = {
+		  "Blinds are obscured",
+		  "After defeating a blind create a {C:purple}Parallel Rare{} Joker with {C:abn_perishable}Perishable{} and {C:money}Rental{}",
+		  "If this Joker has an {C:dark_edition}edition{} each {C:purple}Parallel Rare{} gives {X:mult,C:white}X#1#{} Mult",
+        }
+      },
     },
 
     Spectral = {
