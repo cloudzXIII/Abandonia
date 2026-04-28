@@ -10,7 +10,7 @@ target = "functions/UI_definitions.lua"
 pattern = "if not run_info then G.GAME.round_resets.blind_states[G.GAME.blind_on_deck] = 'Select' end"
 position = "after"
 payload = '''
-local abn_hide_blind = next(SMODS.find_card("j_abn_hard_and_dry")) and type == 'Boss'
+local abn_hide_blind = next(SMODS.find_card("j_abn_hard_and_dry")) and type == 'Boss' or next(SMODS.find_card("j_abn_backrooms_joker")) and type == 'Boss'
 '''
 match_indent = true
 
