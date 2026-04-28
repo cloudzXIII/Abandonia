@@ -2307,6 +2307,19 @@ return {
 		  "If this Joker has an {C:dark_edition}edition{} each {C:purple}Parallel Rare{} gives {X:mult,C:white}X#1#{} Mult",
         }
       },
+	  j_abn_fraud_soul = {
+        name = "Fraud Soul",
+        text = {
+		  "When {C:attention}blind is selected{}",
+		  "Held {C:tarot}Tarots{} give the {C:attention}rightmost{} Joker {C:chips}+#1#{} Chips",
+		  "Held {C:planet}Planets{} give the {C:attention}rightmost{} Joker {C:mult}+#2#{} Mult",
+		  "Held {C:spectral}Spectrals{} give the {C:attention}rightmost{} Joker {X:mult,C:white}+X#3#{} Mult",
+		  "Held {C:abn_sigil}Sigils{} give the {C:attention}rightmost{} Joker {X:chips,C:white}+X#4#{} Chips",
+		  "Held {C:abn_astro}Astros{} give the {C:attention}rightmost{} Joker {C:money}$#5#{}",
+		  "Held {C:abn_calamity}Calamitys{} double all values on this Joker",
+		  "Held {C:abn_nightshift}Nightshifts{} give a {C:attention}random{} card in hand {C:attention}+#6#{} Retriggers",
+        }
+      },
     },
 
     Spectral = {
@@ -3441,6 +3454,9 @@ return {
       abn_joker_mult = "Bonus Mult",
       abn_joker_xmult = "Bonus Mult",
       abn_joker_xchips = "Bonus Chips",
+	  abn_joker_xchips = "Bonus Chips",
+	  abn_joker_dollars = "Bonus Dollars",
+	  abn_joker_rep = "Bonus Repetitions",
       k_abn_increased = "Increased!",
       b_abn_ranks = "Ranks",
       k_abn_merged = "Merged!",
