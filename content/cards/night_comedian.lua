@@ -34,6 +34,7 @@ SMODS.Joker {
       cardmult = 4,
     }
   },
+  pools = { ["Comedians"] = true,},
 
 
   update = function(self, card)

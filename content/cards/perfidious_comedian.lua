@@ -22,6 +22,7 @@ SMODS.Joker {
   blueprint_compat = true,
 
   config = { extra = { xmult = 2.5, xchips = 2.4, } },
+  pools = { ["Comedians"] = true,},
 
 
   update = function(self, card)

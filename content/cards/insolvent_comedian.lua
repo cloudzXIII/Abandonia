@@ -14,6 +14,7 @@ SMODS.Joker {
       required_hand = "None", -- Stores the required hand for the current round
     }
   },
+  pools = { ["Comedians"] = true,},
 
   loc_vars = function(self, info_queue, card)
     return {

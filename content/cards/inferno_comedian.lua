@@ -17,6 +17,7 @@ SMODS.Joker {
   blueprint_compat = true,
 
   config = { extra = { xmult = 1.7, chips = 0, mult = 0, chips_gain = 50, mult_gain = 5 } },
+  pools = { ["Comedians"] = true,},
 
   update = function(self, card)
     if card.area == G.shop_jokers then

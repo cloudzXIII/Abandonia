@@ -17,6 +17,7 @@ SMODS.Joker {
   blueprint_compat = true,
 
   config = { extra = { xmult = 1.5 } },
+  pools = { ["Comedians"] = true,},
   
   
   update = function(self, card)
@@ -43,11 +44,8 @@ SMODS.Joker {
         }))
         G.E_MANAGER:add_event(Event({
           func = function()
-            SMODS.add_card {
-              set = 'Joker',
-              rarity = 'abn_SuperRare',
-              key_append = 'abn_bloody'
-            }
+            local new_card = create_card("Comedians", G.jokers, nil, nil, nil, nil, nil, 'Brat')
+            G.jokers:emplace(new_card)
             return true
           end
         }))

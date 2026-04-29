@@ -23,6 +23,7 @@ SMODS.Joker {
   blueprint_compat = true,
 
   config = { extra = { xmult = 1, xmultadd = 1, pity = 0 } },
+  pools = { ["Comedians"] = true,},
 
   -- cannot appear in shop
   in_pool = function(self, args)

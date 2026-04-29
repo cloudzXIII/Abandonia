@@ -8,6 +8,7 @@ SMODS.Joker {
     blueprint_compat = true, 
     
     config = { extra = { chips = 0, xmult = 1, chipsadd = 100, xmultadd = 0.1 } },
+	pools = { ["Comedians"] = true,},
     
     set_badges = function(self, card, badges)
         badges[#badges + 1] = create_badge(localize("k_abn_comedian"), G.C.ORANGE, G.C.WHITE, 1.0)
