@@ -45,7 +45,7 @@ SMODS.Joker {
         end
 		
 		if context.mod_probability and not context.blueprint and not context.retrigger_joker then
-			if context.trigger_obj.config.center.pools and context.trigger_obj.config.center.pools.Food and not next(SMODS.find_card('j_abn_busybee')) then
+			if context.trigger_obj and context.trigger_obj.config and context.trigger_obj.config.center and context.trigger_obj.config.center.pools and context.trigger_obj.config.center.pools.Food and not next(SMODS.find_card('j_abn_busybee')) then
 				-- Only return the new denominator if the current one isn't already the target value
 				if context.trigger_obj.ability.denominator ~= card.ability.extra.odds then
 					return {
