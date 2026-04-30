@@ -10,20 +10,20 @@ SMODS.Joker {
   end,
 
   rarity = "abn_SuperRare",
-  atlas = 'AbandoniaJokers',
-  pos = { x = 6, y = 16 },
+  atlas = 'ABNJokerSheet4',
+  pos = { x = 6, y = 1 },
   cost = 20,
   discovered = false,
   blueprint_compat = true,
 
   config = { extra = { xmult = 1.5 } },
-  pools = { ["Comedians"] = true,},
-  
-  
+  pools = { ["Comedians"] = true, },
+
+
   update = function(self, card)
     if card.area == G.shop_jokers then
-		card.cost = 30
-	end
+      card.cost = 30
+    end
   end,
 
   calculate = function(self, card, context)

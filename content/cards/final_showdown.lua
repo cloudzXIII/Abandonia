@@ -63,8 +63,8 @@ SMODS.Joker {
   end,
 
   rarity = 2,
-  atlas = 'AbandoniaJokers',
-  pos = { x = 4, y = 11 },
+  atlas = 'ABNJokerSheet3',
+  pos = { x = 4, y = 1 },
   cost = 6,
   discovered = false,
   blueprint_compat = false,

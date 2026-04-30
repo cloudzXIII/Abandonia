@@ -17,14 +17,14 @@ SMODS.Joker {
   end,
 
   rarity = "abn_SuperRare",
-  atlas = 'AbandoniaJokers',
-  pos = { x = 4, y = 17 },
+  atlas = 'ABNJokerSheet4',
+  pos = { x = 4, y = 2 },
   cost = 20,
   discovered = false,
   blueprint_compat = true,
 
   config = { extra = { xmult = 1, xmultadd = 0.3, chips = 0, chipsadd = 100 } },
-  pools = { ["Comedians"] = true,},
+  pools = { ["Comedians"] = true, },
 
 
   update = function(self, card)
@@ -68,7 +68,7 @@ SMODS.Joker {
 
         -- Look back at previous cards in the scoring hand to see if this rank already scored
         for i = 1, #context.scoring_hand do
-          if context.scoring_hand[i] == current_card then break end       -- Stop when we hit the current card
+          if context.scoring_hand[i] == current_card then break end -- Stop when we hit the current card
           if context.scoring_hand[i]:get_id() == rank then
             is_unique = false
             break

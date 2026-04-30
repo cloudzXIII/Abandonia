@@ -28,8 +28,8 @@ SMODS.Joker {
         }
     end,
     rarity = 3,
-    atlas = 'AbandoniaJokers',
-    pos = { x = 8, y = 11 },
+    atlas = 'ABNJokerSheet3',
+    pos = { x = 8, y = 1 },
     cost = 12,
     discovered = false,
     calculate = function(self, card, context)

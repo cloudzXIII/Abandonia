@@ -2,8 +2,8 @@ SMODS.Joker {
   key = 'missing_texture',
 
   rarity = 2,
-  atlas = 'AbandoniaJokers',
-  pos = { x = 6, y = 18 },
+  atlas = 'ABNJokerSheet4',
+  pos = { x = 6, y = 3 },
   cost = 6,
   discovered = false,
   blueprint_compat = false,

@@ -29,8 +29,8 @@ SMODS.Joker {
     end,
     rarity = 2,
     cost = 6,
-    atlas = 'AbandoniaJokers',
-    pos = { x = 4, y = 5 },
+    atlas = 'ABNJokerSheet2',
+    pos = { x = 4, y = 0 },
     discovered = false,
     calculate = function(self, card, context)
         -- add xmult

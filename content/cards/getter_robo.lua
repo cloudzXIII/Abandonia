@@ -1,32 +1,32 @@
 local config = SMODS.current_mod.config
 
 SMODS.Sound({
-    key = 'music_shin',
-    path = 'music_shin.ogg',
-	pitch = 1,
-	speed = 1,
-    select_music_track = function(self)
-        -- If it's anime time play music
-        if G.jokers then
-			for i = 1, #G.jokers.cards do
-				local j = G.jokers.cards[i]
-				if j.config.center.key and j.config.center.key == 'j_abn_getter_robo' and config.Music ~= false then
-					return 1e10
-				end
-			end
-		end
+  key = 'music_shin',
+  path = 'music_shin.ogg',
+  pitch = 1,
+  speed = 1,
+  select_music_track = function(self)
+    -- If it's anime time play music
+    if G.jokers then
+      for i = 1, #G.jokers.cards do
+        local j = G.jokers.cards[i]
+        if j.config.center.key and j.config.center.key == 'j_abn_getter_robo' and config.Music ~= false then
+          return 1e10
+        end
+      end
     end
+  end
 })
 
 -- Getter Robo Joker
 SMODS.Joker {
   key = 'getter_robo',
   rarity = 2,
-  atlas = 'AbandoniaJokers',
-  pos = { x = 4, y = 14 },
+  atlas = 'ABNJokerSheet3',
+  pos = { x = 4, y = 4 },
   cost = 2,
   blueprint_compat = true,
-  config = { extra = { Xmult = 5, Xchips = 1, Boss = 2, } },   -- Changed config to reflect money focus
+  config = { extra = { Xmult = 5, Xchips = 1, Boss = 2, } }, -- Changed config to reflect money focus
 
   loc_vars = function(self, info_queue, card)
     return {

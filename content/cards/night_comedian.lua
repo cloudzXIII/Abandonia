@@ -18,8 +18,8 @@ SMODS.Joker {
   end,
 
   rarity = "abn_SuperRare",
-  atlas = 'AbandoniaJokers',
-  pos = { x = 9, y = 16 },
+  atlas = 'ABNJokerSheet4',
+  pos = { x = 9, y = 1 },
   cost = 20,
   discovered = false,
   blueprint_compat = true,
@@ -34,7 +34,7 @@ SMODS.Joker {
       cardmult = 4,
     }
   },
-  pools = { ["Comedians"] = true,},
+  pools = { ["Comedians"] = true, },
 
 
   update = function(self, card)

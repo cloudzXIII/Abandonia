@@ -14,7 +14,7 @@ SMODS.Joker { -- This currently excludes when a flush is levelled up otherwise i
   end,
 
   rarity = 1,
-  atlas = 'AbandoniaJokers',
+  atlas = 'ABNJokerSheet1',
   pos = { x = 7, y = 4 },
   cost = 4,
   discovered = false,

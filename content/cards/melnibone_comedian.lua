@@ -29,14 +29,14 @@ SMODS.Joker {
   end,
 
   rarity = "abn_SuperRare",
-  atlas = 'AbandoniaJokers',
-  pos = { x = 4, y = 25 },
+  atlas = 'ABNJokerSheet6',
+  pos = { x = 4, y = 0 },
   cost = 20,
   discovered = false,
   blueprint_compat = true,
 
   config = { extra = { xmult = 1, xmultadd = 0.3, chips = 0, chipsadd = 100 } },
-  pools = { ["Comedians"] = true,},
+  pools = { ["Comedians"] = true, },
 
   in_pool = function(self)
     if G.STATE ~= G.STATES.SHOP then

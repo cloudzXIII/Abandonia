@@ -10,7 +10,7 @@ SMODS.Joker {
   end,
 
   rarity = 3,
-  atlas = 'AbandoniaJokers',
+  atlas = 'ABNJokerSheet1',
   pos = { x = 0, y = 1 },
   cost = 10,
   discovered = false,

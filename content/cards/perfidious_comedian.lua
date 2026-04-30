@@ -15,14 +15,14 @@ SMODS.Joker {
   end,
 
   rarity = "abn_SuperRare",
-  atlas = 'AbandoniaJokers',
-  pos = { x = 2, y = 22 },
+  atlas = 'ABNJokerSheet5',
+  pos = { x = 2, y = 2 },
   cost = 20,
   discovered = false,
   blueprint_compat = true,
 
   config = { extra = { xmult = 2.5, xchips = 2.4, } },
-  pools = { ["Comedians"] = true,},
+  pools = { ["Comedians"] = true, },
 
 
   update = function(self, card)
@@ -32,7 +32,6 @@ SMODS.Joker {
   end,
 
   calculate = function(self, card, context)
-
     -- Trigger for each card as it scores
     if context.individual and context.cardarea == G.play then
       if ABN.is_even(context.other_card) and context.other_card.seal then

@@ -16,14 +16,14 @@ SMODS.Joker {
   end,
 
   rarity = "abn_SuperRare",
-  atlas = 'AbandoniaJokers',
-  pos = { x = 8, y = 16 },
+  atlas = 'ABNJokerSheet4',
+  pos = { x = 8, y = 1 },
   cost = 20,
   discovered = false,
   blueprint_compat = true,
 
   config = { extra = { xmult = 1, xmultadd = 1, pity = 0 } },
-  pools = { ["Comedians"] = true,},
+  pools = { ["Comedians"] = true, },
 
   -- cannot appear in shop
   in_pool = function(self, args)
@@ -41,7 +41,7 @@ SMODS.Joker {
       if card.ability.extra.pity >= 6 then
         local chance = math.random(1, 4)
         if chance == 2 then
-          card.ability.extra.pity = 0       -- Reset pity
+          card.ability.extra.pity = 0 -- Reset pity
 
           -- Create a SuperRare card
           local new_card = SMODS.create_card({

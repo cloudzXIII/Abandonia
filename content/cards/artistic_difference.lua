@@ -2,8 +2,8 @@ SMODS.Joker {
   key = 'artistic_difference',
 
   rarity = 1,
-  atlas = 'AbandoniaJokers',
-  pos = { x = 2, y = 12 },
+  atlas = 'ABNJokerSheet3',
+  pos = { x = 2, y = 2 },
   cost = 4,
   discovered = false,
   blueprint_compat = true,

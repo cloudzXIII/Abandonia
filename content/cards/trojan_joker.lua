@@ -95,8 +95,8 @@ SMODS.Joker {
   key = 'trojan_joker',
 
   rarity = 3,
-  atlas = "AbandoniaJokers",
-  pos = { x = 2, y = 30 },
+  atlas = "ABNJokerSheet6",
+  pos = { x = 2, y = 1 },
   cost = 2,
 
   discovered = false,

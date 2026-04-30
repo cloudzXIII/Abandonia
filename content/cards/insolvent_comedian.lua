@@ -1,8 +1,8 @@
 SMODS.Joker {
   key = 'insolvent_comedian',
   rarity = "abn_SuperRare",
-  atlas = 'AbandoniaJokers',
-  pos = { x = 0, y = 17 },
+  atlas = 'ABNJokerSheet4',
+  pos = { x = 0, y = 2 },
   cost = 20,
   discovered = false,
   blueprint_compat = true,
@@ -14,7 +14,7 @@ SMODS.Joker {
       required_hand = "None", -- Stores the required hand for the current round
     }
   },
-  pools = { ["Comedians"] = true,},
+  pools = { ["Comedians"] = true, },
 
   loc_vars = function(self, info_queue, card)
     return {

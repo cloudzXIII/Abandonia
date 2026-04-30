@@ -1,13 +1,13 @@
 SMODS.Joker {
   key = 'joker_of_destruction',
   rarity = 3,
-  atlas = 'AbandoniaJokers',
-  pos = { x = 2, y = 25 },
+  atlas = 'ABNJokerSheet6',
+  pos = { x = 2, y = 0 },
   cost = 8,
   discovered = false,
   blueprint_compat = true,
   config = {
-	extra = { triggered = 0 } 
+    extra = { triggered = 0 }
   },
 
   calculate = function(self, card, context)
@@ -21,25 +21,24 @@ SMODS.Joker {
     end
 
     -- Trigger on first hand with exactly 4 cards
-    if (context.destroy_card and context.cardarea == G.play and G.GAME.current_round.hands_played == 0 and #context.full_hand == 4) or 
-       (context.destroy_card and context.cardarea == "unscored" and G.GAME.current_round.hands_played == 0 and #context.full_hand == 4) then
-      
+    if (context.destroy_card and context.cardarea == G.play and G.GAME.current_round.hands_played == 0 and #context.full_hand == 4) or
+    (context.destroy_card and context.cardarea == "unscored" and G.GAME.current_round.hands_played == 0 and #context.full_hand == 4) then
       if card.ability.extra.triggered == 0 then
         card.ability.extra.triggered = 1
-        
+
         -- Define the set list of 3 items (replace with your actual item keys)
-        local summon_pool = {'c_soul', 'c_abn_body', 'c_abn_mind'} 
+        local summon_pool = { 'c_soul', 'c_abn_body', 'c_abn_mind' }
         local chosen_key = pseudorandom_element(summon_pool, pseudoseed('destruction'))
 
         -- Create the specific card from the list
         local new_card = create_card('Consumable', G.consumeables, nil, nil, nil, nil, chosen_key, 'dest')
         new_card:add_to_deck()
         G.consumeables:emplace(new_card)
-        
+
         card:juice_up()
       end
-      
-      return {remove = true}
+
+      return { remove = true }
     end
   end,
 

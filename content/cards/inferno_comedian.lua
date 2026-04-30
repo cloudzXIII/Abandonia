@@ -10,14 +10,14 @@ SMODS.Joker {
   end,
 
   rarity = "abn_SuperRare",
-  atlas = 'AbandoniaJokers',
-  pos = { x = 1, y = 17 },
+  atlas = 'ABNJokerSheet4',
+  pos = { x = 1, y = 2 },
   cost = 20,
   discovered = false,
   blueprint_compat = true,
 
   config = { extra = { xmult = 1.7, chips = 0, mult = 0, chips_gain = 50, mult_gain = 5 } },
-  pools = { ["Comedians"] = true,},
+  pools = { ["Comedians"] = true, },
 
   update = function(self, card)
     if card.area == G.shop_jokers then

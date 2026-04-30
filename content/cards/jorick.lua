@@ -6,7 +6,7 @@ SMODS.Joker {
   end,
 
   rarity = "abn_ParallelRare",
-  atlas = 'AbandoniaReverse',
+  atlas = 'AbandoniaParallel',
   pos = { x = 1, y = 0 },
   soul_pos = { x = 0, y = 0 },
   cost = 10,

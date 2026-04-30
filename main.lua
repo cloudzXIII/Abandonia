@@ -3,14 +3,26 @@ ABANDONIA = {}
 ABN = SMODS.current_mod
 
 SMODS.current_mod.config_tab = function()
-    local scale = 5/6
-    return {n=G.UIT.ROOT, config = {align = "cl", minh = G.ROOM.T.h*0.25, padding = 0.0, r = 0.1, colour = G.C.GREY}, nodes = {
-        {n = G.UIT.R, config = { padding = 0.05 }, nodes = {
-            {n = G.UIT.C, config = { minw = G.ROOM.T.w*0.25, padding = 0.05 }, nodes = {
-                create_toggle{ label = "Toggle Music", info = {"Enable Custom Music"}, active_colour = ABN.badge_colour, ref_table = ABN.config, ref_value = "Music" },
-            }}
-        }}
-    }}
+  local scale = 5 / 6
+  return {
+    n = G.UIT.ROOT,
+    config = { align = "cl", minh = G.ROOM.T.h * 0.25, padding = 0.0, r = 0.1, colour = G.C.GREY },
+    nodes = {
+      {
+        n = G.UIT.R,
+        config = { padding = 0.05 },
+        nodes = {
+          {
+            n = G.UIT.C,
+            config = { minw = G.ROOM.T.w * 0.25, padding = 0.05 },
+            nodes = {
+              create_toggle { label = "Toggle Music", info = { "Enable Custom Music" }, active_colour = ABN.badge_colour, ref_table = ABN.config, ref_value = "Music" },
+            }
+          }
+        }
+      }
+    }
+  }
 end
 
 
@@ -54,179 +66,39 @@ function loc_colour(_c, _default)
   return abn(_c, _default)
 end
 
-SMODS.Atlas({
-    key = 'modicon',
-    path = 'modicon.png',
-    px = '34',
-    py = '34'
-})
-
-SMODS.Atlas({
-  key = "AbandoniaStickers",
-  path = "stickers.png",
-  px = 71,
-  py = 95,
-})
-
-SMODS.Atlas({
-  key = "AbandoniaSuits",
-  path = "suits.png",
-  px = 71,
-  py = 95,
-})
-
-SMODS.Atlas({
-  key = "AbandoniaSuitIcons",
-  path = "icons.png",
-  px = 71,
-  py = 95,
-})
-
-SMODS.Atlas({
-  key = "AbandoniaHazardTags",
-  path = "hazard_tags.png",
-  px = 34,
-  py = 34,
-})
-
-SMODS.Atlas({
-  key = "AbandoniaTags",
-  path = "tags.png",
-  px = 34,
-  py = 34,
-})
-
-SMODS.Atlas({
-  key = "AbandoniaJokers",
-  path = "jokers_1.png",
-  px = 71,
-  py = 95,
-})
-
-SMODS.Atlas({
-  key = "AbandoniaReverse",
-  path = "reverse_legendary.png",
-  px = 71,
-  py = 95,
-})
-
-SMODS.Atlas({
-  key = 'AbandoniaBlinds',
-  path = 'blinds.png',
-  px = 34,
-  py = 34,
-  frames = 21,
-  atlas_table = 'ANIMATION_ATLAS'
-})
-
-SMODS.Atlas({
-  key = "AbandoniaSpectrals",
-  path = "spectrals.png",
-  px = 71,
-  py = 95,
-})
-
-SMODS.Atlas({
-  key = "AbandoniaPlanets",
-  path = "planets.png",
-  px = 71,
-  py = 95,
-})
-
-SMODS.Atlas({
-  key = "AbandoniaTarots",
-  path = "tarots.png",
-  px = 71,
-  py = 95,
-})
-
-SMODS.Atlas({
-  key = "AbandoniaEnhancements",
-  path = "enhancements.png",
-  px = 71,
-  py = 95,
-})
-
-SMODS.Atlas({
-  key = "AbandoniaVouchers",
-  path = "vouchers.png",
-  px = 71,
-  py = 95,
-})
-
-SMODS.Atlas({
-  key = "AbandoniaCalamity",
-  path = "calamity.png",
-  px = 71,
-  py = 95,
-})
-
-SMODS.Atlas({
-  key = "AbandoniaSigils",
-  path = "sigils.png",
-  px = 71,
-  py = 95,
-})
-
-SMODS.Atlas({
-  key = "AbandoniaNightshift",
-  path = "nightshift.png",
-  px = 71,
-  py = 95,
-})
-
-SMODS.Atlas({
-  key = "AbandoniaAstro",
-  path = "astro.png",
-  px = 71,
-  py = 95,
-})
-
-SMODS.Atlas({
-  key = "AbandoniaStakes",
-  path = "stakes.png",
-  px = 29,
-  py = 29,
-})
-
-SMODS.Atlas({
-  key = "AbandoniaDecks",
-  path = "decks.png",
-  px = 71,
-  py = 95,
-})
-
-SMODS.Atlas({
-  key = "abn_hidden_blind",
-  path = "hidden_blind.png",
-  px = 34,
-  py = 34,
+SMODS.Sound({
+  key = 'music_title',
+  path = 'music_title.ogg',
+  pitch = 1,
+  speed = 1,
+  select_music_track = function(self)
+    -- If it's title play music
+    if G.STAGE == G.STAGES.MAIN_MENU and config.Music ~= false then
+      return 1e10
+    end
+  end
 })
 
 SMODS.Sound({
-    key = 'music_title',
-    path = 'music_title.ogg',
-	pitch = 1,
-	speed = 1,
-    select_music_track = function(self)
-        -- If it's title play music
-        if G.STAGE == G.STAGES.MAIN_MENU and config.Music ~= false then
-            return 1e10
-        end
+  key = 'music_stakes',
+  path = 'music_stakes.ogg',
+  pitch = 1,
+  speed = 1,
+  select_music_track = function(self)
+    -- If it's stakes play music
+    if G.GAME.modifiers.Honor and config.Music ~= false then
+      return 1e10
     end
+  end
 })
 
-SMODS.Sound({
-    key = 'music_stakes',
-    path = 'music_stakes.ogg',
-	pitch = 1,
-	speed = 1,
-    select_music_track = function(self)
-        -- If it's stakes play music
-        if G.GAME.modifiers.Honor and config.Music ~= false then
-            return 1e10
-        end
-    end
+SMODS.ObjectType({
+  key = "Comedians",
+  default = "j_abn_night_comedian",
+  cards = {},
+  inject = function(self)
+    SMODS.ObjectType.inject(self)
+  end,
 })
 
 -- Utilities
@@ -289,7 +161,7 @@ ABN.calculate = function(self, context)
     local ability = context.other_joker.ability
     local has_chips = ability.abn_perma_bonus and ability.abn_perma_bonus ~= 0
     local has_mult = ability.abn_perma_mult and ability.abn_perma_mult ~= 0
-	-- add xmult and xchips
+    -- add xmult and xchips
     local has_x_mult = ability.abn_perma_xmult and ability.abn_perma_xmult ~= 1
     local has_x_chips = ability.abn_perma_xchips and ability.abn_perma_xchips ~= 1
     -- add dollars and repetitions
@@ -297,22 +169,22 @@ ABN.calculate = function(self, context)
     local has_rep = ability.abn_perma_rep and ability.abn_perma_rep ~= 0
 
     if has_chips or has_mult or has_x_mult or has_x_chips or has_dollars or has_rep then
-        return {
-            chips = has_chips and ability.abn_perma_bonus or nil,
-            mult = has_mult and ability.abn_perma_mult or nil,
-            x_mult = has_x_mult and ability.abn_perma_xmult or nil,
-            x_chips = has_x_chips and ability.abn_perma_xchips or nil,
-            dollars = has_dollars and ability.abn_perma_dollars or nil, 
-            repetitions = has_rep and ability.abn_perma_rep or nil, --TODO: figure out why this in specific does not work
-            card = context.other_joker,
-            message_card = context.other_joker,
-            no_juice = true,
-        }
+      return {
+        chips = has_chips and ability.abn_perma_bonus or nil,
+        mult = has_mult and ability.abn_perma_mult or nil,
+        x_mult = has_x_mult and ability.abn_perma_xmult or nil,
+        x_chips = has_x_chips and ability.abn_perma_xchips or nil,
+        dollars = has_dollars and ability.abn_perma_dollars or nil,
+        repetitions = has_rep and ability.abn_perma_rep or nil, --TODO: figure out why this in specific does not work
+        card = context.other_joker,
+        message_card = context.other_joker,
+        no_juice = true,
+      }
     end
   end
-  
 
-  
+
+
 
   if context.mod_probability and not context.blueprint and G.GAME.abn_possibility_sticker then
     return {
