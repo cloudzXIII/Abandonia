@@ -14,9 +14,7 @@ SMODS.Joker {
       chance = 6,
     },
   },
-  pools = {
-    ["Food"] = true,
-  },
+  attributes = { "food" },
   loc_vars = function(self, info_queue, card)
     local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.chance)
     return { vars = { card.ability.extra.chips, card.ability.extra.mult, numerator, denominator } }

@@ -6,7 +6,7 @@ SMODS.Joker {
   cost = 7,
   discovered = false,
   blueprint_compat = true,
-  pools = { ["Food"] = true, },
+  attributes = { "food" },
 
   config = { extra = { odds = 0, dollars = 5 } },
 
@@ -24,7 +24,7 @@ SMODS.Joker {
 
     -- Check for Food Jokers
     for _, j in ipairs(G.jokers.cards) do
-      if j.config.center.pools and j.config.center.pools.Food then
+      if j:has_attribute("food") then
         has_food = true
         break
       end
@@ -42,7 +42,7 @@ SMODS.Joker {
       local rightmost_food = nil
       for i = #G.jokers.cards, 1, -1 do
         local j = G.jokers.cards[i]
-        if j.config.center.pools and j.config.center.pools.Food then
+        if j:has_attribute("food") then
           rightmost_food = j
           break
         end
@@ -60,7 +60,7 @@ SMODS.Joker {
     end
 
     if context.mod_probability and not context.blueprint and not context.retrigger_joker then
-      if context.trigger_obj.config.center.pools and context.trigger_obj.config.center.pools.Food then
+      if context.trigger_obj and context.trigger_obj.has_attribute and context.trigger_obj:has_attribute("food") then
         -- Only return the new numerator if the current one isn't already the target value
         if context.trigger_obj.ability.numerator ~= card.ability.extra.odds then
           return {

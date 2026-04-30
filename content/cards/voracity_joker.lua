@@ -23,7 +23,7 @@ SMODS.Joker {
 
     -- Check for Food Jokers
     for _, j in ipairs(G.jokers.cards) do
-      if j.config.center.pools and j.config.center.pools.Food then
+      if j:has_attribute("food") then
         has_food = true
         break
       end
@@ -36,7 +36,7 @@ SMODS.Joker {
 
   calculate = function(self, card, context)
     -- retrigger food
-    if context.retrigger_joker_check and not context.retrigger_joker and context.other_card and context.other_card.config.center and context.other_card.config.center.pools and context.other_card.config.center.pools.Food and not context.end_of_round and not context.main_eval then
+    if context.retrigger_joker_check and not context.retrigger_joker and context.other_card and context.other_card.has_attribute and context.other_card:has_attribute("food") and not context.end_of_round and not context.main_eval then
       return {
         message = localize('k_again_ex'),
         repetitions = 1,
@@ -45,7 +45,7 @@ SMODS.Joker {
     end
 
     if context.mod_probability and not context.blueprint and not context.retrigger_joker then
-      if context.trigger_obj and context.trigger_obj.config and context.trigger_obj.config.center and context.trigger_obj.config.center.pools and context.trigger_obj.config.center.pools.Food and not next(SMODS.find_card('j_abn_busybee')) then
+      if context.trigger_obj and context.trigger_obj.has_attribute and context.trigger_obj:has_attribute("food") and not next(SMODS.find_card('j_abn_busybee')) then
         -- Only return the new denominator if the current one isn't already the target value
         if context.trigger_obj.ability.denominator ~= card.ability.extra.odds then
           return {

@@ -6,7 +6,7 @@ SMODS.Joker {
   cost = 6,
   discovered = false,
   blueprint_compat = true,
-  pools = { ["Food"] = true, },
+  attributes = { "food" },
 
   config = { extra = { mult = 1, odds = 6 } },
 

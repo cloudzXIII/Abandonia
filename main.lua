@@ -2,7 +2,7 @@ ABANDONIA = {}
 
 ABN = SMODS.current_mod
 
-SMODS.current_mod.config_tab = function()
+ABN.config_tab = function()
   local scale = 5 / 6
   return {
     n = G.UIT.ROOT,
@@ -26,7 +26,6 @@ SMODS.current_mod.config_tab = function()
 end
 
 
-ABN = SMODS.current_mod
 -- Load Options
 ABN_config = ABN.config
 -- This will save the current state even when settings are modified
@@ -182,9 +181,6 @@ ABN.calculate = function(self, context)
       }
     end
   end
-
-
-
 
   if context.mod_probability and not context.blueprint and G.GAME.abn_possibility_sticker then
     return {

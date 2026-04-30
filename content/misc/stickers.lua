@@ -251,7 +251,7 @@ SMODS.Sticker {
   },
   calculate = function(self, card, context)
     if context.destroy_card and context.cardarea == G.play and context.destroy_card == card and
-        SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
+    SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
       card.glass_trigger = true
       return { remove = true }
     end
@@ -453,7 +453,7 @@ SMODS.Sticker {
   },
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and
-        SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
+    SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
       return {
         dollars = card.ability[self.key].dollars
       }
