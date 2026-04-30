@@ -197,3 +197,24 @@ SMODS.Atlas({
   py = 95,
 })
 --#endregion
+
+-- Animated Jokers (Popup Joker and Malware Joker)
+SMODS.Atlas {
+  key = "popup_joker_atlas",
+  path = "popup_joker.png",
+  px = 71,
+  py = 95,
+  frames = 2,
+  fps = 1,
+  atlas_table = 'ANIMATION_ATLAS'
+}
+
+SMODS.Atlas {
+  key = "malware_joker_atlas",
+  path = "malware_joker.png",
+  px = 71,
+  py = 95,
+  frames = 18,
+  fps = 1,
+  atlas_table = 'ANIMATION_ATLAS'
+}
