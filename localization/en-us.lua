@@ -160,6 +160,20 @@ return {
           "{C:attention}Astro Pack",
         }
       },
+      tag_abn_lefty = {
+        name = "Lefty Tag",
+        text = {
+          "{C:blue}+#1#{} hand",
+          "next blind"
+        }
+      },
+      tag_abn_trash = {
+        name = "Trash Tag",
+        text = {
+          "{C:red}+#1#{} discard",
+          "next blind"
+        }
+      },
       --#endregion
     },
     Blind = {

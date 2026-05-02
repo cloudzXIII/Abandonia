@@ -278,3 +278,44 @@ SMODS.Tag {
     end
   end
 }
+
+SMODS.Tag {
+  key = "lefty",
+  pos = { x = 1, y = 2 },
+  atlas = "AbandoniaTags",
+  config = { hands = 1 },
+  loc_vars = function(self, info_queue, tag)
+    return { vars = { tag.config.hands } }
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'round_start_bonus' then
+      tag:yep('+', G.C.BLUE, function()
+        return true
+      end)
+      ease_hands_played(tag.config.hands)
+      tag.triggered = true
+      return true
+    end
+  end
+}
+
+-- Trash Tag
+SMODS.Tag {
+  key = "trash",
+  pos = { x = 2, y = 2 },
+  atlas = "AbandoniaTags",
+  config = { discards = 1 },
+  loc_vars = function(self, info_queue, tag)
+    return { vars = { tag.config.discards } }
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'round_start_bonus' then
+      tag:yep('+', G.C.RED, function()
+        return true
+      end)
+      ease_discard(tag.config.discards)
+      tag.triggered = true
+      return true
+    end
+  end
+}
