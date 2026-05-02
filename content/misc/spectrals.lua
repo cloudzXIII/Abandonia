@@ -54,7 +54,7 @@ SMODS.Consumable {
     return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
   end,
   abn_artist_credits = {
-    artist = "?"
+    artist = "ricottakitten"
   },
 }
 
@@ -84,6 +84,6 @@ SMODS.Consumable {
     return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
   end,
   abn_artist_credits = {
-    artist = "?"
+    artist = "ricottakitten"
   },
 }
