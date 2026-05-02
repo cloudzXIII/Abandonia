@@ -174,6 +174,14 @@ return {
           "next blind"
         }
       },
+      tag_abn_top_filled = {
+        name = "Top-filled Tag",
+        text = {
+          "Create up to {C:attention}#1#",
+          "{C:green}Uncommon{} Jokers",
+          "{C:inactive}(Must have room)",
+        }
+      }
       --#endregion
     },
     Blind = {
