@@ -2474,6 +2474,33 @@ return {
       },
     },
     Other = {
+      p_abn_sigil_normal = {
+        name = 'Sigil Pack',
+        text = {
+          'Select {C:attention}#1#{} of',
+          '{C:attention}#2#{} {C:abn_sigil}Sigil{} cards to',
+          'be used immediately',
+          '{C:inactive}(cannot be skipped)'
+        }
+      },
+      p_abn_sigil_jumbo = {
+        name = 'Jumbo Sigil Pack',
+        text = {
+          'Select {C:attention}#1#{} of',
+          '{C:attention}#2#{} {C:abn_sigil}Sigil{} cards to',
+          'be used immediately',
+          '{C:inactive}(cannot be skipped)'
+        }
+      },
+      p_abn_sigil_mega = {
+        name = 'Mega Sigil Pack',
+        text = {
+          'Select {C:attention}#1#{} of',
+          '{C:attention}#2#{} {C:abn_sigil}Sigil{} cards to',
+          'be used immediately',
+          '{C:inactive}(cannot be skipped)'
+        }
+      },
       p_abn_astro_normal = {
         name = 'Astro Pack',
         text = {
