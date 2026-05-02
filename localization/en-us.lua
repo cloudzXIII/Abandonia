@@ -190,6 +190,20 @@ return {
           "of a random rarity"
         }
       },
+      tag_abn_nightshift = {
+        name = "Nightshift Tag",
+        text = {
+          "Shop has a free",
+          "{C:abn_nightshift}Nightshift{} card",
+        }
+      },
+      tag_abn_hazard = {
+        name = "Hazard Tag",
+        text = {
+          "Create a random",
+          "{C:abn_hazard}Hazard Tag{}",
+        }
+      },
       --#endregion
     },
     Blind = {

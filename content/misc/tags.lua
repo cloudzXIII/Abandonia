@@ -354,6 +354,7 @@ SMODS.Tag {
   end
 }
 
+-- Unrevealed Tag
 SMODS.Tag {
   key = "unrevealed",
   pos = { x = 4, y = 2 },
@@ -384,5 +385,22 @@ SMODS.Tag {
       tag.triggered = true
       return card
     end
+  end
+}
+
+SMODS.Tag {
+  key = "hazard",
+  pos = { x = 4, y = 1 },
+  atlas = "AbandoniaTags",
+  apply = function(self, tag, context)
+    local lock = tag.ID
+    G.CONTROLLER.locks[lock] = true
+    tag:yep('+', G.C.BLUE, function()
+      local tag_key = get_next_tag_key('abn_guaranteed_hazard_tag')
+      add_tag(Tag(tag_key))
+      G.CONTROLLER.locks[lock] = nil
+      return true
+    end)
+    tag.triggered = true
   end
 }
