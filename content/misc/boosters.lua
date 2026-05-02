@@ -36,7 +36,7 @@ SMODS.Booster({
 })
 
 SMODS.Booster({
-  key = 'astro_normal_1',
+  key = 'astro_normal_2',
   atlas = 'AstroBoosters',
   pos = { x = 1, y = 0 },
   config = { extra = 3, choose = 1 },
