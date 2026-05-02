@@ -18,6 +18,101 @@ end
 
 --#endregion
 
+
+-- Uncommon Hazard Tag
+SMODS.Tag {
+  key = "hazard_uncommon",
+  min_ante = 2,
+  atlas = "AbandoniaHazardTags",
+  pos = { x = 0, y = 0 },
+  config = { hazard = true, count = 2 },
+  loc_vars = function(self, info_queue, tag)
+    return { vars = { tag.config.count } }
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'store_joker_create' then
+      local cards_created = 0
+
+      if cards_created < tag.config.count then
+        local card = SMODS.create_card {
+          set = "Joker",
+          rarity = "Uncommon",
+          area = context.area,
+          key_append = "abn_hazard_uncommon"
+        }
+        create_shop_card_ui(card, 'Joker', context.area)
+        card.states.visible = false
+        tag:yep('+', G.C.GREEN, function()
+          card:start_materialize()
+          card.ability.couponed = true
+          card:set_cost()
+          return true
+        end)
+
+        cards_created = cards_created + 1
+
+        if cards_created >= tag.config.count then
+          tag.triggered = true
+        end
+
+        return card
+      end
+    end
+  end
+}
+
+-- Rare Hazard Tag
+SMODS.Tag {
+  key = "hazard_rare",
+  min_ante = 2,
+  atlas = "AbandoniaHazardTags",
+  pos = { x = 1, y = 0 },
+  config = { hazard = true, count = 2 },
+  loc_vars = function(self, info_queue, tag)
+    return { vars = { tag.config.count } }
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'store_joker_create' then
+      local cards_created = 0
+      local rares_in_posession = { 0 }
+      for _, joker in ipairs(G.jokers.cards) do
+        if joker.config.center.rarity == 3 and not rares_in_posession[joker.config.center.key] then
+          rares_in_posession[1] = rares_in_posession[1] + 1
+          rares_in_posession[joker.config.center.key] = true
+        end
+      end
+      if #G.P_JOKER_RARITY_POOLS[3] > rares_in_posession[1] then
+        if cards_created < tag.config.count then
+          local card = SMODS.create_card {
+            set = "Joker",
+            rarity = "Rare",
+            area = context.area,
+            key_append = "abn_hazard_rare"
+          }
+          create_shop_card_ui(card, 'Joker', context.area)
+          card.states.visible = false
+          tag:yep('+', G.C.RED, function()
+            card:start_materialize()
+            card.ability.couponed = true
+            card:set_cost()
+            return true
+          end)
+
+          cards_created = cards_created + 1
+
+
+          if cards_created >= tag.config.count then
+            tag.triggered = true
+          end
+          return card
+        else
+          tag:nope()
+        end
+      end
+    end
+  end,
+}
+
 SMODS.Tag {
   key = "hazard_super",
 

@@ -2,6 +2,20 @@ return {
   descriptions = {
     Tag = {
       --#region Hazard Tags
+      tag_abn_hazard_uncommon = {
+        name = "Uncommon Hazard",
+        text = {
+          "Shop has {C:attention}#1#{} free",
+          "{C:green}Uncommon{} Jokers",
+        }
+      },
+      tag_abn_hazard_rare = {
+        name = "Rare Hazard",
+        text = {
+          "Shop has {C:attention}#1#{} free",
+          "{C:red}Rare{} Jokers",
+        }
+      },
       tag_abn_hazard_super = {
         name = "Super Hazard",
         text = {
