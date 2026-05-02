@@ -353,3 +353,36 @@ SMODS.Tag {
     end
   end
 }
+
+SMODS.Tag {
+  key = "unrevealed",
+  pos = { x = 4, y = 2 },
+  atlas = "AbandoniaTags",
+  loc_vars = function(self, info_queue, tag)
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'store_joker_create' then
+      local random_rarity = pseudorandom_element({ 'Common', 'Uncommon', 'Rare' })
+      local card = SMODS.create_card {
+        set = "Joker",
+        rarity = random_rarity,
+        area = context.area,
+        key_append = "abn_unrevealed"
+      }
+      create_shop_card_ui(card, 'Joker', context.area)
+      card.states.visible = false
+      tag:yep('+', G.C.PURPLE, function()
+        card:start_materialize()
+        if card.facing == 'front' then
+          card:flip()
+        end
+        card.ability.abn_perma_flipped = true
+        card.ability.couponed = true
+        card:set_cost()
+        return true
+      end)
+      tag.triggered = true
+      return card
+    end
+  end
+}

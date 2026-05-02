@@ -1,6 +1,7 @@
 SMODS.Enhancement({
   key = "petroleum",
-  pos = { x = 0, y = 0 },
+  pos = { x = 7, y = 0 },
+  atlas = "AbandoniaEnhancements",
   replace_base_card = true,
   no_rank = true,
   no_suit = true,
@@ -184,58 +185,58 @@ SMODS.Enhancement({
   no_rank = false,
   no_suit = false,
   always_scores = false,
-  config = { 
-    extra = { 
-      chips = 200, 
-      xmult = 2, 
-      xmultadd = 1, 
-      oddsc = 7, 
-      oddsx = 20, 
-    } 
+  config = {
+    extra = {
+      chips = 200,
+      xmult = 2,
+      xmultadd = 1,
+      oddsc = 7,
+      oddsx = 20,
+    }
   },
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
     local chips_num, chips_den = SMODS.get_probability_vars(card, 1, cae.oddsc, 'iron_abn')
     local upgrade_num, upgrade_den = SMODS.get_probability_vars(card, 1, cae.oddsx, 'hot_abn')
-    
+
     return { vars = { cae.chips, cae.xmult, cae.xmultadd, chips_num, chips_den, upgrade_num, upgrade_den } }
   end,
   calculate = function(self, card, context)
     local cae = card.ability.extra
-    
-	if context.modify_scoring_hand and context.other_card.config.center == G.P_CENTERS.m_abn_hot_iron and context.in_scoring and not next(SMODS.find_card('j_abn_forgemaster_joker')) then
-		return {
-			remove_from_hand = true
-        }
-	end
-	
+
+    if context.modify_scoring_hand and context.other_card.config.center == G.P_CENTERS.m_abn_hot_iron and context.in_scoring and not next(SMODS.find_card('j_abn_forgemaster_joker')) then
+      return {
+        remove_from_hand = true
+      }
+    end
+
     -- Scoring while in hand
     if context.main_scoring and context.cardarea == G.hand then
-        local ret = {}
-        local triggered = false
+      local ret = {}
+      local triggered = false
 
-        -- 1 in 7 chance for Chips
-        if SMODS.pseudorandom_probability(card, "iron_abn", 1, cae.oddsc) then
-            ret.chips = cae.chips
-            triggered = true
-        end
+      -- 1 in 7 chance for Chips
+      if SMODS.pseudorandom_probability(card, "iron_abn", 1, cae.oddsc) then
+        ret.chips = cae.chips
+        triggered = true
+      end
 
-        -- 1 in 20 chance to permanently upgrade XMult
-        if SMODS.pseudorandom_probability(card, "hot_abn", 1, cae.oddsx) then
-            cae.xmult = cae.xmult + cae.xmultadd
-            ret.message = localize('k_upgrade_ex')
-            ret.colour = G.C.RED
-            triggered = true
-        end
+      -- 1 in 20 chance to permanently upgrade XMult
+      if SMODS.pseudorandom_probability(card, "hot_abn", 1, cae.oddsx) then
+        cae.xmult = cae.xmult + cae.xmultadd
+        ret.message = localize('k_upgrade_ex')
+        ret.colour = G.C.RED
+        triggered = true
+      end
 
-        -- Always provide the current XMult value (or logic can be adjusted if XMult is also a chance)
-        ret.xmult = cae.xmult
-        
-        -- Only return the table if something happened or we are passing the XMult
-        if triggered or ret.xmult then
-            ret.card = card
-            return ret
-        end
+      -- Always provide the current XMult value (or logic can be adjusted if XMult is also a chance)
+      ret.xmult = cae.xmult
+
+      -- Only return the table if something happened or we are passing the XMult
+      if triggered or ret.xmult then
+        ret.card = card
+        return ret
+      end
     end
   end,
   abn_artist_credits = {
@@ -251,37 +252,39 @@ SMODS.Enhancement({
   no_rank = false,
   no_suit = false,
   always_scores = false,
-  config = { 
-    extra = {  
-      mult = 0, 
-      multadd = 2, 
-      chips = 0, 
-      chipsadd = 3, 
-    } 
+  config = {
+    extra = {
+      mult = 0,
+      multadd = 2,
+      chips = 0,
+      chipsadd = 3,
+    }
   },
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
-    
+
     return { vars = { cae.mult, cae.multadd, cae.chips, cae.chipsadd } }
   end,
   calculate = function(self, card, context)
     local cae = card.ability.extra
-    
-	if context.main_scoring and context.cardarea == G.play then
-	
-		cae.mult = cae.mult + (#context.scoring_hand * cae.multadd)
-		cae.chips = cae.chips + (#context.scoring_hand * cae.chipsadd)
-		
-		return {
-			mult = cae.mult,
-			chips = cae.chips,
-		}
-	end
-	
-	if context.destroy_card and (context.cardarea == G.play or context.cardarea == 'unscored') and (#context.scoring_hand or 0) <= 3 and context.destroy_card == card then
-        return { remove = true }
+
+    if context.main_scoring and context.cardarea == G.play then
+      cae.mult = cae.mult + (#context.scoring_hand * cae.multadd)
+      cae.chips = cae.chips + (#context.scoring_hand * cae.chipsadd)
+
+      return {
+        mult = cae.mult,
+        chips = cae.chips,
+      }
+    end
+
+    if context.destroy_card and (context.cardarea == G.play or context.cardarea == 'unscored') and (#context.scoring_hand or 0) <= 3 and context.destroy_card == card then
+      return { remove = true }
     end
   end,
+  abn_artist_credits = {
+    artist = "Smolicon",
+  },
 })
 
 SMODS.Enhancement({
@@ -292,57 +295,56 @@ SMODS.Enhancement({
   no_rank = false,
   no_suit = false,
   always_scores = false,
-  config = { 
-    extra = {  
-      xmult = 2, 
-      xmultadd = 0.25, 
+  config = {
+    extra = {
+      xmult = 2,
+      xmultadd = 0.25,
       odds = 10,
-    } 
+    }
   },
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
     local odds_num, odds_den = SMODS.get_probability_vars(card, 1, cae.odds, 'hazard_retrig')
-    
+
     return { vars = { cae.xmult, cae.xmultadd, odds_num, odds_den } }
   end,
   calculate = function(self, card, context)
     local cae = card.ability.extra
-    
+
     -- xmult and blind scaling
     if context.main_scoring and context.cardarea == G.play then
-        local hazard_count = 0
-        for i, v in ipairs(context.scoring_hand) do
-            -- check if the card in the scoring hand is hazard
-            if v.config.center == G.P_CENTERS.m_abn_hazard then
-                hazard_count = hazard_count + 1
-            end
+      local hazard_count = 0
+      for i, v in ipairs(context.scoring_hand) do
+        -- check if the card in the scoring hand is hazard
+        if v.config.center == G.P_CENTERS.m_abn_hazard then
+          hazard_count = hazard_count + 1
         end
-        
-        local final_xmult = cae.xmult
-        if hazard_count >= 2 then
-            final_xmult = cae.xmult + ((hazard_count - 1) * cae.xmultadd)
-        end
+      end
 
-        -- raise blind requirement
-        G.GAME.blind.chips = G.GAME.blind.chips * 1.10
-        G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+      local final_xmult = cae.xmult
+      if hazard_count >= 2 then
+        final_xmult = cae.xmult + ((hazard_count - 1) * cae.xmultadd)
+      end
 
-        return {
-            xmult = final_xmult,
-            card = card
-        }
+      -- raise blind requirement
+      G.GAME.blind.chips = G.GAME.blind.chips * 1.10
+      G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+
+      return {
+        xmult = final_xmult,
+        card = card
+      }
     end
 
     -- retriggers
     if context.repetition and context.cardarea == G.play then
-        if SMODS.pseudorandom_probability(card, "hazard_retrig", 1, cae.odds) then
-            return {
-                message = localize('k_again_ex'),
-                repetitions = 1,
-                card = card
-            }
-        end
+      if SMODS.pseudorandom_probability(card, "hazard_retrig", 1, cae.odds) then
+        return {
+          message = localize('k_again_ex'),
+          repetitions = 1,
+          card = card
+        }
+      end
     end
   end,
 })
-

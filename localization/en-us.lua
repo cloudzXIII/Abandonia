@@ -181,7 +181,15 @@ return {
           "{C:green}Uncommon{} Jokers",
           "{C:inactive}(Must have room)",
         }
-      }
+      },
+      tag_abn_unrevealed = {
+        name = "Unrevealed Tag",
+        text = {
+          "Shop has a free",
+          "{C:attention}Flipped{} Joker",
+          "of a random rarity"
+        }
+      },
       --#endregion
     },
     Blind = {
