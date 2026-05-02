@@ -21,7 +21,7 @@ SMODS.Joker {
 
   calculate = function(self, card, context)
     if context.mod_probability and not context.blueprint and not context.retrigger_joker then
-      if context.trigger_obj.config.center.set == "astro_cards" then
+      if context.trigger_obj and context.trigger_obj.config and context.trigger_obj.config.center and context.trigger_obj.config.center.set and context.trigger_obj.config.center.set == "astro_cards" then
         return {
           numerator = context.denominator
         }
