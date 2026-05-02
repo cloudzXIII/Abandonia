@@ -251,9 +251,19 @@ SMODS.Sticker {
   },
   calculate = function(self, card, context)
     if context.destroy_card and context.cardarea == G.play and context.destroy_card == card and
-    SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
+        SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
       card.glass_trigger = true
       return { remove = true }
+    end
+	if context.pre_joker or (context.main_scoring and context.cardarea == G.play) and SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
+      G.E_MANAGER:add_event(Event({
+        trigger = 'before',
+        delay = 0.0,
+        func = function()
+          card:shatter()
+          return true
+        end
+      }))
     end
   end
 }
@@ -332,9 +342,19 @@ SMODS.Sticker({
 
   calculate = function(self, card, context)
     if context.repetition and context.cardarea == G.play then
-      if context.scoring_hand[1] == context.other_card and ABN.is_number(context.other_card) then
+      local first_number = nil
+      for i = 1, #context.scoring_hand do
+        if ABN.is_number(context.scoring_hand[i]) then
+          first_number = context.scoring_hand[i]
+          break
+        end
+      end
+
+      if context.other_card == first_number then
         return {
+          message = localize('k_again_ex'),
           repetitions = card.ability[self.key].repetitions,
+          card = card
         }
       end
     end
@@ -359,9 +379,19 @@ SMODS.Sticker({
 
   calculate = function(self, card, context)
     if context.repetition and context.cardarea == G.play then
-      if context.scoring_hand[1] == context.other_card and context.other_card.ability.set == "Enhanced" then
+      local first_enhanced = nil
+      for i = 1, #context.scoring_hand do
+        if context.scoring_hand[i].ability.set == "Enhanced" then
+          first_enhanced = context.scoring_hand[i]
+          break
+        end
+      end
+
+      if context.other_card == first_enhanced then
         return {
+          message = localize('k_again_ex'),
           repetitions = card.ability[self.key].repetitions,
+          card = card
         }
       end
     end
@@ -386,9 +416,21 @@ SMODS.Sticker({
 
   calculate = function(self, card, context)
     if context.repetition and context.cardarea == G.play then
-      if context.scoring_hand[1] == context.other_card and context.other_card:get_id() == 14 then
+      -- Find the first Ace in the scoring hand
+      local first_ace = nil
+      for i = 1, #context.scoring_hand do
+        if context.scoring_hand[i]:get_id() == 14 then
+          first_ace = context.scoring_hand[i]
+          break
+        end
+      end
+
+      -- If the current card being evaluated is that specific first Ace
+      if context.other_card == first_ace then
         return {
+          message = localize('k_again_ex'),
           repetitions = card.ability[self.key].repetitions,
+          card = card
         }
       end
     end
@@ -453,10 +495,107 @@ SMODS.Sticker {
   },
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and
-    SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
+        SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
       return {
-        dollars = card.ability[self.key].dollars
+        mult = card.ability[self.key].dollars
       }
     end
   end
+}
+
+SMODS.Sticker {
+  key = 'glove_hand',
+  atlas = "AbandoniaStickers",
+  pos = { x = 5, y = 1 },
+  badge_colour = HEX("fd5f55"),
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+        card.ability[self.key].discards,
+      }
+    }
+  end,
+  config = {
+    discards = 1
+  },
+  calculate = function(self, card, context)
+    if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+      ease_discard(card.ability[self.key].discards)
+    end
+  end,
+}
+
+SMODS.Sticker {
+  key = 'spicy',
+  atlas = "AbandoniaStickers",
+  pos = { x = 2, y = 1 },
+  badge_colour = HEX("eb6b43"),
+  
+  calculate = function(self, card, context)
+    -- Trigger at the end of scoring if the round is won
+    if context.final_scoring_step then
+      local current_score = SMODS.calculate_round_score()
+      local target_score = G.GAME.blind.chips
+      
+      if current_score > target_score then
+        -- Define the specific keys we are allowed to double
+        local valid_keys = {
+          chips = true, 
+          mult = true, 
+        }
+
+        local doubled = false
+
+        
+        if type(card.ability.extra) == "table" then
+          for k, v in pairs(card.ability.extra) do
+            if valid_keys[k] and type(v) == "number" then
+              card.ability.extra[k] = v * 2
+              doubled = true
+            end
+          end
+        elseif type(card.ability.extra) == "number" then
+        
+        end
+
+        for k, v in pairs(card.ability) do
+          if valid_keys[k] and type(v) == "number" then
+            card.ability[k] = v * 2
+            doubled = true
+          end
+        end
+
+        if doubled then
+          return {
+            message = 'Spicy!',
+            colour = HEX("eb6b43"),
+            card = card
+          }
+        end
+      end
+    end
+  end,
+}
+
+SMODS.Sticker {
+    key = 'x',
+    atlas = "AbandoniaStickers",
+    pos = { x = 3, y = 1 },
+    badge_colour = HEX("f2994b"),
+    config = { xmult = 5 },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { (card.ability[self.key] and card.ability[self.key].xmult) or self.config.xmult } }
+    end,
+    
+    calculate = function(self, card, context)
+
+            -- If we found debuffed cards, return the XMult
+        if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+			for i, scoring_card in ipairs(context.scoring_hand) do
+                if scoring_card.debuff then
+                    SMODS.calculate_effect({ xmult = card.ability[self.key].xmult }, card)
+				end
+            end
+        end
+    end,
 }
