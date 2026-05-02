@@ -388,9 +388,10 @@ SMODS.Tag {
   end
 }
 
+-- Hazard Tag
 SMODS.Tag {
   key = "hazard",
-  pos = { x = 4, y = 1 },
+  pos = { x = 0, y = 2 },
   atlas = "AbandoniaTags",
   apply = function(self, tag, context)
     local lock = tag.ID
@@ -402,5 +403,32 @@ SMODS.Tag {
       return true
     end)
     tag.triggered = true
+  end
+}
+
+
+-- Nightshift Tag
+SMODS.Tag {
+  key = "nightshift",
+  pos = { x = 4, y = 1 },
+  atlas = "AbandoniaTags",
+  apply = function(self, tag, context)
+    if context.type == 'store_joker_create' then
+      local card = SMODS.create_card {
+        set = "nightshift_cards",
+        area = context.area,
+        key_append = "abn_nightshift"
+      }
+      create_shop_card_ui(card)
+      card.states.visible = false
+      tag:yep('+', G.C.PURPLE, function()
+        card:start_materialize()
+        card.ability.couponed = true
+        card:set_cost()
+        return true
+      end)
+      tag.triggered = true
+      return card
+    end
   end
 }
