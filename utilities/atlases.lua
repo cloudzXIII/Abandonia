@@ -133,6 +133,20 @@ SMODS.Atlas({
   py = 34,
 })
 
+SMODS.Atlas({
+  key = "AstroBoosters",
+  path = "astro_packs.png",
+  px = 71,
+  py = 95,
+})
+
+SMODS.Atlas({
+  key = "SigilBoosters",
+  path = "sigil_packs.png",
+  px = 71,
+  py = 95,
+})
+
 --#region Jokers
 SMODS.Atlas({
   key = "ABNJokerSheet1",
