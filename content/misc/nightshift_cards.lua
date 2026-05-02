@@ -7,7 +7,6 @@ SMODS.ConsumableType {
     key = "nightshift_cards",
     collection_rows = { 6, 6 },
     shop_rate = 0.0,
-    default = "c_abn_aparition",
     primary_colour = G.C.NIGHTSHIFT,
     secondary_colour = G.C.NIGHTSHIFT_SECONDARY,
     loc_txt = {
@@ -79,7 +78,7 @@ SMODS.Consumable {
     atlas = "AbandoniaNightshift",
     cost = 4,
     discovered = false,
-    -- hidden = true, -- commented out so it can be created ?
+    hidden = true,
     soul_set = "Spectral",
     soul_rate = 0.035,
 
@@ -142,7 +141,7 @@ SMODS.Consumable {
     atlas = "AbandoniaNightshift",
     cost = 4,
     discovered = false,
-    -- hidden = true, -- commented out so it can be created ?
+    hidden = true,
     soul_set = "Spectral",
     soul_rate = 0.035,
 
@@ -185,7 +184,7 @@ SMODS.Consumable {
     atlas = "AbandoniaNightshift",
     cost = 4,
     discovered = false,
-    -- hidden = true, -- commented out so it can be created ?
+    hidden = true,
     soul_set = "Spectral",
     soul_rate = 0.035,
 
@@ -227,7 +226,7 @@ SMODS.Consumable {
     atlas = "AbandoniaNightshift",
     cost = 4,
     discovered = false,
-    -- hidden = true, -- commented out so it can be created ?
+    hidden = true,
     soul_set = "Spectral",
     soul_rate = 0.035,
 
@@ -281,7 +280,7 @@ SMODS.Consumable {
     atlas = "AbandoniaNightshift",
     cost = 4,
     discovered = false,
-    -- hidden = true, -- commented out so it can be created ?
+    hidden = true,
     soul_set = "Spectral",
     soul_rate = 0.035,
 
