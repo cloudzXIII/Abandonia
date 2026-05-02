@@ -29,9 +29,7 @@ SMODS.Joker {
                 _planet = v.key
               end
             end
-            local card = create_card(card_type, G.consumeables, nil, nil, nil, nil, _planet, 'blusl')
-            card:add_to_deck()
-            G.consumeables:emplace(card)
+            SMODS.add_card { set = card_type, key = _planet }
           end
           return true
         end)
@@ -40,9 +38,7 @@ SMODS.Joker {
     elseif context.individual and context.cardarea == G.play and context.other_card.seal == 'Purple' and G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
       G.E_MANAGER:add_event(Event({
         func = (function()
-          local card = create_card('Tarot', G.consumeables, nil, nil, nil, nil, nil, '8ba')
-          card:add_to_deck()
-          G.consumeables:emplace(card)
+          SMODS.add_card { set = "Tarot", key_append = "8ba" }
           return true
         end)
       }))

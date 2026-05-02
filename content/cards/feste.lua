@@ -22,10 +22,7 @@ SMODS.Joker {
 
   calculate = function(self, card, context)
     if context.setting_blind then
-      local new_card = create_card('nightshift_cards', G.consumeables)
-      new_card:add_to_deck()
-      new_card:set_edition({ negative = true }, true)
-      G.consumeables:emplace(new_card)
+      SMODS.add_card { set = "nightshift_cards", edition = "e_negative" }
     end
   end,
 

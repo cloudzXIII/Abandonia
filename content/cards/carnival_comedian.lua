@@ -44,14 +44,7 @@ SMODS.Joker {
           card.ability.extra.pity = 0 -- Reset pity
 
           -- Create a SuperRare card
-          local new_card = SMODS.create_card({
-            set = 'Joker',
-            area = G.shop_jokers,
-            rarity = "abn_SuperRare"
-          })
-
-          -- Force the card into the shop container
-          G.shop_jokers:emplace(new_card)
+          local new_card = SMODS.add_card { set = "Joker", area = G.shop_jokers, rarity = "abn_SuperRare" }
           create_shop_card_ui(new_card)
         end
       end

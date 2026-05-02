@@ -27,11 +27,7 @@ SMODS.Joker {
         end
         local limit = G.consumeables.config.card_limit
         if #G.consumeables.cards < limit then
-          local created_card = SMODS.create_card({
-            key = card_key,
-            set = "Planet",
-          })
-          G.consumeables:emplace(created_card)
+          SMODS.add_card { key = card_key, set = "Planet" }
         end
       end
     end

@@ -44,8 +44,7 @@ SMODS.Joker {
         }))
         G.E_MANAGER:add_event(Event({
           func = function()
-            local new_card = create_card("Comedians", G.jokers, nil, nil, nil, nil, nil, 'Brat')
-            G.jokers:emplace(new_card)
+            SMODS.add_card { set = "Comedians", key_append = "brat" }
             return true
           end
         }))

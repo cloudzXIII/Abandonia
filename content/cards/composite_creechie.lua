@@ -20,12 +20,7 @@ function Game:update(dt)
 
       --If creechie isn't there, spawn it
       if not comp_in_shop and not next(SMODS.find_card('j_abn_composite_creechie')) and (G.GAME.CompSpotted or 0) <= 0 then
-        local new_card = SMODS.create_card {
-          key = 'j_abn_composite_creechie',
-          area = G.shop_jokers
-        }
-        new_card:add_to_deck()
-        G.shop_jokers:emplace(new_card)
+        local new_card = SMODS.add_card { key = "j_abn_composite_creechie", area = G.shop_jokers, set = "Joker" }
         create_shop_card_ui(new_card)
       end
     end

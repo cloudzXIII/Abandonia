@@ -29,10 +29,7 @@ SMODS.Joker {
       if card.ability.extra.immutable.jokers_destroyed >= card.ability.extra.immutable.jokers_needed then
         card.ability.extra.immutable.jokers_destroyed = 0
         if #G.consumeables.cards < G.consumeables.config.card_limit then
-          local created_card = SMODS.create_card {
-            set = "calamity_cards",
-          }
-          G.consumeables:emplace(created_card)
+          SMODS.add_card { set = "calamity_cards" }
           return {
             message = "+1",
             colour = G.C.CALAMITY,

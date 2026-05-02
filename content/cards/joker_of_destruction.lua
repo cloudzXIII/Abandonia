@@ -31,9 +31,7 @@ SMODS.Joker {
         local chosen_key = pseudorandom_element(summon_pool, pseudoseed('destruction'))
 
         -- Create the specific card from the list
-        local new_card = create_card('Consumable', G.consumeables, nil, nil, nil, nil, chosen_key, 'dest')
-        new_card:add_to_deck()
-        G.consumeables:emplace(new_card)
+        SMODS.add_card { set = "Consumeables", key = chosen_key }
 
         card:juice_up()
       end

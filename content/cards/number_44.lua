@@ -52,9 +52,7 @@ SMODS.Joker {
     if context.setting_blind then
       for i = 1, card.ability.extra.jokers do
         G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.jokers
-        local new_card = create_card('Joker', G.jokers, false, nil, nil, nil, nil, "mno")
-        new_card:add_to_deck()
-        G.jokers:emplace(new_card)
+        SMODS.add_card { set = "Joker", key_append = "mno" }
       end
     end
   end

@@ -937,10 +937,7 @@ SMODS.Consumable {
     use = function(self, card, area, copier)
         -- Probability check (affected by Oops! All 6s)
         if SMODS.pseudorandom_probability(card, 'virgo', 1, card.ability.extra.odds) then
-            local _card = create_card('Tarot', G.consumeables, nil, nil, nil, nil, 'c_black_hole')
-            _card:add_to_deck()
-            _card:set_edition({ negative = true }, true)
-            G.consumeables:emplace(_card)
+            SMODS.add_card { set = "Tarot", key = "c_black_hole", edition = "e_negative" }
         else
             -- Failure Case: Display "Nope!"
             G.E_MANAGER:add_event(Event({
