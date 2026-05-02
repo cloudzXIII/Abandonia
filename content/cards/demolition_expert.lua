@@ -24,7 +24,7 @@ SMODS.Joker {
   rarity = 2,
   cost = 6,
   atlas = 'ABNJokerSheet2',
-  pos = { x = 7, y = 2 },
+  pos = { x = 7, y = 3 },
   discovered = false,
   calculate = function(self, card, context)
     if context.joker_main then
