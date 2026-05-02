@@ -417,6 +417,7 @@ SMODS.Tag {
       local card = SMODS.create_card {
         set = "nightshift_cards",
         area = context.area,
+        key = ABN.get_random_nightshift(),
         key_append = "abn_nightshift"
       }
       create_shop_card_ui(card)

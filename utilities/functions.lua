@@ -206,20 +206,30 @@ function ABN:calculate_blind_size_modify(blind_amount, ante)
 end
 
 function ABN:get_non_editioned_cards_in_deck()
-local non_editioned = {}
-for i,card in ipairs(G.deck.cards) do
-  if not card.edition then
-    table.insert(non_editioned,card)
+  local non_editioned = {}
+  for i, card in ipairs(G.deck.cards) do
+    if not card.edition then
+      table.insert(non_editioned, card)
+    end
   end
-end
-return non_editioned
+  return non_editioned
 end
 
-function ABN:update_non_editioned_cards_table(tabl,new_editioned_cards)
-for i,card in ipairs(new_editioned_cards) do
-  local result = table.find(tabl,card)
-  if result ~= nil then
-    table.remove(tabl,result)
+function ABN:update_non_editioned_cards_table(tabl, new_editioned_cards)
+  for i, card in ipairs(new_editioned_cards) do
+    local result = table.find(tabl, card)
+    if result ~= nil then
+      table.remove(tabl, result)
+    end
   end
 end
+
+function ABN.get_random_nightshift()
+  local nightshift_pool = {}
+  for k, v in pairs(G.P_CENTER_POOLS["nightshift_cards"]) do
+    nightshift_pool[#nightshift_pool + 1] = v.key
+  end
+
+  local chosen_key = pseudorandom_element(nightshift_pool, "seed" .. pseudorandom(0, 100))
+  return chosen_key
 end
