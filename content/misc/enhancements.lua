@@ -347,4 +347,7 @@ SMODS.Enhancement({
       end
     end
   end,
+  abn_artist_credits = {
+    artist = "Bunnet",
+  },
 })
