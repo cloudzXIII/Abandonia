@@ -9,7 +9,7 @@ SMODS.Joker {
 
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_hot_iron
-    return { vars = {} }
+    return { vars = { localize({ type = 'name_text', key = "m_abn_hot_iron", set = 'Enhanced' }), } }
   end,
 
   calculate = function(self, card, context)

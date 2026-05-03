@@ -1753,7 +1753,7 @@ return {
       j_abn_felix_joker = {
         name = 'Felix Joker',
         text = {
-          "{C:attention}Wild Cards{} also ",
+          "{C:attention}#2#s{} also ",
           "count as {C:attention}#1#s{}",
           "{s:0.8}Enhancement changes at end of each round"
         }
@@ -2153,7 +2153,7 @@ return {
         name = "Feste",
         text = {
           "When {C:attention}Blind{} is selected,",
-          "create a {C:dark_edition}Negative{} {C:abn_nightshift}Nightshift{} card",
+          "create a {C:dark_edition}#1#{} {C:abn_nightshift}Nightshift{} card",
         }
       },
       j_abn_aliasing_joker = {
@@ -2201,21 +2201,22 @@ return {
       j_abn_streetart_joker = {
         name = "Streetart Joker",
         text = {
-          "{C:attention}#1#s{} and {C:attention}#2#s{} count as {C:attention}#3#s{}",
+          "{C:attention}#1#s{} and {C:attention}#2# Cards{}",
+          "count as {C:attention}#3#s{}",
         }
       },
       j_abn_ill_gotten_gains = {
         name = "Ill-gotten Gains",
         text = {
-          "Scoring Glass Cards give {C:money}$#1#{}",
-          "If Glass Card breaks give {C:money}$#2#{}",
+          "Scoring {C:attention}#3#s{} give {C:money}$#1#{}",
+          "If {C:attention}#3#{} breaks give {C:money}$#2#{}",
         }
       },
       j_abn_forgemaster_joker = {
         name = "Forgemaster Joker",
         text = {
-          "{C:attention}Unscoring{} cards turn into {C:attention}Hot Iron{} cards",
-          "{C:attention}Hot Iron{} cards can score when played",
+          "{C:attention}Unscoring{} cards turn into {C:attention}#1# Cards{}",
+          "{C:attention}#1# Cards{} can score when played",
         }
       },
       j_abn_carnival_comedian = {

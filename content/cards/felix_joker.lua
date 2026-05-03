@@ -21,6 +21,7 @@ SMODS.Joker {
     return {
       vars = {
         localize({ type = 'name_text', key = current_enh, set = 'Enhanced' }),
+        localize({ type = 'name_text', key = "m_wild", set = 'Enhanced' }),
       }
     }
   end,

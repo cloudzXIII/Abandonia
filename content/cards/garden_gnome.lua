@@ -25,10 +25,11 @@ SMODS.Joker {
     artist = "TanTanich",
   },
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
     local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.chance, "j_abn_garden_gnome")
     return {
       vars = {
-        numerator, denominator
+        numerator, denominator, localize({ type = 'name_text', key = "e_negative", set = 'Edition' }),
       },
     }
   end,

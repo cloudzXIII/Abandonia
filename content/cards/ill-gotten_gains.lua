@@ -10,7 +10,8 @@ SMODS.Joker {
   config = { extra = { dollars = 4, bdollars = 8, } },
 
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.dollars, card.ability.extra.bdollars } }
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_glass
+    return { vars = { card.ability.extra.dollars, card.ability.extra.bdollars, localize({ type = 'name_text', key = "m_glass", set = 'Enhanced' }), } }
   end,
 
   calculate = function(self, card, context)
