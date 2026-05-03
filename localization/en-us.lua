@@ -2579,6 +2579,103 @@ return {
         }
       },
     },
+    abn_credit_card = {
+      credit_abn_cloudzXIII = {
+        name = "cloudzXIII",
+        text = {
+          {
+            "{s:0.8}Started developing the mod in the first place",
+            "{s:0.8}Coded a big chunk of the mod ^-^",
+          },
+          {
+            "{s:0.8}Made the {C:gold,E:1,s:0.8}Final Mix{s:0.8} mod",
+            "{C:inactive,s:0.8}May your heart be your guiding key",
+          }
+        }
+      },
+      credit_abn_bunnet = {
+        name = "Bunnet",
+        text = {
+          "{s:0.8}Founder of the mod!",
+          "{s:0.8}came up with all the ideas"
+        }
+      },
+      credit_abn_coderevo = {
+        name = "CodeRevo",
+        text = {
+          {
+            "{s:0.8}Added a bunch of things!",
+            "{s:0.8}Namely {C:attention,s:0.8}Vouchers{s:0.8} and {C:attention,s:0.8}Boss Blinds{}"
+          },
+          {
+            "{s:0.8}Made the {C:purple,E:1,s:0.8}Revo's Vault{s:0.8} mod"
+          },
+        }
+      },
+      credit_abn_ericthetoon = {
+        name = "EricTheToon",
+        text = {
+          {
+            "{s:0.8}Added a bunch of things!",
+            "{s:0.8}Namely the new {C:attention,s:0.8}Consumable Types{}",
+            "{s:0.8}and a lot of {C:attention,s:0.8}Jokers"
+          },
+          {
+            "{s:0.8}Made the {C:purple,E:1,s:0.8}Fortlatro{s:0.8} mod"
+          },
+        }
+      },
+      credit_abn_deleteduser = {
+        name = "Deleted User",
+        text = {
+          "{s:0.8}Added some {C:attention,s:0.8}Jokers{}"
+        }
+      },
+      credit_abn_j8bit = {
+        name = "J8-Bit",
+        text = {
+          {
+            "{s:0.8}Added some {C:attention,s:0.8}Jokers{}"
+          },
+          {
+            "{s:0.8}Made the {C:blue,E:1,s:0.8}Forager's Essentials{s:0.8} mod",
+            "{s:0.8}Also made {C:attention,s:0.8}Calvin Chess{s:0.8} on Steam!",
+          },
+        }
+      },
+      credit_abn_marffe = {
+        name = "Marffe",
+        text = {
+          "{s:0.8}Added some {C:attention,s:0.8}Jokers{}"
+        }
+      },
+      credit_abn_mills = {
+        name = "Mills-44",
+        text = {
+          "{s:0.8}Added some {C:attention,s:0.8}Jokers{}"
+        }
+      },
+      credit_abn_rkart = {
+        name = "RKart",
+        text = {
+          "{s:0.8}Composed some {C:red,s:0.8}music{}",
+          "{s:0.8}Namely the {C:attention,s:0.8}Main Menu{}",
+          "{s:0.8}{C:attention,s:0.8}Boss Blind{s:0.8}, {C:attention,s:0.8}Jokers{}",
+          "{s:0.8}and {C:attention,s:0.8}Pack{s:0.8} themes!"
+        }
+      },
+      credit_abn_firch = {
+        name = "Firch",
+        text = {
+          {
+            "{s:0.8}Composed some cool {C:red,s:0.8}soundtracks{}{s:0.8}!"
+          },
+          {
+            "{s:0.8}Made the {C:attention,E:1,s:0.8}Bunco{}{s:0.8} mod"
+          }
+        }
+      },
+    },
     Other = {
       p_abn_calamitybooster = {
         name = 'Calamity Pack',
@@ -2875,27 +2972,8 @@ return {
       },
       abn_credits = {
         text = {
-          "{C:dark_edition,s:2}Founded by:",
-          " ",
-          "{C:dark_edition,s:1.3}Bunnet",
-          " ",
-          "{C:blue,s:2}Programmed by:",
-          " ",
-          "{C:blue,s:1.3}cloudzXIII{}",
-          "{C:blue,s:1.3}Revo{}",
-          "{C:blue,s:1.3}Mills-44{}",
-          "{C:blue,s:1.3}J8-Bit{}",
-          "{C:blue,s:1.3}EricTheToon{}",
-          " ",
-          "{C:red,s:2}Music by:",
-          " ",
-          "{C:red,s:1.3}Rkart{}",
-          "{C:red,s:1.3}Firch{}",
-          " ",
-          "{C:green,s:2}Art by:",
-          " ",
-          "{C:green,s:1.2}People from the Balatro Discord!",
-          "{C:inactive,s:1.1}(look under the Jokers :>)"
+          "{C:green,s:1.5}Art by people from the Balatro {C:blue,s:1.5}Discord{}{s:1.5}!",
+          "{C:inactive,s:1.3}(look under the Jokers :>)"
         }
       }
     },
@@ -3776,6 +3854,10 @@ return {
     challenge_names = {
     },
     dictionary = {
+      k_abn_artist = "Artist",
+      k_abn_founder = "Founder",
+      k_abn_coder = "Coder",
+      k_abn_music = "Music",
       k_abn_superrare = "Super Rare",
       k_abn_parallelrare = "Parallel Rare",
       k_abn_destroyed = "Destroyed!",
