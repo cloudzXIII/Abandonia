@@ -2345,8 +2345,9 @@ return {
       j_abn_hard_and_dry = {
         name = "Hard and Dry",
         text = {
-          "{C:attention}Double{} the values of the {C:attention}Leftmost{} Joker after defeating a blind",
-          "Blinds are obscured",
+          "When {C:attention}Boss Blind{} is defeated,",
+          "{C:attention}Double{} the values of the {C:attention}Leftmost{} Joker",
+          "{C:attention}Boss Blinds{} are {C:red}obscured{}",
         }
       },
       j_abn_bonus_buffoon = {
