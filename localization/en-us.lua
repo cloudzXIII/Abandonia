@@ -1,5 +1,111 @@
 return {
   descriptions = {
+    Back = {
+      b_abn_CrimsonDeck = {
+        name = "Crimson Deck",
+        text = {
+          "Base {C:chips}Chips{} for Poker hands are {C:attention}halved{}",
+          "{X:mult,C:white}X2{} Mult",
+          "All Blinds are {X:mult,C:white}X1.7{} bigger",
+        }
+      },
+      b_abn_AzulDeck = {
+        name = "Azul Deck",
+        text = {
+          "Can {C:chips}play{} and {C:mult}discard{} {C:attention}6{} cards",
+          "lose {C:money}$3{} when playing less then {C:attention}6{} cards",
+        }
+      },
+      b_abn_GoldenDeck = {
+        name = "Golden Deck",
+        text = {
+          "Gain {C:money}$1{} per played card",
+          "If money reaches {C:money}$0{}",
+          "automatically lose the round",
+        }
+      },
+      b_abn_EmeraldDeck = {
+        name = "Emerald Deck",
+        text = {
+          "Start with {C:green}Reroll Surplus{} and {C:green}Reroll Glut{}",
+          "{C:attention}0{} Consumable slots",
+        }
+      },
+      b_abn_WhiteDeck = {
+        name = "White Deck",
+        text = {
+          "{C:attention}-2{} Joker Slots",
+          "Jokers are 2X more likely to be {C:dark_edition}negative{}",
+        }
+      },
+      b_abn_CatastropheDeck = {
+        name = "Catastrophe Deck",
+        text = {
+          "Replace all {C:tarot}Tarot{} packs",
+          "with {C:abn_sigil}Sigil{} packs",
+        }
+      },
+      b_abn_EvenOddDeck = {
+        name = "Even and Odd deck",
+        text = {
+          "Only {C:attention}numbered{} cards",
+        }
+      },
+      b_abn_SnowDeck = {
+        name = "Snow Deck",
+        text = {
+          "Start with a set",
+          "of {C:abn_snow}Snow{} cards",
+        }
+      },
+      b_abn_PenumbraDeck = {
+        name = "Penumbra Deck",
+        text = {
+          "Start with a set",
+          "of {C:abn_penumbra}Penumbra{} cards",
+        }
+      },
+      b_abn_DarkNebulaDeck = {
+        name = "Dark Nebula Deck",
+        text = {
+          "{C:planet}Planet{} Cards don't appear in the shop",
+          "{C:abn_astro}Astro{} Cards appear {C:attention}2X{} more often",
+        }
+      },
+      b_abn_PoltergiestDeck = {
+        name = "Poltergiest Deck",
+        text = {
+          "{C:abn_nightshift}Nightshift{} cards appear more often",
+          "Each used {C:attention}consumable{} increases",
+          "{C:attention}blind requirements{} by {X:attention,C:white}x0.02{}",
+        }
+      },
+      b_abn_InvertedQualia = {
+        name = "Inverted Qualia",
+        text = {
+          "After every {C:attention}Ante{}",
+          "choose a random {C:attention}Suit{}",
+          "This suit counts as {C:attention}ALL{} suits",
+          "Current Suit: #1#",
+        }
+      },
+      b_abn_OxidizedDeck = {
+        name = "Oxidized Deck",
+        text = {
+          "{C:dark_edition}Enhanced{} Cards are",
+          "{C:mult}debuffed{} after {C:attention}scoring",
+          "Non-Enhanced cards can't be {C:mult}debuffed{}",
+        }
+      },
+      b_abn_PlatinumDeck = {
+        name = "Platinum Deck",
+        text = {
+          "Start with {C:red}Hone{} and {C:red}Glow Up{}",
+          "{C:green}1 in 5{} chance for Jokers",
+          "without {C:dark_edition}editions{} to be {C:mult}destroyed",
+        }
+      }
+    },
     Tag = {
       --#region Hazard Tags
       tag_abn_hazard_uncommon = {
@@ -2474,6 +2580,38 @@ return {
       },
     },
     Other = {
+      p_abn_calamitybooster = {
+        name = 'Calamity Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:abn_calamity}Calamity{} cards to',
+          'be used immediately'
+        }
+      },
+      p_abn_calamitybooster2 = {
+        name = 'Calamity Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:abn_calamity}Calamity{} cards to',
+          'be used immediately'
+        }
+      },
+      p_abn_calamitybooster_j = {
+        name = 'Jumbo Calamity Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:abn_calamity}Calamity{} cards to',
+          'be used immediately'
+        }
+      },
+      p_abn_calamitybooster_m = {
+        name = 'Mega Calamity Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:abn_calamity}Calamity{} cards to',
+          'be used immediately'
+        }
+      },
       p_abn_sigil_normal = {
         name = 'Sigil Pack',
         text = {
@@ -2760,8 +2898,6 @@ return {
           "{C:inactive,s:1.1}(look under the Jokers :>)"
         }
       }
-    },
-    Stake = {
     },
     Mod = {
       abandonia = {
@@ -3605,6 +3741,34 @@ return {
         }
       },
     },
+    Stake = {
+      stake_abn_honor = {
+        name = "Honor Jimbo",
+        text = {
+          "Finish at Ante {C:attention}9{}",
+          "Antes {C:attention}4, 8, and 9{} are",
+          "{C:abn_hazard}Hazard{} blinds",
+        },
+      },
+      stake_abn_menacing = {
+        name = "Menacing Jimbo",
+        text = {
+          "Finish at Ante {C:attention}10{}",
+          "Antes {C:attention}5 and 10{} are",
+          "{C:abn_hazard}Hazard{} blinds",
+        },
+      },
+      stake_abn_toxic = {
+        name = "Toxic Jimbo",
+        text = {
+          "Finish at Ante {C:attention}11{}",
+          "Antes {C:attention}6 and 11{} are",
+          "{C:abn_hazard}Hazard{} blinds",
+          "Jokers can be {C:attention}flipped{}",
+          "Jokers can have {C:attention}stickers{}"
+        },
+      },
+    },
   },
   misc = {
     quips = {
@@ -3635,7 +3799,6 @@ return {
       abn_joker_chip = "Bonus Chips",
       abn_joker_mult = "Bonus Mult",
       abn_joker_xmult = "Bonus Mult",
-      abn_joker_xchips = "Bonus Chips",
       abn_joker_xchips = "Bonus Chips",
       abn_joker_dollars = "Bonus Dollars",
       abn_joker_rep = "Bonus Repetitions",

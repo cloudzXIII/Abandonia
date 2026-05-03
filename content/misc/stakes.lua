@@ -9,12 +9,15 @@ end
 local original_game_update = Game.update
 function Game:update(dt)
     original_game_update(self, dt)
-    
+
     -- Ensure win_ante stays locked based on modifiers
     if G.GAME then
-        if G.GAME.modifiers.Toxic and G.GAME.win_ante < 11 then G.GAME.win_ante = 11
-        elseif G.GAME.modifiers.Menacing and G.GAME.win_ante < 10 then G.GAME.win_ante = 10
-        elseif G.GAME.modifiers.Honor and G.GAME.win_ante < 9 then G.GAME.win_ante = 9
+        if G.GAME.modifiers.Toxic and G.GAME.win_ante < 11 then
+            G.GAME.win_ante = 11
+        elseif G.GAME.modifiers.Menacing and G.GAME.win_ante < 10 then
+            G.GAME.win_ante = 10
+        elseif G.GAME.modifiers.Honor and G.GAME.win_ante < 9 then
+            G.GAME.win_ante = 9
         end
     end
 
@@ -23,16 +26,16 @@ function Game:update(dt)
         local is_honor = G.GAME.modifiers.Honor
         local is_menacing = G.GAME.modifiers.Menacing
         local is_toxic = G.GAME.modifiers.Toxic
-        
+
         if is_honor or is_menacing or is_toxic then
             local current_ante = G.GAME.round_resets.ante
-            
+
             -- Define Hazard Antes based on your new rules
-            local is_hazard_ante = (is_honor and (current_ante == 4 or current_ante == 8 or current_ante == 9)) or 
-                                   (is_menacing and (current_ante == 5 or current_ante == 10)) or
-                                   (is_toxic and (current_ante == 6 or current_ante == 11))
-            
-            -- In your new request, you mentioned these specific antes are Hazards. 
+            local is_hazard_ante = (is_honor and (current_ante == 4 or current_ante == 8 or current_ante == 9)) or
+                (is_menacing and (current_ante == 5 or current_ante == 10)) or
+                (is_toxic and (current_ante == 6 or current_ante == 11))
+
+            -- In your new request, you mentioned these specific antes are Hazards.
             -- If you still want "Showdowns" elsewhere, add them here, otherwise this focuses on Hazards.
             if is_hazard_ante then
                 local current_boss_key = G.GAME.round_resets.blind_choices.Boss or ""
@@ -40,20 +43,20 @@ function Game:update(dt)
 
                 if not is_hazard then
                     G.GAME.HonorShowdownTimer = (G.GAME.HonorShowdownTimer or 0) + 1
-                    
+
                     if G.GAME.HonorShowdownTimer >= 20 then
                         G.GAME.HonorShowdownTimer = 0
                         local pool = {}
-                        
+
                         for k, v in pairs(G.P_BLINDS) do
                             if k:find("bl_abn_hazard") then pool[#pool + 1] = k end
                         end
 
                         if #pool > 0 then
                             local r_count = G.GAME.round_resets.boss_reroll_count or 0
-                            local choice = pool[pseudorandom('Honor_hazard'..current_ante..r_count, 1, #pool)]
+                            local choice = pool[pseudorandom('Honor_hazard' .. current_ante .. r_count, 1, #pool)]
                             G.GAME.round_resets.blind_choices.Boss = choice
-                            
+
                             -- UI Refresh
                             if G.blind_select_opts and G.blind_select_opts.boss then
                                 local par = G.blind_select_opts.boss.parent
@@ -87,11 +90,11 @@ function Game:update(dt)
     if G.STATE == G.STATES.SHOP and G.GAME.modifiers.Toxic and G.shop_jokers and G.shop_jokers.cards then
         for _, v in ipairs(G.shop_jokers.cards) do
             if v.config.center.set == 'Joker' and not v.ability.abn_toxic_checked then
-                if pseudorandom('toxic_flip') < 0.3 then 
+                if pseudorandom('toxic_flip') < 0.3 then
                     if v.facing == 'front' then v:flip() end
-                    v.ability.abn_perma_flipped = true 
+                    v.ability.abn_perma_flipped = true
                 end
-                v.ability.abn_toxic_checked = true 
+                v.ability.abn_toxic_checked = true
             end
         end
     end
@@ -104,18 +107,10 @@ SMODS.Stake({
     applied_stakes = {},
     above_stake = "gold",
     atlas = "AbandoniaStakes",
-    pos = {x = 0, y = 0},
+    pos = { x = 0, y = 0 },
     sticker_atlas = "AbandoniaStickers",
     sticker_pos = { x = 5, y = 6 },
     colour = G.C.WHITE,
-    loc_txt = {
-        name = "Honor Jimbo",
-        text = {
-            "Finish at Ante {C:attention}9{}",
-            "Antes {C:attention}4, 8, and 9{} are",
-            "{C:abn_hazard}Hazard{} blinds",
-        },
-    },
     modifiers = function()
         G.GAME.win_ante = 9
         G.GAME.modifiers.Honor = true
@@ -127,18 +122,11 @@ SMODS.Stake({
     applied_stakes = { "abn_honor" },
     above_stake = "abn_honor",
     atlas = "AbandoniaStakes",
-    pos = {x = 1, y = 0},
+    pos = { x = 1, y = 0 },
     sticker_atlas = "AbandoniaStickers",
     sticker_pos = { x = 0, y = 7 },
     colour = G.C.WHITE,
-    loc_txt = {
-        name = "Menacing Jimbo",
-        text = {
-            "Finish at Ante {C:attention}10{}",
-            "Antes {C:attention}5 and 10{} are",
-            "{C:abn_hazard}Hazard{} blinds",
-        },
-    },
+
     modifiers = function()
         G.GAME.win_ante = 10
         G.GAME.modifiers.Menacing = true
@@ -153,20 +141,11 @@ SMODS.Stake({
     applied_stakes = { "abn_menacing" },
     above_stake = "abn_menacing",
     atlas = "AbandoniaStakes",
-    pos = {x = 2, y = 0},
+    pos = { x = 2, y = 0 },
     sticker_atlas = "AbandoniaStickers",
     sticker_pos = { x = 1, y = 7 },
     colour = G.C.WHITE,
-    loc_txt = {
-        name = "Toxic Jimbo",
-        text = {
-            "Finish at Ante {C:attention}11{}",
-            "Antes {C:attention}6 and 11{} are",
-            "{C:abn_hazard}Hazard{} blinds",
-            "Jokers can be {C:attention}flipped{}",
-			"Jokers can have {C:attention}stickers{}"
-        },
-    },
+
     modifiers = function()
         G.GAME.win_ante = 11
         G.GAME.modifiers.Toxic = true
