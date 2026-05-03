@@ -7,9 +7,15 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  loc_vars = function(self, info_queue, center)
+  loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
-    return { vars = {} }
+    return {
+      vars = {
+        localize({ type = 'name_text', key = "m_stone", set = "Enhanced" }),
+        localize({ type = 'name_text', key = "m_abn_polkadot", set = "Enhanced" }),
+        localize({ type = 'name_text', key = "m_wild", set = "Enhanced" }),
+      }
+    }
   end,
 
   calculate = function(self, card, context)

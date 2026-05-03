@@ -14,7 +14,14 @@ SMODS.Joker {
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_pearlenscene
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_iridescent
 
-    return { vars = { card.ability.extra.dollars } }
+    return {
+      vars = {
+        card.ability.extra.dollars,
+        localize({ type = 'name_text', key = "e_abn_gloss", set = "Edition" }),
+        localize({ type = 'name_text', key = "e_abn_pearlenscene", set = "Edition" }),
+        localize({ type = 'name_text', key = "e_abn_iridescent", set = "Edition" }),
+      }
+    }
   end,
 
   in_pool = function(self)

@@ -25,7 +25,8 @@ SMODS.Joker {
     return {
       vars = {
         card.ability.extra.chips_gain, card.ability.extra.mult_gain, numerator, denominator, numerator_2, denominator_2,
-        card.ability.extra.chips, card.ability.extra.mult
+        card.ability.extra.chips, card.ability.extra.mult, localize({ type = 'name_text', key = "e_foil", set = "Edition" }),
+        localize({ type = 'name_text', key = "e_abn_gloss", set = "Edition" })
       },
     }
   end,

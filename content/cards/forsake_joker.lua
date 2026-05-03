@@ -10,7 +10,16 @@ SMODS.Joker {
   config = { extra = { dollars = 4, chips = 0, mult = 0, multadd = 5, } },
 
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.dollars, card.ability.extra.chips, card.ability.extra.mult, card.ability.extra.multadd } }
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_abandond
+    return {
+      vars = {
+        card.ability.extra.dollars,
+        card.ability.extra.chips,
+        card.ability.extra.mult,
+        card.ability.extra.multadd,
+        localize({ type = 'name_text', key = "e_abn_abandond", set = "Edition" }),
+      }
+    }
   end,
 
   in_pool = function(self)

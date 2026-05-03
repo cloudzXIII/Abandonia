@@ -11,7 +11,8 @@ SMODS.Joker {
 
 
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.xmult } }
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_chthonian
+    return { vars = { card.ability.extra.xmult, localize({ type = 'name_text', key = "e_abn_chthonian", set = "Edition" }), } }
   end,
 
   --only appear if you have chthonian

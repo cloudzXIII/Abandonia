@@ -20,7 +20,7 @@ SMODS.Joker {
 
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_sunscourge
-    return { vars = { card.ability.extra.dollars } }
+    return { vars = { card.ability.extra.dollars, localize({ type = 'name_text', key = "e_abn_sunscourge", set = "Edition" }), } }
   end,
 
   add_to_deck = function(self, card)

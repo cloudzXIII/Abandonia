@@ -10,7 +10,8 @@ SMODS.Joker {
   config = { extra = { chipsj = 50, chipsc = 20 } },
 
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.chipsj, card.ability.extra.chipsc } }
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
+    return { vars = { card.ability.extra.chipsj, card.ability.extra.chipsc, localize({ type = 'name_text', key = "e_holo", set = "Edition" }), } }
   end,
 
   in_pool = function(self)
