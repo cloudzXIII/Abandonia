@@ -28,11 +28,11 @@ SMODS.Joker {
 
   calculate = function(self, card, context)
     if context.joker_main then
-      if ABANDONIA.random_chance(.3) then
+      if pseudorandom("j_abn_feline_joker") < 0.3 then
         return {
           xmult = card.ability.extra.xmult
         }
-      elseif ABANDONIA.random_chance(.6) then
+      elseif pseudorandom("j_abn_feline_joker") < 0.6 then
         return {
           chips = card.ability.extra.chips
         }

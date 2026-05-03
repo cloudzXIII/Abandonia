@@ -2601,7 +2601,7 @@ return {
         }
       },
       credit_abn_coderevo = {
-        name = "CodeRevo",
+        name = "Revo",
         text = {
           {
             "{s:0.8}Added a bunch of things!",
