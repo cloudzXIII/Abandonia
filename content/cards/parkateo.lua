@@ -3,7 +3,7 @@ function Card:calculate_joker(context)
     -- Check if the card being calculated is a Consumable and we are in the main scoring phase
     if context.joker_main 
     and self.ability.set ~= 'Joker' 
-	and self.area == G.consumeables.cards
+	and self.area == G.consumeables
     and not self.debuff then
 
         local parkateos = SMODS.find_card('j_abn_parkateo')
