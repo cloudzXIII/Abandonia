@@ -2611,13 +2611,69 @@ return {
 
         }
       },
-	  j_abn_pong_joker = {
+	  j_abn_pong_joker = { -- I dont know who write this way but u scare me. with love, Marffe
         name = "Pong Joker",
         text = {
           "Gain {X:chips,C:white}X#4#{} Chips when playing a {C:attention}Straight{} made of only {C:spades}Dark{} Suits",
 		  "Gain {X:mult,C:white}X#3#{} Mult when playing a {C:attention}Straight{} made of only {C:diamonds}Light{} Suits",
 		  "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{} {X:chips,C:white}X#2#{} {C:inactive}Chips{}",
-
+        }
+      },
+      j_abn_dual_identity = {
+        name = "Dual Identity",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult if you have",
+          "an {C:attention}even{} number of Jokers",
+          "of {C:attention}two different{} rarities",
+        }
+      },
+      j_abn_tetris_joker = {
+        name = "Tetris Joker",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult when",
+          "you have an {C:attention}Even{}",
+          "number of Jokers",
+        }
+      },
+      j_abn_erratic_joker = {
+        name = "Erratic Joker",
+        text = {
+          "{C:attention}Before scoring{}:",
+          "{C:diamonds}Diamonds{} become {C:spades}Spades{}",
+          "{C:spades}Spades{} become {C:hearts}Hearts{}",
+          "{C:hearts}Hearts{} become {C:clubs}Clubs{}",
+          "{C:clubs}Clubs{} become {C:diamonds}Diamonds{}",
+          "and this Joker gains {C:chips}+#1#{} Chips",
+          "whenever a card changes suit",
+          "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
+        }
+      },
+      j_abn_fanart_joker = {
+        name = "Fanart Joker",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult when",
+          "you have an {C:attention}Odd{} number",
+          "of Jokers",
+        }
+      },
+      j_abn_edgesketch_joker = {
+        name = "Edgesketch Joker",
+        text = {
+          "Gains {C:mult}+#3#{} Mult when the",
+          "{C:attention}rightmost{} Joker triggers",
+          "Gains {C:chips}+#4#{} Chips when the",
+          "{C:attention}leftmost{} Joker triggers",
+          "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult, {C:chips}+#2#{C:inactive} Chips)",
+        }
+      },
+      j_abn_phonechat_joker = {
+        name = "Phonechat Joker",
+        text = {
+          "Gains {C:chips}+#3#{} Chips when Joker",
+          "to the {C:attention}left{} triggers",
+          "Gains {C:mult}+#4#{} Mult when Joker",
+          "to the {C:attention}right{} triggers",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#2#{C:inactive} Mult)",
         }
       },
     },
