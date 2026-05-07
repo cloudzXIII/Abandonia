@@ -2,6 +2,11 @@ SMODS.Joker {
   key = 'jokerge',
   loc_txt = {
     ['en-us'] = {
+      name = "Jokerge",
+      text = {
+        "Double the values of",
+        "all other {C:attention}Jokers{}",
+      },
       unlock = {
         "?????",
       },
@@ -21,10 +26,14 @@ SMODS.Joker {
   end,
 
   update = function(self, card)
+    -- Only run logic if the card is in the Joker slots
     if card.area == G.jokers then
       local function double_joker_values(j)
-        if j.ability.set == "Joker" and not j.ability.jokerged then
+        -- Don't double itself and only double if not already doubled
+        if j.ability.set == "Joker" and j ~= card and not j.ability.jokerged then
           local changed_extra = false
+          
+          -- Handle extra
           if type(j.ability.extra) == "table" then
             for k, v in pairs(j.ability.extra) do
               if type(v) == "number" then
@@ -36,6 +45,7 @@ SMODS.Joker {
             changed_extra = true
           end
 
+          -- Handle base ability values if no extra
           if not changed_extra then
             for k, v in pairs(j.ability) do
               if type(v) == "number" and k ~= 'id' and k ~= 'groups' then
@@ -47,16 +57,26 @@ SMODS.Joker {
               end
             end
           end
+          
           j.sell_cost = j.sell_cost * 2
           j.ability.jokerged = true
           j:juice_up()
         end
       end
 
-      if G.shop_jokers then
-        for _, j in ipairs(G.shop_jokers.cards) do double_joker_values(j) end
+      -- Safety check for Shop Jokers
+      if G.shop_jokers and G.shop_jokers.cards then
+        for _, j in ipairs(G.shop_jokers.cards) do 
+            double_joker_values(j) 
+        end
       end
-      for _, j in ipairs(G.jokers.cards) do if j ~= card then double_joker_values(j) end end
+      
+      -- Safety check for Owned Jokers
+      if G.jokers and G.jokers.cards then
+        for _, j in ipairs(G.jokers.cards) do 
+            double_joker_values(j) 
+        end
+      end
     end
   end,
 
@@ -66,7 +86,7 @@ SMODS.Joker {
       if j.ability.set == "Joker" and j.ability.jokerged then
         local changed_extra = false
 
-        -- 1. REVERSE extra
+        -- REVERSE extra
         if type(j.ability.extra) == "table" then
           for k, v in pairs(j.ability.extra) do
             if type(v) == "number" then
@@ -79,12 +99,11 @@ SMODS.Joker {
           changed_extra = true
         end
 
-        -- 2. REVERSE ability
+        -- REVERSE ability
         if not changed_extra then
           for k, v in pairs(j.ability) do
             if type(v) == "number" and k ~= 'id' and k ~= 'groups' then
               if (k == "h_x_chips" or k == "x_mult" or k == "x_chips") then
-                -- Only halve if it's still above the base 1x
                 if v > 1 then j.ability[k] = v / 2 end
               elseif v > 0 then
                 j.ability[k] = v / 2
@@ -99,11 +118,13 @@ SMODS.Joker {
       end
     end
 
-    -- Clean up all jokers in shop and inventory
-    if G.shop_jokers then
+    -- Safety check for Shop Jokers on removal
+    if G.shop_jokers and G.shop_jokers.cards then
       for _, j in ipairs(G.shop_jokers.cards) do halve_joker_values(j) end
     end
-    if G.jokers then
+    
+    -- Safety check for Owned Jokers on removal
+    if G.jokers and G.jokers.cards then
       for _, j in ipairs(G.jokers.cards) do halve_joker_values(j) end
     end
   end,
