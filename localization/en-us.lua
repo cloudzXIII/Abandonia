@@ -2676,6 +2676,58 @@ return {
           "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#2#{C:inactive} Mult)",
         }
       },
+	  j_abn_glossy_joker = {
+        name = "Glossy Joker",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult when {C:dark_edition}Gloss{} edition scores",
+		  "If this Joker has {C:dark_edition}Gloss{} edition gain {C:mult}+#3#{} Mult for each scoring {C:dark_edition}Gloss{} card",
+		  "{C:inactive}Currently: {C:mult}+#2#{} {C:inactive}Mult{}",
+        }
+      },
+	  j_abn_snow_route = {
+        name = "Snow Route",
+        text = {
+          "Played cards with {C:abn_snow}Snow{} suit",
+		  "have a {C:green}#1# in #2#{} to {C:attention}level up{} played hand",
+        }
+      },
+	  j_abn_id_staff = {
+        name = "ID Staff",
+        text = {
+          "When a {C:attention}face{} card is {C:mult}destroyed{}",
+		  "Add {C:abn_hazard}Hazard{} to the {C:attention}leftmost{} card in hand",
+        }
+      },
+	  j_abn_enchanted_night = {
+        name = "Enchanted Night",
+        text = {
+          "{C:spades}Dark{} Suits with {C:dark_edition}Editions{} retrigger",
+        }
+      },
+	  j_abn_health_stickers = {
+        name = "Health Stickers",
+        text = {
+          "When {C:attention}Blind is defeated{}",
+		  "Place a random {C:green}Beneficial{} {C:abn_perishable}Sticker{} on the {C:attention}leftmost{} Joker",
+        }
+      },
+	  j_abn_the_joker_dance = {
+        name = "The Joker Dance",
+        text = {
+          "Jokers {C:attention}can't{} be moved",
+		  "When a hand is played {C:attention}shuffle{} all Jokers",
+		  "All Jokers gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
+        }
+      },
+	  j_abn_royal_order = {
+        name = "Royal Order",
+        text = {
+          "If scoring cards are in the following order",
+		  "{C:hearts}Heart{} {C:diamonds}Diamond{} {C:clubs}Club{} {C:spades}Spade{}",
+		  "level up the played hand by {C:attention}#1#",
+		  "and grant {X:mult,C:white}X#2#{} Mult",
+        }
+      },
     },
 
     Spectral = {
