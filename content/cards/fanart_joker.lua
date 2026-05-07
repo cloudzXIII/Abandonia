@@ -11,7 +11,7 @@ SMODS.Joker {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
-  config = { extra = { xmult = 7 } },
+  config = { extra = { xmult = 5 } },
   calculate = function(self, card, context)
     if context.joker_main then
       if #G.jokers.cards % 2 == 1 then

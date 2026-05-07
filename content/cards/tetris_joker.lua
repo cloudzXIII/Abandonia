@@ -9,7 +9,7 @@ SMODS.Joker {
   cost = 8,
   discovered = false,
   blueprint_compat = true,
-  config = { extra = { xmult = 8 } },
+  config = { extra = { xmult = 6 } },
   calculate = function(self, card, context)
     if context.joker_main then
       if #G.jokers.cards % 2 == 0 then
