@@ -2867,6 +2867,31 @@ return {
       },
     },
     Other = {
+      abn_orange_seal = {
+        name = "Orange Seal",
+        text = {
+          "Creates the {C:planet}Planet{} card",
+          "for this card's {C:attention}rank{}",
+          "of round if {C:attention}held{} in hand",
+          "{C:inactive}(Must have room)",
+        }
+      },
+      abn_pink_seal = {
+        name = "Pink Seal",
+        text = {
+          "Creates a {C:abn_astro}Astro{} card",
+          "when {C:attention}discarded",
+          "{C:inactive}(Must have room)",
+        },
+      },
+      abn_grey_seal = {
+        name = "Grey Seal",
+        text = {
+          "Earn {C:money}$#1#{}",
+          "when {C:attention}discarded",
+        }
+      },
+
       p_abn_calamitybooster = {
         name = 'Calamity Pack',
         text = {
@@ -4078,6 +4103,7 @@ return {
       b_abn_ranks = "Ranks",
       k_abn_merged = "Merged!",
       k_abn_holo = "Holographic!",
+      k_abn_plus_astro = "+1 Astro",
 
     },
     labels = {
@@ -4110,6 +4136,10 @@ return {
       abn_glove_hand = "Glove Hand",
       abn_spicy = "Spicy",
       abn_x = "X",
+      -- Seals
+      abn_orange_seal = "Orange Seal",
+      abn_grey_seal = "Grey Seal",
+      abn_pink_seal = "Pink Seal"
     },
     ranks = {
     },
