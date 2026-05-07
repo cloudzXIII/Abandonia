@@ -2638,11 +2638,8 @@ return {
       j_abn_erratic_joker = {
         name = "Erratic Joker",
         text = {
-          "{C:attention}Before scoring{}:",
-          "{C:diamonds}Diamonds{} become {C:spades}Spades{}",
-          "{C:spades}Spades{} become {C:hearts}Hearts{}",
-          "{C:hearts}Hearts{} become {C:clubs}Clubs{}",
-          "{C:clubs}Clubs{} become {C:diamonds}Diamonds{}",
+          "{C:attention}Before scoring{} each played",
+          "card changes to a {C:attention}random{} suit",
           "and this Joker gains {C:chips}+#1#{} Chips",
           "whenever a card changes suit",
           "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
