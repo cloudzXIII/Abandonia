@@ -1,0 +1,38 @@
+SMODS.Joker {
+  key = 'health_stickers',
+  rarity = 2,
+  atlas = 'ABNJokerSheet8',
+  pos = { x = 7, y = 2 },
+  cost = 6,
+  discovered = false,
+  blueprint_compat = false,
+
+  calculate = function(self, card, context)
+    -- Trigger at end of round
+    if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+      -- Access the first card in the Jokers area (index 1)
+      local leftmost_joker = G.jokers.cards[1]
+
+      -- Check if a leftmost joker exists
+      if leftmost_joker then
+        -- Define the pool of available Abandonia stickers
+        local abn_stickers = {
+          'abn_pump_up', 'abn_crown', 'abn_immortal', 'abn_bullseye', 'abn_lightning_bolt',
+          'abn_top_hat', 'abn_cat_eye', 'abn_glove_hand', 'abn_shovel',
+          'abn_x', 'abn_spicy', --'abn_blood_drop',
+        }
+
+        -- Select a random sticker key from the list
+        local chosen_sticker = pseudorandom_element(abn_stickers, pseudoseed('health_stickers'))
+
+        -- Apply the random sticker to the leftmost joker
+        leftmost_joker:add_sticker(chosen_sticker, true)
+        leftmost_joker:juice_up()
+      end
+    end
+  end,
+
+  abn_artist_credits = {
+    artist = "Gud",
+  },
+}
