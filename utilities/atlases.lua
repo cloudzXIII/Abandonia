@@ -147,12 +147,15 @@ SMODS.Atlas({
   py = 95,
 })
 
+--[[ this crashed the game we need an atlas for this
 SMODS.Atlas({
   key = "AbandoniaCrossmod",
   path = "crossmod.png",
   px = 71,
   py = 95,
 })
+--]]
+
 --#region Jokers
 SMODS.Atlas({
   key = "ABNJokerSheet1",
