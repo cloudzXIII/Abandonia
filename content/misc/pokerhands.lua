@@ -51,7 +51,6 @@ SMODS.PokerHand {
   l_mult = 4,
   l_chips = 40,
   visible = false,
-  above_hand = 'Three of a Kind',
   example = {
     { 'H_Q', true },
     { 'C_Q', true },
@@ -61,12 +60,7 @@ SMODS.PokerHand {
     { 'S_7', true },
   },
   evaluate = function(parts, hand)
-    if #hand == 6 then
-      if #parts._3 < 3 then
-        return {}
-      end
-      return parts._all_pairs
-    end
+    return #parts._3 >= 2 and parts._all_pairs or {}
   end
 }
 
