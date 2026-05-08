@@ -23,8 +23,8 @@ SMODS.Joker {
         end
       end
       local changed = 0
-      if context.full_hand then
-        for _, played_card in ipairs(context.full_hand) do
+      if context.scoring_hand then
+        for _, played_card in ipairs(context.scoring_hand) do
           local available_suits = {}
           for _, suit in ipairs(all_suits) do
             if suit ~= played_card.base.suit then
