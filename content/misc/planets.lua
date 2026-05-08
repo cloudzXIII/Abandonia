@@ -1,31 +1,31 @@
 local rank_planets = {
-  { key = "lauto",   rank = "_2", pos = { x = 2, y = 0 } },
-  { key = "urcurme", rank = "_3", pos = { x = 3, y = 0 } },
-  { key = "nevus",   rank = "_4", pos = { x = 4, y = 0 } },
-  { key = "aerth",   rank = "_5", pos = { x = 5, y = 0 } },
-  { key = "sarh",    rank = "_6", pos = { x = 0, y = 1 } },
-  { key = "unpter",  rank = "_7", pos = { x = 1, y = 1 } },
-  { key = "urno",    rank = "_8", pos = { x = 2, y = 1 } },
-  { key = "ranu",    rank = "_9", pos = { x = 3, y = 1 } },
-  { key = "etnup",   rank = "_1", pos = { x = 4, y = 1 } },
-  { key = "zabures", rank = "_J", pos = { x = 5, y = 1 } },
-  { key = "pergus",  rank = "_Q", pos = { x = 0, y = 2 } },
-  { key = "vugmado", rank = "_K", pos = { x = 1, y = 2 } },
-  { key = "abandia", rank = "_A", pos = { x = 2, y = 2 } },
+  { key = "lauto", rank = "2", pos = { x = 2, y = 0 } },
+  { key = "urcurme", rank = "3", pos = { x = 3, y = 0 } },
+  { key = "nevus", rank = "4", pos = { x = 4, y = 0 } },
+  { key = "aerth", rank = "5", pos = { x = 5, y = 0 } },
+  { key = "sarh", rank = "6", pos = { x = 0, y = 1 } },
+  { key = "unpter", rank = "7", pos = { x = 1, y = 1 } },
+  { key = "urno", rank = "8", pos = { x = 2, y = 1 } },
+  { key = "ranu", rank = "9", pos = { x = 3, y = 1 } },
+  { key = "etnup", rank = "10", pos = { x = 4, y = 1 } },
+  { key = "zabures", rank = "Jack", pos = { x = 5, y = 1 } },
+  { key = "pergus", rank = "Queen", pos = { x = 0, y = 2 } },
+  { key = "vugmado", rank = "King", pos = { x = 1, y = 2 } },
+  { key = "abandia", rank = "Ace", pos = { x = 2, y = 2 } },
 }
 
 for _, def in ipairs(rank_planets) do
   local rank = def.rank
   SMODS.Consumable {
-    key        = def.key,
-    set        = "Planet",
-    atlas      = "AbandoniaPlanets",
-    pos        = def.pos,
+    key = def.key,
+    set = "Planet",
+    atlas = "AbandoniaPlanets",
+    pos = def.pos,
     discovered = false,
-    cost       = 4,
-    config     = { rank = rank },
+    cost = 4,
+    config = { rank = rank },
 
-    loc_vars   = function(self, info_queue, center)
+    loc_vars = function(self, info_queue, center)
       return {
         vars = {
           G.GAME.abn_rank_upgrades[rank].level,
@@ -38,11 +38,11 @@ for _, def in ipairs(rank_planets) do
       }
     end,
 
-    can_use    = function(self, card)
+    can_use = function(self, card)
       return true
     end,
 
-    use        = function(self, card, area, copier)
+    use = function(self, card, area, copier)
       local _rank = G.GAME.abn_rank_upgrades[rank]
       update_hand_text(
         { sound = "button", volume = 0.7, pitch = 0.8, delay = 0.3 },
@@ -143,7 +143,7 @@ end
 --#region Add "Ranks" Tab to run info
 
 -- Manual Rank order since looping through G.GAME.abn_rank_upgrades doesn't do it in order
-local rank_order = { "_A", "_K", "_Q", "_J", "_1", "_9", "_8", "_7", "_6", "_5", "_4", "_3", "_2" }
+local rank_order = { "Ace", "King", "Queen", "Jack", "10", "9", "8", "7", "6", "5", "4", "3", "2" }
 
 local function count_deck_ranks()
   local count = {}
