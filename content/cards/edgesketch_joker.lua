@@ -14,20 +14,15 @@ SMODS.Joker {
   config = { extra = { mult = 0, chips = 0, mult_gain = 5, chips_gain = 15 } },
   calculate = function(self, card, context)
     if context.other_joker and not context.blueprint then
-      if context.other_joker == G.jokers.cards[#G.jokers.cards] then
-        card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
-        return { message = localize('k_upgrade_ex'), colour = G.C.FILTER, card = card }
-      end
-      if context.other_joker == G.jokers.cards[1] then
-        card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_gain
-        return { message = localize('k_upgrade_ex'), colour = G.C.FILTER, card = card }
-      end
-    end
-    if context.before and not context.blueprint then
-      if #G.jokers.cards == 1 then
-        card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
-        card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_gain
-        return { message = localize('k_upgrade_ex'), colour = G.C.FILTER, card = card }
+      if context.other_joker ~= card then
+        if context.other_joker == G.jokers.cards[#G.jokers.cards] then
+          card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+          return { message = localize('k_upgrade_ex'), colour = G.C.FILTER, card = card }
+        end
+        if context.other_joker == G.jokers.cards[1] then
+          card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_gain
+          return { message = localize('k_upgrade_ex'), colour = G.C.FILTER, card = card }
+        end
       end
     end
     if context.joker_main then

@@ -23,9 +23,8 @@ SMODS.Joker {
         end
       end
       local changed = 0
-      -- Solo procesar cartas que anotan
-      for _, played_card in ipairs(G.play.cards) do
-        if played_card:is_scoring() then
+      if context.full_hand then
+        for _, played_card in ipairs(context.full_hand) do
           local available_suits = {}
           for _, suit in ipairs(all_suits) do
             if suit ~= played_card.base.suit then
@@ -66,10 +65,10 @@ SMODS.Joker {
           end
         end
       end
-      if changed > 0 then
-        card.ability.extra.chips = card.ability.extra.chips + (changed * card.ability.extra.chips_gain)
-        return { message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } }, colour = G.C.CHIPS, }
-      end
+    end
+    if context.change_suit and not context.blueprint then
+      card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_gain
+      return { message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } }, colour = G.C.CHIPS, }
     end
     if context.joker_main then
       return { chips = card.ability.extra.chips }
