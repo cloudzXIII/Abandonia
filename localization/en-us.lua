@@ -764,6 +764,15 @@ return {
       },
     },
     Joker = {
+      j_abn_moon_joker = {
+        name = "Moon Joker",
+        text = {
+          "This Joker gains",
+          "{C:mult}+#2#{} Mult every time",
+          "a {C:planet}Planet{} card is used",
+          "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+        }
+      },
       j_abn_planet_joker = {
         name = "Planet Joker",
         text = {
