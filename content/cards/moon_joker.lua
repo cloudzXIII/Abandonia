@@ -31,6 +31,6 @@ SMODS.Joker {
     end
   end,
   abn_artist_credits = {
-    artist = "Vega"
+    artist = "Yahooyowza"
   },
 }
