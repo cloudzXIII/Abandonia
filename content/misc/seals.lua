@@ -291,3 +291,50 @@ SMODS.Seal {
     artist = "Vega",
   },
 }
+
+SMODS.Seal {
+  key = "lavender",
+  badge_colour = HEX("c68ede"),
+  atlas = "AbandoniaSeals",
+  pos = { x = 0, y = 1 },
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+      }
+    }
+  end,
+
+  config = {
+    extra = {
+    }
+  },
+
+  calculate = function(self, card, context)
+    if context.cardarea == G.play and context.repetition then
+      if context.abn_retriggered then
+        return
+      end
+      local pos = ABN.get_pos(card, context.scoring_hand)
+      local scoring_card = context.scoring_hand[pos - 1]
+      if scoring_card and scoring_card ~= card then
+        card_eval_status_text(card, 'extra', nil, nil, nil, {
+          message = localize('k_again_ex'),
+          colour = G.C.FILTER,
+        })
+        SMODS.score_card(scoring_card,
+          {
+            cardarea = G.play,
+            full_hand = context.full_hand,
+            scoring_hand = context.scoring_hand,
+            scoring_name = context.scoring_name,
+            poker_hands = context.poker_hands,
+            abn_retriggered = true,
+          })
+      end
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Vega",
+  },
+}

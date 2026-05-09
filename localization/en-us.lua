@@ -2899,6 +2899,13 @@ return {
       },
     },
     Other = {
+      abn_lavender_seal = {
+        name = "Lavender Seal",
+        text = {
+          "Retrigger {C:attention}playing card{}",
+          "to the {C:attention}left{} when scored"
+        }
+      },
       abn_violet_seal = {
         name = "Violet Seal",
         text = {
@@ -4216,6 +4223,7 @@ return {
       abn_white_seal = "White Seal",
       abn_brown_seal = "Brown Seal",
       abn_violet_seal = "Violet Seal",
+      abn_lavender_seal = "Lavender Seal"
     },
     ranks = {
     },
