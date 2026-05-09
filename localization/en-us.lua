@@ -764,6 +764,15 @@ return {
       },
     },
     Joker = {
+      j_abn_planet_joker = {
+        name = "Planet Joker",
+        text = {
+          "If {C:attention}Boss Blind{} is defeated",
+          "in a {C:attention}single{} hand,",
+          "Upgrade every {C:legendary,E:1}poker hand",
+          "by {C:attention}#1#{} level",
+        }
+      },
       j_abn_attack_777 = {
         name = "Attack 777",
         text = {
@@ -2864,6 +2873,12 @@ return {
       },
     },
     Other = {
+      abn_violet_seal = {
+        name = "Violet Seal",
+        text = {
+          "{C:white,X:chips}X#1#{} Chips"
+        }
+      },
       abn_brown_seal = {
         name = "Brown Seal",
         text = {
@@ -4173,7 +4188,8 @@ return {
       abn_black_seal = "Black Seal",
       abn_teal_seal = "Teal Seal",
       abn_white_seal = "White Seal",
-      abn_brown_seal = "Brown Seal"
+      abn_brown_seal = "Brown Seal",
+      abn_violet_seal = "Violet Seal",
     },
     ranks = {
     },

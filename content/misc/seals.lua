@@ -261,3 +261,33 @@ SMODS.Seal {
     artist = "Vega",
   },
 }
+
+SMODS.Seal {
+  key = "violet",
+  badge_colour = HEX("5600a4"),
+  atlas = "AbandoniaSeals",
+  pos = { x = 1, y = 1 },
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+        self.config.extra.xchips
+      }
+    }
+  end,
+
+  config = {
+    extra = {
+      xchips = 2
+    }
+  },
+
+  calculate = function(self, card, context)
+    if context.main_scoring and context.cardarea == G.play then
+      return { x_chips = self.config.extra.xchips, colour = G.C.CHIPS }
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Vega",
+  },
+}
