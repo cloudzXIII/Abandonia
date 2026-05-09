@@ -764,6 +764,14 @@ return {
       },
     },
     Joker = {
+      j_abn_planet_rejok = {
+        name = "Planet Rejok",
+        text = {
+          "Gives {C:mult}Mult{} and {C:chips}Chips",
+          "of all {C:attention}hand types{} contained",
+          "within played hand"
+        }
+      },
       j_abn_planetary_joker = {
         name = "Planetary Joker",
         text = {

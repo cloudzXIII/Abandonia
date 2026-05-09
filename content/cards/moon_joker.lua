@@ -6,10 +6,10 @@ SMODS.Joker {
     return { vars = { card.ability.extra.mult, card.ability.extra.mult_gain } }
   end,
 
-  rarity = 3,
+  rarity = 1,
   atlas = 'ABNJokerSheet9',
   pos = { x = 2, y = 3 },
-  cost = 10,
+  cost = 4,
   discovered = false,
   blueprint_compat = true,
 

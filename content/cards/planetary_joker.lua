@@ -6,10 +6,10 @@ SMODS.Joker {
     return { vars = {} }
   end,
 
-  rarity = 3,
+  rarity = 1,
   atlas = 'ABNJokerSheet8',
   pos = { x = 2, y = 4 },
-  cost = 10,
+  cost = 4,
   discovered = false,
   blueprint_compat = true,
 
