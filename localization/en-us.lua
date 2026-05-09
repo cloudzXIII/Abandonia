@@ -764,6 +764,15 @@ return {
       },
     },
     Joker = {
+      j_abn_planetary_joker = {
+        name = "Planetary Joker",
+        text = {
+          "Create the {C:planet}Planet{} card",
+          "for played {C:attention}poker hand{}",
+          "in {C:attention}final",
+          "{C:attention}hand{} of round",
+        }
+      },
       j_abn_moon_joker = {
         name = "Moon Joker",
         text = {
