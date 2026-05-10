@@ -2760,6 +2760,53 @@ return {
           "and grant {X:mult,C:white}X#2#{} Mult",
         }
       },
+      j_abn_joker_once_again={
+        name="Joker Once Again",
+        text={
+          "Places {C:attention}White Seal{} on first scoring {C:attention}card{}",
+        },
+      },
+      j_abn_seal_letter={
+        name="Seal Letter",
+        text={
+          "Retrigger {C:attention}cards{} with red seals once",
+        },
+      },
+      j_abn_planetoid_joker={
+        name="Planetoid Joker",
+        text={
+          "Place an {C:attention}Orange Seal{}",
+          "on leftmost scoring card",
+          "on your first played {C:attention}Straight"
+        },
+      },
+      j_abn_ink_depleted_joker={
+        name="Ink Depleted Joker",
+        text={
+          "First scoring {C:attention}Full House{} with all Light Suits",
+          "gains {C:dark_edition}Foil{} and {C:attention}Orange Seals",
+          "First scoring {C:attention}Full House{} with all Dark Suits",
+          "gains {C:dark_edition}Foil{} and {V:1}Pink Seals"
+        },
+      },
+      j_abn_barb_wire_joker={
+        name="Barbwire Joker",
+        text={
+          "First Scoring {C:attention}4",
+          "gains a Black Seal",
+          "{C:green}#1# in #2#{} chance for discarded cards to be {C:attention}destroyed"
+        },
+      },
+      j_abn_till_joker={
+        name="Till Joker",
+        text={
+          "Place Gray Seal on the first Number card",
+          "of First {C:attention}Played {C:blue}hand",
+          "Place Gold Seal on the first Number card",
+          "of Final {C:attention}Scoring {C:blue}hand"
+        },
+      },
+    },
     },
 
     Spectral = {
