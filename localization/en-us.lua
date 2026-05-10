@@ -2726,7 +2726,7 @@ return {
       j_abn_id_staff = {
         name = "ID Staff",
         text = {
-          "When a {C:attention}face{} card is {C:mult}destroyed{}",
+          "When a {C:attention}face{} card is {C:mult}destroyed{},",
           "Add {C:abn_hazard}Hazard{} to the {C:attention}leftmost{} card in hand",
         }
       },
@@ -2739,14 +2739,14 @@ return {
       j_abn_health_stickers = {
         name = "Health Stickers",
         text = {
-          "When {C:attention}Blind is defeated{}",
+          "When {C:attention}Blind{} is defeated",
           "Place a random {C:green}Beneficial{} {C:abn_perishable}Sticker{} on the {C:attention}leftmost{} Joker",
         }
       },
       j_abn_the_joker_dance = {
         name = "The Joker Dance",
         text = {
-          "Jokers {C:attention}can't{} be moved",
+          "Jokers {C:attention}cannot{} be moved",
           "When a hand is played {C:attention}shuffle{} all Jokers",
           "All Jokers gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
         }
@@ -2763,19 +2763,20 @@ return {
       j_abn_joker_once_again = {
         name = "Joker Once Again",
         text = {
-          "Places {C:attention}White Seal{} on first scoring {C:attention}card{}",
+          "Add a {C:attention}White Seal{} to first scoring {C:attention}card{}",
         },
       },
       j_abn_seal_letter = {
         name = "Seal Letter",
         text = {
-          "Retrigger {C:attention}cards{} with red seals once",
+          "Retrigger all",
+          "played cards with {C:red}Red Seals{}",
         },
       },
       j_abn_planetoid_joker = {
         name = "Planetoid Joker",
         text = {
-          "Place an {C:attention}Orange Seal{}",
+          "Place an {C:abn_orange_seal}Orange Seal{}",
           "on leftmost scoring card",
           "on your first played {C:attention}Straight"
         },
@@ -2784,26 +2785,26 @@ return {
         name = "Ink Depleted Joker",
         text = {
           "First scoring {C:attention}Full House{} with all Light Suits",
-          "gains {C:dark_edition}Foil{} and {C:attention}Orange Seals",
+          "gains {C:dark_edition}Foil{} and {C:abn_orange_seal}Orange Seals",
           "First scoring {C:attention}Full House{} with all Dark Suits",
-          "gains {C:dark_edition}Foil{} and {V:1}Pink Seals"
+          "gains {C:dark_edition}Foil{} and {C:abn_pink_seal}Pink Seals"
         },
       },
       j_abn_barb_wire_joker = {
         name = "Barbwire Joker",
         text = {
-          "First Scoring {C:attention}4",
-          "gains a Black Seal",
+          "First scoring {C:attention}4",
+          "gains a {C:abn_black_seal}Black Seal{}",
           "{C:green}#1# in #2#{} chance for discarded cards to be {C:attention}destroyed"
         },
       },
       j_abn_till_joker = {
         name = "Till Joker",
         text = {
-          "Place Gray Seal on the first Number card",
-          "of First {C:attention}Played {C:blue}hand",
-          "Place Gold Seal on the first Number card",
-          "of Final {C:attention}Scoring {C:blue}hand"
+          "Add a {C:abn_grey_seal}Grey Seal{} to first {C:attention}numbered{} card",
+          "of {C:attention}first hand{} of round,",
+          "Add a {C:gold}Gold Seal{} to first {C:attention}numbered{} card",
+          "of {C:attention}final hand{} of round",
         },
       },
     },
