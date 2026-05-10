@@ -257,6 +257,6 @@ SMODS.Atlas {
   px = 71,
   py = 95,
   frames = 18,
-  fps = 1,
+  fps = 6,
   atlas_table = 'ANIMATION_ATLAS'
 }

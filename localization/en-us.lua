@@ -764,6 +764,15 @@ return {
       },
     },
     Joker = {
+      j_abn_malware_joker = {
+        name = "Malware Joker",
+        text = {
+          "Retrigger all {C:attention}Jokers{},",
+          "Every Joker has a",
+          "{C:green}#1# in #2#{} chance",
+          "to be {C:red}destroyed{} every hand",
+        }
+      },
       j_abn_planet_rejok = {
         name = "Planet Rejok",
         text = {
