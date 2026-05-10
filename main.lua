@@ -61,6 +61,16 @@ function loc_colour(_c, _default)
   G.ARGS.LOC_COLOURS.abn_superrare = HEX("d59fcd")
   G.ARGS.LOC_COLOURS.abn_parallelrare = HEX("b26cbb")
 
+  -- Seal colours
+  G.ARGS.LOC_COLOURS.abn_pink_seal = HEX("ec7de7")
+  G.ARGS.LOC_COLOURS.abn_orange_seal = HEX("f8a166")
+  G.ARGS.LOC_COLOURS.abn_grey_seal = HEX("cfcfcf")
+  G.ARGS.LOC_COLOURS.abn_black_seal = HEX("454545")
+  G.ARGS.LOC_COLOURS.abn_teal_seal = HEX("64a5a0")
+  G.ARGS.LOC_COLOURS.abn_white_seal = HEX("dedede")
+  G.ARGS.LOC_COLOURS.abn_brown_seal = HEX("793307")
+  G.ARGS.LOC_COLOURS.abn_violet_seal = HEX("5600a4")
+  G.ARGS.LOC_COLOURS.abn_lavender_seal = HEX("c68ede")
 
   return abn(_c, _default)
 end

@@ -2760,46 +2760,46 @@ return {
           "and grant {X:mult,C:white}X#2#{} Mult",
         }
       },
-      j_abn_joker_once_again={
-        name="Joker Once Again",
-        text={
+      j_abn_joker_once_again = {
+        name = "Joker Once Again",
+        text = {
           "Places {C:attention}White Seal{} on first scoring {C:attention}card{}",
         },
       },
-      j_abn_seal_letter={
-        name="Seal Letter",
-        text={
+      j_abn_seal_letter = {
+        name = "Seal Letter",
+        text = {
           "Retrigger {C:attention}cards{} with red seals once",
         },
       },
-      j_abn_planetoid_joker={
-        name="Planetoid Joker",
-        text={
+      j_abn_planetoid_joker = {
+        name = "Planetoid Joker",
+        text = {
           "Place an {C:attention}Orange Seal{}",
           "on leftmost scoring card",
           "on your first played {C:attention}Straight"
         },
       },
-      j_abn_ink_depleted_joker={
-        name="Ink Depleted Joker",
-        text={
+      j_abn_ink_depleted_joker = {
+        name = "Ink Depleted Joker",
+        text = {
           "First scoring {C:attention}Full House{} with all Light Suits",
           "gains {C:dark_edition}Foil{} and {C:attention}Orange Seals",
           "First scoring {C:attention}Full House{} with all Dark Suits",
           "gains {C:dark_edition}Foil{} and {V:1}Pink Seals"
         },
       },
-      j_abn_barb_wire_joker={
-        name="Barbwire Joker",
-        text={
+      j_abn_barb_wire_joker = {
+        name = "Barbwire Joker",
+        text = {
           "First Scoring {C:attention}4",
           "gains a Black Seal",
           "{C:green}#1# in #2#{} chance for discarded cards to be {C:attention}destroyed"
         },
       },
-      j_abn_till_joker={
-        name="Till Joker",
-        text={
+      j_abn_till_joker = {
+        name = "Till Joker",
+        text = {
           "Place Gray Seal on the first Number card",
           "of First {C:attention}Played {C:blue}hand",
           "Place Gold Seal on the first Number card",
@@ -2807,9 +2807,89 @@ return {
         },
       },
     },
-    },
 
     Spectral = {
+      c_abn_deja_vecu = {
+        name = "Deja Vecu",
+        text = {
+          "Add a {C:abn_pink_seal}Pink Seal{}",
+          "to {C:attention}1{} selected",
+          "card in your hand",
+        },
+      },
+
+      c_abn_deja_reve = {
+        name = "Deja Reve",
+        text = {
+          "Add an {C:abn_orange_seal}Orange Seal{}",
+          "to {C:attention}1{} selected",
+          "card in your hand",
+        },
+      },
+
+      c_abn_entendu = {
+        name = "Entendu",
+        text = {
+          "Add a {C:abn_grey_seal}Grey Seal{}",
+          "to {C:attention}1{} selected",
+          "card in your hand",
+        },
+      },
+
+      c_abn_paramenal = {
+        name = "Paramenal",
+        text = {
+          "Add a {C:abn_black_seal}Black Seal{}",
+          "to {C:attention}1{} selected",
+          "card in your hand",
+        },
+      },
+
+      c_abn_sapience = {
+        name = "Sapience",
+        text = {
+          "Add a {C:abn_teal_seal}Teal Seal{}",
+          "to {C:attention}1{} selected",
+          "card in your hand",
+        },
+      },
+
+      c_abn_jamais_vu = {
+        name = "Jamais Vu",
+        text = {
+          "Add a {C:abn_white_seal}White Seal{}",
+          "to {C:attention}1{} selected",
+          "card in your hand",
+        },
+      },
+
+      c_abn_presque_vu = {
+        name = "Presque Vu",
+        text = {
+          "Add a {C:abn_brown_seal}Brown Seal{}",
+          "to {C:attention}1{} selected",
+          "card in your hand",
+        },
+      },
+
+      c_abn_super_id = {
+        name = "Super ID",
+        text = {
+          "Add a {C:abn_violet_seal}Violet Seal{}",
+          "to {C:attention}1{} selected",
+          "card in your hand",
+        },
+      },
+
+      c_abn_spiral = {
+        name = "Spiral",
+        text = {
+          "Add a {C:abn_lavender_seal}Lavender Seal{}",
+          "to {C:attention}1{} selected",
+          "card in your hand",
+        },
+      },
+
       c_abn_flipside = {
         name = "Flipside",
         text = {
@@ -2817,6 +2897,7 @@ return {
           "selected cards"
         },
       },
+
       c_abn_abyss = {
         name = "Abyss",
         text = {
@@ -2832,6 +2913,7 @@ return {
           "{C:inactive}(Must have room)",
         }
       },
+
       c_abn_mind = {
         name = "The Mind",
         text = {
@@ -2840,6 +2922,7 @@ return {
           "{C:inactive}(Must have room)",
         }
       },
+
       c_abn_baphomet = {
         name = "Baphomet",
         text = {
