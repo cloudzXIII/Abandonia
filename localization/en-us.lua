@@ -2816,6 +2816,78 @@ return {
           "of {C:attention}final hand{} of round",
         },
       },
+	  j_abn_curse_mask = {
+        name = "Curse Mask",
+        text = {
+          "When Blind is Selected remove Curses from all Jokers and Cards",
+		  "Gains {C:mult}+#3#{} Mult per Curse removed from a Joker and",
+		  "{C:chips}+#4#{} Chips per Curse removed from a Card",
+		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}"
+        }
+      },
+	  j_abn_anaglyphic_joker = {
+        name = "Anaglyphic Joker",
+        text = {
+          "Apply {C:mult}A{}{C:chips}n{}{C:mult}a{}{C:chips}g{}{C:mult}l{}{C:chips}y{}{C:mult}p{}{C:chips}h{}{C:mult}i{}{C:chips}c{} to the {C:attention}first{} and {C:attention}last{} scoring card of your {C:attention}first played hand{}",
+		  "Gain {C:mult}+#3#{} Mult and {C:chips}+#4#{} Chips per {C:mult}A{}{C:chips}n{}{C:mult}a{}{C:chips}g{}{C:mult}l{}{C:chips}y{}{C:mult}p{}{C:chips}h{}{C:mult}i{}{C:chips}c{} card in your full deck",
+		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}"
+        }
+      },
+	  j_abn_forsaken_joker = {
+        name = "Forsaken Joker",
+        text = {
+          "{C:green}#1# in #2#{} chance to give {C:dark_edition}Overexposed{} to played {C:attention}Bent{} cards",
+		  "{C:green}#3# in #4#{} chance to give {C:dark_edition}fluorescent{} to played {C:attention}Post{} cards",
+        }
+      },
+	  j_abn_lunatic_joker = {
+        name = "Lunatic Joker",
+        text = {
+          "All scoring {C:attention}Even{} cards of {C:attention}First{} Hand gain {C:inactive}Grayscale{}",
+		  "All scoring {C:attention}Odd{} cards of {C:attention}Last{} Hand gain {C:planet}Cyan Seal{}",
+        }
+      },
+	  j_abn_recursive_joker = {
+        name = "Recursive Joker",
+        text = {
+          "Jokers may appear multiple times",
+		  "Each Joker gives {X:chips,C:white}X#1#{} Chips per copy of that Joker",
+
+        }
+      },
+	  j_abn_joker_jester = {
+        name = "Joker Jester",
+        text = {
+          "{C:common}Common{} Jokers give {C:chips}+#1#{} Chips",
+		  "{C:uncommon}Uncommon{} Jokers give {C:mult}+#2#{} Mult",
+		  "{C:rare}Rare{} Jokers give {X:mult,C:white}X#3#{} Mult",
+
+        }
+      },
+	  j_abn_hazard_cryptid = {
+        name = "Hazard Cryptid",
+        text = {
+          "Gain {C:mult}+#4#{} Mult when poker hand contains a {C:abn_hazard}Hazard{} card and a {C:dark_edition}non-enhanced{} card",
+		  "{C:green}#1# in #2#{} chance to {C:mult}destroy{} all scored cards and this Joker",
+		  "{C:inactive}Currently:{} {C:mult}+#3#{} {C:inactive}Mult"
+        }
+      },
+	  j_abn_noir_joker = {
+        name = "Noir Joker",
+        text = {
+          "Whenever {C:diamonds}Light{} suit cards score apply {C:attention}flipped{} to all {C:spades}Dark{} Suit cards held in hand",
+		  "Gains {C:mult}+#3#{} Mult and {C:chips}+#4#{} Chips per scoring {C:attention}Flipped{} card",
+		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult {C:chips}+#2#{} {C:inactive}Chips"
+        }
+      },
+	  j_abn_deceitful_joker = {
+        name = "Deceitful Joker",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult",
+		  "When an {C:attention}ante is beaten{} apply {C:attention}Flipped{} to all cards of a {C:attention}random{} owned suit",
+		  
+        }
+      },
     },
 
     Spectral = {
