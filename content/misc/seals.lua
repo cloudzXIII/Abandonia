@@ -338,3 +338,188 @@ SMODS.Seal {
     artist = "Vega",
   },
 }
+
+SMODS.Seal {
+  key = "skyblue",
+  badge_colour = HEX("86b8de"),
+  atlas = "AbandoniaSeals",
+  pos = { x = 1, y = 1 },
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+      }
+    }
+  end,
+
+  config = { extra = {} },
+
+  calculate = function(self, card, context)
+  end,
+
+  abn_artist_credits = {
+    artist = "Vega",
+  },
+}
+local oldsmodsscorecard = SMODS.score_card
+function SMODS.score_card(card, context)
+  local conditions = false
+  if G.hand and G.hand.cards then
+    for _, playing in ipairs(G.hand.cards) do
+      if playing.seal and playing.seal == "abn_skyblue" then
+        conditions = true
+        break
+      end
+    end
+  end
+
+  if not G.scorehand and conditions and context.cardarea == G.hand then
+    G.scorehand = true
+    context.cardarea = G.play
+
+    if card.seal and card.seal == "abn_skyblue" then
+      SMODS.score_card(card, context)
+    end
+
+    context.cardarea = G.hand
+    G.scorehand = nil
+  end
+  return oldsmodsscorecard(card, context)
+end
+
+SMODS.Seal {
+  key = "lime",
+  badge_colour = HEX("68de24"),
+  atlas = "AbandoniaSeals",
+  pos = { x = 2, y = 1 },
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+        self.config.extra.chips,
+        self.config.extra.chips_gain
+      }
+    }
+  end,
+
+  config = {
+    extra = {
+      chips = 0,
+      chips_gain = 10
+    }
+  },
+
+  calculate = function(self, card, context)
+    if context.discard and context.other_card == card then
+      SMODS.scale_card(card, {
+        ref_table = self.config.extra,
+        ref_value = "chips",
+        scalar_value = "chips_gain",
+        message_colour = G.C.CHIPS,
+      })
+    end
+    if context.main_scoring and context.cardarea == G.play then
+      return { chips = self.config.extra.chips }
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Vega",
+  },
+}
+
+SMODS.Seal {
+  key = "oxidized",
+  badge_colour = HEX("c75323"),
+  atlas = "AbandoniaSeals",
+  pos = { x = 3, y = 1 },
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+      }
+    }
+  end,
+
+  config = {
+    extra = {
+    }
+  },
+
+  calculate = function(self, card, context)
+    if context.remove_playing_cards then
+      for _, pcard in ipairs(context.removed) do
+        if pcard == card and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+          G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+          G.E_MANAGER:add_event(Event({
+            trigger = 'before',
+            delay = 0.0,
+            func = function()
+              local nightshift = ABN.get_random_nightshift()
+              SMODS.add_card({ key = nightshift })
+              G.GAME.consumeable_buffer = 0
+              return true
+            end
+          }))
+          return { message = localize('k_abn_plus_nightshift'), colour = HEX("1a6a5f") }
+        end
+      end
+    end
+  end,
+  draw = function(self, card, layer)
+    if (layer == 'card' or layer == 'both') and card.sprite_facing == 'front' then
+      G.shared_seals[card.seal].role.draw_major = card
+      G.shared_seals[card.seal]:draw_shader('dissolve', nil, nil, nil, card.children.center)
+      G.shared_seals[card.seal]:draw_shader('voucher', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Vega",
+  },
+}
+
+SMODS.Seal {
+  key = "brass",
+  badge_colour = HEX("a07f1f"),
+  atlas = "AbandoniaSeals",
+  pos = { x = 4, y = 1 },
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+      }
+    }
+  end,
+
+  config = {
+    extra = {
+    }
+  },
+
+  calculate = function(self, card, context)
+    if context.cardarea == G.play and context.repetition then
+      if context.abn_retriggered then
+        return
+      end
+      local pos = ABN.get_pos(card, context.scoring_hand)
+      local scoring_card = context.scoring_hand[pos + 1]
+      if scoring_card and scoring_card ~= card then
+        card_eval_status_text(card, 'extra', nil, nil, nil, {
+          message = localize('k_again_ex'),
+          colour = G.C.FILTER,
+        })
+        SMODS.score_card(scoring_card,
+          {
+            cardarea = G.play,
+            full_hand = context.full_hand,
+            scoring_hand = context.scoring_hand,
+            scoring_name = context.scoring_name,
+            poker_hands = context.poker_hands,
+            abn_retriggered = true,
+          })
+      end
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Vega",
+  },
+}
