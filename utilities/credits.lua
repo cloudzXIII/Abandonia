@@ -1,12 +1,16 @@
 local abn_card_h_popup_ref = G.UIDEF.card_h_popup
 function G.UIDEF.card_h_popup(card)
   local ret_val = abn_card_h_popup_ref(card)
-  local obj = card.config.center or (card.config.tag and G.P_TAGS[card.config.tag.key])
-  if card.area and card.area.config.collection and not card.config.center.discovered then return ret_val end
-  if obj and obj.abn_artist_credits then
-    table.insert(ret_val.nodes[1].nodes[1].nodes[1].nodes,
-      abn_artist_node(obj.abn_artist_credits, "Art by "))
+
+  if ABN.config.show_credits then
+    local obj = card.config.center or (card.config.tag and G.P_TAGS[card.config.tag.key])
+    local target = ret_val.nodes[1].nodes[1].nodes[1].nodes
+    if card.area and card.area.config.collection and not card.config.center.discovered then return ret_val end
+    if obj and obj.abn_artist_credits then
+      table.insert(target, abn_artist_node(obj.abn_artist_credits, "Art by "))
+    end
   end
+
   return ret_val
 end
 

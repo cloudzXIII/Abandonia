@@ -34,3 +34,87 @@ ABN.custom_ui = function(modNodes)
     }
   }
 end
+
+-- Config Tab
+ABN.config_tab = function()
+  local title_text = DynaText({
+    string = "Config",
+    colours = { G.C.WHITE },
+    shadow = true,
+    float = true,
+    silent = true,
+    spacing = 5,
+    scale = 1.3,
+    rotate = true,
+    pop_in = 0,
+  })
+  title_text.states.visible = false
+
+  return {
+    n = G.UIT.ROOT,
+    config = {
+      emboss = 0.05,
+      r = 0.1,
+      align = "tm",
+      padding = 0.2,
+      colour = G.C.BLACK
+    },
+    nodes = {
+      {
+        n = G.UIT.R,
+        config = { r = 0.1, minw = 4, align = "tm", padding = 0.2, colour = G.C.BLACK },
+        nodes = {
+          {
+            n = G.UIT.C,
+            config = { align = "cm", padding = 0.5, colour = darken(G.C.BLACK, 0.2), emboss = 0.05, r = 0.1 },
+            nodes = {
+              {
+                n = G.UIT.R,
+                config = { align = "cm" },
+                nodes = {
+                  { n = G.UIT.O, config = { object = title_text } },
+                }
+              },
+              {
+                n = G.UIT.R,
+                config = { align = "cm", no_fill = true },
+                nodes = {
+                  {
+                    n = G.UIT.R,
+                    config = {
+                      align = "cm",
+                      r = 0.1,
+                      emboss = 0.1,
+                      outline = 1,
+                      padding = 0.14
+                    },
+                    nodes = {
+                      create_toggle({
+                        id = "enable_music",
+                        ref_table = ABN.config,
+                        ref_value = "Music",
+                        label = localize("k_abn_config_toggle_music"),
+                        info = {
+                          G.localization.misc.dictionary.abn_toggle_music,
+                        },
+                      }),
+                      create_toggle({
+                        id = "show_credits",
+                        ref_table = ABN.config,
+                        ref_value = "show_credits",
+                        label = localize("k_abn_config_show_credits"),
+                        info = {
+                          G.localization.misc.dictionary.abn_show_credits,
+                        },
+                      }),
+                    }
+                  },
+                }
+              },
+            }
+          },
+        }
+      },
+    }
+  }
+end

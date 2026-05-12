@@ -1,3 +1,4 @@
 return {
-    Music = true, --Toggle Music
+  Music = true, --Toggle Music
+  ["show_credits"] = true,
 }

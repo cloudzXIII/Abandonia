@@ -4467,6 +4467,13 @@ return {
     challenge_names = {
     },
     dictionary = {
+      -- Config options
+      k_abn_config_show_credits = "Artist Credits",
+      abn_show_credits = "Shows credits under mod badge when enabled",
+      k_abn_config_toggle_music = "Toggle Music",
+      abn_toggle_music = "Enable Custom Music",
+
+      -- Mod badges for credits
       k_abn_artist = "Artist",
       k_abn_founder = "Founder",
       k_abn_coder = "Coder",

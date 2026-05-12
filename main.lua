@@ -2,30 +2,6 @@ ABANDONIA = {}
 
 ABN = SMODS.current_mod
 
-ABN.config_tab = function()
-  local scale = 5 / 6
-  return {
-    n = G.UIT.ROOT,
-    config = { align = "cl", minh = G.ROOM.T.h * 0.25, padding = 0.0, r = 0.1, colour = G.C.GREY },
-    nodes = {
-      {
-        n = G.UIT.R,
-        config = { padding = 0.05 },
-        nodes = {
-          {
-            n = G.UIT.C,
-            config = { minw = G.ROOM.T.w * 0.25, padding = 0.05 },
-            nodes = {
-              create_toggle { label = "Toggle Music", info = { "Enable Custom Music" }, active_colour = ABN.badge_colour, ref_table = ABN.config, ref_value = "Music" },
-            }
-          }
-        }
-      }
-    }
-  }
-end
-
-
 -- Load Options
 ABN_config = ABN.config
 -- This will save the current state even when settings are modified
