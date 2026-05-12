@@ -237,15 +237,51 @@ SMODS.Consumable {
 }
 
 SMODS.Consumable {
-    key = 'orbit',
-    set = 'Tarot',
-    pos = { x = 5, y = 0 },
-	atlas = "AbandoniaTarots",
-    config = { max_highlighted = 3, suit_conv = 'abn_Penumbra' },
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] } } }
-    end,
-	abn_artist_credits = {
-		artist = "SmoliconBoi",
-	},
+  key = 'orbit',
+  set = 'Tarot',
+  pos = { x = 5, y = 0 },
+  atlas = "AbandoniaTarots",
+  config = { max_highlighted = 3, suit_conv = 'abn_Penumbra' },
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] } } }
+  end,
+  abn_artist_credits = {
+    artist = "SmoliconBoi",
+  },
+}
+
+SMODS.Tarot {
+  key = 'toxin',
+  set = 'Tarot',
+  atlas = "AbandoniaTarots",
+  pos = { x = 0, y = 1 },
+  config = { max_highlighted = 2, mod_conv = 'm_abn_hazard' },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+    return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+  end,
+}
+
+SMODS.Tarot {
+  key = 'rift',
+  set = 'Tarot',
+  atlas = "AbandoniaTarots",
+  pos = { x = 1, y = 1 },
+  config = { max_highlighted = 2, mod_conv = 'm_abn_infra' },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+    return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+  end,
+}
+
+SMODS.Tarot {
+  key = 'oil_drum',
+  set = 'Tarot',
+  atlas = "AbandoniaTarots",
+  pos = { x = 2, y = 1 },
+  config = { max_highlighted = 2, mod_conv = 'm_abn_oilfire' },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+    return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+  end,
 }
