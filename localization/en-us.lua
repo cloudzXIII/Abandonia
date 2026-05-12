@@ -777,7 +777,7 @@ return {
         text = {
           "This Joker gains {C:mult}+#3#{} if",
           "played hand is a {C:attention}#5#{}",
-          "and gains {C:chips}+#4#{} when",
+          "and gains {C:chips}+#4#{} Chips when",
           "a {C:abn_snow}Snow{} card is scored",
           "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips, {C:chips}+#1#{C:inactive} Mult){}"
         }
@@ -785,7 +785,8 @@ return {
       j_abn_crybaby = {
         name = "Crybaby",
         text = {
-          "Playing cards permanently gain {C:mult}+#1#{} Mult",
+          "Playing cards permanently",
+          "gain {C:mult}+#1#{} Mult",
           "when {C:attention}discarded",
         }
       },
@@ -815,7 +816,7 @@ return {
           "Gain {X:chips,C:white}X#2#{} Chips when",
           "scoring hands with",
           "{C:attention}even{} ranked cards",
-          "{C:inactive}(A, 9, 7, 5, 3)",
+          "{C:inactive}(10, 8, 6, 4, 2)",
           "{C:inactive}(Currently {C:white,X:chips}X#1#{C:inactive} Chips){}"
         }
       },
