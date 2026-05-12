@@ -3926,6 +3926,14 @@ return {
           "{C:attention}#2#s",
         },
       },
+      c_abn_merchant = {
+        name = "Merchant",
+        text = {
+          "Enhances {C:attention}#1#",
+          "selected cards to",
+          "{C:attention}#2#s",
+        },
+      },
     },
     calamity_cards = {
       c_abn_cyclone = {

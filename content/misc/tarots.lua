@@ -285,3 +285,15 @@ SMODS.Tarot {
     return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
   end,
 }
+
+SMODS.Tarot {
+  key = 'merchant',
+  set = 'Tarot',
+  atlas = "AbandoniaTarots",
+  pos = { x = 3, y = 1 },
+  config = { max_highlighted = 2, mod_conv = 'm_abn_mercurial' },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+    return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+  end,
+}
