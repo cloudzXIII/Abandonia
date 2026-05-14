@@ -1,15 +1,15 @@
 SMODS.Joker {
-  key = 'joe_weatherman',
+  key = 'wireframe_joker',
 
   loc_vars = function(self, info_queue, card)
     local numerator, denominator = SMODS.get_probability_vars(card, card.ability.extra.base, card.ability.extra.odds,
-      'abn_weatherman')
+      'abn_wireframe')
     return { vars = { numerator, denominator } }
   end,
 
   rarity = 2,
-  atlas = 'ABNJokerSheet1',
-  pos = { x = 4, y = 1 },
+  atlas = 'ABNJokerSheet11',
+  pos = { x = 1, y = 3 },
   cost = 6,
   discovered = false,
   blueprint_compat = true,
@@ -17,14 +17,14 @@ SMODS.Joker {
   config = { extra = { base = 1, odds = 8 } },
 
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and ABN.is_number(context.other_card) and SMODS.pseudorandom_probability(card, 'weatherman', card.ability.extra.base, card.ability.extra.odds, "abn_weatherman") then
+    if context.individual and context.cardarea == G.play and ABN.is_number(context.other_card) and SMODS.pseudorandom_probability(card, 'wireframe', card.ability.extra.base, card.ability.extra.odds, "abn_wireframe") then
       if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
         G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
         G.E_MANAGER:add_event(Event({
           func = function()
             SMODS.add_card {
               set = 'Tarot',
-              key_append = 'abn_joe_weatherman'
+              key_append = 'abn_wireframe_joker'
             }
             G.GAME.consumeable_buffer = 0
             return true
@@ -36,6 +36,6 @@ SMODS.Joker {
     end
   end,
   abn_artist_credits = {
-    artist = "AmaibleYak",
+    artist = "Ricottakitten",
   },
 }

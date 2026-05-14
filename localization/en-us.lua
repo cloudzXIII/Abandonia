@@ -1538,10 +1538,10 @@ return {
           "appear in the {C:attention}Shop",
         }
       },
-      j_abn_joe_weatherman = {
-        name = "Joe Weatherman",
+      j_abn_wireframe_joker = {
+        name = "Wireframe Joker",
         text = {
-          "Each played {C:attention}number{} card has",
+          "Each played {C:attention}numbered{} card has",
           "a {C:green}#1# in #2#{} chance to",
           "create a {C:tarot}Tarot{} card",
           "when scored",
