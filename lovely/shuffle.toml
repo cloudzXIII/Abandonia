@@ -1,0 +1,38 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 214748364
+
+# Clown Degree
+# Move cards with seals to the top of the deck after shuffling
+# CardArea:shuffle()
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = "pseudoshuffle(self.cards, pseudoseed(_seed or 'shuffle'))"
+position = "after"
+payload = '''
+local has_clown_degree = next(SMODS.find_card("j_abn_clown_degree"))
+if has_clown_degree then
+    for i = #self.cards, 1, -1 do
+        local card = self.cards[i]
+        if card.seal then 
+            table.remove(self.cards, i)
+            table.insert(self.cards, card) -- Inserts at the end (top of deck)
+        end
+    end
+end
+
+-- Lucrative Joker: Moves Gold Seals and Gold Cards to the top
+local has_lucrative = next(SMODS.find_card("j_abn_lucrative_joker"))
+if has_lucrative then
+    for i = #self.cards, 1, -1 do
+        local card = self.cards[i]
+        if (card.seal == 'Gold') or (card.config.center.key == 'm_gold') then
+            table.remove(self.cards, i)
+            table.insert(self.cards, card)
+        end
+    end
+end
+'''
+match_indent = true
