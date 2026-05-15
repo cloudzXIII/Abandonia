@@ -4272,97 +4272,113 @@ return {
         name = "Cyclone",
         text = {
           "Doubles money,",
-          "{C:red}Destroy{} all {C:attention}Jokers{}",
-          "and {C:attention}playing cards{} with",
-          "{C:dark_edition}Editions{}",
+          "{C:red}Destroy{} all {C:attention}Jokers{} and",
+          "{C:attention}playing cards{} with {C:dark_edition}Editions{}",
         }
       },
       c_abn_eruption = {
         name = "Eruption",
         text = {
-          "{C:red}Destroy{} all cards",
-          "in your deck and",
-          "add {C:attention}#1# #2# numbered",
-          "cards with {C:dark_edition}#3#{} edition",
-          "to your hand",
+          "{C:red}Destroy{} all cards in your {C:attention}full deck{},",
+          "Add {C:attention}#1#{} {C:attention}numbered{} {C:attention}Fossil Cards{}",
+          "with {C:dark_edition}Sunscourge{} edition to your hand",
         }
       },
       c_abn_avalanche = {
         name = "Avalanche",
         text = {
-          "Add {C:attention}#1#{} {C:abn_snow}Snow{} Cards to your deck",
-          "each has random {C:dark_edition}edition{}",
+          "Add {C:attention}#1#{} {C:abn_snow}Snow{} cards with",
+          "random {C:dark_edition}Editions{} to your deck",
         }
       },
       c_abn_flood = {
         name = "Flood",
         text = {
-          "{C:attention}Copy{} all cards in your deck",
-          "Gain {C:attention}#1#{} random {C:abn_hazard}hazard tags{}",
+          "{C:attention}Copy{} all cards in your {C:attention}full deck{}",
+          "Gain {C:attention}#1#{} random {C:abn_hazard}Hazard Tags{}",
         }
       },
       c_abn_tsunami = {
         name = "Tsunami",
         text = {
-          "Create {C:attention}#1#{} random {C:abn_hazard}hazard tag",
-          "All cards in the deck gain {C:attention}flipped{}",
+          "Create {C:attention}#1#{} random {C:abn_hazard}Hazard Tag{},",
+          "All cards in your {C:attention}full deck{}",
+          "become {C:attention}flipped{}",
         }
       },
       c_abn_drought = {
         name = "Drought",
         text = {
-          "{C:mult}Debuff{} all Jokers and set money to {C:money}$0{}",
-          "Summon {C:attention}#1#{} {C:red}super rare Joker{} and {C:attention}#1#{} {C:dark_edition}Parallel Rare Joker",
+          "{C:mult}Debuff{} all Jokers,",
+          "sets money to {C:money}$0{}",
+          "Summon {C:attention}#1#{} {C:abn_superrare}Super Rare{} {C:attention}Joker",
+          "and {C:attention}#1#{} {C:abn_parallelrare}Parallel Rare{} {C:attention}Joker",
           "{C:inactive}(Must have room)",
         }
       },
       c_abn_heatwave = {
         name = "Heatwave",
         text = {
-          "{C:mult}Debuff{} all {C:spades}Spades{}, {C:clubs}Clubs{}, and {C:abn_snow}Snows{}",
-          "{C:diamonds}Diamonds{} and {C:hearts}Hearts{} gain {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+          {
+            "{C:mult}Debuff{} all {C:spades}Spades{},",
+            "{C:clubs}Clubs{}, and {C:abn_snow}Snows{}",
+          },
+          {
+            "{C:diamonds}Diamonds{} and {C:hearts}Hearts{} gain",
+            "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+          },
         }
       },
       c_abn_blizzard = {
         name = "Blizzard",
         text = {
-          "{C:mult}Debuff{} all {C:diamonds}Diamonds{} and {C:hearts}Hearts{}",
-          "{C:spades}Spades{}, {C:clubs}Clubs{}, and {C:abn_snow}Snows{} gain {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+          {
+            "{C:mult}Debuff{} all {C:diamonds}Diamonds{} and {C:hearts}Hearts{}",
+          },
+          {
+            "{C:spades}Spades{}, {C:clubs}Clubs{}, and {C:abn_snow}Snows{} gain",
+            "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+          },
         }
       },
       c_abn_plague = {
         name = "Plague",
         text = {
-          "All jokers gain {C:abn_perishable}Perishable{}",
-          "Summon {C:attention}#1#{} {C:red}super rare Joker{} with a random {C:dark_edition}edition{}",
+          "Add {C:abn_perishable}Perishable{} to all Jokers,",
+          "Summon {C:attention}#1#{} {C:abn_superrare}Super Rare{} {C:attention}Joker{}",
+          "with a random {C:dark_edition}Edition{}",
           "{C:inactive}(Must have room)",
         }
       },
       c_abn_humans = {
         name = "Humans",
         text = {
-          "{C:mult}Destroy{} all Jokers and set money to {C:money}$-20{}",
-          "Gain {C:attention}#1#{} Joker Slots",
+          "{C:red}Destroy{} all Jokers,",
+          "sets money to {C:money}$-20{}",
+          "{C:attention}#1#{} Joker Slot",
         }
       },
       c_abn_rapture = {
         name = "Rapture",
         text = {
-          "All Jokers gain random {C:dark_edition}editions{} and {C:abn_perishable}stickers{}",
+          "All Jokers gain random {C:dark_edition}Editions{}",
+          "and {C:abn_perishable}stickers{}",
         }
       },
       c_abn_heatdeath = {
         name = "Heat Death",
         text = {
           "Reduce all hands levels to {C:attention}1{}",
-          "All cards gain {C:mult}+#1#{} mult and double {C:chips}chips{}",
+          "All cards in your {C:attention}full deck{}",
+          "gain {C:mult}+#1#{} Mult and double {C:chips}Chips{}",
         }
       },
       c_abn_tremor = {
         name = "Tremor",
         text = {
-          "{C:mult}Destroy{} all {C:common}Common{} and {C:uncommon}Uncommon{} Jokers",
-          "{C:rare}Rare{} Jokers gain {C:mult}+#1#{} mult for each destroyed Joker"
+          "{C:mult}Destroy{} all {C:common}Common{} and {C:uncommon}Uncommon{} Jokers,",
+          "{C:rare}Rare{} Jokers gain {C:mult}+#1#{} Mult",
+          "for each destroyed Joker",
         }
       },
     },
@@ -4371,7 +4387,7 @@ return {
         name = "Bael",
         text = {
           {
-            "Next elligible hand is",
+            "Next eligible hand is",
             "transformed into",
             "{C:attention}High Card{}",
           },
@@ -4384,7 +4400,7 @@ return {
         name = "Botis",
         text = {
           {
-            "Next elligible hand is",
+            "Next eligible hand is",
             "transformed into",
             "{C:attention}Pair{}",
           },
@@ -4397,7 +4413,7 @@ return {
         name = "Vinea",
         text = {
           {
-            "Next elligible hand is",
+            "Next eligible hand is",
             "transformed into",
             "{C:attention}Two Pair{}",
           },
@@ -4410,7 +4426,7 @@ return {
         name = "Morax",
         text = {
           {
-            "Next elligible hand is",
+            "Next eligible hand is",
             "transformed into",
             "{C:attention}Three Of A Kind{}",
           },
@@ -4423,7 +4439,7 @@ return {
         name = "Bune",
         text = {
           {
-            "Next elligible hand is",
+            "Next eligible hand is",
             "transformed into",
             "{C:attention}Four Of A Kind{}",
           },
@@ -4436,7 +4452,7 @@ return {
         name = "Furfur",
         text = {
           {
-            "Next elligible hand is",
+            "Next eligible hand is",
             "transformed into",
             "{C:attention}Straight{}",
           },
@@ -4449,7 +4465,7 @@ return {
         name = "Bifrons",
         text = {
           {
-            "Next elligible hand is",
+            "Next eligible hand is",
             "transformed into",
             "{C:attention}Flush{}",
           },
@@ -4462,7 +4478,7 @@ return {
         name = "Crocell",
         text = {
           {
-            "Next elligible hand is",
+            "Next eligible hand is",
             "transformed into",
             "{C:attention}Full House{}",
           },
@@ -4475,7 +4491,7 @@ return {
         name = "Belial",
         text = {
           {
-            "Next elligible hand is",
+            "Next eligible hand is",
             "transformed into",
             "{C:attention}Straight Flush{}",
           },
@@ -4488,7 +4504,7 @@ return {
         name = "Astaroth",
         text = {
           {
-            "Next elligible hand is",
+            "Next eligible hand is",
             "transformed into",
             "{C:attention}Five Of A Kind{}",
           },
@@ -4501,7 +4517,7 @@ return {
         name = "Asmodeus",
         text = {
           {
-            "Next elligible hand is",
+            "Next eligible hand is",
             "transformed into",
             "{C:attention}Flush House{}",
           },
@@ -4514,7 +4530,7 @@ return {
         name = "Camio",
         text = {
           {
-            "Next elligible hand is",
+            "Next eligible hand is",
             "transformed into",
             "{C:attention}Flush Five{}",
           },
