@@ -3342,8 +3342,8 @@ return {
       c_abn_baphomet = {
         name = "Baphomet",
         text = {
-          "Create a {C:abn_sigil}Sigil",
-          "For your {C:attention}most played{} hand",
+          "Create a {C:abn_sigil}Sigil{} for",
+          "your {C:attention}most played{} hand",
         }
       },
     },
@@ -4194,20 +4194,19 @@ return {
       c_abn_crown = {
         name = "Crown",
         text = {
-          "Select {C:attention}1{} number card",
-          "and {C:red}destroy{} all",
-          "held face cards,",
-          "the selected card",
-          "gains {C:chips}chips{} equal",
-          "to the {C:attention}value{} the destroyed cards"
+          "Select {C:attention}1{} number card and",
+          "{C:red}destroy{} all held {C:attention}face{} cards,",
+          "selected card gains {C:chips}Chips{} equal",
+          "to the {C:attention}value{} of destroyed cards",
         }
       },
       c_abn_eon = {
         name = "Eon",
         text = {
           "Apply {C:attention}Immortal{} to",
-          "the {C:attention}rightmost{} Joker",
-          "the {C:attention}leftmost{} Joker gains a random {C:abn_perishable}sticker",
+          "the {C:attention}rightmost{} Joker,",
+          "{C:attention}Leftmost{} Joker gains",
+          "gains a random {C:abn_perishable}sticker",
         }
       },
       c_abn_snowflake = {
