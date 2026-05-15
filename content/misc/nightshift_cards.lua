@@ -219,7 +219,7 @@ SMODS.Consumable {
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_chthonian
-        info_queue[#info_queue + 1] = { key = "abn_violet", set = "Other", vars = {} }
+        info_queue[#info_queue + 1] = { key = "abn_violet", set = "Other", vars = { 10 } }
         info_queue[#info_queue + 1] = { key = "eternal", set = "Other", vars = { 5 } }
         return { vars = {} }
     end,

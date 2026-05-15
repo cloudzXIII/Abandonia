@@ -4528,7 +4528,8 @@ return {
       c_abn_furtive = {
         name = "Furtive",
         text = {
-          "Create a {C:dark_edition}Negative{} {C:legendary}Legendary{} {C:attention}Flipped{} Joker",
+          "Create a {C:dark_edition}Negative{}",
+          "{C:legendary}Legendary{} {C:attention}Flipped{} Joker",
         }
       },
       c_abn_intrusion = {
@@ -4541,22 +4542,34 @@ return {
       c_abn_aparition = {
         name = "Aparition",
         text = {
-          "Fill consumable slots with {C:spectral}Spectral{} cards",
-          "{C:green}#1# in #2#{} chance to gain {C:attention}+1{} Joker slot"
+          "Fill consumable slots",
+          "with {C:spectral}Spectral{} cards,",
+          "{C:green}#1# in #2#{} chance to add",
+          "{C:attention}+1{} Joker slot"
         }
       },
       c_abn_smirk = {
         name = "Smirk",
         text = {
-          "Create a {C:attention}Comedian{} with {C:dark_edition}Chthonian{}, {C:purple}Violet{}, and {C:abn_eternal}Eternal"
+          "Create an {C:abn_eternal}Eternal{}, {C:purple}Violet{},",
+          "{C:dark_edition}Chthonian{} {C:attention}Comedian{}",
+          "{C:inactive}(Must have room)"
         }
       },
       c_abn_observer = {
         name = "Observer",
         text = {
-          "Flip all {C:attention}face down{} cards and Jokers {C:attention}face up{}",
-          "Remove all stickers",
-          "Super Rare Jokers gain {C:chips}+#2#{} Chips {C:mult}+#1#{} Mult",
+          {
+            "Flip all {C:attention}face down{} cards",
+            "and Jokers {C:attention}face up{}",
+          },
+          {
+            "{C:red}Remove{} all stickers",
+          },
+          {
+            "{C:abn_superrare}Super Rare{} Jokers",
+            "gain {C:chips}+#2#{} Chips {C:mult}+#1#{} Mult",
+          },
         }
       },
     },
