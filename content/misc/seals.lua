@@ -343,7 +343,7 @@ SMODS.Seal {
   key = "skyblue",
   badge_colour = HEX("86b8de"),
   atlas = "AbandoniaSeals",
-  pos = { x = 1, y = 1 },
+  pos = { x = 2, y = 1 },
 
   loc_vars = function(self, info_queue, card)
     return {
@@ -391,7 +391,7 @@ SMODS.Seal {
   key = "lime",
   badge_colour = HEX("68de24"),
   atlas = "AbandoniaSeals",
-  pos = { x = 2, y = 1 },
+  pos = { x = 3, y = 1 },
 
   loc_vars = function(self, info_queue, card)
     return {
@@ -431,7 +431,7 @@ SMODS.Seal {
   key = "oxidized",
   badge_colour = HEX("c75323"),
   atlas = "AbandoniaSeals",
-  pos = { x = 3, y = 1 },
+  pos = { x = 4, y = 1 },
 
   loc_vars = function(self, info_queue, card)
     return {
@@ -481,7 +481,7 @@ SMODS.Seal {
   key = "brass",
   badge_colour = HEX("a07f1f"),
   atlas = "AbandoniaSeals",
-  pos = { x = 4, y = 1 },
+  pos = { x = 5, y = 1 },
 
   loc_vars = function(self, info_queue, card)
     return {
