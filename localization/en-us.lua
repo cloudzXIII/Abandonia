@@ -764,6 +764,62 @@ return {
       },
     },
     Joker = {
+      j_abn_jimbo_inscryption = {
+        name = "Jimbo Inscryption",
+        text = {
+          "Each {C:attention}9{} and {C:attention}3{}",
+          "held in hand",
+          "give {C:white,X:mult}X#1#{} Mult"
+        }
+      },
+      j_abn_wildfrost_joker = {
+        name = "Wildfrost Joker",
+        text = {
+          "This Joker gains {C:mult}+#3#{} if",
+          "played hand is a {C:attention}#5#{}",
+          "and gains {C:chips}+#4#{} Chips when",
+          "a {C:abn_snow}Snow{} card is scored",
+          "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips, {C:chips}+#1#{C:inactive} Mult){}"
+        }
+      },
+      j_abn_crybaby = {
+        name = "Crybaby",
+        text = {
+          "Playing cards permanently",
+          "gain {C:mult}+#1#{} Mult",
+          "when {C:attention}discarded",
+        }
+      },
+      j_abn_photoalbum = {
+        name = "Photoalbum Joker",
+        text = {
+          "This Joker gains {C:chips}+#2#{} Chips",
+          "per {C:attention}Face{} card held in hand",
+          "when a {C:attention}numbered{} card scores",
+          "Resets if played hand contains a {C:attention}face{} card",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips){}"
+        }
+      },
+      j_abn_will = {
+        name = "Will",
+        text = {
+          "Gain {X:chips,C:white}X#2#{} Chips when",
+          "scoring hands with",
+          "{C:attention}odd{} ranked cards",
+          "{C:inactive}(A, 9, 7, 5, 3)",
+          "{C:inactive}(Currently {C:white,X:chips}X#1#{C:inactive} Chips){}"
+        }
+      },
+      j_abn_archibald = {
+        name = "Archibald",
+        text = {
+          "Gain {X:chips,C:white}X#2#{} Chips when",
+          "scoring hands with",
+          "{C:attention}even{} ranked cards",
+          "{C:inactive}(10, 8, 6, 4, 2)",
+          "{C:inactive}(Currently {C:white,X:chips}X#1#{C:inactive} Chips){}"
+        }
+      },
       j_abn_malware_joker = {
         name = "Malware Joker",
         text = {
@@ -2793,9 +2849,9 @@ return {
       j_abn_ink_depleted_joker = {
         name = "Ink Depleted Joker",
         text = {
-          "First scoring card of a {C:attention}Full House{} with all {C:diamonds}Light Suits",
+          "First scoring {C:attention}Full House{} with all Light Suits",
           "gains {C:dark_edition}Foil{} and {C:abn_orange_seal}Orange Seals",
-          "First scoring card of a {C:attention}Full House{} with all {C:spades}Dark Suits",
+          "First scoring {C:attention}Full House{} with all Dark Suits",
           "gains {C:dark_edition}Foil{} and {C:abn_pink_seal}Pink Seals"
         },
       },
@@ -2816,76 +2872,76 @@ return {
           "of {C:attention}final hand{} of round",
         },
       },
-	  j_abn_curse_mask = {
+      j_abn_curse_mask = {
         name = "Curse Mask",
         text = {
           "When Blind is Selected remove Curses from all Jokers and Cards",
-		  "Gains {C:mult}+#3#{} Mult per Curse removed from a Joker and",
-		  "{C:chips}+#4#{} Chips per Curse removed from a Card",
-		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}"
+          "Gains {C:mult}+#3#{} Mult per Curse removed from a Joker and",
+          "{C:chips}+#4#{} Chips per Curse removed from a Card",
+          "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}"
         }
       },
-	  j_abn_anaglyphic_joker = {
+      j_abn_anaglyphic_joker = {
         name = "Anaglyphic Joker",
         text = {
           "Apply {C:mult}A{}{C:chips}n{}{C:mult}a{}{C:chips}g{}{C:mult}l{}{C:chips}y{}{C:mult}p{}{C:chips}h{}{C:mult}i{}{C:chips}c{} to the {C:attention}first{} and {C:attention}last{} scoring card of your {C:attention}first played hand{}",
-		  "Gain {C:mult}+#3#{} Mult and {C:chips}+#4#{} Chips per {C:mult}A{}{C:chips}n{}{C:mult}a{}{C:chips}g{}{C:mult}l{}{C:chips}y{}{C:mult}p{}{C:chips}h{}{C:mult}i{}{C:chips}c{} card in your full deck",
-		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}"
+          "Gain {C:mult}+#3#{} Mult and {C:chips}+#4#{} Chips per {C:mult}A{}{C:chips}n{}{C:mult}a{}{C:chips}g{}{C:mult}l{}{C:chips}y{}{C:mult}p{}{C:chips}h{}{C:mult}i{}{C:chips}c{} card in your full deck",
+          "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}"
         }
       },
-	  j_abn_forsaken_joker = {
+      j_abn_forsaken_joker = {
         name = "Forsaken Joker",
         text = {
           "{C:green}#1# in #2#{} chance to give {C:dark_edition}Overexposed{} to played {C:attention}Bent{} cards",
-		  "{C:green}#3# in #4#{} chance to give {C:dark_edition}fluorescent{} to played {C:attention}Post{} cards",
+          "{C:green}#3# in #4#{} chance to give {C:dark_edition}fluorescent{} to played {C:attention}Post{} cards",
         }
       },
-	  j_abn_lunatic_joker = {
+      j_abn_lunatic_joker = {
         name = "Lunatic Joker",
         text = {
           "All scoring {C:attention}Even{} cards of {C:attention}First{} Hand gain {C:inactive}Grayscale{}",
-		  "All scoring {C:attention}Odd{} cards of {C:attention}Last{} Hand gain {C:planet}Cyan Seal{}",
+          "All scoring {C:attention}Odd{} cards of {C:attention}Last{} Hand gain {C:planet}Cyan Seal{}",
         }
       },
-	  j_abn_recursive_joker = {
+      j_abn_recursive_joker = {
         name = "Recursive Joker",
         text = {
           "Jokers may appear multiple times",
-		  "Each Joker gives {X:chips,C:white}X#1#{} Chips per copy of that Joker",
+          "Each Joker gives {X:chips,C:white}X#1#{} Chips per copy of that Joker",
 
         }
       },
-	  j_abn_joker_jester = {
+      j_abn_joker_jester = {
         name = "Joker Jester",
         text = {
           "{C:common}Common{} Jokers give {C:chips}+#1#{} Chips",
-		  "{C:uncommon}Uncommon{} Jokers give {C:mult}+#2#{} Mult",
-		  "{C:rare}Rare{} Jokers give {X:mult,C:white}X#3#{} Mult",
+          "{C:uncommon}Uncommon{} Jokers give {C:mult}+#2#{} Mult",
+          "{C:rare}Rare{} Jokers give {X:mult,C:white}X#3#{} Mult",
 
         }
       },
-	  j_abn_hazard_cryptid = {
+      j_abn_hazard_cryptid = {
         name = "Hazard Cryptid",
         text = {
           "Gain {C:mult}+#4#{} Mult when poker hand contains a {C:abn_hazard}Hazard{} card and a {C:dark_edition}non-enhanced{} card",
-		  "{C:green}#1# in #2#{} chance to {C:mult}destroy{} all scored cards and this Joker",
-		  "{C:inactive}Currently:{} {C:mult}+#3#{} {C:inactive}Mult"
+          "{C:green}#1# in #2#{} chance to {C:mult}destroy{} all scored cards and this Joker",
+          "{C:inactive}Currently:{} {C:mult}+#3#{} {C:inactive}Mult"
         }
       },
-	  j_abn_noir_joker = {
+      j_abn_noir_joker = {
         name = "Noir Joker",
         text = {
           "Whenever {C:diamonds}Light{} suit cards score apply {C:attention}flipped{} to all {C:spades}Dark{} Suit cards held in hand",
-		  "Gains {C:mult}+#3#{} Mult and {C:chips}+#4#{} Chips per scoring {C:attention}Flipped{} card",
-		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult {C:chips}+#2#{} {C:inactive}Chips"
+          "Gains {C:mult}+#3#{} Mult and {C:chips}+#4#{} Chips per scoring {C:attention}Flipped{} card",
+          "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult {C:chips}+#2#{} {C:inactive}Chips"
         }
       },
-	  j_abn_deceitful_joker = {
+      j_abn_deceitful_joker = {
         name = "Deceitful Joker",
         text = {
           "{X:mult,C:white}X#1#{} Mult",
-		  "When an {C:attention}ante is beaten{} apply {C:attention}Flipped{} to all cards of a {C:attention}random{} owned suit",
-		  
+          "When an {C:attention}ante is beaten{} apply {C:attention}Flipped{} to all cards of a {C:attention}random{} owned suit",
+
         }
       },
 	  j_abn_jokertopia = {
@@ -3203,6 +3259,36 @@ return {
       },
     },
     Other = {
+      abn_skyblue_seal = {
+        name = "Skyblue Seal",
+        text = {
+          "Counts in scoring when",
+          "{C:attention}held{} in hand"
+        }
+      },
+      abn_lime_seal = {
+        name = "Lime Seal",
+        text = {
+          "Gains {C:chips}+#2#{} chips",
+          "when {C:attention}discarded",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
+        }
+      },
+      abn_oxidized_seal = {
+        name = "Oxidised Seal",
+        text = {
+          "Creates a {C:abn_nightshift}Nightshift{} card",
+          "when {C:red}destroyed",
+          "{C:inactive}(Must have room)",
+        }
+      },
+      abn_brass_seal = {
+        name = "Brass Seal",
+        text = {
+          "Retrigger {C:attention}playing card{}",
+          "to the {C:attention}right{} when scored"
+        }
+      },
       abn_lavender_seal = {
         name = "Lavender Seal",
         text = {
@@ -3908,6 +3994,38 @@ return {
           "to {V:1}#2#{}",
         },
       },
+      c_abn_toxin = {
+        name = "Toxin",
+        text = {
+          "Enhances {C:attention}#1#",
+          "selected cards to",
+          "{C:attention}#2#s",
+        },
+      },
+      c_abn_rift = {
+        name = "Rift",
+        text = {
+          "Enhances {C:attention}#1#",
+          "selected cards to",
+          "{C:attention}#2#s",
+        },
+      },
+      c_abn_oil_drum = {
+        name = "Oil Drum",
+        text = {
+          "Enhances {C:attention}#1#",
+          "selected cards to",
+          "{C:attention}#2#s",
+        },
+      },
+      c_abn_merchant = {
+        name = "Merchant",
+        text = {
+          "Enhances {C:attention}#1#",
+          "selected cards to",
+          "{C:attention}#2#s",
+        },
+      },
     },
     calamity_cards = {
       c_abn_cyclone = {
@@ -4449,6 +4567,13 @@ return {
     challenge_names = {
     },
     dictionary = {
+      -- Config options
+      k_abn_config_show_credits = "Artist Credits",
+      abn_show_credits = "Shows credits under mod badge when enabled",
+      k_abn_config_toggle_music = "Toggle Music",
+      abn_toggle_music = "Uses custom title screen music when enabled",
+
+      -- Mod badges for credits
       k_abn_artist = "Artist",
       k_abn_founder = "Founder",
       k_abn_coder = "Coder",
@@ -4527,7 +4652,11 @@ return {
       abn_white_seal = "White Seal",
       abn_brown_seal = "Brown Seal",
       abn_violet_seal = "Violet Seal",
-      abn_lavender_seal = "Lavender Seal"
+      abn_lavender_seal = "Lavender Seal",
+      abn_skyblue_seal = "Skyblue Seal",
+      abn_lime_seal = "Lime Seal",
+      abn_oxidized_seal = "Oxidised Seal",
+      abn_brass_seal = "Brass Seal",
     },
     ranks = {
     },
