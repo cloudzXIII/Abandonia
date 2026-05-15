@@ -5,7 +5,7 @@ G.ARGS.LOC_COLOURS["abn_Nightshift"] = G.C.NIGHTSHIFT
 
 SMODS.ConsumableType {
     key = "nightshift_cards",
-    collection_rows = { 6, 6 },
+    collection_rows = { 5 },
     shop_rate = 0.0,
     primary_colour = G.C.NIGHTSHIFT,
     secondary_colour = G.C.NIGHTSHIFT_SECONDARY,

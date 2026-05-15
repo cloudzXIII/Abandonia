@@ -1,5 +1,191 @@
 return {
   descriptions = {
+    weather_report = {
+      c_abn_clear_sky = {
+        name = "Clear Sky",
+        text = {
+          "Retrigger all scoring",
+          "{C:attention}unenhanced{} cards",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_cloudz = {
+        name = "Clouds",
+        text = {
+          "Destroy {C:attention}1{} selected",
+          "{C:attention}Joker{}, copy a",
+          "random owned Joker",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_rain = {
+        name = "Rain",
+        text = {
+          "Create a copy of a random",
+          "{C:attention}playing card{} in hand",
+          "{C:inactive}({C:attention}#1#{C:inactive} uses left)",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_snow = {
+        name = "Snow",
+        text = {
+          "{C:red}+#1#{} discard every round,",
+          "{C:attention}Destroy{} all played",
+          "{C:attention}non-{C:abn_snow}Snow{} cards",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_storm = {
+        name = "Storm",
+        text = {
+          "Give {C:attention}2{} selected cards",
+          "random {C:dark_edition}Editions{}, {C:attention}Seals{},",
+          "and {C:attention}Enhancements{}",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_wind = {
+        name = "Wind",
+        text = {
+          "Discard all {C:attention}non-selected{} cards",
+          "and draw new ones",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_hail = {
+        name = "Hail",
+        text = {
+          "When a hand is played,",
+          "Each card held in hand",
+          "has a {C:green}#1# in #2#{} chance",
+          "to be {C:red}destroyed{}",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_fog = {
+        name = "Fog",
+        text = {
+          "{C:white,X:mult}X#1#{} Mult",
+          "All cards are",
+          "drawn {C:attention}face down{}",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_rainbow = {
+        name = "Rainbow",
+        text = {
+          "Give a random {C:dark_edition}Edition{}",
+          "to {C:attention}#1#{} random cards in hand",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_tornado = {
+        name = "Tornado",
+        text = {
+          "{C:blue}+#1#{} Hand every round",
+          "Discarded cards",
+          "are {C:red}destroyed",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_hurricane = {
+        name = "Hurricane",
+        text = {
+          "Draw {C:attention}#1#{} {C:attention}flipped{} cards,",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_ash_cloud = {
+        name = "Ash Cloud",
+        text = {
+          "{C:blue}+#1#{} Hand every round",
+          "Debuffs all {C:attention}light suits{}",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_drought_weather = {
+        name = "Drought",
+        text = {
+          "Destroy all {C:clubs}Clubs{}",
+          "in hand, then {C:attention}draw{} hand",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_frigid = {
+        name = "Frigid",
+        text = {
+          "Scoring {C:attention}light suit{} cards",
+          "gain random {C:dark_edition}Editions",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_pollen = {
+        name = "Pollen",
+        text = {
+          "Discard all {C:attention}Enhanced{} cards",
+          "and draw that many cards",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_blizzard_weather = {
+        name = "Blizzard",
+        text = {
+          "Scoring {C:attention}dark suit{} cards",
+          "gain random {C:dark_edition}Editions",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_sandstorm = {
+        name = "Sandstorm",
+        text = {
+          "{C:attention}Destroy{} all {C:abn_snow}Snow{} cards",
+          "in hand, then {C:attention}draw{} hand",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_smog = {
+        name = "Smog",
+        text = {
+          "{C:attention}Destroy{} all {C:hearts}Hearts{}",
+          "in hand, then {C:attention}draw{} hand",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_dust_devil = {
+        name = "Dust Devil",
+        text = {
+          "{C:attention}Destroy{} all {C:spades}Spades{}",
+          "in hand, then {C:attention}draw{} hand",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_acid_rain = {
+        name = "Acid Rain",
+        text = {
+          "{C:attention}Destroy{} all {C:diamonds}Diamonds{},",
+          "in hand, then {C:attention}draw{} hand",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_fire_rainbow = {
+        name = "Fire Rainbow",
+        text = {
+          "Level up next played hand",
+          "containing a {C:attention}Spectrum{},",
+          "{C:red}Destroy{} all played cards",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+      c_abn_dew = {
+        name = "Dew",
+        text = {
+          "{C:blue}+#1#{} Hand every round",
+          "Debuffs all {C:attention}dark suits{}",
+          "{C:inactive}(Destroyed at end of round)",
+        }
+      },
+    },
     Back = {
       b_abn_CrimsonDeck = {
         name = "Crimson Deck",
@@ -1045,7 +1231,7 @@ return {
         name = "Braile Joker",
         text = {
           "{C:green}#1# in #2#{} chance for",
-          "cards to be drawn face down",
+          "cards to be drawn {C:attention}face down{}",
           "Face down cards give",
           "{X:mult,C:white}X#3#{} Mult when scored"
         }
@@ -2944,96 +3130,96 @@ return {
 
         }
       },
-	  j_abn_jokertopia = {
+      j_abn_jokertopia = {
         name = "Jokertopia",
         text = {
           "Each Joker gains {C:mult}+#1#{} Mult for each different {C:attention}Seal{} on scoring cards",
         }
       },
-	  j_abn_blessed_joker = {
+      j_abn_blessed_joker = {
         name = "Blessed Joker",
         text = {
           "First Scoring {C:dark_edition}Foil{} card gains {C:abn_violet_seal}Violet Seal{}",
-		  "First Scoring {C:dark_edition}Holographic{} card gains {C:abn_brown_seal}Brown Seal{}",
-		  "First Scoring {C:dark_edition}Polychrome{} card gains {C:mult}Red Seal{}",
+          "First Scoring {C:dark_edition}Holographic{} card gains {C:abn_brown_seal}Brown Seal{}",
+          "First Scoring {C:dark_edition}Polychrome{} card gains {C:mult}Red Seal{}",
         }
       },
-	  j_abn_clown_degree = {
+      j_abn_clown_degree = {
         name = "Clown Degree",
         text = {
           "Cards with {C:attention}seals{} are shuffled to the top of the deck",
-		  "If a card with a {C:attention}seal{} is {C:mult}destroyed{}",
-		  "Apply that {C:attention}seal{} to another card without a {C:attention}seal{}",
+          "If a card with a {C:attention}seal{} is {C:mult}destroyed{}",
+          "Apply that {C:attention}seal{} to another card without a {C:attention}seal{}",
         }
       },
-	  j_abn_corpuscular_joker = {
+      j_abn_corpuscular_joker = {
         name = "Corpuscular Joker",
         text = {
           "{C:dark_edition}Foil{} Jokers give {C:mult}+#1#{} Mult",
-		  "{C:dark_edition}Foil{} Cards give {C:attention}double{} their ranks as {C:mult}Mult",
+          "{C:dark_edition}Foil{} Cards give {C:attention}double{} their ranks as {C:mult}Mult",
         }
       },
-	  j_abn_ransom_joker = {
+      j_abn_ransom_joker = {
         name = "Ransom Joker",
         text = {
           "At {C:attention}end of round{} lose {C:money}$#3#{} per Joker owned",
-		  "When Joker is lost {C:green}#1# in #2#{} chance to create a higher rarity Joker",
+          "When Joker is lost {C:green}#1# in #2#{} chance to create a higher rarity Joker",
         }
       },
-	  j_abn_oilsplash = {
+      j_abn_oilsplash = {
         name = "Oilsplash",
         text = {
           "{C:attention}Unscored{} cards turn into {C:abn_black_seal}Petroleum{} cards",
-		  "If the Score catches fire {C:abn_black_seal}Petroleum{} cards do not turn into {C:abn_black_seal}Oilfire",
+          "If the Score catches fire {C:abn_black_seal}Petroleum{} cards do not turn into {C:abn_black_seal}Oilfire",
         }
       },
-	  j_abn_oiled_joker = {
+      j_abn_oiled_joker = {
         name = "Oiled Joker",
         text = {
           "If {C:attention}first{} {C:mult}discard{} contains a {C:abn_black_seal}Petroleum{} card it is not consumed",
-		  "Played {C:abn_black_seal}Petroleum{} cards give {C:money}$#1#{} and {C:mult}+#4#{} Mult and {C:chips}+#5#{} Chips",
-		  "{C:inactive}Currently:{} {C:mult}+#2#{} {C:inactive}Mult {C:chips}+#3#{} {C:inactive}Chips",
+          "Played {C:abn_black_seal}Petroleum{} cards give {C:money}$#1#{} and {C:mult}+#4#{} Mult and {C:chips}+#5#{} Chips",
+          "{C:inactive}Currently:{} {C:mult}+#2#{} {C:inactive}Mult {C:chips}+#3#{} {C:inactive}Chips",
         }
       },
-	  j_abn_lotion_joker = {
+      j_abn_lotion_joker = {
         name = "Lotion Joker",
         text = {
           "Remove {C:dark_edition}enhancements{} from Played and Discarded {C:abn_black_seal}Petroleum{} and {C:inactive}Stone{} cards",
-		  "Gains {C:chips}+#2#{} Chips per card restored this way",
-		  "{C:inactive}Currently:{} {C:chips}+#1#{} {C:inactive}Chips",
+          "Gains {C:chips}+#2#{} Chips per card restored this way",
+          "{C:inactive}Currently:{} {C:chips}+#1#{} {C:inactive}Chips",
         }
       },
-	  j_abn_yesman_joker = {
+      j_abn_yesman_joker = {
         name = "Yesman Joker",
         text = {
           "{C:dark_edition}Editions{} held in hand are triggered",
-		  "When an {C:dark_edition}Edition{} triggers this Joker gains {C:mult}+#3#{} Mult and {C:chips}+#4#{} Chips",
-		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult {C:chips}+#2#{} {C:inactive}Chips",
+          "When an {C:dark_edition}Edition{} triggers this Joker gains {C:mult}+#3#{} Mult and {C:chips}+#4#{} Chips",
+          "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult {C:chips}+#2#{} {C:inactive}Chips",
         }
       },
-	  j_abn_slot_machine = {
+      j_abn_slot_machine = {
         name = "Slot Machine",
         text = {
           "All {C:green}probability{} always succeed and cost {C:money}$5{}",
-		  "Retrigger and level up all played {C:attention}Royal Flushes{}",
-		  "If you own {C:money}Gold Joker{} probabilities succeeding are {C:attention}free{}",
+          "Retrigger and level up all played {C:attention}Royal Flushes{}",
+          "If you own {C:money}Gold Joker{} probabilities succeeding are {C:attention}free{}",
         }
       },
-	  j_abn_lucrative_joker = {
+      j_abn_lucrative_joker = {
         name = "Lucrative Joker",
         text = {
           "No limit on {C:money}interest{} and {C:tarot}doubling{}",
-		  "{C:money}Gold{} cards and cards {C:money}Gold{} seals are shuffled to the top of the deck",
-		  "If you have Slot Machine double earnings from {C:money}Gold{} cards and Seals",
+          "{C:money}Gold{} cards and cards {C:money}Gold{} seals are shuffled to the top of the deck",
+          "If you have Slot Machine double earnings from {C:money}Gold{} cards and Seals",
         }
       },
-	  j_abn_balatro_university = {
+      j_abn_balatro_university = {
         name = "Balatro University",
         text = {
           "Whenever you gain money during a blind",
-		  "all Jokers gains {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
-		  "If you own Lucrative Joker {C:attention}level up{} hands with {C:money}Gold{} cards",
-		  "If you own Slot Machine retrigger {C:money}Gold{} seals",
+          "all Jokers gains {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
+          "If you own Lucrative Joker {C:attention}level up{} hands with {C:money}Gold{} cards",
+          "If you own Slot Machine retrigger {C:money}Gold{} seals",
         }
       },
     },
@@ -3639,7 +3825,16 @@ return {
       abn_dark_suit = {
         name = "Dark Suit",
         text = {
-          "{C:spades}Spades{}, {C:clubs}Clubs{}"
+          "{C:spades}Spades{}, {C:clubs}Clubs{},",
+          "{C:abn_penumbra}Penumbras{}"
+        }
+      },
+
+      abn_light_suit = {
+        name = "Dark Suit",
+        text = {
+          "{C:hearts}Hearts{}, {C:diamonds}Diamonds{},",
+          "{C:abn_snow}Snows{}"
         }
       },
 
