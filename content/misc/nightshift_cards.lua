@@ -9,19 +9,6 @@ SMODS.ConsumableType {
     shop_rate = 0.0,
     primary_colour = G.C.NIGHTSHIFT,
     secondary_colour = G.C.NIGHTSHIFT_SECONDARY,
-    loc_txt = {
-        collection = "Nightshift Cards",
-        name = "Nightshift",
-        undiscovered = {
-            name = "Not Discovered",
-            text = {
-                "Purchase or use",
-                "this card in an",
-                "unseeded run to",
-                "learn what it does"
-            }
-        },
-    },
 }
 
 local original_game_update = Game.update

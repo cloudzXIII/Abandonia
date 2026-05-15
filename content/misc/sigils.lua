@@ -9,19 +9,6 @@ SMODS.ConsumableType {
     shop_rate = 0.0,
     primary_colour = G.C.SIGILS,
     secondary_colour = G.C.SIGILS_SECONDARY,
-    loc_txt = {
-        collection = "Sigils",
-        name = "Sigils",
-        undiscovered = {
-            name = "Not Discovered",
-            text = {
-                "Purchase or use",
-                "this card in an",
-                "unseeded run to",
-                "learn what it does"
-            }
-        },
-    },
 }
 
 SMODS.Consumable {

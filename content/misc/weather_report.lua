@@ -5,20 +5,6 @@ SMODS.ConsumableType {
   secondary_colour = HEX("79b5c2"),
   collection_rows = { 5, 5 },
   shop_rate = 4,
-  loc_txt = {
-    collection = "Weather Reports",
-    label = "Weather Report",
-    name = "Weather Report",
-    undiscovered = {
-      name = "Not Discovered",
-      text = {
-        "Purchase or use",
-        "this card in an",
-        "unseeded run to",
-        "learn what it does"
-      }
-    },
-  },
 }
 
 ABN.WeatherReport = SMODS.Consumable:extend({

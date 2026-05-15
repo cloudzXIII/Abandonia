@@ -9,19 +9,6 @@ SMODS.ConsumableType {
     shop_rate = 0,
     primary_colour = G.C.ASTRO,
     secondary_colour = G.C.ASTRO_SECONDARY,
-    loc_txt = {
-        collection = "Astro Cards",
-        name = "Astro",
-        undiscovered = {
-            name = "Not Discovered",
-            text = {
-                "Purchase or use",
-                "this card in an",
-                "unseeded run to",
-                "learn what it does"
-            }
-        },
-    },
 }
 
 SMODS.Consumable {
@@ -78,10 +65,10 @@ SMODS.Consumable {
 
     calculate = function(self, card, context)
         if card.ability.extra.used == 2
-        and context.using_consumeable
-        and context.consumeable.config
-        and context.consumeable.config.center
-        and context.consumeable.config.center.set == 'Planet' then
+            and context.using_consumeable
+            and context.consumeable.config
+            and context.consumeable.config.center
+            and context.consumeable.config.center.set == 'Planet' then
             local snapshot = card.ability.extra.hand_snapshot
             for k, v in pairs(G.GAME.hands) do
                 local old_level = snapshot[k]

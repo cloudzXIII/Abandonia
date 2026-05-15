@@ -3445,6 +3445,51 @@ return {
       },
     },
     Other = {
+      undiscovered_weather_report = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
+      },
+      undiscovered_calamity_cards = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
+      },
+      undiscovered_nightshift_cards = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
+      },
+      undiscovered_sigils = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
+      },
+      undiscovered_astro_cards = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
+      },
       abn_skyblue_seal = {
         name = "Skyblue Seal",
         text = {
@@ -4805,10 +4850,32 @@ return {
       k_abn_holo = "Holographic!",
       k_abn_plus_astro = "+1 Astro",
       k_abn_plus_sigil = "+1 Sigil",
-      k_abn_plus_calamity = "+1 Calamity"
+      k_abn_plus_calamity = "+1 Calamity",
 
+      -- Consumable Types
+      b_weather_report_cards = "Weather Reports",
+      k_weather_report = "Weather Report",
+
+      b_calamity_cards_cards = "Calamity Cards",
+      k_calamity_cards = "Calamity",
+
+      b_astro_cards_cards = "Astro Cards",
+      k_astro_cards = "Astro",
+
+      b_sigils_cards = "Sigils",
+      k_sigils = "Sigil",
+
+      b_nightshift_cards_cards = "Nightshift Cards",
+      k_nightshift_cards = "Nightshift"
     },
     labels = {
+      -- Consumable Types
+      weather_report = "Weather Report",
+      calamity_cards = "Calamity",
+      astro_cards = "Astro",
+      sigils = "Sigil",
+      nightshift_cards = "Nightshift",
+      -- Editions
       abn_chthonian = "Chthonian",
       abn_iridescent = "Iridescent",
       abn_abandond = "Abandoned",

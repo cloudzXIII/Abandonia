@@ -9,19 +9,6 @@ SMODS.ConsumableType {
     shop_rate = 0.0,
     primary_colour = G.C.CALAMITY,
     secondary_colour = G.C.CALAMITY_SECONDARY,
-    loc_txt = {
-        collection = "Calamity Cards",
-        name = "Calamity",
-        undiscovered = {
-            name = "Not Discovered",
-            text = {
-                "Purchase or use",
-                "this card in an",
-                "unseeded run to",
-                "learn what it does"
-            }
-        },
-    },
 }
 
 SMODS.Consumable {
