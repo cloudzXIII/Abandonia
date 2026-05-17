@@ -1,0 +1,50 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1
+
+# Rewrite stone card scoring functionality
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+if self.ability.effect == 'Stone Card' or self.config.center.replace_base_card then
+    return self.ability.bonus + (self.ability.perma_bonus or 0)
+end
+'''
+position = "at"
+payload = '''
+if (self.ability.effect == 'Stone Card' and not next(SMODS.find_card('j_abn_streetart_joker'))) or self.config.center.replace_base_card then
+    return self.ability.bonus + (self.ability.perma_bonus or 0)
+end
+'''
+match_indent = true
+times = 1
+
+# Change has_no_suit check to exclude stone cards with streetart joker
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/utils.lua"]'''
+pattern = '''
+if k == 'm_stone' or G.P_CENTERS[k].no_suit then is_stone = true end
+'''
+position = "after"
+payload = '''
+if k == 'm_stone' and next(SMODS.find_card('j_abn_streetart_joker')) then is_stone = false end
+'''
+match_indent = true
+times = 1
+
+# Change has_no_rank check to exclude stone cards with streetart joker
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/utils.lua"]'''
+pattern = '''
+if k == 'm_stone' or G.P_CENTERS[k].no_rank then return true end
+'''
+position = "before"
+payload = '''
+if k == 'm_stone' and next(SMODS.find_card('j_abn_streetart_joker')) then return false end
+'''
+match_indent = true
+times = 1
