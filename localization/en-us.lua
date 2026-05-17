@@ -3222,6 +3222,68 @@ return {
           "If you own Slot Machine retrigger {C:money}Gold{} seals",
         }
       },
+	  j_abn_mad_petr = {
+        name = "Mad Petr",
+        text = {
+          "Retrigger {C:attention}All{} Jokers {C:attention}equal{} to the number {C:attention}different{} held consumables",
+		  "{C:inactive}Currently:{} {C:attention}#1#{} {C:inactive}Retriggers",
+        }
+      },
+	  j_abn_porke = {
+        name = "Porke",
+        text = {
+          "Each Joker gives {X:chips,C:white}X#1#{} Chips per {C:attention}different{} held consumable",
+		  "{C:inactive}Currently: {X:chips,C:white}X#2#{} {C:inactive}Chips{}",
+        }
+      },
+	  j_abn_parq = {
+        name = "P'arq",
+        text = {
+          "Each {C:attention}different{} held consumable lowers {C:attention}blind requirement{} by {C:attention}#1#%",
+		  "{C:inactive}Currently: {C:attention}#2#%",
+        }
+      },
+	  j_abn_pracheo = {
+        name = "Pracheo",
+        text = {
+          "Retrigger cards {C:attention}equal{} to the number {C:attention}different{} held consumables",
+		  "{C:inactive}Currently:{} {C:attention}#1#{} {C:inactive}Retriggers",
+        }
+      },
+	  j_abn_jorg = {
+        name = "Jorg",
+        text = {
+          "{C:mult}Discarded{} cards give {X:mult,C:white}X#1#{} Mult",
+		  "On {C:attention}next{} played hand",
+        }
+      },
+	  j_abn_jurian = {
+        name = "Jurian",
+        text = {
+          "{C:mult}Discarded{} cards give {X:chips,C:white}X#1#{} Chips",
+		  "On {C:attention}next{} played hand",
+        }
+      },
+	  j_abn_jfool = {
+        name = "J’Fool",
+        text = {
+          "Each played {C:attention}Odd{} cards gives equal Xmult to the amount of {C:attention}Odd{} cards played",
+		  "Each played {C:attention}Even{} card gives equal Xmult to the amount of {C:attention}Even{} cards played",
+        }
+      },
+	  j_abn_tochic = {
+        name = "Tochic",
+        text = {
+          "When blind is selected reduce the required score by {C:attention}#1#%{} for each Joker",
+		  "{C:inactive}Currently:{} {C:attention}#2#%",
+        }
+      },
+	  j_abn_obmij = {
+        name = "Jimbo",
+        text = {
+          "Give Xmult equal to the number of Jokers owned",
+        }
+      },
     },
 
     Spectral = {
