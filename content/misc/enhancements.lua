@@ -351,3 +351,148 @@ SMODS.Enhancement({
     artist = "Bunnet",
   },
 })
+
+SMODS.Enhancement({
+  key = "contagion_seal",
+  pos = { x = 7, y = 1 },
+  atlas = "AbandoniaEnhancements",
+  replace_base_card = false,
+  no_rank = false,
+  no_suit = false,
+  always_scores = false,
+  config = {
+    extra = {
+      emult = 1,       
+      emultadd = 0.03,
+    }
+  },
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    
+    return { vars = { cae.emult, cae.emultadd } }
+  end,
+  
+  in_pool = function(self)
+    return false
+  end,
+
+  calculate = function(self, card, context)
+    local cae = card.ability.extra
+
+    -- ^mult (triggers when the enhanced card is scored)
+    if context.main_scoring and context.cardarea == G.play then
+      if cae.emult > 0 then
+        return {
+          e_mult = cae.emult, 
+          card = card,       
+        }
+      end
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Bunnet",
+  },
+}) 
+
+local scie = SMODS.calculate_individual_effect
+function SMODS.calculate_individual_effect(effect, scored_card, key, amount, from_edition)
+    local ret = scie(effect, scored_card, key, amount, from_edition)
+    
+    -- Check if an Xmult modification just fired
+    if (
+        key == "x_mult"
+        or key == "xmult"
+        or key == "Xmult"
+        or key == "x_mult_mod"
+        or key == "xmult_mod"
+        or key == "Xmult_mod"
+    )
+    and amount ~= 1
+    and mult then
+        -- Iterate through all cards in the game to find ones with your enhancement
+        if G.playing_cards then
+            local scaled_count = 0
+            for _, v in ipairs(G.playing_cards) do
+                if v.config.center == G.P_CENTERS.m_abn_contagion_seal then 
+                    scaled_count = scaled_count + 1
+                    
+                    SMODS.scale_card(v, {
+                        ref_table = v.ability.extra,
+                        ref_value = "emult",
+                        scalar_value = "emultadd",
+                        message_colour = G.C.DARK_EDITION,
+                    })
+                end
+            end
+        end
+    end
+
+    return ret
+end
+
+SMODS.Enhancement({
+  key = "contagion_bonus",
+  pos = { x = 1, y = 2 },
+  atlas = "AbandoniaEnhancements",
+  replace_base_card = false,
+  no_rank = false,
+  no_suit = false,
+  always_scores = false,
+  
+  in_pool = function(self)
+	return false
+  end,
+
+  calculate = function(self, card, context)
+
+    -- ^chips
+    if context.main_scoring and context.cardarea == G.play then
+      return {
+        e_chips = #context.scoring_hand,
+        card = self,
+      }
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Bunnet",
+  },
+})
+
+SMODS.Enhancement({
+  key = "contagion_mult",
+  pos = { x = 0, y = 2 },
+  atlas = "AbandoniaEnhancements",
+  replace_base_card = false,
+  no_rank = false,
+  no_suit = false,
+  always_scores = false,
+  config = {
+    extra = {
+      emult = 1,
+    }
+  },
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+	
+    return { vars = { cae.emult, } }
+  end,
+  
+  in_pool = function(self)
+	return false
+  end,
+
+  calculate = function(self, card, context)
+    local cae = card.ability.extra
+
+    -- ^mult
+    if context.main_scoring and context.cardarea == G.play then
+      return {
+        e_mult = cae.emult,
+        card = self,
+      }
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Bunnet",
+  },
+})
