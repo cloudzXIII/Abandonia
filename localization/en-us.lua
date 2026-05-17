@@ -1349,8 +1349,8 @@ return {
       j_abn_construction_joker = {
         name = "Construction Joker",
         text = {
-          "{C:attention}Steel Cards{} are also ",
-          "considered {C:attention}Stone Cards{}"
+          "Each scoring {C:inactive}Steel{} Card gives {C:chips}+#1#{} Chips",
+		  "Each scoring {C:inactive}Stone{} Card gives {X:mult,C:white}X#2#{} Mult",
         }
       },
       j_abn_van_joker = {
@@ -2038,9 +2038,7 @@ return {
       j_abn_felix_joker = {
         name = 'Felix Joker',
         text = {
-          "{C:attention}Wild Cards{} also ",
-          "count as {C:attention}#1#s{}",
-          "{s:0.8}Enhancement changes at end of each round"
+          "Held {C:attention}consumables{} turn into {C:spectral}Spectral{} cards when blind ends",
         }
       },
       j_abn_gris_gris_joker = {
@@ -2486,7 +2484,7 @@ return {
       j_abn_streetart_joker = {
         name = "Streetart Joker",
         text = {
-          "Stone Cards and Polkadot Cards count as {C:hearts}Wild Cards{}",
+          "Stone Cards retain their {C:attention}Rank{} and {C:attention}Suit{}",
         }
       },
       j_abn_ill_gotten_gains = {
@@ -4811,6 +4809,25 @@ return {
           "Increase {C:attention}blind requirement{} by {C:attention}10%{}",
         },
       },
+	  m_abn_contagion_seal = {
+        name = "Contagion Seal",
+        text = {
+          "Whenever {X:mult,C:white}Xmult{} triggers this card gains {X:mult,C:white}^#2#{}",
+		  "{C:inactive}Currently: {X:mult,C:white}^#1#{} {C:inactive}mult}",
+        },
+      },
+	  m_abn_contagion_bonus = {
+        name = "Contagion Bonus",
+        text = {
+          "Give {X:spectral,C:white}^Chips{} {C:attention}equal{} to the number played cards",
+        },
+      },
+	  m_abn_contagion_mult = {
+        name = "Contagion Mult",
+        text = {
+          "{X:mult,C:white}^#1#{} Mult",
+        },
+      },
     },
     Voucher = {
       v_abn_overstock_maximum = {
@@ -4989,11 +5006,13 @@ return {
       k_abn_music = "Music",
       k_abn_superrare = "Super Rare",
       k_abn_parallelrare = "Parallel Rare",
+	  k_abn_virusrare = "Virus Rare",
       k_abn_destroyed = "Destroyed!",
       k_abn_unflipped = "Unflipped!",
       k_abn_rental = "Rental!",
       k_abn_oneshot = "Fire!",
       k_abn_comedian = "Comedian",
+	  k_abn_plagued = "Plagued",
       k_abn_polychrome = "Polychrome!",
       k_abn_onfire = "On Fire!",
       abn_hazard_tags = "Hazard Tags",
