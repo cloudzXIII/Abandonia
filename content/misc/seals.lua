@@ -523,3 +523,131 @@ SMODS.Seal {
     artist = "Vega",
   },
 }
+
+SMODS.Seal {
+  key = "silver",
+  badge_colour = HEX("bec7d4"),
+  atlas = "AbandoniaSeals",
+  pos = { x = 2, y = 0 },
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+      }
+    }
+  end,
+
+  config = {
+    extra = {
+    }
+  },
+
+  calculate = function(self, card, context)
+    if context.discard and context.other_card == card and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+      G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+      G.E_MANAGER:add_event(Event({
+        trigger = 'before',
+        delay = 0.0,
+        func = function()
+          SMODS.add_card({ set = 'weather_report' })
+          G.GAME.consumeable_buffer = 0
+          return true
+        end
+      }))
+      return { message = localize('k_abn_plus_weather'), colour = HEX("79b5c2") }
+    end
+  end,
+  draw = function(self, card, layer)
+    if (layer == 'card' or layer == 'both') and card.sprite_facing == 'front' then
+      G.shared_seals[card.seal].role.draw_major = card
+      G.shared_seals[card.seal]:draw_shader('dissolve', nil, nil, nil, card.children.center)
+      G.shared_seals[card.seal]:draw_shader('voucher', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Vega",
+  },
+}
+
+SMODS.Seal {
+  key = "copper",
+  badge_colour = HEX("d97c42"),
+  atlas = "AbandoniaSeals",
+  pos = { x = 1, y = 0 },
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+      }
+    }
+  end,
+
+  config = {
+    extra = {
+    }
+  },
+
+  calculate = function(self, card, context)
+    if context.discard and context.other_card == card and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+      G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+      G.E_MANAGER:add_event(Event({
+        trigger = 'before',
+        delay = 0.0,
+        func = function()
+          SMODS.add_card({ set = 'program_pack' })
+          G.GAME.consumeable_buffer = 0
+          return true
+        end
+      }))
+      return { message = localize('k_abn_plus_program'), colour = HEX("5d6a58") }
+    end
+  end,
+  draw = function(self, card, layer)
+    if (layer == 'card' or layer == 'both') and card.sprite_facing == 'front' then
+      G.shared_seals[card.seal].role.draw_major = card
+      G.shared_seals[card.seal]:draw_shader('dissolve', nil, nil, nil, card.children.center)
+      G.shared_seals[card.seal]:draw_shader('voucher', nil, card.ARGS.send_to_shader, nil, card.children.center)
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Vega",
+  },
+}
+
+SMODS.Seal {
+  key = "duality",
+  badge_colour = HEX("a56be6"),
+  atlas = "AbandoniaSeals",
+  pos = { x = 6, y = 1 },
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+      }
+    }
+  end,
+
+  config = {
+    extra = {
+    }
+  },
+
+  calculate = function(self, card, context)
+    if context.discard and context.other_card == card and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+      G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+      G.E_MANAGER:add_event(Event({
+        trigger = 'before',
+        delay = 0.0,
+        func = function()
+          SMODS.add_card({ set = 'lexica' })
+          G.GAME.consumeable_buffer = 0
+          return true
+        end
+      }))
+      return { message = localize('k_abn_plus_lexica'), colour = HEX("5d6a58") }
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Vega",
+  },
+}

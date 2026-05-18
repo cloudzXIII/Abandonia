@@ -13,10 +13,12 @@ local rank_planets = {
   { key = "vugmado", rank = "King", pos = { x = 1, y = 2 } },
   { key = "abandia", rank = "Ace", pos = { x = 2, y = 2 } },
 }
+SMODS.Attribute { key = "rank_planet" }
 
 for _, def in ipairs(rank_planets) do
   local rank = def.rank
   SMODS.Consumable {
+    attributes = { "rank_planet" },
     key = def.key,
     set = "Planet",
     atlas = "AbandoniaPlanets",

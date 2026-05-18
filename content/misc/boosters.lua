@@ -648,3 +648,544 @@ SMODS.Booster({
   },
 })
 --#endregion
+
+--#region Weather Packs
+SMODS.Booster {
+  key = "weather_normal_1",
+  weight = 1,
+  kind = 'Weather',
+  cost = 4,
+  atlas = "AbandoniaWeatherPack",
+  pos = { x = 0, y = 0 },
+  config = { extra = 3, choose = 1 },
+  group_key = "k_weather_pack",
+  select_card = 'consumeables',
+  loc_vars = function(self, info_queue, card)
+    local cfg = (card and card.ability) or self.config
+    return {
+      vars = {
+        math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+          math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+        math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
+      key = self.key:sub(1, -3),
+    }
+  end,
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.weather_report, special_colour = G.C.BLUE, contrast = 3 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.weather_report)
+    ease_background_colour(chosen_effect)
+  end,
+  particles = function(self)
+    G.booster_pack_sparkles = Particles(1, 1, 0, 0, {
+      timer = 0.015,
+      scale = 0.2,
+      initialize = true,
+      lifespan = 1,
+      speed = 1.1,
+      padding = -1,
+      attach = G.ROOM_ATTACH,
+      colours = { G.C.WHITE, lighten(G.C.BLUE, 0.4), lighten(G.C.BLUE, 0.2), lighten(G.C.GOLD, 0.2) },
+      fill = true
+    })
+    G.booster_pack_sparkles.fade_alpha = 1
+    G.booster_pack_sparkles:fade(1, 0)
+  end,
+  create_card = function(self, card, i)
+    return {
+      set = "weather_report",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+    }
+  end,
+}
+
+SMODS.Booster {
+  key = "weather_normal_2",
+  weight = 1,
+  kind = 'Weather',
+  cost = 4,
+  atlas = "AbandoniaWeatherPack",
+  pos = { x = 1, y = 0 },
+  config = { extra = 3, choose = 1 },
+  group_key = "k_weather_pack",
+  select_card = 'consumeables',
+  loc_vars = function(self, info_queue, card)
+    local cfg = (card and card.ability) or self.config
+    return {
+      vars = {
+        math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+          math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+        math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
+      key = self.key:sub(1, -3),
+    }
+  end,
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.weather_report, special_colour = G.C.BLUE, contrast = 3 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.weather_report)
+    ease_background_colour(chosen_effect)
+  end,
+  particles = function(self)
+    G.booster_pack_sparkles = Particles(1, 1, 0, 0, {
+      timer = 0.015,
+      scale = 0.2,
+      initialize = true,
+      lifespan = 1,
+      speed = 1.1,
+      padding = -1,
+      attach = G.ROOM_ATTACH,
+      colours = { G.C.WHITE, lighten(G.C.BLUE, 0.4), lighten(G.C.BLUE, 0.2), lighten(G.C.GOLD, 0.2) },
+      fill = true
+    })
+    G.booster_pack_sparkles.fade_alpha = 1
+    G.booster_pack_sparkles:fade(1, 0)
+  end,
+  create_card = function(self, card, i)
+    return {
+      set = "weather_report",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+    }
+  end,
+}
+
+SMODS.Booster {
+  key = "weather_normal_3",
+  weight = 1,
+  kind = 'Weather',
+  cost = 4,
+  atlas = "AbandoniaWeatherPack",
+  pos = { x = 2, y = 0 },
+  config = { extra = 3, choose = 1 },
+  group_key = "k_weather_pack",
+  select_card = 'consumeables',
+  loc_vars = function(self, info_queue, card)
+    local cfg = (card and card.ability) or self.config
+    return {
+      vars = {
+        math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+          math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+        math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
+      key = self.key:sub(1, -3),
+    }
+  end,
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.weather_report, special_colour = G.C.BLUE, contrast = 3 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.weather_report)
+    ease_background_colour(chosen_effect)
+  end,
+  particles = function(self)
+    G.booster_pack_sparkles = Particles(1, 1, 0, 0, {
+      timer = 0.015,
+      scale = 0.2,
+      initialize = true,
+      lifespan = 1,
+      speed = 1.1,
+      padding = -1,
+      attach = G.ROOM_ATTACH,
+      colours = { G.C.WHITE, lighten(G.C.BLUE, 0.4), lighten(G.C.BLUE, 0.2), lighten(G.C.GOLD, 0.2) },
+      fill = true
+    })
+    G.booster_pack_sparkles.fade_alpha = 1
+    G.booster_pack_sparkles:fade(1, 0)
+  end,
+  create_card = function(self, card, i)
+    return {
+      set = "weather_report",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+    }
+  end,
+}
+
+SMODS.Booster {
+  key = "weather_jumbo",
+  weight = 1,
+  kind = 'Weather',
+  cost = 6,
+  atlas = "AbandoniaWeatherPack",
+  pos = { x = 0, y = 1 },
+  config = { extra = 5, choose = 1 },
+  group_key = "k_weather_pack",
+  select_card = 'consumeables',
+  loc_vars = function(self, info_queue, card)
+    local cfg = (card and card.ability) or self.config
+    return {
+      vars = {
+        math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+          math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+        math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
+    }
+  end,
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.weather_report, special_colour = G.C.BLUE, contrast = 3 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.weather_report)
+    ease_background_colour(chosen_effect)
+  end,
+  particles = function(self)
+    G.booster_pack_sparkles = Particles(1, 1, 0, 0, {
+      timer = 0.015,
+      scale = 0.2,
+      initialize = true,
+      lifespan = 1,
+      speed = 1.1,
+      padding = -1,
+      attach = G.ROOM_ATTACH,
+      colours = { G.C.WHITE, lighten(G.C.BLUE, 0.4), lighten(G.C.BLUE, 0.2), lighten(G.C.GOLD, 0.2) },
+      fill = true
+    })
+    G.booster_pack_sparkles.fade_alpha = 1
+    G.booster_pack_sparkles:fade(1, 0)
+  end,
+  create_card = function(self, card, i)
+    return {
+      set = "weather_report",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+    }
+  end,
+}
+
+SMODS.Booster {
+  key = "weather_mega",
+  weight = 0.25,
+  kind = 'Weather',
+  cost = 8,
+  atlas = "AbandoniaWeatherPack",
+  pos = { x = 0, y = 1 },
+  config = { extra = 5, choose = 2 },
+  group_key = "k_weather_pack",
+  select_card = 'consumeables',
+  loc_vars = function(self, info_queue, card)
+    local cfg = (card and card.ability) or self.config
+    return {
+      vars = {
+        math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+          math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+        math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
+    }
+  end,
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.weather_report, special_colour = G.C.BLUE, contrast = 3 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.weather_report)
+    ease_background_colour(chosen_effect)
+  end,
+  particles = function(self)
+    G.booster_pack_sparkles = Particles(1, 1, 0, 0, {
+      timer = 0.015,
+      scale = 0.2,
+      initialize = true,
+      lifespan = 1,
+      speed = 1.1,
+      padding = -1,
+      attach = G.ROOM_ATTACH,
+      colours = { G.C.WHITE, lighten(G.C.BLUE, 0.4), lighten(G.C.BLUE, 0.2), lighten(G.C.GOLD, 0.2) },
+      fill = true
+    })
+    G.booster_pack_sparkles.fade_alpha = 1
+    G.booster_pack_sparkles:fade(1, 0)
+  end,
+  create_card = function(self, card, i)
+    return {
+      set = "weather_report",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+    }
+  end,
+}
+
+--#endregion
+
+--#region Lexica Packs
+SMODS.Booster {
+  key = "lexica_normal_1",
+  weight = 1,
+  kind = 'Lexica',
+  cost = 4,
+  atlas = "AbandoniaLexicaPack",
+  pos = { x = 0, y = 0 },
+  config = { extra = 3, choose = 1 },
+  group_key = "k_lexica_pack",
+  select_card = 'consumeables',
+  loc_vars = function(self, info_queue, card)
+    local cfg = (card and card.ability) or self.config
+    return {
+      vars = {
+        math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+          math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+        math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
+      key = self.key:sub(1, -3),
+    }
+  end,
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.lexica, special_colour = G.C.FILTER, contrast = 3 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.lexica)
+    ease_background_colour(chosen_effect)
+  end,
+  particles = function(self)
+    G.booster_pack_sparkles = Particles(1, 1, 0, 0, {
+      timer = 0.015,
+      scale = 0.2,
+      initialize = true,
+      lifespan = 1,
+      speed = 1.1,
+      padding = -1,
+      attach = G.ROOM_ATTACH,
+      colours = { G.C.WHITE, lighten(G.C.FILTER, 0.4), lighten(G.C.FILTER, 0.2), lighten(G.C.GOLD, 0.2) },
+      fill = true
+    })
+    G.booster_pack_sparkles.fade_alpha = 1
+    G.booster_pack_sparkles:fade(1, 0)
+  end,
+  create_card = function(self, card, i)
+    return {
+      set = "lexica",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+    }
+  end,
+}
+
+SMODS.Booster {
+  key = "lexica_normal_2",
+  weight = 1,
+  kind = 'Lexica',
+  cost = 4,
+  atlas = "AbandoniaLexicaPack",
+  pos = { x = 1, y = 0 },
+  config = { extra = 3, choose = 1 },
+  group_key = "k_lexica_pack",
+  select_card = 'consumeables',
+  loc_vars = function(self, info_queue, card)
+    local cfg = (card and card.ability) or self.config
+    return {
+      vars = {
+        math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+          math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+        math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
+      key = self.key:sub(1, -3),
+    }
+  end,
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.lexica, special_colour = G.C.FILTER, contrast = 3 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.lexica)
+    ease_background_colour(chosen_effect)
+  end,
+  particles = function(self)
+    G.booster_pack_sparkles = Particles(1, 1, 0, 0, {
+      timer = 0.015,
+      scale = 0.2,
+      initialize = true,
+      lifespan = 1,
+      speed = 1.1,
+      padding = -1,
+      attach = G.ROOM_ATTACH,
+      colours = { G.C.WHITE, lighten(G.C.FILTER, 0.4), lighten(G.C.FILTER, 0.2), lighten(G.C.GOLD, 0.2) },
+      fill = true
+    })
+    G.booster_pack_sparkles.fade_alpha = 1
+    G.booster_pack_sparkles:fade(1, 0)
+  end,
+  create_card = function(self, card, i)
+    return {
+      set = "lexica",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+    }
+  end,
+}
+
+SMODS.Booster {
+  key = "lexica_normal_3",
+  weight = 1,
+  kind = 'Lexica',
+  cost = 4,
+  atlas = "AbandoniaLexicaPack",
+  pos = { x = 2, y = 0 },
+  config = { extra = 3, choose = 1 },
+  group_key = "k_lexica_pack",
+  select_card = 'consumeables',
+  loc_vars = function(self, info_queue, card)
+    local cfg = (card and card.ability) or self.config
+    return {
+      vars = {
+        math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+          math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+        math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
+      key = self.key:sub(1, -3),
+    }
+  end,
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.lexica, special_colour = G.C.FILTER, contrast = 3 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.lexica)
+    ease_background_colour(chosen_effect)
+  end,
+  particles = function(self)
+    G.booster_pack_sparkles = Particles(1, 1, 0, 0, {
+      timer = 0.015,
+      scale = 0.2,
+      initialize = true,
+      lifespan = 1,
+      speed = 1.1,
+      padding = -1,
+      attach = G.ROOM_ATTACH,
+      colours = { G.C.WHITE, lighten(G.C.FILTER, 0.4), lighten(G.C.FILTER, 0.2), lighten(G.C.GOLD, 0.2) },
+      fill = true
+    })
+    G.booster_pack_sparkles.fade_alpha = 1
+    G.booster_pack_sparkles:fade(1, 0)
+  end,
+  create_card = function(self, card, i)
+    return {
+      set = "lexica",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+    }
+  end,
+}
+
+SMODS.Booster {
+  key = "lexica_jumbo",
+  weight = 1,
+  kind = 'Lexica',
+  cost = 6,
+  atlas = "AbandoniaLexicaPack",
+  pos = { x = 0, y = 1 },
+  config = { extra = 5, choose = 1 },
+  group_key = "k_lexica_pack",
+  select_card = 'consumeables',
+  loc_vars = function(self, info_queue, card)
+    local cfg = (card and card.ability) or self.config
+    return {
+      vars = {
+        math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+          math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+        math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
+    }
+  end,
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.lexica, special_colour = G.C.FILTER, contrast = 3 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.lexica)
+    ease_background_colour(chosen_effect)
+  end,
+  particles = function(self)
+    G.booster_pack_sparkles = Particles(1, 1, 0, 0, {
+      timer = 0.015,
+      scale = 0.2,
+      initialize = true,
+      lifespan = 1,
+      speed = 1.1,
+      padding = -1,
+      attach = G.ROOM_ATTACH,
+      colours = { G.C.WHITE, lighten(G.C.FILTER, 0.4), lighten(G.C.FILTER, 0.2), lighten(G.C.GOLD, 0.2) },
+      fill = true
+    })
+    G.booster_pack_sparkles.fade_alpha = 1
+    G.booster_pack_sparkles:fade(1, 0)
+  end,
+  create_card = function(self, card, i)
+    return {
+      set = "lexica",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+    }
+  end,
+}
+
+SMODS.Booster {
+  key = "lexica_mega",
+  weight = 0.25,
+  kind = 'Lexica',
+  cost = 8,
+  atlas = "AbandoniaLexicaPack",
+  pos = { x = 0, y = 1 },
+  config = { extra = 5, choose = 2 },
+  group_key = "k_lexica_pack",
+  select_card = 'consumeables',
+  loc_vars = function(self, info_queue, card)
+    local cfg = (card and card.ability) or self.config
+    return {
+      vars = {
+        math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+          math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+        math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
+    }
+  end,
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.lexica, special_colour = G.C.FILTER, contrast = 3 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.lexica)
+    ease_background_colour(chosen_effect)
+  end,
+  particles = function(self)
+    G.booster_pack_sparkles = Particles(1, 1, 0, 0, {
+      timer = 0.015,
+      scale = 0.2,
+      initialize = true,
+      lifespan = 1,
+      speed = 1.1,
+      padding = -1,
+      attach = G.ROOM_ATTACH,
+      colours = { G.C.WHITE, lighten(G.C.FILTER, 0.4), lighten(G.C.FILTER, 0.2), lighten(G.C.GOLD, 0.2) },
+      fill = true
+    })
+    G.booster_pack_sparkles.fade_alpha = 1
+    G.booster_pack_sparkles:fade(1, 0)
+  end,
+  create_card = function(self, card, i)
+    return {
+      set = "lexica",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+    }
+  end,
+}
+--#endregion

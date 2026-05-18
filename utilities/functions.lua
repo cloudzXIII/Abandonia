@@ -150,7 +150,7 @@ function ABN.can_apply_sticker(sticker, card)
   end
   local center = card.config.center
   if (center[sticker.key .. '_compat'] or (center[sticker.key .. '_compat'] == nil and ((sticker.default_compat and not sticker.compat_exceptions[center.key]) or -- default yes with no exception
-    (not sticker.default_compat and sticker.compat_exceptions[center.key])))) then                                                                                --default no with exceptions
+        (not sticker.default_compat and sticker.compat_exceptions[center.key])))) then                                                                            --default no with exceptions
     if not card.ability[sticker.key] then
       if card.pinned and sticker.key == 'pinned' then
         --#JUSTICEFORPINNED
@@ -232,4 +232,16 @@ function ABN.get_random_nightshift()
 
   local chosen_key = pseudorandom_element(nightshift_pool, "seed" .. pseudorandom(0, 100))
   return chosen_key
+end
+
+-- Gets most played Poker Hand
+ABN.most_played_hand = function()
+  local _handname, _played, _order = 'High Card', -1, 100
+  for k, v in pairs(G.GAME.hands) do
+    if v.played > _played or (v.played == _played and _order > v.order) then
+      _played = v.played
+      _handname = k
+    end
+  end
+  return _handname
 end

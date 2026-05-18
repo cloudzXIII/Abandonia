@@ -1,3 +1,20 @@
+local csa = Card.set_ability
+function Card:set_ability(center, initial, delay_sprites)
+    csa(self, center, initial, delay_sprites)
+    if center == G.P_CENTERS.m_stone and next(SMODS.find_card('j_abn_streetart_joker')) then
+        self.config.center.replace_base_card = false
+        self.config.center.no_rank = false
+        self.config.center.no_suit = false
+    end
+end
+
+local shf = Card.should_hide_front
+function Card:should_hide_front()
+    if self.ability.effect == 'Stone Card' and next(SMODS.find_card('j_abn_streetart_joker')) then return false end
+    return shf(self)
+end
+
+
 SMODS.Joker {
   key = 'streetart_joker',
   rarity = 1,
@@ -6,25 +23,6 @@ SMODS.Joker {
   cost = 4,
   discovered = false,
   blueprint_compat = true,
-
-  loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
-    return {
-      vars = {
-        localize({ type = 'name_text', key = "m_stone", set = "Enhanced" }),
-        localize({ type = 'name_text', key = "m_abn_polkadot", set = "Enhanced" }),
-        localize({ type = 'name_text', key = "m_wild", set = "Enhanced" }),
-      }
-    }
-  end,
-
-  calculate = function(self, card, context)
-    if context.check_enhancement and context.other_card.config.center_key == "m_stone" or context.check_enhancement and context.other_card.config.center_key == "m_abn_polkadot" then
-      return {
-        m_wild = true --make cards function as wild cards
-      }
-    end
-  end,
 
   abn_artist_credits = {
     artist = "EverSoNitro",

@@ -1,30 +1,5 @@
-function ABN.reset_felix_joker()
-  local pool = {}
-  for _, v in ipairs(G.P_CENTER_POOLS.Enhanced) do
-    if v.key ~= "m_wild" then pool[#pool + 1] = v.key end
-  end
-  G.GAME.current_round.felix_joker_enhancement = SMODS.poll_enhancement({
-    key = "abn_felix_joker",
-    guaranteed = true,
-    options =
-        pool
-  })
-end
-
 SMODS.Joker {
   key = 'felix_joker',
-
-  loc_vars = function(self, info_queue, card)
-    local current_enh = G.GAME.current_round.felix_joker_enhancement or "m_mult"
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
-    info_queue[#info_queue + 1] = G.P_CENTERS[current_enh]
-    return {
-      vars = {
-        localize({ type = 'name_text', key = current_enh, set = 'Enhanced' }),
-        localize({ type = 'name_text', key = "m_wild", set = 'Enhanced' }),
-      }
-    }
-  end,
 
   rarity = 2,
   atlas = 'ABNJokerSheet5',
@@ -34,11 +9,19 @@ SMODS.Joker {
   blueprint_compat = false,
 
   calculate = function(self, card, context)
-    if context.check_enhancement and context.other_card.config.center_key == "m_wild" then
-      local current_enh = G.GAME.current_round.felix_joker_enhancement or "m_mult"
-      return {
-        [current_enh] = true,
-      }
+    if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+
+      -- destroy non spectrals
+      for i = #G.consumeables.cards, 1, -1 do
+        local v = G.consumeables.cards[i]
+        if v.config.center.set ~= 'Spectral' then
+          v:start_dissolve()
+		  -- create new spectrals
+		  local new_card = create_card('Spectral', G.consumeables)
+          new_card:add_to_deck()
+		  G.consumeables:emplace(new_card)
+        end
+      end
     end
   end,
 

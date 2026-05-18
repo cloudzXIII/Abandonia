@@ -1,5 +1,282 @@
 return {
   descriptions = {
+    lexica = {
+      c_abn_a = {
+        name = "A(mperage)",
+        text = {
+          "Next time a {C:attention}Joker{} with",
+          "an {C:dark_edition}Edition{} {C:attention}triggers{},",
+          "add the same edition to the {C:attention}first{}",
+          "and {C:attention}last{} scoring card"
+        }
+      },
+      c_abn_b = {
+        name = "B(arometer)",
+        text = {
+          "Next time a {C:attention}Mult Card{}",
+          "{C:attention}triggers{}, give",
+          "triple the {C:mult}mult"
+        }
+      },
+      c_abn_c = {
+        name = "C(adence)",
+        text = {
+          "Next time a {C:attention}Two Pair{}",
+          "{C:attention}triggers{}, each scoring",
+          "card gives {C:white,X:chips}X#1#{} Chips"
+        }
+      },
+      c_abn_d = {
+        name = "D(ebridement)",
+        text = {
+          "Next time a {C:attention}face-down{} card",
+          "{C:attention}triggers{}, flip all cards",
+          "in your {C:attention}full deck{} face up",
+          "and they each permanently gain {C:chips}+#1#{} Chips"
+        }
+      },
+      c_abn_e = {
+        name = "E(lapse)",
+        text = {
+          "Next time a {C:attention}Blind{} is skipped,",
+          "gain a random {C:abn_hazard}Hazard Tag{}"
+        }
+      },
+      c_abn_f = {
+        name = "F(eudatory)",
+        text = {
+          "Next time a {C:gold}Gold Seal{} {C:attention}triggers{},",
+          "All Jokers gain {C:white,X:mult}X#1#{} Mult"
+        }
+      },
+      c_abn_g = {
+        name = "G(allant)",
+        text = {
+          "Next time a {C:attention}Full House{}",
+          "{C:attention}triggers{}, {C:red}destroy{}",
+          "all {C:attention}face{} cards,",
+          "{C:attention}lowest rank{} held in hand",
+          "gains all their {C:chips}Chips{}"
+        }
+      },
+      c_abn_h = {
+        name = "H(omage)",
+        text = {
+          "Next time you use a {C:tarot}Tarot{} card,",
+          "create a {C:dark_edition}Negative{} copy of it",
+        }
+      },
+      c_abn_i = {
+        name = "I(ntrinsic)",
+        text = {
+          "Next time an {C:attention}unenhanced{} card scores,",
+          "it permanently gains {C:attention}+1{} retrigger"
+        }
+      },
+      c_abn_j = {
+        name = "J(unction)",
+        text = {
+          "Next time a {C:attention}Straight{} is played,",
+          "increase it's level by {C:attention}1{} for every",
+          "{C:attention}numbered{} card played"
+        }
+      },
+      c_abn_k = {
+        name = "K(armic)",
+        text = {
+          "Next time a {C:attention}Glass Card{}",
+          "is {C:red}destroyed{}, all scoring",
+          "cards permanently gain {C:white,X:mult}X#1#{} Mult"
+        }
+      },
+      c_abn_l = {
+        name = "L(ament)",
+        text = {
+          "Next time a {C:green}probability{} fails,",
+          "Level up your {C:attention}most played{}",
+          "hand by {C:attention}1{}"
+        }
+      },
+      c_abn_m = {
+        name = "M(atriculate)",
+        text = {
+          "Next time you level up",
+          "a hand, also level up",
+          "your {C:attention}most played{} hand"
+        }
+      },
+      c_abn_n = {
+        name = "N(omenclature)",
+        text = {
+          "Next time a {C:attention}Wild Card",
+          "scores, all cards",
+          "held in hand",
+          "gain a {C:abn_brown_seal}Brown Seal{}"
+        }
+      },
+      c_abn_o = {
+        name = "O(beisance)",
+        text = {
+          "Next time a {C:attention}Gold Card",
+          "scores, permanently triple",
+          "its {C:chips}Chips{}"
+        }
+      },
+      c_abn_p = {
+        name = "P(hantasm)",
+        text = {
+          "Next time you use a {C:spectral}Spectral{} card,",
+          "create a {C:dark_edition}Negative{} copy of it",
+        }
+      },
+      c_abn_q = {
+        name = "Q(uagmire)", -- family guy reference?!!?
+        text = {
+          "Next time a {C:attention}Stone Card",
+          "scores, all Jokers",
+          "gain {C:chips}+#1#{} Chips"
+        }
+      },
+      c_abn_r = {
+        name = "R(equiem)", -- resident evil requiem reference?!?
+        text = {
+          "Next time you use a {C:sigils}Sigil{} card,",
+          "all scoring cards in the next hand",
+          "become {C:dark_edition}Polychrome",
+          "and gain a {C:abn_violet_seal}Violet Seal{}"
+        }
+      },
+      c_abn_s = {
+        name = "S(acrilege)",
+        text = {
+          "Next time a hand contains",
+          "both {C:attention}light{} and {C:attention}dark suits{},",
+          "destroy all cards and create",
+          "a {C:dark_edition}Negative{} {C:attention}Soul{}"
+        }
+      },
+      c_abn_t = {
+        name = "T(orrent)", -- sailing the seven seas are we now?
+        text = {
+          "Next time a {C:attention}Flush{}",
+          "{C:attention}triggers{}, add a",
+          "{C:abn_skyblue_seal}Skyblue Seal{} to",
+          "each played card"
+        }
+      },
+      c_abn_u = {
+        name = "U(biquitous)",
+        text = {
+          "Next time a {C:attention}Bonus Card",
+          "is played, add {C:dark_edition}Gloss{} to it",
+        }
+      },
+      c_abn_v = {
+        name = "V(enture)",
+        text = {
+          "Next time you play a hand containing",
+          "only {C:attention}dark suits{}, destroy",
+          "all cards and create a",
+          "{C:dark_edition}Negative{} {C:attention}Body{}",
+          "{C:inactive}Excluding High Card{}",
+        }
+      },
+      c_abn_w = {
+        name = "W(oebegone)",
+        text = {
+          "Next time a {C:attention}Lucky Card{}",
+          "scores, add {C:dark_edition}Abandoned{} edition",
+          "and a {C:red}Red Seal{}"
+        }
+      },
+      c_abn_x = {
+        name = "X(enocentric)",
+        text = {
+          "Next time you play a {C:attention}Spectrum{},",
+          "all Jokers gain",
+          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult"
+        }
+      },
+      c_abn_y = {
+        name = "Y(onder)",
+        text = {
+          "Next time you use a {C:astro_cards}Astro{} card,",
+          "it's {C:green}probabilites{} succeed,",
+          "create a random {C:dark_edition}Negative{}",
+          "rank {C:planet}Planet{} card"
+        }
+      },
+      c_abn_z = {
+        name = "Z(ealot)",
+        text = {
+          "Next time you play a hand containing",
+          "only {C:attention}light suits{}, destroy",
+          "all cards and create a",
+          "{C:dark_edition}Negative{} {C:attention}Mind{}",
+          "{C:inactive}Excluding High Card{}",
+        }
+      },
+      c_abn_thorn = {
+        name = "T(horn)",
+        text = {
+          "Next time you use a {C:nightshift_cards}Nightshift{} card,",
+          "All Jokers gain {C:chips}+#1#{} Chips and",
+          "have their {C:attention}stickers{} {C:red}removed"
+        }
+      },
+    },
+    program_pack = {
+      c_abn_png = {
+        name = ".PNG",
+        text = {
+          "Enhances {C:attention}#1#{} random",
+          "cards in hand into",
+          "{C:dark_edition}Negative{} {C:attention}Lucky Cards{}",
+        }
+      },
+      c_abn_mp4 = {
+        name = ".MP4",
+        text = {
+          "Enhances {C:attention}#1#{} random",
+          "cards in hand into",
+          "{C:dark_edition}Gloss{} {C:attention}Bonus Cards{},",
+          "{C:red}destroy{} all others"
+        }
+      },
+      c_abn_exe = {
+        name = ".EXE",
+        text = {
+          "{C:green}#1# in #2#{} chance to add {C:dark_edition}Chthonian{},",
+          "{C:green}#3# in #4#{} chance to become {C:attention}Fossil{},",
+          "{C:green}#5# in #6#{} chance to {C:red}destroy{}",
+          "each card in your {C:attention}full deck{}",
+        }
+      },
+      c_abn_apk = {
+        name = ".APK",
+        text = {
+          "Enhances all {C:attention}numbered{}",
+          "cards in hand into",
+          "{C:dark_edition}Foil{} {C:attention}Mercurial Cards{}",
+        }
+      },
+      c_abn_zip = {
+        name = ".ZIP",
+        text = {
+          "Enhances all {C:attention}2s{}, {C:attention}3s{}, {C:attention}4s{},",
+          "and {C:attention}5s{} in hand into",
+          "{C:dark_edition}Holographic{} {C:attention}Mult Cards{}",
+        }
+      },
+      c_abn_obj = {
+        name = ".OBJ",
+        text = {
+          "Convert all {C:attention}face{} cards",
+          "in hand into",
+          "{C:dark_edition}Abandoned{} {C:attention}Aces"
+        }
+      },
+    },
     weather_report = {
       c_abn_clear_sky = {
         name = "Clear Sky",
@@ -1350,7 +1627,7 @@ return {
         name = "Construction Joker",
         text = {
           "Each scoring {C:inactive}Steel{} Card gives {C:chips}+#1#{} Chips",
-		  "Each scoring {C:inactive}Stone{} Card gives {X:mult,C:white}X#2#{} Mult",
+          "Each scoring {C:inactive}Stone{} Card gives {X:mult,C:white}X#2#{} Mult",
         }
       },
       j_abn_van_joker = {
@@ -2038,7 +2315,9 @@ return {
       j_abn_felix_joker = {
         name = 'Felix Joker',
         text = {
-          "Held {C:attention}consumables{} turn into {C:spectral}Spectral{} cards when blind ends",
+          "When {C:attention}Blind{} is defeated,",
+          "turn held {C:attention}consumables{}",
+          "into {C:spectral}Spectral{} cards",
         }
       },
       j_abn_gris_gris_joker = {
@@ -2119,7 +2398,7 @@ return {
         }
       },
       j_abn_codding_error = {
-        name = "Codding Error",
+        name = "Coding Error",
         text = {
           "{C:attention}Retrigger{} cards with {C:red}even{} ranks",
           "{C:attention}flips{} between {C:red}even and {C:blue}odd each round",
@@ -3220,63 +3499,63 @@ return {
           "If you own Slot Machine retrigger {C:money}Gold{} seals",
         }
       },
-	  j_abn_mad_petr = {
+      j_abn_mad_petr = {
         name = "Mad Petr",
         text = {
           "Retrigger {C:attention}All{} Jokers {C:attention}equal{} to the number {C:attention}different{} held consumables",
-		  "{C:inactive}Currently:{} {C:attention}#1#{} {C:inactive}Retriggers",
+          "{C:inactive}Currently:{} {C:attention}#1#{} {C:inactive}Retriggers",
         }
       },
-	  j_abn_porke = {
+      j_abn_porke = {
         name = "Porke",
         text = {
           "Each Joker gives {X:chips,C:white}X#1#{} Chips per {C:attention}different{} held consumable",
-		  "{C:inactive}Currently: {X:chips,C:white}X#2#{} {C:inactive}Chips{}",
+          "{C:inactive}Currently: {X:chips,C:white}X#2#{} {C:inactive}Chips{}",
         }
       },
-	  j_abn_parq = {
+      j_abn_parq = {
         name = "P'arq",
         text = {
           "Each {C:attention}different{} held consumable lowers {C:attention}blind requirement{} by {C:attention}#1#%",
-		  "{C:inactive}Currently: {C:attention}#2#%",
+          "{C:inactive}Currently: {C:attention}#2#%",
         }
       },
-	  j_abn_pracheo = {
+      j_abn_pracheo = {
         name = "Pracheo",
         text = {
           "Retrigger cards {C:attention}equal{} to the number {C:attention}different{} held consumables",
-		  "{C:inactive}Currently:{} {C:attention}#1#{} {C:inactive}Retriggers",
+          "{C:inactive}Currently:{} {C:attention}#1#{} {C:inactive}Retriggers",
         }
       },
-	  j_abn_jorg = {
+      j_abn_jorg = {
         name = "Jorg",
         text = {
           "{C:mult}Discarded{} cards give {X:mult,C:white}X#1#{} Mult",
-		  "On {C:attention}next{} played hand",
+          "On {C:attention}next{} played hand",
         }
       },
-	  j_abn_jurian = {
+      j_abn_jurian = {
         name = "Jurian",
         text = {
           "{C:mult}Discarded{} cards give {X:chips,C:white}X#1#{} Chips",
-		  "On {C:attention}next{} played hand",
+          "On {C:attention}next{} played hand",
         }
       },
-	  j_abn_jfool = {
+      j_abn_jfool = {
         name = "J’Fool",
         text = {
           "Each played {C:attention}Odd{} cards gives equal Xmult to the amount of {C:attention}Odd{} cards played",
-		  "Each played {C:attention}Even{} card gives equal Xmult to the amount of {C:attention}Even{} cards played",
+          "Each played {C:attention}Even{} card gives equal Xmult to the amount of {C:attention}Even{} cards played",
         }
       },
-	  j_abn_tochic = {
+      j_abn_tochic = {
         name = "Tochic",
         text = {
           "When blind is selected reduce the required score by {C:attention}#1#%{} for each Joker",
-		  "{C:inactive}Currently:{} {C:attention}#2#%",
+          "{C:inactive}Currently:{} {C:attention}#2#%",
         }
       },
-	  j_abn_obmij = {
+      j_abn_obmij = {
         name = "Jimbo",
         text = {
           "Give Xmult equal to the number of Jokers owned",
@@ -3285,6 +3564,93 @@ return {
     },
 
     Spectral = {
+      c_abn_ascend = {
+        name = "Ascend",
+        text = {
+          "Add {C:dark_edition}Glosss{}, {C:dark_edition}Iridescent{},",
+          "or {C:dark_edition}Pearlenscene{} effect to",
+          "{C:attention}#1#{} selected card in hand",
+        },
+      },
+      c_abn_distortion = {
+        name = "Distortion",
+        text = {
+          "Add {C:dark_edition}Pearlenscene{} to a",
+          "random {C:attention}Joker{}, destroy",
+          "all other Jokers",
+        },
+      },
+      c_abn_exile = {
+        name = "Exile",
+        text = {
+          "Add {C:dark_edition}Negative{} effect to",
+          "{C:attention}#1#{} selected card in hand",
+        },
+      },
+      c_abn_make = {
+        name = "Make",
+        text = {
+          "Add a {C:abn_brass_seal}Brass Seal{}",
+          "to {C:attention}1{} selected",
+          "card in your hand",
+        },
+      },
+      c_abn_door = {
+        name = "Door",
+        text = {
+          "Add a {C:abn_skyblue_seal}Skyblue Seal{}",
+          "to {C:attention}1{} selected",
+          "card in your hand",
+        },
+      },
+      c_abn_silver = {
+        name = "Silver",
+        text = {
+          "Add a {C:abn_silver_seal}Silver Seal{}",
+          "to {C:attention}1{} selected",
+          "card in your hand",
+        },
+      },
+      c_abn_copper = {
+        name = "Copper",
+        text = {
+          "Add a {C:abn_copper_seal}Copper Seal{}",
+          "to {C:attention}1{} selected",
+          "card in your hand",
+        },
+      },
+      c_abn_transform = {
+        name = "Transform",
+        text = {
+          "Creates the last",
+          "{C:spectral}Spectral{} card",
+          "used during this run",
+          "{s:0.8,C:spectral}Soul{s:0.8} excluded",
+        },
+      },
+      c_abn_impure = {
+        name = "Impure",
+        text = {
+          "Add a {C:abn_oxidized_seal}Oxidised Seal{}",
+          "to {C:attention}1{} selected",
+          "card in your hand",
+        }
+      },
+      c_abn_instrument = {
+        name = "Instrument",
+        text = {
+          "Add a {C:abn_lime_seal}Lime Seal{}",
+          "to {C:attention}1{} selected",
+          "card in your hand",
+        }
+      },
+      c_abn_whitehole = {
+        name = "White Hole",
+        text = {
+          "Upgrade every {C:dark_edition,E:1}rank",
+          "by {C:attention}1{} level",
+        },
+      },
       c_abn_deja_vecu = {
         name = "Deja Vecu",
         text = {
@@ -3505,6 +3871,66 @@ return {
       },
     },
     Other = {
+      p_abn_weather_normal = {
+        name = 'Weather Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:weather_report}Weather{} cards',
+        }
+      },
+      p_abn_weather_jumbo = {
+        name = 'Jumbo Weather Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:weather_report}Weather{} cards',
+        }
+      },
+      p_abn_weather_mega = {
+        name = 'Mega Weather Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:weather_report}Weather{} cards',
+        }
+      },
+      p_abn_lexica_normal = {
+        name = 'Lexica Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:lexica}Lexica{} cards'
+        }
+      },
+      p_abn_lexica_jumbo = {
+        name = 'Jumbo Lexica Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:lexica}Lexica{} cards'
+        }
+      },
+      p_abn_lexica_mega = {
+        name = 'Mega Lexica Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:lexica}Lexica{} cards'
+        }
+      },
+      undiscovered_lexica = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
+      },
+      undiscovered_program_pack = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
+      },
       undiscovered_weather_report = {
         name = "Not Discovered",
         text = {
@@ -3549,6 +3975,31 @@ return {
           "unseeded run to",
           "learn what it does"
         }
+      },
+
+      abn_silver_seal = {
+        name = "Silver Seal",
+        text = {
+          "Creates a {C:weather_report}Weather Report{}",
+          "when {C:attention}discarded",
+          "{C:inactive}(Must have room)",
+        },
+      },
+      abn_copper_seal = {
+        name = "Copper Seal",
+        text = {
+          "Creates a {C:program_pack}Program{} card",
+          "when {C:attention}discarded",
+          "{C:inactive}(Must have room)",
+        },
+      },
+      abn_duality_seal = {
+        name = "Duality Seal",
+        text = {
+          "Creates a {C:lexica}Lexica{} card",
+          "when {C:attention}discarded",
+          "{C:inactive}(Must have room)",
+        },
       },
       abn_skyblue_seal = {
         name = "Skyblue Seal",
@@ -4809,20 +5260,20 @@ return {
           "Increase {C:attention}blind requirement{} by {C:attention}10%{}",
         },
       },
-	  m_abn_contagion_seal = {
+      m_abn_contagion_seal = {
         name = "Contagion Seal",
         text = {
           "Whenever {X:mult,C:white}Xmult{} triggers this card gains {X:mult,C:white}^#2#{}",
-		  "{C:inactive}Currently: {X:mult,C:white}^#1#{} {C:inactive}mult}",
+          "{C:inactive}Currently: {X:mult,C:white}^#1#{} {C:inactive}mult}",
         },
       },
-	  m_abn_contagion_bonus = {
+      m_abn_contagion_bonus = {
         name = "Contagion Bonus",
         text = {
           "Give {X:spectral,C:white}^Chips{} {C:attention}equal{} to the number played cards",
         },
       },
-	  m_abn_contagion_mult = {
+      m_abn_contagion_mult = {
         name = "Contagion Mult",
         text = {
           "{X:mult,C:white}^#1#{} Mult",
@@ -5006,13 +5457,13 @@ return {
       k_abn_music = "Music",
       k_abn_superrare = "Super Rare",
       k_abn_parallelrare = "Parallel Rare",
-	  k_abn_virusrare = "Virus Rare",
+      k_abn_virusrare = "Virus Rare",
       k_abn_destroyed = "Destroyed!",
       k_abn_unflipped = "Unflipped!",
       k_abn_rental = "Rental!",
       k_abn_oneshot = "Fire!",
       k_abn_comedian = "Comedian",
-	  k_abn_plagued = "Plagued",
+      k_abn_plagued = "Plagued",
       k_abn_polychrome = "Polychrome!",
       k_abn_onfire = "On Fire!",
       abn_hazard_tags = "Hazard Tags",
@@ -5039,6 +5490,12 @@ return {
       k_abn_plus_astro = "+1 Astro",
       k_abn_plus_sigil = "+1 Sigil",
       k_abn_plus_calamity = "+1 Calamity",
+      k_abn_plus_weather = "+1 Weather",
+      k_abn_plus_program = "+1 Program",
+      k_abn_plus_lexica = "+1 Lexica",
+      k_abn_activated_ex = "Activated!",
+      k_lexica_pack = "Lexica Pack",
+      k_weather_pack = "Weather Pack",
 
       -- Consumable Types
       b_weather_report_cards = "Weather Reports",
@@ -5054,7 +5511,13 @@ return {
       k_sigils = "Sigil",
 
       b_nightshift_cards_cards = "Nightshift Cards",
-      k_nightshift_cards = "Nightshift"
+      k_nightshift_cards = "Nightshift",
+
+      b_program_pack_cards = "Program Cards",
+      k_program_pack = "Program",
+
+      b_lexica_cards = "Lexica Cards",
+      k_lexica = "Lexica"
     },
     labels = {
       -- Consumable Types
@@ -5063,6 +5526,8 @@ return {
       astro_cards = "Astro",
       sigils = "Sigil",
       nightshift_cards = "Nightshift",
+      program_pack = "Program",
+      lexica = "Lexica",
       -- Editions
       abn_chthonian = "Chthonian",
       abn_iridescent = "Iridescent",
@@ -5107,6 +5572,9 @@ return {
       abn_lime_seal = "Lime Seal",
       abn_oxidized_seal = "Oxidised Seal",
       abn_brass_seal = "Brass Seal",
+      abn_copper_seal = "Copper Seal",
+      abn_silver_seal = "Silver Seal",
+      abn_duality_seal = "Duality Seal"
     },
     ranks = {
     },

@@ -15,7 +15,6 @@ end
 
 ABN.optional_features = {
   retrigger_joker = true,
-  quantum_enhancements = true,
   post_trigger = true,
 }
 
@@ -47,6 +46,14 @@ function loc_colour(_c, _default)
   G.ARGS.LOC_COLOURS.abn_brown_seal = HEX("793307")
   G.ARGS.LOC_COLOURS.abn_violet_seal = HEX("5600a4")
   G.ARGS.LOC_COLOURS.abn_lavender_seal = HEX("c68ede")
+  G.ARGS.LOC_COLOURS.abn_skyblue_seal = HEX("86b8de")
+  G.ARGS.LOC_COLOURS.abn_lime_seal = HEX("68de24")
+  G.ARGS.LOC_COLOURS.abn_oxidized_seal = HEX("c75323")
+  G.ARGS.LOC_COLOURS.abn_brass_seal = HEX("a07f1f")
+  G.ARGS.LOC_COLOURS.abn_copper_seal = HEX("d97c42")
+  G.ARGS.LOC_COLOURS.abn_silver_seal = HEX("bec7d4")
+  G.ARGS.LOC_COLOURS.abn_duality_seal = HEX("a56be6")
+
 
   return abn(_c, _default)
 end
@@ -180,7 +187,6 @@ end
 
 function ABN.reset_game_globals(run_start)
   ABN.reset_abn_gerrymandering()
-  ABN.reset_felix_joker()
 end
 
 SMODS.Rarity {

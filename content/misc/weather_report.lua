@@ -25,6 +25,9 @@ ABN.WeatherReport = SMODS.Consumable:extend({
       SMODS.destroy_cards(card, nil, nil, true)
     end
   end,
+  abn_artist_credits = {
+    artist = "matheo000"
+  },
 })
 
 -- Remove use button if passive effect
