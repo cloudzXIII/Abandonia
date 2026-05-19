@@ -34,7 +34,21 @@ ABN.WeatherReport = SMODS.Consumable:extend({
 local use_and_sell_ref = G.UIDEF.use_and_sell_buttons
 function G.UIDEF.use_and_sell_buttons(card)
   local buttons = use_and_sell_ref(card)
-
+  if card.ability and card.ability.set == "weather_report" and not card.config.center.use and card.area == G.pack_cards and G.pack_cards then
+    return {
+      n = G.UIT.ROOT,
+      config = { padding = 0, colour = G.C.CLEAR },
+      nodes = {
+        {
+          n = G.UIT.R,
+          config = { ref_table = card, r = 0.08, padding = 0.1, align = "bm", minw = 0.5 * card.T.w - 0.15, maxw = 0.9 * card.T.w - 0.15, minh = 0.3 * card.T.h, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'use_card', func = 'can_select_card' },
+          nodes = {
+            { n = G.UIT.T, config = { text = localize('b_select'), colour = G.C.UI.TEXT_LIGHT, scale = 0.45, shadow = true } }
+          }
+        },
+      }
+    }
+  end
   if card.ability and card.ability.set == "weather_report" and not card.config.center.use then
     local sell = {
       n = G.UIT.ROOT,
@@ -326,7 +340,7 @@ ABN.WeatherReport {
   end,
   can_use = function(self, card)
     return G.GAME.blind and G.GAME.blind.in_blind
-        and G.hand and #G.hand.cards > 0
+        and G.hand and #G.hand.cards > 0 and next(SMODS.Edition:get_edition_cards(G.hand, true))
   end,
   keep_on_use = function(self, card) return false end,
   use = function(self, card, area, copier)
@@ -343,8 +357,10 @@ ABN.WeatherReport {
             end
           end
           local card_to_enhance = pseudorandom_element(editionless, "abn_rainbow")
-          card_to_enhance:set_edition(edition, true)
-          card:juice_up(0.3, 0.5)
+          if card_to_enhance then
+            card_to_enhance:set_edition(edition, true)
+            card:juice_up(0.3, 0.5)
+          end
         end
         return true
       end
