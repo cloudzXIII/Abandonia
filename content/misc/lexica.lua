@@ -55,6 +55,12 @@ function G.UIDEF.use_and_sell_buttons(card)
   return buttons
 end
 
+local function abn_activate_letter(self, card)
+  SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.GREEN, sound = 'tarot1', }, card)
+  SMODS.destroy_cards(card)
+  SMODS.calculate_context({ abn_letter_activated = true })
+end
+
 SMODS.Consumable {
   key = "a",
   set = 'lexica',
@@ -80,8 +86,7 @@ SMODS.Consumable {
             return true
           end
         }))
-        SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-        SMODS.destroy_cards(card)
+        abn_activate_letter(self, card)
       end
     end
   end,
@@ -103,8 +108,7 @@ SMODS.Consumable {
       if SMODS.has_enhancement(context.other_card, 'm_mult') then
         SMODS.calculate_effect({ mult = ((context.other_card.ability.perma_mult or 0) + 4) * 3 }, context.other_card)
 
-        SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-        SMODS.destroy_cards(card)
+        abn_activate_letter(self, card)
       end
     end
   end,
@@ -125,8 +129,7 @@ SMODS.Consumable {
       SMODS.calculate_effect({ xchips = card.ability.extra.xchips }, context.other_card)
     end
     if context.after and context.main_eval then
-      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.CHIPS }, card)
-      SMODS.destroy_cards(card)
+      abn_activate_letter(self, card)
     end
   end,
 }
@@ -153,8 +156,7 @@ SMODS.Consumable {
           playing_card:flip()
         end
       end
-      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-      SMODS.destroy_cards(card)
+      abn_activate_letter(self, card)
     end
   end,
 }
@@ -178,8 +180,7 @@ SMODS.Consumable {
           return true
         end
       }))
-      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-      SMODS.destroy_cards(card)
+      abn_activate_letter(self, card)
     end
   end,
 }
@@ -201,8 +202,7 @@ SMODS.Consumable {
         joker.ability.abn_perma_xmult = (joker.ability.abn_perma_xmult or 0) + card.ability.extra.xmult
         SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, joker)
       end
-      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-      SMODS.destroy_cards(card)
+      abn_activate_letter(self, card)
     end
   end,
 }
@@ -242,8 +242,7 @@ SMODS.Consumable {
         lowest.ability.perma_bonus = (lowest.ability.perma_bonus or 0) + face_chips
         SMODS.calculate_effect({ message = localize('k_upgrade_ex'), colour = G.C.FILTER }, lowest)
 
-        SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-        SMODS.destroy_cards(card)
+        abn_activate_letter(self, card)
       end
     end
   end,
@@ -271,8 +270,7 @@ SMODS.Consumable {
           return true
         end
       }))
-      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-      SMODS.destroy_cards(card)
+      abn_activate_letter(self, card)
     end
   end,
 }
@@ -292,8 +290,7 @@ SMODS.Consumable {
       if context.other_card and context.other_card.config.center == G.P_CENTERS.c_base then
         context.other_card.ability.perma_repetitions = (context.other_card.ability.perma_repetitions or 0) + 1
         SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, context.other_card)
-        SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-        SMODS.destroy_cards(card)
+        abn_activate_letter(self, card)
       end
     end
   end,
@@ -318,8 +315,7 @@ SMODS.Consumable {
       if numbered > 0 then
         SMODS.calculate_effect({ message = localize('k_level_up_ex'), colour = G.C.FILTER }, card)
         SMODS.smart_level_up_hand(card, "Straight", false, numbered)
-        SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-        SMODS.destroy_cards(card)
+        abn_activate_letter(self, card)
       end
     end
   end,
@@ -349,8 +345,7 @@ SMODS.Consumable {
             SMODS.calculate_effect({ message = localize('k_upgrade_ex'), colour = G.C.FILTER }, crd)
           end
         end
-        SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.MULT }, card)
-        SMODS.destroy_cards(card)
+        abn_activate_letter(self, card)
       end
     end
   end,
@@ -370,8 +365,7 @@ SMODS.Consumable {
     if context.pseudorandom_result and context.result == false then
       SMODS.calculate_effect({ message = localize('k_level_up_ex'), colour = G.C.FILTER }, card)
       SMODS.smart_level_up_hand(card, ABN.most_played_hand(), nil, 1)
-      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-      SMODS.destroy_cards(card)
+      abn_activate_letter(self, card)
     end
   end,
 }
@@ -390,8 +384,7 @@ SMODS.Consumable {
     if context.poker_hand_changed and context.new_level > context.old_level then
       SMODS.calculate_effect({ message = localize('k_level_up_ex'), colour = G.C.FILTER }, card)
       SMODS.smart_level_up_hand(card, ABN.most_played_hand(), nil, 1)
-      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-      SMODS.destroy_cards(card)
+      abn_activate_letter(self, card)
     end
   end,
 }
@@ -420,8 +413,7 @@ SMODS.Consumable {
           end
         }))
       end
-      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-      SMODS.destroy_cards(card)
+      abn_activate_letter(self, card)
     end
   end,
 }
@@ -442,8 +434,7 @@ SMODS.Consumable {
       context.other_card.ability.perma_bonus = ((context.other_card.ability.perma_bonus or 0) +
         context.other_card.base.nominal) * 3
       SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, context.other_card)
-      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-      SMODS.destroy_cards(card)
+      abn_activate_letter(self, card)
     end
   end,
 }
@@ -470,8 +461,7 @@ SMODS.Consumable {
           return true
         end
       }))
-      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-      SMODS.destroy_cards(card)
+      abn_activate_letter(self, card)
     end
   end,
 }
@@ -493,8 +483,7 @@ SMODS.Consumable {
         joker.ability.abn_perma_bonus = (joker.ability.abn_perma_bonus or 0) + card.ability.extra.chips
         SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, joker)
       end
-      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-      SMODS.destroy_cards(card)
+      abn_activate_letter(self, card)
     end
   end,
 }
@@ -526,8 +515,7 @@ SMODS.Consumable {
           return true
         end
       }))
-      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-      SMODS.destroy_cards(card)
+      abn_activate_letter(self, card)
     end
   end,
 }
@@ -559,8 +547,7 @@ SMODS.Consumable {
             return true
           end
         }))
-        SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-        SMODS.destroy_cards(card)
+        abn_activate_letter(self, card)
       end
     end
   end,
@@ -590,8 +577,7 @@ SMODS.Consumable {
         }))
       end
 
-      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-      SMODS.destroy_cards(card)
+      abn_activate_letter(self, card)
     end
   end,
 }
@@ -610,17 +596,15 @@ SMODS.Consumable {
   end,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, 'm_bonus') then
+      local crd = context.other_card
       G.E_MANAGER:add_event(Event({
-        trigger = 'after',
-        delay = 0.4,
         func = function()
-          context.other_card:set_edition("e_abn_gloss", true)
-          context.other_card:juice_up(0.3, 0.5)
+          crd:set_edition("e_abn_gloss", true)
+          crd:juice_up(0.3, 0.5)
           return true
         end
       }))
-      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-      SMODS.destroy_cards(card)
+      abn_activate_letter(self, card)
     end
   end,
 }
@@ -653,8 +637,7 @@ SMODS.Consumable {
             return true
           end
         }))
-        SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-        SMODS.destroy_cards(card)
+        abn_activate_letter(self, card)
       end
     end
   end,
@@ -675,16 +658,16 @@ SMODS.Consumable {
   end,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, 'm_lucky') then
+      local crd = context.other_card
       G.E_MANAGER:add_event(Event({
         func = function()
-          context.other_card:set_edition("e_abn_abandond", true)
-          context.other_card:set_seal('Red', nil, true)
-          context.other_card:juice_up(0.3, 0.5)
+          crd:set_edition("e_abn_abandond", true)
+          crd:set_seal('Red', nil, true)
+          crd:juice_up(0.3, 0.5)
           return true
         end
       }))
-      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-      SMODS.destroy_cards(card)
+      abn_activate_letter(self, card)
     end
   end,
 }
@@ -706,8 +689,7 @@ SMODS.Consumable {
         joker.ability.abn_perma_bonus = (joker.ability.abn_perma_bonus or 0) + card.ability.extra.chips
         SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, joker)
       end
-      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-      SMODS.destroy_cards(card)
+      abn_activate_letter(self, card)
     end
   end,
 }
@@ -736,8 +718,7 @@ SMODS.Consumable {
           return true
         end
       }))
-      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-      SMODS.destroy_cards(card)
+      abn_activate_letter(self, card)
     end
   end,
 }
@@ -770,8 +751,7 @@ SMODS.Consumable {
             return true
           end
         }))
-        SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-        SMODS.destroy_cards(card)
+        abn_activate_letter(self, card)
       end
     end
   end,
@@ -799,8 +779,7 @@ SMODS.Consumable {
         end
         SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, joker)
       end
-      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.FILTER }, card)
-      SMODS.destroy_cards(card)
+      abn_activate_letter(self, card)
     end
   end,
 }
