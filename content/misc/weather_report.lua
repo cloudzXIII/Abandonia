@@ -217,7 +217,7 @@ ABN.WeatherReport {
   config = { max_highlighted = 2 },
   can_use = function(self, card)
     return G.GAME.blind and G.GAME.blind.in_blind and G.hand and #G.hand.highlighted > 0 and
-        #G.hand.highlighted <= card.ability.extra.max_highlighted
+        #G.hand.highlighted <= card.ability.max_highlighted
   end,
   keep_on_use = function(self, card) return false end,
   use = function(self, card, area, copier)
