@@ -1227,6 +1227,15 @@ return {
       },
     },
     Joker = {
+      j_abn_scrabble_joker = {
+        name = "Scrabble Joker",
+        text = {
+          "This Joker gains",
+          "{X:mult,C:white}X#2#{} Mult every time",
+          "a {C:lexica}Lexica{} card is activated",
+          "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
+        },
+      },
       j_abn_ishihara_joker = {
         name = "Ishihara Joker",
         text = {
