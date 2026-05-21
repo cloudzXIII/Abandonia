@@ -17,10 +17,10 @@ SMODS.Joker {
     }
   },
   loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
     return {
       vars = {
-        card.ability.extra.chips, card.ability.extra.sell_value_gain, card.ability.extra.mult_gain, card.ability.extra
-          .chips, card.ability.extra.mult
+        cae.chips, cae.sell_value_gain, cae.mult_gain, cae.chips_gain, cae.mult
       },
     }
   end,

@@ -1227,6 +1227,16 @@ return {
       },
     },
     Joker = {
+      j_abn_joker_of_the_weekend = {
+        name = "Joker by the Weekend",
+        text = {
+          "When {C:attention}odd Blind{} is defeated,",
+          "this Joker gains {C:white,X:mult}X#2#{} Mult,",
+          "When {C:attention}even Blind{} is defeated,",
+          "this Joker gains {C:white,X:chips}X#4#{} Chips",
+          "{C:inactive}(Currently {C:white,X:mult}X#1#{C:inactive} Mult, {C:white,X:chips}X#3#{C:inactive} Chips)"
+        }
+      },
       j_abn_joker_of_the_week = {
         name = "Joker by the Week",
         text = {
@@ -2380,11 +2390,14 @@ return {
       j_abn_bitcoin_joker = {
         name = "Bitcoin Joker",
         text = {
-          "Whenever an {C:abn_Astro}Astro card{} {C:red}fails",
-          "gain {C:chips}+#1# chips{} and {C:dollars}+#2#$ sell value",
-          "Whenever an {C:abn_Astro}Astro card{} {C:green}succeeds",
-          "gain {C:mult}+#3# mult{}",
-          "{C:inactive}[Currently:{C:chips}+#4# chips {C:inactive}and {C:mult}+#5# mult{C:inactive}]",
+          {
+            "When an {C:abn_Astro}Astro{} card {C:red}fails{},",
+            "This Joker gains {C:chips}+#4#{} Chips",
+            "and {C:money}$#2#{} of {C:attention}sell value{}",
+            "When an {C:abn_Astro}Astro{} card {C:green}succeeds{},",
+            "This Joker gains {C:mult}+#3#{} Mult",
+            "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#5#{C:inactive} Mult)",
+          },
         },
       },
       j_abn_joker_form = {
@@ -3091,8 +3104,9 @@ return {
       j_abn_hard_and_dry = {
         name = "Hard and Dry",
         text = {
-          "{C:attention}Double{} the values of the {C:attention}Leftmost{} Joker after defeating a blind",
-          "Blinds are obscured",
+          "Blinds are {C:attention}obscured{},",
+          "When a {C:attention}Blind{} is defeated,",
+          "{C:attention}Double{} the values of {C:attention}Leftmost{} Joker",
         }
       },
       j_abn_bonus_buffoon = {
@@ -3209,16 +3223,19 @@ return {
       j_abn_marmalize_joker = {
         name = "Marmalize Joker",
         text = {
-          "Jokers can’t be {C:mult}debuffed{} or have {C:abn_perishable}stickers{}",
-          "When {C:attention}Blind is selected{} all Jokers gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
+          "Jokers cannot be {C:mult}debuffed{} or have {C:abn_perishable}stickers{}",
+          "When {C:attention}Blind{} is selected,",
+          "all Jokers gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
         }
       },
       j_abn_backrooms_joker = {
         name = "Backrooms Joker",
         text = {
-          "Blinds are obscured",
-          "After defeating a blind create a {C:purple}Parallel Rare{} Joker with {C:abn_perishable}Perishable{} and {C:money}Rental{}",
-          "If this Joker has an {C:dark_edition}edition{} each {C:purple}Parallel Rare{} gives {X:mult,C:white}X#1#{} Mult",
+          "Blinds are {C:attention}obscured{},",
+          "When {C:attention}Blind{} is defeated, create a {C:purple}Parallel{} ",
+          "{C:purple}Rare{} Joker with {C:abn_perishable}Perishable{} and {C:money}Rental{}",
+          "If this Joker has an {C:dark_edition}edition{}, {C:purple}Parallel Rare{}",
+          "Jokers each give {X:mult,C:white}X#1#{} Mult",
         }
       },
       j_abn_fraud_soul = {
