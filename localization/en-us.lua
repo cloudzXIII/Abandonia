@@ -1227,6 +1227,23 @@ return {
       },
     },
     Joker = {
+      j_abn_jimbo_10 = {
+        name = "Jimbo 10",
+        text = {
+          {
+            "This Joker gains {C:chips}+#4#{} Chips",
+            "and {C:white,X:mult}X#2#{} Mult",
+            "when a {C:attention}10{} is scored",
+            "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {X:mult,C:white}X#1#{C:inactive} Mult)",
+          },
+          {
+            "Earn {C:money}$#5#{} for each",
+            "{C:attention}10{} in your {C:attention}full deck",
+            "at end of round",
+            "{C:inactive}(Currently {C:money}$#6#{}{C:inactive})",
+          }
+        }
+      },
       j_abn_whitedwarf_joker = {
         name = "Whitedwarf Joker",
         text = {
