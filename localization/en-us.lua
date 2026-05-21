@@ -1227,6 +1227,16 @@ return {
       },
     },
     Joker = {
+      j_abn_zip_folder = {
+        name = "ZIP Folder",
+        text = {
+          "{C:attention}Doubles{} consumable slots,",
+          "When {C:attention}Blind{} is defeated",
+          "gain {C:chips}+#2#{} Chips for",
+          "each consumable {C:attention}held{}",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
+        }
+      },
       j_abn_crimson_neko = {
         name = "Crimson Neko",
         text = {
