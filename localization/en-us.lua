@@ -1227,6 +1227,14 @@ return {
       },
     },
     Joker = {
+      j_abn_ishihara_joker = {
+        name = "Ishihara Joker",
+        text = {
+          "Played cards with",
+          "{C:abn_penumbra}#2#{} suit give",
+          "{C:mult}+#1#{} Mult when scored",
+        },
+      },
       j_abn_alternate_outfit = {
         name = "Alternate Outfit",
         text = {
@@ -5805,6 +5813,7 @@ return {
     },
     suits_singular = {
       abn_Snow = "Snow",
+      abn_Penumbra = "Penumbra"
     },
 
     suits_plural = {
