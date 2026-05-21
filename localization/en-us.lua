@@ -1227,6 +1227,14 @@ return {
       },
     },
     Joker = {
+      j_abn_blackhat_joker = {
+        name = "Blackhat Joker",
+        text = {
+          "Every played card gives",
+          "{C:chips}+#1#{} Chips when scored if",
+          "a {C:program_pack}Program{} card is {C:attention}held{}"
+        }
+      },
       j_abn_jimbo_10 = {
         name = "Jimbo 10",
         text = {
