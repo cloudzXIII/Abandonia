@@ -21,11 +21,8 @@ SMODS.Joker {
         ref_value = "x_mult",
         scalar_value = "x_mult_gain",
         operation = '+',
-        no_message = true,
+        message_key = "a_xmult"
       })
-      return {
-        message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.x_mult } }
-      }
     end
     if context.joker_main then
       return {

@@ -1227,6 +1227,16 @@ return {
       },
     },
     Joker = {
+      j_abn_joker_of_the_week = {
+        name = "Joker by the Week",
+        text = {
+          "When {C:attention}Blind{} is defeated with",
+          "an {C:attention}odd{} number of {C:attention}Jokers,",
+          "this Joker gains {C:white,X:mult}X#2#{} Mult,",
+          "otherwise gain {C:white,X:chips}X#4#{} Chips",
+          "{C:inactive}(Currently {C:white,X:mult}X#1#{C:inactive} Mult, {C:white,X:chips}X#3#{C:inactive} Chips)"
+        }
+      },
       j_abn_zip_folder = {
         name = "ZIP Folder",
         text = {
