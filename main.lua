@@ -93,6 +93,15 @@ SMODS.ObjectType({
   end,
 })
 
+SMODS.ObjectType({
+  key = "Plagued",
+  default = "j_abn_contagion",
+  cards = {},
+  inject = function(self)
+    SMODS.ObjectType.inject(self)
+  end,
+})
+
 -- Utilities
 local subdir = "utilities"
 local cards = NFS.getDirectoryItems(SMODS.current_mod.path .. subdir)
@@ -202,6 +211,15 @@ SMODS.Rarity {
   key = "ParallelRare",
   default_weight = 0,
   badge_colour = HEX("b26cbb"),
+  get_weight = function(self, weight, object_type)
+    return weight
+  end,
+}
+
+SMODS.Rarity {
+  key = "VirusRare",
+  default_weight = 0,
+  badge_colour = HEX("2e2b2e"),
   get_weight = function(self, weight, object_type)
     return weight
   end,
