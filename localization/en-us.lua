@@ -1227,6 +1227,41 @@ return {
       },
     },
     Joker = {
+      j_abn_crimson_neko = {
+        name = "Crimson Neko",
+        text = {
+          "{C:attention}Lucky{} cards cannot be debuffed,",
+          "This Joker gains {X:chips,C:white}X#2#{} Chips",
+          "every time a {C:attention}Lucky{} card",
+          "{C:green}successfully{} triggers",
+          "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Mult)",
+        },
+      },
+      j_abn_brothers_memento = {
+        name = "Brother's Memento",
+        text = {
+          "First played {C:attention}face",
+          "card gives {X:mult,C:white} X#1# {} Mult",
+          "when scored",
+        },
+      },
+      j_abn_qrcode_joker = {
+        name = "QR Code",
+        text = {
+          "Create a {C:program_pack}Program{} card",
+          "when {C:attention}Blind{} is selected",
+          "{C:inactive}(Must have room)",
+        },
+      },
+      j_abn_foreign_license = {
+        name = "Foreign License",
+        text = {
+          "{X:chips,C:white}X#1#{} Mult if you have",
+          "at least {C:attention}#2#{} Enhanced",
+          "cards in your full deck",
+          "{C:inactive}(Currently {C:attention}#3#{C:inactive})",
+        },
+      },
       j_abn_blackhat_joker = {
         name = "Blackhat Joker",
         text = {
