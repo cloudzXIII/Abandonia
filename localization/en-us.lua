@@ -1227,6 +1227,15 @@ return {
       },
     },
     Joker = {
+      j_abn_whitedwarf_joker = {
+        name = "Whitedwarf Joker",
+        text = {
+          "This Joker gains",
+          "{X:mult,C:white}X#1#{} Mult every time",
+          "a {C:planet}Rank Planet{} card is used",
+          "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+        },
+      },
       j_abn_avalanche_joker = {
         name = "Avalanche",
         text = {
