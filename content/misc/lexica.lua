@@ -90,6 +90,9 @@ SMODS.Consumable {
       end
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -112,6 +115,9 @@ SMODS.Consumable {
       end
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -132,6 +138,9 @@ SMODS.Consumable {
       abn_activate_letter(self, card)
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -159,6 +168,9 @@ SMODS.Consumable {
       abn_activate_letter(self, card)
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -183,6 +195,9 @@ SMODS.Consumable {
       abn_activate_letter(self, card)
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -205,6 +220,9 @@ SMODS.Consumable {
       abn_activate_letter(self, card)
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -246,6 +264,9 @@ SMODS.Consumable {
       end
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -273,6 +294,9 @@ SMODS.Consumable {
       abn_activate_letter(self, card)
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -294,6 +318,9 @@ SMODS.Consumable {
       end
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -319,6 +346,9 @@ SMODS.Consumable {
       end
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -349,6 +379,9 @@ SMODS.Consumable {
       end
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -368,6 +401,9 @@ SMODS.Consumable {
       abn_activate_letter(self, card)
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -387,6 +423,9 @@ SMODS.Consumable {
       abn_activate_letter(self, card)
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -416,6 +455,9 @@ SMODS.Consumable {
       abn_activate_letter(self, card)
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -437,6 +479,9 @@ SMODS.Consumable {
       abn_activate_letter(self, card)
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -464,6 +509,9 @@ SMODS.Consumable {
       abn_activate_letter(self, card)
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -486,6 +534,9 @@ SMODS.Consumable {
       abn_activate_letter(self, card)
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 -- wip, this should probably make the next sigil effected hand get the editions and stuff but like
@@ -518,6 +569,9 @@ SMODS.Consumable {
       abn_activate_letter(self, card)
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -551,6 +605,9 @@ SMODS.Consumable {
       end
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -580,6 +637,9 @@ SMODS.Consumable {
       abn_activate_letter(self, card)
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -607,6 +667,9 @@ SMODS.Consumable {
       abn_activate_letter(self, card)
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -641,6 +704,9 @@ SMODS.Consumable {
       end
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -670,6 +736,9 @@ SMODS.Consumable {
       abn_activate_letter(self, card)
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -692,6 +761,9 @@ SMODS.Consumable {
       abn_activate_letter(self, card)
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -721,6 +793,9 @@ SMODS.Consumable {
       abn_activate_letter(self, card)
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -755,6 +830,9 @@ SMODS.Consumable {
       end
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
 
 SMODS.Consumable {
@@ -782,4 +860,7 @@ SMODS.Consumable {
       abn_activate_letter(self, card)
     end
   end,
+  abn_artist_credits = {
+    artist = "Lazy"
+  },
 }
