@@ -1227,6 +1227,14 @@ return {
       },
     },
     Joker = {
+      j_abn_frigid_joker = {
+        name = "Frigid Joker",
+        text = {
+          "Played cards with",
+          "{C:abn_snow}#2#{} suit give",
+          "{C:mult}+#1#{} Mult when scored",
+        },
+      },
       j_abn_scrabble_joker = {
         name = "Scrabble Joker",
         text = {
