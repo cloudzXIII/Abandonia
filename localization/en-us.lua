@@ -1227,6 +1227,103 @@ return {
       },
     },
     Joker = {
+      j_abn_bibliophile = {
+        name = "Bibliophile",
+        text = {
+          "{C:attention}+2{} Consumable Slots",
+          "When a {C:attention}Boss Blind{} is defeated,",
+          "Gains {X:mult,C:white}X#5#{} Mult if a {C:lexica}Lexica{} Card is {C:attention}held{}",
+          "Gains {C:mult}+#6#{} Mult if a {C:program_pack}Program{} Card is {C:attention}held{}",
+          "Gains {C:chips}+#8#{} Chips if a {C:weather_report}Weather{} Card is {C:attention}held{}",
+          "Gains {X:chips,C:white}X#7#{} Mult if a {C:calamity_cards}Calamity{} Card is {C:attention}held{}",
+          "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {C:mult}+#2#{} {C:inactive}Mult,{} {X:chips,C:white}X#3#{} {C:inactive}Chips,{} {C:chips}+#4#{} {C:inactive}Chips){}"
+        }
+      },
+      j_abn_drifter_joker = {
+        name = "Drifter Joker",
+        text = {
+          "Discarded cards become {C:attention}Fossil Cards{},",
+          "{C:attention}Rankless{} cards return to hand",
+          "when played for the first time"
+        }
+      },
+      j_abn_elated_joker = {
+        name = "Elated Joker",
+        text = {
+          {
+            "Hands containing {C:attention}4{} or more",
+            "Suits cannot be debuffed"
+          },
+          {
+            "This Joker gains {C:chips}+#1#{} per",
+            "unique {C:attention}suit{} discarded,",
+            "gains {C:mult}+#2#{} Mult per unique",
+            "{C:attention}suit{} played",
+            "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#1#{C:inactive} Mult)",
+          }
+        }
+      },
+      j_abn_ironworks = {
+        name = "Ironworks",
+        text = {
+          {
+            "Gives {X:mult,C:white}X#1#{} Mult",
+            "for each {C:attention}Hot Iron Card",
+            "in your {C:attention}full deck",
+            "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+          },
+          {
+            "Gives {X:chips,C:white}X#1#{} Chips",
+            "for each {C:attention}Steel Card",
+            "in your {C:attention}full deck",
+            "{C:inactive}(Currently {X:chips,C:white}X#2#{C:inactive} Chips)",
+          }
+        }
+      },
+      j_abn_prehistoric_joker = {
+        name = "Prehistoric Joker",
+        text = {
+          "This Joker gains {C:white,X:mult}X#2#{} Mult",
+          "when a {C:attention}Stone Card{} scores, {C:white,X:chips}X#4#{}",
+          "Chips when a {C:attention}Fossil Card{} scores",
+          "{C:inactive}(Currently {C:white,X:chips}X#3#{C:inactive} Chips, {C:white,X:mult}X#1#{C:inactive} Mult)",
+        }
+      },
+      j_abn_spare_suit = {
+        name = "Spare Suit",
+        text = {
+          "This Joker gains {C:mult}+#2#{} Mult",
+          "if played hand contains a {C:attention}Spectrum{},",
+          "Retrigger played {C:attention}Mercurial Cards{}",
+          "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult"
+        }
+      },
+      j_abn_underblackcloudz = {
+        name = "Under Black Cloud",
+        text = {
+          "Retrigger all {C:weather_report}Weather{} effects,",
+          "This Joker gains {C:chips}+#4{} Chips and {C:mult}+#2#{} Mult",
+          "when a {C:weather_report}Weather{} effect {C:attention}triggers",
+          "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#1#{C:inactive} Mult)",
+        }
+      },
+      j_abn_monocromator_joker = {
+        name = "Monocromator Joker",
+        text = {
+          {
+            "When a {C:weather_report}Weather{} Card is used,",
+            "add {C:dark_edition}Abandoned{} to",
+            "{C:attention}lowest{} ranked card held in hand",
+          },
+          {
+            "This Joker gains {C:chips}+#2#{} Chips{}",
+            "and {C:mult}+#4#{} Mult when an",
+            "{C:dark_edition}Abandoned{} card is scored",
+            "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#3#{C:inactive} Mult)",
+
+          }
+        }
+      },
       j_abn_joker_of_the_weekend = {
         name = "Joker by the Weekend",
         text = {
@@ -1382,15 +1479,6 @@ return {
             "gain {C:money}$#3#{} when scored",
             "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
           }
-        }
-      },
-      j_abn_spare_suit = {
-        name = "Spare Suit",
-        text = {
-          "This Joker gains {C:mult}+#2#{} Mult",
-          "if played hand contains a {C:attention}Spectrum{},",
-          "Retrigger played {C:attention}Mercurial Cards{}",
-          "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult"
         }
       },
       j_abn_vintage_joker = {
@@ -3309,12 +3397,12 @@ return {
         name = "Hammerspace Joker",
         text = {
           "{C:attention}+2{} Consumable Slots",
-          "Gains {X:mult,C:white}X#5#{} Mult after a Boss Blind if holding a {C:abn_sigil}Sigil{} Card",
-          "Gains {C:mult}+#6#{} Mult after a Boss Blind if holding a {C:abn_astro}Astro{} Card",
-          "Gains {C:chips}+#8#{} Chips after a Boss Blind if holding a {C:tarot}Tarot{} Card",
-          "Gains {X:chips,C:white}X#7#{} Mult after a Boss Blind if holding a {C:spectral}Spectral{} Card",
-          "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{} {C:mult}+#2#{} {C:inactive}Mult{} {X:chips,C:white}X#3#{} {C:inactive}Chips{} {C:chips}+#4#{} {C:inactive}Chips{}"
-
+          "When a {C:attention}Boss Blind{} is defeated,",
+          "Gains {X:mult,C:white}X#5#{} Mult if a {C:abn_sigil}Sigil{} Card is {C:attention}held{}",
+          "Gains {C:mult}+#6#{} Mult if an {C:abn_astro}Astro{} Card is {C:attention}held{}",
+          "Gains {C:chips}+#8#{} Chips if a {C:tarot}Tarot{} Card is {C:attention}held{}",
+          "Gains {X:chips,C:white}X#7#{} Mult if a {C:spectral}Spectral{} Card is {C:attention}held{}",
+          "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {C:mult}+#2#{} {C:inactive}Mult,{} {X:chips,C:white}X#3#{} {C:inactive}Chips,{} {C:chips}+#4#{} {C:inactive}Chips){}"
         }
       },
       j_abn_contract_from_below = {
@@ -3868,8 +3956,9 @@ return {
       j_abn_suspicious_icon = {
         name = "Suspicious Icon",
         text = {
-          "When {C:attention}Blind is selected{}",
-          "{C:mult}destroy{} {C:attention}#1#{} non-Plagued Joker and create {C:attention}#1#{} {C:green}Plagued{} Joker",
+          "When {C:attention}Blind{} is selected,",
+          "{C:mult}Destroy{} {C:attention}#1#{} non-Plagued Joker",
+          "and create {C:attention}#1#{} {C:green}Plagued{} Joker",
         }
       },
       j_abn_badformat_joker = {
@@ -3895,6 +3984,20 @@ return {
     },
 
     Spectral = {
+      c_abn_apotheosis = {
+        name = "Apotheosis",
+        text = {
+          "Sacrifice {C:attention}1{} {C:dark_edition}Negative{} Joker",
+          "to give all cards in hand random {C:dark_edition}Editions{} and {C:attention}Seals{}"
+        }
+      },
+      c_abn_paradigm = {
+        name = "Paradigm",
+        text = {
+          "Sacrifice {C:attention}1{} {C:dark_edition}Polychrome{} Joker",
+          "to give all cards in hand random {C:dark_edition}Editions{} and {C:attention}Seals{}"
+        }
+      },
       c_abn_ascend = {
         name = "Ascend",
         text = {
