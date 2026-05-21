@@ -3321,7 +3321,9 @@ return {
         name = "Contract From Below",
         text = {
           "{C:abn_nightshift}Nightshift{} cards always appear in {C:spectral}Spectral{} packs",
-          "Applies {C:purple}Violet{} and {C:abn_perishable}Perishable{} and {C:attention}Chthonian{} to the {C:attention}leftmost{} Joker when blind is selected",
+          "When {C:attention}Blind{} is selected,",
+          "Apply {C:purple}Violet{}, {C:abn_perishable}Perishable{} and {C:dark_edition}Chthonian{}",
+          "to the {C:attention}leftmost{} Joker",
 
         }
       },

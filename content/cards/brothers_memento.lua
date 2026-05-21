@@ -14,7 +14,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = {} },
+  config = { extra = { xmult = 3 } },
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and context.other_card:is_face() then
       local is_first_face = false
