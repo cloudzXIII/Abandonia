@@ -1,6 +1,6 @@
 -- Ishihara Joker (coded by cloudzXIII)
 SMODS.Joker {
-  key = 'ishihara_',
+  key = 'ishihara_joker',
 
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.mult, localize(card.ability.extra.suit, 'suits_singular') } }
