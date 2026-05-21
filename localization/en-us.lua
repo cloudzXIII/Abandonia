@@ -1227,6 +1227,54 @@ return {
       },
     },
     Joker = {
+      j_abn_alternate_outfit = {
+        name = "Alternate Outfit",
+        text = {
+          {
+            "You may play and discard",
+            "up to {C:attention}6{} cards,",
+          },
+          {
+            "This Joker gains {C:mult}+#2#{} Mult",
+            "if played hand is a {C:attention}#4#{},",
+            "Played {C:attention}Infra{} cards permanently",
+            "gain {C:money}$#3#{} when scored",
+            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+          }
+        }
+      },
+      j_abn_spare_suit = {
+        name = "Spare Suit",
+        text = {
+          "This Joker gains {C:mult}+#2#{} Mult",
+          "if played hand contains a {C:attention}Spectrum{},",
+          "Retrigger played {C:attention}Mercurial Cards{}",
+          "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult"
+        }
+      },
+      j_abn_vintage_joker = {
+        name = "Vintage Joker",
+        text = {
+          "This Joker gains {C:chips}+#2#{} Chips",
+          "When a {C:attention}Fossil Card{} is scored",
+          "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+
+        }
+      },
+      j_abn_egg_arrival = {
+        name = "Egg Arrival",
+        text = {
+          {
+            "Add {C:money}$#1#{} of {C:attention}sell value",
+            "to every {C:attention}Joker{} when",
+            "a {C:weather_report}Weather{} card is used",
+          },
+          {
+            "Retrigger all {C:attention}Jokers{}",
+            "with at least {C:money}$#2#{} sell value",
+          },
+        }
+      },
       j_abn_shovel_knight = {
         name = "Shovel Knight",
         text = {
@@ -1250,7 +1298,7 @@ return {
           "played hand is a {C:attention}#5#{}",
           "and gains {C:chips}+#4#{} Chips when",
           "a {C:abn_snow}Snow{} card is scored",
-          "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips, {C:chips}+#1#{C:inactive} Mult){}"
+          "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips, {C:mult}+#1#{C:inactive} Mult){}"
         }
       },
       j_abn_crybaby = {
