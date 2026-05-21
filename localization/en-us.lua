@@ -3556,9 +3556,125 @@ return {
         }
       },
       j_abn_obmij = {
-        name = "Jimbo",
+        name = "Obmij",
         text = {
           "Give Xmult equal to the number of Jokers owned",
+        }
+      },
+	  j_abn_contagion_joker = {
+        name = "Contagion Joker",
+        text = {
+          "{C:green}#1# in #2#{} chance for cards with {C:attention}seals{} to turn into {C:purple}Contagion Seals{}",
+		  "{C:green}#3# in #4#{} chance for {C:dark_edition}enhanced{} cards to turn into {C:purple}Contagion Bonus cards{}",
+		  "{C:green}#5# in #6#{} chance for played cards with {C:dark_edition}editions{} to turn into {C:purple}Contagion Mult{}",
+		  "Other {C:green}Plagued{} Jokers give {X:mult,C:white}^#7#{} Mult",
+        }
+      },
+	  j_abn_degraded_data_joker = {
+        name = "Degraded Data Joker",
+        text = {
+          "Gain {C:mult}+#4#{} Mult when {C:purple}Contagion Bonus{} cards score",
+		  "Gain {X:mult,C:white}X#5#{} Mult when {C:purple}Contagion Seal{} cards score",
+		  "Gain {X:mult,C:white}^#6#{} Mult when {C:purple}Contagion Mult{} cards score",
+		  "{C:inactive}Currently:{} {C:mult}#1#{} {C:inactive}Mult{} {X:mult,C:white}X#2#{} {C:inactive}Mult{} {X:mult,C:white}^#3#{} {C:inactive}Mult",
+        }
+      },
+	  j_abn_asylum_joker = {
+        name = "Asylum Joker",
+        text = {
+          "Force select {C:attention}#2#{} cards",
+		  "Force selected cards give {X:chips,C:white}^#1#{} Chips"
+        }
+      },
+	  j_abn_ransomware_joker = {
+        name = "Ransomware Joker",
+        text = {
+          "When certain {C:attention}consumables{} are used apply the following effects:",
+		  "{C:tarot}Tarot{} all Jokers gain {C:chips}+#1#{} Chips and you lose {C:money}$#2#",
+		  "{C:spectral}Spectral{} all Jokers gain {C:chips}+#3#{} Chips and you lose {C:money}$#4#",
+		  "{C:abn_calamity}Calamity{} all Jokers Chips values are multiplied by {X:chips,C:white}^#5#{} and you lose {C:money}$#6#",
+		  "{C:abn_snow}Weather Report{} all Jokers gain {C:mult}+#7#{} Mult and you lose {C:money}$#8#",
+		  "{C:abn_astro}Astro{} all Jokers gain {C:mult}+#9#{} Mult and you lose {C:money}$#10#",
+		  "{C:abn_nightshift}Nightshift{} all Jokers Mult values are multiplied by {X:mult,C:white}^#11#{}",
+        }
+      },
+	  j_abn_monitor_joker = {
+        name = "Monitor Joker",
+        text = {
+          "Can {C:chips}play{} and {C:mult}discard{} {C:attention}+1{} more cards",
+		  "First played Six card hand with {C:green}Monitor{} card {C:attention}level up{} all cards {C:planet}planet{} {C:attention}rank{} by {C:attention}1{}",
+		  "Scored cards recieve {X:chips,C:white}X#1#{} Chips",
+        }
+      },
+	  j_abn_scantron_joker = {
+        name = "Scantron Joker",
+        text = {
+          "Scoring {C:money}Lucky{} cards give {X:chips,C:white}^#1#{} Chips",
+		  "Scoring {C:chips}Bonus{} cards give {X:mult,C:white}^#2#{} Mult",
+		  "Scoring {C:money}Gold{} cards give {X:chips,C:white}^#3#{} Chips",
+		  "Scoring {C:hearts}Wild{} cards give {X:mult,C:white}^#4#{} Mult",
+        }
+      },
+	  j_abn_fractured_identity_joker = {
+        name = "Fractured Identity Joker",
+        text = {
+          "Scoring {C:mult}Mult{} cards give {X:chips,C:white}^#1#{} Chips",
+		  "Scoring {C:inactive}Glass{} cards give {X:mult,C:white}^#2#{} Mult",
+		  "Scoring {C:inactive}Steel{} cards give {X:chips,C:white}^#3#{} Chips",
+		  "Scoring {C:inactive}Stone{} cards give {X:mult,C:white}^#4#{} Mult",
+        }
+      },
+	  j_abn_handbook_of_a_conman = {
+        name = "Handbook Of A Conman",
+        text = {
+          "Double the {C:chips}Chips{} and {C:mult}Mult{} values of all hands",
+		  "{C:mult}Debuff{} all {C:green}non-Plagued{} Jokers",
+        }
+      },
+	  j_abn_fit_to_shape = {
+        name = "Fit To Shape",
+        text = {
+          "{C:attention}Four{} card hands give {X:chips,C:white}^#1#{} Chips and {X:mult,C:white}^#2#{} Mult",
+        }
+      },
+	  j_abn_manga_panel_joker = {
+        name = "Manga Panel Joker",
+        text = {
+          "Scoring {C:spades}Dark{} Suits give {X:chips,C:white}^#1#{} Chips and {X:mult,C:white}^#2#{} Mult ",
+        }
+      },
+	  j_abn_blood_money = {
+        name = "Blood Money",
+        text = {
+          "Scoring cards gain {X:mult,C:white}X#1#{} Mult lose {C:money}$#2#{} per played card",
+		  "{C:mult}Destroy{} all played cards if {C:money}${} reaches {C:money}$0{} or lower",
+        }
+      },
+	  j_abn_suspicious_icon = {
+        name = "Suspicious Icon",
+        text = {
+          "When {C:attention}Blind is selected{}",
+		  "{C:mult}destroy{} {C:attention}#1#{} non-Plagued Joker and create {C:attention}#1#{} {C:green}Plagued{} Joker",
+        }
+      },
+	  j_abn_badformat_joker = {
+        name = "Badformat Joker",
+        text = {
+          "Scoring {C:diamonds}Light{} Suits give {X:chips,C:white}^#1#{} Chips and {X:mult,C:white}^#2#{} Mult ",
+        }
+      },
+	  j_abn_ruination_joker = {
+        name = "Ruination Joker",
+        text = {
+          "Each card gives {X:mult,C:white}^1.8{} Mult and {X:chips,C:white}^1.8{} Chips for each other {C:attention}different suit{}",
+		  "If you play a {C:attention}Spectrum{} hand {C:attention}level up{} the {C:planet}planet{} {C:attention}rank{} of each card",
+		  "If this Joker has an {C:dark_edition}edition{} retrigger all played cards",
+        }
+      },
+	  j_abn_rom_hack_balatro = {
+        name = "ROM Hack Balatro",
+        text = {
+          "{C:attention}Vanilla{} Jokers give {X:mult,C:white}X#1#{} Mult {X:chips,C:white}X#2#{} Chips and {C:money}$#3#{}",
         }
       },
     },
@@ -5098,6 +5214,27 @@ return {
           },
         }
       },
+	  c_abn_tunnel = {
+        name = "Tunnel",
+        text = {
+          "Increase the {C:planet}Planet{} {C:attention}Rank{} of all owned cards by {C:attention}#1#{}",
+		  "Lower your {C:attention}most played{} poker hand to level {C:attention}1{}",
+        }
+      },
+	  c_abn_sepulture = {
+        name = "Sepulture",
+        text = {
+          "Destroy all non-Plagued Jokers",
+		  "Create a {C:abn_superrare}Super Rare{} {C:dark_edition}Negative{} {C:green}Plagued Joker{}",
+        }
+      },
+	  c_abn_hostile = {
+        name = "Hostile",
+        text = {
+          "Put {C:mult}Fragile{} and {C:money}Rental{} on all non-Plagued Jokers",
+		  "Create a {C:abn_black_seal}Virus Rare{} Joker",
+        }
+      },
     },
     astro_cards = {
       c_abn_aquar = {
@@ -5264,19 +5401,41 @@ return {
         name = "Contagion Seal",
         text = {
           "Whenever {X:mult,C:white}Xmult{} triggers this card gains {X:mult,C:white}^#2#{}",
-          "{C:inactive}Currently: {X:mult,C:white}^#1#{} {C:inactive}mult}",
+		  "{C:inactive}Currently: {X:mult,C:white}^#1#{} {C:inactive}mult}",
         },
       },
-      m_abn_contagion_bonus = {
+	  m_abn_contagion_bonus = {
         name = "Contagion Bonus",
         text = {
           "Give {X:spectral,C:white}^Chips{} {C:attention}equal{} to the number played cards",
         },
       },
-      m_abn_contagion_mult = {
+	  m_abn_contagion_mult = {
         name = "Contagion Mult",
         text = {
           "{X:mult,C:white}^#1#{} Mult",
+        },
+      },
+	  m_abn_monitor = {
+        name = "Monitor",
+        text = {
+          "Gives {X:mult,C:white}^Mult{} equal to the ammount of scoring {C:attention}#1#{} Suit cards",
+		  "Suit changes every round",
+		  "no rank or suit",
+        },
+      },
+	  m_abn_cotton = {
+        name = "Cotton",
+        text = {
+          "Double the {C:planet}Planet{} {C:attention}ranks{} of {C:inactive}non-cotton{} {C:attention}held{} cards when this is played",
+        },
+      },
+	  m_abn_sew = {
+        name = "Sew",
+        text = {
+          "Each time this card triggers it gains {C:chips}+#4#{} Chips and {C:mult}+#3#{} Mult",
+		  "Retrigger each Sew card for each played Sew card",
+		  "{C:inactive}Currently: {C:chips}+#2#{} {C:inactive}Chips{} {C:mult}+#1#{} {C:inactive}Mult{}",
         },
       },
     },
