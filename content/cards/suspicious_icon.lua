@@ -2,7 +2,7 @@ SMODS.Joker {
   key = 'suspicious_icon',
 
   set_badges = function(self, card, badges)
-    badges[#badges + 1] = create_badge(localize("k_abn_plagued"), G.C.GREEN, G.C.WHITE, 1.0)
+    badges[#badges + 1] = create_badge(localize("k_abn_plagued"), G.C.BLACK, G.C.WHITE, 1.0)
   end,
 
   rarity = 1,
@@ -14,15 +14,15 @@ SMODS.Joker {
 
   config = { extra = { cards = 1 } },
   pools = { ["Plagued"] = true, },
-  
+
   loc_vars = function(self, info_queue, card)
-    return { 
-      vars = { 
+    return {
+      vars = {
         card.ability.extra.cards,
-      } 
+      }
     }
   end, -- <-- Added the missing comma right here!
-  
+
   -- only available on jimbo stakes
   in_pool = function(self)
     return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
@@ -51,8 +51,10 @@ SMODS.Joker {
 
       -- rarity pools
       local commons = { "j_abn_suspicious_icon" }
-      local uncommons = { "j_abn_fit_to_shape", "j_abn_handbook_of_a_conman", "j_abn_asylum_joker", "j_abn_degraded_data_joker" }
-      local rares = { "j_abn_blood_money", "j_abn_manga_panel_joker", "j_abn_monitor_joker", "j_abn_fractured_identity_joker", "j_abn_scantron_joker", "j_abn_ransomware_joker", "j_badformat_joker" }
+      local uncommons = { "j_abn_fit_to_shape", "j_abn_handbook_of_a_conman", "j_abn_asylum_joker",
+        "j_abn_degraded_data_joker" }
+      local rares = { "j_abn_blood_money", "j_abn_manga_panel_joker", "j_abn_monitor_joker",
+        "j_abn_fractured_identity_joker", "j_abn_scantron_joker", "j_abn_ransomware_joker", "j_badformat_joker" }
 
       -- track how many we actually manage to destroy
       local successfully_destroyed = 0
@@ -62,7 +64,7 @@ SMODS.Joker {
           -- pick a random valid target
           local destroyed_joker, key = pseudorandom_element(valid_jokers, 'suspicious_icon_destroy')
           local target_rarity = destroyed_joker.config.center.rarity or 1
-          
+
           -- determine pool rarity
           local base_pool = {}
           if target_rarity == 1 then
@@ -74,7 +76,7 @@ SMODS.Joker {
             for _, j in ipairs(uncommons) do table.insert(base_pool, j) end
             for _, j in ipairs(rares) do table.insert(base_pool, j) end
           else
-            -- rare 
+            -- rare
             for _, j in ipairs(rares) do table.insert(base_pool, j) end
           end
 
@@ -97,7 +99,7 @@ SMODS.Joker {
           -- kill it
           destroyed_joker:start_dissolve()
           successfully_destroyed = successfully_destroyed + 1
-          
+
           -- remove from list
           table.remove(valid_jokers, key)
 
@@ -120,7 +122,8 @@ SMODS.Joker {
 
       if successfully_destroyed > 0 then
         return {
-          message = successfully_destroyed > 1 and ("+" .. successfully_destroyed .. " Jokers") or localize('k_plus_joker'),
+          message = successfully_destroyed > 1 and ("+" .. successfully_destroyed .. " Jokers") or
+              localize('k_plus_joker'),
           colour = G.C.GREEN,
           card = card_target
         }

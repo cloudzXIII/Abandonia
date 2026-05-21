@@ -19,7 +19,7 @@ SMODS.Joker {
   key = 'ruination_joker',
 
   set_badges = function(self, card, badges)
-    badges[#badges + 1] = create_badge(localize("k_abn_plagued"), G.C.GREEN, G.C.WHITE, 1.0)
+    badges[#badges + 1] = create_badge(localize("k_abn_plagued"), G.C.BLACK, G.C.WHITE, 1.0)
   end,
 
   rarity = "abn_SuperRare",
@@ -31,16 +31,16 @@ SMODS.Joker {
 
   config = { extra = { echips = 1.8, emult = 1.8 } },
   pools = { ["Plagued"] = true, },
-  
+
   loc_vars = function(self, info_queue, card)
-    return { 
-      vars = { 
+    return {
+      vars = {
         card.ability.extra.echips,
         card.ability.extra.emult
-      } 
+      }
     }
   end,
-  
+
   in_pool = function(self)
     return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
   end,
@@ -59,17 +59,17 @@ SMODS.Joker {
         }
       end
     end
-	
-	-- retrigger if edition
-	if context.cardarea == G.play and context.repetition and context.other_card and context.other_card ~= self and card.edition then
-        return {
-            message = localize('k_again_ex'),
-            repetitions = 1,
-            card = context.other_card
-        }
-	end
-	
-	if context.cardarea == G.jokers and context.before and not context.blueprint then
+
+    -- retrigger if edition
+    if context.cardarea == G.play and context.repetition and context.other_card and context.other_card ~= self and card.edition then
+      return {
+        message = localize('k_again_ex'),
+        repetitions = 1,
+        card = context.other_card
+      }
+    end
+
+    if context.cardarea == G.jokers and context.before and not context.blueprint then
       local valid_hands = {
         ["abn_Spectrum"] = true,
         ["abn_Specflush"] = true,

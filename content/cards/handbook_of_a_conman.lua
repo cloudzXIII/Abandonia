@@ -2,7 +2,7 @@ SMODS.Joker {
   key = 'handbook_of_a_conman',
 
   set_badges = function(self, card, badges)
-    badges[#badges + 1] = create_badge(localize("k_abn_plagued"), G.C.GREEN, G.C.WHITE, 1.0)
+    badges[#badges + 1] = create_badge(localize("k_abn_plagued"), G.C.BLACK, G.C.WHITE, 1.0)
   end,
 
   rarity = 2,
@@ -16,13 +16,13 @@ SMODS.Joker {
   in_pool = function(self)
     return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
   end,
-  
+
   update = function(self, card)
     if card.area == G.jokers and not card.debuffed then
       for _, j in ipairs(G.jokers.cards) do
-        if j ~= card then 
+        if j ~= card then
           local is_plagued = j.config.center.pools and j.config.center.pools.Plagued
-          
+
           if not is_plagued then
             j:set_debuff(true)
           end
@@ -40,7 +40,7 @@ SMODS.Joker {
       update_hand_text({ sound = 'chips1', modded = true }, { chips = hand_chips, mult = mult })
     end
   end,
-  
+
   abn_artist_credits = {
     artist = "Inky and Vega",
   },
