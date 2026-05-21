@@ -668,6 +668,17 @@ SMODS.Consumable {
         for hand_name, hand_data in pairs(G.GAME.hands) do
             local current_level = hand_data.level
 
+            -- Amulet/Talisman compatibility 
+            if type(current_level) ~= "number" then
+                if type(current_level) == "table" and current_level.to_number then
+                    current_level = current_level:to_number()
+                elseif to_number then
+                    current_level = to_number(current_level)
+                else
+                    current_level = tonumber(current_level) or 1
+                end
+            end
+
             if current_level > 1 then
                 --set level back to 1
                 local levels_to_lose = -(current_level - 1)
@@ -679,7 +690,6 @@ SMODS.Consumable {
                 })
             end
         end
-
 
         --improve all cards
         for _, v in ipairs(G.playing_cards) do
