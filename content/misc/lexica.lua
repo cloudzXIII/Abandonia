@@ -59,6 +59,7 @@ local function abn_activate_letter(self, card)
   SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.GREEN, sound = 'tarot1', }, card)
   SMODS.destroy_cards(card)
   SMODS.calculate_context({ abn_letter_activated = true })
+  G.GAME.abn_letters_activated = (G.GAME.abn_letters_activated or 0) + 1
 end
 
 SMODS.Consumable {

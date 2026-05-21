@@ -33,7 +33,6 @@ SMODS.Joker {
     artist = "Gan",
   },
   in_pool = function(self)
-    return G.GAME.consumeable_usage_total and G.GAME.consumeable_usage_total.lexica and
-        G.GAME.consumeable_usage_total.lexica > 0
+    return (G.GAME.abn_letters_activated or 0) > 0
   end
 }

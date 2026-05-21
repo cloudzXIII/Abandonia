@@ -1227,6 +1227,14 @@ return {
       },
     },
     Joker = {
+      j_abn_syntha_joker = {
+        name = "Syntha Joker",
+        text = {
+          "{C:red}+#1#{} Mult per {C:lexica}Lexica{}",
+          "card activated this run",
+          "{C:inactive}(Currently {C:red}+#2#{C:inactive})",
+        }
+      },
       j_abn_frigid_joker = {
         name = "Frigid Joker",
         text = {
