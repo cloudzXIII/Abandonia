@@ -3330,28 +3330,30 @@ return {
       j_abn_chip_stone = {
         name = "Chip Stone",
         text = {
-          "Scoring {C:inactive}Stone{} cards gain {C:dark_edition}Foil{} and {C:chips}+#1#{} Chips",
+          "{C:attention}Stone{} cards gain {C:dark_edition}Foil{}",
+          "and {C:chips}+#1#{} Chips when scored",
 
         }
       },
       j_abn_mult_stone = {
         name = "Mult Stone",
         text = {
-          "Scoring {C:inactive}Stone{} cards gain {C:mult}Red Seal{} and {C:mult}+#1#{} Mult",
+          "{C:attention}Stone{} cards gain {C:red}Red Seal{}",
+          "and {C:mult}+#1#{} Mult when scored",
 
         }
       },
       j_abn_color_cascade = {
-        name = "Color cascade",
+        name = "Color Cascade",
         text = {
-          "{C:attention}ALL{} hands are considered {C:attention}Flushes{}",
+          "All hands are considered {C:attention}Flushes{}",
 
         }
       },
       j_abn_flawed_imitation = {
         name = "Flawed Imitation",
         text = {
-          "Jokers may appear multiple times",
+          "{C:attention}Jokers{} may appear multiple times",
           "Each Joker gives {X:mult,C:white}X#1#{} Mult per copy of that Joker",
 
         }
@@ -3359,24 +3361,30 @@ return {
       j_abn_pixelgrid_joker = {
         name = "Pixelgrid Joker",
         text = {
-          "Gain {C:mult}+#2#{} Mult if played hand contains an {C:attention}Even{} number of scoring cards",
-          "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{}",
+          "This Joker gains {C:mult}+#2#{} Mult",
+          "if played hand contains an",
+          "{C:attention}even{} number of scoring cards",
+          "{C:inactive}(Currently {C:mult}+#1#{} {C:inactive}Mult){}",
 
         }
       },
       j_abn_defective_pixel_joker = {
         name = "Defective Pixel Joker",
         text = {
-          "Gain {C:mult}+#2#{} Mult if played hand contains an {C:attention}Odd{} number of scoring cards",
-          "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{}",
+          "This Joker gains {C:mult}+#2#{} Mult",
+          "if played hand contains an",
+          "{C:attention}odd{} number of scoring cards",
+          "{C:inactive}(Currently {C:mult}+#1#{} {C:inactive}Mult){}",
 
         }
       },
       j_abn_whitenoise_joker = {
         name = "Whitenoise Joker",
         text = {
-          "Gain {X:mult,C:white}X#2#{} Mult when playing an Even number of {C:diamonds}Light{} and {C:spades}Dark{} Suits",
-          "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{}",
+          "This Joker gains {X:mult,C:white}X#2#{} Mult",
+          "when playing an {C:attention}even{} number of",
+          "{C:diamonds}Light{} and {C:spades}Dark{} Suits",
+          "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
 
         }
       },
@@ -3474,7 +3482,8 @@ return {
         name = "Health Stickers",
         text = {
           "When {C:attention}Blind{} is defeated",
-          "Place a random {C:green}Beneficial{} {C:abn_perishable}Sticker{} on the {C:attention}leftmost{} Joker",
+          "Place a random {C:green}Beneficial{} {C:abn_perishable}Sticker{}",
+          "on {C:attention}leftmost{} Joker",
         }
       },
       j_abn_the_joker_dance = {
