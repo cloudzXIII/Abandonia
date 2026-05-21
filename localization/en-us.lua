@@ -1265,7 +1265,7 @@ return {
         text = {
           "This Joker gains {C:chips}+#2#{} Chips",
           "When a {C:attention}Fossil Card{} is scored",
-          "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
 
         }
       },

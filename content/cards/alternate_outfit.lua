@@ -3,6 +3,7 @@ SMODS.Joker {
   key = 'alternate_outfit',
 
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_infra
     return { vars = { card.ability.extra.mult, card.ability.extra.mult_gain, card.ability.extra.dollars, localize(card.ability.extra.type, 'poker_hands') } }
   end,
 
