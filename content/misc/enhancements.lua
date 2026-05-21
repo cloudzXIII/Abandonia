@@ -354,7 +354,7 @@ SMODS.Enhancement({
 
 SMODS.Enhancement({
   key = "contagion_seal",
-  pos = { x = 0, y = 2 },
+  pos = { x = 7, y = 1 },
   atlas = "AbandoniaEnhancements",
   replace_base_card = false,
   no_rank = false,
@@ -432,7 +432,7 @@ end
 
 SMODS.Enhancement({
   key = "contagion_bonus",
-  pos = { x = 2, y = 2 },
+  pos = { x = 1, y = 2 },
   atlas = "AbandoniaEnhancements",
   replace_base_card = false,
   no_rank = false,
@@ -460,7 +460,7 @@ SMODS.Enhancement({
 
 SMODS.Enhancement({
   key = "contagion_mult",
-  pos = { x = 1, y = 2 },
+  pos = { x = 0, y = 2 },
   atlas = "AbandoniaEnhancements",
   replace_base_card = false,
   no_rank = false,
