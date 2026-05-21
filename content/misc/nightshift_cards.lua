@@ -5,7 +5,7 @@ G.ARGS.LOC_COLOURS["abn_Nightshift"] = G.C.NIGHTSHIFT
 
 SMODS.ConsumableType {
     key = "nightshift_cards",
-    collection_rows = { 5 },
+    collection_rows = { 5,5 },
     shop_rate = 0.0,
     primary_colour = G.C.NIGHTSHIFT,
     secondary_colour = G.C.NIGHTSHIFT_SECONDARY,
@@ -272,7 +272,6 @@ SMODS.Consumable {
     soul_rate = 0.035,
 
     loc_vars = function(self, info_queue, card)
-        -- Fixed: vars should be a flat list, not a nested tuple-style table
         return { vars = { card.ability.extra.mult, card.ability.extra.chips } }
     end,
 
@@ -329,5 +328,288 @@ SMODS.Consumable {
 
     abn_artist_credits = {
         artist = "Inky",
+    },
+}
+
+SMODS.Consumable {
+    key = "tunnel",
+    set = "nightshift_cards",
+    config = { extra = { level = 3 } },
+    pos = { x = 2, y = 1 },
+    atlas = "AbandoniaNightshift",
+    cost = 4,
+    discovered = false,
+    hidden = true,
+    soul_set = "Spectral",
+    soul_rate = 0.035,
+
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.level } }
+    end,
+	
+	-- only available on jimbo stakes
+	in_pool = function(self)
+		return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+	end,
+
+    can_use = function(self, card)
+        return true
+    end,
+
+    use = function(self, card, area, copier)
+        -- level up planet ranks
+        local upgraded_ranks = {}
+        
+        for _, c in ipairs(G.playing_cards) do
+            if c.base and c.base.value then
+                local card_rank = c.base.value
+                
+                if G.GAME.abn_rank_upgrades[card_rank] and not upgraded_ranks[card_rank] then
+                    upgraded_ranks[card_rank] = true
+                    
+                    -- levels up the rank by 3
+                    ABN.level_up_rank(card, card_rank, card.ability.extra.level)
+                end
+            end
+        end
+
+        -- find most played hand
+        local tempuse = -1
+        local most_played_hand = nil
+        
+        for k, v in pairs(G.GAME.hands) do
+            if v.played > tempuse and v.visible then
+                tempuse = v.played
+                most_played_hand = k
+            end
+        end
+
+        -- lower it to 1
+        if most_played_hand then
+            local hand_data = G.GAME.hands[most_played_hand]
+            local current_level = hand_data.level
+
+            -- Amulet/Talisman compatibility
+            if type(current_level) ~= "number" then
+                if type(current_level) == "table" and current_level.to_number then
+                    current_level = current_level:to_number()
+                elseif to_number then
+                    current_level = to_number(current_level)
+                else
+                    current_level = tonumber(current_level) or 1
+                end
+            end
+
+            if current_level > 1 then
+                SMODS.upgrade_poker_hands({
+                    hands = { most_played_hand },
+                    level_up = -current_level + 1,
+                    from = card,
+                })
+            end
+        end
+    end,
+
+    abn_artist_credits = {
+        artist = "Da Gorbage Rat",
+    },
+}
+
+SMODS.Consumable {
+    key = "sepulture",
+    set = "nightshift_cards",
+    pos = { x = 3, y = 1 },
+    atlas = "AbandoniaNightshift",
+    cost = 4,
+    discovered = false,
+    hidden = true,
+    soul_set = "Spectral",
+    soul_rate = 0.035,
+	
+	-- only available on jimbo stakes
+	in_pool = function(self)
+		return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+	end,
+
+    can_use = function(self, card)
+        -- can be used if there is at least one non-plagued Joker to destroy
+        if G.jokers and G.jokers.cards then
+            for _, v in ipairs(G.jokers.cards) do
+                if not (v.config.center.pools and v.config.center.pools["Plagued"]) then
+                    return true
+                end
+            end
+        end
+        return false
+    end,
+
+    use = function(self, card, area, copier)
+        local valid_jokers = {}
+        local owned_jokers = {}
+
+        -- Gather owned joker keys and identify non-plagued targets
+        if G.jokers and G.jokers.cards then
+            for _, v in ipairs(G.jokers.cards) do
+                if v.config.center and v.config.center.key then
+                    owned_jokers[v.config.center.key] = true
+                end
+
+                if not (v.config.center.pools and v.config.center.pools["Plagued"]) then
+                    table.insert(valid_jokers, v)
+                end
+            end
+        end
+
+        local successfully_destroyed = 0
+
+        -- Destroy everything eligible
+        for _, destroyed_joker in ipairs(valid_jokers) do
+            destroyed_joker:start_dissolve()
+            successfully_destroyed = successfully_destroyed + 1
+        end
+
+        -- Only spawn the 1 reward if we actually destroyed something
+        if successfully_destroyed > 0 then
+            local plague_pool = {
+                "j_abn_ruination_joker",
+                "j_abn_rom_hack_balatro",
+            }
+
+            local available_pool = {}
+            for _, joker_key in ipairs(plague_pool) do
+                if not owned_jokers[joker_key] then
+                    table.insert(available_pool, joker_key)
+                end
+            end
+
+            if #available_pool == 0 then
+                available_pool = plague_pool
+            end
+
+            -- pick one
+            local chosen_joker = pseudorandom_element(available_pool, 'sepulture_spawn')
+
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    local spawned_card = create_card('Joker', G.jokers, nil, nil, nil, nil, chosen_joker, 'sep_plague')
+                    spawned_card:add_to_deck()
+                    G.jokers:emplace(spawned_card)
+                    spawned_card:start_materialize()
+					spawned_card:set_edition({ negative = true })
+                    return true
+                end
+            }))
+        end
+    end,
+
+    abn_artist_credits = {
+        artist = "Da Gorbage Rat",
+    },
+}
+
+SMODS.Consumable {
+    key = "hostile",
+    set = "nightshift_cards",
+    pos = { x = 4, y = 1 },
+    atlas = "AbandoniaNightshift",
+    cost = 4,
+    discovered = false,
+    hidden = true,
+    soul_set = "Spectral",
+    soul_rate = 0.035,
+
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = "abn_fragile", set = "Other", vars = { 1,4 } }
+		info_queue[#info_queue + 1] = { key = "rental", set = "Other", vars = { 3 } }
+    end,
+	
+	-- only available on jimbo stakes
+	in_pool = function(self)
+		return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+	end,
+
+
+    can_use = function(self, card)
+        -- can be used if there is at least one non-plagued Joker
+        if G.jokers and G.jokers.cards then
+            for _, v in ipairs(G.jokers.cards) do
+                if not (v.config.center.pools and v.config.center.pools["Plagued"]) and #G.jokers.cards < G.jokers.config.card_limit then
+                    return true
+                end
+            end
+        end
+        return false
+    end,
+
+    use = function(self, card, area, copier)
+        local valid_jokers = {}
+        local owned_jokers = {}
+
+        -- Gather owned joker keys and identify non-plagued targets
+        if G.jokers and G.jokers.cards then
+            for _, v in ipairs(G.jokers.cards) do
+                if v.config.center and v.config.center.key then
+                    owned_jokers[v.config.center.key] = true
+                end
+
+                if not (v.config.center.pools and v.config.center.pools["Plagued"]) then
+                    table.insert(valid_jokers, v)
+                end
+            end
+        end
+
+        local successfully_affected = 0
+
+        -- Apply Rental and Fragile stickers
+        for _, target_joker in ipairs(valid_jokers) do
+            if SMODS.Stickers["rental"] then
+                SMODS.Stickers["rental"]:apply(target_joker, true)
+            end
+            
+            target_joker:add_sticker("abn_fragile", true)
+            
+            target_joker:juice_up(0.5, 0.5)
+            
+            successfully_affected = successfully_affected + 1
+        end
+
+        -- spawn virus rare
+        if successfully_affected > 0 then
+            local plague_pool = {
+                "j_abn_contagion_joker",
+            }
+
+            local available_pool = {}
+            for _, joker_key in ipairs(plague_pool) do
+                if not owned_jokers[joker_key] then
+                    table.insert(available_pool, joker_key)
+                end
+            end
+
+            if #available_pool == 0 then
+                available_pool = plague_pool
+            end
+
+            -- pick one
+            local chosen_joker = pseudorandom_element(available_pool, 'sepulture_spawn')
+
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    local spawned_card = create_card('Joker', G.jokers, nil, nil, nil, nil, chosen_joker, 'sep_plague')
+                    spawned_card:add_to_deck()
+                    G.jokers:emplace(spawned_card)
+                    spawned_card:start_materialize()
+                    return true
+                end
+            }))
+        end
+    end,
+
+    abn_artist_credits = {
+        artist = "Da Gorbage Rat",
     },
 }

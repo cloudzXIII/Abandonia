@@ -354,7 +354,7 @@ SMODS.Enhancement({
 
 SMODS.Enhancement({
   key = "contagion_seal",
-  pos = { x = 7, y = 1 },
+  pos = { x = 0, y = 2 },
   atlas = "AbandoniaEnhancements",
   replace_base_card = false,
   no_rank = false,
@@ -432,7 +432,7 @@ end
 
 SMODS.Enhancement({
   key = "contagion_bonus",
-  pos = { x = 1, y = 2 },
+  pos = { x = 2, y = 2 },
   atlas = "AbandoniaEnhancements",
   replace_base_card = false,
   no_rank = false,
@@ -460,7 +460,7 @@ SMODS.Enhancement({
 
 SMODS.Enhancement({
   key = "contagion_mult",
-  pos = { x = 0, y = 2 },
+  pos = { x = 1, y = 2 },
   atlas = "AbandoniaEnhancements",
   replace_base_card = false,
   no_rank = false,
@@ -492,6 +492,235 @@ SMODS.Enhancement({
       }
     end
   end,
+  abn_artist_credits = {
+    artist = "Bunnet",
+  },
+})
+
+
+SMODS.Enhancement({
+  key = "monitor",
+  pos = { x = 2, y = 1 },
+  atlas = "AbandoniaEnhancements",
+  replace_base_card = true,
+  no_rank = true,
+  no_suit = true,
+  always_scores = true,
+  config = {
+    extra = {
+      suit = "none",
+    }
+  },
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    local suit_text = cae.suit ~= "none" and (cae.suit:sub(1,1):upper() .. cae.suit:sub(2)) or "None"
+    
+    return { vars = { suit_text } }
+  end,
+  
+  in_pool = function(self)
+    return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+  end,
+  
+  update = function(self, card)
+    local cae = card.ability.extra
+    
+    -- Default coordinates if no suit is chosen yet
+    local target_x = 2
+    local target_y = 1
+
+    -- Map each suit to its respective X/Y coordinate
+    if cae.suit == "Spades" then
+      target_x = 5
+      target_y = 1
+    elseif cae.suit == "Hearts" then
+      target_x = 7
+      target_y = 1
+    elseif cae.suit == "Diamonds" then
+      target_x = 4
+      target_y = 1
+    elseif cae.suit == "Clubs" then
+      target_x = 6
+    elseif cae.suit ~= "none" then
+      target_x = 3
+      target_y = 1
+    end
+
+    if card.children and card.children.center then
+      if not card.children.center.sprite_pos_is_unique then
+        card.children.center.sprite_pos = { x = target_x, y = target_y }
+        card.children.center.sprite_pos_is_unique = true
+      else
+        card.children.center.sprite_pos.x = target_x
+        card.children.center.sprite_pos.y = target_y
+      end
+    end
+  end,
+
+  calculate = function(self, card, context)
+    local cae = card.ability.extra
+  
+    -- Pick a random suit present in the deck at the start of the blind
+    if context.setting_blind and not context.blueprint then
+      local all_cards = G.deck.cards
+      if all_cards and #all_cards > 0 then
+        local available_suits = {}
+        local seen = {}
+        for _, c in ipairs(all_cards) do
+          local s = c.base.suit
+          if not seen[s] then
+            table.insert(available_suits, s)
+            seen[s] = true
+          end
+        end
+
+        if #available_suits > 0 then
+          cae.suit = pseudorandom_element(available_suits, pseudoseed('monitor_suit' .. G.GAME.round_resets.ante))
+        end
+      end
+    end
+  
+    -- Scoring logic
+    if context.main_scoring and context.cardarea == G.play then
+      -- Count matching cards of the chosen suit in the scored hand
+      local match_count = 0
+      if context.scoring_hand and cae.suit ~= "none" then
+        for _, sc in ipairs(context.scoring_hand) do
+          if sc:is_suit(cae.suit) then
+            match_count = match_count + 1
+          end
+        end
+      end
+
+      -- If there are matching cards give ^mult 
+      if match_count > 0 then
+        return {
+          e_mult = match_count,
+          card = card,
+        }
+      end
+    end
+  end,
+})
+
+SMODS.Enhancement({
+  key = "cotton",
+  pos = { x = 0, y = 1 },
+  atlas = "AbandoniaEnhancements",
+  replace_base_card = false,
+  no_rank = false,
+  no_suit = false,
+  always_scores = false,
+  
+  in_pool = function(self)
+    return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+  end,
+
+  calculate = function(self, card, context)
+    local cae = card.ability.extra
+
+    if context.main_scoring and context.cardarea == G.play then
+      for i = 1, #G.hand.cards do
+        local hand_card = G.hand.cards[i]
+        
+        if not hand_card.debuff and hand_card.config.center ~= G.P_CENTERS.m_abn_cotton then
+          local rank_key = hand_card.base.value 
+          
+          if G.GAME.abn_rank_upgrades and G.GAME.abn_rank_upgrades[rank_key] then
+            local current_level = G.GAME.abn_rank_upgrades[rank_key].level
+            
+            -- if current level is > 1 double it
+            local level_increase = 1
+            if current_level > 1 then
+              level_increase = current_level
+            end
+            
+            G.E_MANAGER:add_event(Event({
+              trigger = 'before',
+              delay = 0.1,
+              func = function()
+                hand_card:juice_up(0.6, 0.4)
+                return true
+              end
+            }))
+            
+            -- upgrade the rank
+            ABN.level_up_rank(hand_card, rank_key, level_increase, false)
+          end
+        end
+      end
+    end
+  end,
+
+  abn_artist_credits = {
+    artist = "Bunnet",
+  },
+})
+
+SMODS.Enhancement({
+  key = "sew",
+  pos = { x = 1, y = 1 },
+  atlas = "AbandoniaEnhancements",
+  replace_base_card = false,
+  no_rank = false,
+  no_suit = false,
+  always_scores = false,
+  config = {
+    extra = {
+      mult = 0,       
+      chips = 0,
+      multadd = 3,
+      chipsadd = 5,
+    }
+  },
+  
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    return { vars = { cae.mult, cae.chips, cae.multadd, cae.chipsadd } }
+  end,
+  
+  in_pool = function(self)
+    return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+  end,
+
+  calculate = function(self, card, context)
+    local cae = card.ability.extra
+    
+    -- Main scoring 
+    if context.main_scoring and context.cardarea == G.play then
+      cae.mult = cae.mult + cae.multadd
+      cae.chips = cae.chips + cae.chipsadd
+      return {
+        mult = cae.mult,
+        chips = cae.chips,
+        card = card
+      }
+    end
+    
+    -- Repetitions 
+    if context.repetition and context.cardarea == G.play then
+      local sew_count = 0
+      
+      -- Count sew cards
+      if context.scoring_hand then
+        for _, scoring_card in ipairs(context.scoring_hand) do
+          if scoring_card.config.center == G.P_CENTERS.m_abn_sew then
+            sew_count = sew_count + 1
+          end
+        end
+      end
+
+      -- If there's more than one Sew card, grant repetitions equal to total Sew cards 
+      if sew_count > 1 then
+        return {
+          message = localize('k_again_ex'),
+          repetitions = sew_count,
+          card = card
+        }
+      end
+    end
+  end,
+
   abn_artist_credits = {
     artist = "Bunnet",
   },
