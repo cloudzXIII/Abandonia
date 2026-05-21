@@ -35,4 +35,8 @@ SMODS.Joker {
   abn_artist_credits = {
     artist = "Grass",
   },
+  in_pool = function(self)
+    return G.GAME.consumeable_usage_total and G.GAME.consumeable_usage_total.weather_report and
+    G.GAME.consumeable_usage_total.weather_report > 0
+  end
 }
