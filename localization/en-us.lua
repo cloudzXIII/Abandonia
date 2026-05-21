@@ -1227,6 +1227,15 @@ return {
       },
     },
     Joker = {
+      j_abn_avalanche_joker = {
+        name = "Avalanche",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult if played",
+          "hand has a scoring",
+          "{C:abn_snow}Snow{} card and a scoring",
+          "card of any other {C:attention}suit",
+        },
+      },
       j_abn_syntha_joker = {
         name = "Syntha Joker",
         text = {
