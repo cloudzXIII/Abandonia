@@ -5217,7 +5217,23 @@ return {
           "card into a",
           "{C:attention}#2#",
         }
-      }
+      },
+      c_abn_needlework = {
+        name = "Needlework",
+        text = {
+          "Enhances {C:attention}#1#",
+          "selected cards to",
+          "{C:attention}#2#s",
+        },
+      },
+      c_abn_teaset = {
+        name = "Tea Set",
+        text = {
+          "Enhances {C:attention}#1#",
+          "selected cards to",
+          "{C:attention}#2#s",
+        },
+      },
     },
     calamity_cards = {
       c_abn_cyclone = {
