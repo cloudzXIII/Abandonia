@@ -182,13 +182,15 @@ ABN.calculate = function(self, context)
 
   if context.retrigger_joker_check and context.other_card then
     local ability = context.other_card.ability
-    local has_rep = ability.abn_perma_rep and ability.abn_perma_rep ~= 0
-    if has_rep then
-      return {
-        repetitions = has_rep and ability.abn_perma_rep or nil,
-        card = context.other_card,
-        message_card = context.other_card,
-      }
+    if ability then
+      local has_rep = ability.abn_perma_rep and ability.abn_perma_rep ~= 0
+      if has_rep then
+        return {
+          repetitions = has_rep and ability.abn_perma_rep or nil,
+          card = context.other_card,
+          message_card = context.other_card,
+        }
+      end
     end
   end
 
