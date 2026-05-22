@@ -72,4 +72,5 @@ SMODS.Joker {
   abn_artist_credits = {
     artist = "DrSmey",
   },
+  enhancement_gate = "m_glass",
 }
