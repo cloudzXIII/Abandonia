@@ -9,7 +9,7 @@ SMODS.Booster({
   group_key = 'abn_astrobooster',
   draw_hand = true,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   create_card = function(self, card)
     return {
       set = "astro_cards",
@@ -48,7 +48,7 @@ SMODS.Booster({
   group_key = 'abn_astrobooster',
   draw_hand = true,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   create_card = function(self, card)
     return {
       set = "astro_cards",
@@ -87,7 +87,7 @@ SMODS.Booster({
   group_key = 'abn_astrobooster',
   draw_hand = true,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   create_card = function(self, card)
     return {
       set = "astro_cards",
@@ -126,7 +126,7 @@ SMODS.Booster({
   group_key = 'abn_astrobooster',
   draw_hand = true,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   create_card = function(self, card)
     return {
       set = "astro_cards",
@@ -165,7 +165,7 @@ SMODS.Booster({
   group_key = 'abn_astrobooster',
   draw_hand = true,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   create_card = function(self, card)
     return {
       set = "astro_cards",
@@ -204,7 +204,7 @@ SMODS.Booster({
   group_key = 'abn_astrobooster',
   draw_hand = true,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   create_card = function(self, card)
     return {
       set = "astro_cards",
@@ -243,7 +243,7 @@ SMODS.Booster({
   group_key = 'abn_astrobooster',
   draw_hand = true,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   create_card = function(self, card)
     return {
       set = "astro_cards",
@@ -282,7 +282,7 @@ SMODS.Booster({
   group_key = 'abn_astrobooster',
   draw_hand = true,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   create_card = function(self, card)
     return {
       set = "astro_cards",
@@ -339,7 +339,7 @@ SMODS.Booster({
   group_key = 'abn_sigilbooster',
   draw_hand = true,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   create_card = function(self, card)
     return {
       set = "sigils",
@@ -379,7 +379,7 @@ SMODS.Booster({
   group_key = 'abn_sigilbooster',
   draw_hand = true,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   create_card = function(self, card)
     return {
       set = "sigils",
@@ -419,7 +419,7 @@ SMODS.Booster({
   group_key = 'abn_sigilbooster',
   draw_hand = true,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   create_card = function(self, card)
     return {
       set = "sigils",
@@ -459,7 +459,7 @@ SMODS.Booster({
   group_key = 'abn_sigilbooster',
   draw_hand = true,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   create_card = function(self, card)
     return {
       set = "sigils",
@@ -499,7 +499,7 @@ SMODS.Booster({
   group_key = 'abn_sigilbooster',
   draw_hand = true,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   create_card = function(self, card)
     return {
       set = "sigils",
@@ -539,7 +539,7 @@ SMODS.Booster({
   group_key = 'abn_sigilbooster',
   draw_hand = true,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   create_card = function(self, card)
     return {
       set = "sigils",
@@ -579,7 +579,7 @@ SMODS.Booster({
   group_key = 'abn_sigilbooster',
   draw_hand = true,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   create_card = function(self, card)
     return {
       set = "sigils",
@@ -619,7 +619,7 @@ SMODS.Booster({
   group_key = 'abn_sigilbooster',
   draw_hand = true,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   create_card = function(self, card)
     return {
       set = "sigils",

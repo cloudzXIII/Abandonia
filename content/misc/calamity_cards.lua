@@ -668,7 +668,7 @@ SMODS.Consumable {
         for hand_name, hand_data in pairs(G.GAME.hands) do
             local current_level = hand_data.level
 
-            -- Amulet/Talisman compatibility 
+            -- Amulet/Talisman compatibility
             if type(current_level) ~= "number" then
                 if type(current_level) == "table" and current_level.to_number then
                     current_level = current_level:to_number()
@@ -749,7 +749,7 @@ SMODS.Booster({
     group_key = 'abn_calamitybooster',
     draw_hand = true,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     create_card = function(self, card)
         local i = 0
         repeat
@@ -791,7 +791,7 @@ SMODS.Booster({
     group_key = 'abn_calamitybooster',
     draw_hand = true,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     create_card = function(self, card)
         local i = 0
         repeat
@@ -833,7 +833,7 @@ SMODS.Booster({
     group_key = 'abn_calamitybooster_j',
     draw_hand = true,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     create_card = function(self, card)
         local i = 0
         repeat
@@ -875,7 +875,7 @@ SMODS.Booster({
     group_key = 'abn_calamitybooster_m',
     draw_hand = true,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     create_card = function(self, card)
         local i = 0
         repeat

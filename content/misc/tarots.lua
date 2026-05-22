@@ -19,7 +19,7 @@ SMODS.Consumable({
   atlas = "AbandoniaTarots",
   cost = 4,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   loc_vars = function(self, info_queue, card)
   end,
   can_use = function(self, card)
@@ -55,7 +55,7 @@ SMODS.Consumable({
   atlas = "AbandoniaTarots",
   cost = 4,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = { key = 'abn_immortal', set = 'Other' }
     return { vars = { card.ability.extra.max } }
