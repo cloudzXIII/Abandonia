@@ -1227,6 +1227,13 @@ return {
       },
     },
     Joker = {
+      j_abn_hieroglyph = {
+        name = "Hieroglyph",
+        text = {
+          "{C:attention}Unscored{} cards become",
+          "{C:attention}Fossil Cards{} when played"
+        }
+      },
       j_abn_heart_of_glass = {
         name = "Heart of Glass",
         text = {
