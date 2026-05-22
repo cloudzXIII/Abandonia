@@ -7,12 +7,12 @@ SMODS.Joker {
     return { vars = { cae.mult, cae.mult_gain, cae.chips, cae.chips_gain } }
   end,
 
-  rarity = 2,
+  rarity = 3,
   atlas = 'ABNJokerSheet10',
   pos = { x = 2, y = 2 },
-  cost = 6,
+  cost = 10,
   discovered = false,
-  blueprint_compat = false,
+  blueprint_compat = true,
 
   config = { extra = { mult = 0, mult_gain = 2, chips = 0, chips_gain = 4 } },
 
