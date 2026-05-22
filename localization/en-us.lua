@@ -589,14 +589,14 @@ return {
         name = "Super Hazard",
         text = {
           "Shop has a free",
-          "{C:red}Super Rare Joker",
+          "{C:abn_superrare}Super Rare Joker",
         }
       },
       tag_abn_hazard_parallel = {
         name = "Parallel Hazard",
         text = {
           "Shop has a free",
-          "{C:dark_edition}Parallel Rare Joker",
+          "{C:abn_parallelrare}Parallel Rare Joker",
         }
       },
       tag_abn_hazard_legendary = {
@@ -3112,8 +3112,9 @@ return {
       j_abn_ill_gotten_gains = {
         name = "Ill-gotten Gains",
         text = {
-          "Scoring Glass Cards give {C:money}$#1#{}",
-          "If Glass Card breaks give {C:money}$#2#{}",
+          "{C:attention}Glass Cards{} give {C:money}$#1#{} when scored,",
+          "Earn {C:money}$#2#{} for every",
+          "{C:attention}Glass Card{} destroyed",
         }
       },
       j_abn_forgemaster_joker = {
@@ -3126,8 +3127,9 @@ return {
       j_abn_carnival_comedian = {
         name = "Carnival Comedian",
         text = {
-          "Super Rare Jokers can appear in the shop",
-          "This Joker gains {X:mult,C:white}X#2#{} Mult each time you purchase a Super Rare Joker",
+          "{C:abn_superrare}Super Rare{} Jokers may appear in the shop,",
+          "This Joker gains {X:mult,C:white}X#2#{} Mult",
+          "each time you purchase a {C:abn_superrare}Super Rare{} Joker",
           "{C:inactive}Currently {X:mult,C:white}X#1#{C:inactive} Mult",
         }
       },
@@ -3280,29 +3282,35 @@ return {
       j_abn_number_44 = {
         name = "Number 44",
         text = {
-          "When a {C:attention}blind is selected{}",
-          "Create {C:attention}#1#{} joker slots and fill them with random jokers",
+          "When {C:attention}Blind{} is selected,",
+          "Create {C:attention}#1#{} joker slots",
+          "and fill them with random {C:attention}Jokers",
         }
       },
       j_abn_gabagool_sandwhich = {
-        name = "Gabagool Sandwhich",
+        name = "Gabagool Sandwich",
         text = {
-          "Whenever a Joker triggers adds {C:chips}+#3#{} Chips to it",
-          "{C:green}#1# in #2#{} chance to be {C:attention}consumed{} at end of round",
+          "Whenever a Joker triggers",
+          "add {C:chips}+#3#{} Chips to it,",
+          "{C:green}#1# in #2#{} chance to be",
+          "{C:attention}consumed{} at end of round",
         }
       },
       j_abn_marmalade_sandwhich = {
-        name = "Marmalade Sandwhich",
+        name = "Marmalade Sandwich",
         text = {
-          "Whenever a Joker triggers adds {X:mult,C:white}+X#3#{} Mult to it",
-          "{C:green}#1# in #2#{} chance to be {C:attention}consumed{} at end of round",
+          "Whenever a Joker triggers",
+          "add {X:mult,C:white}+X#3#{} Mult to it,",
+          "{C:green}#1# in #2#{} chance to be",
+          "{C:attention}consumed{} at end of round",
         }
       },
       j_abn_voracity_joker = {
         name = "Voracity Joker",
         text = {
-          "Retrigger all {C:attention}Food{} jokers",
-          "{C:green}#1# in #2#{} chance to {C:attention}consume{} all {C:attention}Food{} jokers at end of round",
+          "Retrigger all {C:attention}Food{} Jokers,",
+          "{C:green}#1# in #2#{} chance to {C:attention}consume{}",
+          "all {C:attention}Food{} Jokers at end of round",
         }
       },
       j_abn_busybee = {
@@ -3403,9 +3411,10 @@ return {
       j_abn_perrrkeo = {
         name = "Perrrkeo",
         text = {
-          "{C:purple}Balance{} score by {C:attention}#3#%{}",
-          "Add {C:attention}#2#%{} for each held consumable ",
-
+          "Balances {C:purple}#3#%{C:inactive}",
+          "of {C:mult}Mult{} and {C:chips}Chips{},",
+          "Adds {C:purple}#2#%{} for every",
+          "consumable {C:attention}held",
         }
       },
       j_abn_rubicante = {
@@ -3413,7 +3422,6 @@ return {
         text = {
           "{C:attention}Even{} scoring cards give {C:mult}Mult{}",
           "equal to {C:attention}triple{} their rank",
-
         }
       },
       j_abn_dangerlet = {
