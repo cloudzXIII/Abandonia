@@ -1255,6 +1255,14 @@ return {
       },
     },
     Joker = {
+      j_abn_stop_sign = {
+        name = "Stop Sign",
+        text = {
+          "{C:attention}Jokers{} no longer appear in the {C:attention}shop{},",
+          "You may choose up to {C:attention}2{} cards",
+          "from all {C:attention}Buffoon{} Packs"
+        }
+      },
       j_abn_tag_joker = {
         name = "Tag Joker",
         text = {
