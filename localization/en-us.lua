@@ -1301,10 +1301,10 @@ return {
         name = "Ironworks",
         text = {
           {
-            "Gives {X:mult,C:white}X#1#{} Mult",
+            "Gives {X:mult,C:white}X#3#{} Mult",
             "for each {C:attention}Hot Iron Card",
             "in your {C:attention}full deck",
-            "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+            "{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} Mult)",
           },
           {
             "Gives {X:chips,C:white}X#1#{} Chips",
