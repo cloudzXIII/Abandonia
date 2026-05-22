@@ -1255,6 +1255,14 @@ return {
       },
     },
     Joker = {
+      j_abn_cyber_half = {
+        name = "Cyber Half",
+        text = {
+          "{C:attention}Steel Cards{} give",
+          "gives {C:attention}twice{} their rank as",
+          "{C:chips}Chips{} when held in hand",
+        }
+      },
       j_abn_artistic_interpretation = { -- I did this art :D (cloudzXIII)
         name = "Artistic Interpretation",
         text = {
