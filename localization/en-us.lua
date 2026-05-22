@@ -203,7 +203,7 @@ return {
           "Next time you use a {C:astro_cards}Astro{} card,",
           "it's {C:green}probabilites{} succeed,",
           "create a random {C:dark_edition}Negative{}",
-          "rank {C:planet}Planet{} card"
+          "{C:planet}Rank Planet{} card"
         }
       },
       c_abn_z = {
@@ -806,6 +806,13 @@ return {
         text = {
           "Shop has a free",
           "{C:program_pack}Program{} card",
+        }
+      },
+      tag_abn_rank_planet = { -- prolly think of a better name
+        name = "Rank Planet Tag",
+        text = {
+          "Shop has a free",
+          "{C:planet}Rank Planet{} card",
         }
       },
       --#endregion

@@ -508,3 +508,29 @@ SMODS.Tag {
     end
   end
 }
+
+SMODS.Tag {
+  key = "rank_planet",
+  pos = { x = 2, y = 3 },
+  atlas = "AbandoniaTags",
+  apply = function(self, tag, context)
+    if context.type == 'store_joker_create' then
+      local card = SMODS.create_card {
+        set = "Planet",
+        attributes = { "rank_planet" },
+        area = context.area,
+        key_append = "abn_rank_planet"
+      }
+      create_shop_card_ui(card)
+      card.states.visible = false
+      tag:yep('+', G.C.SECONDARY_SET.program_pack, function()
+        card:start_materialize()
+        card.ability.couponed = true
+        card:set_cost()
+        return true
+      end)
+      tag.triggered = true
+      return card
+    end
+  end
+}
