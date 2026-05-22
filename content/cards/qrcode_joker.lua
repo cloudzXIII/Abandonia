@@ -7,8 +7,8 @@ SMODS.Joker {
   end,
 
   rarity = 2,
-  atlas = 'ABNJokerSheet12',
-  pos = { x = 7, y = 3 },
+  atlas = 'ABNJokerSheet2',
+  pos = { x = 1, y = 3 },
   pixel_size = { h = 95 / 1.2 },
   cost = 6,
   discovered = false,
