@@ -1255,7 +1255,7 @@ return {
             "Suits cannot be debuffed"
           },
           {
-            "This Joker gains {C:chips}+#1#{} per",
+            "This Joker gains {C:chips}+#4#{} per",
             "unique {C:attention}suit{} discarded,",
             "gains {C:mult}+#2#{} Mult per unique",
             "{C:attention}suit{} played",
