@@ -13,7 +13,7 @@ SMODS.Joker {
   pos = { x = 2, y = 0 },
   cost = 6,
   discovered = false,
-  blueprint_compat = false,
+  blueprint_compat = true,
 
   config = { extra = { mult = 0, mult_gain = 5, type = "abn_Spectrum", repetitions = 1 } },
 
