@@ -787,6 +787,27 @@ return {
           "{C:abn_hazard}Hazard Tag{}",
         }
       },
+      tag_abn_weather_report = {
+        name = "Weather Tag",
+        text = {
+          "Shop has a free",
+          "{C:weather_report}Weather{} card",
+        }
+      },
+      tag_abn_lexica = {
+        name = "Lexica Tag",
+        text = {
+          "Shop has a free",
+          "{C:lexica}Lexica{} card",
+        }
+      },
+      tag_abn_program = {
+        name = "Program Tag",
+        text = {
+          "Shop has a free",
+          "{C:program_pack}Program{} card",
+        }
+      },
       --#endregion
     },
     Blind = {

@@ -433,3 +433,78 @@ SMODS.Tag {
     end
   end
 }
+
+SMODS.Tag {
+  key = "weather_report",
+  pos = { x = 5, y = 0 },
+  atlas = "AbandoniaTags",
+  apply = function(self, tag, context)
+    if context.type == 'store_joker_create' then
+      local card = SMODS.create_card {
+        set = "weather_report",
+        area = context.area,
+        key_append = "abn_weather_report"
+      }
+      create_shop_card_ui(card)
+      card.states.visible = false
+      tag:yep('+', G.C.SECONDARY_SET.weather_report, function()
+        card:start_materialize()
+        card.ability.couponed = true
+        card:set_cost()
+        return true
+      end)
+      tag.triggered = true
+      return card
+    end
+  end
+}
+
+SMODS.Tag {
+  key = "lexica",
+  pos = { x = 5, y = 1 },
+  atlas = "AbandoniaTags",
+  apply = function(self, tag, context)
+    if context.type == 'store_joker_create' then
+      local card = SMODS.create_card {
+        set = "lexica",
+        area = context.area,
+        key_append = "abn_lexica"
+      }
+      create_shop_card_ui(card)
+      card.states.visible = false
+      tag:yep('+', G.C.SECONDARY_SET.lexica, function()
+        card:start_materialize()
+        card.ability.couponed = true
+        card:set_cost()
+        return true
+      end)
+      tag.triggered = true
+      return card
+    end
+  end
+}
+
+SMODS.Tag {
+  key = "program",
+  pos = { x = 5, y = 2 },
+  atlas = "AbandoniaTags",
+  apply = function(self, tag, context)
+    if context.type == 'store_joker_create' then
+      local card = SMODS.create_card {
+        set = "program_pack",
+        area = context.area,
+        key_append = "abn_program"
+      }
+      create_shop_card_ui(card)
+      card.states.visible = false
+      tag:yep('+', G.C.SECONDARY_SET.program_pack, function()
+        card:start_materialize()
+        card.ability.couponed = true
+        card:set_cost()
+        return true
+      end)
+      tag.triggered = true
+      return card
+    end
+  end
+}
