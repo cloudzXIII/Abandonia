@@ -162,24 +162,32 @@ ABN.calculate = function(self, context)
     local ability = context.other_joker.ability
     local has_chips = ability.abn_perma_bonus and ability.abn_perma_bonus ~= 0
     local has_mult = ability.abn_perma_mult and ability.abn_perma_mult ~= 0
-    -- add xmult and xchips
     local has_x_mult = ability.abn_perma_xmult and ability.abn_perma_xmult ~= 1
     local has_x_chips = ability.abn_perma_xchips and ability.abn_perma_xchips ~= 1
-    -- add dollars and repetitions
     local has_dollars = ability.abn_perma_dollars and ability.abn_perma_dollars ~= 0
-    local has_rep = ability.abn_perma_rep and ability.abn_perma_rep ~= 0
 
-    if has_chips or has_mult or has_x_mult or has_x_chips or has_dollars or has_rep then
+    if has_chips or has_mult or has_x_mult or has_x_chips or has_dollars then
       return {
         chips = has_chips and ability.abn_perma_bonus or nil,
         mult = has_mult and ability.abn_perma_mult or nil,
         x_mult = has_x_mult and ability.abn_perma_xmult or nil,
         x_chips = has_x_chips and ability.abn_perma_xchips or nil,
         dollars = has_dollars and ability.abn_perma_dollars or nil,
-        repetitions = has_rep and ability.abn_perma_rep or nil, --TODO: figure out why this in specific does not work
         card = context.other_joker,
         message_card = context.other_joker,
         no_juice = true,
+      }
+    end
+  end
+
+  if context.retrigger_joker_check and context.other_card then
+    local ability = context.other_card.ability
+    local has_rep = ability.abn_perma_rep and ability.abn_perma_rep ~= 0
+    if has_rep then
+      return {
+        repetitions = has_rep and ability.abn_perma_rep or nil,
+        card = context.other_card,
+        message_card = context.other_card,
       }
     end
   end
