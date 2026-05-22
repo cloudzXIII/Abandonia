@@ -1255,6 +1255,14 @@ return {
       },
     },
     Joker = {
+      j_abn_tag_joker = {
+        name = "Tag Joker",
+        text = {
+          "This Joker gains {C:white,X:mult}X#2#{} Mult",
+          "when a {C:attention}Tag{} is triggered",
+          "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
+        }
+      },
       j_abn_green_horn = {
         name = "Green Horn",
         text = {
