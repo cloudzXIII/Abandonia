@@ -3,6 +3,7 @@ SMODS.Joker {
   key = 'heart_of_glass',
 
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS["m_glass"]
     local cae = card.ability.extra
     return { vars = { cae.xchips, cae.chips_gain, cae.chips } }
   end,

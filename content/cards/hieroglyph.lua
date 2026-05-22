@@ -3,6 +3,7 @@ SMODS.Joker {
   key = 'hieroglyph',
 
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS["m_abn_fossil"]
     local cae = card.ability.extra
     return { vars = {} }
   end,
@@ -59,6 +60,10 @@ SMODS.Joker {
           return true
         end
       }))
+      return {
+        message = localize("k_upgrade_ex"),
+        card = _card
+      }
     end
   end,
 
