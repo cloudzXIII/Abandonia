@@ -1227,6 +1227,16 @@ return {
       },
     },
     Joker = {
+      j_abn_heart_of_glass = {
+        name = "Heart of Glass",
+        text = {
+          "{C:attention}Glass Cards{} give {C:white,X:chips}X#1#{} Chips",
+          "when scored, and always {C:attention}shatter",
+          "This Joker gains {C:chips}+#2{} Chips",
+          "for every {C:hearts}Heart{} {C:attention}Glass Card{} destroyed",
+          "{C:inactive}(Currently {C:chips}+#3{C:inactive} Chips)"
+        }
+      },
       j_abn_living_card = {
         name = "Living Card",
         text = {
