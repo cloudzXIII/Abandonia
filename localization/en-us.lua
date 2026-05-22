@@ -1293,9 +1293,9 @@ return {
         name = "Spare Suit",
         text = {
           "This Joker gains {C:mult}+#2#{} Mult",
-          "if played hand contains a {C:attention}Spectrum{},",
+          "if played hand contains a {C:attention}#3#{},",
           "Retrigger played {C:attention}Mercurial Cards{}",
-          "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult"
+          "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
         }
       },
       j_abn_underblackcloudz = {
