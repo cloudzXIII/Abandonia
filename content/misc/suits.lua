@@ -24,7 +24,7 @@ SMODS.Suit {
   lc_ui_atlas = "AbandoniaSuitIcons",
   hc_ui_atlas = "AbandoniaSuitIcons",
   pos = { y = 1 },
-  ui_pos = { x = 0, y = 1 },
+  ui_pos = { x = 1, y = 0 },
   lc_colour = HEX("8570c7"),
   in_pool = function(self, args)
     if args and ((args.rank == '') or (args.initial_deck)) then
@@ -34,4 +34,3 @@ SMODS.Suit {
     end
   end,
 }
-

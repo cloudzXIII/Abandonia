@@ -22,8 +22,8 @@ SMODS.Atlas({
 SMODS.Atlas({
   key = "AbandoniaSuitIcons",
   path = "icons.png",
-  px = 71,
-  py = 95,
+  px = 18,
+  py = 18,
 })
 
 SMODS.Atlas({
