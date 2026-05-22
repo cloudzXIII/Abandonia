@@ -74,6 +74,6 @@ SMODS.Joker {
   end,
 
   abn_artist_credits = {
-    artist = "NiceCream",
+    artist = "CubeGetsReal",
   },
 }
