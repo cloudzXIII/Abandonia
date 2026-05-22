@@ -1255,6 +1255,15 @@ return {
       },
     },
     Joker = {
+      j_abn_artistic_interpretation = { -- I did this art :D (cloudzXIII)
+        name = "Artistic Interpretation",
+        text = {
+          "This Joker gains {C:chips}+#2#{} Chips",
+          "per {C:attention}consecutive{} hand played",
+          "with the same {C:attention}poker hand{}",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
+        }
+      },
       j_abn_stop_sign = {
         name = "Stop Sign",
         text = {
