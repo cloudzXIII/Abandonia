@@ -1227,6 +1227,15 @@ return {
       },
     },
     Joker = {
+      j_abn_green_horn = {
+        name = "Green Horn",
+        text = {
+          "{C:white,X:mult}X#1#{} Mult,",
+          "You cannot play your",
+          "{C:attention}highest level{} hand",
+          "{C:inactive}(Currently {C:attention}#2#{C:inactive})"
+        }
+      },
       j_abn_hieroglyph = {
         name = "Hieroglyph",
         text = {
@@ -6022,6 +6031,7 @@ return {
       k_abn_activated_ex = "Activated!",
       k_lexica_pack = "Lexica Pack",
       k_weather_pack = "Weather Pack",
+      k_green_horn = "Not Allowed!",
 
       -- Consumable Types
       b_weather_report_cards = "Weather Reports",

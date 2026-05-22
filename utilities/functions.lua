@@ -245,3 +245,15 @@ ABN.most_played_hand = function()
   end
   return _handname
 end
+
+-- Gets highest level poker hand
+ABN.highest_level_hand = function()
+  local _handname, _played, _order, _level = 'High Card', -1, 100, -1
+  for k, v in pairs(G.GAME.hands) do
+    if v.level > _level or (v.level == _level and _order > v.order) then
+      _level = v.level
+      _handname = k
+    end
+  end
+  return _handname
+end
