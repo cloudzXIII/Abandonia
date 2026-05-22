@@ -1227,6 +1227,14 @@ return {
       },
     },
     Joker = {
+      j_abn_living_card = {
+        name = "Living Card",
+        text = {
+          "{C:attention}Unscored{} cards permanently gain",
+          "{C:chips}+#2#{} Chips and {C:mult}+#1#{} Mult",
+          "when played"
+        }
+      },
       j_abn_bibliophile = {
         name = "Bibliophile",
         text = {

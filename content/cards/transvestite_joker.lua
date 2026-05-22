@@ -31,7 +31,7 @@ SMODS.Joker {
             card = bp or card
           })
           context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) + card.ability.extra.mult
-          context.other_card.ability.perma_chips = (context.other_card.ability.perma_chips or 0) +
+          context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) +
               card.ability.extra.chips
           return true
         end
