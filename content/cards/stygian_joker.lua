@@ -30,18 +30,8 @@ SMODS.Joker {
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
       if context.other_card:is_suit("Hearts") and SMODS.pseudorandom_probability(card, 'stygian', card.ability.extra.base, card.ability.extra.odds, "abn_stygian_joker") then
-        local _card = context.other_card
-        if _card then
-          G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.4,
-            func = function()
-              _card:set_edition("e_abn_chthonian", true)
-              _card:juice_up(0.3, 0.5)
-              return true
-            end
-          }))
-        end
+        context.other_card:set_edition("e_abn_chthonian", true, nil, true)
+        SMODS.calculate_effect({ message = localize("k_abn_chthonian") }, context.other_card)
       end
     end
     if context.joker_main then

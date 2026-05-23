@@ -4979,7 +4979,7 @@ return {
       e_abn_chthonian = {
         name = "Chthonian",
         text = {
-          "{C:attention}X2{} Joker Values*,",
+          "{C:attention}X2{} Values*,",
           "{C:attention}+2%{} blind requirements",
           "{C:inactive,s:0.7}*where possible"
         },
@@ -6117,6 +6117,7 @@ return {
       k_lexica_pack = "Lexica Pack",
       k_weather_pack = "Weather Pack",
       k_green_horn = "Not Allowed!",
+      k_abn_chthonian = "Chthonian!",
 
       -- Consumable Types
       b_weather_report_cards = "Weather Reports",
