@@ -3921,8 +3921,8 @@ return {
 
         }
       },
-      j_abn_jokertopia = {
-        name = "Jokertopia",
+      j_abn_seal_edition_joker = {
+        name = "Seal Edition Joker",
         text = {
           "Each Joker gains {C:mult}+#1#{} Mult",
           "for each different {C:attention}seal{} on scoring cards",
@@ -4106,7 +4106,7 @@ return {
       j_abn_obmij = {
         name = "Obmij",
         text = {
-          "Give Xmult equal to the number of Jokers owned",
+          "Give {C:white,X:mult}XMULT{} equal to the number of Jokers owned",
         }
       },
       j_abn_contagion_joker = {
@@ -4149,27 +4149,35 @@ return {
       j_abn_monitor_joker = {
         name = "Monitor Joker",
         text = {
-          "Can {C:chips}play{} and {C:mult}discard{} {C:attention}+1{} more cards",
-          "First played Six card hand with {C:green}Monitor{} card {C:attention}level up{} all cards {C:planet}planet{} {C:attention}rank{} by {C:attention}1{}",
-          "Scored cards recieve {X:chips,C:white}X#1#{} Chips",
+          {
+            "You may play and discard",
+            "up to {C:attention}6{} cards,",
+          },
+          {
+            "First played {C:attention}6 card{} hand",
+            "with a {C:attention}Monitor Card{} levels up every",
+            "played cards {C:attention}rank{} by {C:attention}1{},",
+            "Played cards permanently gain",
+            "{X:chips,C:white}X#1#{} Chips when scored",
+          },
         }
       },
       j_abn_scantron_joker = {
         name = "Scantron Joker",
         text = {
-          "Scoring {C:money}Lucky{} cards give {X:chips,C:white}^#1#{} Chips",
-          "Scoring {C:chips}Bonus{} cards give {X:mult,C:white}^#2#{} Mult",
-          "Scoring {C:money}Gold{} cards give {X:chips,C:white}^#3#{} Chips",
-          "Scoring {C:hearts}Wild{} cards give {X:mult,C:white}^#4#{} Mult",
+          "Scoring {C:attention}Lucky{} cards give {X:chips,C:white}^#1#{} Chips",
+          "Scoring {C:attention}Bonus{} cards give {X:mult,C:white}^#2#{} Mult",
+          "Scoring {C:attention}Gold{} cards give {X:chips,C:white}^#3#{} Chips",
+          "Scoring {C:attention}Wild{} cards give {X:mult,C:white}^#4#{} Mult",
         }
       },
       j_abn_fractured_identity_joker = {
         name = "Fractured Identity Joker",
         text = {
           "Scoring {C:mult}Mult{} cards give {X:chips,C:white}^#1#{} Chips",
-          "Scoring {C:inactive}Glass{} cards give {X:mult,C:white}^#2#{} Mult",
-          "Scoring {C:inactive}Steel{} cards give {X:chips,C:white}^#3#{} Chips",
-          "Scoring {C:inactive}Stone{} cards give {X:mult,C:white}^#4#{} Mult",
+          "Scoring {C:attention}Glass{} cards give {X:mult,C:white}^#2#{} Mult",
+          "Scoring {C:attention}Steel{} cards give {X:chips,C:white}^#3#{} Chips",
+          "Scoring {C:attention}Stone{} cards give {X:mult,C:white}^#4#{} Mult",
         }
       },
       j_abn_handbook_of_a_conman = {
@@ -4182,7 +4190,8 @@ return {
       j_abn_fit_to_shape = {
         name = "Fit To Shape",
         text = {
-          "{C:attention}Four{} card hands give {X:chips,C:white}^#1#{} Chips and {X:mult,C:white}^#2#{} Mult",
+          "{C:attention}4 card{} hands give",
+          "{X:chips,C:white}^#1#{} Chips and {X:mult,C:white}^#2#{} Mult",
         }
       },
       j_abn_manga_panel_joker = {
