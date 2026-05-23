@@ -7,9 +7,9 @@ SMODS.ConsumableType {
   shop_rate = 4,
 }
 
-local set_sell_ref = Card.set_sell_value
-function Card:set_sell_value()
-  local ret = set_sell_ref(self)
+local set_cost_ref = Card.set_cost -- for some reason hooking Card:set_sell_value() didn't work?
+function Card:set_cost()
+  local ret = set_cost_ref(self)
   if self.ability.set == "lexica" then
     self.sell_cost = 1
   end

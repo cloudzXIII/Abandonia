@@ -1255,6 +1255,18 @@ return {
       },
     },
     Joker = {
+      j_abn_gachapon = {
+        name = "Gachapon",
+        text = {
+          "When {C:attention}Blind{} is selected, {C:money}-$#1#{},",
+          "{C:green}#2# in #3#{} chance to create",
+          "a random {C:green}Uncommon{} Joker,",
+          "{C:green}#4# in #5#{} chance to create",
+          "a random {C:red}Rare{} Joker,",
+          "{C:red}self-destructs at $0{}",
+          "{C:inactive}(Must have room)",
+        }
+      },
       j_abn_stygian_joker = {
         name = "Stygian Joker",
         text = {
