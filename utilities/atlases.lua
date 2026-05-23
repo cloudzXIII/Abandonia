@@ -185,7 +185,7 @@ SMODS.Atlas({
 
 SMODS.Atlas({
   key = "AbandoniaCrossmod",
-  path = "crossmod.png",
+  path = "jokers/crossmod.png",
   px = 71,
   py = 95,
 })
@@ -284,6 +284,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+  key = "ABNJokerSheet13",
+  path = "jokers/joker13.png",
+  px = 71,
+  py = 95,
+})
+
+SMODS.Atlas({
   key = "AbandoniaParallel",
   path = "jokers/parallel.png",
   px = 71,
@@ -301,7 +308,7 @@ SMODS.Atlas({
 -- Animated Jokers (Popup Joker and Malware Joker)
 SMODS.Atlas {
   key = "popup_joker_atlas",
-  path = "popup_joker.png",
+  path = "jokers/popup_joker.png",
   px = 71,
   py = 95,
   frames = 2,
@@ -311,7 +318,7 @@ SMODS.Atlas {
 
 SMODS.Atlas {
   key = "malware_joker_atlas",
-  path = "malware_joker.png",
+  path = "jokers/malware_joker.png",
   px = 71,
   py = 95,
   frames = 18,
