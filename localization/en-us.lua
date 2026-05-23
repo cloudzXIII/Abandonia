@@ -4237,6 +4237,79 @@ return {
           "{X:chips,C:white}X#2#{} Chips, and {C:money}$#3#{}",
         }
       },
+	  j_abn_jokers_mixtape = {
+        name = "Joker's Mixtape",
+        text = {
+          "#1#",
+		  "Effect changes with certain editions",
+        }
+      },
+	  j_abn_awakening_oopart = {
+        name = "Awakening Oopart",
+        text = {
+          "Purchased {C:planet}Planet{} and {C:program_pack}Program{} cards become {C:dark_edition}Negative{}",
+		  "Using {C:planet}Planet{} and {C:program_pack}Program{} cards give held {C:inactive}Steel{} Cards {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
+        }
+      },
+	  j_abn_antikythera_mechanism = {
+        name = "Antikythera Mechanism",
+        text = {
+          "Gain {X:mult,C:white}X#2#{} Mult per {C:program_pack}Program{} card used",
+		  "{C:abn_brown_seal}Fossil{} Cards and {C:inactive}Steel{} Cards can't be {C:mult}debuffed{} or {C:mult}destroyed{}",
+		  "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult",
+        }
+      },
+	  j_abn_pentomino_joker = {
+        name = "Pentomino Joker",
+        text = {
+          "Held {C:diamonds}Light{} Suit cards gain {C:chips}+#1#{} Chips when a {C:program_pack}Program{} card is used",
+		  "{C:attention}Level up{} the {C:planet}planet{} {C:attention}rank{} of cards in the {C:attention}First{} scoring {C:diamonds}Light{} suit {C:attention}Straight{}",
+        }
+      },
+	  j_abn_nuruomino_joker = {
+        name = "Nuruomino Joker",
+        text = {
+          "Held {C:spades}Dark{} Suit cards gain {C:chips}+#1#{} Chips when a {C:program_pack}Program{} card is used",
+		  "{C:attention}Level up{} the {C:planet}planet{} {C:attention}rank{} of cards in the {C:attention}First{} scoring {C:spades}Dark{} suit {C:attention}Straight{}",
+        }
+      },
+	  j_abn_isocromatic_joker = {
+        name = "Isocromatic Joker",
+        text = {
+          "Scoring {C:dark_edition}Foil{} cards gain {C:attention}+#2#{} retrigger",
+		  "Scoring {C:dark_edition}Holographic{} cards increase their {C:planet}planet{} {C:attention}rank{} by {C:attention}#3#",
+		  "Scoring {C:dark_edition}Polychrome{} cards gain {C:chips}+#1#{} Chips",
+        }
+      },
+	  j_abn_color_anomia = {
+        name = "Color Anomia",
+        text = {
+          "{C:program_pack}Program{} cards are {C:money}free{}",
+		  "Played {C:attention}Spectrum{} hands with only {C:attention}Numbered{} cards {C:attention}level up{} the {C:planet}planet{} {C:attention}rank{} of each played card",
+		  "If this Joker has an {C:dark_edition}Edition{} gain {C:chips}+#2#{} Chips{} per used {C:program_pack}Program{} card",
+		  "{C:inactive}Currently:{} {C:chips}+#1#{} {C:inactive}Chips{}"
+        }
+      },
+	  j_abn_grapheme_joker  = {
+        name = "Grapheme Joker",
+        text = {
+          "The {C:attention}First{} played {C:diamond}Light{} Suit card becomes {C:dark_edition}Negative{}",
+		  "Gain {C:chips}+#6#{} Chips and {C:mult}+#5#{} Mult per {C:dark_edition}Negative{} {C:diamonds}Light{} Suit played",
+		  "If this Joker has {C:dark_edition}Negative{} gain {X:mult,C:white}X#4#{} Mult per played {C:dark_edition}Negative{} card",
+		  "{C:inactive}Currently: {X:mult,C:white}X#1#{} {C:inactive}Mult{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#3#{} {C:inactive}Chips{} "
+        }
+      },
+	  j_abn_suit_seal_joker  = {
+        name = "Suit Seal Joker",
+        text = {
+          "If hand has {C:attention}Four unique{} suits",
+		  "Place a {C:abn_violet_seal}Violet Seal{} on all {C:spades}Dark{} Suit cards without seals",
+		  "and place a {C:abn_brown_seal}Brown Seal{} on all {C:diamonds}Light{} Suit cards without seals",
+		  "Gain {C:chips}+#4#{} chips and {C:mult}+#3#{} Mult per played {C:diamonds}Light{} Suit with a seal",
+		  "Gain {C:chips}+#3#{} chips and {C:mult}+#4#{} Mult per played {C:spades}Dark{} Suit with a seal",
+		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}",
+        }
+      },
     },
 
     Spectral = {
