@@ -390,7 +390,7 @@ SMODS.Enhancement({
     end
   end,
   abn_artist_credits = {
-    artist = "Bunnet",
+    artist = "Ricottakitten",
   },
 }) 
 
@@ -454,7 +454,7 @@ SMODS.Enhancement({
     end
   end,
   abn_artist_credits = {
-    artist = "Bunnet",
+    artist = "Ricottakitten",
   },
 })
 
@@ -493,7 +493,7 @@ SMODS.Enhancement({
     end
   end,
   abn_artist_credits = {
-    artist = "Bunnet",
+    artist = "Ricottakitten",
   },
 })
 
@@ -601,6 +601,9 @@ SMODS.Enhancement({
       end
     end
   end,
+  abn_artist_credits = {
+    artist = "Ricottakitten",
+  },
 })
 
 SMODS.Enhancement({
@@ -653,7 +656,7 @@ SMODS.Enhancement({
   end,
 
   abn_artist_credits = {
-    artist = "Bunnet",
+    artist = "Ricottakitten",
   },
 })
 
@@ -722,6 +725,6 @@ SMODS.Enhancement({
   end,
 
   abn_artist_credits = {
-    artist = "Bunnet",
+    artist = "Ricottakitten",
   },
 })

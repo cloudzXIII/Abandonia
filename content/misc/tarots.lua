@@ -19,7 +19,7 @@ SMODS.Consumable({
   atlas = "AbandoniaTarots",
   cost = 4,
   unlocked = true,
-  discovered = false,
+  discovered = true,
   loc_vars = function(self, info_queue, card)
   end,
   can_use = function(self, card)
@@ -55,7 +55,7 @@ SMODS.Consumable({
   atlas = "AbandoniaTarots",
   cost = 4,
   unlocked = true,
-  discovered = false,
+  discovered = true,
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = { key = 'abn_immortal', set = 'Other' }
     return { vars = { card.ability.extra.max } }
@@ -315,7 +315,7 @@ SMODS.Tarot {
   set = 'Tarot',
   atlas = "AbandoniaTarots",
   pos = { x = 5, y = 1 },
-  config = { max_highlighted = 2, mod_conv = 'm_abn_cotton' },
+  config = { max_highlighted = 1, mod_conv = 'm_abn_sew' },
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
     return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
@@ -323,14 +323,18 @@ SMODS.Tarot {
   in_pool = function(self)
     return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
   end,
+  
+  abn_artist_credits = {
+    artist = "Lizzie",
+  },
 }
 
 SMODS.Tarot {
   key = 'teaset',
   set = 'Tarot',
   atlas = "AbandoniaTarots",
-  pos = { x = 5, y = 1 },
-  config = { max_highlighted = 2, mod_conv = 'm_abn_sew' },
+  pos = { x = 0, y = 2 },
+  config = { max_highlighted = 1, mod_conv = 'm_abn_cotton' },
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
     return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
@@ -338,4 +342,8 @@ SMODS.Tarot {
   in_pool = function(self)
     return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
   end,
+  
+  abn_artist_credits = {
+    artist = "Lizzie",
+  },
 }
