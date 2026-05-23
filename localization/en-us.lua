@@ -3925,7 +3925,8 @@ return {
         name = "Seal Edition Joker",
         text = {
           "Each Joker gains {C:mult}+#1#{} Mult",
-          "for each different {C:attention}seal{} on scoring cards",
+          "for every unique {C:attention}seal{}",
+          "in scoring hand",
         }
       },
       j_abn_blessed_joker = {
@@ -4232,7 +4233,8 @@ return {
       j_abn_rom_hack_balatro = {
         name = "ROM Hack Balatro",
         text = {
-          "{C:attention}Vanilla{} Jokers give {X:mult,C:white}X#1#{} Mult {X:chips,C:white}X#2#{} Chips and {C:money}$#3#{}",
+          "{C:attention}Vanilla{} Jokers each give {X:mult,C:white}X#1#{} Mult,",
+          "{X:chips,C:white}X#2#{} Chips, and {C:money}$#3#{}",
         }
       },
     },
