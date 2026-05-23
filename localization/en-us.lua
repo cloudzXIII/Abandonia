@@ -1,5 +1,78 @@
 return {
   descriptions = {
+    continent = {
+      c_abn_africa = {
+        name = "Africa",
+        text = {
+          {
+            "Convert all {C:attention}light suits{}",
+            "held into {C:attention}Stone Cards{}",
+            "with {C:gold}Gold Seals{}"
+          },
+          {
+            "Convert all {C:attention}dark suits{}",
+            "into {C:dark_edition}Negative{} {C:attention}Gold Cards"
+          }
+        },
+      },
+      c_abn_austrailia = {
+        name = "Austrailia",
+        text = {
+          {
+            "Convert all {C:attention}odd{} cards",
+            "held into {C:dark_edition}Foil{} {C:attention}Wild Cards{}",
+          },
+          {
+            "Convert all {C:attention}even{} cards",
+            "held into {C:attention}Glass Cards{}",
+            "with {C:red}Red Seals{}"
+          }
+        },
+      },
+      c_abn_asia = {
+        name = "Asia",
+        text = {
+          {
+            "Convert all {C:attention}Aces{}",
+            "held into {C:dark_edition}Foil{} {C:attention}Mult Cards{}",
+          },
+          {
+            "Convert all {C:attention}face{} cards",
+            "held into {C:attention}Bonus Cards{}",
+            "with {C:abn_white_seal}White Seals{}"
+          }
+        },
+      },
+      c_abn_europe = {
+        name = "Europe",
+        text = {
+          {
+            "Convert all held cards",
+            "with ranks below {C:attention}5{} into",
+            "{C:attention}Steel Cards{} with {C:abn_orange_seal}Orange Seals{}",
+          },
+          {
+            "Convert all held cards",
+            "with ranks above {C:attention}6{} into",
+            "{C:dark_edition}Abandoned{} {C:attention}Fossil Cards{}",
+          }
+        },
+      },
+      c_abn_antarctica = {
+        name = "Antarctica",
+        text = {
+          {
+            "Convert all {C:attention}light suit{} cards",
+            "held into {C:dark_edition}Holographic{} {C:abn_Snow}Snows{}",
+          },
+          {
+            "Convert all {C:attention}dark suit{} cards",
+            "held into {C:abn_penumbra}Penumbras{}",
+            "with {C:abn_lavender_seal}Lavender Seals{}"
+          }
+        },
+      },
+    },
     lexica = {
       c_abn_a = {
         name = "A(mperage)",
@@ -3725,7 +3798,8 @@ return {
       j_abn_joker_once_again = {
         name = "Joker Once Again",
         text = {
-          "Add a {C:attention}White Seal{} to first scoring {C:attention}card{}",
+          "Add a {C:abn_white_seal}White Seal{}",
+          "to first scoring {C:attention}card{}",
         },
       },
       j_abn_seal_letter = {
@@ -3789,23 +3863,27 @@ return {
       j_abn_forsaken_joker = {
         name = "Forsaken Joker",
         text = {
-          "{C:green}#1# in #2#{} chance to give {C:dark_edition}Overexposed{} to played {C:attention}Bent{} cards",
-          "{C:green}#3# in #4#{} chance to give {C:dark_edition}fluorescent{} to played {C:attention}Post{} cards",
+          "{C:green}#1# in #2#{} chance to give",
+          "{C:dark_edition}Overexposed{} to played {C:attention}Bent{} cards,",
+          "{C:green}#3# in #4#{} chance to give",
+          "{C:dark_edition}Fluorescent{} to played {C:attention}Post{} cards",
         }
       },
       j_abn_lunatic_joker = {
         name = "Lunatic Joker",
         text = {
-          "All scoring {C:attention}Even{} cards of {C:attention}First{} Hand gain {C:inactive}Grayscale{}",
-          "All scoring {C:attention}Odd{} cards of {C:attention}Last{} Hand gain {C:planet}Cyan Seal{}",
+          "If {C:attention}first hand{} of round,",
+          "Add {C:inactive}Greyscale{} to scored {C:attention}even{} cards,",
+          "If {C:attention}last hand of round,",
+          "Add {C:planet}Cyan Seal{} to scored {C:attention}odd{} cards",
         }
       },
       j_abn_recursive_joker = {
         name = "Recursive Joker",
         text = {
           "Jokers may appear multiple times",
-          "Each Joker gives {X:chips,C:white}X#1#{} Chips per copy of that Joker",
-
+          "Each Joker gives {X:chips,C:white}X#1#{} Chips",
+          "for every copy of that Joker",
         }
       },
       j_abn_joker_jester = {
@@ -3837,14 +3915,17 @@ return {
         name = "Deceitful Joker",
         text = {
           "{X:mult,C:white}X#1#{} Mult",
-          "When an {C:attention}ante is beaten{} apply {C:attention}Flipped{} to all cards of a {C:attention}random{} owned suit",
+          "When an {C:attention}Boss Blind{} is defeated,",
+          "apply {C:attention}Flipped{} to all cards",
+          "of a {C:attention}random{} owned suit",
 
         }
       },
       j_abn_jokertopia = {
         name = "Jokertopia",
         text = {
-          "Each Joker gains {C:mult}+#1#{} Mult for each different {C:attention}Seal{} on scoring cards",
+          "Each Joker gains {C:mult}+#1#{} Mult",
+          "for each different {C:attention}seal{} on scoring cards",
         }
       },
       j_abn_blessed_joker = {
@@ -3866,30 +3947,51 @@ return {
       j_abn_corpuscular_joker = {
         name = "Corpuscular Joker",
         text = {
-          "{C:dark_edition}Foil{} Jokers give {C:mult}+#1#{} Mult",
-          "{C:dark_edition}Foil{} Cards give {C:attention}double{} their ranks as {C:mult}Mult",
+          "{C:dark_edition}Foil{} Jokers give {C:mult}+#1#{} Mult,",
+          "{C:dark_edition}Foil{} Cards give {C:attention}double{}",
+          "their rank as {C:mult}Mult",
         }
       },
       j_abn_ransom_joker = {
         name = "Ransom Joker",
         text = {
-          "At {C:attention}end of round{} lose {C:money}$#3#{} per Joker owned",
-          "When Joker is lost {C:green}#1# in #2#{} chance to create a higher rarity Joker",
+          {
+            "Lose {C:money}$#3#{} per Joker owned",
+            "at end of round,",
+          },
+          {
+            "When a {C:attention}Joker{} is sold",
+            "or destroyed, {C:green}#1# in #2#{} chance",
+            "to create a {C:attention}higher rarity{} Joker"
+          },
         }
       },
       j_abn_oilsplash = {
         name = "Oilsplash",
         text = {
-          "{C:attention}Unscored{} cards turn into {C:abn_black_seal}Petroleum{} cards",
-          "If the Score catches fire {C:abn_black_seal}Petroleum{} cards do not turn into {C:abn_black_seal}Oilfire",
+          {
+            "{C:attention}Unscored{} cards become",
+            "{C:abn_black_seal}Petroleum{} cards when played",
+          },
+          {
+            "If the Score {C:attention}catches fire{}",
+            "{C:abn_black_seal}Petroleum{} cards do not",
+            "turn into {C:abn_black_seal}Oilfire",
+          },
         }
       },
       j_abn_oiled_joker = {
         name = "Oiled Joker",
         text = {
-          "If {C:attention}first{} {C:mult}discard{} contains a {C:abn_black_seal}Petroleum{} card it is not consumed",
-          "Played {C:abn_black_seal}Petroleum{} cards give {C:money}$#1#{} and {C:mult}+#4#{} Mult and {C:chips}+#5#{} Chips",
-          "{C:inactive}Currently:{} {C:mult}+#2#{} {C:inactive}Mult {C:chips}+#3#{} {C:inactive}Chips",
+          {
+            "If {C:attention}first discard{} of round",
+            "contains a {C:abn_black_seal}Petroleum{} card,",
+            "it is not {C:attention}consumed{}",
+          },
+          {
+            "Played {C:abn_black_seal}Petroleum{} cards give {C:money}$#1#{},",
+            "{C:mult}+#2#{} Mult and {C:chips}+#3#{} Chips",
+          },
         }
       },
       j_abn_lotion_joker = {
@@ -3911,61 +4013,73 @@ return {
       j_abn_slot_machine = {
         name = "Slot Machine",
         text = {
-          "All {C:green}probability{} always succeed and cost {C:money}$5{}",
-          "Retrigger and level up all played {C:attention}Royal Flushes{}",
-          "If you own {C:money}Gold Joker{} probabilities succeeding are {C:attention}free{}",
+          {
+            "{C:attention}listed{} {C:green,E:1,S:1.1}probabilities",
+            "always {C:green}succeed{} and cost {C:money}$5{}",
+            "If you own {C:attention}Golden Joker{},",
+            "probabilities succeeding are {C:attention}free{}",
+          },
+          {
+            "Retrigger and level up all played {C:attention}Royal Flushes{}",
+          },
         }
       },
       j_abn_lucrative_joker = {
         name = "Lucrative Joker",
         text = {
           "No limit on {C:money}interest{} and {C:tarot}doubling{}",
-          "{C:money}Gold{} cards and cards {C:money}Gold{} seals are shuffled to the top of the deck",
-          "If you have Slot Machine double earnings from {C:money}Gold{} cards and Seals",
+          "{C:money}Gold{} cards and cards with {C:gold}Gold seals{} are shuffled to the top of the deck",
+          "If you have {C:attention}Slot Machine{},",
+          "double earnings from {C:money}Gold{} cards and Seals",
         }
       },
       j_abn_balatro_university = {
         name = "Balatro University",
         text = {
           "Whenever you gain money during a blind",
-          "all Jokers gains {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
-          "If you own Lucrative Joker {C:attention}level up{} hands with {C:money}Gold{} cards",
-          "If you own Slot Machine retrigger {C:money}Gold{} seals",
+          "all Jokers gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
+          "If you own {C:attention}Lucrative Joker{},",
+          "{C:attention}level up{} hands with {C:money}Gold{} cards",
+          "If you own {C:attention}Slot Machine{} retrigger {C:gold}Gold seals{}",
         }
       },
       j_abn_mad_petr = {
         name = "Mad Petr",
         text = {
-          "Retrigger {C:attention}All{} Jokers {C:attention}equal{} to the number {C:attention}different{} held consumables",
-          "{C:inactive}Currently:{} {C:attention}#1#{} {C:inactive}Retriggers",
+          "Retrigger all {C:attention}Jokers{}",
+          "per unique consumable {C:attention}held{}",
+          "{C:inactive}(Currently{} {C:attention}#1#{} {C:inactive}Retriggers)",
         }
       },
       j_abn_porke = {
         name = "Porke",
         text = {
-          "Each Joker gives {X:chips,C:white}X#1#{} Chips per {C:attention}different{} held consumable",
-          "{C:inactive}Currently: {X:chips,C:white}X#2#{} {C:inactive}Chips{}",
+          "Each Joker gives {X:chips,C:white}X#1#{} Chips",
+          "per unique consumable {C:attention}held{}",
+          "{C:inactive}(Currently {X:chips,C:white}X#2#{} {C:inactive}Chips){}",
         }
       },
       j_abn_parq = {
         name = "P'arq",
         text = {
-          "Each {C:attention}different{} held consumable lowers {C:attention}blind requirement{} by {C:attention}#1#%",
-          "{C:inactive}Currently: {C:attention}#2#%",
+          "Lowers {C:attention}blind requirements{} by {C:attention}#1#%{}",
+          "per unique consumable {C:attention}held{}",
+          "{C:inactive}(Currently {C:attention}#2#%{C:inactive})",
         }
       },
       j_abn_pracheo = {
         name = "Pracheo",
         text = {
-          "Retrigger cards {C:attention}equal{} to the number {C:attention}different{} held consumables",
-          "{C:inactive}Currently:{} {C:attention}#1#{} {C:inactive}Retriggers",
+          "Retrigger cards {C:attention}1{} time",
+          "per unique consumable {C:attention}held{}",
+          "{C:inactive}(Currently{} {C:attention}#1#{} {C:inactive}Retriggers)",
         }
       },
       j_abn_jorg = {
         name = "Jorg",
         text = {
           "{C:mult}Discarded{} cards give {X:mult,C:white}X#1#{} Mult",
-          "On {C:attention}next{} played hand",
+          "on {C:attention}next{} played hand",
         }
       },
       j_abn_jurian = {
@@ -3976,7 +4090,7 @@ return {
         }
       },
       j_abn_jfool = {
-        name = "J’Fool",
+        name = "J'Fool",
         text = {
           "Each played {C:attention}Odd{} cards gives equal Xmult to the amount of {C:attention}Odd{} cards played",
           "Each played {C:attention}Even{} card gives equal Xmult to the amount of {C:attention}Even{} cards played",
@@ -4478,10 +4592,19 @@ return {
           '{C:attention}#2#{} {C:lexica}Lexica{} cards'
         }
       },
-      undiscovered_lexica = {
+      undiscovered_continent = {
         name = "Not Discovered",
         text = {
           "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
+      },
+      undiscovered_lexica = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or activate",
           "this card in an",
           "unseeded run to",
           "learn what it does"
@@ -6151,7 +6274,10 @@ return {
       k_program_pack = "Program",
 
       b_lexica_cards = "Lexica Cards",
-      k_lexica = "Lexica"
+      k_lexica = "Lexica",
+
+      b_continent_cards = "Continent Cards",
+      k_continent = "Continent"
     },
     labels = {
       -- Consumable Types
@@ -6162,6 +6288,7 @@ return {
       nightshift_cards = "Nightshift",
       program_pack = "Program",
       lexica = "Lexica",
+      continent = "Continent",
       -- Editions
       abn_chthonian = "Chthonian",
       abn_iridescent = "Iridescent",

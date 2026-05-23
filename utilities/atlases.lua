@@ -127,6 +127,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+  key = "AbandoniaContinents",
+  path = "continents.png",
+  px = 65, -- six seveennnn /j
+  py = 94,
+})
+
+SMODS.Atlas({
   key = "AbandoniaProgramPack",
   path = "program_packs.png",
   px = 71,

@@ -4,7 +4,7 @@
 local use_consumeable_ref = Card.use_consumeable
 function Card:use_consumeable(area, copier)
     local used_tarot = copier or self
-    
+
     -- Check for lucrative joker
     local has_lucrative = next(SMODS.find_card("j_abn_lucrative_joker"))
 
@@ -12,12 +12,17 @@ function Card:use_consumeable(area, copier)
     if self.ability.name == 'The Hermit' and has_lucrative then
         stop_use()
         if not copier then set_consumeable_usage(self) end
-        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-            play_sound('timpani')
-            used_tarot:juice_up(0.3, 0.5)
-            -- Remove the math.min cap, just use G.GAME.dollars
-            ease_dollars(math.max(0, G.GAME.dollars), true)
-            return true end }))
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('timpani')
+                used_tarot:juice_up(0.3, 0.5)
+                -- Remove the math.min cap, just use G.GAME.dollars
+                ease_dollars(math.max(0, G.GAME.dollars), true)
+                return true
+            end
+        }))
         delay(0.6)
         return
     end
@@ -39,12 +44,12 @@ function Card:get_p_dollars()
         if next(SMODS.find_card("j_abn_lucrative_joker")) and next(SMODS.find_card("j_abn_slot_machine")) then
             -- Add the extra $3 to the return value
             ret = ret + 3
-            
+
             G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + 3
             G.E_MANAGER:add_event(Event({
-                func = (function() 
-                    G.GAME.dollar_buffer = 0; 
-                    return true 
+                func = (function()
+                    G.GAME.dollar_buffer = 0;
+                    return true
                 end)
             }))
         end
@@ -56,14 +61,14 @@ end
 local original_game_update = Game.update
 function Game:update(dt)
     original_game_update(self, dt)
-    
+
     -- Only run during a run
     if not G.STAGE or G.STAGE ~= G.STAGES.RUN then return end
     if not G.playing_cards or not G.jokers then return end
 
     -- Check if Lucrative Joker is owned
     local has_lucrative = next(SMODS.find_card("j_abn_lucrative_joker"))
-	local has_slot_machine = next(SMODS.find_card("j_abn_slot_machine"))
+    local has_slot_machine = next(SMODS.find_card("j_abn_slot_machine"))
 
     -- Iterate through every card in the deck
     for _, c in ipairs(G.playing_cards) do
@@ -72,25 +77,23 @@ function Game:update(dt)
 
         -- APPLY DOUBLE
         if should_be_doubled and not c.ability.lucratived then
-            
             -- fortlatro griddy function
             if c.ability then
                 -- Target extra table if it exists (Gold cards use ability.h_dollars)
-                if c.ability.h_dollars then 
-                    c.ability.h_dollars = c.ability.h_dollars * 2 
+                if c.ability.h_dollars then
+                    c.ability.h_dollars = c.ability.h_dollars * 2
                 end
-                
             end
 
             c.ability.lucratived = true
 
-        -- REVERT DOUBLE
+            -- REVERT DOUBLE
         elseif not should_be_doubled and c.ability.lucratived then
             print('Lucrative: Reverting a card')
 
             if c.ability then
-                if c.ability.h_dollars then 
-                    c.ability.h_dollars = math.max(0, c.ability.h_dollars / 2) 
+                if c.ability.h_dollars then
+                    c.ability.h_dollars = math.max(0, c.ability.h_dollars / 2)
                 end
             end
 
@@ -109,11 +112,12 @@ SMODS.Joker {
     discovered = false,
     blueprint_compat = true,
     config = { extra = { repetitions = 1 } },
-    
+
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.j_abn_slot_machine
         return { vars = { card.ability.extra.repetitions } }
     end,
-    
+
     in_pool = function(self)
         if not G.playing_cards then return false end
         for _, card in ipairs(G.playing_cards) do
@@ -123,8 +127,8 @@ SMODS.Joker {
             return false
         end
     end,
-	
-	add_to_deck = function(self, card)
+
+    add_to_deck = function(self, card)
         G.GAME.interest_cap = G.GAME.interest_cap + 999999999999
     end,
 
