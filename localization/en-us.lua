@@ -1255,6 +1255,22 @@ return {
       },
     },
     Joker = {
+      j_abn_stygian_joker = {
+        name = "Stygian Joker",
+        text = {
+          {
+            "Played cards with a {C:hearts}Heart{} suit",
+            "have a {C:green}#3# in #4#{} chance",
+            "to gain {C:dark_edition}Chthonian{}"
+          },
+          {
+            "Gives {X:mult,C:white}X#1#{} Mult",
+            "for each {C:dark_edition}Chthonian{} Card",
+            "in your {C:attention}full deck",
+            "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+          },
+        },
+      },
       j_abn_cyber_half = {
         name = "Cyber Half",
         text = {
