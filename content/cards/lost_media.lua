@@ -32,6 +32,6 @@ SMODS.Joker {
   },
   in_pool = function(self, args)
     local missing_ranks = ABN.get_missing_ranks()
-    return #missing_ranks > 0
+    return missing_ranks and #missing_ranks > 0
   end,
 }

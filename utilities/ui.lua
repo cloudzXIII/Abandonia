@@ -38,7 +38,7 @@ end
 -- Config Tab
 ABN.config_tab = function()
   local title_text = DynaText({
-    string = "Config",
+    string = "Settings",
     colours = { G.C.WHITE },
     shadow = true,
     float = true,

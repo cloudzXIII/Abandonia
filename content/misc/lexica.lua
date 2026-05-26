@@ -5,6 +5,7 @@ SMODS.ConsumableType {
   secondary_colour = HEX("f4ae55"),
   collection_rows = { 6, 6 },
   shop_rate = 4,
+  select_card = "consumeables"
 }
 
 local set_cost_ref = Card.set_cost -- for some reason hooking Card:set_sell_value() didn't work?

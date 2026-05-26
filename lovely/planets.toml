@@ -1,5 +1,5 @@
 [manifest]
-version = "1.0.0"
+version = "0.1.0"
 dump_lua = true
 priority = 10
 

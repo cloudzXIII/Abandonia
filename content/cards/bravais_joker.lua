@@ -10,6 +10,8 @@ SMODS.Joker {
   config = { extra = { chips = 0, mult = 0, chipsadd = 10, multadd = 3 } },
 
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_mercurial
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
     return {
       vars = {
         card.ability.extra.chips,

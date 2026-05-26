@@ -9,7 +9,7 @@ SMODS.Joker {
   blueprint_compat = true,
   config = { extra = {
     immutable = {
-      jokers_destroyed = 0,
+      jokers_destroyed = 3,
       jokers_needed = 3,
     },
   } },
@@ -24,14 +24,14 @@ SMODS.Joker {
 
 
   calculate = function(self, card, context)
-    if context.abn_card_destroyed and not context.blueprint then
-      card.ability.extra.immutable.jokers_destroyed = card.ability.extra.immutable.jokers_destroyed + 1
-      if card.ability.extra.immutable.jokers_destroyed >= card.ability.extra.immutable.jokers_needed then
-        card.ability.extra.immutable.jokers_destroyed = 0
+    if context.abn_card_destroyed and context.card.ability.set == "Joker" and not context.blueprint then
+      card.ability.extra.immutable.jokers_destroyed = card.ability.extra.immutable.jokers_destroyed - 1
+      if card.ability.extra.immutable.jokers_destroyed <= 0 then
+        card.ability.extra.immutable.jokers_destroyed = 3
         if #G.consumeables.cards < G.consumeables.config.card_limit then
           SMODS.add_card { set = "calamity_cards" }
           return {
-            message = "+1",
+            message = localize("k_abn_plus_calamity"),
             colour = G.C.CALAMITY,
           }
         end

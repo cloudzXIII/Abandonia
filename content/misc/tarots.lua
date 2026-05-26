@@ -19,7 +19,7 @@ SMODS.Consumable({
   atlas = "AbandoniaTarots",
   cost = 4,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   loc_vars = function(self, info_queue, card)
   end,
   can_use = function(self, card)
@@ -55,7 +55,7 @@ SMODS.Consumable({
   atlas = "AbandoniaTarots",
   cost = 4,
   unlocked = true,
-  discovered = true,
+  discovered = false,
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = { key = 'abn_immortal', set = 'Other' }
     return { vars = { card.ability.extra.max } }
@@ -164,77 +164,18 @@ SMODS.Consumable {
 SMODS.Consumable {
   key = 'masquerade',
   set = 'Tarot',
-  pos = { x = 4, y = 0 },
   atlas = "AbandoniaTarots",
-  config = { max_highlighted = 3, },
+  pos = { x = 4, y = 0 },
+  config = { max_highlighted = 2, mod_conv = 'm_abn_infra' },
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_polkadot
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_oilfire
-    return { vars = { card.ability.max_highlighted, localize("k_abn_rankless") } }
-  end,
-  use = function(self, card, area, copier)
-    G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = 0.4,
-      func = function()
-        play_sound('tarot1')
-        card:juice_up(0.3, 0.5)
-        return true
-      end
-    }))
-    for i = 1, #G.hand.highlighted do
-      local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
-      G.E_MANAGER:add_event(Event({
-        trigger = 'after',
-        delay = 0.15,
-        func = function()
-          G.hand.highlighted[i]:flip()
-          play_sound('card1', percent)
-          G.hand.highlighted[i]:juice_up(0.3, 0.3)
-          return true
-        end
-      }))
-    end
-    delay(0.2)
-    for i = 1, #G.hand.highlighted do
-      local enhancement = pseudorandom_element({ "m_stone", "m_abn_polkadot", "m_abn_oilfire" })
-      G.E_MANAGER:add_event(Event({
-        trigger = 'after',
-        delay = 0.1,
-        func = function()
-          G.hand.highlighted[i]:set_ability(enhancement)
-          return true
-        end
-      }))
-    end
-    for i = 1, #G.hand.highlighted do
-      local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
-      G.E_MANAGER:add_event(Event({
-        trigger = 'after',
-        delay = 0.15,
-        func = function()
-          G.hand.highlighted[i]:flip()
-          play_sound('tarot2', percent, 0.6)
-          G.hand.highlighted[i]:juice_up(0.3, 0.3)
-          return true
-        end
-      }))
-    end
-    G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = 0.2,
-      func = function()
-        G.hand:unhighlight_all()
-        return true
-      end
-    }))
-    delay(0.5)
+    info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+    return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
   end,
   abn_artist_credits = {
     artist = "???",
   },
 }
+
 
 SMODS.Consumable {
   key = 'orbit',
@@ -250,7 +191,7 @@ SMODS.Consumable {
   },
 }
 
-SMODS.Tarot {
+SMODS.Consumable {
   key = 'toxin',
   set = 'Tarot',
   atlas = "AbandoniaTarots",
@@ -262,7 +203,7 @@ SMODS.Tarot {
   end,
 }
 
-SMODS.Tarot {
+SMODS.Consumable {
   key = 'rift',
   set = 'Tarot',
   atlas = "AbandoniaTarots",
@@ -274,7 +215,7 @@ SMODS.Tarot {
   end,
 }
 
-SMODS.Tarot {
+SMODS.Consumable {
   key = 'oil_drum',
   set = 'Tarot',
   atlas = "AbandoniaTarots",
@@ -286,7 +227,7 @@ SMODS.Tarot {
   end,
 }
 
-SMODS.Tarot {
+SMODS.Consumable {
   key = 'merchant',
   set = 'Tarot',
   atlas = "AbandoniaTarots",
@@ -298,7 +239,7 @@ SMODS.Tarot {
   end,
 }
 
-SMODS.Tarot {
+SMODS.Consumable {
   key = 'shovel',
   set = 'Tarot',
   atlas = "AbandoniaTarots",
@@ -310,7 +251,7 @@ SMODS.Tarot {
   end,
 }
 
-SMODS.Tarot {
+SMODS.Consumable {
   key = 'needlework',
   set = 'Tarot',
   atlas = "AbandoniaTarots",
@@ -323,13 +264,13 @@ SMODS.Tarot {
   in_pool = function(self)
     return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
   end,
-  
+
   abn_artist_credits = {
     artist = "Lizzie",
   },
 }
 
-SMODS.Tarot {
+SMODS.Consumable {
   key = 'teaset',
   set = 'Tarot',
   atlas = "AbandoniaTarots",
@@ -342,7 +283,42 @@ SMODS.Tarot {
   in_pool = function(self)
     return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
   end,
-  
+
+  abn_artist_credits = {
+    artist = "Lizzie",
+  },
+}
+
+SMODS.Consumable {
+  key = 'easel',
+  set = 'Tarot',
+  atlas = "AbandoniaTarots",
+  pos = { x = 1, y = 2 },
+  config = { max_highlighted = 2, mod_conv = 'm_abn_polkadot' },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+    return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+  end,
+
+  abn_artist_credits = {
+    artist = "Lizzie",
+  },
+}
+
+SMODS.Consumable {
+  key = 'terminal',
+  set = 'Tarot',
+  atlas = "AbandoniaTarots",
+  pos = { x = 2, y = 2 },
+  config = { max_highlighted = 1, mod_conv = 'm_abn_monitor' },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+    return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+  end,
+  in_pool = function(self)
+    return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+  end,
+
   abn_artist_credits = {
     artist = "Lizzie",
   },

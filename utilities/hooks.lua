@@ -96,7 +96,7 @@ function Card:remove()
 	return card_remove_ref(self)
 end
 
--- Hook to display perma bonus underneath jokers
+-- Hook to display perma bonus underneath jokers (code borrowed from Final Mix's unreleased update :>)
 local generate_UIBox_ability_table_ref = Card.generate_UIBox_ability_table
 function Card:generate_UIBox_ability_table(vars_only)
 	self.abn_extra_chips = nil

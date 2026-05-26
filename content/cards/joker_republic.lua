@@ -1,0 +1,70 @@
+-- Joker Republic (coded by cloudzXIII)
+SMODS.Joker {
+  key = 'joker_republic',
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+      }
+    }
+  end,
+
+  rarity = 2,
+  atlas = 'ABNJokerSheet7',
+  pos = { x = 0, y = 4 },
+  cost = 6,
+  discovered = false,
+  blueprint_compat = true,
+
+  config = {
+    extra = {
+      continent_used = false
+    },
+  },
+  calculate = function(self, card, context)
+    if context.setting_blind and context.blind.key == "bl_big" and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+      G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+      G.E_MANAGER:add_event(Event({
+        func = (function()
+          G.E_MANAGER:add_event(Event({
+            func = function()
+              SMODS.add_card {
+                set = 'continent',
+                key_append = 'abn_republic'
+              }
+              G.GAME.consumeable_buffer = 0
+              return true
+            end
+          }))
+          SMODS.calculate_effect({ message = localize('k_abn_plus_continent'), colour = G.C.SECONDARY_SET.continent },
+            context.blueprint_card or card)
+          return true
+        end)
+      }))
+      return nil, true
+    end
+    if context.using_consumeable and context.consumeable.ability.set == "continent" then
+      card.ability.extra.continent_used = true
+    end
+    if context.before and card.ability.extra.continent_used then
+      card.ability.extra.continent_used = false
+      local _rank = G.GAME.abn_rank_upgrades[context.scoring_hand[1].base.value]
+      update_hand_text(
+        { sound = "button", volume = 0.7, pitch = 0.8, delay = 0.3 },
+        { handname = _rank.name .. "s", chips = _rank.chips, mult = _rank.mult, level = _rank.level }
+      )
+      ABN.level_up_rank(context.scoring_hand[1], context.scoring_hand[1].base.value, 1)
+      update_hand_text(
+        { sound = "button", volume = 0.7, pitch = 1.1, delay = 0 },
+        { mult = 0, chips = 0, handname = "", level = "" }
+      )
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Littleroot",
+  },
+  in_pool = function(self)
+    return G.GAME.consumeable_usage_total and G.GAME.consumeable_usage_total.continent and
+        G.GAME.consumeable_usage_total.continent > 0
+  end
+}

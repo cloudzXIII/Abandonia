@@ -16,6 +16,10 @@ SMODS.Joker {
   pools = { ["Plagued"] = true, },
 
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_lucky
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_bonus
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_gold
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
     return {
       vars = {
         card.ability.extra.luckyechips,
@@ -38,9 +42,9 @@ SMODS.Joker {
       if card and card.config and card.config.center then
         local center = card.config.center
         if center == G.P_CENTERS.m_bonus or
-        center == G.P_CENTERS.m_lucky or
-        center == G.P_CENTERS.m_gold or
-        center == G.P_CENTERS.m_wild then
+            center == G.P_CENTERS.m_lucky or
+            center == G.P_CENTERS.m_gold or
+            center == G.P_CENTERS.m_wild then
           return true -- Both conditions met!
         end
       end

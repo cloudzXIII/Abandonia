@@ -534,3 +534,28 @@ SMODS.Tag {
     end
   end
 }
+
+SMODS.Tag {
+  key = "continent",
+  pos = { x = 3, y = 3 },
+  atlas = "AbandoniaTags",
+  apply = function(self, tag, context)
+    if context.type == 'store_joker_create' then
+      local card = SMODS.create_card {
+        set = "continent",
+        area = context.area,
+        key_append = "abn_continent"
+      }
+      create_shop_card_ui(card)
+      card.states.visible = false
+      tag:yep('+', G.C.SECONDARY_SET.continent, function()
+        card:start_materialize()
+        card.ability.couponed = true
+        card:set_cost()
+        return true
+      end)
+      tag.triggered = true
+      return card
+    end
+  end
+}

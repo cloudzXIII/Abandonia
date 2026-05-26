@@ -20,7 +20,7 @@ ABN.is_dark = function(card)
 end
 
 ABN.is_light = function(card)
-  if card:is_suit("Diamonds") or card:is_suit("Hearts") or card:is_suit('bunc_Fleurons') or card:is_suit('paperback_Stars') or card:is_suit("abn_Snow") or card:is_suit("abn_Penumbra") then
+  if card:is_suit("Diamonds") or card:is_suit("Hearts") or card:is_suit('bunc_Fleurons') or card:is_suit('paperback_Stars') or card:is_suit("abn_Snow") then
     return true
   end
   return false

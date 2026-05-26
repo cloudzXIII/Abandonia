@@ -1,7 +1,7 @@
 # HUGE Thank you to All In Jest (https://github.com/survovoaneend/All-In-Jest) borrowed from them ^-^
 
 [manifest]
-version = "1.0.0"
+version = "0.1.0"
 dump_lua = true
 priority = 10
 

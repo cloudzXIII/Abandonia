@@ -3,6 +3,7 @@ SMODS.Joker {
   key = 'stop_sign',
 
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.p_buffoon_normal_1
     return {
       vars = {
       }

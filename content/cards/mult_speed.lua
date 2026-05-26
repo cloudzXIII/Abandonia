@@ -2,6 +2,8 @@ SMODS.Joker {
   key = 'mult_speed',
 
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_mult
+    info_queue[#info_queue + 1] = G.P_TAGS.Red
     return {
       vars = {
         card.ability.extra.mult,

@@ -1,11 +1,4 @@
 SMODS.Atlas({
-  key = 'modicon',
-  path = 'modicon.png',
-  px = '34',
-  py = '34'
-})
-
-SMODS.Atlas({
   key = "AbandoniaStickers",
   path = "stickers.png",
   px = 71,
@@ -311,6 +304,13 @@ SMODS.Atlas({
   py = 95,
 })
 --#endregion
+
+SMODS.Atlas({
+  key = "ABNJokerCracked",
+  path = "jokers/cracked.png",
+  px = 71,
+  py = 95,
+})
 
 -- Animated Jokers (Popup Joker and Malware Joker)
 SMODS.Atlas {

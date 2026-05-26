@@ -8,11 +8,13 @@ SMODS.Joker {
   blueprint_compat = true,
   config = {
     extra = {
-      xmult = 1, 
+      xmult = 1,
       xmultadd = 1.5,
     }
   },
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_light_suit", set = "Other" }
+    info_queue[#info_queue + 1] = { key = "abn_dark_suit", set = "Other" }
     return {
       vars = {
         card.ability.extra.xmult,
@@ -39,7 +41,7 @@ SMODS.Joker {
 
       if (light_count + dark_count) > 0 and light_count % 2 == 0 and dark_count % 2 == 0 then
         card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmultadd
-        
+
         return {
           message = localize('k_upgrade_ex'),
           colour = G.C.MULT,

@@ -16,6 +16,10 @@ SMODS.Joker {
   pools = { ["Plagued"] = true, },
 
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_mult
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_glass
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
     return {
       vars = {
         card.ability.extra.multechips,
@@ -38,9 +42,9 @@ SMODS.Joker {
       if card and card.config and card.config.center then
         local center = card.config.center
         if center == G.P_CENTERS.m_glass or
-        center == G.P_CENTERS.m_mult or
-        center == G.P_CENTERS.m_steel or
-        center == G.P_CENTERS.m_stone then
+            center == G.P_CENTERS.m_mult or
+            center == G.P_CENTERS.m_steel or
+            center == G.P_CENTERS.m_stone then
           return true -- Both conditions met!
         end
       end

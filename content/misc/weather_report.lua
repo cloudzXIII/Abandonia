@@ -5,6 +5,7 @@ SMODS.ConsumableType {
   secondary_colour = HEX("79b5c2"),
   collection_rows = { 5, 5 },
   shop_rate = 4,
+  select_card = "consumeables",
 }
 
 ABN.WeatherReport = SMODS.Consumable:extend({
@@ -21,6 +22,7 @@ ABN.WeatherReport = SMODS.Consumable:extend({
   -- to do: come up with better extinct message
   destroy_at_end_of_round = function(self, card, context)
     if context.end_of_round and context.main_eval and not context.blueprint and context.game_over == false then
+      SMODS.calculate_context({ abn_weather_destroyed_but_not_triggered = true, card = card }) -- we love long contexts
       SMODS.calculate_effect({ message = localize("k_extinct_ex") }, card)
       SMODS.destroy_cards(card, nil, nil, true)
     end

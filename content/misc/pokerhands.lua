@@ -139,230 +139,230 @@ SMODS.Consumable {
 if not (next(SMODS.find_mod('Bunco')) or next(SMODS.find_mod("SixSuits")) or next(SMODS.find_mod("SpectrumFramework"))) then
   -- Spectrum Hands (Credits to SpectrumFramework, Paperback, Bunco and SixSuits)
 
-  if not next(SMODS.find_mod('Paperback')) then
-    SMODS.PokerHandPart { -- Spectrum Part - Copied from SpectrumFramework who got it from Bunco who got it from SixSuits
-      key = 'spectrum',
-      func = function(hand)
-        if #hand < 5 then return {} end
-        local suits = {}
+  --if not next(SMODS.find_mod('Paperback')) then
+  SMODS.PokerHandPart {   -- Spectrum Part - Copied from SpectrumFramework who got it from Bunco who got it from SixSuits
+    key = 'spectrum',
+    func = function(hand)
+      if #hand < 5 then return {} end
+      local suits = {}
 
-        for k, _ in pairs(SMODS.Suits) do
-          suits[k] = 0
-        end
+      for k, _ in pairs(SMODS.Suits) do
+        suits[k] = 0
+      end
 
-        for _, card in ipairs(hand) do
-          if not SMODS.has_any_suit(card) then
-            for suit, count in pairs(suits) do
-              if card:is_suit(suit, nil, true) and count == 0 then
-                suits[suit] = count + 1
-                break
-              end
+      for _, card in ipairs(hand) do
+        if not SMODS.has_any_suit(card) then
+          for suit, count in pairs(suits) do
+            if card:is_suit(suit, nil, true) and count == 0 then
+              suits[suit] = count + 1
+              break
             end
           end
         end
+      end
 
-        for _, card in ipairs(hand) do
-          if SMODS.has_any_suit(card) then
-            for suit, count in pairs(suits) do
-              if card:is_suit(suit, nil, true) and count == 0 then
-                suits[suit] = count + 1
-                break
-              end
+      for _, card in ipairs(hand) do
+        if SMODS.has_any_suit(card) then
+          for suit, count in pairs(suits) do
+            if card:is_suit(suit, nil, true) and count == 0 then
+              suits[suit] = count + 1
+              break
             end
           end
         end
-
-        local unique_suits = 0
-
-        for _, v in pairs(suits) do
-          if v > 0 then unique_suits = unique_suits + 1 end
-        end
-        return (unique_suits >= 5) and { hand } or {}
       end
-    }
 
-    SMODS.PokerHand { -- Spectrum (Copied from Paperback who referenced it from SixSuits, thanks!)
-      key = 'Spectrum',
-      visible = false,
-      chips = 50,
-      mult = 6,
-      l_chips = 20,
-      l_mult = 2,
-      example = {
-        { 'S_2', true },
-        { 'D_7', true },
-        { 'C_3', true },
-        { 'H_5', true, enhancement = "m_wild" },
-        { 'H_K', true },
-      },
+      local unique_suits = 0
 
-      evaluate = function(parts)
-        return parts.abn_spectrum
+      for _, v in pairs(suits) do
+        if v > 0 then unique_suits = unique_suits + 1 end
       end
-    }
-    SMODS.Consumable {
-      key = "korim",
-      set = "Planet",
-      cost = 4,
-      atlas = "AbandoniaPlanets",
-      pos = { x = 3, y = 2 },
-      config = { hand_type = "abn_Spectrum", softlock = true },
-      loc_vars = function(self, info_queue, card)
-        return {
-          vars = {
-            G.GAME.hands[card.ability.hand_type].level,
-            localize(card.ability.hand_type, 'poker_hands'),
-            G.GAME.hands[card.ability.hand_type].l_mult,
-            G.GAME.hands[card.ability.hand_type].l_chips,
-            colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
-          }
+      return (unique_suits >= 5) and { hand } or {}
+    end
+  }
+
+  SMODS.PokerHand {   -- Spectrum (Copied from Paperback who referenced it from SixSuits, thanks!)
+    key = 'Spectrum',
+    visible = false,
+    chips = 50,
+    mult = 6,
+    l_chips = 20,
+    l_mult = 2,
+    example = {
+      { 'S_2', true },
+      { 'D_7', true },
+      { 'C_3', true },
+      { 'H_5', true, enhancement = "m_wild" },
+      { 'H_K', true },
+    },
+
+    evaluate = function(parts)
+      return parts.abn_spectrum
+    end
+  }
+  SMODS.Consumable {
+    key = "korim",
+    set = "Planet",
+    cost = 4,
+    atlas = "AbandoniaPlanets",
+    pos = { x = 3, y = 2 },
+    config = { hand_type = "abn_Spectrum", softlock = true },
+    loc_vars = function(self, info_queue, card)
+      return {
+        vars = {
+          G.GAME.hands[card.ability.hand_type].level,
+          localize(card.ability.hand_type, 'poker_hands'),
+          G.GAME.hands[card.ability.hand_type].l_mult,
+          G.GAME.hands[card.ability.hand_type].l_chips,
+          colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
         }
-      end,
-      abn_artist_credits = {
-        artist = "Dallan"
-      },
-    }
-    SMODS.PokerHand { -- Straight Spectrum (Copied from Paperback who referenced it from SixSuits, thanks!)
-      key = 'Straight Spectrum',
-      visible = false,
-      chips = 120,
-      mult = 10,
-      l_chips = 45,
-      l_mult = 4,
-      example = {
-        { 'S_Q', true },
-        { 'H_3', true, enhancement = "m_wild" },
-        { 'C_T', true },
-        { 'D_9', true },
-        { 'H_8', true }
-      },
+      }
+    end,
+    abn_artist_credits = {
+      artist = "Dallan"
+    },
+  }
+  SMODS.PokerHand {   -- Straight Spectrum (Copied from Paperback who referenced it from SixSuits, thanks!)
+    key = 'Straight Spectrum',
+    visible = false,
+    chips = 120,
+    mult = 10,
+    l_chips = 45,
+    l_mult = 4,
+    example = {
+      { 'S_Q', true },
+      { 'H_3', true, enhancement = "m_wild" },
+      { 'C_T', true },
+      { 'D_9', true },
+      { 'H_8', true }
+    },
 
-      evaluate = function(parts)
-        if not next(parts.abn_spectrum) or not next(parts._straight) then return {} end
-        return { SMODS.merge_lists(parts.abn_spectrum, parts._straight) }
-      end,
+    evaluate = function(parts)
+      if not next(parts.abn_spectrum) or not next(parts._straight) then return {} end
+      return { SMODS.merge_lists(parts.abn_spectrum, parts._straight) }
+    end,
 
-      modify_display_text = function(self, _cards, scoring_hand)
-        local royal = true
-        for j = 1, #scoring_hand do
-          local rank = not SMODS.has_no_rank(scoring_hand[j]) and SMODS.Ranks[scoring_hand[j].base.value]
-          royal = rank and royal and (rank.key == 'Ace' or rank.key == '10' or rank.face)
-        end
-
-        if royal then
-          return self.key .. ' (Royal)'
-        end
+    modify_display_text = function(self, _cards, scoring_hand)
+      local royal = true
+      for j = 1, #scoring_hand do
+        local rank = not SMODS.has_no_rank(scoring_hand[j]) and SMODS.Ranks[scoring_hand[j].base.value]
+        royal = rank and royal and (rank.key == 'Ace' or rank.key == '10' or rank.face)
       end
-    }
-    SMODS.Consumable {
-      key = "malin",
-      set = "Planet",
-      cost = 4,
-      atlas = "AbandoniaPlanets",
-      pos = { x = 4, y = 2 },
-      config = { hand_type = "abn_Straight Spectrum", softlock = true },
-      loc_vars = function(self, info_queue, card)
-        return {
-          vars = {
-            G.GAME.hands[card.ability.hand_type].level,
-            localize(card.ability.hand_type, 'poker_hands'),
-            G.GAME.hands[card.ability.hand_type].l_mult,
-            G.GAME.hands[card.ability.hand_type].l_chips,
-            colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
-          }
-        }
-      end,
-      abn_artist_credits = {
-        artist = "Dallan"
-      },
-    }
-    SMODS.PokerHand { -- Spectrum House (Copied from Paperback who referenced it from SixSuits, thanks!)
-      key = 'Spectrum House',
-      above_hand = 'Flush House',
-      visible = false,
-      chips = 150,
-      mult = 15,
-      l_chips = 40,
-      l_mult = 4,
-      example = {
-        { 'S_Q', true },
-        { 'S_Q', true, enhancement = "m_wild" },
-        { 'C_Q', true },
-        { 'D_8', true },
-        { 'H_8', true }
-      },
 
-      evaluate = function(parts)
-        if #parts._3 < 1 or #parts._2 < 2 or not next(parts.abn_spectrum) then return {} end
-        return { SMODS.merge_lists(parts._all_pairs, parts.abn_spectrum) }
+      if royal then
+        return self.key .. ' (Royal)'
       end
-    }
-    SMODS.Consumable {
-      key = "thaeton",
-      set = "Planet",
-      cost = 4,
-      atlas = "AbandoniaPlanets",
-      pos = { x = 5, y = 2 },
-      config = { hand_type = "abn_Spectrum House", softlock = true },
-      loc_vars = function(self, info_queue, card)
-        return {
-          vars = {
-            G.GAME.hands[card.ability.hand_type].level,
-            localize(card.ability.hand_type, 'poker_hands'),
-            G.GAME.hands[card.ability.hand_type].l_mult,
-            G.GAME.hands[card.ability.hand_type].l_chips,
-            colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
-          }
+    end
+  }
+  SMODS.Consumable {
+    key = "malin",
+    set = "Planet",
+    cost = 4,
+    atlas = "AbandoniaPlanets",
+    pos = { x = 4, y = 2 },
+    config = { hand_type = "abn_Straight Spectrum", softlock = true },
+    loc_vars = function(self, info_queue, card)
+      return {
+        vars = {
+          G.GAME.hands[card.ability.hand_type].level,
+          localize(card.ability.hand_type, 'poker_hands'),
+          G.GAME.hands[card.ability.hand_type].l_mult,
+          G.GAME.hands[card.ability.hand_type].l_chips,
+          colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
         }
-      end,
-      abn_artist_credits = {
-        artist = "Dallan"
-      },
-    }
-    SMODS.PokerHand { -- Spectrum Five (Copied from Paperback who referenced it from SixSuits, thanks!)
-      key = 'Spectrum Five',
-      above_hand = 'Flush Five',
-      visible = false,
-      chips = 180,
-      mult = 18,
-      l_chips = 55,
-      l_mult = 3,
-      example = {
-        { 'S_7', true },
-        { 'D_7', true },
-        { 'H_7', true, enhancement = "m_wild" },
-        { 'H_7', true },
-        { 'C_7', true }
-      },
+      }
+    end,
+    abn_artist_credits = {
+      artist = "Dallan"
+    },
+  }
+  SMODS.PokerHand {   -- Spectrum House (Copied from Paperback who referenced it from SixSuits, thanks!)
+    key = 'Spectrum House',
+    above_hand = 'Flush House',
+    visible = false,
+    chips = 150,
+    mult = 15,
+    l_chips = 40,
+    l_mult = 4,
+    example = {
+      { 'S_Q', true },
+      { 'S_Q', true, enhancement = "m_wild" },
+      { 'C_Q', true },
+      { 'D_8', true },
+      { 'H_8', true }
+    },
 
-      evaluate = function(parts)
-        if not next(parts._5) or not next(parts.abn_spectrum) then return {} end
-        return { SMODS.merge_lists(parts._5, parts.abn_spectrum) }
-      end
-    }
-    SMODS.Consumable {
-      key = "muroth",
-      set = "Planet",
-      cost = 4,
-      atlas = "AbandoniaPlanets",
-      pos = { x = 0, y = 3 },
-      config = { hand_type = "abn_Spectrum Five", softlock = true },
-      loc_vars = function(self, info_queue, card)
-        return {
-          vars = {
-            G.GAME.hands[card.ability.hand_type].level,
-            localize(card.ability.hand_type, 'poker_hands'),
-            G.GAME.hands[card.ability.hand_type].l_mult,
-            G.GAME.hands[card.ability.hand_type].l_chips,
-            colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
-          }
+    evaluate = function(parts)
+      if #parts._3 < 1 or #parts._2 < 2 or not next(parts.abn_spectrum) then return {} end
+      return { SMODS.merge_lists(parts._all_pairs, parts.abn_spectrum) }
+    end
+  }
+  SMODS.Consumable {
+    key = "thaeton",
+    set = "Planet",
+    cost = 4,
+    atlas = "AbandoniaPlanets",
+    pos = { x = 5, y = 2 },
+    config = { hand_type = "abn_Spectrum House", softlock = true },
+    loc_vars = function(self, info_queue, card)
+      return {
+        vars = {
+          G.GAME.hands[card.ability.hand_type].level,
+          localize(card.ability.hand_type, 'poker_hands'),
+          G.GAME.hands[card.ability.hand_type].l_mult,
+          G.GAME.hands[card.ability.hand_type].l_chips,
+          colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
         }
-      end,
-      abn_artist_credits = {
-        artist = "Dallan"
-      },
-    }
-  end
+      }
+    end,
+    abn_artist_credits = {
+      artist = "Dallan"
+    },
+  }
+  SMODS.PokerHand {   -- Spectrum Five (Copied from Paperback who referenced it from SixSuits, thanks!)
+    key = 'Spectrum Five',
+    above_hand = 'Flush Five',
+    visible = false,
+    chips = 180,
+    mult = 18,
+    l_chips = 55,
+    l_mult = 3,
+    example = {
+      { 'S_7', true },
+      { 'D_7', true },
+      { 'H_7', true, enhancement = "m_wild" },
+      { 'H_7', true },
+      { 'C_7', true }
+    },
+
+    evaluate = function(parts)
+      if not next(parts._5) or not next(parts.abn_spectrum) then return {} end
+      return { SMODS.merge_lists(parts._5, parts.abn_spectrum) }
+    end
+  }
+  SMODS.Consumable {
+    key = "muroth",
+    set = "Planet",
+    cost = 4,
+    atlas = "AbandoniaPlanets",
+    pos = { x = 0, y = 3 },
+    config = { hand_type = "abn_Spectrum Five", softlock = true },
+    loc_vars = function(self, info_queue, card)
+      return {
+        vars = {
+          G.GAME.hands[card.ability.hand_type].level,
+          localize(card.ability.hand_type, 'poker_hands'),
+          G.GAME.hands[card.ability.hand_type].l_mult,
+          G.GAME.hands[card.ability.hand_type].l_chips,
+          colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+        }
+      }
+    end,
+    abn_artist_credits = {
+      artist = "Dallan"
+    },
+  }
+  --end
   SMODS.PokerHand { -- Spectrum Six
     key = 'Spectrum Six',
     above_hand = 'Spectrum Five',
@@ -372,12 +372,12 @@ if not (next(SMODS.find_mod('Bunco')) or next(SMODS.find_mod("SixSuits")) or nex
     l_chips = 55,
     l_mult = 3,
     example = {
-      { 'S_7', true },
-      { 'D_7', true },
+      { 'S_7',      true },
+      { 'D_7',      true },
       { 'abn_SN_7', true },
-      { 'H_7', true },
-      { 'C_7', true },
-      { 'H_7', true, enhancement = "m_wild" },
+      { 'H_7',      true },
+      { 'C_7',      true },
+      { 'H_7',      true, enhancement = "m_wild" },
     },
 
     evaluate = function(parts, hand)

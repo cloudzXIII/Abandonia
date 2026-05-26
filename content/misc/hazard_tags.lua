@@ -24,7 +24,7 @@ SMODS.Tag {
   key = "hazard_uncommon",
   min_ante = 2,
   atlas = "AbandoniaHazardTags",
-  pos = { x = 0, y = 0 },
+  pos = { x = 3, y = 3 },
   config = { hazard = true, count = 2 },
   loc_vars = function(self, info_queue, tag)
     return { vars = { tag.config.count } }
@@ -66,7 +66,7 @@ SMODS.Tag {
   key = "hazard_rare",
   min_ante = 2,
   atlas = "AbandoniaHazardTags",
-  pos = { x = 1, y = 0 },
+  pos = { x = 4, y = 3 },
   config = { hazard = true, count = 2 },
   loc_vars = function(self, info_queue, tag)
     return { vars = { tag.config.count } }
@@ -117,7 +117,7 @@ SMODS.Tag {
   key = "hazard_super",
 
   atlas = "AbandoniaHazardTags",
-  pos = { x = 2, y = 0 },
+  pos = { x = 5, y = 3 },
   config = { hazard = true },
 
   apply = function(self, tag, context)
@@ -150,7 +150,7 @@ SMODS.Tag {
   key = "hazard_parallel",
 
   atlas = "AbandoniaHazardTags",
-  pos = { x = 3, y = 0 },
+  pos = { x = 4, y = 4 },
   config = { hazard = true },
   apply = function(self, tag, context)
     if context.type == 'store_joker_create' then
@@ -182,7 +182,7 @@ SMODS.Tag {
   key = "hazard_legendary",
 
   atlas = "AbandoniaHazardTags",
-  pos = { x = 4, y = 0 },
+  pos = { x = 5, y = 4 },
   config = { hazard = true },
   apply = function(self, tag, context)
     if context.type == 'store_joker_create' then
@@ -214,7 +214,7 @@ SMODS.Tag {
   key = "hazard_negative",
 
   atlas = "AbandoniaHazardTags",
-  pos = { x = 0, y = 1 },
+  pos = { x = 0, y = 4 },
   config = { hazard = true, edition = "e_negative", count = 3 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
@@ -265,7 +265,7 @@ SMODS.Tag {
   key = "hazard_foil",
 
   atlas = "AbandoniaHazardTags",
-  pos = { x = 1, y = 1 },
+  pos = { x = 1, y = 4 },
   config = { hazard = true, edition = "e_foil", count = 3 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
@@ -316,7 +316,7 @@ SMODS.Tag {
   key = "hazard_holo",
 
   atlas = "AbandoniaHazardTags",
-  pos = { x = 2, y = 1 },
+  pos = { x = 2, y = 4 },
   config = { hazard = true, edition = "e_holo", count = 3 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
@@ -367,7 +367,7 @@ SMODS.Tag {
   key = "hazard_polychrome",
 
   atlas = "AbandoniaHazardTags",
-  pos = { x = 3, y = 1 },
+  pos = { x = 3, y = 4 },
   config = { hazard = true, edition = "e_polychrome", count = 3 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
@@ -418,7 +418,7 @@ SMODS.Tag {
   key = "hazard_gloss",
 
   atlas = "AbandoniaHazardTags",
-  pos = { x = 4, y = 1 },
+  pos = { x = 0, y = 0 },
   config = { hazard = true, edition = "e_abn_gloss", count = 1 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_gloss
@@ -469,7 +469,7 @@ SMODS.Tag {
   key = "hazard_pearlenscene",
 
   atlas = "AbandoniaHazardTags",
-  pos = { x = 0, y = 2 },
+  pos = { x = 1, y = 0 },
   config = { hazard = true, edition = "e_abn_pearlenscene", count = 1 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_pearlenscene
@@ -520,7 +520,7 @@ SMODS.Tag {
   key = "hazard_iridescent",
 
   atlas = "AbandoniaHazardTags",
-  pos = { x = 1, y = 2 },
+  pos = { x = 2, y = 0 },
   config = { hazard = true, edition = "e_abn_iridescent", count = 1 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_iridescent
@@ -571,7 +571,7 @@ SMODS.Tag {
   key = "hazard_abandon",
 
   atlas = "AbandoniaHazardTags",
-  pos = { x = 2, y = 2 },
+  pos = { x = 3, y = 0 },
   config = { hazard = true, edition = "e_abn_abandond", count = 1 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_abandond
@@ -622,7 +622,7 @@ SMODS.Tag {
   key = "hazard_sunscourge",
 
   atlas = "AbandoniaHazardTags",
-  pos = { x = 3, y = 2 },
+  pos = { x = 4, y = 0 },
   config = { hazard = true, edition = "e_abn_sunscourge", count = 1 },
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_sunscourge
