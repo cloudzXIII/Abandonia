@@ -1,0 +1,19 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = -1
+
+# patch for packs
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+match_indent = true
+position = 'after'
+pattern = '''
+booster_obj = self.config.center
+'''
+payload = '''
+if self.config.center and self.config.center.key and not string.find(self.config.center.key, "buffoon") and not string.find(self.config.center.key, "standard") and next(SMODS.find_card('j_abn_jolly_roger')) then
+    self.ability.choose = self.ability.choose + 1
+end
+'''
