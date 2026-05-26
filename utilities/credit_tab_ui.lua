@@ -503,7 +503,7 @@ function ABN.credits_tab()
                 nodes = {
                   SMODS.GUI.scrollbar({
                     h = 7,
-                    --w = 0.3,
+                    w = 0.3,
                     scroll_mult = 1.5,
                     colour = ABN.badge_colour,
                     bg_colour = G.C.BLACK,
