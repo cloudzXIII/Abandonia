@@ -4310,6 +4310,191 @@ return {
 		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}",
         }
       },
+	  j_abn_destination_unknown  = {
+        name = "Destination Unknown",
+        text = {
+          "When {C:attention}Blind is selected{} gain {C:chips}+#3#{} Chips per missing {C:attention}rank{} in the full deck",
+		  "If this has {C:dark_edition}Abandoned edition{} it gains an additional {X:chips,C:white}X#4#{} Chips per missing {C:attention}rank{}",
+		  "{C:inactive}Currently: {X:chips,C:white}X#1#{} {C:inactive}Chips{} {C:chips}+#2#{} {C:inactive}Chips{}",
+        }
+      },
+	  j_abn_under_construction  = {
+        name = "Under Construction",
+        text = {
+          "After {C:attention}Boss Blind has been defeated{} sell this Joker to create {C:attention}any{} Joker in your collection",
+		  "{C:inactive}(can only create{} {C:common}Common{} {C:uncommon}Uncommon{} {C:inactive}and{} {C:rare}Rare{}{C:inactive}){}",
+        }
+      },
+	  j_abn_legends_remade  = {
+        name = "Legends Remade",
+        text = {
+          "If you own a {C:legendary}Legendary{} {C:money}sell{} {C:attention}this joker{}",
+		  "to create any {C:legendary}Legendary{} from your collection",
+        }
+      },
+	  j_abn_plastic_joker  = {
+        name = "Plastic Joker",
+        text = {
+          "When {C:abn_black_seal}Petroleum{} cards turn into {C:abn_black_seal}Oilfire{} cards",
+		  "{C:attention}Level up{} the {C:planet}Planet{} {C:attention}Rank{} of the {C:attention}lowest{} rank held in hand",
+        }
+      },
+	  j_abn_propagator_joker  = {
+        name = "Propagator Joker",
+        text = {
+          "Each scoring card gives {X:mult,C:white}^2.0{} Mult per card that share the same {C:attention}rank and {C:attention}suit",
+		  "{C:green}#1# in #2#{} to create a copy of the {C:attention}First{} scoring card",
+        }
+      },
+	  j_abn_computerworm_joker  = {
+        name = "Computerworm Joker",
+        text = {
+          "When {C:attention}Blind is selected{} {C:mult}destroy{} the {C:attention}leftmost{} Joker and create a {C:dark_edition}Negative{} copy of this Joker without {C:abn_eternal}Eternal{}",
+		  "This Joker gives {X:mult,C:white}^#3#{} Mult and {X:chips,C:white}^#4#{} Chips per copy of itself",
+		  "{C:inactive}Currently:{} {X:mult,C:white}^#1#{} {C:inactive}Mult{} {X:chips,C:white}^#2#{} {C:inactive}Chips{}",
+        }
+      },
+	  j_abn_naneinf_joker  = {
+        name = "NANEINF Joker",
+        text = {
+          "Scaling Jokers scale {C:attention}twice{} as fast",
+		  "Retrigger the {C:attention}first{} scaling Joker",
+        }
+      },
+	  j_abn_noneuclidean_joker  = {
+        name = "Non-euclidean Joker",
+        text = {
+          "When another Joker gains {C:chips}Chips{} or {C:mult}Mult{} this Joker gains {C:attention}double{} that amount",
+		  "{C:Inactive}Currently:{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#1#{} {C:inactive}Chips{}",
+        }
+      },
+	  j_abn_aseprite_joker  = {
+        name = "Aseprite Joker",
+        text = {
+          "The {C:attention}First{} played {C:spades}Dark{} Suit card becomes {C:dark_edition}Negative{}",
+		  "Gain {C:chips}+#6#{} Chips and {C:mult}+#5#{} Mult per {C:dark_edition}Negative{} {C:spades}Dark{} Suit played",
+		  "If this Joker has {C:dark_edition}Negative{} gain {X:mult,C:white}X#4#{} Mult per played {C:dark_edition}Negative{} card",
+		  "{C:inactive}Currently: {X:mult,C:white}X#1#{} {C:inactive}Mult{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#3#{} {C:inactive}Chips{}"
+        }
+      },
+	  j_abn_cupon_joker  = {
+        name = "Cupon Joker",
+        text = {
+          "Consumables that only select {C:attention}1{} target can select {C:attention}2{}"
+        }
+      },
+	  j_abn_entropic_spades  = {
+        name = "Entropic Spades",
+        text = {
+          "Scored {C:spades}Spades{} are {C:mult}destroyed{} and their {C:chips}Chips{} are added to this joker",
+		  "{C:inactive}Currently:{} {C:chips}+#1#{} {C:inactive}Chips",
+        }
+      },
+	  j_abn_entropic_hearts  = {
+        name = "Entropic Hearts",
+        text = {
+          "Scored {C:hearts}Hearts{} are {C:mult}destroyed{} and their {C:chips}Chips{} are added to this joker",
+		  "{C:inactive}Currently:{} {C:chips}+#1#{} {C:inactive}Chips",
+        }
+      },
+	  j_abn_entropic_clubs  = {
+        name = "Entropic Clubs",
+        text = {
+          "Scored {C:clubs}Clubs{} are {C:mult}destroyed{} and their {C:chips}Chips{} are added to this joker",
+		  "{C:inactive}Currently:{} {C:chips}+#1#{} {C:inactive}Chips",
+        }
+      },
+	  j_abn_entropic_diamonds  = {
+        name = "Entropic Diamonds",
+        text = {
+          "Scored {C:diamonds}Diamonds{} are {C:mult}destroyed{} and their {C:chips}Chips{} are added to this joker",
+		  "{C:inactive}Currently:{} {C:chips}+#1#{} {C:inactive}Chips",
+        }
+      },
+	  j_abn_joker_in_hiding  = {
+        name = "Joker In Hiding",
+        text = {
+          "Whenever you select a {C:attention}Joker{} from a {C:attention}pack{} it gains {C:attention}Flipped{} and {C:dark_edition}Holographic{}",
+		  "Flipped Jokers and Cards give {C:money}$#1#{}",
+        }
+      },
+	  j_abn_joker_family  = {
+        name = "Joker & Family",
+        text = {
+          "If you own {C:common}Common{} {C:uncommon}Uncommon{} {C:rare}Rare{} and {C:attention}Comedian{} Jokers",
+		  "Lower all {C:attention}blind requirements{} by {C:attention}50%{} and give {X:mult,C:white}X#2#{} Mult for each {C:attention}unique{} Joker {C:attention}rarity{}",
+		  "{C:inactive}Currently: {X:mult,C:white}X#1#{} {C:inactive}Mult{}",
+        }
+      },
+	  j_abn_jolly_roger  = {
+        name = "Jolly Roger",
+        text = {
+          "Can {C:attention}select{} an {C:attention}extra{} card when selecting {C:attention}consumables{} from {C:attention}packs{}",
+		  "{C:money}Selling{} consumables gives different effects:",
+		  "#1#",
+		  "#2#",
+		  "#3#",
+		  "#4#",
+		  "#5#",
+		  "#6#",
+		  "#7#"
+        }
+      },
+	  j_abn_dreamstalker_joker  = {
+        name = "Dreamstalker Joker",
+        text = {
+          "If you have an {C:attention}Even{} number of {C:mult}Discards{}",
+		  "{C:diamonds}Light{} suits give {C:mult}+#1# Mult{} when scored for every {C:spades}Dark{} suit card scored before",
+		  "If you have an {C:attention}Odd{} number of {C:mult}Discards{}",
+		  "{C:spades}Dark{} suits give {C:mult}+#1# Mult{} when scored for every {C:diamonds}Light{} suit card scored before",
+        }
+      },
+	  j_abn_carnaval_joker  = {
+        name = "Carnaval Joker",
+        text = {
+          "If scoring hand contains a {C:abn_penumbra}Penumbra{} Suit and another {C:spades}Dark{} Suit and {C:diamonds}Light{} Suit",
+		  "All scoring cards gain {C:mult}+#1#{} Mult"
+        }
+      },
+	  j_abn_painyatta  = {
+        name = "Painyatta",
+        text = {
+          "When a {C:attention}Voucher{} is purchased redeem {C:attention}#1#{} other random Vouchers for {C:money}free{}"
+        }
+      },
+	  j_abn_puddles  = {
+        name = "Puddles",
+        text = {
+          "{X:mult,C:white}X#2#{} Mult per Joker to the {C:attention}right{}",
+          "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{}",
+        }
+      },
+	  j_abn_talstaff  = {
+        name = "Talstaff",
+        text = {
+          "{X:mult,C:white}X#2#{} Mult per Joker to the {C:attention}left{}",
+          "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{}",
+        }
+      },
+	  j_abn_m_earl  = {
+        name = "M. Earl",
+        text = {
+          "Lower all {C:attention}Blind requirements{} by {C:attention}90%{}",
+        }
+      },
+	  j_abn_loki  = {
+        name = "Loki",
+        text = {
+          "When a {C:attention}Comedian{} Joker triggers all other {C:attention}non-Comedian{} Jokers gain {C:mult}+#1#{} Mult",
+        }
+      },
+	  j_abn_arkham  = {
+        name = "Arkham",
+        text = {
+          "Scoring {C:attention}Even{} cards {C:attention}level up{} their {C:planet}planet{} {C:attention}rank{} equal to the number of {C:attention}Odd{} scoring cards",
+		  "Scoring {C:attention}Odd{} cards {C:attention}level up{} their {C:planet}planet{} {C:attention}rank{} equal to the number of {C:attention}Even{} scoring cards",
+        }
+      },
     },
 
     Spectral = {
