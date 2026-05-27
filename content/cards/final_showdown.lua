@@ -95,9 +95,6 @@ SMODS.Joker {
       G.FUNCS.reroll_boss()
     end
   end,
-  remove_from_deck = function(self, card, from_debuff)
-    G.jokers.config.card_limit = G.jokers.config.card_limit - card.ability.extra.joker_slots
-  end,
   abn_artist_credits = {
     artist = "superb_thing"
   },

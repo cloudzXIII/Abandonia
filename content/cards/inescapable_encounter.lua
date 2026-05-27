@@ -32,7 +32,7 @@ end
 
 SMODS.Joker {
   key = 'inescapable_encounter',
-  rarity = 1,
+  rarity = 3,
   atlas = 'ABNJokerSheet3',
   pos = { x = 7, y = 3 },
   cost = 4,

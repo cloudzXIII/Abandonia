@@ -1,6 +1,6 @@
 SMODS.Joker {
   key = 'fraud_soul',
-  rarity = 1,
+  rarity = 2,
   atlas = 'ABNJokerSheet4',
   pos = { x = 4, y = 1 },
   soul_pos = { x = 5, y = 1 },
