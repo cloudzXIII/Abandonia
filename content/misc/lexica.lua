@@ -419,10 +419,16 @@ SMODS.Consumable {
     return { vars = {} }
   end,
   calculate = function(self, card, context)
-    if context.poker_hand_changed and context.new_level > context.old_level then
+    if context.poker_hand_changed and context.new_level > context.old_level and not card.ability.processing_level_up then
+      
+      -- Set a flag to prevent the infinite loop
+      card.ability.processing_level_up = true
+      
       SMODS.calculate_effect({ message = localize('k_level_up_ex'), colour = G.C.FILTER }, card)
       SMODS.smart_level_up_hand(card, ABN.most_played_hand(), nil, 1)
       abn_activate_letter(self, card)
+
+      card.ability.processing_level_up = false
     end
   end,
   abn_artist_credits = {
