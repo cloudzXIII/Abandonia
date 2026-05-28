@@ -6411,6 +6411,14 @@ return {
           "{C:attention}#2#",
         },
       },
+      c_abn_unmake = {
+        name = "Unmake",
+        text = {
+          "Converts up to",
+          "{C:attention}#1#{} selected cards",
+          "to {V:1}#2#{}",
+        },
+      },
     },
     calamity_cards = {
       c_abn_cyclone = {

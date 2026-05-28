@@ -44,49 +44,6 @@ SMODS.Consumable({
   },
 })
 
-SMODS.Consumable({
-  key = "eon",
-  set = "Tarot",
-  hidden = true,
-  soul_set = "Tarot",
-  soul_rate = 0.025,
-  config = { extra = { max = 2 } },
-  pos = { x = 2, y = 0 },
-  atlas = "AbandoniaTarots",
-  cost = 4,
-  unlocked = true,
-  discovered = false,
-  loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = { key = 'abn_immortal', set = 'Other' }
-    return { vars = { card.ability.extra.max } }
-  end,
-  can_use = function(self, card)
-    if G.jokers and #G.jokers.highlighted > 0 and #G.jokers.highlighted < (card.ability.extra.max + 1) then
-      local no = false
-      for k, v in pairs(G.jokers.highlighted) do
-        if v.eternal_compat == false then
-          no = true
-        end
-      end
-
-      if not no then
-        return true
-      end
-    end
-    return false
-  end,
-  use = function(self, card)
-    for k, v in pairs(G.jokers.highlighted) do
-      v:add_sticker("abn_immortal", true)
-      v:juice_up()
-      G.jokers:unhighlight_all()
-    end
-  end,
-  abn_artist_credits = {
-    artist = "b.b.b.b",
-  },
-})
-
 SMODS.Consumable {
   key = 'wheel_of_fate',
   set = 'Tarot',
@@ -146,6 +103,49 @@ SMODS.Consumable {
     artist = "Grass",
   },
 }
+
+SMODS.Consumable({
+  key = "eon",
+  set = "Tarot",
+  hidden = true,
+  soul_set = "Tarot",
+  soul_rate = 0.025,
+  config = { extra = { max = 2 } },
+  pos = { x = 2, y = 0 },
+  atlas = "AbandoniaTarots",
+  cost = 4,
+  unlocked = true,
+  discovered = false,
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = 'abn_immortal', set = 'Other' }
+    return { vars = { card.ability.extra.max } }
+  end,
+  can_use = function(self, card)
+    if G.jokers and #G.jokers.highlighted > 0 and #G.jokers.highlighted < (card.ability.extra.max + 1) then
+      local no = false
+      for k, v in pairs(G.jokers.highlighted) do
+        if v.eternal_compat == false then
+          no = true
+        end
+      end
+
+      if not no then
+        return true
+      end
+    end
+    return false
+  end,
+  use = function(self, card)
+    for k, v in pairs(G.jokers.highlighted) do
+      v:add_sticker("abn_immortal", true)
+      v:juice_up()
+      G.jokers:unhighlight_all()
+    end
+  end,
+  abn_artist_credits = {
+    artist = "b.b.b.b",
+  },
+})
 
 SMODS.Consumable {
   key = 'snowflake',
@@ -334,4 +334,18 @@ SMODS.Consumable {
     info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
     return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
   end,
+}
+
+SMODS.Consumable {
+  key = 'unmake',
+  set = 'Tarot',
+  pos = { x = 4, y = 2 },
+  atlas = "AbandoniaTarots",
+  config = { max_highlighted = 3, suit_conv = 'abn_suitless' },
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] } } }
+  end,
+  abn_artist_credits = {
+    artist = "Comykel",
+  },
 }
