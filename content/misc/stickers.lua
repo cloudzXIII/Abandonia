@@ -1,7 +1,7 @@
 SMODS.Sticker {
   key = 'pump_up',
   atlas = "AbandoniaStickers",
-  pos = { x = 0, y = 0 },
+  pos = { x = 1, y = 5 },
   badge_colour = HEX("fda0a5"),
   loc_vars = function(self, info_queue, card)
     return {
@@ -25,7 +25,7 @@ SMODS.Sticker {
 SMODS.Sticker {
   key = 'immortal',
   atlas = "AbandoniaStickers",
-  pos = { x = 2, y = 0 },
+  pos = { x = 0, y = 0 },
   badge_colour = HEX("daa54e"),
   sets = { Joker = true },
   calculate = function(self, card, context)
@@ -61,7 +61,7 @@ end
 SMODS.Sticker {
   key = 'bullseye',
   atlas = "AbandoniaStickers",
-  pos = { x = 3, y = 0 },
+  pos = { x = 4, y = 5 },
   badge_colour = HEX("3cb4ff"),
   loc_vars = function(self, info_queue, card)
     return {
@@ -83,7 +83,7 @@ SMODS.Sticker {
 SMODS.Sticker {
   key = 'shovel',
   atlas = "AbandoniaStickers",
-  pos = { x = 4, y = 1 },
+  pos = { x = 1, y = 6 },
   badge_colour = HEX("a6a6a6"),
   loc_vars = function(self, info_queue, card)
     return {
@@ -105,7 +105,7 @@ SMODS.Sticker {
 SMODS.Sticker {
   key = 'downgrade',
   atlas = "AbandoniaStickers",
-  pos = { x = 5, y = 4 },
+  pos = { x = 4, y = 1 },
   badge_colour = HEX("b73d2f"),
   loc_vars = function(self, info_queue, card)
     return {
@@ -127,7 +127,7 @@ SMODS.Sticker {
 SMODS.Sticker {
   key = 'violet',
   atlas = "AbandoniaStickers",
-  pos = { x = 2, y = 4 },
+  pos = { x = 1, y = 1 },
   badge_colour = HEX("8a71e1"),
   loc_vars = function(self, info_queue, card)
     return {
@@ -158,7 +158,7 @@ SMODS.Sticker {
 SMODS.Sticker {
   key = "weight",
   atlas = "AbandoniaStickers",
-  pos = { x = 1, y = 2 },
+  pos = { x = 1, y = 4 },
   badge_colour = HEX("676388"),
   sets = { Joker = true },
 
@@ -200,7 +200,7 @@ SMODS.Sticker {
 SMODS.Sticker {
   key = "crown",
   atlas = "AbandoniaStickers",
-  pos = { x = 1, y = 0 },
+  pos = { x = 2, y = 5 },
   badge_colour = HEX("fdcf51"),
   config = {},
 }
@@ -217,7 +217,7 @@ end
 SMODS.Sticker {
   key = "flip",
   atlas = "AbandoniaStickers",
-  pos = { x = 0, y = 5 },
+  pos = { x = 0, y = 2 },
   badge_colour = HEX("1f4a8f"),
 
   config = {},
@@ -231,7 +231,7 @@ SMODS.Sticker {
 SMODS.Sticker {
   key = "fragile",
   atlas = "AbandoniaStickers",
-  pos = { x = 2, y = 6 },
+  pos = { x = 3, y = 3 },
   badge_colour = HEX("e6d5c3"),
   sets = { Default = true },
 
@@ -255,7 +255,7 @@ SMODS.Sticker {
       card.glass_trigger = true
       return { remove = true }
     end
-	if context.pre_joker or (context.main_scoring and context.cardarea == G.play) and SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
+    if context.pre_joker or (context.main_scoring and context.cardarea == G.play) and SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
       G.E_MANAGER:add_event(Event({
         trigger = 'before',
         delay = 0.0,
@@ -270,7 +270,7 @@ SMODS.Sticker {
 SMODS.Sticker {
   key = "abn_possibility",
   atlas = "AbandoniaStickers",
-  pos = { x = 3, y = 4 },
+  pos = { x = 2, y = 1 },
   badge_colour = HEX("469c79"),
   config = {},
   calculate = function(self, card, context)
@@ -284,7 +284,7 @@ SMODS.Sticker {
 SMODS.Sticker({
   key = "question_mark",
   atlas = "AbandoniaStickers",
-  pos = { x = 4, y = 3 },
+  pos = { x = 2, y = 0 },
   badge_colour = HEX("e5e4e2"),
   config = {},
 
@@ -300,7 +300,7 @@ SMODS.Sticker({
 SMODS.Sticker({
   key = "square",
   atlas = "AbandoniaStickers",
-  pos = { x = 1, y = 4 },
+  pos = { x = 0, y = 1 },
   badge_colour = HEX("95d5f5"),
   loc_vars = function(self, info_queue, card)
     return {
@@ -327,7 +327,7 @@ SMODS.Sticker({
 SMODS.Sticker({
   key = "lightning_bolt",
   atlas = "AbandoniaStickers",
-  pos = { x = 4, y = 0 },
+  pos = { x = 0, y = 7 },
   badge_colour = HEX("83e9f8"),
   loc_vars = function(self, info_queue, card)
     return {
@@ -364,7 +364,7 @@ SMODS.Sticker({
 SMODS.Sticker({
   key = "top_hat",
   atlas = "AbandoniaStickers",
-  pos = { x = 5, y = 0 },
+  pos = { x = 1, y = 7 },
   badge_colour = HEX("5e7977"),
   loc_vars = function(self, info_queue, card)
     return {
@@ -401,7 +401,7 @@ SMODS.Sticker({
 SMODS.Sticker({
   key = "cat_eye",
   atlas = "AbandoniaStickers",
-  pos = { x = 0, y = 1 },
+  pos = { x = 2, y = 7 },
   badge_colour = HEX("74cca8"),
   loc_vars = function(self, info_queue, card)
     return {
@@ -440,7 +440,7 @@ SMODS.Sticker({
 SMODS.Sticker({
   key = "negative_plus",
   atlas = "AbandoniaStickers",
-  pos = { x = 3, y = 3 },
+  pos = { x = 1, y = 0 },
   badge_colour = HEX("454e4d"),
   config = {},
 
@@ -456,7 +456,7 @@ SMODS.Sticker({
 SMODS.Sticker({
   key = "eraser",
   atlas = "AbandoniaStickers",
-  pos = { x = 5, y = 3 },
+  pos = { x = 3, y = 0 },
   badge_colour = HEX("ffffff"),
   config = {},
 
@@ -474,7 +474,7 @@ SMODS.Sticker({
 SMODS.Sticker {
   key = "lucky",
   atlas = "AbandoniaStickers",
-  pos = { x = 0, y = 4 },
+  pos = { x = 4, y = 0 },
   badge_colour = HEX("75ce84"),
 
   loc_vars = function(self, info_queue, card)
@@ -506,7 +506,7 @@ SMODS.Sticker {
 SMODS.Sticker {
   key = 'glove_hand',
   atlas = "AbandoniaStickers",
-  pos = { x = 5, y = 1 },
+  pos = { x = 4, y = 6 },
   badge_colour = HEX("fd5f55"),
   loc_vars = function(self, info_queue, card)
     return {
@@ -528,25 +528,25 @@ SMODS.Sticker {
 SMODS.Sticker {
   key = 'spicy',
   atlas = "AbandoniaStickers",
-  pos = { x = 2, y = 1 },
+  pos = { x = 3, y = 5 },
   badge_colour = HEX("eb6b43"),
-  
+
   calculate = function(self, card, context)
     -- Trigger at the end of scoring if the round is won
     if context.final_scoring_step then
       local current_score = SMODS.calculate_round_score()
       local target_score = G.GAME.blind.chips
-      
+
       if current_score > target_score then
         -- Define the specific keys we are allowed to double
         local valid_keys = {
-          chips = true, 
-          mult = true, 
+          chips = true,
+          mult = true,
         }
 
         local doubled = false
 
-        
+
         if type(card.ability.extra) == "table" then
           for k, v in pairs(card.ability.extra) do
             if valid_keys[k] and type(v) == "number" then
@@ -555,7 +555,7 @@ SMODS.Sticker {
             end
           end
         elseif type(card.ability.extra) == "number" then
-        
+
         end
 
         for k, v in pairs(card.ability) do
@@ -578,24 +578,23 @@ SMODS.Sticker {
 }
 
 SMODS.Sticker {
-    key = 'x',
-    atlas = "AbandoniaStickers",
-    pos = { x = 3, y = 1 },
-    badge_colour = HEX("f2994b"),
-    config = { xmult = 5 },
-    loc_vars = function(self, info_queue, card)
-        return { vars = { (card.ability[self.key] and card.ability[self.key].xmult) or self.config.xmult } }
-    end,
-    
-    calculate = function(self, card, context)
+  key = 'x',
+  atlas = "AbandoniaStickers",
+  pos = { x = 2, y = 3 },
+  badge_colour = HEX("f2994b"),
+  config = { xmult = 5 },
+  loc_vars = function(self, info_queue, card)
+    return { vars = { (card.ability[self.key] and card.ability[self.key].xmult) or self.config.xmult } }
+  end,
 
-            -- If we found debuffed cards, return the XMult
-        if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
-			for i, scoring_card in ipairs(context.scoring_hand) do
-                if scoring_card.debuff then
-                    SMODS.calculate_effect({ xmult = card.ability[self.key].xmult }, card)
-				end
-            end
+  calculate = function(self, card, context)
+    -- If we found debuffed cards, return the XMult
+    if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+      for i, scoring_card in ipairs(context.scoring_hand) do
+        if scoring_card.debuff then
+          SMODS.calculate_effect({ xmult = card.ability[self.key].xmult }, card)
         end
-    end,
+      end
+    end
+  end,
 }

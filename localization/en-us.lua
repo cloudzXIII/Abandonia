@@ -5934,7 +5934,8 @@ return {
       abn_x = {
         name = "X",
         text = {
-          "scoring {C:mult}Debuffed{} cards give {X:mult,C:white}X#1#{} Mult"
+          "{C:mult}Debuffed{} cards give",
+          "{X:mult,C:white}X#1#{} Mult when scored"
         }
       },
       abn_honor_sticker = {
