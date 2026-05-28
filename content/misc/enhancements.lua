@@ -12,7 +12,7 @@ SMODS.Enhancement({
     local cae = card.ability.extra
     return { vars = { cae.chips, cae.dollars } }
   end,
-  calculate = function(self, card, context, effect)
+  calculate = function(self, card, context)
     local cae = card.ability.extra
     if context.main_scoring and context.cardarea == G.play then
       return {
@@ -20,10 +20,7 @@ SMODS.Enhancement({
         dollars = cae.dollars
       }
     end
-    if
-    context.final_scoring_step
-    and SMODS.calculate_round_score() > G.GAME.blind.chips
-    then
+    if context.final_scoring_step and SMODS.calculate_round_score() > G.GAME.blind.chips then
       card_eval_status_text(card, "extra", nil, nil, nil, { message = localize("k_abn_onfire") })
       G.E_MANAGER:add_event(Event({
         func = function()
@@ -52,7 +49,7 @@ SMODS.Enhancement({
     local num, den = SMODS.get_probability_vars(card, 1, cae.odds, "oilfire_abn")
     return { vars = { cae.mult, cae.dollars, num, den } }
   end,
-  calculate = function(self, card, context, effect)
+  calculate = function(self, card, context)
     local cae = card.ability.extra
     if context.before and card.ability.abn_just then
       card.ability.abn_just = nil
@@ -64,11 +61,11 @@ SMODS.Enhancement({
       }
     end
     if
-    context.destroying_card
-    and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
-    and not card.getting_sliced
-    and context.destroying_card == card
-    and not card.ability.abn_just
+        context.destroying_card
+        and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
+        and not card.getting_sliced
+        and context.destroying_card == card
+        and not card.ability.abn_just
     then
       return {
         remove = true
@@ -90,7 +87,7 @@ SMODS.Enhancement({
     local num, den = SMODS.get_probability_vars(card, 1, cae.odds, "oilfire_abn")
     return { vars = { cae.xmult, cae.dollars, num, den } }
   end,
-  calculate = function(self, card, context, effect)
+  calculate = function(self, card, context)
     local cae = card.ability.extra
     if context.main_scoring and context.cardarea == G.play then
       return {
@@ -99,10 +96,10 @@ SMODS.Enhancement({
       }
     end
     if
-    context.destroying_card
-    and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
-    and not card.getting_sliced
-    and context.destroying_card == card
+        context.destroying_card
+        and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
+        and not card.getting_sliced
+        and context.destroying_card == card
     then
       return {
         remove = true
@@ -120,7 +117,7 @@ SMODS.Enhancement({
     local cae = card.ability.extra
     return { vars = { cae.chips, cae.chip_gain } }
   end,
-  calculate = function(self, card, context, effect)
+  calculate = function(self, card, context)
     local cae = card.ability.extra
     if context.main_scoring and context.cardarea == G.play then
       return {
@@ -159,7 +156,7 @@ SMODS.Enhancement({
     local cae = card.ability.extra
     return { vars = { cae.chips, cae.chips_gain } }
   end,
-  calculate = function(self, card, context, effect)
+  calculate = function(self, card, context)
     local cae = card.ability.extra
     if context.main_scoring and context.cardarea == G.play then
       return {
@@ -362,16 +359,16 @@ SMODS.Enhancement({
   always_scores = false,
   config = {
     extra = {
-      emult = 1,       
+      emult = 1,
       emultadd = 0.03,
     }
   },
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
-    
+
     return { vars = { cae.emult, cae.emultadd } }
   end,
-  
+
   in_pool = function(self)
     return false
   end,
@@ -383,8 +380,8 @@ SMODS.Enhancement({
     if context.main_scoring and context.cardarea == G.play then
       if cae.emult > 0 then
         return {
-          e_mult = cae.emult, 
-          card = card,       
+          e_mult = cae.emult,
+          card = card,
         }
       end
     end
@@ -392,42 +389,42 @@ SMODS.Enhancement({
   abn_artist_credits = {
     artist = "Ricottakitten",
   },
-}) 
+})
 
 local scie = SMODS.calculate_individual_effect
 function SMODS.calculate_individual_effect(effect, scored_card, key, amount, from_edition)
-    local ret = scie(effect, scored_card, key, amount, from_edition)
-    
-    -- Check if an Xmult modification just fired
-    if (
+  local ret = scie(effect, scored_card, key, amount, from_edition)
+
+  -- Check if an Xmult modification just fired
+  if (
         key == "x_mult"
         or key == "xmult"
         or key == "Xmult"
         or key == "x_mult_mod"
         or key == "xmult_mod"
         or key == "Xmult_mod"
-    )
-    and amount ~= 1
-    and mult then
-        -- Iterate through all cards in the game to find ones with your enhancement
-        if G.playing_cards then
-            local scaled_count = 0
-            for _, v in ipairs(G.playing_cards) do
-                if v.config.center == G.P_CENTERS.m_abn_contagion_seal then 
-                    scaled_count = scaled_count + 1
-                    
-                    SMODS.scale_card(v, {
-                        ref_table = v.ability.extra,
-                        ref_value = "emult",
-                        scalar_value = "emultadd",
-                        message_colour = G.C.DARK_EDITION,
-                    })
-                end
-            end
-        end
-    end
+      )
+      and amount ~= 1
+      and mult then
+    -- Iterate through all cards in the game to find ones with your enhancement
+    if G.playing_cards then
+      local scaled_count = 0
+      for _, v in ipairs(G.playing_cards) do
+        if v.config.center == G.P_CENTERS.m_abn_contagion_seal then
+          scaled_count = scaled_count + 1
 
-    return ret
+          SMODS.scale_card(v, {
+            ref_table = v.ability.extra,
+            ref_value = "emult",
+            scalar_value = "emultadd",
+            message_colour = G.C.DARK_EDITION,
+          })
+        end
+      end
+    end
+  end
+
+  return ret
 end
 
 SMODS.Enhancement({
@@ -438,13 +435,12 @@ SMODS.Enhancement({
   no_rank = false,
   no_suit = false,
   always_scores = false,
-  
+
   in_pool = function(self)
-	return false
+    return false
   end,
 
   calculate = function(self, card, context)
-
     -- ^chips
     if context.main_scoring and context.cardarea == G.play then
       return {
@@ -473,12 +469,12 @@ SMODS.Enhancement({
   },
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
-	
+
     return { vars = { cae.emult, } }
   end,
-  
+
   in_pool = function(self)
-	return false
+    return false
   end,
 
   calculate = function(self, card, context)
@@ -513,18 +509,18 @@ SMODS.Enhancement({
   },
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
-    local suit_text = cae.suit ~= "none" and (cae.suit:sub(1,1):upper() .. cae.suit:sub(2)) or "None"
-    
+    local suit_text = cae.suit ~= "none" and (cae.suit:sub(1, 1):upper() .. cae.suit:sub(2)) or "None"
+
     return { vars = { suit_text } }
   end,
-  
+
   in_pool = function(self)
     return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
   end,
-  
+
   update = function(self, card)
     local cae = card.ability.extra
-    
+
     -- Default coordinates if no suit is chosen yet
     local target_x = 2
     local target_y = 1
@@ -559,7 +555,7 @@ SMODS.Enhancement({
 
   calculate = function(self, card, context)
     local cae = card.ability.extra
-  
+
     -- Pick a random suit present in the deck at the start of the blind
     if context.setting_blind and not context.blueprint then
       local all_cards = G.deck.cards
@@ -579,7 +575,7 @@ SMODS.Enhancement({
         end
       end
     end
-  
+
     -- Scoring logic
     if context.main_scoring and context.cardarea == G.play then
       -- Count matching cards of the chosen suit in the scored hand
@@ -592,7 +588,7 @@ SMODS.Enhancement({
         end
       end
 
-      -- If there are matching cards give ^mult 
+      -- If there are matching cards give ^mult
       if match_count > 0 then
         return {
           e_mult = match_count,
@@ -614,7 +610,7 @@ SMODS.Enhancement({
   no_rank = false,
   no_suit = false,
   always_scores = false,
-  
+
   in_pool = function(self)
     return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
   end,
@@ -625,19 +621,19 @@ SMODS.Enhancement({
     if context.main_scoring and context.cardarea == G.play then
       for i = 1, #G.hand.cards do
         local hand_card = G.hand.cards[i]
-        
+
         if not hand_card.debuff and hand_card.config.center ~= G.P_CENTERS.m_abn_cotton then
-          local rank_key = hand_card.base.value 
-          
+          local rank_key = hand_card.base.value
+
           if G.GAME.abn_rank_upgrades and G.GAME.abn_rank_upgrades[rank_key] then
             local current_level = G.GAME.abn_rank_upgrades[rank_key].level
-            
+
             -- if current level is > 1 double it
             local level_increase = 1
             if current_level > 1 then
               level_increase = current_level
             end
-            
+
             G.E_MANAGER:add_event(Event({
               trigger = 'before',
               delay = 0.1,
@@ -646,7 +642,7 @@ SMODS.Enhancement({
                 return true
               end
             }))
-            
+
             -- upgrade the rank
             ABN.level_up_rank(hand_card, rank_key, level_increase, false)
           end
@@ -670,26 +666,26 @@ SMODS.Enhancement({
   always_scores = false,
   config = {
     extra = {
-      mult = 0,       
+      mult = 0,
       chips = 0,
       multadd = 3,
       chipsadd = 5,
     }
   },
-  
+
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
     return { vars = { cae.mult, cae.chips, cae.multadd, cae.chipsadd } }
   end,
-  
+
   in_pool = function(self)
     return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
   end,
 
   calculate = function(self, card, context)
     local cae = card.ability.extra
-    
-    -- Main scoring 
+
+    -- Main scoring
     if context.main_scoring and context.cardarea == G.play then
       cae.mult = cae.mult + cae.multadd
       cae.chips = cae.chips + cae.chipsadd
@@ -699,11 +695,11 @@ SMODS.Enhancement({
         card = card
       }
     end
-    
-    -- Repetitions 
+
+    -- Repetitions
     if context.repetition and context.cardarea == G.play then
       local sew_count = 0
-      
+
       -- Count sew cards
       if context.scoring_hand then
         for _, scoring_card in ipairs(context.scoring_hand) do
@@ -713,7 +709,7 @@ SMODS.Enhancement({
         end
       end
 
-      -- If there's more than one Sew card, grant repetitions equal to total Sew cards 
+      -- If there's more than one Sew card, grant repetitions equal to total Sew cards
       if sew_count > 1 then
         return {
           message = localize('k_again_ex'),
@@ -728,3 +724,105 @@ SMODS.Enhancement({
     artist = "Ricottakitten",
   },
 })
+
+SMODS.Enhancement({
+  key = "teabag",
+  pos = { x = 3, y = 0 },
+  atlas = "AbandoniaEnhancements",
+  config = { extra = { hands_remaining = 5, chips = 20 } },
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    local cuppa = 0
+    for _, playing_card in ipairs(G.playing_cards or {}) do
+      if SMODS.has_enhancement(playing_card, 'm_abn_teabag') and playing_card ~= card then cuppa = cuppa + 1 end
+    end
+    return { vars = { cae.chips, cae.hands_remaining, cae.chips * cuppa } }
+  end,
+  calculate = function(self, card, context)
+    local cae = card.ability.extra
+    if context.main_scoring and context.cardarea == G.play then
+      local cuppa = 0
+      for _, playing_card in ipairs(G.playing_cards) do
+        if SMODS.has_enhancement(playing_card, 'm_abn_teabag') and playing_card ~= card then cuppa = cuppa + 1 end
+      end
+      return {
+        chips = cae.chips * cuppa,
+      }
+    end
+
+    if context.final_scoring_step and context.cardarea == G.play then
+      cae.hands_remaining = cae.hands_remaining - 1
+      if cae.hands_remaining <= 0 then
+        SMODS.calculate_effect({ message = localize("k_abn_brewed_ex") }, card)
+        G.E_MANAGER:add_event(Event({
+          func = function()
+            card:juice_up(0.3, 0.4)
+            card:set_ability("m_abn_teastain")
+            card.children.center.teabag_card = false
+            return true
+          end
+        }))
+      end
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Comykel",
+  },
+  set_sprites = function(self, card, front)
+    card.children.center:set_sprite_pos({ x = 2, y = 2 })
+    card.children.center.teabag_card = true
+  end
+})
+
+SMODS.Enhancement({
+  key = "teastain",
+  pos = { x = 4, y = 2 },
+  atlas = "AbandoniaEnhancements",
+  config = { extra = { xmult = 1.2, xmult_gain = 0.3 } },
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    local cuppa = 0
+    for _, playing_card in ipairs(G.playing_cards or {}) do
+      if SMODS.has_enhancement(playing_card, 'm_abn_teastain') and playing_card ~= card then cuppa = cuppa + 1 end
+    end
+    return { vars = { cae.xmult + (cae.xmult_gain * cuppa), cae.xmult_gain } }
+  end,
+  calculate = function(self, card, context)
+    local cae = card.ability.extra
+    if context.main_scoring and context.cardarea == G.play then
+      local cuppa = 0
+      for _, playing_card in ipairs(G.playing_cards) do
+        if SMODS.has_enhancement(playing_card, 'm_abn_teastain') and playing_card ~= card then cuppa = cuppa + 1 end
+      end
+      return {
+        x_mult = cae.xmult + (cae.xmult_gain * cuppa),
+      }
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Comykel",
+  },
+  set_sprites = function(self, card, front)
+    card.children.center:set_sprite_pos({ x = 2, y = 2 })
+    card.children.center.teastain_card = true
+  end
+})
+
+-- credits to paperback for this, used so the enhancement is drawn on top of the card
+SMODS.DrawStep {
+  key = "teabag",
+  order = 21,
+  func = function(self, layer)
+    if self.children.center.teabag_card then
+      self.children.center:set_sprite_pos({ x = 3, y = 2 })
+      self.children.center:draw_shader('dissolve')
+      self.children.center:set_sprite_pos({ x = 2, y = 2 })
+    end
+    if self.children.center.teastain_card then
+      self.children.center:set_sprite_pos({ x = 4, y = 2 })
+      self.children.center:draw_shader('dissolve')
+      self.children.center:set_sprite_pos({ x = 2, y = 2 })
+    end
+  end,
+  conditions = { vortex = false, facing = 'front' }
+}

@@ -18,7 +18,6 @@ SMODS.Joker {
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.j_abn_lucrative_joker
-        info_queue[#info_queue + 1] = G.P_CENTERS.j_abn_slot_machine
         return { vars = { card.ability.extra.mult, card.ability.extra.chips } }
     end,
 

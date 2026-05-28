@@ -204,11 +204,11 @@ SMODS.Consumable {
 }
 
 SMODS.Consumable {
-  key = 'rift',
+  key = 'anvil',
   set = 'Tarot',
   atlas = "AbandoniaTarots",
   pos = { x = 1, y = 1 },
-  config = { max_highlighted = 2, mod_conv = 'm_abn_infra' },
+  config = { max_highlighted = 2, mod_conv = 'm_abn_hot_iron' },
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
     return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
@@ -216,11 +216,11 @@ SMODS.Consumable {
 }
 
 SMODS.Consumable {
-  key = 'oil_drum',
+  key = 'strike',
   set = 'Tarot',
   atlas = "AbandoniaTarots",
   pos = { x = 2, y = 1 },
-  config = { max_highlighted = 2, mod_conv = 'm_abn_oilfire' },
+  config = { max_highlighted = 2, mod_conv = 'm_abn_petroleum' },
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
     return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
@@ -275,7 +275,7 @@ SMODS.Consumable {
   set = 'Tarot',
   atlas = "AbandoniaTarots",
   pos = { x = 0, y = 2 },
-  config = { max_highlighted = 1, mod_conv = 'm_abn_cotton' },
+  config = { max_highlighted = 1, mod_conv = 'm_abn_teabag' },
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
     return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
@@ -322,4 +322,16 @@ SMODS.Consumable {
   abn_artist_credits = {
     artist = "Lizzie",
   },
+}
+
+SMODS.Consumable {
+  key = 'pillow',
+  set = 'Tarot',
+  atlas = "AbandoniaTarots",
+  pos = { x = 3, y = 2 },
+  config = { max_highlighted = 2, mod_conv = 'm_abn_cotton' },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+    return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+  end,
 }
