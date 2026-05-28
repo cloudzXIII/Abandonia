@@ -1533,10 +1533,8 @@ return {
       j_abn_joker_tv = {
         name = "Joker TV",
         text = {
-          "All Jokers gain {C:money}$1{} of {C:attention}sell value{}",
-          "and {C:diamonds}light suits{} in your deck",
-          "gain {C:mult}+1{} Mult every time",
-          "a {C:program_pack}Program{} card is used",
+          "When you use a {C:program_pack}Program{} card all Joker sell values increase by {C:money}$#1#{} and all {C:diamonds}Light{} Suits gain {C:mult}+#2#{} Mult",
+		  "When you use a {C:attention}Rank{} {C:planet}Planet{} card all {C:s}Dark{} Suits gain {C:mult}+#2#{} Mult",
         }
       },
       j_abn_classified_joker = {
@@ -2087,7 +2085,7 @@ return {
       j_abn_brothers_memento = {
         name = "Brother's Memento",
         text = {
-          "First played {C:attention}face",
+          "First played {C:attention}Ace",
           "card gives {X:mult,C:white} X#1# {} Mult",
           "when scored",
         },
