@@ -38,6 +38,14 @@ SMODS.Joker {
       }
     end
   end,
+  in_pool = function(self, args)
+    for _, playing_card in ipairs(G.playing_cards or {}) do
+      if playing_card.edition then
+        return true
+      end
+    end
+    return false
+  end,
 
   abn_artist_credits = {
     artist = "La Ginger",
