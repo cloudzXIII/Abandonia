@@ -140,7 +140,7 @@ if not (next(SMODS.find_mod('Bunco')) or next(SMODS.find_mod("SixSuits")) or nex
   -- Spectrum Hands (Credits to SpectrumFramework, Paperback, Bunco and SixSuits)
 
   --if not next(SMODS.find_mod('Paperback')) then
-  SMODS.PokerHandPart {   -- Spectrum Part - Copied from SpectrumFramework who got it from Bunco who got it from SixSuits
+  SMODS.PokerHandPart { -- Spectrum Part - Copied from SpectrumFramework who got it from Bunco who got it from SixSuits
     key = 'spectrum',
     func = function(hand)
       if #hand < 5 then return {} end
@@ -181,7 +181,7 @@ if not (next(SMODS.find_mod('Bunco')) or next(SMODS.find_mod("SixSuits")) or nex
     end
   }
 
-  SMODS.PokerHand {   -- Spectrum (Copied from Paperback who referenced it from SixSuits, thanks!)
+  SMODS.PokerHand { -- Spectrum (Copied from Paperback who referenced it from SixSuits, thanks!)
     key = 'Spectrum',
     visible = false,
     chips = 50,
@@ -222,7 +222,7 @@ if not (next(SMODS.find_mod('Bunco')) or next(SMODS.find_mod("SixSuits")) or nex
       artist = "Dallan"
     },
   }
-  SMODS.PokerHand {   -- Straight Spectrum (Copied from Paperback who referenced it from SixSuits, thanks!)
+  SMODS.PokerHand { -- Straight Spectrum (Copied from Paperback who referenced it from SixSuits, thanks!)
     key = 'Straight Spectrum',
     visible = false,
     chips = 120,
@@ -276,7 +276,7 @@ if not (next(SMODS.find_mod('Bunco')) or next(SMODS.find_mod("SixSuits")) or nex
       artist = "Dallan"
     },
   }
-  SMODS.PokerHand {   -- Spectrum House (Copied from Paperback who referenced it from SixSuits, thanks!)
+  SMODS.PokerHand { -- Spectrum House (Copied from Paperback who referenced it from SixSuits, thanks!)
     key = 'Spectrum House',
     above_hand = 'Flush House',
     visible = false,
@@ -319,7 +319,7 @@ if not (next(SMODS.find_mod('Bunco')) or next(SMODS.find_mod("SixSuits")) or nex
       artist = "Dallan"
     },
   }
-  SMODS.PokerHand {   -- Spectrum Five (Copied from Paperback who referenced it from SixSuits, thanks!)
+  SMODS.PokerHand { -- Spectrum Five (Copied from Paperback who referenced it from SixSuits, thanks!)
     key = 'Spectrum Five',
     above_hand = 'Flush Five',
     visible = false,
@@ -553,3 +553,266 @@ SMODS.Consumable {
     artist = "Dallan"
   },
 }
+
+--#region new pokerhands
+SMODS.PokerHand {
+  key = 'Abyss',
+  visible = false,
+  chips = 38,
+  mult = 4,
+  l_chips = 20,
+  l_mult = 2,
+  example = {
+    { 'abn_SUI_2', true },
+    { 'abn_SUI_7', true },
+    { 'abn_SUI_3', true },
+    { 'abn_SUI_5', true },
+    { 'abn_SUI_K', true },
+  },
+  evaluate = function(parts, hand)
+    if #hand < 5 then return {} end
+    local suitless_count = 0
+    local suitless_cards = {}
+
+    for _, card in ipairs(hand) do
+      if SMODS.has_no_suit(card) then
+        suitless_count = suitless_count + 1
+        table.insert(suitless_cards, card)
+      end
+    end
+
+    if suitless_count >= 5 then
+      return { suitless_cards }
+    end
+
+    return {}
+  end
+}
+
+SMODS.PokerHand {
+  key = 'Haunted House',
+  visible = false,
+  chips = 75,
+  mult = 6,
+  l_chips = 30,
+  l_mult = 2,
+  example = {
+    { 'S_Q',       true },
+    { 'D_Q',       true },
+    { 'C_Q',       true },
+    { 'abn_SUI_7', true },
+    { 'abn_SUI_7', true },
+    { 'abn_SUI_7', true },
+  },
+  evaluate = function(parts, hand)
+    if #hand < 6 then return {} end
+    local suit_cards = {}
+    local suitless_cards = {}
+
+    for _, card in ipairs(hand) do
+      if SMODS.has_no_suit(card) then
+        table.insert(suitless_cards, card)
+      else
+        table.insert(suit_cards, card)
+      end
+    end
+
+    if #suit_cards >= 3 and #suitless_cards >= 3 then
+      local three_suits = get_X_same(3, suit_cards)
+      local three_suitless = get_X_same(3, suitless_cards)
+
+      if next(three_suits) and next(three_suitless) then
+        return { SMODS.merge_lists(three_suits, three_suitless) }
+      end
+    end
+    return {}
+  end
+}
+
+
+SMODS.PokerHand {
+  key = 'Empty Throne',
+  visible = false,
+  chips = 120,
+  mult = 9,
+  l_chips = 40,
+  l_mult = 4,
+  example = {
+    { 'abn_SUI_5', true },
+    { 'abn_SUI_6', true },
+    { 'abn_SUI_7', true },
+    { 'abn_SUI_8', true },
+    { 'abn_SUI_9', true },
+  },
+  evaluate = function(parts, hand)
+    if #hand < 5 then return {} end
+    local suitless_cards = {}
+
+    for _, card in ipairs(hand) do
+      if SMODS.has_no_suit(card) then
+        table.insert(suitless_cards, card)
+      end
+    end
+
+    if #suitless_cards < 5 then return {} end
+
+    return get_straight(suitless_cards, SMODS.four_fingers('straight'), SMODS.shortcut(), SMODS.wrap_around_straight())
+  end,
+  modify_display_text = function(self, _cards, scoring_hand)
+    local royal = true
+    for j = 1, #scoring_hand do
+      local rank = not SMODS.has_no_rank(scoring_hand[j]) and SMODS.Ranks[scoring_hand[j].base.value]
+      royal = rank and royal and (rank.key == 'Ace' or rank.key == '10' or rank.face)
+    end
+    if royal then
+      return self.key .. ' (Royal)'
+    end
+  end
+}
+
+
+SMODS.PokerHand {
+  key = 'Void Space',
+  visible = false,
+  chips = 50,
+  mult = 4,
+  l_chips = 25,
+  l_mult = 3,
+  example = {
+    { 'abn_SUI_2', true },
+    { 'abn_SUI_5', true },
+    { 'abn_SUI_3', true },
+    { 'H_A',       true, enhancement = "m_abn_polkadot" },
+    { 'S_K',       true, enhancement = "m_abn_petroleum" },
+  },
+  evaluate = function(parts, hand)
+    if #hand < 5 then return {} end
+    local rankless_cards = {}
+    local suitless_cards = {}
+
+    for _, card in ipairs(hand) do
+      if SMODS.has_no_rank(card) then
+        table.insert(rankless_cards, card)
+      elseif SMODS.has_no_suit(card) and not SMODS.has_no_rank(card) then
+        table.insert(suitless_cards, card)
+      end
+    end
+
+    if #rankless_cards >= 2 and #suitless_cards >= 3 then
+      return { SMODS.merge_lists(rankless_cards, suitless_cards) }
+    end
+    return {}
+  end
+}
+
+SMODS.PokerHand {
+  key = 'Inverse Spectrum',
+  visible = false,
+  chips = 80,
+  mult = 8,
+  l_chips = 25,
+  l_mult = 3,
+  example = {
+    { 'S_2',       true },
+    { 'D_7',       true },
+    { 'C_3',       true },
+    { 'H_5',       true },
+    { 'abn_SN_K',  true },
+    { 'abn_SUI_A', true },
+  },
+  evaluate = function(parts, hand)
+    if #hand < 6 then return {} end
+    if not next(parts.abn_spectrum) then return {} end
+
+    local suitless_cards = {}
+    for _, card in ipairs(hand) do
+      if SMODS.has_no_suit(card) then
+        table.insert(suitless_cards, card)
+      end
+    end
+
+    if #suitless_cards >= 1 then
+      return { SMODS.merge_lists(parts.abn_spectrum, suitless_cards) }
+    end
+    return {}
+  end
+}
+
+SMODS.PokerHand {
+  key = 'Divider Conquered',
+  visible = false,
+  chips = 120,
+  mult = 10,
+  l_chips = 40,
+  l_mult = 4,
+  example = {
+    { 'H_Q',       true },
+    { 'D_Q',       true },
+    { 'S_7',       true },
+    { 'C_7',       true },
+    { 'abn_SUI_3', true },
+    { 'abn_SUI_5', true },
+  },
+  evaluate = function(parts, hand)
+    if #hand < 6 then return {} end
+    local light_cards = {}
+    local dark_cards = {}
+    local suitless_cards = {}
+
+    for _, card in ipairs(hand) do
+      if SMODS.has_no_suit(card) then
+        table.insert(suitless_cards, card)
+      elseif ABN.is_light(card) then
+        table.insert(light_cards, card)
+      elseif ABN.is_dark(card) then
+        table.insert(dark_cards, card)
+      end
+    end
+
+    if #light_cards >= 2 and #dark_cards >= 2 and #suitless_cards >= 2 then
+      return { SMODS.merge_lists(suitless_cards, light_cards, dark_cards) }
+    end
+    return {}
+  end
+}
+
+SMODS.PokerHand {
+  key = 'Twilight Distillation',
+  visible = false,
+  chips = 150,
+  mult = 15,
+  l_chips = 45,
+  l_mult = 4,
+  example = {
+    { 'H_5',       true },
+    { 'D_6',       true },
+    { 'S_7',       true },
+    { 'C_8',       true },
+    { 'abn_SUI_9', true },
+    { 'abn_SUI_T', true },
+  },
+  evaluate = function(parts, hand)
+    if #hand < 6 then return {} end
+    local light_cards = {}
+    local dark_cards = {}
+    local suitless_cards = {}
+
+    for _, card in ipairs(hand) do
+      if SMODS.has_no_suit(card) then
+        table.insert(suitless_cards, card)
+      elseif ABN.is_light(card) then
+        table.insert(light_cards, card)
+      elseif ABN.is_dark(card) then
+        table.insert(dark_cards, card)
+      end
+    end
+
+    if #light_cards < 2 or #dark_cards < 2 or #suitless_cards < 2 then
+      return {}
+    end
+
+    return get_straight(SMODS.merge_lists(suitless_cards, light_cards, dark_cards), SMODS.four_fingers('straight'),
+      SMODS.shortcut(), SMODS.wrap_around_straight())
+  end,
+}
+--#endregion

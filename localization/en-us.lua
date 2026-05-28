@@ -7355,7 +7355,18 @@ return {
 
       ["abn_triple_pair"] = "Triple Pair",
       ["abn_double_triple"] = "Double Triple",
-      ["abn_6oak"] = "Six of a Kind"
+      ["abn_6oak"] = "Six of a Kind",
+
+
+      ['abn_Abyss'] = "Abyss",
+      ['abn_Haunted House'] = "Haunted House",
+      ['abn_Empty Throne'] = "Empty Throne",
+      ['abn_Empty Throne (Royal)'] = "Royal Throne",
+      ['abn_Void Space'] = "Void Space",
+
+      ['abn_Inverse Spectrum'] = "Inverse Spectrum",
+      ['abn_Divider Conquered'] = "Divider Conquered",
+      ['abn_Twilight Distillation'] = "Twilight Distillation",
     },
     poker_hand_descriptions = {
       ['abn_Spectrum'] = {
@@ -7401,7 +7412,36 @@ return {
 
       ["abn_triple_pair"] = { "3 pairs of cards with different ranks", },
       ["abn_double_triple"] = { "2 pairs of 3 cards with the same rank.", },
-      ["abn_6oak"] = { "6 cards with the same rank", }
+      ["abn_6oak"] = { "6 cards with the same rank", },
+
+
+      ['abn_Abyss'] = {
+        "5 cards with no suit"
+      },
+      ['abn_Haunted House'] = {
+        "A Three of a Kind with suits and",
+        "a Three of a Kind with no suits"
+      },
+      ['abn_Empty Throne'] = {
+        "5 suitless cards in a row (consecutive ranks)",
+      },
+      ['abn_Void Space'] = {
+        "2 rankless cards and 3 suitless cards"
+      },
+
+
+      ['abn_Inverse Spectrum'] = {
+        "5 cards with different suits",
+        "and 1 suitless card"
+      },
+      ['abn_Divider Conquered'] = {
+        "2 Light suit cards, 2 Dark suit cards,",
+        "and 2 suitless cards"
+      },
+      ['abn_Twilight Distillation'] = {
+        "A Straight containing 2 Light suit cards,",
+        "2 Dark suit cards, and 2 suitless cards"
+      },
     },
   }
 }
