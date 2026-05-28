@@ -7,8 +7,8 @@ SMODS.Joker {
   end,
 
   rarity = 2,
-  atlas = 'ABNJokerSheet12',
-  pos = { x = 7, y = 3 },
+  atlas = 'ABNJokerSheet10',
+  pos = { x = 2, y = 4 },
   pixel_size = { h = 95 / 1.2 },
   cost = 6,
   discovered = false,
@@ -16,15 +16,15 @@ SMODS.Joker {
 
   config = { extra = { xmult = 3 } },
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and context.other_card:is_face() then
-      local is_first_face = false
+    if context.individual and context.cardarea == G.play and context.other_card:get_id() == 14 then
+      local is_first_ace = false
       for i = 1, #context.scoring_hand do
-        if context.scoring_hand[i]:is_face() then
-          is_first_face = context.scoring_hand[i] == context.other_card
+        if context.scoring_hand[i]:get_id() == 14 then
+          is_first_ace = context.scoring_hand[i] == context.other_card
           break
         end
       end
-      if is_first_face then
+      if is_first_ace then
         return {
           xmult = card.ability.extra.xmult
         }

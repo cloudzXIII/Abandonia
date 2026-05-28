@@ -19,7 +19,7 @@ end
 
 SMODS.Joker {
   key = 'the_joker_dance',
-  rarity = 2,
+  rarity = 3,
   atlas = 'ABNJokerSheet9',
   pos = { x = 8, y = 2 },
   cost = 5,

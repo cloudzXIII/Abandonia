@@ -33,7 +33,10 @@ SMODS.Joker {
       for _, area in ipairs({ G.jokers.cards or {}, G.playing_cards }) do
         for e, joker in ipairs(area) do
           if not joker.edition then
-            joker:flip()
+			if joker.facing == "front" then
+				joker:flip()
+				joker.ability.abn_perma_flipped = true
+			end
             if joker.facing == "back" then
               joker.ability.abn_perma_flipped = true
             end
