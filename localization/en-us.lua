@@ -1534,7 +1534,6 @@ return {
         name = "Joker TV",
         text = {
           "When you use a {C:program_pack}Program{} card all Joker sell values increase by {C:money}$#1#{} and all {C:diamonds}Light{} Suits gain {C:mult}+#2#{} Mult",
-		  "When you use a {C:attention}Rank{} {C:planet}Planet{} card all {C:s}Dark{} Suits gain {C:mult}+#2#{} Mult",
         }
       },
       j_abn_classified_joker = {
@@ -4980,28 +4979,32 @@ return {
       j_abn_entropic_spades          = {
         name = "Entropic Spades",
         text = {
-          "Scored {C:spades}Spades{} are {C:mult}destroyed{} and their {C:chips}Chips{} are added to this joker",
+          "Destroy all {C:spades}Spades{} scored,",
+          "this Joker gains their {C:chips}Chips{}",
           "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips)",
         }
       },
       j_abn_entropic_hearts          = {
         name = "Entropic Hearts",
         text = {
-          "Scored {C:hearts}Hearts{} are {C:mult}destroyed{} and their {C:chips}Chips{} are added to this joker",
+          "Destroy all {C:hearts}Hearts{} scored,",
+          "this Joker gains their {C:chips}Chips{}",
           "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips)",
         }
       },
       j_abn_entropic_clubs           = {
         name = "Entropic Clubs",
         text = {
-          "Scored {C:clubs}Clubs{} are {C:mult}destroyed{} and their {C:chips}Chips{} are added to this joker",
+          "Destroy all {C:clubs}Clubs{} scored,",
+          "this Joker gains their {C:chips}Chips{}",
           "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips)",
         }
       },
       j_abn_entropic_diamonds        = {
         name = "Entropic Diamonds",
         text = {
-          "Scored {C:diamonds}Diamonds{} are {C:mult}destroyed{} and their {C:chips}Chips{} are added to this joker",
+          "Destroy all {C:diamonds}Diamonds{} scored,",
+          "this Joker gains their {C:chips}Chips{}",
           "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips)",
         }
       },
