@@ -2197,7 +2197,7 @@ return {
             "if played hand is a {C:attention}#4#{},",
             "Played {C:attention}Infra{} cards permanently",
             "gain {C:money}$#3#{} when scored",
-            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
           }
         }
       },
@@ -2205,9 +2205,8 @@ return {
         name = "Vintage Joker",
         text = {
           "This Joker gains {C:chips}+#2#{} Chips",
-          "When a {C:attention}Fossil Card{} is scored",
+          "when a {C:attention}Fossil Card{} is scored",
           "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
-
         }
       },
       j_abn_egg_arrival = {
@@ -3674,7 +3673,7 @@ return {
         name = "Camorrista",
         text = {
           "When {C:attention}Blind{} is selected,",
-          "steal {C:money}$#3#{} sell value from other Jokers,",
+          "steal {C:money}$#3#{} of sell value from other Jokers,",
           "Gain {X:mult,C:white}X#2#{} Mult for every {C:money}$#3#{} stolen",
           "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
         }
@@ -3702,12 +3701,13 @@ return {
           "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
         }
       },
-      j_abn_daybreak_aurora          = { -- TO RELOCALIZE
+      j_abn_daybreak_aurora          = {
         name = "Daybreak Aurora",
         text = {
-          "Scoring cards with {C:dark_edition}Holographic{} give {C:chips}+#2#{} Chips",
-          "Jokers with {C:dark_edition}Holographic{} give {C:chips}+#1#{} Chips",
-          "If this Joker has {C:dark_edition}Holographic{} double the chip amount",
+          "Scoring {C:dark_edition}Holographic{} cards give {C:chips}+#2#{} Chips,",
+          "{C:dark_edition}Holographic{} Jokers give {C:chips}+#1#{} Chips,",
+          "{C:attention}double{} the number of chips given",
+          "if this Joker is {C:dark_edition}Holographic{}",
         }
       },
       j_abn_bowie                    = {
@@ -3733,17 +3733,21 @@ return {
       j_abn_aliasing_joker           = {
         name = "Aliasing Joker",
         text = {
-          "Adds {C:dark_edition}Gloss{}, {C:dark_edition}Pearlescene{},",
-          "or {C:dark_edition}Iridescendent{} to first scoring",
-          "{C:attention}numbered{} card of the {C:attention}first{} and {C:attention}final{} hand",
-          "Scoring cards with editions give {C:money}$#1#{}",
+          { "Adds {C:dark_edition}Gloss{}, {C:dark_edition}Pearlenscene{},",
+            "or {C:dark_edition}Iridescendent{} edition to",
+            "first scoring {C:attention}numbered{} card",
+            "of {C:attention}first{} and {C:attention}final{} hand",
+          },
+          {
+            "Scoring cards with {C:dark_edition}editions{} give {C:money}$#1#",
+          },
         }
       },
       j_abn_ponzi                    = {
         name = "Ponzi",
         text = {
           "All cards gain {C:mult}+#1#{} Mult and",
-          "{C:chips}+#2#{} Chips when {C:money}money{} is lost",
+          "{C:chips}+#2#{} Chips when {C:money}money{} is lost,",
           "Lose {C:money}$#3#{} per {C:attention}scoring{} card"
         }
       },
@@ -4560,13 +4564,14 @@ return {
         name = "Slot Machine",
         text = {
           {
-            "{C:attention}listed{} {C:green,E:1,S:1.1}probabilities",
-            "always {C:green}succeed{} and cost {C:money}$5{}",
-            "If you own {C:attention}Golden Joker{},",
-            "probabilities succeeding are {C:attention}free{}",
+            "{C:attention}Listed{} {C:green,E:1,S:1.1}probabilities{} always",
+            "{C:green}succeed{}, but cost {C:money}$5{} unless",
+            "you own {C:attention}Golden Joker",
           },
           {
-            "Retrigger and level up all played {C:attention}Royal Flushes{}",
+            "If {C:attention}poker hand{} is a",
+            "{C:attention}Royal Flush{}, retrigger",
+            "and level up hand",
           },
         }
       },
@@ -4919,29 +4924,39 @@ return {
       j_abn_propagator_joker         = {
         name = "Propagator Joker",
         text = {
-          "Each scoring card gives {X:mult,C:white}^2.0{} Mult per card that share the same {C:attention}rank and {C:attention}suit",
-          "{C:green}#1# in #2#{} to create a copy of the {C:attention}First{} scoring card",
+          "Scoring cards give {X:mult,C:white}^2.0{} Mult per",
+          "card with the same {C:attention}rank{} and {C:attention}suit{},",
+          "{C:green}#1# in #2#{} chance to create a",
+          "copy of the {C:attention}first{} scoring card",
         }
       },
       j_abn_computerworm_joker       = {
         name = "Computerworm Joker",
         text = {
-          "When {C:attention}Blind is selected{} {C:mult}destroy{} the {C:attention}leftmost{} Joker and create a {C:dark_edition}Negative{} copy of this Joker without {C:abn_eternal}Eternal{}",
-          "This Joker gives {X:mult,C:white}^#3#{} Mult and {X:chips,C:white}^#4#{} Chips per copy of itself",
-          "{C:inactive}(Currently{} {X:mult,C:white}^#1#{} {C:inactive}Mult,{} {X:chips,C:white}^#2#{} {C:inactive}Chips){}",
+          {
+            "When {C:attention}Blind{} is selected, {C:mult}destroy{} ",
+            "{C:attention}leftmost{} Joker and create a {C:dark_edition}Negative{}",
+            "copy of this Joker without {C:abn_eternal}Eternal{}",
+          },
+          {
+            "This Joker gives {X:mult,C:white}^#3#{} Mult and",
+            "{X:chips,C:white}^#4#{} Chips per copy of itself",
+            "{C:inactive}(Currently{} {X:mult,C:white}^#1#{} {C:inactive}Mult,{} {X:chips,C:white}^#2#{} {C:inactive}Chips){}",
+          },
         }
       },
       j_abn_naneinf_joker            = {
         name = "NANEINF Joker",
         text = {
-          "Scaling Jokers scale {C:attention}twice{} as fast",
-          "Retrigger the {C:attention}first{} scaling Joker",
+          "Scaling Jokers scale {C:attention}twice{} as fast,",
+          "Retrigger {C:attention}first{} scaling Joker",
         }
       },
       j_abn_noneuclidean_joker       = {
         name = "Non-euclidean Joker",
         text = {
-          "When another Joker gains {C:chips}Chips{} or {C:mult}Mult{} this Joker gains {C:attention}double{} that amount",
+          "When another Joker gains {C:chips}Chips{} or {C:mult}Mult{},",
+          "this Joker gains {C:attention}double{} that amount",
           "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips,{} {C:mult}+#2#{} {C:inactive}Mult){}",
         }
       },
@@ -4955,7 +4970,7 @@ return {
         }
       },
       j_abn_cupon_joker              = {
-        name = "Cupon Joker",
+        name = "Coupon Joker",
         text = {
           "Consumables that only select {C:attention}1{} target can select {C:attention}2{}"
         }
@@ -4991,7 +5006,8 @@ return {
       j_abn_joker_in_hiding          = {
         name = "Joker In Hiding",
         text = {
-          "Whenever you select a {C:attention}Joker{} from a {C:attention}pack{} it gains {C:attention}Flipped{} and {C:dark_edition}Holographic{}",
+          "Whenever you select a {C:attention}Joker{} from a {C:attention}Pack{},",
+          "it gains {C:attention}Flipped{} and {C:dark_edition}Holographic{}",
           "Flipped Jokers and Cards give {C:money}$#1#{}",
         }
       },
