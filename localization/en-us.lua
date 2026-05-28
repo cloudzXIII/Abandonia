@@ -5062,6 +5062,57 @@ return {
           "Scoring {C:attention}Odd{} cards {C:attention}level up{} their {C:planet}planet{} {C:attention}rank{} equal to the number of {C:attention}Even{} scoring cards",
         }
       },
+	  j_abn_edition_anonymous                   = {
+        name = "Edition Anonymous",
+        text = {
+          "When a card with an {C:dark_edition}Edition{} scores randomize its {C:dark_edition}Edition{}",
+		  "Each card that changes {C:dark_edition}Editions{} gains {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
+		  "When {C:attention}Blind defeated{} randomize the Editions of all owned Jokers",
+		  "Each Joker that changes {C:dark_edition}Editions{} gains {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
+        }
+      },
+	  j_abn_pedro_joker                  = {
+        name = "Pedro Joker",
+        text = {
+          "When {C:attention}Blind is defeated{}",
+		  "{C:mult}destroy{} lowest {C:money}sell value{} Joker and add {C:attention}8X{} its {C:money}value{} to this Joker as {C:chips}Chips{} and {C:mult}Mult{}",
+		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}",
+        }
+      },
+	  j_abn_example_joker                  = {
+        name = "Example Joker",
+        text = {
+          "Create the {C:abn_sigil}Sigil{} Card for the {C:attention}poker hand{} that wins the round",
+        }
+      },
+	  j_abn_minimalist_joker                  = {
+        name = "Minimalist Joker",
+        text = {
+          "All {C:common}Common{} Jokers give {X:mult,C:white}X#1#{} Mult",
+		  "{C:mult}self-destruct{} when a Joker is {C:money}sold{}",
+		  "{C:attention}Consumables{} sell for {C:money}$0{}",
+        }
+      },
+	  j_abn_clowns_soul                  = {
+        name = "Clowns Soul",
+        text = {
+          "Pay {C:money}$#1#{} and {C:green}Reroll{} selected joker keeping its {C:dark_edition}Editions{}, {C:attention}Stickers{}, etc",
+        }
+      },
+	  j_abn_confirm_joker                  = {
+        name = "Confirm Joker",
+        text = {
+          "At {C:attention}end of round{} gain a {C:attention}random tag{}",
+		  "If {C:abn_hazard}Hazard Tag{} is obtained gain {C:money}$#1#{}",
+        }
+      },
+	  j_abn_illegal_ante                  = {
+        name = "Illegal Ante",
+        text = {
+          "During {C:attention}Even{} Antes {C:attention}double{} all {C:green}probabilities",
+		  "During {C:attention}Odd{} Antes {C:attention}double{} all {C:money}money{} obtained",
+        }
+      },
     },
 
     Spectral = {
