@@ -3887,18 +3887,22 @@ return {
           "per remaining {C:attention}hand",
         }
       },
-      j_abn_goldcartridge_joker      = { -- TO RELOCALIZE
-        name = "Goldcartridge Joker",
+      j_abn_goldcartridge_joker      = {
+        name = "Golden Cartridge",
         text = {
-          "Jokers worth less than this Joker give {X:mult,C:white}X#1#{} Mult",
-          "At end of the round increase Joker value by {C:money}$#2#",
+          "Jokers with a lower {C:attention}sell value",
+          "than this Joker give {X:mult,C:white}X#1#{} Mult,",
+          "Gains {C:money}$#2#{} of {C:attention}sell value{}",
+          "at end of round",
         }
       },
       j_abn_insolvent_comedian       = {
         name = "Insolvent Comedian",
         text = {
-          "All Jokers gain {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult{}",
-          "If {C:attention}played hand{} is the same as the {C:attention}final hand{} of the {C:attention}previous round",
+          "All Jokers gain {C:chips}+#1#{} Chips",
+          "and {C:mult}+#2#{} Mult if played hand",
+          "matches the {C:attention}final poker hand{}",
+          "of {C:attention}previous{} round",
           "{C:inactive}(Currently {C:attention}#4#{C:inactive})",
         }
       },

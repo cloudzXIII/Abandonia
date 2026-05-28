@@ -53,13 +53,14 @@ SMODS.Joker {
     end
 
     -- Only apply the multiplier if the scoring name matches the required hand
-    if context.joker_main and context.scoring_name == extra.required_hand then
+    if context.before and context.scoring_name == extra.required_hand then
       for i = 1, #G.jokers.cards do
         local j = G.jokers.cards[i]
 
         -- Gain chips and mult
         j.ability.abn_perma_bonus = (j.ability.abn_perma_bonus or 0) + card.ability.extra.chips
         j.ability.abn_perma_mult = (j.ability.abn_perma_mult or 0) + card.ability.extra.mult
+        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, j)
       end
     end
   end
