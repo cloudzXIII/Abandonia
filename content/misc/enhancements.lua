@@ -389,6 +389,11 @@ SMODS.Enhancement({
   abn_artist_credits = {
     artist = "Ricottakitten",
   },
+
+  set_sprites = function(self, card, front)
+    card.children.center:set_sprite_pos({ x = 2, y = 2 })
+    card.children.center.contagion_seal = true
+  end
 })
 
 local scie = SMODS.calculate_individual_effect
@@ -820,6 +825,11 @@ SMODS.DrawStep {
     end
     if self.children.center.teastain_card then
       self.children.center:set_sprite_pos({ x = 4, y = 2 })
+      self.children.center:draw_shader('dissolve')
+      self.children.center:set_sprite_pos({ x = 2, y = 2 })
+    end
+    if self.children.center.contagion_seal then
+      self.children.center:set_sprite_pos({ x = 7, y = 1 })
       self.children.center:draw_shader('dissolve')
       self.children.center:set_sprite_pos({ x = 2, y = 2 })
     end
