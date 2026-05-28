@@ -1370,6 +1370,15 @@ return {
       },
     },
     Joker = {
+      j_abn_hand_puppet = {
+        name = "Hand Puppet",
+        text = {
+          "This Joker gains {C:attention}double{} the rank",
+          "of {C:dark_edition}editioned{} cards",
+          "held in hand as {C:mult}Mult{}",
+          "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+        }
+      },
       j_abn_hawk = {
         name = "Hawk",
         text = {
