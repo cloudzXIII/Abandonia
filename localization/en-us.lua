@@ -7290,6 +7290,10 @@ return {
       abn_duality_seal = "Duality Seal"
     },
     ranks = {
+      ["abn_11"] = "11",
+      ["abn_12"] = "12",
+      ["abn_13"] = "13",
+      ["abn_14"] = "14",
     },
     v_text = {
     },
