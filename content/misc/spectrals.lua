@@ -905,22 +905,26 @@ SMODS.Consumable {
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_iridescent
     return { vars = { card.ability.max_highlighted } }
   end,
+  can_use = function(self, card)
+    return G.hand and #G.hand.highlighted == card.ability.max_highlighted and (not G.hand.highlighted[1].edition)
+  end,
   use = function(self, card, area, copier)
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
       func = function()
-        local edition = SMODS.poll_edition { key = "abn_ascend", guaranteed = true, no_negative = true, options = { 'e_abn_gloss', 'e_abn_iridescent', 'e_abn_pearlenscene' } }
+        local choices = { 'abn_gloss', 'abn_iridescent', 'abn_pearlenscene' }
+        
+        local chosen_edition = pseudorandom_element(choices, 'abn_ascend')
+
         local ascend_card = G.hand.highlighted[1]
-        ascend_card:set_edition(edition, true)
+
+        ascend_card:set_edition({ [chosen_edition] = true }, true)
+        
         card:juice_up(0.3, 0.5)
         return true
       end
     }))
-  end,
-  can_use = function(self, card)
-    return G.hand and #G.hand.highlighted <= card.ability.max_highlighted and #G.hand.highlighted > 0 and
-        (not G.hand.highlighted[1].edition)
   end,
   abn_artist_credits = {
     artist = "Flote"
