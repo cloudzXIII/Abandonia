@@ -187,7 +187,7 @@ ABN.contributors = {
     role = "Music",
     colour = G.C.RED,
     links = {
-      { url = "youtube.com/@RKart-Musica", pos = { x = 0, y = 2 }, name = "Youtube" },
+      { url = "youtube.com/@RKart-Musica", pos = { x = 1, y = 1 }, name = "Youtube" },
     }
   },
   {
