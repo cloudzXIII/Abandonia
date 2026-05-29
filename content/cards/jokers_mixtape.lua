@@ -24,7 +24,7 @@ SMODS.Joker {
           card.ability.extra.text = "Give X1 Mult per Joker owned"
           target_x = 3
         -- red
-        elseif card.edition.polychrome or card.edition.abn_pearlenscene then
+        elseif card.edition.polychrome or card.edition.abn_pearlescent then
           card.ability.extra.text = "Retrigger All Jokers"
           target_x = 1
         -- blue
@@ -77,7 +77,7 @@ SMODS.Joker {
           card = card
         }
       -- grey (Base / No impactful edition)
-      elseif not ed or (not ed.negative and not ed.abn_abandond and not ed.holo and not ed.abn_iridescent and not ed.polychrome and not ed.abn_pearlenscene and not ed.foil and not ed.abn_gloss) then
+      elseif not ed or (not ed.negative and not ed.abn_abandond and not ed.holo and not ed.abn_iridescent and not ed.polychrome and not ed.abn_pearlescent and not ed.foil and not ed.abn_gloss) then
         return {
           chips = 10 * #G.jokers.cards,
           card = card
@@ -85,9 +85,9 @@ SMODS.Joker {
       end
     end
     
-    -- red (Polychrome / Pearlenscene retrigger logic)
+    -- red (Polychrome / pearlescent retrigger logic)
     if context.retrigger_joker_check and not context.retrigger_joker and context.other_card then
-      if ed and (ed.polychrome or ed.abn_pearlenscene) then
+      if ed and (ed.polychrome or ed.abn_pearlescent) then
         -- Prevent infinite loops by ensuring it doesn't retrigger itself or another Mixtape
         if context.other_card.config.center.key ~= 'j_jokers_mixtape' then
           return {

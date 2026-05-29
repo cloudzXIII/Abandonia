@@ -860,7 +860,7 @@ SMODS.Consumable {
   pos = { x = 6, y = 3 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_pearlenscene
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_pearlescent
     return { vars = {} }
   end,
   use = function(self, card, area, copier)
@@ -870,7 +870,7 @@ SMODS.Consumable {
       delay = 0.4,
       func = function()
         local eligible_card = pseudorandom_element(editionless_jokers, 'vremade_hex')
-        eligible_card:set_edition("e_abn_pearlenscene")
+        eligible_card:set_edition("e_abn_pearlescent")
 
         local _first_dissolve = nil
         for _, joker in ipairs(G.jokers.cards) do
@@ -900,7 +900,7 @@ SMODS.Consumable {
   pos = { x = 3, y = 3 },
   config = { extra = {}, max_highlighted = 1 },
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_pearlenscene
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_pearlescent
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_gloss
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_iridescent
     return { vars = { card.ability.max_highlighted } }
@@ -913,7 +913,7 @@ SMODS.Consumable {
       trigger = 'after',
       delay = 0.4,
       func = function()
-        local choices = { 'abn_gloss', 'abn_iridescent', 'abn_pearlenscene' }
+        local choices = { 'abn_gloss', 'abn_iridescent', 'abn_pearlescent' }
         
         local chosen_edition = pseudorandom_element(choices, 'abn_ascend')
 

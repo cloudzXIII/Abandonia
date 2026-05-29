@@ -4,7 +4,7 @@
 	#define PRECISION mediump
 #endif
 
-extern PRECISION vec2 pearlenscene;
+extern PRECISION vec2 pearlescent;
 extern PRECISION float dissolve;
 extern PRECISION float time;
 extern PRECISION vec4 texture_details;
@@ -44,9 +44,9 @@ vec4 effect(vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords)
 
     float lum = dot(tex.rgb, vec3(0.299, 0.587, 0.114));
 
-    float wave1 = sin(uv.x * 4.8 + uv.y * 2.1 + pearlenscene.x * 0.0001);
-    float wave2 = sin(uv.x * 2.3 - uv.y * 5.5 + pearlenscene.x * 0.0002);
-    float wave3 = sin((uv.x + uv.y) * 3.7 + pearlenscene.y * 0.0001);
+    float wave1 = sin(uv.x * 4.8 + uv.y * 2.1 + pearlescent.x * 0.0001);
+    float wave2 = sin(uv.x * 2.3 - uv.y * 5.5 + pearlescent.x * 0.0002);
+    float wave3 = sin((uv.x + uv.y) * 3.7 + pearlescent.y * 0.0001);
     float ripple = (wave1 * 0.45 + wave2 * 0.35 + wave3 * 0.20);
 
     float angle = fract(ripple * 0.5 + 0.5 + lum * 0.25);
