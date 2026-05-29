@@ -10,13 +10,6 @@ SMODS.Joker {
     abn_coder = "LasagnaFelidae",
 
     
-    
-    update = function(self, card)
-        if card.area == G.shop_jokers then
-            card.cost = 30
-        end
-    end,
-    
     calculate = function(self, card, context)
         if context.setting_blind then
             for _, joker in ipairs(G.jokers.cards or {}) do

@@ -6,6 +6,7 @@ SMODS.Joker {
     pos = { x = 7, y = 0 },
     soul_pos = { x = 8, y = 0 },
     cost = 20,
+    pools = { ["Comedians"] = true, },
     discovered = false,
     blueprint_compat = true,
     abn_coder = "LasagnaFelidae",
@@ -28,12 +29,6 @@ SMODS.Joker {
                 card.ability.extra.echips
             }
         }
-    end,
-    
-    update = function(self, card)
-        if card.area == G.shop_jokers then
-            card.cost = 30
-        end
     end,
     
     calculate = function(self, card, context)

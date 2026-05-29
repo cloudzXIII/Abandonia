@@ -5224,6 +5224,21 @@ return {
           }
         }
       
+      },
+      j_abn_spare_overall = {
+        name = "Spare Overall",
+        text = {
+          {
+            "Gain {C:red}+#1#{} Mult when playing",
+            "a {C:attention}#2#{}",
+            "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult)",
+          },
+          {
+            "{C:attention}Odd {C:enhanced}Bonus Cards{} gain {C:chips}+#4#{} Chips",
+            "{C:attention}Even {C:enhanced}Mult Cards{} gain {C:mult}+#5#{} Mult"
+          }
+        }
+      
       }
     },
 
