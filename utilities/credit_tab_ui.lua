@@ -161,7 +161,8 @@ ABN.contributors = {
     role = "Coder",
     colour = G.C.BLUE,
     links = {
-      { url = "github.com/LasagnaFelidae", pos = { x = 0, y = 0 }, name = "Github" }
+      { url = "github.com/LasagnaFelidae", pos = { x = 0, y = 0 }, name = "Github" },
+      { url = "ko-fi.com/lasagnafelidae",  pos = { x = 0, y = 1 }, name = "Buy me a Coffee!" }
     }
   },
   {
