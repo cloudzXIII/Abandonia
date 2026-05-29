@@ -157,7 +157,7 @@ SMODS.Consumable {
     return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] } } }
   end,
   abn_artist_credits = {
-    artist = "camostar34",
+    artist = "Camostar34",
   },
 }
 
@@ -172,7 +172,7 @@ SMODS.Consumable {
     return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
   end,
   abn_artist_credits = {
-    artist = "???",
+    artist = "Camostar34",
   },
 }
 

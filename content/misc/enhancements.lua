@@ -32,6 +32,9 @@ SMODS.Enhancement({
       }))
     end
   end,
+  abn_artist_credits = {
+    artist = "Criyo",
+  },
 })
 
 SMODS.Enhancement({
@@ -61,11 +64,11 @@ SMODS.Enhancement({
       }
     end
     if
-        context.destroying_card
-        and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
-        and not card.getting_sliced
-        and context.destroying_card == card
-        and not card.ability.abn_just
+    context.destroying_card
+    and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
+    and not card.getting_sliced
+    and context.destroying_card == card
+    and not card.ability.abn_just
     then
       return {
         remove = true
@@ -74,7 +77,10 @@ SMODS.Enhancement({
   end,
   in_pool = function(self)
     return false
-  end
+  end,
+  abn_artist_credits = {
+    artist = "Inky",
+  },
 })
 
 SMODS.Enhancement({
@@ -96,16 +102,19 @@ SMODS.Enhancement({
       }
     end
     if
-        context.destroying_card
-        and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
-        and not card.getting_sliced
-        and context.destroying_card == card
+    context.destroying_card
+    and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
+    and not card.getting_sliced
+    and context.destroying_card == card
     then
       return {
         remove = true
       }
     end
   end,
+  abn_artist_credits = {
+    artist = "Revo",
+  },
 })
 
 SMODS.Enhancement({
@@ -141,6 +150,9 @@ SMODS.Enhancement({
       end
     end
   end,
+  abn_artist_credits = {
+    artist = "Smolicon",
+  },
 })
 
 SMODS.Enhancement({
@@ -172,6 +184,9 @@ SMODS.Enhancement({
       })
     end
   end,
+  abn_artist_credits = {
+    artist = "Camostar34",
+  },
 })
 
 SMODS.Enhancement({
@@ -402,15 +417,15 @@ function SMODS.calculate_individual_effect(effect, scored_card, key, amount, fro
 
   -- Check if an Xmult modification just fired
   if (
-        key == "x_mult"
-        or key == "xmult"
-        or key == "Xmult"
-        or key == "x_mult_mod"
-        or key == "xmult_mod"
-        or key == "Xmult_mod"
-      )
-      and amount ~= 1
-      and mult then
+    key == "x_mult"
+    or key == "xmult"
+    or key == "Xmult"
+    or key == "x_mult_mod"
+    or key == "xmult_mod"
+    or key == "Xmult_mod"
+  )
+  and amount ~= 1
+  and mult then
     -- Iterate through all cards in the game to find ones with your enhancement
     if G.playing_cards then
       local scaled_count = 0
@@ -807,6 +822,9 @@ SMODS.Enhancement({
   abn_artist_credits = {
     artist = "Comykel",
   },
+  in_pool = function(self)
+    return false
+  end,
   set_sprites = function(self, card, front)
     card.children.center:set_sprite_pos({ x = 2, y = 2 })
     card.children.center.teastain_card = true

@@ -80,11 +80,18 @@ SMODS.Joker {
       }
 
       if valid_hands[context.scoring_name] then
-        -- Level up all scoring cards
-        for _, scoring_card in ipairs(context.scoring_hand) do
-          if scoring_card.base and scoring_card.base.value then
-            ABN.level_up_rank(card, scoring_card.base.value, 1)
-          end
+        for _, scored_card in ipairs(context.scoring_hand) do
+          card:juice_up(0.3, 0.5)
+          local _rank = G.GAME.abn_rank_upgrades[scored_card.base.value]
+          update_hand_text(
+            { sound = "button", volume = 0.7, pitch = 0.8, delay = 0.3 },
+            { handname = _rank.name .. "s", chips = _rank.chips, mult = _rank.mult, level = _rank.level }
+          )
+          ABN.level_up_rank(scored_card, scored_card.base.value)
+          update_hand_text(
+            { sound = "button", volume = 0.7, pitch = 1.1, delay = 0 },
+            { mult = 0, chips = 0, handname = "", level = "" }
+          )
         end
       end
     end

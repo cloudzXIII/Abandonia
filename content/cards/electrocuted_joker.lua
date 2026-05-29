@@ -17,6 +17,8 @@ SMODS.Joker {
     },
   },
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_gold
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
     local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds,
       'abn_electrocuted_joker')
     return {
