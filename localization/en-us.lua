@@ -1370,6 +1370,16 @@ return {
       },
     },
     Joker = {
+      j_abn_dark_tie = {
+        name = "Dark Tie",
+        text = {
+          "This Joker gains {C:chips}+#4#{} Chips and",
+          "{C:mult}+#2#{} Mult for each {C:attention}pair{} of",
+          "matching {C:attention}even{} and {C:attention}odd{} cards",
+          "with {C:abn_suitless}Null{} suit in played hand",
+          "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#1#{C:inactive} Mult)"
+        }
+      },
       j_abn_punk_joker = {
         name = "Punk Joker",
         text = {

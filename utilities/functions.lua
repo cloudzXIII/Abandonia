@@ -1,13 +1,25 @@
 ABN.is_even = function(card)
+  local even_ranks = { "abn_12", "abn_14" }
   if card:get_id() <= 10 and card:get_id() >= 0 and card:get_id() % 2 == 0 then
     return true
+  end
+  for _, rank in ipairs(even_ranks) do
+    if card.base.value == rank then
+      return true
+    end
   end
   return false
 end
 
 ABN.is_odd = function(card)
+  local odd_ranks = { "abn_11", "abn_13" }
   if (card:get_id() <= 10 and card:get_id() >= 0 and card:get_id() % 2 == 1) or (card:get_id() == 14) then
     return true
+  end
+  for _, rank in ipairs(odd_ranks) do
+    if card.base.value == rank then
+      return true
+    end
   end
   return false
 end
