@@ -83,7 +83,7 @@ ABN.ContinentCard {
     info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
     info_queue[#info_queue + 1] = G.P_SEALS.Gold
     info_queue[#info_queue + 1] = G.P_CENTERS.m_gold
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+    info_queue[#info_queue + 1] = { key = 'e_negative_playing_card', set = 'Edition', config = { extra = 1 } }
     info_queue[#info_queue + 1] = { key = "abn_light_suit", set = "Other" }
     info_queue[#info_queue + 1] = { key = "abn_dark_suit", set = "Other" }
     return { vars = {} }

@@ -7,30 +7,31 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
   unlocked = true,
-  config = { 
-    extra = { 
+  config = {
+    extra = {
       xmult = 1,
-      mult = 0, 
-      chips = 0, 
+      mult = 0,
+      chips = 0,
       xmultadd = 0.1,
-      multadd = 3, 
+      multadd = 3,
       chipsadd = 10,
-    } 
-  }, 
+    }
+  },
 
   loc_vars = function(self, info_queue, card)
-    return { 
-      vars = { 
+    info_queue[#info_queue + 1] = { key = 'e_negative_playing_card', set = 'Edition', config = { extra = 1 } }
+    return {
+      vars = {
         card.ability.extra.xmult,
-        card.ability.extra.mult, 
-        card.ability.extra.chips, 
+        card.ability.extra.mult,
+        card.ability.extra.chips,
         card.ability.extra.xmultadd,
-        card.ability.extra.multadd, 
+        card.ability.extra.multadd,
         card.ability.extra.chipsadd,
-      } 
+      }
     }
   end,
-  
+
   -- Only available if you have a negative card in your deck
   in_pool = function(self)
     if G.STAGE ~= G.STAGES.RUN or not G.playing_cards then return false end
@@ -42,13 +43,13 @@ SMODS.Joker {
     return false
   end,
 
-  calculate = function(self, card, context) 
+  calculate = function(self, card, context)
     -- Turn the first played Light Suit card Negative
     if context.before and not context.blueprint then
       for i = 1, #context.scoring_hand do
         local scoring_card = context.scoring_hand[i]
         if ABN.is_light(scoring_card) and not scoring_card.edition then
-          scoring_card:set_edition({negative = true}, true)
+          scoring_card:set_edition({ negative = true }, true)
           break -- Only the first one gets turned negative
         end
       end
@@ -65,7 +66,7 @@ SMODS.Joker {
           upgraded = true
         end
       end
-      
+
       if context.other_card and context.other_card.edition and context.other_card.edition.negative and card.edition and card.edition.negative then
         card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmultadd
         upgraded = true
@@ -87,7 +88,7 @@ SMODS.Joker {
         chips = card.ability.extra.chips,
       }
     end
-  end, 
+  end,
 
   abn_artist_credits = {
     artist = "Triangle Snack",

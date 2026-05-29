@@ -1370,6 +1370,20 @@ return {
       },
     },
     Joker = {
+      j_abn_punk_joker = {
+        name = "Punk Joker",
+        text = {
+          {
+            "Add {C:dark_edition}Negative{} edition to",
+            "first scoring {C:abn_suitless}Null{} card,",
+          },
+          {
+            "This Joker gains {C:white,X:chips}X#2#{} Mult when",
+            "a {C:dark_edition}Negative{} {C:abn_suitless}Null{} card is scored",
+            "{C:inactive}(Currently {C:white,X:chips}X#1#{C:inactive} Chips)",
+          }
+        }
+      },
       j_abn_greygoo_joker = {
         name = "Grey Goo Joker",
         text = {
