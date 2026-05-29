@@ -57,8 +57,8 @@ SMODS.Joker {
   in_pool = function(self, args)
     local has_null = false
 
-    for _, playing_card in ipairs(G.playing_cards) do
-      if playing_card.suit == "abn_suitless" then
+    for _, playing_card in ipairs(G.playing_cards or {}) do
+      if playing_card.base.suit == "abn_suitless" then
         has_null = true
       end
     end
