@@ -5507,6 +5507,29 @@ return {
           "Helped with atlases",
           "and made so much",
           "cool {C:green}Art{}!",
+          "Check out {C:attention}Vega's Stuff{}"
+        }
+      },
+      credit_abn_comykel = {
+        name = "",
+        text = {
+          "Made so much cool art!",
+          "Check out {C:attention}CMYKEL"
+        }
+      },
+      credit_abn_inky = {
+        name = "",
+        text = {
+          "Made so much cool art!",
+          "{s:0.85}(aswell as these cool credit cards)",
+          "Check out {C:attention}Inky's Bunch-O-Things{}"
+        }
+      },
+      credit_abn_feli = {
+        name = "",
+        text = {
+          "(text here)",
+          "Check out {C:attention}Feli's Pizzeria{}"
         }
       },
       credit_abn_j8bit = {

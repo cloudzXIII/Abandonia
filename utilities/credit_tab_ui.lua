@@ -120,19 +120,48 @@ ABN.contributors = {
     }
   },
   {
-    key = "credit_abn_vega",
-    name = "Vega",
-    role = "Artist",
-    colour = G.C.GREEN,
-    links = {
-    }
-  },
-  {
     key = "credit_abn_j8bit",
     name = "J8-Bit",
     role = "Programmer",
     colour = G.C.BLUE,
     links = {
+      { url = "github.com//orangequilavaburst", pos = { x = 0, y = 0 }, name = "Github" }
+    }
+  },
+  {
+    key = "credit_abn_vega",
+    name = "Vega",
+    role = "Artist",
+    colour = G.C.GREEN,
+    links = {
+      { url = "github.com/VegaTheAvali", pos = { x = 0, y = 0 }, name = "Github" }
+    }
+  },
+  {
+    key = "credit_abn_comykel",
+    name = "Comykel",
+    role = "Artist",
+    colour = G.C.GREEN,
+    links = {
+      { url = "github.com/comykel", pos = { x = 0, y = 0 }, name = "Github" }
+    }
+  },
+  {
+    key = "credit_abn_inky",
+    name = "Inky",
+    role = "Artist",
+    colour = G.C.GREEN,
+    links = {
+      { url = "github.com/InkystA", pos = { x = 0, y = 0 }, name = "Github" }
+    }
+  },
+  {
+    key = "credit_abn_feli",
+    name = "Feli",
+    role = "Coder",
+    colour = G.C.BLUE,
+    links = {
+      { url = "github.com/LasagnaFelidae", pos = { x = 0, y = 0 }, name = "Github" }
     }
   },
   {
