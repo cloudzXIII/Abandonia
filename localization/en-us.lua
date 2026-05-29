@@ -5290,8 +5290,8 @@ return {
         name = "PPE Joker",
         text = {
           {
-            "{X:mult,C:white}X#1#{} Mult",
-            "for every {C:red}Debuffed{} Joker",
+            "{X:mult,C:white}X#1#{} Mult for",
+            "every {C:red}debuffed{} Joker",
             "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
           },
         }
@@ -5623,7 +5623,7 @@ return {
         text = {
           "Is the same sequence",
           "even reversed",
-          "{C:inactive}(e.g. A,K,10,K,A)",
+          "{C:inactive}(e.g. A, K, 10, K, A)",
         }
       },
       abn_suitless = {
