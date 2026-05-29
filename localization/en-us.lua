@@ -5274,7 +5274,36 @@ return {
         }
       
       },
+      j_abn_palindromic_beetle = {
+        name = "Palindromic Beetle",
+        text = {
+          {
+            "If the {C:attention}full hand{} is a {C:attention}palindromic sequence",
+            "and is composed of {C:attention}both {C:diamonds}Light{} and {C:spades}Dark{} suits,",
+            "level up the {C:planet}Planet Rank{} of each {C:attention}scoring{} card by",
+            "the amount of times the {C:attention}rank{} has been {C:attention}repeated{} in hand",
+          },
+        }
+      
+      },
+      j_abn_ppe_joker = {
+        name = "PPE Joker",
+        text = {
+          {
+            "{X:mult,C:white}X#1#{} Mult",
+            "for every {C:red}Debuffed{} Joker"
+          },
+          {
+            "Scored hand size must be",
+            "larger than {C:attention}#2#{}",
+            "{C:inactive}(Changes to highest played hand size)",
+            "{C:inactive}(Resets when defeating a blind)"
+          },
+        }
+      
+      },
     },
+
 
     Spectral = {
       c_abn_apotheosis = {
@@ -5594,6 +5623,14 @@ return {
       }
     },
     Other = {
+      abn_palindromic_sequence = {
+        name = "Palindromic Sequence",
+        text = {
+          "Is the same sequence",
+          "even reversed",
+          "{C:inactive}(e.g. A,K,10,K,A)",
+        }
+      },
       abn_suitless = {
         text = {
           "Has no suit",

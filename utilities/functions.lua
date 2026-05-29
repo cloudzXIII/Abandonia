@@ -30,6 +30,28 @@ ABN.is_number = function(card)
   return not card:is_face() and card:get_id() ~= 14
 end
 
+ABN.is_palindrome = function(table)
+    local l = #table
+    local ct = 0
+    for i = 1, math.floor(l/2) do
+        if table[i] ~= table[l - i + 1] then
+          return false
+        else
+          ct = ct + 1
+        end
+    end
+    return ct
+end
+
+ABN.table_count = function(table, val)
+  local ct = 0
+  for i, v in ipairs(table) do
+      if v == val then
+        ct = ct + 1
+      end
+  end
+  return ct
+end
 
 -- Find position of card
 ABN.get_pos = function(card, area)
