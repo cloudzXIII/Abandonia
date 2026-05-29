@@ -5239,7 +5239,41 @@ return {
           }
         }
       
-      }
+      },
+      j_abn_boulevard_of_alters = {
+        name = "Boulevard of Alters",
+        text = {
+          {
+            "Whenever a {C:rare}Rare{} Joker triggers,",
+            "all {C:common}Common{} Jokers gain {C:chips}+10{} Chips"
+          },
+          {
+            "Whenever a {C:uncommon}Uncommon{} Joker triggers,",
+            "all {C:rare}Rare{} Jokers gain {X:mult,C:white}x0.1{} Mult"
+          },
+          {
+            "Whenever a {C:common}Common{} Joker triggers,",
+            "all {C:uncommon}Uncommon{} Jokers gain {X:chips,C:white}x0.1{} Chips"
+          },
+        }
+      
+      },
+      j_abn_memory_dump_joker = {
+        name = "Memory Dump Joker",
+        text = {
+          {
+            "Each Joker gains {X:mult,C:white}X#1#{} Mult",
+            "every scored hand"
+          },
+          {
+            "Scored hand size must be",
+            "larger than {C:attention}#2#{}",
+            "{C:inactive}(Changes to highest played hand size)",
+            "{C:inactive}(Resets when defeating a blind)"
+          },
+        }
+      
+      },
     },
 
     Spectral = {
