@@ -1370,6 +1370,15 @@ return {
       },
     },
     Joker = {
+      j_abn_greygoo_joker = {
+        name = "Grey Goo Joker",
+        text = {
+          "If {C:attention}first hand{} of round",
+          "has only {C:abn_suitless}Null{} cards, add",
+          "permanent copies to deck",
+          "and draw them to {C:attention}hand",
+        }
+      },
       j_abn_elementalist_joker = {
         name = "Elementalist Joker",
         text = {
