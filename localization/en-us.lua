@@ -5291,13 +5291,8 @@ return {
         text = {
           {
             "{X:mult,C:white}X#1#{} Mult",
-            "for every {C:red}Debuffed{} Joker"
-          },
-          {
-            "Scored hand size must be",
-            "larger than {C:attention}#2#{}",
-            "{C:inactive}(Changes to highest played hand size)",
-            "{C:inactive}(Resets when defeating a blind)"
+            "for every {C:red}Debuffed{} Joker",
+            "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
           },
         }
       
