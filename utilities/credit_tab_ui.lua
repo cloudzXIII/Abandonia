@@ -42,38 +42,35 @@ ABN.CreditCard = SMODS.Center:extend({
   inject = function(self)
     SMODS.Center.inject(self)
   end,
+  set_card_type_badge = function(self, card, badges)
+  end,
 })
 ABN.CreditCard {
   key = "bunnet",
   pos = { x = 0, y = 0 },
-  set_card_type_badge = function(self, card, badges)
-  end,
 }
 ABN.CreditCard {
   key = "cloudzXIII",
   pos = { x = 1, y = 0 },
   soul_pos = { x = 1, y = 1 },
-  set_card_type_badge = function(self, card, badges)
-  end,
 }
 ABN.CreditCard {
   key = "ericthetoon",
   pos = { x = 2, y = 0 },
   soul_pos = { x = 2, y = 1 },
-  set_card_type_badge = function(self, card, badges)
-  end,
 }
 ABN.CreditCard {
   key = "doggfly",
   pos = { x = 3, y = 0 },
-  set_card_type_badge = function(self, card, badges)
-  end,
 }
 ABN.CreditCard {
   key = "comykel",
   pos = { x = 4, y = 0 },
-  set_card_type_badge = function(self, card, badges)
-  end,
+}
+ABN.CreditCard {
+  key = "vega",
+  pos = { x = 5, y = 0 },
+  soul_pos = { x = 5, y = 1 },
 }
 --#endregion
 
@@ -139,6 +136,7 @@ ABN.contributors = {
   {
     key = "credit_abn_vega",
     name = "Vega",
+    has_icon = true,
     role = "Artist",
     colour = G.C.GREEN,
     links = {
