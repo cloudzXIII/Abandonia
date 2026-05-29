@@ -1370,6 +1370,21 @@ return {
       },
     },
     Joker = {
+      j_abn_elementalist_joker = {
+        name = "Elementalist Joker",
+        text = {
+          {
+            "Upgrade level of played",
+            "hand if it contains",
+            "{C:attention}6{} or more suits",
+          },
+          {
+            "If {C:attention}poker hand{} is a",
+            "{C:attention}#1#{}, level up",
+            "{C:planet}planet{} {C:attention}rank{} of all cards scored"
+          }
+        }
+      },
       j_abn_hand_puppet = {
         name = "Hand Puppet",
         text = {
