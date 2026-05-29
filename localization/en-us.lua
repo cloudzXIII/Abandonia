@@ -3757,7 +3757,7 @@ return {
         name = "Blackmore Joker",
         text = {
           "The first {C:attention}scoring card{} gives",
-          "its {C:attention}Rank{} as {X:mult,C:white} XMULT {}",
+          "its {C:attention}Rank{} as {X:mult,C:white}XMult{}",
         }
       },
       j_abn_feste = {
@@ -4689,8 +4689,8 @@ return {
       j_abn_jfool = { -- TO RELOCALIZE
         name = "J'Fool",
         text = {
-          "Each played {C:attention}Odd{} cards gives equal Xmult to the amount of {C:attention}Odd{} cards played",
-          "Each played {C:attention}Even{} card gives equal Xmult to the amount of {C:attention}Even{} cards played",
+          "Each played {C:attention}Odd{} cards gives {C:white,X:mult}XMult{} equal to the amount of {C:attention}Odd{} cards played",
+          "Each played {C:attention}Even{} card gives {C:white,X:mult}XMult{} equal to the amount of {C:attention}Even{} cards played",
         }
       },
       j_abn_tochic = {
@@ -4705,7 +4705,7 @@ return {
       j_abn_obmij = {
         name = "Obmij",
         text = {
-          "Give {C:white,X:mult}XMULT{} equal to",
+          "Give {C:white,X:mult}XMult{} equal to",
           "the number of {C:attention}Jokers{} owned",
         }
       },
@@ -7037,15 +7037,16 @@ return {
       m_abn_contagion_seal = {
         name = "Contagion Seal",
         text = {
-          "Whenever {X:mult,C:white}Xmult{} triggers,",
-          "this card gains {X:mult,C:white}^#2#{}",
-          "{C:inactive}(Currently {X:mult,C:white}^#1#{} {C:inactive}Mult){}",
+          "Gains {X:mult,C:white}^#2#{} Mult when",
+          "an {X:mult,C:white}XMult{} effect triggers",
+          "{C:inactive}(Currently {X:mult,C:white}^#1#{C:inactive} Mult)",
         },
       },
       m_abn_contagion_bonus = {
         name = "Contagion Bonus",
         text = {
-          "Give {X:spectral,C:white}^Chips{} {C:attention}equal{} to the number played cards",
+          "Gives {X:spectral,C:white}^Chips{} equal to",
+          "the number of cards played",
         },
       },
       m_abn_contagion_mult = {
@@ -7058,7 +7059,7 @@ return {
         name = "Monitor Card",
         text = {
           "Gives {X:mult,C:white}^Mult{} equal to",
-          "number of scoring {C:attention}#1#{} Suit cards",
+          "number of scoring {V:1}#1#{}",
           "{s:0.8}Suit changes every round",
           "no rank or suit",
         },
@@ -7066,7 +7067,9 @@ return {
       m_abn_cotton = {
         name = "Cotton Card",
         text = {
-          "Double the {C:planet}Planet{} {C:attention}ranks{} of {C:inactive}non-cotton{} {C:attention}held{} cards when this is played",
+          "Doubles the {C:planet}planet{} {C:attention}ranks{}",
+          "of {C:inactive}non-Cotton{} cards",
+          "held in hand",
         },
       },
       m_abn_sew = {
