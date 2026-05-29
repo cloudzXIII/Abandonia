@@ -4499,20 +4499,29 @@ return {
 
         }
       },
-      j_abn_hazard_cryptid = { -- TO RELOCALIZE
+      j_abn_hazard_cryptid = {
         name = "Hazard Cryptid",
         text = {
-          "Gain {C:mult}+#4#{} Mult when poker hand contains a {C:abn_hazard}Hazard{} card and a {C:dark_edition}non-enhanced{} card",
-          "{C:green}#1# in #2#{} chance to {C:mult}destroy{} all scored cards and this Joker",
+          "This Joker gains {C:mult}+#4#{} Mult if",
+          "played hand contains a {C:abn_hazard}Hazard{} card",
+          "and a {C:dark_edition}non-enhanced{} card,",
+          "{C:green}#1# in #2#{} chance to {C:mult}destroy{}",
+          "all scored cards and this Joker",
           "{C:inactive}(Currently{} {C:mult}+#3#{} {C:inactive}Mult)"
         }
       },
-      j_abn_noir_joker = { -- TO RELOCALIZE
+      j_abn_noir_joker = {
         name = "Noir Joker",
         text = {
-          "Whenever {C:diamonds}Light{} suit cards score apply {C:attention}flipped{} to all {C:spades}Dark{} Suit cards held in hand",
-          "Gains {C:mult}+#3#{} Mult and {C:chips}+#4#{} Chips per scoring {C:attention}Flipped{} card",
-          "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult, {C:chips}+#2#{} {C:inactive}Chips)"
+          {
+            "Add {C:attention}Flipped{} to all {C:spades}Dark{} suits",
+            "in hand when a {C:diamonds}Light{} suit is scored",
+          },
+          {
+            "This Joker gains {C:mult}+#3#{} Mult and",
+            "{C:chips}+#4#{} Chips per scoring {C:attention}Flipped{} card",
+            "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult, {C:chips}+#2#{} {C:inactive}Chips)",
+          }
         }
       },
       j_abn_deceitful_joker = {
@@ -7290,8 +7299,8 @@ return {
       abn_astrobooster = "Astro Booster",
       abn_joker_chip = "extra Chips",
       abn_joker_mult = "extra Mult",
-      abn_joker_xmult = "extra Mult",
-      abn_joker_xchips = "extra Chips",
+      abn_joker_xmult = "Mult",
+      abn_joker_xchips = "Chips",
       abn_joker_dollars = "extra Dollars",
       abn_joker_rep = "extra Repetitions",
       k_abn_increased = "Increased!",
