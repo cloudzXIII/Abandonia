@@ -756,8 +756,8 @@ return {
           "card in your {C:attention}full deck"
         }
       },
-      tag_abn_hazard_pearlenscene = {
-        name = "Pearlenscene Hazard",
+      tag_abn_hazard_pearlescent = {
+        name = "Pearlescent Hazard",
         text = {
           "Add {C:dark_edition}#1#{} to",
           "a random {C:attention}Joker{} and {C:attention}1{}",
@@ -798,8 +798,8 @@ return {
           "becomes {C:dark_edition}#1#",
         },
       },
-      tag_abn_pearlenscene = {
-        name = "Pearlenscene Tag",
+      tag_abn_pearlescent = {
+        name = "Pearlescent Tag",
         text = {
           "Next base edition shop",
           "Joker is free and",
@@ -3748,7 +3748,7 @@ return {
       j_abn_aliasing_joker = {
         name = "Aliasing Joker",
         text = {
-          { "Adds {C:dark_edition}Gloss{}, {C:dark_edition}Pearlenscene{},",
+          { "Adds {C:dark_edition}Gloss{}, {C:dark_edition}Pearlescent{},",
             "or {C:dark_edition}Iridescendent{} edition to",
             "first scoring {C:attention}numbered{} card",
             "of {C:attention}first{} and {C:attention}final{} hand",
@@ -5193,6 +5193,38 @@ return {
           "During {C:attention}Odd{} Antes {C:attention}double{} all {C:money}money{} obtained",
         }
       },
+      j_abn_enigma_comedian = {
+        name = "Enigma Comedian",
+        text = {
+          {
+            "When {C:attention}Blind{} is selected,",
+            "create {C:attention}1{} {C:dark_edition}Pearlescent{}",
+            "{C:planet}Vanilla{} {C:attention}Joker",
+            "{C:inactive}(Must have room)",
+          },
+          {
+            "{X:mult,C:white}^#1#{} Mult and {X:chips,C:white}^#2#{} Chips",
+            "for every {C:planet}Vanilla{} {C:attention}Joker{}";
+            "triggered"
+
+          }
+        }
+      
+      },
+      j_abn_golden_apple = {
+        name = "Golden Apple",
+        text = {
+          {
+            "When {C:attention}Blind{} is selected,",
+            "remove all {C:enhanced}Perishable{} stickers",
+          },
+          {
+            "{C:dark_edition}Eternal{} Jokers can",
+            "be sold"
+          }
+        }
+      
+      }
     },
 
     Spectral = {
@@ -5216,14 +5248,14 @@ return {
         name = "Ascend",
         text = {
           "Add {C:dark_edition}Glosss{}, {C:dark_edition}Iridescent{},",
-          "or {C:dark_edition}Pearlenscene{} effect to",
+          "or {C:dark_edition}Pearlescent{} effect to",
           "{C:attention}#1#{} selected card in hand",
         },
       },
       c_abn_distortion = {
         name = "Distortion",
         text = {
-          "Add {C:dark_edition}Pearlenscene{} to a",
+          "Add {C:dark_edition}Pearlescent{} to a",
           "random {C:attention}Joker{}, destroy",
           "all other Jokers",
         },
@@ -6120,8 +6152,8 @@ return {
           "when triggered"
         }
       },
-      e_abn_pearlenscene = {
-        name = "Pearlenscene",
+      e_abn_pearlescent = {
+        name = "Pearlescent",
         text = {
           "{C:mult}+#1#{} Mult,",
           "{C:chips}+#2#{} Chips,",
@@ -7317,7 +7349,7 @@ return {
       abn_abandond = "Abandoned",
       abn_sunscourge = "Sunscourge",
       abn_gloss = "Gloss",
-      abn_pearlenscene = "Pearlenscene",
+      abn_pearlescent = "Pearlescent",
       -- STICKERS
       abn_pump_up = "Pump Up",
       abn_immortal = "Immortal",
