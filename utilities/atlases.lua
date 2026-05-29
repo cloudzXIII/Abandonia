@@ -1,4 +1,11 @@
 SMODS.Atlas({
+  key = "placeholder",
+  path = "placeholder/placeholderJ.png",
+  px = 71,
+  py = 95,
+})
+
+SMODS.Atlas({
   key = "AbandoniaStickers",
   path = "stickers.png",
   px = 71,
