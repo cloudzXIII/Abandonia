@@ -48,16 +48,7 @@ SMODS.Joker {
     end
     if context.before and card.ability.extra.continent_used then
       card.ability.extra.continent_used = false
-      local _rank = G.GAME.abn_rank_upgrades[context.scoring_hand[1].base.value]
-      update_hand_text(
-        { sound = "button", volume = 0.7, pitch = 0.8, delay = 0.3 },
-        { handname = _rank.name .. "s", chips = _rank.chips, mult = _rank.mult, level = _rank.level }
-      )
       ABN.level_up_rank(context.scoring_hand[1], context.scoring_hand[1].base.value, 1)
-      update_hand_text(
-        { sound = "button", volume = 0.7, pitch = 1.1, delay = 0 },
-        { mult = 0, chips = 0, handname = "", level = "" }
-      )
     end
   end,
   abn_artist_credits = {
