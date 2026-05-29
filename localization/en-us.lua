@@ -5219,7 +5219,7 @@ return {
             "remove all {C:enhanced}Perishable{} stickers",
           },
           {
-            "{C:dark_edition}Eternal{} Jokers can",
+            "{C:enhanced}Eternal{} Jokers can",
             "be sold"
           }
         }
