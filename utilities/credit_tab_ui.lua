@@ -90,6 +90,7 @@ ABN.contributors = {
     role = "Founder",
     colour = G.C.DARK_EDITION,
     links = {
+      { url = "github.com/Bunnetdeluz", pos = { x = 0, y = 0 }, name = "Github" },
     }
   },
   {
@@ -117,6 +118,7 @@ ABN.contributors = {
     role = "Programmer",
     colour = G.C.BLUE,
     links = {
+      { url = "github.com/marcoosgiam", pos = { x = 0, y = 0 }, name = "Github" },
     }
   },
   {
@@ -171,6 +173,7 @@ ABN.contributors = {
     role = "Programmer",
     colour = G.C.BLUE,
     links = {
+      { url = "github.com/Marffe", pos = { x = 0, y = 0 }, name = "Github" },
     }
   },
   {
@@ -179,6 +182,7 @@ ABN.contributors = {
     role = "Music",
     colour = G.C.RED,
     links = {
+      { url = "youtube.com/@RKart-Musica", pos = { x = 0, y = 2 }, name = "Youtube" },
     }
   },
   {
@@ -187,6 +191,7 @@ ABN.contributors = {
     role = "Music",
     colour = G.C.RED,
     links = {
+      { url = "github.com/Firch", pos = { x = 0, y = 0 }, name = "Github" },
     }
   },
   {
@@ -196,6 +201,7 @@ ABN.contributors = {
     has_icon = true,
     colour = G.C.GREEN,
     links = {
+      { url = "github.com/Dogg-Fly", pos = { x = 0, y = 0 }, name = "Github" },
     }
   }
 }
