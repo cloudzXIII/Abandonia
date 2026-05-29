@@ -54,4 +54,14 @@ SMODS.Joker {
   abn_artist_credits = {
     artist = "IPreferCheddar",
   },
+  in_pool = function(self, args)
+    local has_null = false
+
+    for _, playing_card in ipairs(G.playing_cards) do
+      if playing_card.suit == "abn_suitless" then
+        has_null = true
+      end
+    end
+    return has_null and G.GAME.abn_has_played_six_hand
+  end
 }

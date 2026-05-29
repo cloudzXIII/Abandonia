@@ -202,6 +202,10 @@ ABN.calculate = function(self, context)
   if context.after and context.main_eval and not context.blueprint and G.GAME.abn_possibility_sticker then
     G.GAME.abn_possibility_sticker = false
   end
+
+  if context.before and #context.full_hand == 6 and not G.GAME.abn_has_played_six_hand then
+    G.GAME.abn_has_played_six_hand = true
+  end
 end
 
 function ABN.reset_game_globals(run_start)
