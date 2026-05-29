@@ -93,6 +93,6 @@ SMODS.Joker {
   end,
 
   abn_artist_credits = {
-    artist = "Ricottakitten",
+    artist = "Ricottakitten & Inky",
   },
 }
