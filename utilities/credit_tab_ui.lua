@@ -65,7 +65,13 @@ ABN.CreditCard {
 }
 ABN.CreditCard {
   key = "doggfly",
-  pos = { x = 0, y = 1 },
+  pos = { x = 3, y = 0 },
+  set_card_type_badge = function(self, card, badges)
+  end,
+}
+ABN.CreditCard {
+  key = "comykel",
+  pos = { x = 4, y = 0 },
   set_card_type_badge = function(self, card, badges)
   end,
 }
@@ -142,6 +148,7 @@ ABN.contributors = {
   {
     key = "credit_abn_comykel",
     name = "Comykel",
+    has_icon = true,
     role = "Artist",
     colour = G.C.GREEN,
     links = {
