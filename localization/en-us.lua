@@ -5461,7 +5461,7 @@ return {
         }
       },
       j_abn_baba_joker               = {
-        name = "Baba Joker",
+        name = "Baba is Joker",
         text = {
           {
             "{C:blue}+#1#{} Chips and {C:red}+#2#{} Mult",

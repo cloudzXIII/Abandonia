@@ -354,3 +354,13 @@ SMODS.Atlas {
   fps = 6,
   atlas_table = 'ANIMATION_ATLAS'
 }
+
+SMODS.Atlas {
+  key = "baba_is_joker",
+  path = "jokers/baba_is_joker.png",
+  px = 71,
+  py = 95,
+  frames = 2,
+  fps = 1,
+  atlas_table = 'ANIMATION_ATLAS'
+}
