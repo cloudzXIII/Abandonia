@@ -69,6 +69,7 @@ SMODS.Enhancement({
         and not card.getting_sliced
         and context.destroying_card == card
         and not card.ability.abn_just
+		and not next(SMODS.find_card("j_abn_immolation_joker"))
     then
       return {
         remove = true
