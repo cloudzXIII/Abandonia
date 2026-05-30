@@ -16,7 +16,7 @@ SMODS.Consumable {
   pos = { x = 0, y = 0 },
   config = { extra = { amount = 3 } },
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+    info_queue[#info_queue + 1] = { key = 'e_negative_playing_card', set = 'Edition', config = { extra = 1 } }
     info_queue[#info_queue + 1] = G.P_CENTERS.m_lucky
     return { vars = { card.ability.extra.amount } }
   end,

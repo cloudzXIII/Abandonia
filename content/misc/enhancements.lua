@@ -64,11 +64,11 @@ SMODS.Enhancement({
       }
     end
     if
-    context.destroying_card
-    and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
-    and not card.getting_sliced
-    and context.destroying_card == card
-    and not card.ability.abn_just
+        context.destroying_card
+        and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
+        and not card.getting_sliced
+        and context.destroying_card == card
+        and not card.ability.abn_just
     then
       return {
         remove = true
@@ -102,10 +102,10 @@ SMODS.Enhancement({
       }
     end
     if
-    context.destroying_card
-    and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
-    and not card.getting_sliced
-    and context.destroying_card == card
+        context.destroying_card
+        and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
+        and not card.getting_sliced
+        and context.destroying_card == card
     then
       return {
         remove = true
@@ -417,15 +417,15 @@ function SMODS.calculate_individual_effect(effect, scored_card, key, amount, fro
 
   -- Check if an Xmult modification just fired
   if (
-    key == "x_mult"
-    or key == "xmult"
-    or key == "Xmult"
-    or key == "x_mult_mod"
-    or key == "xmult_mod"
-    or key == "Xmult_mod"
-  )
-  and amount ~= 1
-  and mult then
+        key == "x_mult"
+        or key == "xmult"
+        or key == "Xmult"
+        or key == "x_mult_mod"
+        or key == "xmult_mod"
+        or key == "Xmult_mod"
+      )
+      and amount ~= 1
+      and mult then
     -- Iterate through all cards in the game to find ones with your enhancement
     if G.playing_cards then
       local scaled_count = 0
@@ -513,6 +513,21 @@ SMODS.Enhancement({
   },
 })
 
+function ABN.reset_monitor_card()
+  G.GAME.current_round.abn_monitor_card = G.GAME.current_round.abn_monitor_card or { suit = 'Hearts' }
+  local monitor_suits = {}
+  local suits = {}
+  for _, v in ipairs(G.playing_cards or {}) do
+    suits[v.base.suit] = true
+  end
+  for k, v in pairs(suits) do
+    if k ~= G.GAME.current_round.abn_monitor_card.suit then monitor_suits[#monitor_suits + 1] = k end
+  end
+  if #monitor_suits > 0 then
+    local monitor_suit = pseudorandom_element(monitor_suits, 'm_abn_monitor' .. G.GAME.round_resets.ante)
+    G.GAME.current_round.abn_monitor_card.suit = monitor_suit
+  end
+end
 
 SMODS.Enhancement({
   key = "monitor",
@@ -524,14 +539,13 @@ SMODS.Enhancement({
   always_scores = true,
   config = {
     extra = {
-      suit = "none",
     }
   },
+
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
-    local suit_text = cae.suit ~= "none" and (cae.suit:sub(1, 1):upper() .. cae.suit:sub(2)) or "None"
-
-    return { vars = { suit_text } }
+    local suit = (G.GAME.current_round.abn_monitor_card or {}).suit or "Hearts"
+    return { vars = { localize(suit, 'suits_plural') or "Nones", colours = { G.C.SUITS[suit] or G.C.L_BLACK } } }
   end,
 
   in_pool = function(self)
@@ -544,22 +558,18 @@ SMODS.Enhancement({
     -- Default coordinates if no suit is chosen yet
     local target_x = 2
     local target_y = 1
-
+    local suit = (G.GAME.current_round.abn_monitor_card or {}).suit or "Hearts"
     -- Map each suit to its respective X/Y coordinate
-    if cae.suit == "Spades" then
-      target_x = 5
-      target_y = 1
-    elseif cae.suit == "Hearts" then
-      target_x = 7
-      target_y = 1
-    elseif cae.suit == "Diamonds" then
+    if suit == "Spades" then
       target_x = 4
-      target_y = 1
-    elseif cae.suit == "Clubs" then
+    elseif suit == "Hearts" then
       target_x = 6
-    elseif cae.suit ~= "none" then
+    elseif suit == "Diamonds" then
       target_x = 3
-      target_y = 1
+    elseif suit == "Clubs" then
+      target_x = 5
+    else
+      target_x = 2
     end
 
     if card.children and card.children.center then
@@ -574,35 +584,12 @@ SMODS.Enhancement({
   end,
 
   calculate = function(self, card, context)
-    local cae = card.ability.extra
-
-    -- Pick a random suit present in the deck at the start of the blind
-    if context.setting_blind and not context.blueprint then
-      local all_cards = G.deck.cards
-      if all_cards and #all_cards > 0 then
-        local available_suits = {}
-        local seen = {}
-        for _, c in ipairs(all_cards) do
-          local s = c.base.suit
-          if not seen[s] then
-            table.insert(available_suits, s)
-            seen[s] = true
-          end
-        end
-
-        if #available_suits > 0 then
-          cae.suit = pseudorandom_element(available_suits, pseudoseed('monitor_suit' .. G.GAME.round_resets.ante))
-        end
-      end
-    end
-
-    -- Scoring logic
     if context.main_scoring and context.cardarea == G.play then
       -- Count matching cards of the chosen suit in the scored hand
       local match_count = 0
-      if context.scoring_hand and cae.suit ~= "none" then
+      if context.scoring_hand then
         for _, sc in ipairs(context.scoring_hand) do
-          if sc:is_suit(cae.suit) then
+          if sc:is_suit(G.GAME.current_round.abn_monitor_card.suit) then
             match_count = match_count + 1
           end
         end
@@ -662,8 +649,6 @@ SMODS.Enhancement({
                 return true
               end
             }))
-
-            -- upgrade the rank
             ABN.level_up_rank(hand_card, rank_key, level_increase, false)
           end
         end

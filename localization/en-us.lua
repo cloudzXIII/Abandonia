@@ -1370,6 +1370,48 @@ return {
       },
     },
     Joker = {
+      j_abn_boxing_champ = {
+        name = "Boxing Champ",
+        text = {
+          "This Joker gains {C:chips}+#4#{} Chips",
+          "and {C:mult}+#2#{} Mult when another",
+          "{C:attention}Joker{} is triggered",
+          "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#1#{C:inactive} Mult)"
+        }
+      },
+      j_abn_dark_tie = {
+        name = "Dark Tie",
+        text = {
+          "This Joker gains {C:chips}+#4#{} Chips and",
+          "{C:mult}+#2#{} Mult for each {C:attention}pair{} of",
+          "matching {C:attention}even{} and {C:attention}odd{} cards",
+          "with {C:abn_suitless}Null{} suit in played hand",
+          "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#1#{C:inactive} Mult)"
+        }
+      },
+      j_abn_punk_joker = {
+        name = "Punk Joker",
+        text = {
+          {
+            "Add {C:dark_edition}Negative{} edition to",
+            "first scoring {C:abn_suitless}Null{} card,",
+          },
+          {
+            "This Joker gains {C:white,X:chips}X#2#{} Mult when",
+            "a {C:dark_edition}Negative{} {C:abn_suitless}Null{} card is scored",
+            "{C:inactive}(Currently {C:white,X:chips}X#1#{C:inactive} Chips)",
+          }
+        }
+      },
+      j_abn_greygoo_joker = {
+        name = "Grey Goo Joker",
+        text = {
+          "If {C:attention}first hand{} of round",
+          "has only {C:abn_suitless}Null{} cards, add",
+          "permanent copies to deck",
+          "and draw them to {C:attention}hand",
+        }
+      },
       j_abn_elementalist_joker = {
         name = "Elementalist Joker",
         text = {
@@ -3734,7 +3776,7 @@ return {
         name = "Blackmore Joker",
         text = {
           "The first {C:attention}scoring card{} gives",
-          "its {C:attention}Rank{} as {X:mult,C:white} XMULT {}",
+          "its {C:attention}Rank{} as {X:mult,C:white}XMult{}",
         }
       },
       j_abn_feste = {
@@ -4466,20 +4508,29 @@ return {
 
         }
       },
-      j_abn_hazard_cryptid = { -- TO RELOCALIZE
+      j_abn_hazard_cryptid = {
         name = "Hazard Cryptid",
         text = {
-          "Gain {C:mult}+#4#{} Mult when poker hand contains a {C:abn_hazard}Hazard{} card and a {C:dark_edition}non-enhanced{} card",
-          "{C:green}#1# in #2#{} chance to {C:mult}destroy{} all scored cards and this Joker",
+          "This Joker gains {C:mult}+#4#{} Mult if",
+          "played hand contains a {C:abn_hazard}Hazard{} card",
+          "and a {C:dark_edition}non-enhanced{} card,",
+          "{C:green}#1# in #2#{} chance to {C:mult}destroy{}",
+          "all scored cards and this Joker",
           "{C:inactive}(Currently{} {C:mult}+#3#{} {C:inactive}Mult)"
         }
       },
-      j_abn_noir_joker = { -- TO RELOCALIZE
+      j_abn_noir_joker = {
         name = "Noir Joker",
         text = {
-          "Whenever {C:diamonds}Light{} suit cards score apply {C:attention}flipped{} to all {C:spades}Dark{} Suit cards held in hand",
-          "Gains {C:mult}+#3#{} Mult and {C:chips}+#4#{} Chips per scoring {C:attention}Flipped{} card",
-          "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult, {C:chips}+#2#{} {C:inactive}Chips)"
+          {
+            "Add {C:attention}Flipped{} to all {C:spades}Dark{} suits",
+            "in hand when a {C:diamonds}Light{} suit is scored",
+          },
+          {
+            "This Joker gains {C:mult}+#3#{} Mult and",
+            "{C:chips}+#4#{} Chips per scoring {C:attention}Flipped{} card",
+            "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult, {C:chips}+#2#{} {C:inactive}Chips)",
+          }
         }
       },
       j_abn_deceitful_joker = {
@@ -4666,8 +4717,8 @@ return {
       j_abn_jfool = { -- TO RELOCALIZE
         name = "J'Fool",
         text = {
-          "Each played {C:attention}Odd{} cards gives equal Xmult to the amount of {C:attention}Odd{} cards played",
-          "Each played {C:attention}Even{} card gives equal Xmult to the amount of {C:attention}Even{} cards played",
+          "Each played {C:attention}Odd{} cards gives {C:white,X:mult}XMult{} equal to the amount of {C:attention}Odd{} cards played",
+          "Each played {C:attention}Even{} card gives {C:white,X:mult}XMult{} equal to the amount of {C:attention}Even{} cards played",
         }
       },
       j_abn_tochic = {
@@ -4682,7 +4733,7 @@ return {
       j_abn_obmij = {
         name = "Obmij",
         text = {
-          "Give {C:white,X:mult}XMULT{} equal to",
+          "Give {C:white,X:mult}XMult{} equal to",
           "the number of {C:attention}Jokers{} owned",
         }
       },
@@ -5585,6 +5636,29 @@ return {
           "Helped with atlases",
           "and made so much",
           "cool {C:green}Art{}!",
+          "Check out {C:attention}Vega's Stuff{}"
+        }
+      },
+      credit_abn_comykel = {
+        name = "",
+        text = {
+          "Made so much cool art!",
+          "Check out {C:attention}CMYKEL{}!"
+        }
+      },
+      credit_abn_inky = {
+        name = "",
+        text = {
+          "Made so much cool art!",
+          "{s:0.85}(aswell as these cool credit cards)",
+          "Check out {C:attention}Inky's Bunch-O-Things{}!"
+        }
+      },
+      credit_abn_feli = {
+        name = "",
+        text = {
+          "Added some {C:attention}Jokers{}",
+          "Check out {C:attention}Feli's Jokeria{}!"
         }
       },
       credit_abn_j8bit = {
@@ -7142,15 +7216,16 @@ return {
       m_abn_contagion_seal = {
         name = "Contagion Seal",
         text = {
-          "Whenever {X:mult,C:white}Xmult{} triggers,",
-          "this card gains {X:mult,C:white}^#2#{}",
-          "{C:inactive}(Currently {X:mult,C:white}^#1#{} {C:inactive}Mult){}",
+          "Gains {X:mult,C:white}^#2#{} Mult when",
+          "an {X:mult,C:white}XMult{} effect triggers",
+          "{C:inactive}(Currently {X:mult,C:white}^#1#{C:inactive} Mult)",
         },
       },
       m_abn_contagion_bonus = {
         name = "Contagion Bonus",
         text = {
-          "Give {X:spectral,C:white}^Chips{} {C:attention}equal{} to the number played cards",
+          "Gives {X:spectral,C:white}^Chips{} equal to",
+          "the number of cards played",
         },
       },
       m_abn_contagion_mult = {
@@ -7163,7 +7238,7 @@ return {
         name = "Monitor Card",
         text = {
           "Gives {X:mult,C:white}^Mult{} equal to",
-          "number of scoring {C:attention}#1#{} Suit cards",
+          "number of scoring {V:1}#1#{}",
           "{s:0.8}Suit changes every round",
           "no rank or suit",
         },
@@ -7171,7 +7246,9 @@ return {
       m_abn_cotton = {
         name = "Cotton Card",
         text = {
-          "Double the {C:planet}Planet{} {C:attention}ranks{} of {C:inactive}non-cotton{} {C:attention}held{} cards when this is played",
+          "Doubles the {C:planet}planet{} {C:attention}ranks{}",
+          "of {C:inactive}non-Cotton{} cards",
+          "held in hand",
         },
       },
       m_abn_sew = {
@@ -7382,8 +7459,8 @@ return {
       abn_astrobooster = "Astro Booster",
       abn_joker_chip = "extra Chips",
       abn_joker_mult = "extra Mult",
-      abn_joker_xmult = "extra Mult",
-      abn_joker_xchips = "extra Chips",
+      abn_joker_xmult = "Mult",
+      abn_joker_xchips = "Chips",
       abn_joker_dollars = "extra Dollars",
       abn_joker_rep = "extra Repetitions",
       k_abn_increased = "Increased!",

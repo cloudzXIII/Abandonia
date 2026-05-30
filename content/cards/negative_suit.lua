@@ -2,7 +2,7 @@ SMODS.Joker {
   key = 'negative_suit',
 
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+    info_queue[#info_queue + 1] = { key = 'e_negative_playing_card', set = 'Edition', config = { extra = 1 } }
     local negative_tally = 0
     if G.playing_cards then
       for _, playing_card in ipairs(G.playing_cards) do

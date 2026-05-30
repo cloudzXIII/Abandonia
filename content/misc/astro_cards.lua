@@ -735,6 +735,7 @@ SMODS.Consumable {
     discovered = false,
 
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds)
         return { vars = { numerator, denominator, card.ability.extra.chips, card.ability.extra.mult } }
     end,
@@ -913,6 +914,7 @@ SMODS.Consumable {
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.c_black_hole
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds)
         return { vars = { numerator, denominator, card.ability.extra.cards } }
     end,

@@ -5,7 +5,7 @@ G.ARGS.LOC_COLOURS["abn_Nightshift"] = G.C.NIGHTSHIFT
 
 SMODS.ConsumableType {
     key = "nightshift_cards",
-    collection_rows = { 5,5 },
+    collection_rows = { 5, 5 },
     shop_rate = 0.0,
     primary_colour = G.C.NIGHTSHIFT,
     secondary_colour = G.C.NIGHTSHIFT_SECONDARY,
@@ -346,11 +346,11 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.level } }
     end,
-	
-	-- only available on jimbo stakes
-	in_pool = function(self)
-		return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
-	end,
+
+    -- only available on jimbo stakes
+    in_pool = function(self)
+        return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+    end,
 
     can_use = function(self, card)
         return true
@@ -359,14 +359,14 @@ SMODS.Consumable {
     use = function(self, card, area, copier)
         -- level up planet ranks
         local upgraded_ranks = {}
-        
+
         for _, c in ipairs(G.playing_cards) do
             if c.base and c.base.value then
                 local card_rank = c.base.value
-                
+
                 if G.GAME.abn_rank_upgrades[card_rank] and not upgraded_ranks[card_rank] then
                     upgraded_ranks[card_rank] = true
-                    
+
                     -- levels up the rank by 3
                     ABN.level_up_rank(card, card_rank, card.ability.extra.level)
                 end
@@ -376,7 +376,7 @@ SMODS.Consumable {
         -- find most played hand
         local tempuse = -1
         local most_played_hand = nil
-        
+
         for k, v in pairs(G.GAME.hands) do
             if v.played > tempuse and v.visible then
                 tempuse = v.played
@@ -425,12 +425,15 @@ SMODS.Consumable {
     hidden = true,
     soul_set = "Spectral",
     soul_rate = 0.035,
-	
-	-- only available on jimbo stakes
-	in_pool = function(self)
-		return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
-	end,
 
+    -- only available on jimbo stakes
+    in_pool = function(self)
+        return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+    end,
+
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+    end,
     can_use = function(self, card)
         -- can be used if there is at least one non-plagued Joker to destroy
         if G.jokers and G.jokers.cards then
@@ -497,7 +500,7 @@ SMODS.Consumable {
                     spawned_card:add_to_deck()
                     G.jokers:emplace(spawned_card)
                     spawned_card:start_materialize()
-					spawned_card:set_edition({ negative = true })
+                    spawned_card:set_edition({ negative = true })
                     return true
                 end
             }))
@@ -521,14 +524,14 @@ SMODS.Consumable {
     soul_rate = 0.035,
 
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = { key = "abn_fragile", set = "Other", vars = { 1,4 } }
-		info_queue[#info_queue + 1] = { key = "rental", set = "Other", vars = { 3 } }
+        info_queue[#info_queue + 1] = { key = "abn_fragile", set = "Other", vars = { 1, 4 } }
+        info_queue[#info_queue + 1] = { key = "rental", set = "Other", vars = { 3 } }
     end,
-	
-	-- only available on jimbo stakes
-	in_pool = function(self)
-		return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
-	end,
+
+    -- only available on jimbo stakes
+    in_pool = function(self)
+        return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+    end,
 
 
     can_use = function(self, card)
@@ -567,11 +570,11 @@ SMODS.Consumable {
             if SMODS.Stickers["rental"] then
                 SMODS.Stickers["rental"]:apply(target_joker, true)
             end
-            
+
             target_joker:add_sticker("abn_fragile", true)
-            
+
             target_joker:juice_up(0.5, 0.5)
-            
+
             successfully_affected = successfully_affected + 1
         end
 

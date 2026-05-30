@@ -42,32 +42,35 @@ ABN.CreditCard = SMODS.Center:extend({
   inject = function(self)
     SMODS.Center.inject(self)
   end,
+  set_card_type_badge = function(self, card, badges)
+  end,
 })
 ABN.CreditCard {
   key = "bunnet",
   pos = { x = 0, y = 0 },
-  set_card_type_badge = function(self, card, badges)
-  end,
 }
 ABN.CreditCard {
   key = "cloudzXIII",
   pos = { x = 1, y = 0 },
   soul_pos = { x = 1, y = 1 },
-  set_card_type_badge = function(self, card, badges)
-  end,
 }
 ABN.CreditCard {
   key = "ericthetoon",
   pos = { x = 2, y = 0 },
   soul_pos = { x = 2, y = 1 },
-  set_card_type_badge = function(self, card, badges)
-  end,
 }
 ABN.CreditCard {
   key = "doggfly",
-  pos = { x = 0, y = 1 },
-  set_card_type_badge = function(self, card, badges)
-  end,
+  pos = { x = 3, y = 0 },
+}
+ABN.CreditCard {
+  key = "comykel",
+  pos = { x = 4, y = 0 },
+}
+ABN.CreditCard {
+  key = "vega",
+  pos = { x = 5, y = 0 },
+  soul_pos = { x = 5, y = 1 },
 }
 --#endregion
 
@@ -90,6 +93,7 @@ ABN.contributors = {
     role = "Founder",
     colour = G.C.DARK_EDITION,
     links = {
+      { url = "github.com/Bunnetdeluz", pos = { x = 0, y = 0 }, name = "Github" },
     }
   },
   {
@@ -117,14 +121,7 @@ ABN.contributors = {
     role = "Programmer",
     colour = G.C.BLUE,
     links = {
-    }
-  },
-  {
-    key = "credit_abn_vega",
-    name = "Vega",
-    role = "Artist",
-    colour = G.C.GREEN,
-    links = {
+      { url = "github.com/marcoosgiam", pos = { x = 0, y = 0 }, name = "Github" },
     }
   },
   {
@@ -133,6 +130,46 @@ ABN.contributors = {
     role = "Programmer",
     colour = G.C.BLUE,
     links = {
+      { url = "github.com//orangequilavaburst", pos = { x = 0, y = 0 }, name = "Github" }
+    }
+  },
+  {
+    key = "credit_abn_vega",
+    name = "Vega",
+    has_icon = true,
+    role = "Artist",
+    colour = G.C.GREEN,
+    links = {
+      { url = "github.com/VegaTheAvali", pos = { x = 0, y = 0 }, name = "Github" }
+    }
+  },
+  {
+    key = "credit_abn_comykel",
+    name = "Comykel",
+    has_icon = true,
+    role = "Artist",
+    colour = G.C.GREEN,
+    links = {
+      { url = "github.com/comykel", pos = { x = 0, y = 0 }, name = "Github" }
+    }
+  },
+  {
+    key = "credit_abn_inky",
+    name = "Inky",
+    role = "Artist",
+    colour = G.C.GREEN,
+    links = {
+      { url = "github.com/InkystA", pos = { x = 0, y = 0 }, name = "Github" }
+    }
+  },
+  {
+    key = "credit_abn_feli",
+    name = "Feli",
+    role = "Coder",
+    colour = G.C.BLUE,
+    links = {
+      { url = "github.com/LasagnaFelidae", pos = { x = 0, y = 0 }, name = "Github" },
+      { url = "ko-fi.com/lasagnafelidae",  pos = { x = 0, y = 1 }, name = "Buy me a Coffee!" }
     }
   },
   {
@@ -141,6 +178,7 @@ ABN.contributors = {
     role = "Programmer",
     colour = G.C.BLUE,
     links = {
+      { url = "github.com/Marffe", pos = { x = 0, y = 0 }, name = "Github" },
     }
   },
   {
@@ -149,6 +187,7 @@ ABN.contributors = {
     role = "Music",
     colour = G.C.RED,
     links = {
+      { url = "youtube.com/@RKart-Musica", pos = { x = 1, y = 1 }, name = "Youtube" },
     }
   },
   {
@@ -157,6 +196,7 @@ ABN.contributors = {
     role = "Music",
     colour = G.C.RED,
     links = {
+      { url = "github.com/Firch", pos = { x = 0, y = 0 }, name = "Github" },
     }
   },
   {
@@ -166,6 +206,7 @@ ABN.contributors = {
     has_icon = true,
     colour = G.C.GREEN,
     links = {
+      { url = "github.com/Dogg-Fly", pos = { x = 0, y = 0 }, name = "Github" },
     }
   }
 }

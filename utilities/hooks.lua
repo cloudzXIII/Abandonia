@@ -148,7 +148,7 @@ function Card:generate_UIBox_ability_table(vars_only)
 		} or nil
 	end
 
-	-- Xmult
+	-- Perma Xmult
 	if self.ability.abn_perma_xmult and self.ability.abn_perma_xmult ~= 1 then
 		self.abn_extra_xmult = (self.area and self.area == G.jokers) and {
 			{
@@ -157,10 +157,15 @@ function Card:generate_UIBox_ability_table(vars_only)
 				nodes = {
 					{
 						n = G.UIT.C,
+						config = { align = "cm", colour = G.C.MULT, r = 0.05, minw = 0.4, padding = 0.03, res = 0.15 },
+						nodes = {
+							{ n = G.UIT.T, config = { text = "X" .. self.ability.abn_perma_xmult, colour = G.C.WHITE, scale = 0.32 } },
+						}
+					},
+					{
+						n = G.UIT.C,
 						config = { ref_table = self, align = "m", colour = G.C.CLEAR, r = 0.05, padding = 0.06 },
 						nodes = {
-							{ n = G.UIT.T, config = { text = "X" .. self.ability.abn_perma_xmult, colour = G.C.MULT, scale = 0.32 } },
-							{ n = G.UIT.T, config = { text = "", colour = G.C.MULT, scale = 0.1 } },
 							{ n = G.UIT.T, config = { text = localize("abn_joker_xmult"), colour = G.C.L_BLACK, scale = 0.32, padding = 0.1 } }
 						}
 					} }
@@ -168,7 +173,7 @@ function Card:generate_UIBox_ability_table(vars_only)
 		} or nil
 	end
 
-	-- Perma Xchips
+	-- Perma XChips
 	if self.ability.abn_perma_xchips and self.ability.abn_perma_xchips ~= 1 then
 		self.abn_extra_xchips = (self.area and self.area == G.jokers) and {
 			{
@@ -177,13 +182,19 @@ function Card:generate_UIBox_ability_table(vars_only)
 				nodes = {
 					{
 						n = G.UIT.C,
-						config = { ref_table = self, align = "m", colour = G.C.CLEAR, r = 0.05, padding = 0.06 },
+						config = { align = "cm", colour = G.C.CHIPS, r = 0.05, minw = 0.4, padding = 0.03, res = 0.15 },
 						nodes = {
-							{ n = G.UIT.T, config = { text = "X" .. self.ability.abn_perma_xchips, colour = G.C.CHIPS, scale = 0.32 } },
-							{ n = G.UIT.T, config = { text = "", colour = G.C.CHIPS, scale = 0.1 } },
+							{ n = G.UIT.T, config = { text = "X" .. self.ability.abn_perma_xchips, colour = G.C.WHITE, scale = 0.32 } },
+						}
+					},
+					{
+						n = G.UIT.C,
+						config = { ref_table = self, align = "cm", colour = G.C.CLEAR, r = 0.05, padding = 0.06 },
+						nodes = {
 							{ n = G.UIT.T, config = { text = localize("abn_joker_xchips"), colour = G.C.L_BLACK, scale = 0.32, padding = 0.1 } }
 						}
-					} }
+					}
+				}
 			}
 		} or nil
 	end
