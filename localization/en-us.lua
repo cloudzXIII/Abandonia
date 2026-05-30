@@ -5549,6 +5549,13 @@ return {
         "{C:inactive}Currently:[{C:mult}#2# Mult{C:inactive}]",
       },
     },
+    j_abn_bonus_power_joker = {
+      name="Bonus Power Joker",
+      text={
+        "{C:money}$#1#{}, {C:red}#2# mult{} and {C:chips}#3# chips",
+        "When a {C:attention}Bonus{} card is scored",
+      },
+    },
       
     },
 
