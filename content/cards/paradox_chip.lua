@@ -16,7 +16,6 @@ SMODS.Joker {
     discovered = false,
     blueprint_compat = true,
     
-    config = { extra = { chips = 10, mult = 3 } },
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and ABN.is_number(context.other_card) and context.other_card.base.suit.nominal > 10 then
             return {mult = context.other_card.base.suit.nominal}
