@@ -816,3 +816,185 @@ SMODS.PokerHand {
   end,
 }
 --#endregion
+
+
+SMODS.Consumable {
+  key = "numa",
+  set = "Planet",
+  cost = 4,
+  atlas = "AbandoniaPlanets",
+  pos = { x = 5, y = 3 },
+  config = { hand_type = "abn_Empty Throne", softlock = true },
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+        G.GAME.hands[card.ability.hand_type].level,
+        localize(card.ability.hand_type, 'poker_hands'),
+        G.GAME.hands[card.ability.hand_type].l_mult,
+        G.GAME.hands[card.ability.hand_type].l_chips,
+        colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+      }
+    }
+  end,
+  abn_artist_credits = {
+    artist = "Feli"
+  },
+  set_card_type_badge = function(self, card, badges)
+    badges[#badges + 1] = create_badge("Asteroid",
+      get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.Planet.text_colour,
+      1.2)
+  end
+}
+
+SMODS.Consumable {
+  key = "felix",
+  set = "Planet",
+  cost = 4,
+  atlas = "AbandoniaPlanets",
+  pos = { x = 1, y = 4 },
+  config = { hand_type = "abn_Inverse Spectrum", softlock = true },
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+        G.GAME.hands[card.ability.hand_type].level,
+        localize(card.ability.hand_type, 'poker_hands'),
+        G.GAME.hands[card.ability.hand_type].l_mult,
+        G.GAME.hands[card.ability.hand_type].l_chips,
+        colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+      }
+    }
+  end,
+  abn_artist_credits = {
+    artist = "Feli"
+  },
+  set_card_type_badge = function(self, card, badges)
+    badges[#badges + 1] = create_badge("Satellite",
+      get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.Planet.text_colour,
+      1.2)
+  end
+}
+
+SMODS.Consumable {
+  key = "nikos",
+  set = "Planet",
+  cost = 4,
+  atlas = "AbandoniaPlanets",
+  pos = { x = 0, y = 4 },
+  config = { hand_type = "abn_Abyss", softlock = true },
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+        G.GAME.hands[card.ability.hand_type].level,
+        localize(card.ability.hand_type, 'poker_hands'),
+        G.GAME.hands[card.ability.hand_type].l_mult,
+        G.GAME.hands[card.ability.hand_type].l_chips,
+        colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+      }
+    }
+  end,
+  abn_artist_credits = {
+    artist = "Feli"
+  },
+}
+
+SMODS.Consumable {
+  key = "suzuho",
+  set = "Planet",
+  cost = 4,
+  atlas = "AbandoniaPlanets",
+  pos = { x = 2, y = 4 },
+  config = { hand_type = "abn_Divider Conquered", softlock = true },
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+        G.GAME.hands[card.ability.hand_type].level,
+        localize(card.ability.hand_type, 'poker_hands'),
+        G.GAME.hands[card.ability.hand_type].l_mult,
+        G.GAME.hands[card.ability.hand_type].l_chips,
+        colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+      }
+    }
+  end,
+  abn_artist_credits = {
+    artist = "Feli"
+  },
+  set_card_type_badge = function(self, card, badges)
+    badges[#badges + 1] = create_badge("Split Planet",
+      get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.Planet.text_colour,
+      1.2)
+  end
+}
+
+SMODS.Consumable {
+  key = "arret",
+  set = "Planet",
+  cost = 4,
+  atlas = "AbandoniaPlanets",
+  pos = { x = 3, y = 4 },
+  config = { hand_type = "abn_Haunted House", softlock = true },
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+        G.GAME.hands[card.ability.hand_type].level,
+        localize(card.ability.hand_type, 'poker_hands'),
+        G.GAME.hands[card.ability.hand_type].l_mult,
+        G.GAME.hands[card.ability.hand_type].l_chips,
+        colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+      }
+    }
+  end,
+  abn_artist_credits = {
+    artist = "Feli"
+  },
+  set_card_type_badge = function(self, card, badges)
+    badges[#badges + 1] = create_badge("Tenalp",
+      get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.Planet.text_colour,
+      1.2)
+  end
+}
+
+SMODS.Consumable {
+  key = "korobos",
+  set = "Planet",
+  cost = 4,
+  atlas = "AbandoniaPlanets",
+  pos = { x = 4, y = 4 },
+  config = { hand_type = "abn_Twilight Distillation", softlock = true },
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+        G.GAME.hands[card.ability.hand_type].level,
+        localize(card.ability.hand_type, 'poker_hands'),
+        G.GAME.hands[card.ability.hand_type].l_mult,
+        G.GAME.hands[card.ability.hand_type].l_chips,
+        colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+      }
+    }
+  end,
+  abn_artist_credits = {
+    artist = "Feli"
+  },
+}
+
+SMODS.Consumable {
+  key = "myrios",
+  set = "Planet",
+  cost = 4,
+  atlas = "AbandoniaPlanets",
+  pos = { x = 5, y = 4 },
+  config = { hand_type = "abn_Void Space", softlock = true },
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+        G.GAME.hands[card.ability.hand_type].level,
+        localize(card.ability.hand_type, 'poker_hands'),
+        G.GAME.hands[card.ability.hand_type].l_mult,
+        G.GAME.hands[card.ability.hand_type].l_chips,
+        colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+      }
+    }
+  end,
+  abn_artist_credits = {
+    artist = "Feli"
+  },
+}
