@@ -5363,6 +5363,73 @@ return {
         }
 
       },
+	  j_abn_invisible_ink_joker             = {
+        name = "Invisible Ink Joker",
+        text = {
+          "Gain {C:mult}+#3#{} Mult per different scoring {C:attention}Suit{} of {C:money}Lucky{} cards",
+		  "If you play a {C:attention}Spectrum{} hand of only {C:money}Lucky{} cards gain {X:chips,C:white}X#4#{} Chips for each one",
+		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {X:chips,C:white}X#2#{} {C:inactive}Chips{}",
+        }
+      },
+	  j_abn_jimbos_love_letter             = {
+        name = "Jimbo's Love Letter",
+        text = {
+          "{C:hearts}Hearts{} held in hand count in scoring",
+		  "The first played Flush of only {C:hearts}Hearts{} levels up each cards {C:planet}planet{} {C:attention}rank{}",
+        }
+      },
+	  j_abn_immolation_joker             = {
+        name = "Immolation Joker",
+        text = {
+          "{C:abn_black_seal}Oilfire{} cards are not {C:mult}destroyed{} after use",
+        }
+      },
+	  j_abn_mariner_joker             = {
+        name = "Mariner Joker",
+        text = {
+          "After you use a {C:continent}Continent{} card create a random {C:planet}Planet{} {C:attention}Rank{} card",
+        }
+      },
+	  j_abn_fortune_joker             = {
+        name = "Fortune Joker",
+        text = {
+          "Scoring {C:money}Lucky{} cards {C:attention}level up{} their {C:planet}Planet{} {C:attention}Rank{}",
+		  "If a {C:money}Lucky{} card triggers retrigger that card",
+        }
+      },
+	  j_abn_darkest_joker             = {
+        name = "Darkest Joker",
+        text = {
+          "Gain {C:mult}+#3#{} Mult per Scoring {C:spades}Dark{} Suit with an {C:dark_edition}Edition{}",
+		  "Gain {C:chips}+#4#{} Chips per Scoring {C:spades}Dark{} Suit with an {C:dark_edition}Enhancement{}",
+		  "{C:inactive}Currently: {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}",
+        }
+      },
+	  j_abn_bodyguard_joker             = {
+        name = "Bodyguard Joker",
+        text = {
+          "Gain {C:mult}+#2#{} Mult per scoring {C:attention}Flipped{} card",
+		  "Remove {C:attention}Flipped{} from scoring {C:attention}Flipped{} cards",
+		  "Unscoring Cards gain {C:attention}Flipped{}",
+		  "{C:inactive}Currently: {C:mult}+#1#{} {C:inactive}Mult{}",
+        }
+      },
+	  j_abn_collectible_joker             = {
+        name = "Collectible Joker",
+        text = {
+		  "Gain {C:chips}+#8#{} Chips per different {C:common}Common{} Joker obtained this run",
+		  "Gain {C:mult}+#7#{} Mult per different {C:uncommon}Uncommon{} Joker obtained this run",
+		  "Gain {X:mult,C:white}X#5#{} Mult per different {C:rare}Rare{} Joker obtained this run",
+		  "Gain {X:mult,C:white}X#6#{} Chips per different {C:legendary}Legendary{} Joker obtained this run",
+		  "{C:inactive}Currently: {X:mult,C:white}X#1#{} {C:inactive}Mult{} {C:mult}+#3#{} {C:inactive}Mult{} {X:chips,C:white}X#2#{} {C:inactive}Chips{} {C:chips}+#4#{} {C:inactive}Chips{}"
+        }
+      },
+	  j_abn_flotsam_joker             = {
+        name = "Flotsam Joker",
+        text = {
+		  "If you play a {C:attention}Flush{} cards held in hand matching the same {C:attention}Suit{} score"
+        }
+      },
     },
 
 
