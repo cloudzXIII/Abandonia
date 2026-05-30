@@ -5541,6 +5541,15 @@ return {
           }
         }
       },
+    j_abn_lucky_socks = {
+      name="Lucky Socks",
+      text={
+        "This {C:attention}Joker{} gains {C:mult}#1# Mult{} if played {C:chips}hand{} contains a {C:attention}Pair",
+        "{C:attention}Pair lucky cards{} are guaranteed to {C:green}succeed",
+        "{C:inactive}Currently:[{C:mult}#2# Mult{C:inactive}]",
+      },
+    },
+      
     },
 
 
