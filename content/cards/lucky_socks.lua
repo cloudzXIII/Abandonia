@@ -26,7 +26,6 @@ SMODS.Joker {
 
   calculate = function(self, card, context)
     if context.before then
-        print("context before:")
         local guaranteed_lucky_cards = {}
         for i,v in ipairs(context.scoring_hand) do
             if guaranteed_lucky_cards[v] == nil and SMODS.has_enhancement(v,"m_lucky") then
