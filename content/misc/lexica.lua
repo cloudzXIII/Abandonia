@@ -17,45 +17,6 @@ function Card:set_cost()
   return ret
 end
 
--- Remove use button from lexica cards
-local use_and_sell_ref = G.UIDEF.use_and_sell_buttons
-function G.UIDEF.use_and_sell_buttons(card)
-  local buttons = use_and_sell_ref(card)
-  if card.ability and card.ability.set == "lexica" and card.area == G.pack_cards and G.pack_cards then
-    return {
-      n = G.UIT.ROOT,
-      config = { padding = 0, colour = G.C.CLEAR },
-      nodes = {
-        {
-          n = G.UIT.R,
-          config = { ref_table = card, r = 0.08, padding = 0.1, align = "bm", minw = 0.5 * card.T.w - 0.15, maxw = 0.9 * card.T.w - 0.15, minh = 0.3 * card.T.h, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'use_card', func = 'can_select_card' },
-          nodes = {
-            { n = G.UIT.T, config = { text = localize('b_select'), colour = G.C.UI.TEXT_LIGHT, scale = 0.45, shadow = true } }
-          }
-        },
-      }
-    }
-  end
-  if card.ability and card.ability.set == "lexica" then
-    local sell = {
-      n = G.UIT.ROOT,
-      config = { padding = 0, colour = G.C.CLEAR },
-      nodes = {
-        {
-          n = G.UIT.C,
-          config = { padding = 0.15, align = 'cl' },
-          nodes = {
-            buttons.nodes[1].nodes[1]
-          }
-        },
-      }
-    }
-    return sell
-  end
-
-  return buttons
-end
-
 local function abn_activate_letter(self, card)
   SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.GREEN, sound = 'tarot1', }, card)
   SMODS.destroy_cards(card)
@@ -420,10 +381,9 @@ SMODS.Consumable {
   end,
   calculate = function(self, card, context)
     if context.poker_hand_changed and context.new_level > context.old_level and not card.ability.processing_level_up then
-      
       -- Set a flag to prevent the infinite loop
       card.ability.processing_level_up = true
-      
+
       SMODS.calculate_effect({ message = localize('k_level_up_ex'), colour = G.C.FILTER }, card)
       SMODS.smart_level_up_hand(card, ABN.most_played_hand(), nil, 1)
       abn_activate_letter(self, card)

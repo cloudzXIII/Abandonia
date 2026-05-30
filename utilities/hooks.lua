@@ -284,12 +284,50 @@ end
 
 local card_can_sell_card_ref = Card.can_sell_card
 function Card:can_sell_card(context, ...)
-    local ret = card_can_sell_card_ref(self, context, ...)
+	local ret = card_can_sell_card_ref(self, context, ...)
 
-    if next(SMODS.find_card("j_abn_golden_apple")) and SMODS.is_eternal(self, {from_sell = true}) and self.area and self.area.config.type == 'joker' then
-        return true
+	if next(SMODS.find_card("j_abn_golden_apple")) and SMODS.is_eternal(self, { from_sell = true }) and self.area and self.area.config.type == 'joker' then
+		return true
 	end
-	
-	return ret
 
+	return ret
+end
+
+-- Remove use button from continent cards, weather cards or lexica cards where necessary
+local use_and_sell_ref = G.UIDEF.use_and_sell_buttons
+function G.UIDEF.use_and_sell_buttons(card)
+	local buttons = use_and_sell_ref(card)
+	if card.ability and (card.ability.set == "continent" or card.ability.set == "weather_report" or card.ability.set == "lexica") and not card.config.center.use and card.area == G.pack_cards and G.pack_cards then
+		return {
+			n = G.UIT.ROOT,
+			config = { padding = 0, colour = G.C.CLEAR },
+			nodes = {
+				{
+					n = G.UIT.R,
+					config = { ref_table = card, r = 0.08, padding = 0.1, align = "bm", minw = 0.5 * card.T.w - 0.15, maxw = 0.9 * card.T.w - 0.15, minh = 0.3 * card.T.h, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'use_card', func = 'can_select_from_booster' },
+					nodes = {
+						{ n = G.UIT.T, config = { text = localize('b_select'), colour = G.C.UI.TEXT_LIGHT, scale = 0.45, shadow = true } }
+					}
+				},
+			}
+		}
+	end
+	if card.ability and (card.ability.set == "continent" or card.ability.set == "weather_report" or card.ability.set == "lexica") and not card.config.center.use then
+		local sell = {
+			n = G.UIT.ROOT,
+			config = { padding = 0, colour = G.C.CLEAR },
+			nodes = {
+				{
+					n = G.UIT.C,
+					config = { padding = 0.15, align = 'cl' },
+					nodes = {
+						buttons.nodes[1].nodes[1]
+					}
+				},
+			}
+		}
+		return sell
+	end
+
+	return buttons
 end
