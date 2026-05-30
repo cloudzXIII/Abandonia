@@ -5297,6 +5297,21 @@ return {
         }
       
       },
+      j_abn_symbol_of_peace = {
+        name = "Symbol Of Peace",
+        text = {
+          {
+            "{C:enhanced}+#1#{} selection limit,",
+            "{C:blue}+#1#{} hand, {C:red}+#1#{} discard,",
+            "{C:attention}+#1#{} Joker slot,",
+            "{C:tarot}+#1#{} Consumable slot,",
+            "{C:attention}+#1#{} Voucher in shop,",
+            "{C:tarot}+#1#{} Booster Pack in shop and",
+            "{C:red}disables{} the boss blind",
+          },
+        }
+      
+      },
     },
 
 
