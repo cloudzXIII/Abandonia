@@ -1,3 +1,5 @@
+
+
 ABN.is_even = function(card)
   local even_ranks = { "abn_12", "abn_14" }
   if card:get_id() <= 10 and card:get_id() >= 0 and card:get_id() % 2 == 0 then
