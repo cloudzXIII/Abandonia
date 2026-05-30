@@ -5255,12 +5255,12 @@ return {
           },
           {
             "{X:mult,C:white}^#1#{} Mult and {X:chips,C:white}^#2#{} Chips",
-            "for every {C:planet}Vanilla{} {C:attention}Joker{}";
+            "for every {C:planet}Vanilla{} {C:attention}Joker{}",
             "triggered"
 
           }
         }
-      
+
       },
       j_abn_golden_apple = {
         name = "Golden Apple",
@@ -5274,7 +5274,7 @@ return {
             "be sold"
           }
         }
-      
+
       },
       j_abn_spare_overall = {
         name = "Spare Overall",
@@ -5289,7 +5289,7 @@ return {
             "{C:attention}Even {C:enhanced}Mult Cards{} gain {C:mult}+#5#{} Mult"
           }
         }
-      
+
       },
       j_abn_boulevard_of_alters = {
         name = "Boulevard of Alters",
@@ -5307,7 +5307,7 @@ return {
             "all {C:uncommon}Uncommon{} Jokers gain {X:chips,C:white}x0.1{} Chips"
           },
         }
-      
+
       },
       j_abn_memory_dump_joker = {
         name = "Memory Dump Joker",
@@ -5323,7 +5323,7 @@ return {
             "{C:inactive}(Resets when defeating a blind)"
           },
         }
-      
+
       },
       j_abn_palindromic_beetle = {
         name = "Palindromic Beetle",
@@ -5335,7 +5335,7 @@ return {
             "the amount of times the {C:attention}rank{} has been {C:attention}repeated{} in hand",
           },
         }
-      
+
       },
       j_abn_ppe_joker = {
         name = "PPE Joker",
@@ -5346,7 +5346,7 @@ return {
             "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
           },
         }
-      
+
       },
       j_abn_symbol_of_peace = {
         name = "Symbol Of Peace",
@@ -5361,7 +5361,7 @@ return {
             "{C:red}disables{} the boss blind",
           },
         }
-      
+
       },
     },
 
@@ -5760,6 +5760,27 @@ return {
         text = {
           'Choose {C:attention}#1#{} of up to',
           '{C:attention}#2#{} {C:lexica}Lexica{} cards'
+        }
+      },
+      p_abn_continent_mega = {
+        name = 'Mega Continent Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:continent}Continent{} cards'
+        }
+      },
+      p_abn_continent_jumbo = {
+        name = 'Jumbo Continent Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:continent}Continent{} cards'
+        }
+      },
+      p_abn_continent_normal = {
+        name = 'Continent Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:continent}Continent{} cards'
         }
       },
       undiscovered_continent = {
@@ -7477,6 +7498,7 @@ return {
       k_abn_activated_ex = "Activated!",
       k_lexica_pack = "Lexica Pack",
       k_weather_pack = "Forecast Pack",
+      k_continent_pack = "Continent Pack",
       k_green_horn = "Not Allowed!",
       k_abn_chthonian = "Chthonian!",
       k_abn_brewed_ex = "Brewed!",
