@@ -53,6 +53,11 @@ SMODS.Joker {
             mult=card.ability.extra.mult
         }
     end
+    if context.joker_main then
+        return {
+            mult=card.ability.extra.mult
+        }
+    end
     if context.fix_probability then
         local lucky_cards = card.guaranteed_lucky_cards
         local is_lucky = false
