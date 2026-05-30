@@ -5541,22 +5541,28 @@ return {
           }
         }
       },
-    j_abn_lucky_socks = {
-      name="Lucky Socks",
-      text={
-        "This {C:attention}Joker{} gains {C:mult}#1# Mult{} if played {C:chips}hand{} contains a {C:attention}Pair",
-        "{C:attention}Pair lucky cards{} are guaranteed to {C:green}succeed",
-        "{C:inactive}Currently:[{C:mult}#2# Mult{C:inactive}]",
+      j_abn_lucky_socks              = {
+        name = "Lucky Socks",
+        text = {
+          {
+            "This Joker gains {C:mult}+#1#{} Mult if",
+            "played hand contains a {C:attention}Pair{}",
+          },
+          {
+            "{C:attention}Pairs{} of {C:attention}Lucky{} cards",
+            "are guaranteed to {C:green}succeed",
+            "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+          }
+        },
       },
-    },
-    j_abn_bonus_power_joker = {
-      name="Bonus Power Joker",
-      text={
-        "{C:money}$#1#{}, {C:red}#2# mult{} and {C:chips}#3# chips",
-        "When a {C:attention}Bonus{} card is scored",
+      j_abn_bonus_power_joker        = {
+        name = "Bonus Power Joker",
+        text = {
+          "Played {C:attention}Bonus Cards{} give {C:money}$#1#{},",
+          "{C:chips}+#3#{} Chips and {C:mult}+#2#{} Mult",
+          "when scored"
+        },
       },
-    },
-      
     },
 
 
