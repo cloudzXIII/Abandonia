@@ -899,7 +899,7 @@ return {
         name = "Weather Tag",
         text = {
           "Shop has a free",
-          "{C:weather_report}Weather{} card",
+          "{C:weather_report}Weather Report{}",
         }
       },
       tag_abn_lexica = {
@@ -1612,7 +1612,7 @@ return {
           },
           {
             "This Joker gains {C:chips}+#2#{} Chips and",
-            "{C:mult}+#4#{} Mult per {C:weather_report}Weather{} card used",
+            "{C:mult}+#4#{} Mult per {C:weather_report}Weather Report{} used",
             "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#3#{C:inactive} Mult)",
           },
         }
@@ -1678,10 +1678,10 @@ return {
       j_abn_slippery_joker = {
         name = "Slippery Joker",
         text = {
-          "Earn {C:money}$#1#{} when a {C:weather_report}Weather{} card",
+          "Earn {C:money}$#1#{} when a {C:weather_report}Weather Report{}",
           "destroys itself without triggering,",
           "This Joker gains {C:money}$#2#{} of {C:attention}sell value{}",
-          "when a {C:weather_report}Weather{} card triggers"
+          "when a {C:weather_report}Weather Report{} triggers"
         }
       },
       j_abn_joker_stamp = {
@@ -1844,7 +1844,7 @@ return {
             "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult, {C:chips}+#3#{C:inactive} Chips)"
           },
           {
-            "When a {C:attention}non-negative{} {C:weather_report}Weather{} card",
+            "When a {C:attention}non-negative{} {C:weather_report}Weather Report{}",
             "is destroyed, create a {C:dark_edition}Negative{} copy of it"
           }
         }
@@ -1862,7 +1862,7 @@ return {
             "When {C:attention}Big Blind{} is defeated,",
             "destroy all held {C:tarot}Tarot{} cards",
             "and create a {C:dark_edition}Negative{} {C:weather_report}Weather{}",
-            "card for every one destroyed"
+            "{C:weather_report}Report{} for every one destroyed"
           },
         }
       },
@@ -2037,7 +2037,7 @@ return {
           "When a {C:attention}Boss Blind{} is defeated,",
           "Gains {X:mult,C:white}X#5#{} Mult if a {C:lexica}Lexica{} Card is {C:attention}held{}",
           "Gains {C:mult}+#6#{} Mult if a {C:program_pack}Program{} Card is {C:attention}held{}",
-          "Gains {C:chips}+#8#{} Chips if a {C:weather_report}Weather{} Card is {C:attention}held{}",
+          "Gains {C:chips}+#8#{} Chips if a {C:weather_report}Weather Report{} is {C:attention}held{}",
           "Gains {X:chips,C:white}X#7#{} Mult if a {C:calamity_cards}Calamity{} Card is {C:attention}held{}",
           "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {C:mult}+#2#{} {C:inactive}Mult,{} {X:chips,C:white}X#3#{} {C:inactive}Chips,{} {C:chips}+#4#{} {C:inactive}Chips){}"
         }
@@ -2115,7 +2115,7 @@ return {
         name = "Monocromator Joker",
         text = {
           {
-            "When a {C:weather_report}Weather{} Card is used,",
+            "When a {C:weather_report}Weather Report{} is used,",
             "add {C:dark_edition}Abandoned{} to {C:attention}lowest{}",
             "ranked card held in hand",
           },
@@ -2299,7 +2299,7 @@ return {
           {
             "Add {C:money}$#1#{} of {C:attention}sell value",
             "to every {C:attention}Joker{} when",
-            "a {C:weather_report}Weather{} card is used",
+            "a {C:weather_report}Weather Report{} is used",
           },
           {
             "Retrigger all {C:attention}Jokers{}",
@@ -5924,21 +5924,21 @@ return {
         name = 'Forecast Pack',
         text = {
           'Choose {C:attention}#1#{} of up to',
-          '{C:attention}#2#{} {C:weather_report}Weather{} cards',
+          '{C:attention}#2#{} {C:weather_report}Weather Reports{}',
         }
       },
       p_abn_weather_jumbo = {
         name = 'Jumbo Forecast Pack',
         text = {
           'Choose {C:attention}#1#{} of up to',
-          '{C:attention}#2#{} {C:weather_report}Weather{} cards',
+          '{C:attention}#2#{} {C:weather_report}Weather Reports{}',
         }
       },
       p_abn_weather_mega = {
         name = 'Mega Forecast Pack',
         text = {
           'Choose {C:attention}#1#{} of up to',
-          '{C:attention}#2#{} {C:weather_report}Weather{} cards',
+          '{C:attention}#2#{} {C:weather_report}Weather Reports{}',
         }
       },
       p_abn_lexica_normal = {
