@@ -466,16 +466,16 @@ SMODS.Tag {
 }
 
 SMODS.Tag {
-  key = "hazard_pearlenscene",
+  key = "hazard_pearlescent",
 
   atlas = "AbandoniaHazardTags",
   pos = { x = 1, y = 0 },
-  config = { hazard = true, edition = "e_abn_pearlenscene", count = 1 },
+  config = { hazard = true, edition = "e_abn_pearlescent", count = 1 },
   loc_vars = function(self, info_queue, tag)
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_pearlenscene
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_pearlescent
     return {
       vars = {
-        localize({ type = 'name_text', key = "e_abn_pearlenscene", set = "Edition" }) }
+        localize({ type = 'name_text', key = "e_abn_pearlescent", set = "Edition" }) }
     }
   end,
   apply = function(self, tag, context)

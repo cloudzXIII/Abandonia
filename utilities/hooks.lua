@@ -281,3 +281,15 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
 
 	return UI_table
 end
+
+local card_can_sell_card_ref = Card.can_sell_card
+function Card:can_sell_card(context, ...)
+    local ret = card_can_sell_card_ref(self, context, ...)
+
+    if next(SMODS.find_card("j_abn_golden_apple")) and SMODS.is_eternal(self, {from_sell = true}) and self.area and self.area.config.type == 'joker' then
+        return true
+	end
+	
+	return ret
+
+end

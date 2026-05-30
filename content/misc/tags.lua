@@ -35,16 +35,16 @@ SMODS.Tag {
   end
 }
 
--- Pearlenscene Tag
+-- Pearlescent Tag
 SMODS.Tag {
-  key = "pearlenscene",
+  key = "pearlescent",
   pos = { x = 1, y = 0 },
   atlas = "AbandoniaTags",
   loc_vars = function(self, info_queue, tag)
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_pearlenscene
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_pearlescent
     return {
       vars = {
-        localize({ type = 'name_text', key = "e_abn_pearlenscene", set = "Edition" })
+        localize({ type = 'name_text', key = "e_abn_pearlescent", set = "Edition" })
       }
     }
   end,
@@ -56,7 +56,7 @@ SMODS.Tag {
         context.card.temp_edition = true
         tag:yep('+', G.C.DARK_EDITION, function()
           context.card.temp_edition = nil
-          context.card:set_edition("e_abn_pearlenscene", true)
+          context.card:set_edition("e_abn_pearlescent", true)
           context.card.ability.couponed = true
           context.card:set_cost()
           G.CONTROLLER.locks[lock] = nil
@@ -68,7 +68,7 @@ SMODS.Tag {
     end
   end,
   in_pool = function(self, args)
-    return G.P_CENTERS["e_abn_pearlenscene"].discovered
+    return G.P_CENTERS["e_abn_pearlescent"].discovered
   end
 }
 

@@ -83,6 +83,6 @@ SMODS.Joker {
   end,
 
   abn_artist_credits = {
-    artist = "Dogg-Fly & Vega",
+    artist = "Dogg-Fly, Inky & Vega",
   },
 }

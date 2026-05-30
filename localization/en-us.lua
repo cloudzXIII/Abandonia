@@ -756,8 +756,8 @@ return {
           "card in your {C:attention}full deck"
         }
       },
-      tag_abn_hazard_pearlenscene = {
-        name = "Pearlenscene Hazard",
+      tag_abn_hazard_pearlescent = {
+        name = "Pearlescent Hazard",
         text = {
           "Add {C:dark_edition}#1#{} to",
           "a random {C:attention}Joker{} and {C:attention}1{}",
@@ -798,8 +798,8 @@ return {
           "becomes {C:dark_edition}#1#",
         },
       },
-      tag_abn_pearlenscene = {
-        name = "Pearlenscene Tag",
+      tag_abn_pearlescent = {
+        name = "Pearlescent Tag",
         text = {
           "Next base edition shop",
           "Joker is free and",
@@ -3790,7 +3790,7 @@ return {
       j_abn_aliasing_joker = {
         name = "Aliasing Joker",
         text = {
-          { "Adds {C:dark_edition}Gloss{}, {C:dark_edition}Pearlenscene{},",
+          { "Adds {C:dark_edition}Gloss{}, {C:dark_edition}Pearlescent{},",
             "or {C:dark_edition}Iridescendent{} edition to",
             "first scoring {C:attention}numbered{} card",
             "of {C:attention}first{} and {C:attention}final{} hand",
@@ -5244,7 +5244,127 @@ return {
           "During {C:attention}Odd{} Antes {C:attention}double{} all {C:money}money{} obtained",
         }
       },
+      j_abn_enigma_comedian = {
+        name = "Enigma Comedian",
+        text = {
+          {
+            "When {C:attention}Blind{} is selected,",
+            "create {C:attention}1{} {C:dark_edition}Pearlescent{}",
+            "{C:planet}Vanilla{} {C:attention}Joker",
+            "{C:inactive}(Must have room)",
+          },
+          {
+            "{X:mult,C:white}^#1#{} Mult and {X:chips,C:white}^#2#{} Chips",
+            "for every {C:planet}Vanilla{} {C:attention}Joker{}";
+            "triggered"
+
+          }
+        }
+      
+      },
+      j_abn_golden_apple = {
+        name = "Golden Apple",
+        text = {
+          {
+            "When {C:attention}Blind{} is selected,",
+            "remove all {C:enhanced}Perishable{} stickers",
+          },
+          {
+            "{C:enhanced}Eternal{} Jokers can",
+            "be sold"
+          }
+        }
+      
+      },
+      j_abn_spare_overall = {
+        name = "Spare Overall",
+        text = {
+          {
+            "Gain {C:red}+#1#{} Mult when playing",
+            "a {C:attention}#2#{}",
+            "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult)",
+          },
+          {
+            "{C:attention}Odd {C:enhanced}Bonus Cards{} gain {C:chips}+#4#{} Chips",
+            "{C:attention}Even {C:enhanced}Mult Cards{} gain {C:mult}+#5#{} Mult"
+          }
+        }
+      
+      },
+      j_abn_boulevard_of_alters = {
+        name = "Boulevard of Alters",
+        text = {
+          {
+            "Whenever a {C:rare}Rare{} Joker triggers,",
+            "all {C:common}Common{} Jokers gain {C:chips}+10{} Chips"
+          },
+          {
+            "Whenever a {C:uncommon}Uncommon{} Joker triggers,",
+            "all {C:rare}Rare{} Jokers gain {X:mult,C:white}x0.1{} Mult"
+          },
+          {
+            "Whenever a {C:common}Common{} Joker triggers,",
+            "all {C:uncommon}Uncommon{} Jokers gain {X:chips,C:white}x0.1{} Chips"
+          },
+        }
+      
+      },
+      j_abn_memory_dump_joker = {
+        name = "Memory Dump Joker",
+        text = {
+          {
+            "Each Joker gains {X:mult,C:white}X#1#{} Mult",
+            "every scored hand"
+          },
+          {
+            "Scored hand size must be",
+            "larger than {C:attention}#2#{}",
+            "{C:inactive}(Changes to highest played hand size)",
+            "{C:inactive}(Resets when defeating a blind)"
+          },
+        }
+      
+      },
+      j_abn_palindromic_beetle = {
+        name = "Palindromic Beetle",
+        text = {
+          {
+            "If the {C:attention}full hand{} is a {C:attention}palindromic sequence",
+            "and is composed of {C:attention}both {C:diamonds}Light{} and {C:spades}Dark{} suits,",
+            "level up the {C:planet}Planet Rank{} of each {C:attention}scoring{} card by",
+            "the amount of times the {C:attention}rank{} has been {C:attention}repeated{} in hand",
+          },
+        }
+      
+      },
+      j_abn_ppe_joker = {
+        name = "PPE Joker",
+        text = {
+          {
+            "{X:mult,C:white}X#1#{} Mult for",
+            "every {C:red}debuffed{} Joker",
+            "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
+          },
+        }
+      
+      },
+      j_abn_symbol_of_peace = {
+        name = "Symbol Of Peace",
+        text = {
+          {
+            "{C:enhanced}+#1#{} selection limit,",
+            "{C:blue}+#1#{} hand, {C:red}+#1#{} discard,",
+            "{C:attention}+#1#{} Joker slot,",
+            "{C:tarot}+#1#{} Consumable slot,",
+            "{C:attention}+#1#{} Voucher in shop,",
+            "{C:tarot}+#1#{} Booster Pack in shop and",
+            "{C:red}disables{} the boss blind",
+          },
+        }
+      
+      },
     },
+
 
     Spectral = {
       c_abn_apotheosis = {
@@ -5267,14 +5387,14 @@ return {
         name = "Ascend",
         text = {
           "Add {C:dark_edition}Glosss{}, {C:dark_edition}Iridescent{},",
-          "or {C:dark_edition}Pearlenscene{} effect to",
+          "or {C:dark_edition}Pearlescent{} effect to",
           "{C:attention}#1#{} selected card in hand",
         },
       },
       c_abn_distortion = {
         name = "Distortion",
         text = {
-          "Add {C:dark_edition}Pearlenscene{} to a",
+          "Add {C:dark_edition}Pearlescent{} to a",
           "random {C:attention}Joker{}, destroy",
           "all other Jokers",
         },
@@ -5587,6 +5707,14 @@ return {
       }
     },
     Other = {
+      abn_palindromic_sequence = {
+        name = "Palindromic Sequence",
+        text = {
+          "Is the same sequence",
+          "even reversed",
+          "{C:inactive}(e.g. A, K, 10, K, A)",
+        }
+      },
       abn_suitless = {
         text = {
           "Has no suit",
@@ -6194,8 +6322,8 @@ return {
           "when triggered"
         }
       },
-      e_abn_pearlenscene = {
-        name = "Pearlenscene",
+      e_abn_pearlescent = {
+        name = "Pearlescent",
         text = {
           "{C:mult}+#1#{} Mult,",
           "{C:chips}+#2#{} Chips,",
@@ -7394,7 +7522,7 @@ return {
       abn_abandond = "Abandoned",
       abn_sunscourge = "Sunscourge",
       abn_gloss = "Gloss",
-      abn_pearlenscene = "Pearlenscene",
+      abn_pearlescent = "Pearlescent",
       -- STICKERS
       abn_pump_up = "Pump Up",
       abn_immortal = "Immortal",

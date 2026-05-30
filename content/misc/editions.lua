@@ -149,12 +149,12 @@ SMODS.Edition {
 }
 
 SMODS.Shader {
-  key = 'pearlenscene',
-  path = 'pearlenscene.fs',
+  key = 'pearlescent',
+  path = 'pearlescent.fs',
 }
 SMODS.Edition {
-  key = 'abn_pearlenscene',
-  shader = "pearlenscene",
+  key = 'abn_pearlescent',
+  shader = "pearlescent",
   discovered = true,
   config = { chips = 100, mult = 20, },
   loc_vars = function(self, info_queue, card)

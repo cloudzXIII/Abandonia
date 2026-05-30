@@ -11,14 +11,14 @@ SMODS.Joker {
 
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_gloss
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_pearlenscene
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_pearlescent
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_iridescent
 
     return {
       vars = {
         card.ability.extra.dollars,
         localize({ type = 'name_text', key = "e_abn_gloss", set = "Edition" }),
-        localize({ type = 'name_text', key = "e_abn_pearlenscene", set = "Edition" }),
+        localize({ type = 'name_text', key = "e_abn_pearlescent", set = "Edition" }),
         localize({ type = 'name_text', key = "e_abn_iridescent", set = "Edition" }),
       }
     }
@@ -49,7 +49,7 @@ SMODS.Joker {
         end
 
         if is_first_valid_card and (G.GAME.current_round.hands_left == 0 or G.GAME.current_round.hands_played == 0) then
-          local editions = { 'e_abn_gloss', 'e_abn_pearlenscene', 'e_abn_iridescent' }
+          local editions = { 'e_abn_gloss', 'e_abn_pearlescent', 'e_abn_iridescent' }
           local chosen_edition = pseudorandom_element(editions, pseudoseed('aliasing_joker'))
 
           context.other_card:set_edition(chosen_edition, true)
