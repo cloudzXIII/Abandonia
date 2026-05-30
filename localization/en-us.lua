@@ -1395,8 +1395,8 @@ return {
             "when scored",
           },
           {
-            "{C:red}self-destructs if hand doesn't contain",
-            "{C:red}at least 1 of these cards{}"
+            "{C:red}self-destructs{} if hand",
+            "contains none of these cards",
           }
         },
       },
