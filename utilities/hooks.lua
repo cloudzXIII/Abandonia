@@ -79,6 +79,17 @@ function Card:get_chip_bonus()
 	end
 end
 
+local cardSetCostHook = Card.set_cost
+function Card:set_cost()
+    local ret = cardSetCostHook(self)
+    if next(SMODS.find_card("j_abn_baba_joker")) and self.config.center.consumeable and self.config.center.set == "weather_report" then
+        self.sell_cost = 5
+    end
+    return ret
+end
+
+
+
 local get_blind_amount_ref = get_blind_amount
 function get_blind_amount(ante)
 	local amount = get_blind_amount_ref(ante)
