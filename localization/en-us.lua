@@ -1376,12 +1376,12 @@ return {
           {
             "Scored {C:attention}odd{} cards give {X:mult,C:white}X#1#{} Mult,",
             "increases by {X:mult,C:white}X#3#{} Mult",
-            "when a {C:attention}odd{} card is scored",
+            "when an {C:attention}odd{} card is scored",
           },
           {
             "Scored {C:attention}even{} cards give {X:chips,C:white}X#2#{} Chips,",
             "increases by {X:chips,C:white}X#4#{} Chips",
-            "when a {C:attention}even{} card is scored",
+            "when an {C:attention}even{} card is scored",
           },
         }
       },
