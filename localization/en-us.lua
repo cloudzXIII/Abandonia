@@ -3549,7 +3549,7 @@ return {
         text = {
           "This Joker gains {C:chips}+#1#{} Chips",
           "and {C:mult}+#2#{} Mult for each",
-          "{c:attention}consecutive {C:attention}Blind{} beaten",
+          "{C:attention}consecutive {C:attention}Blind{} beaten",
           "in a {C:attention}single{} hand",
           "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#4#{C:inactive} Mult){}"
         },
@@ -5428,6 +5428,87 @@ return {
         name = "Flotsam Joker",
         text = {
 		  "If you play a {C:attention}Flush{} cards held in hand matching the same {C:attention}Suit{} score"
+        }
+      },
+      j_abn_baba_joker = {
+        name = "Baba Joker",
+        text = {
+          {
+            "{C:blue}+#1#{} Chips and {C:red}+#2#{} Mult",
+            "per {C:weather_report}Weather Report{}",
+            "used this run",
+            "{C:inactive}(Currently {C:blue}+#3#{C:inactive} and {C:red}+#4#{C:inactive})",
+          },
+          {
+            "{C:weather_report}Weather Reports{}",
+            "now sell for {C:gold}$5"
+          },
+        }
+      
+      },
+      j_abn_wet_joker = {
+        name = "Wet Joker",
+        text = {
+          {
+            "{C:weather_report}Weather Reports{}",
+            "aren't destroyed at the",
+            "end of the round"
+          },
+        }
+      
+      },
+      j_abn_paint_by_numbers = {
+        name = "Paint by Numbers",
+        text = {
+          {
+            "If the {C:attention}first hand{} is composed of",
+            "only {C:attention}numbered {C:enhanced}Null{} cards",
+            "{C:attention}retrigger{} all cards",
+            "and {C:attention}level up{} the hand"
+          },
+          {
+            "If the {C:attention}second hand{} is composed of",
+            "only {C:attention}numbered{} {C:enhanced}non-Null{} cards",
+            "{C:attention}retrigger{} all cards",
+            "and {C:attention}level up{} the hand"
+          },
+        }
+      
+      },
+      j_abn_paradox_chip = {
+        name = "Paradox Chip",
+        text = {
+          {
+            "Scored {C:attention}numbered cards",
+            "above rank {c:attention}10",
+            "give their rank as {C:red}Mult",
+          },
+        }
+      
+      },
+      j_abn_strickland_joker = {
+        name = "Strickland Joker",
+        text = {
+          {
+            "Gain {C:red}+#1#{} Mult per {C:attention}played card{},",
+            "resets if the score {C:red,E:2}catches fire",
+            "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)"
+          },
+        }
+      },
+      j_abn_aesthetic_joker = {
+        name = "Aesthetic Joker",
+        text = {
+          {
+            "If this joker is {C:dark_edition}Editioned{},",
+            "gain {C:chips}+#1#{} Chips per",
+            "scoring {C:enhanced}Enhanced{} card",
+            "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+          },
+          {
+            "{C:enhanced}Enhanced{} cards give {C:red}Mult",
+            "equal to their chip value"
+          }
         }
       },
     },
