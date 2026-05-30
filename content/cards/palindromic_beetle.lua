@@ -38,23 +38,12 @@ SMODS.Joker {
                 end
             end
         end
+        
     end,
     
     
     abn_artist_credits = {
         artist = "Notextify",
     },
-    
-    in_pool = function(self, args) 
-        for _, joker in ipairs(G.jokers.cards or {}) do
-            if joker.ability.perishable then
-                return true
-            end
-            if SMODS.is_eternal(joker, trigger) then
-                return true
-            end
-        end
-        return false
-    end
     
 }

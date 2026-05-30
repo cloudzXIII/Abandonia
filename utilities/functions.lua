@@ -42,7 +42,6 @@ ABN.is_palindrome = function(table)
     end
     return ct
 end
-
 ABN.table_count = function(table, val)
   local ct = 0
   for i, v in ipairs(table) do
