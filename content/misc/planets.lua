@@ -1,3 +1,37 @@
+function ABN.localize_perma_bonuses(specific_vars, desc_nodes, card)
+  if card and card:get_abn_rank_chips() ~= 0 then
+    localize { type = 'other', key = 'card_abn_rank_chips', nodes = desc_nodes, vars = { SMODS.signed(card:get_abn_rank_chips()) } }
+  end
+  if card and card:get_abn_rank_mult() ~= 0 then
+    localize { type = 'other', key = 'card_abn_rank_mult', nodes = desc_nodes, vars = { SMODS.signed(card:get_abn_rank_mult()) } }
+  end
+end
+
+local igo = Game.init_game_object
+function Game:init_game_object(...)
+  local ret = igo(self, ...)
+  ret.abn_rank_upgrades = {
+    ["2"] = { name = "2", value = G.P_CARDS.H_2.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["3"] = { name = "3", value = G.P_CARDS.H_3.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["4"] = { name = "4", value = G.P_CARDS.H_4.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["5"] = { name = "5", value = G.P_CARDS.H_5.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["6"] = { name = "6", value = G.P_CARDS.H_6.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["7"] = { name = "7", value = G.P_CARDS.H_7.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["8"] = { name = "8", value = G.P_CARDS.H_8.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["9"] = { name = "9", value = G.P_CARDS.H_9.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["10"] = { name = "10", value = G.P_CARDS.H_T.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["Jack"] = { name = "Jack", value = G.P_CARDS.H_J.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["Queen"] = { name = "Queen", value = G.P_CARDS.H_Q.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["King"] = { name = "King", value = G.P_CARDS.H_K.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["Ace"] = { name = "Ace", value = G.P_CARDS.H_A.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["abn_11"] = { name = "11", value = G.P_CARDS.H_abn_11 and G.P_CARDS.H_abn_11.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["abn_12"] = { name = "12", value = G.P_CARDS.H_abn_12 and G.P_CARDS.H_abn_12.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["abn_13"] = { name = "13", value = G.P_CARDS.H_abn_13 and G.P_CARDS.H_abn_13.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["abn_14"] = { name = "14", value = G.P_CARDS.H_abn_14 and G.P_CARDS.H_abn_14.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+  }
+  return ret
+end
+
 local rank_planets = {
   { key = "lauto",   rank = "2",     pos = { x = 2, y = 0 } },
   { key = "urcurme", rank = "3",     pos = { x = 3, y = 0 } },
@@ -126,29 +160,22 @@ end
 function Card:get_abn_rank_chips()
   if self.debuff then return 0 end
   if self.ability.name == "Stone Card" then return 0 end
-  for k, v in pairs(G.GAME.abn_rank_upgrades) do
-    if self.base.value == v.name then
-      return v.chips
-    end
-  end
-  return 0
+  local upgrade = G.GAME.abn_rank_upgrades[self.base.value]
+  return upgrade and upgrade.chips or 0
 end
 
 function Card:get_abn_rank_mult()
   if self.debuff then return 0 end
   if self.ability.name == "Stone Card" then return 0 end
-  for k, v in pairs(G.GAME.abn_rank_upgrades) do
-    if self.base.value == v.name then
-      return v.mult
-    end
-  end
-  return 0
+  local upgrade = G.GAME.abn_rank_upgrades[self.base.value]
+  return upgrade and upgrade.mult or 0
 end
 
 --#region Add "Ranks" Tab to run info
 
 -- Manual Rank order since looping through G.GAME.abn_rank_upgrades doesn't do it in order
-local rank_order = { "Ace", "King", "Queen", "Jack", "10", "9", "8", "7", "6", "5", "4", "3", "2" }
+local rank_order = { "abn_14", "abn_13", "abn_12", "abn_11", "Ace", "King", "Queen", "Jack", "10", "9", "8", "7", "6",
+  "5", "4", "3", "2" }
 
 local function count_deck_ranks()
   local count = {}
@@ -164,7 +191,7 @@ end
 local function create_rank_row(rank_key, counts)
   local _rank = G.GAME.abn_rank_upgrades[rank_key]
 
-  local count = counts[_rank.name] or 0
+  local count = counts[rank_key] or 0
   if count == 0 and _rank.level <= 1 then return nil end
 
   local level_col = _rank.level == 1
@@ -207,7 +234,7 @@ local function create_rank_row(rank_key, counts)
               { n = G.UIT.B, config = { w = 0.08, h = 0.01 } },
             }
           },
-          { n = G.UIT.T, config = { text = "+", scale = 0.45, colour = G.C.MULT } },
+          { n = G.UIT.T, config = { text = "X", scale = 0.45, colour = G.C.MULT } },
           {
             n = G.UIT.C,
             config = { align = "cl", padding = 0.01, r = 0.1, colour = G.C.MULT, minw = 1.1 },
