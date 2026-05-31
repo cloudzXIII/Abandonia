@@ -7766,6 +7766,11 @@ return {
       k_abn_chthonian = "Chthonian!",
       k_abn_brewed_ex = "Brewed!",
 
+      k_abn_satellite = "Satellite",
+      k_abn_asteroid = "Asteroid",
+      k_abn_tenalp = "Tenalp",
+      k_abn_split = "Split Planet",
+
       -- Consumable Types
       b_weather_report_cards = "Weather Reports",
       k_weather_report = "Weather Report",

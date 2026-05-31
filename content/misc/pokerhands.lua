@@ -840,7 +840,7 @@ SMODS.Consumable {
     artist = "Feli"
   },
   set_card_type_badge = function(self, card, badges)
-    badges[#badges + 1] = create_badge("Asteroid",
+    badges[#badges + 1] = create_badge(localize("k_abn_asteroid"),
       get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.Planet.text_colour,
       1.2)
   end
@@ -868,7 +868,7 @@ SMODS.Consumable {
     artist = "Feli"
   },
   set_card_type_badge = function(self, card, badges)
-    badges[#badges + 1] = create_badge("Satellite",
+    badges[#badges + 1] = create_badge(localize("k_abn_satellite"),
       get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.Planet.text_colour,
       1.2)
   end
@@ -919,7 +919,7 @@ SMODS.Consumable {
     artist = "Feli"
   },
   set_card_type_badge = function(self, card, badges)
-    badges[#badges + 1] = create_badge("Split Planet",
+    badges[#badges + 1] = create_badge(localize("k_abn_split"),
       get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.Planet.text_colour,
       1.2)
   end
@@ -947,7 +947,7 @@ SMODS.Consumable {
     artist = "Feli"
   },
   set_card_type_badge = function(self, card, badges)
-    badges[#badges + 1] = create_badge("Tenalp",
+    badges[#badges + 1] = create_badge(localize("k_abn_tenalp"),
       get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.Planet.text_colour,
       1.2)
   end
