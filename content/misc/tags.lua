@@ -357,7 +357,7 @@ SMODS.Tag {
 -- Unrevealed Tag
 SMODS.Tag {
   key = "unrevealed",
-  pos = { x = 4, y = 2 },
+  pos = { x = 5, y = 3 },
   atlas = "AbandoniaTags",
   loc_vars = function(self, info_queue, tag)
   end,
