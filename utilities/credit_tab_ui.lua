@@ -48,6 +48,7 @@ ABN.CreditCard = SMODS.Center:extend({
 ABN.CreditCard {
   key = "bunnet",
   pos = { x = 0, y = 0 },
+  soul_pos = { x = 0, y = 1 },
 }
 ABN.CreditCard {
   key = "cloudzXIII",
@@ -62,6 +63,7 @@ ABN.CreditCard {
 ABN.CreditCard {
   key = "doggfly",
   pos = { x = 3, y = 0 },
+  soul_pos = { x = 3, y = 1 },
 }
 ABN.CreditCard {
   key = "comykel",
@@ -71,6 +73,11 @@ ABN.CreditCard {
   key = "vega",
   pos = { x = 5, y = 0 },
   soul_pos = { x = 5, y = 1 },
+}
+ABN.CreditCard {
+  key = "inky",
+  pos = { x = 6, y = 0 },
+  soul_pos = { x = 6, y = 1 },
 }
 --#endregion
 
@@ -156,6 +163,7 @@ ABN.contributors = {
   {
     key = "credit_abn_inky",
     name = "Inky",
+    has_icon = true,
     role = "Artist",
     colour = G.C.GREEN,
     links = {
