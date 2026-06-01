@@ -936,8 +936,8 @@ return {
       bl_abn_magenta_magnet = {
         name = "Magenta Magnet",
         text = {
-          "Hand must contain",
-          "a Gold or Steel card"
+          "Increase the blindsize by 5%",
+		  "for each $ held",
         },
       },
       bl_abn_silver_star = {
@@ -970,10 +970,11 @@ return {
         },
       },
       bl_abn_wild_cherry = {
-        name = "Wild Cherry",
+        name = "Impostor Cherry",
         text = {
-          "Hand must contain",
-          "a Wild card"
+          "Add 10 Impostor cards to your deck",
+		  "Hands containing Impostor cards",
+		  "do not score",
         },
       },
       bl_abn_teal_tear = {
@@ -1110,7 +1111,121 @@ return {
           "Jokers with editions are destroyed",
         },
       },
+	  bl_abn_offbeat_triangle = {
+        name = "Offbeat Triangle",
+        text = {
+          "2nd, 4th, 6th,",
+          "and subsequent even hands",
+          "decrease score",
+        },
+      },
+	  bl_abn_type_o_negative = {
+        name = "Type O Negative",
+        text = {
+          "+1X Base score for each different edition",
+		  "in your Jokers and cards",
+        },
+      },
+	  bl_abn_spectral_jewel = {
+        name = "Spectral Jewel",
+        text = {
+          "First drawn hand is debuffed",
+		  "Must play atleast 2 suits",
+        },
+      },
+	  bl_abn_equal_brass = {
+        name = "Equal Brass",
+        text = {
+          "+1 Selection Limit",
+		  "Must play 6 cards",
+		  "Divide base Mult by unplayed suits",
+        },
+      },
+	  bl_abn_calamity_x = {
+        name = "Calamity X",
+        text = {
+          "Changes effects before hand scores",
+        },
+      },
+	  bl_abn_gilded_labrys = {
+        name = "Gilded Labrys",
+        text = {
+          "On Odd hands debuff",
+		  "all Odd rank cards",
+		  "On Even hands debuff",
+		  "all Even rank cards",
+        },
+      },
+	  bl_abn_mauve_moth = {
+        name = "Mauve Moth",
+        text = {
+          "Jokers and playing cards cannot be rearranged",
+		  "Cards cannot be deselected",
+        },
+      },
       -- hazard
+	  bl_abn_hazard_moth = {
+        name = "Hazard Moth",
+        text = {
+          "Jokers and playing cards cannot be rearranged",
+		  "Cards cannot be deselected",
+		  "Very Large Blind",
+		  "Cannot draw cards until hand is empty",
+        },
+      },
+	  bl_abn_hazard_labrys = {
+        name = "Hazard Labrys",
+        text = {
+          "On Odd hands debuff",
+		  "all Odd rank cards",
+		  "On Even hands debuff",
+		  "all Even rank cards",
+		  "Discarded hands cannot be played",
+		  "Playing most played hand",
+		  "multiplies blind requirement by 2x",
+        },
+      },
+	  bl_abn_hazard_x = {
+        name = "Hazard X",
+        text = {
+          "Changes effects before hand scores",
+        },
+      },
+	  bl_abn_hazard_brass = {
+        name = "Hazard Brass",
+        text = {
+          "+1 Selection Limit",
+		  "Must play 6 cards",
+		  "Divide base Mult by unplayed suits",
+		  "Flip all cards in hand face down",
+        },
+      },
+	  bl_abn_hazard_jewel = {
+        name = "Hazard Jewel",
+        text = {
+          "First drawn hand is debuffed",
+		  "Must play atleast 3 suits",
+		  "Hand must not contain 3 or 5 cards",
+        },
+      },
+	  bl_abn_hazard_negative = {
+        name = "Type O Negative",
+        text = {
+          "+2.5X Base score for each different edition",
+		  "in your Jokers and cards",
+		  "All cards must score",
+        },
+      },
+	  bl_abn_hazard_triangle = {
+        name = "Hazard Triangle",
+        text = {
+          "2nd, 4th, 6th,",
+          "and subsequent even hands",
+          "decrease score",
+		  "Debuff all hands with more",
+		  "than 4 different suits",
+        },
+      },
       bl_abn_hazard_tower = {
         name = "Hazard Tower",
         text = {
@@ -1178,10 +1293,10 @@ return {
       bl_abn_hazard_magnet = {
         name = "Hazard Magnet",
         text = {
-          "Hand must contain",
-          "a Gold and a Steel card",
-          "Debuff a random Joker",
-          "after each hand"
+          "Increase the blindsize by 10%",
+		  "for each $ held",
+		  "all cards debuffed",
+		  "until you have 0 discards",
         },
       },
       bl_abn_hazard_star = {
@@ -1251,10 +1366,10 @@ return {
       bl_abn_hazard_cherry = {
         name = "Hazard Cherry",
         text = {
-          "Hand must contain",
-          "a Wild card",
-          "Played hand must contain",
-          "5 cards or less" -- confusion??
+          "Add 20 Impostor cards to your deck",
+		  "Hands containing Impostor cards",
+		  "do not score",
+          "Played hand must contain 5 cards",
         },
       },
       bl_abn_hazard_tear = {
@@ -5561,6 +5676,13 @@ return {
           "Played {C:attention}Bonus Cards{} give {C:money}$#1#{},",
           "{C:chips}+#3#{} Chips and {C:mult}+#2#{} Mult",
           "when scored"
+        },
+      },
+	  j_abn_decollage_joker        = {
+        name = "Decollage Joker",
+        text = {
+          "Give {X:mult,C:white}XMult{} equal to the number of {C:attention}different Suits",
+		  "If this Joker has {C:dark_edition}Holographic{} edition all scoring cards gain {C:mult}+#1#{} Mult",
         },
       },
     },
