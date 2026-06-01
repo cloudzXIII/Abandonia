@@ -4,7 +4,7 @@ ABN.is_even = function(card)
     return true
   end
   for _, rank in ipairs(even_ranks) do
-    if card.base.value == rank then
+    if card:get_id() == SMODS.Ranks[rank].id then
       return true
     end
   end
@@ -17,7 +17,7 @@ ABN.is_odd = function(card)
     return true
   end
   for _, rank in ipairs(odd_ranks) do
-    if card.base.value == rank then
+    if card:get_id() == SMODS.Ranks[rank].id then
       return true
     end
   end
