@@ -1,5 +1,3 @@
-
-
 ABN.is_even = function(card)
   local even_ranks = { "abn_12", "abn_14" }
   if card:get_id() <= 10 and card:get_id() >= 0 and card:get_id() % 2 == 0 then
@@ -45,23 +43,23 @@ ABN.is_number = function(card)
 end
 
 ABN.is_palindrome = function(table)
-    local l = #table
-    local ct = 0
-    for i = 1, math.floor(l/2) do
-        if table[i] ~= table[l - i + 1] then
-          return false
-        else
-          ct = ct + 1
-        end
+  local l = #table
+  local ct = 0
+  for i = 1, math.floor(l / 2) do
+    if table[i] ~= table[l - i + 1] then
+      return false
+    else
+      ct = ct + 1
     end
-    return ct
+  end
+  return ct
 end
 ABN.table_count = function(table, val)
   local ct = 0
   for i, v in ipairs(table) do
-      if v == val then
-        ct = ct + 1
-      end
+    if v == val then
+      ct = ct + 1
+    end
   end
   return ct
 end
@@ -347,4 +345,14 @@ ABN.balance_percent = function(card, percent)
 
   delay(0.6)
   return hand_chips, mult
+end
+
+ABN.count_planet_ranks_played = function(hand)
+  local total_level = 0
+  for _, scored_card in ipairs(hand) do
+    local level = G.GAME.abn_rank_upgrades[scored_card.base.value] and
+        G.GAME.abn_rank_upgrades[scored_card.base.value].level or 1
+    total_level = total_level + level
+  end
+  return total_level
 end

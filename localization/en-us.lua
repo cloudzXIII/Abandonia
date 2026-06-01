@@ -6707,7 +6707,7 @@ return {
       e_abn_vintage = {
         name = "Vintage",
         text = {
-          "{C:white,X:money}X#3#{}, {C:chips}+#2#{} chips, and {C:mult}+#1#{} Mult",
+          "{C:money}+$#3#{}, {C:chips}+#2#{} Chips, and {C:mult}+#1#{} Mult",
           "per level of played hand"
         }
       }

@@ -312,17 +312,17 @@ SMODS.Edition {
   key = 'abn_vintage',
   shader = "plata",
   discovered = true,
-  config = { chips = 10, mult = 8, xdollars = 1.1 },
+  config = { chips = 2, mult = 1, dollars = 1 },
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.edition.chips, card.edition.mult, card.edition.xdollars } }
+    return { vars = { card.edition.chips, card.edition.mult, card.edition.dollars } }
   end,
   calculate = function(self, card, context)
     if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
-      local level = G.GAME.hands[context.scoring_name] and G.GAME.hands[context.scoring_name].level or 1
+      local level = ABN.count_planet_ranks_played(context.scoring_hand)
       return {
         chips = card.edition.chips * level,
         mult = card.edition.mult * level,
-        dollars = G.GAME.dollars * (card.edition.xdollars * level)
+        dollars = card.edition.dollars * level
       }
     end
   end,
