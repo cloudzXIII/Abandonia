@@ -172,3 +172,164 @@ SMODS.Edition {
     artist = "Bro-Fly"
   },
 }
+
+-- new editions
+SMODS.Shader {
+  key = 'chromatic',
+  path = 'chromatic.fs',
+}
+SMODS.Edition {
+  key = 'abn_chromatic',
+  shader = "chromatic",
+  discovered = true,
+  config = { x_mult = 1.3, dollars = 4, x_chips = 1.5 },
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.edition.x_chips, card.edition.x_mult, card.edition.dollars } }
+  end,
+  calculate = function(self, card, context)
+    if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+      return {
+        x_chips = card.edition.x_chips,
+        x_mult = card.edition.x_mult,
+        dollars = card.edition.dollars
+      }
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Bro-Fly"
+  },
+}
+
+SMODS.Shader {
+  key = 'flash',
+  path = 'flash.fs',
+}
+SMODS.Edition {
+  key = 'abn_reversal',
+  shader = "flash",
+  discovered = true,
+  config = {},
+  loc_vars = function(self, info_queue, card)
+    return { vars = {} }
+  end,
+  calculate = function(self, card, context)
+    if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+      return {
+        message = localize('k_swapped_ex'),
+        swap = true
+      }
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Bro-Fly"
+  },
+}
+
+SMODS.Shader {
+  key = 'exs',
+  path = 'exs.fs',
+}
+SMODS.Edition {
+  key = 'abn_bit_rot',
+  shader = "exs",
+  discovered = true,
+  config = { emult = 1 },
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.edition.emult } }
+  end,
+  calculate = function(self, card, context)
+    if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+      return {
+        emult = card.edition.emult
+      }
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Bro-Fly"
+  },
+  in_pool = function(self)
+    return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+  end,
+}
+
+SMODS.Shader {
+  key = 'cam',
+  path = 'cam.fs',
+}
+SMODS.Edition {
+  key = 'abn_reel',
+  shader = "cam",
+  discovered = true,
+  config = { echips = 1 },
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.edition.echips } }
+  end,
+  calculate = function(self, card, context)
+    if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+      return {
+        emult = card.edition.echips
+      }
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Bro-Fly"
+  },
+  in_pool = function(self)
+    return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+  end,
+}
+
+SMODS.Shader {
+  key = 'orange',
+  path = 'orange.fs',
+}
+SMODS.Edition {
+  key = 'abn_collodion',
+  shader = "orange",
+  discovered = true,
+  config = { percent = 20 },
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.edition.percent } }
+  end,
+  calculate = function(self, card, context)
+    if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+      ABN.balance_percent(card, (card.edition.percent * 0.01))
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Bro-Fly"
+  },
+  in_pool = function(self)
+    return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+  end,
+}
+
+SMODS.Shader {
+  key = 'plata',
+  path = 'plata.fs',
+}
+SMODS.Edition {
+  key = 'abn_vintage',
+  shader = "plata",
+  discovered = true,
+  config = { chips = 10, mult = 8, xdollars = 1.1 },
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.edition.chips, card.edition.mult, card.edition.xdollars } }
+  end,
+  calculate = function(self, card, context)
+    if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+      local level = G.GAME.hands[context.scoring_name] and G.GAME.hands[context.scoring_name].level or 1
+      return {
+        chips = card.edition.chips * level,
+        mult = card.edition.mult * level,
+        dollars = G.GAME.dollars * (card.edition.xdollars * level)
+      }
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Bro-Fly"
+  },
+  in_pool = function(self)
+    return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+  end,
+}

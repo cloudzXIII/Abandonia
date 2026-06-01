@@ -937,7 +937,7 @@ return {
         name = "Magenta Magnet",
         text = {
           "Increase the blindsize by 5%",
-		  "for each $ held",
+          "for each $ held",
         },
       },
       bl_abn_silver_star = {
@@ -973,8 +973,8 @@ return {
         name = "Impostor Cherry",
         text = {
           "Add 10 Impostor cards to your deck",
-		  "Hands containing Impostor cards",
-		  "do not score",
+          "Hands containing Impostor cards",
+          "do not score",
         },
       },
       bl_abn_teal_tear = {
@@ -1111,7 +1111,7 @@ return {
           "Jokers with editions are destroyed",
         },
       },
-	  bl_abn_offbeat_triangle = {
+      bl_abn_offbeat_triangle = {
         name = "Offbeat Triangle",
         text = {
           "2nd, 4th, 6th,",
@@ -1119,111 +1119,111 @@ return {
           "decrease score",
         },
       },
-	  bl_abn_type_o_negative = {
+      bl_abn_type_o_negative = {
         name = "Type O Negative",
         text = {
           "+1X Base score for each different edition",
-		  "in your Jokers and cards",
+          "in your Jokers and cards",
         },
       },
-	  bl_abn_spectral_jewel = {
+      bl_abn_spectral_jewel = {
         name = "Spectral Jewel",
         text = {
           "First drawn hand is debuffed",
-		  "Must play atleast 2 suits",
+          "Must play atleast 2 suits",
         },
       },
-	  bl_abn_equal_brass = {
+      bl_abn_equal_brass = {
         name = "Equal Brass",
         text = {
           "+1 Selection Limit",
-		  "Must play 6 cards",
-		  "Divide base Mult by unplayed suits",
+          "Must play 6 cards",
+          "Divide base Mult by unplayed suits",
         },
       },
-	  bl_abn_calamity_x = {
+      bl_abn_calamity_x = {
         name = "Calamity X",
         text = {
           "Changes effects before hand scores",
         },
       },
-	  bl_abn_gilded_labrys = {
+      bl_abn_gilded_labrys = {
         name = "Gilded Labrys",
         text = {
           "On Odd hands debuff",
-		  "all Odd rank cards",
-		  "On Even hands debuff",
-		  "all Even rank cards",
+          "all Odd rank cards",
+          "On Even hands debuff",
+          "all Even rank cards",
         },
       },
-	  bl_abn_mauve_moth = {
+      bl_abn_mauve_moth = {
         name = "Mauve Moth",
         text = {
           "Jokers and playing cards cannot be rearranged",
-		  "Cards cannot be deselected",
+          "Cards cannot be deselected",
         },
       },
       -- hazard
-	  bl_abn_hazard_moth = {
+      bl_abn_hazard_moth = {
         name = "Hazard Moth",
         text = {
           "Jokers and playing cards cannot be rearranged",
-		  "Cards cannot be deselected",
-		  "Very Large Blind",
-		  "Cannot draw cards until hand is empty",
+          "Cards cannot be deselected",
+          "Very Large Blind",
+          "Cannot draw cards until hand is empty",
         },
       },
-	  bl_abn_hazard_labrys = {
+      bl_abn_hazard_labrys = {
         name = "Hazard Labrys",
         text = {
           "On Odd hands debuff",
-		  "all Odd rank cards",
-		  "On Even hands debuff",
-		  "all Even rank cards",
-		  "Discarded hands cannot be played",
-		  "Playing most played hand",
-		  "multiplies blind requirement by 2x",
+          "all Odd rank cards",
+          "On Even hands debuff",
+          "all Even rank cards",
+          "Discarded hands cannot be played",
+          "Playing most played hand",
+          "multiplies blind requirement by 2x",
         },
       },
-	  bl_abn_hazard_x = {
+      bl_abn_hazard_x = {
         name = "Hazard X",
         text = {
           "Changes effects before hand scores",
         },
       },
-	  bl_abn_hazard_brass = {
+      bl_abn_hazard_brass = {
         name = "Hazard Brass",
         text = {
           "+1 Selection Limit",
-		  "Must play 6 cards",
-		  "Divide base Mult by unplayed suits",
-		  "Flip all cards in hand face down",
+          "Must play 6 cards",
+          "Divide base Mult by unplayed suits",
+          "Flip all cards in hand face down",
         },
       },
-	  bl_abn_hazard_jewel = {
+      bl_abn_hazard_jewel = {
         name = "Hazard Jewel",
         text = {
           "First drawn hand is debuffed",
-		  "Must play atleast 3 suits",
-		  "Hand must not contain 3 or 5 cards",
+          "Must play atleast 3 suits",
+          "Hand must not contain 3 or 5 cards",
         },
       },
-	  bl_abn_hazard_negative = {
+      bl_abn_hazard_negative = {
         name = "Type O Negative",
         text = {
           "+2.5X Base score for each different edition",
-		  "in your Jokers and cards",
-		  "All cards must score",
+          "in your Jokers and cards",
+          "All cards must score",
         },
       },
-	  bl_abn_hazard_triangle = {
+      bl_abn_hazard_triangle = {
         name = "Hazard Triangle",
         text = {
           "2nd, 4th, 6th,",
           "and subsequent even hands",
           "decrease score",
-		  "Debuff all hands with more",
-		  "than 4 different suits",
+          "Debuff all hands with more",
+          "than 4 different suits",
         },
       },
       bl_abn_hazard_tower = {
@@ -1294,9 +1294,9 @@ return {
         name = "Hazard Magnet",
         text = {
           "Increase the blindsize by 10%",
-		  "for each $ held",
-		  "all cards debuffed",
-		  "until you have 0 discards",
+          "for each $ held",
+          "all cards debuffed",
+          "until you have 0 discards",
         },
       },
       bl_abn_hazard_star = {
@@ -1367,8 +1367,8 @@ return {
         name = "Hazard Cherry",
         text = {
           "Add 20 Impostor cards to your deck",
-		  "Hands containing Impostor cards",
-		  "do not score",
+          "Hands containing Impostor cards",
+          "do not score",
           "Played hand must contain 5 cards",
         },
       },
@@ -5678,11 +5678,11 @@ return {
           "when scored"
         },
       },
-	  j_abn_decollage_joker        = {
+      j_abn_decollage_joker          = {
         name = "Decollage Joker",
         text = {
           "Give {X:mult,C:white}XMult{} equal to the number of {C:attention}different Suits",
-		  "If this Joker has {C:dark_edition}Holographic{} edition all scoring cards gain {C:mult}+#1#{} Mult",
+          "If this Joker has {C:dark_edition}Holographic{} edition all scoring cards gain {C:mult}+#1#{} Mult",
         },
       },
     },
@@ -6670,6 +6670,45 @@ return {
         text = {
           "{C:mult}+#1#{} Mult,",
           "{C:chips}+#2#{} Chips,",
+        }
+      },
+      e_abn_chromatic = {
+        name = "Chromatic",
+        text = {
+          "{C:white,X:chips}X#1#{} Chips, {C:white,X:mult}x#2#{} Mult,",
+          "and {C:money}$#3#{} when triggered"
+        }
+      },
+      e_abn_reversal = {
+        name = "Reversal",
+        text = {
+          "Swap {C:chips}Chips{} and {C:mult}Mult",
+        }
+      },
+      e_abn_bit_rot = {
+        name = "Bit Rot",
+        text = {
+          "{X:mult,C:white}^#1#{} Mult",
+        },
+      },
+      e_abn_reel = {
+        name = "Reel",
+        text = {
+          "{X:chips,C:white}^#1#{} Chips",
+        },
+      },
+      e_abn_collodion = {
+        name = "Collodion",
+        text = {
+          "Balances {C:purple}#1#%{} of",
+          "{C:chips}Chips{} and {C:mult}Mult{}"
+        }
+      },
+      e_abn_vintage = {
+        name = "Vintage",
+        text = {
+          "{C:white,X:money}X#3#{}, {C:chips}+#2#{} chips, and {C:mult}+#1#{} Mult",
+          "per level of played hand"
         }
       }
     },
@@ -7935,6 +7974,13 @@ return {
       abn_sunscourge = "Sunscourge",
       abn_gloss = "Gloss",
       abn_pearlescent = "Pearlescent",
+      abn_chromatic = "Chromatic",
+      abn_reversal = "Reversal",
+      abn_bit_rot = "Bit Rot",
+      abn_reel = "Reel",
+      abn_collodion = "Collodion",
+      abn_vintage = "Vintage",
+
       -- STICKERS
       abn_pump_up = "Pump Up",
       abn_immortal = "Immortal",
