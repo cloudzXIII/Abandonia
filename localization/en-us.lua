@@ -1485,6 +1485,15 @@ return {
       },
     },
     Joker = {
+      j_abn_corrupted_virtue = {
+        name = "Corrupted Virtue",
+        text = {
+          "If {C:attention}first hand{} of round is",
+          "a single {C:attention}13{}, destroy it and",
+          "create a {C:nightshift_cards}Nightshift{} card",
+          "{C:inactive}(Must have room)",
+        }
+      },
       j_abn_wingding_joker = {
         name = "Wingding Joker",
         text = {
@@ -7955,6 +7964,7 @@ return {
       b_abn_ranks = "Ranks",
       k_abn_merged = "Merged!",
       k_abn_holo = "Holographic!",
+      k_abn_plus_nightshift = "+1 Nightshift",
       k_abn_plus_astro = "+1 Astro",
       k_abn_plus_sigil = "+1 Sigil",
       k_abn_plus_calamity = "+1 Calamity",

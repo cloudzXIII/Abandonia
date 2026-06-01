@@ -143,6 +143,9 @@ ABN.calculate = function(self, context)
         x_mult = 1.25
       }
     end
+    if not G.GAME.abn_13_played_this_run and context.other_card:get_id() == SMODS.Ranks.abn_13.id then
+      G.GAME.abn_13_played_this_run = true
+    end
   end
 
   if context.after and context.main_eval and not context.blueprint then
