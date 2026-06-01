@@ -233,7 +233,7 @@ SMODS.Edition {
   key = 'abn_bit_rot',
   shader = "exs",
   discovered = true,
-  config = { emult = 1 },
+  config = { emult = 1.3 },
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.emult } }
   end,
@@ -260,7 +260,7 @@ SMODS.Edition {
   key = 'abn_reel',
   shader = "cam",
   discovered = true,
-  config = { echips = 1 },
+  config = { echips = 1.3 },
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.echips } }
   end,
