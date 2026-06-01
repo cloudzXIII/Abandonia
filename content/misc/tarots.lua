@@ -334,6 +334,10 @@ SMODS.Consumable {
     info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
     return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
   end,
+  
+  in_pool = function(self)
+    return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+  end,
 }
 
 SMODS.Consumable {
