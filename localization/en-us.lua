@@ -1485,6 +1485,22 @@ return {
       },
     },
     Joker = {
+      j_abn_full_jester = {
+        name = "Full Jester",
+        text = {
+          {
+            "If played hand is composed of",
+            "{C:attention}6{} or more suits, this joker gains",
+            "{C:white,X:mult}X#2#{} Mult per scoring suit"
+          },
+          {
+            "If played hand is composed of {C:attention}5{} suits",
+            "and a {C:attention}rankless{} card, this joker",
+            "gains {C:white,X:chips}X#4#{} Chips per scoring suit",
+            "{C:inactive}(Currently {C:white,X:chips}X#3#{C:inactive} Chips, {C:white,X:mult}X#1#{C:inactive} Mult)"
+          }
+        }
+      },
       j_abn_balakiren = {
         name = "Balakiren",
         text = {
