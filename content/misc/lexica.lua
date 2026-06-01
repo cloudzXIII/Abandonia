@@ -18,6 +18,7 @@ function Card:set_cost()
 end
 
 local function abn_activate_letter(self, card)
+  set_consumeable_usage(card)
   SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.GREEN, sound = 'tarot1', }, card)
   SMODS.destroy_cards(card)
   SMODS.calculate_context({ abn_letter_activated = true })

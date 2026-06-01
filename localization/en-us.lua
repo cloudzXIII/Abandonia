@@ -1485,6 +1485,33 @@ return {
       },
     },
     Joker = {
+      j_abn_wingding_joker = {
+        name = "Wingding Joker",
+        text = {
+          "This Joker gains {C:mult}+#4#{} Mult",
+          "when a {C:lexica}Lexica{} card is sold,",
+          "gains {C:chips}+#2#{} Chips when a",
+          "{C:program_pack}Program{} card is sold",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#3#{C:inactive} Mult)"
+        }
+      },
+      j_abn_inventory_joker = {
+        name = "Inventory Joker",
+        text = {
+          "When {C:attention}Blind{} is selected,",
+          "gain {C:chips}+#2#{} Chips for",
+          "each consumable {C:attention}held{}",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
+        },
+      },
+      j_abn_enrage_joker = {
+        name = "Enrage Joker",
+        text = {
+          "{C:white,X:chips}X#1#{} Chips,",
+          "Forces {C:attention}#2#{} cards to",
+          "always be selected",
+        },
+      },
       j_abn_full_jester = {
         name = "Full Jester",
         text = {
