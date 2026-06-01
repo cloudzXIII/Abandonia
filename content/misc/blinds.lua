@@ -9,18 +9,29 @@ SMODS.Blind({
   atlas = "AbandoniaBlinds",
   pos = { x = 0, y = 9 },
   boss_colour = HEX("9e4d6e"),
-  debuff_hand = function(self, cards, hand, handname, check)
-    local no = true
-    for k, v in pairs(cards) do
-      if SMODS.has_enhancement(v, "m_gold") or SMODS.has_enhancement(v, "m_steel") then
-        no = false
-      end
-    end
-    return no
-  end,
-  abn_artist_credits = { -- jst realized this doesnt work :D
-    artist = "Meladaptive",
-  },
+  calculate = function(self, card, context)
+        -- Triggered when entering the blind
+        if context.setting_blind then
+			G.GAME.MagnetChips = G.GAME.blind.chips
+        end
+		
+		if context.first_hand_drawn and not G.GAME.blind.disabled  then
+			--blind size increases by 5% for each $ in G.GAME.dollars
+			local multiplier = 1 + (0.05 * math.max(0, G.GAME.dollars))
+            
+            G.GAME.blind.chips = math.floor(G.GAME.blind.chips * multiplier)
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+		end
+    end,
+    
+    disable = function(self)
+        G.GAME.blind.chips = G.GAME.MagnetChips
+		G.GAME.blind.chip_text = number_format(G.GAME.blind.chips) 
+    end,
+	
+	abn_artist_credits = { -- jst realized this doesnt work :D
+		artist = "Meladaptive",
+	},
 })
 
 SMODS.Blind({
@@ -162,24 +173,242 @@ SMODS.Blind({
 })
 -- art by Grass
 
+-- ==========================================
+-- Impostors Failure Popup Helper
+-- ==========================================
+local function show_impostor_fail_text()
+    local disp_text = "Impostor Played!"
+
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = G.SETTINGS.GAMESPEED * 0.05,
+        blockable = false,
+        func = function()
+            play_sound('cancel', 0.8, 1.2)
+            attention_text({
+                scale = 0.75,
+                text = disp_text,
+                maxw = 14,
+                hold = G.SETTINGS.GAMESPEED * (#disp_text * 0.04 + 1.2),
+                align = 'cm',
+                offset = { x = 0, y = -2.5 },
+                major = G.play
+            })
+            return true
+        end
+    }))
+end
+
 SMODS.Blind({
-  key = "wild_cherry",
-  boss = {
-    showdown = true,
-  },
-  atlas = "AbandoniaBlinds",
-  pos = { x = 0, y = 5 },
-  boss_colour = HEX("ce54cc"),
-  debuff_hand = function(self, cards, hand, handname, check)
-    local no = true
-    for k, v in pairs(cards) do
-      if SMODS.has_enhancement(v, "m_wild") then
-        no = false
-      end
+    key = "wild_cherry",
+    boss = {
+        showdown = true,
+    },
+    atlas = "AbandoniaBlinds",
+    pos = { x = 0, y = 5 },
+    boss_colour = HEX("ce54cc"),
+    calculate = function(self, card, context)
+        -- Triggered when entering the blind
+        if context.setting_blind and not G.GAME.blind.disabled then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    -- Gather all cards in the deck
+                    local all_cards = G.deck.cards
+                    if not all_cards or #all_cards == 0 then return true end
+
+                    -- FILTER: Only allow cards that are NOT already impostors
+                    local valid_base_cards = {}
+                    for _, c in ipairs(all_cards) do
+                        if not (c.ability and c.ability.is_impostor) then
+                            table.insert(valid_base_cards, c)
+                        end
+                    end
+
+                    -- Fallback: If your entire deck is somehow impostors, use the whole deck to prevent a softlock
+                    if #valid_base_cards == 0 then valid_base_cards = all_cards end
+
+                    -- Spawns 10 impostor clones into the deck
+                    local num_cards = 10 
+                    local new_cards = {}
+
+                    for i = 1, num_cards do
+                        -- Grab a completely random, clean base card from our filtered pool
+                        local base_card = pseudorandom_element(valid_base_cards, pseudoseed('impostor_choice_' .. i))
+                        if not base_card then break end
+
+                        -- Clone the clean card
+                        local new_card = copy_card(base_card)
+                        
+                        -- Register the new clone into the game systems
+                        new_card:add_to_deck()
+                        G.deck.config.card_limit = G.deck.config.card_limit + 1
+                        table.insert(G.playing_cards, new_card)
+                        G.deck:emplace(new_card)
+
+                        -- Set the impostor flag
+                        new_card.ability.is_impostor = true
+
+                        -- =========================================================
+                        -- STABLE VISUAL ANOMALIES (Guaranteed exactly 1 effect)
+                        -- =========================================================
+                        local rand_val = pseudorandom(pseudoseed('impostor_weird_' .. i))
+                        local weird_modifier = math.floor(rand_val * 5) + 1
+                        
+                        if weird_modifier == 1 then
+                            -- size adjustments
+                            local scale_rand = pseudorandom(pseudoseed('impostor_scale_' .. i))
+                            local scale_mod = (scale_rand <= 0.5 and 1.15 or 0.85)
+                            new_card.ability.forced_scale = scale_mod
+                            
+                            local old_draw = new_card.draw
+                            new_card.draw = function(self, layer)
+                                if self.T and self.ability.forced_scale then
+                                    self.T.w = G.CARD_W * self.ability.forced_scale
+                                    self.T.h = G.CARD_H * self.ability.forced_scale
+                                end
+                                if old_draw then old_draw(self, layer) end
+                            end
+                            
+                        elseif weird_modifier == 2 then
+                            -- weird smudge / shader anomaly
+                            local chosen_shader = 'negative_shine'
+                            
+                            -- CONDITION CHECK: If the card has a native edition, overwrite shader to 'booster'
+                            if base_card.edition then
+                                chosen_shader = 'booster'
+                            end
+                            
+                            local old_draw = new_card.draw
+                            new_card.draw = function(self, layer)
+                                if old_draw then old_draw(self, layer) end
+                                if self.children and self.children.center then
+                                    self.children.center:draw_shader(chosen_shader, nil, self.ARGS.send_to_shader)
+                                end
+                            end
+                            
+                        elseif weird_modifier == 3 then
+                            -- no rank
+                            new_card.base.nominal = 0
+                            new_card.base.suit_nominal = 0
+                            
+                        elseif weird_modifier == 4 then
+                            -- text chip anomaly
+                            new_card.ability.perma_bonus = -6969
+                        elseif weird_modifier == 5 then
+                            -- text mult anomaly
+                            new_card.ability.perma_mult = 6767
+                        end
+                        
+                        -- Start materializing the copy with visual feedback
+                        new_card:start_materialize(nil, nil)
+                        new_card:juice_up(0.6, 0.6)
+                        table.insert(new_cards, new_card)
+                    end
+                    
+                    playing_card_joker_effects(new_cards)
+                    return true
+                end
+            }))
+        end
+
+        -- Before scoring: Reset the hand state tracking
+        if context.before then
+            G.GAME.ImpostorDetected = false
+            G.GAME.ImpostorPenalty = 0
+        end
+
+        -- During scoring: Look for an impostor inside the scoring hand
+        if context.scoring_hand then
+            for _, c in ipairs(context.scoring_hand) do
+                if c.ability and c.ability.is_impostor then
+                    G.GAME.ImpostorDetected = true
+                    break
+                end
+            end
+        end
+
+        -- Final scoring step: Record penalty AND fire the text event ONCE
+        if context.final_scoring_step and G.GAME.ImpostorDetected then
+            local result = SMODS.calculate_round_score()
+            G.GAME.ImpostorPenalty = result
+            show_impostor_fail_text()
+        end
+    end,
+    
+    disable = function(self)
+        -- Clean out all impostors
+        for _, card in ipairs(G.playing_cards) do
+            if card.ability and card.ability.is_impostor then
+                card:start_dissolve()
+            end
+        end
+        G.GAME.ImpostorDetected = false
+        G.GAME.ImpostorPenalty = 0
+    end,
+    
+    defeat = function(self)
+        self:disable()
     end
-    return no
-  end,
 })
+
+-- ==========================================
+-- Hook into Game.update (State Trapping)
+-- ==========================================
+local old_update = Game.update
+function Game:update(dt)
+    old_update(self, dt)
+
+    -- Apply subtraction right after round score settles (state 3)
+    if G.STATE == 3 and G.GAME.ImpostorDetected and G.GAME.blind and not G.GAME.blind.disabled then
+        G.GAME.chips = G.GAME.chips - (G.GAME.ImpostorPenalty or 0)
+        G.GAME.ImpostorPenalty = 0
+    end
+
+    -- Apply subtraction during game state 19 evaluations
+    if G.STATE == 19 and G.GAME.ImpostorDetected and G.GAME.blind and not G.GAME.blind.disabled then
+        G.GAME.chips = G.GAME.chips - (G.GAME.ImpostorPenalty or 0)
+        G.GAME.ImpostorPenalty = 0
+    end
+end
+
+-- ==========================================
+-- Game Over Interception Hook
+-- ==========================================
+local old_update_game_over = Game.update_game_over
+function Game:update_game_over(dt)
+    local current_chips = to_big(G.GAME.chips)
+    local target_chips = to_big(G.GAME.blind.chips)
+    local wafer_score = to_big(G.GAME.Wafer_Score or 0)
+    
+    if current_chips >= target_chips or (wafer_score > to_big(0) and (current_chips + wafer_score) >= target_chips) then
+        if G.GAME.Wafer_Score_Applied == 0 and wafer_score > to_big(0) then
+            G.GAME.Wafer_Score_Applied = 1
+            G.GAME.chips = G.GAME.chips + G.GAME.Wafer_Score
+        end
+
+        G.STATE = G.STATES.HAND_PLAYED
+        G.STATE_COMPLETE = true
+        end_round()
+        G.GAME.Wafer_Score = 0
+        return
+    
+    elseif G.GAME.ImpostorDetected and G.GAME.current_round.hands_left > 0 then
+        if G.deck and #G.deck.cards > 0 then
+            local draw_count = G.hand.config.card_limit - #G.hand.cards
+            SMODS.draw_cards(draw_count)
+        end
+        
+        G.GAME.ImpostorDetected = false
+        G.STATE = G.STATES.SELECTING_HAND
+        return
+
+    else
+        G.GAME.ImpostorDetected = false
+        old_update_game_over(self, dt)
+    end
+end
 
 SMODS.Blind({
   key = "teal_tear",
@@ -840,96 +1069,472 @@ SMODS.Blind({
   end,
 })
 
+SMODS.Blind({
+  key = "offbeat_triangle",
+  boss = {
+    showdown = true,
+  },
+  atlas = "AbandoniaBlinds",
+  pos = { x = 0, y = 71 },
+  boss_colour = HEX("f5a600"),
+
+  defeat = function(self)
+    G.GAME.EdgingHands = 0
+  end,
+
+  calculate = function(self, card, context)
+    if context.final_scoring_step and not G.GAME.blind.disabled then
+      G.GAME.EdgingHands = (G.GAME.EdgingHands or 0) + 1
+      if G.GAME.EdgingHands % 2 ~= 1 then
+        return { xchips = -1 }
+      end
+    end
+  end,
+})
+
+SMODS.Blind({
+    key = "type_o_negative",
+    boss = {
+        showdown = true,
+    },
+    atlas = "AbandoniaBlinds",
+    pos = { x = 0, y = 63 },
+    boss_colour = HEX("58605e"),
+    calculate = function(self, card, context)
+        -- Triggered when entering the blind: back up original chips and reset flag
+        if context.setting_blind then
+            G.GAME.SpectralChips = G.GAME.blind.chips
+        end
+		
+        -- Trigger when the first hand is drawn and blind isn't disabled
+        if context.first_hand_drawn and not G.GAME.blind.disabled then  
+            
+            local unique_editions = {}
+            local unique_count = 0
+
+            -- Helper function to check and count editions
+            local function check_card_edition(c)
+                if c and c.edition and c.edition.type then
+                    local ed_type = c.edition.type
+                    if not unique_editions[ed_type] then
+                        unique_editions[ed_type] = true
+                        unique_count = unique_count + 1
+                    end
+                end
+            end
+
+            -- Scan Jokers
+            if G.jokers and G.jokers.cards then
+                for _, j in ipairs(G.jokers.cards) do
+                    check_card_edition(j)
+                end
+            end
+			
+			-- Scan Playing Cards
+            if G.playing_cards then
+                for _, c in ipairs(G.playing_cards) do
+                    check_card_edition(c)
+                end
+            end
+			
+            -- Apply the multiplier if any unique editions were found
+            if unique_count > 0 then
+                G.GAME.blind.chips = G.GAME.blind.chips * unique_count
+                G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+            end
+        end
+    end,
+    
+    disable = function(self)
+        if G.GAME.SpectralChips then
+            G.GAME.blind.chips = G.GAME.SpectralChips
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips) 
+        end
+    end,
+})
+
+SMODS.Blind({
+  key = "spectral_jewel",
+  boss = {
+    showdown = true,
+  },
+  atlas = "AbandoniaBlinds",
+  pos = { x = 0, y = 59 },
+  boss_colour = HEX("416eac"),
+  
+  calculate = function(self, blind, context)
+    -- Debuff the starting hand
+    if context.first_hand_drawn and not G.GAME.blind.disabled then            
+      for _, card in ipairs(G.hand.cards) do
+        card:set_debuff(true)
+        card.wasdebuffed = true
+      end
+    end
+
+    -- Debuff less than 2 suits
+    if not G.GAME.blind.disabled and context.debuff_hand then
+      local unique_suits = {}
+      local suit_count = 0
+      
+      for _, card in ipairs(context.full_hand or {}) do
+        local suit = card.base.suit
+        if suit and not unique_suits[suit] then
+          unique_suits[suit] = true
+          suit_count = suit_count + 1
+        end
+      end
+
+      if suit_count < 2 then
+        blind.triggered = true
+        return {
+          debuff = true
+        }
+      end
+    end
+  end,
+    
+  disable = function(self)
+    for _, card in ipairs(G.hand.cards) do
+      card:set_debuff(false)
+      card.wasdebuffed = false
+    end
+  end,
+})
+
+SMODS.Blind({
+  key = "equal_brass",
+  boss = {
+    showdown = true,
+  },
+  debuff = {
+    h_size_ge = 6,
+  },
+  atlas = "AbandoniaBlinds",
+  pos = { x = 0, y = 61 },
+  boss_colour = HEX("d9a066"),
+
+  defeat = function(self)
+    SMODS.change_play_limit(-1)
+    SMODS.change_discard_limit(-1)
+  end,
+
+  calculate = function(self, card, context)
+    if context.setting_blind and not G.GAME.blind.disabled then
+      SMODS.change_play_limit(1)
+      SMODS.change_discard_limit(1)
+    end
+	
+    -- change hand values
+    if context.modify_hand and context.scoring_hand and not G.GAME.blind.disabled then
+      local played_suits = {}
+      
+      for i = 1, #context.scoring_hand do
+        local scoring_card = context.scoring_hand[i]
+        
+        -- suit check
+        for suit_key, _ in pairs(SMODS.Suits) do
+          if scoring_card:is_suit(suit_key) then
+            played_suits[suit_key] = true
+          end
+        end
+      end
+
+      -- count suits
+      local unplayed_suit_count = 0
+      for suit_key, _ in pairs(SMODS.Suits) do
+        if not played_suits[suit_key] then
+          unplayed_suit_count = unplayed_suit_count + 1
+        end
+      end
+
+      -- divide base mult
+      if unplayed_suit_count > 0 then
+        mult = mod_mult(mult / unplayed_suit_count)
+
+        -- update UI 
+        update_hand_text({delay = 0}, {chips = hand_chips, mult = mult})
+
+      end
+    end
+  end,
+})
+
+local function show_calamity_text(effect_id)
+  local effect_strings = {
+    [1] = "Destroy a random Joker if Blind is not won in one hand",
+    [2] = "+1X Base",
+    [3] = "Played enhancements are randomized before scoring",
+    [4] = "Destroy one random card in hand after hand is played",
+	[5] = "+0.2X Base per unused hand/discard",
+	[6] = "Flip all cards in hand",
+	[7] = "Divide Mult by number of played cards",
+  }
+  local disp_text = effect_strings[effect_id] or "Calamity!"
+
+  G.E_MANAGER:add_event(Event({
+    trigger = 'after',
+    delay = G.SETTINGS.GAMESPEED * 0.05,
+    blockable = false,
+    func = function()
+      play_sound('cancel', 0.8, 1.2)
+      attention_text({
+        scale = 0.75,
+        text = disp_text,
+        maxw = 14,
+        hold = G.SETTINGS.GAMESPEED * (#disp_text * 0.04 + 1.2),
+        align = 'cm',
+        offset = { x = 0, y = -2.5 }, -- Raised so it stays above cards
+        major = G.play
+      })
+      return true
+    end
+  }))
+end
+
+SMODS.Blind({
+  key = "calamity_x",
+  boss = {
+    showdown = true,
+  },
+  atlas = "AbandoniaBlinds",
+  pos = { x = 0, y = 65 },
+  boss_colour = HEX("42d0c4"),
+  mult = 2,
+
+  calculate = function(self, card, context)
+    if context.before and not G.GAME.blind.disabled then
+      -- Pick a random effect
+      local effect = pseudorandom('calamity_choice', 1, 4)
+      G.GAME.blind.calamity_effect = effect
+
+      -- Display the chosen effect
+      show_calamity_text(effect)
+
+      -- +1X Base
+	  if effect == 2 then
+        G.GAME.blind.mult = G.GAME.blind.mult + 1
+        G.GAME.blind.chips = get_blind_amount(G.GAME.round_resets.ante)*G.GAME.blind.mult*G.GAME.starting_params.ante_scaling
+        G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+      end
+	  
+	  -- Randomize Enhancements
+      if effect == 3 then
+        local enhanced_list = {}
+        for i = 1, #G.play.cards do
+          local target_card = G.play.cards[i]
+          -- If the card is NOT a base card, it means it is already enhanced
+          if target_card.config.center ~= G.P_CENTERS.c_base then
+            table.insert(enhanced_list, target_card)
+          end
+        end
+
+        -- If we found enhanced cards, randomize their enhancements using SMODS.poll_enhancement
+        if #enhanced_list > 0 then
+          for _, enhanced_card in ipairs(enhanced_list) do
+            local enhancement_key = {key = 'calamity_enh', guaranteed = true}
+            local random_enhancement = G.P_CENTERS[SMODS.poll_enhancement(enhancement_key)]
+            
+            if random_enhancement then
+              enhanced_card:set_ability(random_enhancement, nil, true)
+              enhanced_card:juice_up()
+            end
+          end
+        end
+      end
+	  
+	  if effect == 4 and #G.play.cards > 0 then
+        local destroyed_target = pseudorandom_element(G.play.cards, 'calamity_destroy')
+        destroyed_target.should_destroy = true
+      end
+    end
+	
+	-- Destroy a random card
+	if context.destroy_card and context.cardarea == G.play and not G.GAME.blind.disabled then
+      if context.destroy_card.should_destroy then
+        return {remove = true}
+      end
+    end
+	
+	-- Joker destroy
+    if context.after then
+      local effect = G.GAME.blind.calamity_effect
+
+      if effect == 1 and #G.jokers.cards > 0 then
+        local result = SMODS.calculate_round_score()
+        if result < G.GAME.blind.chips then
+          local sacrificed_joker = pseudorandom_element(G.jokers.cards, 'calamity_joker')
+          G.E_MANAGER:add_event(Event({
+            trigger = 'immediate',
+            func = function()
+              sacrificed_joker:start_dissolve()
+              return true
+            end
+          }))
+        end
+      end
+
+      -- Clear the effect tracking flag for the next hand
+      G.GAME.blind.calamity_effect = nil
+    end
+  end,
+})
+
+SMODS.Blind({
+  key = "gilded_labrys",
+  boss = {
+    showdown = true,
+  },
+  atlas = "AbandoniaBlinds",
+  pos = { x = 0, y = 67 }, --six seveennnn /srs
+  boss_colour = HEX("fde698"),
+  
+  calculate = function(self, card, context)
+    -- trigger every hand
+    if context.hand_drawn then
+      G.GAME.EdgingHands = (G.GAME.EdgingHands or 0) + 1
+	  for _, c in ipairs(G.playing_cards) do
+		-- Debuff evens
+		if G.GAME.EdgingHands % 2 ~= 1 and not G.GAME.blind.disabled then
+			if ABN.is_even(c) then
+				c:set_debuff(true)
+				c.wasdebuffed = true
+			elseif ABN.is_odd(c) then
+				c:set_debuff(false)
+				c.wasdebuffed = false
+			end
+		-- Debuff odds
+		elseif G.GAME.EdgingHands % 2 == 1 and not G.GAME.blind.disabled then
+			if ABN.is_even(c) then
+				c:set_debuff(false)
+				c.wasdebuffed = false
+			elseif ABN.is_odd(c) then
+				c:set_debuff(true)
+				c.wasdebuffed = true
+			end
+		end
+    end
+    end
+  end,
+  
+  disable = function(self)
+    for _, card in ipairs(G.playing_cards) do
+      card:set_debuff(false)
+      card.wasdebuffed = false
+    end
+  end,
+  
+  defeat = function(self)
+    G.GAME.EdgingHands = 0
+  end,
+  
+})
+
+
+local original_game_update = Game.update
+
+function Game:update(dt)
+    original_game_update(self, dt)
+
+    if G.STAGE ~= G.STAGES.RUN then return end
+	
+	if G.GAME.blind and G.GAME.blind.config.blind.key == 'bl_abn_mauve_moth' and not G.GAME.blind.disabled then
+		if G.jokers and G.jokers.cards then
+			for i = 1, #G.jokers.cards do
+				local j = G.jokers.cards[i]
+			
+				j.states.drag.can = false
+			
+			end
+		end
+		for _, c in ipairs(G.playing_cards) do
+			c.states.drag.can = false
+		end
+		
+	end
+	
+	if G.GAME.blind and G.GAME.blind.config.blind.key == 'bl_abn_mauve_moth' and G.GAME.blind.disabled or G.GAME.blind and G.GAME.blind.config.blind.key == 'bl_abn_mauve_moth' and G.STATE == 8 then
+		if G.jokers and G.jokers.cards then
+			for i = 1, #G.jokers.cards do
+				local j = G.jokers.cards[i]
+			
+				j.states.drag.can = true
+			
+			end
+		end
+		for _, c in ipairs(G.playing_cards) do
+			c.states.drag.can = true
+		end
+	end
+end
+
+SMODS.Blind({
+  key = "mauve_moth",
+  boss = {
+    showdown = true,
+  },
+  atlas = "AbandoniaBlinds",
+  pos = { x = 0, y = 69 }, -- nice
+  boss_colour = HEX("c292a1"),
+  
+  calculate = function(self, card, context)
+	
+	if G.hand and G.hand.highlighted then
+		for i = 1, #G.hand.highlighted do
+			G.hand.highlighted[i].ability.forced_selection = true
+		end
+	end
+  end,
+})
+
 -- Hazard Blinds
 -- Hazard Heart
 
 SMODS.Blind({
-  key = "hazard_magnet",
-  boss = {
-    showdown = true,
-    hazard_blind = true,
-  },
-  atlas = "AbandoniaBlinds",
-  pos = { x = 0, y = 21 },
-  boss_colour = HEX("9e4d6e"),
-  debuff_hand = function(self, cards, hand, handname, check)
-    local no = true
-    local gold, steel = false, false
-    for k, v in pairs(cards) do
-      if SMODS.has_enhancement(v, "m_gold") then
-        gold = true
-      end
-      if SMODS.has_enhancement(v, "m_steel") then
-        steel = true
-      end
-      if gold and steel then
-        no = false
-      end
-    end
-    return no
-  end,
-  calculate = function(self, blind, context)
-    if not blind.disabled then
-      if context.debuff_card and context.debuff_card.area == G.jokers then
-        if context.debuff_card.ability.hazard_magnet_chosen then
-          return {
-            debuff = true,
-          }
+    key = "hazard_magnet",
+    boss = {
+        showdown = true,
+        hazard_blind = true,
+    },
+    atlas = "AbandoniaBlinds",
+    pos = { x = 0, y = 21 },
+    boss_colour = HEX("9e4d6e"),
+    
+    calculate = function(self, card, context)
+        -- Triggered when entering the blind to save the original requirement
+        if context.setting_blind then
+            G.GAME.MagnetChips = G.GAME.blind.chips
         end
-      end
-      if context.press_play and G.jokers.cards[1] then
-        blind.triggered = true
-        blind.prepped = true
-      end
-      if context.hand_drawn then
-        if blind.prepped and G.jokers.cards[1] then
-          local prev_chosen_set = {}
-          local fallback_jokers = {}
-          local jokers = {}
-          for i = 1, #G.jokers.cards do
-            if G.jokers.cards[i].ability.hazard_magnet_chosen then
-              prev_chosen_set[G.jokers.cards[i]] = true
-              G.jokers.cards[i].ability.hazard_magnet_chosen = nil
-              if G.jokers.cards[i].debuff then
-                SMODS.recalc_debuff(G.jokers.cards[i])
-              end
+        
+        -- Apply scaling and debuffs when the first hand is drawn
+        if context.first_hand_drawn and not G.GAME.blind.disabled then
+            -- Blind size increases by 10% for each $ in G.GAME.dollars
+            local multiplier = 1 + (0.10 * math.max(0, G.GAME.dollars))
+            G.GAME.blind.chips = math.floor(G.GAME.blind.chips * multiplier)
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+            
+            -- Debuff all cards if player has discards
+            if G.GAME.current_round.discards_left > 0 then
+                for _, c in ipairs(G.playing_cards) do
+                    c:set_debuff(true)
+                end
             end
-          end
-          for i = 1, #G.jokers.cards do
-            if not G.jokers.cards[i].debuff then
-              if not prev_chosen_set[G.jokers.cards[i]] then
-                jokers[#jokers + 1] = G.jokers.cards[i]
-              end
-              table.insert(fallback_jokers, G.jokers.cards[i])
-            end
-          end
-          if #jokers == 0 then
-            jokers = fallback_jokers
-          end
-          local _card = pseudorandom_element(jokers, "vremade_crimson_heart")
-          if _card then
-            _card.ability.hazard_magnet_chosen = true
-            SMODS.recalc_debuff(_card)
-            _card:juice_up()
-            blind:wiggle()
-          end
         end
-      end
-    end
-    if context.hand_drawn then
-      blind.prepped = nil
-    end
-  end,
-  disable = function(self)
-    for _, joker in ipairs(G.jokers.cards) do
-      joker.ability.hazard_magnet_chosen = nil
-    end
-  end,
-  defeat = function(self)
-    for _, joker in ipairs(G.jokers.cards) do
-      joker.ability.hazard_magnet_chosen = nil
-    end
-  end,
+
+        if G.STATE == 1 and G.GAME.current_round.discards_left == 0 and not G.GAME.blind.disabled then
+			G.GAME.blind:disable()
+        end
+    end,
+    
+    disable = function(self)
+        -- Restore original chips
+        G.GAME.blind.chips = G.GAME.MagnetChips or G.GAME.blind.chips
+        G.GAME.blind.chip_text = number_format(G.GAME.blind.chips) 
+
+        for _, c in ipairs(G.playing_cards) do
+            c:set_debuff(false)
+            c.wasdebuffed = false
+        end
+    end,
 })
 
 SMODS.Blind({
@@ -1322,15 +1927,151 @@ SMODS.Blind({
   atlas = "AbandoniaBlinds",
   pos = { x = 0, y = 17 },
   boss_colour = HEX("ce54cc"),
-  debuff_hand = function(self, cards, hand, handname, check)
-    local no = true
-    for k, v in pairs(cards) do
-      if SMODS.has_enhancement(v, "m_wild") then
-        no = false
-      end
+  
+  calculate = function(self, card, context)
+        -- Triggered when entering the blind
+        if context.setting_blind and not G.GAME.blind.disabled then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    -- Gather all cards in the deck
+                    local all_cards = G.deck.cards
+                    if not all_cards or #all_cards == 0 then return true end
+
+                    -- FILTER: Only allow cards that are NOT already impostors
+                    local valid_base_cards = {}
+                    for _, c in ipairs(all_cards) do
+                        if not (c.ability and c.ability.is_impostor) then
+                            table.insert(valid_base_cards, c)
+                        end
+                    end
+
+                    -- Fallback: If your entire deck is somehow impostors, use the whole deck to prevent a softlock
+                    if #valid_base_cards == 0 then valid_base_cards = all_cards end
+
+                    -- Spawns 20 impostor clones into the deck
+                    local num_cards = 20 
+                    local new_cards = {}
+
+                    for i = 1, num_cards do
+                        -- Grab a completely random, clean base card from our filtered pool
+                        local base_card = pseudorandom_element(valid_base_cards, pseudoseed('impostor_choice_' .. i))
+                        if not base_card then break end
+
+                        -- Clone the clean card
+                        local new_card = copy_card(base_card)
+                        
+                        -- Register the new clone into the game systems
+                        new_card:add_to_deck()
+                        G.deck.config.card_limit = G.deck.config.card_limit + 1
+                        table.insert(G.playing_cards, new_card)
+                        G.deck:emplace(new_card)
+
+                        -- Set the impostor flag
+                        new_card.ability.is_impostor = true
+
+                        -- =========================================================
+                        -- STABLE VISUAL ANOMALIES (Guaranteed exactly 1 effect)
+                        -- =========================================================
+                        local rand_val = pseudorandom(pseudoseed('impostor_weird_' .. i))
+                        local weird_modifier = math.floor(rand_val * 5) + 1
+                        
+                        if weird_modifier == 1 then
+                            -- size adjustments
+                            local scale_rand = pseudorandom(pseudoseed('impostor_scale_' .. i))
+                            local scale_mod = (scale_rand <= 0.5 and 1.15 or 0.85)
+                            new_card.ability.forced_scale = scale_mod
+                            
+                            local old_draw = new_card.draw
+                            new_card.draw = function(self, layer)
+                                if self.T and self.ability.forced_scale then
+                                    self.T.w = G.CARD_W * self.ability.forced_scale
+                                    self.T.h = G.CARD_H * self.ability.forced_scale
+                                end
+                                if old_draw then old_draw(self, layer) end
+                            end
+                            
+                        elseif weird_modifier == 2 then
+                            -- weird smudge / shader anomaly
+                            local chosen_shader = 'negative_shine'
+                            
+                            -- CONDITION CHECK: If the card has a native edition, overwrite shader to 'booster'
+                            if base_card.edition then
+                                chosen_shader = 'booster'
+                            end
+                            
+                            local old_draw = new_card.draw
+                            new_card.draw = function(self, layer)
+                                if old_draw then old_draw(self, layer) end
+                                if self.children and self.children.center then
+                                    self.children.center:draw_shader(chosen_shader, nil, self.ARGS.send_to_shader)
+                                end
+                            end
+                            
+                        elseif weird_modifier == 3 then
+                            -- no rank
+                            new_card.base.nominal = 0
+                            new_card.base.suit_nominal = 0
+                            
+                        elseif weird_modifier == 4 then
+                            -- text chip anomaly
+                            new_card.ability.perma_bonus = -6969
+                        elseif weird_modifier == 5 then
+                            -- text mult anomaly
+                            new_card.ability.perma_mult = 6767
+                        end
+                        
+                        -- Start materializing the copy with visual feedback
+                        new_card:start_materialize(nil, nil)
+                        new_card:juice_up(0.6, 0.6)
+                        table.insert(new_cards, new_card)
+                    end
+                    
+                    playing_card_joker_effects(new_cards)
+                    return true
+                end
+            }))
+        end
+
+        -- Before scoring: Reset the hand state tracking
+        if context.before then
+            G.GAME.ImpostorDetected = false
+            G.GAME.ImpostorPenalty = 0
+        end
+
+        -- During scoring: Look for an impostor inside the scoring hand
+        if context.scoring_hand then
+            for _, c in ipairs(context.scoring_hand) do
+                if c.ability and c.ability.is_impostor then
+                    G.GAME.ImpostorDetected = true
+                    break
+                end
+            end
+        end
+
+        -- Final scoring step: Record penalty AND fire the text event ONCE
+        if context.final_scoring_step and G.GAME.ImpostorDetected then
+            local result = SMODS.calculate_round_score()
+            G.GAME.ImpostorPenalty = result
+            show_impostor_fail_text()
+        end
+    end,
+    
+    disable = function(self)
+        -- Clean out all impostors
+        for _, card in ipairs(G.playing_cards) do
+            if card.ability and card.ability.is_impostor then
+                card:start_dissolve()
+            end
+        end
+        G.GAME.ImpostorDetected = false
+        G.GAME.ImpostorPenalty = 0
+    end,
+    
+    defeat = function(self)
+        self:disable()
     end
-    return no
-  end,
 })
 
 SMODS.Blind({
@@ -2483,5 +3224,600 @@ SMODS.Blind({
         return true
       end
     }))
+  end,
+})
+
+SMODS.Blind({
+  key = "hazard_triangle",
+  boss = { showdown = true, hazard_blind = true },
+  atlas = "AbandoniaBlinds",
+  pos = { x = 0, y = 72 },
+  boss_colour = HEX("f5a600"),
+
+  defeat = function(self)
+    G.GAME.EdgingHands = 0
+  end,
+
+  calculate = function(self, blind, context)
+    -- Suit Debuff Mechanic
+    if not blind.disabled and context.debuff_hand then
+      local unique_suits = {}
+      local suit_count = 0
+      
+      for _, card in ipairs(context.full_hand or {}) do
+        local suit = card.base.suit
+        if suit and not unique_suits[suit] then
+          unique_suits[suit] = true
+          suit_count = suit_count + 1
+        end
+      end
+
+      if suit_count > 4 then
+        blind.triggered = true
+        return {
+          debuff = true
+        }
+      end
+    end
+	
+	--Even hands debuff
+    if context.final_scoring_step and not blind.disabled then
+      G.GAME.EdgingHands = (G.GAME.EdgingHands or 0) + 1
+      if G.GAME.EdgingHands % 2 ~= 1 then
+        return { xchips = -1 }
+      end
+    end
+  end,
+})
+
+-- ==========================================
+-- Hazard Negative Failure Popup Helper
+-- ==========================================
+local function show_hazard_fail_text()
+    local disp_text = "All cards must score!"
+
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = G.SETTINGS.GAMESPEED * 0.05,
+        blockable = false,
+        func = function()
+            play_sound('cancel', 0.8, 1.2)
+            attention_text({
+                scale = 0.75,
+                text = disp_text,
+                maxw = 14,
+                hold = G.SETTINGS.GAMESPEED * (#disp_text * 0.04 + 1.2),
+                align = 'cm',
+                offset = { x = 0, y = -2.5 },
+                major = G.play
+            })
+            return true
+        end
+    }))
+end
+
+SMODS.Blind({
+    key = "hazard_negative",
+    boss = { showdown = true, hazard_blind = true },
+    atlas = "AbandoniaBlinds",
+    pos = { x = 0, y = 64 },
+    boss_colour = HEX("58605e"),
+    calculate = function(self, card, context)
+        -- Triggered when entering the blind: back up original chips
+        if context.setting_blind then
+            G.GAME.SpectralChips = G.GAME.blind.chips
+        end
+        
+        -- Trigger when the first hand is drawn and blind isn't disabled
+        if context.first_hand_drawn and not G.GAME.blind.disabled then  
+            local unique_editions = {}
+            local unique_count = 0
+
+            -- Helper function to check and count editions
+            local function check_card_edition(c)
+                if c and c.edition then
+                    local ed_type = c.edition.type or next(c.edition)
+                    if ed_type and ed_type ~= 'key' and not unique_editions[ed_type] then
+                        unique_editions[ed_type] = true
+                        unique_count = unique_count + 1
+                    end
+                end
+            end
+
+            -- Scan Jokers
+            if G.jokers and G.jokers.cards then
+                for _, j in ipairs(G.jokers.cards) do
+                    check_card_edition(j)
+                end
+            end
+            
+            -- Scan Playing Cards
+            if G.playing_cards then
+                for _, c in ipairs(G.playing_cards) do
+                    check_card_edition(c)
+                end
+            end
+            
+            -- Apply linear multiplier (e.g., 2 editions = x5.0)
+            if unique_count > 0 then
+                local multiplier = unique_count * 2.5
+                G.GAME.blind.chips = G.GAME.blind.chips * multiplier
+                G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+            end
+        end
+
+        -- ====================================================================
+        -- MATCHING HAND COUNT LOGIC (Impostor-style state trapping)
+        -- ====================================================================
+        if not G.GAME.blind.disabled then
+            -- Before scoring: Reset trackers
+            if context.before then
+                G.GAME.HazardMismatchDetected = false
+                G.GAME.HazardPenalty = 0
+            end
+
+            -- During scoring: Compare full hand size to scoring hand size
+            if context.scoring_hand and context.full_hand then
+                if #context.full_hand ~= #context.scoring_hand then
+                    G.GAME.HazardMismatchDetected = true
+                end
+            end
+
+            -- Final scoring step: Record the score to nullify and pop up text
+            if context.final_scoring_step and G.GAME.HazardMismatchDetected then
+                local result = SMODS.calculate_round_score()
+                G.GAME.HazardPenalty = result
+                show_hazard_fail_text()
+            end
+        end
+    end,
+    
+    disable = function(self)
+        if G.GAME.SpectralChips then
+            G.GAME.blind.chips = G.GAME.SpectralChips
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips) 
+        end
+        G.GAME.HazardMismatchDetected = false
+        G.GAME.HazardPenalty = 0
+    end,
+
+    defeat = function(self)
+        self:disable()
+    end
+})
+
+-- ==========================================
+-- Hook into Game.update (State Trapping)
+-- ==========================================
+local old_update = Game.update
+function Game:update(dt)
+    old_update(self, dt)
+
+    -- Subtract the scored points if a mismatch occurred (State 3 and 19)
+    if G.GAME.blind and not G.GAME.blind.disabled and G.GAME.HazardMismatchDetected then
+        if G.STATE == 3 or G.STATE == 19 then
+            G.GAME.chips = G.GAME.chips - (G.GAME.HazardPenalty or 0)
+            G.GAME.HazardPenalty = 0
+        end
+    end
+end
+
+-- ==========================================
+-- Game Over Interception Hook Adaptation
+-- ==========================================
+local old_update_game_over = Game.update_game_over
+function Game:update_game_over(dt)
+    if G.GAME.blind and G.GAME.HazardMismatchDetected and G.GAME.current_round.hands_left > 0 then
+        -- Mimic Impostors handling: redraw to hand limit and continue round
+        if G.deck and #G.deck.cards > 0 then
+            local draw_count = G.hand.config.card_limit - #G.hand.cards
+            SMODS.draw_cards(draw_count)
+        end
+        
+        G.GAME.HazardMismatchDetected = false
+        G.STATE = G.STATES.SELECTING_HAND
+        return
+    else
+        old_update_game_over(self, dt)
+    end
+end
+
+SMODS.Blind({
+  key = "hazard_jewel",
+  boss = { showdown = true, hazard_blind = true },
+  atlas = "AbandoniaBlinds",
+  pos = { x = 0, y = 60 },
+  boss_colour = HEX("416eac"),
+  
+  calculate = function(self, blind, context)
+    -- Debuff the starting hand
+    if context.first_hand_drawn and not blind.disabled then            
+      for _, card in ipairs(G.hand.cards) do
+        card:set_debuff(true)
+        card.wasdebuffed = true
+      end
+    end
+
+    -- Hazard evaluations before scoring
+    if not blind.disabled and context.debuff_hand then
+      local hand_size = #(context.full_hand or {})
+      
+      -- no 3 or 5
+      if hand_size == 3 or hand_size == 5 then
+        blind.triggered = true
+        return {
+          debuff = true
+        }
+      end
+
+      -- must play 3+ suits
+      local unique_suits = {}
+      local suit_count = 0
+      
+      for _, card in ipairs(context.full_hand or {}) do
+        local suit = card.base.suit
+        if suit and not unique_suits[suit] then
+          unique_suits[suit] = true
+          suit_count = suit_count + 1
+        end
+      end
+
+      if suit_count < 3 then
+        blind.triggered = true
+        return {
+          debuff = true
+        }
+      end
+    end
+  end,
+    
+  disable = function(self)
+    for _, card in ipairs(G.hand.cards) do
+      card:set_debuff(false)
+      card.wasdebuffed = false
+    end
+  end,
+})
+
+SMODS.Blind({
+  key = "hazard_brass",
+  boss = { showdown = true, hazard_blind = true },
+  debuff = {
+    h_size_ge = 6,
+  },
+  atlas = "AbandoniaBlinds",
+  pos = { x = 0, y = 62 },
+  boss_colour = HEX("d9a066"),
+
+  defeat = function(self)
+    SMODS.change_play_limit(-1)
+    SMODS.change_discard_limit(-1)
+  end,
+
+  calculate = function(self, card, context)
+    if context.setting_blind and not G.GAME.blind.disabled then
+      SMODS.change_play_limit(1)
+      SMODS.change_discard_limit(1)
+    end
+	
+    -- change hand values
+    if context.modify_hand and context.scoring_hand and not G.GAME.blind.disabled then
+      local played_suits = {}
+      
+      for i = 1, #context.scoring_hand do
+        local scoring_card = context.scoring_hand[i]
+        
+        -- suit check
+        for suit_key, _ in pairs(SMODS.Suits) do
+          if scoring_card:is_suit(suit_key) then
+            played_suits[suit_key] = true
+          end
+        end
+      end
+	  
+	  -- flip cards
+	  if G.hand.cards then
+		for _, card in ipairs(G.hand.cards) do
+            if card.facing == 'front' then
+                card:flip()
+            end
+        end
+	  end
+
+      -- count suits
+      local unplayed_suit_count = 0
+      for suit_key, _ in pairs(SMODS.Suits) do
+        if not played_suits[suit_key] then
+          unplayed_suit_count = unplayed_suit_count + 1
+        end
+      end
+
+      -- divide base mult
+      if unplayed_suit_count > 0 then
+        mult = mod_mult(mult / unplayed_suit_count)
+
+        -- update UI 
+        update_hand_text({delay = 0}, {chips = hand_chips, mult = mult})
+
+      end
+    end
+  end,
+})
+
+SMODS.Blind({
+  key = "hazard_x",
+  boss = { showdown = true, hazard_blind = true },
+  atlas = "AbandoniaBlinds",
+  pos = { x = 0, y = 66 },
+  boss_colour = HEX("42d0c4"), 
+  mult = 2,
+
+  calculate = function(self, card, context)
+    if context.before and not G.GAME.blind.disabled then
+      -- Pick a random effect
+      local effect = pseudorandom('calamity_choice', 1, 7)
+      G.GAME.blind.calamity_effect = effect
+
+      -- Display the chosen effect
+      show_calamity_text(effect)
+
+      -- +1X Base
+      if effect == 2 then
+        G.GAME.blind.mult = G.GAME.blind.mult + 1
+        G.GAME.blind.chips = get_blind_amount(G.GAME.round_resets.ante)*G.GAME.blind.mult*G.GAME.starting_params.ante_scaling
+        G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+      end
+      
+      -- Randomize Enhancements
+      if effect == 3 then
+        local enhanced_list = {}
+        for i = 1, #G.play.cards do
+          local target_card = G.play.cards[i]
+          if target_card.config.center ~= G.P_CENTERS.c_base then
+            table.insert(enhanced_list, target_card)
+          end
+        end
+        
+        if #enhanced_list > 0 then
+          for _, enhanced_card in ipairs(enhanced_list) do
+            local enhancement_key = {key = 'calamity_enh', guaranteed = true}
+            local random_enhancement = G.P_CENTERS[SMODS.poll_enhancement(enhancement_key)]
+            
+            if random_enhancement then
+              enhanced_card:set_ability(random_enhancement, nil, true)
+              enhanced_card:juice_up()
+            end
+          end
+        end
+      end
+      
+      -- +0.2X Base
+      if effect == 5 then
+        G.GAME.blind.mult = G.GAME.blind.mult + (0.2 * G.GAME.current_round.discards_left) + (0.2 * G.GAME.current_round.hands_left)
+        G.GAME.blind.chips = get_blind_amount(G.GAME.round_resets.ante)*G.GAME.blind.mult*G.GAME.starting_params.ante_scaling
+        G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+      end
+      
+      -- Flip cards
+      if effect == 6 then
+        for _, card in ipairs(G.hand.cards) do
+          if card.facing == 'front' then
+            card:flip()
+          end
+        end
+      end
+      
+      if effect == 4 and #G.play.cards > 0 then
+        local destroyed_target = pseudorandom_element(G.play.cards, 'calamity_destroy')
+        destroyed_target.should_destroy = true
+      end
+    end
+    
+    -- Destroy a random card
+    if context.destroy_card and context.cardarea == G.play and not G.GAME.blind.disabled then
+      if context.destroy_card.should_destroy then
+        return {remove = true}
+      end
+    end
+    
+    if context.modify_hand and context.scoring_hand and not G.GAME.blind.disabled and current_effect == 7 then
+      mult = mod_mult(mult / #context.full_hand)
+      -- update UI 
+      update_hand_text({delay = 0}, {chips = hand_chips, mult = mult})
+    end
+    
+    -- Joker destroy
+    if context.after then
+      local effect = G.GAME.blind.calamity_effect
+
+      if effect == 1 and #G.jokers.cards > 0 then
+        local result = SMODS.calculate_round_score()
+        if result < G.GAME.blind.chips then
+          local sacrificed_joker = pseudorandom_element(G.jokers.cards, 'calamity_joker')
+          G.E_MANAGER:add_event(Event({
+            trigger = 'immediate',
+            func = function()
+              sacrificed_joker:start_dissolve()
+              return true
+            end
+          }))
+        end
+      end
+
+      -- Reset
+      G.GAME.blind.calamity_effect = nil
+    end
+  end, 
+})
+
+SMODS.Blind({
+  key = "hazard_labrys",
+  boss = { showdown = true, hazard_blind = true },
+  atlas = "AbandoniaBlinds",
+  pos = { x = 0, y = 68 },
+  boss_colour = HEX("fde698"),
+  
+  debuff_hand = function(self, cards, hand, handname, check)
+    if G.GAME.blind.disabled then return end
+    
+    -- If the current evaluated poker hand is in our banned table, block it!
+    if G.GAME.banned_labrys_hands and G.GAME.banned_labrys_hands[handname] then
+      return true
+    end
+  end,
+  
+  calculate = function(self, card, context)
+    -- trigger every hand
+    if context.hand_drawn then
+      G.GAME.EdgingHands = (G.GAME.EdgingHands or 0) + 1
+	  for _, c in ipairs(G.playing_cards) do
+		-- Debuff evens
+		if G.GAME.EdgingHands % 2 ~= 1 and not G.GAME.blind.disabled then
+			if ABN.is_even(c) then
+				c:set_debuff(true)
+				c.wasdebuffed = true
+			elseif ABN.is_odd(c) then
+				c:set_debuff(false)
+				c.wasdebuffed = false
+			end
+		-- Debuff odds
+		elseif G.GAME.EdgingHands % 2 == 1 and not G.GAME.blind.disabled then
+			if ABN.is_even(c) then
+				c:set_debuff(false)
+				c.wasdebuffed = false
+			elseif ABN.is_odd(c) then
+				c:set_debuff(true)
+				c.wasdebuffed = true
+			end
+		end
+      end
+    end
+	
+	-- Ban discarded hands
+	if context.pre_discard and not context.hook then
+      if G.hand.highlighted and #G.hand.highlighted > 0 then
+        local discarded_hand_type, _ = G.FUNCS.get_poker_hand_info(G.hand.highlighted)
+        
+        if discarded_hand_type and discarded_hand_type ~= 'Egg' then
+          if not G.GAME.banned_labrys_hands then G.GAME.banned_labrys_hands = {} end
+          if not G.GAME.banned_labrys_hands[discarded_hand_type] then
+            G.GAME.banned_labrys_hands[discarded_hand_type] = true
+          end
+        end
+      end
+    end
+	
+	if context.before then
+		-- find most played hand
+		local max_played = -1
+		for k, v in pairs(G.GAME.hands) do
+			if v.visible and v.played > max_played then
+				max_played = v.played
+			end
+		end
+
+		local most_played_hands = {}
+		if max_played >= 0 then
+			for k, v in pairs(G.GAME.hands) do
+				if v.visible and v.played == max_played then
+					most_played_hands[k] = true
+				end
+			end
+		end
+
+		-- if most played hand double requirement
+		if most_played_hands[context.scoring_name] then
+			G.GAME.blind.chips = G.GAME.blind.chips * 2
+			G.GAME.blind.chip_text = number_format(G.GAME.blind.chips) 
+		end
+	end
+  end,
+  
+  disable = function(self)
+    for _, card in ipairs(G.playing_cards) do
+      card:set_debuff(false)
+      card.wasdebuffed = false
+    end
+  end,
+  
+  defeat = function(self)
+    G.GAME.EdgingHands = 0
+  end,
+  
+})
+
+local original_game_update = Game.update
+
+function Game:update(dt)
+    original_game_update(self, dt)
+
+    if G.STAGE ~= G.STAGES.RUN then return end
+	
+	if G.GAME.blind and G.GAME.blind.config.blind.key == 'bl_abn_hazard_moth' and not G.GAME.blind.disabled then
+		if G.jokers and G.jokers.cards then
+			for i = 1, #G.jokers.cards do
+				local j = G.jokers.cards[i]
+			
+				j.states.drag.can = false
+			
+			end
+		end
+		for _, c in ipairs(G.playing_cards) do
+			c.states.drag.can = false
+		end
+		
+	end
+	
+	if G.GAME.blind and G.GAME.blind.config.blind.key == 'bl_abn_hazard_moth' and G.GAME.blind.disabled or G.GAME.blind and G.GAME.blind.config.blind.key == 'bl_abn_hazard_moth' and G.STATE == 8 then
+		if G.jokers and G.jokers.cards then
+			for i = 1, #G.jokers.cards do
+				local j = G.jokers.cards[i]
+			
+				j.states.drag.can = true
+			
+			end
+		end
+		for _, c in ipairs(G.playing_cards) do
+			c.states.drag.can = true
+		end
+	end
+end
+
+local draw_to_hand_ref = G.FUNCS.draw_from_deck_to_hand
+G.FUNCS.draw_from_deck_to_hand = function(e)
+    if G.GAME.blind and G.GAME.blind.config.blind.key == 'bl_abn_hazard_moth' and not G.GAME.blind.disabled then
+		if #G.hand.cards > 0 then
+			return
+		end
+    end
+
+    -- Call the original logic
+    draw_to_hand_ref(e)
+end
+
+SMODS.Blind({
+  key = "hazard_moth",
+  boss = {
+    showdown = true,
+  },
+  atlas = "AbandoniaBlinds",
+  pos = { x = 0, y = 70 },
+  boss_colour = HEX("c292a1"),
+  mult = 7,
+  
+  calculate = function(self, blind, context)
+	
+	if G.hand and G.hand.highlighted then
+		for i = 1, #G.hand.highlighted do
+			G.hand.highlighted[i].ability.forced_selection = true
+		end
+	end
+	
+	if blind.disabled then
+		G.GAME.blind.mult = 2
+        G.GAME.blind.chips = get_blind_amount(G.GAME.round_resets.ante)*G.GAME.blind.mult*G.GAME.starting_params.ante_scaling
+        G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+	end
+	
   end,
 })
