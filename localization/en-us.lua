@@ -675,7 +675,7 @@ return {
           "{C:green}1 in 5{} chance for Jokers",
           "without {C:dark_edition}editions{} to be {C:mult}destroyed",
         }
-      }
+      },
 	  b_abn_ConvergenceDeck = {
         name = "Convergence Deck",
         text = {
@@ -683,7 +683,7 @@ return {
 		  "before scoring",
 		  "{C:mult}X2.5 Blind size",
         }
-      }
+      },
 	  b_abn_JugglerDeck = {
         name = "Juggler Deck",
         text = {
@@ -691,7 +691,7 @@ return {
 		  "{C:chips}Hands{} save between rounds",
 		  "Selling Jokers gives {C:chips}Hands{}"
         }
-      }
+      },
     },
     Tag = {
       --#region Hazard Tags
