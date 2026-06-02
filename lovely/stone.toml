@@ -48,3 +48,51 @@ if k == 'm_stone' and next(SMODS.find_card('j_abn_streetart_joker')) then return
 '''
 match_indent = true
 times = 1
+
+# Rewrite polkadot card scoring functionality
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+if self.ability.effect == 'Stone Card' or self.config.center.replace_base_card then
+    return self.ability.bonus + (self.ability.perma_bonus or 0)
+end
+'''
+position = "after"
+payload = '''
+if self.ability.effect == 'Polkadot Card' and next(SMODS.find_card('j_abn_gagman_joker')) then
+    -- Do nothing, let it fall through to calculate standard rank/suit scoring
+elseif self.ability.effect == 'Polkadot Card' then
+    return self.ability.bonus + (self.ability.perma_bonus or 0)
+end
+'''
+match_indent = true
+times = 1
+
+# Change has_no_suit check to exclude polkadot cards with gagman joker
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/utils.lua"]'''
+pattern = '''
+if k == 'm_stone' or G.P_CENTERS[k].no_suit then is_stone = true end
+'''
+position = "after"
+payload = '''
+if k == 'm_abn_polkadot' and next(SMODS.find_card('j_abn_gagman_joker')) then is_stone = false end
+'''
+match_indent = true
+times = 1
+
+# Change has_no_rank check to exclude polkadot cards with gagman joker
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/utils.lua"]'''
+pattern = '''
+if k == 'm_stone' or G.P_CENTERS[k].no_rank then return true end
+'''
+position = "before"
+payload = '''
+if k == 'm_abn_polkadot' and next(SMODS.find_card('j_abn_gagman_joker')) then return false end
+'''
+match_indent = true
+times = 1
