@@ -21,32 +21,36 @@ SMODS.Joker {
     extra = {
       chips = 0,
       chips_gain = 5,
-      last_played = "",
+      last_played = "none",
     },
   },
+  
   calculate = function(self, card, context)
-    if context.press_play then
-      card.ability.extra.last_played = G.GAME.last_hand_played
-    end
-    if context.joker_main then
-      if card.ability.extra.last_played == context.scoring_name or card.ability.extra.chips == 0 then
+    if context.before and not context.blueprint then
+      -- Completely ignore High Card
+      if context.scoring_name == "High Card" then return end
+
+      if card.ability.extra.last_played == "none" or card.ability.extra.last_played == context.scoring_name then
         SMODS.scale_card(card, {
           ref_table = card.ability.extra,
           ref_value = "chips",
           scalar_value = "chips_gain",
           operation = '+',
         })
-      else
-        if card.ability.extra.chips > 0 then
-          card.ability.extra.chips = 0
-          SMODS.calculate_effect({ message = localize('k_reset'), colour = G.C.FILTER }, card)
-        end
       end
-      return {
-        chips = card.ability.extra.chips
-      }
+      
+      card.ability.extra.last_played = context.scoring_name
+    end
+
+    if context.joker_main then
+      if card.ability.extra.chips > 0 then
+        return {
+          chips = card.ability.extra.chips,
+        }
+      end
     end
   end,
+
   abn_artist_credits = {
     artist = "cloudzXIII", -- hell yeah
     colour = G.C.GOLD
