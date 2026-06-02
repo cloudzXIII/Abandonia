@@ -1163,7 +1163,24 @@ return {
           "Cards cannot be deselected",
         },
       },
+	  bl_abn_ominous_sigil = {
+        name = "Ominous Sigil",
+        text = {
+          "Discard half of the deck",
+		  "Scoring cards don't score",
+		  "Unscored cards score instead",
+        },
+      },
       -- hazard
+	  bl_abn_hazard_sigil = {
+        name = "Hazard Sigil",
+        text = {
+          "Discard half of the deck",
+		  "Scoring cards don't score",
+		  "Unscored cards score instead",
+		  "Hands and Discards are a shared resource",
+        },
+      },
       bl_abn_hazard_moth = {
         name = "Hazard Moth",
         text = {
@@ -5735,6 +5752,50 @@ return {
         text = {
           "Give {X:mult,C:white}XMult{} equal to the number of {C:attention}different Suits",
           "If this Joker has {C:dark_edition}Holographic{} edition all scoring cards gain {C:mult}+#1#{} Mult",
+        },
+      },
+	  j_abn_joker_reloaded          = {
+        name = "Joker Reloaded",
+        text = {
+          "At {C:attention}end of round{} all Jokers gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
+		  "Per different {C:dark_edition}Edition{} in held {C:attention}consumables{}",
+        },
+      },
+	  j_abn_monkey_buisness          = {
+        name = "Monkey Buisness",
+        text = {
+          "{C:attention}Consumables{} can have different {C:dark_edition}editions",
+        },
+      },
+	  j_abn_gagman_joker          = {
+        name = "Gagman Joker",
+        text = {
+          "Pokadot Cards retain their",
+		  "{C:attention}rank{} and {C:attention}suit{}",
+        },
+      },
+	  j_abn_epic_joker          = {
+        name = "Epic Joker",
+        text = {
+          "Gain {X:mult,C:white}X#2#{} Mult per {C:attention}Number Rank{} card above {C:attention}10{} played in a {C:attention}Flush{}",
+		  "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult",
+        },
+      },
+	  j_abn_caffeinated_joker          = {
+        name = "Caffeinated Joker",
+        text = {
+          "Scoring {C:mult}Red Seals{} retrigger again for each {C:mult}Red Seal{} played",
+		  "{C:mult}Debuff{} all cards after first hand",
+		  "Each scored {C:abn_brass_seal}Tea Stain{} card is {C:mult}destroyed{} and this Joker gains {X:mult,C:white}X#2#{} Mult",
+		  "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult",
+        },
+      },
+	  j_abn_joker_totebag          = {
+        name = "Joker Totebag",
+        text = {
+          "When {C:attention}Blind is selected{} gain {C:mult}+#2#{} Mult and {C:chips}+#1#{} Chips for each consumable that shares a name",
+		  "If each one of those Consumables has a {C:attention}different{} {C:dark_edition}Edition{} double this Joker's {C:chips}chips{} and {C:mult}mult{}",
+		  "{C:inactive}Currently: {C:mult}+#4#{} {C:inactive}Mult{} {C:chips}+#3#{} {C:inactive}Chips{}"
         },
       },
     },
