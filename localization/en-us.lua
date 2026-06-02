@@ -676,6 +676,22 @@ return {
           "without {C:dark_edition}editions{} to be {C:mult}destroyed",
         }
       }
+	  b_abn_ConvergenceDeck = {
+        name = "Convergence Deck",
+        text = {
+          "Swap {C:chips}Chips{} and {C:mult}Mult{}",
+		  "before scoring",
+		  "{C:mult}X2.5 Blind size",
+        }
+      }
+	  b_abn_JugglerDeck = {
+        name = "Juggler Deck",
+        text = {
+          "Start with {C:attention}10{} {C:chips}Hands{}",
+		  "{C:chips}Hands{} save between rounds",
+		  "Selling Jokers gives {C:chips}Hands{}"
+        }
+      }
     },
     Tag = {
       --#region Hazard Tags
