@@ -544,3 +544,76 @@ SMODS.Back {
         end
     end
 }
+
+SMODS.Back {
+    name = 'Convergence Deck',
+    key = 'ConvergenceDeck',
+    atlas = 'AbandoniaDecks',
+    pos = { x = 5, y = 3 },
+
+    config = {
+        hand_size = 0
+    },
+	
+	apply = function()
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling * 2.5
+				return true
+            end
+        }))
+    end,
+
+    calculate = function(self, card, context)
+        if context.modify_hand then
+            local current_chips = G.GAME.hands[context.scoring_name].chips
+            local current_mult = G.GAME.hands[context.scoring_name].mult
+
+            hand_chips = mod_chips(current_mult)
+            mult = mod_mult(current_chips)
+
+            update_hand_text({delay = 0}, {chips = hand_chips, mult = mult})
+        end
+    end,
+}
+
+local original_game_update = Game.update
+function Game:update(dt)
+    original_game_update(self, dt)
+	if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect and G.GAME.selected_back.effect.center and G.GAME.selected_back.effect.center.key == 'b_abn_JugglerDeck' and G.STATE ~= 8 then
+		G.GAME.round_resets.hands = G.GAME.current_round.hands_left
+    end
+end
+
+SMODS.Back {
+    name = 'Juggler Deck',
+    key = 'JugglerDeck',
+    atlas = 'AbandoniaDecks',
+    pos = { x = 0, y = 4 },
+
+    config = {
+        hands = 6
+    },
+
+    calculate = function(self, card, context)
+		if context.selling_card and context.card ~= card and context.card.config.center.rarity and context.card.ability.set == 'Joker' then
+            local card_rarity = context.card.config.center.rarity
+			if card_rarity == 1 then
+				G.GAME.round_resets.hands = G.GAME.round_resets.hands + 1
+				ease_hands_played(1)
+			elseif card_rarity == 2 then
+				G.GAME.round_resets.hands = G.GAME.round_resets.hands + 2
+				ease_hands_played(2)
+			elseif card_rarity == 3 then
+				G.GAME.round_resets.hands = G.GAME.round_resets.hands + 5
+				ease_hands_played(5)
+			elseif card_rarity == 4 then
+				G.GAME.round_resets.hands = G.GAME.round_resets.hands + 10
+				ease_hands_played(10)
+			elseif card_rarity ~= 1 and card_rarity ~= 2 and card_rarity ~= 3 and card_rarity ~= 4 then
+				G.GAME.round_resets.hands = G.GAME.round_resets.hands + 3
+				ease_hands_played(3)
+			end
+		end
+	end,
+}

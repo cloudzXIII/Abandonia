@@ -1486,6 +1486,83 @@ SMODS.Blind({
   end,
 })
 
+SMODS.Blind({
+  key = "ominous_sigil",
+  boss = {
+    showdown = true,
+  },
+  atlas = "AbandoniaBlinds",
+  pos = { x = 0, y = 73 },
+  boss_colour = HEX("fd5f55"),
+  
+  in_pool = function(self)
+    return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+  end,
+  
+  calculate = function(self, card, context)
+    if context.setting_blind then
+      G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+        local original_highlighted_limit = G.hand.config.highlighted_limit
+
+        G.hand.config.highlighted_limit = 9999
+
+        local discarded_count = 0
+        local any_selected = false
+
+        local half_deck_size = math.floor(#G.deck.cards / 2)
+        local all_cards = {G.hand.cards, G.deck.cards}
+        
+        if half_deck_size > 0 then
+          for i = 1, half_deck_size do
+            local selected_card = G.deck.cards[#G.deck.cards] 
+            if selected_card then
+              G.hand:add_to_highlighted(selected_card, true)
+              
+              for k, v in ipairs(G.deck.cards) do
+                if v == selected_card then
+                  table.remove(G.deck.cards, k)
+                  break
+                end
+              end
+              
+              any_selected = true
+            end
+          end
+        end
+
+        -- Discard selected highlighted cards
+        if any_selected then
+          G.FUNCS.discard_cards_from_highlighted(nil, true)
+        end
+
+        G.hand:unhighlight_all()
+        G.hand.config.highlighted_limit = original_highlighted_limit
+
+        return true
+      end}))
+    end
+	
+    if context.modify_scoring_hand then
+      local is_scoring = false
+      for _, scoring_card in ipairs(context.scoring_hand) do
+        if scoring_card == context.other_card then
+          is_scoring = true
+          break
+        end
+      end
+
+      if is_scoring then
+        return {
+          remove_from_hand = true
+        }
+      else
+        return {
+          add_to_hand = true
+        }
+      end
+    end
+  end,
+})
 -- Hazard Blinds
 -- Hazard Heart
 
@@ -3797,9 +3874,7 @@ end
 
 SMODS.Blind({
   key = "hazard_moth",
-  boss = {
-    showdown = true,
-  },
+  boss = { showdown = true, hazard_blind = true },
   atlas = "AbandoniaBlinds",
   pos = { x = 0, y = 70 },
   boss_colour = HEX("c292a1"),
@@ -3819,5 +3894,111 @@ SMODS.Blind({
         G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 	end
 	
+  end,
+})
+
+SMODS.Blind({
+  key = "hazard_sigil",
+  boss = { showdown = true, hazard_blind = true },
+  atlas = "AbandoniaBlinds",
+  pos = { x = 0, y = 74 },
+  boss_colour = HEX("fd5f55"),
+  
+  in_pool = function(self)
+    return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+  end,
+  
+  drawn_to_hand = function(self)
+      self:sync_remaining_uses()
+  end,
+
+  use_discard = function(self)
+      self:sync_remaining_uses()
+  end,
+
+  sync_remaining_uses = function(self)
+      if G.GAME and G.GAME.current_round then
+          local remaining_hands = G.GAME.current_round.hands_left
+          local remaining_discards = G.GAME.current_round.discards_left
+          local min_value = math.min(remaining_hands, remaining_discards)
+
+          G.GAME.current_round.hands_left = min_value
+          G.GAME.current_round.discards_left = min_value
+          
+          if min_value == 0 then
+              G.E_MANAGER:add_event(Event({
+                  func = function()
+                      G.STATE = G.STATES.HAND_PLAYED
+                      G.STATE_COMPLETE = true
+                      end_round()
+                      return true
+                  end
+              }))
+          end
+      end
+  end,
+  
+  calculate = function(self, card, context)
+    if context.setting_blind then
+      G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+        local original_highlighted_limit = G.hand.config.highlighted_limit
+
+        G.hand.config.highlighted_limit = 9999
+
+        local discarded_count = 0
+        local any_selected = false
+
+        local half_deck_size = math.floor(#G.deck.cards / 2)
+        local all_cards = {G.hand.cards, G.deck.cards}
+        
+        if half_deck_size > 0 then
+          for i = 1, half_deck_size do
+            local selected_card = G.deck.cards[#G.deck.cards] 
+            if selected_card then
+              G.hand:add_to_highlighted(selected_card, true)
+              
+              for k, v in ipairs(G.deck.cards) do
+                if v == selected_card then
+                  table.remove(G.deck.cards, k)
+                  break
+                end
+              end
+              
+              any_selected = true
+            end
+          end
+        end
+
+        -- Discard selected highlighted cards
+        if any_selected then
+          G.FUNCS.discard_cards_from_highlighted(nil, true)
+        end
+
+        G.hand:unhighlight_all()
+        G.hand.config.highlighted_limit = original_highlighted_limit
+
+        return true
+      end}))
+    end
+	
+    if context.modify_scoring_hand then
+      local is_scoring = false
+      for _, scoring_card in ipairs(context.scoring_hand) do
+        if scoring_card == context.other_card then
+          is_scoring = true
+          break
+        end
+      end
+
+      if is_scoring then
+        return {
+          remove_from_hand = true
+        }
+      else
+        return {
+          add_to_hand = true
+        }
+      end
+    end
   end,
 })
