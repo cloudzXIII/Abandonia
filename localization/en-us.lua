@@ -7,6 +7,7 @@ return {
           "Replace {C:attention}1{} selected Joker",
           "with a higher {C:attention}rarity{},",
           "sets money to {C:money}$-10{}",
+          "{C:inactive,s:0.8}({C:attention,s:0.8}Stickers{C:inactive,s:0.8} and {C:dark_edition,s:0.8}Editions{C:inactive,s:0.8} are retained){}"
         }
       },
     },

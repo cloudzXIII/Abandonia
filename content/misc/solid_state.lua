@@ -73,8 +73,6 @@ ABN.SolidState {
       end
     }))
 
-    local old_edition = selected.edition and selected.edition.key or nil
-
     local pool = SMODS.get_clean_pool("Joker", upper_rarity, false)
     local new_key = pseudorandom_element(pool, "abn_digitization")
     G.E_MANAGER:add_event(Event({
@@ -83,10 +81,6 @@ ABN.SolidState {
         return true
       end
     }))
-
-    if old_edition then
-      selected:set_edition(old_edition)
-    end
 
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
