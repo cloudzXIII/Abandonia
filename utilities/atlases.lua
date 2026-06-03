@@ -134,9 +134,16 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+  key = "AbandoniaSolidState",
+  path = "solid_state.png",
+  px = 71,
+  py = 95,
+})
+
+SMODS.Atlas({
   key = "AbandoniaContinents",
   path = "continents.png",
-  px = 65, -- six seveennnn /j
+  px = 65,
   py = 94,
 })
 
@@ -311,7 +318,6 @@ SMODS.Atlas({
   px = 71,
   py = 95,
 })
-
 SMODS.Atlas({
   key = "ABNJokerSheet14",
   path = "jokers/joker14.png",
