@@ -28,6 +28,10 @@ SMODS.Joker {
       }
     }
   end,
+  
+  add_to_deck = function(self, card)
+    unlock_card(self)
+  end,
 
   calculate = function(self, card, context)
     -- Trigger for every card in the scoring hand individually

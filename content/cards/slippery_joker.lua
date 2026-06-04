@@ -21,7 +21,7 @@ SMODS.Joker {
         dollars = card.ability.extra.dollars
       }
     end
-    if (context.using_consumeable and context.consumeable.ability.set == "weather_report") or (context.post_trigger and context.other_card.ability.set == "weather_report") then
+    if (context.using_consumeable and context.consumeable.ability.set and context.consumeable.ability.set == "weather_report") or (context.post_trigger and context.other_card.ability.set == "weather_report") then
       if card.set_cost then
         card.ability.extra_value = (card.ability.extra_value or 0) + card.ability.extra.sell_value
         card:set_cost()
