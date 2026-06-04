@@ -22,7 +22,7 @@ ABN.WeatherReport = SMODS.Consumable:extend({
   -- to do: come up with better extinct message
   destroy_at_end_of_round = function(self, card, context)
     if context.end_of_round and context.main_eval and not context.blueprint and context.game_over == false then
-      if not next(SMODS.find_card("j_abn_baba_joker")) then
+      if not next(SMODS.find_card("j_abn_wet_joker")) then
         SMODS.calculate_context({ abn_weather_destroyed_but_not_triggered = true, card = card }) -- we love long contexts
         SMODS.calculate_effect({ message = localize("k_extinct_ex") }, card)
         SMODS.destroy_cards(card, nil, nil, true)
@@ -742,9 +742,11 @@ ABN.WeatherReport {
   key = "fire_rainbow",
   pos = { x = 3, y = 3 },
   config = { extra = { triggered = false, spectrum_played = false, type = "abn_Spectrum" } },
+  
   can_use = function(self, card)
     return G.GAME.blind and G.GAME.blind.in_blind and not card.ability.extra.triggered
   end,
+  
   use = function(self, card, area, copier)
     G.E_MANAGER:add_event(Event({
       func = function()
@@ -757,25 +759,21 @@ ABN.WeatherReport {
     }))
     delay(0.4)
   end,
+  
   calculate = function(self, card, context)
-    if card.ability.extra.triggered then
-      if context.before and next(context.poker_hands[card.ability.extra.type]) then
-        card.ability.extra.triggered = false
-        card.ability.extra.spectrum_played = true
-        SMODS.calculate_effect({ message = localize('k_level_up_ex'), colour = G.C.FILTER }, card)
-        SMODS.smart_level_up_hand(card, context.scoring_name)
-      end
-      if context.destroy_card and context.cardarea == G.play and card.abiity.extra.spectrum_played then
-        return {
-          remove = true
-        }
-      end
-      --[[ hmm should it be destroyed after use?
-      if context.after and context.main_eval and not context.blueprint and card.ability.extra.spectrum_played then
-        SMODS.destroy_cards(card)
-      end
-      --]]
+    if card.ability.extra.triggered and context.before and next(context.poker_hands[card.ability.extra.type]) then
+      card.ability.extra.triggered = false
+      card.ability.extra.spectrum_played = true
+      SMODS.calculate_effect({ message = localize('k_level_up_ex'), colour = G.C.FILTER }, card)
+      SMODS.smart_level_up_hand(card, context.scoring_name)
     end
+    
+    if context.destroy_card and context.cardarea == G.play and card.ability.extra.spectrum_played then
+      return {
+        remove = true
+      }
+    end
+    
     self:destroy_at_end_of_round(card, context)
   end,
 }
