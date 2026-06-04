@@ -377,3 +377,13 @@ SMODS.Atlas {
   fps = 2,
   atlas_table = 'ANIMATION_ATLAS'
 }
+
+SMODS.Atlas {
+  key = "buggy_joker",
+  path = "jokers/buggy_joker.png",
+  px = 71,
+  py = 95,
+  frames = 5,
+  fps = 2,
+  atlas_table = 'ANIMATION_ATLAS'
+}
