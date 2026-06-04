@@ -1253,7 +1253,7 @@ return {
         },
       },
       bl_abn_hazard_negative = {
-        name = "Type O Negative",
+        name = "Hazard Negative",
         text = {
           "+2.5X Base score for each different edition",
           "in your Jokers and cards",
@@ -5823,6 +5823,64 @@ return {
           "When {C:attention}Blind is selected{} gain {C:mult}+#2#{} Mult and {C:chips}+#1#{} Chips for each consumable that shares a name",
           "If each one of those Consumables has a {C:attention}different{} {C:dark_edition}Edition{} double this Joker's {C:chips}chips{} and {C:mult}mult{}",
           "{C:inactive}Currently: {C:mult}+#4#{} {C:inactive}Mult{} {C:chips}+#3#{} {C:inactive}Chips{}"
+        },
+      },
+	  j_abn_agent_jimbo          = {
+        name = "Agent Jimbo",
+        text = {
+          "All {C:attention}Consumables{} cost twice as much",
+		  "but gain {C:attention}random{} {C:dark_edition}Editions{} upon purchase",
+		  "When a {C:attention}6{} triggers gain {X:chips,C:white}X#2#{} Chips per different type consumable with {C:dark_edition}Editions{}",
+		  "{C:inactive}Currently:{} {X:chips,C:white}X#1#{} {C:inactive}Chips{}",
+        },
+      },
+	  j_abn_cowboy_poker          = {
+        name = "Cowboy Poker",
+        text = {
+          "When a {C:attention}Big Blind{} is defeated each held {C:attention}consumable{} gains a different {C:dark_edition}Edition",
+		  "Increases the Payout by {C:money}$#2#{} per different {C:dark_edition}Edition{} on Consumables",
+		  "{C:inactive}Currently:{} {C:money}$#1#{}",
+        },
+      },
+	  j_abn_joker_besties          = {
+        name = "Joker Besties",
+        text = {
+          "{C:attention}Scoring{} Jokers/Cards with {C:dark_edition}Foil{} become {C:dark_edition}Holographic{}",
+		  "{C:attention}Scoring{} Jokers/Cards with {C:dark_edition}Holographic{} become {C:dark_edition}Polychrome{}",
+		  "{C:attention}Scoring{} Jokers/Cards with {C:dark_edition}Polychrome{} become {C:dark_edition}Chromatic{}",
+		  "Jokers/Cards gain {C:chips}+#1#{} Chips when changing {C:dark_edition}editions{}",
+        },
+      },
+	  j_abn_darknet_joker         = {
+        name = "Darknet Joker",
+        text = {
+          "If the {C:attention}First Hand{} you play is a {C:attention}Divider Conquered{} using only {C:attention}Numbered{} cards",
+		  "They all gain {C:dark_edition}Bit Rot{} Edition",
+		  "This Joker gains {X:mult,C:white}X#1#{} Mult per scoring card in {C:attention}Divider Conquered{} hands",
+		  "{C:inactive}Currently:{} {X:mult,C:white}X#2#{} {C:inactive}Mult",
+        },
+      },
+	  j_abn_stuntdouble         = {
+        name = "Stunt Double",
+        text = {
+          "{C:mult}+#1#{} Mult {C:attention}-#2#{} hand size",
+		  "If you have Stuntman gain {C:attention}+#3#{} hand size",
+        },
+      },
+	  j_abn_twinbo         = {
+        name = "Twinbo",
+        text = {
+          "{C:attention}+#1#{} Joker Slots",
+		  "Can only play {C:attention}2{} cards at a time",
+		  "Played cards give {X:mult,C:white}X#2#{} Mult",
+        },
+      },
+	  j_abn_quadratic_joker         = {
+        name = "Quadratic Joker",
+        text = {
+          "{C:attention}Straights{} made with {C:attention}4{} suits",
+		  "gain editions from lowest to highest rank {C:dark_edition}Gloss, Iridescent, Pearlescene, Chromatic",
+		  "Cards held in hand with matching {C:attention}rank/suit{} add to the score",
         },
       },
     },
