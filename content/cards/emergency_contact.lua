@@ -53,7 +53,7 @@ SMODS.Joker {
 
 
   abn_artist_credits = {
-    artist = "B.b.b.b",
+    artist = "IpreferCheedar",
   },
 }
 
