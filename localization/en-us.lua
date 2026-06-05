@@ -10,6 +10,45 @@ return {
           "{C:inactive,s:0.8}({C:attention,s:0.8}Stickers{C:inactive,s:0.8} and {C:dark_edition,s:0.8}Editions{C:inactive,s:0.8} are retained){}"
         }
       },
+	  c_abn_paste = {
+        name = "Paste",
+        text = {
+          "Select a {C:attention}Joker{} and create a Copy",
+		  "All other Jokers gain {C:inactive}Fragile{}",
+        }
+      },
+	  c_abn_power = {
+        name = "Power",
+        text = {
+          "Upgrade {C:attention}all hands{} to the {C:attention}level{} of your {C:attention}highest{} hand",
+        }
+      },
+	  c_abn_hotspot = {
+        name = "Hotspot",
+        text = {
+          "Select a {C:attention}Rank{} turn all cards held in hand into that {C:attention}Rank{}",
+		  "{C:attention}-1{} Joker slots",
+        }
+      },
+	  c_abn_bookmark = {
+        name = "Bookmark",
+        text = {
+          "Destroy a {C:attention}Face{} card and create {C:attention}3{} Random {C:attention}high level number{} cards ",
+		  "They all gain {C:attention}random{} seals",
+        }
+      },
+	  c_abn_translate = {
+        name = "Translate",
+        text = {
+          "{C:green}Reroll{} all {C:attention}Jokers{} and their {C:dark_edition}Editions{}",
+        }
+      },
+	  c_abn_incognito = {
+        name = "Incognito",
+        text = {
+          "Give all cards in hand {C:attention}Flipped{} and {C:abn_brown_seal}Brown Seal{}",
+        }
+      },
     },
     continent = {
       c_abn_africa = {
