@@ -3834,7 +3834,7 @@ return {
           "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#4#{C:inactive} Mult){}"
         },
       },
-      j_abn_metropolitan_joker       = {
+      _metropolitan_joker       = {
         name = "Metropolitan Joker",
         text = {
           "{X:mult,C:white}X#1#{} Mult for each {C:attention}#2#{}",
@@ -3842,7 +3842,7 @@ return {
           "{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)"
         }
       },
-      j_abn_telejoker                = {
+      _telejoker                = {
         name = "TeleJoker",
         text = {
           "Retrigger all cards played if",
@@ -5922,6 +5922,33 @@ return {
 		  "Cards held in hand with matching {C:attention}rank/suit{} add to the score",
         },
       },
+	j_abn_wild_power_joker = {
+      name="Wild Power Joker",
+      text={
+        "{C:green}#1# in #2# chance{} for {X:mult,C:white}X#7#{} {C:mult}mult",
+        "when a {C:attention}Wild{} card is {C:attention}scored",
+        "{C:green}#3# in #4# chance{} for {C:mult}#8# mult",
+        "when a {C:attention}Wild{} card is {C:attention}scored",
+        "{C:green}#5# in #6# chance{} for {C:chips}#9# chips",
+        "when a {C:attention}Wild{} card is {C:attention}scored",
+      },
+    },
+    j_abn_ballistic_glass_joker = {
+      name="Ballistic Glass Joker",
+      text={
+        "Each {C:attention}Glass{} card held in hand gives {X:mult,C:white}X#1#{} {C:red}mult",
+        "{C:attention}Glass{} cards don't break",
+        "{X:chips,C:white}X#2#{} {C:chips}chips{} when a {C:attention}Glass{} card is {C:attention}scored",
+        "{C:money}-$#3#{} when a {C:attention}Glass{} card is {C:attention}scored",
+      },
+    },
+    j_abn_gold_7={
+      name="Gold 7",
+      text={
+        "Scoring {C:attention}7's{} become {C:attention}Gold{} cards",
+        "Scored {C:attention}Gold{} cards{} give twice their ranks as {C:mult}mult",
+      },
+    },
     },
 
 
