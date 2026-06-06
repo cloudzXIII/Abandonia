@@ -5980,6 +5980,41 @@ return {
         "{C:inactive}[Currently {C:attention}#2#{C:inactive}/{C:inactive}#1#]"
       },
     },
+	j_abn_ghost_in_the_machine         = {
+        name = "Ghost In The Machine",
+        text = {
+          "Whenever you use a Solid State Card",
+		  "Create a {C:attention}random{} {C:dark_edition}negative{} {C:spectral}Spectral{} card",
+        },
+      },
+	  j_abn_advertisement_joker         = {
+        name = "Advertisement Joker",
+        text = {
+          "Gain {X:mult,C:white}X#3#{} Mult when a Solid State card is used",
+		  "Gain {C:chips}+#4#{} Chips when a {C:program_pack}Program Card{} is used",
+		  "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}",
+        },
+      },
+	  j_abn_jester_vs_jester         = {
+        name = "Jester vs Jester",
+        text = {
+          "If you have an {C:attention}Even{} number of {C:common}Common{} Jokers Each played {C:attention}2, 4, 6, 8 and 10{} gives {C:chips}+#1#{} Chips",
+		  "If you have an {C:attention}Odd{} number of {C:common}Common{} Jokers Each played {C:attention}3, 5, 7, 9 and Ace{} gives {C:chips}+#2#{} Chips",
+		  "If you have an {C:attention}Even{} number of {C:uncommon}Uncommon{} Jokers Each played {C:attention}2, 4, 6, 8 and 10{} gives {X:mult,C:white}X#3#{} Mult",
+		  "If you have an {C:attention}Odd{} number of {C:uncommon}Uncommon{} Jokers Each played {C:attention}3, 5, 7, 9 and Ace{} gives {X:mult,C:white}X#4#{} Mult",
+		  "If you have an {C:attention}Even{} number of {C:rare}Rare{} Jokers Each played {C:attention}2, 4, 6, 8 and 10{} gives {X:chips,C:white}X#5#{} Chips",
+		  "If you have an {C:attention}Odd{} number of {C:rare}Rare{} Jokers Each played {C:attention}3, 5, 7, 9 and Ace{} gives {X:chips,C:white}X#6#{} Chips",
+        },
+      },
+	  j_abn_rampegous_jester         = {
+        name = "Rampegous Jester",
+        text = {
+          "If you have {C:attention}Even{} number of {C:rare}Rare{} Jokers and you score an {C:attention}Even{} number of cards",
+		  "This Joker and all other {C:rare}Rare{} Jokers gain {X:mult,C:white}X#2#{} Mult for each scoring card",
+		  "If you have {C:attention}Odd{} number of {C:common}Common{} Jokers and you score an Odd number of cards",
+		  "This Joker all other {C:common}Common{} Jokers gains {C:chips}+#1#{} Chips per scoring card.",
+        },
+      },
     },
 
 
