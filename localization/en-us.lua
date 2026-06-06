@@ -5949,6 +5949,37 @@ return {
         "Scored {C:attention}Gold{} cards{} give twice their ranks as {C:mult}mult",
       },
     },
+    j_abn_7_slot={
+      name="7 Slot",
+      text={
+        "When a {C:attention}7{} is {C:attention}scored{}",
+        "level up {C:attention}7{} rank by each other scoring {C:attention}7",
+        "each scoring {C:attention}7{} gains {C:mult}+#1# mult{} per scoring {C:attention}7",
+        "If you have exactly {C:attention}7 Jokers{}",
+      }
+    },
+    j_abn_rival_photograph={
+      name="Rival's Photograph",
+      text={
+        "First played {C:attention}Numbered{} card gives {X:mult,C:white}X#1#{} Mult",
+        "when scored",
+      },
+    },
+    j_abn_bestfriend_photograph={
+      name="Bestfriend's Photograph",
+      text={
+        "First played {C:attention}Numbered{} card gives {X:chips,C:white}X#1#{} Chips",
+        "when scored"
+      },
+    },
+    j_abn_emergency_contact={
+      name="Emergency Contact",
+      text={
+        "After {C:attention}#1#{} rounds, sell this card to",
+        "Create a discovered {C:rare}rare {C:money}Perishable {C:attention}Joker{} from your collection",
+        "{C:inactive}[Currently {C:attention}#2#{C:inactive}/{C:inactive}#1#]"
+      },
+    },
     },
 
 
