@@ -25,8 +25,10 @@ SMODS.Joker {
       }
     end
 	
-	if context.selling_card and context.card.ability.set == 'Joker' or context.destroy_card and context.card.ability.set == 'Joker' then
-		local rarity = context.card.config.center.rarity
+	local triggered_card = context.selling_card or context.destroyed_card
+  
+	if triggered_card and triggered_card.ability.set == 'Joker' then
+		local rarity = triggered_card.config.center.rarity
 		if SMODS.pseudorandom_probability(card, 'ransom', 1, card.ability.extra.odds) then
 			if rarity == 1 then
 				SMODS.add_card {
