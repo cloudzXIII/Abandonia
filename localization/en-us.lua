@@ -1016,8 +1016,7 @@ return {
       bl_abn_gold_belt = {
         name = "Gold Belt",
         text = {
-          "Hand must contain",
-          "a Lucky card"
+          "Debuff all light suits"
         },
       },
       bl_abn_lime_lock = {
@@ -1394,10 +1393,9 @@ return {
       bl_abn_hazard_belt = {
         name = "Hazard Belt",
         text = {
-          "Hand must contain",
-          "a Lucky card",
-          "Increase blind requirement",
-          "by 5% when a card is triggered"
+		  "Debuff all light suits",
+          "Excess score this Ante",
+		  "is added to this Blind",
         },
       },
       bl_abn_hazard_pin = {
@@ -2885,11 +2883,10 @@ return {
       j_abn_communist_bear = {
         name = "Communist Bear",
         text = {
-          "Debuffs played {C:attention}Face{} cards",
-          "after scoring, This Joker",
-          "gains {C:mult}+#2#{} Mult",
-          "per {C:attention}Face{} card debuffed",
-          "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+          "Retrigger all",
+          "played {C:attention}face{} cards",
+          "and destroy them",
+          "{C:attention}after{} scoring",
         },
       },
       j_abn_shadowy_joker = {
@@ -3772,10 +3769,7 @@ return {
       j_abn_fatal_silhouette         = {
         name = "Fatal Silhouette",
         text = {
-          "Retrigger all",
-          "played {C:attention}face{} cards",
-          "and destroy them",
-          "{C:attention}after{} scoring"
+          "The {C:attention}first played{} {C:diamonds}Light{} Suit with a {C:abn_silver_seal}Silver Seal{} gives {C:white,X:chips}X#1#{} Chips",
         }
       },
       j_abn_joerror                  = {
@@ -6013,6 +6007,17 @@ return {
 		  "This Joker and all other {C:rare}Rare{} Jokers gain {X:mult,C:white}X#2#{} Mult for each scoring card",
 		  "If you have {C:attention}Odd{} number of {C:common}Common{} Jokers and you score an Odd number of cards",
 		  "This Joker all other {C:common}Common{} Jokers gains {C:chips}+#1#{} Chips per scoring card.",
+        },
+      },
+	  j_abn_clown_funk         = {
+        name = "Clown Funk",
+        text = {
+          "If the {C:attention}first hand{} of a round is",
+		  "{C:attention}Flush{} with {C:hearts}Hearts{} {C:attention}leftmost{} Joker gains {C:dark_edition}Gloss{}",
+		  "{C:attention}Straight{} with {C:spades}Spades{} {C:attention}leftmost{} Joker gains {C:dark_edition}Pearlescent{}",
+		  "{C:attention}Full House{} with {C:diamonds}Diamonds{} {C:attention}leftmost{} Joker gains {C:dark_edition}Iridescent{}",
+		  "{C:attention}Five of a Kind{} with {C:clubs}Clubs{} {C:attention}leftmost{} Joker gains {C:dark_edition}Chromatic{}",
+		  "If this Joker has an {C:dark_edition}Edition{} Jokers with {C:dark_edition}Editions{} cannot be destroyed",
         },
       },
     },

@@ -60,14 +60,14 @@ SMODS.Blind({
   atlas = "AbandoniaBlinds",
   pos = { x = 0, y = 11 },
   boss_colour = HEX("a79475"),
-  debuff_hand = function(self, cards, hand, handname, check)
-    local no = true
-    for k, v in pairs(cards) do
-      if SMODS.has_enhancement(v, "m_lucky") then
-        no = false
-      end
+  recalc_debuff = function(self, card, from_blind)
+    if G.GAME.blind.disabled then
+      return false
     end
-    return no
+    if ABN.is_light(card) then
+      return true
+    end
+    return false
   end,
 })
 
@@ -1643,6 +1643,33 @@ SMODS.Blind({
   end,
 })
 
+-- Hook into end of round
+local end_round_original = end_round
+function end_round()
+    -- Initialize the tracker if it doesn't exist yet
+    G.GAME.AnteOverscore = G.GAME.AnteOverscore or 0
+
+    -- Get current scored chips and the required blind chips
+    local scored_chips = G.GAME.chips or 0
+    local required_chips = (G.GAME.blind and G.GAME.blind.chips) or 0
+
+    -- Calculate the AnteOverscore
+    if scored_chips > required_chips then
+        local excess = scored_chips - required_chips
+        G.GAME.AnteOverscore = G.GAME.AnteOverscore + excess
+    end
+
+
+    -- Check if this round was a Boss Blind
+    if G.GAME.blind and G.GAME.blind.boss then
+        G.GAME.AnteOverscore = 0
+    end
+
+
+    -- Call the original end_round
+    end_round_original()
+end
+
 SMODS.Blind({
   key = "hazard_belt",
   boss = {
@@ -1652,36 +1679,26 @@ SMODS.Blind({
   atlas = "AbandoniaBlinds",
   pos = { x = 0, y = 23 },
   boss_colour = HEX("a79475"),
-  debuff_hand = function(self, cards, hand, handname, check)
-    local no = true
-    for k, v in pairs(cards) do
-      if SMODS.has_enhancement(v, "m_lucky") then
-        no = false
-      end
+  recalc_debuff = function(self, card, from_blind)
+    if G.GAME.blind.disabled then
+      return false
     end
-    return no
+    if ABN.is_light(card) then
+      return true
+    end
+    return false
   end,
-  set_blind = function(self)
-    self.old_chips = G.GAME.blind.chips
-  end,
+  
   calculate = function(self, blind, context)
-    if context.individual and (context.other_card.ability.set == "Enhanced" or context.other_card.ability.set == "Default") and not context.end_of_round then --< said per car trigger so uh / limiting it with playing cards
-      G.GAME.blind.chips = G.GAME.blind.chips + ((5 / G.GAME.blind.chips) * 100)
-      G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-      blind:juice_up()
-    end
+	if context.setting_blind and not G.GAME.blind.disabled then
+		G.GAME.blind.chips = G.GAME.blind.chips + G.GAME.AnteOverscore
+		G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+	end
   end,
-  defeat = function(self)
-    self.triggered = false
-    self.old_chips = nil
-  end,
+
   disable = function(self)
-    self.triggered = false
-    if self.old_chips then
-      G.GAME.blind.chips = self.old_chips
-      G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-    end
-    self.old_chips = nil
+    G.GAME.blind.chips = G.GAME.blind.chips - G.GAME.AnteOverscore
+    G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
   end,
 })
 

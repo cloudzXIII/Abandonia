@@ -12,44 +12,32 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { mult = 0, mult_gain = 1 } },
-
+  config = {
+    extra = {
+      repetitions = 1,
+    },
+  },
   calculate = function(self, card, context)
+    if context.repetition and context.cardarea == G.play and context.other_card:is_face() then
+      return {
+        repetitions = card.ability.extra.repetitions
+      }
+    end
     if context.final_scoring_step then
-      local faces = 0
-      for _, scored_card in ipairs(context.scoring_hand) do
-        if scored_card:is_face() then
-          faces = faces + 1
-          SMODS.scale_card(card, {
-            ref_table = card.ability.extra,
-            ref_value = "mult",
-            scalar_value = "mult_gain",
-            operation = '+',
-            no_message = true
-          })
-          SMODS.debuff_card(scored_card, true, "communist_bear")
+      for _, v in ipairs(context.scoring_hand) do
+        if v:is_face() then
+          SMODS.destroy_cards(v)
           G.E_MANAGER:add_event(Event({
             func = function()
-              scored_card:juice_up()
+              card:juice_up()
               return true
             end
           }))
         end
       end
-      if faces > 0 then
-        return {
-          message = localize('k_upgrade_ex'),
-          colour = G.C.FILTER
-        }
-      end
-    end
-    if context.joker_main then
-      return {
-        mult = card.ability.extra.mult
-      }
     end
   end,
   abn_artist_credits = {
-    artist = "Creator.png",
+    artist = "Creator.png"
   },
 }
