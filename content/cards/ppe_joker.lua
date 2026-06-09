@@ -11,8 +11,8 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         local ct = 0
         if G.jokers then
-            for i, card in ipairs(G.jokers.cards) do
-                if card.debuff then ct = ct + 1 end
+            for i, j_card in ipairs(G.jokers.cards) do
+                if j_card.debuff then ct = ct + 1 end
             end
         end
 		return { vars = {card.ability.extra.xmult, (card.ability.extra.xmult*ct > 1 and card.ability.extra.xmult*ct or 1) }}

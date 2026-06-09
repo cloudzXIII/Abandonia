@@ -5774,7 +5774,39 @@ return {
         }
 
       },
-      j_abn_jolly_voxel_joker             = {
+      j_abn_joker_note = {
+        name = "Joker Note",
+        text = {
+          {
+            "For every {C:attention}sealed{}",
+            "scoring card, this joker:",
+            "Gains {C:red}+#1#{} Mult if the card is {C:attention}even{}",
+            "Gains {C:blue}+#2#{} Chips if the card is {C:attention}odd{}",
+            "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult, {C:blue}+#4#{C:inactive} Chips)",
+          },
+        }
+
+      },
+      j_abn_motocross_joker = {
+        name = "Motocross Joker",
+        text = {
+          {
+            "Gains {X:red,C:white}X#1#{} Mult",
+            "each {C:attention}#2#{} scored", 
+            "{C:inactive}(Suit changes after",
+            "{C:inactive}playing a hand)",
+            "{C:inactive}(Currently {X:red,C:white}X#3#{C:inactive} Mult)",
+          },
+          {
+            "Scoring {C:attention}Wild Cards{} gain", 
+            "{C:gold}+$#4#{} and {C:chips}+#5#{} Chips",
+            "for every {C:attention}Wild Card{}",
+            "in your entire deck",
+          },
+        }
+
+      },
+      j_abn_jolly_voxel_joker = {
         name = "Jolly Voxel Joker",
         text = {
           {
@@ -5784,7 +5816,24 @@ return {
         }
 
       },
-      j_abn_psychokinesis_joker             = {
+      j_abn_luftballon_joker = {
+        name = "Luftballon Joker",
+        text = {
+          {
+            "When a {C:attention}9{} triggers,",
+            "gain {C:red}+#1#{} Mult for each {C:attention}9",
+            "in your {C:attention}entire deck", 
+            "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult)"
+          },
+          {
+            "If you play a {C:attention}#2#",
+            "with only {C:attention}9{}s,",
+            "level up the hand {C:attention}9{} times"
+          },
+        }
+
+      },
+      j_abn_psychokinesis_joker = {
         name = "Psychokinesis Joker",
         text = {
           {
