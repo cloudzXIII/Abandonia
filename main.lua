@@ -214,6 +214,7 @@ end
 function ABN.reset_game_globals(run_start)
   ABN.reset_abn_gerrymandering()
   ABN.reset_monitor_card()
+  ABN.reset_abn_motocross_card()
 end
 
 SMODS.Rarity {
