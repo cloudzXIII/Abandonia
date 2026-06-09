@@ -5760,6 +5760,32 @@ return {
         }
 
       },
+      j_abn_jolly_voxel_joker             = {
+        name = "Jolly Voxel Joker",
+        text = {
+          {
+            "{X:chips,C:white}X#1#{} Chips if hand",
+            "is a {C:attention}#2#"
+          },
+        }
+
+      },
+      j_abn_psychokinesis_joker             = {
+        name = "Psychokinesis Joker",
+        text = {
+          {
+            "When your {C:attention}first hand{} scores,",
+            "all {C:attention}Steel{} and {C:attention}Gold{} cards",
+            "held in hand",
+            "become {C:dark_edition}Reversal{}",
+          },
+          {
+            "Scoring {C:dark_edition}Reversal{} cards",
+            "give {C:gold}$#1#"
+          },
+        }
+
+      },
       j_abn_strickland_joker         = {
         name = "Strickland Joker",
         text = {
