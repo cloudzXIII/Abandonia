@@ -817,12 +817,9 @@ SMODS.Consumable {
   calculate = function(self, card, context)
     if context.using_consumeable and context.consumeable.ability.set == 'nightshift_cards' then
       for _, joker in ipairs(G.jokers.cards) do
-        joker.ability.perma_bonus = (joker.ability.perma_bonus or 0) + card.ability.extra.chips
-        for _, sticker_key in ipairs(SMODS.Sticker.obj_buffer) do
-          local sticker = SMODS.Stickers[sticker_key]
-          if joker[sticker_key] then
-            sticker:apply(joker, false)
-          end
+        joker.ability.abn_perma_bonus = (joker.ability.abn_perma_bonus or 0) + card.ability.extra.chips
+        for _, sticker in ipairs(SMODS.Sticker.obj_buffer) do
+          if joker.ability[sticker] then joker:remove_sticker(sticker) end
         end
         SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, joker)
       end
@@ -831,5 +828,75 @@ SMODS.Consumable {
   end,
   abn_artist_credits = {
     artist = "Lazy"
+  },
+}
+
+SMODS.Consumable {
+  key = "yogh",
+  set = 'lexica',
+  cost = 10,
+  atlas = "abn_AbandoniaLetters",
+  pos = { x = 7, y = 2 },
+  config = { extra = { chips = 10 } },
+  
+  loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_reversal
+    return { vars = { card.ability.extra.chips } }
+  end,
+  
+  calculate = function(self, card, context)
+    if context.before then
+      local triggered = false
+      for _, scoring_card in ipairs(context.scoring_hand) do
+        if scoring_card:is_suit('abn_Penumbra') then
+		
+          triggered = true  
+          scoring_card:set_edition({abn_reversal = true}, true) 
+		  
+        end
+      end
+      if triggered then
+        abn_activate_letter(self, card)
+      end
+    end
+  end,
+  
+  abn_artist_credits = {
+    artist = "La Ginger"
+  },
+}
+
+SMODS.Consumable {
+  key = "eth",
+  set = 'lexica',
+  cost = 10,
+  atlas = "abn_AbandoniaLetters",
+  pos = { x = 8, y = 2 },
+  config = { extra = { chips = 10 } },
+  
+  loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_collodion
+    return { vars = { card.ability.extra.chips } }
+  end,
+  
+  calculate = function(self, card, context)
+    if context.before then
+      local triggered = false
+      for _, scoring_card in ipairs(context.scoring_hand) do
+        if scoring_card:is_suit('abn_Snow') then
+		
+          triggered = true  
+          scoring_card:set_edition({abn_collodion = true}, true) 
+		  
+        end
+      end
+      if triggered then
+        abn_activate_letter(self, card)
+      end
+    end
+  end,
+  
+  abn_artist_credits = {
+    artist = "La Ginger"
   },
 }
