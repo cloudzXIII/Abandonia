@@ -18,7 +18,7 @@ SMODS.Joker {
   config = { extra = { mult = 0, mult_gain = 10 } },
 
   calculate = function(self, card, context)
-    if context.end_of_round and context.main_eval and context.game_over == false and G.GAME.blind.Boss and not context.blueprint then
+    if context.end_of_round and context.main_eval and context.game_over == false and G.GAME.blind.boss and not context.blueprint then
       local leftmost = G.jokers.cards[1]
       if leftmost then
         G.E_MANAGER:add_event(Event({
