@@ -5,7 +5,7 @@ SMODS.Joker {
     
     loc_vars = function(self, info_queue, card)
         return { 
-            vars = { card.ability.extra.mult_mod, card.ability.extra.mult } 
+            vars = { card.ability.extra.multadd, card.ability.extra.mult } 
         }
     end,
     
@@ -16,23 +16,26 @@ SMODS.Joker {
     discovered = false,
     blueprint_compat = true,
     
-    config = { extra = { mult = 0, mult_mod = 2 } },
+    config = { extra = { mult = 0, multadd = 2 } },
     calculate = function(self, card, context)
         if context.before then
-            if SMODS.calculate_round_score() > G.GAME.blind.chips then
+            card.ability.extra.mult = card.ability.extra.mult + (card.ability.extra.multadd * #context.full_hand)
+            return {
+				message = localize('k_upgrade_ex'),
+			}
+        end
+		
+		if context.final_scoring_step then
+			if SMODS.calculate_round_score() > G.GAME.blind.chips then
                 if card.ability.extra.mult > 0 then
                     card.ability.extra.mult = 0
                     return {
                         message = localize('k_reset')
                     }
                 end
-            else
-                card.ability.extra.mult = card.ability.extra.mult + (card.ability.extra.mult_mod * #context.full_hand)
-                return {
-                    message = localize('k_upgrade_ex'),
-                }
             end
-        end
+		end
+		
         if context.joker_main then
             return {mult = card.ability.extra.mult}
         end

@@ -52,6 +52,7 @@ SMODS.Joker {
             G.E_MANAGER:add_event(Event({
                 func = function()
                     card:juice_up(0.3, 0.5)
+                    SMODS.add_voucher_to_shop()
                     SMODS.add_booster_to_shop()
                     return true
                 end
@@ -63,6 +64,4 @@ SMODS.Joker {
     abn_artist_credits = {
         artist = "Sirtime",
     },
-
-
 }

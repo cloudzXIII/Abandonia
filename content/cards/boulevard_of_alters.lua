@@ -1,9 +1,8 @@
 SMODS.Joker {
     key = 'boulevard_of_alters',
     rarity = 2,
-    --atlas = 'ABNJokerSheet11',
-    atlas = "placeholder",
-    pos = { x = 0, y = 0 },
+    atlas = 'ABNJokerSheet13',
+    pos = { x = 1, y = 5 },
     config = {extra = {chips = 10, xmult = 0.1, xchips = 0.1}},
     cost = 10,
     discovered = false,
