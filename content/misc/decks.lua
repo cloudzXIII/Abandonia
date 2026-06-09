@@ -231,16 +231,38 @@ SMODS.Back {
         hand_size = 0
     },
 
-    apply = function()
+    apply = function(self)
         G.E_MANAGER:add_event(Event({
-
+            trigger = 'immediate',
             func = function()
-                for _, card in pairs(G.playing_cards) do
-                    if card:get_id() > 10 then
-                        card:start_dissolve()
+                if not G.playing_cards or #G.playing_cards == 0 then 
+                    return false 
+                end
+                
+                local rank_mapping = {
+                    [11] = 'abn_11',
+                    [12] = 'abn_12',
+                    [13] = 'abn_13',
+                    [14] = 'abn_14' 
+                }
+                
+                for i = 1, #G.playing_cards do
+                    local card = G.playing_cards[i]
+                    local card_id = card:get_id()
+                    
+                    if rank_mapping[card_id] then
+                        local suit_prefix = string.sub(card.base.suit, 1, 1) .. '_'
+                        local target_suffix = rank_mapping[card_id]
+                        
+                        local target_card_def = G.P_CARDS[suit_prefix .. target_suffix]
+                        
+                        if target_card_def then
+                            card:set_base(target_card_def)
+                        end
                     end
                 end
-
+                
+                if G.deck then G.deck:sort() end
                 return true
             end
         }))
