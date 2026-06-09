@@ -32,6 +32,15 @@ SMODS.Joker {
         end
     end,
 
+    in_pool = function(self,args)
+        for i, playing_card in ipairs(G.playing_cards) do
+            if SMODS.has_enhancement(playing_card, "m_steel") or SMODS.has_enhancement(playing_card, "m_gold") then
+                return true
+            end
+        end
+        return false
+    end,
+
 
     abn_artist_credits = {
         artist = "bird_but_bread",
