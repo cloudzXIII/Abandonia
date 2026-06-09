@@ -113,7 +113,7 @@ return {
         text = {
           {
             "Convert all {C:diamonds}light suit{} cards",
-            "held into {C:dark_edition}Holographic{} {C:abn_Snow}Snows{}",
+            "held into {C:dark_edition}Holographic{} {C:abn_snow}Snows{}",
           },
           {
             "Convert all {C:spades}dark suit{} cards",
@@ -375,6 +375,20 @@ return {
           "Next time you use a {C:nightshift_cards}Nightshift{} card,",
           "All Jokers gain {C:chips}+#1#{} Chips and",
           "have their {C:attention}stickers{} {C:red}removed"
+        }
+      },
+	  c_abn_yogh = {
+        name = "YOGH",
+        text = {
+          "Next time you play {C:abn_penumbra}Penumbra{} cards",
+		  "They all gain {C:dark_edition}Reversal edition{}",
+        }
+      },
+	  c_abn_eth = {
+        name = "ETH",
+        text = {
+          "Next time you play {C:abn_snow}Snow{} cards",
+		  "They all gain {C:dark_edition}Collodion edition{}",
         }
       },
     },
@@ -6045,6 +6059,57 @@ return {
 		  "{C:attention}Five of a Kind{} with {C:clubs}Clubs{} {C:attention}leftmost{} Joker gains {C:dark_edition}Chromatic{}",
 		  "If this Joker has an {C:dark_edition}Edition{} Jokers with {C:dark_edition}Editions{} cannot be destroyed",
         },
+      },
+	  j_abn_galactic_consciousness         = {
+        name = "Galactic Consciousness",
+        text = {
+          "{C:dark_edition}Gloss Edition{} {C:attention}Jokers/Cards{} give {C:mult}+#1#{} Mult when scoring",
+		  "{C:dark_edition}Pearlescene Edition{} {C:attention}Jokers/Cards{} give {X:chips,C:white}X#2#{} Chips when scoring",
+		  "{C:dark_edition}Irradescent Edition{} {C:attention}Jokers/Cards{} give {X:mult,C:white}X#3#{} Mult when scoring",
+		  "{C:dark_edition}Chromatic Edition{} {C:attention}Jokers/Cards{} give {X:chips,C:white}^#4#{} Chips when scoring",
+        },
+      },
+	  j_abn_grampa_joker         = {
+        name = "Grampa Joker",
+        text = {
+          "The {C:attention}First{} scoring card on the {C:attention}Final hand{} gains {C:dark_edition}Vintage{}",
+        }
+      },
+	  j_abn_trans_joker         = {
+        name = "Trans Joker",
+        text = {
+          "When a card changes {C:attention}Suit{} increase its {C:planet}Planet{} {C:attention}Rank{}",
+        }
+      },
+	  j_abn_joker_scroll         = {
+        name = "Joker Scroll",
+        text = {
+          "If you have an {C:attention}Even{} number of Jokers with the same {C:money}sell value{} scoring {C:attention}Even{} cards in {C:attention}Full House{} gain {C:dark_edition}Vintage{}",
+		  "If you have an {C:attention}Odd{} number of Jokers with the same {C:money}sell value{} scoring {C:attention}Odd{} cards in {C:attention}Full House{} gain {C:dark_edition}Vintage{}",
+		  "If this card has {C:dark_edition}Abandoned Edition{} it gains {X:mult,C:white}X#2#{} Mult per scored {C:dark_edition}Vintage Edition{} card",
+		  "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{}"
+        }
+      },
+	  j_abn_comedic_audience         = {
+        name = "Comedic Audience",
+        text = {
+          "When {C:attention}Blind is selected{} destroy the {C:attention}leftmost{} Joker",
+		  "Create a Joker based on its rarity",
+		  "{C:rare}Rare{} -> {C:abn_superrare}Super Rare{}",
+		  "{C:abn_superrare}Super Rare{} -> {C:legendary}Legendary{}",
+		  "{C:legendary}Legendary{} -> {C:abn_parallelrare}Parallel Rare{}",
+        }
+      },
+	  j_abn_balatro_the_movie         = {
+        name = "Balatro The Movie",
+        text = {
+          "Increase {C:attention}blind requirement{} by {X:attention,C:white}X#10#{} for each blind defeated this run",
+		  "Gain {X:mult,C:white}X#6#{} Mult for each different hand played",
+		  "Gain {X:chips,C:white}X#7#{} Chips per repeating hand",
+		  "Gains {C:mult}+#8#{} Mult and {C:chips}+#9#{} Chips per scoring card with {C:attention}different{} {C:dark_edition}enhancement{}",
+		  "If hand contains a {C:diamonds}Diamond{} {C:clubs}Club{} {C:hearts}Heart{} and {C:spades}Spade{} all scoring cards level up their {C:planet}planet{} {C:attention}rank{} by {C:attention}4{}",
+		  "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{} {X:chips,C:white}X#2#{} {C:inactive}Chips{} {C:mult}+#3#{} {C:inactive}Mult{} {C:chips}+#4#{} {C:inactive}Chips{} {X:attention,C:white}X#5#{} {C:inactive}Blind requirement"
+        }
       },
     },
 
