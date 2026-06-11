@@ -71,3 +71,41 @@ function SMODS.localize_perma_bonuses(specific_vars, desc_nodes)
   end
   return ret
 end
+
+SMODS.Suit {
+  key = 'Tie',
+  card_key = 'TI',
+  lc_atlas = "AbandoniaSuits",
+  hc_atlas = "AbandoniaSuits",
+  lc_ui_atlas = "AbandoniaSuitIcons",
+  hc_ui_atlas = "AbandoniaSuitIcons",
+  pos = { y = 3 },
+  ui_pos = { x = 1, y = 0 },
+  lc_colour = HEX("82e888"),
+  in_pool = function(self, args)
+    if args and ((args.rank == '') or (args.initial_deck)) then
+      return false
+    else
+      return true
+    end
+  end,
+}
+
+SMODS.Suit {
+  key = 'Bow',
+  card_key = 'BW',
+  lc_atlas = "AbandoniaSuits",
+  hc_atlas = "AbandoniaSuits",
+  lc_ui_atlas = "AbandoniaSuitIcons",
+  hc_ui_atlas = "AbandoniaSuitIcons",
+  pos = { y = 4 },
+  ui_pos = { x = 1, y = 0 },
+  lc_colour = HEX("3f2c6d"),
+  in_pool = function(self, args)
+    if args and ((args.rank == '') or (args.initial_deck)) then
+      return false
+    else
+      return true
+    end
+  end,
+}
