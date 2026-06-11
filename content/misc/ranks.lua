@@ -18,6 +18,8 @@ SMODS.Rank {
     Clubs = 4,
     Diamonds = 5,
     Spades = 6,
+	abn_Tie = 7,
+	abn_Bow = 8,
   },
 
   in_pool = function(self, args)
@@ -49,6 +51,8 @@ SMODS.Rank {
     Clubs = 4,
     Diamonds = 5,
     Spades = 6,
+	abn_Tie = 7,
+	abn_Bow = 8,
   },
 
   in_pool = function(self, args)
@@ -80,6 +84,8 @@ SMODS.Rank {
     Clubs = 4,
     Diamonds = 5,
     Spades = 6,
+	abn_Tie = 7,
+	abn_Bow = 8,
   },
 
   in_pool = function(self, args)
@@ -112,6 +118,8 @@ SMODS.Rank {
     Clubs = 4,
     Diamonds = 5,
     Spades = 6,
+	abn_Tie = 7,
+	abn_Bow = 8,
   },
 
 
