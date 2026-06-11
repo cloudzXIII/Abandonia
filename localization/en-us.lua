@@ -6277,6 +6277,21 @@ return {
 		  "{C:inactive}Currently:{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#1#{} {C:inactive}Chips{}",
         }
       },
+	  j_abn_meddlesome_naidemoc         = {
+        name = "Meddlesome Naidemoc",
+        text = {
+          "Before scoring change card suits",
+		  "{C:diamonds}Diamonds{} -> {C:spades}Spades{}",
+		  "{C:spades}Spades{} -> {C:hearts}Hearts{}",
+		  "{C:hearts}Hearts{} -> {C:clubs}Clubs{}",
+		  "{C:clubs}Clubs{} -> {C:abn_snow}Snow{}",
+		  "{C:abn_snow}Snow{} -> {C:abn_penumbra}Penumbra{}",
+		  "{C:abn_penumbra}Penumbra{} -> {C:abn_tie}Tie{}",
+		  "{C:abn_tie}Tie{} -> {C:abn_bow}Bow{}",
+		  "This Joker gains {C:chips}+#3#{} Chips {C:mult}+#4#{} Mult when a card changes suit",
+		  "{C:inactive}Currently:{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#1#{} {C:inactive}Chips{}"
+        }
+      },
     },
 
 
