@@ -7,49 +7,27 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { dollars = 4, bdollars = 8, } },
+  config = { extra = { dollars = 1, edollars = 4, } },
 
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_glass
-    return { vars = { card.ability.extra.dollars, card.ability.extra.bdollars, localize({ type = 'name_text', key = "m_glass", set = 'Enhanced' }), } }
+    return { vars = { card.ability.extra.dollars, card.ability.extra.edollars, } }
   end,
 
   calculate = function(self, card, context)
-    if not next(SMODS.find_card("j_glass")) then
-      -- if glass card breaks
-      if context.remove_playing_cards and not context.blueprint then
-        local glass_cards = 0
-        for _, removed_card in ipairs(context.removed) do
-          if removed_card.shattered then glass_cards = glass_cards + 1 end
-        end
-        if glass_cards > 0 then
-          return {
-            dollars = card.ability.extra.bdollars * glass_cards,
-            colour = G.C.MONEY,
-            card = card
-          }
-        end
-      end
-
-      -- trigger for every card in the scoring hand individually
-      if context.individual and context.cardarea == G.play then
-        -- check if card is glass
-        if context.other_card.config.center == G.P_CENTERS.m_glass then
-          return {
-            dollars = card.ability.extra.dollars,
-            colour = G.C.MONEY,
-            card = card
-          }
-        end
-      end
-    else
-      -- trigger for every card in the scoring hand individually
-      if context.individual and context.cardarea == G.play then
-        -- check if card is glass
-        if context.other_card.config.center == G.P_CENTERS.m_glass then
-          context.other_card:set_edition(poll_edition('ill', nil, false, true))
-        end
-      end
+    if context.individual and context.cardarea == G.play then
+		if context.other_card:is_suit("abn_Tie") and context.other_card.config.center and context.other_card.config.center == G.P_CENTERS.c_base then
+			return {
+				dollars = card.ability.extra.dollars,
+				colour = G.C.MONEY,
+				card = card
+			}
+		elseif context.other_card:is_suit("abn_Tie") and context.other_card.config.center and context.other_card.config.center ~= G.P_CENTERS.c_base then
+			return {
+				dollars = card.ability.extra.edollars,
+				colour = G.C.MONEY,
+				card = card
+			}
+		end
     end
   end,
 
