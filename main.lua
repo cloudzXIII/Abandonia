@@ -26,6 +26,8 @@ function loc_colour(_c, _default)
 
   G.ARGS.LOC_COLOURS.abn_snow = HEX("5dc6e2")
   G.ARGS.LOC_COLOURS.abn_penumbra = HEX("8570c7")
+  G.ARGS.LOC_COLOURS.abn_tie = HEX("82e888")
+  G.ARGS.LOC_COLOURS.abn_bow = HEX("3f2c6d")
   G.ARGS.LOC_COLOURS.abn_hazard = HEX("831717")
   G.ARGS.LOC_COLOURS.abn_calamity = HEX("c3a37a")
   G.ARGS.LOC_COLOURS.abn_perishable = HEX("687ee7")
