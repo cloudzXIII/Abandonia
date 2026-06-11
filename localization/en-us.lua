@@ -5692,6 +5692,41 @@ return {
         }
 
       },
+      j_abn_mult_disco  = {
+        name = "Mult Disco",
+        text = {
+          {
+            "{X:mult,C:white}X#1#{} Mult for every",
+            "{C:dark_edition}Negative {C:attention}Mult{} scored card",
+
+          },
+          {
+            "Gains {C:mult}+#2#{} Mult per scored",
+            "{C:spades}Dark{} suited {C:attention}Mult Cards{}",
+            "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)"
+          }
+
+        }
+
+      },
+      j_abn_prizefighter_joker  = {
+        name = "Prizefighter Joker",
+        text = {
+          {
+            "If the played {C:attention}hand size{} is bigger than {C:attention}#1#{},",
+            "gain {C:chips}+#2#{} Chips and {C:mult}+#3#{} Mult",
+            "{C:inactive}(Currently {C:chips}+#4#{C:inactive} Chips and {C:mult}+#5#{C:inactive} Mult)"
+
+          },
+          {
+            "If the played {C:attention}hand size{} is double of {C:attention}#1#{},",
+            "{C:attention}double{} this Joker's {C:chips}Chips{} and {C:mult}Mult",
+            "{C:inactive}(Hand size resets when beating a blind)"
+          },
+
+        }
+
+      },
       j_abn_symbol_of_peace          = {
         name = "Symbol Of Peace",
         text = {
@@ -5839,6 +5874,21 @@ return {
             "Gains {C:red}+#1#{} Mult if the card is {C:attention}even{}",
             "Gains {C:blue}+#2#{} Chips if the card is {C:attention}odd{}",
             "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult, {C:blue}+#4#{C:inactive} Chips)",
+          },
+        }
+
+      },
+      j_abn_mad_professor = {
+        name = "Mad Professor",
+        text = {
+          {
+            "Each played {C:attention}card{}",
+            "permanently gains",
+            "{C:blue}+#1#{} Chips for",
+            "each time its {C:attention}rank",
+            "has {C:attention}scored{} this {C:attention}hand",
+            "{C:inactive}e.g. \"2\",\"4\",\"2\",\"4\"",
+            "{C:inactive}= {C:chips}+1{C:inactive},{C:chips}+1{C:inactive},{C:chips}+2{C:inactive},{C:chips}+2{C:inactive}"
           },
         }
 
@@ -6557,7 +6607,7 @@ return {
         name = "",
         text = {
           "Made so much cool art!",
-          "Check out {C:attention}CMYKEL{}!"
+          "Check out {C:attention}CMYKL{}!"
         }
       },
       credit_abn_inky = {
