@@ -5625,6 +5625,27 @@ return {
         }
 
       },
+      j_abn_orphic_joker      = {
+        name = "Orphic Joker",
+        text = {
+          {
+            "If you play a {C:attention}#1#{} with",
+            "{C:hearts}Hearts{}, {C:diamonds}Diamonds{}, {C:spades}Spades{} and {C:clubs}Clubs{},",
+            "level up the {C:attention}poker hand{} and",
+            "gain {C:mult}+#2#{} Mult.",
+            "{C:inactive}(Currently {C:mult}+#4#{C:inactive} Mult)",
+          },
+          {
+            "If you play a {C:attention}#1#{} with",
+            "{C:abn_penumbra}Penumbras{}, {C:abn_snow}Snows{}, {C:abn_bow}Bows{} and {C:abn_tie}Ties{},",
+            "level up the {C:planet}Planet Rank{} of",
+            "each {C:attention}scoring{} card and",
+            "gain {C:chips}+#3#{} Chips.",
+            "{C:inactive}(Currently {C:chips}+#5#{C:inactive} Chips)",
+          },
+        }
+
+      },
       j_abn_ppe_joker                = {
         name = "PPE Joker",
         text = {
@@ -5633,6 +5654,42 @@ return {
             "every {C:red}debuffed{} Joker",
             "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
           },
+        }
+
+      },
+      j_abn_sherlock_joker                = {
+        name = "Sherlock Joker",
+        text = {
+          {
+            "Reveals the name of a",
+            "selected {C:attention}flipped{} card",
+            "{C:inactive}(#1#){}",
+          },
+          {
+            "Reveals the next card",
+            "to be {C:attention}drawn",
+            "{C:inactive}(#2#){}",
+          },
+        }
+
+      },
+      j_abn_crass_joker                = {
+        name = "Crass Joker",
+        text = {
+          {
+            "Whenever you buy an",
+            "{C:dark_edition}editioned{} {C:attention}Joker",
+            "gain {C:chips}+#1#{} Chips",
+            "multiplied by its {C:gold}cost",
+
+          },
+          {
+            "If the {C:attention}Joker{} was {C:attention}free",
+            "gain {C:chips}+#1#{} Chips multiplied ",
+            "by its {C:gold}base cost",
+            "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+          }
+
         }
 
       },
