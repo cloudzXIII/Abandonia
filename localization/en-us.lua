@@ -4133,9 +4133,8 @@ return {
       j_abn_ill_gotten_gains         = {
         name = "Ill-gotten Gains",
         text = {
-          "{C:attention}Glass Cards{} give {C:money}$#1#{} when scored,",
-          "Earn {C:money}$#2#{} for every",
-          "{C:attention}Glass Card{} destroyed",
+          "Scoring {C:abn_tie}Ties{} give {C:money}$#1#{} when scoring",
+		  "Give {C:money}$#2#{} instead if scoring {C:abn_tie}Tie{} has an {C:dark_edition}enhancement{}",
         }
       },
       j_abn_forgemaster_joker        = {
@@ -6249,6 +6248,33 @@ return {
 		  "Gains {C:mult}+#8#{} Mult and {C:chips}+#9#{} Chips per scoring card with {C:attention}different{} {C:dark_edition}enhancement{}",
 		  "If hand contains a {C:diamonds}Diamond{} {C:clubs}Club{} {C:hearts}Heart{} and {C:spades}Spade{} all scoring cards level up their {C:planet}planet{} {C:attention}rank{} by {C:attention}4{}",
 		  "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{} {X:chips,C:white}X#2#{} {C:inactive}Chips{} {C:mult}+#3#{} {C:inactive}Mult{} {C:chips}+#4#{} {C:inactive}Chips{} {X:attention,C:white}X#5#{} {C:inactive}Blind requirement"
+        }
+      },
+	  j_abn_hustler_joker         = {
+        name = "Hustler Joker",
+        text = {
+          "{C:money}+$#1#{} {C:mult}+#2#{} Mult and {C:chips}+#3#{} Chips if hand contains {C:abn_bow}Bows{} and {C:abn_tie}Ties{}"
+        }
+      },
+	  j_abn_spanish_joker         = {
+        name = "Spanish Joker",
+        text = {
+          "Scoring {C:hearts}Hearts{} become {C:abn_snow}Snows{}",
+		  "Scoring {C:spades}Spades{} become {C:abn_bow}Bows{}",
+		  "Scoring {C:diamonds}Diamonds{} becomes {C:abn_tie}Ties{}",
+		  "Scoring {C:clubs}Clubs{} become {C:abn_penumbra}Penumbras{}",
+		  "If this joker has {C:dark_edition}Vintage edition{}",
+		  "when a suit changes gain {C:mult}+#2#{} Mult and {C:money}+$#2#{} to sell value",
+		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult",
+        }
+      },
+	  j_abn_alter_suits         = {
+        name = "Alter Suits",
+        text = {
+          "If Scoring hand contains of {C:abn_snow}Snow{} {C:abn_penumbra}Penumbra{} {C:abn_tie}Tie{} and {C:abn_bow}Bow{}",
+		  "Gain Mult equal the combined {C:attention}rank{} of all cards",
+		  "Gain {C:chips}+#3#{} Chips per each hand without any scoring Vanilla Suits",
+		  "{C:inactive}Currently:{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#1#{} {C:inactive}Chips{}",
         }
       },
     },
@@ -8614,13 +8640,17 @@ return {
     suits_singular = {
       abn_Snow = "Snow",
       abn_Penumbra = "Penumbra",
-      abn_suitless = "Null"
+      abn_suitless = "Null",
+	  abn_Tie = "Tie",
+	  abn_Bow = "Bow",
     },
 
     suits_plural = {
       abn_Snow = "Snows",
       abn_Penumbra = "Penumbras",
-      abn_suitless = "Nulls"
+      abn_suitless = "Nulls",
+	  abn_Tie = "Ties",
+	  abn_Bow = "Bows",
     },
     poker_hands = {
       ['abn_Spectrum'] = "Spectrum",
