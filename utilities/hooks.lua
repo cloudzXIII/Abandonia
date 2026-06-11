@@ -8,7 +8,31 @@ end
 
 local create_card_old = create_card
 function create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
+	
+	if _type == "Joker" and G.GAME and G.GAME.abn_legendary_rate and G.GAME.abn_legendary_rate > 0 and not legendary then
+        if pseudorandom("abn_legendary") < (G.GAME.abn_legendary_rate or 0) then
+            legendary = true
+            _rarity = 4
+        end
+    elseif _type == "Joker" and G.GAME and G.GAME.abn_superrare_rate and G.GAME.abn_superrare_rate > 0 then
+        if pseudorandom("abn_superrare") < (G.GAME.abn_superrare_rate or 0) then
+            legendary = false
+            _rarity = "abn_SuperRare"
+        end
+    elseif _type == "Joker" and G.GAME and G.GAME.abn_parallelrare_rate and G.GAME.abn_parallelrare_rate > 0 then
+        if pseudorandom("abn_parallelrare") < (G.GAME.abn_parallelrare_rate or 0) then
+            legendary = false
+            _rarity = "abn_ParallelRare"
+        end
+    elseif _type == "Joker" and G.GAME and G.GAME.abn_virusrare_rate and G.GAME.abn_virusrare_rate > 0 then
+        if pseudorandom("abn_virusrare") < (G.GAME.abn_virusrare_rate or 0) and (G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor) then
+            legendary = false
+            _rarity = "abn_VirusRare"
+        end
+    end
+
 	local ret = create_card_old(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
+	
 	if not ret.edition and G.GAME.modifiers.abn_all_edition and ret.ability and ret.ability.set == "Joker" then
 		ret:set_edition(poll_edition(nil, nil, nil, true))
 	end

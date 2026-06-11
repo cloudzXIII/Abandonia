@@ -5901,6 +5901,24 @@ return {
         }
 
       },
+      j_abn_mutually_assured_destruction = {
+        name = "Mutually Assured Destruction",
+        text = {
+          {
+            "All {C:legendary}rarities{} can appear",
+            "in {C:attention}shop",
+
+          },
+          {
+            "{C:red}Destroy{} every {C:attention}Joker{} held if",
+            "no {C:attention}Joker{} was bought",
+            "in the {C:attention}shop",
+            "{C:inactive}(Bypasses {C:dark_edition}Eternal{C:inactive})",
+            "{C:inactive}Joker Safety: {B:1,C:white}#1#"
+          },
+        }
+
+      },
       j_abn_mad_professor = {
         name = "Mad Professor",
         text = {
