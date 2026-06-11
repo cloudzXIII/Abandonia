@@ -34,19 +34,19 @@ SMODS.Joker {
                 if playing_card.base.suit == "abn_Tie" then has_ties = true end
             end
             if has_ties and has_bows and has_snow and has_penumbra then
-                for i, _card in ipairs(context.scoring_hand) do
-                    local _rank = G.GAME.abn_rank_upgrades[_card.base.value]
-                    update_hand_text(
-                        { sound = "button", volume = 0.7, pitch = 0.8, delay = 0.3 },
-                        { handname = _rank.name .. "s", chips = _rank.chips, mult = _rank.mult, level = _rank.level }
-                    )
-                    ABN.level_up_rank(_card, _card.base.value, 1)
-                    update_hand_text(
-                        { sound = "button", volume = 0.7, pitch = 1.1, delay = 0 },
-                        { mult = 0, chips = 0, handname = "", level = "" }
-                    )
-                    card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
-                end
+
+            local _rank = G.GAME.abn_rank_upgrades[_card.base.value]
+                update_hand_text(
+                    { sound = "button", volume = 0.7, pitch = 0.8, delay = 0.3 },
+                    { handname = _rank.name .. "s", chips = _rank.chips, mult = _rank.mult, level = _rank.level }
+                )
+                ABN.level_up_rank(_card, _card.base.value, #context.scoring_hand)
+                update_hand_text(
+                    { sound = "button", volume = 0.7, pitch = 1.1, delay = 0 },
+                    { mult = 0, chips = 0, handname = "", level = "" }
+                )
+                card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
+            end
             elseif has_hearts and has_clubs and has_diamonds and has_spades then
                 if ct == 6 then SMODS.smart_level_up_hand(nil, card.ability.extra.poker_hand, false, 1) end
                 card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod
