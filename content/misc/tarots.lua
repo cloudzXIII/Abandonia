@@ -353,3 +353,78 @@ SMODS.Consumable {
     artist = "Comykel",
   },
 }
+
+SMODS.Consumable {
+  key = 'crossroad',
+  set = 'Tarot',
+  atlas = "AbandoniaTarots",
+  pos = { x = 2, y = 3 },
+  config = {
+    extra = {
+      cards = 1 -- Note: If you want to allow multiple selections, make sure to increase this number (e.g., 2 or 5)
+    }
+  },
+  loc_vars = function(self, info_queue, center)
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_darkner
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_lightner
+    if center and center.ability and center.ability.extra then
+        return {vars = {center.ability.extra.cards}} 
+    end
+    return {vars = {}}
+  end,
+  
+  can_use = function(self, card)
+    if G and G.hand and G.hand.highlighted and card.ability and card.ability.extra and card.ability.extra.cards then
+      if #G.hand.highlighted > 0 and #G.hand.highlighted <= card.ability.extra.cards then
+        return true
+      end
+    end
+    return false
+  end,
+
+  use = function(self, card, area, copier)
+    if G.hand and G.hand.highlighted then
+      
+      -- Loop through every currently highlighted card
+      for i = 1, #G.hand.highlighted do
+        local target_card = G.hand.highlighted[i]
+        
+        -- Default fallback enhancement
+        local enhancement_key = 'm_abn_darkner' 
+
+        -- Determine alignment
+        if ABN.is_light(target_card) then
+          enhancement_key = 'm_abn_lightner'
+        elseif ABN.is_dark(target_card) then
+          enhancement_key = 'm_abn_darkner'
+        end
+        
+        -- Apply the enhancement inside the event manager queue
+        if G.P_CENTERS[enhancement_key] then
+          G.E_MANAGER:add_event(Event({
+            trigger = 'immediate',
+            func = function()
+              target_card:set_ability(G.P_CENTERS[enhancement_key])
+              target_card:juice_up(0.3, 0.5)
+              return true
+            end
+          }))
+        end
+      end -- End of for loop
+      
+      -- Unhighlight everything after all enhancement events are queued
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.2,
+        func = function()
+          G.hand:unhighlight_all()
+          return true
+        end
+      }))
+    end
+  end,
+
+  abn_artist_credits = {
+    artist = "Firch",
+  },
+}

@@ -840,3 +840,176 @@ SMODS.DrawStep {
   end,
   conditions = { vortex = false, facing = 'front' }
 }
+
+SMODS.Enhancement({
+  key = "darkner",
+  pos = { x = 1, y = 3 },
+  atlas = "AbandoniaEnhancements",
+  config = { extra = { chips = 5, mult = 2, light_threshold = 2 } },
+  
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    local dark_count = 0
+    
+    if G.playing_cards then
+      if G.play and G.play.cards then
+        for _, playing_card in ipairs(G.play.cards) do
+          if ABN.is_dark(playing_card) then dark_count = dark_count + 1 end
+        end
+      end
+      if G.hand and G.hand.cards then
+        for _, playing_card in ipairs(G.hand.cards) do
+          if ABN.is_dark(playing_card) and playing_card ~= card then 
+            dark_count = dark_count + 1 
+          end
+        end
+      end
+    end
+
+    return { 
+      vars = { 
+        cae.chips, 
+        cae.mult, 
+        cae.light_threshold 
+      } 
+    }
+  end,
+  
+  calculate = function(self, card, context)
+    local cae = card.ability.extra
+    
+
+    if context.main_scoring and context.cardarea == G.play then
+      local dark_count = 0
+      
+
+      if context.scoring_hand then
+        for _, playing_card in ipairs(context.scoring_hand) do
+          if ABN.is_dark(playing_card) then dark_count = dark_count + 1 end
+        end
+      end
+      
+
+      if G.hand and G.hand.cards then
+        for _, playing_card in ipairs(G.hand.cards) do
+          if ABN.is_dark(playing_card) and playing_card ~= card then 
+            dark_count = dark_count + 1 
+          end
+        end
+      end
+      
+      if dark_count > 0 then
+        return {
+          chips = dark_count * cae.chips,
+          mult = dark_count * cae.mult
+        }
+      end
+    end
+
+
+    if context.destroy_card and context.cardarea == G.play and context.destroy_card == card then
+      local light_count = 0
+      
+
+      if context.scoring_hand then
+        for _, playing_card in ipairs(context.scoring_hand) do
+          if ABN.is_light(playing_card) then light_count = light_count + 1 end
+        end
+      end
+
+      if light_count >= cae.light_threshold then
+        return { remove = true }
+      end
+    end
+  end,
+  
+  abn_artist_credits = {
+    artist = "Toyrapple",
+  },
+})
+
+SMODS.Enhancement({
+  key = "lightner",
+  pos = { x = 2, y = 3 },
+  atlas = "AbandoniaEnhancements",
+  config = { extra = { chips = 5, mult = 2, dark_threshold = 2 } },
+  
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    local light_count = 0
+    
+    if G.playing_cards then
+      if G.play and G.play.cards then
+        for _, playing_card in ipairs(G.play.cards) do
+          if ABN.is_light(playing_card) then light_count = light_count + 1 end
+        end
+      end
+      if G.hand and G.hand.cards then
+        for _, playing_card in ipairs(G.hand.cards) do
+          if ABN.is_light(playing_card) and playing_card ~= card then 
+            light_count = light_count + 1 
+          end
+        end
+      end
+    end
+
+    return { 
+      vars = { 
+        cae.chips, 
+        cae.mult, 
+        cae.dark_threshold 
+      } 
+    }
+  end,
+  
+  calculate = function(self, card, context)
+    local cae = card.ability.extra
+    
+
+    if context.main_scoring and context.cardarea == G.play then
+      local light_count = 0
+      
+
+      if context.scoring_hand then
+        for _, playing_card in ipairs(context.scoring_hand) do
+          if ABN.is_light(playing_card) then light_count = light_count + 1 end
+        end
+      end
+      
+
+      if G.hand and G.hand.cards then
+        for _, playing_card in ipairs(G.hand.cards) do
+          if ABN.is_light(playing_card) and playing_card ~= card then 
+            light_count = light_count + 1 
+          end
+        end
+      end
+      
+      if light_count > 0 then
+        return {
+          chips = light_count * cae.chips,
+          mult = light_count * cae.mult
+        }
+      end
+    end
+
+    if context.destroy_card and context.cardarea == G.play and context.destroy_card == card then
+      local dark_count = 0
+      
+
+      if context.scoring_hand then
+        for _, playing_card in ipairs(context.scoring_hand) do
+          if ABN.is_dark(playing_card) then dark_count = dark_count + 1 end
+        end
+      end
+
+      if dark_count >= cae.dark_threshold then
+        return { remove = true }
+      end
+    end
+  end,
+  
+  abn_artist_credits = {
+    artist = "Toyrapple",
+  },
+})
