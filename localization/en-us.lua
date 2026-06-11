@@ -5645,6 +5645,29 @@ return {
         }
 
       },
+      j_abn_edition_design_joker      = {
+        name = "Edition & Design Joker",
+        text = {
+          {
+            "Whenever you buy",
+            "an {C:dark_edition}editioned{} {C:attention}Joker{},",
+            "gain {C:mult}Mult{} based",
+            "on its {C:legendary}rarity",
+            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+          },
+          {
+            "{C:common}Common{} : {C:red}+#2#{} Mult",
+            "{C:uncommon}Uncommon{} : {C:red}+#3#{} Mult",
+            "{C:rare}Rare{} : {C:red}+#4#{} Mult",
+            "{C:abn_superrare}Super Rare{} : {C:red}+#5#{} Mult",
+            "{C:abn_parallelrare}Parallel Rare{} : {C:red}+#6#{} Mult",
+            "{C:legendary}Legendary{} : {C:red}+#7#{} Mult",
+            "{C:abn_virusrare}Virus Rare{} : {C:red}+#8#{} Mult",
+
+          },
+        }
+
+      },
       j_abn_ppe_joker                = {
         name = "PPE Joker",
         text = {
