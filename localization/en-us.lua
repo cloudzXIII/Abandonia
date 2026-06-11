@@ -7417,7 +7417,19 @@ return {
           "{C:money}+$#3#{}, {C:chips}+#2#{} Chips, and {C:mult}+#1#{} Mult",
           "per level of played hand"
         }
-      }
+      },
+	  e_abn_bright = {
+        name = "Bright",
+        text = {
+          "{C:chips}+#1#{} Chips {C:mult}+#2#{} Mult per scoring {C:diamonds}Light Suit{} {C:planet}planet{} {C:attention}rank{}"
+        }
+      },
+	  e_abn_dark = {
+        name = "Dark",
+        text = {
+          "{C:chips}+#1#{} Chips {C:mult}+#2#{} Mult per scoring {C:spades}Dark Suit{} {C:planet}planet{} {C:attention}rank{}"
+        }
+      },
     },
     Planet = {
       c_abn_numa = {
@@ -7841,6 +7853,13 @@ return {
           "Converts up to",
           "{C:attention}#1#{} selected cards",
           "to {V:1}#2#{}",
+        },
+      },
+	  c_abn_crossroad = {
+        name = "Crossroad",
+        text = {
+          "{C:attention}#1#{} selected card turns into a",
+		  "{C:spades}Darkner{} or {C:diamonds}Lightner{} card depending on it {C:attention}Suit{}",
         },
       },
     },
@@ -8411,6 +8430,20 @@ return {
           "{C:inactive}(Currently {C:chips}+#2#{} {C:inactive}Chips,{} {C:mult}+#1#{} {C:inactive}Mult){}",
         },
       },
+	  m_abn_darkner = {
+        name = "Darkner Card",
+        text = {
+          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult for played and held {C:spades}Dark Suits{}",
+		  "{C:mult}Self-destruct{} if played with {C:attention}#3#{} or more {C:diamonds}Light Suits",
+        },
+      },
+	  m_abn_lightner = {
+        name = "Lightner Card",
+        text = {
+          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult for played and held {C:diamonds}Light Suits{}",
+		  "{C:mult}Self-destruct{} if played with {C:attention}#3#{} or more {C:spades}Dark Suits",
+        },
+      },
     },
     Voucher = {
       v_abn_overstock_maximum = {
@@ -8693,6 +8726,8 @@ return {
       abn_reel = "Reel",
       abn_collodion = "Collodion",
       abn_vintage = "Vintage",
+	  abn_bright = "Bright",
+	  abn_dark = "Dark",
 
       -- STICKERS
       abn_pump_up = "Pump Up",
