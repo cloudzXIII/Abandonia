@@ -1,10 +1,9 @@
 SMODS.Joker {
     key = 'crass_joker',
     rarity = 2,
-    --atlas = 'ABNJokerSheet16',
-    --pos = { x = 2, y = 1 },
-    atlas = "placeholder",
-    pos = {x=0,y=0},
+    atlas = 'ABNJokerSheet10',
+    pos = { x = 8, y = 3 },
+
     cost = 6,
     discovered = false,
     blueprint_compat = true,
