@@ -330,6 +330,12 @@ SMODS.Atlas({
   px = 71,
   py = 95,
 })
+SMODS.Atlas({
+  key = "ABNJokerSheet16",
+  path = "jokers/joker16.png",
+  px = 71,
+  py = 95,
+})
 
 SMODS.Atlas({
   key = "AbandoniaParallel",
