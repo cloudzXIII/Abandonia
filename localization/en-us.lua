@@ -8811,10 +8811,10 @@ return {
       ["abn_triple_pair"] = "Triple Pair",
       ["abn_double_triple"] = "Double Triple",
       ["abn_6oak"] = "Six of a Kind",
+	  ["abn_Flush Six"] = "Flush Six",
 
 
       ['abn_Abyss'] = "Abyss",
-      ['abn_Haunted House'] = "Haunted House",
       ['abn_Empty Throne'] = "Empty Throne",
       ['abn_Empty Throne (Royal)'] = "Royal Throne",
       ['abn_Void Space'] = "Void Space",
@@ -8822,6 +8822,8 @@ return {
       ['abn_Inverse Spectrum'] = "Inverse Spectrum",
       ['abn_Divider Conquered'] = "Divider Conquered",
       ['abn_Twilight Distillation'] = "Twilight Distillation",
+	  
+	  ['abn_Haunted Mansion'] = "Haunted Mansion",
     },
     poker_hand_descriptions = {
       ['abn_Spectrum'] = {
@@ -8868,12 +8870,14 @@ return {
       ["abn_triple_pair"] = { "3 pairs of cards with different ranks", },
       ["abn_double_triple"] = { "2 pairs of 3 cards with the same rank.", },
       ["abn_6oak"] = { "6 cards with the same rank", },
+	  ["abn_Flush Six"] = { "6 cards with the same rank and suit", },
+	  
 
 
       ['abn_Abyss'] = {
         "5 cards with no suit"
       },
-      ['abn_Haunted House'] = {
+      ['abn_Haunted Mansion'] = {
         "A Three of a Kind with suits and",
         "a Three of a Kind with no suits"
       },
