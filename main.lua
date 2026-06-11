@@ -211,6 +211,8 @@ ABN.calculate = function(self, context)
   end
 end
 
+
+
 function ABN.reset_game_globals(run_start)
   ABN.reset_abn_gerrymandering()
   ABN.reset_monitor_card()
