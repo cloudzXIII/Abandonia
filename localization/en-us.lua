@@ -5816,6 +5816,40 @@ return {
         }
 
       },
+      j_abn_nicotine_joker = {
+        name = "Nicotine Joker",
+        text = {
+          {
+            "{C:chips}+#1#{} Chips",
+            "{C:inactive}(Doubles if score catches fire)"
+          },
+        }
+
+      },
+      j_abn_scrapbook_joker = {
+        name = "Scrapbook Joker",
+        text = {
+          {
+            "When a {C:blind}Blind{} is selected,",
+            "each {C:attention}Joker{} gains {C:chips}+#1#{} Chips",
+            "per applied {C:attention}Sticker"
+          },
+        }
+
+      },
+      j_abn_for_sale_joker = {
+        name = "For Sale",
+        text = {
+          {
+            "When a hand is played,",
+            "gain {C:chips}Chips{} equal",
+            "to the total sell value",
+            "of all current {C:attention}Jokers",
+            "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
+          },
+        }
+
+      },
       j_abn_luftballon_joker = {
         name = "Luftballon Joker",
         text = {
