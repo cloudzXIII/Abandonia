@@ -855,9 +855,9 @@ return {
       tag_abn_hazard_abandon = {
         name = "Abandon Hazard",
         text = {
-          "Add {C:dark_edition}#1#{} to",
-          "a random {C:attention}Joker{} and {C:attention}1{}",
-          "card in your {C:attention}full deck"
+          "Add {C:dark_edition}Abandoned{} to",
+          "a random {C:attention}Joker{} and {C:attention}#1#{}",
+          "cards in your {C:attention}full deck"
         }
       },
       tag_abn_hazard_sunscourge = {
@@ -866,6 +866,55 @@ return {
           "Add {C:dark_edition}#1#{} to",
           "a random {C:attention}Joker{} and {C:attention}1{}",
           "card in your {C:attention}full deck"
+        }
+      },
+	  tag_abn_hazard_investment = {
+        name = "Hazard Investment",
+        text = {
+          "Gain {C:money}$#1#{} after defeating the next {C:attention}Boss Blind{}",
+        }
+      },
+	  tag_abn_hazard_voucher = {
+        name = "Hazard Voucher",
+        text = {
+          "Add {C:attention}#1#{} Vouchers to the next Shop",
+        }
+      },
+	  tag_abn_hazard_reroll = {
+        name = "Hazard Reroll",
+        text = {
+          "Re-rolls the next {C:attention}Boss Blind{} {C:attention}2{} times",
+        }
+      },
+	  tag_abn_hazard_standard = {
+        name = "Hazard Standard",
+        text = {
+          "Gives {C:attention}2{} free {C:attention}Mega Standard Packs{}",
+        }
+      },
+	  tag_abn_hazard_charm = {
+        name = "Charm Hazard",
+        text = {
+          "Gives {C:attention}2{} free {C:tarot}Mega Arcana Packs{}",
+        }
+      },
+	  tag_abn_hazard_meteor = {
+        name = "Meteor Hazard",
+        text = {
+          "Gives {C:attention}2{} free {C:planet}Mega Celestial Packs{}",
+        }
+      },
+	  tag_abn_hazard_buffoon = {
+        name = "Buffoon Hazard",
+        text = {
+          "Gives {C:attention}2{} free {C:attention}Mega Buffoon Packs{}",
+        }
+      },
+	  tag_abn_hazard_handy = {
+        name = "Handy Hazard",
+        text = {
+          "Gain {C:money}$#1#{} for each {C:chips}hand{} played this run",
+		  "{C:inactive}Currently: {C:money}$#2#{}", 
         }
       },
       --#endregion
@@ -7214,6 +7263,30 @@ return {
         text = {
           'Choose {C:attention}#1#{} of up to',
           '{C:attention}#2#{} {C:abn_astro}Astro{} cards to',
+          'be used immediately'
+        }
+      },
+	  p_abn_solid_normal = {
+        name = 'Solid State Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} Solid State cards to',
+          'be used immediately'
+        }
+      },
+	  p_abn_solid_jumbo = {
+        name = 'Jumbo Solid State Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} Solid State cards to',
+          'be used immediately'
+        }
+      },
+	  p_abn_solid_mega = {
+        name = 'Mega Solid State Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} Solid State cards to',
           'be used immediately'
         }
       },
