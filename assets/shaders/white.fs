@@ -23,7 +23,7 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
     } else {
         float lum = dot(tex.rgb, vec3(0.299, 0.587, 0.114));
         // Desaturar parcialmente, con t evitando optimizacion del compilador
-        vec3 desaturated = mix(tex.rgb, vec3(lum), 0.45 + t * 0.0);
+        vec3 desaturated = mix(tex.rgb, vec3(lum), 0.45 + t * 0.00001);
         // Aclarar hacia blanco
         vec3 brightened = desaturated + vec3(0.28);
         // Curva suave para pasteles
