@@ -333,3 +333,102 @@ SMODS.Edition {
     return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
   end,
 }
+
+
+SMODS.Shader {
+  key = 'white',
+  path = 'white.fs',
+}
+SMODS.Edition {
+  key = 'abn_bright',
+  shader = "white", 
+  discovered = true,
+  config = { chips = 20, mult = 8 },
+  
+  loc_vars = function(self, info_queue, card)
+    if card and card.edition then
+      return { vars = { card.edition.chips, card.edition.mult } }
+    end
+    return { vars = { self.config.chips, self.config.mult } }
+  end,
+  
+  calculate = function(self, card, context)
+    if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+      local scaling_factor = 0
+      
+      for i = 1, #context.scoring_hand do
+        local scoring_card = context.scoring_hand[i]
+        
+        if ABN.is_light(scoring_card) then
+          local rank_key = scoring_card.base.value
+          local rank_data = G.GAME.abn_rank_upgrades[rank_key]
+          
+          if rank_data and rank_data.level and rank_data.level > 1 then
+            scaling_factor = scaling_factor + rank_data.level
+          end
+        end
+      end
+      
+      if scaling_factor > 0 then
+        return {
+          chips = (card.edition.chips or self.config.chips) * scaling_factor,
+          mult = (card.edition.mult or self.config.mult) * scaling_factor,
+          card = card
+        }
+      end
+    end
+  end,
+  
+  abn_artist_credits = {
+    artist = "Bro-Fly"
+  },
+}
+
+SMODS.Shader {
+  key = 'balablack',
+  path = 'balablack.fs',
+}
+SMODS.Edition {
+  key = 'abn_dark',
+  shader = "balablack", 
+  discovered = true,
+  config = { chips = 20, mult = 8 },
+  
+  loc_vars = function(self, info_queue, card)
+    if card and card.edition then
+      return { vars = { card.edition.chips, card.edition.mult } }
+    end
+    return { vars = { self.config.chips, self.config.mult } }
+  end,
+  
+  calculate = function(self, card, context)
+    if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+      local scaling_factor = 0
+      
+      for i = 1, #context.scoring_hand do
+        local scoring_card = context.scoring_hand[i]
+        
+        if ABN.is_dark(scoring_card) then
+          local rank_key = scoring_card.base.value
+          local rank_data = G.GAME.abn_rank_upgrades[rank_key]
+          
+          if rank_data and rank_data.level and rank_data.level > 1 then
+            scaling_factor = scaling_factor + rank_data.level
+          end
+        end
+      end
+      
+      if scaling_factor > 0 then
+        return {
+          chips = (card.edition.chips or self.config.chips) * scaling_factor,
+          mult = (card.edition.mult or self.config.mult) * scaling_factor,
+          card = card
+        }
+      end
+    end
+  end,
+  
+  abn_artist_credits = {
+    artist = "Bro-Fly"
+  },
+}

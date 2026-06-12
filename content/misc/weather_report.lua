@@ -61,6 +61,7 @@ ABN.WeatherReport {
     return G.GAME.blind and G.GAME.blind.in_blind
         and G.jokers and #G.jokers.highlighted == 1
         and #G.jokers.cards > 1
+		and #G.jokers.cards <= G.jokers.config.card_limit
   end,
   keep_on_use = function(self, card) return false end,
   use = function(self, card, area, copier)
@@ -84,7 +85,7 @@ ABN.WeatherReport {
       trigger = 'after',
       delay = 0.5,
       func = function()
-        if #G.jokers.cards < G.jokers.config.card_limit then
+        if #G.jokers.cards < G.jokers.config.card_limit + 1 then
           local chosen_joker = pseudorandom_element(jokers, 'abn_cloudzxiii')
           local copied_joker = copy_card(chosen_joker)
           copied_joker:add_to_deck()

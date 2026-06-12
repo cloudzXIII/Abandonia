@@ -28,8 +28,11 @@ SMODS.Joker {
         colour = G.C.MONEY
       }
     end
-    if context.retrigger_joker_check and context.other_card ~= card and context.other_card.sell_cost >= card.ability.extra.dollars then
-      return { repetitions = 1 }
+
+    if context.retrigger_joker_check and context.other_card ~= card then
+      if context.other_card.sell_cost and context.other_card.sell_cost >= card.ability.extra.dollars then
+        return { repetitions = 1 }
+      end
     end
   end,
   abn_artist_credits = {

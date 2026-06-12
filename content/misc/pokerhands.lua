@@ -590,7 +590,7 @@ SMODS.PokerHand {
 }
 
 SMODS.PokerHand {
-  key = 'Haunted House',
+  key = 'Haunted Mansion',
   visible = false,
   chips = 75,
   mult = 6,
@@ -815,6 +815,30 @@ SMODS.PokerHand {
       SMODS.shortcut(), SMODS.wrap_around_straight())
   end,
 }
+
+SMODS.PokerHand {
+    key = 'Flush Six',
+    visible = false,
+    chips = 200,
+    mult = 18,
+    l_chips = 80, 
+    l_mult = 5,
+    example = {
+        { 'S_8', true },
+        { 'S_8', true },
+        { 'S_8', true },
+        { 'S_8', true },
+        { 'S_8', true },
+        { 'S_8', true },
+    },
+    evaluate = function(parts, hand)
+        local six_oak = get_X_same(6, hand)
+        -- Ensures exactly 6 cards are played, a 6 of a kind exists, and it evaluates as a valid flush
+        if #hand == 6 and next(six_oak) and next(parts._flush) then
+            return { SMODS.merge_lists(six_oak, parts._flush) }
+        end
+    end
+}
 --#endregion
 
 
@@ -931,7 +955,7 @@ SMODS.Consumable {
   cost = 4,
   atlas = "AbandoniaPlanets",
   pos = { x = 3, y = 4 },
-  config = { hand_type = "abn_Haunted House", softlock = true },
+  config = { hand_type = "abn_Haunted Mansion", softlock = true },
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
@@ -998,3 +1022,4 @@ SMODS.Consumable {
     artist = "Feli"
   },
 }
+
