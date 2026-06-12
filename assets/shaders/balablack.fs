@@ -22,7 +22,7 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
         tex.a = 0;
     } else {
         // Color de tinte: #4f6367
-        vec3 tint = vec3(0.3098, 0.3882, 0.4039) + vec3(t * 0.0);
+        vec3 tint = vec3(0.3098, 0.3882, 0.4039) + vec3(t * 0.00001);
 
         // Luminancia del pixel original
         float lum = dot(tex.rgb, vec3(0.299, 0.587, 0.114));
