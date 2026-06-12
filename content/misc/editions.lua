@@ -336,12 +336,12 @@ SMODS.Edition {
 
 
 SMODS.Shader {
-  key = 'white',
-  path = 'white.fs',
+  key = 'pale',
+  path = 'pale.fs',
 }
 SMODS.Edition {
   key = 'abn_bright',
-  shader = "white", 
+  shader = "pale", 
   discovered = true,
   config = { chips = 20, mult = 8 },
   
