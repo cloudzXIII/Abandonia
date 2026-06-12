@@ -206,9 +206,14 @@ end
 target = 'functions/button_callbacks.lua'
 match_indent = true
 position = 'at'
-pattern = "    if ((G.GAME.dollars-G.GAME.bankrupt_at) - 10 >= 0) and"
+pattern = '''    if ((G.GAME.dollars-G.GAME.bankrupt_at) - 10 >= 0) and
+      (G.GAME.used_vouchers["v_retcon"] or
+      (G.GAME.used_vouchers["v_directors_cut"] and not G.GAME.round_resets.boss_rerolled)) then
+'''
 payload = '''
     if ((G.GAME.dollars-G.GAME.bankrupt_at) - (G.GAME.abn_boss_reroll_cost or 10) >= 0) and
+      (G.GAME.used_vouchers["v_retcon"] or
+      (G.GAME.used_vouchers["v_directors_cut"] and not G.GAME.round_resets.boss_rerolled) or next(SMODS.find_card("j_abn_bad_director"))) then 
 '''
 [[patches]]
 [patches.pattern]
@@ -219,6 +224,16 @@ pattern = "if not G.from_boss_tag then ease_dollars(-10) end"
 payload = '''
 if not G.from_boss_tag then ease_dollars(-(G.GAME.abn_boss_reroll_cost or 10)) end
 '''
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+match_indent = true
+position = 'after'
+pattern = "G.GAME.round_resets.blind_choices.Boss = get_new_boss()"
+payload = '''
+SMODS.calculate_context({abn_reroll_boss = true, cost = G.GAME.current_round.reroll_cost})
+'''
+
 
 # UI Definitions Blind Reroll button
 [[patches]]
@@ -229,4 +244,15 @@ position = 'at'
 pattern = '''        UIBox_button({label = {localize('b_reroll_boss'), localize('$')..'10'}, button = "reroll_boss", func = 'reroll_boss_button'}) or nil''' 
 payload = '''
         UIBox_button({label = {localize('b_reroll_boss'), localize('$')..(G.GAME.abn_boss_reroll_cost or 10)}, button = "reroll_boss", func = 'reroll_boss_button'}) or nil
+'''
+
+# UI Definitions Blind Reroll button
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+match_indent = true
+position = 'at'
+pattern = '''        (G.GAME.used_vouchers["v_retcon"] or G.GAME.used_vouchers["v_directors_cut"]) and''' 
+payload = '''
+        (G.GAME.used_vouchers["v_retcon"] or G.GAME.used_vouchers["v_directors_cut"] or next(SMODS.find_card("j_abn_bad_director"))) and
 '''

@@ -5919,6 +5919,132 @@ return {
         }
 
       },
+      j_abn_oddball_todd = {
+        name = "Oddball Todd",
+        text = {
+          "Played cards with",
+          "{C:attention}odd{} rank give",
+          "{C:chips}+#1#{} Chips when scored",
+          "{C:inactive}(A, 13, 12, 11, 9, 7, 5, 3,   )",
+        },
+      },
+      j_abn_even_stephen = {
+        name = "Even Stephen",
+        text = {
+          "Played cards with",
+          "{C:attention}even{} rank give",
+          "{C:mult}+#1#{} Mult when scored",
+          "{C:inactive}(14, 12, 10, 8, 6, 4, 2)",
+        },
+      },
+      j_abn_cataract_joker = {
+        name = "Cataract Joker",
+        text = {
+          "When playing a {C:attention}#1#{}:",
+          "{X:chips,C:white}X#2#{} Chips if {C:abn_snow}Snows{}",
+          "{X:mult,C:white}X#3#{} Mult if {C:abn_penumbra}Penumbras{}",
+          "Balance {C:chips}Chips{} and {C:mult}Mult{} if {C:abn_tie}Ties{}",
+          "Swap {C:chips}Chips{} and {C:mult}Mult{} if {C:abn_bow}Bows{}",
+        },
+      },
+      j_abn_billiard_14 = {
+        name = "Billiard 14",
+        text = {
+          "{C:green}#1# in #2#{} chance for each",
+          "played {C:attention}14{} to create a",
+          "{C:clubs}Solid State{} card when scored",
+          "{C:inactive}(Must have room)",
+        },
+      },
+      j_abn_spilling_salt = {
+        name = "Spilling Salt",
+        text = {
+          "Scored {C:red}debuffed{} cards",
+          "increase their {C:planet}planet rank{}",
+          "by {C:attention}1"
+        },
+      },
+      j_abn_front_to_cover = {
+        name = "Front to Cover",
+        text = {
+          {
+            "Unscored {C:attention}flipped{} cards",
+            "return to the deck",
+          },
+          {
+            "When {C:attention}flipped{} cards score,",
+            "gain {C:blue}Chips{} equal to its rank"
+          }
+        },
+      },
+      j_abn_usury_joker = {
+        name = "Usury Joker",
+        text = {
+          {
+            "{C:abn_tie}Ties{}, {C:abn_bow}Bows{} and {C:clubs}Clubs",
+            "become {C:attention}Lucky{} when {C:attention}scored",
+            "Lose {C:gold}-$#1#{} when a",
+            "{C:attention}Lucky Card{} triggers"
+          },
+          {
+            "Go up to",
+            "{C:red}-$#2#{} in debt",
+          },
+        },
+      },
+      j_abn_deranged_imposter = {
+        name = "Deranged Imposter",
+        text = {
+          {
+          "Gains {C:red}+#1#{} Mult per scored card with",
+          "matching {C:attention}ranks {}and {C:enhanced}enhancements{}",
+          "but different {C:planet}suits",
+          },
+          {
+          "Gains {C:blue}+#2#{} Chips per scored card with",
+          "matching {C:planet}suits {}and {C:enhanced}enhancements{}",
+          "but different {C:attention}ranks",
+          "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult, {C:blue}+#4#{C:inactive} Chips)",
+          }
+        },
+      },
+      j_abn_autostereogram_joker = {
+        name = "Autostereogram Joker",
+        text = {
+          {
+          "Gains {X:red,C:white}X#1#{} Mult per scored",
+          "{C:attention}odd{} card with matching {C:dark_edition}editions{}",
+          },
+          {
+          "Gains {X:chips,C:white}X#2#{} Chips per scored",
+          "{C:attention}even{} card with matching {C:dark_edition}editions{}",
+          "{C:inactive}(Currently {X:red,C:white}X#3#{C:inactive} Mult, {X:blue,C:white}X#4#{C:inactive} Chips)",
+          }
+        },
+      },
+      j_abn_identigram_joker = {
+        name = "Identigram Joker",
+        text = {
+          {
+          "Gains {X:red,C:white}X#1#{} Mult per scored",
+          "{C:attention}odd{} card with different {C:dark_edition}editions{}",
+          },
+          {
+          "Gains {X:chips,C:white}X#2#{} Chips per scored",
+          "{C:attention}even{} card with different {C:dark_edition}editions{}",
+          "{C:inactive}(Currently {X:red,C:white}X#3#{C:inactive} Mult, {X:blue,C:white}X#4#{C:inactive} Chips)",
+          }
+        },
+      },
+      j_abn_anxious_gimbo = {
+        name = "Anxious Gimbo",
+        text = {
+          "Each played {C:attention}2{}, {C:attention}3{},",
+          "{C:attention}5{}, {C:attention}7{}, {C:attention}11{}, or {C:attention}13{}",
+          "gives {X:chips,C:white}X#1#{} Chips and",
+          "{C:mult}+#2#{} Mult when scored",
+        },
+      },
       j_abn_mad_professor = {
         name = "Mad Professor",
         text = {
