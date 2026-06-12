@@ -639,3 +639,36 @@ SMODS.Back {
 		end
 	end,
 }
+
+SMODS.Back {
+    key = "ensnared",
+    name = "Ensnared Deck",
+    config = {
+        extra = {
+            slots = 0,
+            slots_mod = 1,
+            debt = 10
+        }
+    },
+    atlas = "AbandoniaDecks",
+    pos = { x = 4, y = 4 },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                self.config.extra.slots,
+                self.config.extra.slots_mod,
+                self.config.extra.debt
+            }
+        }
+    end,
+    apply = function(self, card, context)
+        G.GAME.starting_params.consumable_slots = self.config.extra.slots
+        G.GAME.bankrupt_at = G.GAME.bankrupt_at - self.config.extra.debt
+    end,
+    calculate = function(self, card, context)
+        if context.beat_boss and context.main_eval then
+            G.consumeables.config.card_limit = G.consumeables.config.card_limit + self.config.extra.slots_mod
+            self.config.extra.slots = self.config.extra.slots + self.config.extra.slots_mod
+        end
+    end,
+}

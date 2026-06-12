@@ -756,6 +756,15 @@ return {
           "Selling Jokers gives {C:chips}Hands{}"
         }
       },
+      b_abn_ensnared = {
+        name = "Ensnared Deck",
+        text = {
+          "{C:attention}#1#{} consumable slots,",
+          "increases by {C:attention}+#2#{} when",
+          "{C:attention}Boss Blind{} defeated",
+          "Go up to {C:red}-$#3#{} in debt"
+        }
+      },
     },
     Tag = {
       --#region Hazard Tags
@@ -1161,7 +1170,7 @@ return {
           "atleast 4 different suits"
         },
       },
-      bl_abn_mint_£ = {
+      bl_abn_mint_e = {
         name = "Mint £",
         text = {
           "Mult can't go above 3X $"
@@ -1173,7 +1182,7 @@ return {
           "All Joker values are halved"
         },
       },
-      bl_abn_orange_± = {
+      bl_abn_orange_plus = {
         name = "Orange ±",
         text = {
           "Retriggers are disabled"
@@ -1599,7 +1608,7 @@ return {
           "Hands above level 3 are debuffed",
         },
       },
-      bl_abn_hazard_£ = {
+      bl_abn_hazard_e = {
         name = "Hazard £",
         text = {
           "Mult can't go above 2X $",
@@ -1613,7 +1622,7 @@ return {
           "3 card Hands are debuffed",
         },
       },
-      bl_abn_hazard_± = {
+      bl_abn_hazard_plus = {
         name = "Hazard ±",
         text = {
           "Retriggers are disabled",
@@ -6558,9 +6567,18 @@ return {
 		  "{C:inactive}Currently:{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#1#{} {C:inactive}Chips{}"
         }
       },
+      j_abn_tlumddo = {
+        name = "Tlumddo Joker",
+        text = {
+          "When a {C:attention}Bonus Card{} is scored,",
+          "all non-{C:attention}Bonus{} cards in scoring",
+          "hand permanently gain {C:mult}+#1#{} Mult",
+          "When an {C:attention}odd Bonus Card{} is scored,",
+          "all non-{C:attention}Bonus{} cards in scoring",
+          "hand permanently gain {C:chips}+#2#{} Chips"
+        }
+      }
     },
-
-
     Spectral = {
       c_abn_apotheosis = {
         name = "Apotheosis",
