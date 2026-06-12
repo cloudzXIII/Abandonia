@@ -6576,6 +6576,10 @@ return {
           "When an {C:attention}odd Bonus Card{} is scored,",
           "all non-{C:attention}Bonus{} cards in scoring",
           "hand permanently gain {C:chips}+#2#{} Chips"
+        },
+        unlock = {
+          "Have the {C:attention,E:1}Bonus{} Enhancement",
+          "on an odd numbered card"
         }
       }
     },

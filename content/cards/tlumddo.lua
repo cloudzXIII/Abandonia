@@ -10,6 +10,7 @@ SMODS.Joker {
     pos = { x = 8, y = 5 },
     cost = 8,
     rarity = 3,
+    unlocked = false,
     blueprint_compat = true,
     atlas = "ABNJokerSheet11",
     loc_vars = function(self, info_queue, card)
@@ -27,6 +28,14 @@ SMODS.Joker {
             local is_bonus = enhancements and enhancements.m_bonus
             if is_bonus then
                 local id = other_card:get_id()
+                if
+                    context.other_card.base.value == "abn_14" or
+                    context.other_card.base.value == "abn_13" or
+                    context.other_card.base.value == "abn_12" or
+                    context.other_card.base.value == "abn_11"
+                then
+                    id = context.other_card.base.nominal 
+                end
                 local is_odd = (id <= 10 and id >= 0 and id % 2 == 1) or (id == 14)
                 for _, scored_card in ipairs(context.scoring_hand) do
                     local scored_enhancements = SMODS.get_enhancements(scored_card)
@@ -44,4 +53,29 @@ SMODS.Joker {
     abn_artist_credits = {
         artist = "Inky",
     },
+    check_for_unlock = function(self, args)
+        if args.type == "modify_deck" then
+            for _, card in ipairs(G.playing_cards) do
+                local enhancements = SMODS.get_enhancements(card)
+                local is_bonus = enhancements and enhancements.m_bonus
+                if is_bonus then
+                    local id = card.base.id
+                    if
+                        card.base.value == "abn_14" or
+                        card.base.value == "abn_13" or
+                        card.base.value == "abn_12" or
+                        card.base.value == "abn_11"
+                    then
+                        id = card.base.nominal
+                    end
+                    local is_odd = (id <= 10 and id >= 0 and id % 2 == 1) or (id == 14)
+                    if is_odd then
+                        unlock_card(self)
+                        return true
+                    end
+                end
+            end
+        end
+        return false
+    end
 }
