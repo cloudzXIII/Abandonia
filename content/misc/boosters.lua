@@ -1460,3 +1460,239 @@ SMODS.Booster {
     }
   end,
 }
+
+SMODS.Booster {
+  key = "solid_normal_1",
+  weight = 1,
+  kind = 'solid_state',
+  cost = 4,
+  atlas = "abn_AbandoniaSolidState",
+  pos = { x = 0, y = 3 },
+  config = { extra = 3, choose = 1 },
+  group_key = "k_solid_pack",
+  draw_hand = true,
+  loc_vars = function(self, info_queue, card)
+    local cfg = (card and card.ability) or self.config
+    return {
+      vars = {
+        math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+          math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+        math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
+      key = self.key:sub(1, -3),
+    }
+  end,
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.solid_state, special_colour = G.C.SET.solid_state, contrast = 2 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.solid_state)
+    ease_background_colour(chosen_effect)
+  end,
+  particles = function(self)
+    G.booster_pack_sparkles = Particles(1, 1, 0, 0, {
+      timer = 0.015,
+      scale = 0.2,
+      initialize = true,
+      lifespan = 1,
+      speed = 1.1,
+      padding = -1,
+      attach = G.ROOM_ATTACH,
+      colours = { 
+        G.C.WHITE, 
+        G.C.SET.solid_state,                
+        lighten(G.C.SET.solid_state, 0.4),  
+        darken(G.C.PURPLE, 0.2)              
+      },
+      fill = true
+    })
+    G.booster_pack_sparkles.fade_alpha = 1
+    G.booster_pack_sparkles:fade(1, 0)
+  end,
+  create_card = function(self, card, i)
+    return {
+      set = "solid_state",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+    }
+  end,
+}
+
+SMODS.Booster {
+  key = "solid_normal_2",
+  weight = 1,
+  kind = 'solid_state',
+  cost = 4,
+  atlas = "abn_AbandoniaSolidState",
+  pos = { x = 1, y = 3 },
+  config = { extra = 3, choose = 1 },
+  group_key = "k_solid_pack",
+  draw_hand = true,
+  loc_vars = function(self, info_queue, card)
+    local cfg = (card and card.ability) or self.config
+    return {
+      vars = {
+        math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+          math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+        math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
+      key = self.key:sub(1, -3),
+    }
+  end,
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.solid_state, special_colour = G.C.SET.solid_state, contrast = 2 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.solid_state)
+    ease_background_colour(chosen_effect)
+  end,
+  particles = function(self)
+    G.booster_pack_sparkles = Particles(1, 1, 0, 0, {
+      timer = 0.015,
+      scale = 0.2,
+      initialize = true,
+      lifespan = 1,
+      speed = 1.1,
+      padding = -1,
+      attach = G.ROOM_ATTACH,
+      colours = { 
+        G.C.WHITE, 
+        G.C.SET.solid_state,                
+        lighten(G.C.SET.solid_state, 0.4),  
+        darken(G.C.PURPLE, 0.2)              
+      },
+      fill = true
+    })
+    G.booster_pack_sparkles.fade_alpha = 1
+    G.booster_pack_sparkles:fade(1, 0)
+  end,
+  create_card = function(self, card, i)
+    return {
+      set = "solid_state",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+    }
+  end,
+}
+
+SMODS.Booster {
+  key = "solid_jumbo_1",
+  weight = 1,
+  kind = 'solid_state',
+  cost = 6,
+  atlas = "abn_AbandoniaSolidState",
+  pos = { x = 2, y = 3 },
+  config = { extra = 5, choose = 1 },
+  group_key = "k_solid_pack",
+  draw_hand = true,
+  loc_vars = function(self, info_queue, card)
+    local cfg = (card and card.ability) or self.config
+    return {
+      vars = {
+        math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+          math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+        math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
+      key = self.key:sub(1, -3),
+    }
+  end,
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.solid_state, special_colour = G.C.SET.solid_state, contrast = 2 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.solid_state)
+    ease_background_colour(chosen_effect)
+  end,
+  particles = function(self)
+    G.booster_pack_sparkles = Particles(1, 1, 0, 0, {
+      timer = 0.015,
+      scale = 0.2,
+      initialize = true,
+      lifespan = 1,
+      speed = 1.1,
+      padding = -1,
+      attach = G.ROOM_ATTACH,
+      colours = { 
+        G.C.WHITE, 
+        G.C.SET.solid_state,                
+        lighten(G.C.SET.solid_state, 0.4),  
+        darken(G.C.PURPLE, 0.2)              
+      },
+      fill = true
+    })
+    G.booster_pack_sparkles.fade_alpha = 1
+    G.booster_pack_sparkles:fade(1, 0)
+  end,
+  create_card = function(self, card, i)
+    return {
+      set = "solid_state",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+    }
+  end,
+}
+
+SMODS.Booster {
+  key = "solid_mega_1",
+  weight = 1,
+  kind = 'solid_state',
+  cost = 8,
+  atlas = "abn_AbandoniaSolidState",
+  pos = { x = 3, y = 3 },
+  config = { extra = 5, choose = 2 },
+  group_key = "k_solid_pack",
+  draw_hand = true,
+  loc_vars = function(self, info_queue, card)
+    local cfg = (card and card.ability) or self.config
+    return {
+      vars = {
+        math.min(cfg.choose + (G.GAME.modifiers.booster_choice_mod or 0),
+          math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0))),
+        math.max(1, cfg.extra + (G.GAME.modifiers.booster_size_mod or 0)) },
+      key = self.key:sub(1, -3),
+    }
+  end,
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.solid_state, special_colour = G.C.SET.solid_state, contrast = 2 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.solid_state)
+    ease_background_colour(chosen_effect)
+  end,
+  particles = function(self)
+    G.booster_pack_sparkles = Particles(1, 1, 0, 0, {
+      timer = 0.015,
+      scale = 0.2,
+      initialize = true,
+      lifespan = 1,
+      speed = 1.1,
+      padding = -1,
+      attach = G.ROOM_ATTACH,
+      colours = { 
+        G.C.WHITE, 
+        G.C.SET.solid_state,                
+        lighten(G.C.SET.solid_state, 0.4),  
+        darken(G.C.PURPLE, 0.2)              
+      },
+      fill = true
+    })
+    G.booster_pack_sparkles.fade_alpha = 1
+    G.booster_pack_sparkles:fade(1, 0)
+  end,
+  create_card = function(self, card, i)
+    return {
+      set = "solid_state",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+    }
+  end,
+}
