@@ -183,11 +183,257 @@ SMODS.Tag {
   end
 }
 
+SMODS.Tag {
+  key = "chromatic",
+  pos = { x = 1, y = 0 },
+  atlas = "AbandoniaTags",
+  loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_chromatic
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'store_joker_modify' then
+      if not context.card.edition and not context.card.temp_edition and context.card.ability.set == 'Joker' then
+        local lock = tag.ID
+        G.CONTROLLER.locks[lock] = true
+        context.card.temp_edition = true
+        tag:yep('+', G.C.DARK_EDITION, function()
+          context.card.temp_edition = nil
+          context.card:set_edition("e_abn_chromatic", true)
+          context.card.ability.couponed = true
+          context.card:set_cost()
+          G.CONTROLLER.locks[lock] = nil
+          return true
+        end)
+        tag.triggered = true
+        return true
+      end
+    end
+  end,
+  in_pool = function(self, args)
+    return G.P_CENTERS["e_abn_chromatic"].discovered
+  end
+}
+
+SMODS.Tag {
+  key = "reversal",
+  pos = { x = 0, y = 1 },
+  atlas = "AbandoniaTags",
+  loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_reversal
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'store_joker_modify' then
+      if not context.card.edition and not context.card.temp_edition and context.card.ability.set == 'Joker' then
+        local lock = tag.ID
+        G.CONTROLLER.locks[lock] = true
+        context.card.temp_edition = true
+        tag:yep('+', G.C.DARK_EDITION, function()
+          context.card.temp_edition = nil
+          context.card:set_edition("e_abn_reversal", true)
+          context.card.ability.couponed = true
+          context.card:set_cost()
+          G.CONTROLLER.locks[lock] = nil
+          return true
+        end)
+        tag.triggered = true
+        return true
+      end
+    end
+  end,
+  in_pool = function(self, args)
+    return G.P_CENTERS["e_abn_reversal"].discovered
+  end
+}
+
+SMODS.Tag {
+  key = "bit_rot",
+  pos = { x = 1, y = 1 },
+  atlas = "AbandoniaTags",
+  loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_bit_rot
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'store_joker_modify' then
+      if not context.card.edition and not context.card.temp_edition and context.card.ability.set == 'Joker' then
+        local lock = tag.ID
+        G.CONTROLLER.locks[lock] = true
+        context.card.temp_edition = true
+        tag:yep('+', G.C.DARK_EDITION, function()
+          context.card.temp_edition = nil
+          context.card:set_edition("e_abn_bit_rot", true)
+          context.card.ability.couponed = true
+          context.card:set_cost()
+          G.CONTROLLER.locks[lock] = nil
+          return true
+        end)
+        tag.triggered = true
+        return true
+      end
+    end
+  end,
+  in_pool = function(self, args)
+    return G.P_CENTERS["e_abn_bit_rot"].discovered
+  end
+}
+
+SMODS.Tag {
+  key = "reel",
+  pos = { x = 2, y = 1 },
+  atlas = "AbandoniaTags",
+  loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_reel
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'store_joker_modify' then
+      if not context.card.edition and not context.card.temp_edition and context.card.ability.set == 'Joker' then
+        local lock = tag.ID
+        G.CONTROLLER.locks[lock] = true
+        context.card.temp_edition = true
+        tag:yep('+', G.C.DARK_EDITION, function()
+          context.card.temp_edition = nil
+          context.card:set_edition("e_abn_reel", true)
+          context.card.ability.couponed = true
+          context.card:set_cost()
+          G.CONTROLLER.locks[lock] = nil
+          return true
+        end)
+        tag.triggered = true
+        return true
+      end
+    end
+  end,
+  in_pool = function(self, args)
+    return G.P_CENTERS["e_abn_reel"].discovered
+  end
+}
+
+SMODS.Tag {
+  key = "collodion",
+  pos = { x = 3, y = 1 },
+  atlas = "AbandoniaTags",
+  loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_collodion
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'store_joker_modify' then
+      if not context.card.edition and not context.card.temp_edition and context.card.ability.set == 'Joker' then
+        local lock = tag.ID
+        G.CONTROLLER.locks[lock] = true
+        context.card.temp_edition = true
+        tag:yep('+', G.C.DARK_EDITION, function()
+          context.card.temp_edition = nil
+          context.card:set_edition("e_abn_collodion", true)
+          context.card.ability.couponed = true
+          context.card:set_cost()
+          G.CONTROLLER.locks[lock] = nil
+          return true
+        end)
+        tag.triggered = true
+        return true
+      end
+    end
+  end,
+  in_pool = function(self, args)
+    return G.P_CENTERS["e_abn_collodion"].discovered
+  end
+}
+
+SMODS.Tag {
+  key = "vintage",
+  pos = { x = 4, y = 1 },
+  atlas = "AbandoniaTags",
+  loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_vintage
+  end,
+  apply = function(self, tag, context)
+    if context.type == 'store_joker_modify' then
+      if not context.card.edition and not context.card.temp_edition and context.card.ability.set == 'Joker' then
+        local lock = tag.ID
+        G.CONTROLLER.locks[lock] = true
+        context.card.temp_edition = true
+        tag:yep('+', G.C.DARK_EDITION, function()
+          context.card.temp_edition = nil
+          context.card:set_edition("e_abn_vintage", true)
+          context.card.ability.couponed = true
+          context.card:set_cost()
+          G.CONTROLLER.locks[lock] = nil
+          return true
+        end)
+        tag.triggered = true
+        return true
+      end
+    end
+  end,
+  in_pool = function(self, args)
+    return G.P_CENTERS["e_abn_vintage"].discovered
+  end
+}
+
+SMODS.Tag {
+    key = "unknown",
+    pos = { x = 2, y = 3 },
+    atlas = "AbandoniaTags",
+    
+	loc_vars = function(self, info_queue, tag)
+		info_queue[#info_queue + 1] = { key = "abn_flipped_card", set = "Other" }
+	end,
+	
+    apply = function(self, tag, context)
+        if context.type == 'store_joker_create' then
+            
+            local chosen_rarity_num = math.floor(pseudorandom('tag_rarity') * 3) + 1
+            local rarity_map = { [1] = "Common", [2] = "Uncommon", [3] = "Rare" }
+            local chosen_rarity_str = rarity_map[chosen_rarity_num]
+
+            local jokers_in_possession = { 0 }
+            for _, joker in ipairs(G.jokers.cards) do
+                if joker.config.center.rarity == chosen_rarity_num and not jokers_in_possession[joker.config.center.key] then
+                    jokers_in_possession[1] = jokers_in_possession[1] + 1
+                    jokers_in_possession[joker.config.center.key] = true
+                end
+            end
+
+            if #G.P_JOKER_RARITY_POOLS[chosen_rarity_num] > jokers_in_possession[1] then
+                local lock = tag.ID
+                G.CONTROLLER.locks[lock] = true
+
+                local card = SMODS.create_card {
+                    set = "Joker",
+                    rarity = chosen_rarity_str,
+                    area = context.area,
+                    key_append = "vremade_rta"
+                }
+                create_shop_card_ui(card, 'Joker', context.area)
+                card.states.visible = false
+
+                tag:yep('+', G.C.BLUE, function()
+                    card:start_materialize()
+                    card.ability.couponed = true
+                    card:set_cost()
+                    
+                    if card.facing == "front" then
+                        card:flip()
+                    end
+                    card.ability.abn_perma_flipped = true
+                    
+                    G.CONTROLLER.locks[lock] = nil
+                    return true
+                end)
+
+                tag.triggered = true
+                return card
+            else
+                tag:nope()
+            end
+        end
+    end,
+}
+
 -- Calamity Tag
 SMODS.Tag {
   key = "calamity",
   min_ante = 2,
-  pos = { x = 0, y = 1 },
+  pos = { x = 4, y = 2 },
   atlas = "AbandoniaTags",
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.p_abn_calamitybooster
@@ -219,7 +465,7 @@ SMODS.Tag {
 SMODS.Tag {
   key = "sigil",
   min_ante = 2,
-  pos = { x = 1, y = 1 },
+  pos = { x = 5, y = 2 },
   atlas = "AbandoniaTags",
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.p_abn_sigil_normal_1
@@ -251,7 +497,7 @@ SMODS.Tag {
 SMODS.Tag {
   key = "astro",
   min_ante = 2,
-  pos = { x = 2, y = 1 },
+  pos = { x = 0, y = 3 },
   atlas = "AbandoniaTags",
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.p_abn_astro_normal_1
@@ -282,7 +528,7 @@ SMODS.Tag {
 -- Lefty Tag
 SMODS.Tag {
   key = "lefty",
-  pos = { x = 1, y = 2 },
+  pos = { x = 1, y = 4 },
   atlas = "AbandoniaTags",
   config = { hands = 1 },
   loc_vars = function(self, info_queue, tag)
@@ -303,7 +549,7 @@ SMODS.Tag {
 -- Trash Tag
 SMODS.Tag {
   key = "trash",
-  pos = { x = 2, y = 2 },
+  pos = { x = 0, y = 4 },
   atlas = "AbandoniaTags",
   config = { discards = 1 },
   loc_vars = function(self, info_queue, tag)
@@ -354,44 +600,58 @@ SMODS.Tag {
   end
 }
 
--- Unrevealed Tag
+-- Flip Tag
 SMODS.Tag {
-  key = "unrevealed",
-  pos = { x = 5, y = 3 },
-  atlas = "AbandoniaTags",
-  loc_vars = function(self, info_queue, tag)
-  end,
-  apply = function(self, tag, context)
-    if context.type == 'store_joker_create' then
-      local random_rarity = pseudorandom_element({ 'Common', 'Uncommon', 'Rare' })
-      local card = SMODS.create_card {
-        set = "Joker",
-        rarity = random_rarity,
-        area = context.area,
-        key_append = "abn_unrevealed"
-      }
-      create_shop_card_ui(card, 'Joker', context.area)
-      card.states.visible = false
-      tag:yep('+', G.C.PURPLE, function()
-        card:start_materialize()
-        if card.facing == 'front' then
-          card:flip()
+    key = "flip",
+    pos = { x = 2, y = 4 },
+    atlas = "AbandoniaTags",
+    
+    loc_vars = function(self, info_queue, tag)
+        info_queue[#info_queue + 1] = { key = "abn_flipped_card", set = "Other" }
+    end,
+    
+    apply = function(self, tag, context)
+		
+        if context.type == 'store_joker_create' then
+            
+            local lock = tag.ID
+            G.CONTROLLER.locks[lock] = true
+
+            local chosen_set = pseudorandom('abn_tag_set') > 0.5 and "Enhanced" or "Enhanced"
+
+            local card = SMODS.create_card {
+                set = chosen_set, 
+                area = context.area,
+                key_append = "flip"
+            }
+            
+            create_shop_card_ui(card, 'Standard', context.area)
+            card.states.visible = false
+
+            tag:yep('+', G.C.BLUE, function()
+                card:start_materialize()
+                card.ability.couponed = true
+                card:set_cost()
+                
+                if card.facing == "front" then
+                    card:flip()
+                end
+                card.ability.abn_perma_flipped = true
+                
+                G.CONTROLLER.locks[lock] = nil
+                return true
+            end)
+
+            tag.triggered = true
+            return card
         end
-        card.ability.abn_perma_flipped = true
-        card.ability.couponed = true
-        card:set_cost()
-        return true
-      end)
-      tag.triggered = true
-      return card
-    end
-  end
+    end,
 }
 
 -- Hazard Tag
 SMODS.Tag {
   key = "hazard",
-  pos = { x = 0, y = 2 },
+  pos = { x = 5, y = 3 },
   atlas = "AbandoniaTags",
   apply = function(self, tag, context)
     local lock = tag.ID
@@ -410,7 +670,7 @@ SMODS.Tag {
 -- Nightshift Tag
 SMODS.Tag {
   key = "nightshift",
-  pos = { x = 4, y = 1 },
+  pos = { x = 1, y = 3 },
   atlas = "AbandoniaTags",
   apply = function(self, tag, context)
     if context.type == 'store_joker_create' then
@@ -436,7 +696,7 @@ SMODS.Tag {
 
 SMODS.Tag {
   key = "weather_report",
-  pos = { x = 5, y = 0 },
+  pos = { x = 1, y = 2 },
   atlas = "AbandoniaTags",
   apply = function(self, tag, context)
     if context.type == 'store_joker_create' then
@@ -461,7 +721,7 @@ SMODS.Tag {
 
 SMODS.Tag {
   key = "lexica",
-  pos = { x = 5, y = 1 },
+  pos = { x = 3, y = 3 },
   atlas = "AbandoniaTags",
   apply = function(self, tag, context)
     if context.type == 'store_joker_create' then
@@ -486,7 +746,7 @@ SMODS.Tag {
 
 SMODS.Tag {
   key = "program",
-  pos = { x = 5, y = 2 },
+  pos = { x = 5, y = 1 },
   atlas = "AbandoniaTags",
   apply = function(self, tag, context)
     if context.type == 'store_joker_create' then
@@ -511,7 +771,7 @@ SMODS.Tag {
 
 SMODS.Tag {
   key = "rank_planet",
-  pos = { x = 2, y = 3 },
+  pos = { x = 4, y = 3 },
   atlas = "AbandoniaTags",
   apply = function(self, tag, context)
     if context.type == 'store_joker_create' then
@@ -537,25 +797,54 @@ SMODS.Tag {
 
 SMODS.Tag {
   key = "continent",
-  pos = { x = 3, y = 3 },
+  pos = { x = 0, y = 2 },
   atlas = "AbandoniaTags",
   apply = function(self, tag, context)
-    if context.type == 'store_joker_create' then
-      local card = SMODS.create_card {
-        set = "continent",
-        area = context.area,
-        key_append = "abn_continent"
-      }
-      create_shop_card_ui(card)
-      card.states.visible = false
-      tag:yep('+', G.C.SECONDARY_SET.continent, function()
-        card:start_materialize()
-        card.ability.couponed = true
-        card:set_cost()
-        return true
-      end)
-      tag.triggered = true
-      return card
+        if context.type == 'new_blind_choice' then
+            local lock = tag.ID
+            G.CONTROLLER.locks[lock] = true
+            tag:yep('+', G.C.SECONDARY_SET.Spectral, function()
+                local booster = SMODS.create_card { key = 'p_abn_continent_normal_1', area = G.play }
+                booster.T.x = G.play.T.x + G.play.T.w / 2 - G.CARD_W * 1.27 / 2
+                booster.T.y = G.play.T.y + G.play.T.h / 2 - G.CARD_H * 1.27 / 2
+                booster.T.w = G.CARD_W * 1.27
+                booster.T.h = G.CARD_H * 1.27
+                booster.cost = 0
+                booster.from_tag = true
+                G.FUNCS.use_card({ config = { ref_table = booster } })
+                booster:start_materialize()
+                G.CONTROLLER.locks[lock] = nil
+                return true
+            end)
+            tag.triggered = true
+            return true
+        end
     end
-  end
+}
+
+SMODS.Tag {
+  key = "solid",
+  pos = { x = 2, y = 2 },
+  atlas = "AbandoniaTags",
+  apply = function(self, tag, context)
+        if context.type == 'new_blind_choice' then
+            local lock = tag.ID
+            G.CONTROLLER.locks[lock] = true
+            tag:yep('+', G.C.SECONDARY_SET.Spectral, function()
+                local booster = SMODS.create_card { key = 'p_abn_solid_normal_2', area = G.play }
+                booster.T.x = G.play.T.x + G.play.T.w / 2 - G.CARD_W * 1.27 / 2
+                booster.T.y = G.play.T.y + G.play.T.h / 2 - G.CARD_H * 1.27 / 2
+                booster.T.w = G.CARD_W * 1.27
+                booster.T.h = G.CARD_H * 1.27
+                booster.cost = 0
+                booster.from_tag = true
+                G.FUNCS.use_card({ config = { ref_table = booster } })
+                booster:start_materialize()
+                G.CONTROLLER.locks[lock] = nil
+                return true
+            end)
+            tag.triggered = true
+            return true
+        end
+    end
 }

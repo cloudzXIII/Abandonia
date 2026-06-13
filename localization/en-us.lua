@@ -756,6 +756,15 @@ return {
           "Selling Jokers gives {C:chips}Hands{}"
         }
       },
+      b_abn_ensnared = {
+        name = "Ensnared Deck",
+        text = {
+          "{C:attention}#1#{} consumable slots,",
+          "increases by {C:attention}+#2#{} when",
+          "{C:attention}Boss Blind{} defeated",
+          "Go up to {C:red}-$#3#{} in debt"
+        }
+      },
     },
     Tag = {
       --#region Hazard Tags
@@ -855,9 +864,9 @@ return {
       tag_abn_hazard_abandon = {
         name = "Abandon Hazard",
         text = {
-          "Add {C:dark_edition}#1#{} to",
-          "a random {C:attention}Joker{} and {C:attention}1{}",
-          "card in your {C:attention}full deck"
+          "Add {C:dark_edition}Abandoned{} to",
+          "a random {C:attention}Joker{} and {C:attention}#1#{}",
+          "cards in your {C:attention}full deck"
         }
       },
       tag_abn_hazard_sunscourge = {
@@ -866,6 +875,55 @@ return {
           "Add {C:dark_edition}#1#{} to",
           "a random {C:attention}Joker{} and {C:attention}1{}",
           "card in your {C:attention}full deck"
+        }
+      },
+	  tag_abn_hazard_investment = {
+        name = "Hazard Investment",
+        text = {
+          "Gain {C:money}$#1#{} after defeating the next {C:attention}Boss Blind{}",
+        }
+      },
+	  tag_abn_hazard_voucher = {
+        name = "Hazard Voucher",
+        text = {
+          "Add {C:attention}#1#{} Vouchers to the next Shop",
+        }
+      },
+	  tag_abn_hazard_reroll = {
+        name = "Hazard Reroll",
+        text = {
+          "Re-rolls the next {C:attention}Boss Blind{} {C:attention}2{} times",
+        }
+      },
+	  tag_abn_hazard_standard = {
+        name = "Hazard Standard",
+        text = {
+          "Gives {C:attention}2{} free {C:attention}Mega Standard Packs{}",
+        }
+      },
+	  tag_abn_hazard_charm = {
+        name = "Charm Hazard",
+        text = {
+          "Gives {C:attention}2{} free {C:tarot}Mega Arcana Packs{}",
+        }
+      },
+	  tag_abn_hazard_meteor = {
+        name = "Meteor Hazard",
+        text = {
+          "Gives {C:attention}2{} free {C:planet}Mega Celestial Packs{}",
+        }
+      },
+	  tag_abn_hazard_buffoon = {
+        name = "Buffoon Hazard",
+        text = {
+          "Gives {C:attention}2{} free {C:attention}Mega Buffoon Packs{}",
+        }
+      },
+	  tag_abn_hazard_handy = {
+        name = "Handy Hazard",
+        text = {
+          "Gain {C:money}$#1#{} for each {C:chips}hand{} played this run",
+		  "{C:inactive}Currently: {C:money}$#2#{}", 
         }
       },
       --#endregion
@@ -908,6 +966,62 @@ return {
           "Next base edition shop",
           "Joker is free and",
           "becomes {C:dark_edition}#1#",
+        },
+      },
+	  tag_abn_chromatic = {
+        name = "Chromatic Tag",
+        text = {
+          "Next base edition shop",
+          "Joker is free and",
+          "becomes {C:dark_edition}Chromatic",
+        },
+      },
+	  tag_abn_reversal = {
+        name = "Reversal Tag",
+        text = {
+          "Next base edition shop",
+          "Joker is free and",
+          "becomes {C:dark_edition}Reversal",
+        },
+      },
+	  tag_abn_bit_rot = {
+        name = "Bit Rot Tag",
+        text = {
+          "Next base edition shop",
+          "Joker is free and",
+          "becomes {C:dark_edition}Bit Rot",
+        },
+      },
+	  tag_abn_reel = {
+        name = "Reel Tag",
+        text = {
+          "Next base edition shop",
+          "Joker is free and",
+          "becomes {C:dark_edition}Reel",
+        },
+      },
+	  tag_abn_collodion = {
+        name = "Collodion Tag",
+        text = {
+          "Next base edition shop",
+          "Joker is free and",
+          "becomes {C:dark_edition}Collodion",
+        },
+      },
+	  tag_abn_vintage = {
+        name = "Vintage Tag",
+        text = {
+          "Next base edition shop",
+          "Joker is free and",
+          "becomes {C:dark_edition}Vintage",
+        },
+      },
+	  tag_abn_unknown = {
+        name = "Unknown Tag",
+        text = {
+          "Next base edition shop",
+          "Has a free Random rarity",
+          "{C:attention}Flipped{} Joker",
         },
       },
       tag_abn_calamity = {
@@ -953,12 +1067,11 @@ return {
           "{C:inactive}(Must have room)",
         }
       },
-      tag_abn_unrevealed = {
-        name = "Unrevealed Tag",
+      tag_abn_flip = {
+        name = "Flip Tag",
         text = {
           "Shop has a free",
-          "{C:attention}Flipped{} Joker",
-          "of a random rarity"
+          "{C:attention}Flipped{} card",
         }
       },
       tag_abn_nightshift = {
@@ -1006,8 +1119,15 @@ return {
       tag_abn_continent = {
         name = "Continental Tag",
         text = {
-          "Shop has a free",
-          "{C:continent}Continent{} card",
+          "Gives a free",
+          "{C:continent}Continent{} Pack",
+        }
+      },
+	  tag_abn_solid = {
+        name = "Solid State Tag",
+        text = {
+          "Gives a free",
+          "Solid State Pack",
         }
       },
       --#endregion
@@ -1112,7 +1232,7 @@ return {
           "atleast 4 different suits"
         },
       },
-      bl_abn_mint_£ = {
+      bl_abn_mint_e = {
         name = "Mint £",
         text = {
           "Mult can't go above 3X $"
@@ -1124,7 +1244,7 @@ return {
           "All Joker values are halved"
         },
       },
-      bl_abn_orange_± = {
+      bl_abn_orange_plus = {
         name = "Orange ±",
         text = {
           "Retriggers are disabled"
@@ -1550,7 +1670,7 @@ return {
           "Hands above level 3 are debuffed",
         },
       },
-      bl_abn_hazard_£ = {
+      bl_abn_hazard_e = {
         name = "Hazard £",
         text = {
           "Mult can't go above 2X $",
@@ -1564,7 +1684,7 @@ return {
           "3 card Hands are debuffed",
         },
       },
-      bl_abn_hazard_± = {
+      bl_abn_hazard_plus = {
         name = "Hazard ±",
         text = {
           "Retriggers are disabled",
@@ -6535,9 +6655,22 @@ return {
 		  "{C:inactive}Currently:{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#1#{} {C:inactive}Chips{}"
         }
       },
+      j_abn_tlumddo = {
+        name = "Tlumddo Joker",
+        text = {
+          "When a {C:attention}Bonus Card{} is scored,",
+          "all non-{C:attention}Bonus{} cards in scoring",
+          "hand permanently gain {C:mult}+#1#{} Mult",
+          "When an {C:attention}odd Bonus Card{} is scored,",
+          "all non-{C:attention}Bonus{} cards in scoring",
+          "hand permanently gain {C:chips}+#2#{} Chips"
+        },
+        unlock = {
+          "Have the {C:attention,E:1}Bonus{} Enhancement",
+          "on an odd numbered card"
+        }
+      }
     },
-
-
     Spectral = {
       c_abn_apotheosis = {
         name = "Apotheosis",
@@ -7240,6 +7373,30 @@ return {
         text = {
           'Choose {C:attention}#1#{} of up to',
           '{C:attention}#2#{} {C:abn_astro}Astro{} cards to',
+          'be used immediately'
+        }
+      },
+	  p_abn_solid_normal = {
+        name = 'Solid State Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} Solid State cards to',
+          'be used immediately'
+        }
+      },
+	  p_abn_solid_jumbo = {
+        name = 'Jumbo Solid State Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} Solid State cards to',
+          'be used immediately'
+        }
+      },
+	  p_abn_solid_mega = {
+        name = 'Mega Solid State Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} Solid State cards to',
           'be used immediately'
         }
       },
