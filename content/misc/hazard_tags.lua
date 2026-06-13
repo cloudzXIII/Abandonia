@@ -898,7 +898,7 @@ SMODS.Tag {
 SMODS.Tag {
   key = "hazard_handy",
   atlas = "AbandoniaHazardTags",
-  pos = { x = 3, y = 4 },
+  pos = { x = 2, y = 5 },
   config = { hazard = true, dollars_per_hand = 2 },
   
   loc_vars = function(self, info_queue, tag)
