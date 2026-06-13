@@ -26,7 +26,7 @@ SMODS.Joker {
                        G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
                         G.E_MANAGER:add_event(Event({
                             func = function()
-                                SMODS.create_card({set="astro_cards"})
+                                SMODS.add_card({set="astro_cards", area = G.consumeables})
                                 G.GAME.consumeable_buffer = 0 
                                 return true
                             end
@@ -95,9 +95,14 @@ SMODS.Joker {
         if context.setting_blind then
             card.ability.extra.create = false
         end
-
-        
-
+    end,
+    in_pool = function(self, args)
+        for i, playing_card in ipairs(G.playing_cards) do
+            if SMODS.has_enhancement(playing_card, "m_stone") or SMODS.has_enhancement(playing_card, "m_abn_petroleum") then
+                return true
+            end
+        end
+        return false
     end,
     abn_artist_credits = {
         artist = "Sustato",

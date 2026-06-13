@@ -6093,6 +6093,82 @@ return {
             },
         },
       },
+      j_abn_harlequin_joker = {
+        name = "Harlequin Joker",
+        text = {
+            {
+            "If the {C:attention}first{} card scored is {C:attention}even{} and",
+            "the {C:attention}last{} card scored is {C:attention}odd:"
+            },
+            {
+            "Give a {C:dark_edition}Negative{} {C:abn_sigil}Sigil Card{}",
+            "if they have matching {C:enhanced}Enhancements",
+            },
+            {
+            "Give a {C:dark_edition}Negative{} {C:abn_solidstate}Solid State Card{}",
+            "if they have matching {C:dark_edition}Editions",
+            },
+            {
+            "Give a {C:dark_edition}Negative{} {C:abn_lexica}Lexica Card{}",
+            "if they have matching {C:attention}Seals",
+            },
+        },
+      },
+      j_abn_ridiculous_joker = {
+        name = "Ridiculous Joker",
+        text = {
+            {
+            "If your {C:attention}played hand{} is only {C:attention}even{} cards,",
+            "and the cards {C:attention}held{} are only {C:attention}odd{} cards,",
+            "gain {C:red}Mult{} equal to",
+            "the rank sum of all cards"
+            },
+            {
+            "If your {C:attention}played hand{} is only {C:attention}odd{} ranks,",
+            "and the cards {C:attention}held{} are only {C:attention}even{} ranks,",
+            "gain {C:blue}Chips{} equal to",
+            "the rank sum of all cards",
+            },
+            {
+            "{C:inactive}(Currently {C:red}+#1#{C:inactive} Mult, {C:blue}+#2#{C:inactive} Chips)",
+            },
+        },
+      },
+      j_abn_housing_crisis = {
+        name = "Housing Crisis",
+        text = {
+            {
+            "If the {C:attention}first played hand{} is a {C:attention}#1#{}",
+            "composed of {C:attention}2{} even cards and {C:attention}3{} odd cards,",
+            "earn {C:gold}$#2#{} and gain {C:red}+#3#{} Mult and {C:blue}+#4#{} Chips",
+            },
+            {
+            "If the {C:attention}second played hand{} is a {C:attention}#1#{}",
+            "composed of {C:attention}2{} odd cards and {C:attention}3{} even cards,",
+            "earn {C:gold}$#5#{} and gain {C:red}+#6#{} Mult and {C:blue}+#7#{} Chips",
+            },
+            {
+            "If the {C:attention}third played hand{} is a {C:attention}#1#{}",
+            "composed of {C:attention}2{} {C:diamonds}Light Suits{} and {C:attention}3{} {C:spades}Dark Suits{},",
+            "{C:planet}level up{} the {C:attention}poker hand{}",
+            },
+            {
+            "{C:inactive}(Currently {C:red}+#8#{C:inactive} Mult, {C:blue}+#9#{C:inactive} Chips)",
+            },
+        },
+      },
+      j_abn_nerd_joker = {
+        name = "Nerd Joker",
+        text = {
+            {
+            "If your {C:attention}scoring hand{} is an even",
+            "amount of odd ranked cards,",
+            "gain {C:chips}Chips{} equal to {X:blue,C:white}X#1#{}",
+            "the {C:attention}sum{} of ranks",
+            "{C:inactive}(Currently {C:blue}+#2#{C:inactive} Chips)",
+            },
+        },
+      },
       j_abn_billiard_14 = {
         name = "Billiard 14",
         text = {
@@ -6202,6 +6278,17 @@ return {
             "has {C:attention}scored{} this {C:attention}hand",
             "{C:inactive}e.g. \"2\",\"4\",\"2\",\"4\"",
             "{C:inactive}= {C:chips}+1{C:inactive},{C:chips}+1{C:inactive},{C:chips}+2{C:inactive},{C:chips}+2{C:inactive}"
+          },
+        }
+
+      },
+      j_abn_bad_director = {
+        name = "Bad Director",
+        text = {
+          {
+            "Boss Blinds can be rerolled",
+            "at the base cost of {C:gold}$#1#{}", 
+            "increase cost by {C:gold}$1{} per reroll"
           },
         }
 
@@ -6361,6 +6448,20 @@ return {
         text = {
           "At {C:attention}end of round{} all Jokers gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
           "Per different {C:dark_edition}Edition{} in held {C:attention}consumables{}",
+        },
+      },
+      j_abn_joker_unlimited           = {
+        name = "Joker Unlimited",
+        text = {
+          {
+          "Gain {X:red,C:white}X#1#{} Mult per hand",
+          "played during a {C:blind}Boss Blind",
+          "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+          },
+          {
+          "When beating a {C:blind}Boss Blind{}, {C:attention}copy{} all cards",
+          "in your {C:attention}full deck{}",
+          }
         },
       },
       j_abn_monkey_buisness          = {

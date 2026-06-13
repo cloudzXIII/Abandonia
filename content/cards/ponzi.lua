@@ -28,12 +28,14 @@ SMODS.Joker {
   end,
 
   update = function(self, card)
-    if card.area == G.jokers then
+    if card.area and card.area == G.jokers then
       if G.GAME.dollars < card.ability.extra.money then
         card.ability.extra.money = G.GAME.dollars
-        for _, v in ipairs(G.playing_cards) do
-          v.ability.perma_mult = (v.ability.perma_mult or 0) + card.ability.extra.mult
-          v.ability.perma_bonus = (v.ability.perma_bonus or 0) + card.ability.extra.chips
+        if G.playing_cards then 
+          for _, v in ipairs(G.playing_cards) do
+            v.ability.perma_mult = (v.ability.perma_mult or 0) + card.ability.extra.mult
+            v.ability.perma_bonus = (v.ability.perma_bonus or 0) + card.ability.extra.chips
+          end
         end
       end
 
