@@ -926,6 +926,129 @@ return {
 		  "{C:inactive}Currently: {C:money}$#2#{}", 
         }
       },
+	  
+	  tag_abn_hazard_chromatic = {
+        name = "Chromatic Hazard",
+        text = {
+          "Add {C:dark_edition}Chromatic{} to",
+          "a random {C:attention}Joker{} and {C:attention}#1#{}",
+          "card in your {C:attention}full deck"
+        }
+      },
+	  tag_abn_hazard_reversal = {
+        name = "Reversal Hazard",
+        text = {
+          "Add {C:dark_edition}Reversal{} to",
+          "a random {C:attention}Joker{} and {C:attention}#1#{}",
+          "card in your {C:attention}full deck"
+        }
+      },
+	  tag_abn_hazard_bit_rot = {
+        name = "Bit Rot Hazard",
+        text = {
+          "Add {C:dark_edition}Bit Rot{} to",
+          "a random {C:attention}Joker{} and {C:attention}#1#{}",
+          "card in your {C:attention}full deck"
+        }
+      },
+	  tag_abn_hazard_reel = {
+        name = "Reel Hazard",
+        text = {
+          "Add {C:dark_edition}Reel{} to",
+          "a random {C:attention}Joker{} and {C:attention}#1#{}",
+          "card in your {C:attention}full deck"
+        }
+      },
+	  tag_abn_hazard_collodion = {
+        name = "Collodion Hazard",
+        text = {
+          "Add {C:dark_edition}Collodion{} to",
+          "a random {C:attention}Joker{} and {C:attention}#1#{}",
+          "card in your {C:attention}full deck"
+        }
+      },
+	  tag_abn_hazard_vintage = {
+        name = "Vintage Hazard",
+        text = {
+          "Add {C:dark_edition}Vintage{} to",
+          "a random {C:attention}Joker{} and {C:attention}#1#{}",
+          "card in your {C:attention}full deck"
+        }
+      },
+	  
+	  tag_abn_hazard_garbage = {
+        name = "Garbage Hazard",
+        text = {
+          "Gain {C:money}$#1#{} for each unused {C:mult}Discard{} this run",
+		  "{C:inactive}Currently: {C:money}$#2#{}", 
+        }
+      },
+	  tag_abn_hazard_ethereal = {
+        name = "Ethereal Hazard",
+        text = {
+          "Gives {C:attention}2{} free {C:spectral}Mega Spectral Packs{}",
+        }
+      },
+	  tag_abn_hazard_juggler = {
+        name = "Juggler Hazard",
+        text = {
+          "{C:attention}+#1#{} hand size",
+		  "next round",
+        }
+      },
+	  tag_abn_hazard_d6 = {
+        name = "D6 Hazard",
+        text = {
+          "{C:attention}+#1#{} free rerolls",
+		  "in the next shop",
+        }
+      },
+	  tag_abn_hazard_speed = {
+        name = "Speed Hazard",
+        text = {
+          "Gives {C:money}$#1#{} per skipped",
+		  "blind this run",
+		  "{C:inactive}(will give {C:money}$#2#{}{C:inactive})"
+        }
+      },
+	  tag_abn_hazard_orbital = {
+        name = "Orbital Hazard",
+        text = {
+          "Upgrade {C:attention}#1#{} and {C:attention}#2#{}",
+		  "By {C:attention}#3#{} levels",
+        }
+      },
+	  tag_abn_hazard_weather = {
+        name = "Weather Hazard",
+        text = {
+          "Gives {C:attention}2{} free {C:weather_report}Mega Weather Packs{}",
+        }
+      },
+	  tag_abn_hazard_calamity = {
+        name = "Calmity Hazard",
+        text = {
+          "Gives {C:attention}2{} free {C:abn_calamity}Mega Calamity Packs{}",
+        }
+      },
+	  tag_abn_hazard_sigil = {
+        name = "Sigil Hazard",
+        text = {
+          "Gives {C:attention}2{} free {C:abn_sigil}Mega Sigil Packs{}",
+        }
+      },
+	  tag_abn_hazard_astro = {
+        name = "Astro Hazard",
+        text = {
+          "Gives {C:attention}2{} free {C:abn_astro}Mega Astro Packs{}",
+        }
+      },
+	  tag_abn_hazard_nightshift = {
+        name = "Nightshift Hazard",
+        text = {
+          "Shop has a free",
+          "{C:abn_nightshift}Nightshift{} card",
+        }
+      },
       --#endregion
       --#region Normal Tags
       tag_abn_gloss = {
@@ -1129,6 +1252,28 @@ return {
           "Gives a free",
           "Solid State Pack",
         }
+      },
+	  tag_abn_patch = {
+        name = "Patch Tag",
+        text = {
+          "Next base edition shop",
+          "Has a free Joker",
+          "with a {C:attention}positive{} Sticker",
+        },
+      },
+	  tag_abn_plague = {
+        name = "Plague Tag",
+        text = {
+          "Next base edition shop",
+          "Has a free {C:green}Plagued{} Joker",
+        },
+      },
+	  tag_abn_virus = {
+        name = "Virus Tag",
+        text = {
+          "Next base edition shop",
+          "Has a free {C:abn_black_seal}Virus{} Joker",
+        },
       },
       --#endregion
     },
