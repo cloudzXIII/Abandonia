@@ -54,7 +54,7 @@ SMODS.Joker {
       local uncommons = { "j_abn_fit_to_shape", "j_abn_handbook_of_a_conman", "j_abn_asylum_joker",
         "j_abn_degraded_data_joker" }
       local rares = { "j_abn_blood_money", "j_abn_manga_panel_joker", "j_abn_monitor_joker",
-        "j_abn_fractured_identity_joker", "j_abn_scantron_joker", "j_abn_ransomware_joker", "j_badformat_joker" }
+        "j_abn_fractured_identity_joker", "j_abn_scantron_joker", "j_abn_ransomware_joker", "j_abn_badformat_joker" }
 
       -- track how many we actually manage to destroy
       local successfully_destroyed = 0
