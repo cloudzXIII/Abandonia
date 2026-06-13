@@ -968,6 +968,62 @@ return {
           "becomes {C:dark_edition}#1#",
         },
       },
+	  tag_abn_chromatic = {
+        name = "Chromatic Tag",
+        text = {
+          "Next base edition shop",
+          "Joker is free and",
+          "becomes {C:dark_edition}Chromatic",
+        },
+      },
+	  tag_abn_reversal = {
+        name = "Reversal Tag",
+        text = {
+          "Next base edition shop",
+          "Joker is free and",
+          "becomes {C:dark_edition}Reversal",
+        },
+      },
+	  tag_abn_bit_rot = {
+        name = "Bit Rot Tag",
+        text = {
+          "Next base edition shop",
+          "Joker is free and",
+          "becomes {C:dark_edition}Bit Rot",
+        },
+      },
+	  tag_abn_reel = {
+        name = "Reel Tag",
+        text = {
+          "Next base edition shop",
+          "Joker is free and",
+          "becomes {C:dark_edition}Reel",
+        },
+      },
+	  tag_abn_collodion = {
+        name = "Collodion Tag",
+        text = {
+          "Next base edition shop",
+          "Joker is free and",
+          "becomes {C:dark_edition}Collodion",
+        },
+      },
+	  tag_abn_vintage = {
+        name = "Vintage Tag",
+        text = {
+          "Next base edition shop",
+          "Joker is free and",
+          "becomes {C:dark_edition}Vintage",
+        },
+      },
+	  tag_abn_unknown = {
+        name = "Unknown Tag",
+        text = {
+          "Next base edition shop",
+          "Has a free Random rarity",
+          "{C:attention}Flipped{} Joker",
+        },
+      },
       tag_abn_calamity = {
         name = "Calamity Tag",
         text = {
@@ -1011,12 +1067,11 @@ return {
           "{C:inactive}(Must have room)",
         }
       },
-      tag_abn_unrevealed = {
-        name = "Unrevealed Tag",
+      tag_abn_flip = {
+        name = "Flip Tag",
         text = {
           "Shop has a free",
-          "{C:attention}Flipped{} Joker",
-          "of a random rarity"
+          "{C:attention}Flipped{} card",
         }
       },
       tag_abn_nightshift = {
@@ -1064,8 +1119,15 @@ return {
       tag_abn_continent = {
         name = "Continental Tag",
         text = {
-          "Shop has a free",
-          "{C:continent}Continent{} card",
+          "Gives a free",
+          "{C:continent}Continent{} Pack",
+        }
+      },
+	  tag_abn_solid = {
+        name = "Solid State Tag",
+        text = {
+          "Gives a free",
+          "Solid State Pack",
         }
       },
       --#endregion
