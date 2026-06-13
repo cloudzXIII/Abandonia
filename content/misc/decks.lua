@@ -443,6 +443,12 @@ SMODS.Back {
             local chosen_suit = pseudorandom_element(available_suits, pseudoseed('paint_deck' .. seed_suffix))
             G.GAME.paint_deck_suit = chosen_suit
 
+
+            local clean_suit_name = chosen_suit:gsub("^[^_]+_", "")
+            
+
+            clean_suit_name = clean_suit_name:sub(1,1):upper() .. clean_suit_name:sub(2)
+
             -- display text
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
@@ -451,7 +457,7 @@ SMODS.Back {
                     play_sound('tarot1', 1.1, 0.6)
                     attention_text({
                         scale = 0.8,
-                        text = "New Suit: " .. chosen_suit,
+                        text = "New Suit: " .. clean_suit_name,
                         hold = 2,
                         align = 'cm',
                         offset = { x = 0, y = -1 },
@@ -465,7 +471,11 @@ SMODS.Back {
     end,
 
     loc_vars = function(self, info_queue)
-        return { vars = { G.GAME.paint_deck_suit or 'Spades' } }
+        local display_suit = G.GAME.paint_deck_suit or 'Spades'
+        local clean_display = display_suit:gsub("^[^_]+_", "")
+        clean_display = clean_display:sub(1,1):upper() .. clean_display:sub(2)
+        
+        return { vars = { clean_display } }
     end,
 
     apply = function(self)

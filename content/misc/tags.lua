@@ -185,7 +185,7 @@ SMODS.Tag {
 
 SMODS.Tag {
   key = "chromatic",
-  pos = { x = 1, y = 0 },
+  pos = { x = 5, y = 0 },
   atlas = "AbandoniaTags",
   loc_vars = function(self, info_queue, tag)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_chromatic
@@ -401,7 +401,7 @@ SMODS.Tag {
                     set = "Joker",
                     rarity = chosen_rarity_str,
                     area = context.area,
-                    key_append = "vremade_rta"
+                    key_append = "unknown"
                 }
                 create_shop_card_ui(card, 'Joker', context.area)
                 card.states.visible = false
@@ -571,7 +571,7 @@ SMODS.Tag {
 SMODS.Tag {
   key = "top_filled",
   min_ante = 2,
-  pos = { x = 3, y = 2 },
+  pos = { x = 3, y = 4 },
   atlas = "AbandoniaTags",
   config = { spawn_jokers = 2 },
   loc_vars = function(self, info_queue, tag)
@@ -847,4 +847,224 @@ SMODS.Tag {
             return true
         end
     end
+}
+
+SMODS.Tag {
+    key = "patch",
+    pos = { x = 4, y = 4 },
+    atlas = "AbandoniaTags",
+    
+    loc_vars = function(self, info_queue, tag)
+        info_queue[#info_queue + 1] = { key = "abn_flipped_card", set = "Other" }
+    end,
+    
+    apply = function(self, tag, context)
+        if context.type == 'store_joker_create' then
+            
+            -- Generates a random number (1 or 2) for Common or Uncommon
+            local chosen_rarity_num = math.floor(pseudorandom('tag_rarity') * 2) + 1
+            local rarity_map = { [1] = "Common", [2] = "Uncommon" }
+            local chosen_rarity_str = rarity_map[chosen_rarity_num]
+
+            local jokers_in_possession = { 0 }
+            for _, joker in ipairs(G.jokers.cards) do
+                if joker.config.center.rarity == chosen_rarity_num and not jokers_in_possession[joker.config.center.key] then
+                    jokers_in_possession[1] = jokers_in_possession[1] + 1
+                    jokers_in_possession[joker.config.center.key] = true
+                end
+            end
+
+            if #G.P_JOKER_RARITY_POOLS[chosen_rarity_num] > jokers_in_possession[1] then
+                local lock = tag.ID
+                G.CONTROLLER.locks[lock] = true
+
+                local card = SMODS.create_card {
+                    set = "Joker",
+                    rarity = chosen_rarity_str,
+                    area = context.area,
+                    key_append = "unknown"
+                }
+                create_shop_card_ui(card, 'Joker', context.area)
+                card.states.visible = false
+
+                tag:yep('+', G.C.BLUE, function()
+                    card:start_materialize()
+                    card.ability.couponed = true
+                    card:set_cost()
+                    
+                    -- sticker list
+                    local abn_stickers = {
+                        'abn_pump_up', 'abn_bullseye', 'abn_shovel',
+                        'abn_weight', 'abn_possiblity', 'abn_square',
+						'abn_lightning_bolt', 'abn_top_hat', 'abn_spicy',
+                        'abn_lucky',
+                    }
+                    
+                    
+                    local chosen_sticker = pseudorandom_element(abn_stickers, pseudoseed('tag_sticker'))
+                    card:add_sticker(chosen_sticker, true)
+
+                    
+                    G.CONTROLLER.locks[lock] = nil
+                    return true
+                end)
+
+                tag.triggered = true
+                return card
+            else
+                tag:nope()
+            end
+        end
+    end,
+}
+
+SMODS.Tag {
+    key = "plague",
+    pos = { x = 0, y = 5 },
+    atlas = "AbandoniaTags",
+    
+	in_pool = function(self)
+		return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+	end,
+	
+    apply = function(self, tag, context)
+        if context.type == 'store_joker_create' then
+            
+            local owned_jokers = {}
+            if G.jokers and G.jokers.cards then
+                for _, joker in ipairs(G.jokers.cards) do
+                    if joker.config.center and joker.config.center.key then
+                        owned_jokers[joker.config.center.key] = true
+                    end
+                end
+            end
+
+            local uncommons = { 
+                "j_abn_fit_to_shape", "j_abn_handbook_of_a_conman", 
+                "j_abn_asylum_joker", "j_abn_degraded_data_joker" 
+            }
+            local rares = { 
+                "j_abn_blood_money", "j_abn_manga_panel_joker", "j_abn_monitor_joker",
+                "j_abn_fractured_identity_joker", "j_abn_scantron_joker", 
+                "j_abn_ransomware_joker", "j_abn_badformat_joker" 
+            }
+
+
+            local base_pool = {}
+            for _, j in ipairs(uncommons) do table.insert(base_pool, j) end
+            for _, j in ipairs(rares) do table.insert(base_pool, j) end
+
+
+            local available_pool = {}
+            for _, joker_key in ipairs(base_pool) do
+                if not owned_jokers[joker_key] then
+                    table.insert(available_pool, joker_key)
+                end
+            end
+
+            if #available_pool == 0 then
+                available_pool = base_pool
+            end
+
+            local chosen_joker = pseudorandom_element(available_pool, pseudoseed('plague_tag_spawn'))
+
+            local lock = tag.ID
+            G.CONTROLLER.locks[lock] = true
+
+            local card = SMODS.create_card {
+                set = "Joker",
+                area = context.area,
+                key = chosen_joker,
+                key_append = "plague_tag"
+            }
+            create_shop_card_ui(card, 'Joker', context.area)
+            card.states.visible = false
+
+            tag:yep('+', G.C.GREEN, function()
+                card:start_materialize()
+                
+                card.ability.couponed = true
+                card:set_cost()
+
+                G.CONTROLLER.locks[lock] = nil
+                return true
+            end)
+
+            tag.triggered = true
+            return card
+        end
+    end,
+}
+
+SMODS.Tag {
+    key = "virus",
+    pos = { x = 5, y = 4 },
+    atlas = "AbandoniaTags",
+    
+    apply = function(self, tag, context)
+        if context.type == 'store_joker_create' then
+       
+            local owned_jokers = {}
+            if G.jokers and G.jokers.cards then
+                for _, joker in ipairs(G.jokers.cards) do
+                    if joker.config.center and joker.config.center.key then
+                        owned_jokers[joker.config.center.key] = true
+                    end
+                end
+            end
+
+            local base_pool = {}
+            for key, center in pairs(G.P_CENTERS) do
+                if center.set == "Joker" and (center.rarity == "abn_VirusRare" or (center.pools and center.pools["abn_VirusRare"])) then
+                    table.insert(base_pool, key)
+                end
+            end
+
+            local available_pool = {}
+            for _, joker_key in ipairs(base_pool) do
+                if not owned_jokers[joker_key] then
+                    table.insert(available_pool, joker_key)
+                end
+            end
+
+
+            if #available_pool == 0 then
+                available_pool = base_pool
+            end
+
+
+            if #available_pool == 0 then 
+                tag:nope()
+                return 
+            end
+
+
+            local chosen_joker = pseudorandom_element(available_pool, pseudoseed('virus_rare_tag_spawn'))
+
+            local lock = tag.ID
+            G.CONTROLLER.locks[lock] = true
+
+            local card = SMODS.create_card {
+                set = "Joker",
+                area = context.area,
+                key = chosen_joker,
+                key_append = "virus_rare_tag"
+            }
+            create_shop_card_ui(card, 'Joker', context.area)
+            card.states.visible = false
+
+            tag:yep('+', G.C.GREEN, function()
+                card:start_materialize()
+                
+                card.ability.couponed = true
+                card:set_cost()
+
+                G.CONTROLLER.locks[lock] = nil
+                return true
+            end)
+
+            tag.triggered = true
+            return card
+        end
+    end,
 }
