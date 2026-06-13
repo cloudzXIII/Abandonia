@@ -5947,6 +5947,32 @@ return {
           "Swap {C:chips}Chips{} and {C:mult}Mult{} if {C:abn_bow}Bows{}",
         },
       },
+      j_abn_stone_calendar = {
+        name = "Stone Calendar",
+        text = {
+            {
+            "{C:attention}Stone{} and {C:attention}Petroleum Cards{}",
+            "retain their ranks and suit",
+            },
+            {
+            "If your hand is composed of {C:attention}Stone Cards{}",
+            "with atleast {C:attention}4{} different suits,",
+            "gain {X:chips,C:white}X#1#{} Chips",
+            "{C:inactive}(Currently {X:blue,C:white}X#2#{C:inactive} Chips)",
+            },
+            {
+            "{C:attention}Petroleum Cards{} have a {C:green}#3# in #4#{} chance",
+            "to create an {C:abn_astro}Astro Card{} when triggered",
+            "{C:inactive}(Must have room)",
+            },
+            {
+            "Playing at least {C:attention}2{} odd {C:attention}Stone Cards{} and",
+            "{C:attention}2{} even {C:attention}Petroleum Cards{} guarantees",
+            "{C:abn_astro}Astro Card{} creation until the next {C:attention}Blind",
+            
+            },
+        },
+      },
       j_abn_billiard_14 = {
         name = "Billiard 14",
         text = {
