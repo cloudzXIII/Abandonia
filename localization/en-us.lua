@@ -3747,10 +3747,8 @@ return {
       j_abn_jorick = {
         name = "Jorik",
         text = {
-          "This Joker gains",
-          "{X:mult,C:white} X#1# {} Mult every {C:attention}#2#{C:inactive} (#3#){}",
-          "cards drawn to hand",
-          "{C:inactive}(Currently {X:mult,C:white} X#4# {C:inactive} Mult)",
+          "If you have {C:attention}0{} {C:mult}discards{}",
+		  "{X:mult,C:white}X#1#{} Mult {X:chips,C:white}X#2#{} Chips",
         },
       },
       j_abn_nightstalker = {
@@ -4090,9 +4088,8 @@ return {
       j_abn_pankert                  = {
         name = "Pankert",
         text = {
-          "This Joker gains {C:white,X:mult}X#1#{}",
-          "for each {C:attention}consumable{} held",
-          "{C:inactive}(Currently {C:white,X:mult}X#2#{} {C:inactive}Mult)"
+          "If you have {C:attention}4{} or more consumables",
+          "{C:white,X:chips}^#1#{} Chips"
         }
       },
       j_abn_final_showdown           = {
