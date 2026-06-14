@@ -49,6 +49,34 @@ return {
           "Give all cards in hand {C:attention}Flipped{} and {C:abn_brown_seal}Brown Seal{}",
         }
       },
+	  c_abn_upload = {
+        name = "Upload",
+        text = {
+          "Place the {C:attention}leftmost{} Joker into the {C:attention}consumable slots{}",
+		  "{C:attention}-1{} Consumable Slots",
+        }
+      },
+	  c_abn_brightness = {
+        name = "Brightness",
+        text = {
+          "Apply {C:money}Bright{} to all {C:diamonds}Light Suit{} cards held in hand",
+		  "{C:mult}Destroy{} all {C:spades}Dark Suit{} cards held in hand",
+        }
+      },
+	  c_abn_dark_web = {
+        name = "Dark Web",
+        text = {
+          "Apply {C:spades}Dark{} to all {C:spades}Dark Suit{} cards held in hand",
+		  "{C:mult}Destroy{} all {C:diamonds}Light Suit{} cards held in hand",
+        }
+      },
+	  c_abn_database = {
+        name = "Database",
+        text = {
+          "{C:mult}Destroy{} selected {C:attention}Joker{}",
+		  "Choose a new Joker of the same {C:attention}rarity{}",
+        }
+      },
     },
     continent = {
       c_abn_africa = {
@@ -1927,8 +1955,8 @@ return {
           }
         },
       },
-      j_abn_boxing_champ = {
-        name = "Boxing Champ",
+      j_abn_dark_stallion = {
+        name = "Dark Stallion",
         text = {
           "This Joker gains {C:chips}+#4#{} Chips",
           "and {C:mult}+#2#{} Mult when another",
