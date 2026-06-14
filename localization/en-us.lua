@@ -6915,7 +6915,73 @@ return {
           "Have the {C:attention,E:1}Bonus{} Enhancement",
           "on an odd numbered card"
         }
-      }
+      },
+	  j_abn_information_overload         = {
+        name = "Information Overload",
+        text = {
+          "All Scoring {C:attention}Even{} cards gain {C:spectral}Fire Aura",
+		  "All Scoring {C:attention}Odd{} cards gain {C:money}Based Aura",
+        }
+      },
+	  j_abn_pirate_server         = {
+        name = "Pirate Server",
+        text = {
+          "Scoring {C:money}Medium Ammo{} cards gain {C:abn_brown_seal}Brown Seal{}",
+		  "Scoring {C:purple}XP Boost{} cards gain {C:dark_edition}Chromatic Edition{}",
+		  "If this Joker has {C:tarot}Shockwaved{} retrigger all Jokers {C:attention}without{} {C:dark_edition}Editions{}",
+        }
+      },
+	  j_abn_the_big_cheese         = {
+        name = "The Big Cheese",
+        text = {
+          "All {C:uncommon}Uncommon{} and {C:rare}Rare{} Jokers are {C:attention}free{}",
+		  "But they gain {C:money}Mythic Edition{} upon {C:attention}purchase{}",
+        }
+      },
+	  j_abn_the_drink         = {
+        name = "The Drink",
+        text = {
+          "If your {C:attention}First hand{} is {C:attention}5{} Scoring cards they all gain {C:tarot}Shockwaved{}",
+		  "If your {C:attention}Final hand{} is {C:attention}High Card{} all {C:attention}unscoring{} cards gain {C:purple}Glitched Seal{}",
+        }
+      },
+	  j_abn_certified_brainrot         = {
+        name = "Certified Brainrot",
+        text = {
+          "All {C:attention}Brainrot{} Jokers give {X:chips,C:white}^#2#{} Chips and {X:mult,C:white}^#1#{} Mult",
+		  "Debuff all {C:attention}non-Brainrot{} Jokers",
+        }
+      },
+	  j_abn_mini_balala         = {
+        name = "Mini Balala",
+        text = {
+          "When a {C:attention}Joker{} is {C:money}sold{}",
+		  "{C:green}#1# in #2#{} chance to create a {C:mult}Gnome{}",
+		  "{C:green}#1# in #3#{} chance to create a {C:purple}Bandage Bazooka{}",
+		  "{C:green}#1# in #4#{} chance to create a {C:money}FTC Lawsuit",
+        }
+      },
+	  j_abn_mango         = {
+        name = "Mango",
+        text = {
+          "#1#",
+		  "#2#",
+        }
+      },
+	  j_abn_joker_fortnite         = {
+        name = "Joker = Fortnite",
+        text = {
+          "If {C:purple}Fortnite{} is {C:attention}installed{} {X:mult,C:white}X#2#{} Mult per {C:attention}modded{} Joker",
+		  "Otherwise {C:mult}+#4#{} Mult per {C:attention}modded{} Joker",
+		  "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{} {C:mult}+#3#{} {C:inactive}Mult{}"
+        }
+      },
+	  j_abn_ugh_jimbo         = {
+        name = "Ugh Jimbo?",
+        text = {
+          "Likes to talk...maybe"
+        }
+      },
     },
     Spectral = {
       c_abn_apotheosis = {
