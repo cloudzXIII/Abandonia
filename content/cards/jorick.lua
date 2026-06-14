@@ -12,25 +12,20 @@ SMODS.Joker {
   cost = 10,
   discovered = false,
   blueprint_compat = true,
-
-  config = { extra = { draws = 23, draws_remaining = 23, x_mult = 1, x_mult_gain = 1 } },
+  config = { extra = { xmult = 2, xchips = 2, } },
+  
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    return { vars = { cae.xmult, cae.xchips, } }
+  end,
 
   calculate = function(self, card, context)
-    if context.hand_drawn then
-      if card.ability.extra.draws_remaining <= 0 then
-        card.ability.extra.draws_remaining = card.ability.extra.draws
-        SMODS.scale_card(card, {
-          ref_table = card.ability.extra,
-          ref_value = "x_mult",
-          scalar_value = "x_mult_gain",
-          operation = '+',
-          message_key = 'a_xmult'
-        })
-      else
-        card.ability.extra.draws_remaining = card.ability.extra.draws_remaining - #context.hand_drawn
-        return nil, true
-      end
-    end
+    if context.joker_main and G.GAME.current_round.discards_left == 0 then
+		return {
+			xmult = card.ability.extra.xmult,
+			xchips = card.ability.extra.xchips,
+		}
+	end
   end,
   abn_artist_credits = {
     artist = "Olsberg",
