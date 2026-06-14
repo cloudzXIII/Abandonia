@@ -1,4 +1,4 @@
--- Solid State Consumables (coded by cloudzXIII)
+-- Solid State Consumables (coded by cloudzXIII + EricTheToon)
 SMODS.ConsumableType {
   key = "solid_state",
   primary_colour = HEX("709795"),
@@ -571,5 +571,256 @@ ABN.SolidState {
 
   abn_artist_credits = {
     artist = "Muddz"
+  },
+}
+
+ABN.SolidState {
+  key = "upload",
+  pos = { x = 1, y = 1 }, 
+
+  can_use = function(self, card)
+    return G.jokers and G.jokers.cards[1] and #G.consumeables.cards < G.consumeables.config.card_limit
+  end,
+
+  use = function(self, card, area, copier)
+    local target_joker = G.jokers.cards[1]
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        play_sound('card1', 1)
+        target_joker:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.2,
+      func = function()
+        G.jokers:remove_card(target_joker)
+        
+        G.consumeables:emplace(target_joker)
+		
+		G.consumeables.config.card_limit = G.consumeables.config.card_limit - 1
+        
+        return true
+      end
+    }))
+
+    delay(0.5)
+  end,
+
+  abn_artist_credits = {
+    artist = "Muddz"
+  },
+}
+
+ABN.SolidState {
+  key = "brightness",
+  pos = { x = 1, y = 2 }, 
+
+  loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue + 1] = { key = "abn_light_suit", set = "Other" }
+	info_queue[#info_queue + 1] = { key = "abn_dark_suit", set = "Other" }
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_bright
+	return { vars = {} }
+  end,
+
+  can_use = function(self, card)
+    return #G.hand.cards > 0 
+  end,
+
+  use = function(self, card, area, copier)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        play_sound('card1', 1)
+        card:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.2,
+      func = function()
+        local destroyed_cards = {}
+
+        for i = #G.hand.cards, 1, -1 do
+          local target_card = G.hand.cards[i]
+          
+          if ABN.is_light(target_card) then
+            target_card:set_edition({ abn_bright = true }, true)
+            target_card:juice_up(0.3, 0.3)
+		  end
+          if ABN.is_dark(target_card) then
+            table.insert(destroyed_cards, target_card)
+          end
+        end
+
+        if #destroyed_cards > 0 then
+          for _, c in ipairs(destroyed_cards) do
+            c:start_dissolve()
+          end
+        end
+
+        return true
+      end
+    }))
+
+    delay(0.5)
+  end,
+
+  abn_artist_credits = {
+    artist = "Muddz"
+  },
+}
+
+ABN.SolidState {
+  key = "dark_web",
+  pos = { x = 0, y = 2 }, 
+
+  loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue + 1] = { key = "abn_light_suit", set = "Other" }
+	info_queue[#info_queue + 1] = { key = "abn_dark_suit", set = "Other" }
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_dark
+	return { vars = {} }
+  end,
+
+  can_use = function(self, card)
+    return #G.hand.cards > 0 
+  end,
+
+  use = function(self, card, area, copier)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        play_sound('card1', 1)
+        card:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.2,
+      func = function()
+        local destroyed_cards = {}
+
+        for i = #G.hand.cards, 1, -1 do
+          local target_card = G.hand.cards[i]
+          
+          if ABN.is_dark(target_card) then
+            target_card:set_edition({ abn_dark = true }, true)
+            target_card:juice_up(0.3, 0.3)
+		  end
+          if ABN.is_light(target_card) then
+            table.insert(destroyed_cards, target_card)
+          end
+        end
+
+        if #destroyed_cards > 0 then
+          for _, c in ipairs(destroyed_cards) do
+            c:start_dissolve()
+          end
+        end
+
+        return true
+      end
+    }))
+
+    delay(0.5)
+  end,
+
+  abn_artist_credits = {
+    artist = "Muddz"
+  },
+}
+
+local original_game_update = Game.update
+function Game:update(dt)
+    original_game_update(self, dt)
+
+    -- Detect clicks on Collection items during the Solid State process
+    local target = G.CONTROLLER.hovering.target
+    if G.GAME.dark_web_active and target and target.config and love.mouse.isDown(1) then
+        
+        -- Verify the player clicked a valid, discovered Joker card
+        if target.config.center and target.config.center.set == 'Joker' and target.config.center.discovered then
+            local rarity = target.config.center.rarity
+            local card_key = target.config.center.key
+            local allowed_rarity = G.GAME.dark_web_active.allowed_rarity
+            
+            -- Enforce that the clicked card exactly matches the rarity tier of the destroyed Joker
+            if rarity == allowed_rarity then
+                
+                -- Spawn the chosen Joker directly into your joker slots
+                local card = create_card('Joker', G.jokers, nil, nil, nil, nil, card_key)
+                card:add_to_deck()
+                G.jokers:emplace(card)
+                
+                -- Clear tracker data and close out the collection panel safely
+                G.GAME.dark_web_active = nil
+                G.FUNCS.exit_overlay_menu()
+            end
+        end
+    end
+end
+
+ABN.SolidState {
+  key = "database",
+  pos = { x = 4, y = 1 }, 
+
+  can_use = function(self, card)
+    return G.jokers and G.jokers.highlighted and #G.jokers.highlighted == 1 
+  end,
+
+  use = function(self, card, area, copier)
+    local target_joker = G.jokers.highlighted[1]
+    
+    if target_joker then
+      local target_rarity = target_joker.config.center.rarity
+
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.15,
+        func = function()
+          play_sound('card1', 1)
+          card:juice_up(0.3, 0.3)
+          return true
+        end
+      }))
+
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.2,
+        func = function()
+          target_joker:juice_up(0.3, 0.3)
+          target_joker:start_dissolve()
+
+
+          G.GAME.dark_web_active = {
+            allowed_rarity = target_rarity
+          }
+          
+
+          G.FUNCS.overlay_menu({
+            definition = create_UIBox_your_collection_jokers(),
+          })
+
+          return true
+        end
+      }))
+    end
+
+    delay(0.5)
+  end,
+
+  abn_artist_credits = {
+    artist = "La Ginger & Gfs"
   },
 }
