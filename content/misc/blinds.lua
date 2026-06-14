@@ -588,7 +588,7 @@ function Game:update_game_over(dt)
 end
 
 SMODS.Blind({
-  key = "mint_£",
+  key = "mint_e",
   boss = {
     showdown = true,
   },
@@ -741,7 +741,7 @@ end
 
 
 SMODS.Blind {
-  key = 'orange_±',
+  key = 'orange_plus',
   config = {},
   boss = {
     showdown = true,
@@ -2710,7 +2710,7 @@ SMODS.Blind({
 })
 
 SMODS.Blind({
-  key = "hazard_£",
+  key = "hazard_e",
   boss = { showdown = true, hazard_blind = true },
   atlas = "AbandoniaBlinds",
   pos = { x = 0, y = 34 },
@@ -2854,7 +2854,7 @@ SMODS.Blind({
 })
 
 SMODS.Blind {
-  key = 'hazard_±',
+  key = 'hazard_plus',
   config = {},
   boss = { showdown = true, hazard_blind = true },
   debuff = { suit = "Hearts" },
