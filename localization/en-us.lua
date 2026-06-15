@@ -9346,6 +9346,7 @@ return {
 
       b_solid_state_cards = "Solid State Cards",
       k_solid_state = "Solid State",
+      k_tag="Tag",
     },
     labels = {
       -- Consumable Types
