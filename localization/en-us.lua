@@ -66,7 +66,7 @@ return {
 	  c_abn_dark_web = {
         name = "Dark Web",
         text = {
-          "Apply {C:spades}Dark{} to all {C:spades}Dark Suit{} cards held in hand",
+          "Apply {C:spades}Opaque{} to all {C:spades}Dark Suit{} cards held in hand",
 		  "{C:mult}Destroy{} all {C:diamonds}Light Suit{} cards held in hand",
         }
       },
@@ -7785,7 +7785,7 @@ return {
         name = "Violet",
         text = {
           "Increase {C:attention}blind requirements",
-          " by {C:attention}#1#%{}",
+          " by {C:attention}10%{}",
           "when scored"
         }
       },
@@ -7829,8 +7829,7 @@ return {
       abn_question_mark = {
         name = "Question Mark?",
         text = {
-          "{C:attention}1{} scoring card",
-          "becomes {C:attention}Rankless{}"
+          "Scoring cards become {C:attention}Null{}"
         }
       },
       abn_square = {
@@ -8071,7 +8070,7 @@ return {
         }
       },
 	  e_abn_dark = {
-        name = "Dark",
+        name = "Opaque",
         text = {
           "{C:chips}+#1#{} Chips {C:mult}+#2#{} Mult per scoring {C:spades}Dark Suit{} {C:planet}planet{} {C:attention}rank{}"
         }
