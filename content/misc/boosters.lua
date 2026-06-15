@@ -1696,3 +1696,159 @@ SMODS.Booster {
     }
   end,
 }
+
+SMODS.Booster({
+  key = 'program_normal_1',
+  atlas = 'abn_AbandoniaProgramPack',
+  pos = { x = 0, y = 2 },
+  config = { extra = 3, choose = 1 },
+  weight = 1,
+  cost = 4,
+  group_key = 'abn_programbooster',
+  draw_hand = true,
+  unlocked = true,
+  discovered = false,
+  create_card = function(self, card)
+    return {
+      set = "program_pack",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+      key_append = "abn_program_cards"
+    }
+  end,
+
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
+  end,
+
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.GREEN, special_colour = G.C.MULT, contrast = 2 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.program_pack)
+    ease_background_colour(chosen_effect)
+  end,
+  abn_artist_credits = {
+    artist = "Vega",
+  },
+})
+
+SMODS.Booster({
+  key = 'program_normal_2',
+  atlas = 'abn_AbandoniaProgramPack',
+  pos = { x = 1, y = 2 },
+  config = { extra = 3, choose = 1 },
+  weight = 1,
+  cost = 4,
+  group_key = 'abn_programbooster',
+  draw_hand = true,
+  unlocked = true,
+  discovered = false,
+  create_card = function(self, card)
+    return {
+      set = "program_pack",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+      key_append = "abn_program_cards"
+    }
+  end,
+
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
+  end,
+
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.GREEN, special_colour = G.C.MULT, contrast = 2 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.program_pack)
+    ease_background_colour(chosen_effect)
+  end,
+  abn_artist_credits = {
+    artist = "Vega",
+  },
+})
+
+SMODS.Booster({
+  key = 'program_jumbo_1',
+  atlas = 'abn_AbandoniaProgramPack',
+  pos = { x = 2, y = 2 },
+  config = { extra = 5, choose = 1 },
+  weight = 1,
+  cost = 6,
+  group_key = 'abn_programbooster',
+  draw_hand = true,
+  unlocked = true,
+  discovered = false,
+  create_card = function(self, card)
+    return {
+      set = "program_pack",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+      key_append = "abn_program_cards"
+    }
+  end,
+
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
+  end,
+
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.GREEN, special_colour = G.C.MULT, contrast = 2 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.program_pack)
+    ease_background_colour(chosen_effect)
+  end,
+  abn_artist_credits = {
+    artist = "Vega",
+  },
+})
+
+SMODS.Booster({
+  key = 'program_mega_1',
+  atlas = 'abn_AbandoniaProgramPack',
+  pos = { x = 3, y = 2 },
+  config = { extra = 5, choose = 2 },
+  weight = 1,
+  cost = 8,
+  group_key = 'abn_programbooster',
+  draw_hand = true,
+  unlocked = true,
+  discovered = false,
+  create_card = function(self, card)
+    return {
+      set = "program_pack",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+      key_append = "abn_program_cards"
+    }
+  end,
+
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
+  end,
+
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.GREEN, special_colour = G.C.MULT, contrast = 2 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.program_pack)
+    ease_background_colour(chosen_effect)
+  end,
+  abn_artist_credits = {
+    artist = "Vega",
+  },
+})
