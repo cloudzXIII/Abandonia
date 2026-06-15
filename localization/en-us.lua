@@ -7737,6 +7737,30 @@ return {
           'be used immediately'
         }
       },
+	  p_abn_program_normal = {
+        name = 'Program Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:program_pack}Program{} cards to',
+          'be used immediately'
+        }
+      },
+	  p_abn_program_jumbo = {
+        name = 'Jumbo Program Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:program_pack}Program{} cards to',
+          'be used immediately'
+        }
+      },
+	  p_abn_program_mega = {
+        name = 'Mega Program Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:program_pack}Program{} cards to',
+          'be used immediately'
+        }
+      },
       card_abn_rank_chips = {
         text = {
           "{C:planet}#1#{} chips",
@@ -7928,6 +7952,13 @@ return {
           "Used this Joker",
           "to win on {C:attention}Toxic",
           "{C:attention}Stake{} difficulty",
+        }
+      },
+	  abn_spade = {
+        name = "Spade Sticker",
+        text = {
+          "All {C:spades}Spades{} give {C:attention}Double{} chips",
+		  "{C:mult}debuff{} all other suits",
         }
       },
 
@@ -9287,6 +9318,8 @@ return {
       abn_calamitybooster_m = "Mega Calamity Pack",
       abn_sigilbooster = "Sigil Booster",
       abn_astrobooster = "Astro Booster",
+	  k_solid_pack = "Solid State Pack",
+	  abn_programbooster = "Program Pack",
       abn_joker_chip = "extra Chips",
       abn_joker_mult = "extra Mult",
       abn_joker_xmult = "Mult",
@@ -9346,7 +9379,7 @@ return {
 
       b_solid_state_cards = "Solid State Cards",
       k_solid_state = "Solid State",
-      k_tag="Tag",
+	  k_tag = "Tag",
     },
     labels = {
       -- Consumable Types
@@ -9398,6 +9431,7 @@ return {
       abn_glove_hand = "Glove Hand",
       abn_spicy = "Spicy",
       abn_x = "X",
+	  abn_spade = "Spade",
       -- Seals
       abn_orange_seal = "Orange Seal",
       abn_grey_seal = "Grey Seal",
