@@ -38,14 +38,14 @@ ABN.listStickers = function(card)
 end
 
 ABN.is_dark = function(card)
-  if card:is_suit("Spades") or card:is_suit("Clubs") or card:is_suit('bunc_Halberds') or card:is_suit('paperback_Crowns') or card:is_suit("abn_Penumbra") then
+  if card:is_suit("Spades") or card:is_suit("Clubs") or card:is_suit('bunc_Halberds') or card:is_suit('paperback_Crowns') or card:is_suit("abn_Penumbra") or card:is_suit("abn_Bow") then
     return true
   end
   return false
 end
 
 ABN.is_light = function(card)
-  if card:is_suit("Diamonds") or card:is_suit("Hearts") or card:is_suit('bunc_Fleurons') or card:is_suit('paperback_Stars') or card:is_suit("abn_Snow") then
+  if card:is_suit("Diamonds") or card:is_suit("Hearts") or card:is_suit('bunc_Fleurons') or card:is_suit('paperback_Stars') or card:is_suit("abn_Snow") or card:is_suit("abn_Tie") then
     return true
   end
   return false
@@ -304,80 +304,60 @@ ABN.highest_level_hand = function()
   return _handname
 end
 
-table.insert(SMODS.calculation_keys, "abn_balance_percent")
-if SMODS.other_calculation_keys then
-  table.insert(SMODS.other_calculation_keys, "abn_balance_percent")
-end
-local abn_balance_mixed = false
-local abn_original_smods_calculate_effect = SMODS.calculate_individual_effect
-function calculate_balance_percent_values(input_hand_chips, input_mult, percent)
-  local chip_mod = percent * input_hand_chips
-  local mult_mod = percent * input_mult
-  local avg = (chip_mod + mult_mod) / 2
-  local new_hand_chips = input_hand_chips + (avg - chip_mod)
-  local new_mult = input_mult + (avg - mult_mod)
-  new_hand_chips = math.floor(new_hand_chips + 0.5)
-  new_mult = math.floor(new_mult + 0.5)
-  new_hand_chips = math.max(1, new_hand_chips)
-  new_mult = math.max(1, new_mult)
-  return new_hand_chips, new_mult
-end
-SMODS.calculate_individual_effect = function(effect, scored_card, key, amount, from_edition)
-  if key ~= "abn_balance_percent" then
-    return abn_original_smods_calculate_effect(effect, scored_card, key, amount, from_edition)
-  end
-  amount = amount / 100
-  if effect.card and effect.card ~= scored_card then
-    juice_card(effect.card)
-  end
-  local new_hand_chips, new_mult = calculate_balance_percent_values(hand_chips, mult, amount)
-  SMODS.Scoring_Parameters.chips:modify(new_hand_chips - hand_chips)
-  SMODS.Scoring_Parameters.mult:modify(new_mult - mult)
-  local text = "Balanced " .. (amount * 100) .. "%"
+
+-- Function to balance a percentage of score - borrowed from my own mod, Final Mix B)
+ABN.balance_percent = function(card, percent)
+  local chip_mod = percent * hand_chips
+  local mult_mod = percent * mult
+  local average = (chip_mod + mult_mod) / 2
+  hand_chips = hand_chips + (average - chip_mod)
+  mult = mult + (average - mult_mod)
+  
+  update_hand_text({ delay = 0 }, { mult = mult, chips = hand_chips })
+  card_eval_status_text(card, 'extra', nil, nil, nil, {
+    message = (percent * 100) .. "% " .. localize('k_balanced'),
+    colour = { 0.8, 0.45, 0.85, 1 },
+    sound = 'gong'
+  })
+  
   G.E_MANAGER:add_event(Event({
-    trigger = "immediate",
+    trigger = 'immediate',
     func = (function()
-      ease_colour(G.C.UI_CHIPS, mix_colours(G.C.PLASMA, G.C.UI_CHIPS, amount))
-      ease_colour(G.C.UI_MULT, mix_colours(G.C.PLASMA, G.C.UI_MULT, amount))
-      if not abn_balance_mixed then
-        abn_balance_mixed = true
-        G.E_MANAGER:add_event(Event({
-          trigger = "after",
-          blockable = false,
-          blocking = false,
-          delay = 6.3,
-          func = (function()
-            if G.STATE ~= 2 then
-              ease_colour(G.C.UI_CHIPS, G.C.BLUE, 2)
-              ease_colour(G.C.UI_MULT, G.C.RED, 2)
-              abn_balance_mixed = false
-              return true
-            end
-          end)
-        }))
-      end
+      ease_colour(G.C.UI_CHIPS, { 0.8, 0.45, 0.85, 1 })
+      ease_colour(G.C.UI_MULT, { 0.8, 0.45, 0.85, 1 })
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        blockable = false,
+        blocking = false,
+        delay = 4.3,
+        func = (function()
+          ease_colour(G.C.UI_CHIPS, G.C.BLUE, 2)
+          ease_colour(G.C.UI_MULT, G.C.RED, 2)
+          return true
+        end)
+      }))
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        blockable = false,
+        blocking = false,
+        no_delete = true,
+        delay = 6.3,
+        func = (function()
+          G.C.UI_CHIPS[1], G.C.UI_CHIPS[2], G.C.UI_CHIPS[3], G.C.UI_CHIPS[4] = G.C.BLUE[1], G.C.BLUE[2],
+          G.C.BLUE[3],
+          G.C.BLUE[4]
+          G.C.UI_MULT[1], G.C.UI_MULT[2], G.C.UI_MULT[3], G.C.UI_MULT[4] = G.C.RED[1], G.C.RED[2], G.C.RED[3],
+          G.C.RED
+          [4]
+          return true
+        end)
+      }))
       return true
     end)
   }))
-  if not effect.remove_default_message then
-    if from_edition then
-      card_eval_status_text(scored_card, "jokers", nil, percent, nil, {
-        message = text,
-        colour = G.C.ABN_PLASMA,
-        sound = "gong",
-        edition = true
-      })
-    else
-      card_eval_status_text(
-        effect.message_card or effect.juice_card or scored_card or effect.card or effect.focus, "extra", nil, percent, nil, {
-          message = text,
-          colour = G.C.ABN_PLASMA,
-          sound = "gong"
-        }
-      )
-    end
-  end
-  return true
+  
+  delay(0.6)
+  return hand_chips, mult
 end
 
 ABN.count_planet_ranks_played = function(hand)
@@ -388,4 +368,69 @@ ABN.count_planet_ranks_played = function(hand)
     total_level = total_level + level
   end
   return total_level
+end
+
+
+ABN.add_tag_to_shop = function (key,price,extra)
+    extra = extra or {}
+    extra.W = extra.W or 0.8
+    extra.H = extra.H or 0.8
+    extra.area = extra.area or G.shop_vouchers
+    local center = G.P_TAGS[key]
+    center.atlas = center.atlas or 'tags'
+    local area = extra.area
+
+
+    if area == G.shop_vouchers then
+        area.config.card_limit = area.config.card_limit + 1
+    end
+
+    local tag = Card(
+        area.T.x + area.T.w/2, 
+        area.T.y, 
+        extra.W, 
+        extra.H, 
+        G.P_CARDS.empty, 
+        center, 
+        {bypass_discovery_center = true, bypass_discovery_ui = true}
+    )
+    
+    for i, v in pairs(center.config) do
+        tag.config[i] = v
+    end
+    
+    tag.ability.booster_pos = #area.cards + 1
+    tag.ability.is_shop_tag = true
+    local tag_key = key
+    local tag_2 = Tag(tag_key)
+    if tag_key == "tag_orbital" then
+        local available_hands = {}
+
+        for _, v in ipairs(G.handlist) do
+            local hand = G.GAME.hands[v]
+            if hand.visible then
+                available_hands[#available_hands+1] = v
+            end
+        end
+        tag_2.ability.orbital_hand = pseudorandom_element(available_hands, pseudoseed(tag_2.ability.booster_pos.."_orbital"))
+        tag.ability.orbital_hand = tag.ability.orbital_hand
+    end
+    tag.config.tag = tag_2
+    tag.name = tag.config.tag.name
+    
+    create_shop_card_ui(tag, "Tag", area)
+    
+    tag.edition = nil
+    tag.base_cost = price or 1
+    tag:set_cost()
+    tag.config.center.set_card_type_badge = function (self,card,badges)
+        badges[#badges+1] = create_badge(localize('k_tag'), G.C.SECONDARY_SET.Planet, G.C.WHITE, 1.2 )
+    end
+
+    tag.states.collide.can = true
+
+    tag:start_materialize()
+    area:emplace(tag)
+
+    return tag
 end
