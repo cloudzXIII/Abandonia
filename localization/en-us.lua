@@ -4738,16 +4738,16 @@ return {
       j_abn_perrrkeo                 = {
         name = "Perrrkeo",
         text = {
-          "Balances {C:purple}#3#%{C:inactive}",
+          "Balances {C:white,X:abn_plasma}#3#%",
           "of {C:mult}Mult{} and {C:chips}Chips{},",
-          "Adds {C:purple}#2#%{} for every",
+          "Adds {C:white,X:abn_plasma}#2#%{} for every",
           "consumable {C:attention}held",
         }
       },
       j_abn_rubicante                = {
         name = "Rubicante",
         text = {
-          "{C:attention}Even{} scoring cards give {C:mult}Mult{}",
+          "{C:attention}Even{} scoring cards give {C:mult}Mult",
           "equal to {C:attention}triple{} their rank",
         }
       },
@@ -7007,6 +7007,15 @@ return {
           "Likes to talk...maybe"
         }
       },
+      j_abn_stereogram = {
+        name = "Stereogram Joker",
+        text = {
+          "Played {C:attention}numbered",
+          "{C:attention}cards{} balance {C:white,X:abn_plasma}#1#%{} of",
+          "{C:chips}Chips{} and {C:mult}Mult",
+          "when scored"
+        }
+      }
     },
     Spectral = {
       c_abn_apotheosis = {
@@ -8053,7 +8062,7 @@ return {
       e_abn_collodion = {
         name = "Collodion",
         text = {
-          "Balances {C:purple}#1#%{} of",
+          "Balances {C:white,X:abn_plasma}#1#%{} of",
           "{C:chips}Chips{} and {C:mult}Mult{}"
         }
       },

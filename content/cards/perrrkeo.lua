@@ -18,8 +18,10 @@ SMODS.Joker {
 
   calculate = function(self, card, context)
     if context.final_scoring_step then
-      local percent = (card.ability.extra.balance + (card.ability.extra.balance_gain * #G.consumeables.cards)) / 100
-      ABN.balance_percent(card, (percent))
+      local percent = (card.ability.extra.balance + (card.ability.extra.balance_gain * #G.consumeables.cards))
+      return {
+        abn_balance_percent = percent
+      }
     end
   end,
 

@@ -18,6 +18,8 @@ ABN.optional_features = {
   post_trigger = true,
 }
 
+G.C.ABN_PLASMA = { 0.8, 0.45, 0.85, 1 }
+
 local abn = loc_colour
 function loc_colour(_c, _default)
   if not G.ARGS.LOC_COLOURS then
@@ -37,6 +39,7 @@ function loc_colour(_c, _default)
   G.ARGS.LOC_COLOURS.abn_astro = HEX("5204ff")
   G.ARGS.LOC_COLOURS.abn_superrare = HEX("d59fcd")
   G.ARGS.LOC_COLOURS.abn_parallelrare = HEX("b26cbb")
+  G.ARGS.LOC_COLOURS.abn_plasma = { 0.8, 0.45, 0.85, 1 }
 
   -- Seal colours
   G.ARGS.LOC_COLOURS.abn_pink_seal = HEX("ec7de7")
