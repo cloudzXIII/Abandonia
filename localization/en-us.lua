@@ -841,11 +841,9 @@ return {
 	  b_abn_epoch = {
         name = "New Epoch",
         text = {
-          "{C:abn_parallelrare}Parallel Rare{} and {C:abn_superrare}Super Rare{}",
-		  "appear in the shop",
-		  "{C:common}Common{} and {C:uncommon}Uncommon{}",
-		  "can't appear",
-		  "Start with {C:attention}Overstock{} and {C:attention}Overstock plus{}",
+          "Start with all",
+		  "{C:attention}Vanilla{} Vouchers",
+		  "{C:chips}Small Blinds{} are now {C:attention}Big Blinds{}",
         }
       },
 	  b_abn_shackle = {
@@ -2790,7 +2788,7 @@ return {
           "This Joker gains {X:chips,C:white}X#2#{} Chips",
           "every time a {C:attention}Lucky{} card",
           "{C:green}successfully{} triggers",
-          "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Mult)",
+          "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips)",
         },
       },
       j_abn_brothers_memento = {
@@ -3471,10 +3469,11 @@ return {
       j_abn_statue_joker = {
         name = "Statue Joker",
         text = {
-          "This Joker gains {C:mult}+#2#{} Mult",
-          "when a {C:attention}#3#{} card",
-          "is scored, then add",
-          "{C:dark_edition}#4#{} to it",
+          "Gain {C:mult}+#2#{} Mult per {C:attention}rankless{} card scored",
+          "{C:inactive}Stone{} cards gain {C:dark_edition}Chromatic{}",
+		  "{C:abn_black_seal}Petroleum{} cards gain {C:dark_edition}Collodion{}",
+		  "{C:attention}Pokladot{} cards gain {C:dark_edition}Gloss{}",
+		  "{C:abn_black_seal}Oilfire{} cards gain {C:dark_edition}Abandoned{}",
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
         }
       },
@@ -6643,14 +6642,13 @@ return {
         name = "Aesthetic Joker",
         text = {
           {
-            "If this joker is {C:dark_edition}Editioned{},",
-            "gain {C:chips}+#1#{} Chips per",
-            "scoring {C:enhanced}Enhanced{} card",
-            "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+            "Gain {C:chips}+#1#{} for each {C:attention}unique{} {C:dark_edition}Enhancement{} scored this run",
+			"{C:inactive}Currently:{} {C:chips}+#2#{} {C:inactive}Chips{}",
           },
           {
-            "{C:enhanced}Enhanced{} cards give {C:red}Mult",
-            "equal to their chip value"
+            "If this Joker has an {C:dark_edition}edition{}",
+			"{C:enhanced}Enhanced{} cards give {C:red}Mult",
+            "equal to their {C:chips}chip{} value"
           }
         }
       },
