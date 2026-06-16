@@ -14,8 +14,11 @@ SMODS.Joker {
   cost = 6,
   discovered = false,
   blueprint_compat = true,
-
   config = { extra = { mult = 0, mult_gain = 5, type = "abn_Spectrum", repetitions = 1 } },
+  
+  in_pool = function(self)
+    return G.GAME.hands["abn_Spectrum"] and G.GAME.hands["abn_Spectrum"].played > 0
+  end,
 
   calculate = function(self, card, context)
     if context.before and next(context.poker_hands[card.ability.extra.type]) then

@@ -11,8 +11,19 @@ SMODS.Joker {
   cost = 6,
   discovered = false,
   blueprint_compat = true,
-
   config = { extra = { repetitions = 1 } },
+  
+  in_pool = function(self)
+	if not G or not G.jokers then return false end
+
+    for _, joker in ipairs(G.jokers.cards) do
+		if joker.ability and joker.ability.abn_perma_flipped then
+			return true
+        end
+    end
+
+    return false
+  end,
 
   calculate = function(self, card, context)
     if context.retrigger_joker_check then
