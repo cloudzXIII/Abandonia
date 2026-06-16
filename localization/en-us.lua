@@ -77,6 +77,19 @@ return {
 		  "Choose a new Joker of the same {C:attention}rarity{}",
         }
       },
+	  c_abn_zoom = {
+        name = "Zoom",
+        text = {
+          "All cards in hand gain {C:attention}2{} {C:planet}Planet{} {C:attention}Rank{}",
+        }
+      },
+	  c_abn_recycle = {
+        name = "Recycle",
+        text = {
+          "{C:mult}Destroy{} selected cards in hand",
+		  "Gain {C:money}${} equal to their {C:attention}rank{}",
+        }
+      },
     },
     continent = {
       c_abn_africa = {
@@ -471,6 +484,13 @@ return {
           "{C:dark_edition}Abandoned{} {C:attention}Aces"
         }
       },
+	  c_abn_lua = {
+        name = ".LUA",
+        text = {
+          "All held {C:attention}11{}'s, {C:attention}12{}'s, {C:attention}13{}'s and {C:attention}14{}'s",
+          "gain {C:dark_edition}Tea Tag enhancement{} and {C:dark_edition}Collodion Edition{}"
+        }
+      },
     },
     weather_report = {
       c_abn_clear_sky = {
@@ -791,6 +811,56 @@ return {
           "increases by {C:attention}+#2#{} when",
           "{C:attention}Boss Blind{} defeated",
           "Go up to {C:red}-$#3#{} in debt"
+        }
+      },
+	  b_abn_treaty = {
+        name = "Treaty of Colours",
+        text = {
+          "Start with {C:abn_snow}Snows{}, {C:abn_penumbra}Penumbras{},",
+		  "{C:abn_tie}Ties{} and {C:abn_bow}Bows{}",
+        }
+      },
+	  b_abn_photometry = {
+        name = "Photometry Deck",
+        text = {
+          "Start with {C:abn_snow}Snows{}, {C:abn_penumbra}Penumbras{},",
+		  "{C:abn_tie}Ties{}, {C:abn_bow}Bows{} and {C:inactive}Nulls{}",
+		  "No {C:attention}vanillia{} suits",
+        }
+      },
+	  b_abn_synesthic = {
+        name = "Synesthic Circle",
+        text = {
+          "Start with all suits",
+		  "{C:attention}+1{} hand selection",
+		  "No face cards",
+		  "Beating boss blind increases",
+		  "blind requirements by {C:white,X:mult}X1.3{}",
+        }
+      },
+	  b_abn_epoch = {
+        name = "New Epoch",
+        text = {
+          "{C:abn_parallelrare}Parallel Rare{} and {C:abn_superrare}Super Rare{}",
+		  "appear in the shop",
+		  "{C:common}Common{} and {C:uncommon}Uncommon{}",
+		  "can't appear",
+		  "Start with {C:attention}Overstock{} and {C:attention}Overstock plus{}",
+        }
+      },
+	  b_abn_shackle = {
+        name = "Shackle Maniac",
+        text = {
+          "Start with only {C:spades}Dark Suits",
+		  "with {C:dark_edition}Chthonian Editon{}",
+        }
+      },
+	  b_abn_poneglyph = {
+        name = "Poneglyph",
+        text = {
+          "Start with a full set of",
+		  "{C:inactive}Stone{}, {C:abn_black_seal}Petroleum,",
+		  "{C:attention}Polkadot{} and {C:inactive}Null{} cards ",
         }
       },
     },
@@ -4738,16 +4808,16 @@ return {
       j_abn_perrrkeo                 = {
         name = "Perrrkeo",
         text = {
-          "Balances {C:white,X:abn_plasma}#3#%",
+          "Balances {C:purple}#3#%{C:inactive}",
           "of {C:mult}Mult{} and {C:chips}Chips{},",
-          "Adds {C:white,X:abn_plasma}#2#%{} for every",
+          "Adds {C:purple}#2#%{} for every",
           "consumable {C:attention}held",
         }
       },
       j_abn_rubicante                = {
         name = "Rubicante",
         text = {
-          "{C:attention}Even{} scoring cards give {C:mult}Mult",
+          "{C:attention}Even{} scoring cards give {C:mult}Mult{}",
           "equal to {C:attention}triple{} their rank",
         }
       },
@@ -7007,15 +7077,6 @@ return {
           "Likes to talk...maybe"
         }
       },
-      j_abn_stereogram = {
-        name = "Stereogram Joker",
-        text = {
-          "Played {C:attention}numbered",
-          "{C:attention}cards{} balance {C:white,X:abn_plasma}#1#%{} of",
-          "{C:chips}Chips{} and {C:mult}Mult",
-          "when scored"
-        }
-      }
     },
     Spectral = {
       c_abn_apotheosis = {
@@ -7976,7 +8037,7 @@ return {
         name = "Dark Suit",
         text = {
           "{C:spades}Spades{}, {C:clubs}Clubs{},",
-          "{C:abn_penumbra}Penumbras{}",
+          "{C:abn_penumbra}Penumbras{}, {C:abn_bow}Bows{}",
         }
       },
 
@@ -7984,7 +8045,7 @@ return {
         name = "Light Suit",
         text = {
           "{C:hearts}Hearts{}, {C:diamonds}Diamonds{},",
-          "{C:abn_snow}Snows{}",
+          "{C:abn_snow}Snows{}, {C:abn_tie}Ties{}",
         }
       },
 
@@ -8092,7 +8153,7 @@ return {
       e_abn_collodion = {
         name = "Collodion",
         text = {
-          "Balances {C:white,X:abn_plasma}#1#%{} of",
+          "Balances {C:purple}#1#%{} of",
           "{C:chips}Chips{} and {C:mult}Mult{}"
         }
       },
@@ -8602,10 +8663,11 @@ return {
         text = {
           {
             "{C:mult}Debuff{} all {C:spades}Spades{},",
-            "{C:clubs}Clubs{}, and {C:abn_snow}Snows{}",
+            "{C:clubs}Clubs{}, {C:abn_snow}Snows{},",
+			"{C:abn_tie}Ties{}, {C:abn_bow}Bows{}, and {C:abn_penumbra}Penumbras",
           },
           {
-            "{C:diamonds}Diamonds{} and {C:hearts}Hearts{} gain",
+            "{C:diamonds}Diamonds{}, {C:hearts}Hearts{} and {C:inactive}Nulls{} gain",
             "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
           },
         }
@@ -8614,10 +8676,12 @@ return {
         name = "Blizzard",
         text = {
           {
-            "{C:mult}Debuff{} all {C:diamonds}Diamonds{} and {C:hearts}Hearts{}",
+            "{C:mult}Debuff{} all {C:diamonds}Diamonds{}, {C:hearts}Hearts{} and {C:inactive}Nulls{}",
           },
           {
-            "{C:spades}Spades{}, {C:clubs}Clubs{}, and {C:abn_snow}Snows{} gain",
+            "{C:spades}Spades{}, {C:clubs}Clubs{},",
+			"{C:abn_snow}Snows{}, {C:abn_tie}Ties{},",
+			"{C:abn_bow}Bows{} and {C:abn_penumbra}Penumbras{} gain",
             "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
           },
         }
