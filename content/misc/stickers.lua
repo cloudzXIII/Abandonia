@@ -129,13 +129,6 @@ SMODS.Sticker {
   atlas = "AbandoniaStickers",
   pos = { x = 1, y = 1 },
   badge_colour = HEX("8a71e1"),
-  loc_vars = function(self, info_queue, card)
-    return {
-      vars = {
-        card.ability[self.key].percent * 100,
-      }
-    }
-  end,
   config = {
     percent = 0.1
   },
@@ -290,9 +283,9 @@ SMODS.Sticker({
 
   calculate = function(self, card, context)
     if context.before then
-      local target = pseudorandom_element(context.scoring_hand, "abn_question_mark")
-      target:set_ability("m_stone", true)
-      return { message = localize('k_stone'), colour = G.C.FILTER }
+      for i = 1, #context.scoring_hand do
+        context.scoring_hand[i]:change_suit('abn_suitless')
+      end
     end
   end
 })
@@ -596,5 +589,28 @@ SMODS.Sticker {
         end
       end
     end
+  end,
+}
+
+
+
+SMODS.Sticker {
+  key = 'spade',
+  atlas = "AbandoniaStickers",
+  pos = { x = 1, y = 2 },
+  badge_colour = HEX("3c4368"),
+
+  calculate = function(self, card, context)
+	if G.playing_cards then
+		for _, card in ipairs(G.playing_cards) do
+			if not card:is_suit("Spades") then
+				card:set_debuff(true)
+			elseif card:is_suit("Spades") and not card.ability.spaded then
+				card.ability.spaded = true
+				local rank_nominal = SMODS.Ranks[card.base.value] and SMODS.Ranks[card.base.value].nominal or 0
+				card.ability.perma_bonus = (card.ability.perma_bonus or 0) + rank_nominal
+			end
+		end
+	end    
   end,
 }

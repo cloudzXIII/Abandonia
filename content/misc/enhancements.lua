@@ -80,7 +80,7 @@ SMODS.Enhancement({
     return false
   end,
   abn_artist_credits = {
-    artist = "Inky",
+    artist = "Comykel",
   },
 })
 
@@ -114,7 +114,7 @@ SMODS.Enhancement({
     end
   end,
   abn_artist_credits = {
-    artist = "Revo",
+    artist = "Comykel",
   },
 })
 
@@ -253,7 +253,7 @@ SMODS.Enhancement({
     end
   end,
   abn_artist_credits = {
-    artist = "Lime Squeezed",
+    artist = "Comykel",
   },
 })
 
@@ -303,6 +303,7 @@ SMODS.Enhancement({
 SMODS.Enhancement({
   key = "hazard",
   pos = { x = 6, y = 0 },
+  soul_pos = { x = 4, y = 3 },
   atlas = "AbandoniaEnhancements",
   replace_base_card = false,
   no_rank = false,
@@ -361,7 +362,7 @@ SMODS.Enhancement({
     end
   end,
   abn_artist_credits = {
-    artist = "Bunnet",
+    artist = "Comykel",
   },
 })
 

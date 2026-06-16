@@ -269,3 +269,11 @@ SMODS.Gradient {
   },
   cycle = 10
 }
+
+SMODS.Atlas{
+	key = 'balatro',
+    path = 'logo.png',
+    px = 332 ,
+    py = 216 ,
+    prefix_config = {key = false}
+}

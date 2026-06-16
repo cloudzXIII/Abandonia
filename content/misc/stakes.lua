@@ -108,8 +108,8 @@ SMODS.Stake({
     above_stake = "gold",
     atlas = "AbandoniaStakes",
     pos = { x = 0, y = 0 },
-    sticker_atlas = "AbandoniaStickers",
-    sticker_pos = { x = 5, y = 6 },
+    sticker_atlas = "AbandoniaStakeStickers",
+    sticker_pos = { x = 1, y = 2 },
     colour = G.C.WHITE,
     modifiers = function()
         G.GAME.win_ante = 9
@@ -123,8 +123,8 @@ SMODS.Stake({
     above_stake = "abn_honor",
     atlas = "AbandoniaStakes",
     pos = { x = 1, y = 0 },
-    sticker_atlas = "AbandoniaStickers",
-    sticker_pos = { x = 0, y = 7 },
+    sticker_atlas = "AbandoniaStakeStickers",
+    sticker_pos = { x = 2, y = 2 },
     colour = G.C.WHITE,
 
     modifiers = function()
@@ -142,8 +142,8 @@ SMODS.Stake({
     above_stake = "abn_menacing",
     atlas = "AbandoniaStakes",
     pos = { x = 2, y = 0 },
-    sticker_atlas = "AbandoniaStickers",
-    sticker_pos = { x = 1, y = 7 },
+    sticker_atlas = "AbandoniaStakeStickers",
+    sticker_pos = { x = 3, y = 2 },
     colour = G.C.WHITE,
 
     modifiers = function()
