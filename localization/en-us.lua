@@ -7075,6 +7075,24 @@ return {
           "Likes to talk...maybe"
         }
       },
+	j_abn_suit_eradication = {
+      name="Suit Eradication",
+      text={
+        "Destroy each scoring {C:hearts}Hearts{},{C:diamonds}Diamonds{},{C:spades},Spades{} and {C:clubs}clubs.",
+        "Gain {C:chips}chips{} equal to the {C:attention}ranks{} of destroyed cards.",
+        "Create 1 random card with the same rank as destroyed one",
+        "with either {V:1}Snow{},{V:2}Tie{},{V:3}Penumbra{} or {V:4}Bow{} suit.",
+        "{C:inactive}Currently:[{C:chips}#1# chips{C:inactive}]",
+      },
+    },
+    j_abn_tag_collector = {
+      name="Tag Collector",
+      text={
+        "{C:attention}Tags{} can be purchased at the shop for {C:money}$#2#",
+        "At start of the shop add #1# {C:attention}tag<s>",
+      }
+    }
+			
     },
     Spectral = {
       c_abn_apotheosis = {
