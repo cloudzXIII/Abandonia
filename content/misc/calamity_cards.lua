@@ -399,7 +399,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = "blizzard",
     set = "calamity_cards",
-    config = { extra = { chips = 10, mult = 5 } },
+    config = { extra = { chips = 15, mult = 10 } },
     pos = { x = 2, y = 1 },
     atlas = "AbandoniaCalamity",
     cost = 4,
@@ -419,9 +419,9 @@ SMODS.Consumable {
 
     use = function(self, card, area, copier)
         for _, v in ipairs(G.playing_cards) do
-            if v:is_suit("Diamonds") or v:is_suit("Hearts") then
+            if v:is_suit("Diamonds") or v:is_suit("Hearts") or v:is_suit("abn_suitless") then
                 v.permadebuff = true
-            elseif v:is_suit("Spades") or v:is_suit("Clubs") or v:is_suit("abn_Snow") then
+            elseif v:is_suit("Spades") or v:is_suit("Clubs") or v:is_suit("abn_Snow") or v:is_suit("abn_Tie") or v:is_suit("abn_Bow") or v:is_suit("abn_Penumbra") then
                 v.ability.perma_bonus = (v.ability.perma_bonus or 0) + card.ability.extra.chips
                 v.ability.perma_mult = (v.ability.perma_mult or 0) + card.ability.extra.mult
             end
@@ -577,7 +577,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = "heatwave",
     set = "calamity_cards",
-    config = { extra = { chips = 10, mult = 5 } },
+    config = { extra = { chips = 15, mult = 10 } },
     pos = { x = 5, y = 1 },
     atlas = "AbandoniaCalamity",
     cost = 4,
@@ -597,9 +597,9 @@ SMODS.Consumable {
 
     use = function(self, card, area, copier)
         for _, v in ipairs(G.playing_cards) do
-            if v:is_suit("Spades") or v:is_suit("Clubs") or v:is_suit("abn_Snow") then
+            if v:is_suit("Spades") or v:is_suit("Clubs") or v:is_suit("abn_Snow") or v:is_suit("abn_Tie") or v:is_suit("abn_Bow") or v:is_suit("abn_Penumbra") then
                 v.permadebuff = true
-            elseif v:is_suit("Diamonds") or v:is_suit("Hearts") then
+            elseif v:is_suit("Diamonds") or v:is_suit("Hearts") or v:is_suit("abn_suitless") then
                 v.ability.perma_bonus = (v.ability.perma_bonus or 0) + card.ability.extra.chips
                 v.ability.perma_mult = (v.ability.perma_mult or 0) + card.ability.extra.mult
             end

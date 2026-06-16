@@ -1,4 +1,4 @@
--- Program Pack Consumables (coded by cloudzXIII)
+-- Program Pack Consumables (coded by cloudzXIII + EricTheToon)
 
 SMODS.ConsumableType {
   key = "program_pack",
@@ -470,5 +470,65 @@ SMODS.Consumable {
   end,
   abn_artist_credits = {
     artist = "Strawberry Cereal",
+  },
+}
+
+SMODS.Consumable {
+  key = "lua",
+  set = 'program_pack',
+  cost = 4,
+  atlas = "abn_AbandoniaProgramPack",
+  pos = { x = 3, y = 0 },
+  hidden = true,
+
+  config = {
+    extra = {}
+  },
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_teabag
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_collodion
+    return {
+      vars = {}
+    }
+  end,
+
+  can_use = function(self, card)
+    if G.hand and #G.hand.cards > 0 then
+      local target_ranks = { abn_11 = true, abn_12 = true, abn_13 = true, abn_14 = true }
+      for _, hand_card in ipairs(G.hand.cards) do
+        if target_ranks[hand_card.base.value] then
+          return true
+        end
+      end
+    end
+    return false
+  end,
+
+  use = function(self, card, area, copier)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+
+    local target_ranks = { abn_11 = true, abn_12 = true, abn_13 = true, abn_14 = true }
+
+    for _, hand_card in ipairs(G.hand.cards) do
+      if target_ranks[hand_card.base.value] then
+        hand_card:set_ability("m_abn_teabag")
+        hand_card:set_edition("e_abn_collodion", true)
+        
+        hand_card:juice_up(0.3, 0.3)
+      end
+    end
+  end,
+  
+  abn_artist_credits = {
+    artist = "Comykel",
   },
 }

@@ -682,3 +682,293 @@ SMODS.Back {
         end
     end,
 }
+
+SMODS.Back {
+    key = 'treaty',
+	name = "Treaty Of Colors",
+    atlas = 'AbandoniaDecks',
+    pos = { x = 5, y = 4 },
+	config = {
+        hand_size = 0,
+    },
+
+    apply = function(self)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                local original_cards = {}
+                for _, v in pairs(G.playing_cards) do
+                    table.insert(original_cards, v)
+                end
+
+                for _, card in ipairs(original_cards) do
+                    local new_card = copy_card(card)
+                    
+
+                    if card.base.suit == 'Spades' then
+                        new_card:change_suit('abn_Snow')    
+                    elseif card.base.suit == 'Hearts' then
+                        new_card:change_suit('abn_Penumbra') 
+                    elseif card.base.suit == 'Diamonds' then
+                        new_card:change_suit('abn_Tie')     
+                    elseif card.base.suit == 'Clubs' then
+                        new_card:change_suit('abn_Bow')
+                    end
+
+
+                    new_card:add_to_deck()
+                    G.deck:emplace(new_card)
+                    table.insert(G.playing_cards, new_card)
+                end
+
+                G.deck.config.card_limit = #G.playing_cards
+                return true
+            end
+        }))
+    end
+}
+
+SMODS.Back {
+    key = 'photometry',
+    name = "Photometry Deck",
+    atlas = 'AbandoniaDecks',
+    pos = { x = 0, y = 5 },
+    config = {
+        hand_size = 0,
+    },
+
+    apply = function(self)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                local suit_map = {
+                    Spades = 'abn_Snow',
+                    Hearts = 'abn_Penumbra',
+                    Diamonds = 'abn_Tie',
+                    Clubs = 'abn_Bow'
+                }
+
+                local original_cards = {}
+                for _, v in pairs(G.playing_cards) do
+                    table.insert(original_cards, v)
+                end
+
+                for _, card in ipairs(original_cards) do
+                    local current_suit = card.base.suit
+                    if suit_map[current_suit] then
+                        card:change_suit(suit_map[current_suit])
+                    end
+                end
+
+                for _, card in ipairs(original_cards) do
+                    if card.base.suit == 'abn_Bow' then 
+                        local new_card = copy_card(card)
+                        
+                        new_card:change_suit('abn_suitless') 
+                        new_card:add_to_deck()
+                        G.deck:emplace(new_card)
+                        table.insert(G.playing_cards, new_card)
+                    end
+                end
+
+                G.deck.config.card_limit = #G.playing_cards
+                return true
+            end
+        }))
+    end
+}
+
+SMODS.Back {
+    key = 'synesthic',
+    name = "Synesthic Circle",
+    atlas = 'AbandoniaDecks',
+    pos = { x = 0, y = 6 },
+    config = {
+        hand_size = 0,
+    },
+
+    apply = function(self)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                SMODS.change_play_limit(1)
+                local suit_map = {
+                    Spades = 'abn_Snow',
+                    Hearts = 'abn_Penumbra',
+                    Diamonds = 'abn_Tie',
+                    Clubs = 'abn_Bow'
+                }
+                
+                local original_cards = {}
+                for _, v in pairs(G.playing_cards) do
+                    table.insert(original_cards, v)
+                end
+
+                for _, card in ipairs(original_cards) do
+                    if card.base.value == 'Jack' or card.base.value == 'Queen' or card.base.value == 'King' then
+                        card:start_dissolve()
+                        for i, gc in ipairs(G.playing_cards) do
+                            if gc == card then
+                                table.remove(G.playing_cards, i)
+                                break
+                            end
+                        end
+                        G.deck:remove_card(card)
+                        card:remove()
+                    end
+                end
+
+                local remaining_cards = {}
+                for _, v in pairs(G.playing_cards) do
+                    table.insert(remaining_cards, v)
+                end
+
+                for _, card in ipairs(remaining_cards) do
+                    local current_suit = card.base.suit
+                    if suit_map[current_suit] then
+                        local new_card = copy_card(card)
+                        new_card:change_suit(suit_map[current_suit])
+                        new_card:add_to_deck()
+                        G.deck:emplace(new_card)
+                        table.insert(G.playing_cards, new_card)
+                        
+                        if current_suit == 'Clubs' then 
+                            local suitless_card = copy_card(card)
+                            suitless_card:change_suit('abn_suitless') 
+                            suitless_card:add_to_deck()
+                            G.deck:emplace(suitless_card)
+                            table.insert(G.playing_cards, suitless_card)
+                        end
+                    end
+                end
+
+                G.deck.config.card_limit = #G.playing_cards
+                return true
+            end
+        }))
+    end,
+	
+	calculate = function(self, card, context)
+        if context.end_of_round and context.main_eval and not context.blueprint and G.GAME.blind and G.GAME.blind.boss then
+            G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling * 1.3
+        end
+    end,
+}
+
+SMODS.Back {
+    key = 'epoch',
+	name = 'New Epoch',
+    atlas = 'AbandoniaDecks',
+    pos = { x = 1, y = 6 },
+
+    config = {
+        hand_size = 0
+    },
+
+    apply = function()
+        G.E_MANAGER:add_event(Event({
+
+            func = function()
+                --give vouchers
+                local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'v_overstock_norm')
+                _card:add_to_deck()
+                G.vouchers:emplace(_card)
+
+                local _card2 = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'v_overstock_plus')
+                _card2:add_to_deck()
+                G.vouchers:emplace(_card2)
+
+                change_shop_size(2)
+				
+				G.GAME.common_mod = 0
+				G.GAME.uncommon_mod = 0
+				--this isn't working does anyone know how to change their spawn rates?
+				--G.GAME.abn_SuperRare_mod = 1
+                --G.GAME.abn_ParallelRare_mod = 1
+
+                return true
+            end
+        }))
+    end,
+}
+
+SMODS.Back {
+    key = 'shackle',
+    name = "Shackle Maniac",
+    atlas = 'AbandoniaDecks',
+    pos = { x = 5, y = 2 },
+    config = {
+        hand_size = 0,
+    },
+
+    apply = function(self)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                for _, card in ipairs(G.playing_cards) do
+                    local current_suit = card.base.suit
+                    
+                    card:set_edition({abn_chthonian = true}, true, true)
+                    
+                    if current_suit == 'Hearts' then
+                        card:change_suit('abn_Penumbra')
+                    elseif current_suit == 'Diamonds' then
+                        card:change_suit('abn_Bow')
+                    end
+                end
+                G.deck.config.card_limit = #G.playing_cards
+                return true
+            end
+        }))
+    end
+}
+
+SMODS.Back {
+    key = 'poneglyph',
+    name = "Poneglyph",
+    atlas = 'AbandoniaDecks',
+    pos = { x = 3, y = 4 },
+    config = {
+        hand_size = 0,
+    },
+
+    apply = function(self)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                -- 1. Snapshot the initial deck before we push any duplicates into it
+                local original_cards = {}
+                for _, card in ipairs(G.playing_cards) do
+                    table.insert(original_cards, card)
+                end
+
+                -- 2. Loop through and instantly clone/modify every card in a single frame
+                for _, original_card in ipairs(original_cards) do
+                    local copy = copy_card(original_card)
+                    local current_suit = copy.base.suit
+                    
+                    -- Assigning completely different suits and enhancements all at once
+                    if current_suit == 'Clubs' then
+                        copy:change_suit('abn_suitless')
+                    elseif current_suit == 'Hearts' then
+                        copy:change_suit('Diamonds')                             -- Changes suit
+                        copy:set_ability(G.P_CENTERS.m_abn_petroleum, nil, true)  -- Appends Petroleum
+                    elseif current_suit == 'Diamonds' then
+                        copy:change_suit('Spades')                               -- Changes suit
+                        copy:set_ability(G.P_CENTERS.m_abn_polkadot, nil, true)   -- Appends Polkadot
+                    elseif current_suit == 'Spades' then
+                        copy:change_suit('Hearts')                               -- Changes suit
+                        copy:set_ability(G.P_CENTERS.m_stone, nil, true)          -- Appends Stone
+                    end
+                    
+                    -- Add the card data and physical reference directly into the engine
+                    copy:add_to_deck()
+                    G.deck:emplace(copy)
+                    table.insert(G.playing_cards, copy)
+                end
+
+                -- 3. Instantly recalculate the card limit 
+                G.deck.config.card_limit = #G.playing_cards
+                
+                -- Briefly play a single screen-wide visual deck update instead of 52 tiny ones
+                G.deck:shuffle()
+                return true
+            end
+        }))
+    end
+}

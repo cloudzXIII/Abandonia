@@ -824,3 +824,113 @@ ABN.SolidState {
     artist = "La Ginger & Gfs"
   },
 }
+
+ABN.SolidState {
+  key = "zoom",
+  pos = { x = 4, y = 2 }, 
+
+  loc_vars = function(self, info_queue, card)
+    return { vars = {} }
+  end,
+
+  can_use = function(self, card)
+    return #G.hand.cards > 0 
+  end,
+
+  use = function(self, card, area, copier)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.2,
+      func = function()
+        local processed_ranks = {}
+
+        for i = #G.hand.cards, 1, -1 do
+          local target_card = G.hand.cards[i]
+          
+          if target_card and target_card.base and target_card.base.value then
+            local rank_key = target_card.base.value
+            
+            -- Only trigger the upgrade if this specific rank hasn't been upgraded yet during this use
+            if G.GAME.abn_rank_upgrades[rank_key] and not processed_ranks[rank_key] then
+              ABN.level_up_rank(target_card, rank_key, 2, false)
+              processed_ranks[rank_key] = true
+            end
+          end
+        end
+
+          return true
+      end
+    }))
+  end,
+
+  abn_artist_credits = {
+    artist = "Toyrapple"
+  },
+}
+
+ABN.SolidState {
+  key = "recycle",
+  pos = { x = 5, y = 2 }, 
+
+  loc_vars = function(self, info_queue, card)
+    return { vars = {} }
+  end,
+
+  can_use = function(self, card)
+    return G.hand and #G.hand.highlighted > 0 
+  end,
+
+  use = function(self, card, area, copier)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.2,
+      func = function()
+        local total_gold = 0
+        local destroyed_cards = {}
+
+        for i = #G.hand.highlighted, 1, -1 do
+          local target_card = G.hand.highlighted[i]
+          
+          if target_card and target_card.base and target_card.base.value then
+            local rank_key = target_card.base.value
+            local upgrade_data = G.GAME.abn_rank_upgrades[rank_key]
+            local rank_dollar_value = nil
+
+            if upgrade_data and type(upgrade_data.value) == "number" then
+              rank_dollar_value = upgrade_data.value
+            end
+			
+            if not rank_dollar_value then
+              local fallback_id = target_card:get_id()
+              if fallback_id and fallback_id > 0 then
+                rank_dollar_value = fallback_id
+              end
+            end
+			
+            if rank_dollar_value then
+              total_gold = total_gold + rank_dollar_value
+              table.insert(destroyed_cards, target_card)
+            end
+          end
+        end
+
+        if total_gold > 0 then
+          ease_dollars(total_gold)
+        end
+
+        if #destroyed_cards > 0 then
+          G.hand:unhighlight_all()
+          for _, c in ipairs(destroyed_cards) do
+            c:start_dissolve()
+          end
+        end
+
+        return true
+      end
+    }))
+  end,
+
+  abn_artist_credits = {
+    artist = "Camostar34"
+  },
+}
