@@ -7089,7 +7089,7 @@ return {
       name="Tag Collector",
       text={
         "{C:attention}Tags{} can be purchased at the shop for {C:money}$#2#",
-        "At start of the shop add #1# {C:attention}tag<s>",
+        "At start of the shop add #1# {C:attention}tag",
       }
     }
 			
