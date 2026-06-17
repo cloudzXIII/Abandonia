@@ -1145,6 +1145,13 @@ return {
           "{C:abn_nightshift}Nightshift{} card",
         }
       },
+	  tag_abn_hazard_program = {
+        name = "Program Hazard",
+        text = {
+          "Gives {C:attention}2{} free",
+          "{C:program_pack}Jumbo Program Packs",
+        }
+      },
       --#endregion
       --#region Normal Tags
       tag_abn_gloss = {
@@ -1324,8 +1331,8 @@ return {
       tag_abn_program = {
         name = "Program Tag",
         text = {
-          "Shop has a free",
-          "{C:program_pack}Program{} card",
+          "Gives a free",
+          "{C:program_pack}Jumbo Program Pack",
         }
       },
       tag_abn_rank_planet = { -- prolly think of a better name
@@ -4201,7 +4208,7 @@ return {
           "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#4#{C:inactive} Mult){}"
         },
       },
-      _metropolitan_joker       = {
+      j_abn_metropolitan_joker       = {
         name = "Metropolitan Joker",
         text = {
           "{X:mult,C:white}X#1#{} Mult for each {C:attention}#2#{}",
@@ -4209,7 +4216,7 @@ return {
           "{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)"
         }
       },
-      _telejoker                = {
+      j_abn_telejoker                = {
         name = "TeleJoker",
         text = {
           "Retrigger all cards played if",
@@ -7075,24 +7082,30 @@ return {
           "Likes to talk...maybe"
         }
       },
-	j_abn_suit_eradication = {
-      name="Suit Eradication",
-      text={
-        "Destroy each scoring {C:hearts}Hearts{},{C:diamonds}Diamonds{},{C:spades},Spades{} and {C:clubs}clubs.",
-        "Gain {C:chips}chips{} equal to the {C:attention}ranks{} of destroyed cards.",
-        "Create 1 random card with the same rank as destroyed one",
-        "with either {V:1}Snow{},{V:2}Tie{},{V:3}Penumbra{} or {V:4}Bow{} suit.",
-        "{C:inactive}Currently:[{C:chips}#1# chips{C:inactive}]",
+	  j_abn_stereogram         = {
+        name = "Stereogram",
+        text = {
+          "Scored {C:attention}number{} cards",
+		  "Balance {C:attention}#1#%{} of {C:chips}chips{} and {C:mult}mult{}"
+        }
       },
-    },
-    j_abn_tag_collector = {
-      name="Tag Collector",
-      text={
-        "{C:attention}Tags{} can be purchased at the shop for {C:money}$#2#",
-        "At start of the shop add #1# {C:attention}tag",
-      }
-    }
-			
+	  j_abn_suit_eradication         = {
+        name = "Suit Eradication",
+        text = {
+          "Destroy each scoring {C:hearts}Hearts{},{C:diamonds}Diamonds{},{C:spades},Spades{} and {C:clubs}clubs.",
+		  "Gain {C:chips}chips{} equal to the {C:attention}ranks{} of destroyed cards.",
+		  "Create 1 random card with the same rank as destroyed one",
+		  "with either {V:1}Snow{},{V:2}Tie{},{V:3}Penumbra{} or {V:4}Bow{} suit.",
+		  "{C:inactive}Currently:[{C:chips}#1# chips{C:inactive}]",
+        }
+      },
+	  j_abn_tag_collector         = {
+        name = "Tag Collector",
+        text = {
+          "{C:attention}Tags{} can be purchased at the shop for {C:money}$#2#",
+		  "At start of the shop add #1# {C:attention}tag",
+        }
+      },
     },
     Spectral = {
       c_abn_apotheosis = {
