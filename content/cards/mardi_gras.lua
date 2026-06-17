@@ -17,13 +17,3 @@ SMODS.Joker {
     artist = "iprefercheddar"
   },
 }
-
-local set_ability = Card.set_ability;
-function Card:set_ability(...)
-  set_ability(self, ...)
-  if next(SMODS.find_card("j_abn_mardi_gras")) then
-    if self.ability and self.ability.set == "Booster" and self.ability.name:find("Arcana") then
-      self.ability.choose = self.ability.choose + #SMODS.find_card("j_abn_mardi_gras")
-    end
-  end
-end

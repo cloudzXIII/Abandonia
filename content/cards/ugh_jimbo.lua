@@ -3,8 +3,8 @@ if ((SMODS.Mods["Fortlatro"] or {}).can_load) then
 SMODS.Joker {
   key = 'ugh_jimbo',
   rarity = 3,
-  atlas = 'AbandoniaLegendary', 
-  pos = { x = 3, y = 8 }, 
+  atlas = 'ABNJokerSheet17', 
+  pos = { x = 7, y = 1 }, 
   cost = 4,
   discovered = false,
   blueprint_compat = true,

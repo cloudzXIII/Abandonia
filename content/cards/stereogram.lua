@@ -32,6 +32,11 @@ SMODS.Joker {
             end
         end
     end,
+	
+	abn_artist_credits = {
+		artist = "Yahooyowza",
+	},
+	
     in_pool = function(self, args)
         if G.GAME then
             if G.GAME.selected_back.effect.center.key ~= "b_plasma" then

@@ -18,17 +18,20 @@ SMODS.Joker {
 
   config = { extra = { dark_reps = 0, light_reps = 0 } },
   calculate = function(self, card, context)
+    -- Calculate reps BEFORE scoring happens
     if context.before and not context.blueprint then
       local light_enhancements = {}
       for _, v in ipairs(context.scoring_hand) do
-        if ABN.is_light(v) and v.set == "Enhanced" then
+        -- FIX: changed v.set to v.ability.set
+        if ABN.is_light(v) and v.ability.set == "Enhanced" then
           light_enhancements[v.config.center.key] = true
         end
       end
 
       local dark_enhancements = {}
       for _, v in ipairs(context.scoring_hand) do
-        if ABN.is_dark(v) and v.set == "Enhanced" then
+        -- FIX: changed v.set to v.ability.set
+        if ABN.is_dark(v) and v.ability.set == "Enhanced" then
           dark_enhancements[v.config.center.key] = true
         end
       end
@@ -46,20 +49,33 @@ SMODS.Joker {
       card.ability.extra.light_reps = unique_light
       card.ability.extra.dark_reps = unique_dark
     end
-    if context.repetition and context.cardarea == G.play and card.ability.extra.dark_reps > 0 and ABN.is_light(context.other_card) then
-      return {
-        repetitions = card.ability.extra.dark_reps
-      }
-    end
-    if context.repetition and context.cardarea == G.play and card.ability.extra.light_reps > 0 and ABN.is_dark(context.other_card) then
-      return {
-        repetitions = card.ability.extra.light_reps
-      }
+    
+    -- FIX: Combined repetition logic into a cleaner, single block
+    if context.repetition and context.cardarea == G.play then
+      local reps = 0
+      
+      if ABN.is_light(context.other_card) and card.ability.extra.dark_reps > 0 then
+        reps = reps + card.ability.extra.dark_reps
+      end
+      
+      if ABN.is_dark(context.other_card) and card.ability.extra.light_reps > 0 then
+        reps = reps + card.ability.extra.light_reps
+      end
+
+      if reps > 0 then
+        return {
+          message = localize('k_again_ex'), -- Adds the visual "Again!" text
+          repetitions = reps,
+          card = card
+        }
+      end
     end
   end,
+  
   abn_artist_credits = {
     artist = "Willthewednesday",
   },
+  
   in_pool = function(self, args)
     local light_enhanced = false
     local dark_enhanced = false
