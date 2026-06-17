@@ -859,33 +859,15 @@ SMODS.Back {
     pos = { x = 1, y = 6 },
 
     config = {
-        hand_size = 0
+		hand_size = 0,
+		vouchers = { "v_antimatter", "v_blank", "v_clearance_sale", "v_crystal_ball", "v_directors_cut", "v_glow_up", "v_grabber", "v_hieroglyph", "v_hone", "v_illusion", "v_liquidation", "v_magic_trick", "v_money_tree", "v_nacho_tong", "v_observatory", "v_omen_globe", "v_overstock_norm", "v_overstock_plus", "v_paint_brush", "v_palette", "v_petroglyph", "v_planet_merchant", "v_planet_tycoon", "v_recyclomancy", "v_reroll_glut", "v_reroll_surplus", "v_retcon", "v_seed_money", "v_tarot_merchant", "v_tarot_tycoon", "v_telescope", "v_wasteful", } 
     },
-
-    apply = function()
-        G.E_MANAGER:add_event(Event({
-
-            func = function()
-                --give vouchers
-                local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'v_overstock_norm')
-                _card:add_to_deck()
-                G.vouchers:emplace(_card)
-
-                local _card2 = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'v_overstock_plus')
-                _card2:add_to_deck()
-                G.vouchers:emplace(_card2)
-
-                change_shop_size(2)
-				
-				G.GAME.common_mod = 0
-				G.GAME.uncommon_mod = 0
-				--this isn't working does anyone know how to change their spawn rates?
-				--G.GAME.abn_SuperRare_mod = 1
-                --G.GAME.abn_ParallelRare_mod = 1
-
-                return true
-            end
-        }))
+	
+	
+	calculate = function(self, card, context)
+        if G.GAME.round_resets.blind_choices.Small then
+            G.GAME.round_resets.blind_choices.Small = 'bl_big'
+        end
     end,
 }
 
@@ -919,6 +901,7 @@ SMODS.Back {
     end
 }
 
+--[[
 SMODS.Back {
     key = 'poneglyph',
     name = "Poneglyph",
@@ -972,3 +955,4 @@ SMODS.Back {
         }))
     end
 }
+--]]
