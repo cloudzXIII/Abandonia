@@ -144,9 +144,20 @@ ABN.calculate = function(self, context)
 
   if context.individual and context.cardarea == G.play then
     if context.other_card.ability.abn_perma_flipped then
-      return {
-        x_mult = 1.25
-      }
+		local target_xmult = 1.25
+				
+		if G.jokers and G.jokers.cards then
+			for _, joker in ipairs(G.jokers.cards) do
+				if joker.config.center.key == 'j_abn_reversecard_joker' and joker.facing == 'back' then
+				target_xmult = target_xmult * 2
+				break				
+				end
+			end
+		end
+
+		return {
+			x_mult = target_xmult
+		}
     end
     if not G.GAME.abn_13_played_this_run and context.other_card:get_id() == SMODS.Ranks.abn_13.id then
       G.GAME.abn_13_played_this_run = true
