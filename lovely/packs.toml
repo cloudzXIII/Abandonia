@@ -16,4 +16,14 @@ payload = '''
 if self.config.center and self.config.center.key and not string.find(self.config.center.key, "buffoon") and not string.find(self.config.center.key, "standard") and next(SMODS.find_card('j_abn_jolly_roger')) then
     self.ability.choose = self.ability.choose + 1
 end
+
+-- Mardi Gras logic: Extra choose count in Arcana packs (Scales with multiple)
+if self.config.center and self.config.center.key and string.find(self.config.center.key, "arcana") then
+	local mardi_gras = SMODS.find_card("j_abn_mardi_gras")
+	if mardi_gras and next(mardi_gras) then
+		for _, joker in ipairs(mardi_gras) do
+			self.ability.choose = (self.ability.choose or 0) + 1
+		end
+	end
+end
 '''
