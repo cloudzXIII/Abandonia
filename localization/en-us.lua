@@ -2082,7 +2082,7 @@ return {
           },
           {
             "If {C:attention}poker hand{} is a",
-            "{C:attention}#1#{}, level up",
+            "{C:attention}Inverse Spectrum{}, level up",
             "{C:planet}planet{} {C:attention}rank{} of all cards scored"
           }
         }
@@ -2894,9 +2894,9 @@ return {
       j_abn_ishihara_joker = {
         name = "Ishihara Joker",
         text = {
-          "Played cards with",
-          "{C:abn_penumbra}#2#{} suit give",
-          "{C:mult}+#1#{} Mult when scored",
+          "Gain {C:chips}chips{} {C:attention}equal{} to",
+		  "the {C:attention}ranks{} of scoring {C:dark_edition}Negative{} {C:diamonds}Light Suits{}",
+		  "{C:inactive}Currently:{} {C:chips}+#1#{} {C:inactive}Chips",
         },
       },
       j_abn_alternate_outfit = {
@@ -3538,10 +3538,11 @@ return {
       j_abn_polychameleon = {
         name = "Polychameleon",
         text = {
-          "Gives {C:white,X:mult}X#1#{} Mult",
-          "for each {C:dark_edition}#4#{} or",
-          "{C:dark_edition}#3#{} Joker owned",
-          "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+          "{C:dark_edition}Holographic{} Jokers give {X:mult,C:white}X#1#{} Mult",
+		  "{C:dark_edition}Polychrome{} Jokers give {C:mult}+#2#{} Mult",
+		  "If this Joker has {C:dark_edition}Holographic{} gain {X:chips,C:white}X#3#{} Chips when a {C:dark_edition}Holographic/Polychrome{} Joker triggers",
+		  "If this Joker has {C:dark_edition}Polychrome{} gains {C:chips}+#4#{} Chips each when a {C:dark_edition}Polychrome/Holographic{} Joker triggers",
+		  "{C:inactive}Currently:{} {X:chips,C:white}X#6#{} {C:inactive}Chips{} {C:chips}+#5#{} {C:inactive}Chips{} ",
         }
       },
       j_abn_dark_magokert = {
@@ -3602,9 +3603,9 @@ return {
       j_abn_daredevil = {
         name = "Daredevil",
         text = {
-          "{C:white,X:mult}X#1#{} Mult",
-          "{C:attention}First{} hand is",
-          "drawn {C:attention}face down{}"
+          "Every played card counts in scoring",
+		  "Face down cards {C:attention}retrigger{} per face down card",
+		  "If you have Stunt Double scoring facedown cards level up their {C:planet}planet{} {C:attention}rank{}",
         }
       },
       j_abn_dryeraser_board = {
@@ -7104,6 +7105,35 @@ return {
         text = {
           "{C:attention}Tags{} can be purchased at the shop for {C:money}$#2#",
 		  "At start of the shop add #1# {C:attention}tag",
+        }
+      },
+	  j_abn_yanga_joker         = {
+        name = "Yanga Joker",
+        text = {
+          "Gain {C:chips}+#4#{} Chips when an {C:spades}Opaque{} card scores",
+		  "Gains {C:mult}+#3#{} Mult when a {C:dark_edition}Chthonian{} card scores",
+		  "If {C:attention}First hand{} is {C:attention}Flush{} with only {C:abn_bow}Bows{} they gain {C:spades}Darkner{} enhancement and {C:dark_edition}Chthonian Edition{}",
+		  "If {C:attention}First hand{} is {C:attention}Flush{} with only {C:spades}Spades{} they gain {C:spades}Darkner{} enhancement and {C:dark_edition}Opaque Edition{}",
+		  "If {C:attention}First hand{} is {C:attention}Flush{} with only {C:clubs}Clubs{} they gain {C:spades}Darkner{} enhancement and {C:dark_edition}Chthonian Edition{}",
+		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips",
+        }
+      },
+	  j_abn_pincushion_joker         = {
+        name = "Pincushion Joker",
+        text = {
+          "Retrigger the Joker to the {C;attention}left{}",
+		  "Gain {X:mult,C:white}X#2#{} Mult when a joker is retriggered",
+		  "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult",
+        }
+      },
+	  j_abn_reversecard_joker         = {
+        name = "Reversecard Joker",
+        text = {
+          "If hand is composed of both {C:attention}Flipped{} and {C:attention}face up{} cards",
+		  "Flip all {C:attention}Flipped{} cards {C:attention}face up{} and Flip all {C:attention}face up{} cards {C:attention}face down{}",
+		  "Gains {C:chips}chips{} {C:attention}equal{} to the rank of cards {C:attention}flipped up{} if those cards were {C:attention}flipped down{} gain {C:mult}Mult{} instead",
+		  "If this Joker is {C:attention}Flipped{}, {C:attention}Flipped{} cards give double {C:chips}Chips{} and {C:mult}Mult{}",
+		  "{C:inactive}Currently:{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#1#{} {C:inactive}Chips{}",
         }
       },
     },
