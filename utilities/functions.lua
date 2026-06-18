@@ -371,15 +371,67 @@ ABN.count_planet_ranks_played = function(hand)
 end
 
 
-ABN.add_tag_to_shop = function (key,price,extra)
+--allow tags to be in the shop
+
+if not G.P_CENTERS['mod_shop_tag_base'] then
+    G.P_CENTERS['mod_shop_tag_base'] = {
+        key = 'mod_shop_tag_base',
+        name = "Tag",
+        set = "Tag",
+        config = {},
+        pos = {x=0, y=0},
+        atlas = 'tags'
+    }
+end
+
+local old_card_save = Card.save
+function Card.save(self)
+    local cardTable = old_card_save(self)
+    if self.ability and self.ability.is_shop_tag then
+        cardTable.is_shop_tag = true
+        cardTable.shop_tag_key = self.ability.shop_tag_key
+    end
+    return cardTable
+end
+
+local old_card_load = Card.load
+function Card.load(self, cardTable, other_card)
+    if cardTable.is_shop_tag and cardTable.shop_tag_key then
+        local key = cardTable.shop_tag_key
+        if not G.P_CENTERS[key] and G.P_TAGS[key] then
+            local center = G.P_TAGS[key]
+            G.P_CENTERS[key] = {
+                key = key,
+                name = center.name,
+                set = "Tag",
+                config = center.config or {},
+                pos = center.pos or {x=0, y=0},
+                atlas = center.atlas or 'tags'
+            }
+        end
+    end
+    old_card_load(self, cardTable, other_card)
+end
+
+ABN.add_tag_to_shop = function (key, price, extra)
     extra = extra or {}
     extra.W = extra.W or 0.8
     extra.H = extra.H or 0.8
     extra.area = extra.area or G.shop_vouchers
     local center = G.P_TAGS[key]
-    center.atlas = center.atlas or 'tags'
+    if not center then return end
     local area = extra.area
 
+    if not G.P_CENTERS[key] then
+        G.P_CENTERS[key] = {
+            key = key,
+            name = center.name,
+            set = "Tag",
+            config = center.config or {},
+            pos = center.pos or {x=0, y=0},
+            atlas = center.atlas or 'tags'
+        }
+    end
 
     if area == G.shop_vouchers then
         area.config.card_limit = area.config.card_limit + 1
@@ -391,7 +443,7 @@ ABN.add_tag_to_shop = function (key,price,extra)
         extra.W, 
         extra.H, 
         G.P_CARDS.empty, 
-        center, 
+        G.P_CENTERS[key], 
         {bypass_discovery_center = true, bypass_discovery_ui = true}
     )
     
@@ -401,34 +453,34 @@ ABN.add_tag_to_shop = function (key,price,extra)
     
     tag.ability.booster_pos = #area.cards + 1
     tag.ability.is_shop_tag = true
-    local tag_key = key
-    local tag_2 = Tag(tag_key)
-    if tag_key == "tag_orbital" then
+    tag.ability.shop_tag_key = key
+    
+    local tag_object = Tag(key)
+    if key == "tag_orbital" then
         local available_hands = {}
-
         for _, v in ipairs(G.handlist) do
             local hand = G.GAME.hands[v]
             if hand.visible then
                 available_hands[#available_hands+1] = v
             end
         end
-        tag_2.ability.orbital_hand = pseudorandom_element(available_hands, pseudoseed(tag_2.ability.booster_pos.."_orbital"))
-        tag.ability.orbital_hand = tag.ability.orbital_hand
+        tag_object.ability.orbital_hand = pseudorandom_element(available_hands, pseudoseed(tag.ability.booster_pos.."_orbital"))
+        tag.ability.orbital_hand = tag_object.ability.orbital_hand
     end
-    tag.config.tag = tag_2
-    tag.name = tag.config.tag.name
+    tag.config.tag = tag_object
+    tag.name = tag_object.name
     
     create_shop_card_ui(tag, "Tag", area)
     
     tag.edition = nil
     tag.base_cost = price or 1
     tag:set_cost()
-    tag.config.center.set_card_type_badge = function (self,card,badges)
+    
+    tag.config.center.set_card_type_badge = function (self, card, badges)
         badges[#badges+1] = create_badge(localize('k_tag'), G.C.SECONDARY_SET.Planet, G.C.WHITE, 1.2 )
     end
 
     tag.states.collide.can = true
-
     tag:start_materialize()
     area:emplace(tag)
 
