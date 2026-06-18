@@ -293,9 +293,7 @@ SMODS.Edition {
   end,
   calculate = function(self, card, context)
     if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
-      return {
-        abn_balance_percent = card.ability.extra.percent
-      }
+      ABN.balance_percent(card, (card.edition.percent * 0.01))
     end
   end,
   abn_artist_credits = {
