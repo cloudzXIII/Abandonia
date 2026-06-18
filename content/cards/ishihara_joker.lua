@@ -1,38 +1,47 @@
 -- Ishihara Joker (coded by cloudzXIII)
 SMODS.Joker {
   key = 'ishihara_joker',
-
-  loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.mult, localize(card.ability.extra.suit, 'suits_singular') } }
-  end,
-
   rarity = 1,
   atlas = 'ABNJokerSheet8',
   pos = { x = 7, y = 5 },
   cost = 5,
   discovered = false,
   blueprint_compat = true,
-
-  config = { extra = { mult = 5, suit = "abn_Penumbra" } },
-  calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play then
-      if context.other_card:is_suit(card.ability.extra.suit) then
-        return {
-          mult = card.ability.extra.mult
-        }
-      end
-    end
+  config = { extra = { chips = 0 } },
+  
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.extra.chips } }
   end,
-  abn_artist_credits = {
-    artist = "Vega",
-  },
-
+  
   in_pool = function(self)
     for _, card in ipairs(G.playing_cards or {}) do
-      if card:is_suit("abn_Penumbra") then
+      if ABN.is_light(card) and card.edition and card.edition.negative then
         return true
       end
     end
     return false
   end,
+  
+  calculate = function(self, card, context)
+    if context.individual and context.cardarea == G.play then
+      if ABN.is_light(context.other_card) and context.other_card.edition and context.other_card.edition.negative then
+        card.ability.extra.chips = card.ability.extra.chips + context.other_card.base.nominal
+        return {
+		  message = localize('k_upgrade_ex'),
+          colour = G.C.CHIPS,
+          card = card
+        }
+      end
+    end
+	
+    if context.joker_main then
+		return {
+          chips = card.ability.extra.chips,
+        }
+    end
+  end,
+  
+  abn_artist_credits = {
+    artist = "Vega",
+  },
 }
