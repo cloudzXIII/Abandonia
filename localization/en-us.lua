@@ -491,6 +491,27 @@ return {
           "gain {C:dark_edition}Tea Tag enhancement{} and {C:dark_edition}Collodion Edition{}"
         }
       },
+	  c_abn_pdf = {
+        name = ".PDF",
+        text = {
+          "All held {C:hearts}Hearts{} become {C:abn_snow}Snows{}",
+		  "All held {C:diamonds}Diamonds{} become {C:abn_penumbra}Penumbras{}",
+		  "All held {C:clubs}Clubs{} become {C:abn_tie}Ties{}",
+		  "All held {C:spades}Spades{} become {C:abn_bow}Bows{}",
+        }
+      },
+	  c_abn_jpg = {
+        name = ".JPG",
+        text = {
+          "All {C:attention}Even{} {C:abn_bow}Bows{} and {C:spades}Spades{} in hand gain {C:dark_edition}Vintage Edition{}",
+        }
+      },
+	  c_abn_gif = {
+        name = ".GIF",
+        text = {
+          "All {C:attention}Odd{} {C:abn_tie}Ties{} and {C:clubs}Clubs{} in hand gain {C:dark_edition}Reversal Edition{}",
+        }
+      },
     },
     weather_report = {
       c_abn_clear_sky = {
@@ -3290,9 +3311,11 @@ return {
       j_abn_yharman_joker = {
         name = "Yharman Joker",
         text = {
-          "Destroy played {C:attention}flipped{} cards",
-          "after scoring and gain {C:white,X:mult}X#2#{} Mult per card",
-          "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
+          "When Blind is selected Choose between {C:spades}Dark{} or {C:diamonds}Light{} Suits",
+		  "Chosen Suit becomes {C:attention}Flipped{}",
+		  "Scoring {C:attention}Front facing{} cards level up their {C:planet}planet{} {C:attention}Rank{} equal to the amount of scoring {C:attention}Flipped{} cards",
+		  "Cards leveled above {C:attention}5{} gain {C:spades}Opaque{}/{C:money}Bright{}",
+		  "{C:inactive}Chosen Suit:{} {C:attention}#1#{}",
         }
       },
       j_abn_negative_suit = {
@@ -7157,7 +7180,7 @@ return {
       c_abn_ascend = {
         name = "Ascend",
         text = {
-          "Add {C:dark_edition}Glosss{}, {C:dark_edition}Iridescent{},",
+          "Add {C:dark_edition}Gloss{}, {C:dark_edition}Iridescent{},",
           "or {C:dark_edition}Pearlescent{} effect to",
           "{C:attention}#1#{} selected card in hand",
         },
@@ -8083,6 +8106,169 @@ return {
           "{C:attention}Stake{} difficulty",
         }
       },
+	  
+	  abn_noxious_sticker = {
+        name = "Noxious Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Noxious",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
+	  abn_lethal_sticker = {
+        name = "Lethal Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Lethal",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
+	  abn_baneful_sticker = {
+        name = "Baneful Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Baneful",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
+	  abn_malicious_sticker = {
+        name = "Malicious Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Malicious",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
+	  abn_malignant_sticker = {
+        name = "Malignant Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Malignant",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
+	  abn_inhospitable_sticker = {
+        name = "Inhospitable Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Inhospitable",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
+	  abn_unendurable_sticker = {
+        name = "Unendurable Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Unendurable",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
+	  abn_torturous_sticker = {
+        name = "Torturous Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Torturous",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
+	  abn_wretched_sticker = {
+        name = "Wretched Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Wretched",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
+	  abn_agonizing_sticker = {
+        name = "Agonizing Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Agonizing",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
+	  abn_deplorable_sticker = {
+        name = "Deplorable Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Deplorable",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
+	  abn_vile_sticker = {
+        name = "Vile Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Vile",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
+	  abn_revolting_sticker = {
+        name = "Revolting Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Revolting",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
+	  abn_heinous_sticker = {
+        name = "Heinous Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Heinous",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
+	  abn_abhorent_sticker = {
+        name = "Abhorent Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Abhorent",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
+	  abn_bloodcurdling_sticker = {
+        name = "Bloodcurdling Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Bloodcurdling",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
+	  abn_repulsive_sticker = {
+        name = "Repulsive Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Repulsive",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
+	  abn_Hazard_sticker = {
+        name = "Hazard Jimbo",
+        text = {
+          "Used this Joker",
+          "to win on {C:attention}Hazard",
+          "{C:attention}Stake{} difficulty",
+        }
+      },
+	  
 	  abn_spade = {
         name = "Spade Sticker",
         text = {
@@ -9370,14 +9556,14 @@ return {
       v_abn_chaos = {
         name = "Pendulum of Chaos",
         text = {
-          "{C:abn_sigil}Sigil{}, {C:abn_astro}Astro{}, {C:abn_calamity}Calamity{} and {C:abn_nightshift}Nightshift{}",
+          "{C:abn_sigil}Sigil{}, {C:abn_astro}Astro{}, {C:clubs}Solid State{}, {C:abn_nightshift}Nightshift{}, {C:abn_calamity}Calamity{}, and {C:lexica}Lexica",
           "cards can appear in {C:tarot}Tarot{} packs",
         }
       },
       v_abn_invasion = {
         name = "Parallel Invasion",
         text = {
-          "{C:abn_sigil}Sigil{}, {C:abn_astro}Astro{}, {C:abn_calamity}Calamity{} and {C:abn_nightshift}Nightshift{}",
+          "{C:abn_sigil}Sigil{}, {C:abn_astro}Astro{}, {C:clubs}Solid State{}, {C:abn_nightshift}Nightshift{}, and {C:abn_calamity}Calamity{}",
           "cards can appear in the shop",
         }
       },
@@ -9407,6 +9593,132 @@ return {
           "{C:abn_hazard}Hazard{} blinds",
           "Jokers can be {C:attention}flipped{}",
           "Jokers can have {C:attention}stickers{}"
+        },
+      },
+	  stake_abn_noxious = {
+        name = "Noxious Jimbo",
+        text = {
+          "Finish at Ante {C:attention}12{}",
+          "Applies Toxic Jimbo",
+        },
+      },
+	  stake_abn_lethal = {
+        name = "Lethal Jimbo",
+        text = {
+          "Finish at Ante {C:attention}13{}",
+          "Applies Toxic Jimbo",
+        },
+      },
+	  stake_abn_baneful = {
+        name = "Baneful Jimbo",
+        text = {
+          "Finish at Ante {C:attention}14{}",
+          "Applies Toxic Jimbo",
+        },
+      },
+	  stake_abn_malicious = {
+        name = "Malicious Jimbo",
+        text = {
+          "Finish at Ante {C:attention}15{}",
+          "Applies Toxic Jimbo",
+        },
+      },
+	  stake_abn_malignant = {
+        name = "Malignant Jimbo",
+        text = {
+          "Finish at Ante {C:attention}16{}",
+          "Applies Toxic Jimbo",
+        },
+      },
+	  stake_abn_inhospitable = {
+        name = "Inhospitable Jimbo",
+        text = {
+          "Finish at Ante {C:attention}17{}",
+          "Applies Toxic Jimbo",
+        },
+      },
+	  stake_abn_unendurable = {
+        name = "Unendurable Jimbo",
+        text = {
+          "Finish at Ante {C:attention}18{}",
+          "Applies Toxic Jimbo",
+        },
+      },
+	  stake_abn_torturous = {
+        name = "Torturous Jimbo",
+        text = {
+          "Finish at Ante {C:attention}19{}",
+          "Applies Toxic Jimbo",
+        },
+      },
+	  stake_abn_wretched = {
+        name = "Wretched Jimbo",
+        text = {
+          "Finish at Ante {C:attention}20{}",
+          "Applies Toxic Jimbo",
+        },
+      },
+	  stake_abn_agonizing = {
+        name = "Agonizing Jimbo",
+        text = {
+          "Finish at Ante {C:attention}21{}",
+          "Applies Toxic Jimbo",
+        },
+      },
+	  stake_abn_deplorable = {
+        name = "Deplorable Jimbo",
+        text = {
+          "Finish at Ante {C:attention}22{}",
+          "Applies Toxic Jimbo",
+        },
+      },
+	  stake_abn_vile = {
+        name = "Vile Jimbo",
+        text = {
+          "Finish at Ante {C:attention}23{}",
+          "Applies Toxic Jimbo",
+        },
+      },
+	  stake_abn_revolting = {
+        name = "Revolting Jimbo",
+        text = {
+          "Finish at Ante {C:attention}24{}",
+          "Applies Toxic Jimbo",
+        },
+      },
+	  stake_abn_heinous = {
+        name = "Heinous Jimbo",
+        text = {
+          "Finish at Ante {C:attention}25{}",
+          "Applies Toxic Jimbo",
+        },
+      },
+	  stake_abn_abhorent = {
+        name = "Abhorent Jimbo",
+        text = {
+          "Finish at Ante {C:attention}26{}",
+          "Applies Toxic Jimbo",
+        },
+      },
+	  stake_abn_bloodcurdling = {
+        name = "Bloodcurdling Jimbo",
+        text = {
+          "Finish at Ante {C:attention}27{}",
+          "Applies Toxic Jimbo",
+        },
+      },
+	  stake_abn_repulsive = {
+        name = "Repulsive Jimbo",
+        text = {
+          "Finish at Ante {C:attention}28{}",
+          "Applies Toxic Jimbo",
+        },
+      },
+	  stake_abn_hazard = {
+        name = "Hazard Jimbo",
+        text = {
+          "Finish at Ante {C:attention}29{}",
+          "Applies Toxic Jimbo",
         },
       },
     },
