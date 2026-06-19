@@ -5729,8 +5729,8 @@ return {
           "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips,{} {C:mult}+#2#{} {C:inactive}Mult){}",
         }
       },
-      j_abn_aseprite_joker               = {
-        name = "Aseprite Joker",
+      j_abn_depresor_joker           = {
+        name = "Depresor Joker",
         text = {
           "The {C:attention}First{} played {C:spades}Dark{} Suit card becomes {C:dark_edition}Negative{}",
           "Gain {C:chips}+#6#{} Chips and {C:mult}+#5#{} Mult per {C:dark_edition}Negative{} {C:spades}Dark{} Suit played",
@@ -7167,6 +7167,13 @@ return {
           "Gains {C:chips}chips{} {C:attention}equal{} to the rank of cards {C:attention}flipped up{} if those cards were {C:attention}flipped down{} gain {C:mult}Mult{} instead",
           "If this Joker is {C:attention}Flipped{}, {C:attention}Flipped{} cards give double {C:chips}Chips{} and {C:mult}Mult{}",
           "{C:inactive}Currently:{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#1#{} {C:inactive}Chips{}",
+        }
+      },
+	  j_abn_weltschmerz_joker         = {
+        name = "Weltschmerz Joker",
+        text = {
+          "Scoring {C:inactive}Null{} cards gain {C:attention}Flipped{} after scoring",
+		  "Retrigger {C:attention}Flipped{} {C:inactive}Null{} cards",
         }
       },
     },
