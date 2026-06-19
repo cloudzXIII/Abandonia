@@ -742,7 +742,7 @@ ABN.WeatherReport {
 ABN.WeatherReport {
   key = "fire_rainbow",
   pos = { x = 3, y = 3 },
-  config = { extra = { triggered = false, spectrum_played = false, type = "abn_Spectrum" } },
+  config = { extra = { triggered = false, spectrum_played = false } },
   
   can_use = function(self, card)
     return G.GAME.blind and G.GAME.blind.in_blind and not card.ability.extra.triggered
@@ -762,11 +762,30 @@ ABN.WeatherReport {
   end,
   
   calculate = function(self, card, context)
-    if card.ability.extra.triggered and context.before and next(context.poker_hands[card.ability.extra.type]) then
-      card.ability.extra.triggered = false
-      card.ability.extra.spectrum_played = true
-      SMODS.calculate_effect({ message = localize('k_level_up_ex'), colour = G.C.FILTER }, card)
-      SMODS.smart_level_up_hand(card, context.scoring_name)
+    if card.ability.extra.triggered and context.before then
+      local spectrum_hands = {
+        "abn_Spectrum",
+        "abn_Specflush",
+        "abn_Straight Specflush",
+        "abn_Specflush House",
+        "abn_Specflush Five",
+        "abn_Specflush Six"
+      }
+      
+      local is_spectrum = false
+      for _, hand_type in ipairs(spectrum_hands) do
+        if context.poker_hands[hand_type] and next(context.poker_hands[hand_type]) then
+          is_spectrum = true
+          break
+        end
+      end
+
+      if is_spectrum then
+        card.ability.extra.triggered = false
+        card.ability.extra.spectrum_played = true
+        SMODS.calculate_effect({ message = localize('k_level_up_ex'), colour = G.C.FILTER }, card)
+        SMODS.smart_level_up_hand(card, context.scoring_name)
+      end
     end
     
     if context.destroy_card and context.cardarea == G.play and card.ability.extra.spectrum_played then
