@@ -1,6 +1,8 @@
-# ![icon](assets/1x/modicon.png) Abandonia
+![Logo](https://github.com/user-attachments/assets/8c5b1540-410f-45b4-9fb3-e126ba100243)
 
-A mod to celebrate the creative minds and artists of Balatro!
+# Abandonia :: Celebrating the creative minds and artists of Balatro!
+
+A Balatro mod founded by Bunnet focused on expanding the base game with a bunch of content!
 
 # Installation
 - Requires [Steamodded 1620a+](https://github.com/Steamodded/smods/releases)
