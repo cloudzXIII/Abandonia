@@ -11,29 +11,23 @@ SMODS.Joker {
   pos = { x = 6, y = 3 },
   soul_pos = { x = 7, y = 3 },
   cost = 20,
-  config = {
-    extra = { dollars = 2 }
-  },
   rarity = 4,
   blueprint_compat = true,
   unlocked = false,
-
-  loc_vars = function(self, info_queue, card)
-    return {
-      vars = {
-        card.ability.extra.dollars,
-      }
-    }
-  end,
 
   add_to_deck = function(self, card)
     unlock_card(self)
   end,
 
   calculate = function(self, card, context)
-    -- Check if the Blind effect is starting
-    if context.setting_blind then
-      ease_dollars(card.ability.extra.dollars)
+    if context.repetition and context.cardarea == G.play and context.other_card == context.scoring_hand[1] then
+        return {
+			repetitions = G.GAME.current_round.discards_left
+        }
     end
-  end
+  end,
+
+  abn_artist_credits = {
+    artist = "Long Rooster",
+  },
 }
