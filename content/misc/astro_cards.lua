@@ -968,8 +968,8 @@ SMODS.Consumable {
 
 SMODS.Voucher({
     key = "chaos",
-    atlas = "AbandoniaAstro",
-    pos = { x = 1, y = 2 },
+    atlas = "AbandoniaVouchers",
+    pos = { x = 0, y = 2 },
     cost = 10,
 
     redeem = function(self, card)
@@ -993,7 +993,13 @@ SMODS.Voucher({
                         "c_abn_rapture", "c_abn_furtive", "c_abn_intrusion", "c_abn_aparition",
                         "c_abn_bael", "c_abn_botis", "c_abn_vinea", "c_abn_morax", "c_abn_bune",
                         "c_abn_furfur", "c_abn_bifrons", "c_abn_crocell", "c_abn_belial",
-                        "c_abn_astaroth", "c_abn_asmodeus", "c_abn_camio",
+                        "c_abn_astaroth", "c_abn_asmodeus", "c_abn_camio", "c_abn_digitization",
+						"c_abn_paste", "c_abn_power", "c_abn_hotspot", "c_abn_bookmark", "c_abn_translate",
+						"c_abn_incognito", "c_abn_upload", "c_abn_brightness", "c_abn_dark_web", "c_abn_database",
+						"c_abn_zoom", "c_abn_recycle", "c_abn_a", "c_abn_b", "c_abn_c", "c_abn_d", "c_abn_e", "c_abn_f",
+						"c_abn_g", "c_abn_h", "c_abn_i", "c_abn_j", "c_abn_k", "c_abn_l", "c_abn_m", "c_abn_n", "c_abn_o",
+						"c_abn_p", "c_abn_q", "c_abn_r", "c_abn_s", "c_abn_t", "c_abn_u", "c_abn_v", "c_abn_w", "c_abn_x",
+						"c_abn_y", "c_abn_z", "c_abn_thorn", "c_abn_yogh", "c_abn_eth",
                     }
 
                     -- This gives a 20% chance for ANY slot to be replaced
@@ -1043,9 +1049,9 @@ SMODS.Voucher({
 
 SMODS.Voucher({
     key = "invasion",
-    atlas = "AbandoniaAstro",
+    atlas = "AbandoniaVouchers",
     pos = {
-        x = 2,
+        x = 1,
         y = 2,
     },
     cost = 10,
@@ -1056,5 +1062,6 @@ SMODS.Voucher({
         G.GAME.astro_cards_rate = 1
         G.GAME.calamity_cards_rate = 1
         G.GAME.nightshift_cards_rate = 1
+		G.GAME.solid_state_rate = 1
     end,
 })

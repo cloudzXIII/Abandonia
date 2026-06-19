@@ -479,7 +479,6 @@ SMODS.Consumable {
   cost = 4,
   atlas = "abn_AbandoniaProgramPack",
   pos = { x = 3, y = 0 },
-  hidden = true,
 
   config = {
     extra = {}
@@ -524,6 +523,170 @@ SMODS.Consumable {
         hand_card:set_edition("e_abn_collodion", true)
         
         hand_card:juice_up(0.3, 0.3)
+      end
+    end
+  end,
+  
+  abn_artist_credits = {
+    artist = "Comykel",
+  },
+}
+
+SMODS.Consumable {
+  key = "pdf",
+  set = 'program_pack',
+  cost = 4,
+  atlas = "abn_AbandoniaProgramPack",
+  pos = { x = 4, y = 0 },
+
+  config = {
+    extra = {}
+  },
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {}
+    }
+  end,
+
+  can_use = function(self, card)
+    if G.hand and #G.hand.cards > 0 then
+      return true
+    end
+    return false
+  end,
+
+  use = function(self, card, area, copier)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+
+    local suit_mapping = {
+      Hearts = 'abn_Snow',
+      Diamonds = 'abn_Penumbra',
+      Clubs = 'abn_Tie',
+      Spades = 'abn_Bow'
+    }
+
+    for _, hand_card in ipairs(G.hand.cards) do
+      local changed = false
+      
+      for base_suit, target_suit in pairs(suit_mapping) do
+        if hand_card:is_suit(base_suit) then
+          hand_card:change_suit(target_suit)
+          changed = true
+          break
+        end
+      end
+
+      if changed then
+        hand_card:juice_up(0.3, 0.3)
+      end
+    end
+  end,
+  
+  abn_artist_credits = {
+    artist = "Comykel",
+  },
+}
+
+SMODS.Consumable {
+  key = "jpg",
+  set = 'program_pack',
+  cost = 4,
+  atlas = "abn_AbandoniaProgramPack",
+  pos = { x = 3, y = 1 },
+
+  config = {
+    extra = {}
+  },
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_vintage
+    return {
+      vars = {}
+    }
+  end,
+
+  can_use = function(self, card)
+    if G.hand and #G.hand.cards > 0 then
+      return true
+    end
+    return false
+  end,
+
+  use = function(self, card, area, copier)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+
+    for _, deck_card in ipairs(G.hand.cards) do
+      if (deck_card:is_suit('Spades') or deck_card:is_suit('abn_Bow')) and ABN.is_even(deck_card) then
+        
+        deck_card:set_edition({ abn_vintage = true }, true)
+		
+      end
+    end
+  end,
+  
+  abn_artist_credits = {
+    artist = "Comykel",
+  },
+}
+
+SMODS.Consumable {
+  key = "gif",
+  set = 'program_pack',
+  cost = 4,
+  atlas = "abn_AbandoniaProgramPack",
+  pos = { x = 4, y = 1 },
+
+  config = {
+    extra = {}
+  },
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_reversal
+    return {
+      vars = {}
+    }
+  end,
+
+  can_use = function(self, card)
+    if G.hand and #G.hand.cards > 0 then
+      return true
+    end
+    return false
+  end,
+
+  use = function(self, card, area, copier)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+
+    for _, deck_card in ipairs(G.hand.cards) do
+      if (deck_card:is_suit('Clubs') or deck_card:is_suit('abn_Tie')) and ABN.is_odd(deck_card) then
+        
+        deck_card:set_edition({ abn_reversal = true }, true)
+		
       end
     end
   end,

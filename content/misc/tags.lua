@@ -1003,6 +1003,10 @@ SMODS.Tag {
     pos = { x = 5, y = 4 },
     atlas = "AbandoniaTags",
     
+	in_pool = function(self)
+		return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+	end,
+	
     apply = function(self, tag, context)
         if context.type == 'store_joker_create' then
        
