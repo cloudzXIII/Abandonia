@@ -3965,7 +3965,7 @@ return {
           "Each played {C:attention}4{} gains {C:chips}+#2#{} Chips"
         },
       },
-      j_abn_light_collage = {                -- TO RELOCALIZE
+      j_abn_light_collage = { -- TO RELOCALIZE
         name = "Light Collage",
         text = {
           "Gains {C:chips}+#1#{} Chips when a {C:edition}Foil{} card scores",
@@ -4149,12 +4149,20 @@ return {
           "each one gives {X:mult,C:white}X#1#{} {C:mult}Mult",
         }
       },
-      j_abn_codding_error = {
+      j_abn_codding_error_even = {
         name = "Coding Error",
         text = {
-          "{C:attention}Retrigger{} cards with {C:red}even{} ranks",
-          "{C:attention}flips{} between {C:red}even{} and {C:blue}odd{} each round",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive})"
+          "Retrigger all played",
+          "cards with {C:red}even{} ranks",
+          "{C:inactive,s:0.8}(Changes to {C:blue,s:0.8}Odd{C:inactive,s:0.8} next round)",
+        }
+      },
+      j_abn_codding_error_odd = {
+        name = "Coding Error",
+        text = {
+          "Retrigger all played",
+          "cards with {C:blue}odd{} ranks",
+          "{C:inactive,s:0.8}(Changes to {C:red,s:0.8}Even{C:inactive,s:0.8} next round)",
         }
       },
       j_abn_figurehead = {
@@ -4496,7 +4504,7 @@ return {
           "Lose {C:money}$#3#{} per {C:attention}scoring{} card"
         }
       },
-      j_abn_forsake_joker = {                -- TO RELOCALIZE
+      j_abn_forsake_joker = { -- TO RELOCALIZE
         name = "Forsake Joker",
         text = {
           "When {C:dark_edition}Abandoned edition{} triggers gain {C:money}$#1#{}",
@@ -4561,7 +4569,7 @@ return {
           "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult, {C:chips}+#2# {C:inactive}Chips)",
         }
       },
-      j_abn_basiquat_joker = {               -- TO RELOCALIZE
+      j_abn_basiquat_joker = { -- TO RELOCALIZE
         name = "Basiquat Joker",
         text = {
           "If hand contains an {C:attention}even{} number of scoring cards",
@@ -4775,7 +4783,7 @@ return {
           "{C:inactive}(Currently{} {X:mult,C:white}X#3#{} {C:inactive}Mult,{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips){}"
         }
       },
-      j_abn_ulam_joker = {                   -- TO RELOCALIZE
+      j_abn_ulam_joker = { -- TO RELOCALIZE
         name = "Ulam Joker",
         text = {
           "Gains {C:mult}Mult{} and {C:chips}Chips{} equal to the rank difference",
@@ -4784,7 +4792,7 @@ return {
           "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips){}"
         }
       },
-      j_abn_beyond_the_rainbow = {           -- TO RELOCALIZE
+      j_abn_beyond_the_rainbow = { -- TO RELOCALIZE
         name = "Beyond The Rainbow",
         text = {
           "Gain {X:mult,C:white}X#2#{} Mult for each different {C:attention}suit{} in {C:attention}Spectrum{} hands",
@@ -4799,7 +4807,7 @@ return {
           "{C:attention}Odd{} scoring cards with {C:red}seals{} give {X:chips,C:white}X#2#{} Chips",
         }
       },
-      j_abn_venom_comedian = {               -- TO RELOCALIZE
+      j_abn_venom_comedian = { -- TO RELOCALIZE
         name = "Venom Comedian",
         text = {
           "Gain {X:mult,C:white}X#3#{} Mult per scoring {C:abn_snow}Snow{} card in {C:attention}Spectrum{} hands",
@@ -4871,7 +4879,7 @@ return {
           "to be {C:mult}destroyed",
         }
       },
-      j_abn_j_jimbob = {                     -- TO RELOCALIZE
+      j_abn_j_jimbob = { -- TO RELOCALIZE
         name = "J'Jimbob",
         text = {
           "Scoring {C:inactive}Stone{}, {C:inactive}Glass{}, {C:money}Lucky{} and {C:mult}Mult{} cards give {X:chips,C:white}X#2#{} Chips",
@@ -4978,7 +4986,7 @@ return {
 
         }
       },
-      j_abn_pong_joker = {                   -- I dont know who write this way but u scare me. with love, Marffe
+      j_abn_pong_joker = { -- I dont know who write this way but u scare me. with love, Marffe
         name = "Pong Joker",
         text = {
           "Gain {X:chips,C:white}X#4#{} Chips when playing a {C:attention}Straight{} made of only {C:spades}Dark{} Suits",
@@ -5246,7 +5254,7 @@ return {
           "First Scoring {C:dark_edition}Polychrome{} card gains {C:mult}Red Seal{}",
         }
       },
-      j_abn_clown_degree = {                 -- TO RELOCALIZE
+      j_abn_clown_degree = { -- TO RELOCALIZE
         name = "Clown Degree",
         text = {
           "Cards with {C:attention}seals{} are shuffled to the top of the deck",
@@ -5304,7 +5312,7 @@ return {
           },
         }
       },
-      j_abn_lotion_joker = {                 -- TO RELOCALIZE
+      j_abn_lotion_joker = { -- TO RELOCALIZE
         name = "Lotion Joker",
         text = {
           "Remove {C:dark_edition}enhancements{} from Played and Discarded {C:abn_black_seal}Petroleum{} and {C:inactive}Stone{} cards",
@@ -5401,7 +5409,7 @@ return {
           "On {C:attention}next{} played hand",
         }
       },
-      j_abn_jfool = {                        -- TO RELOCALIZE
+      j_abn_jfool = { -- TO RELOCALIZE
         name = "J'Fool",
         text = {
           "Each played {C:attention}Odd{} cards gives {C:white,X:mult}XMult{} equal to the amount of {C:attention}Odd{} cards played",
@@ -5562,7 +5570,7 @@ return {
           " {X:mult,C:white}X#1#{} Mult, {X:chips,C:white}X#2#{} Chips, and {C:money}$#3#{}",
         }
       },
-      j_abn_jokers_mixtape = {               -- TO RELOCALIZE (well, probably not relocalize just add colours to the var or add extra keys e.g. jokers_mixtape_negative)
+      j_abn_jokers_mixtape = { -- TO RELOCALIZE (well, probably not relocalize just add colours to the var or add extra keys e.g. jokers_mixtape_negative)
         name = "Joker's Mixtape",
         text = {
           "#1#",
@@ -5583,7 +5591,7 @@ return {
           },
         }
       },
-      j_abn_antikythera_mechanism = {        -- TO RELOCALIZE
+      j_abn_antikythera_mechanism = { -- TO RELOCALIZE
         name = "Antikythera Mechanism",
         text = {
           {
@@ -5614,7 +5622,7 @@ return {
           "in {C:attention}First{} scoring {C:spades}Dark{} suit {C:attention}Straight{}",
         }
       },
-      j_abn_isocromatic_joker = {            -- TO RELOCALIZE
+      j_abn_isocromatic_joker = { -- TO RELOCALIZE
         name = "Isocromatic Joker",
         text = {
           "Scoring {C:dark_edition}Foil{} cards gain {C:attention}+#2#{} retrigger",
@@ -5622,7 +5630,7 @@ return {
           "Scoring {C:dark_edition}Polychrome{} cards gain {C:chips}+#1#{} Chips",
         }
       },
-      j_abn_color_anomia = {                 -- TO RELOCALIZE
+      j_abn_color_anomia = { -- TO RELOCALIZE
         name = "Colour Anomia",
         text = {
           "{C:program_pack}Program{} cards are {C:money}free{},",
@@ -5631,7 +5639,7 @@ return {
           "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips){}"
         }
       },
-      j_abn_grapheme_joker = {               -- TO RELOCALIZE
+      j_abn_grapheme_joker = { -- TO RELOCALIZE
         name = "Grapheme Joker",
         text = {
           "The {C:attention}First{} played {C:diamond}Light{} Suit card becomes {C:dark_edition}Negative{}",
