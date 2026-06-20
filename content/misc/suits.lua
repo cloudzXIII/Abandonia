@@ -1,6 +1,7 @@
 SMODS.Suit {
   key = 'Snow',
   card_key = 'SN',
+  shade = "light",
   lc_atlas = "AbandoniaSuits",
   hc_atlas = "AbandoniaSuits",
   lc_ui_atlas = "AbandoniaSuitIcons",
@@ -20,6 +21,7 @@ SMODS.Suit {
 SMODS.Suit {
   key = 'Penumbra',
   card_key = 'PN',
+  shade = "dark",
   lc_atlas = "AbandoniaSuits",
   hc_atlas = "AbandoniaSuits",
   lc_ui_atlas = "AbandoniaSuitIcons",
@@ -39,6 +41,7 @@ SMODS.Suit {
 SMODS.Suit {
   key = 'suitless',
   card_key = 'SUI',
+  shade = "suitless",
   lc_atlas = "AbandoniaSuits",
   hc_atlas = "AbandoniaSuits",
   lc_ui_atlas = "AbandoniaSuitIcons",
@@ -75,6 +78,7 @@ end
 SMODS.Suit {
   key = 'Tie',
   card_key = 'TI',
+  shade = "light",
   lc_atlas = "AbandoniaSuits",
   hc_atlas = "AbandoniaSuits",
   lc_ui_atlas = "AbandoniaSuitIcons",
@@ -94,6 +98,7 @@ SMODS.Suit {
 SMODS.Suit {
   key = 'Bow',
   card_key = 'BW',
+  shade = "dark",
   lc_atlas = "AbandoniaSuits",
   hc_atlas = "AbandoniaSuits",
   lc_ui_atlas = "AbandoniaSuitIcons",

@@ -27,29 +27,32 @@ end
 ABN.listStickers = function(card)
   local sticker_list = {}
   local ability = card.ability
-  
-  for _,v in pairs(SMODS.Stickers) do
+
+  for _, v in pairs(SMODS.Stickers) do
     if ability[v.key] then
-      sticker_list[#sticker_list+1] = v.key
+      sticker_list[#sticker_list + 1] = v.key
     end
   end
-  
+
   return #sticker_list > 0 and sticker_list or nil
 end
 
 ABN.is_dark = function(card)
-  if card:is_suit("Spades") or card:is_suit("Clubs") or card:is_suit('bunc_Halberds') or card:is_suit('paperback_Crowns') or card:is_suit("abn_Penumbra") or card:is_suit("abn_Bow") then
+  if SMODS.has_no_suit(card) then return false end
+  if (Card.is_suit_shade and card:is_suit_shade("dark")) or card:is_suit("Spades") or card:is_suit("Clubs") or card:is_suit('bunc_Halberds') or card:is_suit('paperback_Crowns') or card:is_suit("abn_Penumbra") or card:is_suit("abn_Bow") then
     return true
   end
   return false
 end
 
 ABN.is_light = function(card)
-  if card:is_suit("Diamonds") or card:is_suit("Hearts") or card:is_suit('bunc_Fleurons') or card:is_suit('paperback_Stars') or card:is_suit("abn_Snow") or card:is_suit("abn_Tie") then
+  if SMODS.has_no_suit(card) then return false end
+  if (Card.is_suit_shade and card:is_suit_shade("light")) or card:is_suit("Diamonds") or card:is_suit("Hearts") or card:is_suit('bunc_Fleurons') or card:is_suit('paperback_Stars') or card:is_suit("abn_Snow") or card:is_suit("abn_Tie") then
     return true
   end
   return false
 end
+
 
 ABN.is_number = function(card)
   return not card:is_face() and card:get_id() ~= 14
@@ -159,32 +162,32 @@ function ABN.get_missing_ranks()
   if G.GAME and G.playing_cards and #G.playing_cards > 0 then
     local current_ranks = {}
     local missing_ranks = {}
-    
+
     for _, playing_card in ipairs(G.playing_cards) do
       if not SMODS.has_no_rank(playing_card) then
         current_ranks[playing_card.base.value] = true
       end
     end
-    
+
     for _, rank in ipairs(SMODS.Rank.obj_buffer) do
       if not current_ranks[rank] then
         table.insert(missing_ranks, rank)
       end
     end
-    
+
     return missing_ranks
   end
 end
 
 function ABN.random_sticker(card, seed)
   local compatible = {}
-  
+
   for key, sticker in pairs(SMODS.Stickers) do
     if ABN.can_apply_sticker(sticker, card) then
       table.insert(compatible, key)
     end
   end
-  
+
   return #compatible > 0 and pseudorandom_element(compatible, seed or 'abandonia') or 'perishable'
 end
 
@@ -196,7 +199,7 @@ function ABN.can_apply_sticker(sticker, card)
   end
   local center = card.config.center
   if (center[sticker.key .. '_compat'] or (center[sticker.key .. '_compat'] == nil and ((sticker.default_compat and not sticker.compat_exceptions[center.key]) or -- default yes with no exception
-  (not sticker.default_compat and sticker.compat_exceptions[center.key])))) then                                                                            --default no with exceptions
+    (not sticker.default_compat and sticker.compat_exceptions[center.key])))) then                                                                                --default no with exceptions
     if not card.ability[sticker.key] then
       if card.pinned and sticker.key == 'pinned' then
         --#JUSTICEFORPINNED
@@ -275,7 +278,7 @@ function ABN.get_random_nightshift()
   for k, v in pairs(G.P_CENTER_POOLS["nightshift_cards"]) do
     nightshift_pool[#nightshift_pool + 1] = v.key
   end
-  
+
   local chosen_key = pseudorandom_element(nightshift_pool, "seed" .. pseudorandom(0, 100))
   return chosen_key
 end
@@ -312,14 +315,14 @@ ABN.balance_percent = function(card, percent)
   local average = (chip_mod + mult_mod) / 2
   hand_chips = hand_chips + (average - chip_mod)
   mult = mult + (average - mult_mod)
-  
+
   update_hand_text({ delay = 0 }, { mult = mult, chips = hand_chips })
   card_eval_status_text(card, 'extra', nil, nil, nil, {
     message = (percent * 100) .. "% " .. localize('k_balanced'),
     colour = { 0.8, 0.45, 0.85, 1 },
     sound = 'gong'
   })
-  
+
   G.E_MANAGER:add_event(Event({
     trigger = 'immediate',
     func = (function()
@@ -344,18 +347,18 @@ ABN.balance_percent = function(card, percent)
         delay = 6.3,
         func = (function()
           G.C.UI_CHIPS[1], G.C.UI_CHIPS[2], G.C.UI_CHIPS[3], G.C.UI_CHIPS[4] = G.C.BLUE[1], G.C.BLUE[2],
-          G.C.BLUE[3],
-          G.C.BLUE[4]
+              G.C.BLUE[3],
+              G.C.BLUE[4]
           G.C.UI_MULT[1], G.C.UI_MULT[2], G.C.UI_MULT[3], G.C.UI_MULT[4] = G.C.RED[1], G.C.RED[2], G.C.RED[3],
-          G.C.RED
-          [4]
+              G.C.RED
+              [4]
           return true
         end)
       }))
       return true
     end)
   }))
-  
+
   delay(0.6)
   return hand_chips, mult
 end
@@ -364,7 +367,7 @@ ABN.count_planet_ranks_played = function(hand)
   local total_level = 0
   for _, scored_card in ipairs(hand) do
     local level = G.GAME.abn_rank_upgrades[scored_card.base.value] and
-    G.GAME.abn_rank_upgrades[scored_card.base.value].level or 1
+        G.GAME.abn_rank_upgrades[scored_card.base.value].level or 1
     total_level = total_level + level
   end
   return total_level
@@ -374,115 +377,116 @@ end
 --allow tags to be in the shop
 
 if not G.P_CENTERS['mod_shop_tag_base'] then
-    G.P_CENTERS['mod_shop_tag_base'] = {
-        key = 'mod_shop_tag_base',
-        name = "Tag",
-        set = "Tag",
-        config = {},
-        pos = {x=0, y=0},
-        atlas = 'tags'
-    }
+  G.P_CENTERS['mod_shop_tag_base'] = {
+    key = 'mod_shop_tag_base',
+    name = "Tag",
+    set = "Tag",
+    config = {},
+    pos = { x = 0, y = 0 },
+    atlas = 'tags'
+  }
 end
 
 local old_card_save = Card.save
 function Card.save(self)
-    local cardTable = old_card_save(self)
-    if self.ability and self.ability.is_shop_tag then
-        cardTable.is_shop_tag = true
-        cardTable.shop_tag_key = self.ability.shop_tag_key
-    end
-    return cardTable
+  local cardTable = old_card_save(self)
+  if self.ability and self.ability.is_shop_tag then
+    cardTable.is_shop_tag = true
+    cardTable.shop_tag_key = self.ability.shop_tag_key
+  end
+  return cardTable
 end
 
 local old_card_load = Card.load
 function Card.load(self, cardTable, other_card)
-    if cardTable.is_shop_tag and cardTable.shop_tag_key then
-        local key = cardTable.shop_tag_key
-        if not G.P_CENTERS[key] and G.P_TAGS[key] then
-            local center = G.P_TAGS[key]
-            G.P_CENTERS[key] = {
-                key = key,
-                name = center.name,
-                set = "Tag",
-                config = center.config or {},
-                pos = center.pos or {x=0, y=0},
-                atlas = center.atlas or 'tags'
-            }
-        end
+  if cardTable.is_shop_tag and cardTable.shop_tag_key then
+    local key = cardTable.shop_tag_key
+    if not G.P_CENTERS[key] and G.P_TAGS[key] then
+      local center = G.P_TAGS[key]
+      G.P_CENTERS[key] = {
+        key = key,
+        name = center.name,
+        set = "Tag",
+        config = center.config or {},
+        pos = center.pos or { x = 0, y = 0 },
+        atlas = center.atlas or 'tags'
+      }
     end
-    old_card_load(self, cardTable, other_card)
+  end
+  old_card_load(self, cardTable, other_card)
 end
 
-ABN.add_tag_to_shop = function (key, price, extra)
-    extra = extra or {}
-    extra.W = extra.W or 0.8
-    extra.H = extra.H or 0.8
-    extra.area = extra.area or G.shop_vouchers
-    local center = G.P_TAGS[key]
-    if not center then return end
-    local area = extra.area
+ABN.add_tag_to_shop = function(key, price, extra)
+  extra = extra or {}
+  extra.W = extra.W or 0.8
+  extra.H = extra.H or 0.8
+  extra.area = extra.area or G.shop_vouchers
+  local center = G.P_TAGS[key]
+  if not center then return end
+  local area = extra.area
 
-    if not G.P_CENTERS[key] then
-        G.P_CENTERS[key] = {
-            key = key,
-            name = center.name,
-            set = "Tag",
-            config = center.config or {},
-            pos = center.pos or {x=0, y=0},
-            atlas = center.atlas or 'tags'
-        }
-    end
+  if not G.P_CENTERS[key] then
+    G.P_CENTERS[key] = {
+      key = key,
+      name = center.name,
+      set = "Tag",
+      config = center.config or {},
+      pos = center.pos or { x = 0, y = 0 },
+      atlas = center.atlas or 'tags'
+    }
+  end
 
-    if area == G.shop_vouchers then
-        area.config.card_limit = area.config.card_limit + 1
-    end
+  if area == G.shop_vouchers then
+    area.config.card_limit = area.config.card_limit + 1
+  end
 
-    local tag = Card(
-        area.T.x + area.T.w/2, 
-        area.T.y, 
-        extra.W, 
-        extra.H, 
-        G.P_CARDS.empty, 
-        G.P_CENTERS[key], 
-        {bypass_discovery_center = true, bypass_discovery_ui = true}
-    )
-    
-    for i, v in pairs(center.config) do
-        tag.config[i] = v
-    end
-    
-    tag.ability.booster_pos = #area.cards + 1
-    tag.ability.is_shop_tag = true
-    tag.ability.shop_tag_key = key
-    
-    local tag_object = Tag(key)
-    if key == "tag_orbital" then
-        local available_hands = {}
-        for _, v in ipairs(G.handlist) do
-            local hand = G.GAME.hands[v]
-            if hand.visible then
-                available_hands[#available_hands+1] = v
-            end
-        end
-        tag_object.ability.orbital_hand = pseudorandom_element(available_hands, pseudoseed(tag.ability.booster_pos.."_orbital"))
-        tag.ability.orbital_hand = tag_object.ability.orbital_hand
-    end
-    tag.config.tag = tag_object
-    tag.name = tag_object.name
-    
-    create_shop_card_ui(tag, "Tag", area)
-    
-    tag.edition = nil
-    tag.base_cost = price or 1
-    tag:set_cost()
-    
-    tag.config.center.set_card_type_badge = function (self, card, badges)
-        badges[#badges+1] = create_badge(localize('k_tag'), G.C.SECONDARY_SET.Planet, G.C.WHITE, 1.2 )
-    end
+  local tag = Card(
+    area.T.x + area.T.w / 2,
+    area.T.y,
+    extra.W,
+    extra.H,
+    G.P_CARDS.empty,
+    G.P_CENTERS[key],
+    { bypass_discovery_center = true, bypass_discovery_ui = true }
+  )
 
-    tag.states.collide.can = true
-    tag:start_materialize()
-    area:emplace(tag)
+  for i, v in pairs(center.config) do
+    tag.config[i] = v
+  end
 
-    return tag
+  tag.ability.booster_pos = #area.cards + 1
+  tag.ability.is_shop_tag = true
+  tag.ability.shop_tag_key = key
+
+  local tag_object = Tag(key)
+  if key == "tag_orbital" then
+    local available_hands = {}
+    for _, v in ipairs(G.handlist) do
+      local hand = G.GAME.hands[v]
+      if hand.visible then
+        available_hands[#available_hands + 1] = v
+      end
+    end
+    tag_object.ability.orbital_hand = pseudorandom_element(available_hands,
+      pseudoseed(tag.ability.booster_pos .. "_orbital"))
+    tag.ability.orbital_hand = tag_object.ability.orbital_hand
+  end
+  tag.config.tag = tag_object
+  tag.name = tag_object.name
+
+  create_shop_card_ui(tag, "Tag", area)
+
+  tag.edition = nil
+  tag.base_cost = price or 1
+  tag:set_cost()
+
+  tag.config.center.set_card_type_badge = function(self, card, badges)
+    badges[#badges + 1] = create_badge(localize('k_tag'), G.C.SECONDARY_SET.Planet, G.C.WHITE, 1.2)
+  end
+
+  tag.states.collide.can = true
+  tag:start_materialize()
+  area:emplace(tag)
+
+  return tag
 end
