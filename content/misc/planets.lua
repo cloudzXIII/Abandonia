@@ -33,19 +33,19 @@ function Game:init_game_object(...)
 end
 
 local rank_planets = {
-  { key = "lauto",   rank = "2",     pos = { x = 2, y = 0 } },
-  { key = "urcurme", rank = "3",     pos = { x = 3, y = 0 } },
-  { key = "nevus",   rank = "4",     pos = { x = 4, y = 0 } },
-  { key = "aerth",   rank = "5",     pos = { x = 5, y = 0 } },
-  { key = "sarh",    rank = "6",     pos = { x = 0, y = 1 } },
-  { key = "unpter",  rank = "7",     pos = { x = 1, y = 1 } },
-  { key = "urno",    rank = "8",     pos = { x = 2, y = 1 } },
-  { key = "ranu",    rank = "9",     pos = { x = 3, y = 1 } },
-  { key = "etnup",   rank = "10",    pos = { x = 4, y = 1 } },
-  { key = "zabures", rank = "Jack",  pos = { x = 5, y = 1 } },
-  { key = "pergus",  rank = "Queen", pos = { x = 0, y = 2 } },
-  { key = "vugmado", rank = "King",  pos = { x = 1, y = 2 } },
-  { key = "abandia", rank = "Ace",   pos = { x = 2, y = 2 } },
+  { key = "lauto", rank = "2", pos = { x = 2, y = 0 } },
+  { key = "urcurme", rank = "3", pos = { x = 3, y = 0 } },
+  { key = "nevus", rank = "4", pos = { x = 4, y = 0 } },
+  { key = "aerth", rank = "5", pos = { x = 5, y = 0 } },
+  { key = "sarh", rank = "6", pos = { x = 0, y = 1 } },
+  { key = "unpter", rank = "7", pos = { x = 1, y = 1 } },
+  { key = "urno", rank = "8", pos = { x = 2, y = 1 } },
+  { key = "ranu", rank = "9", pos = { x = 3, y = 1 } },
+  { key = "etnup", rank = "10", pos = { x = 4, y = 1 } },
+  { key = "zabures", rank = "Jack", pos = { x = 5, y = 1 } },
+  { key = "pergus", rank = "Queen", pos = { x = 0, y = 2 } },
+  { key = "vugmado", rank = "King", pos = { x = 1, y = 2 } },
+  { key = "abandia", rank = "Ace", pos = { x = 2, y = 2 } },
 }
 SMODS.Attribute { key = "rank_planet" }
 
@@ -88,6 +88,7 @@ function ABN.level_up_rank(card, rank, amount, instant)
   amount = amount or 1
   instant = instant or false
   local _rank = G.GAME.abn_rank_upgrades[rank]
+  if not _rank then return end
   -- e
   update_hand_text(
     { sound = "button", volume = 0.7, pitch = 0.8, delay = 0.3 },

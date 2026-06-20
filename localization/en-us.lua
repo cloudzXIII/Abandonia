@@ -1,7 +1,7 @@
 return {
   descriptions = {
     solid_state = {
-      c_abn_digitization = { -- TODO: probably make this a little more clearer? e.g. say editions remain
+      c_abn_digitization = {
         name = "Digitization",
         text = {
           "Replace {C:attention}1{} selected Joker",
@@ -20,7 +20,8 @@ return {
       c_abn_power = {
         name = "Power",
         text = {
-          "Upgrade {C:attention}all hands{} to the {C:attention}level{} of your {C:attention}highest{} hand",
+          "Upgrade all {C:attention}poker hands{} to the",
+          "{C:attention}level{} of {C:attention}highest level{} hand",
         }
       },
       c_abn_hotspot = {
@@ -33,8 +34,9 @@ return {
       c_abn_bookmark = {
         name = "Bookmark",
         text = {
-          "Destroy a {C:attention}Face{} card and create {C:attention}3{} Random {C:attention}high level number{} cards ",
-          "They all gain {C:attention}random{} seals",
+          "Destroy {C:attention}1{} selected {C:attention}face{} card,",
+          "create {C:attention}3{} random {C:attention}high level numbered{} cards",
+          "with random {C:attention}seals{}",
         }
       },
       c_abn_translate = {
@@ -46,14 +48,15 @@ return {
       c_abn_incognito = {
         name = "Incognito",
         text = {
-          "Give all cards in hand {C:attention}Flipped{} and {C:abn_brown_seal}Brown Seal{}",
+          "Add {C:attention}Flipped{} and {C:abn_brown_seal}Brown Seal{}",
+          "to all cards held in hand"
         }
       },
       c_abn_upload = {
         name = "Upload",
         text = {
-          "Place the {C:attention}leftmost{} Joker into the {C:attention}consumable slots{}",
-          "{C:attention}-1{} Consumable Slots",
+          "Move {C:attention}leftmost{} Joker into the {C:attention}consumable slots{}",
+          "{C:attention}-1{} Consumable Slot",
         }
       },
       c_abn_brightness = {
@@ -3644,8 +3647,8 @@ return {
       j_abn_dryeraser_board = {
         name = "Dryeraser Board J",
         text = {
-          "{X:red,C:white} X#1# {} Mult if all",
-          "cards played and held in hand",
+          "{X:red,C:white} X#1# {} Mult if all cards",
+          "played and held in hand",
           "are {C:spades}#2#{}",
         }
       },
@@ -6185,7 +6188,9 @@ return {
         name = "Jimbo's Love Letter",
         text = {
           "{C:hearts}Hearts{} held in hand count in scoring",
-          "The first played Flush of only {C:hearts}Hearts{} levels up each cards {C:planet}planet{} {C:attention}rank{}",
+          "Once per round, if played hand",
+          "contains a {C:attention}Flush{} of {C:hearts}Hearts{},",
+          "level up {C:planet}planet{} {C:attention}rank{} of all scoring cards"
         }
       },
       j_abn_immolation_joker = {
@@ -7127,8 +7132,8 @@ return {
       j_abn_stereogram = {
         name = "Stereogram",
         text = {
-          "Scored {C:attention}number{} cards",
-          "Balance {C:attention}#1#%{} of {C:chips}chips{} and {C:mult}mult{}"
+          "Scoring {C:attention}numbered{} cards",
+          "Balance {C:attention}#1#%{} of {C:chips}Chips{} and {C:mult}Mult{}"
         }
       },
       j_abn_suit_eradication = {
