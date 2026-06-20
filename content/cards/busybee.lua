@@ -24,7 +24,7 @@ SMODS.Joker {
 
     -- Check for Food Jokers
     for _, j in ipairs(G.jokers.cards) do
-      if j:has_attribute("food") then
+      if j and j.has_attribute and j:has_attribute("food") then
         has_food = true
         break
       end
