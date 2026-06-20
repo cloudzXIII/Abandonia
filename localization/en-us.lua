@@ -5821,9 +5821,9 @@ return {
         name = "Dreamstalker Joker",
         text = {
           "If you have an {C:attention}Even{} number of {C:mult}Discards{}",
-          "{C:diamonds}Light{} suits give {C:mult}+#1# Mult{} when scored for every {C:spades}Dark{} suit card scored before",
+          "{C:diamonds}Light{} suits give {C:mult}+#1#{} Mult when scored for every {C:spades}Dark{} suit card scored before",
           "If you have an {C:attention}Odd{} number of {C:mult}Discards{}",
-          "{C:spades}Dark{} suits give {C:mult}+#1# Mult{} when scored for every {C:diamonds}Light{} suit card scored before",
+          "{C:spades}Dark{} suits give {C:mult}+#1#{} Mult when scored for every {C:diamonds}Light{} suit card scored before",
         }
       },
       j_abn_carnaval_joker = {
@@ -6851,15 +6851,13 @@ return {
           "Cards held in hand with matching {C:attention}rank/suit{} add to the score",
         },
       },
-      j_abn_wild_power_joker = {
+      j_abn_wild_power_joker = { -- ts doesnt exist
         name = "Wild Power Joker",
         text = {
-          "{C:green}#1# in #2# chance{} for {X:mult,C:white}X#7#{} {C:mult}mult",
-          "when a {C:attention}Wild{} card is {C:attention}scored",
-          "{C:green}#3# in #4# chance{} for {C:mult}#8# mult",
-          "when a {C:attention}Wild{} card is {C:attention}scored",
-          "{C:green}#5# in #6# chance{} for {C:chips}#9# chips",
-          "when a {C:attention}Wild{} card is {C:attention}scored",
+          "When a {C:attention}Wild{} card is scored:",
+          "{C:green,s:0.8}#1# in #2# chance{s:0.8} for {X:mult,C:white,s:0.8}X#7#{s:0.8} Mult",
+          "{C:green,s:0.8}#3# in #4# chance{s:0.8} for {C:mult,s:0.8}+#8#{s:0.8} Mult",
+          "{C:green,s:0.8}#5# in #6# chance{s:0.8} for {C:chips,s:0.8}+#9#{s:0.8} Chips",
         },
       },
       j_abn_ballistic_glass_joker = {
@@ -6881,10 +6879,15 @@ return {
       j_abn_7_slot = {
         name = "7 Slot",
         text = {
-          "When a {C:attention}7{} is {C:attention}scored{}",
-          "level up {C:attention}7{} rank by each other scoring {C:attention}7",
-          "each scoring {C:attention}7{} gains {C:mult}+#1# mult{} per scoring {C:attention}7",
-          "If you have exactly {C:attention}7 Jokers{}",
+          {
+            "Scoring {C:attention}7s{} level up their {C:planet}planet{} {C:attention}rank{}",
+            "once for every other scoring {C:attention}7",
+          },
+          {
+            "If you have exactly {C:attention}7 Jokers{},",
+            "each scoring {C:attention}7{} permanently gains",
+            "{C:mult}+#1#{} Mult per scoring {C:attention}7",
+          },
         }
       },
       j_abn_rival_photograph = {
