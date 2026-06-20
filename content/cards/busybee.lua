@@ -18,20 +18,13 @@ SMODS.Joker {
 
   --only appear if you have food
   in_pool = function(self)
-    if not G.playing_cards or not G.jokers then return false end
-
-    local has_food = false
-
-    -- Check for Food Jokers
-    for _, j in ipairs(G.jokers.cards) do
-      if j and j.has_attribute and j:has_attribute("food") then
-        has_food = true
-        break
+    for _, joker in ipairs(G.jokers.cards or {}) do
+      if joker.config.center.attributes and joker.config.center.attributes.food then
+        return true
       end
     end
 
-    -- Only return true if we have food
-    return has_food
+    return false
   end,
 
 
