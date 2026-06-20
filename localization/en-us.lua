@@ -9981,6 +9981,10 @@ return {
       ['abn_Twilight Distillation'] = "Twilight Distillation",
 
       ['abn_Haunted Mansion'] = "Haunted Mansion",
+      ['abn_Mansion'] = "Mansion",
+      ['abn_Flush Mansion'] = "Flush Mansion",
+      ['abn_Emperium Flush'] = "Emperium Flush",
+
     },
     poker_hand_descriptions = {
       ['abn_Spectrum'] = {
@@ -10058,6 +10062,19 @@ return {
         "A Straight containing 2 Light suit cards,",
         "2 Dark suit cards, and 2 suitless cards"
       },
+
+      ['abn_Mansion'] = {
+        "4 cards of one suit",
+        "2 cards of another suit",
+      },
+      ['abn_Flush Mansion'] = {
+        "2 Three of a Kinds with",
+        "all cards sharing the same suit",
+      },
+      ['abn_Emperium Flush'] = {
+        "14, 13, 12, 11, and Ace",
+        "all sharing the same suit",
+      }
     },
   }
 }

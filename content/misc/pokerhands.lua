@@ -372,12 +372,12 @@ if not (next(SMODS.find_mod('Bunco')) or next(SMODS.find_mod("SixSuits")) or nex
     l_chips = 55,
     l_mult = 3,
     example = {
-      { 'S_7',      true },
-      { 'D_7',      true },
+      { 'S_7', true },
+      { 'D_7', true },
       { 'abn_SN_7', true },
-      { 'H_7',      true },
-      { 'C_7',      true },
-      { 'H_7',      true, enhancement = "m_wild" },
+      { 'H_7', true },
+      { 'C_7', true },
+      { 'H_7', true, enhancement = "m_wild" },
     },
 
     evaluate = function(parts, hand)
@@ -597,9 +597,9 @@ SMODS.PokerHand {
   l_chips = 30,
   l_mult = 2,
   example = {
-    { 'S_Q',       true },
-    { 'D_Q',       true },
-    { 'C_Q',       true },
+    { 'S_Q', true },
+    { 'D_Q', true },
+    { 'C_Q', true },
     { 'abn_SUI_7', true },
     { 'abn_SUI_7', true },
     { 'abn_SUI_7', true },
@@ -682,8 +682,8 @@ SMODS.PokerHand {
     { 'abn_SUI_2', true },
     { 'abn_SUI_5', true },
     { 'abn_SUI_3', true },
-    { 'H_A',       true, enhancement = "m_abn_polkadot" },
-    { 'S_K',       true, enhancement = "m_abn_petroleum" },
+    { 'H_A', true, enhancement = "m_abn_polkadot" },
+    { 'S_K', true, enhancement = "m_abn_petroleum" },
   },
   evaluate = function(parts, hand)
     if #hand < 5 then return {} end
@@ -713,11 +713,11 @@ SMODS.PokerHand {
   l_chips = 25,
   l_mult = 3,
   example = {
-    { 'S_2',       true },
-    { 'D_7',       true },
-    { 'C_3',       true },
-    { 'H_5',       true },
-    { 'abn_SN_K',  true },
+    { 'S_2', true },
+    { 'D_7', true },
+    { 'C_3', true },
+    { 'H_5', true },
+    { 'abn_SN_K', true },
     { 'abn_SUI_A', true },
   },
   evaluate = function(parts, hand)
@@ -746,10 +746,10 @@ SMODS.PokerHand {
   l_chips = 40,
   l_mult = 4,
   example = {
-    { 'H_Q',       true },
-    { 'D_Q',       true },
-    { 'S_7',       true },
-    { 'C_7',       true },
+    { 'H_Q', true },
+    { 'D_Q', true },
+    { 'S_7', true },
+    { 'C_7', true },
     { 'abn_SUI_3', true },
     { 'abn_SUI_5', true },
   },
@@ -784,10 +784,10 @@ SMODS.PokerHand {
   l_chips = 45,
   l_mult = 4,
   example = {
-    { 'H_5',       true },
-    { 'D_6',       true },
-    { 'S_7',       true },
-    { 'C_8',       true },
+    { 'H_5', true },
+    { 'D_6', true },
+    { 'S_7', true },
+    { 'C_8', true },
     { 'abn_SUI_9', true },
     { 'abn_SUI_T', true },
   },
@@ -817,27 +817,27 @@ SMODS.PokerHand {
 }
 
 SMODS.PokerHand {
-    key = 'Flush Six',
-    visible = false,
-    chips = 200,
-    mult = 18,
-    l_chips = 80, 
-    l_mult = 5,
-    example = {
-        { 'S_8', true },
-        { 'S_8', true },
-        { 'S_8', true },
-        { 'S_8', true },
-        { 'S_8', true },
-        { 'S_8', true },
-    },
-    evaluate = function(parts, hand)
-        local six_oak = get_X_same(6, hand)
-        -- Ensures exactly 6 cards are played, a 6 of a kind exists, and it evaluates as a valid flush
-        if #hand == 6 and next(six_oak) and next(parts._flush) then
-            return { SMODS.merge_lists(six_oak, parts._flush) }
-        end
+  key = 'Flush Six',
+  visible = false,
+  chips = 200,
+  mult = 18,
+  l_chips = 80,
+  l_mult = 5,
+  example = {
+    { 'S_8', true },
+    { 'S_8', true },
+    { 'S_8', true },
+    { 'S_8', true },
+    { 'S_8', true },
+    { 'S_8', true },
+  },
+  evaluate = function(parts, hand)
+    local six_oak = get_X_same(6, hand)
+    -- Ensures exactly 6 cards are played, a 6 of a kind exists, and it evaluates as a valid flush
+    if #hand == 6 and next(six_oak) and next(parts._flush) then
+      return { SMODS.merge_lists(six_oak, parts._flush) }
     end
+  end
 }
 --#endregion
 
@@ -1023,3 +1023,128 @@ SMODS.Consumable {
   },
 }
 
+SMODS.PokerHand {
+  key = 'Mansion',
+  visible = false,
+  chips = 80,
+  mult = 6,
+  l_chips = 40,
+  l_mult = 3,
+  example = {
+    { 'S_K', true },
+    { 'S_K', true },
+    { 'H_Q', true },
+    { 'H_Q', true },
+    { 'H_Q', true },
+    { 'H_Q', true },
+  },
+  evaluate = function(parts, hand)
+    if #hand < 6 then return {} end
+    local suits = {}
+
+    for _, card in ipairs(hand) do
+      for suit, _ in pairs(SMODS.Suits) do
+        if card:is_suit(suit, nil, true) then
+          suits[suit] = (suits[suit] or 0) + 1
+          break
+        end
+      end
+    end
+
+    local has_two = false
+    local has_four = false
+    local two_suits = {}
+    local four_suits = {}
+
+    for suit, count in pairs(suits) do
+      if count >= 4 then
+        has_four = true
+        for _, card in ipairs(hand) do
+          if card:is_suit(suit, nil, true) and #four_suits < 4 then
+            table.insert(four_suits, card)
+          end
+        end
+      elseif count >= 2 then
+        has_two = true
+        for _, card in ipairs(hand) do
+          if card:is_suit(suit, nil, true) and #two_suits < 2 then
+            table.insert(two_suits, card)
+          end
+        end
+      end
+    end
+
+    if has_two and has_four then
+      return { SMODS.merge_lists(two_suits, four_suits) }
+    end
+    return {}
+  end
+}
+
+SMODS.PokerHand {
+  key = 'Flush Mansion',
+  visible = false,
+  chips = 200,
+  mult = 16,
+  l_chips = 50,
+  l_mult = 4,
+  above_hand = 'Flush House',
+  example = {
+    { 'D_7', true },
+    { 'D_7', true },
+    { 'D_7', true },
+    { 'D_4', true },
+    { 'D_4', true },
+    { 'D_4', true },
+  },
+  evaluate = function(parts, hand)
+    if #hand < 6 then return {} end
+    if #parts._3 < 2 or not next(parts._flush) then return {} end
+
+    return { SMODS.merge_lists(parts._flush, parts._all_pairs) }
+  end
+}
+
+SMODS.PokerHand {
+  key = 'Emperium Flush',
+  visible = false,
+  chips = 180,
+  mult = 12,
+  l_chips = 90,
+  l_mult = 6,
+  above_hand = 'Straight Flush',
+  example = {
+    { 'S_abn_14', true },
+    { 'S_abn_13', true },
+    { 'S_abn_12', true },
+    { 'S_abn_11', true },
+    { 'S_A', true },
+  },
+  evaluate = function(parts, hand)
+    if #hand < 5 then return {} end
+    if not next(parts._straight) or not next(parts._flush) then return {} end
+
+    local straight_cards = parts._straight[1]
+
+    local target_ranks = {
+      SMODS.Ranks['abn_14'].id,
+      SMODS.Ranks['abn_13'].id,
+      SMODS.Ranks['abn_12'].id,
+      SMODS.Ranks['abn_11'].id,
+      SMODS.Ranks['Ace'].id,
+    }
+
+    local ranks = {}
+    for _, card in ipairs(straight_cards) do
+      ranks[card:get_id()] = true
+    end
+
+    for _, id in ipairs(target_ranks) do
+      if not ranks[id] then
+        return {}
+      end
+    end
+
+    return { SMODS.merge_lists(parts._straight, parts._flush) }
+  end,
+}
