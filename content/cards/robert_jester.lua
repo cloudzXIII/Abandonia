@@ -29,7 +29,7 @@ SMODS.Joker {
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and context.other_card:is_suit("Clubs") then
       if next(SMODS.find_card("j_joker")) then
-        context.other_card.ability.perma_dollars = (context.other_card.ability.perma_dollars or 0) +
+        context.other_card.ability.perma_p_dollars = (context.other_card.ability.perma_p_dollars or 0) +
             (card.ability.extra.dollars * G.GAME.current_round.discards_left)
         SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, context.other_card)
       end
