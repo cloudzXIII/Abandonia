@@ -1972,6 +1972,38 @@ return {
       },
     },
     Joker = {
+      j_abn_mateo_mime = {
+        name = "Mateo Mime",
+        text = {
+          {
+            "Scored {C:abn_suitless}Nulls{} give {X:chips,C:white}X#1#{} Chips,",
+            "increases by {X:chips,C:white}X#2#{} Chips",
+            "when a {C:abn_suitless}Null{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "played {C:abn_suitless}Nulls{} permanently",
+            "gain {C:money}$#3#{} per remaining",
+            "hand when scored"
+          }
+        }
+      },
+      j_abn_brulio_buffoon = {
+        name = "Brulio Buffoon",
+        text = {
+          {
+            "Scored {C:abn_suitless}Nulls{} give {X:mult,C:white}X#1#{} Mult,",
+            "increases by {X:mult,C:white}X#2#{} Mult",
+            "when a {C:abn_suitless}Null{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "played {C:abn_suitless}Nulls{} permanently",
+            "gain {C:mult}+#3#{} Mult per remaining",
+            "hand when scored"
+          }
+        }
+      },
       j_abn_robert_jester = {
         name = "Robert Jester",
         text = {
