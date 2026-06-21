@@ -1972,6 +1972,21 @@ return {
       },
     },
     Joker = {
+      j_abn_faruk_jester = {
+        name = "Faruk Jester",
+        text = {
+          {
+            "Scored {C:spades}Spades{} give {X:chips,C:white}X#1#{} Chips,",
+            "increases by {X:chips,C:white}X#2#{} Chips",
+            "when a {C:spades}Spade{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "{C:spades}Spades{} permanently gain",
+            "{C:mult}+#3#{} Mult per card {C:attention}held{} in hand"
+          }
+        }
+      },
       j_abn_maurice_jester = {
         name = "Maurice Jester",
         text = {
