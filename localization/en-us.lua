@@ -1972,6 +1972,21 @@ return {
       },
     },
     Joker = {
+      j_abn_mike_jester = {
+        name = "Mike Jester",
+        text = {
+          {
+            "Scored {C:abn_bow}Bows{} give {X:mult,C:white}X#1#{} Mult,",
+            "increases by {X:mult,C:white}X#2#{} Mult",
+            "when a {C:abn_bow}Bow{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "scoring {C:abn_bow}Bows{} balance",
+            "{C:chips}Chips{} and {C:mult}Mult{} by {C:purple}#3#%{}"
+          }
+        }
+      },
       j_abn_jerry_jester = {
         name = "Jerry J. Jester",
         text = {
@@ -2013,7 +2028,7 @@ return {
           {
             "If {C:attention}Joker{} is owned,",
             "scoring {C:abn_snow}Snows{} lower",
-            "{C:attention}blind requirements{} by {C:attention}%#3#{}"
+            "{C:attention}blind requirements{} by {C:attention}#3#%{}"
           }
         }
       },
