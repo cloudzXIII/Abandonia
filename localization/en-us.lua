@@ -1972,6 +1972,51 @@ return {
       },
     },
     Joker = {
+      j_abn_jerry_jester = {
+        name = "Jerry J. Jester",
+        text = {
+          {
+            "Scored {C:abn_tie}Ties{} give {X:mult,C:white}X#1#{} Mult,",
+            "increases by {X:mult,C:white}X#2#{} Mult",
+            "when a {C:abn_tie}Tie{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "played {C:abn_tie}Ties{} permanently",
+            "gain {C:money}$#3#{} when scored"
+          }
+        }
+      },
+      j_abn_freddy_jester = {
+        name = "Freddy Jester",
+        text = {
+          {
+            "Scored {C:abn_penumbra}Penumbras{} give {X:mult,C:white}X#1#{} Mult,",
+            "increases by {X:mult,C:white}X#2#{} Mult",
+            "when a {C:abn_penumbra}Penumbra{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "played {C:abn_penumbra}Penumbras{} permanently",
+            "gain {C:chips}+#3#{} Chips when scored"
+          }
+        }
+      },
+      j_abn_reggy_jester = {
+        name = "Reggy Jester",
+        text = {
+          {
+            "Scored {C:abn_snow}Snows{} give {X:mult,C:white}X#1#{} Mult,",
+            "increases by {X:mult,C:white}X#2#{} Mult",
+            "when a {C:abn_snow}Snow{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "scoring {C:abn_snow}Snows{} lower",
+            "{C:attention}blind requirements{} by {C:attention}%#3#{}"
+          }
+        }
+      },
       j_abn_mainframe_joker = {
         name = "Mainframe Joker",
         text = {
@@ -9823,6 +9868,7 @@ return {
       k_green_horn = "Not Allowed!",
       k_abn_chthonian = "Chthonian!",
       k_abn_brewed_ex = "Brewed!",
+      k_abn_reduced_ex = "Reduced!",
 
       k_abn_satellite = "Satellite",
       k_abn_asteroid = "Asteroid",
