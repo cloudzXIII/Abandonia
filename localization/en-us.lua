@@ -1972,6 +1972,21 @@ return {
       },
     },
     Joker = {
+      j_abn_maurice_jester = {
+        name = "Maurice Jester",
+        text = {
+          {
+            "Scored {C:hearts}Hearts{} give {X:chips,C:white}X#1#{} Chips,",
+            "increases by {X:chips,C:white}X#2#{} Chips",
+            "when a {C:hearts}Heart{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "played {C:hearts}Hearts{} permanently",
+            "gain {C:white,X:mult}X#3#{} Mult when scored"
+          }
+        }
+      },
       j_abn_mike_jester = {
         name = "Mike Jester",
         text = {
