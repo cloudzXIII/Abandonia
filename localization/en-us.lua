@@ -4746,14 +4746,19 @@ return {
           "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult, {C:chips}+#2# {C:inactive}Chips)",
         }
       },
-      j_abn_basiquat_joker = { -- TO RELOCALIZE
+      j_abn_basiquat_joker = {
         name = "Basiquat Joker",
         text = {
-          "If hand contains an {C:attention}even{} number of scoring cards",
-          "Gain {C:chips}Chips{} equal to {C:attention}twice{} the {C:money}sell value{} of current Jokers",
-          "If hand contains an {C:attention}odd{} number of scoring cards",
-          "Gain {C:mult}Mult{} equal to {C:attention}twice{} the {C:money}sell value{} of current Jokers",
-          "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult, {C:chips}+#2# {C:inactive}Chips)",
+          {
+            "If hand contains an {C:attention}even{} number",
+            "of scoring cards, gain {C:chips}Chips{} equal to",
+            "{C:attention}twice{} the {C:money}sell value{} of current Jokers",
+          },
+          {
+            "If hand contains an {C:attention}odd{} number",
+            "of scoring cards, gain {C:mult}Mult{} equal to",
+            "{C:attention}twice{} the {C:money}sell value{} of current Jokers",
+          }
         }
       },
       j_abn_coercive_comedian = {
