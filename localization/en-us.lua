@@ -3562,14 +3562,18 @@ return {
           "{C:attention}flipped{} cards in hand",
         }
       },
-      j_abn_yharman_joker = { -- to relocalize
+      j_abn_yharman_joker = { -- to relocalize (its *fine*, but could be made clearer)
         name = "Yharman Joker",
         text = {
-          "When Blind is selected Choose between {C:spades}Dark{} or {C:diamonds}Light{} Suits",
-          "Chosen Suit becomes {C:attention}Flipped{}",
-          "Scoring {C:attention}Front facing{} cards level up their {C:planet}planet{} {C:attention}Rank{} equal to the amount of scoring {C:attention}Flipped{} cards",
-          "Cards leveled above {C:attention}5{} gain {C:spades}Opaque{}/{C:money}Bright{}",
-          "{C:inactive}Chosen Suit:{} {C:attention}#1#{}",
+          {
+            "{C:attention}#1# Suits{} are drawn {C:attention}face down{}",
+            "{C:inactive,s:0.8}Could change when Blind is selected",
+          },
+          {
+            "Level up {C:planet}planet{} {C:attention}rank{} of scored {C:attention}face up{} cards",
+            "equal to the number of scoring {C:attention}Flipped{} cards,",
+            "cards leveled above {C:attention}5{} gain {C:dark_edition}Opaque{}/{C:dark_edition}Bright{}",
+          },
         }
       },
       j_abn_negative_suit = {
@@ -6028,25 +6032,28 @@ return {
           "{C:inactive}(Currently {X:chips,C:white}X#1#{} {C:inactive}Chips,{} {C:chips}+#2#{} {C:inactive}Chips){}",
         }
       },
-      j_abn_under_construction = { -- to relocalize
+      j_abn_under_construction = {
         name = "Under Construction",
         text = {
-          "After {C:attention}Boss Blind has been defeated{} sell this Joker to create {C:attention}any{} Joker in your collection",
-          "{C:inactive}(can only create{} {C:common}Common{} {C:uncommon}Uncommon{} {C:inactive}and{} {C:rare}Rare{}{C:inactive}){}",
+          "When {C:attention}Boss Blind{} is defeated,",
+          "{C:attention}sell{} this Joker to create {C:attention}any{} Joker in your collection",
+          "{C:inactive,s:0.8}(can only create {C:common,s:0.8}Common{C:inactive,s:0.8}, {C:uncommon,s:0.8}Uncommon{C:inactive,s:0.8}, and {C:rare,s:0.8}Rare{C:inactive,s:0.8})",
         }
       },
       j_abn_legends_remade = {
         name = "Legends Remade",
         text = {
-          "If you own a {C:legendary}Legendary{} {C:money}sell{} {C:attention}this joker{}",
-          "to create any {C:legendary}Legendary{} from your collection",
+          "If you own a {C:legendary}Legendary{} Joker,",
+          "{C:money}sell{} this {C:attention}Joker{} to create",
+          "any {C:legendary}Legendary{} Joker from your collection",
         }
       },
       j_abn_plastic_joker = {
         name = "Plastic Joker",
         text = {
           "When {C:abn_black_seal}Petroleum{} cards turn into {C:abn_black_seal}Oilfire{} cards,",
-          "{C:attention}Level up{} the {C:planet}Planet{} {C:attention}Rank{} of the {C:attention}lowest{} rank held in hand",
+          "{C:attention}Level up{} the {C:planet}planet{} {C:attention}rank{}",
+          "of {C:attention}lowest{} rank {C:attention}held{} in hand",
         }
       },
       j_abn_propagator_joker = {
@@ -7512,11 +7519,11 @@ return {
           "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
         }
       },
-      j_abn_tag_collector = { -- to relocalize
+      j_abn_tag_collector = {
         name = "Tag Collector",
         text = {
-          "{C:attention}Tags{} can be purchased at the shop for {C:money}$#2#",
-          "At start of the shop add #1# {C:attention}tag",
+          "{C:attention}Tags{} can be purchased",
+          "in the shop for {C:money}$#2#",
         }
       },
       j_abn_yanga_joker = { -- to relocalize
@@ -7555,28 +7562,40 @@ return {
           "Retrigger {C:attention}Flipped{} {C:inactive}Null{} cards",
         }
       },
-      j_abn_rough_draft_joker = { -- to relocalize
+      j_abn_rough_draft_joker = {
         name = "Rough Draft Joker",
         text = {
-          "Scoring {C:money}Lucky{} {C:inactive}Null{} cards have",
-          "{C:green}#1# in #2#{} Chance to gain {C:chips}+#5#{} Chips",
-          "{C:green}#1# in #3#{} Chance to gain {C:chips}+#6#{} Chips",
-          "{C:green}#1# in #4#{} Chance to {C:attention}double{} the {C:chips}chips{} of all scoring cards",
+          "Scoring {C:attention}Lucky{} {C:abn_suitless}Null{} cards have a:",
+          "{C:green}#1# in #2#{} Chance to gain {C:chips}+#5#{} Chips,",
+          "{C:green}#1# in #3#{} Chance to gain {C:chips}+#6#{} Chips,",
+          "{C:green}#1# in #4#{} Chance to {C:attention}double{}",
+          "the {C:chips}chips{} of all scoring cards",
         }
       },
-      j_abn_friend_jimbo = { -- to relocalize
+      j_abn_friend_jimbo = {
         name = "Friend Jimbo",
         text = {
-          "When a {C:spades}Dark suit{} card is {C:mult}destroyed{} create a {C:inactive}Stone card{}",
-          "If it was {C:abn_black_seal}Darkner{} gain chips equal to the {C:mult}destroyed{} card rank",
-          "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips){}",
+          {
+            "When a {C:spades}Dark suit{} is {C:mult}destroyed{},",
+            "create a {C:attention}Stone{} card",
+          },
+          {
+            "If destroyed card was {C:abn_black_seal}Darkner{},",
+            "gain {C:chips}Chips{} equal to it's [C:attention}rank",
+            "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips){}",
+          }
         }
       },
-      j_abn_telisyndrome_joker = { -- to relocalize
+      j_abn_telisyndrome_joker = {
         name = "Telisyndrome Joker",
         text = {
-          "Gives {X:chips,C:white}^#1#{} chips per {C:attention}unique{} scoring {C:dark_edition}Enchancement{}",
-          "Each Plagued Joker gives {C:mult}+#2#{} Mult per {C:attention}unique{} {C:dark_edition}Edition",
+          {
+            "Gives {X:chips,C:white}^#1#{} Chips per",
+            "{C:attention}unique{} scoring {C:attention}Enchancement{}",
+          },
+          {
+            "Each Plagued Joker gives {C:mult}+#2#{} Mult per {C:attention}unique{} {C:dark_edition}Edition",
+          }
         }
       },
       j_abn_malicious_code_joker = {
@@ -7788,13 +7807,20 @@ return {
           "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
         }
       },
-      j_abn_balatro_64 = { -- to relocalize
+      j_abn_balatro_64 = {
         name = "Balatro 64",
         text = {
-          "If winning hand is only {C:spades}Dark Suit{} cards gain {X:mult,C:white}X#5#{} Mult per scoring card",
-          "If winning hand is only {C:diamonds}Light Suit{} cards gain {X:chips,C:white}X#6#{} Chips per scoring card",
-          "If winning hand is composed of both all Jokers gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
-          "{C:inactive}Currently:{} {X:mult,C:white}X#3#{} {C:inactive}Mult{} {X:chips,C:white}X#4#{} {C:inactive}Chips{}"
+          {
+            "If {C:attention}winning hand{} is only {C:spades}Dark Suits{},",
+            "gain {X:mult,C:white}X#5#{} Mult per scoring card,",
+            "If {C:attention}winning hand{} is only {C:diamonds}Light Suits{},",
+            "gain {X:chips,C:white}X#6#{} Chips per scoring card",
+            "{C:inactive}(Currently{} {X:mult,C:white}X#3#{} {C:inactive}Mult,{} {X:chips,C:white}X#4#{} {C:inactive}Chips){}"
+          },
+          {
+            "If {C:attention}winning hand{} is composed of {C:attention}both{},",
+            "all Jokers gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
+          },
         }
       },
     },
