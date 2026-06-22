@@ -4790,8 +4790,8 @@ return {
       j_abn_ill_gotten_gains = {
         name = "Ill-gotten Gains",
         text = {
-          "Scoring {C:abn_tie}Ties{} give {C:money}$#1#{} when scoring",
-          "Give {C:money}$#2#{} instead if scoring {C:abn_tie}Tie{} has an {C:dark_edition}enhancement{}",
+          "Scoring {C:abn_tie}Ties{} give {C:money}$#1#{}",
+          "Give {C:money}$#2#{} instead if scoring {C:abn_tie}Tie{} has an {C:attention}enhancement{}",
         }
       },
       j_abn_forgemaster_joker = {
@@ -6569,8 +6569,8 @@ return {
       j_abn_darkest_joker = {
         name = "Darkest Joker",
         text = {
-          "Gain {C:mult}+#3#{} Mult per Scoring {C:spades}Dark{} Suit with an {C:dark_edition}Edition{}",
-          "Gain {C:chips}+#4#{} Chips per Scoring {C:spades}Dark{} Suit with an {C:dark_edition}Enhancement{}",
+          "Gain {C:mult}+#3#{} Mult per Scoring {C:spades}Dark Suit{} with an {C:dark_edition}Edition{}",
+          "Gain {C:chips}+#4#{} Chips per Scoring {C:spades}Dark Suit{} with an {C:attention}Enhancement{}",
           "{C:inactive}(Currently {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
         }
       },
@@ -7050,11 +7050,12 @@ return {
         name = "Aesthetic Joker",
         text = {
           {
-            "Gain {C:chips}+#1#{} for each {C:attention}unique{} {C:dark_edition}Enhancement{} scored this run",
+            "{C:chips}+#1#{} for each {C:attention}unique{}",
+            "{C:attention}enhancement{} scored this run",
             "{C:inactive}(Currently{} {C:chips}+#2#{} {C:inactive}Chips){}",
           },
           {
-            "If this Joker has an {C:dark_edition}edition{}",
+            "If this Joker has an {C:dark_edition}edition{},",
             "{C:enhanced}Enhanced{} cards give {C:red}Mult",
             "equal to their {C:chips}chip{} value"
           }
@@ -7369,7 +7370,7 @@ return {
           "Increase {C:attention}blind requirement{} by {X:attention,C:white}X#10#{} for each blind defeated this run",
           "Gain {X:mult,C:white}X#6#{} Mult for each different hand played",
           "Gain {X:chips,C:white}X#7#{} Chips per repeating hand",
-          "Gains {C:mult}+#8#{} Mult and {C:chips}+#9#{} Chips per scoring card with {C:attention}different{} {C:dark_edition}enhancement{}",
+          "Gains {C:mult}+#8#{} Mult and {C:chips}+#9#{} Chips per scoring card with {C:attention}different{} {C:attention}enhancement{}",
           "If hand contains a {C:diamonds}Diamond{} {C:clubs}Club{} {C:hearts}Heart{} and {C:spades}Spade{} all scoring cards level up their {C:planet}planet{} {C:attention}rank{} by {C:attention}4{}",
           "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {X:chips,C:white}X#2#{} {C:inactive}Chips,{} {C:mult}+#3#{} {C:inactive}Mult,{} {C:chips}+#4#{} {C:inactive}Chips,{} {X:attention,C:white}X#5#{} {C:inactive}Blind requirement)"
         }
@@ -7509,7 +7510,7 @@ return {
           "Balance {C:attention}#1#%{} of {C:chips}Chips{} and {C:mult}Mult{}"
         }
       },
-      j_abn_suit_eradication = { -- to relocalize
+      j_abn_suit_eradication = {
         name = "Suit Eradication",
         text = {
           {
@@ -10218,7 +10219,7 @@ return {
           "{C:attention}Playing cards{} in shop",
           "are guaranteed to spawn",
           "with either an {C:dark_edition}Edition{} and a {C:attention}Seal{}",
-          "or with an {C:dark_edition}Edition{} and an {C:dark_edition}Enhancement{}"
+          "or with an {C:dark_edition}Edition{} and an {C:attention}Enhancement{}"
         }
       },
       v_abn_forget_fossil = {
