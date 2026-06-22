@@ -3,6 +3,10 @@ version = "0.1.0"
 dump_lua = true
 priority = 1
 
+# ==========================================
+# STONE CARD PATCHES (Street Art Joker)
+# ==========================================
+
 # Rewrite stone card scoring functionality
 [[patches]]
 [patches.pattern]
@@ -49,13 +53,18 @@ if k == 'm_stone' and next(SMODS.find_card('j_abn_streetart_joker')) then return
 match_indent = true
 times = 1
 
+
+# ==========================================
+# POLKADOT CARD PATCHES (Gagman Joker)
+# ==========================================
+
 # Rewrite polkadot card scoring functionality
 [[patches]]
 [patches.pattern]
 target = "card.lua"
 pattern = '''
 if self.ability.effect == 'Stone Card' or self.config.center.replace_base_card then
-    return self.ability.bonus + (self.ability.perma_bonus or 0)
+    return self.ability.bonus + (self.ability.perma_bonus or 0)
 end
 '''
 position = "after"
@@ -93,6 +102,45 @@ if k == 'm_stone' or G.P_CENTERS[k].no_rank then return true end
 position = "before"
 payload = '''
 if k == 'm_abn_polkadot' and next(SMODS.find_card('j_abn_gagman_joker')) then return false end
+'''
+match_indent = true
+times = 1
+
+
+# ==========================================
+# OILFIRE CARD PATCHES (Inferno Comedian Joker)
+# ==========================================
+
+# Rewrite oilfire card scoring functionality to allow rank scoring fall-through
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+if self.ability.effect == 'Stone Card' or self.config.center.replace_base_card then
+    return self.ability.bonus + (self.ability.perma_bonus or 0)
+end
+'''
+position = "after"
+payload = '''
+if self.ability.effect == 'Oilfire Card' and next(SMODS.find_card('j_abn_inferno_comedian')) then
+    -- Do nothing, let it fall through to retain and calculate rank scoring
+elseif self.ability.effect == 'Oilfire Card' then
+    return self.ability.bonus + (self.ability.perma_bonus or 0)
+end
+'''
+match_indent = true
+times = 1
+
+# Change has_no_rank check to exclude oilfire cards with inferno comedian joker
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/utils.lua"]'''
+pattern = '''
+if k == 'm_stone' or G.P_CENTERS[k].no_rank then return true end
+'''
+position = "before"
+payload = '''
+if k == 'm_abn_oilfire' and next(SMODS.find_card('j_abn_inferno_comedian')) then return false end
 '''
 match_indent = true
 times = 1
