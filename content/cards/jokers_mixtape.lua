@@ -10,38 +10,33 @@ SMODS.Joker {
   config = { extra = { text = "Give +10 chips per Joker owned" } },
 
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.text } }
+    local ed = card.edition
+    local edition_type = "grey"
+
+    if ed then
+      if ed.negative or ed.abn_abandond then
+        edition_type = "black"
+      elseif ed.polychrome or ed.abn_pearlescent then
+        edition_type = "red"
+      elseif ed.foil or ed.abn_gloss then
+        edition_type = "blue"
+      elseif ed.holo or ed.abn_iridescent then
+        edition_type = "yellow"
+      else
+        edition_type = "grey"
+      end
+    end
+
+    return {
+      key = self.key .. '_' .. edition_type,
+      vars = {}
+    }
   end,
 
   update = function(self, card)
     if card.area == G.jokers then
       local target_x = 4
       local target_y = 5
-
-      if card.edition then
-        -- black
-        if card.edition.negative or card.edition.abn_abandond then
-          card.ability.extra.text = "Give X1 Mult per Joker owned"
-          target_x = 3
-        -- red
-        elseif card.edition.polychrome or card.edition.abn_pearlescent then
-          card.ability.extra.text = "Retrigger All Jokers"
-          target_x = 1
-        -- blue
-        elseif card.edition.foil or card.edition.abn_gloss then
-          card.ability.extra.text = "X3 Chips"
-          target_x = 0
-        -- yellow
-        elseif card.edition.holo or card.edition.abn_iridescent then
-          card.ability.extra.text = "Gives Xmult equal to the number of scoring cards"
-          target_x = 2
-        else
-          card.ability.extra.text = "Give +10 chips per Joker owned"
-        end
-      else
-        card.ability.extra.text = "Give +10 chips per Joker owned"
-      end
-
       if card.children and card.children.center then
         if not card.children.center.sprite_pos_is_unique then
           card.children.center.sprite_pos = { x = target_x, y = target_y }
@@ -64,19 +59,19 @@ SMODS.Joker {
           xmult = #G.jokers.cards,
           card = card
         }
-      -- yellow (Holo / Iridescent)
+        -- yellow (Holo / Iridescent)
       elseif ed and (ed.holo or ed.abn_iridescent) then
         return {
           xmult = #context.scoring_hand,
           card = card
         }
-      -- blue (Foil / Gloss)
+        -- blue (Foil / Gloss)
       elseif ed and (ed.foil or ed.abn_gloss) then
         return {
           xchips = 3,
           card = card
         }
-      -- grey (Base / No impactful edition)
+        -- grey (Base / No impactful edition)
       elseif not ed or (not ed.negative and not ed.abn_abandond and not ed.holo and not ed.abn_iridescent and not ed.polychrome and not ed.abn_pearlescent and not ed.foil and not ed.abn_gloss) then
         return {
           chips = 10 * #G.jokers.cards,
@@ -84,7 +79,7 @@ SMODS.Joker {
         }
       end
     end
-    
+
     -- red (Polychrome / pearlescent retrigger logic)
     if context.retrigger_joker_check and not context.retrigger_joker and context.other_card then
       if ed and (ed.polychrome or ed.abn_pearlescent) then

@@ -5773,14 +5773,42 @@ return {
         name = "ROM Hack Balatro",
         text = {
           "{C:attention}Vanilla{} Jokers each give",
-          " {X:mult,C:white}X#1#{} Mult, {X:chips,C:white}X#2#{} Chips, and {C:money}$#3#{}",
+          "{X:mult,C:white}X#1#{} Mult, {X:chips,C:white}X#2#{} Chips, and {C:money}$#3#{}",
         }
       },
-      j_abn_jokers_mixtape = { -- TO RELOCALIZE (well, probably not relocalize just add colours to the var or add extra keys e.g. jokers_mixtape_negative)
+      j_abn_jokers_mixtape_base = {
         name = "Joker's Mixtape",
         text = {
-          "#1#",
-          "Effect changes with certain editions",
+          "Give {C:chips}+10{} chips per {C:attention}Joker{} owned",
+          "{s:0.8}Effect changes with certain editions",
+        }
+      },
+      j_abn_jokers_mixtape_black = {
+        name = "Joker's Mixtape",
+        text = {
+          "Give {C:white,X:mult}X1{} Mult per Joker owned",
+          "{s:0.8}Effect changes with certain editions",
+        }
+      },
+      j_abn_jokers_mixtape_red = {
+        name = "Joker's Mixtape",
+        text = {
+          "Retrigger All Jokers",
+          "{s:0.8}Effect changes with certain editions",
+        }
+      },
+      j_abn_jokers_mixtape_blue = {
+        name = "Joker's Mixtape",
+        text = {
+          "{C:white,X:chips}X3{} Chips",
+          "{s:0.8}Effect changes with certain editions",
+        }
+      },
+      j_abn_jokers_mixtape_yellow = {
+        name = "Joker's Mixtape",
+        text = {
+          "Give {C:white,X:mult}XMult{} equal to the number of scoring cards",
+          "{s:0.8}Effect changes with certain editions",
         }
       },
       j_abn_awakening_oopart = {
@@ -5837,13 +5865,22 @@ return {
           "Scoring {C:dark_edition}Polychrome{} cards gain {C:chips}+#1#{} Chips",
         }
       },
-      j_abn_color_anomia = { -- TO RELOCALIZE
+      j_abn_color_anomia = {
         name = "Colour Anomia",
         text = {
-          "{C:program_pack}Program{} cards are {C:money}free{},",
-          "Played {C:attention}Spectrum{} hands with only {C:attention}Numbered{} cards {C:attention}level up{} the {C:planet}planet{} {C:attention}rank{} of each played card",
-          "If this Joker has an {C:dark_edition}Edition{} gain {C:chips}+#2#{} Chips{} per used {C:program_pack}Program{} card",
-          "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips){}"
+          {
+            "{C:program_pack}Program{} cards are {C:attention}free{}",
+          },
+          {
+            "If played hand contains a {C:attention}Spectrum{}",
+            "with only {C:attention}numbered{} cards, level up",
+            "{C:planet}planet{} {C:attention}rank{} of each played card",
+          },
+          {
+            "If this Joker has an {C:dark_edition}edition{},",
+            "gain {C:chips}+#2#{} Chips per {C:program_pack}Program{} card used",
+            "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips){}"
+          },
         }
       },
       j_abn_grapheme_joker = {
