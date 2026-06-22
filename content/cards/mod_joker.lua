@@ -1,9 +1,9 @@
 SMODS.Joker {
   key = 'mod_joker',
-  rarity = 2, 
+  rarity = 2,
   atlas = 'ABNJokerSheet17',
   pos = { x = 7, y = 4 },
-  cost = 6, 
+  cost = 6,
   discovered = false,
   blueprint_compat = true,
   config = {
@@ -12,8 +12,9 @@ SMODS.Joker {
       chip_gain = 5,
     }
   },
-  
+
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
     return { vars = { card.ability.extra.chips, card.ability.extra.chip_gain } }
   end,
 
@@ -30,13 +31,13 @@ SMODS.Joker {
 
     card.ability.extra.chips = valid_suits * card.ability.extra.chip_gain
   end,
-  
+
   calculate = function(self, card, context)
     if context.joker_main then
-        return {
-          chips = card.ability.extra.chips,
-          colour = G.C.CHIPS
-        }
+      return {
+        chips = card.ability.extra.chips,
+        colour = G.C.CHIPS
+      }
     end
   end,
 

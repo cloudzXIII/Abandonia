@@ -3554,7 +3554,7 @@ return {
           "{C:attention}flipped{} cards in hand",
         }
       },
-      j_abn_yharman_joker = {
+      j_abn_yharman_joker = { -- to relocalize
         name = "Yharman Joker",
         text = {
           "When Blind is selected Choose between {C:spades}Dark{} or {C:diamonds}Light{} Suits",
@@ -7492,7 +7492,7 @@ return {
           "At start of the shop add #1# {C:attention}tag",
         }
       },
-      j_abn_yanga_joker = {
+      j_abn_yanga_joker = { -- to relocalize
         name = "Yanga Joker",
         text = {
           "Gain {C:chips}+#4#{} Chips when an {C:spades}Opaque{} card scores",
@@ -7559,7 +7559,7 @@ return {
           "{C:green}#1# in #2#{} chance for Scoring {C:chips}Bonus{} cards to turn into {C:purple}Contagion Bonus{}",
         }
       },
-      j_abn_fraudulent_mod_joker = {
+      j_abn_fraudulent_mod_joker = { -- to relocalize
         name = "Fraudulent Mod Joker",
         text = {
           "Gains {C:mult}+#1#{} Mult per scoring {C:dark_edition}Sew Enchantment{} cards on {C:abn_tie}Ties{} and {C:abn_bow}Bows{}",
@@ -7630,7 +7630,7 @@ return {
           "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
         }
       },
-      j_abn_cossak_joker = {
+      j_abn_cossak_joker = { -- to relocalize
         name = "Cossak Joker",
         text = {
           "Scoring {C:abn_snow}Snow{} Suits gain {C:planet}Ice Enhancement{}",
@@ -7638,7 +7638,7 @@ return {
           "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}"
         }
       },
-      j_abn_spectrum_hand = {
+      j_abn_spectrum_hand = { -- to relocalize
         name = "Spectrum Hand",
         text = {
           "If played hand contains a {C:attention}Spectrum{},",
@@ -7659,11 +7659,12 @@ return {
       j_abn_mod_joker = {
         name = "Mod Joker",
         text = {
-          "{C:chips}+#2#{} Chips per {C:attention}different{} scoring suit a {C:hearts}Wild{} card is considered",
+          "{C:chips}+#2#{} Chips per unique {C:attention}suit{}",
+          "a {C:attention}Wild{} card is considered",
           "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}",
         }
       },
-      j_abn_snow_comedian = {
+      j_abn_snow_comedian = { -- to relocalize
         name = "Snow Comedian",
         text = {
           "Gains {C:mult}+#3#{} Mult per hand made with {C:attention}Even{} {C:abn_snow}Snow{} cards",
@@ -7689,7 +7690,7 @@ return {
           }
         }
       },
-      j_abn_fanfiction_comedian = {
+      j_abn_fanfiction_comedian = { -- to relocalize
         name = "Fanfiction Comedian",
         text = {
           "Gains {X:mult,C:white}X#2#{} Mult for each {C:attention}unique{} {C:inactive}Suitless{} card Scored",
@@ -7705,14 +7706,14 @@ return {
           "decreases the {C:attention}blind requirement{} by {C:attention}#1#%",
         }
       },
-      j_abn_joker_in_a_nutshell = {
+      j_abn_joker_in_a_nutshell = { -- to relocalize
         name = "Joker In A Nutshell",
         text = {
           "{C:common}Common{} Jokers without {C:dark_edition}Editions{} can't be {C:mult}debuffed{} or {C:mult}destroyed{}",
           "{C:rare}Rare{} and {C:uncommon}Uncommon{} Jokers can't appear in the shop",
         }
       },
-      j_abn_runedelta = {
+      j_abn_runedelta = { -- to relocalize
         name = "Runedelta",
         text = {
           "If winning hand is only {C:spades}Dark Suit{} cards gain {C:mult}+#3#{} Mult",
@@ -7721,7 +7722,7 @@ return {
           "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}",
         }
       },
-      j_abn_balatro_64 = {
+      j_abn_balatro_64 = { -- to relocalize
         name = "Balatro 64",
         text = {
           "If winning hand is only {C:spades}Dark Suit{} cards gain {X:mult,C:white}X#5#{} Mult per scoring card",
