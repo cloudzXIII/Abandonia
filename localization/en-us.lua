@@ -4141,7 +4141,7 @@ return {
           "Each played {C:attention}4{} gains {C:chips}+#2#{} Chips"
         },
       },
-      j_abn_light_collage = { -- TO RELOCALIZE
+      j_abn_light_collage = { -- TO RELOCALIZE (oh hell naw)
         name = "Light Collage",
         text = {
           "Gains {C:chips}+#1#{} Chips when a {C:edition}Foil{} card scores",
@@ -4971,13 +4971,19 @@ return {
           },
         }
       },
-      j_abn_ulam_joker = { -- TO RELOCALIZE
+      j_abn_ulam_joker = {
         name = "Ulam Joker",
         text = {
-          "Gains {C:mult}Mult{} and {C:chips}Chips{} equal to the rank difference",
-          "between {C:attention}first{} and {C:attention}last{} scored cards in a {C:attention}Spectrum{} hand",
-          "If this Joker has an {C:dark_edition}edition{} gains twice the difference",
-          "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips){}"
+          {
+            "This Joker gains {C:mult}Mult{} and {C:chips}Chips{} equal to",
+            "the rank difference between {C:attention}first{} and",
+            "{C:attention}last{} scored cards in a {C:attention}Spectrum{} hand",
+            "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips){}"
+          },
+          {
+            "If this Joker has an {C:dark_edition}edition{},",
+            "gains {C:attention}twice{} the rank difference",
+          },
         }
       },
       j_abn_beyond_the_rainbow = {
@@ -5079,12 +5085,17 @@ return {
           "to be {C:mult}destroyed",
         }
       },
-      j_abn_j_jimbob = { -- TO RELOCALIZE
+      j_abn_j_jimbob = {
         name = "J'Jimbob",
         text = {
-          "Scoring {C:inactive}Stone{}, {C:inactive}Glass{}, {C:money}Lucky{} and {C:mult}Mult{} cards give {X:chips,C:white}X#2#{} Chips",
-          "Scoring {C:inactive}Steel{}, {C:chips}Bonus{}, {C:money}Gold{} and {C:hearts}Wild{} cards give {X:mult,C:white}X#1#{} Mult",
-
+          {
+            "Scoring {C:attention}Stone{}, {C:attention}Glass{}, {C:attention}Lucky{}",
+            "and {C:attention}Mult{} cards give {X:chips,C:white}X#2#{} Chips",
+          },
+          {
+            "Scoring {C:attention}Steel{}, {C:attention}Bonus{}, {C:attention}Gold{}",
+            "and {C:attention}Wild{} cards give {X:mult,C:white}X#1#{} Mult",
+          }
         }
       },
       j_abn_trevulit = {
