@@ -107,6 +107,15 @@ ABN.config_tab = function()
                           G.localization.misc.dictionary.abn_show_credits,
                         },
                       }),
+                      create_toggle({
+                        id = "show_credits",
+                        ref_table = ABN.config,
+                        ref_value = "enable_logo",
+                        label = localize("k_abn_config_enable_logo"),
+                        info = {
+                          G.localization.misc.dictionary.abn_enable_logo,
+                        },
+                      }),
                     }
                   },
                 }

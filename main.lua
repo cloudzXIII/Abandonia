@@ -7,7 +7,7 @@ ABN_config = ABN.config
 -- This will save the current state even when settings are modified
 ABN.enabled = copy_table(ABN_config)
 
-local config = SMODS.current_mod.config
+local config = ABN.config
 
 ABN.description_loc_vars = function()
   return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2, shadow = true }
@@ -288,10 +288,12 @@ SMODS.Gradient {
   cycle = 10
 }
 
-SMODS.Atlas {
-  key = 'balatro',
-  path = 'logo.png',
-  px = 332,
-  py = 216,
-  prefix_config = { key = false }
-}
+if ABN.config.enable_logo then
+  SMODS.Atlas {
+    key = 'balatro',
+    path = 'logo.png',
+    px = 332,
+    py = 216,
+    prefix_config = { key = false }
+  }
+end

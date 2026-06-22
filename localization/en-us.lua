@@ -10388,6 +10388,8 @@ return {
       abn_show_credits = "Shows credits under mod badge when enabled",
       k_abn_config_toggle_music = "Toggle Music",
       abn_toggle_music = "Uses custom title screen music when enabled",
+      k_abn_config_enable_logo = "Enable Custom Title Screen",
+      abn_enable_logo = "(Requires Restart)",
 
       -- Mod badges for credits
       k_abn_artist = "Artist",
