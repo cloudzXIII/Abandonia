@@ -11,6 +11,17 @@ SMODS.Joker {
 	info_queue[#info_queue + 1] = { key = "abn_flipped_card", set = "Other" }
     return { vars = {} }
   end,
+  
+  in_pool = function(self, args)
+    if G.playing_cards then
+      for _, card in ipairs(G.playing_cards) do
+        if card.base.suit == "abn_suitless" then
+          return true
+        end
+      end
+    end
+    return false
+  end,
 
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
