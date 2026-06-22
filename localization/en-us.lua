@@ -2400,6 +2400,10 @@ return {
             "played {C:attention}Infra{} cards",
             "level up scoring hand",
           },
+		  {
+			"If this joker is {C:dark_edition}Negative{} and the score catches fire",
+			"all cards held in hand become {C:dark_edition}Negative{}",
+		  }
         }
       },
       j_abn_i_am_not_joker = {
@@ -7355,8 +7359,137 @@ return {
       j_abn_weltschmerz_joker = {
         name = "Weltschmerz Joker",
         text = {
-          "Scoring {C:inactive}Null{} cards gain {C:attention}Flipped{} after scoring",
+          "Scoring {C:inactive}Null{} cards gain {C:attention}Flipped{}",
           "Retrigger {C:attention}Flipped{} {C:inactive}Null{} cards",
+        }
+      },
+	  j_abn_rough_draft_joker = {
+        name = "Rough Draft Joker",
+        text = {
+          "Scoring {C:money}Lucky{} {C:inactive}Null{} cards have",
+          "{C:green}#1# in #2#{} Chance to gain {C:chips}+#5#{} Chips",
+		  "{C:green}#1# in #3#{} Chance to gain {C:chips}+#6#{} Chips",
+		  "{C:green}#1# in #4#{} Chance to {C:attention}double{} the {C:chips}chips{} of all scoring cards",
+        }
+      },
+	  j_abn_friend_jimbo = {
+        name = "Friend Jimbo",
+        text = {
+          "When a {C:spades}Dark suit{} card is {C:mult}destroyed{} create a {C:inactive}Stone card{}",
+		  "If it was {C:abn_black_seal}Darkner{} gain chips equal to the {C:mult}destroyed{} card rank",
+		  "{C:inactive}Currently:{} {C:chips}+#1#{} {C:inactive}Chips{}",
+        }
+      },
+	  j_abn_telisyndrome_joker = {
+        name = "Telisyndrome Joker",
+        text = {
+          "Gives {X:chips,C:white}^#1#{} chips per {C:attention}unique{} scoring {C:dark_edition}Enchancement{}",
+		  "Each Plagued Joker gives {C:mult}+#2#{} Mult per {C:attention}unique{} {C:dark_edition}Edition",
+        }
+      },
+	  j_abn_malicious_code_joker = {
+        name = "Malicious Code Joker",
+        text = {
+          "{C:green}#1# in #2#{} chance for Scoring {C:mult}Mult{} cards to turn into {C:purple}Contagion Mult{}",
+		  "{C:green}#1# in #2#{} chance for Scoring {C:chips}Bonus{} cards to turn into {C:purple}Contagion Bonus{}",
+        }
+      },
+	  j_abn_fraudulent_mod_joker = {
+        name = "Fraudulent Mod Joker",
+        text = {
+          "Gains {C:mult}+#1#{} Mult per scoring {C:dark_edition}Sew Enchantment{} cards on {C:abn_tie}Ties{} and {C:abn_bow}Bows{}",
+		  "Gains {C:chips}+#2#{} Chips per scoring {C:dark_edition}Cotton Enchantment{} on {C:abn_tie}Ties{} and {C:abn_bow}Bows{}",
+		  "{C:inactive}Currently:{} {C:mult}+#3#{} {C:inactive}Mult{} {C:chips}+#4#{} {C:inactive}Chips{}"
+        }
+      },
+	  j_abn_narcoleptic_joker = {
+        name = "Narcoleptic Joker",
+        text = {
+          "{X:chips,C:white}X#1#{} Chips if played hand contains only {C:spades}Spades{} and {C:clubs}Clubs{}",
+		  "{X:mult,C:white}X#2#{} Mult if played hand contains only {C:spades}Spades{} and {C:abn_bow}Bows{}",
+        }
+      },
+	  j_abn_spectrum_hell = {
+        name = "Spectrum Hell",
+        text = {
+          "If the Score Catches Fire and played hand is a {C:attention}Spectrum{} hand",
+		  "all Jokers gain {X:mult,C:white}X#1#{} Mult",
+        }
+      },
+	  j_abn_nova_red_eyes_joker = {
+        name = "Nova Red Eyes Joker",
+        text = {
+          "If First Hand is composed of only {C:spades}Dark Suits{}",
+		  "They all gain {C:attention}+#1#{} retrigger and {C:dark_edition}Chthonian Edition{}",
+        }
+      },
+	  j_abn_genocide_route = {
+        name = "Genocide Route",
+        text = {
+          "When purchased {C:mult}destroy{} all Jokers and",
+		  "Gain {X:mult,C:white}X#3#{} Mult and {X:chips,C:white}X#4#{} Chips per {C:mult}destroyed{} Joker",
+		  "When {C:attention}Blind is selected{} create a random {C:attention}#5#{} Joker with {C:dark_edition}#6# Edition{}",
+		  "{C:attention}Restart{} this process after getting a {C:abn_superrare}Super Rare{}",
+		  "{C:inactive}Currently: {X:mult,C:white}X#1#{} {C:inactive}Mult{} {X:chips,C:white}X#2#{} {C:inactive}Chips{}"
+        }
+      },
+	  j_abn_runedelta_disc2 = {
+        name = "Runedelta Disc2",
+        text = {
+		  {
+			"The first scoring {C:attention}Even{} card with an {C:dark_edition}Edition{} retriggers",
+			"for each Joker matching that {C:dark_edition}Edition{}",
+			"This Joker gains {X:mult,C:white}X#3#{} Mult per retrigger",
+		  },
+		  {
+			"The first scoring {C:attention}Odd{} card with an {C:dark_edition}Edition{} retriggers",
+			"for each Joker matching that {C:dark_edition}Edition{}",
+			"This Joker gains {X:chips,C:white}X#4#{} Chips per retrigger",
+		  },
+		  {
+			"If this Joker has an {C:dark_edition}Edition{} Jokers with {C:dark_edition}Editions{} can't be {C:mult}debuffed{}",
+			"{C:inactive}(Currently: {X:mult,C:white}X#1#{} {C:inactive}Mult {X:chips,C:white}X#2#{} {C:inactive}Chips){}"
+		  }
+        }
+      },
+	  j_abn_origiri_triplets = {
+        name = "Origiri Triplets",
+        text = {
+          "If combined {C:attention}ranks{} of scoring hand are divisible by {C:attention}3{} (ex {C:attention}3{}, {C:attention}6{}, {C:attention}9{}, {C:attention}12{}, etc",
+		  "This Joker gains {C:chips}+#4#{} Chips {C:mult}+#3#{} Mult and {C:money}$#5#{} sell value",
+		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}",
+        }
+      },
+	  j_abn_cossak_joker = {
+        name = "Cossak Joker",
+        text = {
+          "Scoring {C:abn_snow}Snow{} Suits gain {C:planet}Ice Enhancement{}",
+		  "Gain {C:chips}+#2#{} Chips per Scoring {C:abn_snow}Snow{} {C:planet}Ice Enhancement{}",
+		  "{C:inactive}Currently: {C:chips}+#1#{} {C:inactive}Chips{}"
+        }
+      },
+	  j_abn_spectrum_hand = {
+        name = "Spectrum Hand",
+        text = {
+          "If played hand is a {C:attention}Spectrum{} hand",
+		  "Scoring {C:diamonds}Light Suits{} gain {C:spectral}Fervent{} and {C:inactive}Silver Edition{}",
+		  "Scoring {C:spades}Dark Suits{} gain {C:money}Charged{} and {C:dark_edition}Chthonian{}",
+		  "If this Joker has {C:inactive}Silver{} gain {C:mult}+#1#{} Mult per Scoring card",
+		  "If this Joker has {C:dark_edition}Chthonian{} gain {C:chips}+#2#{} Chips per scoring card",
+		  "{C:inactive}Currently: {C:mult}+#3#{} {C:inactive}Mult {C:chips}+#4#{} {C:inactive}Chips{}"
+        }
+      },
+	  j_abn_celestial_joker = {
+        name = "Celestial Joker",
+        text = {
+          "When {C:attention}Blind is selected{} all Jokers gain {C:chips}+#1#{} Chips",
+        }
+      },
+	  j_abn_mod_joker = {
+        name = "Mod Joker",
+        text = {
+          "{C:chips}+#2#{} chips per {C:attention}different{} scoring suit a {C:hearts}Wild{} card is considered",
+		  "{C:inactive}Currently: {C:chips}+#1#{} {C:inactive}Chips{}",
         }
       },
     },
