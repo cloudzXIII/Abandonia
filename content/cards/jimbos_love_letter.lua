@@ -31,7 +31,7 @@ SMODS.Joker {
         -- Upgrade logic
         if context.before and not card.ability.extra.triggered then
             -- Check if the played hand is a flush
-            if context.scoring_name == "Flush" or context.scoring_name == "Straight Flush" or context.scoring_name == "Royal Flush" or context.scoring_name == "Flush Five" or context.scoring_name == "Flush House" then
+            if next(context.poker_hands["Flush"]) then
                 local is_all_hearts = true
 
                 for i = 1, #context.scoring_hand do

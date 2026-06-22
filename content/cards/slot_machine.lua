@@ -22,67 +22,37 @@ SMODS.Joker {
     cost = 10,
     discovered = false,
     blueprint_compat = true,
-    config = { extra = { repetitions = 1 } },
+    config = { extra = { repetitions = 1, IsRoyalFlush = false } },
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.j_golden
-        return { vars = { card.ability.extra.repetitions } }
+        return { vars = { card.ability.extra.repetitions, localize("Royal Flush", "poker_hands") } }
     end,
 
     in_pool = function(self)
-        if not G.playing_cards then return false end
-        if G.GAME.consumeable_usage['c_wheel_of_fortune'] and
-            G.GAME.consumeable_usage['c_wheel_of_fortune'].count > 0 then
-            return true
-        end
-        return false
+        return G.GAME.consumeable_usage['c_wheel_of_fortune'] and
+            G.GAME.consumeable_usage['c_wheel_of_fortune'].count > 0
     end,
 
     calculate = function(self, card, context)
         -- Level up
-        if context.before and context.scoring_name == "Straight Flush" then
-            local is_royal = true
-            local counts = { ['10'] = 0, ['11'] = 0, ['12'] = 0, ['13'] = 0, ['14'] = 0 }
-
-            for i = 1, #context.scoring_hand do
-                local rank = context.scoring_hand[i].base.id
-                if not counts[tostring(rank)] then
-                    is_royal = false
-                    break
-                end
-            end
-
-            if is_royal then
-                return {
-                    level_up = true,
-                    message = localize('k_level_up_ex'),
-                }
-            end
+        if context.evaluate_poker_hand then
+            card.ability.extra.IsRoyalFlush = context.display_name == localize("Royal Flush", "poker_hands")
+        end
+        if context.before and card.ability.extra.IsRoyalFlush then
+            return {
+                level_up = true,
+                message = localize('k_level_up_ex'),
+            }
         end
 
         -- Retrigger
-        if context.repetition and context.cardarea == G.play then
-            -- check for Royal Flush
-            if context.scoring_name == "Straight Flush" then
-                local is_royal = true
-                local counts = { ['10'] = 0, ['11'] = 0, ['12'] = 0, ['13'] = 0, ['14'] = 0 }
-
-                for i = 1, #context.scoring_hand do
-                    local rank = context.scoring_hand[i].base.id
-                    if not counts[tostring(rank)] then
-                        is_royal = false
-                        break
-                    end
-                end
-
-                if is_royal then
-                    return {
-                        message = localize('k_again_ex'),
-                        repetitions = 1,
-                        card = card
-                    }
-                end
-            end
+        if context.repetition and context.cardarea == G.play and card.ability.extra.IsRoyalFlush then
+            return {
+                message = localize('k_again_ex'),
+                repetitions = 1,
+                card = card
+            }
         end
     end,
 

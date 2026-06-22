@@ -1972,6 +1972,19 @@ return {
       },
     },
     Joker = {
+      j_abn_regalia_joker = {
+        name = "Regalia Joker",
+        text = {
+          {
+            "Earn {C:money}$#1#{} if {C:attention}poker hand{} is a",
+            "{C:attention}#2#{} or a {C:attention}#3#{}",
+          },
+          {
+            "If {C:attention}poker hand{} is a {C:attention}#3#{},",
+            "level up {C:planet}planet{} {C:attention}rank{} of all cards scored"
+          }
+        }
+      },
       j_abn_klyde_clown = {
         name = "Klyde Clown",
         text = {
@@ -5498,7 +5511,7 @@ return {
           },
           {
             "If {C:attention}poker hand{} is a",
-            "{C:attention}Royal Flush{}, retrigger",
+            "{C:attention}#2#{}, retrigger",
             "and level up hand",
           },
         }

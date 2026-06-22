@@ -52,13 +52,11 @@ SMODS.Joker {
         }
       end
     end
-  
+
     -- Scaling Logic
     if context.before and not context.blueprint then
-      if context.scoring_name == "Straight" or 
-         context.scoring_name == "Straight Flush" or 
-         context.scoring_name == "Royal Flush" then
-        
+      if context.scoring_name == "Straight" or
+      context.scoring_name == "Straight Flush" then
         local all_light = true
         local all_dark = true
 
@@ -80,7 +78,7 @@ SMODS.Joker {
         if triggered then
           return {
             message = localize('k_upgrade_ex'),
-            colour = G.C.Mult, 
+            colour = G.C.Mult,
             card = card
           }
         end
@@ -90,7 +88,7 @@ SMODS.Joker {
     -- Scoring Logic
     if context.joker_main then
       return {
-        xmult = card.ability.extra.xmult, 
+        xmult = card.ability.extra.xmult,
         xchips = card.ability.extra.xchips,
       }
     end

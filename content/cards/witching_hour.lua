@@ -34,11 +34,9 @@ SMODS.Joker {
       end
     end
     if context.joker_main then
-      if card.ability.extra.x_mult >= 1 then
-        return {
-          x_mult = card.ability.extra.x_mult,
-        }
-      end
+      return {
+        x_mult = card.ability.extra.x_mult,
+      }
     end
   end,
   abn_artist_credits = {
