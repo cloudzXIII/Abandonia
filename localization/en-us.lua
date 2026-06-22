@@ -7416,7 +7416,7 @@ return {
           "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips){}"
         }
       },
-      j_abn_tlumddo = { -- to relocalize
+      j_abn_tlumddo = {
         name = "Tlumddo Joker",
         text = {
           {
@@ -7512,11 +7512,18 @@ return {
       j_abn_suit_eradication = { -- to relocalize
         name = "Suit Eradication",
         text = {
-          "Destroy each scoring {C:hearts}Hearts{},{C:diamonds}Diamonds{},{C:spades},Spades{} and {C:clubs}clubs.",
-          "Gain {C:chips}chips{} equal to the {C:attention}ranks{} of destroyed cards.",
-          "Create 1 random card with the same rank as destroyed one",
-          "with either {V:1}Snow{},{V:2}Tie{},{V:3}Penumbra{} or {V:4}Bow{} suit.",
-          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
+          {
+            "Destroy each {C:hearts}Hearts{}, {C:diamonds}Diamonds{},",
+            "{C:spades}Spades{}, and {C:clubs}Clubs{} scored, gain {C:chips}chips{}",
+            "equal to the {C:attention}ranks{} of destroyed cards",
+            "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
+          },
+          {
+            "Create a random card with the",
+            "same {C:attention}rank{} as destroyed card",
+            "with either {V:1}Snow{}, {V:2}Tie{},",
+            "{V:3}Penumbra{} or {V:4}Bow{} suit",
+          },
         }
       },
       j_abn_tag_collector = {
