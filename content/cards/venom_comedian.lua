@@ -7,7 +7,18 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { chips = 0, xmult = 1, chipsadd = 100, xmultadd = 0.1 } },
+  config = { 
+    extra = { 
+      mult = 0, 
+      chips = 0, 
+      xmult = 1,
+      xchips = 1,
+      multadd = 18,
+      xchipsadd = 0.3,
+      xmultadd = 0.2,
+      chipsadd = 50
+    } 
+  },
   pools = { ["Comedians"] = true, },
 
   set_badges = function(self, card, badges)
@@ -17,78 +28,81 @@ SMODS.Joker {
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
+        card.ability.extra.mult,
         card.ability.extra.xmult,
         card.ability.extra.chips,
+        card.ability.extra.xchips,
+        card.ability.extra.multadd,
+        card.ability.extra.xchipsadd,
         card.ability.extra.xmultadd,
-        card.ability.extra.chipsadd,
+        card.ability.extra.chipsadd
       }
     }
   end,
 
-  update = function(self, card)
-    if card.area == G.shop_jokers then
-      card.cost = 30
-    end
-  end,
-
   calculate = function(self, card, context)
-    -- SCALING LOGIC: Happens 'before' the hand scores
+    local valid_hands = {
+      ["abn_Spectrum"] = true,
+      ["abn_Specflush"] = true,
+      ["abn_Straight Specflush"] = true,
+      ["abn_Spectrum House"] = true,
+      ["abn_Specflush House"] = true,
+      ["abn_Specflush Five"] = true,
+      ["abn_Specflush Six"] = true
+    }
+
     if context.cardarea == G.jokers and context.before and not context.blueprint then
-      -- List of valid hands that trigger scaling
-      local valid_hands = {
-        ["abn_Spectrum"] = true,
-        ["abn_Specflush"] = true,
-        ["abn_Straight Specflush"] = true,
-        ["abn_Specflush House"] = true,
-        ["abn_Specflush Five"] = true,
-        ["abn_Specflush Six"] = true
-      }
-
       if valid_hands[context.scoring_name] then
-        -- check edition
-        local level_up_res = nil
-        if card.edition then
-          level_up_res = {
-            level_up = 2,
-            message = localize('k_level_up_ex')
-          }
-        end
+        local any_triggered = false
 
-        -- suit scaling
-        for _, scoring_card in ipairs(context.scoring_hand) do
-          local triggered = false
+        for i, scoring_card in ipairs(context.scoring_hand) do
+          local card_triggered = false
 
-          -- check for Snow cards
+          if scoring_card:is_suit("abn_Tie") or (scoring_card.ability and scoring_card.ability.abn_tie) then
+            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.multadd
+            card_triggered = true
+          end
+
+          if scoring_card:is_suit("abn_Bow") or (scoring_card.ability and scoring_card.ability.abn_bow) then
+            card.ability.extra.xchips = card.ability.extra.xchips + card.ability.extra.xchipsadd
+            card_triggered = true
+          end
+
           if scoring_card:is_suit("abn_Snow") then
             card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmultadd
-            triggered = true
+            card_triggered = true
           end
 
-          -- check for Penumbra cards
           if scoring_card:is_suit("abn_Penumbra") then
             card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chipsadd
-            triggered = true
+            card_triggered = true
           end
 
-          -- display upgrade
-          if triggered then
-            card_eval_status_text(scoring_card, 'extra', nil, nil, nil, { message = "Upgrade!", colour = G.C.ATTENTION })
-            card:juice_up()
+          if card_triggered then
+            any_triggered = true
           end
         end
 
-        -- level up if edition
-        if level_up_res then
-          return level_up_res
+        if any_triggered then
+          card_eval_status_text(card, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.ATTENTION })
+          card:juice_up()
+        end
+
+        if card.edition then
+			return {
+				level_up = 2,
+				message = localize('k_level_up_ex')
+			}
         end
       end
     end
 
-    -- scoring
     if context.joker_main then
       return {
-        xmult = card.ability.extra.xmult,
-        chips = card.ability.extra.chips,
+        mult = card.ability.extra.mult > 0 and card.ability.extra.mult or nil,
+        xmult = card.ability.extra.xmult > 1 and card.ability.extra.xmult or nil,
+        chips = card.ability.extra.chips > 0 and card.ability.extra.chips or nil,
+        xchips = card.ability.extra.xchips > 1 and card.ability.extra.xchips or nil,
         card = card
       }
     end

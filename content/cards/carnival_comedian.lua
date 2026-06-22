@@ -22,7 +22,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { xmult = 1, xmultadd = 1, pity = 0 } },
+  config = { extra = { xmult = 1, xmultadd = 2, pity = 0 } },
   pools = { ["Comedians"] = true, },
 
   -- cannot appear in shop
