@@ -17,7 +17,7 @@ SMODS.Joker {
     end,
 
     calculate = function(self, card, context)
-        if not card.ability.extra.stop and next(context.poker_hands["Flush"]) and context.individual and context.cardarea == G.play then
+        if not card.ability.extra.stop and context.individual and context.cardarea == G.play and next(context.poker_hands["Flush"]) then
             if context.other_card == context.scoring_hand[#context.scoring_hand] then
                 card.ability.extra.stop = true
 

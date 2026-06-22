@@ -12,16 +12,17 @@ SMODS.Joker {
       xmultadd = 0.1,
     },
   },
-  
+
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_teastain
     return {
       vars = {
-        card.ability.extra.xmult, 
+        card.ability.extra.xmult,
         card.ability.extra.xmultadd,
       }
     }
   end,
-  
+
   in_pool = function(self)
     if not G.playing_cards then return false end
 
@@ -30,8 +31,7 @@ SMODS.Joker {
 
     for _, card in ipairs(G.playing_cards) do
       if card then
-		
-		-- Check for a Teastain
+        -- Check for a Teastain
         if card.config and card.config.center and card.config.center == G.P_CENTERS_m_abn_teastain then
           has_teastain = true
         end
@@ -49,12 +49,11 @@ SMODS.Joker {
 
     return false
   end,
-  
+
   calculate = function(self, card, context)
     -- Retriggers
     if context.cardarea == G.play and context.repetition and not context.repetition_only then
       if context.other_card and context.other_card.seal and context.other_card.seal == "Red" then
-        
         -- Count red seals
         local red_seal_count = 0
         if context.scoring_hand then
@@ -75,18 +74,18 @@ SMODS.Joker {
         end
       end
     end
-	
-	-- Destroy
-	if context.destroy_card and context.cardarea == G.play then
-		if context.destroy_card.config.center == G.P_CENTERS.m_abn_teastain then
-			card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmultadd
-			return {
-				remove = true,
-				message = localize('k_upgrade_ex'),
-				colour = G.C.MULT
-			}
-		end
-	end
+
+    -- Destroy
+    if context.destroy_card and context.cardarea == G.play then
+      if context.destroy_card.config.center == G.P_CENTERS.m_abn_teastain then
+        card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmultadd
+        return {
+          remove = true,
+          message = localize('k_upgrade_ex'),
+          colour = G.C.MULT
+        }
+      end
+    end
 
     -- Scoring
     if context.joker_main then
@@ -94,16 +93,15 @@ SMODS.Joker {
         xmult = card.ability.extra.xmult,
       }
     end
-	
-	-- Debuff
-	if context.hand_drawn then
-		if G.GAME.current_round.hands_played >= 1 then
-			for _, c in ipairs(G.playing_cards) do
-				c:set_debuff(true)
-			end
-		end
-	end
-	
+
+    -- Debuff
+    if context.hand_drawn then
+      if G.GAME.current_round.hands_played >= 1 then
+        for _, c in ipairs(G.playing_cards) do
+          c:set_debuff(true)
+        end
+      end
+    end
   end,
 
   abn_artist_credits = {

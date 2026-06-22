@@ -2276,12 +2276,12 @@ return {
         text = {
           {
             "If played hand is composed of",
-            "{C:attention}6{} or more suits, this joker gains",
+            "{C:attention}6{} or more suits, this Joker gains",
             "{C:white,X:mult}X#2#{} Mult per scoring suit"
           },
           {
             "If played hand is composed of {C:attention}5{} suits",
-            "and a {C:attention}rankless{} card, this joker",
+            "and a {C:attention}rankless{} card, this Joker",
             "gains {C:white,X:chips}X#4#{} Chips per scoring suit",
             "{C:inactive}(Currently {C:white,X:chips}X#3#{C:inactive} Chips, {C:white,X:mult}X#1#{C:inactive} Mult)"
           }
@@ -2461,8 +2461,8 @@ return {
             "level up scoring hand",
           },
           {
-            "If this joker is {C:dark_edition}Negative{} and the score catches fire",
-            "all cards held in hand become {C:dark_edition}Negative{}",
+            "If this Joker is {C:dark_edition}Negative{} and the score {C:attention}catches fire{},",
+            "all cards {C:attention}held{} in hand become {C:dark_edition}Negative{}",
           }
         }
       },
@@ -2672,7 +2672,7 @@ return {
         name = "Joker Collector",
         text = {
           "This Joker gains {C:chips}+#1#{} Chips for",
-          "every unique joker {C:attention}purchased{} this run,",
+          "every unique Joker {C:attention}purchased{} this run,",
           "Gives {C:white,X:mult}X#3#{} Mult if you have",
           "purchased {C:attention}10{} or more Jokers ",
           "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
@@ -4981,7 +4981,7 @@ return {
         name = "Number 44",
         text = {
           "When {C:attention}Blind{} is selected,",
-          "Create {C:attention}#1#{} joker slots and",
+          "Create {C:attention}#1#{} Joker slots and",
           "fill them with random {C:attention}Jokers",
         }
       },
@@ -5022,10 +5022,16 @@ return {
       j_abn_bravais_joker = {
         name = "Bravais Joker",
         text = {
-          "Gains {C:chips}+#3#{} Chips for each {C:hearts}Wild{} Card used in Spectrum hands",
-          "Gains {C:mult}+#4#{} Mult for each {C:mult}Mercurial{} Card used in Spectrum hands",
-          "If this Joker has an {C:dark_edition}edition{} {C:hearts}Wild{} Cards gain {C:chips}+#3#{} Chips and {C:mult}Mercurial{} Cards gain {C:mult}+#4#{} Mult",
-          "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips)",
+          {
+            "Gains {C:chips}+#3#{} Chips for each {C:attention}Wild{} Card used in Spectrum hands",
+            "Gains {C:mult}+#4#{} Mult for each {C:attention}Mercurial{} Card used in Spectrum hands",
+            "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips)",
+          },
+          {
+            "If this Joker has an {C:dark_edition}edition{},",
+            "{C:attention}Wild{} cards gain {C:chips}+#3#{} Chips",
+            "and {C:mult}Mercurial{} Cards gain {C:mult}+#4#{} Mult",
+          }
         }
       },
       j_abn_photodegradation = {
@@ -5419,9 +5425,14 @@ return {
       j_abn_barb_wire_joker = {
         name = "Barbwire Joker",
         text = {
-          "First scoring {C:attention}4",
-          "gains a {C:abn_black_seal}Black Seal{}",
-          "{C:green}#1# in #2#{} chance for discarded cards to be {C:attention}destroyed"
+          {
+            "First scoring {C:attention}4",
+            "gains a {C:abn_black_seal}Black Seal{}",
+          },
+          {
+            "{C:green}#1# in #2#{} chance to",
+            "destroy discarded cards",
+          }
         },
       },
       j_abn_till_joker = {
@@ -6279,8 +6290,8 @@ return {
       j_abn_clowns_soul = {
         name = "Clowns Soul",
         text = {
-          "Pay {C:money}$#1#{} to {C:green}Reroll{} selected joker",
-          "keeping its {C:dark_edition}Editions{}, {C:attention}Stickers{}, etc",
+          "Pay {C:money}$#1#{} to {C:green}reroll{} selected Joker",
+          "{C:inactive,s:0.8}({C:attention,s:0.8}Stickers{C:inactive,s:0.8} and {C:dark_edition,s:0.8}Editions{C:inactive,s:0.8} are retained){}"
         }
       },
       j_abn_confirm_joker = {
@@ -6660,7 +6671,7 @@ return {
         text = {
           {
             "For every {C:attention}sealed{}",
-            "scoring card, this joker:",
+            "scoring card, this Joker:",
             "Gains {C:red}+#1#{} Mult if the card is {C:attention}even{}",
             "Gains {C:blue}+#2#{} Chips if the card is {C:attention}odd{}",
             "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult, {C:blue}+#4#{C:inactive} Chips)",
@@ -7134,10 +7145,16 @@ return {
       j_abn_caffeinated_joker = {
         name = "Caffeinated Joker",
         text = {
-          "Scoring {C:mult}Red Seals{} retrigger again for each {C:mult}Red Seal{} played",
-          "{C:mult}Debuff{} all cards after first hand",
-          "Each scored {C:abn_brass_seal}Tea Stain{} card is {C:mult}destroyed{} and this Joker gains {X:mult,C:white}X#2#{} Mult",
-          "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult)",
+          {
+            "{C:mult}Debuff{} all cards after first hand,",
+            "Retrigger played {C:red}Red Seals{} once",
+            "for each {C:mult}Red Seal{} played",
+          },
+          {
+            "Each scored {C:attention}Tea Stain{} card is {C:mult}destroyed{}",
+            "and this Joker gains {X:mult,C:white}X#2#{} Mult",
+            "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult)",
+          },
         },
       },
       j_abn_joker_totebag = {
@@ -7250,14 +7267,16 @@ return {
       j_abn_rival_photograph = {
         name = "Rival's Photograph",
         text = {
-          "First played {C:attention}Numbered{} card gives {X:mult,C:white}X#1#{} Mult",
+          "First played {C:attention}numbered{}",
+          "card gives {X:mult,C:white}X#1#{} Mult",
           "when scored",
         },
       },
       j_abn_bestfriend_photograph = {
         name = "Bestfriend's Photograph",
         text = {
-          "First played {C:attention}Numbered{} card gives {X:chips,C:white}X#1#{} Chips",
+          "First played {C:attention}numbered{}",
+          "card gives {X:chips,C:white}X#1#{} Chips",
           "when scored"
         },
       },
@@ -7385,13 +7404,18 @@ return {
       j_abn_spanish_joker = { -- to relocalise
         name = "Spanish Joker",
         text = {
-          "Scoring {C:hearts}Hearts{} become {C:abn_snow}Snows{}",
-          "Scoring {C:spades}Spades{} become {C:abn_bow}Bows{}",
-          "Scoring {C:diamonds}Diamonds{} becomes {C:abn_tie}Ties{}",
-          "Scoring {C:clubs}Clubs{} become {C:abn_penumbra}Penumbras{}",
-          "If this joker has {C:dark_edition}Vintage edition{}",
-          "when a suit changes gain {C:mult}+#2#{} Mult and {C:money}+$#2#{} to sell value",
-          "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult)",
+          {
+            "Scoring {C:hearts}Hearts{} become {C:abn_snow}Snows{}",
+            "Scoring {C:spades}Spades{} become {C:abn_bow}Bows{}",
+            "Scoring {C:diamonds}Diamonds{} becomes {C:abn_tie}Ties{}",
+            "Scoring {C:clubs}Clubs{} become {C:abn_penumbra}Penumbras{}",
+          },
+          {
+            "If this Joker has {C:dark_edition}Vintage{} edition,",
+            "gain {C:mult}+#2#{} Mult and {C:money}$#2#{} of {C:attention}sell value{}",
+            "when a suit changes",
+            "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult)",
+          },
         }
       },
       j_abn_alter_suits = {
@@ -7550,7 +7574,7 @@ return {
         name = "Pincushion Joker",
         text = {
           "Retrigger the Joker to the {C;attention}left{}",
-          "Gain {X:mult,C:white}X#2#{} Mult when a joker is retriggered",
+          "Gain {X:mult,C:white}X#2#{} Mult when a Joker is retriggered",
           "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult)",
         }
       },
