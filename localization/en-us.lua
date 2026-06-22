@@ -5846,13 +5846,23 @@ return {
           "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips){}"
         }
       },
-      j_abn_grapheme_joker = { -- TO RELOCALIZE
+      j_abn_grapheme_joker = {
         name = "Grapheme Joker",
         text = {
-          "The {C:attention}First{} played {C:diamond}Light{} Suit card becomes {C:dark_edition}Negative{}",
-          "Gain {C:chips}+#6#{} Chips and {C:mult}+#5#{} Mult per {C:dark_edition}Negative{} {C:diamonds}Light{} Suit played",
-          "If this Joker has {C:dark_edition}Negative{} gain {X:mult,C:white}X#4#{} Mult per played {C:dark_edition}Negative{} card",
-          "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#3#{} {C:inactive}Chips){} "
+          {
+            "Add {C:dark_edition}Negative{} edition to",
+            "{C:attention}first{} scoring {C:diamonds}Light Suit{}",
+          },
+          {
+            "This Joker gains {C:chips}+#6#{} Chips",
+            "and {C:mult}+#5#{} Mult per {C:dark_edition}Negative{}",
+            "{C:diamonds}Light Suit{} scored",
+          },
+          {
+            "If this Joker has {C:dark_edition}Negative{} edition,",
+            "gain {X:mult,C:white}X#4#{} Mult per played {C:dark_edition}Negative{} card",
+            "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#3#{} {C:inactive}Chips){}",
+          }
         }
       },
       j_abn_suit_seal_joker = {
