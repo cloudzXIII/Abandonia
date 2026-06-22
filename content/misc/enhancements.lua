@@ -918,7 +918,7 @@ SMODS.Enhancement({
         end
       end
 
-      if light_count >= cae.light_threshold then
+      if light_count >= cae.light_threshold and not next(SMODS.find_card('j_abn_device_joker')) then
         return { remove = true }
       end
     end
@@ -994,7 +994,7 @@ SMODS.Enhancement({
       end
     end
 
-    if context.destroy_card and context.cardarea == G.play and context.destroy_card == card then
+    if context.destroy_card and context.cardarea == G.play and context.destroy_card == card and not next(SMODS.find_card('j_abn_device_joker')) then
       local dark_count = 0
       
 
