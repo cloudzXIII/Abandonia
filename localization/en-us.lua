@@ -4732,7 +4732,7 @@ return {
       j_abn_carnival_comedian = {
         name = "Carnival Comedian",
         text = {
-          "{C:abn_superrare}Super Rare{} Jokers may appear in the shop,",
+          "{C:abn_superrare}Super Rare{} Jokers may appear in the shop",
           "This Joker gains {X:mult,C:white}X#2#{} Mult each time",
           "you purchase a {C:abn_superrare}Super Rare{} Joker",
           "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
@@ -5003,23 +5003,21 @@ return {
       j_abn_perfidious_comedian = {
         name = "Perfidious Comedian",
         text = {
-          "{C:attention}Even{} scoring cards with {C:red}seals{} give {X:mult,C:white}X#1#{} Mult",
-          "{C:attention}Odd{} scoring cards with {C:red}seals{} give {X:chips,C:white}X#2#{} Chips",
+          "{C:attention}Even{} and {C:attention}Odd{} cards with {C:attention}Seals{} held in hand count in scoring",
+		  "When an {C:attention}Even{} card with a {C:attention}Seal{} scores gain {C:mult}Mult{} equal to its {C:attention}rank{}",
+		  "When an {C:attention}Odd{} card with a {C:attention}Seal{} scores gain {C:chips}Chips{} equal to its {C:attention}rank{}",
+		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}"
         }
       },
-      j_abn_venom_comedian = {
+      j_abn_venom_comedian = { -- TO RELOCALIZE
         name = "Venom Comedian",
         text = {
-          {
-            "If played hand contains a {C:attention}Spectrum{}, this Joker",
-            "gains {X:mult,C:white}X#3#{} Mult per scoring {C:abn_snow}Snow{} card and",
-            "{C:chips}+#4#{} Chips per scoring {C:abn_penumbra}Penumbra{} card",
-          },
-          {
-            "If this Joker has an {C:dark_edition}edition{},",
-            "level up played {C:attention}Spectrum{} hands by {C:attention}2{}",
-            "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips)",
-          }
+          "Gains {C:mult}+#5#{} Mult per scoring {C:abn_tie}Tie{} card in {C:attention}Spectrum{} hands",
+		  "Gains {X:chips,C:white}X#6#{} Chips per scoring {C:abn_bow}Bow{} card in {C:attention}Spectrum{} hands",
+		  "Gains {X:mult,C:white}X#7#{} Mult per scoring {C:abn_snow}Snow{} card in {C:attention}Spectrum{} hands",
+		  "Gains {C:chips}+#8#{} Chips per scoring {C:abn_penumbra}Penumbra{} card in {C:attention}Spectrum{} hands",
+		  "If this Joker has an {C:dark_edition}edition{} played {C:attention}Spectrum{} hands level up by {C:attention}2{}",
+		  "{C:inactive}Currently: {X:mult,C:white}X#2#{} {C:mult}+#1#{} {C:inactive}Mult{} {X:chips,C:white}X#4#{} {C:chips}+#3#{} {C:inactive}Chips{}"
         }
       },
       j_abn_marmalize_joker = {
@@ -7593,6 +7591,34 @@ return {
         text = {
           "{C:chips}+#2#{} Chips per {C:attention}different{} scoring suit a {C:hearts}Wild{} card is considered",
           "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}",
+        }
+      },
+	  j_abn_snow_comedian = {
+        name = "Snow Comedian",
+        text = {
+          "Gains {C:mult}+#3#{} Mult per hand made with {C:attention}Even{} {C:abn_snow}Snow{} cards",
+		  "Gains {C:chips}+#4#{} Chips per hand made with {C:attention}Odd{} {C:abn_snow}Snow{} cards",
+		  "If hand contains a {C:attention}Flush{} made with only {C:abn_snow}Snow{} cards",
+		  "level up the {C:planet}planet{} {C:attention}Rank{} of all scoring cards",
+		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}"
+        }
+      },
+	  j_abn_primogeniture_joker = {
+        name = "Primogeniture Joker",
+        text = {
+          "{C:common}Common{} Jokers are {C:money}free{}",
+		  "{C:common}Common{} Jokers give {X:mult,C:white}X#1#{} Mult",
+		  "If you have {C:attention}Joker{} this Joker gains {C:chips}+#2#{} chips per {C:common}Common{} Jokers triggering",
+		  "{C:inactive}Currently:{} {C:chips}+#3#{} {C:inactive}Chips{} ",
+        }
+      },
+	  j_abn_fanfiction_comedian = {
+        name = "Fanfiction Comedian",
+        text = {
+          "Gains {X:mult,C:white}X#2#{} Mult for each {C:attention}unique{} {C:inactive}Suitless{} card Scored",
+		  "{C:inactive}Suitless{} Cards each gain {C:mult}+#4#{} Mult and {C:chips}+#3#{} Chips per {C:attention}unique{} {C:inactive}Suitless{} card scored",
+		  "{C:attention}Retrigger{} Each {C:inactive}Suitless{} card for each {C:attention}different{} {C:inactive}Suitless{} card scored",
+		  "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{}",
         }
       },
     },
