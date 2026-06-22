@@ -3562,7 +3562,7 @@ return {
           "{C:attention}flipped{} cards in hand",
         }
       },
-      j_abn_yharman_joker = { -- to relocalize (its *fine*, but could be made clearer)
+      j_abn_yharman_joker = { -- to relocalise (its *fine*, but could be made clearer)
         name = "Yharman Joker",
         text = {
           {
@@ -3816,7 +3816,7 @@ return {
           "and Jokers give {X:mult,C:white}X#1#{} Mult"
         }
       },
-      j_abn_polychameleon = { -- to relocalize
+      j_abn_polychameleon = { -- to relocalise
         name = "Polychameleon",
         text = {
           "{C:dark_edition}Holographic{} Jokers give {X:mult,C:white}X#1#{} Mult",
@@ -4212,7 +4212,7 @@ return {
           "Each played {C:attention}4{} gains {C:chips}+#2#{} Chips"
         },
       },
-      j_abn_light_collage = { -- TO RELOCALIZE (oh hell naw)
+      j_abn_light_collage = { -- TO relocalise (oh hell naw)
         name = "Light Collage",
         text = {
           "Gains {C:chips}+#1#{} Chips when a {C:edition}Foil{} card scores",
@@ -5081,7 +5081,7 @@ return {
           "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}"
         }
       },
-      j_abn_venom_comedian = { -- TO RELOCALIZE
+      j_abn_venom_comedian = { -- TO relocalise
         name = "Venom Comedian",
         text = {
           "Gains {C:mult}+#5#{} Mult per scoring {C:abn_tie}Tie{} card in {C:attention}Spectrum{} hands",
@@ -6530,7 +6530,7 @@ return {
         }
 
       },
-      j_abn_invisible_ink_joker = { -- to relocalize
+      j_abn_invisible_ink_joker = { -- to relocalise
         name = "Invisible Ink Joker",
         text = {
           "Gain {C:mult}+#3#{} Mult per different scoring {C:attention}Suit{} of {C:money}Lucky{} cards",
@@ -6547,7 +6547,7 @@ return {
           "level up {C:planet}planet{} {C:attention}rank{} of all scoring cards"
         }
       },
-      j_abn_immolation_joker = { -- to relocalize and tooltip
+      j_abn_immolation_joker = { -- to relocalise and tooltip
         name = "Immolation Joker",
         text = {
           "{C:abn_black_seal}Oilfire{} cards are not {C:mult}destroyed{} after use",
@@ -6668,7 +6668,7 @@ return {
         }
 
       },
-      j_abn_mutually_assured_destruction = { -- to relocalize
+      j_abn_mutually_assured_destruction = { -- to relocalise
         name = "Mutually Assured Destruction",
         text = {
           {
@@ -7153,7 +7153,8 @@ return {
         text = {
           "All {C:attention}Consumables{} cost twice as much",
           "but gain {C:attention}random{} {C:dark_edition}Editions{} upon purchase",
-          "When a {C:attention}6{} triggers gain {X:chips,C:white}X#2#{} Chips per different type consumable with {C:dark_edition}Editions{}",
+          "When a {C:attention}6{} is scored, gain {X:chips,C:white}X#2#{} Chips",
+          "per unique {C:dark_edition}editioned{} consumable type",
           "{C:inactive}(Currently{} {X:chips,C:white}X#1#{} {C:inactive}Chips){}",
         },
       },
@@ -7268,14 +7269,14 @@ return {
           "{C:inactive}[Currently {C:attention}#2#{C:inactive}/{C:inactive}#1#]"
         },
       },
-      j_abn_ghost_in_the_machine = { -- to relocalize
+      j_abn_ghost_in_the_machine = { -- to relocalise
         name = "Ghost In The Machine",
         text = {
           "Whenever you use a {C:solid_state}Solid State{} Card",
           "Create a {C:attention}random{} {C:dark_edition}negative{} {C:spectral}Spectral{} card",
         },
       },
-      j_abn_advertisement_joker = { -- to relocalize
+      j_abn_advertisement_joker = { -- to relocalise
         name = "Advertisement Joker",
         text = {
           "Gain {X:mult,C:white}X#3#{} Mult when a {C:solid_state}Solid State{} card is used",
@@ -7283,7 +7284,7 @@ return {
           "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
         },
       },
-      j_abn_jester_vs_jester = { -- to relocalize
+      j_abn_jester_vs_jester = { -- to relocalise
         name = "Jester vs Jester",
         text = {
           "If you have an {C:attention}Even{} number of {C:common}Common{} Jokers Each played {C:attention}2, 4, 6, 8 and 10{} gives {C:chips}+#1#{} Chips",
@@ -7294,7 +7295,7 @@ return {
           "If you have an {C:attention}Odd{} number of {C:rare}Rare{} Jokers Each played {C:attention}3, 5, 7, 9 and Ace{} gives {X:chips,C:white}X#6#{} Chips",
         },
       },
-      j_abn_rampegous_jester = { -- to relocalize
+      j_abn_rampegous_jester = { -- to relocalise
         name = "Rampegous Jester",
         text = {
           "If you have {C:attention}Even{} number of {C:rare}Rare{} Jokers and you score an {C:attention}Even{} number of cards",
@@ -7329,7 +7330,7 @@ return {
           "The {C:attention}First{} scoring card on the {C:attention}Final hand{} gains {C:dark_edition}Vintage{}",
         }
       },
-      j_abn_trans_joker = { -- to relocalize
+      j_abn_trans_joker = { -- to relocalise
         name = "Trans Joker",
         text = {
           "When a card changes {C:attention}suit{},",
@@ -7364,7 +7365,7 @@ return {
           "create a Joker based on its {C:attention}rarity{}",
         }
       },
-      j_abn_balatro_the_movie = {
+      j_abn_balatro_the_movie = { -- to relocalise
         name = "Balatro: The Movie",
         text = {
           "Increase {C:attention}blind requirement{} by {X:attention,C:white}X#10#{} for each blind defeated this run",
@@ -7381,7 +7382,7 @@ return {
           "{C:money}+$#1#{} {C:mult}+#2#{} Mult and {C:chips}+#3#{} Chips if hand contains {C:abn_bow}Bows{} and {C:abn_tie}Ties{}"
         }
       },
-      j_abn_spanish_joker = { -- to relocalize
+      j_abn_spanish_joker = { -- to relocalise
         name = "Spanish Joker",
         text = {
           "Scoring {C:hearts}Hearts{} become {C:abn_snow}Snows{}",
@@ -7534,7 +7535,7 @@ return {
           "in the shop for {C:money}$#2#",
         }
       },
-      j_abn_yanga_joker = { -- to relocalize
+      j_abn_yanga_joker = { -- to relocalise
         name = "Yanga Joker",
         text = {
           "Gain {C:chips}+#4#{} Chips when an {C:spades}Opaque{} card scores",
@@ -7553,7 +7554,7 @@ return {
           "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult)",
         }
       },
-      j_abn_reversecard_joker = { -- to relocalize
+      j_abn_reversecard_joker = { -- to relocalise
         name = "Reversecard Joker",
         text = {
           "If hand is composed of both {C:attention}Flipped{} and {C:attention}face up{} cards",
@@ -7710,7 +7711,7 @@ return {
           }
         }
       },
-      j_abn_spectrum_hand = { -- to relocalize
+      j_abn_spectrum_hand = { -- to relocalise
         name = "Spectrum Hand",
         text = {
           {
@@ -7740,7 +7741,7 @@ return {
           "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}",
         }
       },
-      j_abn_snow_comedian = { -- to relocalize
+      j_abn_snow_comedian = { -- to relocalise
         name = "Snow Comedian",
         text = {
           "Gains {C:mult}+#3#{} Mult per hand made with {C:attention}Even{} {C:abn_snow}Snow{} cards",
