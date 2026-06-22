@@ -4680,12 +4680,13 @@ return {
           "Lose {C:money}$#3#{} per {C:attention}scoring{} card"
         }
       },
-      j_abn_forsake_joker = { -- TO RELOCALIZE
+      j_abn_forsake_joker = {
         name = "Forsake Joker",
         text = {
-          "When {C:dark_edition}Abandoned edition{} triggers gain {C:money}$#1#{}",
-          "If triggered on a {C:attention}Card{} gain Chips equal to {C:attention}double{} its rank",
-          "If triggered on a {C:attention}Joker{} gain {C:mult}+#4#{} Mult",
+          "Earn {C:money}$#1#{} when {C:dark_edition}Abandoned{} edition triggers,",
+          "If triggered on a {C:attention}Playing Card{},",
+          "gain Chips equal to {C:attention}double{} its rank",
+          "Gain {C:mult}+#4#{} Mult if triggered on a {C:attention}Joker{}",
           "{C:inactive}(Currently{} {C:mult}+#3#{} {C:inactive}Mult, {C:chips}+#2# {C:inactive}Chips)",
         }
       },
@@ -5433,9 +5434,14 @@ return {
       j_abn_clown_degree = { -- TO RELOCALIZE
         name = "Clown Degree",
         text = {
-          "Cards with {C:attention}seals{} are shuffled to the top of the deck",
-          "If a card with a {C:attention}seal{} is {C:mult}destroyed{}",
-          "Apply that {C:attention}seal{} to another card without a {C:attention}seal{}",
+          {
+            "Cards with {C:attention}seals{} are shuffled",
+            "shuffled to the top of the deck",
+          },
+          {
+            "If card with a {C:attention}seal{} is {C:mult}destroyed{}, apply",
+            "that {C:attention}seal{} to another card without a {C:attention}seal{}",
+          }
         }
       },
       j_abn_corpuscular_joker = {
@@ -5488,11 +5494,12 @@ return {
           },
         }
       },
-      j_abn_lotion_joker = { -- TO RELOCALIZE
+      j_abn_lotion_joker = {
         name = "Lotion Joker",
         text = {
-          "Remove {C:dark_edition}enhancements{} from Played and Discarded {C:abn_black_seal}Petroleum{} and {C:inactive}Stone{} cards",
-          "Gains {C:chips}+#2#{} Chips per card restored this way",
+          "Remove {C:attention}enhancements{} from played and",
+          "discarded {C:attention}Petroleum{} and {C:attention}Stone{} cards,",
+          "gains {C:chips}+#2#{} Chips per card restored this way",
           "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips)",
         }
       },
@@ -5585,11 +5592,17 @@ return {
           "On {C:attention}next{} played hand",
         }
       },
-      j_abn_jfool = { -- TO RELOCALIZE
+      j_abn_jfool = {
         name = "J'Fool",
         text = {
-          "Each played {C:attention}Odd{} cards gives {C:white,X:mult}XMult{} equal to the amount of {C:attention}Odd{} cards played",
-          "Each played {C:attention}Even{} card gives {C:white,X:mult}XMult{} equal to the amount of {C:attention}Even{} cards played",
+          {
+            "Played {C:attention}Odd{} cards give {C:white,X:mult}XMult{} equal to",
+            "the number of {C:attention}Odd{} cards played",
+          },
+          {
+            "Played {C:attention}Even{} cards give {C:white,X:mult}XMult{} equal to",
+            "the number of {C:attention}Even{} cards played",
+          },
         }
       },
       j_abn_tochic = {
@@ -5767,7 +5780,7 @@ return {
           },
         }
       },
-      j_abn_antikythera_mechanism = { -- TO RELOCALIZE
+      j_abn_antikythera_mechanism = {
         name = "Antikythera Mechanism",
         text = {
           {
@@ -5777,8 +5790,8 @@ return {
             "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult)",
           },
           {
-            "{C:abn_brown_seal}Fossil{} Cards and {C:inactive}Steel{} Cards",
-            "can't be {C:mult}debuffed{} or {C:mult}destroyed{}",
+            "{C:attention}Fossil{} Cards and {C:attention}Steel{} Cards",
+            "cannot be {C:red}debuffed{} or {C:red}destroyed{}",
           },
         }
       },
@@ -5798,11 +5811,12 @@ return {
           "in {C:attention}First{} scoring {C:spades}Dark{} suit {C:attention}Straight{}",
         }
       },
-      j_abn_isocromatic_joker = { -- TO RELOCALIZE
+      j_abn_isocromatic_joker = {
         name = "Isocromatic Joker",
         text = {
-          "Scoring {C:dark_edition}Foil{} cards gain {C:attention}+#2#{} retrigger",
-          "Scoring {C:dark_edition}Holographic{} cards increase their {C:planet}planet{} {C:attention}rank{} by {C:attention}#3#",
+          "Scoring {C:dark_edition}Foil{} cards gain {C:attention}+#2#{} Retrigger,",
+          "Scoring {C:dark_edition}Holographic{} cards have their",
+          "{C:planet}planet{} {C:attention}rank{} increased by {C:attention}#3#{},",
           "Scoring {C:dark_edition}Polychrome{} cards gain {C:chips}+#1#{} Chips",
         }
       },
@@ -7415,23 +7429,26 @@ return {
         name = "Spectrum Hell",
         text = {
           "If played hand contains a {C:attention}Spectrum{}",
-          "and score {C:attention}catches on fire{},",
-          "all Jokers permanently gain {X:mult,C:white}X#1#{} Mult",
+          "and score {C:attention}catches on fire{}, all",
+          "{C:attention}Jokers{} permanently gain {X:mult,C:white}X#1#{} Mult",
         }
       },
       j_abn_nova_red_eyes_joker = {
         name = "Nova Red Eyes Joker",
         text = {
-          "If First Hand is composed of only {C:spades}Dark Suits{},",
-          "They all gain {C:attention}+#1#{} retrigger and {C:dark_edition}Chthonian{} edition",
+          "If {C:attention}first hand{} of round",
+          "has only {C:spades}dark suits{},",
+          "all scoring cards permanently gain",
+          "{C:attention}+#1#{} Retrigger and {C:dark_edition}Chthonian{} edition",
         }
       },
       j_abn_genocide_route = {
         name = "Genocide Route",
         text = {
-          "When purchased {C:mult}destroy{} all Jokers and",
-          "Gain {X:mult,C:white}X#3#{} Mult and {X:chips,C:white}X#4#{} Chips per {C:mult}destroyed{} Joker",
-          "When {C:attention}Blind is selected{} create a random {C:attention}#5#{} Joker with {C:dark_edition}#6# Edition{}",
+          "When purchased, {C:mult}destroy{} all Jokers and gain",
+          "{X:mult,C:white}X#3#{} Mult and {X:chips,C:white}X#4#{} Chips per {C:mult}destroyed{} Joker",
+          "When {C:attention}Blind{} is selected, create a random",
+          "{C:attention}#5#{} Joker with {C:dark_edition}#6# Edition{}",
           "{C:attention}Restart{} this process after getting a {C:abn_superrare}Super Rare{}",
           "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {X:chips,C:white}X#2#{} {C:inactive}Chips){}"
         }

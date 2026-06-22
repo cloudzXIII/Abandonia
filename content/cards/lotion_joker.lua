@@ -6,15 +6,17 @@ SMODS.Joker {
     cost = 6,
     discovered = false,
     blueprint_compat = true,
-	config = { extra = {chips = 0, chipsadd = 10 } },
-    
-	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.chips, card.ability.extra.chipsadd} }
-	end,
-	
-	in_pool = function(self)
+    config = { extra = { chips = 0, chipsadd = 10 } },
+
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_petroleum
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
+        return { vars = { card.ability.extra.chips, card.ability.extra.chipsadd } }
+    end,
+
+    in_pool = function(self)
         if not G.playing_cards then return false end
-            
+
         for _, card in ipairs(G.playing_cards) do
             if card and card.config and card.config.center then
                 if card.config.center == G.P_CENTERS.m_abn_petroleum or card.config.center == G.P_CENTERS.m_stone then
@@ -27,8 +29,7 @@ SMODS.Joker {
 
 
     calculate = function(self, card, context)
-	
-		if context.pre_discard and not context.blueprint then
+        if context.pre_discard and not context.blueprint then
             if context.full_hand then
                 for i = 1, #context.full_hand do
                     local discarded_card = context.full_hand[i]
@@ -37,28 +38,26 @@ SMODS.Joker {
                         card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chipsadd
                         -- remove enhancement
                         discarded_card:set_ability(G.P_CENTERS.c_base)
-						
-						
                     end
                 end
             end
         end
-	
+
         if context.individual and context.cardarea == G.play then
-			if context.other_card.config.center and context.other_card.config.center == G.P_CENTERS.m_abn_petroleum or context.other_card.config.center and context.other_card.config.center == G.P_CENTERS.m_stone then
-				card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chipsadd
-				context.other_card:set_ability(G.P_CENTERS.c_base)
-				return {
+            if context.other_card.config.center and context.other_card.config.center == G.P_CENTERS.m_abn_petroleum or context.other_card.config.center and context.other_card.config.center == G.P_CENTERS.m_stone then
+                card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chipsadd
+                context.other_card:set_ability(G.P_CENTERS.c_base)
+                return {
                     message = localize('k_upgrade_ex'),
                     colour = G.C.CHIPS,
-					card = card
+                    card = card
                 }
-			end
-		end
-		
-		if context.joker_main then
+            end
+        end
+
+        if context.joker_main then
             return {
-				chips = card.ability.extra.chips,
+                chips = card.ability.extra.chips,
                 card = card
             }
         end
