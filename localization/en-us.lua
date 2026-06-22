@@ -7831,7 +7831,15 @@ return {
           "Made some cool",
           "{C:green}Art{}!",
         }
-      }
+      },
+      credit_abn_gfs = {
+        name = "",
+        text = {
+          "Made a lot of the",
+          "cool {C:legendary}Legendary{}",
+          "Joker backgrounds!"
+        }
+      },
     },
     Other = {
       abn_comedic_audience_tooltip = {

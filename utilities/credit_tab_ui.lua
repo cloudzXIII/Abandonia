@@ -79,6 +79,15 @@ ABN.CreditCard {
   pos = { x = 6, y = 0 },
   soul_pos = { x = 6, y = 1 },
 }
+ABN.CreditCard {
+  key = "feli",
+  pos = { x = 7, y = 0 },
+  soul_pos = { x = 7, y = 1 },
+}
+ABN.CreditCard {
+  key = "gfs",
+  pos = { x = 8, y = 0 },
+}
 --#endregion
 
 ABN.contributors = {
@@ -174,10 +183,31 @@ ABN.contributors = {
     key = "credit_abn_feli",
     name = "Feli",
     role = "Coder",
+    has_icon = true,
     colour = G.C.BLUE,
     links = {
       { url = "github.com/LasagnaFelidae", pos = { x = 0, y = 0 }, name = "Github" },
       { url = "ko-fi.com/lasagnafelidae",  pos = { x = 0, y = 1 }, name = "Buy me a Coffee!" }
+    }
+  },
+  {
+    key = "credit_abn_doggfly",
+    name = "Dogg-Fly",
+    role = "Artist",
+    has_icon = true,
+    colour = G.C.GREEN,
+    links = {
+      { url = "github.com/Dogg-Fly", pos = { x = 0, y = 0 }, name = "Github" },
+    }
+  },
+  {
+    key = "credit_abn_gfs",
+    name = "Gfs",
+    role = "Artist",
+    has_icon = true,
+    colour = G.C.GREEN,
+    links = {
+      { url = "https://github.com/gfsgfsPunchlineGuy", pos = { x = 0, y = 0 }, name = "Github" },
     }
   },
   {
@@ -207,16 +237,6 @@ ABN.contributors = {
       { url = "github.com/Firch", pos = { x = 0, y = 0 }, name = "Github" },
     }
   },
-  {
-    key = "credit_abn_doggfly",
-    name = "Dogg-Fly",
-    role = "Artist",
-    has_icon = true,
-    colour = G.C.GREEN,
-    links = {
-      { url = "github.com/Dogg-Fly", pos = { x = 0, y = 0 }, name = "Github" },
-    }
-  }
 }
 
 --#region Credits Tab
