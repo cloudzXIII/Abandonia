@@ -1972,6 +1972,24 @@ return {
       },
     },
     Joker = {
+      j_abn_klyde_clown = {
+        name = "Klyde Clown",
+        text = {
+          {
+            "Scored {V:1}#5#{} give {X:chips,C:white}X#1#{} Chips",
+            "and {C:white,X:mult}X#7#{} Mult, increases by",
+            "{X:chips,C:white}X#2#{} Chips and {C:white,X:mult}X#8#{} Mult",
+            "when a {V:1}#6#{} is scored",
+            "{s:0.8}suit changes every hand",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "{V:1}#5#{} permanently gain",
+            "{C:chips}+#4#{} Chips and {C:mult}+#3#{} Mult",
+            "per card {C:attention}held{} in hand",
+          }
+        }
+      },
       j_abn_mateo_mime = {
         name = "Mateo Mime",
         text = {
