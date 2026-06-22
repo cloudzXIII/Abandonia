@@ -2069,6 +2069,21 @@ return {
           }
         }
       },
+      j_abn_jimbo = {
+        name = "Jimbo",
+        text = {
+          {
+            "Scored {C:hearts}Hearts{} give {X:mult,C:white}X#1#{} Mult,",
+            "increases by {X:mult,C:white}X#2#{} Mult",
+            "when a {C:hearts}Heart{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "{C:hearts}Hearts{} permanently gain",
+            "{C:mult}+#3#{} Mult before scoring"
+          }
+        }
+      },
       j_abn_maurice_jester = {
         name = "Maurice Jester",
         text = {
@@ -2368,14 +2383,6 @@ return {
           "Scored {C:diamonds}Diamonds{} give {X:mult,C:white}X#1#{} Mult,",
           "increases by {X:mult,C:white}X#2#{} Mult",
           "when a {C:diamonds}Diamond{} is scored",
-        }
-      },
-      j_abn_giacomo = {
-        name = "Giacomo",
-        text = {
-          "Scored {C:hearts}Hearts{} give {X:mult,C:white}X#1#{} Mult,",
-          "increases by {X:mult,C:white}X#2#{} Mult",
-          "when a {C:hearts}Heart{} is scored",
         }
       },
       j_abn_cicero = {

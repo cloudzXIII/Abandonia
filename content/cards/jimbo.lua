@@ -9,6 +9,7 @@ SMODS.Joker {
     }
   },
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.j_joker
     local cae = card.ability.extra
     return { vars = { cae.x_mult, cae.x_mult_gain, cae.mult } }
   end,
@@ -40,18 +41,13 @@ SMODS.Joker {
       }
     end
 
-    if context.cardarea == G.jokers and context.before then
-      if next(SMODS.find_card('j_joker')) then
-        for i = 1, #context.scoring_hand do
-          local scoring_card = context.scoring_hand[i]
-          
-          scoring_card.ability.perma_mult = (scoring_card.ability.perma_mult or 0) + card.ability.extra.mult
-          
-          card_eval_status_text(scoring_card, 'extra', nil, nil, nil, {
-            message = localize('k_upgrade_ex'),
-            colour = G.C.MULT
-          })
-        end
+    if context.before and next(SMODS.find_card('j_joker')) then
+      for i = 1, #context.scoring_hand do
+        local scoring_card = context.scoring_hand[i]
+
+        scoring_card.ability.perma_mult = (scoring_card.ability.perma_mult or 0) + card.ability.extra.mult
+
+        SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.MULT }, card)
       end
     end
   end,
