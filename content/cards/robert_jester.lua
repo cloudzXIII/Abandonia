@@ -53,6 +53,6 @@ SMODS.Joker {
   end,
 
   abn_artist_credits = {
-    artist = "Inky & Vlambambo",
+    artist = "Abelsketch & Vlambambo",
   },
 }
