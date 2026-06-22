@@ -4980,12 +4980,18 @@ return {
           "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips){}"
         }
       },
-      j_abn_beyond_the_rainbow = { -- TO RELOCALIZE
+      j_abn_beyond_the_rainbow = {
         name = "Beyond The Rainbow",
         text = {
-          "Gain {X:mult,C:white}X#2#{} Mult for each different {C:attention}suit{} in {C:attention}Spectrum{} hands",
-          "If this Joker has an {C:dark_edition}edition{} {C:green}#3# in #4#{} scoring cards create {C:attention}Double Tags{}",
-          "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}"
+          {
+            "This Joker gains {X:mult,C:white}X#2#{} Mult per",
+            "unique {C:attention}suit{} in {C:attention}Spectrum{} hands",
+            "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}"
+          },
+          {
+            "If this Joker has an {C:dark_edition}edition{},",
+            "{C:green}#3# in #4#{} scoring cards create {C:attention}Double Tags{}",
+          }
         }
       },
       j_abn_perfidious_comedian = {
@@ -5776,7 +5782,7 @@ return {
           "{X:mult,C:white}X#1#{} Mult, {X:chips,C:white}X#2#{} Chips, and {C:money}$#3#{}",
         }
       },
-      j_abn_jokers_mixtape_base = {
+      j_abn_jokers_mixtape_grey = {
         name = "Joker's Mixtape",
         text = {
           "Give {C:chips}+10{} chips per {C:attention}Joker{} owned",
