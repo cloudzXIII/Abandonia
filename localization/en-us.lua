@@ -7632,6 +7632,38 @@ return {
           "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
         }
       },
+	  j_abn_frenemy_joker = {
+        name = "Frenemy Joker",
+        text = {
+          "Each {C:attention}unique rarity{} among Jokers",
+		  "decreases the {C:attention}blind requirement{} by {C:attention}#1#%",
+        }
+      },
+	  j_abn_joker_in_a_nutshell = {
+        name = "Joker In A Nutshell",
+        text = {
+          "{C:common}Common{} Jokers without {C:dark_edition}Editions{} can't be {C:mult}debuffed{} or {C:mult}destroyed{}",
+		  "{C:rare}Rare{} and {C:uncommon}Uncommon{} Jokers can't appear in the shop",
+        }
+      },
+	  j_abn_runedelta = {
+        name = "Runedelta",
+        text = {
+          "If winning hand is only {C:spades}Dark Suit{} cards gain {C:mult}+#3#{} Mult",
+		  "If winning hand is only {C:diamonds}Light Suit{} cards gain {C:chips}+#4#{} Chips",
+		  "If hand is composed of {C:diamonds}Light{} and {C:spades}Dark Suits{} {C:mult}destroy{} this Joker",
+		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}",
+        }
+      },
+	  j_abn_balatro_64 = {
+        name = "Balatro 64",
+        text = {
+          "If winning hand is only {C:spades}Dark Suit{} cards gain {X:mult,C:white}X#5#{} Mult per scoring card",
+		  "If winning hand is only {C:diamonds}Light Suit{} cards gain {X:chips,C:white}X#6#{} Chips per scoring card",
+		  "If winning hand is composed of both all Jokers gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
+		  "{C:inactive}Currently:{} {X:mult,C:white}X#3#{} {C:inactive}Mult{} {X:chips,C:white}X#4#{} {C:inactive}Chips{}"
+        }
+      },
     },
     Spectral = {
       c_abn_apotheosis = {
