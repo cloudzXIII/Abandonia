@@ -2001,7 +2001,7 @@ return {
           {
             "If {C:attention}Joker{} is owned,",
             "scoring {C:diamonds}Diamonds{} add",
-            "{C:money}$#3#{} to the value to",
+            "{C:money}$#3#{} of {C:attention}sell value{} to",
             "every {C:attention}Joker{}"
           }
         }
