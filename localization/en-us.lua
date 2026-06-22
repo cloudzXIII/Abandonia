@@ -6379,16 +6379,15 @@ return {
         name = "Crass Joker",
         text = {
           {
-            "Whenever you buy",
-            "an {C:dark_edition}editioned{} {C:attention}Joker{},",
+            "If an {C:dark_edition}editioned{} {C:attention}Joker{} is purchased,",
             "gain {C:chips}+#1#{} Chips multiplied",
-            "by its {C:gold}cost",
+            "by its {C:attention}cost",
 
           },
           {
-            "If the {C:attention}Joker{} was {C:attention}free{},",
+            "If a {C:attention}free{} {C:attention}Joker{} is purchased,",
             "gain {C:chips}+#1#{} Chips multiplied ",
-            "by its {C:gold}base cost",
+            "by its {C:attention}original cost",
             "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
           }
 
