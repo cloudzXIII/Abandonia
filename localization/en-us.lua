@@ -5431,7 +5431,7 @@ return {
           "First Scoring {C:dark_edition}Polychrome{} card gains {C:mult}Red Seal{}",
         }
       },
-      j_abn_clown_degree = { -- TO RELOCALIZE
+      j_abn_clown_degree = {
         name = "Clown Degree",
         text = {
           {
