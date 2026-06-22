@@ -2377,22 +2377,6 @@ return {
           }
         }
       },
-      j_abn_hastur = {
-        name = "Hastur",
-        text = {
-          "Scored {C:diamonds}Diamonds{} give {X:mult,C:white}X#1#{} Mult,",
-          "increases by {X:mult,C:white}X#2#{} Mult",
-          "when a {C:diamonds}Diamond{} is scored",
-        }
-      },
-      j_abn_cicero = {
-        name = "Cicero",
-        text = {
-          "Scored {C:spades}Spades{} give {X:mult,C:white}X#1#{} Mult,",
-          "increases by {X:mult,C:white}X#2#{} Mult",
-          "when a {C:spades}Spade{} is scored",
-        }
-      },
       j_abn_spawn_joker = {
         name = "Spawn Joker",
         text = {
