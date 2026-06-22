@@ -1975,6 +1975,72 @@ return {
       },
     },
     Joker = {
+      j_abn_juliana_jester = {
+        name = "Juliana Jester",
+        text = {
+          {
+            "Scored {C:spades}Spades{} give {X:mult,C:white}X#1#{} Mult,",
+            "increases by {X:mult,C:white}X#2#{} Mult",
+            "when a {C:spades}Spade{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "level up {C:planet}planet{} {C:attention}rank{}",
+            "of all {C:spades}Spades{} scored",
+          }
+        }
+      },
+      j_abn_dimitri_jester = {
+        name = "Dimitri Jester",
+        text = {
+          {
+            "Scored {C:diamonds}Diamonds{} give {X:mult,C:white}X#1#{} Mult,",
+            "increases by {X:mult,C:white}X#2#{} Mult",
+            "when a {C:diamonds}Diamond{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "scoring {C:diamonds}Diamonds{} add",
+            "{C:money}$#3#{} to the value to",
+            "every {C:attention}Joker{}"
+          }
+        }
+      },
+      j_abn_rando_jester = {
+        name = "Rando Jester",
+        text = {
+          {
+            "Scored {C:clubs}Clubs{} give {X:mult,C:white}X#1#{} Mult,",
+            "increases by {X:mult,C:white}X#2#{} Mult",
+            "when a {C:clubs}Club{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "scoring {C:clubs}Clubs{} increase",
+            "the next {C:green}probability{} by {C:attention}#3#{}",
+            "{C:inactive,s:0.8}(ex: {C:green,s:0.8}1 in 4{C:inactive,s:0.8} -> {C:green,s:0.8}2 in 4{C:inactive,s:0.8} -> {C:green,s:0.8}3 in 4{C:inactive,s:0.8})",
+
+          }
+        }
+      },
+      j_abn_giacomo_king = {
+        name = "Giacomo King of Jesters",
+        text = {
+          "Played {C:attention}11s{}, {C:attention}12s{}, {C:attention}13s{}",
+          "and {C:attention}14s{} of {C:diamonds}Diamonds{} and {C:clubs}Clubs{} ",
+          "give {C:white,X:mult}^#1#{} Mult when scored",
+          "{s:0.8}Flip this Joker when triggered{}"
+        }
+      },
+      j_abn_giacomo_hidden = {
+        name = "Giacomo Hidden Scoundral",
+        text = {
+          "Played {C:attention}11s{}, {C:attention}12s{}, {C:attention}13s{}",
+          "and {C:attention}14s{} of {C:hearts}Hearts{} and {C:spades}Spades{} ",
+          "give {C:white,X:mult}^#1#{} Mult when scored",
+          "{s:0.8}Flip this Joker when triggered{}"
+        }
+      },
       j_abn_regalia_joker = {
         name = "Regalia Joker",
         text = {
@@ -7632,36 +7698,36 @@ return {
           "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
         }
       },
-	  j_abn_frenemy_joker = {
+      j_abn_frenemy_joker = {
         name = "Frenemy Joker",
         text = {
           "Each {C:attention}unique rarity{} among Jokers",
-		  "decreases the {C:attention}blind requirement{} by {C:attention}#1#%",
+          "decreases the {C:attention}blind requirement{} by {C:attention}#1#%",
         }
       },
-	  j_abn_joker_in_a_nutshell = {
+      j_abn_joker_in_a_nutshell = {
         name = "Joker In A Nutshell",
         text = {
           "{C:common}Common{} Jokers without {C:dark_edition}Editions{} can't be {C:mult}debuffed{} or {C:mult}destroyed{}",
-		  "{C:rare}Rare{} and {C:uncommon}Uncommon{} Jokers can't appear in the shop",
+          "{C:rare}Rare{} and {C:uncommon}Uncommon{} Jokers can't appear in the shop",
         }
       },
-	  j_abn_runedelta = {
+      j_abn_runedelta = {
         name = "Runedelta",
         text = {
           "If winning hand is only {C:spades}Dark Suit{} cards gain {C:mult}+#3#{} Mult",
-		  "If winning hand is only {C:diamonds}Light Suit{} cards gain {C:chips}+#4#{} Chips",
-		  "If hand is composed of {C:diamonds}Light{} and {C:spades}Dark Suits{} {C:mult}destroy{} this Joker",
-		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}",
+          "If winning hand is only {C:diamonds}Light Suit{} cards gain {C:chips}+#4#{} Chips",
+          "If hand is composed of {C:diamonds}Light{} and {C:spades}Dark Suits{} {C:mult}destroy{} this Joker",
+          "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}",
         }
       },
-	  j_abn_balatro_64 = {
+      j_abn_balatro_64 = {
         name = "Balatro 64",
         text = {
           "If winning hand is only {C:spades}Dark Suit{} cards gain {X:mult,C:white}X#5#{} Mult per scoring card",
-		  "If winning hand is only {C:diamonds}Light Suit{} cards gain {X:chips,C:white}X#6#{} Chips per scoring card",
-		  "If winning hand is composed of both all Jokers gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
-		  "{C:inactive}Currently:{} {X:mult,C:white}X#3#{} {C:inactive}Mult{} {X:chips,C:white}X#4#{} {C:inactive}Chips{}"
+          "If winning hand is only {C:diamonds}Light Suit{} cards gain {X:chips,C:white}X#6#{} Chips per scoring card",
+          "If winning hand is composed of both all Jokers gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
+          "{C:inactive}Currently:{} {X:mult,C:white}X#3#{} {C:inactive}Mult{} {X:chips,C:white}X#4#{} {C:inactive}Chips{}"
         }
       },
     },
@@ -10312,6 +10378,9 @@ return {
       k_abn_chthonian = "Chthonian!",
       k_abn_brewed_ex = "Brewed!",
       k_abn_reduced_ex = "Reduced!",
+
+      abn_hidden_side = "Hidden Scoundral",
+      abn_king_side = "King of Jesters",
 
       k_abn_satellite = "Satellite",
       k_abn_asteroid = "Asteroid",
