@@ -4879,7 +4879,7 @@ return {
         name = "Hard and Dry",
         text = {
           "Blinds are {C:attention}obscured{},",
-          "{C:attention}Double{} the values of {C:attention}Leftmost{} Joker",
+          "{C:attention}Double{} the values of {C:attention}leftmost{} Joker",
           "when {C:attention}Blind{} is defeated",
         }
       },
@@ -7116,7 +7116,7 @@ return {
         name = "Quadratic Joker",
         text = {
           "{C:attention}Straights{} made with {C:attention}4{} suits",
-          "gain editions from lowest to highest rank {C:dark_edition}Gloss, Iridescent, Pearlescene, Chromatic",
+          "gain editions from lowest to highest rank {C:dark_edition}Gloss, Iridescent, Pearlescent, Chromatic",
           "Cards held in hand with matching {C:attention}rank/suit{} add to the score",
         },
       },
@@ -7230,10 +7230,10 @@ return {
       j_abn_galactic_consciousness = {
         name = "Galactic Consciousness",
         text = {
-          "{C:dark_edition}Gloss Edition{} {C:attention}Jokers/Cards{} give {C:mult}+#1#{} Mult when scoring",
-          "{C:dark_edition}Pearlescene Edition{} {C:attention}Jokers/Cards{} give {X:chips,C:white}X#2#{} Chips when scoring",
-          "{C:dark_edition}Irradescent Edition{} {C:attention}Jokers/Cards{} give {X:mult,C:white}X#3#{} Mult when scoring",
-          "{C:dark_edition}Chromatic Edition{} {C:attention}Jokers/Cards{} give {X:chips,C:white}^#4#{} Chips when scoring",
+          "{C:dark_edition}Gloss{} {C:attention}Jokers/Cards{} give {C:mult}+#1#{} Mult when scoring",
+          "{C:dark_edition}Pearlescent{} {C:attention}Jokers/Cards{} give {X:chips,C:white}X#2#{} Chips when scoring",
+          "{C:dark_edition}Iridescent{} {C:attention}Jokers/Cards{} give {X:mult,C:white}X#3#{} Mult when scoring",
+          "{C:dark_edition}Chromatic{} {C:attention}Jokers/Cards{} give {X:chips,C:white}^#4#{} Chips when scoring",
         },
       },
       j_abn_grampa_joker = {
