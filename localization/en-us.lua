@@ -4765,11 +4765,15 @@ return {
       j_abn_conspiracy_joker = {
         name = "Conspiracy Joker",
         text = {
-          "On {C:attention}Even{} turns flip all and shuffle all Jokers",
-          "If a Joker triggers while flipped gain {C:mult}+#3#{} Mult",
-          "On {C:attention}Odd{} turns flip all Jokers face up",
-          "If a Joker triggers while face up gain {C:chips}+#4#{} Chips",
-          "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult, {C:chips}+#1# {C:inactive}Chips)",
+          {
+            "On {C:attention}Even{} hands, flip all and shuffle all Jokers",
+            "If a Joker triggers while {C:attention}flipped{} gain {C:mult}+#3#{} Mult",
+          },
+          {
+            "On {C:attention}Odd{} hands, flip all Jokers face up",
+            "If a Joker triggers while {C:attention}face up{} gain {C:chips}+#4#{} Chips",
+            "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult, {C:chips}+#1# {C:inactive}Chips)",
+          },
         }
       },
       j_abn_mana = {
