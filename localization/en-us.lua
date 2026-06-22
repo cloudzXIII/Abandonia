@@ -7160,11 +7160,9 @@ return {
       j_abn_comedic_audience = {
         name = "Comedic Audience",
         text = {
-          "When {C:attention}Blind is selected{} destroy the {C:attention}leftmost{} Joker",
-          "Create a Joker based on its rarity",
-          "{C:rare}Rare{} -> {C:abn_superrare}Super Rare{}",
-          "{C:abn_superrare}Super Rare{} -> {C:legendary}Legendary{}",
-          "{C:legendary}Legendary{} -> {C:abn_parallelrare}Parallel Rare{}",
+          "When {C:attention}Blind{} is selected,",
+          "destroy {C:attention}leftmost{} Joker,",
+          "create a Joker based on its {C:attention}rarity{}",
         }
       },
       j_abn_balatro_the_movie = {
@@ -7703,6 +7701,14 @@ return {
       }
     },
     Other = {
+      abn_comedic_audience_tooltip = {
+        name = "Comedic Audience",
+        text = {
+          "{C:rare}Rare{} -> {C:abn_superrare}Super Rare{}",
+          "{C:abn_superrare}Super Rare{} -> {C:legendary}Legendary{}",
+          "{C:legendary}Legendary{} -> {C:abn_parallelrare}Parallel Rare{}",
+        }
+      },
       abn_digitization_upgrades = {
         name = "Possible Upgrades",
         text = {
