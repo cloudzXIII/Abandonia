@@ -490,8 +490,9 @@ return {
       c_abn_lua = {
         name = ".LUA",
         text = {
-          "All held {C:attention}11{}'s, {C:attention}12{}'s, {C:attention}13{}'s and {C:attention}14{}'s",
-          "gain {C:dark_edition}Tea Tag enhancement{} and {C:dark_edition}Collodion Edition{}"
+          "Enhances all {C:attention}11s{}, {C:attention}12s{}, {C:attention}13s{}",
+          "and {C:attention}14s{} in hand into",
+          "{C:dark_edition}Collodion{} {C:attention}Tea Tag{} cards "
         }
       },
       c_abn_pdf = {
@@ -506,13 +507,15 @@ return {
       c_abn_jpg = {
         name = ".JPG",
         text = {
-          "All {C:attention}Even{} {C:abn_bow}Bows{} and {C:spades}Spades{} in hand gain {C:dark_edition}Vintage Edition{}",
+          "Add {C:dark_edition}Vintage{} edition to all",
+          "{C:attention}even{} {C:abn_bow}Bows{} and {C:spades}Spades{} in hand",
         }
       },
       c_abn_gif = {
         name = ".GIF",
         text = {
-          "All {C:attention}Odd{} {C:abn_tie}Ties{} and {C:clubs}Clubs{} in hand gain {C:dark_edition}Reversal Edition{}",
+          "Add {C:dark_edition}Vintage{} edition to all",
+          "{C:attention}odd{} {C:abn_tie}Ties{} and {C:clubs}Clubs{} in hand",
         }
       },
     },
