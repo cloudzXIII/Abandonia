@@ -2514,7 +2514,7 @@ return {
           },
         }
       },
-      j_abn_joker_tv = {
+      j_abn_joker_tv = { -- to relocalize
         name = "Joker TV",
         text = {
           "When you use a {C:program_pack}Program{} card all Joker sell values increase by {C:money}$#1#{} and all {C:diamonds}Light{} Suits gain {C:mult}+#2#{} Mult",
@@ -3804,7 +3804,7 @@ return {
           "and Jokers give {X:mult,C:white}X#1#{} Mult"
         }
       },
-      j_abn_polychameleon = {
+      j_abn_polychameleon = { -- to relocalize
         name = "Polychameleon",
         text = {
           "{C:dark_edition}Holographic{} Jokers give {X:mult,C:white}X#1#{} Mult",
@@ -3963,7 +3963,7 @@ return {
           "{C:inactive}(Currently {X:mult,C:white} X#1# {} {C:inactive}Mult){}",
         }
       },
-      j_abn_goth_gabe = {
+      j_abn_goth_gabe = { -- to relocalize
         name = "Goth Gabe",
         text = {
           "This Joker gains {X:red,C:white}X#2#{} Mult",
@@ -4671,7 +4671,7 @@ return {
           "{C:attention}consumed{} at end of round",
         }
       },
-      j_abn_jakdos = {
+      j_abn_jakdos = { -- to relocalize
         name = "Jakdos",
         text = {
           "{X:mult,C:white}X#1#{} Mult",
@@ -5338,7 +5338,8 @@ return {
         name = "ID Staff",
         text = {
           "When a {C:attention}face{} card is {C:mult}destroyed{},",
-          "Add {C:abn_hazard}Hazard{} to the {C:attention}leftmost{} card in hand",
+          "Enhance {C:attention}leftmost{} card in hand",
+          "into a {C:attention}Hazard{} card"
         }
       },
       j_abn_enchanted_night = {
@@ -5619,7 +5620,7 @@ return {
           },
         }
       },
-      j_abn_lucrative_joker = {
+      j_abn_lucrative_joker = { -- to relocalize
         name = "Lucrative Joker",
         text = {
           "No limit on {C:money}interest{} and {C:tarot}doubling{}",
@@ -5915,7 +5916,7 @@ return {
           },
         }
       },
-      j_abn_pentomino_joker = {
+      j_abn_pentomino_joker = { -- to relocalize
         name = "Pentomino Joker",
         text = {
           "Held {C:diamonds}Light{} Suit cards gain {C:chips}+#1#{} Chips when a {C:program_pack}Program{} card is used",
@@ -6006,7 +6007,7 @@ return {
           "{C:inactive}(Currently {X:chips,C:white}X#1#{} {C:inactive}Chips,{} {C:chips}+#2#{} {C:inactive}Chips){}",
         }
       },
-      j_abn_under_construction = {
+      j_abn_under_construction = { -- to relocalize
         name = "Under Construction",
         text = {
           "After {C:attention}Boss Blind has been defeated{} sell this Joker to create {C:attention}any{} Joker in your collection",
@@ -6501,7 +6502,7 @@ return {
         }
 
       },
-      j_abn_invisible_ink_joker = {
+      j_abn_invisible_ink_joker = { -- to relocalize
         name = "Invisible Ink Joker",
         text = {
           "Gain {C:mult}+#3#{} Mult per different scoring {C:attention}Suit{} of {C:money}Lucky{} cards",
@@ -6518,7 +6519,7 @@ return {
           "level up {C:planet}planet{} {C:attention}rank{} of all scoring cards"
         }
       },
-      j_abn_immolation_joker = {
+      j_abn_immolation_joker = { -- to relocalize and tooltip
         name = "Immolation Joker",
         text = {
           "{C:abn_black_seal}Oilfire{} cards are not {C:mult}destroyed{} after use",
@@ -6639,7 +6640,7 @@ return {
         }
 
       },
-      j_abn_mutually_assured_destruction = {
+      j_abn_mutually_assured_destruction = { -- to relocalize
         name = "Mutually Assured Destruction",
         text = {
           {
@@ -7350,7 +7351,7 @@ return {
           "{C:money}+$#1#{} {C:mult}+#2#{} Mult and {C:chips}+#3#{} Chips if hand contains {C:abn_bow}Bows{} and {C:abn_tie}Ties{}"
         }
       },
-      j_abn_spanish_joker = {
+      j_abn_spanish_joker = { -- to relocalize
         name = "Spanish Joker",
         text = {
           "Scoring {C:hearts}Hearts{} become {C:abn_snow}Snows{}",
@@ -7386,15 +7387,19 @@ return {
           "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips){}"
         }
       },
-      j_abn_tlumddo = {
+      j_abn_tlumddo = { -- to relocalize
         name = "Tlumddo Joker",
         text = {
-          "When a {C:attention}Bonus Card{} is scored,",
-          "all non-{C:attention}Bonus{} cards in scoring",
-          "hand permanently gain {C:mult}+#1#{} Mult",
-          "When an {C:attention}odd Bonus Card{} is scored,",
-          "all non-{C:attention}Bonus{} cards in scoring",
-          "hand permanently gain {C:chips}+#2#{} Chips"
+          {
+            "When a {C:attention}Bonus Card{} is scored,",
+            "all non-{C:attention}Bonus{} cards in scoring",
+            "hand permanently gain {C:mult}+#1#{} Mult",
+          },
+          {
+            "When an {C:attention}odd Bonus Card{} is scored,",
+            "all non-{C:attention}Bonus{} cards in scoring",
+            "hand permanently gain {C:chips}+#2#{} Chips"
+          }
         },
         unlock = {
           "Have the {C:attention,E:1}Bonus{} Enhancement",
@@ -7475,7 +7480,7 @@ return {
           "Balance {C:attention}#1#%{} of {C:chips}Chips{} and {C:mult}Mult{}"
         }
       },
-      j_abn_suit_eradication = {
+      j_abn_suit_eradication = { -- to relocalize
         name = "Suit Eradication",
         text = {
           "Destroy each scoring {C:hearts}Hearts{},{C:diamonds}Diamonds{},{C:spades},Spades{} and {C:clubs}clubs.",
@@ -7485,7 +7490,7 @@ return {
           "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
         }
       },
-      j_abn_tag_collector = {
+      j_abn_tag_collector = { -- to relocalize
         name = "Tag Collector",
         text = {
           "{C:attention}Tags{} can be purchased at the shop for {C:money}$#2#",
@@ -7511,7 +7516,7 @@ return {
           "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult)",
         }
       },
-      j_abn_reversecard_joker = {
+      j_abn_reversecard_joker = { -- to relocalize
         name = "Reversecard Joker",
         text = {
           "If hand is composed of both {C:attention}Flipped{} and {C:attention}face up{} cards",
@@ -7528,7 +7533,7 @@ return {
           "Retrigger {C:attention}Flipped{} {C:inactive}Null{} cards",
         }
       },
-      j_abn_rough_draft_joker = {
+      j_abn_rough_draft_joker = { -- to relocalize
         name = "Rough Draft Joker",
         text = {
           "Scoring {C:money}Lucky{} {C:inactive}Null{} cards have",
@@ -7537,7 +7542,7 @@ return {
           "{C:green}#1# in #4#{} Chance to {C:attention}double{} the {C:chips}chips{} of all scoring cards",
         }
       },
-      j_abn_friend_jimbo = {
+      j_abn_friend_jimbo = { -- to relocalize
         name = "Friend Jimbo",
         text = {
           "When a {C:spades}Dark suit{} card is {C:mult}destroyed{} create a {C:inactive}Stone card{}",
@@ -7545,14 +7550,14 @@ return {
           "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips){}",
         }
       },
-      j_abn_telisyndrome_joker = {
+      j_abn_telisyndrome_joker = { -- to relocalize
         name = "Telisyndrome Joker",
         text = {
           "Gives {X:chips,C:white}^#1#{} chips per {C:attention}unique{} scoring {C:dark_edition}Enchancement{}",
           "Each Plagued Joker gives {C:mult}+#2#{} Mult per {C:attention}unique{} {C:dark_edition}Edition",
         }
       },
-      j_abn_malicious_code_joker = {
+      j_abn_malicious_code_joker = { -- to relocalize
         name = "Malicious Code Joker",
         text = {
           "{C:green}#1# in #2#{} chance for Scoring {C:mult}Mult{} cards to turn into {C:purple}Contagion Mult{}",
