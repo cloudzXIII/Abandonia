@@ -3888,8 +3888,8 @@ return {
           },
           {
             "This Joker gains {C:mult}+#2#{} Mult",
-            "if played hand contains a {C:attention}Wild Card",
-            "or {C:attention}Bonus Card",
+            "if played hand contains a",
+            "{C:attention}Wild Card{} or {C:attention}Bonus Card",
             "{C:inactive}(Currently {C:mult}+#3#{} {C:inactive}Mult){}",
           }
         }
@@ -4954,10 +4954,16 @@ return {
       j_abn_photodegradation = {
         name = "Photodegredation",
         text = {
-          "When played hand contains a {C:attention}Spectrum{}",
-          "Gain {C:chips}+#4#{} Chips and {C:mult}+#5#{} Mult for each card held in hand with matching suits",
-          "If this Joker has an {C:dark_edition}edition{} gain {X:mult,C:white}X#6#{} Mult for matching suits",
-          "{C:inactive}(Currently{} {X:mult,C:white}X#3#{} {C:inactive}Mult,{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips){}"
+          {
+            "If played hand contains a {C:attention}Spectrum{}, this Joker",
+            "gains {C:chips}+#4#{} Chips and {C:mult}+#5#{} Mult",
+            "for each card {C:attention}held{} in hand with {C:attention}matching suits",
+          },
+          {
+            "If this Joker has an {C:dark_edition}edition{},",
+            "gain {X:mult,C:white}X#6#{} Mult for matching suits",
+            "{C:inactive}(Currently{} {X:mult,C:white}X#3#{} {C:inactive}Mult,{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips){}"
+          },
         }
       },
       j_abn_ulam_joker = { -- TO RELOCALIZE
@@ -4984,13 +4990,19 @@ return {
           "{C:attention}Odd{} scoring cards with {C:red}seals{} give {X:chips,C:white}X#2#{} Chips",
         }
       },
-      j_abn_venom_comedian = { -- TO RELOCALIZE
+      j_abn_venom_comedian = {
         name = "Venom Comedian",
         text = {
-          "Gain {X:mult,C:white}X#3#{} Mult per scoring {C:abn_snow}Snow{} card in {C:attention}Spectrum{} hands",
-          "Gain {C:chips}+#4#{} Chips per scoring {C:abn_penumbra}Penumbra{} card in {C:attention}Spectrum{} hands",
-          "If this Joker has an {C:dark_edition}edition{} played {C:attention}Spectrum{} hands gain {C:attention}2{} levels",
-          "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips)"
+          {
+            "If played hand contains a {C:attention}Spectrum{}, this Joker",
+            "gains {X:mult,C:white}X#3#{} Mult per scoring {C:abn_snow}Snow{} card and",
+            "{C:chips}+#4#{} Chips per scoring {C:abn_penumbra}Penumbra{} card",
+          },
+          {
+            "If this Joker has an {C:dark_edition}edition{},",
+            "level up played {C:attention}Spectrum{} hands by {C:attention}2{}",
+            "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips)",
+          }
         }
       },
       j_abn_marmalize_joker = {
