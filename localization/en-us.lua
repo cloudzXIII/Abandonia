@@ -2514,10 +2514,18 @@ return {
           },
         }
       },
-      j_abn_joker_tv = { -- to relocalize
+      j_abn_joker_tv = {
         name = "Joker TV",
         text = {
-          "When you use a {C:program_pack}Program{} card all Joker sell values increase by {C:money}$#1#{} and all {C:diamonds}Light{} Suits gain {C:mult}+#2#{} Mult",
+          {
+            "When a {C:program_pack}Program{} card is used,",
+            "add {C:money}$#1#{} of {C:attention}sell value{} to all {C:attention}Jokers{}",
+            "and {C:diamonds}Light Suits{} permanently gain {C:mult}+#2#{} Mult",
+          },
+          {
+            "When a {C:planet}Rank Planet{} card is used,",
+            "all {C:spades}Dark Suits{} permanently gain {C:mult}+#2#{} Mult"
+          }
         }
       },
       j_abn_classified_joker = {
@@ -3659,9 +3667,9 @@ return {
       j_abn_malicious_entity = {
         name = "Malicious Entity",
         text = {
-          "If {C:attention}first hand{} of round",
-          "destroy leftmost scoring card",
-          "and gain {C:white,X:mult}X#2#{} Mult",
+          "If {C:attention}first hand{} of round,",
+          "destroy {C:attention}leftmost{} scoring",
+          "card and gain {C:white,X:mult}X#2#{} Mult",
           "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)",
         }
       },
@@ -3963,13 +3971,12 @@ return {
           "{C:inactive}(Currently {X:mult,C:white} X#1# {} {C:inactive}Mult){}",
         }
       },
-      j_abn_goth_gabe = { -- to relocalize
+      j_abn_goth_gabe = {
         name = "Goth Gabe",
         text = {
-          "This Joker gains {X:red,C:white}X#2#{} Mult",
-          "if all suits played",
-          "are {C:spades}Dark{}",
-          "{C:inactive}(Currently {X:mult,C:white} X#1# {} {C:inactive}Mult){}",
+          "This Joker gains {X:red,C:white}X#2#{} Mult if",
+          "played hand only contains {C:spades}Dark Suits{}",
+          "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
         }
       },
       j_abn_synergy_joker = {
@@ -4671,11 +4678,12 @@ return {
           "{C:attention}consumed{} at end of round",
         }
       },
-      j_abn_jakdos = { -- to relocalize
+      j_abn_jakdos = {
         name = "Jakdos",
         text = {
           "{X:mult,C:white}X#1#{} Mult",
-          "Scoring cards without {C:dark_edition}Chthonian{} are {C:mult}Debuffed{}"
+          "Scoring cards without",
+          "{C:dark_edition}Chthonian{} are {C:mult}Debuffed{}"
         }
       },
       j_abn_power_four = {
@@ -5620,13 +5628,20 @@ return {
           },
         }
       },
-      j_abn_lucrative_joker = { -- to relocalize
+      j_abn_lucrative_joker = {
         name = "Lucrative Joker",
         text = {
-          "No limit on {C:money}interest{} and {C:tarot}doubling{}",
-          "{C:money}Gold{} cards and cards with {C:gold}Gold seals{} are shuffled to the top of the deck",
-          "If you have {C:attention}Slot Machine{},",
-          "double earnings from {C:money}Gold{} cards and Seals",
+          {
+            "No limit on {C:money}interest{} and {C:tarot}doubling{}",
+          },
+          {
+            "{C:attention}Gold{} cards and cards with {C:gold}Gold Seals{}",
+            "are shuffled to the top of the deck",
+          },
+          {
+            "If {C:attention}Slot Machine{} is owned, double",
+            "earnings from {C:attention}Gold{} cards and {C:attention}seals",
+          }
         }
       },
       j_abn_balatro_university = {
@@ -5916,11 +5931,17 @@ return {
           },
         }
       },
-      j_abn_pentomino_joker = { -- to relocalize
+      j_abn_pentomino_joker = {
         name = "Pentomino Joker",
         text = {
-          "Held {C:diamonds}Light{} Suit cards gain {C:chips}+#1#{} Chips when a {C:program_pack}Program{} card is used",
-          "{C:attention}Level up{} the {C:planet}planet{} {C:attention}rank{} of cards in the {C:attention}First{} scoring {C:diamonds}Light{} suit {C:attention}Straight{}",
+          {
+            "Held {C:diamonds}Light{} Suit cards gain {C:chips}+#1#{} Chips",
+            "when a {C:program_pack}Program{} card is used",
+          },
+          {
+            "{C:attention}Level up{} {C:planet}planet{} {C:attention}rank{} of cards in",
+            "{C:attention}first{} scoring {C:diamonds}Light Suit{} {C:attention}Straight{}",
+          }
         }
       },
       j_abn_nuruomino_joker = {
@@ -7239,14 +7260,14 @@ return {
           "{C:inactive}[Currently {C:attention}#2#{C:inactive}/{C:inactive}#1#]"
         },
       },
-      j_abn_ghost_in_the_machine = {
+      j_abn_ghost_in_the_machine = { -- to relocalize
         name = "Ghost In The Machine",
         text = {
           "Whenever you use a {C:solid_state}Solid State{} Card",
           "Create a {C:attention}random{} {C:dark_edition}negative{} {C:spectral}Spectral{} card",
         },
       },
-      j_abn_advertisement_joker = {
+      j_abn_advertisement_joker = { -- to relocalize
         name = "Advertisement Joker",
         text = {
           "Gain {X:mult,C:white}X#3#{} Mult when a {C:solid_state}Solid State{} card is used",
@@ -7254,7 +7275,7 @@ return {
           "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
         },
       },
-      j_abn_jester_vs_jester = {
+      j_abn_jester_vs_jester = { -- to relocalize
         name = "Jester vs Jester",
         text = {
           "If you have an {C:attention}Even{} number of {C:common}Common{} Jokers Each played {C:attention}2, 4, 6, 8 and 10{} gives {C:chips}+#1#{} Chips",
@@ -7265,7 +7286,7 @@ return {
           "If you have an {C:attention}Odd{} number of {C:rare}Rare{} Jokers Each played {C:attention}3, 5, 7, 9 and Ace{} gives {X:chips,C:white}X#6#{} Chips",
         },
       },
-      j_abn_rampegous_jester = {
+      j_abn_rampegous_jester = { -- to relocalize
         name = "Rampegous Jester",
         text = {
           "If you have {C:attention}Even{} number of {C:rare}Rare{} Jokers and you score an {C:attention}Even{} number of cards",
@@ -7300,10 +7321,11 @@ return {
           "The {C:attention}First{} scoring card on the {C:attention}Final hand{} gains {C:dark_edition}Vintage{}",
         }
       },
-      j_abn_trans_joker = {
+      j_abn_trans_joker = { -- to relocalize
         name = "Trans Joker",
         text = {
-          "When a card changes {C:attention}Suit{} increase its {C:planet}Planet{} {C:attention}Rank{}",
+          "When a card changes {C:attention}suit{},",
+          "increase its {C:planet}planet{} {C:attention}rank{}",
         }
       },
       j_abn_joker_scroll = {
@@ -7557,19 +7579,31 @@ return {
           "Each Plagued Joker gives {C:mult}+#2#{} Mult per {C:attention}unique{} {C:dark_edition}Edition",
         }
       },
-      j_abn_malicious_code_joker = { -- to relocalize
+      j_abn_malicious_code_joker = {
         name = "Malicious Code Joker",
         text = {
-          "{C:green}#1# in #2#{} chance for Scoring {C:mult}Mult{} cards to turn into {C:purple}Contagion Mult{}",
-          "{C:green}#1# in #2#{} chance for Scoring {C:chips}Bonus{} cards to turn into {C:purple}Contagion Bonus{}",
+          {
+            "{C:green}#1# in #2#{} chance to {C:attention}enhance{} scoring",
+            "{C:attention}Mult{} cards into {C:purple}Contagion Mult{}",
+          },
+          {
+            "{C:green}#1# in #2#{} chance to {C:attention}enhance{} scoring",
+            "{C:attention}Bonus{} cards into {C:purple}Contagion Bonus{}",
+          },
         }
       },
-      j_abn_fraudulent_mod_joker = { -- to relocalize
+      j_abn_fraudulent_mod_joker = {
         name = "Fraudulent Mod Joker",
         text = {
-          "Gains {C:mult}+#1#{} Mult per scoring {C:dark_edition}Sew Enchantment{} cards on {C:abn_tie}Ties{} and {C:abn_bow}Bows{}",
-          "Gains {C:chips}+#2#{} Chips per scoring {C:dark_edition}Cotton Enchantment{} on {C:abn_tie}Ties{} and {C:abn_bow}Bows{}",
-          "{C:inactive}(Currently{} {C:mult}+#3#{} {C:inactive}Mult,{} {C:chips}+#4#{} {C:inactive}Chips){}"
+          {
+            "This Joker gains {C:mult}+#1#{} Mult per",
+            "scoring {C:abn_tie}Tie{} or {C:abn_bow}Bow{} {C:attention}Sew{} card",
+          },
+          {
+            "This Joker gains {C:chips}+#2#{} Chips per",
+            "scoring {C:abn_tie}Tie{} or {C:abn_bow}Bow{} {C:attention}Cotton{} card",
+            "{C:inactive}(Currently{} {C:mult}+#3#{} {C:inactive}Mult,{} {C:chips}+#4#{} {C:inactive}Chips){}"
+          }
         }
       },
       j_abn_narcoleptic_joker = {
@@ -7635,23 +7669,33 @@ return {
           "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
         }
       },
-      j_abn_cossak_joker = { -- to relocalize
-        name = "Cossak Joker",
+      j_abn_cossak_joker = {
+        name = "Cossack Joker",
         text = {
-          "Scoring {C:abn_snow}Snow{} Suits gain {C:planet}Ice Enhancement{}",
-          "Gain {C:chips}+#2#{} Chips per Scoring {C:abn_snow}Snow{} {C:planet}Ice Enhancement{}",
-          "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}"
+          {
+            "{C:attention}Enhance{} played {C:abn_snow}Snows{} into",
+            "{C:attention}Ice{} cards when scored",
+          },
+          {
+            "This Joker gains {C:chips}+#2#{} Chips",
+            "per Scoring {C:abn_snow}Snow{} {C:attention}Ice{} card",
+            "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}"
+          }
         }
       },
       j_abn_spectrum_hand = { -- to relocalize
         name = "Spectrum Hand",
         text = {
-          "If played hand contains a {C:attention}Spectrum{},",
-          "Scoring {C:diamonds}Light Suits{} gain {C:spectral}Fervent{} and {C:inactive}Silver Edition{}",
-          "Scoring {C:spades}Dark Suits{} gain {C:money}Charged{} and {C:dark_edition}Chthonian{}",
-          "If this Joker has {C:inactive}Silver{} gain {C:mult}+#1#{} Mult per Scoring card",
-          "If this Joker has {C:dark_edition}Chthonian{} gain {C:chips}+#2#{} Chips per scoring card",
-          "{C:inactive}(Currently {C:mult}+#3#{} {C:inactive}Mult {C:chips}+#4#{} {C:inactive}Chips){}"
+          {
+            "If played hand contains a {C:attention}Spectrum{},",
+            "add {C:attention}Fervent{} and {C:dark_edition}Silver{} to scoring {C:diamonds}Light Suits{},",
+            "add {C:dark_edition}Charged{} and {C:dark_edition}Chthonian{} to scoring {C:spades}Dark Suits{}",
+          },
+          {
+            "If this Joker has {C:dark_edition}Silver{} gain {C:mult}+#1#{} Mult per card scored",
+            "If this Joker has {C:dark_edition}Chthonian{} gain {C:chips}+#2#{} Chips per card scored",
+            "{C:inactive}(Currently {C:mult}+#3#{} {C:inactive}Mult {C:chips}+#4#{} {C:inactive}Chips){}"
+          },
         }
       },
       j_abn_celestial_joker = {
@@ -7695,36 +7739,53 @@ return {
           }
         }
       },
-      j_abn_fanfiction_comedian = { -- to relocalize
+      j_abn_fanfiction_comedian = {
         name = "Fanfiction Comedian",
         text = {
-          "Gains {X:mult,C:white}X#2#{} Mult for each {C:attention}unique{} {C:inactive}Suitless{} card Scored",
-          "{C:inactive}Suitless{} Cards each gain {C:mult}+#4#{} Mult and {C:chips}+#3#{} Chips per {C:attention}unique{} {C:inactive}Suitless{} card scored",
-          "{C:attention}Retrigger{} Each {C:inactive}Suitless{} card for each {C:attention}different{} {C:inactive}Suitless{} card scored",
-          "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
+          {
+            "This Joker gains {X:mult,C:white}X#2#{} Mult",
+            "for each {C:attention}unique{} {C:attention}Suitless{} card Scored",
+            "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
+          },
+          {
+            "{C:attention}Suitless{} Cards each gain {C:mult}+#4#{} Mult",
+            "and {C:chips}+#3#{} Chips per {C:attention}unique{}",
+            "{C:attention}Suitless{} card scored",
+          },
+          {
+            "{C:attention}Retrigger{} each {C:attention}Suitless{} card once",
+            "for each {C:attention}unique{} {C:attention}Suitless{} card scored",
+          },
         }
       },
       j_abn_frenemy_joker = {
         name = "Frenemy Joker",
         text = {
-          "Each {C:attention}unique rarity{} among Jokers",
-          "decreases the {C:attention}blind requirement{} by {C:attention}#1#%",
+          "Each unique {C:attention}rarity{} among Jokers",
+          "decreases {C:attention}blind requirements{} by {C:attention}#1#%",
         }
       },
-      j_abn_joker_in_a_nutshell = { -- to relocalize
+      j_abn_joker_in_a_nutshell = {
         name = "Joker In A Nutshell",
         text = {
-          "{C:common}Common{} Jokers without {C:dark_edition}Editions{} can't be {C:mult}debuffed{} or {C:mult}destroyed{}",
-          "{C:rare}Rare{} and {C:uncommon}Uncommon{} Jokers can't appear in the shop",
+          {
+            "{C:common}Common{} Jokers without {C:dark_edition}Editions{}",
+            "cannot be {C:red}debuffed{} or {C:red}destroyed{}",
+          },
+          {
+            "{C:rare}Rare{} and {C:uncommon}Uncommon{} Jokers",
+            " cannot appear in the {C:green}shop",
+          },
         }
       },
-      j_abn_runedelta = { -- to relocalize
+      j_abn_runedelta = {
         name = "Runedelta",
         text = {
-          "If winning hand is only {C:spades}Dark Suit{} cards gain {C:mult}+#3#{} Mult",
-          "If winning hand is only {C:diamonds}Light Suit{} cards gain {C:chips}+#4#{} Chips",
-          "If hand is composed of {C:diamonds}Light{} and {C:spades}Dark Suits{} {C:mult}destroy{} this Joker",
-          "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}",
+          "This Joker gains {C:mult}+#3#{} Mult if",
+          "{C:attention}winning hand{} only contains {C:spades}Dark Suits{},",
+          "gains {C:chips}+#4#{} Chips if it only contains {C:diamonds}Light Suits{}",
+          "{C:red,s:0.8}self-destructs if hand contains light and dark suits ",
+          "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
         }
       },
       j_abn_balatro_64 = { -- to relocalize
