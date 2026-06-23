@@ -7363,11 +7363,11 @@ return {
           "The {C:attention}First{} scoring card on the {C:attention}Final hand{} gains {C:dark_edition}Vintage{}",
         }
       },
-      j_abn_trans_joker = { -- to relocalise
+      j_abn_trans_joker = {
         name = "Trans Joker",
         text = {
           "When a card changes {C:attention}suit{},",
-          "increase its {C:planet}planet{} {C:attention}rank{}",
+          "level up its {C:planet}planet{} {C:attention}rank{}",
         }
       },
       j_abn_joker_scroll = {
@@ -7415,7 +7415,7 @@ return {
           "{C:money}+$#1#{} {C:mult}+#2#{} Mult and {C:chips}+#3#{} Chips if hand contains {C:abn_bow}Bows{} and {C:abn_tie}Ties{}"
         }
       },
-      j_abn_spanish_joker = { -- to relocalise
+      j_abn_spanish_joker = { 
         name = "Spanish Joker",
         text = {
           {
@@ -7749,17 +7749,20 @@ return {
           }
         }
       },
-      j_abn_spectrum_hand = { -- to relocalise
+      j_abn_spectrum_hand = {
         name = "Spectrum Hand",
         text = {
           {
             "If played hand contains a {C:attention}Spectrum{},",
-            "add {C:attention}Fervent{} and {C:dark_edition}Silver{} to scoring {C:diamonds}Light Suits{},",
-            "add {C:dark_edition}Charged{} and {C:dark_edition}Chthonian{} to scoring {C:spades}Dark Suits{}",
+            "{C:attention}Enhance{} scoring {C:diamonds}Light Suits{} into",
+            "{C:dark_edition}Silver{} {C:attention}Fervent{} cards, {C:attention}enhance{} scoring",
+            "{C:spades}Dark Suits{} into {C:dark_edition}Chthonian{} {C:attention}Charged{} cards",
           },
           {
-            "If this Joker has {C:dark_edition}Silver{} gain {C:mult}+#1#{} Mult per card scored",
-            "If this Joker has {C:dark_edition}Chthonian{} gain {C:chips}+#2#{} Chips per card scored",
+            "If this Joker has {C:dark_edition}Silver{} edition,",
+            "gains {C:mult}+#1#{} Mult per card scored",
+            "If this Joker has {C:dark_edition}Chthonian{} edition,",
+            "gains {C:chips}+#2#{} Chips per card scored",
             "{C:inactive}(Currently {C:mult}+#3#{} {C:inactive}Mult {C:chips}+#4#{} {C:inactive}Chips){}"
           },
         }
