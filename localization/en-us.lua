@@ -7682,7 +7682,7 @@ return {
           },
           {
             "If destroyed card was {C:abn_black_seal}Darkner{},",
-            "gain {C:chips}Chips{} equal to it's [C:attention}rank",
+            "gain {C:chips}Chips{} equal to it's {C:attention}rank",
             "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips){}",
           }
         }
