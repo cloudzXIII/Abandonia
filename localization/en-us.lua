@@ -5131,8 +5131,8 @@ return {
         name = "Marmalize Joker",
         text = {
           "Jokers cannot be {C:mult}debuffed{} or have {C:abn_perishable}stickers{}",
-          "When {C:attention}Blind{} is selected,",
-          "all Jokers gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
+          "When {C:attention}Blind{} is selected, all Jokers",
+          "gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
         }
       },
       j_abn_backrooms_joker = {
