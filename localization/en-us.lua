@@ -8743,7 +8743,7 @@ return {
           "{C:mult}#1#{} Mult"
         }
       },
-      abn_violet = {
+      abn_vessel = {
         name = "Vessel",
         text = {
           "Increase {C:attention}blind requirements",
@@ -10650,7 +10650,7 @@ return {
       abn_bullseye = "Bullseye",
       abn_shovel = "Shovel",
       abn_downgrade = "Downgrade",
-      abn_violet = "Vessel",
+      abn_vessel = "Vessel",
       abn_weight = "Weight",
       abn_crown = "Crown",
       abn_flip = "Flip",

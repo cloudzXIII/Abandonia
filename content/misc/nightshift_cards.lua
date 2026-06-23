@@ -219,7 +219,7 @@ SMODS.Consumable {
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_chthonian
-        info_queue[#info_queue + 1] = { key = "abn_violet", set = "Other", vars = { 10 } }
+        info_queue[#info_queue + 1] = { key = "abn_vessel", set = "Other", vars = { 10 } }
         info_queue[#info_queue + 1] = { key = "eternal", set = "Other", vars = { 5 } }
         return { vars = {} }
     end,
@@ -245,7 +245,7 @@ SMODS.Consumable {
 
                 -- Apply the stickers
                 joker:set_eternal(true) -- Standard method for eternal
-                joker:add_sticker("abn_violet", true)
+                joker:add_sticker("abn_vessel", true)
 
                 -- Visual feedback
                 joker:juice_up(0.3, 0.5)

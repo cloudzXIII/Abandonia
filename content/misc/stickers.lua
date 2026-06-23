@@ -125,7 +125,7 @@ SMODS.Sticker {
 }
 
 SMODS.Sticker {
-  key = 'violet',
+  key = 'vessel',
   atlas = "AbandoniaStickers",
   pos = { x = 1, y = 1 },
   badge_colour = HEX("8a71e1"),
@@ -601,16 +601,16 @@ SMODS.Sticker {
   badge_colour = HEX("3c4368"),
 
   calculate = function(self, card, context)
-	if G.playing_cards then
-		for _, card in ipairs(G.playing_cards) do
-			if not card:is_suit("Spades") then
-				card:set_debuff(true)
-			elseif card:is_suit("Spades") and not card.ability.spaded then
-				card.ability.spaded = true
-				local rank_nominal = SMODS.Ranks[card.base.value] and SMODS.Ranks[card.base.value].nominal or 0
-				card.ability.perma_bonus = (card.ability.perma_bonus or 0) + rank_nominal
-			end
-		end
-	end    
+    if G.playing_cards then
+      for _, card in ipairs(G.playing_cards) do
+        if not card:is_suit("Spades") then
+          card:set_debuff(true)
+        elseif card:is_suit("Spades") and not card.ability.spaded then
+          card.ability.spaded = true
+          local rank_nominal = SMODS.Ranks[card.base.value] and SMODS.Ranks[card.base.value].nominal or 0
+          card.ability.perma_bonus = (card.ability.perma_bonus or 0) + rank_nominal
+        end
+      end
+    end
   end,
 }

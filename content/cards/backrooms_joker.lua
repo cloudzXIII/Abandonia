@@ -31,7 +31,7 @@ SMODS.Joker {
 
   set_ability = function(self, card, initial)
     card:set_eternal(true)
-    card:add_sticker("abn_violet", true)
+    card:add_sticker("abn_vessel", true)
   end,
 
   loc_vars = function(self, info_queue, card)
