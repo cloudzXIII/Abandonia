@@ -5236,7 +5236,7 @@ return {
         text = {
           "{C:abn_nightshift}Nightshift{} cards always appear in {C:spectral}Spectral{} packs",
           "When {C:attention}Blind{} is selected,",
-          "Apply {C:purple}Violet{}, {C:abn_perishable}Perishable{} and {C:dark_edition}Chthonian{}",
+          "Apply {C:purple}Vessel{}, {C:abn_perishable}Perishable{} and {C:dark_edition}Chthonian{}",
           "to the {C:attention}leftmost{} Joker",
 
         }
@@ -5581,7 +5581,7 @@ return {
         text = {
           {
             "Cards with {C:attention}seals{} are shuffled",
-            "shuffled to the top of the deck",
+            "to the top of the deck",
           },
           {
             "If card with a {C:attention}seal{} is {C:mult}destroyed{}, apply",
@@ -8744,7 +8744,7 @@ return {
         }
       },
       abn_violet = {
-        name = "Violet",
+        name = "Vessel",
         text = {
           "Increase {C:attention}blind requirements",
           " by {C:attention}10%{}",
@@ -9943,7 +9943,7 @@ return {
       c_abn_smirk = {
         name = "Smirk",
         text = {
-          "Create an {C:abn_eternal}Eternal{}, {C:purple}Violet{},",
+          "Create an {C:abn_eternal}Eternal{}, {C:purple}Vessel{},",
           "{C:dark_edition}Chthonian{} {C:attention}Comedian{}",
           "{C:inactive}(Must have room)"
         }
@@ -10650,7 +10650,7 @@ return {
       abn_bullseye = "Bullseye",
       abn_shovel = "Shovel",
       abn_downgrade = "Downgrade",
-      abn_violet = "Violet",
+      abn_violet = "Vessel",
       abn_weight = "Weight",
       abn_crown = "Crown",
       abn_flip = "Flip",
