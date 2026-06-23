@@ -5,7 +5,7 @@ SMODS.ConsumableType {
   primary_colour = HEX("5d6a58"),
   secondary_colour = HEX("5d6a58"),
   collection_rows = { 3, 3 },
-  shop_rate = 4,
+  shop_rate = 1,
 }
 
 SMODS.Consumable {
