@@ -12,7 +12,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { echips = 1, selected = 2 } },
+  config = { extra = { echips = 1.3, selected = 2 } },
   pools = { ["Plagued"] = true, },
 
   loc_vars = function(self, info_queue, card)
