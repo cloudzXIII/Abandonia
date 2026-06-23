@@ -1023,32 +1023,37 @@ return {
       tag_abn_hazard_standard = {
         name = "Hazard Standard",
         text = {
-          "Gives {C:attention}2{} free {C:attention}Mega Standard Packs{}",
+          "Gives {C:attention}2{} free",
+          "{C:attention}Mega Standard Packs{}",
         }
       },
       tag_abn_hazard_charm = {
         name = "Charm Hazard",
         text = {
-          "Gives {C:attention}2{} free {C:tarot}Mega Arcana Packs{}",
+          "Gives {C:attention}2{} free",
+          "{C:tarot}Mega Arcana Packs{}",
         }
       },
       tag_abn_hazard_meteor = {
         name = "Meteor Hazard",
         text = {
-          "Gives {C:attention}2{} free {C:planet}Mega Celestial Packs{}",
+          "Gives {C:attention}2{} free",
+          "{C:planet}Mega Celestial Packs{}",
         }
       },
       tag_abn_hazard_buffoon = {
         name = "Buffoon Hazard",
         text = {
-          "Gives {C:attention}2{} free {C:attention}Mega Buffoon Packs{}",
+          "Gives {C:attention}2{} free",
+          "{C:attention}Mega Buffoon Packs{}",
         }
       },
       tag_abn_hazard_handy = {
         name = "Handy Hazard",
         text = {
-          "Gain {C:money}$#1#{} for each {C:chips}hand{} played this run",
-          "{C:inactive}Currently: {C:money}$#2#{}",
+          "Gives {C:money}$#1#{} per played",
+          "{C:blue}hand{} this run",
+          "{C:inactive}(Will give {C:money}$#2#{C:inactive})",
         }
       },
 
@@ -1104,14 +1109,16 @@ return {
       tag_abn_hazard_garbage = {
         name = "Garbage Hazard",
         text = {
-          "Gain {C:money}$#1#{} for each unused {C:mult}Discard{} this run",
-          "{C:inactive}Currently: {C:money}$#2#{}",
+          "Gives {C:money}$#1#{} per unused",
+          "{C:red}discard{} this run",
+          "{C:inactive}(Will give {C:money}$#2#{C:inactive})",
         }
       },
       tag_abn_hazard_ethereal = {
         name = "Ethereal Hazard",
         text = {
-          "Gives {C:attention}2{} free {C:spectral}Mega Spectral Packs{}",
+          "Gives {C:attention}2{} free",
+          "{C:spectral}Mega Spectral Packs{}",
         }
       },
       tag_abn_hazard_juggler = {
@@ -1140,31 +1147,35 @@ return {
         name = "Orbital Hazard",
         text = {
           "Upgrade {C:attention}#1#{} and {C:attention}#2#{}",
-          "By {C:attention}#3#{} levels",
+          "by {C:attention}#3#{} levels",
         }
       },
       tag_abn_hazard_weather = {
         name = "Weather Hazard",
         text = {
-          "Gives {C:attention}2{} free {C:weather_report}Mega Weather Packs{}",
+          "Gives {C:attention}2{} free",
+          "{C:weather_report}Mega Weather Packs{}",
         }
       },
       tag_abn_hazard_calamity = {
         name = "Calmity Hazard",
         text = {
-          "Gives {C:attention}2{} free {C:abn_calamity}Mega Calamity Packs{}",
+          "Gives {C:attention}2{} free",
+          "{C:abn_calamity}Mega Calamity Packs{}",
         }
       },
       tag_abn_hazard_sigil = {
         name = "Sigil Hazard",
         text = {
-          "Gives {C:attention}2{} free {C:abn_sigil}Mega Sigil Packs{}",
+          "Gives {C:attention}2{} free",
+          "{C:abn_sigil}Mega Sigil Packs{}",
         }
       },
       tag_abn_hazard_astro = {
         name = "Astro Hazard",
         text = {
-          "Gives {C:attention}2{} free {C:abn_astro}Mega Astro Packs{}",
+          "Gives {C:attention}2{} free",
+          "{C:abn_astro}Mega Astro Packs{}",
         }
       },
       tag_abn_hazard_nightshift = {
