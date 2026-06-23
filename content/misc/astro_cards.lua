@@ -601,7 +601,6 @@ SMODS.Consumable {
             vars = {
                 SMODS.get_probability_vars(card, 1, card.ability.extra.odds)
             },
-
         }
     end,
 
@@ -611,8 +610,11 @@ SMODS.Consumable {
 
     use = function(self, card, area, copier)
         if SMODS.pseudorandom_probability(card, 'pisces', 1, card.ability.extra.odds) then
-            G.GAME.round_resets.hands = G.GAME.round_resets.hands + 1
-            ease_hands_played(1)
+            -- Double the hands for the current round setup
+            local hands_to_add = G.GAME.round_resets.hands
+            G.GAME.round_resets.hands = G.GAME.round_resets.hands * 2
+            ease_hands_played(hands_to_add)
+            
             local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_pisces')
             _card:add_to_deck()
             _card.ability.extra.used = 1
@@ -655,8 +657,11 @@ SMODS.Consumable {
         if context.end_of_round and card.area == G.vouchers and card.ability.extra.used == 1 then
             card.ability.extra.used = 0
             card:start_dissolve()
-            G.GAME.round_resets.hands = G.GAME.round_resets.hands - 1
-            ease_hands_played(-1)
+            
+            -- Revert the doubling by dividing by 2 and removing the excess from the current UI
+            local half_hands = G.GAME.round_resets.hands / 2
+            G.GAME.round_resets.hands = half_hands
+            ease_hands_played(-half_hands)
         end
     end,
 
