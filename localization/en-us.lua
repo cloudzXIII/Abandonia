@@ -7779,14 +7779,21 @@ return {
           "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}",
         }
       },
-      j_abn_snow_comedian = { -- to relocalise
+      j_abn_snow_comedian = { 
         name = "Snow Comedian",
         text = {
-          "Gains {C:mult}+#3#{} Mult per hand made with {C:attention}Even{} {C:abn_snow}Snow{} cards",
-          "Gains {C:chips}+#4#{} Chips per hand made with {C:attention}Odd{} {C:abn_snow}Snow{} cards",
-          "If hand contains a {C:attention}Flush{} made with only {C:abn_snow}Snow{} cards",
-          "level up the {C:planet}planet{} {C:attention}rank{} of all scoring cards",
+          {
+          "This Joker gains {C:mult}+#3#{} Mult if played",
+          "hand contains {C:attention}Even{} {C:abn_snow}Snow{} cards,",
+          "gains {C:chips}+#4#{} Chips if played hand",
+          "contains {C:attention}Odd{} {C:abn_snow}Snow{} cards",
           "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}"
+          },
+          {
+          "If played hand contains a {C:attention}Flush{},",
+          "containing only {C:abn_snow}Snow{} cards, level up",
+          "{C:planet}planet{} {C:attention}rank{} of all scoring cards",
+          },
         }
       },
       j_abn_primogeniture_joker = {
