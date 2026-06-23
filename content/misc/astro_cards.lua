@@ -590,7 +590,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = "pisces",
     set = "astro_cards",
-    config = { extra = { odds = 4, used = 0 } },
+    config = { extra = { odds = 7, used = 0 } },
     pos = { x = 1, y = 1 },
     atlas = "AbandoniaAstro",
     cost = 4,
