@@ -4982,7 +4982,7 @@ return {
       j_abn_bonus_buffoon = {
         name = "Bonus Buffoon",
         text = {
-          "{C:attention}Enhanced{} cards give {X:mult,C:white}X#4#{} Mult for each {C:abn_superrare}Comedian{} you own",
+          "{C:attention}Enhanced{} cards give {X:mult,C:white}X#4#{} Mult for each {C:attention}Comedian{} you own",
           "{C:green}#1# in #2#{} chance this is destroyed at the end of round",
           "{C:inactive}(Currently{} {X:mult,C:white}X#3#{} {C:inactive}Mult){}",
         }
@@ -4990,7 +4990,7 @@ return {
       j_abn_creechie_buffoon = {
         name = "Creechie Buffoon",
         text = {
-          "{C:dark_edition}Editioned{} cards give {X:mult,C:white}X#4#{} Mult for each {C:abn_superrare}Comedian{} you own",
+          "{C:dark_edition}Editioned{} cards give {X:mult,C:white}X#4#{} Mult for each {C:attention}Comedian{} you own",
           "{C:green}#1# in #2#{} chance this is destroyed at the end of round",
           "{C:inactive}(Currently{} {X:mult,C:white}X#3#{} {C:inactive}Mult){}",
         }
@@ -4998,8 +4998,8 @@ return {
       j_abn_composite_creechie = {
         name = "Composite Creechie",
         text = {
-          "{C:attention}Enhanced{} cards give {X:mult,C:white}X#4#{} Mult for each {C:abn_superrare}Comedian{} you own",
-          "{C:dark_edition}Editioned{} cards give {X:mult,C:white}X#4#{} Mult for each {C:abn_superrare}Comedian{} you own",
+          "{C:attention}Enhanced{} cards give {X:mult,C:white}X#4#{} Mult for each {C:attention}Comedian{} you own",
+          "{C:dark_edition}Editioned{} cards give {X:mult,C:white}X#4#{} Mult for each {C:attention}Comedian{} you own",
           "{C:green}#1# in #2#{} chance this is destroyed at the end of round",
           "{C:inactive}(Currently{} {X:mult,C:white}X#3#{} {C:inactive}Mult){}",
         }
