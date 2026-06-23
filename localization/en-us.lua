@@ -3816,14 +3816,24 @@ return {
           "and Jokers give {X:mult,C:white}X#1#{} Mult"
         }
       },
-      j_abn_polychameleon = { -- to relocalise
+      j_abn_polychameleon = {
         name = "Polychameleon",
         text = {
+          {
           "{C:dark_edition}Holographic{} Jokers give {X:mult,C:white}X#1#{} Mult",
           "{C:dark_edition}Polychrome{} Jokers give {C:mult}+#2#{} Mult",
-          "If this Joker has {C:dark_edition}Holographic{} gain {X:chips,C:white}X#3#{} Chips when a {C:dark_edition}Holographic/Polychrome{} Joker triggers",
-          "If this Joker has {C:dark_edition}Polychrome{} gains {C:chips}+#4#{} Chips each when a {C:dark_edition}Polychrome/Holographic{} Joker triggers",
+        },
+        {
+          "If this Joker has {C:dark_edition}Holographic{} edition,",
+          "gains {X:chips,C:white}X#3#{} Chips when a {C:dark_edition}Holographic/",
+          "{C:dark_edition}Polychrome{} Joker triggers",
+        },
+        {
+          "If this Joker has {C:dark_edition}Polychrome{} edition,",
+          "gains {C:chips}+#4#{} Chips when a {C:dark_edition}Polychrome/",
+          "{C:dark_edition}Holographic{} Joker triggers",
           "{C:inactive}(Currently{} {X:chips,C:white}X#6#{} {C:inactive}Chips,{} {C:chips}+#5#{} {C:inactive}Chips){} ",
+        },
         }
       },
       j_abn_dark_magokert = {
