@@ -1503,7 +1503,7 @@ return {
         name = "Slate Slab",
         text = {
           "First and last played cards",
-		  "will not score",
+          "will not score",
         },
       },
       bl_abn_azure_circle = {
@@ -1843,9 +1843,9 @@ return {
         name = "Hazard Slab",
         text = {
           "First and last played cards",
-		  "will not score",
-		  "Increase blind requirement by X1.5",
-		  "when repeating already played hands",
+          "will not score",
+          "Increase blind requirement by X1.5",
+          "when repeating already played hands",
         },
       },
       bl_abn_hazard_circle = {
@@ -3833,20 +3833,20 @@ return {
         name = "Polychameleon",
         text = {
           {
-          "{C:dark_edition}Holographic{} Jokers give {X:mult,C:white}X#1#{} Mult",
-          "{C:dark_edition}Polychrome{} Jokers give {C:mult}+#2#{} Mult",
-        },
-        {
-          "If this Joker has {C:dark_edition}Holographic{} edition,",
-          "gains {X:chips,C:white}X#3#{} Chips when a {C:dark_edition}Holographic/",
-          "{C:dark_edition}Polychrome{} Joker triggers",
-        },
-        {
-          "If this Joker has {C:dark_edition}Polychrome{} edition,",
-          "gains {C:chips}+#4#{} Chips when a {C:dark_edition}Polychrome/",
-          "{C:dark_edition}Holographic{} Joker triggers",
-          "{C:inactive}(Currently{} {X:chips,C:white}X#6#{} {C:inactive}Chips,{} {C:chips}+#5#{} {C:inactive}Chips){} ",
-        },
+            "{C:dark_edition}Holographic{} Jokers give {X:mult,C:white}X#1#{} Mult",
+            "{C:dark_edition}Polychrome{} Jokers give {C:mult}+#2#{} Mult",
+          },
+          {
+            "If this Joker has {C:dark_edition}Holographic{} edition,",
+            "gains {X:chips,C:white}X#3#{} Chips when a {C:dark_edition}Holographic/",
+            "{C:dark_edition}Polychrome{} Joker triggers",
+          },
+          {
+            "If this Joker has {C:dark_edition}Polychrome{} edition,",
+            "gains {C:chips}+#4#{} Chips when a {C:dark_edition}Polychrome/",
+            "{C:dark_edition}Holographic{} Joker triggers",
+            "{C:inactive}(Currently{} {X:chips,C:white}X#6#{} {C:inactive}Chips,{} {C:chips}+#5#{} {C:inactive}Chips){} ",
+          },
         }
       },
       j_abn_dark_magokert = {
@@ -6138,17 +6138,17 @@ return {
         name = "Depressor Joker",
         text = {
           {
-          "{C:attention}First{} played {C:spades}Dark Suit{}",
-          "becomes {C:dark_edition}Negative{}",
+            "{C:attention}First{} played {C:spades}Dark Suit{}",
+            "becomes {C:dark_edition}Negative{}",
           },
           {
-          "This Joker gains {C:chips}+#6#{} Chips and",
-          "{C:mult}+#5#{} Mult per {C:dark_edition}Negative{} {C:spades}Dark Suit{} played",
+            "This Joker gains {C:chips}+#6#{} Chips and",
+            "{C:mult}+#5#{} Mult per {C:dark_edition}Negative{} {C:spades}Dark Suit{} played",
           },
           {
-          "If this Joker has {C:dark_edition}Negative{} edition",
-          "gain {X:mult,C:white}X#4#{} Mult per {C:dark_edition}Negative{} card played",
-          "{C:inactive}(Currently {C:chips}+#3#{} {C:inactive}Chips,{} {C:mult}+#2#{} {C:inactive}Mult,{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}"
+            "If this Joker has {C:dark_edition}Negative{} edition",
+            "gain {X:mult,C:white}X#4#{} Mult per {C:dark_edition}Negative{} card played",
+            "{C:inactive}(Currently {C:chips}+#3#{} {C:inactive}Chips,{} {C:mult}+#2#{} {C:inactive}Mult,{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}"
           },
         }
       },
@@ -7438,7 +7438,7 @@ return {
           "{C:money}+$#1#{} {C:mult}+#2#{} Mult and {C:chips}+#3#{} Chips if hand contains {C:abn_bow}Bows{} and {C:abn_tie}Ties{}"
         }
       },
-      j_abn_spanish_joker = { 
+      j_abn_spanish_joker = {
         name = "Spanish Joker",
         text = {
           {
@@ -7596,15 +7596,22 @@ return {
           "in the shop for {C:money}$#2#",
         }
       },
-      j_abn_yanga_joker = { -- to relocalise
+      j_abn_yanga_joker = {
         name = "Yanga Joker",
         text = {
-          "Gain {C:chips}+#4#{} Chips when an {C:spades}Opaque{} card scores",
-          "Gains {C:mult}+#3#{} Mult when a {C:dark_edition}Chthonian{} card scores",
-          "If {C:attention}First hand{} is {C:attention}Flush{} with only {C:abn_bow}Bows{} they gain {C:spades}Darkner{} enhancement and {C:dark_edition}Chthonian Edition{}",
-          "If {C:attention}First hand{} is {C:attention}Flush{} with only {C:spades}Spades{} they gain {C:spades}Darkner{} enhancement and {C:dark_edition}Opaque Edition{}",
-          "If {C:attention}First hand{} is {C:attention}Flush{} with only {C:clubs}Clubs{} they gain {C:spades}Darkner{} enhancement and {C:dark_edition}Chthonian Edition{}",
-          "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips)",
+          {
+            "Gain {C:chips}+#4#{} Chips when an {C:attention}Opaque{} card scores",
+            "Gains {C:mult}+#3#{} Mult when a {C:dark_edition}Chthonian{} card scores",
+            "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips)",
+          },
+          {
+            "If {C:attention}first hand{} is {C:attention}Flush{} of {C:abn_bow}Bows{}, enhance",
+            "played cards into {C:dark_edition}Chthonian{} {C:spades}Darkner{} cards",
+            "If {C:attention}first hand{} is {C:attention}Flush{} of {C:spades}Spades{}, enhance",
+            "played cards into {C:dark_edition}Opaque{} {C:spades}Darkner{} cards",
+            "If {C:attention}first hand{} is {C:attention}Flush{} of {C:clubs}Clubs{}, enhance",
+            "played cards into {C:dark_edition}Chthonian{} {C:spades}Darkner{} cards",
+          },
         }
       },
       j_abn_pincushion_joker = {
@@ -7618,11 +7625,17 @@ return {
       j_abn_reversecard_joker = { -- to relocalise
         name = "Reversecard Joker",
         text = {
-          "If hand is composed of both {C:attention}Flipped{} and {C:attention}face up{} cards",
-          "Flip all {C:attention}Flipped{} cards {C:attention}face up{} and Flip all {C:attention}face up{} cards {C:attention}face down{}",
-          "Gains {C:chips}chips{} {C:attention}equal{} to the rank of cards {C:attention}flipped up{} if those cards were {C:attention}flipped down{} gain {C:mult}Mult{} instead",
-          "If this Joker is {C:attention}Flipped{}, {C:attention}Flipped{} cards give double {C:chips}Chips{} and {C:mult}Mult{}",
-          "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips){}",
+          {
+            "If played hand contains both {C:attention}Flipped{} and {C:attention}face up{} cards,",
+            "Flip all {C:attention}Flipped{} cards {C:attention}face up{}, flip all {C:attention}face up{} cards {C:attention}face down{}",
+            "Gains {C:chips}chips{} {C:attention}equal{} to the rank of cards {C:attention}flipped up{},",
+            "if cards flipped were {C:attention}face down{}, gain {C:mult}Mult{} instead",
+            "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips){}",
+          },
+          {
+            "If this Joker is {C:attention}Flipped{}, {C:attention}Flipped{} cards",
+            "give double {C:chips}Chips{} and {C:mult}Mult{}",
+          },
         }
       },
       j_abn_weltschmerz_joker = {
@@ -7805,20 +7818,20 @@ return {
           "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}",
         }
       },
-      j_abn_snow_comedian = { 
+      j_abn_snow_comedian = {
         name = "Snow Comedian",
         text = {
           {
-          "This Joker gains {C:mult}+#3#{} Mult if played",
-          "hand contains {C:attention}Even{} {C:abn_snow}Snow{} cards,",
-          "gains {C:chips}+#4#{} Chips if played hand",
-          "contains {C:attention}Odd{} {C:abn_snow}Snow{} cards",
-          "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}"
+            "This Joker gains {C:mult}+#3#{} Mult if played",
+            "hand contains {C:attention}Even{} {C:abn_snow}Snow{} cards,",
+            "gains {C:chips}+#4#{} Chips if played hand",
+            "contains {C:attention}Odd{} {C:abn_snow}Snow{} cards",
+            "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}"
           },
           {
-          "If played hand contains a {C:attention}Flush{},",
-          "containing only {C:abn_snow}Snow{} cards, level up",
-          "{C:planet}planet{} {C:attention}rank{} of all scoring cards",
+            "If played hand contains a {C:attention}Flush{},",
+            "containing only {C:abn_snow}Snow{} cards, level up",
+            "{C:planet}planet{} {C:attention}rank{} of all scoring cards",
           },
         }
       },
