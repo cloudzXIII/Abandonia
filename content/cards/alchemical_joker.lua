@@ -86,7 +86,6 @@ SMODS.Joker {
     check_requirement(G.jokers.cards)
     check_requirement(G.deck.cards)
     if requirement >= 4 then
-      print("requirement meet")
       return true
     end
     return false
