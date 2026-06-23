@@ -4,7 +4,7 @@ SMODS.ConsumableType {
   primary_colour = HEX("f4ae55"),
   secondary_colour = HEX("f4ae55"),
   collection_rows = { 6, 6 },
-  shop_rate = 4,
+  shop_rate = 1,
   select_card = "consumeables"
 }
 
@@ -838,21 +838,19 @@ SMODS.Consumable {
   atlas = "abn_AbandoniaLetters",
   pos = { x = 7, y = 2 },
   config = { extra = { chips = 10 } },
-  
+
   loc_vars = function(self, info_queue, card)
-	info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_reversal
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_reversal
     return { vars = { card.ability.extra.chips } }
   end,
-  
+
   calculate = function(self, card, context)
     if context.before then
       local triggered = false
       for _, scoring_card in ipairs(context.scoring_hand) do
         if scoring_card:is_suit('abn_Penumbra') then
-		
-          triggered = true  
-          scoring_card:set_edition({abn_reversal = true}, true) 
-		  
+          triggered = true
+          scoring_card:set_edition({ abn_reversal = true }, true)
         end
       end
       if triggered then
@@ -860,7 +858,7 @@ SMODS.Consumable {
       end
     end
   end,
-  
+
   abn_artist_credits = {
     artist = "La Ginger"
   },
@@ -873,21 +871,19 @@ SMODS.Consumable {
   atlas = "abn_AbandoniaLetters",
   pos = { x = 8, y = 2 },
   config = { extra = { chips = 10 } },
-  
+
   loc_vars = function(self, info_queue, card)
-	info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_collodion
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_collodion
     return { vars = { card.ability.extra.chips } }
   end,
-  
+
   calculate = function(self, card, context)
     if context.before then
       local triggered = false
       for _, scoring_card in ipairs(context.scoring_hand) do
         if scoring_card:is_suit('abn_Snow') then
-		
-          triggered = true  
-          scoring_card:set_edition({abn_collodion = true}, true) 
-		  
+          triggered = true
+          scoring_card:set_edition({ abn_collodion = true }, true)
         end
       end
       if triggered then
@@ -895,7 +891,7 @@ SMODS.Consumable {
       end
     end
   end,
-  
+
   abn_artist_credits = {
     artist = "La Ginger"
   },
