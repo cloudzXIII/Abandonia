@@ -1502,8 +1502,8 @@ return {
       bl_abn_slate_slab = {
         name = "Slate Slab",
         text = {
-          "Hand must contain",
-          "a Stone card"
+          "First and last played cards",
+		  "will not score",
         },
       },
       bl_abn_azure_circle = {
@@ -1842,10 +1842,10 @@ return {
       bl_abn_hazard_slab = {
         name = "Hazard Slab",
         text = {
-          "Hand must contain",
-          "a Stone card",
-          "Debuff the leftmost Joker",
-          "every hand"
+          "First and last played cards",
+		  "will not score",
+		  "Increase blind requirement by X1.5",
+		  "when repeating already played hands",
         },
       },
       bl_abn_hazard_circle = {
@@ -10015,7 +10015,7 @@ return {
         name = "Pisces",
         text = {
           "{C:green}#1# in #2#{} chance to gain",
-          "{C:blue}+1{} hand until next blind",
+          "Double hands until next blind",
         }
       },
       c_abn_sagitt = {
