@@ -88,6 +88,10 @@ ABN.CreditCard {
   key = "gfs",
   pos = { x = 8, y = 0 },
 }
+ABN.CreditCard {
+  key = "ginger",
+  pos = { x = 9, y = 0 },
+}
 --#endregion
 
 ABN.contributors = {
@@ -208,6 +212,15 @@ ABN.contributors = {
     colour = G.C.GREEN,
     links = {
       { url = "https://github.com/gfsgfsPunchlineGuy", pos = { x = 0, y = 0 }, name = "Github" },
+    }
+  },
+  {
+    key = "credit_abn_ginger",
+    name = "La Ginger",
+    role = "Artist",
+    has_icon = true,
+    colour = G.C.GREEN,
+    links = {
     }
   },
   {

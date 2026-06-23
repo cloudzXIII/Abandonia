@@ -8282,6 +8282,13 @@ return {
           "Joker backgrounds!"
         }
       },
+      credit_abn_ginger = {
+        name = "",
+        text = {
+          "Made some cool",
+          "{C:green}Art{}!",
+        }
+      },
     },
     Other = {
       abn_comedic_audience_tooltip = {
