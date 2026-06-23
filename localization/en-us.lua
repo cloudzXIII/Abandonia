@@ -6123,12 +6123,21 @@ return {
         }
       },
       j_abn_depresor_joker = {
-        name = "Depresor Joker",
+        name = "Depressor Joker",
         text = {
-          "The {C:attention}First{} played {C:spades}Dark{} Suit card becomes {C:dark_edition}Negative{}",
-          "Gain {C:chips}+#6#{} Chips and {C:mult}+#5#{} Mult per {C:dark_edition}Negative{} {C:spades}Dark{} Suit played",
-          "If this Joker has {C:dark_edition}Negative{} gain {X:mult,C:white}X#4#{} Mult per played {C:dark_edition}Negative{} card",
+          {
+          "{C:attention}First{} played {C:spades}Dark Suit{}",
+          "becomes {C:dark_edition}Negative{}",
+          },
+          {
+          "This Joker gains {C:chips}+#6#{} Chips and",
+          "{C:mult}+#5#{} Mult per {C:dark_edition}Negative{} {C:spades}Dark Suit{} played",
+          },
+          {
+          "If this Joker has {C:dark_edition}Negative{} edition",
+          "gain {X:mult,C:white}X#4#{} Mult per {C:dark_edition}Negative{} card played",
           "{C:inactive}(Currently {C:chips}+#3#{} {C:inactive}Chips,{} {C:mult}+#2#{} {C:inactive}Mult,{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}"
+          },
         }
       },
       j_abn_cupon_joker = {
