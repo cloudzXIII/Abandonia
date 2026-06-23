@@ -35,7 +35,7 @@ SMODS.Joker {
 function ABN.reset_abn_gerrymandering()
   G.GAME.current_round.abn_gerrymandering = G.GAME.current_round.abn_gerrymandering or { suit = 'Hearts' }
   local gerry_suits = {}
-  for k, v in ipairs({ 'Spades', 'Hearts', 'Clubs', 'Diamonds', 'abn_Snow' }) do
+  for k, v in ipairs({ 'Spades', 'Hearts', 'Clubs', 'Diamonds', 'abn_Snow', 'abn_Penumbra', 'abn_Tie', 'abn_Bow' }) do
     if v ~= G.GAME.current_round.abn_gerrymandering.suit then gerry_suits[#gerry_suits + 1] = v end
   end
   local suit = pseudorandom_element(gerry_suits, 'j_abn_gerrymandering' .. G.GAME.round_resets.ante)
