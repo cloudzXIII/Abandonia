@@ -1,8 +1,8 @@
 SMODS.Joker {
   key = 'carnaval_joker',
-  rarity = 3, 
+  rarity = 3,
   atlas = 'ABNJokerSheet8',
-  pos = { x = 9, y = 5 },    
+  pos = { x = 9, y = 5 },
   cost = 8,
   discovered = false,
   blueprint_compat = true,
@@ -12,17 +12,19 @@ SMODS.Joker {
     }
   },
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_light_suit", set = "Other" }
+    info_queue[#info_queue + 1] = { key = "abn_dark_suit", set = "Other" }
     return {
       vars = {
         card.ability.extra.mult
       }
     }
   end,
-  
+
   calculate = function(self, card, context)
     if context.before and not context.blueprint then
       local first_penumbra_index = nil
-      
+
       -- Find penumbra card
       for i = 1, #context.scoring_hand do
         if context.full_hand[i]:is_suit("abn_Penumbra") then
@@ -42,7 +44,7 @@ SMODS.Joker {
           -- Skip first penumbra
           if i ~= first_penumbra_index then
             local check_card = context.scoring_hand[i]
-            
+
             if ABN.is_dark(check_card) then
               has_other_dark = true
             end
@@ -63,16 +65,16 @@ SMODS.Joker {
     -- Upgrade cards
     if context.individual and context.cardarea == G.play then
       local master_card = context.blueprint_card or card
-      
+
       if master_card.ability.extra.carnaval_active then
         local target = context.other_card
-        
+
         target.ability.perma_mult = (target.ability.perma_mult or 0) + card.ability.extra.mult
-        
+
         return {
-			message = localize('k_upgrade_ex'),
-			colour = G.C.MULT,
-			card = card
+          message = localize('k_upgrade_ex'),
+          colour = G.C.MULT,
+          card = card
         }
       end
     end
