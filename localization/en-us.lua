@@ -7424,12 +7424,24 @@ return {
       j_abn_balatro_the_movie = { -- to relocalise
         name = "Balatro: The Movie",
         text = {
-          "Increase {C:attention}blind requirement{} by {X:attention,C:white}X#10#{} for each blind defeated this run",
-          "Gain {X:mult,C:white}X#6#{} Mult for each different hand played",
-          "Gain {X:chips,C:white}X#7#{} Chips per repeating hand",
-          "Gains {C:mult}+#8#{} Mult and {C:chips}+#9#{} Chips per scoring card with {C:attention}different{} {C:attention}enhancement{}",
-          "If hand contains a {C:diamonds}Diamond{} {C:clubs}Club{} {C:hearts}Heart{} and {C:spades}Spade{} all scoring cards level up their {C:planet}planet{} {C:attention}rank{} by {C:attention}4{}",
-          "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {X:chips,C:white}X#2#{} {C:inactive}Chips,{} {C:mult}+#3#{} {C:inactive}Mult,{} {C:chips}+#4#{} {C:inactive}Chips,{} {X:attention,C:white}X#5#{} {C:inactive}Blind requirement)"
+          {
+            "Increase {C:attention}blind requirement{} by {X:attention,C:white}X#10#{}",
+            "for every {C:attention}Blind{} defeated this run",
+          },
+          {
+            "Gains {X:mult,C:white}X#6#{} Mult for each {C:attention}unique{} hand played,",
+            "Gains {X:chips,C:white}X#7#{} Chips per {C:attention}repeating{} hand,",
+            "Gains {C:mult}+#8#{} Mult and {C:chips}+#9#{} Chips",
+            "per unique {C:attention}enhancement{} in scored hand",
+            "{C:inactive,s:0.8}(Currently {X:mult,C:white,s:0.8}X#1#{} {C:inactive,s:0.8}Mult, {X:chips,C:white,s:0.8}X#2#{} {C:inactive,s:0.8}Chips, {C:mult,s:0.8}+#3# {C:inactive,s:0.8}Mult, {C:chips,s:0.8}+#4# {C:inactive,s:0.8}Chips, {X:attention,C:white,s:0.8}X#5#{} {C:inactive,s:0.8}Blind requirement)"
+          },
+          {
+            "If played hand contains a ",
+            "{C:diamonds}Diamond{} card, {C:clubs}Club{} card,",
+            "{C:hearts}Heart{} card, and {C:spades}Spade{} card,",
+            "level up {C:planet}planet{} {C:attention}rank{}",
+            "of all cards scored by {C:attention}4{}",
+          }
         }
       },
       j_abn_hustler_joker = {
