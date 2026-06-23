@@ -7160,7 +7160,7 @@ return {
         },
       },
       j_abn_monkey_buisness = {
-        name = "Monkey Buisness",
+        name = "Monkey Business",
         text = {
           "{C:attention}Consumables{} can have different {C:dark_edition}editions",
         },
