@@ -12,13 +12,16 @@ SMODS.Joker {
     if context.individual and context.cardarea == G.play then
       local currentCard = context.other_card
       if currentCard then
-        --remove 10% blind requirement
-        G.GAME.blind.chips = G.GAME.blind.chips * 0.10
+        local new_chips = G.GAME.blind.chips * 0.90
+        
+        if new_chips < 1 then 
+          new_chips = 0 
+        end
+
+        G.GAME.blind.chips = new_chips
         G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 
-
         currentCard:juice_up()
-
 
         return {
           extra = { message = "-10%!", colour = G.C.Mult },
