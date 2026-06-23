@@ -21,7 +21,7 @@ SMODS.Joker {
   calculate = function(self, card, context)
     if context.before and context.main_eval and not context.blueprint and G.GAME.current_round.hands_played == 0 then
         local this_card = nil
-        for i = #context.full_hand,1,-1 do
+        for i = #context.full_hand do
             local v = context.full_hand[i]
             if not v:is_face() and v:get_id() ~= 14 then
                 this_card=v
