@@ -2400,15 +2400,23 @@ return {
         name = "Hawk",
         text = {
           {
-            "Scored {C:abn_penumbra}Penumbras{} give {X:mult,C:white}X#1#{} Mult,",
-            "increases by {X:mult,C:white}X#2#{} Mult",
-            "when a {C:abn_penumbra}Penumbra{} is scored",
+            "{C:mult}Destroy{} the first scoring card",
           },
           {
-            "On {C:attention}winning hand{} of round,",
-            "level up {C:planet}planet{} {C:attention}rank{}",
-            "of all cards scored"
-          }
+            "If it was {C:attention}Even{}",
+			"all scoring cards gain {C:mult}+#5#{} Mult and this gains {X:mult,C:white}X#3#{} Mult",
+          },
+		  {
+			"If it was {C:attention}Odd{}",
+			"all scoring cards gain {C:chips}+#6#{} Chips and this gains {X:chips,C:white}X#4#{} Chips",
+		  },
+		  {
+			"If the {C:attention}winning hand{} has both {C:attention}Odd{} and {C:attention}Even{} cards",
+			"level up the {C:planet}planet{} {C:attention}rank{} of all scoring cards",
+		  },
+		  {
+			"{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{} {X:chips,C:white}X#2#{} {C:inactive}Chips{}",
+		  }
         }
       },
       j_abn_kaufmo = {
@@ -4036,14 +4044,18 @@ return {
         name = "Inferno Comedian",
         text = {
           {
-            "Played cards give {C:white,X:mult}X#1#{} Mult",
-            "when scored",
+            "Scoring cards give {C:white,X:mult}X#1#{} Mult",
           },
           {
-            "If score {C:attention}catches on fire{},",
-            "This Joker gains chips equal",
-            "to last played hand",
-            "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
+            "If Score {C:attention}Catches on fire{}",
+			"One random Joker gains {C:dark_edition}Sunscourge{}",
+			"and all cards in hand become {C:dark_edition}Sunscourge{} {C:abn_black_seal}Oilfire{} cards",
+		  },
+		  {
+			"{C:abn_black_seal}Oilfire{} cards give {C:white,X:mult}X#1#{} Mult",
+			"{C:abn_black_seal}Oilfire{} cards retain their {C:attention}ranks{}",
+			"When they are {C:mult}destroyed{} gain {C:mult}Mult{} {C:attention}equal{} to their {C:attention}ranks{}",
+			"{C:inactive}Currently:{} {C:mult}+#2#{} {C:inactive}Mult",
           }
         }
       },
@@ -9998,7 +10010,7 @@ return {
         name = "Aries",
         text = {
           "{C:green}#1# in #2#{} chance to gain",
-          "{C:red}+1{} discard until next blind",
+          "double discards until next blind",
         }
       },
       c_abn_cancer = {
