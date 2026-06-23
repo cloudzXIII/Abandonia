@@ -126,14 +126,19 @@ SMODS.Blind({
   atlas = "AbandoniaBlinds",
   pos = { x = 0, y = 14 },
   boss_colour = HEX("4f6c74"),
-  debuff_hand = function(self, cards, hand, handname, check)
-    local no = true
-    for k, v in pairs(cards) do
-      if SMODS.has_enhancement(v, "m_stone") then
-        no = false
+  
+  calculate = function(self, card, context)
+    if context.modify_scoring_hand then
+      if context.full_hand and #context.full_hand > 0 then
+        local first_card = context.full_hand[1]
+        local last_card = context.full_hand[#context.full_hand]
+        if context.other_card == first_card or context.other_card == last_card then
+          return {
+            remove_from_hand = true
+          }
+        end
       end
     end
-    return no
   end,
 })
 
@@ -1831,65 +1836,44 @@ SMODS.Blind({
   pos = { x = 0, y = 26 },
   boss = { showdown = true, hazard_blind = true },
   boss_colour = HEX("4f6c74"),
-  debuff_hand = function(self, cards, hand, handname, check)
-    local no = true
-    for k, v in pairs(cards) do
-      if SMODS.has_enhancement(v, "m_stone") then
-        no = false
+
+  calculate = function(self, blind, context)
+    if blind.disabled then return end
+
+    if context.setting_blind then
+      blind.effect.hands = {}
+      for _, poker_hand in ipairs(G.handlist) do
+        blind.effect.hands[poker_hand] = false
       end
     end
-    return no
-  end,
-  calculate = function(self, blind, context)
-    if not blind.disabled then
-      if context.debuff_card and context.debuff_card.area == G.jokers then
-        if context.debuff_card.ability.hazard_pin then
+
+    if context.before and not context.blueprint then
+      local handname = context.scoring_name
+      
+      if blind.effect.hands and blind.effect.hands[handname] then
+        G.GAME.blind.chips = G.GAME.blind.chips * 1.5
+        G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+        blind.triggered = true
+      end
+    end
+
+    if context.after and not context.blueprint then
+      local handname = context.scoring_name
+      if blind.effect.hands then
+        blind.effect.hands[handname] = true
+      end
+    end
+
+    if context.modify_scoring_hand then
+      if context.full_hand and #context.full_hand > 0 then
+        local first_card = context.full_hand[1]
+        local last_card = context.full_hand[#context.full_hand]
+        if context.other_card == first_card or context.other_card == last_card then
           return {
-            debuff = true,
+            remove_from_hand = true
           }
         end
       end
-      if context.press_play and G.jokers.cards[1] then
-        blind.triggered = true
-        blind.prepped = true
-      end
-      if context.hand_drawn then
-        if blind.prepped and G.jokers.cards[1] then
-          local prev_chosen_set = {}
-          local fallback_jokers = {}
-          local jokers = {}
-          for i = 1, #G.jokers.cards do
-            if G.jokers.cards[i].ability.hazard_pin then
-              prev_chosen_set[G.jokers.cards[i]] = true
-              G.jokers.cards[i].ability.hazard_pin = nil
-              if G.jokers.cards[i].debuff then
-                SMODS.recalc_debuff(G.jokers.cards[i])
-              end
-            end
-          end
-          for i = 1, #G.jokers.cards do
-            if not G.jokers.cards[i].debuff then
-              if not prev_chosen_set[G.jokers.cards[i]] then
-                jokers[#jokers + 1] = G.jokers.cards[i]
-              end
-              table.insert(fallback_jokers, G.jokers.cards[i])
-            end
-          end
-          if #jokers == 0 then
-            jokers = fallback_jokers
-          end
-          local _card = G.jokers.cards[1]
-          if _card then
-            _card.ability.hazard_pin = true
-            SMODS.recalc_debuff(_card)
-            _card:juice_up()
-            blind:wiggle()
-          end
-        end
-      end
-    end
-    if context.hand_drawn then
-      blind.prepped = nil
     end
   end,
 })
