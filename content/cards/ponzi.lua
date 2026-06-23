@@ -1,3 +1,4 @@
+-- Ponzi (coded by cloudzXIII)
 SMODS.Joker {
   key = 'ponzi',
   loc_txt = {
@@ -16,39 +17,23 @@ SMODS.Joker {
   blueprint_compat = true,
   unlocked = false,
 
-  config = { extra = { mult = 3, chips = 10, loss = 1, money = 99999999 } },
+  config = { extra = { dollars = 1, } },
 
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.mult, card.ability.extra.chips, card.ability.extra.loss } }
+    return { vars = { card.ability.extra.dollars } }
   end,
 
   add_to_deck = function(self, card)
-    card.ability.extra.money = G.GAME.dollars
     unlock_card(self)
-  end,
-
-  update = function(self, card)
-    if card.area and card.area == G.jokers then
-      if G.GAME.dollars < card.ability.extra.money then
-        card.ability.extra.money = G.GAME.dollars
-        if G.playing_cards then 
-          for _, v in ipairs(G.playing_cards) do
-            v.ability.perma_mult = (v.ability.perma_mult or 0) + card.ability.extra.mult
-            v.ability.perma_bonus = (v.ability.perma_bonus or 0) + card.ability.extra.chips
-          end
-        end
-      end
-
-      if G.GAME.dollars > card.ability.extra.money then
-        card.ability.extra.money = G.GAME.dollars
-      end
-    end
   end,
 
   calculate = function(self, card, context)
     if context.cardarea == G.play and context.individual and not context.end_of_round then
+      context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) +
+          (card.ability.extra.dollars * #context.scoring_hand)
+      SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, context.other_card)
       return {
-        dollars = -card.ability.extra.loss,
+        dollars = -card.ability.extra.dollars,
         card = card,
       }
     end

@@ -2404,19 +2404,19 @@ return {
           },
           {
             "If it was {C:attention}Even{}",
-			"all scoring cards gain {C:mult}+#5#{} Mult and this gains {X:mult,C:white}X#3#{} Mult",
+            "all scoring cards gain {C:mult}+#5#{} Mult and this gains {X:mult,C:white}X#3#{} Mult",
           },
-		  {
-			"If it was {C:attention}Odd{}",
-			"all scoring cards gain {C:chips}+#6#{} Chips and this gains {X:chips,C:white}X#4#{} Chips",
-		  },
-		  {
-			"If the {C:attention}winning hand{} has both {C:attention}Odd{} and {C:attention}Even{} cards",
-			"level up the {C:planet}planet{} {C:attention}rank{} of all scoring cards",
-		  },
-		  {
-			"{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{} {X:chips,C:white}X#2#{} {C:inactive}Chips{}",
-		  }
+          {
+            "If it was {C:attention}Odd{}",
+            "all scoring cards gain {C:chips}+#6#{} Chips and this gains {X:chips,C:white}X#4#{} Chips",
+          },
+          {
+            "If the {C:attention}winning hand{} has both {C:attention}Odd{} and {C:attention}Even{} cards",
+            "level up the {C:planet}planet{} {C:attention}rank{} of all scoring cards",
+          },
+          {
+            "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{} {X:chips,C:white}X#2#{} {C:inactive}Chips{}",
+          }
         }
       },
       j_abn_kaufmo = {
@@ -4055,14 +4055,14 @@ return {
           },
           {
             "If Score {C:attention}Catches on fire{}",
-			"One random Joker gains {C:dark_edition}Sunscourge{}",
-			"and all cards in hand become {C:dark_edition}Sunscourge{} {C:abn_black_seal}Oilfire{} cards",
-		  },
-		  {
-			"{C:abn_black_seal}Oilfire{} cards give {C:white,X:mult}X#1#{} Mult",
-			"{C:abn_black_seal}Oilfire{} cards retain their {C:attention}ranks{}",
-			"When they are {C:mult}destroyed{} gain {C:mult}Mult{} {C:attention}equal{} to their {C:attention}ranks{}",
-			"{C:inactive}Currently:{} {C:mult}+#2#{} {C:inactive}Mult",
+            "One random Joker gains {C:dark_edition}Sunscourge{}",
+            "and all cards in hand become {C:dark_edition}Sunscourge{} {C:abn_black_seal}Oilfire{} cards",
+          },
+          {
+            "{C:abn_black_seal}Oilfire{} cards give {C:white,X:mult}X#1#{} Mult",
+            "{C:abn_black_seal}Oilfire{} cards retain their {C:attention}ranks{}",
+            "When they are {C:mult}destroyed{} gain {C:mult}Mult{} {C:attention}equal{} to their {C:attention}ranks{}",
+            "{C:inactive}Currently:{} {C:mult}+#2#{} {C:inactive}Mult",
           }
         }
       },
@@ -4789,9 +4789,9 @@ return {
       j_abn_ponzi = {
         name = "Ponzi",
         text = {
-          "All cards gain {C:mult}+#1#{} Mult and",
-          "{C:chips}+#2#{} Chips when {C:money}money{} is lost,",
-          "Lose {C:money}$#3#{} per {C:attention}scoring{} card"
+          "Lose {C:money}$#1#{} per card played,",
+          "each scoring card gains {C:mult}Mult{}",
+          "equal to money {C:attention}lost{}"
         }
       },
       j_abn_forsake_joker = {
