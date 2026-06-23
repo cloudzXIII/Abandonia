@@ -3805,8 +3805,15 @@ return {
       j_abn_vaporwave_joker = {
         name = "Vaporwave Joker",
         text = {
-          "{C:dark_edition}#2#{} cards",
-          "and Jokers give {C:mult}+#1#{} Mult"
+          {
+            "Played and discarded {C:dark_edition}#2#{} cards",
+            "permanently gain {C:chips}+#1#{} Chips per card",
+            "played or discarded"
+          },
+          {
+            "If this Joker has {C:dark_edition}#2#{} edition,",
+            "{C:dark_edition}#2#{} Jokers give {C:white,X:chips}X#3#{} Chips"
+          }
         }
       },
       j_abn_maxwell_joker = {

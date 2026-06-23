@@ -3,7 +3,7 @@ SMODS.Joker {
 
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
-    return { vars = { card.ability.extra.mult, localize({ type = 'name_text', key = "e_polychrome", set = "Edition" }) } }
+    return { vars = { card.ability.extra.chips, localize({ type = 'name_text', key = "e_polychrome", set = "Edition" }), card.ability.extra.xchips } }
   end,
 
   rarity = 3,
@@ -14,10 +14,10 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { mult = 8 } },
+  config = { extra = { chips = 1, xchips = 3 } },
 
   calculate = function(self, card, context)
-    if context.other_joker and context.other_joker.edition and context.other_joker.edition.polychrome == true and card ~= context.other_joker
+    if card.edition and card.edition.polychrome and context.other_joker and context.other_joker.edition and context.other_joker.edition.polychrome == true and card ~= context.other_joker
     then
       G.E_MANAGER:add_event(Event({
         func = function()
@@ -26,15 +26,20 @@ SMODS.Joker {
         end,
       }))
       return {
-        mult = card.ability.extra.mult
+        xchips = card.ability.extra.xchips
       }
     end
     if context.individual and context.cardarea == G.play then
       if context.other_card.edition and context.other_card.edition.key == "e_polychrome" then
-        return {
-          mult = card.ability.extra.mult
-        }
+        context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus +
+            card.ability.extra.chips * #context.scoring_hand
+        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, context.other_card)
       end
+    end
+    if context.discard and context.other_card.edition and context.other_card.edition.key == "e_polychrome" then
+      context.other_card.ability.perma_bonus = context.other_card.ability.perma_bonus +
+          card.ability.extra.chips * #context.full_hand
+      SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, context.other_card)
     end
   end,
   in_pool = function(self, args)
