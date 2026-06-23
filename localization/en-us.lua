@@ -845,7 +845,8 @@ return {
       b_abn_treaty = {
         name = "Treaty of Colours",
         text = {
-          "Start with {C:abn_snow}Snows{}, {C:abn_penumbra}Penumbras{},",
+          "Start with all {C:attention}vanilla{} suits,",
+          "{C:abn_snow}Snows{}, {C:abn_penumbra}Penumbras{},",
           "{C:abn_tie}Ties{} and {C:abn_bow}Bows{}",
         }
       },
