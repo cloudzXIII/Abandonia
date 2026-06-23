@@ -2415,22 +2415,7 @@ return {
             "level up the {C:planet}planet{} {C:attention}rank{} of all scoring cards",
           },
           {
-            "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{} {X:chips,C:white}X#2#{} {C:inactive}Chips{}",
-          }
-        }
-      },
-      j_abn_kaufmo = {
-        name = "Kaufmo",
-        text = {
-          {
-            "Scored {C:abn_snow}Snows{} give {X:mult,C:white}X#1#{} Mult,",
-            "increases by {X:mult,C:white}X#2#{} Mult",
-            "when a {C:abn_snow}Snow{} is scored",
-          },
-          {
-            "On {C:attention}winning hand{} of round,",
-            "level up {C:planet}planet{} {C:attention}rank{}",
-            "of all cards scored"
+            "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult{} {X:chips,C:white}X#2#{} {C:inactive}Chips){}",
           }
         }
       },
@@ -4054,15 +4039,16 @@ return {
             "Scoring cards give {C:white,X:mult}X#1#{} Mult",
           },
           {
-            "If Score {C:attention}Catches on fire{}",
-            "One random Joker gains {C:dark_edition}Sunscourge{}",
-            "and all cards in hand become {C:dark_edition}Sunscourge{} {C:abn_black_seal}Oilfire{} cards",
+            "If score {C:attention}catches on fire{},",
+            "Add {C:dark_edition}Sunscourge{} edition to a random Joker,",
+            "and enhance all cards in hand into",
+            "{C:dark_edition}Sunscourge{} {C:attention}Oilfire{} cards",
           },
           {
-            "{C:abn_black_seal}Oilfire{} cards give {C:white,X:mult}X#1#{} Mult",
-            "{C:abn_black_seal}Oilfire{} cards retain their {C:attention}ranks{}",
+            "{C:attention}Oilfire{} cards give {C:white,X:mult}X#1#{} Mult",
+            "{C:attention}Oilfire{} cards retain their {C:attention}ranks{}",
             "When they are {C:mult}destroyed{} gain {C:mult}Mult{} {C:attention}equal{} to their {C:attention}ranks{}",
-            "{C:inactive}Currently:{} {C:mult}+#2#{} {C:inactive}Mult",
+            "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult)",
           }
         }
       },
