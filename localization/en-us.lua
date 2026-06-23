@@ -886,7 +886,7 @@ return {
         name = "Poneglyph",
         text = {
           "Start with a full set of",
-          "{C:inactive}Stone{}, {C:abn_black_seal}Petroleum,",
+          "{C:attention}Stone{}, {C:attention}Petroleum,",
           "{C:attention}Polkadot{} and {C:inactive}Null{} cards ",
         }
       },
@@ -3771,10 +3771,10 @@ return {
         name = "Statue Joker",
         text = {
           "Gain {C:mult}+#2#{} Mult per {C:attention}rankless{} card scored",
-          "{C:inactive}Stone{} cards gain {C:dark_edition}Chromatic{}",
-          "{C:abn_black_seal}Petroleum{} cards gain {C:dark_edition}Collodion{}",
+          "{C:attention}Stone{} cards gain {C:dark_edition}Chromatic{}",
+          "{C:attention}Petroleum{} cards gain {C:dark_edition}Collodion{}",
           "{C:attention}Pokladot{} cards gain {C:dark_edition}Gloss{}",
-          "{C:abn_black_seal}Oilfire{} cards gain {C:dark_edition}Abandoned{}",
+          "{C:attention}Oilfire{} cards gain {C:dark_edition}Abandoned{}",
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
         }
       },
@@ -5955,7 +5955,7 @@ return {
           },
           {
             "Using {C:planet}Planet{} and {C:program_pack}Program{} cards",
-            "give held {C:inactive}Steel{} Cards",
+            "give held {C:attention}Steel{} Cards",
             "{C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
           },
         }
@@ -6433,7 +6433,7 @@ return {
           {
             "If the {C:attention}full hand{} is a {C:attention}palindromic sequence",
             "and is composed of {C:attention}both {C:diamonds}Light{} and {C:spades}Dark{} suits,",
-            "level up the {C:planet}Planet Rank{} of each {C:attention}scoring{} card by",
+            "level up the {C:planet}planet{} {C:attnention}Rank{} of each {C:attention}scoring{} card by",
             "the amount of times the {C:attention}rank{} has been {C:attention}repeated{} in hand",
           },
         }
@@ -6452,7 +6452,7 @@ return {
           {
             "If you play a {C:attention}#1#{} with",
             "{C:abn_penumbra}Penumbras{}, {C:abn_snow}Snows{}, {C:abn_bow}Bows{} and {C:abn_tie}Ties{},",
-            "level up the {C:planet}Planet Rank{} of",
+            "level up the {C:planet}planet{} {C:attention}rank{} of",
             "each {C:attention}scoring{} card and",
             "gain {C:chips}+#3#{} Chips.",
             "{C:inactive}(Currently {C:chips}+#5#{C:inactive} Chips)",
@@ -6878,7 +6878,7 @@ return {
         name = "Spilling Salt",
         text = {
           "Scored {C:red}debuffed{} cards",
-          "increase their {C:planet}planet rank{}",
+          "increase their {C:planet}planet{} {C:attention}rank{}",
           "by {C:attention}1"
         },
       },
