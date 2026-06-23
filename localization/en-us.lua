@@ -9543,9 +9543,9 @@ return {
       c_abn_masquerade = {
         name = "Masquerade",
         text = {
-          "Enhances {C:attention}#1#{} selected",
-          "card into a",
-          "{C:attention}#2#",
+          "Enhances {C:attention}#1#{}",
+          "selected cards to",
+          "{C:attention}#2#s",
         },
       },
       c_abn_orbit = {
