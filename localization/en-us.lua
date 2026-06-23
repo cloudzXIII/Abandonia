@@ -5039,14 +5039,15 @@ return {
         name = "Bravais Joker",
         text = {
           {
-            "Gains {C:chips}+#3#{} Chips for each {C:attention}Wild{} Card used in Spectrum hands",
-            "Gains {C:mult}+#4#{} Mult for each {C:attention}Mercurial{} Card used in Spectrum hands",
+            "If played hand contains a {C:attention}Spectrum{},",
+            "gains {C:chips}+#3#{} Chips per {C:attention}Wild{} Card scored,",
+            "gains {C:mult}+#4#{} Mult per {C:attention}Mercurial{} Card scored",
             "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips)",
           },
           {
             "If this Joker has an {C:dark_edition}edition{},",
             "{C:attention}Wild{} cards gain {C:chips}+#3#{} Chips",
-            "and {C:mult}Mercurial{} Cards gain {C:mult}+#4#{} Mult",
+            "and {C:attention}Mercurial{} Cards gain {C:mult}+#4#{} Mult",
           }
         }
       },
