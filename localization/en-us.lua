@@ -6741,7 +6741,7 @@ return {
           "Played cards with",
           "{C:attention}odd{} rank give",
           "{C:chips}+#1#{} Chips when scored",
-          "{C:inactive}(A, 13, 12, 11, 9, 7, 5, 3,   )",
+          "{C:inactive}(13, 12, 11, A, 9, 7, 5, 3)",
         },
       },
       j_abn_even_stephen = {
