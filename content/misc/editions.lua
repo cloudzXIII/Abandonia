@@ -267,7 +267,7 @@ SMODS.Edition {
   calculate = function(self, card, context)
     if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
       return {
-        emult = card.edition.echips
+        echips = card.edition.echips
       }
     end
   end,
