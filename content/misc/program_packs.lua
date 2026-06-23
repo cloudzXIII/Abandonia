@@ -105,9 +105,7 @@ SMODS.Consumable {
   use = function(self, card, area, copier)
     local held = {}
     for _, c in ipairs(G.hand.cards) do
-      if not c.edition then
-        held[#held + 1] = c
-      end
+      held[#held + 1] = c
     end
     pseudoshuffle(held, pseudoseed('abn_mp4'))
 
@@ -521,12 +519,12 @@ SMODS.Consumable {
       if target_ranks[hand_card.base.value] then
         hand_card:set_ability("m_abn_teabag")
         hand_card:set_edition("e_abn_collodion", true)
-        
+
         hand_card:juice_up(0.3, 0.3)
       end
     end
   end,
-  
+
   abn_artist_credits = {
     artist = "Comykel",
   },
@@ -576,7 +574,7 @@ SMODS.Consumable {
 
     for _, hand_card in ipairs(G.hand.cards) do
       local changed = false
-      
+
       for base_suit, target_suit in pairs(suit_mapping) do
         if hand_card:is_suit(base_suit) then
           hand_card:change_suit(target_suit)
@@ -590,7 +588,7 @@ SMODS.Consumable {
       end
     end
   end,
-  
+
   abn_artist_credits = {
     artist = "Comykel",
   },
@@ -634,13 +632,11 @@ SMODS.Consumable {
 
     for _, deck_card in ipairs(G.hand.cards) do
       if (deck_card:is_suit('Spades') or deck_card:is_suit('abn_Bow')) and ABN.is_even(deck_card) then
-        
         deck_card:set_edition({ abn_vintage = true }, true)
-		
       end
     end
   end,
-  
+
   abn_artist_credits = {
     artist = "Comykel",
   },
@@ -684,13 +680,11 @@ SMODS.Consumable {
 
     for _, deck_card in ipairs(G.hand.cards) do
       if (deck_card:is_suit('Clubs') or deck_card:is_suit('abn_Tie')) and ABN.is_odd(deck_card) then
-        
         deck_card:set_edition({ abn_reversal = true }, true)
-		
       end
     end
   end,
-  
+
   abn_artist_credits = {
     artist = "Comykel",
   },
