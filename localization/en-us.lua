@@ -5102,7 +5102,8 @@ return {
           },
           {
             "If this Joker has an {C:dark_edition}edition{},",
-            "{C:green}#3# in #4#{} scoring cards create {C:attention}Double Tags{}",
+            "{C:green}#3# in #4#{} chance for scoring cards",
+            "to create {C:attention}Double Tags{}",
           }
         }
       },
