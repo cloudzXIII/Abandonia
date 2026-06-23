@@ -178,7 +178,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = "aries",
     set = "astro_cards",
-    config = { extra = { odds = 4, used = 0 } },
+    config = { extra = { odds = 6, used = 0 } },
     pos = { x = 1, y = 0 },
     atlas = "AbandoniaAstro",
     cost = 4,
@@ -189,7 +189,6 @@ SMODS.Consumable {
             vars = {
                 SMODS.get_probability_vars(card, 1, card.ability.extra.odds)
             },
-
         }
     end,
 
@@ -198,9 +197,12 @@ SMODS.Consumable {
     end,
 
     use = function(self, card, area, copier)
-        if SMODS.pseudorandom_probability(card, "aquar", 1, card.ability.extra.odds) then
-            G.GAME.round_resets.discards = G.GAME.round_resets.discards + 1
-            ease_discard(1)
+        if SMODS.pseudorandom_probability(card, "aries", 1, card.ability.extra.odds) then
+            -- Double the discards for the current round setup
+            local discards_to_add = G.GAME.round_resets.discards
+            G.GAME.round_resets.discards = G.GAME.round_resets.discards * 2
+            ease_discard(discards_to_add)
+
             local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_aries')
             _card:add_to_deck()
             _card.ability.extra.used = 1
@@ -243,8 +245,11 @@ SMODS.Consumable {
         if context.end_of_round and card.area == G.vouchers and card.ability.extra.used == 1 then
             card.ability.extra.used = 0
             card:start_dissolve()
-            G.GAME.round_resets.discards = G.GAME.round_resets.discards - 1
-            ease_discard(-1)
+            
+            -- Revert the doubling by dividing by 2 and removing the excess from the current UI
+            local half_discards = G.GAME.round_resets.discards / 2
+            G.GAME.round_resets.discards = half_discards
+            ease_discard(-half_discards)
         end
     end,
 
