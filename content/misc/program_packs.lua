@@ -528,6 +528,17 @@ SMODS.Consumable {
   abn_artist_credits = {
     artist = "Comykel",
   },
+
+  in_pool = function(self, args)
+    local target_ranks = { abn_11 = true, abn_12 = true, abn_13 = true, abn_14 = true }
+
+    for _, playing_card in ipairs(G.playing_cards or {}) do
+      if playing_card:get_id() == SMODS.Ranks[target_ranks].id then
+        return true
+      end
+    end
+    return false
+  end
 }
 
 SMODS.Consumable {
