@@ -424,15 +424,17 @@ return {
       c_abn_yogh = {
         name = "YOGH",
         text = {
-          "Next time you play {C:abn_penumbra}Penumbra{} cards",
-          "They all gain {C:dark_edition}Reversal edition{}",
+          "Next time you play a hand containing",
+          "{C:abn_penumbra}Penumbras{}, add {C:dark_edition}Reversal{}",
+          "to played {C:abn_penumbra}Penumbras",
         }
       },
       c_abn_eth = {
         name = "ETH",
         text = {
-          "Next time you play {C:abn_snow}Snow{} cards",
-          "They all gain {C:dark_edition}Collodion edition{}",
+          "Next time you play a hand containing",
+          "{C:abn_snow}Snows{}, add {C:dark_edition}Collodion{}",
+          "to played {C:abn_snow}Snows{}",
         }
       },
     },
