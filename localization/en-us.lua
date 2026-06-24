@@ -7265,10 +7265,18 @@ return {
       j_abn_joker_besties = {
         name = "Joker Besties",
         text = {
-          "{C:attention}Scoring{} Jokers/Cards with {C:dark_edition}Foil{} become {C:dark_edition}Holographic{}",
-          "{C:attention}Scoring{} Jokers/Cards with {C:dark_edition}Holographic{} become {C:dark_edition}Polychrome{}",
-          "{C:attention}Scoring{} Jokers/Cards with {C:dark_edition}Polychrome{} become {C:dark_edition}Chromatic{}",
-          "Jokers/Cards gain {C:chips}+#1#{} Chips when changing {C:dark_edition}editions{}",
+          {
+            "Jokers/cards with {C:inactive}edition 1{} become",
+            "{C:inactive}edition 2{} when triggered",
+            "Jokers/cards gain {C:chips}+#1#{} Chips",
+            "when changing {C:dark_edition}editions{}",
+          },
+          {
+            "{C:inactive}(ex: edition 1 -> edition 2)",
+            "{C:dark_edition}Foil{} -> {C:dark_edition}Holographic{}",
+            "{C:dark_edition}Holographic{} -> {C:dark_edition}Polychrome{}",
+            "{C:dark_edition}Polychrome{} -> {C:dark_edition}Chromatic{}",
+          }
         },
       },
       j_abn_darknet_joker = {
