@@ -4405,9 +4405,9 @@ return {
       j_abn_tronie_joker = {
         name = "Tronie Joker",
         text = {
-          "{C:chips}+#3#{} Joker Slots",
-          "{X:mult,C:white}#1#X{} {C:attention}Blind requirement{}",
-          "Increases by {X:mult,C:white}#2#X{} when {C:attention}Ante{} is defeated",
+          "{C:chips}+#1#{} Joker Slots",
+          "{X:mult,C:white}#2#X{} {C:attention}Blind requirement{}",
+          "Increases by {X:mult,C:white}#3#X{} when {C:attention}Ante{} is defeated",
         },
       },
       j_abn_garden_gnome = {
