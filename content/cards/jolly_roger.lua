@@ -1,3 +1,6 @@
+-- This is just looking really ugly and pmo, so want to comment it out for now till i find a way to implement it better
+-- - cloudz :)
+--[[
 SMODS.Joker {
   key = 'jolly_roger',
   rarity = 3,
@@ -23,7 +26,7 @@ SMODS.Joker {
       text7 = ""
     }
   },
-  
+
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
@@ -37,7 +40,7 @@ SMODS.Joker {
       },
     }
   end,
-  
+
   update = function(self, card)
     if card.area == G.jokers then
 
@@ -61,20 +64,20 @@ SMODS.Joker {
       card.ability.extra.text7 = owned.continent and "Continent: Random Joker gains a random edition" or ""
     end
   end,
-  
+
   calculate = function(self, card, context)
     if context.selling_card then
       local sold_card = context.card
       if not sold_card or not sold_card.config or not sold_card.config.center then return end
-      
+
       local sold_set = sold_card.config.center.set
-      
+
       -- TAROT
       if sold_set == "Tarot" and G.deck and #G.playing_cards > 0 then
         local target = pseudorandom_element(G.playing_cards, pseudoseed('jolly_tarot'))
         target.ability.perma_bonus = (target.ability.perma_bonus or 0) + card.ability.extra.tarotchips
         target:juice_up()
-      
+
       -- PLANET
       elseif sold_set == "Planet" and G.deck and #G.playing_cards > 0 then
         local target = pseudorandom_element(G.playing_cards, pseudoseed('jolly_planet'))
@@ -118,3 +121,4 @@ SMODS.Joker {
     artist = "Omicra",
   },
 }
+--]]

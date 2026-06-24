@@ -7057,20 +7057,16 @@ return {
       j_abn_jolly_voxel_joker = {
         name = "Jolly Voxel Joker",
         text = {
-          {
-            "{X:chips,C:white}X#1#{} Chips if hand",
-            "is a {C:attention}#2#"
-          },
+          "{X:chips,C:white}X#1#{} Chips if {C:attention}poker hand{}",
+          "is a {C:attention}#2#"
         }
 
       },
       j_abn_nicotine_joker = {
         name = "Nicotine Joker",
         text = {
-          {
-            "{C:chips}+#1#{} Chips",
-            "{C:inactive}(Doubles if score catches fire)"
-          },
+          "{C:chips}+#1#{} Chips",
+          "{C:inactive}(Doubles if score catches fire)"
         }
 
       },
@@ -7134,11 +7130,9 @@ return {
       j_abn_strickland_joker = {
         name = "Strickland Joker",
         text = {
-          {
-            "Gain {C:red}+#1#{} Mult per {C:attention}played card{},",
-            "resets if the score {C:red,E:2}catches fire",
-            "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)"
-          },
+          "Gain {C:red}+#1#{} Mult per {C:attention}played card{},",
+          "resets if the score {C:red,E:2}catches fire",
+          "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)"
         }
       },
       j_abn_aesthetic_joker = {
