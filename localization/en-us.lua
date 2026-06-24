@@ -7353,21 +7353,21 @@ return {
           "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
         },
       },
-      j_abn_jester_vs_jester = { -- to relocalise
+      j_abn_jester_vs_jester = {
         name = "Jester vs Jester",
         text = {
-          "If you have an {C:attention}Even{} number of {C:common}Common{} Jokers,",
-          "each played {C:attention}2, 4, 6, 8 and 10{} gives {C:chips}+#1#{} Chips",
-          "If you have an {C:attention}Odd{} number of {C:common}Common{} Jokers,",
-          "each played {C:attention}3, 5, 7, 9 and Ace{} gives {C:chips}+#2#{} Chips",
-          "If you have an {C:attention}Even{} number of {C:uncommon}Uncommon{} Jokers,",
-          "Each played {C:attention}2, 4, 6, 8 and 10{} gives {X:mult,C:white}X#3#{} Mult",
-          "If you have an {C:attention}Odd{} number of {C:uncommon}Uncommon{} Jokers,",
-          "each played {C:attention}3, 5, 7, 9 and Ace{} gives {X:mult,C:white}X#4#{} Mult",
-          "If you have an {C:attention}Even{} number of {C:rare}Rare{} Jokers,",
-          "each played {C:attention}2, 4, 6, 8 and 10{} gives {X:chips,C:white}X#5#{} Chips",
-          "If you have an {C:attention}Odd{} number of {C:rare}Rare{} Jokers,",
-          "each played {C:attention}3, 5, 7, 9 and Ace{} gives {X:chips,C:white}X#6#{} Chips",
+          {
+            "If you have an {C:attention}even{} number of {C:inactive,s:0.8}(rarity){} Jokers,",
+            "scoring {C:attention}even{} cards give {C:inactive,s:0.8}(reward 1)",
+            "If you have an {C:attention}odd{} number of {C:inactive,s:0.8}(rarity){} Jokers,",
+            "scoring {C:attention}odd{} cards give {C:inactive,s:0.8}(reward 2)",
+          },
+          {
+            "{C:inactive,s:0.8}(ex: Rarity: reward 1 or reward 2)",
+            "{C:common}Common{}: {C:chips}+#1#{} or {C:chips}+#2#{} Chips",
+            "{C:uncommon}Uncommon{}: {X:mult,C:white}X#3#{} or {X:mult,C:white}X#4#{} Mult",
+            "{C:rare}Rare{}: {X:chips,C:white}X#5#{} or {X:chips,C:white}X#6#{} Chips",
+          },
         },
       },
       j_abn_rampegous_jester = { -- to relocalise
