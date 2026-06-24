@@ -3119,7 +3119,7 @@ return {
       j_abn_foreign_license = {
         name = "Foreign License",
         text = {
-          "{X:chips,C:white}X#1#{} Mult if you have",
+          "{X:chips,C:white}X#1#{} Chips if you have",
           "at least {C:attention}#2#{} Enhanced",
           "cards in your full deck",
           "{C:inactive}(Currently {C:attention}#3#{C:inactive})",
