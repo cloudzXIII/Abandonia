@@ -13,21 +13,24 @@ SMODS.Joker {
   perishable_compat = false,
   config = { extra = { chips = 0, mult = 0, chips_gain = 3, mult_gain = 1 } },
   calculate = function(self, card, context)
-    if context.other_joker and not context.blueprint then
-      if context.other_joker ~= card then
-        local card_index = nil
-        for i, j in ipairs(G.jokers.cards) do
-          if j == card then card_index = i break end
+    if context.post_trigger and not context.blueprint then
+      local pos = ABN.get_pos(card, G.jokers.cards)
+      if context.other_card ~= card and pos then
+        if context.other_card == G.jokers.cards[pos - 1] then
+          SMODS.scale_card(card, {
+            ref_table = card.ability.extra,
+            ref_value = "chips",
+            scalar_value = "chips_gain",
+            operation = '+',
+          })
         end
-        if card_index then
-          if context.other_joker == G.jokers.cards[card_index - 1] then
-            card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_gain
-            return { message = localize('k_upgrade_ex'), colour = G.C.FILTER, card = card }
-          end
-          if context.other_joker == G.jokers.cards[card_index + 1] then
-            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
-            return { message = localize('k_upgrade_ex'), colour = G.C.FILTER, card = card }
-          end
+        if context.other_card == G.jokers.cards[pos + 1] then
+          SMODS.scale_card(card, {
+            ref_table = card.ability.extra,
+            ref_value = "mult",
+            scalar_value = "mult_gain",
+            operation = '+',
+          })
         end
       end
     end
