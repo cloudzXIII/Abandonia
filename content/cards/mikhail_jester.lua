@@ -38,6 +38,6 @@ SMODS.Joker {
   end,
 
   abn_artist_credits = {
-    artist = "Da Gorbage Rat & Vlambambo, Inky"
+    artist = "Da Gorbage Rat, Vlambambo, Inky"
   },
 }

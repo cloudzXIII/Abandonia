@@ -36,6 +36,6 @@ SMODS.Joker {
   end,
 
   abn_artist_credits = {
-    artist = "Da Gorbage Rat & Vlambambo, Notmario"
+    artist = "Da Gorbage Rat, Vlambambo, Notmario"
   },
 }

@@ -6644,7 +6644,8 @@ return {
       j_abn_immolation_joker = { -- to relocalise and tooltip
         name = "Immolation Joker",
         text = {
-          "{C:abn_black_seal}Oilfire{} cards are not {C:mult}destroyed{} after use",
+          "{C:attention}Oilfire{} cards are not",
+          "{C:mult}destroyed{} when triggered",
         }
       },
       j_abn_mariner_joker = {

@@ -8,31 +8,30 @@ end
 
 local create_card_old = create_card
 function create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
-	
 	if _type == "Joker" and G.GAME and G.GAME.abn_legendary_rate and G.GAME.abn_legendary_rate > 0 and not legendary then
-        if pseudorandom("abn_legendary") < (G.GAME.abn_legendary_rate or 0) then
-            legendary = true
-            _rarity = 4
-        end
-    elseif _type == "Joker" and G.GAME and G.GAME.abn_superrare_rate and G.GAME.abn_superrare_rate > 0 then
-        if pseudorandom("abn_superrare") < (G.GAME.abn_superrare_rate or 0) then
-            legendary = false
-            _rarity = "abn_SuperRare"
-        end
-    elseif _type == "Joker" and G.GAME and G.GAME.abn_parallelrare_rate and G.GAME.abn_parallelrare_rate > 0 then
-        if pseudorandom("abn_parallelrare") < (G.GAME.abn_parallelrare_rate or 0) then
-            legendary = false
-            _rarity = "abn_ParallelRare"
-        end
-    elseif _type == "Joker" and G.GAME and G.GAME.abn_virusrare_rate and G.GAME.abn_virusrare_rate > 0 then
-        if pseudorandom("abn_virusrare") < (G.GAME.abn_virusrare_rate or 0) and (G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor) then
-            legendary = false
-            _rarity = "abn_VirusRare"
-        end
-    end
+		if pseudorandom("abn_legendary") < (G.GAME.abn_legendary_rate or 0) then
+			legendary = true
+			_rarity = 4
+		end
+	elseif _type == "Joker" and G.GAME and G.GAME.abn_superrare_rate and G.GAME.abn_superrare_rate > 0 then
+		if pseudorandom("abn_superrare") < (G.GAME.abn_superrare_rate or 0) then
+			legendary = false
+			_rarity = "abn_SuperRare"
+		end
+	elseif _type == "Joker" and G.GAME and G.GAME.abn_parallelrare_rate and G.GAME.abn_parallelrare_rate > 0 then
+		if pseudorandom("abn_parallelrare") < (G.GAME.abn_parallelrare_rate or 0) then
+			legendary = false
+			_rarity = "abn_ParallelRare"
+		end
+	elseif _type == "Joker" and G.GAME and G.GAME.abn_virusrare_rate and G.GAME.abn_virusrare_rate > 0 then
+		if pseudorandom("abn_virusrare") < (G.GAME.abn_virusrare_rate or 0) and (G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor) then
+			legendary = false
+			_rarity = "abn_VirusRare"
+		end
+	end
 
 	local ret = create_card_old(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
-	
+
 	if not ret.edition and G.GAME.modifiers.abn_all_edition and ret.ability and ret.ability.set == "Joker" then
 		ret:set_edition(poll_edition(nil, nil, nil, true))
 	end
@@ -105,14 +104,12 @@ end
 
 local cardSetCostHook = Card.set_cost
 function Card:set_cost()
-    local ret = cardSetCostHook(self)
-    if next(SMODS.find_card("j_abn_baba_joker")) and self.config.center.consumeable and self.config.center.set == "weather_report" then
-        self.sell_cost = 5
-    end
-    return ret
+	local ret = cardSetCostHook(self)
+	if next(SMODS.find_card("j_abn_baba_joker")) and self.config.center.consumeable and self.config.center.set == "weather_report" then
+		self.sell_cost = 5
+	end
+	return ret
 end
-
-
 
 local get_blind_amount_ref = get_blind_amount
 function get_blind_amount(ante)
@@ -365,4 +362,22 @@ function G.UIDEF.use_and_sell_buttons(card)
 	end
 
 	return buttons
+end
+
+-- Credits under card
+local card_h_popup_ref = G.UIDEF.card_h_popup
+function G.UIDEF.card_h_popup(card, ...)
+	local ret = card_h_popup_ref(card, ...)
+	if ABN.config.show_credits and card.config and card.config.center and card.config.center.abn_artist_credits then
+		local credits = card.config.center.abn_artist_credits
+		table.insert(ret.nodes[1].nodes[1].nodes, {
+			n = G.UIT.R,
+			config = { align = "cm", padding = 0.03 },
+			nodes = {
+				{ n = G.UIT.T, config = { colour = G.C.UI.TEXT_DARK, scale = 0.3, text = "Art by " } },
+				{ n = G.UIT.T, config = { colour = credits.colour or G.C.UI.TEXT_DARK, scale = 0.3, text = credits.artist } }
+			}
+		})
+	end
+	return ret
 end
