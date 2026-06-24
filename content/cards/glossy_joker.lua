@@ -9,43 +9,38 @@ SMODS.Joker {
   config = {
     extra = {
       xmult = 2,
-	  mult = 0,
-	  multadd = 10,
+      mult = 0,
+      mult_gain = 10,
     }
   },
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_gloss
     return {
       vars = {
         card.ability.extra.xmult,
         card.ability.extra.mult,
-		card.ability.extra.multadd,
+        card.ability.extra.mult_gain,
       },
     }
   end,
 
   calculate = function(self, card, context)
-    -- Individual card triggers
     if context.individual and context.cardarea == G.play then
-		local currentCard = context.other_card
-        if currentCard and currentCard.edition and currentCard.edition.key == 'e_abn_gloss' and not card.edition or currentCard and currentCard.edition and currentCard.edition.key == 'e_abn_gloss' and card.edition and card.edition.key ~= 'e_abn_gloss' then
-			return {
-				xmult = card.ability.extra.xmult, 
-			}
-		elseif currentCard and currentCard.edition and currentCard.edition.key == 'e_abn_gloss' and card.edition and card.edition.key == 'e_abn_gloss' then
-			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.multadd
-			return {
-				xmult = card.ability.extra.xmult, 
-				message = localize('k_upgrade_ex'),
-				colour = G.C.MULT,
-			}
-		end
+      if card.edition and card.edition.key == 'e_abn_gloss' and context.other_card.edition and context.other_card.edition.key == 'e_abn_gloss' then
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "mult",
+          scalar_value = "mult_gain",
+        })
+      end
+      return {
+        xmult = card.ability.extra.xmult,
+      }
     end
-  
 
-    -- Scoring Logic
     if context.joker_main then
       return {
-        mult = card.ability.extra.mult, 
+        mult = card.ability.extra.mult,
       }
     end
   end,

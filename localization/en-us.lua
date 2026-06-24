@@ -5403,9 +5403,16 @@ return {
       j_abn_glossy_joker = {
         name = "Glossy Joker",
         text = {
-          "{X:mult,C:white}X#1#{} Mult when {C:dark_edition}Gloss{} edition scores",
-          "If this Joker has {C:dark_edition}Gloss{} edition gain {C:mult}+#3#{} Mult for each scoring {C:dark_edition}Gloss{} card",
-          "{C:inactive}(Currently {C:mult}+#2#{} {C:inactive}Mult){}",
+          {
+            "{X:mult,C:white}X#1#{} Mult when",
+            "{C:dark_edition}Gloss{} edition scores",
+          },
+          {
+            "If this Joker has {C:dark_edition}Gloss{} edition,",
+            "gains {C:mult}+#3#{} Mult when a",
+            "{C:dark_edition}Gloss{} card is scored",
+            "{C:inactive}(Currently {C:mult}+#2#{} {C:inactive}Mult){}",
+          }
         }
       },
       j_abn_snow_route = {
