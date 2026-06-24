@@ -3385,9 +3385,10 @@ return {
       j_abn_sacred_rouge = {
         name = 'Sacred Rouge',
         text = {
-          "Scoring cards with {C:attention}matching suits{}",
-          "give {C:chips}+#1#{} Chips, scoring cards",
-          "with {C:attention}matching ranks{} give {C:mult}+#2#{} Mult"
+          "This Joker gains {C:white,X:mult}X#2#{} Mult",
+          "per unique {C:attention}suit{}, {C:mult}+#4#{} Mult per",
+          "unique {C:attention}rank{} in played hand",
+          "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult, {C:white,X:mult}X#1#{} {C:inactive}Mult)",
         }
       },
       j_abn_ichor = {

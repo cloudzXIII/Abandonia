@@ -1,3 +1,20 @@
+local count_unique = function(area, type)
+  local cards = {}
+  local thingy = type == "suit" and "suit" or type == "rank" and "value"
+
+  for _, v in ipairs(area) do
+    cards[v.base[thingy]] = true
+  end
+
+  local unique = 0
+  for _ in pairs(cards) do
+    unique = unique + 1
+  end
+
+  return unique
+end
+
+
 SMODS.Joker {
   key = 'sacred_rouge',
 
@@ -5,8 +22,10 @@ SMODS.Joker {
     local cae = card.ability.extra
     return {
       vars = {
-        cae.chips,
-        cae.mult
+        card.ability.extra.x_mult,
+        card.ability.extra.xmult_gain,
+        card.ability.extra.mult,
+        card.ability.extra.mult_gain
       }
     }
   end,
@@ -21,27 +40,40 @@ SMODS.Joker {
 
   config = {
     extra = {
-      chips = 80,
-      mult = 8
-    },
+      x_mult = 1,
+      xmult_gain = 0.02,
+      mult = 0,
+      mult_gain = 4
+    }
   },
+
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play then
-      local chip_count = 0
-      local mult_count = 0
-      for i = 1, #context.full_hand do
-        if context.full_hand[i] ~= context.other_card and not context.full_hand[i].debuff then
-          if context.full_hand[i].base.value == context.other_card.base.value then
-            mult_count = 1
-          end
-          if context.full_hand[i].base.suit == context.other_card.base.suit and not context.full_hand[i].debuff then
-            chip_count = 1
-          end
-        end
-      end
+    if context.before and not context.blueprint then
+      local unique_suits = count_unique(context.scoring_hand, "suit")
+      local unique_ranks = count_unique(context.scoring_hand, "rank")
+      SMODS.scale_card(card, {
+        ref_table = card.ability.extra,
+        ref_value = "x_mult",
+        scalar_value = "xmult_gain",
+        operation = function(ref_table, ref_value, initial, change)
+          ref_table[ref_value] = initial + unique_suits * change
+        end,
+        no_message = true
+      })
+      SMODS.scale_card(card, {
+        ref_table = card.ability.extra,
+        ref_value = "mult",
+        scalar_value = "mult_gain",
+        operation = function(ref_table, ref_value, initial, change)
+          ref_table[ref_value] = initial + unique_ranks * change
+        end,
+      })
+    end
+
+    if context.joker_main then
       return {
-        chips = card.ability.extra.chips * chip_count,
-        mult = card.ability.extra.mult * mult_count
+        mult = card.ability.extra.mult,
+        x_mult = card.ability.extra.x_mult
       }
     end
   end,
