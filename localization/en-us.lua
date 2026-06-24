@@ -6341,8 +6341,14 @@ return {
       j_abn_confirm_joker = {
         name = "Confirm Joker",
         text = {
-          "Gain a random {C:attention}tag{} at end of round,",
-          "Earn {C:money}$#1#{} if a {C:abn_hazard}Hazard Tag{} is obtained",
+          {
+            "Create a random {C:attention}Tag{}",
+            "at end of round",
+          },
+          {
+            "Earn {C:money}$#1#{} if a ",
+            "{C:abn_hazard}Hazard Tag{} is obtained",
+          },
         }
       },
       j_abn_illegal_ante = {
@@ -10589,6 +10595,7 @@ return {
       k_abn_plus_program = "+1 Program",
       k_abn_plus_lexica = "+1 Lexica",
       k_abn_plus_continent = "+1 Continent",
+      k_plus_tag = "+1 Tag!",
       k_abn_plus_solid_state = "+1 Solid State",
       k_abn_activated_ex = "Activated!",
       k_lexica_pack = "Lexica Pack",
