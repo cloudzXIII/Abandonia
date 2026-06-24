@@ -3385,10 +3385,9 @@ return {
       j_abn_sacred_rouge = {
         name = 'Sacred Rouge',
         text = {
-          "Each scored card with a ",
-          "{C:attention}matching suit{} scores {C:chips}+#1#{} Chips,",
-          "each scored card with a",
-          "{C:attention}matching rank{} scores {C:mult}+#2#{} Mult"
+          "Scoring cards with {C:attention}matching suits{}",
+          "give {C:chips}+#1#{} Chips, scoring cards",
+          "with {C:attention}matching ranks{} give {C:mult}+#2#{} Mult"
         }
       },
       j_abn_ichor = {
@@ -4644,9 +4643,9 @@ return {
       j_abn_archaic_joker = {
         name = "Archaic Joker",
         text = {
-          "This Joker gains {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
-          "When a {C:attention}blind{} is defeated with",
-          "an {C:attention}odd{} number of cards",
+          "This Joker gains {C:chips}+#1#{} Chips and",
+          "{C:mult}+#2#{} Mult when {C:attention}Blind{} is defeated",
+          "with an {C:attention}odd{} number of cards",
           "{C:inactive}(Currently {C:chips}+#3#{} {C:inactive}Chips,{} {C:mult}+#4#{} {C:inactive}Mult{}{C:inactive})",
         }
       },
