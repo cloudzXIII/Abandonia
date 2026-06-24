@@ -1989,6 +1989,26 @@ return {
       },
     },
     Joker = {
+      j_abn_fraser_jester = {
+        name = "Fraser Jester",
+        text = {
+          "{C:attention}+#1#{} hand size",
+        },
+      },
+      j_abn_mikhail_jester = {
+        name = "Mikhail Jester",
+        text = {
+          "{C:red}+#1#{} discards",
+          "each round",
+        },
+      },
+      j_abn_mitch_jester = {
+        name = "Mitch Jester",
+        text = {
+          "{C:blue}+#1#{} hands",
+          "each round",
+        },
+      },
       j_abn_juliana_jester = {
         name = "Juliana Jester",
         text = {
