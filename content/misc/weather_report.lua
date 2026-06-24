@@ -4,7 +4,7 @@ SMODS.ConsumableType {
   primary_colour = HEX("79b5c2"),
   secondary_colour = HEX("79b5c2"),
   collection_rows = { 5, 5 },
-  shop_rate = 4,
+  shop_rate = 1,
   select_card = "consumeables",
 }
 
@@ -29,7 +29,6 @@ ABN.WeatherReport = SMODS.Consumable:extend({
         set_consumeable_usage(card)
       end
     end
-    
   end,
   abn_artist_credits = {
     artist = "matheo000"
@@ -61,7 +60,7 @@ ABN.WeatherReport {
     return G.GAME.blind and G.GAME.blind.in_blind
         and G.jokers and #G.jokers.highlighted == 1
         and #G.jokers.cards > 1
-		and #G.jokers.cards <= G.jokers.config.card_limit
+        and #G.jokers.cards <= G.jokers.config.card_limit
   end,
   keep_on_use = function(self, card) return false end,
   use = function(self, card, area, copier)
@@ -743,11 +742,11 @@ ABN.WeatherReport {
   key = "fire_rainbow",
   pos = { x = 3, y = 3 },
   config = { extra = { triggered = false, spectrum_played = false } },
-  
+
   can_use = function(self, card)
     return G.GAME.blind and G.GAME.blind.in_blind and not card.ability.extra.triggered
   end,
-  
+
   use = function(self, card, area, copier)
     G.E_MANAGER:add_event(Event({
       func = function()
@@ -760,7 +759,7 @@ ABN.WeatherReport {
     }))
     delay(0.4)
   end,
-  
+
   calculate = function(self, card, context)
     if card.ability.extra.triggered and context.before then
       local spectrum_hands = {
@@ -771,7 +770,7 @@ ABN.WeatherReport {
         "abn_Specflush Five",
         "abn_Specflush Six"
       }
-      
+
       local is_spectrum = false
       for _, hand_type in ipairs(spectrum_hands) do
         if context.poker_hands[hand_type] and next(context.poker_hands[hand_type]) then
@@ -787,13 +786,13 @@ ABN.WeatherReport {
         SMODS.smart_level_up_hand(card, context.scoring_name)
       end
     end
-    
+
     if context.destroy_card and context.cardarea == G.play and card.ability.extra.spectrum_played then
       return {
         remove = true
       }
     end
-    
+
     self:destroy_at_end_of_round(card, context)
   end,
 }

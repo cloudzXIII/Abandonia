@@ -6,7 +6,7 @@ G.ARGS.LOC_COLOURS["abn_Astro"] = G.C.ASTRO
 SMODS.ConsumableType {
     key = "astro_cards",
     collection_rows = { 6, 6 },
-    shop_rate = 0,
+    shop_rate = 1,
     primary_colour = G.C.ASTRO,
     secondary_colour = G.C.ASTRO_SECONDARY,
 }
@@ -245,7 +245,7 @@ SMODS.Consumable {
         if context.end_of_round and card.area == G.vouchers and card.ability.extra.used == 1 then
             card.ability.extra.used = 0
             card:start_dissolve()
-            
+
             -- Revert the doubling by dividing by 2 and removing the excess from the current UI
             local half_discards = G.GAME.round_resets.discards / 2
             G.GAME.round_resets.discards = half_discards
@@ -619,7 +619,7 @@ SMODS.Consumable {
             local hands_to_add = G.GAME.round_resets.hands
             G.GAME.round_resets.hands = G.GAME.round_resets.hands * 2
             ease_hands_played(hands_to_add)
-            
+
             local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_pisces')
             _card:add_to_deck()
             _card.ability.extra.used = 1
@@ -662,7 +662,7 @@ SMODS.Consumable {
         if context.end_of_round and card.area == G.vouchers and card.ability.extra.used == 1 then
             card.ability.extra.used = 0
             card:start_dissolve()
-            
+
             -- Revert the doubling by dividing by 2 and removing the excess from the current UI
             local half_hands = G.GAME.round_resets.hands / 2
             G.GAME.round_resets.hands = half_hands
@@ -1004,12 +1004,12 @@ SMODS.Voucher({
                         "c_abn_bael", "c_abn_botis", "c_abn_vinea", "c_abn_morax", "c_abn_bune",
                         "c_abn_furfur", "c_abn_bifrons", "c_abn_crocell", "c_abn_belial",
                         "c_abn_astaroth", "c_abn_asmodeus", "c_abn_camio", "c_abn_digitization",
-						"c_abn_paste", "c_abn_power", "c_abn_hotspot", "c_abn_bookmark", "c_abn_translate",
-						"c_abn_incognito", "c_abn_upload", "c_abn_brightness", "c_abn_dark_web", "c_abn_database",
-						"c_abn_zoom", "c_abn_recycle", "c_abn_a", "c_abn_b", "c_abn_c", "c_abn_d", "c_abn_e", "c_abn_f",
-						"c_abn_g", "c_abn_h", "c_abn_i", "c_abn_j", "c_abn_k", "c_abn_l", "c_abn_m", "c_abn_n", "c_abn_o",
-						"c_abn_p", "c_abn_q", "c_abn_r", "c_abn_s", "c_abn_t", "c_abn_u", "c_abn_v", "c_abn_w", "c_abn_x",
-						"c_abn_y", "c_abn_z", "c_abn_thorn", "c_abn_yogh", "c_abn_eth",
+                        "c_abn_paste", "c_abn_power", "c_abn_hotspot", "c_abn_bookmark", "c_abn_translate",
+                        "c_abn_incognito", "c_abn_upload", "c_abn_brightness", "c_abn_dark_web", "c_abn_database",
+                        "c_abn_zoom", "c_abn_recycle", "c_abn_a", "c_abn_b", "c_abn_c", "c_abn_d", "c_abn_e", "c_abn_f",
+                        "c_abn_g", "c_abn_h", "c_abn_i", "c_abn_j", "c_abn_k", "c_abn_l", "c_abn_m", "c_abn_n", "c_abn_o",
+                        "c_abn_p", "c_abn_q", "c_abn_r", "c_abn_s", "c_abn_t", "c_abn_u", "c_abn_v", "c_abn_w", "c_abn_x",
+                        "c_abn_y", "c_abn_z", "c_abn_thorn", "c_abn_yogh", "c_abn_eth",
                     }
 
                     -- This gives a 20% chance for ANY slot to be replaced
@@ -1072,6 +1072,6 @@ SMODS.Voucher({
         G.GAME.astro_cards_rate = 1
         G.GAME.calamity_cards_rate = 1
         G.GAME.nightshift_cards_rate = 1
-		G.GAME.solid_state_rate = 1
+        G.GAME.solid_state_rate = 1
     end,
 })
