@@ -20,7 +20,7 @@ SMODS.Joker {
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
-        card.ability.extra.x_mult,
+        card.ability.extra.x_chips,
         card.ability.extra.xmult_gain,
         card.ability.extra.chips,
         card.ability.extra.chips_gain
@@ -39,10 +39,10 @@ SMODS.Joker {
 
   config = {
     extra = {
-      x_mult = 1,
-      xmult_gain = 0.1,
+      x_chips = 1,
+      xmult_gain = 0.05,
       chips = 0,
-      chips_gain = 10
+      chips_gain = 5
     }
   },
 
@@ -52,7 +52,7 @@ SMODS.Joker {
       local unique_ranks = count_unique(context.scoring_hand, "rank")
       SMODS.scale_card(card, {
         ref_table = card.ability.extra,
-        ref_value = "x_mult",
+        ref_value = "x_chips",
         scalar_value = "xmult_gain",
         operation = function(ref_table, ref_value, initial, change)
           ref_table[ref_value] = initial + unique_suits * change
@@ -72,7 +72,7 @@ SMODS.Joker {
     if context.joker_main then
       return {
         chips = card.ability.extra.chips,
-        x_mult = card.ability.extra.x_mult
+        x_chips = card.ability.extra.x_chips
       }
     end
   end,

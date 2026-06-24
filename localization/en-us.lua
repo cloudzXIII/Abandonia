@@ -3376,10 +3376,10 @@ return {
       j_abn_sacred_bleu = {
         name = 'Sacred Bleu',
         text = {
-          "This Joker gains {C:white,X:mult}X#2#{} Mult",
-          "per unique {C:attention}suit{},",
-          "{C:chips}+#4#{} Chips per unique {C:attention}rank{},",
-          "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:white,X:mult}X#1#{} {C:inactive}Mult)",
+          "This Joker gains {C:white,X:chips}X#2#{} Chips",
+          "per unique {C:attention}suit{}, {C:chips}+#4#{} Chips per",
+          "unique {C:attention}rank{} in played hand",
+          "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:white,X:chips}X#1#{} {C:inactive}Chips)",
         },
       },
       j_abn_sacred_rouge = {
