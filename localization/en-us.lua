@@ -6112,7 +6112,8 @@ return {
         name = "Under Construction",
         text = {
           "When {C:attention}Boss Blind{} is defeated,",
-          "{C:attention}sell{} this Joker to create {C:attention}any{} Joker in your collection",
+          "{C:attention}sell{} this Joker to create",
+          "{C:attention}any{} Joker in your collection",
           "{C:inactive,s:0.8}(can only create {C:common,s:0.8}Common{C:inactive,s:0.8}, {C:uncommon,s:0.8}Uncommon{C:inactive,s:0.8}, and {C:rare,s:0.8}Rare{C:inactive,s:0.8})",
         }
       },
