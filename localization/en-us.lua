@@ -5145,12 +5145,22 @@ return {
       j_abn_venom_comedian = { -- TO relocalise
         name = "Venom Comedian",
         text = {
-          "Gains {C:mult}+#5#{} Mult per scoring {C:abn_tie}Tie{} card in {C:attention}Spectrum{} hands",
-          "Gains {X:chips,C:white}X#6#{} Chips per scoring {C:abn_bow}Bow{} card in {C:attention}Spectrum{} hands",
-          "Gains {X:mult,C:white}X#7#{} Mult per scoring {C:abn_snow}Snow{} card in {C:attention}Spectrum{} hands",
-          "Gains {C:chips}+#8#{} Chips per scoring {C:abn_penumbra}Penumbra{} card in {C:attention}Spectrum{} hands",
-          "If this Joker has an {C:dark_edition}edition{} played {C:attention}Spectrum{} hands level up by {C:attention}2{}",
-          "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult, {C:mult}+#1#{} {C:inactive}Mult,{} {X:chips,C:white}X#4#{C:inactive} Chips, {C:chips}+#3#{} {C:inactive}Chips){}"
+          {
+            "This Joker gain {C:inactive}reward{} per scoring {C:inactive,s:0.8}(suit){}",
+            "If played hand contains a {C:attention}Spectrum{}",
+          },
+          {
+            "{C:abn_tie}Ties{}: {C:mult}+#5#{} Mult",
+            "{C:abn_bow}Bows{}: {X:chips,C:white}X#6#{} Chips",
+            "{C:abn_snow}Snows{}: {X:mult,C:white}X#7#{} Mult",
+            "{C:abn_penumbra}Penumbras{}: {C:chips}+#8#{} Chips",
+            "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult, {C:mult}+#1#{} {C:inactive}Mult,{} {X:chips,C:white}X#4#{C:inactive} Chips, {C:chips}+#3#{} {C:inactive}Chips){}"
+          },
+          {
+            "If this Joker has an {C:dark_edition}edition{},",
+            "level up played hands containing",
+            "a {C:attention}Spectrum{} by {C:attention}2{}",
+          },
         }
       },
       j_abn_marmalize_joker = {
@@ -6411,16 +6421,19 @@ return {
 
       },
       j_abn_spare_overall = {
-        name = "Spare Overall",
+        name = "Spare Overalls",
         text = {
           {
-            "Gain {C:red}+#1#{} Mult when playing",
+            "This Joker gains {C:red}+#1#{} Mult",
+            "if played hand contains",
             "a {C:attention}#2#{}",
             "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult)",
           },
           {
-            "{C:attention}Odd {C:enhanced}Bonus Cards{} gain {C:chips}+#4#{} Chips",
-            "{C:attention}Even {C:enhanced}Mult Cards{} gain {C:mult}+#5#{} Mult"
+            "{C:attention}Odd Bonus{} cards permanently",
+            "gain {C:chips}+#4#{} Chips when scored,",
+            "{C:attention}Even Mult{} cards permanently",
+            "gain {C:mult}+#5#{} Mult when scored"
           }
         }
 
