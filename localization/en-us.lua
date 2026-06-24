@@ -4652,9 +4652,9 @@ return {
       j_abn_outdated_joker = {
         name = "Outdated Joker",
         text = {
-          "This Joker gains {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
-          "if {C:attention}Blind{} is defeated with",
-          "an {C:attention}even{} number of cards",
+          "This Joker gains {C:chips}+#1#{} Chips and",
+          "{C:mult}+#2#{} Mult when {C:attention}Blind{} is defeated",
+          "with an {C:attention}even{} number of cards",
           "{C:inactive}(Currently {C:chips}+#3#{} {C:inactive}Chips,{} {C:mult}+#4#{} {C:inactive}Mult){}",
         }
       },
