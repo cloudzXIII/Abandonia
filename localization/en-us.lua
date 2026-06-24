@@ -6625,12 +6625,20 @@ return {
         }
 
       },
-      j_abn_invisible_ink_joker = { -- to relocalise
+      j_abn_invisible_ink_joker = {
         name = "Invisible Ink Joker",
         text = {
-          "Gain {C:mult}+#3#{} Mult per different scoring {C:attention}Suit{} of {C:money}Lucky{} cards",
-          "If you play a {C:attention}Spectrum{} hand of only {C:money}Lucky{} cards gain {X:chips,C:white}X#4#{} Chips for each one",
-          "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {X:chips,C:white}X#2#{} {C:inactive}Chips){}",
+          {
+            "This Joker gains {C:mult}+#3#{} Mult",
+            "per unique {C:attention}suit{}",
+            "in scoring {C:attention}Lucky{} cards",
+            "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {X:chips,C:white}X#2#{} {C:inactive}Chips){}",
+          },
+          {
+            "If played hand contains a {C:attention}Spectrum{}",
+            "containing only {C:attention}Lucky{} cards,",
+            "gain {X:chips,C:white}X#4#{} Chips for each one",
+          },
         }
       },
       j_abn_jimbos_love_letter = {
