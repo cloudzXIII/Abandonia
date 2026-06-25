@@ -4153,8 +4153,9 @@ return {
       j_abn_jorick = {
         name = "Jorik",
         text = {
-          "If you have {C:attention}0{} {C:mult}discards{}",
-          "{X:mult,C:white}X#1#{} Mult {X:chips,C:white}X#2#{} Chips",
+          "{X:mult,C:white}X#1#{} Mult and {X:chips,C:white}X#2#{} Chips",
+          "when {C:attention}0{} discards",
+          "remaining",
         },
       },
       j_abn_nightstalker = {
@@ -5174,11 +5175,16 @@ return {
       j_abn_backrooms_joker = {
         name = "Backrooms Joker",
         text = {
-          "Blinds are {C:attention}obscured{},",
-          "When {C:attention}Blind{} is defeated, create a {C:purple}Parallel{} ",
-          "{C:purple}Rare{} Joker with {C:abn_perishable}Perishable{} and {C:money}Rental{}",
-          "If this Joker has an {C:dark_edition}edition{}, {C:purple}Parallel Rare{}",
-          "Jokers each give {X:mult,C:white}X#1#{} Mult",
+          {
+            "Blinds are {C:attention}obscured{},",
+            "When {C:attention}Blind{} is defeated, create",
+            "a {C:purple}Parallel Rare{} Joker with",
+            "{C:abn_perishable}Perishable{} and {C:money}Rental{}",
+          },
+          {
+            "If this Joker has an {C:dark_edition}edition{},",
+            "{C:purple}Parallel Rare{} Jokers each give {X:mult,C:white}X#1#{} Mult",
+          }
         }
       },
       j_abn_fraud_soul = {
@@ -5240,7 +5246,7 @@ return {
         }
       },
       j_abn_trevulit = {
-        name = "trevulit",
+        name = "Trevulit",
         text = {
           "{C:attention}Odd{} scoring cards give {C:mult}Mult{}",
           "equal to {C:attention}triple{} their rank",
@@ -5784,7 +5790,7 @@ return {
         name = "Jurian",
         text = {
           "{C:mult}Discarded{} cards give {X:chips,C:white}X#1#{} Chips",
-          "On {C:attention}next{} played hand",
+          "on {C:attention}next{} played hand",
         }
       },
       j_abn_jfool = {
@@ -6108,11 +6114,17 @@ return {
       j_abn_destination_unknown = {
         name = "Destination Unknown",
         text = {
-          "When {C:attention}Blind{} is selected,",
-          "gain {C:chips}+#3#{} Chips per missing {C:attention}rank{} in your full deck",
-          "If this has {C:dark_edition}Abandoned edition{},",
-          "it gains an additional {X:chips,C:white}X#4#{} Chips per missing {C:attention}rank{}",
-          "{C:inactive}(Currently {X:chips,C:white}X#1#{} {C:inactive}Chips,{} {C:chips}+#2#{} {C:inactive}Chips){}",
+          {
+            "When {C:attention}Blind{} is selected,",
+            "this Joker gains {C:chips}+#3#{} Chips",
+            "per missing {C:attention}rank{} in your full deck",
+          },
+          {
+            "If this Joker has {C:dark_edition}Abandoned{} edition,",
+            "gains an additional {X:chips,C:white}X#4#{} Chips",
+            "per missing {C:attention}rank{}",
+            "{C:inactive}(Currently {X:chips,C:white}X#1#{} {C:inactive}Chips,{} {C:chips}+#2#{} {C:inactive}Chips){}",
+          },
         }
       },
       j_abn_under_construction = {
@@ -6517,20 +6529,19 @@ return {
         name = "Edition & Design Joker",
         text = {
           {
-            "Whenever you buy",
-            "an {C:dark_edition}editioned{} {C:attention}Joker{},",
-            "gain {C:mult}Mult{} based",
-            "on its {C:legendary}rarity",
+            "When an {C:dark_edition}editioned{} {C:attention}Joker{},",
+            "is purchased, gains {C:mult}Mult{}",
+            "based on its {C:legendary}rarity",
             "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
           },
           {
-            "{C:common}Common{} : {C:red}+#2#{} Mult",
-            "{C:uncommon}Uncommon{} : {C:red}+#3#{} Mult",
-            "{C:rare}Rare{} : {C:red}+#4#{} Mult",
-            "{C:abn_superrare}Super Rare{} : {C:red}+#5#{} Mult",
-            "{C:abn_parallelrare}Parallel Rare{} : {C:red}+#6#{} Mult",
-            "{C:legendary}Legendary{} : {C:red}+#7#{} Mult",
-            "{C:abn_virusrare}Virus Rare{} : {C:red}+#8#{} Mult",
+            "{C:common}Common{}: {C:red}+#2#{} Mult",
+            "{C:uncommon}Uncommon{}: {C:red}+#3#{} Mult",
+            "{C:rare}Rare{}: {C:red}+#4#{} Mult",
+            "{C:abn_superrare}Super Rare{}: {C:red}+#5#{} Mult",
+            "{C:abn_parallelrare}Parallel Rare{}: {C:red}+#6#{} Mult",
+            "{C:legendary}Legendary{}: {C:red}+#7#{} Mult",
+            "{C:abn_virusrare}Virus Rare{}: {C:red}+#8#{} Mult",
 
           },
         }
@@ -7232,7 +7243,9 @@ return {
       j_abn_epic_joker = {
         name = "Epic Joker",
         text = {
-          "Gain {X:mult,C:white}X#2#{} Mult per {C:attention}Number Rank{} card above {C:attention}10{} played in a {C:attention}Flush{}",
+          "This Joker gains {X:mult,C:white}X#2#{} Mult per",
+          "{C:attention}numbered{} card above {C:attention}10{}",
+          "played in a {C:attention}Flush{}",
           "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult)",
         },
       },
