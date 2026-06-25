@@ -18,20 +18,13 @@ SMODS.Joker {
       }
     }
   end,
-  
+
   -- Check if a nightshift card has been used
   in_pool = function(self)
-	local nightshift_card_used = false
-	if G.GAME.consumeable_usage then
-		for _, v in pairs(G.GAME.consumeable_usage) do
-			if v.set == 'nightshift_cards' then
-				nightshift_card_used = true
-				break 
-			end
-		end
-	end
-   end,
-  
+    return G.GAME.consumeable_usage_total and G.GAME.consumeable_usage_total.nightshift_cards and
+        G.GAME.consumeable_usage_total.nightshift_cards > 0
+  end,
+
   calculate = function(self, card, context)
     -- Reset the tracking counts at the start of the scoring hand
     if context.before and not context.blueprint then
@@ -42,7 +35,7 @@ SMODS.Joker {
     if context.individual and context.cardarea == G.play then
       local target_card = context.other_card
       local is_discards_even = (G.GAME.current_round.discards_left % 2 == 0)
-      
+
       local is_dark = ABN.is_dark(target_card)
       local is_light = ABN.is_light(target_card)
 

@@ -4196,7 +4196,7 @@ return {
           "This Joker gains {C:mult}+#4#{} Mult,",
           "{C:chips}+#5#{} Chips and {C:money}+$#6#{} when",
           "a {C:attention}Comedian{} Joker is triggered",
-          "{C:inactive,s:0.8}(Excluding Bubbly Comedian)",
+          "{s:0.8,C:attention}Bubbly Comedian{s:0.8} excluded",
           "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive}, {C:chips}+#2#{} {C:inactive}, {C:money}$#3#{}{C:inactive})"
         }
       },
@@ -5142,12 +5142,12 @@ return {
           "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}"
         }
       },
-      j_abn_venom_comedian = { -- TO relocalise
+      j_abn_venom_comedian = {
         name = "Venom Comedian",
         text = {
           {
-            "This Joker gain {C:inactive}reward{} per scoring {C:inactive,s:0.8}(suit){}",
-            "If played hand contains a {C:attention}Spectrum{}",
+            "This Joker gains {C:inactive}reward{} per scoring {C:inactive}(suit){}",
+            "if played hand contains a {C:attention}Spectrum{}",
           },
           {
             "{C:abn_tie}Ties{}: {C:mult}+#5#{} Mult",
@@ -6657,7 +6657,7 @@ return {
           "level up {C:planet}planet{} {C:attention}rank{} of all scoring cards"
         }
       },
-      j_abn_immolation_joker = { -- to relocalise and tooltip
+      j_abn_immolation_joker = {
         name = "Immolation Joker",
         text = {
           "{C:attention}Oilfire{} cards are not",
@@ -6779,7 +6779,7 @@ return {
         }
 
       },
-      j_abn_mutually_assured_destruction = { -- to relocalise
+      j_abn_mutually_assured_destruction = {
         name = "Mutually Assured Destruction",
         text = {
           {
@@ -6788,10 +6788,10 @@ return {
 
           },
           {
-            "{C:red}Destroy{} every {C:attention}Joker{} held if",
-            "no {C:attention}Joker{} was bought",
-            "in the {C:attention}shop",
-            "{C:inactive}(Bypasses {C:dark_edition}Eternal{C:inactive})",
+            "{C:red}Destroy{} every {C:attention}Joker{} held",
+            "if no {C:attention}Joker{} was",
+            "bought in the {C:attention}shop",
+            "{C:inactive}(Can destroy {C:dark_edition}Eternal{C:inactive})",
             "{C:inactive}Joker Safety: {B:1,C:white}#1#"
           },
         }
@@ -7390,18 +7390,19 @@ return {
           "{C:inactive}[Currently {C:attention}#2#{C:inactive}/{C:inactive}#1#]"
         },
       },
-      j_abn_ghost_in_the_machine = { -- to relocalise
+      j_abn_ghost_in_the_machine = {
         name = "Ghost In The Machine",
         text = {
-          "Whenever you use a {C:solid_state}Solid State{} Card",
-          "Create a {C:attention}random{} {C:dark_edition}negative{} {C:spectral}Spectral{} card",
+          "Create a random {C:dark_edition}Negative{}",
+          "{C:spectral}Spectral{} card every time",
+          "a {C:solid_state}Solid State{} card is used",
         },
       },
       j_abn_advertisement_joker = { -- to relocalise
         name = "Advertisement Joker",
         text = {
-          "Gain {X:mult,C:white}X#3#{} Mult when a {C:solid_state}Solid State{} card is used",
-          "Gain {C:chips}+#4#{} Chips when a {C:program_pack}Program Card{} is used",
+          "Gains {X:mult,C:white}X#3#{} Mult when a {C:solid_state}Solid State{} card is used",
+          "Gains {C:chips}+#4#{} Chips when a {C:program_pack}Program Card{} is used",
           "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
         },
       },
@@ -7409,10 +7410,10 @@ return {
         name = "Jester vs Jester",
         text = {
           {
-            "If you have an {C:attention}even{} number of {C:inactive,s:0.8}(rarity){} Jokers,",
-            "scoring {C:attention}even{} cards give {C:inactive,s:0.8}(reward 1)",
-            "If you have an {C:attention}odd{} number of {C:inactive,s:0.8}(rarity){} Jokers,",
-            "scoring {C:attention}odd{} cards give {C:inactive,s:0.8}(reward 2)",
+            "If you have an {C:attention}even{} number of {C:inactive}(rarity){} Jokers,",
+            "scoring {C:attention}even{} cards give {C:inactive}(reward 1)",
+            "If you have an {C:attention}odd{} number of {C:inactivee}(rarity){} Jokers,",
+            "scoring {C:attention}odd{} cards give {C:inactivee(reward 2)",
           },
           {
             "{C:inactive,s:0.8}(ex: Rarity: reward 1 or reward 2)",
@@ -7422,13 +7423,21 @@ return {
           },
         },
       },
-      j_abn_rampegous_jester = { -- to relocalise
+      j_abn_rampegous_jester = {
         name = "Rampegous Jester",
         text = {
-          "If you have {C:attention}Even{} number of {C:rare}Rare{} Jokers and you score an {C:attention}Even{} number of cards",
-          "This Joker and all other {C:rare}Rare{} Jokers gain {X:mult,C:white}X#2#{} Mult for each scoring card",
-          "If you have {C:attention}Odd{} number of {C:common}Common{} Jokers and you score an Odd number of cards",
-          "This Joker all other {C:common}Common{} Jokers gains {C:chips}+#1#{} Chips per scoring card.",
+          {
+            "If you have an {C:attention}even{} number of {C:rare}Rare{} Jokers",
+            "and score an {C:attention}even{} number of cards,",
+            "this Joker and all other {C:rare}Rare{} Jokers",
+            "gain {X:mult,C:white}X#2#{} Mult per scoring card",
+          },
+          {
+            "If you have an {C:attention}odd{} number of {C:common}Common{} Jokers",
+            "and score an {C:attention}odd{} number of cards,",
+            "this Joker and all other {C:common}Common{} Jokers",
+            "gain {C:chips}+#1#{} Chips per scoring card",
+          },
         },
       },
       j_abn_clown_funk = {
@@ -7507,7 +7516,7 @@ return {
             "{C:inactive,s:0.8}(Currently {X:mult,C:white,s:0.8}X#1#{} {C:inactive,s:0.8}Mult, {X:chips,C:white,s:0.8}X#2#{} {C:inactive,s:0.8}Chips, {C:mult,s:0.8}+#3# {C:inactive,s:0.8}Mult, {C:chips,s:0.8}+#4# {C:inactive,s:0.8}Chips, {X:attention,C:white,s:0.8}X#5#{} {C:inactive,s:0.8}Blind requirement)"
           },
           {
-            "If played hand contains a ",
+            "If played hand contains a",
             "{C:diamonds}Diamond{} card, {C:clubs}Club{} card,",
             "{C:hearts}Heart{} card, and {C:spades}Spade{} card,",
             "level up {C:planet}planet{} {C:attention}rank{}",

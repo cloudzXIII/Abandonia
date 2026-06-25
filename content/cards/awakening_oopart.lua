@@ -27,15 +27,8 @@ SMODS.Joker {
     end
 
     -- has a program card been used
-    local program_card_used = false
-    if G.GAME and G.GAME.consumeable_usage then
-      for _, v in pairs(G.GAME.consumeable_usage) do
-        if v.set == 'program_pack' then
-          program_card_used = true
-          break
-        end
-      end
-    end
+    local program_card_used = G.GAME.consumeable_usage_total and G.GAME.consumeable_usage_total.program_pack and
+        G.GAME.consumeable_usage_total.program_pack > 0
 
     -- if both yes spawn
     return has_steel and program_card_used
