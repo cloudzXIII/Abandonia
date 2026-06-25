@@ -12,6 +12,8 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
+  pools = { ["Plagued"] = true, },
+
   -- only available on jimbo stakes
   in_pool = function(self)
     return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor

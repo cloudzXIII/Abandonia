@@ -381,3 +381,16 @@ function G.UIDEF.card_h_popup(card, ...)
 	end
 	return ret
 end
+
+-- Add info tooltip on Plagued Jokers
+local generate_card_ui_ref = generate_card_ui
+function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
+	local UI_table = generate_card_ui_ref(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start,
+		main_end, card)
+
+	if card and card.config and card.config.center and card.config.center.pools and card.config.center.pools["Plagued"] then
+		generate_card_ui_ref({ key = "abn_plagued_joker_info", set = "Other" }, UI_table)
+	end
+
+	return UI_table
+end

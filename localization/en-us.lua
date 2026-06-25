@@ -1409,7 +1409,7 @@ return {
         name = "Plague Tag",
         text = {
           "Next base edition shop",
-          "Has a free {C:green}Plagued{} Joker",
+          "Has a free {C:abn_black_seal}Plagued{} Joker",
         },
       },
       tag_abn_virus = {
@@ -5828,7 +5828,7 @@ return {
           "{C:green}#1# in #2#{} chance for cards with {C:attention}seals{} to turn into {C:purple}Contagion Seals{}",
           "{C:green}#3# in #4#{} chance for {C:dark_edition}enhanced{} cards to turn into {C:purple}Contagion Bonus cards{}",
           "{C:green}#5# in #6#{} chance for played cards with {C:dark_edition}editions{} to turn into {C:purple}Contagion Mult{}",
-          "Other {C:green}Plagued{} Jokers give {X:mult,C:white}^#7#{} Mult",
+          "Other {C:abn_black_seal}Plagued{} Jokers give {X:mult,C:white}^#7#{} Mult",
         }
       },
       j_abn_degraded_data_joker = {
@@ -5897,7 +5897,7 @@ return {
         name = "Handbook Of A Conman",
         text = {
           "Double the {C:chips}Chips{} and {C:mult}Mult{} values of all hands",
-          "{C:mult}Debuff{} all {C:green}non-Plagued{} Jokers",
+          "{C:mult}Debuff{} all {C:attention}non-Plagued{} Jokers",
         }
       },
       j_abn_fit_to_shape = {
@@ -5926,8 +5926,8 @@ return {
         name = "Suspicious Icon",
         text = {
           "When {C:attention}Blind{} is selected,",
-          "{C:mult}Destroy{} {C:attention}#1#{} non-Plagued Joker",
-          "and create {C:attention}#1#{} {C:green}Plagued{} Joker",
+          "{C:mult}Destroy{} {C:attention}#1#{} {C:attention}non-Plagued{} Joker",
+          "and create {C:attention}#1#{} {C:abn_black_seal}Plagued{} Joker",
         }
       },
       j_abn_badformat_joker = {
@@ -7786,7 +7786,8 @@ return {
             "{C:attention}unique{} scoring {C:attention}Enchancement{}",
           },
           {
-            "Each Plagued Joker gives {C:mult}+#2#{} Mult per {C:attention}unique{} {C:dark_edition}Edition",
+            "Each {C:abn_black_seal}Plagued{} Joker gives {C:mult}+#2#{} Mult",
+            "per {C:attention}unique{} {C:dark_edition}Edition",
           }
         }
       },
@@ -8382,6 +8383,13 @@ return {
       },
     },
     Other = {
+      abn_plagued_joker_info = {
+        name = "Plagued Joker",
+        text = {
+          "Joker type that only",
+          "appears in {C:attention}Jimbo Stakes{}"
+        }
+      },
       abn_comedic_audience_tooltip = {
         name = "Comedic Audience",
         text = {
@@ -10077,15 +10085,22 @@ return {
       c_abn_sepulture = {
         name = "Sepulture",
         text = {
-          "Destroy all non-Plagued Jokers",
-          "Create a {C:abn_superrare}Super Rare{} {C:dark_edition}Negative{} {C:green}Plagued Joker{}",
+          "Destroy all {C:attention}non-Plagued{} Jokers,",
+          "Create a {C:abn_superrare}Super Rare{}",
+          "{C:dark_edition}Negative{} {C:abn_black_seal}Plagued{} Joker",
         }
       },
       c_abn_hostile = {
         name = "Hostile",
         text = {
-          "Put {C:mult}Fragile{} and {C:money}Rental{} on all non-Plagued Jokers",
-          "Create a {C:abn_black_seal}Virus Rare{} Joker",
+          {
+            "Add {C:mult}Fragile{} and {C:money}Rental{}",
+            "to all {C:attention}non-Plagued{} Jokers",
+          },
+          {
+            "Creates a random",
+            "{C:abn_black_seal}Virus Rare{} {C:attention}Joker{}",
+          }
         }
       },
     },

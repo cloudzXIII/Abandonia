@@ -433,6 +433,7 @@ SMODS.Consumable {
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+        info_queue[#info_queue + 1] = { key = "abn_plagued_joker_info", set = "Other" }
     end,
     can_use = function(self, card)
         -- can be used if there is at least one non-plagued Joker to destroy
@@ -526,6 +527,7 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = { key = "abn_fragile", set = "Other", vars = { 1, 4 } }
         info_queue[#info_queue + 1] = { key = "rental", set = "Other", vars = { 3 } }
+        info_queue[#info_queue + 1] = { key = "abn_plagued_joker_info", set = "Other" }
     end,
 
     -- only available on jimbo stakes
