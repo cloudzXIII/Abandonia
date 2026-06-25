@@ -14,7 +14,7 @@
   "priority": 0,
   "badge_colour": "5d5e8d",
   "badge_text_colour": "FFFFFF",
-  "version": "0.1.0-DEV",
+  "version": "0.1.1a-DEV",
   "icon_path": "modicon.png",
   "icon_width": 32,
   "dependencies": [
