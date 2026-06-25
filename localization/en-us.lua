@@ -7115,13 +7115,11 @@ return {
       j_abn_for_sale_joker = {
         name = "For Sale",
         text = {
-          {
-            "When a hand is played,",
-            "gain {C:chips}Chips{} equal",
-            "to the total sell value",
-            "of all current {C:attention}Jokers",
-            "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
-          },
+          "When a hand is played,",
+          "gain {C:chips}Chips{} equal to",
+          "the total {C:attention}sell value{}",
+          "of all current {C:attention}Jokers",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
         }
 
       },
