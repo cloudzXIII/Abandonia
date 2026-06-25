@@ -6550,11 +6550,9 @@ return {
       j_abn_ppe_joker = {
         name = "PPE Joker",
         text = {
-          {
-            "{X:mult,C:white}X#1#{} Mult for",
-            "every {C:red}debuffed{} Joker",
-            "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
-          },
+          "{X:mult,C:white}X#1#{} Mult for",
+          "every {C:red}debuffed{} Joker",
+          "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
         }
 
       },
@@ -6631,15 +6629,13 @@ return {
       j_abn_symbol_of_peace = {
         name = "Symbol Of Peace",
         text = {
-          {
-            "{C:enhanced}+#1#{} selection limit,",
-            "{C:blue}+#1#{} hand, {C:red}+#1#{} discard,",
-            "{C:attention}+#1#{} Joker slot,",
-            "{C:tarot}+#1#{} Consumable slot,",
-            "{C:attention}+#1#{} Voucher in shop,",
-            "{C:tarot}+#1#{} Booster Pack in shop and",
-            "{C:red}disables{} the boss blind",
-          },
+          "{C:enhanced}+#1#{} selection limit,",
+          "{C:blue}+#1#{} hand, {C:red}+#1#{} discard,",
+          "{C:attention}+#1#{} Joker slot,",
+          "{C:tarot}+#1#{} Consumable slot,",
+          "{C:attention}+#1#{} Voucher in shop,",
+          "{C:tarot}+#1#{} Booster Pack in shop,",
+          "{C:red}disables{} the {C:attention}Boss Blind{}",
         }
 
       },
@@ -6678,14 +6674,22 @@ return {
       j_abn_mariner_joker = {
         name = "Mariner Joker",
         text = {
-          "After you use a {C:continent}Continent{} card create a random {C:planet}Planet{} {C:attention}Rank{} card",
+          "Create a random {C:attention}Rank{}",
+          "{C:planet}Planet{} card every time",
+          "a {C:continent}Continent{} card is used",
         }
       },
       j_abn_fortune_joker = {
         name = "Fortune Joker",
         text = {
-          "Scoring {C:money}Lucky{} cards {C:attention}level up{} their {C:planet}Planet{} {C:attention}Rank{}",
-          "If a {C:money}Lucky{} card triggers retrigger that card",
+          {
+            "Level up {C:planet}planet{} {C:attention}rank{}",
+            "of all {C:attention}Lucky{} cards scored",
+          },
+          {
+            "Retrigger scoring {C:attention}Lucky{} cards",
+            "when they {C:green}successfully{} trigger",
+          }
         }
       },
       j_abn_darkest_joker = {

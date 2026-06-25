@@ -59,7 +59,7 @@ SMODS.Joker {
       local lucky_card_count = 0
 
       for _, sc in ipairs(context.scoring_hand) do
-        if sc.config.center == G.P_CENTERS.m_lucky then
+        if SMODS.has_enhancement(sc, "m_lucky") then
           lucky_card_count = lucky_card_count + 1
           local suit = sc.base.suit
           if not scoring_lucky_suits[suit] then

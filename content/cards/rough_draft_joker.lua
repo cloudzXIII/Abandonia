@@ -1,7 +1,7 @@
 SMODS.Joker {
   key = 'rough_draft_joker',
   rarity = 2,
-  atlas = 'ABNJokerSheet13', 
+  atlas = 'ABNJokerSheet13',
   pos = { x = 1, y = 3 },
   cost = 5,
   discovered = false,
@@ -9,32 +9,32 @@ SMODS.Joker {
 
   config = {
     extra = {
-      odds_10 = 4,     
-      odds_50 = 7,     
+      odds_10 = 4,
+      odds_50 = 7,
       odds_double = 13,
-      chips_10 = 10,   
-      chips_50 = 50    
+      chips_10 = 10,
+      chips_50 = 50
     }
   },
 
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.m_lucky
-    return { 
-      vars = { 
+    return {
+      vars = {
         '' .. (G.GAME and G.GAME.probabilities.normal or 1),
         card.ability.extra.odds_10,
         card.ability.extra.odds_50,
         card.ability.extra.odds_double,
         card.ability.extra.chips_10,
         card.ability.extra.chips_50
-      } 
+      }
     }
   end,
-  
+
   in_pool = function(self, args)
     if G.playing_cards then
       for _, card in ipairs(G.playing_cards) do
-        if card.base.suit == "abn_suitless" and card.config.center == G.P_CENTERS.m_lucky then
+        if card.base.suit == "abn_suitless" and SMODS.has_enhancement(card, "m_lucky") then
           return true
         end
       end
@@ -76,13 +76,13 @@ SMODS.Joker {
           for i = 1, #context.scoring_hand do
             local target_card = context.scoring_hand[i]
             target_card.ability.perma_bonus = target_card.ability.perma_bonus or 0
-            
+
             if target_card.ability.perma_bonus > 0 then
               target_card.ability.perma_bonus = target_card.ability.perma_bonus * 2
             else
               target_card.ability.perma_bonus = target_card.base.nominal
             end
-            
+
             target_card:juice_up()
           end
         end
@@ -92,7 +92,7 @@ SMODS.Joker {
             message = localize('k_upgrade_ex'),
             colour = G.C.CHIPS,
             card = card
-          } 
+          }
         end
       end
     end
