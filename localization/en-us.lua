@@ -7049,7 +7049,7 @@ return {
             "{C:blue}+#1#{} Chips for",
             "each time its {C:attention}rank",
             "has {C:attention}scored{} this {C:attention}hand",
-            "{C:inactive}e.g. \"2\",\"4\",\"2\",\"4\"",
+            "{C:inactive}ex: \"2\",\"4\",\"2\",\"4\"",
             "{C:inactive}= {C:chips}+1{C:inactive},{C:chips}+1{C:inactive},{C:chips}+2{C:inactive},{C:chips}+2{C:inactive}"
           },
         }
@@ -8412,7 +8412,7 @@ return {
         text = {
           "Is the same sequence",
           "even reversed",
-          "{C:inactive}(e.g. A, K, 10, K, A)",
+          "{C:inactive}(ex: A, K, 10, K, A)",
         }
       },
       abn_suitless = {
