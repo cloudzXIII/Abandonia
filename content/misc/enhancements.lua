@@ -64,12 +64,12 @@ SMODS.Enhancement({
       }
     end
     if
-        context.destroying_card
-        and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
-        and not card.getting_sliced
-        and context.destroying_card == card
-        and not card.ability.abn_just
-		and not next(SMODS.find_card("j_abn_immolation_joker"))
+    context.destroying_card
+    and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
+    and not card.getting_sliced
+    and context.destroying_card == card
+    and not card.ability.abn_just
+    and not next(SMODS.find_card("j_abn_immolation_joker"))
     then
       return {
         remove = true
@@ -103,10 +103,10 @@ SMODS.Enhancement({
       }
     end
     if
-        context.destroying_card
-        and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
-        and not card.getting_sliced
-        and context.destroying_card == card
+    context.destroying_card
+    and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
+    and not card.getting_sliced
+    and context.destroying_card == card
     then
       return {
         remove = true
@@ -122,7 +122,7 @@ SMODS.Enhancement({
   key = "mercurial",
   pos = { x = 0, y = 0 },
   atlas = "AbandoniaEnhancements",
-  config = { extra = { chips = 0, chip_gain = 10 } },
+  config = { extra = { chips = 0, chip_gain = 5 } },
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
     return { vars = { cae.chips, cae.chip_gain } }
@@ -419,15 +419,15 @@ function SMODS.calculate_individual_effect(effect, scored_card, key, amount, fro
 
   -- Check if an Xmult modification just fired
   if (
-        key == "x_mult"
-        or key == "xmult"
-        or key == "Xmult"
-        or key == "x_mult_mod"
-        or key == "xmult_mod"
-        or key == "Xmult_mod"
-      )
-      and amount ~= 1
-      and mult then
+    key == "x_mult"
+    or key == "xmult"
+    or key == "Xmult"
+    or key == "x_mult_mod"
+    or key == "xmult_mod"
+    or key == "Xmult_mod"
+  )
+  and amount ~= 1
+  and mult then
     -- Iterate through all cards in the game to find ones with your enhancement
     if G.playing_cards then
       local scaled_count = 0
@@ -847,11 +847,11 @@ SMODS.Enhancement({
   pos = { x = 1, y = 3 },
   atlas = "AbandoniaEnhancements",
   config = { extra = { chips = 5, mult = 2, light_threshold = 2 } },
-  
+
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
     local dark_count = 0
-    
+
     if G.playing_cards then
       if G.play and G.play.cards then
         for _, playing_card in ipairs(G.play.cards) do
@@ -860,45 +860,45 @@ SMODS.Enhancement({
       end
       if G.hand and G.hand.cards then
         for _, playing_card in ipairs(G.hand.cards) do
-          if ABN.is_dark(playing_card) and playing_card ~= card then 
-            dark_count = dark_count + 1 
+          if ABN.is_dark(playing_card) and playing_card ~= card then
+            dark_count = dark_count + 1
           end
         end
       end
     end
 
-    return { 
-      vars = { 
-        cae.chips, 
-        cae.mult, 
-        cae.light_threshold 
-      } 
+    return {
+      vars = {
+        cae.chips,
+        cae.mult,
+        cae.light_threshold
+      }
     }
   end,
-  
+
   calculate = function(self, card, context)
     local cae = card.ability.extra
-    
+
 
     if context.main_scoring and context.cardarea == G.play then
       local dark_count = 0
-      
+
 
       if context.scoring_hand then
         for _, playing_card in ipairs(context.scoring_hand) do
           if ABN.is_dark(playing_card) then dark_count = dark_count + 1 end
         end
       end
-      
+
 
       if G.hand and G.hand.cards then
         for _, playing_card in ipairs(G.hand.cards) do
-          if ABN.is_dark(playing_card) and playing_card ~= card then 
-            dark_count = dark_count + 1 
+          if ABN.is_dark(playing_card) and playing_card ~= card then
+            dark_count = dark_count + 1
           end
         end
       end
-      
+
       if dark_count > 0 then
         return {
           chips = dark_count * cae.chips,
@@ -910,7 +910,7 @@ SMODS.Enhancement({
 
     if context.destroy_card and context.cardarea == G.play and context.destroy_card == card then
       local light_count = 0
-      
+
 
       if context.scoring_hand then
         for _, playing_card in ipairs(context.scoring_hand) do
@@ -923,7 +923,7 @@ SMODS.Enhancement({
       end
     end
   end,
-  
+
   abn_artist_credits = {
     artist = "Toyrapple",
   },
@@ -934,11 +934,11 @@ SMODS.Enhancement({
   pos = { x = 2, y = 3 },
   atlas = "AbandoniaEnhancements",
   config = { extra = { chips = 5, mult = 2, dark_threshold = 2 } },
-  
+
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
     local light_count = 0
-    
+
     if G.playing_cards then
       if G.play and G.play.cards then
         for _, playing_card in ipairs(G.play.cards) do
@@ -947,45 +947,45 @@ SMODS.Enhancement({
       end
       if G.hand and G.hand.cards then
         for _, playing_card in ipairs(G.hand.cards) do
-          if ABN.is_light(playing_card) and playing_card ~= card then 
-            light_count = light_count + 1 
+          if ABN.is_light(playing_card) and playing_card ~= card then
+            light_count = light_count + 1
           end
         end
       end
     end
 
-    return { 
-      vars = { 
-        cae.chips, 
-        cae.mult, 
-        cae.dark_threshold 
-      } 
+    return {
+      vars = {
+        cae.chips,
+        cae.mult,
+        cae.dark_threshold
+      }
     }
   end,
-  
+
   calculate = function(self, card, context)
     local cae = card.ability.extra
-    
+
 
     if context.main_scoring and context.cardarea == G.play then
       local light_count = 0
-      
+
 
       if context.scoring_hand then
         for _, playing_card in ipairs(context.scoring_hand) do
           if ABN.is_light(playing_card) then light_count = light_count + 1 end
         end
       end
-      
+
 
       if G.hand and G.hand.cards then
         for _, playing_card in ipairs(G.hand.cards) do
-          if ABN.is_light(playing_card) and playing_card ~= card then 
-            light_count = light_count + 1 
+          if ABN.is_light(playing_card) and playing_card ~= card then
+            light_count = light_count + 1
           end
         end
       end
-      
+
       if light_count > 0 then
         return {
           chips = light_count * cae.chips,
@@ -996,7 +996,7 @@ SMODS.Enhancement({
 
     if context.destroy_card and context.cardarea == G.play and context.destroy_card == card and not next(SMODS.find_card('j_abn_device_joker')) then
       local dark_count = 0
-      
+
 
       if context.scoring_hand then
         for _, playing_card in ipairs(context.scoring_hand) do
@@ -1009,7 +1009,7 @@ SMODS.Enhancement({
       end
     end
   end,
-  
+
   abn_artist_credits = {
     artist = "Toyrapple",
   },
