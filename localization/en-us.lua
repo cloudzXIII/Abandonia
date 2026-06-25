@@ -3928,9 +3928,20 @@ return {
       j_abn_daredevil = {
         name = "Daredevil",
         text = {
-          "Every played card counts in scoring",
-          "Face down cards {C:attention}retrigger{} per face down card",
-          "If you have Stunt Double scoring facedown cards level up their {C:planet}planet{} {C:attention}rank{}",
+          {
+            "Every {C:attention}played card",
+            "counts in scoring",
+          },
+          {
+            "Retrigger {C:attention}face down{} cards",
+            "once for each {C:attention}face down{}",
+            "card in scoring hand"
+          },
+          {
+            "If {C:attention}Stunt Double{} is owned,",
+            "level up {C:planet}planet{} {C:attention}rank{}",
+            "of all {C:attention}face down{} cards scored",
+          }
         }
       },
       j_abn_dryeraser_board = {
@@ -4302,8 +4313,8 @@ return {
       j_abn_sanguine_treasure = {
         name = "Sanguine Treasure",
         text = {
-          "Scoring {C:attention}Gold cards",
-          "gives double their {C:chips}chips{} and {C:money}money",
+          "Scoring {C:attention}Gold{} cards give",
+          "double their {C:chips}Chips{} and {C:money}money",
         },
       },
       j_abn_vitamin_joker = {
@@ -7322,8 +7333,14 @@ return {
       j_abn_stuntdouble = {
         name = "Stunt Double",
         text = {
-          "{C:mult}+#1#{} Mult {C:attention}-#2#{} hand size",
-          "If you have Stuntman gain {C:attention}+#3#{} hand size",
+          {
+            "{C:mult}+#1#{} Mult,",
+            "{C:attention}-#2#{} hand size",
+          },
+          {
+            "If {C:attention}Stuntman{} is owned,",
+            "gain {C:attention}+#3#{} hand size",
+          },
         },
       },
       j_abn_twinbo = {
@@ -7334,12 +7351,19 @@ return {
           "Played cards give {X:mult,C:white}X#2#{} Mult",
         },
       },
-      j_abn_quadratic_joker = {
+      j_abn_quadratic_joker = { -- to relocalise
         name = "Quadratic Joker",
         text = {
-          "{C:attention}Straights{} made with {C:attention}4{} suits",
-          "gain editions from lowest to highest rank {C:dark_edition}Gloss, Iridescent, Pearlescent, Chromatic",
-          "Cards held in hand with matching {C:attention}rank/suit{} add to the score",
+          {
+            "{C:attention}Straights{} containing {C:attention}4{} suits gain",
+            "editions from lowest to highest rank",
+            "{C:inactive,s:0.8}({C:dark_edition,s:0.8}Gloss{C:inactive,s:0.8}, {C:dark_edition,s:0.8}Iridescent{C:inactive,s:0.8}, {C:dark_edition,s:0.8}Pearlescent{C:inactive,s:0.8}, {C:dark_edition,s:0.8}Chromatic{C:inactive,s:0.8})",
+          },
+          {
+            "Cards {C:attention}held{} in hand with",
+            "a matching {C:attention}rank{} or {C:attention}suit{}",
+            "count in scoring",
+          },
         },
       },
       j_abn_wild_power_joker = { -- ts doesnt exist
@@ -7400,9 +7424,11 @@ return {
       j_abn_emergency_contact = {
         name = "Emergency Contact",
         text = {
-          "After {C:attention}#1#{} rounds, sell this card to",
-          "Create a discovered {C:rare}rare {C:money}Perishable {C:attention}Joker{} from your collection",
-          "{C:inactive}[Currently {C:attention}#2#{C:inactive}/{C:inactive}#1#]"
+          "After {C:attention}#1#{} rounds,",
+          "{C:attention}sell{} this Joker to create",
+          "a discovered {C:rare}Rare{} {C:abn_perishable}Perishable{}",
+          "Joker from your collection",
+          "{C:inactive}(Currently {C:attention}#2#{C:inactive}/{C:inactive}#1#)"
         },
       },
       j_abn_ghost_in_the_machine = {

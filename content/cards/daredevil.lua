@@ -7,12 +7,15 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { 
-    extra = { 
+  config = {
+    extra = {
       facedown_retriggers = 0
-    } 
+    }
   },
 
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.j_abn_stuntdouble
+  end,
   calculate = function(self, card, context)
     -- Force all played cards (including face down ones) into the scoring hand
     if context.modify_scoring_hand and not context.blueprint then
@@ -58,7 +61,7 @@ SMODS.Joker {
       end
     end
   end,
-  
+
   abn_artist_credits = {
     artist = "GhostSalt"
   },
