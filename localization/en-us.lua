@@ -7481,7 +7481,7 @@ return {
           },
         },
       },
-      j_abn_clown_funk = {
+      j_abn_clown_funk = { -- to relocalise
         name = "Clown Funk",
         text = {
           "If the {C:attention}first hand{} of a round is",
@@ -7492,7 +7492,7 @@ return {
           "If this Joker has an {C:dark_edition}Edition{} Jokers with {C:dark_edition}Editions{} cannot be destroyed",
         },
       },
-      j_abn_galactic_consciousness = {
+      j_abn_galactic_consciousness = { -- to relocalise
         name = "Galactic Consciousness",
         text = {
           "{C:dark_edition}Gloss{} {C:attention}Jokers/Cards{} give {C:mult}+#1#{} Mult when scoring",
@@ -7501,7 +7501,7 @@ return {
           "{C:dark_edition}Chromatic{} {C:attention}Jokers/Cards{} give {X:chips,C:white}^#4#{} Chips when scoring",
         },
       },
-      j_abn_grampa_joker = {
+      j_abn_grampa_joker = { -- to relocalise
         name = "Grampa Joker",
         text = {
           "The {C:attention}First{} scoring card on the {C:attention}Final hand{} gains {C:dark_edition}Vintage{}",
@@ -7565,7 +7565,7 @@ return {
           }
         }
       },
-      j_abn_hustler_joker = {
+      j_abn_hustler_joker = { -- to relocalise
         name = "Hustler Joker",
         text = {
           "{C:money}+$#1#{} {C:mult}+#2#{} Mult and {C:chips}+#3#{} Chips if hand contains {C:abn_bow}Bows{} and {C:abn_tie}Ties{}"
@@ -7638,7 +7638,7 @@ return {
           "All Scoring {C:attention}Odd{} cards gain {C:money}Based Aura",
         }
       },
-      j_abn_pirate_server = {
+      j_abn_pirate_server = { -- to relocalise
         name = "Pirate Server",
         text = {
           "Scoring {C:money}Medium Ammo{} cards gain {C:abn_brown_seal}Brown Seal{}",
@@ -7646,21 +7646,21 @@ return {
           "If this Joker has {C:tarot}Shockwaved{} retrigger all Jokers {C:attention}without{} {C:dark_edition}Editions{}",
         }
       },
-      j_abn_the_big_cheese = {
+      j_abn_the_big_cheese = { -- to relocalise
         name = "The Big Cheese",
         text = {
           "All {C:uncommon}Uncommon{} and {C:rare}Rare{} Jokers are {C:attention}free{}",
           "But they gain {C:money}Mythic Edition{} upon {C:attention}purchase{}",
         }
       },
-      j_abn_the_drink = {
+      j_abn_the_drink = { -- to relocalise
         name = "The Drink",
         text = {
           "If your {C:attention}First hand{} is {C:attention}5{} Scoring cards they all gain {C:tarot}Shockwaved{}",
           "If your {C:attention}Final hand{} is {C:attention}High Card{} all {C:attention}unscoring{} cards gain {C:purple}Glitched Seal{}",
         }
       },
-      j_abn_certified_brainrot = {
+      j_abn_certified_brainrot = { -- to relocalise
         name = "Certified Brainrot",
         text = {
           "All {C:attention}Brainrot{} Jokers give {X:chips,C:white}^#2#{} Chips and {X:mult,C:white}^#1#{} Mult",
@@ -7676,7 +7676,7 @@ return {
           "{C:green}#1# in #4#{} chance to create a {C:money}FTC Lawsuit",
         }
       },
-      j_abn_mango = {
+      j_abn_mango = { -- to relocalise (well not relocalise just colour descriptions better)
         name = "Mango",
         text = {
           "#1#",
@@ -7782,9 +7782,9 @@ return {
         name = "Rough Draft Joker",
         text = {
           "Scoring {C:attention}Lucky{} {C:abn_suitless}Null{} cards have a:",
-          "{C:green}#1# in #2#{} Chance to gain {C:chips}+#5#{} Chips,",
-          "{C:green}#1# in #3#{} Chance to gain {C:chips}+#6#{} Chips,",
-          "{C:green}#1# in #4#{} Chance to {C:attention}double{}",
+          "{C:green}#1# in #2#{} chance to gain {C:chips}+#5#{} Chips,",
+          "{C:green}#1# in #3#{} chance to gain {C:chips}+#6#{} Chips,",
+          "{C:green}#1# in #4#{} chance to {C:attention}double{}",
           "the {C:chips}chips{} of all scoring cards",
         }
       },
@@ -7807,7 +7807,7 @@ return {
         text = {
           {
             "Gives {X:chips,C:white}^#1#{} Chips per",
-            "{C:attention}unique{} scoring {C:attention}Enchancement{}",
+            "{C:attention}unique{} scoring {C:attention}Enhancement{}",
           },
           {
             "Each {C:abn_black_seal}Plagued{} Joker gives {C:mult}+#2#{} Mult",
@@ -7866,7 +7866,7 @@ return {
           "{C:attention}+#1#{} Retrigger and {C:dark_edition}Chthonian{} edition",
         }
       },
-      j_abn_genocide_route = {
+      j_abn_genocide_route = { -- to relocalise
         name = "Genocide Route",
         text = {
           "When purchased, {C:mult}destroy{} all Jokers and gain",
@@ -7896,7 +7896,7 @@ return {
           }
         }
       },
-      j_abn_origiri_triplets = {
+      j_abn_origiri_triplets = { -- to relocalise
         name = "Origiri Triplets",
         text = {
           "This Joker gains {C:chips}+#4#{} Chips {C:mult}+#3#{} Mult and {C:money}$#5#{} sell value",
