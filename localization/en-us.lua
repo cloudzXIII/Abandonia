@@ -4652,7 +4652,7 @@ return {
       j_abn_astro_joker = {
         name = "Astro Joker",
         text = {
-          "{C:abn_Astro}Astro Cards{} always {C:green}succeed",
+          "{C:abn_Astro}Astro{} cards always {C:green}succeed",
           "{C:green}#1# in #2# chance{} this {C:attention}Joker{} is",
           "{C:red}destroyed{} at end of round.",
         }
@@ -5859,7 +5859,7 @@ return {
         name = "Asylum Joker",
         text = {
           "Force select {C:attention}#2#{} cards",
-          "Force selected cards give {X:chips,C:white}^#1#{} Chips"
+          "{C:attention}Force-selected{} cards give {X:chips,C:white}^#1#{} Chips"
         }
       },
       j_abn_ransomware_joker = {
@@ -5948,7 +5948,8 @@ return {
       j_abn_badformat_joker = {
         name = "Badformat Joker",
         text = {
-          "Scoring {C:diamonds}Light{} Suits give {X:chips,C:white}^#1#{} Chips and {X:mult,C:white}^#2#{} Mult ",
+          "{C:diamonds}Light Suits{} give {X:chips,C:white}^#1#{} Chips",
+          "and {X:mult,C:white}^#2#{} Mult when scored",
         }
       },
       j_abn_ruination_joker = {
