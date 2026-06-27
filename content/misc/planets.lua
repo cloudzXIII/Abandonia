@@ -104,7 +104,7 @@ function ABN.level_up_rank(card, rank, amount, instant)
   if _rank.level >= 20 and card then
     SMODS.calculate_effect({ message = localize("k_abn_limit_reached"), colour = G.C.RED }, card)
     return
-  elseif rank.level + amount >= 20 then
+  elseif _rank.level + amount >= 20 then
     amount = 20 - _rank.level
     over_limit = true
   end
