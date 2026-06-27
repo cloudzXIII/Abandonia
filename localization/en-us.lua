@@ -7355,17 +7355,17 @@ return {
           "Played cards give {X:mult,C:white}X#2#{} Mult",
         },
       },
-      j_abn_quadratic_joker = { -- to relocalise
+      j_abn_quadratic_joker = {
         name = "Quadratic Joker",
         text = {
           {
             "{C:attention}Straights{} containing {C:attention}4{} suits gain",
-            "editions from lowest to highest rank",
+            "{C:dark_edition}Editions{} from {C:attention}lowest{} to {C:attention}highest{} rank",
             "{C:inactive,s:0.8}({C:dark_edition,s:0.8}Gloss{C:inactive,s:0.8}, {C:dark_edition,s:0.8}Iridescent{C:inactive,s:0.8}, {C:dark_edition,s:0.8}Pearlescent{C:inactive,s:0.8}, {C:dark_edition,s:0.8}Chromatic{C:inactive,s:0.8})",
           },
           {
             "Cards {C:attention}held{} in hand with",
-            "a matching {C:attention}rank{} or {C:attention}suit{}",
+            "the same {C:attention}rank{} or {C:attention}suit{}",
             "count in scoring",
           },
         },
@@ -7770,8 +7770,9 @@ return {
             "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips){}",
           },
           {
-            "If this Joker is {C:attention}Flipped{}, {C:attention}Flipped{} cards",
-            "give double {C:chips}Chips{} and {C:mult}Mult{}",
+            "If this Joker is {C:attention}Flipped{},",
+            "{C:attention}Flipped{} cards give double the",
+            "amount of {C:chips}Chips{} and {C:mult}Mult{}",
           },
         }
       },
