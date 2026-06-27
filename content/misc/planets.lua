@@ -11,41 +11,45 @@ local igo = Game.init_game_object
 function Game:init_game_object(...)
   local ret = igo(self, ...)
   ret.abn_rank_upgrades = {
-    ["2"] = { name = "2", value = G.P_CARDS.H_2.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
-    ["3"] = { name = "3", value = G.P_CARDS.H_3.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
-    ["4"] = { name = "4", value = G.P_CARDS.H_4.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
-    ["5"] = { name = "5", value = G.P_CARDS.H_5.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
-    ["6"] = { name = "6", value = G.P_CARDS.H_6.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
-    ["7"] = { name = "7", value = G.P_CARDS.H_7.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
-    ["8"] = { name = "8", value = G.P_CARDS.H_8.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
-    ["9"] = { name = "9", value = G.P_CARDS.H_9.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
-    ["10"] = { name = "10", value = G.P_CARDS.H_T.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
-    ["Jack"] = { name = "Jack", value = G.P_CARDS.H_J.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
-    ["Queen"] = { name = "Queen", value = G.P_CARDS.H_Q.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
-    ["King"] = { name = "King", value = G.P_CARDS.H_K.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
-    ["Ace"] = { name = "Ace", value = G.P_CARDS.H_A.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
-    ["abn_11"] = { name = "11", value = G.P_CARDS.H_abn_11 and G.P_CARDS.H_abn_11.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
-    ["abn_12"] = { name = "12", value = G.P_CARDS.H_abn_12 and G.P_CARDS.H_abn_12.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
-    ["abn_13"] = { name = "13", value = G.P_CARDS.H_abn_13 and G.P_CARDS.H_abn_13.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
-    ["abn_14"] = { name = "14", value = G.P_CARDS.H_abn_14 and G.P_CARDS.H_abn_14.value, mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["2"] = { name = "2", mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["3"] = { name = "3", mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["4"] = { name = "4", mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["5"] = { name = "5", mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["6"] = { name = "6", mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["7"] = { name = "7", mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["8"] = { name = "8", mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["9"] = { name = "9", mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["10"] = { name = "10", mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["Jack"] = { name = "Jack", mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["Queen"] = { name = "Queen", mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["King"] = { name = "King", mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["Ace"] = { name = "Ace", mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["abn_11"] = { name = "11", mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["abn_12"] = { name = "12", mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["abn_13"] = { name = "13", mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
+    ["abn_14"] = { name = "14", mult = 0, chips = 0, level = 1, s_mult = 0, s_chips = 0, l_mult = 1, l_chips = 3 },
   }
   return ret
 end
 
 local rank_planets = {
-  { key = "lauto", rank = "2", pos = { x = 2, y = 0 } },
-  { key = "urcurme", rank = "3", pos = { x = 3, y = 0 } },
-  { key = "nevus", rank = "4", pos = { x = 4, y = 0 } },
-  { key = "aerth", rank = "5", pos = { x = 5, y = 0 } },
-  { key = "sarh", rank = "6", pos = { x = 0, y = 1 } },
-  { key = "unpter", rank = "7", pos = { x = 1, y = 1 } },
-  { key = "urno", rank = "8", pos = { x = 2, y = 1 } },
-  { key = "ranu", rank = "9", pos = { x = 3, y = 1 } },
-  { key = "etnup", rank = "10", pos = { x = 4, y = 1 } },
-  { key = "zabures", rank = "Jack", pos = { x = 5, y = 1 } },
-  { key = "pergus", rank = "Queen", pos = { x = 0, y = 2 } },
-  { key = "vugmado", rank = "King", pos = { x = 1, y = 2 } },
-  { key = "abandia", rank = "Ace", pos = { x = 2, y = 2 } },
+  { key = "lauto",    rank = "2",      pos = { x = 2, y = 0 } },
+  { key = "urcurme",  rank = "3",      pos = { x = 3, y = 0 } },
+  { key = "nevus",    rank = "4",      pos = { x = 4, y = 0 } },
+  { key = "aerth",    rank = "5",      pos = { x = 5, y = 0 } },
+  { key = "sarh",     rank = "6",      pos = { x = 0, y = 1 } },
+  { key = "unpter",   rank = "7",      pos = { x = 1, y = 1 } },
+  { key = "urno",     rank = "8",      pos = { x = 2, y = 1 } },
+  { key = "ranu",     rank = "9",      pos = { x = 3, y = 1 } },
+  { key = "etnup",    rank = "10",     pos = { x = 4, y = 1 } },
+  { key = "zabures",  rank = "Jack",   pos = { x = 5, y = 1 } },
+  { key = "pergus",   rank = "Queen",  pos = { x = 0, y = 2 } },
+  { key = "vugmado",  rank = "King",   pos = { x = 1, y = 2 } },
+  { key = "abandia",  rank = "Ace",    pos = { x = 2, y = 2 } },
+  { key = "clun_va",  rank = "abn_11", pos = { x = 2, y = 2 } },
+  { key = "reart",    rank = "abn_12", pos = { x = 2, y = 2 } },
+  { key = "oshprue",  rank = "abn_13", pos = { x = 2, y = 2 } },
+  { key = "meisness", rank = "abn_14", pos = { x = 2, y = 2 } },
 }
 SMODS.Attribute { key = "rank_planet" }
 
@@ -61,11 +65,17 @@ for _, def in ipairs(rank_planets) do
     cost = 4,
     config = { rank = rank },
 
+    set_card_type_badge = function(self, card, badges)
+      badges[#badges + 1] = create_badge(localize("k_abn_rank_planet"),
+        get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.Planet.text_colour,
+        1.2)
+    end,
+
     loc_vars = function(self, info_queue, center)
       return {
         vars = {
           G.GAME.abn_rank_upgrades[rank].level,
-          G.GAME.abn_rank_upgrades[rank].value,
+          localize(rank, 'ranks'),
           G.GAME.abn_rank_upgrades[rank].l_mult,
           G.GAME.abn_rank_upgrades[rank].l_chips,
           colours = { (G.GAME.abn_rank_upgrades[rank].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.abn_rank_upgrades[rank].level)]) }

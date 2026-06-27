@@ -9634,6 +9634,42 @@ return {
           "{C:chips}+#4#{} chips"
         }
       },
+      c_abn_clun_va = {
+        name = "Clun Va",
+        text = {
+          "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+          "{C:attention}#2#s",
+          "{C:mult}+#3#{} Mult and",
+          "{C:chips}+#4#{} chips"
+        }
+      },
+      c_abn_reart = {
+        name = "Reart",
+        text = {
+          "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+          "{C:attention}#2#s",
+          "{C:mult}+#3#{} Mult and",
+          "{C:chips}+#4#{} chips"
+        }
+      },
+      c_abn_oshprue = {
+        name = "Oshprue",
+        text = {
+          "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+          "{C:attention}#2#s",
+          "{C:mult}+#3#{} Mult and",
+          "{C:chips}+#4#{} chips"
+        }
+      },
+      c_abn_meisness = {
+        name = "Meisness",
+        text = {
+          "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+          "{C:attention}#2#s",
+          "{C:mult}+#3#{} Mult and",
+          "{C:chips}+#4#{} chips"
+        }
+      },
       c_abn_queaor = {
         name = "Queaor",
         text = {
@@ -10686,6 +10722,7 @@ return {
       k_abn_founder = "Founder",
       k_abn_coder = "Coder",
       k_abn_music = "Music",
+      k_abn_rank_planet = "Rank Planet",
       k_abn_superrare = "Super Rare",
       k_abn_parallelrare = "Parallel Rare",
       k_abn_virusrare = "Virus Rare",
