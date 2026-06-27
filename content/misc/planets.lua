@@ -46,10 +46,10 @@ local rank_planets = {
   { key = "pergus",   rank = "Queen",  pos = { x = 0, y = 2 } },
   { key = "vugmado",  rank = "King",   pos = { x = 1, y = 2 } },
   { key = "abandia",  rank = "Ace",    pos = { x = 2, y = 2 } },
-  { key = "clun_va",  rank = "abn_11", pos = { x = 2, y = 2 } },
-  { key = "reart",    rank = "abn_12", pos = { x = 2, y = 2 } },
-  { key = "oshprue",  rank = "abn_13", pos = { x = 2, y = 2 } },
-  { key = "meisness", rank = "abn_14", pos = { x = 2, y = 2 } },
+  { key = "clun_va",  rank = "abn_11", pos = { x = 0, y = 5 } },
+  { key = "reart",    rank = "abn_12", pos = { x = 4, y = 5 } },
+  { key = "oshprue",  rank = "abn_13", pos = { x = 0, y = 6 } },
+  { key = "meisness", rank = "abn_14", pos = { x = 6, y = 5 } },
 }
 SMODS.Attribute { key = "rank_planet" }
 
@@ -99,6 +99,12 @@ function ABN.level_up_rank(card, rank, amount, instant)
   instant = instant or false
   local _rank = G.GAME.abn_rank_upgrades[rank]
   if not _rank then return end
+
+  if _rank.level >= 20 and card then
+    SMODS.calculate_effect({ message = localize("k_abn_limit_reached"), colour = G.C.RED }, card)
+    return
+  end
+
   -- e
   update_hand_text(
     { sound = "button", volume = 0.7, pitch = 0.8, delay = 0.3 },

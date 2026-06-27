@@ -12,7 +12,7 @@ pattern = """tab_definition_function = create_UIBox_current_hands,
 position = "after"
 payload = '''
 {
-	label = localize('b_abn_ranks'),
+	label = localize('b_abn_planet_ranks'),
 	tab_definition_function = create_UIBox_current_ranks,
 },
 '''

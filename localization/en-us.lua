@@ -10723,6 +10723,8 @@ return {
       k_abn_coder = "Coder",
       k_abn_music = "Music",
       k_abn_rank_planet = "Rank Planet",
+      b_abn_planet_ranks = "Planet Ranks",
+      k_abn_limit_reached = "Max Level Reached!",
       k_abn_superrare = "Super Rare",
       k_abn_parallelrare = "Parallel Rare",
       k_abn_virusrare = "Virus Rare",
