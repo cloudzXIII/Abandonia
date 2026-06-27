@@ -22,5 +22,6 @@
 	"Amulet | Cryptlib"
   ],
   "conflicts": [
+    "ColdBeans"
   ]
 }
