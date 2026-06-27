@@ -19,6 +19,7 @@ ABN.optional_features = {
 }
 
 G.C.ABN_PLASMA = { 0.8, 0.45, 0.85, 1 }
+G.C.ABN_PLAGUED = HEX("cfeb2d")
 
 local abn = loc_colour
 function loc_colour(_c, _default)
@@ -59,6 +60,7 @@ function loc_colour(_c, _default)
   G.ARGS.LOC_COLOURS.abn_silver_seal = HEX("bec7d4")
   G.ARGS.LOC_COLOURS.abn_duality_seal = HEX("a56be6")
 
+  G.ARGS.LOC_COLOURS.abn_plagued = HEX("cfeb2d")
 
   return abn(_c, _default)
 end

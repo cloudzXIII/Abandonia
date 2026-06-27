@@ -2,7 +2,7 @@ SMODS.Joker {
   key = 'rom_hack_balatro',
 
   set_badges = function(self, card, badges)
-    badges[#badges + 1] = create_badge(localize("k_abn_plagued"), G.C.BLACK, G.C.WHITE, 1.0)
+    badges[#badges + 1] = create_badge(localize("k_abn_plagued"), G.C.ABN_PLAGUED, G.C.WHITE, 1.0)
   end,
 
   rarity = "abn_SuperRare",

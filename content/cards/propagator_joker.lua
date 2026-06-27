@@ -2,7 +2,7 @@ SMODS.Joker {
   key = 'propagator_joker',
 
   set_badges = function(self, card, badges)
-    badges[#badges + 1] = create_badge(localize("k_abn_plagued"), G.C.BLACK, G.C.WHITE, 1.0)
+    badges[#badges + 1] = create_badge(localize("k_abn_plagued"), G.C.ABN_PLAGUED, G.C.WHITE, 1.0)
   end,
 
   rarity = "abn_VirusRare",
@@ -14,17 +14,17 @@ SMODS.Joker {
   blueprint_compat = true,
   config = { extra = { odds = 4, emult = 2.0 } },
   pools = { ["Plagued"] = true, },
-  
+
   loc_vars = function(self, info_queue, card)
-    return { 
-      vars = { 
-        G.GAME.probabilities.normal, 
-        card.ability.extra.odds, 
-        card.ability.extra.emult 
-      } 
+    return {
+      vars = {
+        G.GAME.probabilities.normal,
+        card.ability.extra.odds,
+        card.ability.extra.emult
+      }
     }
   end,
-  
+
   -- only available on jimbo stakes
   in_pool = function(self)
     return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
@@ -54,11 +54,11 @@ SMODS.Joker {
 
     -- Dupe Logic 1/4
     if context.before and not context.blueprint then
-      if SMODS.pseudorandom_probability(card, 'propagator', 1, card.ability.extra.odds) then   
+      if SMODS.pseudorandom_probability(card, 'propagator', 1, card.ability.extra.odds) then
         -- Get first card
         if context.scoring_hand and context.scoring_hand[1] then
           local first_card = context.scoring_hand[1]
-          
+
           local clone = copy_card(first_card, nil, nil, G.playing_card)
           clone:add_to_deck()
           G.deck.config.card_limit = G.deck.config.card_limit + 1

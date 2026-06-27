@@ -10,7 +10,7 @@ SMODS.Joker {
   pools = { ["Plagued"] = true },
 
   set_badges = function(self, card, badges)
-    badges[#badges + 1] = create_badge(localize("k_abn_plagued"), G.C.BLACK, G.C.WHITE, 1.0)
+    badges[#badges + 1] = create_badge(localize("k_abn_plagued"), G.C.ABN_PLAGUED, G.C.WHITE, 1.0)
   end,
 
   loc_vars = function(self, info_queue, card)

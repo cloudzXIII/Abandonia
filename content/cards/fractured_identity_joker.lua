@@ -2,7 +2,7 @@ SMODS.Joker {
   key = 'fractured_identity_joker',
 
   set_badges = function(self, card, badges)
-    badges[#badges + 1] = create_badge(localize("k_abn_plagued"), G.C.BLACK, G.C.WHITE, 1.0)
+    badges[#badges + 1] = create_badge(localize("k_abn_plagued"), G.C.ABN_PLAGUED, G.C.WHITE, 1.0)
   end,
 
   rarity = 3,
@@ -42,9 +42,9 @@ SMODS.Joker {
       if card and card.config and card.config.center then
         local center = card.config.center
         if center == G.P_CENTERS.m_glass or
-            center == G.P_CENTERS.m_mult or
-            center == G.P_CENTERS.m_steel or
-            center == G.P_CENTERS.m_stone then
+        center == G.P_CENTERS.m_mult or
+        center == G.P_CENTERS.m_steel or
+        center == G.P_CENTERS.m_stone then
           return true -- Both conditions met!
         end
       end

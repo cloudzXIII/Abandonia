@@ -1409,7 +1409,7 @@ return {
         name = "Plague Tag",
         text = {
           "Next base edition shop",
-          "Has a free {C:abn_black_seal}Plagued{} Joker",
+          "Has a free {C:abn_plagued}Plagued{} Joker",
         },
       },
       tag_abn_virus = {
@@ -3358,10 +3358,14 @@ return {
       j_abn_ancient_prophet = {
         name = "Ancient Prophet",
         text = {
-          "Retrigger any {C:red}Debuffed{} and",
-          "{C:attention}Flipped{} card, {C:red}Debuffed{}",
-          "and {C:attention}Flipped{} cards give",
-          "{C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips when scored",
+          {
+            "Retrigger all played",
+            "{C:red}Debuffed{} and {C:attention}Flipped{} cards",
+          },
+          {
+            "{C:red}Debuffed{} and {C:attention}Flipped{} cards give",
+            "{C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips when scored",
+          }
         }
       },
       j_abn_trojan_joker = {
@@ -4648,7 +4652,7 @@ return {
       j_abn_astro_joker = {
         name = "Astro Joker",
         text = {
-          "All {C:abn_Astro}Astro Cards{} always {C:green}succeed",
+          "{C:abn_Astro}Astro Cards{} always {C:green}succeed",
           "{C:green}#1# in #2# chance{} this {C:attention}Joker{} is",
           "{C:red}destroyed{} at end of round.",
         }
@@ -5839,7 +5843,7 @@ return {
           "{C:green}#1# in #2#{} chance for cards with {C:attention}seals{} to turn into {C:purple}Contagion Seals{}",
           "{C:green}#3# in #4#{} chance for {C:dark_edition}enhanced{} cards to turn into {C:purple}Contagion Bonus cards{}",
           "{C:green}#5# in #6#{} chance for played cards with {C:dark_edition}editions{} to turn into {C:purple}Contagion Mult{}",
-          "Other {C:abn_black_seal}Plagued{} Jokers give {X:mult,C:white}^#7#{} Mult",
+          "Other {C:abn_plagued}Plagued{} Jokers give {X:mult,C:white}^#7#{} Mult",
         }
       },
       j_abn_degraded_data_joker = {
@@ -5938,7 +5942,7 @@ return {
         text = {
           "When {C:attention}Blind{} is selected,",
           "{C:mult}Destroy{} {C:attention}#1#{} {C:attention}non-Plagued{} Joker",
-          "and create {C:attention}#1#{} {C:abn_black_seal}Plagued{} Joker",
+          "and create {C:attention}#1#{} {C:abn_plagued}Plagued{} Joker",
         }
       },
       j_abn_badformat_joker = {
@@ -7588,7 +7592,7 @@ return {
           },
         }
       },
-      j_abn_alter_suits = {
+      j_abn_alter_suits = { -- to relocalise
         name = "Alter Suits",
         text = {
           "If Scoring hand contains of {C:abn_snow}Snow{} {C:abn_penumbra}Penumbra{} {C:abn_tie}Tie{} and {C:abn_bow}Bow{}",
@@ -7810,7 +7814,7 @@ return {
             "{C:attention}unique{} scoring {C:attention}Enhancement{}",
           },
           {
-            "Each {C:abn_black_seal}Plagued{} Joker gives {C:mult}+#2#{} Mult",
+            "Each {C:abn_plagued}Plagued{} Joker gives {C:mult}+#2#{} Mult",
             "per {C:attention}unique{} {C:dark_edition}Edition",
           }
         }
@@ -7899,9 +7903,9 @@ return {
       j_abn_origiri_triplets = { -- to relocalise
         name = "Origiri Triplets",
         text = {
-          "This Joker gains {C:chips}+#4#{} Chips {C:mult}+#3#{} Mult and {C:money}$#5#{} sell value",
-          "ifs combined {C:attention}ranks{} of scoring hand are divisible by {C:attention}3{}",
-          "(ex: {C:attention}3{}, {C:attention}6{}, {C:attention}9{}, {C:attention}12{C:inactive})",
+          "This Joker gains {C:chips}+#4#{} Chips {C:mult}+#3#{} Mult and {C:money}$#5#{} of sell value",
+          "if combined {C:attention}ranks{} of scoring hand are divisible by {C:attention}3{}",
+          "{C:inactive}(ex: {C:attention}3{}, {C:attention}6{}, {C:attention}9{}, {C:attention}12{C:inactive})",
           "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
         }
       },
@@ -10111,7 +10115,7 @@ return {
         text = {
           "Destroy all {C:attention}non-Plagued{} Jokers,",
           "Create a {C:abn_superrare}Super Rare{}",
-          "{C:dark_edition}Negative{} {C:abn_black_seal}Plagued{} Joker",
+          "{C:dark_edition}Negative{} {C:abn_plagued}Plagued{} Joker",
         }
       },
       c_abn_hostile = {

@@ -2,7 +2,7 @@ SMODS.Joker {
   key = 'telisyndrome_joker',
 
   set_badges = function(self, card, badges)
-    badges[#badges + 1] = create_badge(localize("k_abn_plagued"), G.C.BLACK, G.C.WHITE, 1.0)
+    badges[#badges + 1] = create_badge(localize("k_abn_plagued"), G.C.ABN_PLAGUED, G.C.WHITE, 1.0)
   end,
 
   rarity = "abn_VirusRare",
@@ -14,16 +14,16 @@ SMODS.Joker {
 
   config = { extra = { echips = 2.3, mult = 100 } },
   pools = { ["Plagued"] = true, },
-  
+
   loc_vars = function(self, info_queue, card)
-    return { 
-      vars = { 
+    return {
+      vars = {
         card.ability.extra.echips,
         card.ability.extra.mult
-      } 
+      }
     }
   end,
-  
+
   -- only available on jimbo stakes
   in_pool = function(self)
     return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
@@ -33,7 +33,7 @@ SMODS.Joker {
     if context.joker_main then
       local unique_enhancements = {}
       local count = 0
-      
+
       if context.scoring_hand then
         for i = 1, #context.scoring_hand do
           local scoring_card = context.scoring_hand[i]
@@ -57,10 +57,9 @@ SMODS.Joker {
 
     if context.other_joker and context.other_joker ~= card then
       if context.other_joker.config.center.pools and context.other_joker.config.center.pools.Plagued then
-        
         local unique_editions = {}
         local edition_count = 0
-        
+
         if G.jokers and G.jokers.cards then
           for i = 1, #G.jokers.cards do
             local jkr = G.jokers.cards[i]
@@ -82,7 +81,6 @@ SMODS.Joker {
         end
       end
     end
-
   end,
   abn_artist_credits = {
     artist = "Da Gorbage Rat",
