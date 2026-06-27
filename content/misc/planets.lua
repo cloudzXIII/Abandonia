@@ -97,12 +97,16 @@ end
 function ABN.level_up_rank(card, rank, amount, instant)
   amount = amount or 1
   instant = instant or false
+  local over_limit = false
   local _rank = G.GAME.abn_rank_upgrades[rank]
   if not _rank then return end
 
   if _rank.level >= 20 and card then
     SMODS.calculate_effect({ message = localize("k_abn_limit_reached"), colour = G.C.RED }, card)
     return
+  elseif rank.level + amount >= 20 then
+    amount = 20 - _rank.level
+    over_limit = true
   end
 
   -- e
@@ -160,6 +164,9 @@ function ABN.level_up_rank(card, rank, amount, instant)
     { sound = "button", volume = 0.7, pitch = 1.1, delay = 0 },
     { mult = 0, chips = 0, handname = "", level = "" }
   )
+  if over_limit then
+    SMODS.calculate_effect({ message = localize("k_abn_limit_reached"), colour = G.C.RED }, card)
+  end
 end
 
 local get_chip_mult_ref = Card.get_chip_mult
