@@ -7870,15 +7870,23 @@ return {
           "{C:attention}+#1#{} Retrigger and {C:dark_edition}Chthonian{} edition",
         }
       },
-      j_abn_genocide_route = { -- to relocalise
+      j_abn_genocide_route = {
         name = "Genocide Route",
         text = {
-          "When purchased, {C:mult}destroy{} all Jokers and gain",
-          "{X:mult,C:white}X#3#{} Mult and {X:chips,C:white}X#4#{} Chips per {C:mult}destroyed{} Joker",
-          "When {C:attention}Blind{} is selected, create a random",
-          "{C:attention}#5#{} Joker with {C:dark_edition}#6# Edition{}",
-          "{C:attention}Restart{} this process after getting a {C:abn_superrare}Super Rare{}",
-          "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {X:chips,C:white}X#2#{} {C:inactive}Chips){}"
+          {
+            "{C:mult}Destroy{} all Jokers on purchase,",
+            "gains {X:mult,C:white}X#3#{} Mult and {X:chips,C:white}X#4#{} Chips",
+            "per {C:mult}destroyed{} Joker",
+            "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {X:chips,C:white}X#2#{} {C:inactive}Chips){}",
+          },
+          {
+            "{C:attention}Restart{} this process when a",
+            "{C:abn_superrare}Super Rare{} {C:attention}Joker{} is obtained",
+          },
+          {
+            "When {C:attention}Blind{} is selected, create a random",
+            "{V:1}#5#{} Joker with {C:dark_edition}#6#{} edition",
+          },
         }
       },
       j_abn_runedelta_disc2 = {
