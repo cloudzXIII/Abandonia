@@ -4905,20 +4905,34 @@ return {
       j_abn_coercive_comedian = {
         name = "Coercive Comedian",
         text = {
-          "Card {C:chips}play{} and {C:mult}discard{} limit {C:attention}+1{}",
-          "Gain {X:mult,C:white}X#2#{} Mult per {C:attention}Unique{} number card scored",
-          "Gain {C:chips}+#4#{} Chips per hand played",
-          "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult, {C:chips}+#3# {C:inactive}Chips)",
+          {
+            "Can {C:blue}play{} and {C:red}discard{}",
+            "up to {C:attention}6{} cards"
+          },
+          {
+            "This Joker gains {X:mult,C:white}X#2#{} Mult",
+            "per unique {C:attention}numbered{} card scored,",
+            "gains {C:chips}+#4#{} Chips per hand played",
+            "{C:inactive}(Currently {C:chips}+#3# {C:inactive}Chips, {X:mult,C:white}X#1#{} {C:inactive}Mult)",
+          }
         }
       },
-      j_abn_night_comedian = {
+      j_abn_night_comedian = { -- to relocalise, made it meh for now
         name = "Night Comedian",
         text = {
-          "Each scored {C:attention}Enhanced{} card gains {C:chips}+#5#{} Chips and {C:mult}+#6#{} Mult for each matching {C:attention}Enhancement{}",
-          "This Joker gains {C:chips}+#4#{} Chips per scoring Enhanced card",
-          "Each scored {C:dark_edition}Editioned{} card gains {C:chips}+#6#{} Chips and {C:mult}+#5#{} Mult for each matching {C:dark_edition}Edition{}",
-          "This Joker gains {X:mult,C:white}X#3#{} Mult per scoring {C:dark_edition}Edition{}",
-          "{C:inactive}(Currently{} {X:mult,C:white}X#2#{} {C:inactive}Mult, {C:chips}+#1# {C:inactive}Chips)",
+          {
+            "Scoring {C:attention}Enhanced{} cards gain {C:chips}+#5#{} Chips",
+            "and {C:mult}+#6#{} Mult for each matching {C:attention}Enhancement{}",
+            "Scoring {C:dark_edition}Editioned{} cards gain {C:chips}+#6#{} Chips",
+            "and {C:mult}+#5#{} Mult for each matching {C:dark_edition}Edition{}",
+          },
+          {
+            "This Joker gains {C:chips}+#4#{} Chips",
+            "per scoring {C:attention}Enhanced{} card",
+            "This Joker gains {X:mult,C:white}X#3#{} Mult",
+            "per scoring {C:dark_edition}Edition{}",
+            "{C:inactive}(Currently{} {X:mult,C:white}X#2#{} {C:inactive}Mult, {C:chips}+#1# {C:inactive}Chips)",
+          }
         }
       },
       j_abn_minimus = {
@@ -5456,7 +5470,8 @@ return {
       j_abn_enchanted_night = {
         name = "Enchanted Night",
         text = {
-          "{C:spades}Dark{} Suits with {C:dark_edition}Editions{} retrigger",
+          "Retrigger all played",
+          "{C:dark_edition}Editioned{} {C:spades}Dark Suits{}",
         }
       },
       j_abn_health_stickers = {
