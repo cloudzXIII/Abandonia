@@ -1,7 +1,7 @@
 [manifest]
 version = "1.0.0"
 dump_lua = true
-priority = -1
+priority = 2 # so cold beans can patch first (how kind of me right)
 
 # Big blind doesn't increase ante
 [[patches]]
