@@ -10392,7 +10392,7 @@ return {
         name = "Cotton Card",
         text = {
           "Doubles the {C:planet}planet{} {C:attention}ranks{}",
-          "of {C:inactive}non-Cotton{} cards",
+          "of {C:attention}Cotton{} cards",
           "held in hand",
         },
       },
