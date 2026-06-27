@@ -4702,7 +4702,7 @@ return {
       j_abn_hunter_license = {
         name = "Hunter License",
         text = {
-          "Gain {C:money}$#1#{} when this obtained",
+          "Earn {C:money}$#1#{} on purchase",
           "{C:mult}self-destructs{} if money reaches {C:money}$0{}",
         }
       },
