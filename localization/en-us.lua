@@ -7885,28 +7885,31 @@ return {
         name = "Runedelta Disc 2",
         text = {
           {
-            "The first scoring {C:attention}Even{} card with an {C:dark_edition}Edition{} retriggers",
-            "for each Joker matching that {C:dark_edition}Edition{}",
-            "This Joker gains {X:mult,C:white}X#3#{} Mult per retrigger",
+            "The first scoring {C:dark_edition}Editioned{} {C:inactive}(rank){} card",
+            "retriggers once for each Joker",
+            "with the same {C:dark_edition}Edition{}, this Joker",
+            "gains {C:inactive}(reward){} per retrigger",
           },
           {
-            "The first scoring {C:attention}Odd{} card with an {C:dark_edition}Edition{} retriggers",
-            "for each Joker matching that {C:dark_edition}Edition{}",
-            "This Joker gains {X:chips,C:white}X#4#{} Chips per retrigger",
-          },
-          {
-            "If this Joker has an {C:dark_edition}Edition{} Jokers with {C:dark_edition}Editions{} can't be {C:mult}debuffed{}",
+            "{C:inactive}(ex: rank: reward)",
+            "{C:attention}Even{}: {X:mult,C:white}X#3#{} Mult",
+            "{C:attention}Odd{}: {X:chips,C:white}X#4#{} Chips",
             "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult, {X:chips,C:white}X#2#{} {C:inactive}Chips){}"
+          },
+          {
+            "If this Joker has an {C:dark_edition}Edition{},",
+            "{C:dark_edition}Editioned{} {C:attention}Jokers{} cannot be {C:red}debuffed{}",
           }
         }
       },
-      j_abn_origiri_triplets = { -- to relocalise
+      j_abn_origiri_triplets = {
         name = "Origiri Triplets",
         text = {
-          "This Joker gains {C:chips}+#4#{} Chips {C:mult}+#3#{} Mult and {C:money}$#5#{} of sell value",
-          "if combined {C:attention}ranks{} of scoring hand are divisible by {C:attention}3{}",
-          "{C:inactive}(ex: {C:attention}3{}, {C:attention}6{}, {C:attention}9{}, {C:attention}12{C:inactive})",
-          "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
+          "This Joker gains {C:chips}+#4#{} Chips, {C:mult}+#3#{} Mult",
+          "and {C:money}$#5#{} of {C:attention}sell value{} if combined {C:attention}ranks{}",
+          "in scoring hand are divisible by {C:attention}3{}",
+          "{C:inactive}(ex: {C:attention}3{C:inactive}, {C:attention}6{C:inactive}, {C:attention}9{C:inactive}, {C:attention}12{C:inactive})",
+          "{C:inactive}(Currently {C:chips}+#2#{} {C:inactive}Chips, {C:mult}+#1#{} {C:inactive}Mult{C:inactive}){}",
         }
       },
       j_abn_cossak_joker = {
