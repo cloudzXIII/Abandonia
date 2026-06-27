@@ -18,8 +18,8 @@ SMODS.Rank {
     Clubs = 4,
     Diamonds = 5,
     Spades = 6,
-	abn_Tie = 7,
-	abn_Bow = 8,
+    abn_Tie = 7,
+    abn_Bow = 8,
   },
 
   in_pool = function(self, args)
@@ -51,8 +51,8 @@ SMODS.Rank {
     Clubs = 4,
     Diamonds = 5,
     Spades = 6,
-	abn_Tie = 7,
-	abn_Bow = 8,
+    abn_Tie = 7,
+    abn_Bow = 8,
   },
 
   in_pool = function(self, args)
@@ -84,8 +84,8 @@ SMODS.Rank {
     Clubs = 4,
     Diamonds = 5,
     Spades = 6,
-	abn_Tie = 7,
-	abn_Bow = 8,
+    abn_Tie = 7,
+    abn_Bow = 8,
   },
 
   in_pool = function(self, args)
@@ -118,8 +118,8 @@ SMODS.Rank {
     Clubs = 4,
     Diamonds = 5,
     Spades = 6,
-	abn_Tie = 7,
-	abn_Bow = 8,
+    abn_Tie = 7,
+    abn_Bow = 8,
   },
 
 
@@ -134,7 +134,7 @@ SMODS.Rank {
 
 SMODS.Rank:take_ownership('Ace',
   {
-    next = { 'abn_11' },
+    next = { 'abn_11', '2' },
     straight_edge = false
   }
 )
