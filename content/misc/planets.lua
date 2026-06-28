@@ -49,7 +49,7 @@ local rank_planets = {
   { key = "clun_va",  rank = "abn_11", pos = { x = 0, y = 5 } },
   { key = "reart",    rank = "abn_12", pos = { x = 4, y = 5 } },
   { key = "oshprue",  rank = "abn_13", pos = { x = 0, y = 6 } },
-  { key = "meisness", rank = "abn_14", pos = { x = 6, y = 5 } },
+  { key = "meisness", rank = "abn_14", pos = { x = 5, y = 5 } },
 }
 SMODS.Attribute { key = "rank_planet" }
 
