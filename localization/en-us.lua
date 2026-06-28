@@ -4457,8 +4457,8 @@ return {
       j_abn_interminable_joker = {
         name = "Interminable Joker",
         text = {
-          "If you have 6 or more {C:attention}Jokers",
-          "each one gives {X:mult,C:white}X#1#{} {C:mult}Mult",
+          "If you have {C:attention}6{} or more {C:attention}Jokers{},",
+          "each one gives {X:mult,C:white}X#1#{} Mult",
         }
       },
       j_abn_codding_error_even = {
