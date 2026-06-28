@@ -486,7 +486,7 @@ SMODS.Enhancement({
   always_scores = false,
   config = {
     extra = {
-      emult = 1,
+      emult = 1.1,
     }
   },
   loc_vars = function(self, info_queue, card)
