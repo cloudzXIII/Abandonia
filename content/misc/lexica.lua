@@ -527,14 +527,16 @@ SMODS.Consumable {
       card.ability.extra.used_sigil = true
     end
     if context.before and card.ability.extra.used_sigil then
-      G.E_MANAGER:add_event(Event({
-        func = function()
-          context.other_card:set_edition("e_polychrome", true)
-          context.other_card:set_seal('abn_violet', nil, true)
-          context.other_card:juice_up(0.3, 0.5)
-          return true
-        end
-      }))
+      for _, _card in ipairs(context.scoring_hand) do
+        G.E_MANAGER:add_event(Event({
+          func = function()
+            _card:set_edition("e_polychrome", true)
+            _card:set_seal('abn_violet', nil, true)
+            _card:juice_up(0.3, 0.5)
+            return true
+          end
+        }))
+      end
       abn_activate_letter(self, card)
     end
   end,
