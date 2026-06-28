@@ -3675,14 +3675,14 @@ return {
       j_abn_feline_joker = {
         name = "Feline Joker",
         text = {
-          "Randomly gives {C:blue}#2#{} chips",
-          " {C:white,X:mult}X#1#{} Mult or {C:money}$#3#{}"
+          "Randomly gives {C:chips}+#2#{} Chips,",
+          "{C:white,X:mult}X#1#{} Mult, or {C:money}$#3#{}"
         }
       },
       j_abn_executioner = {
         name = "Executioner",
         text = {
-          "Cards held in hand",
+          "Cards {C:attention}held{} in hand",
           "permanently gain",
           "{C:chips}+#1#{} Chips",
           "when a {C:attention}playing card{}",
@@ -3720,7 +3720,7 @@ return {
         text = {
           "Gives {C:white,X:mult}X#1#{} Mult",
           "for each {C:attention}unique rarity{}",
-          "{C:attention}Joker{} in your possession",
+          "among your {C:attention}Jokers{}",
           "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
         }
       },
@@ -3739,7 +3739,7 @@ return {
           }
         }
       },
-      j_abn_inkblot_test = {
+      j_abn_inkblot_test = { -- potentially rework?
         name = "Inkblot Test",
         text = {
           {
