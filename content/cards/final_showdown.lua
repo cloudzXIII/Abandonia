@@ -62,7 +62,7 @@ SMODS.Joker {
     return { vars = { card.ability.extra.amount } }
   end,
 
-  rarity = 2,
+  rarity = 3,
   atlas = 'ABNJokerSheet3',
   pos = { x = 4, y = 1 },
   cost = 6,

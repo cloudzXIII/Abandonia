@@ -8,7 +8,7 @@ SMODS.Joker {
   blueprint_compat = true,
   attributes = { "food" },
 
-  config = { extra = { chips = 10, odds = 8 } },
+  config = { extra = { chips = 10, odds = 3 } },
 
 
   loc_vars = function(self, info_queue, card)

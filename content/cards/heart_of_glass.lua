@@ -15,7 +15,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { xchips = 2, chips = 0, chips_gain = 10 } },
+  config = { extra = { xchips = 2, chips = 0, chips_gain = 20 } },
 
   calculate = function(self, card, context)
     if context.fix_probability and context.trigger_obj and context.trigger_obj.config and context.trigger_obj.config.center and SMODS.has_enhancement(context.trigger_obj, "m_glass") then

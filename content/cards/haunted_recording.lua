@@ -12,7 +12,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { poker_hand = "High Card", x_mult = 1, x_mult_gain = 0.5 } },
+  config = { extra = { poker_hand = "High Card", x_mult = 1, x_mult_gain = 0.2 } },
 
   calculate = function(self, card, context)
     if context.before and not context.blueprint then

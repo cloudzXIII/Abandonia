@@ -25,8 +25,8 @@ SMODS.Joker {
       type = "Four of a Kind",
       chips = 0,
       mult = 0,
-      chips_gain = 100,
-      mult_gain = 2
+      chips_gain = 10,
+      mult_gain = 1
     },
   },
   calculate = function(self, card, context)

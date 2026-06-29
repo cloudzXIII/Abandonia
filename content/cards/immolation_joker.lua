@@ -1,6 +1,6 @@
 SMODS.Joker {
   key = 'immolation_joker',
-  rarity = 2,
+  rarity = 1,
   atlas = 'ABNJokerSheet1',
   pos = { x = 8, y = 5 },
   cost = 6,
