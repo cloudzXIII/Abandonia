@@ -47,11 +47,16 @@ SMODS.Joker {
       end
     end
 
-    if count >= 3 and G.STATE ~= G.STATES.GAME_OVER and not card.game_over_triggered then
+    if count >= 3 and G.STATE ~= G.STATES.GAME_OVER and G.STATE ~= G.STATES.BLIND_SELECT and not card.game_over_triggered then
       card.game_over_triggered = true
       G.E_MANAGER:add_event(Event({
         func = function()
           G.STATE = G.STATES.GAME_OVER
+          if not G.GAME.won and not G.GAME.seeded and not G.GAME.challenge then
+            G.PROFILES[G.SETTINGS.profile].high_scores.current_streak.amt = 0
+          end
+          G:save_settings()
+          G.FILE_HANDLER.force = true
           G.STATE_COMPLETE = false
           return true
         end
