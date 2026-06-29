@@ -7362,10 +7362,16 @@ return {
       j_abn_darknet_joker = {
         name = "Darknet Joker",
         text = {
-          "If you play a {C:attention}Divider Conquered{} using only {C:attention}Numbered{} cards",
-          "They all gain {C:dark_edition}Bit Rot{} Edition",
-          "This Joker gains {X:mult,C:white}X#1#{} Mult per scoring card in {C:attention}Divider Conquered{} hands",
-          "{C:inactive}(Currently{} {X:mult,C:white}X#2#{} {C:inactive}Mult)",
+          {
+            "If played hand is a {C:attention}Divider Conquered{}",
+            "containing only {C:attention}numbered{} cards,",
+            "They all gain {C:dark_edition}Bit Rot{} edition",
+          },
+          {
+            "This Joker gains {X:mult,C:white}X#1#{} Mult per",
+            "scoring card in a {C:attention}Divider Conquered{}",
+            "{C:inactive}(Currently{} {X:mult,C:white}X#2#{} {C:inactive}Mult)",
+          },
         },
       },
       j_abn_stuntdouble = {
