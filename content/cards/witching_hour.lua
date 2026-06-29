@@ -12,7 +12,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { x_mult = 1, x_mult_gain = 0.1 } },
+  config = { extra = { x_mult = 1, x_mult_gain = 0.02 } },
 
   calculate = function(self, card, context)
     if context.stay_flipped and context.to_area == G.hand and ABN.is_dark(context.other_card) then
