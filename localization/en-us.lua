@@ -6217,9 +6217,10 @@ return {
             "{X:chips,C:white}^#4#{} Chips per copy of itself",
             "{C:inactive}(Currently{} {X:mult,C:white}^#1#{} {C:inactive}Mult,{} {X:chips,C:white}^#2#{} {C:inactive}Chips){}",
           },
-		  {
-			"Automatically end the run if there is 3 or more of this Joker",
-		  },
+          {
+            "{C:red,E:1}lose the game{} if you own {C:attention}3{}",
+            "or morecopies of this Joker",
+          },
         }
       },
       j_abn_naneinf_joker = {
