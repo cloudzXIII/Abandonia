@@ -17,8 +17,8 @@ SMODS.Joker {
 
   rarity = 4,
   atlas = 'AbandoniaLegendary',
-  pos = { x = 2, y = 10 },
-  soul_pos = { x = 3, y = 10 },
+  pos = { x = 6, y = 13 },
+  soul_pos = { x = 7, y = 13 },
   cost = 10,
   discovered = false,
   blueprint_compat = true,
