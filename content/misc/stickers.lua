@@ -244,7 +244,7 @@ SMODS.Sticker {
   },
   calculate = function(self, card, context)
     if context.destroy_card and context.cardarea == G.play and context.destroy_card == card and
-        SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
+    SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
       card.glass_trigger = true
       return { remove = true }
     end
@@ -483,7 +483,7 @@ SMODS.Sticker {
   },
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and
-        SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
+    SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
       return {
         mult = card.ability[self.key].dollars
       }
@@ -596,15 +596,127 @@ SMODS.Sticker {
   badge_colour = HEX("3c4368"),
 
   calculate = function(self, card, context)
-    if G.playing_cards then
-      for _, card in ipairs(G.playing_cards) do
-        if not card:is_suit("Spades") then
-          card:set_debuff(true)
-        elseif card:is_suit("Spades") and not card.ability.spaded then
-          card.ability.spaded = true
-          local rank_nominal = SMODS.Ranks[card.base.value] and SMODS.Ranks[card.base.value].nominal or 0
-          card.ability.perma_bonus = (card.ability.perma_bonus or 0) + rank_nominal
-        end
+    for _, _card in ipairs(G.playing_cards or {}) do
+      if not _card:is_suit("Spades") then
+        card:set_debuff(true)
+      end
+    end
+    if context.individual and context.cardarea == G.play then
+      if context.other_cardis_suit("Spades") then
+        return {
+          chips = context.other_card.base.nominal * 2
+        }
+      end
+    end
+  end,
+}
+
+SMODS.Sticker {
+  key = 'heart',
+  atlas = "AbandoniaStickers",
+  pos = { x = 2, y = 2 },
+  badge_colour = HEX("f03464"),
+
+  calculate = function(self, card, context)
+    for _, _card in ipairs(G.playing_cards or {}) do
+      if not _card:is_suit("Hearts") then
+        card:set_debuff(true)
+      end
+    end
+    if context.individual and context.cardarea == G.play then
+      if context.other_cardis_suit("Hearts") then
+        return {
+          chips = context.other_card.base.nominal * 2
+        }
+      end
+    end
+  end,
+}
+
+SMODS.Sticker {
+  key = 'club',
+  atlas = "AbandoniaStickers",
+  pos = { x = 3, y = 2 },
+  badge_colour = HEX("235955"),
+
+  calculate = function(self, card, context)
+    for _, _card in ipairs(G.playing_cards or {}) do
+      if not _card:is_suit("Clubs") then
+        card:set_debuff(true)
+      end
+    end
+    if context.individual and context.cardarea == G.play then
+      if context.other_cardis_suit("Clubs") then
+        return {
+          chips = context.other_card.base.nominal * 2
+        }
+      end
+    end
+  end,
+}
+
+SMODS.Sticker {
+  key = 'diamond',
+  atlas = "AbandoniaStickers",
+  pos = { x = 4, y = 2 },
+  badge_colour = HEX("f06b3f"),
+
+  calculate = function(self, card, context)
+    for _, _card in ipairs(G.playing_cards or {}) do
+      if not _card:is_suit("Diamonds") then
+        card:set_debuff(true)
+      end
+    end
+    if context.individual and context.cardarea == G.play then
+      if context.other_cardis_suit("Diamonds") then
+        return {
+          chips = context.other_card.base.nominal * 2
+        }
+      end
+    end
+  end,
+}
+
+
+SMODS.Sticker {
+  key = 'daytime',
+  atlas = "AbandoniaStickers",
+  pos = { x = 0, y = 3 },
+  badge_colour = HEX("eba61c"),
+
+  calculate = function(self, card, context)
+    for _, _card in ipairs(G.playing_cards or {}) do
+      if ABN.is_dark(_card) then
+        _card:set_debuff(true)
+      end
+    end
+    if context.individual and context.cardarea == G.play then
+      if ABN.is_light(context.other_card) then
+        return {
+          chips = context.other_card.base.nominal * 2
+        }
+      end
+    end
+  end,
+}
+
+SMODS.Sticker {
+  key = 'nighttime',
+  atlas = "AbandoniaStickers",
+  pos = { x = 1, y = 3 },
+  badge_colour = HEX("435b8c"),
+
+  calculate = function(self, card, context)
+    for _, _card in ipairs(G.playing_cards or {}) do
+      if ABN.is_light(_card) then
+        _card:set_debuff(true)
+      end
+    end
+    if context.individual and context.cardarea == G.play then
+      if ABN.is_dark(context.other_card) then
+        return {
+          chips = context.other_card.base.nominal * 2
+        }
       end
     end
   end,

@@ -9259,8 +9259,49 @@ return {
       abn_spade = {
         name = "Spade Sticker",
         text = {
-          "All {C:spades}Spades{} give {C:attention}Double{} chips",
-          "{C:mult}debuff{} all other suits",
+          "Played {C:spades}Spades{} give {C:attention}twice{}",
+          "their {C:attention}rank{} as {C:chips}Chips",
+          "{C:red}debuff{} all other suits",
+        }
+      },
+      abn_club = {
+        name = "Club Sticker",
+        text = {
+          "Played {C:clubs}Clubs{} give {C:attention}twice{}",
+          "their {C:attention}rank{} as {C:chips}Chips",
+          "{C:red}debuff{} all other suits",
+        }
+      },
+      abn_diamond = {
+        name = "Diamond Sticker",
+        text = {
+          "Played {C:diamonds}Diamonds{} give {C:attention}twice{}",
+          "their {C:attention}rank{} as {C:chips}Chips",
+          "{C:red}debuff{} all other suits",
+        }
+      },
+      abn_heart = {
+        name = "Heart Sticker",
+        text = {
+          "Played {C:hearts}Hearts{} give {C:attention}twice{}",
+          "their {C:attention}rank{} as {C:chips}Chips",
+          "{C:red}debuff{} all other suits",
+        }
+      },
+      abn_daytime = {
+        name = "Daytime",
+        text = {
+          "Played {C:diamonds}Light Suits{} give {C:attention}twice{}",
+          "their {C:attention}rank{} as {C:chips}Chips",
+          "{C:red}debuff{} all {C:spades}Dark Suits{}",
+        }
+      },
+      abn_nighttime = {
+        name = "Nighttime",
+        text = {
+          "Played {C:spades}Dark Suits{} give {C:attention}twice{}",
+          "their {C:attention}rank{} as {C:chips}Chips",
+          "{C:red}debuff{} all {C:diamonds}Light Suits{}",
         }
       },
 
@@ -10776,6 +10817,9 @@ return {
     challenge_names = {
     },
     dictionary = {
+      -- sigil menu
+      ph_abn_sigils_active = "Sigils Active",
+      ph_abn_no_sigils_active = "No Sigils Active",
       -- Config options
       k_abn_config_show_credits = "Artist Credits",
       abn_show_credits = "Shows credits under mod badge when enabled",
@@ -10865,6 +10909,7 @@ return {
       k_astro_cards = "Astro",
 
       b_sigils_cards = "Sigil Cards",
+      b_abn_sigils = "Sigils",
       k_sigils = "Sigil",
 
       b_nightshift_cards_cards = "Nightshift Cards",
@@ -10934,6 +10979,11 @@ return {
       abn_spicy = "Spicy",
       abn_x = "X",
       abn_spade = "Spade",
+      abn_club = "Club",
+      abn_diamond = "Diamond",
+      abn_heart = "Heart",
+      abn_daytime = "Daytime",
+      abn_nighttime = "Nightime",
       -- Seals
       abn_orange_seal = "Orange Seal",
       abn_grey_seal = "Grey Seal",
