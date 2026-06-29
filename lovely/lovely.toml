@@ -72,7 +72,8 @@ position = "after"
 payload = '''
 abn = {
     legendary_pool = {in_shop = false, rate = 1.00},
-    cthonian = false
+    cthonian = false,
+    used_sigils = {},
 },
 '''
 match_indent = true

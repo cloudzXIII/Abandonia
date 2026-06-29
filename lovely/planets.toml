@@ -15,6 +15,10 @@ payload = '''
 	label = localize('b_abn_planet_ranks'),
 	tab_definition_function = create_UIBox_current_ranks,
 },
+{
+	label = localize('b_abn_sigils'),
+	tab_definition_function = create_UIBox_used_sigils,
+},
 '''
 match_indent = true
 

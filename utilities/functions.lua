@@ -501,3 +501,97 @@ ABN.get_positive_stickers = function()
   }
   return positive_stickers
 end
+
+function create_UIBox_used_sigils()
+  local silent = false
+  local keys_used = {}
+  local area_count = 0
+  local sigil_areas = {}
+  local sigil_tables = {}
+  local sigil_table_rows = {}
+  for k, v in ipairs(G.P_CENTER_POOLS["sigils"]) do
+    local key = 1 + math.floor((k - 0.1) / 2)
+    keys_used[key] = keys_used[key] or {}
+    if G.GAME.abn.used_sigils[v.key] then
+      keys_used[key][#keys_used[key] + 1] = v
+    end
+  end
+  for k, v in ipairs(keys_used) do
+    if next(v) then
+      area_count = area_count + 1
+    end
+  end
+  for k, v in ipairs(keys_used) do
+    if next(v) then
+      if #sigil_areas == 5 or #sigil_areas == 10 then
+        table.insert(sigil_table_rows,
+          { n = G.UIT.R, config = { align = "cm", padding = 0, no_fill = true }, nodes = sigil_tables }
+        )
+        sigil_tables = {}
+      end
+      sigil_areas[#sigil_areas + 1] = CardArea(
+        G.ROOM.T.x + 0.2 * G.ROOM.T.w / 2, G.ROOM.T.h,
+        (#v == 1 and 1 or 1.33) * G.CARD_W,
+        (area_count >= 10 and 0.75 or 1.07) * G.CARD_H,
+        { card_limit = 2, type = 'voucher', highlight_limit = 0 })
+      for kk, vv in ipairs(v) do
+        local center = G.P_CENTERS[vv.key]
+        local card = Card(sigil_areas[#sigil_areas].T.x + sigil_areas[#sigil_areas].T.w / 2,
+          sigil_areas[#sigil_areas].T.y, G.CARD_W, G.CARD_H, nil, center,
+          { bypass_discovery_center = true, bypass_discovery_ui = true, bypass_lock = true })
+        card.ability.order = vv.order
+        card:start_materialize(nil, silent)
+        silent = true
+        sigil_areas[#sigil_areas]:emplace(card)
+      end
+      table.insert(sigil_tables,
+        {
+          n = G.UIT.C,
+          config = { align = "cm", padding = 0, no_fill = true },
+          nodes = {
+            { n = G.UIT.O, config = { object = sigil_areas[#sigil_areas] } }
+          }
+        }
+      )
+    end
+  end
+  table.insert(sigil_table_rows,
+    { n = G.UIT.R, config = { align = "cm", padding = 0, no_fill = true }, nodes = sigil_tables }
+  )
+
+
+  local t = silent and {
+        n = G.UIT.ROOT,
+        config = { align = "cm", colour = G.C.CLEAR },
+        nodes = {
+          {
+            n = G.UIT.R,
+            config = { align = "cm" },
+            nodes = {
+              { n = G.UIT.O, config = { object = DynaText({ string = { localize('ph_abn_sigils_active') }, colours = { G.C.UI.TEXT_LIGHT }, bump = true, scale = 0.6 }) } }
+            }
+          },
+          {
+            n = G.UIT.R,
+            config = { align = "cm", minh = 0.5 },
+            nodes = {
+            }
+          },
+          {
+            n = G.UIT.R,
+            config = { align = "cm", colour = G.C.BLACK, r = 1, padding = 0.15, emboss = 0.05 },
+            nodes = {
+              { n = G.UIT.R, config = { align = "cm" }, nodes = sigil_table_rows },
+            }
+          }
+        }
+      } or
+      {
+        n = G.UIT.ROOT,
+        config = { align = "cm", colour = G.C.CLEAR },
+        nodes = {
+          { n = G.UIT.O, config = { object = DynaText({ string = { localize('ph_abn_no_sigils_active') }, colours = { G.C.UI.TEXT_LIGHT }, bump = true, scale = 0.6 }) } }
+        }
+      }
+  return t
+end

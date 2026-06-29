@@ -33,22 +33,22 @@ function Game:init_game_object(...)
 end
 
 local rank_planets = {
-  { key = "lauto",    rank = "2",      pos = { x = 2, y = 0 } },
-  { key = "urcurme",  rank = "3",      pos = { x = 3, y = 0 } },
-  { key = "nevus",    rank = "4",      pos = { x = 4, y = 0 } },
-  { key = "aerth",    rank = "5",      pos = { x = 5, y = 0 } },
-  { key = "sarh",     rank = "6",      pos = { x = 0, y = 1 } },
-  { key = "unpter",   rank = "7",      pos = { x = 1, y = 1 } },
-  { key = "urno",     rank = "8",      pos = { x = 2, y = 1 } },
-  { key = "ranu",     rank = "9",      pos = { x = 3, y = 1 } },
-  { key = "etnup",    rank = "10",     pos = { x = 4, y = 1 } },
-  { key = "zabures",  rank = "Jack",   pos = { x = 5, y = 1 } },
-  { key = "pergus",   rank = "Queen",  pos = { x = 0, y = 2 } },
-  { key = "vugmado",  rank = "King",   pos = { x = 1, y = 2 } },
-  { key = "abandia",  rank = "Ace",    pos = { x = 2, y = 2 } },
-  { key = "clun_va",  rank = "abn_11", pos = { x = 0, y = 5 } },
-  { key = "reart",    rank = "abn_12", pos = { x = 4, y = 5 } },
-  { key = "oshprue",  rank = "abn_13", pos = { x = 0, y = 6 } },
+  { key = "lauto", rank = "2", pos = { x = 2, y = 0 } },
+  { key = "urcurme", rank = "3", pos = { x = 3, y = 0 } },
+  { key = "nevus", rank = "4", pos = { x = 4, y = 0 } },
+  { key = "aerth", rank = "5", pos = { x = 5, y = 0 } },
+  { key = "sarh", rank = "6", pos = { x = 0, y = 1 } },
+  { key = "unpter", rank = "7", pos = { x = 1, y = 1 } },
+  { key = "urno", rank = "8", pos = { x = 2, y = 1 } },
+  { key = "ranu", rank = "9", pos = { x = 3, y = 1 } },
+  { key = "etnup", rank = "10", pos = { x = 4, y = 1 } },
+  { key = "zabures", rank = "Jack", pos = { x = 5, y = 1 } },
+  { key = "pergus", rank = "Queen", pos = { x = 0, y = 2 } },
+  { key = "vugmado", rank = "King", pos = { x = 1, y = 2 } },
+  { key = "abandia", rank = "Ace", pos = { x = 2, y = 2 } },
+  { key = "clun_va", rank = "abn_11", pos = { x = 0, y = 5 } },
+  { key = "reart", rank = "abn_12", pos = { x = 4, y = 5 } },
+  { key = "oshprue", rank = "abn_13", pos = { x = 0, y = 6 } },
   { key = "meisness", rank = "abn_14", pos = { x = 5, y = 5 } },
 }
 SMODS.Attribute { key = "rank_planet" }
@@ -316,11 +316,6 @@ function create_UIBox_current_ranks()
       { n = G.UIT.R, config = { align = "cm", padding = 0.04 }, nodes = rows }
     }
   }
-end
-
-G.FUNCS.current_ranks = function(e)
-  G.SETTINGS.paused = true
-  G.FUNCS.overlay_menu { definition = create_UIBox_current_ranks() }
 end
 
 --#endregion

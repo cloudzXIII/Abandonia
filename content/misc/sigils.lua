@@ -25,6 +25,7 @@ SMODS.Consumable {
     end,
 
     use = function(self, card, area, copier)
+        G.GAME.abn.used_sigils[card.config.center.key] = true
         -- Create the card as a Voucher to live in the voucher area
         local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_bael')
         _card:add_to_deck()
@@ -62,6 +63,7 @@ SMODS.Consumable {
 
         --kill self
         if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+            G.GAME.abn.used_sigils[card.config.center.key] = nil
             card:start_dissolve()
         end
     end,
@@ -85,6 +87,7 @@ SMODS.Consumable {
     end,
 
     use = function(self, card, area, copier)
+        G.GAME.abn.used_sigils[card.config.center.key] = true
         local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_botis')
         _card:add_to_deck()
         G.vouchers:emplace(_card)
@@ -148,6 +151,7 @@ SMODS.Consumable {
 
         -- kill self
         if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+            G.GAME.abn.used_sigils[card.config.center.key] = nil
             card:start_dissolve()
         end
     end,
@@ -169,6 +173,7 @@ SMODS.Consumable {
     end,
 
     use = function(self, card, area, copier)
+        G.GAME.abn.used_sigils[card.config.center.key] = true
         local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_vinea')
         _card:add_to_deck()
         G.vouchers:emplace(_card)
@@ -294,6 +299,7 @@ SMODS.Consumable {
 
         -- Kill self
         if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+            G.GAME.abn.used_sigils[card.config.center.key] = nil
             card:start_dissolve()
         end
     end,
@@ -315,6 +321,7 @@ SMODS.Consumable {
     end,
 
     use = function(self, card, area, copier)
+        G.GAME.abn.used_sigils[card.config.center.key] = true
         local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_morax')
         _card:add_to_deck()
         G.vouchers:emplace(_card)
@@ -394,6 +401,7 @@ SMODS.Consumable {
 
         -- Kill self
         if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+            G.GAME.abn.used_sigils[card.config.center.key] = nil
             card:start_dissolve()
         end
     end,
@@ -415,6 +423,7 @@ SMODS.Consumable {
     end,
 
     use = function(self, card, area, copier)
+        G.GAME.abn.used_sigils[card.config.center.key] = true
         local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_bune')
         _card:add_to_deck()
         G.vouchers:emplace(_card)
@@ -491,6 +500,7 @@ SMODS.Consumable {
 
         -- Kill self
         if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+            G.GAME.abn.used_sigils[card.config.center.key] = nil
             card:start_dissolve()
         end
     end,
@@ -512,6 +522,7 @@ SMODS.Consumable {
     end,
 
     use = function(self, card, area, copier)
+        G.GAME.abn.used_sigils[card.config.center.key] = true
         local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_furfur')
         _card:add_to_deck()
         G.vouchers:emplace(_card)
@@ -591,6 +602,7 @@ SMODS.Consumable {
 
         -- Cleanup
         if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+            G.GAME.abn.used_sigils[card.config.center.key] = nil
             card:start_dissolve()
         end
     end,
@@ -612,6 +624,7 @@ SMODS.Consumable {
     end,
 
     use = function(self, card, area, copier)
+        G.GAME.abn.used_sigils[card.config.center.key] = true
         local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_bifrons')
         _card:add_to_deck()
         G.vouchers:emplace(_card)
@@ -689,6 +702,7 @@ SMODS.Consumable {
 
         -- Kill self
         if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+            G.GAME.abn.used_sigils[card.config.center.key] = nil
             card:start_dissolve()
         end
     end,
@@ -710,6 +724,7 @@ SMODS.Consumable {
     end,
 
     use = function(self, card, area, copier)
+        G.GAME.abn.used_sigils[card.config.center.key] = true
         local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_crocell')
         _card:add_to_deck()
         G.vouchers:emplace(_card)
@@ -852,6 +867,7 @@ SMODS.Consumable {
         end
 
         if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+            G.GAME.abn.used_sigils[card.config.center.key] = nil
             card:start_dissolve()
         end
     end,
@@ -873,6 +889,7 @@ SMODS.Consumable {
     end,
 
     use = function(self, card, area, copier)
+        G.GAME.abn.used_sigils[card.config.center.key] = true
         local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_belial')
         _card:add_to_deck()
         G.vouchers:emplace(_card)
@@ -932,6 +949,7 @@ SMODS.Consumable {
 
         -- Cleanup
         if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+            G.GAME.abn.used_sigils[card.config.center.key] = nil
             card:start_dissolve()
         end
     end,
@@ -953,6 +971,7 @@ SMODS.Consumable {
     end,
 
     use = function(self, card, area, copier)
+        G.GAME.abn.used_sigils[card.config.center.key] = true
         local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_astaroth')
         _card:add_to_deck()
         G.vouchers:emplace(_card)
@@ -1052,6 +1071,7 @@ SMODS.Consumable {
 
         -- Kill self
         if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+            G.GAME.abn.used_sigils[card.config.center.key] = nil
             card:start_dissolve()
         end
     end,
@@ -1073,6 +1093,7 @@ SMODS.Consumable {
     end,
 
     use = function(self, card, area, copier)
+        G.GAME.abn.used_sigils[card.config.center.key] = true
         local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_asmodeus')
         _card:add_to_deck()
         G.vouchers:emplace(_card)
@@ -1191,6 +1212,7 @@ SMODS.Consumable {
 
         -- Kill self
         if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+            G.GAME.abn.used_sigils[card.config.center.key] = nil
             card:start_dissolve()
         end
     end,
@@ -1212,6 +1234,7 @@ SMODS.Consumable {
     end,
 
     use = function(self, card, area, copier)
+        G.GAME.abn.used_sigils[card.config.center.key] = true
         local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_camio')
         _card:add_to_deck()
         G.vouchers:emplace(_card)
@@ -1289,6 +1312,7 @@ SMODS.Consumable {
 
         -- Cleanup
         if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+            G.GAME.abn.used_sigils[card.config.center.key] = nil
             card:start_dissolve()
         end
     end,
@@ -1311,6 +1335,7 @@ SMODS.Consumable {
     end,
 
     use = function(self, card, area, copier)
+        G.GAME.abn.used_sigils[card.config.center.key] = true
         -- 1. Find the highest play count
         local max_plays = 0
         for k, v in pairs(G.GAME.hands) do
