@@ -4414,7 +4414,9 @@ return {
       j_abn_missing_texture = {
         name = 'Missing Texture',
         text = {
-          "Turns every scored card into an {C:attention}Ace{}"
+          "Turns every scored card",
+          "into an {C:attention}Ace{}",
+          "before scoring"
         },
       },
       j_abn_mult_speed = {
@@ -7548,7 +7550,9 @@ return {
       j_abn_grampa_joker = { -- to relocalise
         name = "Grampa Joker",
         text = {
-          "The {C:attention}First{} scoring card on the {C:attention}Final hand{} gains {C:dark_edition}Vintage{}",
+          "Add {C:dark_edition}Vintage{} edition",
+          "to first scoring card",
+          "on {C:attention}last hand{} of round",
         }
       },
       j_abn_trans_joker = {
