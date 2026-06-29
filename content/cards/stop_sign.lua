@@ -33,13 +33,3 @@ SMODS.Joker {
     artist = "Patitofi8"
   },
 }
-
-local set_ability = Card.set_ability;
-function Card:set_ability(...)
-  set_ability(self, ...)
-  if next(SMODS.find_card("j_abn_stop_sign")) then
-    if self.ability and self.ability.set == "Booster" and self.config.center.kind == "Buffoon" then
-      self.ability.choose = 2
-    end
-  end
-end

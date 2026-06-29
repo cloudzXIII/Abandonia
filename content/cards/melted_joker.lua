@@ -12,7 +12,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { xmult = 1.25, dollars = 1 } },
+  config = { extra = { xmult = 1.5, dollars = 1 } },
 
   calculate = function(self, card, context)
     if context.setting_blind and not context.blueprint then

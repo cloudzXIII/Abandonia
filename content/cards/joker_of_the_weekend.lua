@@ -14,7 +14,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = false,
 
-  config = { extra = { x_mult = 1, x_mult_gain = 0.3, x_chips = 1, x_chips_gain = 0.5 } },
+  config = { extra = { x_mult = 1, x_mult_gain = 0.3, x_chips = 1, x_chips_gain = 0.3 } },
 
   calculate = function(self, card, context)
     if context.end_of_round and context.main_eval and not context.blueprint then

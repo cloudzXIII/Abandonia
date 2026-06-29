@@ -10,14 +10,14 @@ SMODS.Joker {
     }
   end,
 
-  rarity = 1,
+  rarity = 2,
   atlas = 'ABNJokerSheet2',
   pos = { x = 8, y = 4 },
   cost = 3,
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { chips = 0, chips_gain = 80 } },
+  config = { extra = { chips = 0, chips_gain = 8 } },
 
   calculate = function(self, card, context)
     if context.using_consumeable and not context.blueprint and context.consumeable.ability.set == 'Planet' then

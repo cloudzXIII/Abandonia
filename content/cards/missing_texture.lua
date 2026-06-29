@@ -1,7 +1,7 @@
 SMODS.Joker {
   key = 'missing_texture',
 
-  rarity = 2,
+  rarity = 3,
   atlas = 'ABNJokerSheet4',
   pos = { x = 6, y = 3 },
   cost = 6,

@@ -11,7 +11,7 @@ SMODS.Joker {
     }
   end,
 
-  rarity = 1,
+  rarity = 2,
   atlas = 'ABNJokerSheet1',
   pos = { x = 7, y = 1 },
   cost = 3,
@@ -34,10 +34,30 @@ SMODS.Joker {
 
 function ABN.reset_abn_gerrymandering()
   G.GAME.current_round.abn_gerrymandering = G.GAME.current_round.abn_gerrymandering or { suit = 'Hearts' }
+  local current_suit = G.GAME.current_round.abn_gerrymandering.suit
+
   local gerry_suits = {}
-  for k, v in ipairs({ 'Spades', 'Hearts', 'Clubs', 'Diamonds', 'abn_Snow', 'abn_Penumbra', 'abn_Tie', 'abn_Bow' }) do
-    if v ~= G.GAME.current_round.abn_gerrymandering.suit then gerry_suits[#gerry_suits + 1] = v end
+  local seen = {}
+
+  for _, c in ipairs(G.playing_cards) do
+    local s = c.base.suit
+    if not seen[s] then
+      seen[s] = true
+    end
   end
-  local suit = pseudorandom_element(gerry_suits, 'j_abn_gerrymandering' .. G.GAME.round_resets.ante)
-  G.GAME.current_round.abn_gerrymandering.suit = suit
+
+  for suit_name, _ in pairs(seen) do
+    if suit_name ~= current_suit then
+      table.insert(gerry_suits, suit_name)
+    end
+  end
+
+  if #gerry_suits == 0 and seen[current_suit] then
+    table.insert(gerry_suits, current_suit)
+  end
+
+  if #gerry_suits > 0 then
+    local suit = pseudorandom_element(gerry_suits, 'j_abn_gerrymandering' .. G.GAME.round_resets.ante)
+    G.GAME.current_round.abn_gerrymandering.suit = suit
+  end
 end

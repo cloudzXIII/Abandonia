@@ -32,7 +32,7 @@ SMODS.Joker {
 
   config = {
     extra = {
-      mult = 1
+      mult = 10
     },
   },
   calculate = function(self, card, context)
