@@ -6,6 +6,9 @@ SMODS.Joker {
   cost = 6,
   discovered = false,
   blueprint_compat = false,
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_beneficial_sticker_info", set = "Other" }
+  end
 
   calculate = function(self, card, context)
     -- Trigger at end of round

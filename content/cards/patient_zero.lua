@@ -7,6 +7,10 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = false,
 
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_beneficial_sticker_info", set = "Other" }
+  end,
+
   set_ability = function(self, card, initial)
     card:add_sticker("abn_immortal", true)
   end,

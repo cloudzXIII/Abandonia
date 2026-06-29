@@ -854,6 +854,7 @@ SMODS.Tag {
   atlas = "AbandoniaTags",
 
   loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = { key = "abn_beneficial_sticker_info", set = "Other" }
   end,
 
   apply = function(self, tag, context)

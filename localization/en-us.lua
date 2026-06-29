@@ -8467,6 +8467,12 @@ return {
       },
     },
     Other = {
+      abn_beneficial_sticker_info = {
+        name = "Beneficial Stickers",
+        text = {
+          "Stickers with {C:green}positive{} effects"
+        }
+      },
       abn_plagued_joker_info = {
         name = "Plagued Joker",
         text = {
