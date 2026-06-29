@@ -20,7 +20,7 @@ SMODS.Joker {
   config = {
     extra = {
       chips = 50,
-      dollars = 20
+      dollars = 30
     },
   },
   calculate = function(self, card, context)

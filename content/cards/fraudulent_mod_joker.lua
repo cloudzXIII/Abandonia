@@ -1,6 +1,6 @@
 SMODS.Joker {
   key = 'fraudulent_mod_joker',
-  rarity = 1,
+  rarity = 2,
   atlas = 'ABNJokerSheet12',
   pos = { x = 7, y = 1 },
   cost = 4,

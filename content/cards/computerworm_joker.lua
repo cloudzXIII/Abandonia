@@ -47,6 +47,17 @@ SMODS.Joker {
       end
     end
 
+    if count >= 3 and G.STATE ~= G.STATES.GAME_OVER and not card.game_over_triggered then
+      card.game_over_triggered = true
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          G.STATE = G.STATES.GAME_OVER
+          G.STATE_COMPLETE = false
+          return true
+        end
+      }))
+    end
+
     card.ability.extra.emult = count * card.ability.extra.emultadd
     card.ability.extra.echips = count * card.ability.extra.echipsadd
   end,
@@ -56,7 +67,7 @@ SMODS.Joker {
       -- identify the leftmost Joker
       local leftmost_joker = G.jokers.cards[1]
 
-      if leftmost_joker and not leftmost_joker.getting_sliced and not SMODS.is_eternal(leftmost_joker, card) then
+      if leftmost_joker and not leftmost_joker.getting_sliced and not leftmost_joker.ability.eternal then
         leftmost_joker.getting_sliced = true
         G.GAME.joker_buffer = G.GAME.joker_buffer - 1
         G.E_MANAGER:add_event(Event({
@@ -77,8 +88,6 @@ SMODS.Joker {
         })
 
         j:set_edition({ negative = true }, true)
-        j:set_eternal(nil)
-
         j:add_to_deck()
         G.jokers:emplace(j)
       end

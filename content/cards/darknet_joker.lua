@@ -49,7 +49,7 @@ SMODS.Joker {
 					message = localize('k_upgrade_ex'),
                 })
 
-                if G.GAME.current_round.hands_played == 0 and #real_scoring_hand > 0 then
+                if #real_scoring_hand > 0 then
                     local only_numbers = true
                     for _, scored_card in ipairs(real_scoring_hand) do
                         local id = scored_card:get_id()

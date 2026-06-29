@@ -13,7 +13,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { sell_value = 4, dollars = 20 } },
+  config = { extra = { sell_value = 1, dollars = 20 } },
   calculate = function(self, card, context)
     if context.using_consumeable and context.consumeable.ability.set == "weather_report" then
       for _, other_card in ipairs(G.jokers.cards) do

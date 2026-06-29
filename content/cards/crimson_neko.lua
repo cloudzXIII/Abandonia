@@ -13,7 +13,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { x_chips = 1, x_chips_gain = 0.5 } },
+  config = { extra = { x_chips = 1, x_chips_gain = 0.25 } },
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and context.other_card.lucky_trigger and not context.blueprint then
       SMODS.scale_card(card, {
