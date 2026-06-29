@@ -2,7 +2,7 @@
 SMODS.Joker {
   key = 'jimbo_inscryption',
 
-  rarity = 1,
+  rarity = 3,
   atlas = 'ABNJokerSheet6',
   pos = { x = 0, y = 5 },
   cost = 4,

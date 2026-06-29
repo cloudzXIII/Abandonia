@@ -19,7 +19,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { mult = 0, chips = 0, mult_gain = 2, chips_gain = 20 } },
+  config = { extra = { mult = 0, chips = 0, mult_gain = 2, chips_gain = 10 } },
 
   calculate = function(self, card, context)
     if context.setting_blind then

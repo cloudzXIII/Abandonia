@@ -1,6 +1,6 @@
 SMODS.Joker {
   key = 'interminable_joker',
-  rarity = 1,
+  rarity = 3,
   atlas = 'ABNJokerSheet4',
   pos = { x = 1, y = 1 },
   cost = 4,

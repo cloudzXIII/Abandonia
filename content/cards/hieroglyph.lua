@@ -8,7 +8,7 @@ SMODS.Joker {
     return { vars = {} }
   end,
 
-  rarity = 1,
+  rarity = 2,
   atlas = 'ABNJokerSheet5',
   pos = { x = 1, y = 0 },
   cost = 5,

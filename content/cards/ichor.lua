@@ -16,7 +16,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = false,
 
-  config = { extra = { xmult = 1.5 } },
+  config = { extra = { xmult = 2 } },
 
   calculate = function(self, card, context)
     if context.other_joker and context.other_joker.edition and context.other_joker.edition.negative == true and card ~= context.other_joker

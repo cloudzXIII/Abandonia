@@ -15,7 +15,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { repetitions = 1, count = 0, base = 1, odds = 2 } },
+  config = { extra = { repetitions = 1, count = 0, base = 1, odds = 4 } },
 
   calculate = function(self, card, context)
     if context.before then
