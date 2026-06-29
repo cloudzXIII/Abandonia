@@ -31,7 +31,7 @@ SMODS.Joker {
 
         -- Visual Feedback
         return {
-          message = ("Tasty!"),
+          message = localize("k_abn_tasty_ex"),
           colour = G.C.ATTENTION
         }
       end

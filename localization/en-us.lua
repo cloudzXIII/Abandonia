@@ -10755,6 +10755,7 @@ return {
       abn_hazard_tags = "Hazard Tags",
       abn_kept = "Kept!",
       k_abn_even = "Even",
+      k_abn_tasty_ex = "Tasty!",
       k_abn_odd = "Odd",
       k_abn_rankless = "Rankless",
       k_abn_numbered = "numbered",

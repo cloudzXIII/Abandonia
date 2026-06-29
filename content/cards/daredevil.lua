@@ -17,13 +17,6 @@ SMODS.Joker {
     info_queue[#info_queue + 1] = G.P_CENTERS.j_abn_stuntdouble
   end,
   calculate = function(self, card, context)
-    -- Force all played cards (including face down ones) into the scoring hand
-    if context.modify_scoring_hand and not context.blueprint then
-      return {
-        add_to_hand = true
-      }
-    end
-
     -- Individual scoring evaluation (runs once per individual scoring card)
     if context.individual and context.cardarea == G.play and not context.blueprint then
       local scoring_card = context.other_card
@@ -56,7 +49,13 @@ SMODS.Joker {
         return {
           message = localize('k_again_ex'),
           repetitions = card.ability.extra.facedown_retriggers,
-          card = card
+          message_card = card
+        }
+      end
+
+      if context.modify_scoring_hand and not context.blueprint then
+        return {
+          add_to_hand = true
         }
       end
     end
