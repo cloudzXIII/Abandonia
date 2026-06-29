@@ -490,3 +490,13 @@ ABN.add_tag_to_shop = function(key, price, extra)
 
   return tag
 end
+
+ABN.get_positive_stickers = function()
+  local positive_stickers = {
+    'abn_pump_up', 'abn_bullseye', 'abn_shovel',
+    'abn_weight', 'abn_possiblity', 'abn_square',
+    'abn_lightning_bolt', 'abn_top_hat', 'abn_spicy',
+    'abn_lucky',
+  }
+  return positive_stickers
+end

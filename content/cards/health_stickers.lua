@@ -15,12 +15,8 @@ SMODS.Joker {
 
       -- Check if a leftmost joker exists
       if leftmost_joker then
-        -- Define the pool of available Abandonia stickers
-        local abn_stickers = {
-          'abn_pump_up', 'abn_crown', 'abn_immortal', 'abn_bullseye', 'abn_lightning_bolt',
-          'abn_top_hat', 'abn_cat_eye', 'abn_glove_hand', 'abn_shovel',
-          'abn_x', 'abn_spicy', --'abn_blood_drop',
-        }
+        -- Get all positive stickers
+        local abn_stickers = ABN.get_positive_stickers()
 
         -- Select a random sticker key from the list
         local chosen_sticker = pseudorandom_element(abn_stickers, pseudoseed('health_stickers'))

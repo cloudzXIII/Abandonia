@@ -889,13 +889,8 @@ SMODS.Tag {
           card.ability.couponed = true
           card:set_cost()
 
-          -- sticker list
-          local abn_stickers = {
-            'abn_pump_up', 'abn_bullseye', 'abn_shovel',
-            'abn_weight', 'abn_possiblity', 'abn_square',
-            'abn_lightning_bolt', 'abn_top_hat', 'abn_spicy',
-            'abn_lucky',
-          }
+          -- Get all positive stickers
+          local abn_stickers = ABN.get_positive_stickers()
 
 
           local chosen_sticker = pseudorandom_element(abn_stickers, pseudoseed('tag_sticker'))

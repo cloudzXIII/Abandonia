@@ -1402,7 +1402,7 @@ return {
         text = {
           "Next base edition shop",
           "Has a free Joker",
-          "with a {C:attention}positive{} Sticker",
+          "with a {C:green}beneficial{} Sticker",
         },
       },
       tag_abn_plague = {
@@ -4733,7 +4733,7 @@ return {
         name = "Patient Zero",
         text = {
           "When {C:attention}Blind{} is selected,",
-          "apply a {C:green}positive{} sticker",
+          "apply a {C:green}beneficial{} sticker",
           "to {C:attention}rightmost{} Joker",
         }
       },
