@@ -4373,9 +4373,8 @@ return {
         name = "Abandonia",
         text = {
           {
-            "Scored cards",
-            "give {C:white,X:mult}X#1#{} Mult",
-            "and {C:white,X:chips}X#2#{} Chips",
+            "Played cards give {C:white,X:mult}X#1#{} Mult",
+            "and {C:white,X:chips}X#2#{} Chips when scored",
           },
           {
             "If this Joker has {C:dark_edition}Abandoned{} edition,",
@@ -10450,17 +10449,18 @@ return {
       m_abn_kintsugi = {
         name = "Kintsugi Card",
         text = {
-          "Gives {C:money}$#3#{} {C:mult}+#2#{} Mult {C:chips}+#1#{} Chips",
-          "{C:green}#4# in #5#{} chance to create a copy of this card when another card is {C:mult}destroyed{}",
-          "{C:green}#6# in #7#{} chance for this card to double its values",
+          "Gives {C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult, and {C:money}$#3#{}",
+          "{C:green}#4# in #5#{} chance to create a copy of this card",
+          "when another card is {C:mult}destroyed{}",
+          "{C:green}#6# in #7#{} chance for this card to {C:attention}double{} its {C:attention}values{}",
         },
       },
       m_abn_first_aid = {
         name = "First Aid",
         text = {
-          "If played with {C:mult}Debuffed{} cards gain {C:mult}+#4#{} Mult",
+          "If played with {C:mult}debuffed{} cards gain {C:mult}+#4#{} Mult",
           "If a card is {C:mult}destroyed{} gain {C:chips}+#3#{} Chips",
-          "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#1#{} {C:inactive}Chips){}",
+          "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips){}",
         },
       },
     },
