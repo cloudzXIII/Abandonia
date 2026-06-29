@@ -21,9 +21,9 @@ SMODS.Joker {
 
   calculate = function(self, card, context)
     if context.repetition and context.cardarea == G.play and context.other_card == context.scoring_hand[1] then
-        return {
-			repetitions = G.GAME.current_round.discards_left
-        }
+      return {
+        repetitions = G.GAME.current_round.hands_left
+      }
     end
   end,
 

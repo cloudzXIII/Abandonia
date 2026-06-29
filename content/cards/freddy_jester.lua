@@ -24,7 +24,7 @@ SMODS.Joker {
   blueprint_compat = true,
   unlocked = false,
 
-  config = { extra = { x_mult = 1, x_mult_gain = 0.04, chips = 25 } },
+  config = { extra = { x_mult = 1.5, x_mult_gain = 0.04, chips = 25 } },
 
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and context.other_card:is_suit("abn_Penumbra") then

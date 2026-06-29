@@ -53,7 +53,7 @@ SMODS.Joker {
   blueprint_compat = true,
   unlocked = false,
 
-  config = { extra = { x_chips = 1, x_chips_gain = 0.04, mult_gain = 2, chips_gain = 2, x_mult = 1, x_mult_gain = 0.04 } },
+  config = { extra = { x_chips = 1.5, x_chips_gain = 0.04, mult_gain = 2, chips_gain = 2, x_mult = 1, x_mult_gain = 0.04 } },
 
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.hand and context.other_card:is_suit(G.GAME.current_round.abn_klyde_clown and G.GAME.current_round.abn_klyde_clown.suit or "Hearts") and not context.blueprint then

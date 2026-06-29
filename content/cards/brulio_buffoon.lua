@@ -24,7 +24,7 @@ SMODS.Joker {
   blueprint_compat = true,
   unlocked = false,
 
-  config = { extra = { x_chips = 1, x_chips_gain = 0.04, mult = 1 } },
+  config = { extra = { x_chips = 1.5, x_chips_gain = 0.04, mult = 1 } },
 
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and context.other_card.base.suit == "abn_suitless" then

@@ -4957,7 +4957,7 @@ return {
         name = "Claus",
         text = {
           "Retrigger {C:attention}first{} scoring card",
-          "once per remaining {C:attention}discard",
+          "once per remaining {C:attention}hand",
         }
       },
       j_abn_jamie = {
