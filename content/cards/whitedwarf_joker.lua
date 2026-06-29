@@ -13,7 +13,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { x_mult = 1, x_mult_gain = 0.3 } },
+  config = { extra = { x_mult = 1, x_mult_gain = 0.1 } },
   calculate = function(self, card, context)
     if context.using_consumeable and context.consumeable.ability.set == "Planet" and context.consumeable:has_attribute("rank_planet") then
       SMODS.scale_card(card, {

@@ -1,18 +1,18 @@
 SMODS.Joker {
   key = 'ransom_joker',
-  rarity = 2,
+  rarity = 1,
   atlas = 'ABNJokerSheet8',
   pos = { x = 2, y = 5 },
   cost = 6,
   discovered = false,
   blueprint_compat = true,
   config = { extra = { odds = 10, dollars = 1 } },
-  
+
   loc_vars = function(self, info_queue, card)
     local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds)
     return { vars = { numerator, denominator, card.ability.extra.dollars } }
   end,
-  
+
   calculate = function(self, card, context)
     if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
       card.ability.extra_value = card.ability.extra_value + (#G.jokers.cards * card.ability.extra.dollars)
@@ -23,10 +23,10 @@ SMODS.Joker {
         card = card,
       }
     end
-	
+
     if context.selling_card or context.destroyed_card then
       local triggered_card = context.card
-      
+
       if triggered_card and triggered_card.ability and triggered_card.ability.set == 'Joker' then
         local rarity = triggered_card.config.center.rarity
         if SMODS.pseudorandom_probability(card, 'ransom', 1, card.ability.extra.odds) then
@@ -76,7 +76,7 @@ SMODS.Joker {
       end
     end
   end,
-  
+
   abn_artist_credits = {
     artist = "Da Gorbage Rat",
   },
