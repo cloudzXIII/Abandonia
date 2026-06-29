@@ -4219,10 +4219,10 @@ return {
       j_abn_gimbo = {
         name = "Gimbo",
         text = {
-          "Each played {C:attention}2{},",
-          "{C:attention}3{}, {C:attention}5{} or {C:attention}7{} gives",
-          "{C:mult}+#2#{} Mult when scored",
-		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult"
+          "This Joker gains {C:mult}+#2#{} Mult when",
+          "each played {C:attention}2{}, {C:attention}3{},",
+          "{C:attention}5{} or {C:attention}7{} is scored",
+          "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult)"
         }
       },
       j_abn_boozy_joker = {
@@ -4373,18 +4373,20 @@ return {
         name = "Abandonia",
         text = {
           {
-			"Scored cards",
-			"give {C:white,X:mult}X#1#{} Mult",
-			"and {C:white,X:chips}X#2#{} Chips",
-		  },
-		  {
-			"If this Joker has {C:dark_edition}Abandoned Edition{}",
-			"all scoring cards gain {C:mult}+#3#{} Mult and {C:chips}+#4#{} Chips",
-		  },
-		  {
-			"If this Joker has {C:dark_edition}Vintage Edition{}",
-			"all Jokers gain {C:mult}+#3#{} Mult and {C:chips}+#4#{} Chips",
-		  }
+            "Scored cards",
+            "give {C:white,X:mult}X#1#{} Mult",
+            "and {C:white,X:chips}X#2#{} Chips",
+          },
+          {
+            "If this Joker has {C:dark_edition}Abandoned{} edition,",
+            "all scoring cards permanently gain",
+            "{C:mult}+#3#{} Mult and {C:chips}+#4#{} Chips",
+          },
+          {
+            "If this Joker has {C:dark_edition}Vintage{} edition,",
+            "all Jokers permanently gain",
+            "{C:mult}+#3#{} Mult and {C:chips}+#4#{} Chips",
+          }
         },
       },
       j_abn_felix_joker = {
@@ -10445,20 +10447,20 @@ return {
           "{C:mult}Self-destruct{} if played with {C:attention}#3#{} or more {C:spades}Dark Suits",
         },
       },
-	  m_abn_kintsugi = {
+      m_abn_kintsugi = {
         name = "Kintsugi Card",
         text = {
           "Gives {C:money}$#3#{} {C:mult}+#2#{} Mult {C:chips}+#1#{} Chips",
-		  "{C:green}#4# in #5#{} chance to create a copy of this card when another card is {C:mult}destroyed{}",
-		  "{C:green}#6# in #7#{} chance for this card to double its values",
+          "{C:green}#4# in #5#{} chance to create a copy of this card when another card is {C:mult}destroyed{}",
+          "{C:green}#6# in #7#{} chance for this card to double its values",
         },
       },
-	  m_abn_first_aid = {
+      m_abn_first_aid = {
         name = "First Aid",
         text = {
           "If played with {C:mult}Debuffed{} cards gain {C:mult}+#4#{} Mult",
-		  "If a card is {C:mult}destroyed{} gain {C:chips}+#3#{} Chips",
-		  "{C:inactive}Currently:{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#1#{} {C:inactive}Chips{}",
+          "If a card is {C:mult}destroyed{} gain {C:chips}+#3#{} Chips",
+          "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#1#{} {C:inactive}Chips){}",
         },
       },
     },

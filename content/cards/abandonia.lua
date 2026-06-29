@@ -27,8 +27,8 @@ SMODS.Joker {
       vars = {
         card.ability.extra.x_mult,
         card.ability.extra.x_chips,
-		card.ability.extra.mult,
-		card.ability.extra.chips,
+        card.ability.extra.mult,
+        card.ability.extra.chips,
       }
     }
   end,
@@ -56,27 +56,22 @@ SMODS.Joker {
         card = card
       }
     end
-	
-	if context.before and not context.blueprint then
-		if card.edition and card.edition.abn_vintage then
-			for _, joker in ipairs(G.jokers.cards) do
-                joker.ability.abn_perma_mult = (joker.ability.abn_perma_mult or 0) + card.ability.extra.mult
-                joker.ability.abn_perma_bonus = (joker.ability.abn_perma_bonus or 0) + card.ability.extra.chips
-				card_eval_status_text(card, 'extra', nil, nil, nil, {
-					message = "Upgrade!",
-                })
-            end
-		elseif card.edition and card.edition.abn_abandond then
-			for _, played_card in ipairs(context.scoring_hand) do
-				played_card.ability.perma_mult = (played_card.ability.perma_mult or 0) + card.ability.extra.mult
-				played_card.ability.perma_bonus = (played_card.ability.perma_bonus or 0) + card.ability.extra.chips
-				card_eval_status_text(card, 'extra', nil, nil, nil, {
-					message = "Upgrade!",
-                })
-			end
-		end
-	end
-	
+
+    if context.before and not context.blueprint then
+      if card.edition and card.edition.abn_vintage then
+        for _, joker in ipairs(G.jokers.cards) do
+          joker.ability.abn_perma_mult = (joker.ability.abn_perma_mult or 0) + card.ability.extra.mult
+          joker.ability.abn_perma_bonus = (joker.ability.abn_perma_bonus or 0) + card.ability.extra.chips
+          SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, joker)
+        end
+      elseif card.edition and card.edition.abn_abandond then
+        for _, played_card in ipairs(context.scoring_hand) do
+          played_card.ability.perma_mult = (played_card.ability.perma_mult or 0) + card.ability.extra.mult
+          played_card.ability.perma_bonus = (played_card.ability.perma_bonus or 0) + card.ability.extra.chips
+          SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, played_card)
+        end
+      end
+    end
   end,
   abn_artist_credits = {
     artist = "Comykel",
