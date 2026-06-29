@@ -6196,7 +6196,7 @@ return {
         name = "Computerworm Joker",
         text = {
           {
-            "When {C:attention}Blind{} is selected, {C:mult}destroy{} ",
+            "When {C:attention}Blind{} is selected, {C:red}destroy{} ",
             "{C:attention}leftmost{} Joker and create a {C:dark_edition}Negative{}",
             "copy of this Joker without {C:abn_eternal}Eternal{}",
           },

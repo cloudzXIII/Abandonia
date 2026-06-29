@@ -56,17 +56,18 @@ SMODS.Joker {
       -- identify the leftmost Joker
       local leftmost_joker = G.jokers.cards[1]
 
-      if leftmost_joker then
-        --destroy it
-        leftmost_joker:start_dissolve()
-
-        leftmost_joker:remove_from_deck()
-        for i = 1, #G.jokers.cards do
-          if G.jokers.cards[i] == leftmost_joker then
-            table.remove(G.jokers.cards, i)
-            break
+      if leftmost_joker and not leftmost_joker.getting_sliced and not SMODS.is_eternal(leftmost_joker, card) then
+        leftmost_joker.getting_sliced = true
+        G.GAME.joker_buffer = G.GAME.joker_buffer - 1
+        G.E_MANAGER:add_event(Event({
+          func = function()
+            G.GAME.joker_buffer = 0
+            card:juice_up(0.8, 0.8)
+            leftmost_joker:start_dissolve({ HEX("57ecab") }, nil, 1.6)
+            play_sound('slice1', 0.96 + math.random() * 0.08)
+            return true
           end
-        end
+        }))
 
         -- create joker
         local j = SMODS.create_card({
