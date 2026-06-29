@@ -27,7 +27,7 @@ SMODS.Joker {
   config = { extra = { x_mult = 1, x_mult_gain = 0.04, percent = 0.04 } },
 
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and context.other_card:is_suit("abn_Penumbra") then
+    if context.individual and context.cardarea == G.play and context.other_card:is_suit("abn_Tie") then
       if next(SMODS.find_card("j_joker")) then
         ABN.balance_percent(context.other_card, card.ability.extra.percent)
       end
@@ -53,4 +53,11 @@ SMODS.Joker {
   abn_artist_credits = {
     artist = "Inky & Vlambambo",
   },
+  in_pool = function(self, args)
+    for _, playing in ipairs(G.playing_cards or {}) do
+      if playing:is_suit("abn_Penumbra") then
+        return true
+      end
+    end
+  end
 }

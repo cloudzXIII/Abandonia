@@ -7043,7 +7043,7 @@ return {
           },
           {
             "Gains {X:chips,C:white}X#2#{} Chips per scored",
-            "{C:attention}even{} card with matching {C:dark_edition}editions{}",
+            "{C:attention}even{} card with {C:attention}matching{} {C:dark_edition}editions{}",
             "{C:inactive}(Currently {X:red,C:white}X#3#{C:inactive} Mult, {X:blue,C:white}X#4#{C:inactive} Chips)",
           }
         },
@@ -7057,7 +7057,7 @@ return {
           },
           {
             "Gains {X:chips,C:white}X#2#{} Chips per scored",
-            "{C:attention}even{} card with different {C:dark_edition}editions{}",
+            "{C:attention}even{} card with {C:attention}different{} {C:dark_edition}editions{}",
             "{C:inactive}(Currently {X:red,C:white}X#3#{C:inactive} Mult, {X:blue,C:white}X#4#{C:inactive} Chips)",
           }
         },
