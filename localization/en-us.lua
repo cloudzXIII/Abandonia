@@ -4733,8 +4733,8 @@ return {
         name = "Patient Zero",
         text = {
           "When {C:attention}Blind{} is selected,",
-          "apply a sticker",
-          "to {C:attention}rightmost Joker",
+          "apply a {C:green}positive{} sticker",
+          "to {C:attention}rightmost{} Joker",
         }
       },
       j_abn_melnibone_comedian = {

@@ -52,7 +52,7 @@ SMODS.Joker {
         -- Visual/Sound feedback
         return {
           message = 'Infected!',
-          colour = G.C.Mult,
+          colour = G.C.MULT,
           card = rightmost_joker,
         }
       end
