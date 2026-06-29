@@ -375,7 +375,7 @@ return {
           "only {C:spades}dark suits{}, destroy",
           "all cards and create a",
           "{C:dark_edition}Negative{} {C:attention}Body{}",
-          "{C:inactive}Excluding High Card{}",
+          "{C:attention,s:0.8}High Card{s:0.8} excluded",
         }
       },
       c_abn_w = {
@@ -410,7 +410,7 @@ return {
           "only {C:diamonds}light suits{}, destroy",
           "all cards and create a",
           "{C:dark_edition}Negative{} {C:attention}Mind{}",
-          "{C:inactive}Excluding High Card{}",
+          "{C:attention,s:0.8}High Card{s:0.8} excluded",
         }
       },
       c_abn_thorn = {
