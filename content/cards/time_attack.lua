@@ -71,7 +71,7 @@ SMODS.Joker {
     artist = "Vlambambo",
   },
   in_pool = function(self)
-    for _, area in ipairs({ G.jokers.cards or {}, G.playing_cards }) do
+    for _, area in ipairs({ G.jokers.cards or {}, G.playing_cards or {} }) do
       for _, other_card in ipairs(area) do
         if other_card.edition then
           return true
