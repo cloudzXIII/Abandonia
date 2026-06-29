@@ -4281,12 +4281,12 @@ return {
       j_abn_light_collage = { -- TO relocalise (oh hell naw)
         name = "Light Collage",
         text = {
-          "Gains {C:chips}+#1#{} Chips when a {C:edition}Foil{} card scores",
-          "Gains {C:mult}+#2#{} Mult when a {C:edition}Gloss{} card scores",
+          "Gains {C:chips}+#1#{} Chips when a {C:dark_edition}Foil{} card scores",
+          "Gains {C:mult}+#2#{} Mult when a {C:dark_edition}Gloss{} card scores",
           "{C:green}#3# in {C:green}#4#{} chance to convert 1 random non edition card",
-          "in the deck into a {C:edition}Foil{} card when {C:abn_sigil}Sigil card{} is used",
+          "in the deck into a {C:dark_edition}Foil{} card when {C:abn_sigil}Sigil card{} is used",
           "{C:green}#5# in {C:green}#6#{} chance to convert 1 random non edition card",
-          "in the deck into a {C:edition}Gloss{} card when {C:abn_sigil}Sigil card{} is used",
+          "in the deck into a {C:dark_edition}Gloss{} card when {C:abn_sigil}Sigil card{} is used",
           "{C:inactive}(Currently {C:chips}+#7#{C:inactive} Chips, {C:mult}+#8#{C:inactive} Mult)"
         },
       },
