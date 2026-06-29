@@ -8211,7 +8211,8 @@ return {
       c_abn_whitehole = {
         name = "White Hole",
         text = {
-          "Upgrade every {C:dark_edition,E:1}rank",
+          "Upgrade every",
+          "{C:planet,E:1}planet{} {C:attention,E:1}rank{}",
           "by {C:attention}1{} level",
         },
       },
