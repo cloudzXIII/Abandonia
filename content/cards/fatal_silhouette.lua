@@ -5,18 +5,18 @@ SMODS.Joker {
   pos = { x = 7, y = 1 },
   cost = 4,
   discovered = false,
-  blueprint_compat = true, 
+  blueprint_compat = true,
   config = { extra = { xchips = 2 } },
-  
+
   loc_vars = function(self, info_queue, card)
-	info_queue[#info_queue + 1] = { key = "abn_light_suit", set = "Other" }
+    info_queue[#info_queue + 1] = { key = "abn_light_suit", set = "Other" }
+    info_queue[#info_queue + 1] = G.P_SEALS.abn_silver_seal
     return { vars = { card.ability.extra.xchips } }
   end,
 
   calculate = function(self, card, context)
     -- Check individual cards in the played hand during scoring
     if context.individual and context.cardarea == G.play then
-      
       -- Verify if the current card is Light and has the Silver seal using your helper functions
       if ABN.is_light(context.other_card) and context.other_card.seal == 'abn_silver' then
         local is_first_matching_card = false
@@ -27,7 +27,7 @@ SMODS.Joker {
             break
           end
         end
-        
+
         if is_first_matching_card then
           return {
             xchips = card.ability.extra.xchips,
@@ -37,7 +37,7 @@ SMODS.Joker {
       end
     end
   end,
-  
+
   abn_artist_credits = {
     artist = "Sustato",
   },

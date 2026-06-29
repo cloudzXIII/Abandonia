@@ -4516,7 +4516,10 @@ return {
       j_abn_fatal_silhouette = {
         name = "Fatal Silhouette",
         text = {
-          "The {C:attention}first played{} {C:diamonds}Light{} Suit with a {C:abn_silver_seal}Silver Seal{} gives {C:white,X:chips}X#1#{} Chips",
+          "First played {C:diamonds}Light Suit{}",
+          "card with a {C:abn_silver_seal}Silver Seal{} ",
+          "gives {C:white,X:chips}X#1#{} Chips",
+          "when scored",
         }
       },
       j_abn_joerror = {
