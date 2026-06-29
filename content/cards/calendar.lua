@@ -2,7 +2,7 @@
 SMODS.Joker {
   key = 'calendar',
 
-  rarity = 1,
+  rarity = 2,
   atlas = 'ABNJokerSheet2',
   pos = { x = 3, y = 5 },
   cost = 6,

@@ -23,7 +23,7 @@ SMODS.Joker {
       local target = context.other_card
 
       -- Ensure the target is actually a Joker
-      if target ~= card and type(target) == 'table' and target.ability and target.ability.set == 'Joker' and target.config.center.key and target.config.center.key ~= 'j_abn_voracity_joker' and target.config.center.key ~= 'j_abn_busybee' and target.config.center.key ~= 'j_abn_joker_midnight' then
+      if target ~= card and type(target) == 'table' and target.ability and target.ability.set == 'Joker' and target.config.center.key and target.config.center.key ~= 'j_abn_voracity_joker' and target.config.center.key ~= 'j_abn_busybee' and target.config.center.key ~= 'j_abn_joker_midnight' and target.config.center.key ~= 'j_abn_daredevil' then
         -- Apply the permanent chips
         target.ability.abn_perma_xmult = (target.ability.abn_perma_xmult or 1) + card.ability.extra.xmult
 
@@ -31,7 +31,7 @@ SMODS.Joker {
 
         -- Visual Feedback
         return {
-          message = localize("k_abn_tasty_ex"),
+          message = ("Tasty!"),
           colour = G.C.ATTENTION
         }
       end

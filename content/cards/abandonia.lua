@@ -1,3 +1,24 @@
+local config = SMODS.current_mod.config
+
+SMODS.Sound({
+  key = 'music_abandonia',
+  path = 'music_abandonia.ogg',
+  pitch = 1,
+  speed = 1,
+  select_music_track = function(self)
+    -- If it's abandonia time play music
+    if G.jokers then
+      for i = 1, #G.jokers.cards do
+        local j = G.jokers.cards[i]
+        if j.config.center.key and j.config.center.key == 'j_abn_abandonia' and config.Music ~= false then
+          return 1e10
+        end
+      end
+    end
+  end
+})
+
+
 SMODS.Joker {
   key = 'abandonia',
 
@@ -5,7 +26,9 @@ SMODS.Joker {
     return {
       vars = {
         card.ability.extra.x_mult,
-        card.ability.extra.x_chips
+        card.ability.extra.x_chips,
+		card.ability.extra.mult,
+		card.ability.extra.chips,
       }
     }
   end,
@@ -17,7 +40,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { x_mult = 2, x_chips = 2 } },
+  config = { extra = { x_mult = 2, x_chips = 2, mult = 4, chips = 10, } },
 
   update = function(self, card)
     if card.area == G.shop_jokers then
@@ -33,6 +56,27 @@ SMODS.Joker {
         card = card
       }
     end
+	
+	if context.before and not context.blueprint then
+		if card.edition and card.edition.abn_vintage then
+			for _, joker in ipairs(G.jokers.cards) do
+                joker.ability.abn_perma_mult = (joker.ability.abn_perma_mult or 0) + card.ability.extra.mult
+                joker.ability.abn_perma_bonus = (joker.ability.abn_perma_bonus or 0) + card.ability.extra.chips
+				card_eval_status_text(card, 'extra', nil, nil, nil, {
+					message = "Upgrade!",
+                })
+            end
+		elseif card.edition and card.edition.abn_abandond then
+			for _, played_card in ipairs(context.scoring_hand) do
+				played_card.ability.perma_mult = (played_card.ability.perma_mult or 0) + card.ability.extra.mult
+				played_card.ability.perma_bonus = (played_card.ability.perma_bonus or 0) + card.ability.extra.chips
+				card_eval_status_text(card, 'extra', nil, nil, nil, {
+					message = "Upgrade!",
+                })
+			end
+		end
+	end
+	
   end,
   abn_artist_credits = {
     artist = "Comykel",

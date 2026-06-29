@@ -13,7 +13,7 @@ SMODS.Joker {
   soul_pos = { x = 3, y = 4 },
   cost = 20,
   config = {
-    extra = { x_chips = 1, x_chips_gain = 0.1 }
+    extra = { x_chips = 1, x_chips_gain = 0.2 }
   },
   rarity = 4,
   blueprint_compat = true,

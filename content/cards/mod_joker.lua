@@ -1,3 +1,5 @@
+if ((SMODS.Mods["allinjest"] or {}).can_load) then
+
 SMODS.Joker {
   key = 'mod_joker',
   rarity = 2,
@@ -45,3 +47,5 @@ SMODS.Joker {
     artist = "0kronix",
   },
 }
+
+end

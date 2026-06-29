@@ -6,7 +6,7 @@ SMODS.Joker {
     atlas = 'ABNJokerSheet15',
     pos = { x = 4, y = 5 },
     abn_coder = "LasagnaFelidae",
-    config = { extra = { xchips = 1.7, mult = 23 } },
+    config = { extra = { xchips = 1.25, mult = 11 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xchips, card.ability.extra.mult } }
     end,

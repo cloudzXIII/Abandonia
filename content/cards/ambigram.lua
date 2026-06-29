@@ -12,7 +12,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { mult = 4, symmetrical = false } },
+  config = { extra = { mult = 8, symmetrical = false } },
 
   calculate = function(self, card, context)
     if context.before then

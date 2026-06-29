@@ -1,6 +1,6 @@
 SMODS.Joker {
   key = 'blackmore_joker',
-  rarity = 1,
+  rarity = 2,
   atlas = 'ABNJokerSheet4',
   pos = { x = 0, y = 1 },
   cost = 4,

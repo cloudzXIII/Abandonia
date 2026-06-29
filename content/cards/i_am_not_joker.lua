@@ -1,3 +1,24 @@
+local config = SMODS.current_mod.config
+
+SMODS.Sound({
+  key = 'music_not_joker',
+  path = 'music_not_joker.ogg',
+  pitch = 1,
+  speed = 1,
+  select_music_track = function(self)
+    -- If it's not joker time play music
+    if G.jokers then
+      for i = 1, #G.jokers.cards do
+        local j = G.jokers.cards[i]
+        if j.config.center.key and j.config.center.key == 'j_abn_i_am_not_joker' and config.Music ~= false then
+          return 1e10
+        end
+      end
+    end
+  end
+})
+
+
 -- I am not Joker (coded by cloudzXIII)
 SMODS.Joker {
   key = 'i_am_not_joker',
