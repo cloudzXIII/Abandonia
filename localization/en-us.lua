@@ -4522,9 +4522,8 @@ return {
       j_abn_joerror = {
         name = "Joeerror",
         text = {
-          "Jokers each give",
-          "{X:mult,C:white} X#1# {} Mult,",
-          "{C:red,E:1}self-destructs{}"
+          "Jokers each give {X:mult,C:white} X#1# {} Mult,",
+          "{C:red,E:1}self-destructs after scoring{}"
         }
       },
       j_abn_pankert = {
