@@ -3779,10 +3779,10 @@ return {
       j_abn_escuderia_joker = {
         name = "Escuderia Joker",
         text = {
-          "Gives {C:white,X:mult}X#1#{} Mult",
+          "Gives {C:mult}+#1#{} Mult",
           "for each {C:attention}unique sticker{}",
           "among your {C:attention}Jokers{}",
-          "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+          "{C:inactive}(Currently {C:mult}+#2#{} {C:inactive} Mult)",
         }
       },
       j_abn_statue_joker = {
@@ -6217,6 +6217,9 @@ return {
             "{X:chips,C:white}^#4#{} Chips per copy of itself",
             "{C:inactive}(Currently{} {X:mult,C:white}^#1#{} {C:inactive}Mult,{} {X:chips,C:white}^#2#{} {C:inactive}Chips){}",
           },
+		  {
+			"Automatically end the run if there is 3 or more of this Joker",
+		  },
         }
       },
       j_abn_naneinf_joker = {
@@ -7356,7 +7359,7 @@ return {
       j_abn_darknet_joker = {
         name = "Darknet Joker",
         text = {
-          "If the {C:attention}First Hand{} you play is a {C:attention}Divider Conquered{} using only {C:attention}Numbered{} cards",
+          "If you play a {C:attention}Divider Conquered{} using only {C:attention}Numbered{} cards",
           "They all gain {C:dark_edition}Bit Rot{} Edition",
           "This Joker gains {X:mult,C:white}X#1#{} Mult per scoring card in {C:attention}Divider Conquered{} hands",
           "{C:inactive}(Currently{} {X:mult,C:white}X#2#{} {C:inactive}Mult)",
