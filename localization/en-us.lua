@@ -10246,8 +10246,15 @@ return {
       c_abn_tunnel = {
         name = "Tunnel",
         text = {
-          "Increase the {C:planet}Planet{} {C:attention}Rank{} of all owned cards by {C:attention}#1#{}",
-          "Lower your {C:attention}most played{} poker hand to level {C:attention}1{}",
+          {
+            "Level up {C:planet}planet{} {C:attention}rank{}",
+            "of all {C:attention}ranks{} in your",
+            "{C:attention}full deck{} by {C:attention}#1#{}",
+          },
+          {
+            "Set {C:attention}most played{} poker hand",
+            "to level {C:attention}1{}",
+          },
         }
       },
       c_abn_sepulture = {
