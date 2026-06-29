@@ -28,4 +28,14 @@ if self.config.center and self.config.center.key and string.find(self.config.cen
 		end
 	end
 end
+
+-- Stop Sign logic: Force 2 choices in all Buffoon packs
+if self.config.center and self.config.center.key and string.find(self.config.center.key, "buffoon") then
+	local stop_sign = SMODS.find_card("j_abn_stop_sign")
+	if stop_sign and next(stop_sign) then
+		if (self.ability.choose or 1) < 2 then
+			self.ability.choose = 2
+		end
+	end
+end
 '''
