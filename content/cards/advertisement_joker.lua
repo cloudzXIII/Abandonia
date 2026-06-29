@@ -7,11 +7,11 @@ SMODS.Joker {
     discovered = false,
     blueprint_compat = true,
     unlocked = true,
-    config = { extra = { xmult = 1, chips = 0, xmultadd = 0.25, chipsadd = 10 } },
+    config = { extra = { x_mult = 1, chips = 0, x_mult_gain = 0.25, chips_gain = 10 } },
 
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.xmult, card.ability.extra.chips, card.ability.extra.xmultadd, card.ability.extra.chipsadd } }
+        return { vars = { card.ability.extra.x_mult, card.ability.extra.chips, card.ability.extra.x_mult_gain, card.ability.extra.chips_gain } }
     end,
 
     in_pool = function(self)
@@ -29,26 +29,28 @@ SMODS.Joker {
     calculate = function(self, card, context)
         -- If using a solid state card
         if context.using_consumeable and context.consumeable.ability.set == "solid_state" and not context.blueprint then
-            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmultadd
-            return {
-                message = localize('k_upgrade_ex'),
-                colour = G.C.MULT,
-                card = card
-            }
+            SMODS.scale_card(card, {
+                ref_table = card.ability.extra,
+                ref_value = "x_mult",
+                scalar_value = "x_mult_gain",
+                operation = '+',
+                message_key = 'a_x_mult',
+            })
         end
 
         if context.using_consumeable and context.consumeable.ability.set == "program_pack" and not context.blueprint then
-            card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chipsadd
-            return {
-                message = localize('k_upgrade_ex'),
-                colour = G.C.CHIPS,
-                card = card
-            }
+            SMODS.scale_card(card, {
+                ref_table = card.ability.extra,
+                ref_value = "chips",
+                scalar_value = "chips_gain",
+                operation = '+',
+                message_key = 'a_chips',
+            })
         end
 
         if context.joker_main then
             return {
-                xmult = card.ability.extra.xmult,
+                x_mult = card.ability.extra.x_mult,
                 chips = card.ability.extra.chips
             }
         end
