@@ -64,12 +64,12 @@ SMODS.Enhancement({
       }
     end
     if
-        context.destroying_card
-        and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
-        and not card.getting_sliced
-        and context.destroying_card == card
-        and not card.ability.abn_just
-        and not next(SMODS.find_card("j_abn_immolation_joker"))
+    context.destroying_card
+    and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
+    and not card.getting_sliced
+    and context.destroying_card == card
+    and not card.ability.abn_just
+    and not next(SMODS.find_card("j_abn_immolation_joker"))
     then
       return {
         remove = true
@@ -103,10 +103,10 @@ SMODS.Enhancement({
       }
     end
     if
-        context.destroying_card
-        and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
-        and not card.getting_sliced
-        and context.destroying_card == card
+    context.destroying_card
+    and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
+    and not card.getting_sliced
+    and context.destroying_card == card
     then
       return {
         remove = true
@@ -122,10 +122,10 @@ SMODS.Enhancement({
   key = "mercurial",
   pos = { x = 0, y = 0 },
   atlas = "AbandoniaEnhancements",
-  config = { extra = { chips = 0, chip_gain = 5 } },
+  config = { extra = { chips = 0, chipsadd = 5 } },
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
-    return { vars = { cae.chips, cae.chip_gain } }
+    return { vars = { cae.chips, cae.chipsadd } }
   end,
   calculate = function(self, card, context)
     local cae = card.ability.extra
@@ -146,7 +146,7 @@ SMODS.Enhancement({
         SMODS.scale_card(card, {
           ref_table = cae,
           ref_value = "chips",
-          scalar_value = "chip_gain"
+          scalar_value = "chipsadd"
         })
       end
     end
@@ -164,10 +164,10 @@ SMODS.Enhancement({
   no_rank = true,
   no_suit = true,
   always_scores = true,
-  config = { extra = { chips = 10, chips_gain = 5 } },
+  config = { extra = { chips = 10, chipsadd = 5 } },
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
-    return { vars = { cae.chips, cae.chips_gain } }
+    return { vars = { cae.chips, cae.chipsadd } }
   end,
   calculate = function(self, card, context)
     local cae = card.ability.extra
@@ -181,7 +181,7 @@ SMODS.Enhancement({
       SMODS.scale_card(card, {
         ref_table = cae,
         ref_value = "chips",
-        scalar_value = "chips_gain"
+        scalar_value = "chipsadd"
       })
     end
   end,
@@ -419,15 +419,15 @@ function SMODS.calculate_individual_effect(effect, scored_card, key, amount, fro
 
   -- Check if an Xmult modification just fired
   if (
-        key == "x_mult"
-        or key == "xmult"
-        or key == "Xmult"
-        or key == "x_mult_mod"
-        or key == "xmult_mod"
-        or key == "Xmult_mod"
-      )
-      and amount ~= 1
-      and mult then
+    key == "x_mult"
+    or key == "xmult"
+    or key == "Xmult"
+    or key == "x_mult_mod"
+    or key == "xmult_mod"
+    or key == "Xmult_mod"
+  )
+  and amount ~= 1
+  and mult then
     -- Iterate through all cards in the game to find ones with your enhancement
     if G.playing_cards then
       local scaled_count = 0
@@ -486,7 +486,7 @@ SMODS.Enhancement({
   always_scores = false,
   config = {
     extra = {
-      emult = 1.1,
+      emult = 1.2,
     }
   },
   loc_vars = function(self, info_queue, card)
@@ -631,7 +631,7 @@ SMODS.Enhancement({
       for i = 1, #G.hand.cards do
         local hand_card = G.hand.cards[i]
 
-        if not hand_card.debuff and SMODS.has_enhancement(hand_card, "m_abn_cotton") then
+        if not hand_card.debuff and hand_card.config.center ~= G.P_CENTERS.m_abn_cotton then
           local rank_key = hand_card.base.value
 
           if G.GAME.abn_rank_upgrades and G.GAME.abn_rank_upgrades[rank_key] then
@@ -785,14 +785,14 @@ SMODS.Enhancement({
   key = "teastain",
   pos = { x = 4, y = 2 },
   atlas = "AbandoniaEnhancements",
-  config = { extra = { xmult = 1.2, xmult_gain = 0.3 } },
+  config = { extra = { xmult = 1.2, xmultadd = 0.3 } },
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
     local cuppa = 0
     for _, playing_card in ipairs(G.playing_cards or {}) do
       if SMODS.has_enhancement(playing_card, 'm_abn_teastain') and playing_card ~= card then cuppa = cuppa + 1 end
     end
-    return { vars = { cae.xmult + (cae.xmult_gain * cuppa), cae.xmult_gain } }
+    return { vars = { cae.xmult + (cae.xmultadd * cuppa), cae.xmultadd } }
   end,
   calculate = function(self, card, context)
     local cae = card.ability.extra
@@ -802,7 +802,7 @@ SMODS.Enhancement({
         if SMODS.has_enhancement(playing_card, 'm_abn_teastain') and playing_card ~= card then cuppa = cuppa + 1 end
       end
       return {
-        x_mult = cae.xmult + (cae.xmult_gain * cuppa),
+        x_mult = cae.xmult + (cae.xmultadd * cuppa),
       }
     end
   end,
@@ -1012,5 +1012,153 @@ SMODS.Enhancement({
 
   abn_artist_credits = {
     artist = "Toyrapple",
+  },
+})
+
+SMODS.Enhancement({
+  key = "kintsugi",
+  pos = { x = 0, y = 3 },
+  atlas = "AbandoniaEnhancements",
+  config = {
+    extra = {
+      chips = 1,
+      mult = 1,
+      dollars = 1,
+      odds_dup = 7,
+      odds_double = 9,
+    }
+  },
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    local dup_num, dup_den = SMODS.get_probability_vars(card, 1, cae.odds_dup, 'kintsugi_dup_abn')
+    local db_num, db_den = SMODS.get_probability_vars(card, 1, cae.odds_double, 'kintsugi_db_abn')
+
+    return { vars = { cae.chips, cae.mult, cae.dollars, dup_num, dup_den, db_num, db_den } }
+  end,
+  calculate = function(self, card, context)
+    local cae = card.ability.extra
+
+    if context.remove_playing_cards and not context.blueprint and SMODS.pseudorandom_probability(card, "kintsugi_dup_abn", 1, cae.odds_dup) then
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          local copy = copy_card(card)
+          if not copy then return true end
+
+          G.deck:emplace(copy)
+          copy:add_to_deck()
+          G.deck.config.card_limit = G.deck.config.card_limit + 1
+          table.insert(G.playing_cards, copy)
+          copy:start_materialize(nil, nil)
+
+          playing_card_joker_effects({copy})
+          card_eval_status_text(card, 'extra', nil, nil, nil, { message = localize('k_duplicated_ex'), colour = G.C.ATTENTION })
+          return true
+        end
+      }))
+    end
+
+    if context.main_scoring and context.cardarea == G.play then
+      if SMODS.pseudorandom_probability(card, "kintsugi_db_abn", 1, cae.odds_double) then
+        cae.chips = cae.chips * 2
+        cae.mult = cae.mult * 2
+        cae.dollars = cae.dollars * 2
+        
+        return {
+          message = localize('k_upgrade_ex'),
+          colour = G.C.ATTENTION,
+          chips = cae.chips,
+          mult = cae.mult,
+          dollars = cae.dollars,
+          card = card
+        }
+      else
+        return {
+          chips = cae.chips,
+          mult = cae.mult,
+          dollars = cae.dollars,
+        }
+      end
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Littleroot",
+  },
+})
+
+SMODS.Enhancement({
+  key = "first_aid",
+  pos = { x = 7, y = 2 },
+  atlas = "AbandoniaEnhancements",
+  config = {
+    extra = {
+      chips = 0,
+      mult = 0,
+      chipsadd = 10,
+      multadd = 10,
+    }
+  },
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    return { vars = { cae.chips, cae.mult, cae.chipsadd, cae.multadd } }
+  end,
+  calculate = function(self, card, context)
+    local cae = card.ability.extra
+
+    if context.remove_playing_cards and not context.blueprint then
+      local destroyed_count = 0
+      
+      for _, removed_card in ipairs(context.removed) do
+        if removed_card ~= card then
+          destroyed_count = destroyed_count + 1
+        end
+      end
+
+      if destroyed_count > 0 then
+        cae.chips = cae.chips + (cae.chipsadd * destroyed_count)
+        
+        G.E_MANAGER:add_event(Event({
+          func = function()
+            card_eval_status_text(card, 'extra', nil, nil, nil, { 
+              message = localize('k_upgrade_ex'),
+              colour = G.C.CHIPS 
+            })
+            return true
+          end
+        }))
+      end
+    end
+
+    if context.main_scoring and context.cardarea == G.play then
+      local has_debuffed = false
+      
+      if context.scoring_hand then
+        for _, scoring_card in ipairs(context.scoring_hand) do
+          if scoring_card.debuff then
+            has_debuffed = true
+            break
+          end
+        end
+      end
+
+      if has_debuffed then
+        cae.mult = cae.mult + cae.multadd
+        
+        return {
+          chips = cae.chips,
+          mult = cae.mult,
+          message = localize('k_upgrade_ex'),
+          colour = G.C.MULT,
+          card = card
+        }
+      else
+        return {
+          chips = cae.chips,
+          mult = cae.mult
+        }
+      end
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Gud",
   },
 })
