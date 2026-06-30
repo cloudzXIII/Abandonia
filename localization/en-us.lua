@@ -2488,8 +2488,10 @@ return {
             "level up scoring hand",
           },
           {
-            "If this Joker is {C:dark_edition}Negative{} and the score {C:attention}catches fire{},",
-            "all cards {C:attention}held{} in hand become {C:dark_edition}Negative{}",
+            "If this Joker has {C:dark_edition}Negative{} edition",
+            "and score {C:attention}catches on fire{},",
+            "all cards {C:attention}held{} in hand",
+            "become {C:dark_edition}Negative{}",
           }
         }
       },
@@ -2710,8 +2712,8 @@ return {
         text = {
           "{C:attention}Polkadot{} cards {C:attention}held",
           "in hand count in scoring,",
-          "{C:attention}Polkadot{} cards permanently gain",
-          "{C:mult}+#1#{} Mult when scored"
+          "{C:attention}Polkadot{} cards permanently",
+          "gain {C:mult}+#1#{} Mult when scored"
         }
       },
       j_abn_frontier_joker = {
@@ -4430,8 +4432,8 @@ return {
       j_abn_old_as_dirt = {
         name = 'Old as Dirt',
         text = {
-          "This Joker gains {C:white,X:mult}X#1# {} Mult for",
-          "each {C:money}$1{} below {C:red}$0{}",
+          "This Joker gains {C:white,X:mult}X#1# {} Mult",
+          "for each {C:money}$1{} below {C:red}$0{}",
           "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
         }
       },
@@ -4725,8 +4727,9 @@ return {
       j_abn_triple_star_license = {
         name = "Triple Star License",
         text = {
-          "{X:mult,C:white}X#1#{} Mult {X:chips,C:white}X#2#{} Chips",
-          "{C:mult}self-destructs{} if a Joker is sold",
+          "{X:mult,C:white}X#1#{} Mult, {X:chips,C:white}X#2#{} Chips",
+          "{C:mult}self-destructs{} if",
+          "a {C:attention}Joker is {C:attention}sold{}",
         }
       },
       j_abn_patient_zero = {
@@ -4800,8 +4803,10 @@ return {
       j_abn_blackmore_joker = {
         name = "Blackmore Joker",
         text = {
-          "The first {C:attention}scoring card{} gives",
-          "its {C:attention}Rank{} as {X:mult,C:white}XMult{}",
+
+          "First played card",
+          "gives its {C:attention}rank{} as",
+          "{X:mult,C:white}XMult{} when scored",
         }
       },
       j_abn_feste = {
@@ -5747,8 +5752,8 @@ return {
         name = "Yesman Joker",
         text = {
           "{C:dark_edition}Editions{} {C:attention}held in hand{} are triggered",
-          "This Joker gains {C:mult}+#3#{} Mult and {C:chips}+#4#{} Chips",
-          "when an {C:dark_edition}Edition{} triggers",
+          "This Joker gains {C:mult}+#3#{} Mult and",
+          "{C:chips}+#4#{} Chips when an {C:dark_edition}Edition{} triggers",
           "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult, {C:chips}+#2#{} {C:inactive}Chips)",
         }
       },
@@ -5889,8 +5894,15 @@ return {
       j_abn_asylum_joker = {
         name = "Asylum Joker",
         text = {
-          "Force select {C:attention}#2#{} cards",
-          "{C:attention}Force-selected{} cards give {X:chips,C:white}^#1#{} Chips"
+          {
+            "Forces {C:attention}#2#{} cards to",
+            "always be selected",
+          },
+          {
+            "{C:attention}Force-selected{} cards",
+            "give {X:chips,C:white}^#1#{} Chips",
+            "when scored"
+          }
         }
       },
       j_abn_ransomware_joker = {
@@ -7424,10 +7436,17 @@ return {
       j_abn_ballistic_glass_joker = {
         name = "Ballistic Glass Joker",
         text = {
-          "Each {C:attention}Glass{} card held in hand gives {X:mult,C:white}X#1#{} {C:red}mult",
-          "{C:attention}Glass{} cards don't break",
-          "{X:chips,C:white}X#2#{} {C:chips}chips{} when a {C:attention}Glass{} card is {C:attention}scored",
-          "{C:money}-$#3#{} when a {C:attention}Glass{} card is {C:attention}scored",
+          {
+            "{C:attention}Glass{} cards don't break",
+          },
+          {
+            "Each {C:attention}Glass{} card held in hand",
+            "gives {X:mult,C:white}X#1#{} Mult",
+          },
+          {
+            "{C:attention}Glass{} cards give {X:chips,C:white}X#2#{} Chips",
+            "and {C:money}-$#3#{} when scored",
+          },
         },
       },
       j_abn_gold_7 = {
@@ -7648,16 +7667,22 @@ return {
       j_abn_meddlesome_naidemoc = {
         name = "Meddlesome Naidemoc",
         text = {
-          "Before scoring change card suits",
-          "{C:diamonds}Diamonds{} -> {C:spades}Spades{}",
-          "{C:spades}Spades{} -> {C:hearts}Hearts{}",
-          "{C:hearts}Hearts{} -> {C:clubs}Clubs{}",
-          "{C:clubs}Clubs{} -> {C:abn_snow}Snow{}",
-          "{C:abn_snow}Snow{} -> {C:abn_penumbra}Penumbra{}",
-          "{C:abn_penumbra}Penumbra{} -> {C:abn_tie}Tie{}",
-          "{C:abn_tie}Tie{} -> {C:abn_bow}Bow{}",
-          "This Joker gains {C:chips}+#3#{} Chips {C:mult}+#4#{} Mult when a card changes suit",
-          "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips){}"
+
+          {
+            "Before scoring, cards change {C:attention}suits",
+            "{C:diamonds,s:0.8}Diamonds{s:0.8} -> {C:spades,s:0.8}Spades{s:0.8}",
+            "{C:spades,s:0.8}Spades{s:0.8} -> {C:hearts,s:0.8}Hearts{s:0.8}",
+            "{C:hearts,s:0.8}Hearts{s:0.8} -> {C:clubs,s:0.8}Clubs{s:0.8}",
+            "{C:clubs,s:0.8}Clubs{s:0.8} -> {C:abn_snow,s:0.8}Snows{s:0.8}",
+            "{C:abn_snow,s:0.8}Snows{s:0.8} -> {C:abn_penumbra,s:0.8}Penumbras{s:0.8}",
+            "{C:abn_penumbra,s:0.8}Penumbras{s:0.8} -> {C:abn_tie}Ties{s:0.8}",
+            "{C:abn_tie,s:0.8}Ties{s:0.8} -> {C:abn_bow,s:0.8}Bows{s:0.8}",
+          },
+          {
+            "This Joker gains {C:chips}+#3#{} Chips and",
+            "{C:mult}+#4#{} Mult when a card changes {C:attention}suit{}",
+            "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips){}"
+          },
         }
       },
       j_abn_tlumddo = {

@@ -2,6 +2,7 @@ SMODS.Joker {
   key = 'dorcelessness',
 
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_flipped_card", set = "Other" }
     return { vars = { card.ability.extra.repetitions } }
   end,
 
@@ -12,14 +13,14 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
   config = { extra = { repetitions = 1 } },
-  
+
   in_pool = function(self)
-	if not G or not G.jokers then return false end
+    if not G or not G.jokers then return false end
 
     for _, joker in ipairs(G.jokers.cards) do
-		if joker.ability and joker.ability.abn_perma_flipped then
-			return true
-        end
+      if joker.ability and joker.ability.abn_perma_flipped then
+        return true
+      end
     end
 
     return false

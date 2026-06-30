@@ -4,7 +4,7 @@ SMODS.Joker {
 
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
-    return { vars = { cae.xmult, ABN.highest_level_hand() } }
+    return { vars = { cae.xmult, localize(ABN.highest_level_hand(), 'poker_hands') } }
   end,
 
   rarity = 1,
