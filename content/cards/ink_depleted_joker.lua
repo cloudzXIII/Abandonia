@@ -11,6 +11,9 @@ SMODS.Joker {
         info_queue[#info_queue + 1] = G.P_SEALS["abn_orange"]
         info_queue[#info_queue + 1] = G.P_SEALS["abn_pink"]
         info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
+
+        info_queue[#info_queue + 1] = { key = "abn_light_suit", set = "Other" }
+        info_queue[#info_queue + 1] = { key = "abn_dark_suit", set = "Other" }
         return {
             vars = {},
         }
@@ -36,10 +39,9 @@ SMODS.Joker {
             if is_dark or is_light then
                 local target_card = context.scoring_hand[1]
                 local seal_to_apply = is_dark and "abn_pink" or "abn_orange"
-                
+
                 target_card:set_edition("e_foil", true)
                 target_card:set_seal(seal_to_apply, true)
-
             end
         end
     end,

@@ -3979,9 +3979,9 @@ return {
       j_abn_newground_joker = {
         name = "Newground Joker",
         text = {
-          "When {C:attention}Blind{} is selected,",
           "This Joker gains {C:mult}+#3#{} Mult",
-          "and {C:chips}+#4#{} Chips",
+          "and {C:chips}+#4#{} Chips when",
+          "{C:attention}Blind{} is selected",
           "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult, {C:chips}+#2#{} {C:inactive}Chips)"
         }
       },
@@ -4536,8 +4536,9 @@ return {
       j_abn_pankert = {
         name = "Pankert",
         text = {
-          "If you have {C:attention}4{} or more consumables",
-          "{C:white,X:chips}^#1#{} Chips"
+          "{C:white,X:chips}^#1#{} Chips",
+          "if you have {C:attention}4{} or more",
+          "consumables {C:attention}held{}",
         }
       },
       j_abn_final_showdown = {
@@ -5545,10 +5546,11 @@ return {
       j_abn_ink_depleted_joker = {
         name = "Ink Depleted Joker",
         text = {
-          "First scoring {C:attention}Full House{} with all {C:diamonds}Light{} Suits",
-          "gains {C:dark_edition}Foil{} and {C:abn_orange_seal}Orange Seals",
-          "First scoring {C:attention}Full House{} with all {C:spades}Dark{} Suits",
-          "gains {C:dark_edition}Foil{} and {C:abn_pink_seal}Pink Seals"
+          "If {C:attention}first hand{} of round is a {C:attention}Full House{},",
+          "add {C:dark_edition}Foil{} and {C:abn_orange_seal}Orange Seal{}",
+          "to scoring {C:diamonds}Light Suits{},",
+          "add {C:dark_edition}Foil{} and {C:abn_pink_seal}Pink Seal",
+          "to scoring {C:spades}Dark Suits{}",
         },
       },
       j_abn_barb_wire_joker = {
@@ -6598,14 +6600,13 @@ return {
             "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
           },
           {
-            "{C:common}Common{}: {C:red}+#2#{} Mult",
-            "{C:uncommon}Uncommon{}: {C:red}+#3#{} Mult",
-            "{C:rare}Rare{}: {C:red}+#4#{} Mult",
-            "{C:abn_superrare}Super Rare{}: {C:red}+#5#{} Mult",
-            "{C:abn_parallelrare}Parallel Rare{}: {C:red}+#6#{} Mult",
-            "{C:legendary}Legendary{}: {C:red}+#7#{} Mult",
-            "{C:abn_virusrare}Virus Rare{}: {C:red}+#8#{} Mult",
-
+            "{C:common,s:0.8}Common{s:0.8}: {C:red,s:0.8}+#2#{s:0.8} Mult",
+            "{C:uncommon,s:0.8}Uncommon{s:0.8}: {C:red,s:0.8}+#3#{s:0.8} Mult",
+            "{C:rare,s:0.8}Rare{s:0.8}: {C:red,s:0.8}+#4#{s:0.8} Mult",
+            "{C:abn_superrare,s:0.8}Super Rare{s:0.8}: {C:red,s:0.8}+#5#{s:0.8} Mult",
+            "{C:abn_parallelrare,s:0.8}Parallel Rare{s:0.8}: {C:red,s:0.8}+#6#{s:0.8} Mult",
+            "{C:legendary,s:0.8}Legendary{s:0.8}: {C:red,s:0.8}+#7#{s:0.8} Mult",
+            "{C:abn_virusrare,s:0.8}Virus Rare{s:0.8}: {C:red,s:0.8}+#8#{s:0.8} Mult",
           },
         }
 
@@ -7197,8 +7198,8 @@ return {
           },
           {
             "If you play a {C:attention}#2#",
-            "with only {C:attention}9{}s,",
-            "level up the hand {C:attention}9{} times"
+            "with only {C:attention}9s{}, level up",
+            "hand {C:attention}9{} times"
           },
         }
 
