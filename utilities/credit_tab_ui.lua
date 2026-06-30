@@ -103,7 +103,7 @@ ABN.contributors = {
     colour = G.C.GOLD,
     links = {
       { url = "github.com/cloudzXIII", pos = { x = 0, y = 0 }, name = "Github" },
-      { url = "ko-fi.com/cloudzxiii",  pos = { x = 0, y = 1 }, name = "Buy me a Coffee!" }
+      { url = "ko-fi.com/cloudzxiii", pos = { x = 0, y = 1 }, name = "Buy me a Coffee!" }
     }
   },
   {
@@ -191,7 +191,7 @@ ABN.contributors = {
     colour = G.C.BLUE,
     links = {
       { url = "github.com/LasagnaFelidae", pos = { x = 0, y = 0 }, name = "Github" },
-      { url = "ko-fi.com/lasagnafelidae",  pos = { x = 0, y = 1 }, name = "Buy me a Coffee!" }
+      { url = "ko-fi.com/lasagnafelidae", pos = { x = 0, y = 1 }, name = "Buy me a Coffee!" }
     }
   },
   {
@@ -211,7 +211,7 @@ ABN.contributors = {
     has_icon = true,
     colour = G.C.GREEN,
     links = {
-      { url = "https://github.com/gfsgfsPunchlineGuy", pos = { x = 0, y = 0 }, name = "Github" },
+      { url = "github.com/gfsgfsPunchlineGuy", pos = { x = 0, y = 0 }, name = "Github" },
     }
   },
   {
@@ -221,6 +221,7 @@ ABN.contributors = {
     has_icon = true,
     colour = G.C.GREEN,
     links = {
+      { url = "github.com/LeGinger-Ginger", pos = { x = 0, y = 0 }, name = "Github" },
     }
   },
   {
