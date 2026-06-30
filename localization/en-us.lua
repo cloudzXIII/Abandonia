@@ -10451,8 +10451,8 @@ return {
         name = "Mercurial Card",
         text = {
           "Gains {C:chips}+#2#{} Chips",
-          "for each unique suit",
-          "in scoring hand.",
+          "for each unique {C:attention}suit",
+          "in scoring hand",
           "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
         },
       },
