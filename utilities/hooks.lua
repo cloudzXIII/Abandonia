@@ -117,17 +117,6 @@ function get_blind_amount(ante)
 	return ABN:calculate_blind_size_modify(amount, ante)
 end
 
-local card_remove_ref = Card.remove
-function Card:remove()
-	if (self.added_to_deck or (self.area and (self.area == G.hand or self.area == G.deck))) then
-		SMODS.calculate_context {
-			abn_card_destroyed = true,
-			card = self,
-		}
-	end
-	return card_remove_ref(self)
-end
-
 -- Hook to display perma bonus underneath jokers (code borrowed from Final Mix's unreleased update :>)
 local generate_UIBox_ability_table_ref = Card.generate_UIBox_ability_table
 function Card:generate_UIBox_ability_table(vars_only)

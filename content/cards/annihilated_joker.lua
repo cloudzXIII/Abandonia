@@ -24,7 +24,7 @@ SMODS.Joker {
 
 
   calculate = function(self, card, context)
-    if context.abn_card_destroyed and context.card.ability.set == "Joker" and not context.blueprint then
+    if context.joker_type_destroyed and context.card.ability.set == "Joker" and not context.blueprint then
       card.ability.extra.immutable.jokers_destroyed = card.ability.extra.immutable.jokers_destroyed - 1
       if card.ability.extra.immutable.jokers_destroyed <= 0 then
         card.ability.extra.immutable.jokers_destroyed = 3
