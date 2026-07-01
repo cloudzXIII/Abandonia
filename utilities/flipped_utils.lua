@@ -1,42 +1,3 @@
-SMODS.Consumable {
-  key = 'flipside',
-  set = 'Spectral',
-  atlas = "AbandoniaSpectrals",
-  pos = { x = 0, y = 0 },
-  config = { max_highlighted = 3, },
-  loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = { key = "abn_flipped_card", set = "Other" }
-    return { vars = { card.ability.max_highlighted } }
-  end,
-  use = function(self, card, area, copier)
-    G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = 0.4,
-      func = function()
-        play_sound('tarot1')
-        card:juice_up(0.3, 0.5)
-        return true
-      end
-    }))
-    for _, v in ipairs(G.hand.highlighted) do
-      v:flip()
-      v.ability.abn_perma_flipped = true
-    end
-    G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = 0.2,
-      func = function()
-        G.hand:unhighlight_all()
-        return true
-      end
-    }))
-    delay(0.5)
-  end,
-  abn_artist_credits = {
-    artist = "lolhappy909_lol"
-  },
-}
-
 -- HOOKS
 local card_flip_ref = Card.flip
 function Card:flip(bypass_perma_flipped)
@@ -93,6 +54,36 @@ SMODS.DrawStep {
     if self.ability.abn_perma_flipped then
       G.shared_abn_flipped_indicator.role.draw_major = self
       G.shared_abn_flipped_indicator:draw_shader('dissolve', nil, nil, nil, self.children.center)
+    end
+  end,
+  conditions = { vortex = false, facing = 'back' },
+}
+
+SMODS.DrawStep {
+  key = 'stickers_flipped',
+  order = 40,
+  func = function(self, layer)
+    if self.sticker and G.shared_stickers[self.sticker] then
+      G.shared_stickers[self.sticker].role.draw_major = self
+      G.shared_stickers[self.sticker]:draw_shader('dissolve', nil, nil, nil, self.children.center)
+      G.shared_stickers[self.sticker]:draw_shader('voucher', nil, self.ARGS.send_to_shader, nil, self.children.center)
+    elseif (self.sticker_run and G.shared_stickers[self.sticker_run]) and G.SETTINGS.run_stake_stickers then
+      G.shared_stickers[self.sticker_run].role.draw_major = self
+      G.shared_stickers[self.sticker_run]:draw_shader('dissolve', nil, nil, nil, self.children.center)
+      G.shared_stickers[self.sticker_run]:draw_shader('voucher', nil, self.ARGS.send_to_shader, nil, self.children
+        .center)
+    end
+
+    for k, v in pairs(SMODS.Stickers) do
+      if self.ability[v.key] then
+        if v and v.draw and type(v.draw) == 'function' then
+          v:draw(self, layer)
+        else
+          G.shared_stickers[v.key].role.draw_major = self
+          G.shared_stickers[v.key]:draw_shader('dissolve', nil, nil, nil, self.children.center)
+          G.shared_stickers[v.key]:draw_shader('voucher', nil, self.ARGS.send_to_shader, nil, self.children.center)
+        end
+      end
     end
   end,
   conditions = { vortex = false, facing = 'back' },

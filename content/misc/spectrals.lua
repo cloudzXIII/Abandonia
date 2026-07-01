@@ -1,4 +1,43 @@
 SMODS.Consumable {
+  key = 'flipside',
+  set = 'Spectral',
+  atlas = "AbandoniaSpectrals",
+  pos = { x = 0, y = 0 },
+  config = { max_highlighted = 3, },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_flipped_card", set = "Other" }
+    return { vars = { card.ability.max_highlighted } }
+  end,
+  use = function(self, card, area, copier)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+    for _, v in ipairs(G.hand.highlighted) do
+      v:flip()
+      v.ability.abn_perma_flipped = true
+    end
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.2,
+      func = function()
+        G.hand:unhighlight_all()
+        return true
+      end
+    }))
+    delay(0.5)
+  end,
+  abn_artist_credits = {
+    artist = "lolhappy909_lol"
+  },
+}
+
+SMODS.Consumable {
   key = 'abyss',
   set = 'Spectral',
   atlas = "AbandoniaSpectrals",
@@ -914,13 +953,13 @@ SMODS.Consumable {
       delay = 0.4,
       func = function()
         local choices = { 'abn_gloss', 'abn_iridescent', 'abn_pearlescent' }
-        
+
         local chosen_edition = pseudorandom_element(choices, 'abn_ascend')
 
         local ascend_card = G.hand.highlighted[1]
 
         ascend_card:set_edition({ [chosen_edition] = true }, true)
-        
+
         card:juice_up(0.3, 0.5)
         return true
       end
