@@ -42,13 +42,13 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
 		func = function()
 			if SMODS.OPENED_BOOSTER and SMODS.OPENED_BOOSTER.config.center.kind == "Arcana" and G.GAME.modifiers.abn_guarantee_spectral_in_tarot then
 				local go, av = true, 0
-				for k, v in pairs(G.pack_cards.cards) do
+				for k, v in pairs(G.pack_cards and G.pack_cards.cards or {}) do
 					if v.ability.set == "Spectral" then
 						go = false
 					end
 				end
 
-				local to_replace = pseudorandom_element(G.pack_cards.cards, pseudoseed("brr"))
+				local to_replace = pseudorandom_element(G.pack_cards and G.pack_cards.cards or {}, pseudoseed("brr"))
 				if go and to_replace then
 					if #SMODS.get_clean_pool("Spectral") > 0 then
 						to_replace:set_ability(
