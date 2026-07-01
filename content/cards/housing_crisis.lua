@@ -1,4 +1,3 @@
-
 SMODS.Joker {
     key = "housing_crisis",
     blueprint_compat = true,
@@ -7,21 +6,23 @@ SMODS.Joker {
     atlas = 'ABNJokerSheet15',
     pos = { x = 8, y = 5 },
     abn_coder = "LasagnaFelidae",
-    config = { 
-        extra = { 
-            chips = 0 , chips_gain_1 = 9 , chips_gain_2 = 6 ,
-            mult = 0, mult_gain_1 = 6 , mult_gain_2 = 9 ,
+    config = {
+        extra = {
+            chips = 0, chips_gain_1 = 9, chips_gain_2 = 6,
+            mult = 0, mult_gain_1 = 6, mult_gain_2 = 9,
             dollars_1 = 3, dollars_2 = 4,
-            type = "Full House"} 
-        },
+            type = "Full House" }
+    },
     loc_vars = function(self, info_queue, card)
-        return { 
+        info_queue[#info_queue + 1] = { key = "abn_light_suit", set = "Other" }
+        info_queue[#info_queue + 1] = { key = "abn_dark_suit", set = "Other" }
+        return {
             vars = {
                 localize(card.ability.extra.type, 'poker_hands'),
-                card.ability.extra.dollars_1, card.ability.extra.mult_gain_1, card.ability.extra.chips_gain_1, 
+                card.ability.extra.dollars_1, card.ability.extra.mult_gain_1, card.ability.extra.chips_gain_1,
                 card.ability.extra.dollars_2, card.ability.extra.mult_gain_2, card.ability.extra.chips_gain_2,
-                card.ability.extra.mult, card.ability.extra.chips, 
-            } 
+                card.ability.extra.mult, card.ability.extra.chips,
+            }
         }
     end,
 
@@ -34,26 +35,25 @@ SMODS.Joker {
             local total = 0
             local ret = {}
             for _, c in ipairs(context.scoring_hand) do
-
                 local rank = c.base.id
-                if c.base.value == "abn_14" 
+                if c.base.value == "abn_14"
                 or c.base.value == "abn_13"
                 or c.base.value == "abn_12"
-                or c.base.value == "abn_11" then 
-                    rank = c.base.nominal 
+                or c.base.value == "abn_11" then
+                    rank = c.base.nominal
                 end
 
                 if rank <= 10 and rank >= 0 and rank % 2 == 0 then
-                    evens[#evens+1] = c
+                    evens[#evens + 1] = c
                 end
                 if rank <= 10 and rank >= 0 and rank % 2 == 1 then
-                    odds[#odds+1] = c
+                    odds[#odds + 1] = c
                 end
                 if ABN.is_dark(c) then
-                    darks[#darks+1] = c
+                    darks[#darks + 1] = c
                 end
                 if ABN.is_light then
-                    lights[#lights+1] = c
+                    lights[#lights + 1] = c
                 end
             end
             if G.GAME.current_round.hands_played == 0 and #evens == 2 and #odds == 3 then

@@ -12,7 +12,7 @@ function Game:update(dt)
 
     -- Ensure win_ante stays locked based on modifiers
     if G.GAME then
-		if G.GAME.modifiers.Noxious and G.GAME.win_ante < 12 then
+        if G.GAME.modifiers.Noxious and G.GAME.win_ante < 12 then
             G.GAME.win_ante = 12
         elseif G.GAME.modifiers.Toxic and G.GAME.win_ante < 11 then
             G.GAME.win_ante = 11
@@ -89,14 +89,16 @@ function Game:update(dt)
     end
 
     -- Toxic Flip Mechanic
-    if G.STATE == G.STATES.SHOP and G.GAME.modifiers.Toxic and G.shop_jokers and G.shop_jokers.cards then
-        for _, v in ipairs(G.shop_jokers.cards) do
-            if v.config.center.set == 'Joker' and not v.ability.abn_toxic_checked then
-                if pseudorandom('toxic_flip') < 0.3 then
-                    if v.facing == 'front' then v:flip() end
-                    v.ability.abn_perma_flipped = true
+    if ABN.config.enable_flipped_stakes then
+        if G.STATE == G.STATES.SHOP and G.GAME.modifiers.Toxic and G.shop_jokers and G.shop_jokers.cards then
+            for _, v in ipairs(G.shop_jokers.cards) do
+                if v.config.center.set == 'Joker' and not v.ability.abn_toxic_checked then
+                    if pseudorandom('toxic_flip') < 0.3 then
+                        if v.facing == 'front' then v:flip() end
+                        v.ability.abn_perma_flipped = true
+                    end
+                    v.ability.abn_toxic_checked = true
                 end
-                v.ability.abn_toxic_checked = true
             end
         end
     end
@@ -169,7 +171,7 @@ SMODS.Stake({
 
     modifiers = function()
         G.GAME.win_ante = 12
-		G.GAME.modifiers.Noxious = true
+        G.GAME.modifiers.Noxious = true
         G.GAME.modifiers.Toxic = true
         G.GAME.modifiers.enable_eternals_in_shop = true
         G.GAME.modifiers.enable_perishables_in_shop = true
@@ -189,7 +191,7 @@ SMODS.Stake({
 
     modifiers = function()
         G.GAME.win_ante = 13
-		G.GAME.modifiers.Lethal = true
+        G.GAME.modifiers.Lethal = true
         G.GAME.modifiers.Toxic = true
         G.GAME.modifiers.enable_eternals_in_shop = true
         G.GAME.modifiers.enable_perishables_in_shop = true
@@ -209,7 +211,7 @@ SMODS.Stake({
 
     modifiers = function()
         G.GAME.win_ante = 14
-		G.GAME.modifiers.Baneful = true
+        G.GAME.modifiers.Baneful = true
         G.GAME.modifiers.Toxic = true
         G.GAME.modifiers.enable_eternals_in_shop = true
         G.GAME.modifiers.enable_perishables_in_shop = true
@@ -229,7 +231,7 @@ SMODS.Stake({
 
     modifiers = function()
         G.GAME.win_ante = 15
-		G.GAME.modifiers.Malicious = true
+        G.GAME.modifiers.Malicious = true
         G.GAME.modifiers.Toxic = true
         G.GAME.modifiers.enable_eternals_in_shop = true
         G.GAME.modifiers.enable_perishables_in_shop = true
@@ -249,7 +251,7 @@ SMODS.Stake({
 
     modifiers = function()
         G.GAME.win_ante = 16
-		G.GAME.modifiers.Malignant = true
+        G.GAME.modifiers.Malignant = true
         G.GAME.modifiers.Toxic = true
         G.GAME.modifiers.enable_eternals_in_shop = true
         G.GAME.modifiers.enable_perishables_in_shop = true
@@ -269,7 +271,7 @@ SMODS.Stake({
 
     modifiers = function()
         G.GAME.win_ante = 17
-		G.GAME.modifiers.Inhospitable = true
+        G.GAME.modifiers.Inhospitable = true
         G.GAME.modifiers.Toxic = true
         G.GAME.modifiers.enable_eternals_in_shop = true
         G.GAME.modifiers.enable_perishables_in_shop = true
@@ -289,7 +291,7 @@ SMODS.Stake({
 
     modifiers = function()
         G.GAME.win_ante = 18
-		G.GAME.modifiers.Unendurable = true
+        G.GAME.modifiers.Unendurable = true
         G.GAME.modifiers.Toxic = true
         G.GAME.modifiers.enable_eternals_in_shop = true
         G.GAME.modifiers.enable_perishables_in_shop = true
@@ -309,7 +311,7 @@ SMODS.Stake({
 
     modifiers = function()
         G.GAME.win_ante = 19
-		G.GAME.modifiers.Torturous = true
+        G.GAME.modifiers.Torturous = true
         G.GAME.modifiers.Toxic = true
         G.GAME.modifiers.enable_eternals_in_shop = true
         G.GAME.modifiers.enable_perishables_in_shop = true
@@ -329,7 +331,7 @@ SMODS.Stake({
 
     modifiers = function()
         G.GAME.win_ante = 20
-		G.GAME.modifiers.Wretched = true
+        G.GAME.modifiers.Wretched = true
         G.GAME.modifiers.Toxic = true
         G.GAME.modifiers.enable_eternals_in_shop = true
         G.GAME.modifiers.enable_perishables_in_shop = true
@@ -349,7 +351,7 @@ SMODS.Stake({
 
     modifiers = function()
         G.GAME.win_ante = 21
-		G.GAME.modifiers.Agonizing = true
+        G.GAME.modifiers.Agonizing = true
         G.GAME.modifiers.Toxic = true
         G.GAME.modifiers.enable_eternals_in_shop = true
         G.GAME.modifiers.enable_perishables_in_shop = true
@@ -369,7 +371,7 @@ SMODS.Stake({
 
     modifiers = function()
         G.GAME.win_ante = 22
-		G.GAME.modifiers.Deplorable = true
+        G.GAME.modifiers.Deplorable = true
         G.GAME.modifiers.Toxic = true
         G.GAME.modifiers.enable_eternals_in_shop = true
         G.GAME.modifiers.enable_perishables_in_shop = true
@@ -389,7 +391,7 @@ SMODS.Stake({
 
     modifiers = function()
         G.GAME.win_ante = 23
-		G.GAME.modifiers.Vile = true
+        G.GAME.modifiers.Vile = true
         G.GAME.modifiers.Toxic = true
         G.GAME.modifiers.enable_eternals_in_shop = true
         G.GAME.modifiers.enable_perishables_in_shop = true
@@ -409,7 +411,7 @@ SMODS.Stake({
 
     modifiers = function()
         G.GAME.win_ante = 24
-		G.GAME.modifiers.Revolting = true
+        G.GAME.modifiers.Revolting = true
         G.GAME.modifiers.Toxic = true
         G.GAME.modifiers.enable_eternals_in_shop = true
         G.GAME.modifiers.enable_perishables_in_shop = true
@@ -429,7 +431,7 @@ SMODS.Stake({
 
     modifiers = function()
         G.GAME.win_ante = 25
-		G.GAME.modifiers.Heinous = true
+        G.GAME.modifiers.Heinous = true
         G.GAME.modifiers.Toxic = true
         G.GAME.modifiers.enable_eternals_in_shop = true
         G.GAME.modifiers.enable_perishables_in_shop = true
@@ -449,7 +451,7 @@ SMODS.Stake({
 
     modifiers = function()
         G.GAME.win_ante = 26
-		G.GAME.modifiers.Abhorent = true
+        G.GAME.modifiers.Abhorent = true
         G.GAME.modifiers.Toxic = true
         G.GAME.modifiers.enable_eternals_in_shop = true
         G.GAME.modifiers.enable_perishables_in_shop = true
@@ -469,7 +471,7 @@ SMODS.Stake({
 
     modifiers = function()
         G.GAME.win_ante = 27
-		G.GAME.modifiers.Bloodcurdling = true
+        G.GAME.modifiers.Bloodcurdling = true
         G.GAME.modifiers.Toxic = true
         G.GAME.modifiers.enable_eternals_in_shop = true
         G.GAME.modifiers.enable_perishables_in_shop = true
@@ -489,7 +491,7 @@ SMODS.Stake({
 
     modifiers = function()
         G.GAME.win_ante = 28
-		G.GAME.modifiers.Repulsive = true
+        G.GAME.modifiers.Repulsive = true
         G.GAME.modifiers.Toxic = true
         G.GAME.modifiers.enable_eternals_in_shop = true
         G.GAME.modifiers.enable_perishables_in_shop = true
@@ -509,7 +511,7 @@ SMODS.Stake({
 
     modifiers = function()
         G.GAME.win_ante = 29
-		G.GAME.modifiers.Hazard = true
+        G.GAME.modifiers.Hazard = true
         G.GAME.modifiers.Toxic = true
         G.GAME.modifiers.enable_eternals_in_shop = true
         G.GAME.modifiers.enable_perishables_in_shop = true

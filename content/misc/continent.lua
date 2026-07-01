@@ -97,6 +97,8 @@ ABN.ContinentCard {
   config = { extra = { chips = 10 } },
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = { key = "abn_daytime", set = "Other", vars = {} }
+
+    info_queue[#info_queue + 1] = { key = "abn_light_suit", set = "Other" }
     local cae = card.ability.extra
     return { vars = { cae.chips } }
   end,
@@ -152,6 +154,7 @@ ABN.ContinentCard {
   config = { extra = { chips = 10 } },
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = { key = "abn_nighttime", set = "Other", vars = {} }
+    info_queue[#info_queue + 1] = { key = "abn_dark_suit", set = "Other" }
     local cae = card.ability.extra
     return { vars = { cae.chips } }
   end,

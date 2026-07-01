@@ -3336,8 +3336,8 @@ return {
       j_abn_ishihara_joker = {
         name = "Ishihara Joker",
         text = {
-          "Gain {C:chips}chips{} {C:attention}equal{} to",
-          "the {C:attention}ranks{} of scoring {C:dark_edition}Negative{} {C:diamonds}Light Suits{}",
+          "Gain {C:chips}chips{} {C:attention}equal{} to the {C:attention}ranks",
+          "of scoring {C:dark_edition}Negative{} {C:diamonds}Light Suits{}",
           "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips)",
         },
       },
@@ -4260,7 +4260,7 @@ return {
         name = "Joker by Midnight",
         text = {
           {
-            "Debuff all {C:diamonds}Light{} cards"
+            "Debuff all {C:diamonds}Light Suits{}"
           },
           { "When {C:attention}Blind{} is selected,",
             "add {C:dark_edition}#3#{} to",
@@ -11062,10 +11062,16 @@ return {
       -- Config options
       k_abn_config_show_credits = "Artist Credits",
       abn_show_credits = "Shows credits under mod badge when enabled",
+
       k_abn_config_toggle_music = "Toggle Music",
       abn_toggle_music = "Uses custom title screen music when enabled",
+
       k_abn_config_enable_logo = "Enable Custom Title Screen",
       abn_enable_logo = "(Requires Restart)",
+
+
+      k_abn_config_enable_flipped_stakes = "Disable Flipped Jokers in shop?",
+      abn_enable_flipped_stakes = "Flipped Jokers no longer spawn in Jimbo Stakes",
 
       -- Mod badges for credits
       k_abn_artist = "Artist",

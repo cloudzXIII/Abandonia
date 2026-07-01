@@ -108,12 +108,21 @@ ABN.config_tab = function()
                         },
                       }),
                       create_toggle({
-                        id = "show_credits",
+                        id = "enable_logo",
                         ref_table = ABN.config,
                         ref_value = "enable_logo",
                         label = localize("k_abn_config_enable_logo"),
                         info = {
                           G.localization.misc.dictionary.abn_enable_logo,
+                        },
+                      }),
+                      create_toggle({
+                        id = "enable_flipped_stakes",
+                        ref_table = ABN.config,
+                        ref_value = "enable_flipped_stakes",
+                        label = localize("k_abn_config_enable_flipped_stakes"),
+                        info = {
+                          G.localization.misc.dictionary.abn_enable_flipped_stakes,
                         },
                       }),
                     }

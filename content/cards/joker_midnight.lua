@@ -3,6 +3,8 @@ SMODS.Joker {
 
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_sunscourge
+
+    info_queue[#info_queue + 1] = { key = "abn_light_suit", set = "Other" }
     local tally = 0
     if G.playing_cards then
       for _, c in ipairs(G.playing_cards) do
