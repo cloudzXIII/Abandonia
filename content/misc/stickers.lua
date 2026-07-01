@@ -598,11 +598,11 @@ SMODS.Sticker {
   calculate = function(self, card, context)
     for _, _card in ipairs(G.playing_cards or {}) do
       if not _card:is_suit("Spades") then
-        card:set_debuff(true)
+        _card:set_debuff(true)
       end
     end
     if context.individual and context.cardarea == G.play then
-      if context.other_cardis_suit("Spades") then
+      if context.other_card:is_suit("Spades") then
         return {
           chips = context.other_card.base.nominal * 2
         }
@@ -620,11 +620,11 @@ SMODS.Sticker {
   calculate = function(self, card, context)
     for _, _card in ipairs(G.playing_cards or {}) do
       if not _card:is_suit("Hearts") then
-        card:set_debuff(true)
+        _card:set_debuff(true)
       end
     end
     if context.individual and context.cardarea == G.play then
-      if context.other_cardis_suit("Hearts") then
+      if context.other_card:is_suit("Hearts") then
         return {
           chips = context.other_card.base.nominal * 2
         }
@@ -642,11 +642,11 @@ SMODS.Sticker {
   calculate = function(self, card, context)
     for _, _card in ipairs(G.playing_cards or {}) do
       if not _card:is_suit("Clubs") then
-        card:set_debuff(true)
+        _card:set_debuff(true)
       end
     end
     if context.individual and context.cardarea == G.play then
-      if context.other_cardis_suit("Clubs") then
+      if context.other_card:is_suit("Clubs") then
         return {
           chips = context.other_card.base.nominal * 2
         }
@@ -664,11 +664,11 @@ SMODS.Sticker {
   calculate = function(self, card, context)
     for _, _card in ipairs(G.playing_cards or {}) do
       if not _card:is_suit("Diamonds") then
-        card:set_debuff(true)
+        _card:set_debuff(true)
       end
     end
     if context.individual and context.cardarea == G.play then
-      if context.other_cardis_suit("Diamonds") then
+      if context.other_card:is_suit("Diamonds") then
         return {
           chips = context.other_card.base.nominal * 2
         }
@@ -717,6 +717,193 @@ SMODS.Sticker {
         return {
           chips = context.other_card.base.nominal * 2
         }
+      end
+    end
+  end,
+}
+
+SMODS.Sticker {
+  key = 'even_legacy',
+  atlas = "AbandoniaStickers",
+  pos = { x = 4, y = 7 },
+  badge_colour = HEX("fd5f55"),
+
+  calculate = function(self, card, context)
+    if context.individual and context.cardarea == G.play then
+      if ABN.is_even(context.other_card) then
+        return {
+          chips = context.other_card.base.nominal * 3
+        }
+      elseif ABN.is_odd(context.other_card) then
+        return {
+          chips = 1
+        }
+      end
+    end
+  end,
+}
+
+SMODS.Sticker {
+  key = 'odd_legacy',
+  atlas = "AbandoniaStickers",
+  pos = { x = 0, y = 8 },
+  badge_colour = HEX("009cfd"),
+
+  calculate = function(self, card, context)
+    if context.individual and context.cardarea == G.play then
+      if ABN.is_odd(context.other_card) then
+        return {
+          chips = context.other_card.base.nominal * 3
+        }
+      elseif ABN.is_even(context.other_card) then
+        return {
+          chips = 1
+        }
+      end
+    end
+  end,
+}
+
+SMODS.Sticker {
+  key = 'jimbo_legacy',
+  atlas = "AbandoniaStickers",
+  pos = { x = 1, y = 8 },
+  badge_colour = HEX("009cfd"),
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+        card.ability[self.key].chips,
+      }
+    }
+  end,
+  config = {
+    chips = 50
+  },
+
+  calculate = function(self, card, context)
+    if context.other_joker and context.other_joker:is_rarity("Common") then
+      return {
+        chips = card.ability[self.key].chips
+      }
+    end
+  end,
+}
+
+SMODS.Sticker {
+  key = 'rejok_legacy',
+  atlas = "AbandoniaStickers",
+  pos = { x = 2, y = 8 },
+  badge_colour = HEX("fda200"),
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+        card.ability[self.key].chips,
+      }
+    }
+  end,
+  config = {
+    chips = 100
+  },
+
+  calculate = function(self, card, context)
+    if context.other_joker and context.other_joker:is_rarity("Uncommon") then
+      return {
+        chips = card.ability[self.key].chips
+      }
+    end
+  end,
+}
+
+SMODS.Sticker {
+  key = 'obmij_legacy',
+  atlas = "AbandoniaStickers",
+  pos = { x = 3, y = 8 },
+  badge_colour = HEX("fd5f55"),
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+        card.ability[self.key].mult,
+      }
+    }
+  end,
+  config = {
+    mult = 20
+  },
+
+  calculate = function(self, card, context)
+    if context.other_joker and context.other_joker:is_rarity("Rare") then
+      return {
+        mult = card.ability[self.key].mult
+      }
+    end
+  end,
+}
+
+SMODS.Sticker {
+  key = 'jester_legacy',
+  atlas = "AbandoniaStickers",
+  pos = { x = 4, y = 8 },
+  badge_colour = HEX("009cfd"),
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+        card.ability[self.key].mult,
+      }
+    }
+  end,
+  config = {
+    mult = 40
+  },
+
+  calculate = function(self, card, context)
+    if context.other_joker and context.other_joker:is_rarity("abn_SuperRare") then
+      return {
+        mult = card.ability[self.key].mult
+      }
+    end
+  end,
+}
+
+SMODS.Sticker {
+  key = 'currency',
+  atlas = "AbandoniaStickers",
+  pos = { x = 3, y = 6 },
+  badge_colour = HEX("86c06b"),
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+        card.ability[self.key].dollars,
+      }
+    }
+  end,
+  config = {
+    dollars = 1
+  },
+  calculate = function(self, card, context)
+    if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+      SMODS.calculate_effect({ dollars = card.ability[self.key].dollars }, card)
+    end
+  end,
+}
+
+SMODS.Sticker {
+  key = 'chain',
+  atlas = "AbandoniaStickers",
+  pos = { x = 0, y = 6 },
+  badge_colour = HEX("537df2"),
+  loc_vars = function(self, info_queue, card)
+  end,
+  config = {
+  },
+  calculate = function(self, card, context)
+    if context.pre_discard then
+      local hand_count = #G.hand.cards
+      for i = 1, hand_count do
+        draw_card(G.hand, G.discard, i * 100 / hand_count, 'down', nil, nil, 0.07)
       end
     end
   end,

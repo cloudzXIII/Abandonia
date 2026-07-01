@@ -216,7 +216,7 @@ ABN.contributors = {
   },
   {
     key = "credit_abn_ginger",
-    name = "La Ginger",
+    name = "Le Ginger",
     role = "Artist",
     has_icon = true,
     colour = G.C.GREEN,

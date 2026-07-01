@@ -28,7 +28,7 @@ ABN.ContinentCard = SMODS.Consumable:extend({
   pixel_size = { w = 65, h = 94 },
   display_size = { w = 65, h = 94 },
   can_use = function(self, card)
-    return G.GAME.blind and G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
   end,
   abn_artist_credits = {
     artist = "Muddz"
@@ -39,87 +39,26 @@ ABN.ContinentCard = SMODS.Consumable:extend({
 ABN.ContinentCard {
   key = "africa",
   pos = { x = 4, y = 1 },
-  config = {},
+  config = { extra = { mult = 1 } },
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
-    info_queue[#info_queue + 1] = G.P_SEALS.Gold
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_gold
-    info_queue[#info_queue + 1] = { key = 'e_negative_playing_card', set = 'Edition', config = { extra = 1 } }
-    info_queue[#info_queue + 1] = { key = "abn_light_suit", set = "Other" }
-    info_queue[#info_queue + 1] = { key = "abn_dark_suit", set = "Other" }
-    return { vars = {} }
+    info_queue[#info_queue + 1] = { key = "abn_diamond", set = "Other", vars = {} }
+    local cae = card.ability.extra
+    return { vars = { cae.mult } }
   end,
   use = function(self, card, area, copier)
-    local light_suits = {}
-    local dark_suits = {}
+    local joker = G.jokers.cards[#G.jokers.cards]
+    joker:add_sticker("abn_diamond", true)
+    joker:juice_up()
+    G.jokers:unhighlight_all()
     for _, c in ipairs(G.hand.cards) do
-      if ABN.is_light(c) then
-        light_suits[#light_suits + 1] = c
-      end
-      if ABN.is_dark(c) then
-        dark_suits[#dark_suits + 1] = c
+      if c:is_suit("Diamonds") then
+        c.ability.perma_mult = (c.ability.perma_mult or 0) + card.ability.extra.mult
+        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, c)
       end
     end
-
-    G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = 0.4,
-      func = function()
-        play_sound('tarot1')
-        card:juice_up(0.3, 0.5)
-        return true
-      end
-    }))
-
-    for _, _cards in ipairs({ light_suits, dark_suits }) do
-      for i = 1, #_cards do
-        local percent = 1.15 - (i - 0.999) / (#_cards - 0.998) * 0.3
-        G.E_MANAGER:add_event(Event({
-          trigger = 'after',
-          delay = 0.15,
-          func = function()
-            _cards[i]:flip()
-            play_sound('card1', percent)
-            _cards[i]:juice_up(0.3, 0.3)
-            return true
-          end
-        }))
-      end
-
-      for i = 1, #_cards do
-        G.E_MANAGER:add_event(Event({
-          func = function()
-            if _cards == light_suits then
-              _cards[i]:set_ability("m_stone")
-              _cards[i]:set_seal("Gold", true, true)
-            end
-            if _cards == dark_suits then
-              _cards[i]:set_ability("m_gold")
-              _cards[i]:set_edition("e_negative")
-            end
-            return true
-          end
-        }))
-      end
-
-      for i = 1, #_cards do
-        local percent = 0.85 + (i - 0.999) / (#_cards - 0.998) * 0.3
-        G.E_MANAGER:add_event(Event({
-          trigger = 'after',
-          delay = 0.15,
-          func = function()
-            _cards[i]:flip()
-            play_sound('tarot2', percent, 0.6)
-            _cards[i]:juice_up(0.3, 0.3)
-            return true
-          end
-        }))
-      end
-    end
-    delay(0.5)
   end,
   can_use = function(self, card)
-    return G.GAME.blind and G.GAME.blind.in_blind and G.hand and #G.hand.cards > 0
+    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
   end,
   abn_artist_credits = {
     artist = "HyperReal63"
@@ -127,257 +66,79 @@ ABN.ContinentCard {
 }
 
 ABN.ContinentCard {
-  key = "austrailia",
+  key = "australia",
   pos = { x = 2, y = 1 },
-  config = {},
+  config = { extra = { mult = 1 } },
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_glass
-    info_queue[#info_queue + 1] = G.P_SEALS.Red
-    return { vars = {} }
+    info_queue[#info_queue + 1] = { key = "abn_spade", set = "Other", vars = {} }
+    local cae = card.ability.extra
+    return { vars = { cae.mult } }
   end,
   use = function(self, card, area, copier)
-    local even_cards = {}
-    local odd_cards = {}
+    local joker = G.jokers.cards[#G.jokers.cards]
+    joker:add_sticker("abn_spade", true)
+    joker:juice_up()
+    G.jokers:unhighlight_all()
     for _, c in ipairs(G.hand.cards) do
-      if ABN.is_even(c) then
-        even_cards[#even_cards + 1] = c
-      end
-      if ABN.is_odd(c) then
-        odd_cards[#odd_cards + 1] = c
+      if c:is_suit("Spades") then
+        c.ability.perma_mult = (c.ability.perma_mult or 0) + card.ability.extra.mult
+        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, c)
       end
     end
-
-    G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = 0.4,
-      func = function()
-        play_sound('tarot1')
-        card:juice_up(0.3, 0.5)
-        return true
-      end
-    }))
-
-    for _, _cards in ipairs({ even_cards, odd_cards }) do
-      for i = 1, #_cards do
-        local percent = 1.15 - (i - 0.999) / (#_cards - 0.998) * 0.3
-        G.E_MANAGER:add_event(Event({
-          trigger = 'after',
-          delay = 0.15,
-          func = function()
-            _cards[i]:flip()
-            play_sound('card1', percent)
-            _cards[i]:juice_up(0.3, 0.3)
-            return true
-          end
-        }))
-      end
-
-      for i = 1, #_cards do
-        G.E_MANAGER:add_event(Event({
-          func = function()
-            if _cards == even_cards then
-              _cards[i]:set_ability("m_wild")
-              _cards[i]:set_edition("e_foil")
-            end
-            if _cards == odd_cards then
-              _cards[i]:set_ability("m_glass")
-              _cards[i]:set_seal("Red", true, true)
-            end
-            return true
-          end
-        }))
-      end
-
-      for i = 1, #_cards do
-        local percent = 0.85 + (i - 0.999) / (#_cards - 0.998) * 0.3
-        G.E_MANAGER:add_event(Event({
-          trigger = 'after',
-          delay = 0.15,
-          func = function()
-            _cards[i]:flip()
-            play_sound('tarot2', percent, 0.6)
-            _cards[i]:juice_up(0.3, 0.3)
-            return true
-          end
-        }))
-      end
-    end
-    delay(0.5)
   end,
   can_use = function(self, card)
-    return G.GAME.blind and G.GAME.blind.in_blind and G.hand and #G.hand.cards > 0
+    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
   end,
 }
 
 ABN.ContinentCard {
   key = "asia",
   pos = { x = 0, y = 1 },
-  config = {},
+  config = { extra = { chips = 10 } },
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_mult
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_bonus
-    info_queue[#info_queue + 1] = G.P_SEALS.abn_white
-    return { vars = {} }
+    info_queue[#info_queue + 1] = { key = "abn_daytime", set = "Other", vars = {} }
+    local cae = card.ability.extra
+    return { vars = { cae.chips } }
   end,
   use = function(self, card, area, copier)
-    local aces = {}
-    local face_cards = {}
+    local joker = G.jokers.cards[#G.jokers.cards]
+    joker:add_sticker("abn_daytime", true)
+    joker:juice_up()
+    G.jokers:unhighlight_all()
     for _, c in ipairs(G.hand.cards) do
-      if c:get_id() == 14 then
-        aces[#aces + 1] = c
-      end
-      if c:is_face() then
-        face_cards[#face_cards + 1] = c
+      if ABN.is_light(c) then
+        c.ability.perma_chips = (c.ability.perma_chips or 0) + card.ability.extra.chips
       end
     end
-
-    G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = 0.4,
-      func = function()
-        play_sound('tarot1')
-        card:juice_up(0.3, 0.5)
-        return true
-      end
-    }))
-
-    for _, _cards in ipairs({ aces, face_cards }) do
-      for i = 1, #_cards do
-        local percent = 1.15 - (i - 0.999) / (#_cards - 0.998) * 0.3
-        G.E_MANAGER:add_event(Event({
-          trigger = 'after',
-          delay = 0.15,
-          func = function()
-            _cards[i]:flip()
-            play_sound('card1', percent)
-            _cards[i]:juice_up(0.3, 0.3)
-            return true
-          end
-        }))
-      end
-
-      for i = 1, #_cards do
-        G.E_MANAGER:add_event(Event({
-          func = function()
-            if _cards == aces then
-              _cards[i]:set_ability("m_mult")
-              _cards[i]:set_edition("e_foil")
-            end
-            if _cards == face_cards then
-              _cards[i]:set_ability("m_bonus")
-              _cards[i]:set_seal("abn_white", true, true)
-            end
-            return true
-          end
-        }))
-      end
-
-      for i = 1, #_cards do
-        local percent = 0.85 + (i - 0.999) / (#_cards - 0.998) * 0.3
-        G.E_MANAGER:add_event(Event({
-          trigger = 'after',
-          delay = 0.15,
-          func = function()
-            _cards[i]:flip()
-            play_sound('tarot2', percent, 0.6)
-            _cards[i]:juice_up(0.3, 0.3)
-            return true
-          end
-        }))
-      end
-    end
-    delay(0.5)
   end,
   can_use = function(self, card)
-    return G.GAME.blind and G.GAME.blind.in_blind and G.hand and #G.hand.cards > 0
+    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
   end,
 }
 
 ABN.ContinentCard {
   key = "europe",
   pos = { x = 3, y = 1 },
-  config = {},
+  config = { extra = { mult = 1 } },
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
-    info_queue[#info_queue + 1] = G.P_SEALS.abn_orange
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_abandond
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_fossil
-    return { vars = {} }
+    info_queue[#info_queue + 1] = { key = "abn_club", set = "Other", vars = {} }
+    local cae = card.ability.extra
+    return { vars = { cae.mult } }
   end,
   use = function(self, card, area, copier)
-    local over_5 = {}
-    local under_5 = {}
+    local joker = G.jokers.cards[#G.jokers.cards]
+    joker:add_sticker("abn_club", true)
+    joker:juice_up()
+    G.jokers:unhighlight_all()
     for _, c in ipairs(G.hand.cards) do
-      if c:get_id() <= 5 then
-        under_5[#under_5 + 1] = c
-      end
-      if c:get_id() >= 6 then
-        over_5[#over_5 + 1] = c
+      if c:is_suit("Clubs") then
+        c.ability.perma_mult = (c.ability.perma_mult or 0) + card.ability.extra.mult
+        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, c)
       end
     end
-
-    G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = 0.4,
-      func = function()
-        play_sound('tarot1')
-        card:juice_up(0.3, 0.5)
-        return true
-      end
-    }))
-
-    for _, _cards in ipairs({ over_5, under_5 }) do
-      for i = 1, #_cards do
-        local percent = 1.15 - (i - 0.999) / (#_cards - 0.998) * 0.3
-        G.E_MANAGER:add_event(Event({
-          trigger = 'after',
-          delay = 0.15,
-          func = function()
-            _cards[i]:flip()
-            play_sound('card1', percent)
-            _cards[i]:juice_up(0.3, 0.3)
-            return true
-          end
-        }))
-      end
-
-      for i = 1, #_cards do
-        G.E_MANAGER:add_event(Event({
-          func = function()
-            if _cards == over_5 then
-              _cards[i]:set_ability("m_steel")
-              _cards[i]:set_seal("abn_orange", true, true)
-            end
-            if _cards == under_5 then
-              _cards[i]:set_ability("m_abn_fossil")
-              _cards[i]:set_edition("e_abn_abandond")
-            end
-            return true
-          end
-        }))
-      end
-
-      for i = 1, #_cards do
-        local percent = 0.85 + (i - 0.999) / (#_cards - 0.998) * 0.3
-        G.E_MANAGER:add_event(Event({
-          trigger = 'after',
-          delay = 0.15,
-          func = function()
-            _cards[i]:flip()
-            play_sound('tarot2', percent, 0.6)
-            _cards[i]:juice_up(0.3, 0.3)
-            return true
-          end
-        }))
-      end
-    end
-    delay(0.5)
   end,
   can_use = function(self, card)
-    return G.GAME.blind and G.GAME.blind.in_blind and G.hand and #G.hand.cards > 0
+    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
   end,
   abn_artist_credits = {
     artist = "cloudzXIII",
@@ -388,157 +149,443 @@ ABN.ContinentCard {
 ABN.ContinentCard {
   key = "antarctica",
   pos = { x = 1, y = 1 },
-  config = {},
+  config = { extra = { chips = 10 } },
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
-    info_queue[#info_queue + 1] = G.P_SEALS.abn_lavender
-    info_queue[#info_queue + 1] = { key = "abn_light_suit", set = "Other" }
-    info_queue[#info_queue + 1] = { key = "abn_dark_suit", set = "Other" }
-    return { vars = {} }
+    info_queue[#info_queue + 1] = { key = "abn_nighttime", set = "Other", vars = {} }
+    local cae = card.ability.extra
+    return { vars = { cae.chips } }
   end,
   use = function(self, card, area, copier)
-    local light_suits = {}
-    local dark_suits = {}
+    local joker = G.jokers.cards[#G.jokers.cards]
+    joker:add_sticker("abn_nighttime", true)
+    joker:juice_up()
+    G.jokers:unhighlight_all()
     for _, c in ipairs(G.hand.cards) do
-      if ABN.is_light(c) then
-        light_suits[#light_suits + 1] = c
-      end
       if ABN.is_dark(c) then
-        dark_suits[#dark_suits + 1] = c
+        c.ability.perma_chips = (c.ability.perma_chips or 0) + card.ability.extra.chips
       end
     end
-
-    G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = 0.4,
-      func = function()
-        play_sound('tarot1')
-        card:juice_up(0.3, 0.5)
-        return true
-      end
-    }))
-
-    for _, _cards in ipairs({ light_suits, dark_suits }) do
-      for i = 1, #_cards do
-        local percent = 1.15 - (i - 0.999) / (#_cards - 0.998) * 0.3
-        G.E_MANAGER:add_event(Event({
-          trigger = 'after',
-          delay = 0.15,
-          func = function()
-            _cards[i]:flip()
-            play_sound('card1', percent)
-            _cards[i]:juice_up(0.3, 0.3)
-            return true
-          end
-        }))
-      end
-
-      for i = 1, #_cards do
-        G.E_MANAGER:add_event(Event({
-          func = function()
-            if _cards == light_suits then
-              assert(SMODS.change_base(_cards[i], "abn_Snow"))
-              _cards[i]:set_edition("e_holo")
-            end
-            if _cards == dark_suits then
-              assert(SMODS.change_base(_cards[i], "abn_Penumbra"))
-              _cards[i]:set_seal("abn_lavender", true, true)
-            end
-            return true
-          end
-        }))
-      end
-
-      for i = 1, #_cards do
-        local percent = 0.85 + (i - 0.999) / (#_cards - 0.998) * 0.3
-        G.E_MANAGER:add_event(Event({
-          trigger = 'after',
-          delay = 0.15,
-          func = function()
-            _cards[i]:flip()
-            play_sound('tarot2', percent, 0.6)
-            _cards[i]:juice_up(0.3, 0.3)
-            return true
-          end
-        }))
-      end
-    end
-    delay(0.5)
   end,
   can_use = function(self, card)
-    return G.GAME.blind and G.GAME.blind.in_blind and G.hand and #G.hand.cards > 0
+    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
   end,
 }
 
 ABN.ContinentCard {
-  key = "avalon",
-  pos = { x = 2, y = 0 },
-  config = { extra = { type = "Five of a Kind" } },
+  key = "south_america",
+  pos = { x = 5, y = 1 },
+  config = { extra = { mult = 1 } },
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = { key = "abn_top_hat", set = "Other", vars = {} }
-    return { vars = {} }
+    info_queue[#info_queue + 1] = { key = "abn_heart", set = "Other", vars = {} }
+    local cae = card.ability.extra
+    return { vars = { cae.mult } }
   end,
-  calculate = function(self, card, context)
-    if context.before and next(context.poker_hands[card.ability.extra.type]) then
-      local faces = true
-      for _, v in ipairs(context.full_hand) do
-        if v:is_face() ~= false then
-          faces = false
-        end
-      end
-      if faces then
-        SMODS.destroy_cards(context.full_hand)
-        SMODS.add_card { rarity = "Legendary", key_append = "keris", stickers = { "abn_top_hat" } }
+  use = function(self, card, area, copier)
+    local joker = G.jokers.cards[#G.jokers.cards]
+    joker:add_sticker("abn_heart", true)
+    joker:juice_up()
+    G.jokers:unhighlight_all()
+    for _, c in ipairs(G.hand.cards) do
+      if c:is_suit("Hearts") then
+        c.ability.perma_mult = (c.ability.perma_mult or 0) + card.ability.extra.mult
+        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, c)
       end
     end
+  end,
+  can_use = function(self, card)
+    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
+  end,
+
+  abn_artist_credits = {
+    artist = "Da Gorbage Rat"
+  },
+}
+
+ABN.ContinentCard {
+  key = "north_america",
+  pos = { x = 0, y = 2 },
+  config = { extra = { sell_value = 5 } },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_jimbo_legacy", set = "Other", vars = { 50 } }
+    local cae = card.ability.extra
+    return { vars = { cae.sell_value } }
+  end,
+  use = function(self, card, area, copier)
+    local joker = G.jokers.cards[#G.jokers.cards]
+    joker:add_sticker("abn_jimbo_legacy", true)
+    joker:juice_up()
+    G.jokers:unhighlight_all()
+    for _, other_card in ipairs(G.jokers.cards) do
+      other_card.ability.extra_value = (other_card.ability.extra_value or 0) +
+          card.ability.extra.sell_value
+      SMODS.calculate_effect({ message = localize('k_val_up'), colour = G.C.MONEY }, other_card)
+      other_card:set_cost()
+    end
+  end,
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.cards > 0
+  end,
+
+  abn_artist_credits = {
+    artist = "Da Gorbage Rat"
+  },
+}
+
+ABN.ContinentCard {
+  key = "atlantis",
+  pos = { x = 5, y = 2 },
+  config = { extra = { mult = 2, chips = 5 } },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_weight", set = "Other", vars = { 2 } }
+    info_queue[#info_queue + 1] = { key = "abn_fragile", set = "Other", vars = { 1, 4 } }
+    local cae = card.ability.extra
+    return { vars = { cae.mult, cae.chips } }
+  end,
+  use = function(self, card, area, copier)
+    local joker = G.jokers.cards[#G.jokers.cards]
+    joker:add_sticker("abn_weight", true)
+    joker:juice_up()
+
+    local leftmost = G.jokers.cards[1]
+    leftmost:add_sticker("abn_fragile", true)
+    leftmost:juice_up()
+    G.jokers:unhighlight_all()
+    for _, c in ipairs(G.hand.cards) do
+      if c:is_suit("abn_Penumbra") then
+        c.ability.perma_mult = (c.ability.perma_mult or 0) + card.ability.extra.mult
+        c.ability.perma_bonus = (c.ability.perma_bonus or 0) + card.ability.extra.chips
+        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, c)
+      end
+    end
+  end,
+  can_use = function(self, card)
+    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
   end,
 }
 
 ABN.ContinentCard {
-  key = "keris",
-  pos = { x = 3, y = 0 },
-  config = { extra = { type = "Flush" } },
+  key = "hyperborea",
+  pos = { x = 0, y = 3 },
+  config = { extra = { mult = 2, chips = 5 } },
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = { key = "abn_bullseye", set = "Other", vars = { 100 } }
-    return { vars = {} }
+    info_queue[#info_queue + 1] = { key = "abn_even_legacy", set = "Other", vars = {} }
+    info_queue[#info_queue + 1] = { key = "perishable", set = "Other", vars = { 5, 5 } }
+    info_queue[#info_queue + 1] = { key = "rental", set = "Other", vars = { 3 } }
+    local cae = card.ability.extra
+    return { vars = { cae.mult, cae.chips } }
   end,
-  calculate = function(self, card, context)
-    if context.before and next(context.poker_hands[card.ability.extra.type]) then
-      local faces = true
-      for _, v in ipairs(context.full_hand) do
-        if not v:is_face() then
-          faces = false
-        end
-      end
-      if faces then
-        SMODS.destroy_cards(context.full_hand)
-        SMODS.add_card { rarity = "abn_ParallelRare", key_append = "keris", stickers = { "abn_bullseye" } }
+  use = function(self, card, area, copier)
+    local joker = G.jokers.cards[#G.jokers.cards]
+    joker:add_sticker("abn_even_legacy", true)
+    joker:juice_up()
+
+    local leftmost = G.jokers.cards[1]
+    leftmost:add_sticker("perishable", true)
+    leftmost:add_sticker("rental", true)
+    leftmost:juice_up()
+    G.jokers:unhighlight_all()
+    for _, c in ipairs(G.hand.cards) do
+      if c:is_suit("abn_Snow") then
+        c.ability.perma_mult = (c.ability.perma_mult or 0) + card.ability.extra.mult
+        c.ability.perma_bonus = (c.ability.perma_bonus or 0) + card.ability.extra.chips
+        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, c)
       end
     end
+  end,
+  can_use = function(self, card)
+    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
+  end,
+}
+
+ABN.ContinentCard {
+  key = "lemuria",
+  pos = { x = 0, y = 0 },
+  config = { extra = { mult = 2, chips = 5 } },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_odd_legacy", set = "Other", vars = {} }
+    info_queue[#info_queue + 1] = { key = "abn_downgrade", set = "Other", vars = { -5 } }
+    info_queue[#info_queue + 1] = { key = "eternal", set = "Other", vars = {} }
+    local cae = card.ability.extra
+    return { vars = { cae.mult, cae.chips } }
+  end,
+  use = function(self, card, area, copier)
+    local joker = G.jokers.cards[#G.jokers.cards]
+    joker:add_sticker("abn_odd_legacy", true)
+    joker:juice_up()
+
+    local leftmost = G.jokers.cards[1]
+    leftmost:add_sticker("abn_downgrade", true)
+    leftmost:add_sticker("eternal", true)
+    leftmost:juice_up()
+    G.jokers:unhighlight_all()
+    for _, c in ipairs(G.hand.cards) do
+      if c:is_suit("abn_Bow") then
+        c.ability.perma_mult = (c.ability.perma_mult or 0) + card.ability.extra.mult
+        c.ability.perma_bonus = (c.ability.perma_bonus or 0) + card.ability.extra.chips
+        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, c)
+      end
+    end
+  end,
+  can_use = function(self, card)
+    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
   end,
 }
 
 ABN.ContinentCard {
   key = "mu",
   pos = { x = 4, y = 0 },
-  config = { extra = { type = "abn_Spectrum" } },
+  config = { extra = { mult = 2, chips = 5 } },
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
-    info_queue[#info_queue + 1] = { key = "abn_pump_up", set = "Other", vars = { 10 } }
-    return { vars = {} }
+    info_queue[#info_queue + 1] = { key = "abn_rejok_legacy", set = "Other", vars = { 100 } }
+    info_queue[#info_queue + 1] = { key = "rental", set = "Other", vars = { 3 } }
+    info_queue[#info_queue + 1] = { key = "eternal", set = "Other", vars = {} }
+    local cae = card.ability.extra
+    return { vars = { cae.mult, cae.chips } }
   end,
-  calculate = function(self, card, context)
-    if context.before and next(context.poker_hands[card.ability.extra.type]) then
-      local aces = true
-      for _, v in ipairs(context.full_hand) do
-        if v:get_id() ~= 14 then
-          aces = false
-        end
-      end
-      if aces then
-        SMODS.destroy_cards(context.full_hand)
-        SMODS.add_card { set = "Comedians", edition = "e_holo", key_append = "mu", stickers = { "abn_pump_up" } }
+  use = function(self, card, area, copier)
+    local joker = G.jokers.cards[#G.jokers.cards]
+    joker:add_sticker("abn_rejok_legacy", true)
+    joker:juice_up()
+
+    local leftmost = G.jokers.cards[1]
+    leftmost:add_sticker("rental", true)
+    leftmost:add_sticker("eternal", true)
+    leftmost:juice_up()
+    G.jokers:unhighlight_all()
+    for _, c in ipairs(G.hand.cards) do
+      if c:is_suit("abn_Tie") then
+        c.ability.perma_mult = (c.ability.perma_mult or 0) + card.ability.extra.mult
+        c.ability.perma_bonus = (c.ability.perma_bonus or 0) + card.ability.extra.chips
+        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, c)
       end
     end
+  end,
+  can_use = function(self, card)
+    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
+  end,
+}
+
+
+ABN.ContinentCard {
+  key = "asgard",
+  pos = { x = 2, y = 2 },
+  config = { extra = { mult = 2, chips = 5 } },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_obmij_legacy", set = "Other", vars = { 20 } }
+    info_queue[#info_queue + 1] = { key = "rental", set = "Other", vars = { 3 } }
+    info_queue[#info_queue + 1] = { key = "abn_fragile", set = "Other", vars = { 1, 4 } }
+    local cae = card.ability.extra
+    return { vars = { cae.mult, cae.chips } }
+  end,
+  use = function(self, card, area, copier)
+    local joker = G.jokers.cards[#G.jokers.cards]
+    joker:add_sticker("abn_obmij_legacy", true)
+    joker:juice_up()
+
+    local leftmost = G.jokers.cards[1]
+    leftmost:add_sticker("rental", true)
+    leftmost:add_sticker("abn_fragile", true)
+    leftmost:juice_up()
+    G.jokers:unhighlight_all()
+    for _, c in ipairs(G.hand.cards) do
+      if c:is_suit("abn_Tie") then
+        c.ability.perma_mult = (c.ability.perma_mult or 0) + card.ability.extra.mult
+        c.ability.perma_bonus = (c.ability.perma_bonus or 0) + card.ability.extra.chips
+        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, c)
+      end
+    end
+  end,
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.cards > 0
+  end,
+}
+
+
+ABN.ContinentCard {
+  key = "shangrila",
+  pos = { x = 3, y = 2 },
+  config = { extra = { mult = 2, chips = 5 } },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_lucky", set = "Other", vars = { 1, 6, 10 } }
+    info_queue[#info_queue + 1] = { key = "abn_possibility", set = "Other", vars = {} }
+    info_queue[#info_queue + 1] = { key = "eternal", set = "Other", vars = {} }
+    info_queue[#info_queue + 1] = { key = "abn_eraser", set = "Other", vars = {} }
+    local cae = card.ability.extra
+    return { vars = { cae.mult, cae.chips } }
+  end,
+  use = function(self, card, area, copier)
+    local joker_to_destroy = G.jokers.cards[#G.jokers.cards]
+    if joker_to_destroy:is_rarity("Common") then
+      joker_to_destroy.getting_sliced = true
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.1,
+        func = function()
+          joker_to_destroy:start_dissolve({ G.C.RED }, nil, 1.6)
+          return true
+        end
+      }))
+
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          SMODS.add_card {
+            set = 'Joker',
+            rarity = "Uncommon",
+            stickers = { "abn_lucky", "abn_possibility" }, force_stickers = true
+          }
+          return true
+        end
+      }))
+    end
+
+    local leftmost = G.jokers.cards[1]
+    leftmost:add_sticker("eternal", true)
+    leftmost:add_sticker("abn_eraser", true)
+    leftmost:juice_up()
+    G.jokers:unhighlight_all()
+  end,
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.cards > 0 and
+        G.jokers.cards[#G.jokers.cards]:is_rarity("Common")
+  end,
+}
+
+ABN.ContinentCard {
+  key = "ker_is",
+  pos = { x = 3, y = 0 },
+  config = { extra = { mult = 2, chips = 5 } },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_glove_hand", set = "Other", vars = { 1 } }
+    info_queue[#info_queue + 1] = { key = "abn_bullseye", set = "Other", vars = { 100 } }
+    info_queue[#info_queue + 1] = { key = "abn_eraser", set = "Other", vars = {} }
+    info_queue[#info_queue + 1] = { key = "rental", set = "Other", vars = { 3 } }
+    local cae = card.ability.extra
+    return { vars = { cae.mult, cae.chips } }
+  end,
+  use = function(self, card, area, copier)
+    local joker_to_destroy = G.jokers.cards[#G.jokers.cards]
+    if joker_to_destroy:is_rarity("Uncommon") then
+      joker_to_destroy.getting_sliced = true
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.1,
+        func = function()
+          joker_to_destroy:start_dissolve({ G.C.RED }, nil, 1.6)
+          return true
+        end
+      }))
+
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          SMODS.add_card {
+            set = 'Joker',
+            rarity = "Rare",
+            stickers = { "abn_glove_hand", "abn_bullseye" }, force_stickers = true
+          }
+          return true
+        end
+      }))
+    end
+
+    local leftmost = G.jokers.cards[1]
+    leftmost:add_sticker("rental", true)
+    leftmost:add_sticker("abn_eraser", true)
+    leftmost:juice_up()
+    G.jokers:unhighlight_all()
+  end,
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.cards > 0 and
+        G.jokers.cards[#G.jokers.cards]:is_rarity("Uncommon")
+  end,
+}
+
+
+ABN.ContinentCard {
+  key = "avalon",
+  pos = { x = 1, y = 0 },
+  config = { extra = { mult = 2, chips = 5 } },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_shovel", set = "Other", vars = { 2 } }
+    info_queue[#info_queue + 1] = { key = "abn_jester_legacy", set = "Other", vars = { 40 } }
+    info_queue[#info_queue + 1] = { key = "abn_chain", set = "Other", vars = {} }
+    info_queue[#info_queue + 1] = { key = "rental", set = "Other", vars = { 3 } }
+    local cae = card.ability.extra
+    return { vars = { cae.mult, cae.chips } }
+  end,
+
+  hidden = true,
+  soul_set = 'continent',
+
+  use = function(self, card, area, copier)
+    local joker_to_destroy = G.jokers.cards[#G.jokers.cards]
+    if joker_to_destroy:is_rarity("Rare") then
+      joker_to_destroy.getting_sliced = true
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.1,
+        func = function()
+          joker_to_destroy:start_dissolve({ G.C.RED }, nil, 1.6)
+          return true
+        end
+      }))
+
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          SMODS.add_card {
+            set = 'Joker',
+            rarity = "abn_SuperRare",
+            stickers = { "abn_shovel", "abn_jester_legacy" }, force_stickers = true
+          }
+          return true
+        end
+      }))
+    end
+
+    local leftmost = G.jokers.cards[1]
+    leftmost:add_sticker("rental", true)
+    leftmost:add_sticker("abn_chain", true)
+    leftmost:juice_up()
+    G.jokers:unhighlight_all()
+  end,
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.cards > 0 and
+        G.jokers.cards[#G.jokers.cards]:is_rarity("Rare")
+  end,
+}
+
+ABN.ContinentCard {
+  key = "el_dorado",
+  pos = { x = 4, y = 2 },
+  config = { extra = {} },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_immortal", set = "Other", vars = {} }
+    info_queue[#info_queue + 1] = { key = "abn_odd_legacy", set = "Other", vars = {} }
+    info_queue[#info_queue + 1] = { key = "abn_cat_eye", set = "Other", vars = {} }
+    info_queue[#info_queue + 1] = { key = "eternal", set = "Other", vars = {} }
+    info_queue[#info_queue + 1] = { key = "abn_even_legacy", set = "Other", vars = {} }
+    info_queue[#info_queue + 1] = { key = "abn_lightning_bolt", set = "Other", vars = {} }
+    local cae = card.ability.extra
+    return { vars = { cae.mult, cae.chips } }
+  end,
+
+  hidden = true,
+  soul_set = 'continent',
+
+  use = function(self, card, area, copier)
+    local joker = G.jokers.cards[#G.jokers.cards]
+    joker:add_sticker("abn_immortal", true)
+    joker:add_sticker("abn_odd_legacy", true)
+    joker:add_sticker("abn_cat_eye", true)
+    joker:juice_up()
+
+    local leftmost = G.jokers.cards[1]
+    leftmost:add_sticker("eternal", true)
+    leftmost:add_sticker("abn_even_legacy", true)
+    leftmost:add_sticker("abn_lightning_bolt", true)
+    leftmost:juice_up()
+    G.jokers:unhighlight_all()
+  end,
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.cards > 0
   end,
 }

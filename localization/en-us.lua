@@ -99,101 +99,239 @@ return {
         name = "Africa",
         text = {
           {
-            "Convert all {C:diamonds}light suits{}",
-            "held into {C:attention}Stone Cards{}",
-            "with {C:gold}Gold Seals{}"
+            "Apply {C:diamonds}Diamond Sticker{} to",
+            "the {C:attention}rightmost{} Joker",
           },
           {
-            "Convert all {C:spades}dark suits{}",
-            "into {C:dark_edition}Negative{} {C:attention}Gold Cards"
+            "All {C:diamonds}Diamonds{} held",
+            "permanently gain {C:mult}+#1#{} Mult"
           }
         },
       },
-      c_abn_austrailia = {
-        name = "Austrailia",
+
+      c_abn_australia = {
+        name = "Australia",
         text = {
           {
-            "Convert all {C:attention}odd{} cards",
-            "held into {C:dark_edition}Foil{} {C:attention}Wild Cards{}",
+            "Apply {C:spades}Spade Sticker{} to",
+            "the {C:attention}rightmost{} Joker",
           },
           {
-            "Convert all {C:attention}even{} cards",
-            "held into {C:attention}Glass Cards{}",
-            "with {C:red}Red Seals{}"
+            "All {C:spades}Spades{} held",
+            "permanently gain {C:mult}+#1#{} Mult"
           }
         },
       },
+
       c_abn_asia = {
         name = "Asia",
         text = {
           {
-            "Convert all {C:attention}Aces{}",
-            "held into {C:dark_edition}Foil{} {C:attention}Mult Cards{}",
+            "Apply {C:attention}Day Time{} to",
+            "the {C:attention}rightmost{} Joker",
           },
           {
-            "Convert all {C:attention}face{} cards",
-            "held into {C:attention}Bonus Cards{}",
-            "with {C:abn_white_seal}White Seals{}"
+            "All {C:diamonds}Light Suits{} held",
+            "permanently gain {C:chips}+#1#{} Chips"
           }
         },
       },
+
       c_abn_europe = {
         name = "Europe",
         text = {
           {
-            "Convert all held cards",
-            "with ranks below {C:attention}5{} into",
-            "{C:attention}Steel Cards{} with {C:abn_orange_seal}Orange Seals{}",
+            "Apply {C:clubs}Club Sticker{} to",
+            "the {C:attention}rightmost{} Joker",
           },
           {
-            "Convert all held cards",
-            "with ranks above {C:attention}6{} into",
-            "{C:dark_edition}Abandoned{} {C:attention}Fossil Cards{}",
+            "All {C:clubs}Clubs{} held",
+            "permanently gain {C:mult}+#1#{} Mult"
           }
         },
       },
+
       c_abn_antarctica = {
         name = "Antarctica",
         text = {
           {
-            "Convert all {C:diamonds}light suit{} cards",
-            "held into {C:dark_edition}Holographic{} {C:abn_snow}Snows{}",
+            "Apply {C:attention}Night Time{} to",
+            "the {C:attention}rightmost{} Joker",
           },
           {
-            "Convert all {C:spades}dark suit{} cards",
-            "held into {C:abn_penumbra}Penumbras{}",
-            "with {C:abn_lavender_seal}Lavender Seals{}"
+            "All {C:spades}Dark Suits{} held",
+            "permanently gain {C:chips}+#1#{} Chips"
           }
+        },
+      },
+
+      c_abn_south_america = {
+        name = "South America",
+        text = {
+          {
+            "Apply {C:hearts}Heart Sticker{} to",
+            "the {C:attention}rightmost{} Joker",
+          },
+          {
+            "All {C:hearts}Hearts{} held",
+            "permanently gain {C:mult}+#1#{} Mult"
+          }
+        },
+      },
+      c_abn_north_america = {
+        name = "North America",
+        text = {
+          {
+            "Apply {C:attention}Jimbo Legacy{} to",
+            "the {C:attention}rightmost{} Joker",
+          },
+          {
+            "Add {C:money}$#1#{} of {C:attention}sell value",
+            "to every {C:attention}Joker{}",
+          }
+        },
+      },
+      c_abn_atlantis = {
+        name = "Atlantis",
+        text = {
+          {
+            "Apply {C:attention}Weight{} to",
+            "the {C:attention}rightmost{} Joker,",
+            "{C:attention}Fragile{} to {C:attention}leftmost{}"
+          },
+          {
+            "All {C:abn_penumbra}Penumbras{} held",
+            "permanently gain {C:mult}+#1#{} Mult",
+            "and {C:chips}+#2#{} Chips"
+          }
+        },
+      },
+      c_abn_hyperborea = {
+        name = "Hyperborea",
+        text = {
+          {
+            "Apply {C:attention}Even Legacy{} to",
+            "the {C:attention}rightmost{} Joker,",
+            "{C:attention}Rental{} and {C:attention}Perishable{}",
+            "to {C:attention}leftmost{}"
+          },
+          {
+            "All {C:abn_snow}Snows{} held",
+            "permanently gain {C:mult}+#1#{} Mult",
+            "and {C:chips}+#2#{} Chips"
+          }
+        },
+      },
+
+      c_abn_lemuria = {
+        name = "Lemuria",
+        text = {
+          {
+            "Apply {C:attention}Odd Legacy{} to",
+            "the {C:attention}rightmost{} Joker,",
+            "{C:attention}Eternal{} and {C:attention}Downgrade{}",
+            "to {C:attention}leftmost{}"
+          },
+          {
+            "All {C:abn_bow}Bows{} held",
+            "permanently gain {C:mult}+#1#{} Mult",
+            "and {C:chips}+#2#{} Chips"
+          }
+        },
+      },
+
+      c_abn_mu = {
+        name = "Mu",
+        text = {
+          {
+            "Apply {C:attention}Rejok Legacy{} to",
+            "the {C:attention}rightmost{} Joker,",
+            "{C:attention}Eternal{} and {C:attention}Rental{}",
+            "to {C:attention}leftmost{}"
+          },
+          {
+            "All {C:abn_tie}Ties{} held",
+            "permanently gain {C:mult}+#1#{} Mult",
+            "and {C:chips}+#2#{} Chips"
+          }
+        },
+      },
+
+      c_abn_asgard = {
+        name = "Asgard",
+        text = {
+          {
+            "Apply {C:attention}Obmij Legacy{} to",
+            "the {C:attention}rightmost{} Joker,",
+            "{C:attention}Fragile{} and {C:attention}Rental{}",
+            "to {C:attention}leftmost{}"
+          },
+          {
+            "All {C:abn_suitless}Nulls{} held",
+            "permanently gain {C:mult}+#1#{} Mult",
+            "and {C:chips}+#2#{} Chips"
+          }
+        },
+      },
+
+      c_abn_shangrila = {
+        name = "Shangrila",
+        text = {
+          {
+            "Destroy {C:attention}rightmost{} Joker",
+            "if it is {C:common}Common{}, create a",
+            "{C:uncommon}Uncommon{} Joker with {C:attention}Lucky{}",
+            "and {C:attention}Possibility{}",
+          },
+          {
+            "Apply {C:attention}Eraser{} and {C:attention}Eternal{}",
+            "to {C:attention}leftmost{} Joker"
+          },
+        },
+      },
+      c_abn_ker_is = {
+        name = "Ker Is",
+        text = {
+          {
+            "Destroy {C:attention}rightmost{} Joker",
+            "if it is {C:uncommon}Uncommon{}, create a",
+            "{C:rare}Rare{} Joker with {C:attention}Bullseye{}",
+            "and {C:attention}Glove Hand{}",
+          },
+          {
+            "Apply {C:attention}Eraser{} and {C:attention}Rental{}",
+            "to {C:attention}leftmost{} Joker"
+          },
         },
       },
       c_abn_avalon = {
         name = "Avalon",
         text = {
-          "If a {C:attention}Five of a Kind{}",
-          "is played using only {C:attention}face{} cards,",
-          "destroy all of them and",
-          "create a {C:legendary}Legendary{} Joker",
-          "with a {C:abn_black}Top Hat{} sticker"
-        }
+          {
+            "Destroy {C:attention}rightmost{} Joker",
+            "if it is {C:rare}Rare{}, create a",
+            "{C:abn_superrare}Super Rare{} Joker with",
+            "{C:attention}Jester Legacy{} and {C:attention}Shovel{}",
+          },
+          {
+            "Apply {C:attention}Eternal{} and {C:attention}Chain{}",
+            "to {C:attention}leftmost{} Joker"
+          },
+        },
       },
-      c_abn_keris = {
-        name = "Keris",
+      c_abn_el_dorado = {
+        name = "El Dorado",
         text = {
-          "If a {C:attention}Flush{} is played",
-          "using only {C:attention}face{} cards,",
-          "destroy all of them and",
-          "create a {C:abn_parallelrare}Parallel Rare{} Joker",
-          "with a {C:abn_black}Bullseye{} sticker"
-        }
-      },
-      c_abn_mu = {
-        name = "Mu",
-        text = {
-          "If played hand contains a {C:attention}Spectrum{}",
-          "using only {C:attention}Aces{},",
-          "destroy all of them and",
-          "create a {C:dark_edition}Holographic{} {C:attention}Comedian{}",
-          "with a {C:abn_black}Pump Up{} sticker"
+          {
+            "Apply {C:attention}Immortal{}, {C:attention}Cat Eye{},",
+            "and {C:attention}Odd Legacy{}",
+            "to {C:attention}rightmost{} Joker"
+          },
+          {
+            "Apply {C:attention}Eternal{}, {C:attention}Lightning Bolt{},",
+            "and {C:attention}Even Legacy{}",
+            "to {C:attention}leftmost{} Joker"
+          },
         }
       },
     },
@@ -6320,7 +6458,7 @@ return {
           "Flipped Jokers and Cards give {C:money}$#1#{}",
         }
       },
-      j_abn_joker_family = {
+      j_abn_joker_family = { -- sonion im crine (to relocalise)
         name = "Joker & Family",
         text = {
           "If you own {C:common}Common{} {C:uncommon}Uncommon{} {C:rare}Rare{} and {C:attention}Comedian{} Jokers",
@@ -9095,6 +9233,7 @@ return {
           "{X:mult,C:white}X#1#{} Mult when scored"
         }
       },
+
       abn_honor_sticker = {
         name = "Honor Jimbo",
         text = {
@@ -9329,6 +9468,71 @@ return {
           "Played {C:spades}Dark Suits{} give {C:attention}twice{}",
           "their {C:attention}rank{} as {C:chips}Chips",
           "{C:red}debuff{} all {C:diamonds}Light Suits{}",
+        }
+      },
+
+      abn_even_legacy = {
+        name = "Even Legacy",
+        text = {
+          "Played {C:attention}even{} cards give",
+          "{C:attention}triple{} their {C:attention}rank{} as",
+          "{C:chips}Chips,{} {C:attention}odd{} cards give",
+          "{C:chips}+1{} Chips",
+        },
+      },
+
+      abn_odd_legacy = {
+        name = "Odd Legacy",
+        text = {
+          "Played {C:attention}odd{} cards give",
+          "{C:attention}triple{} their {C:attention}rank{} as",
+          "{C:chips}Chips,{} {C:attention}even{} cards give",
+          "{C:chips}+1{} Chips",
+        },
+      },
+
+      abn_jimbo_legacy = {
+        name = "Jimbo Legacy",
+        text = {
+          "{C:common}Common{} Jokers",
+          "each give {C:chips}+#1#{} Chips",
+        },
+      },
+
+      abn_rejok_legacy = {
+        name = "Rejok Legacy",
+        text = {
+          "{C:uncommon}Uncommon{} Jokers",
+          "each give {C:chips}+#1#{} Chips",
+        },
+      },
+
+      abn_obmij_legacy = {
+        name = "Obmij Legacy",
+        text = {
+          "{C:rare}Rare{} Jokers",
+          "each give {C:mult}+#1#{} Mult",
+        },
+      },
+
+      abn_jester_legacy = {
+        name = "Jester Legacy",
+        text = {
+          "{C:abn_superrare}Super Rare{} Jokers",
+          "each give {C:mult}+#1#{} Mult",
+        },
+      },
+      abn_currency = {
+        name = "Currency",
+        text = {
+          "{C:money}$#1#{}"
+        }
+      },
+      abn_chain = {
+        name = "Chain",
+        text = {
+          "On discard, discard your",
+          "entire hand"
         }
       },
 
@@ -11018,6 +11222,15 @@ return {
       abn_heart = "Heart",
       abn_daytime = "Daytime",
       abn_nighttime = "Nightime",
+      abn_even_legacy = "Even Legacy",
+      abn_odd_legacy = "Odd Legacy",
+      abn_jimbo_legacy = "Jimbo Legacy",
+      abn_rejok_legacy = "Rejok Legacy",
+      abn_obmij_legacy = "Obmij Legacy",
+      abn_jester_legacy = "Jester Legacy",
+      abn_currency = "Currency",
+      abn_chain = "Chain",
+
       -- Seals
       abn_orange_seal = "Orange Seal",
       abn_grey_seal = "Grey Seal",
