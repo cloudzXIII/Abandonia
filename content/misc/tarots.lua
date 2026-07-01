@@ -121,26 +121,18 @@ SMODS.Consumable({
     return { vars = { card.ability.extra.max } }
   end,
   can_use = function(self, card)
-    if G.jokers and #G.jokers.highlighted > 0 and #G.jokers.highlighted < (card.ability.extra.max + 1) then
-      local no = false
-      for k, v in pairs(G.jokers.highlighted) do
-        if v.eternal_compat == false then
-          no = true
-        end
-      end
-
-      if not no then
-        return true
-      end
-    end
-    return false
+    return G.jokers and #G.jokers.cards > 0
   end,
   use = function(self, card)
-    for k, v in pairs(G.jokers.highlighted) do
-      v:add_sticker("abn_immortal", true)
-      v:juice_up()
-      G.jokers:unhighlight_all()
-    end
+    local joker = G.jokers.cards[#G.jokers.cards]
+    joker:add_sticker("abn_immortal", true)
+    joker:juice_up()
+
+    local leftmost = G.jokers.cards[1]
+    local sticker = ABN.random_sticker(leftmost, "abn_cool_beans")
+    leftmost:add_sticker(sticker, true)
+    leftmost:juice_up()
+    G.jokers:unhighlight_all()
   end,
   abn_artist_credits = {
     artist = "b.b.b.b",
@@ -334,7 +326,7 @@ SMODS.Consumable {
     info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
     return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
   end,
-  
+
   in_pool = function(self)
     return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
   end,
@@ -368,11 +360,11 @@ SMODS.Consumable {
     info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_darkner
     info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_lightner
     if center and center.ability and center.ability.extra then
-        return {vars = {center.ability.extra.cards}} 
+      return { vars = { center.ability.extra.cards } }
     end
-    return {vars = {}}
+    return { vars = {} }
   end,
-  
+
   can_use = function(self, card)
     if G and G.hand and G.hand.highlighted and card.ability and card.ability.extra and card.ability.extra.cards then
       if #G.hand.highlighted > 0 and #G.hand.highlighted <= card.ability.extra.cards then
@@ -384,13 +376,12 @@ SMODS.Consumable {
 
   use = function(self, card, area, copier)
     if G.hand and G.hand.highlighted then
-      
       -- Loop through every currently highlighted card
       for i = 1, #G.hand.highlighted do
         local target_card = G.hand.highlighted[i]
-        
+
         -- Default fallback enhancement
-        local enhancement_key = 'm_abn_darkner' 
+        local enhancement_key = 'm_abn_darkner'
 
         -- Determine alignment
         if ABN.is_light(target_card) then
@@ -398,7 +389,7 @@ SMODS.Consumable {
         elseif ABN.is_dark(target_card) then
           enhancement_key = 'm_abn_darkner'
         end
-        
+
         -- Apply the enhancement inside the event manager queue
         if G.P_CENTERS[enhancement_key] then
           G.E_MANAGER:add_event(Event({
@@ -411,7 +402,7 @@ SMODS.Consumable {
           }))
         end
       end -- End of for loop
-      
+
       -- Unhighlight everything after all enhancement events are queued
       G.E_MANAGER:add_event(Event({
         trigger = 'after',

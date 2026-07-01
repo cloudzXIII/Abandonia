@@ -182,33 +182,14 @@ end
 function ABN.random_sticker(card, seed)
   local compatible = {}
 
-  for key, sticker in pairs(SMODS.Stickers) do
-    if ABN.can_apply_sticker(sticker, card) then
-      table.insert(compatible, key)
+  for sticker in pairs(SMODS.Stickers) do
+    print(sticker)
+    if sticker ~= 'pinned' then
+      table.insert(compatible, sticker)
     end
   end
 
   return #compatible > 0 and pseudorandom_element(compatible, seed or 'abandonia') or 'perishable'
-end
-
--- sticker function, nabbed from MaxBoi's mod, check them out! https://github.com/MaxBoi342/MaxBois-Mod
-
-function ABN.can_apply_sticker(sticker, card)
-  if type(sticker.should_apply) == 'function' then
-    return sticker:should_apply(card, card.config.center, nil, true)
-  end
-  local center = card.config.center
-  if (center[sticker.key .. '_compat'] or (center[sticker.key .. '_compat'] == nil and ((sticker.default_compat and not sticker.compat_exceptions[center.key]) or -- default yes with no exception
-    (not sticker.default_compat and sticker.compat_exceptions[center.key])))) then                                                                                --default no with exceptions
-    if not card.ability[sticker.key] then
-      if card.pinned and sticker.key == 'pinned' then
-        --#JUSTICEFORPINNED
-      elseif not (card.ability['perishable'] and sticker.key == 'eternal' or card.ability['eternal'] and sticker.key == 'perishable') then --vanilla sticker exclusivity check, idk if theres a proper way to do it
-        return true
-      end
-    end
-  end
-  return false
 end
 
 function ABN.msg(card, message, type)

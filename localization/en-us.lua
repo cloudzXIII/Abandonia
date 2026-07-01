@@ -5098,8 +5098,9 @@ return {
       j_abn_minimus = {
         name = "Minimus",
         text = {
-          "Scoring number cards below {C:attention}5{}",
-          "Give {X:mult,C:white}X#1#{} Mult and {X:chips,C:white}X#2#{} Chips",
+          "Scoring {C:attention}numbered{} cards",
+          "below {C:attention}5{} give",
+          "{X:mult,C:white}X#1#{} Mult and {X:chips,C:white}X#2#{} Chips",
         }
       },
       j_abn_claus = {
@@ -10014,7 +10015,7 @@ return {
       c_abn_crown = {
         name = "Crown",
         text = {
-          "Select {C:attention}1{} number card and",
+          "Select {C:attention}1{} {C:attention}numbered{} card and",
           "{C:red}destroy{} all held {C:attention}face{} cards,",
           "selected card gains {C:chips}Chips{} equal",
           "to the {C:attention}value{} of destroyed cards",
