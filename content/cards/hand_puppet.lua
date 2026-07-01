@@ -48,6 +48,6 @@ SMODS.Joker {
   end,
 
   abn_artist_credits = {
-    artist = "La Ginger",
+    artist = "Le Ginger",
   },
 }

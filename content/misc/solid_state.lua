@@ -17,11 +17,11 @@ ABN.SolidState = SMODS.Consumable:extend({
 ABN.SolidState {
   key = "paste",
   pos = { x = 0, y = 0 },
-  
+
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = { key = "abn_fragile", set = "Other", vars = { 1, 4 } }
   end,
-  
+
   can_use = function(self, card)
     return G.jokers and #G.jokers.highlighted == 1 and #G.jokers.cards < G.jokers.config.card_limit
   end,
@@ -38,11 +38,11 @@ ABN.SolidState {
         G.jokers:emplace(copy)
         copy:start_materialize()
         play_sound('card1', 1.2, 1.2)
-        
+
         for _, joker in ipairs(G.jokers.cards) do
           if joker ~= selected and joker ~= copy then
             joker:add_sticker("abn_fragile", true)
-            joker:juice_up(0.3, 0.3) 
+            joker:juice_up(0.3, 0.3)
           end
         end
 
@@ -64,7 +64,7 @@ ABN.SolidState {
   hidden = true,
   soul_set = "Planet",
   soul_rate = 0.005,
-  
+
   can_use = function(self, card)
     local max_level = 1
     if G.GAME and G.GAME.hands then
@@ -78,7 +78,7 @@ ABN.SolidState {
   end,
 
   use = function(self, card, area, copier)
-    -- Get levels 
+    -- Get levels
     local max_level = 1
     if G.GAME and G.GAME.hands then
       for _, hand_data in pairs(G.GAME.hands) do
@@ -90,7 +90,7 @@ ABN.SolidState {
 
     update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
       { handname = localize('k_all_hands'), chips = '...', mult = '...', level = '' })
-    
+
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.2,
@@ -103,7 +103,7 @@ ABN.SolidState {
     }))
 
     update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
-    
+
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.9,
@@ -115,7 +115,7 @@ ABN.SolidState {
     }))
 
     update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
-    
+
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.9,
@@ -127,14 +127,14 @@ ABN.SolidState {
       end
     }))
 
-    update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '-> '..max_level })
+    update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '-> ' .. max_level })
     delay(1.3)
 
     if G.GAME and G.GAME.hands then
       for hand_name, hand_data in pairs(G.GAME.hands) do
         local current_level = hand_data.level or 1
         local level_diff = max_level - current_level
-        
+
         if level_diff > 0 then
           hand_data.level = max_level
           hand_data.mult = hand_data.mult + hand_data.l_mult * level_diff
@@ -148,14 +148,14 @@ ABN.SolidState {
   end,
 
   abn_artist_credits = {
-    artist = "Feli" 
+    artist = "Feli"
   },
 }
 
 ABN.SolidState {
   key = "hotspot",
   pos = { x = 2, y = 0 },
-  
+
   can_use = function(self, card)
     if G.hand and G.hand.highlighted and #G.hand.highlighted == 1 then
       return true
@@ -164,7 +164,7 @@ ABN.SolidState {
   end,
 
   use = function(self, card, area, copier)
-	G.jokers.config.card_limit = G.jokers.config.card_limit - 1
+    G.jokers.config.card_limit = G.jokers.config.card_limit - 1
     local target_card = G.hand.highlighted[1]
     local target_rank_key = target_card.base.value
 
@@ -207,21 +207,26 @@ ABN.SolidState {
             local full_suit = hand_card.base.suit
             local lookup_key = ""
             local rank_obj = SMODS.Ranks[target_rank_key]
-            
+
             if rank_obj and rank_obj.key and not rank_obj.modName then
               local suit_prefix = string.sub(full_suit, 1, 1)
               local rank_shorthand = target_rank_key
-              if target_rank_key == 'Ace' then rank_shorthand = 'A'
-              elseif target_rank_key == 'King' then rank_shorthand = 'K'
-              elseif target_rank_key == 'Queen' then rank_shorthand = 'Q'
-              elseif target_rank_key == 'Jack' then rank_shorthand = 'J'
-              elseif target_rank_key == '10' then rank_shorthand = 'T'
+              if target_rank_key == 'Ace' then
+                rank_shorthand = 'A'
+              elseif target_rank_key == 'King' then
+                rank_shorthand = 'K'
+              elseif target_rank_key == 'Queen' then
+                rank_shorthand = 'Q'
+              elseif target_rank_key == 'Jack' then
+                rank_shorthand = 'J'
+              elseif target_rank_key == '10' then
+                rank_shorthand = 'T'
               end
               lookup_key = suit_prefix .. '_' .. rank_shorthand
             else
               lookup_key = full_suit .. '_' .. target_rank_key
             end
-            
+
             if G.P_CARDS[lookup_key] then
               hand_card:set_base(G.P_CARDS[lookup_key])
             else
@@ -265,13 +270,13 @@ ABN.SolidState {
   end,
 
   abn_artist_credits = {
-    artist = "Feli" 
+    artist = "Feli"
   },
 }
 
 ABN.SolidState {
   key = 'bookmark',
-  pos = { x = 3, y = 0 }, 
+  pos = { x = 3, y = 0 },
   config = { max_highlighted = 1 },
 
   can_use = function(self, card)
@@ -339,7 +344,7 @@ ABN.SolidState {
               G.hand
             )
 
-            new_card:set_seal(SMODS.poll_seal({key = 'bookmark', guaranteed = true}), true)
+            new_card:set_seal(SMODS.poll_seal({ key = 'bookmark', guaranteed = true }), true)
           end
         end
 
@@ -359,7 +364,7 @@ ABN.SolidState {
   end,
 
   abn_artist_credits = {
-    artist = "Feli" 
+    artist = "Feli"
   },
 }
 
@@ -372,7 +377,6 @@ ABN.SolidState {
   end,
 
   use = function(self, card, area, copier)
-
     local jokers_to_reroll = {}
     for _, j in ipairs(G.jokers.cards) do
       table.insert(jokers_to_reroll, j)
@@ -396,14 +400,13 @@ ABN.SolidState {
     G.E_MANAGER:add_event(Event({
       func = function()
         for _, j in ipairs(jokers_to_reroll) do
-
           local current_rarity = ABN.get_rarity(j)
           local pool = SMODS.get_clean_pool("Joker", current_rarity, false)
           local new_key = pseudorandom_element(pool, "abn_digitization")
-          
+
 
           j:set_ability(G.P_CENTERS[new_key])
-          
+
 
           local new_edition = poll_edition('abn_edition_reroll', nil, false, true)
           j:set_edition(new_edition, true, true)
@@ -532,12 +535,12 @@ ABN.SolidState {
 ABN.SolidState {
   key = "incognito",
   pos = { x = 0, y = 1 },
-  
+
   loc_vars = function(self, info_queue, card)
-	info_queue[#info_queue + 1] = { key = "abn_flipped_card", set = "Other" }
+    info_queue[#info_queue + 1] = { key = "abn_flipped_card", set = "Other" }
     info_queue[#info_queue + 1] = G.P_SEALS.abn_brown
   end,
-  
+
   can_use = function(self, card)
     return G.hand and #G.hand.cards > 0
   end,
@@ -551,7 +554,7 @@ ABN.SolidState {
         delay = 0.15,
         func = function()
           target_card:set_seal('abn_brown', true)
-          
+
           if not target_card.ability.abn_perma_flipped then
             if target_card.facing == 'front' then
               target_card:flip()
@@ -576,7 +579,7 @@ ABN.SolidState {
 
 ABN.SolidState {
   key = "upload",
-  pos = { x = 1, y = 1 }, 
+  pos = { x = 1, y = 1 },
 
   can_use = function(self, card)
     return G.jokers and G.jokers.cards[1] and #G.consumeables.cards < G.consumeables.config.card_limit
@@ -600,11 +603,11 @@ ABN.SolidState {
       delay = 0.2,
       func = function()
         G.jokers:remove_card(target_joker)
-        
+
         G.consumeables:emplace(target_joker)
-		
-		G.consumeables.config.card_limit = G.consumeables.config.card_limit - 1
-        
+
+        G.consumeables.config.card_limit = G.consumeables.config.card_limit - 1
+
         return true
       end
     }))
@@ -619,17 +622,17 @@ ABN.SolidState {
 
 ABN.SolidState {
   key = "brightness",
-  pos = { x = 1, y = 2 }, 
+  pos = { x = 1, y = 2 },
 
   loc_vars = function(self, info_queue, card)
-	info_queue[#info_queue + 1] = { key = "abn_light_suit", set = "Other" }
-	info_queue[#info_queue + 1] = { key = "abn_dark_suit", set = "Other" }
+    info_queue[#info_queue + 1] = { key = "abn_light_suit", set = "Other" }
+    info_queue[#info_queue + 1] = { key = "abn_dark_suit", set = "Other" }
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_bright
-	return { vars = {} }
+    return { vars = {} }
   end,
 
   can_use = function(self, card)
-    return #G.hand.cards > 0 
+    return #G.hand.cards > 0
   end,
 
   use = function(self, card, area, copier)
@@ -651,11 +654,11 @@ ABN.SolidState {
 
         for i = #G.hand.cards, 1, -1 do
           local target_card = G.hand.cards[i]
-          
+
           if ABN.is_light(target_card) then
             target_card:set_edition({ abn_bright = true }, true)
             target_card:juice_up(0.3, 0.3)
-		  end
+          end
           if ABN.is_dark(target_card) then
             table.insert(destroyed_cards, target_card)
           end
@@ -681,17 +684,17 @@ ABN.SolidState {
 
 ABN.SolidState {
   key = "dark_web",
-  pos = { x = 0, y = 2 }, 
+  pos = { x = 0, y = 2 },
 
   loc_vars = function(self, info_queue, card)
-	info_queue[#info_queue + 1] = { key = "abn_light_suit", set = "Other" }
-	info_queue[#info_queue + 1] = { key = "abn_dark_suit", set = "Other" }
+    info_queue[#info_queue + 1] = { key = "abn_light_suit", set = "Other" }
+    info_queue[#info_queue + 1] = { key = "abn_dark_suit", set = "Other" }
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_dark
-	return { vars = {} }
+    return { vars = {} }
   end,
 
   can_use = function(self, card)
-    return #G.hand.cards > 0 
+    return #G.hand.cards > 0
   end,
 
   use = function(self, card, area, copier)
@@ -713,11 +716,11 @@ ABN.SolidState {
 
         for i = #G.hand.cards, 1, -1 do
           local target_card = G.hand.cards[i]
-          
+
           if ABN.is_dark(target_card) then
             target_card:set_edition({ abn_dark = true }, true)
             target_card:juice_up(0.3, 0.3)
-		  end
+          end
           if ABN.is_light(target_card) then
             table.insert(destroyed_cards, target_card)
           end
@@ -743,45 +746,43 @@ ABN.SolidState {
 
 local original_game_update = Game.update
 function Game:update(dt)
-    original_game_update(self, dt)
+  original_game_update(self, dt)
 
-    -- Detect clicks on Collection items during the Solid State process
-    local target = G.CONTROLLER.hovering.target
-    if G.GAME.dark_web_active and target and target.config and love.mouse.isDown(1) then
-        
-        -- Verify the player clicked a valid, discovered Joker card
-        if target.config.center and target.config.center.set == 'Joker' and target.config.center.discovered then
-            local rarity = target.config.center.rarity
-            local card_key = target.config.center.key
-            local allowed_rarity = G.GAME.dark_web_active.allowed_rarity
-            
-            -- Enforce that the clicked card exactly matches the rarity tier of the destroyed Joker
-            if rarity == allowed_rarity then
-                
-                -- Spawn the chosen Joker directly into your joker slots
-                local card = create_card('Joker', G.jokers, nil, nil, nil, nil, card_key)
-                card:add_to_deck()
-                G.jokers:emplace(card)
-                
-                -- Clear tracker data and close out the collection panel safely
-                G.GAME.dark_web_active = nil
-                G.FUNCS.exit_overlay_menu()
-            end
-        end
+  -- Detect clicks on Collection items during the Solid State process
+  local target = G.CONTROLLER.hovering.target
+  if G.GAME.dark_web_active and target and target.config and love.mouse.isDown(1) then
+    -- Verify the player clicked a valid, discovered Joker card
+    if target.config.center and target.config.center.set == 'Joker' and target.config.center.discovered then
+      local rarity = target.config.center.rarity
+      local card_key = target.config.center.key
+      local allowed_rarity = G.GAME.dark_web_active.allowed_rarity
+
+      -- Enforce that the clicked card exactly matches the rarity tier of the destroyed Joker
+      if rarity == allowed_rarity then
+        -- Spawn the chosen Joker directly into your joker slots
+        local card = create_card('Joker', G.jokers, nil, nil, nil, nil, card_key)
+        card:add_to_deck()
+        G.jokers:emplace(card)
+
+        -- Clear tracker data and close out the collection panel safely
+        G.GAME.dark_web_active = nil
+        G.FUNCS.exit_overlay_menu()
+      end
     end
+  end
 end
 
 ABN.SolidState {
   key = "database",
-  pos = { x = 4, y = 1 }, 
+  pos = { x = 4, y = 1 },
 
   can_use = function(self, card)
-    return G.jokers and G.jokers.highlighted and #G.jokers.highlighted == 1 
+    return G.jokers and G.jokers.highlighted and #G.jokers.highlighted == 1
   end,
 
   use = function(self, card, area, copier)
     local target_joker = G.jokers.highlighted[1]
-    
+
     if target_joker then
       local target_rarity = target_joker.config.center.rarity
 
@@ -806,7 +807,7 @@ ABN.SolidState {
           G.GAME.dark_web_active = {
             allowed_rarity = target_rarity
           }
-          
+
 
           G.FUNCS.overlay_menu({
             definition = create_UIBox_your_collection_jokers(),
@@ -821,20 +822,20 @@ ABN.SolidState {
   end,
 
   abn_artist_credits = {
-    artist = "La Ginger & Gfs"
+    artist = "Le Ginger & Gfs"
   },
 }
 
 ABN.SolidState {
   key = "zoom",
-  pos = { x = 4, y = 2 }, 
+  pos = { x = 4, y = 2 },
 
   loc_vars = function(self, info_queue, card)
     return { vars = {} }
   end,
 
   can_use = function(self, card)
-    return #G.hand.cards > 0 
+    return #G.hand.cards > 0
   end,
 
   use = function(self, card, area, copier)
@@ -846,10 +847,10 @@ ABN.SolidState {
 
         for i = #G.hand.cards, 1, -1 do
           local target_card = G.hand.cards[i]
-          
+
           if target_card and target_card.base and target_card.base.value then
             local rank_key = target_card.base.value
-            
+
             -- Only trigger the upgrade if this specific rank hasn't been upgraded yet during this use
             if G.GAME.abn_rank_upgrades[rank_key] and not processed_ranks[rank_key] then
               ABN.level_up_rank(target_card, rank_key, 2, false)
@@ -858,7 +859,7 @@ ABN.SolidState {
           end
         end
 
-          return true
+        return true
       end
     }))
   end,
@@ -870,14 +871,14 @@ ABN.SolidState {
 
 ABN.SolidState {
   key = "recycle",
-  pos = { x = 5, y = 2 }, 
+  pos = { x = 5, y = 2 },
 
   loc_vars = function(self, info_queue, card)
     return { vars = {} }
   end,
 
   can_use = function(self, card)
-    return G.hand and #G.hand.highlighted > 0 
+    return G.hand and #G.hand.highlighted > 0
   end,
 
   use = function(self, card, area, copier)
@@ -890,7 +891,7 @@ ABN.SolidState {
 
         for i = #G.hand.highlighted, 1, -1 do
           local target_card = G.hand.highlighted[i]
-          
+
           if target_card and target_card.base and target_card.base.value then
             local rank_key = target_card.base.value
             local upgrade_data = G.GAME.abn_rank_upgrades[rank_key]
@@ -899,14 +900,14 @@ ABN.SolidState {
             if upgrade_data and type(upgrade_data.value) == "number" then
               rank_dollar_value = upgrade_data.value
             end
-			
+
             if not rank_dollar_value then
               local fallback_id = target_card:get_id()
               if fallback_id and fallback_id > 0 then
                 rank_dollar_value = fallback_id
               end
             end
-			
+
             if rank_dollar_value then
               total_gold = total_gold + rank_dollar_value
               table.insert(destroyed_cards, target_card)

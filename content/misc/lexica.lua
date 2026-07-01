@@ -862,7 +862,7 @@ SMODS.Consumable {
   end,
 
   abn_artist_credits = {
-    artist = "La Ginger"
+    artist = "Le Ginger"
   },
 }
 
@@ -895,6 +895,6 @@ SMODS.Consumable {
   end,
 
   abn_artist_credits = {
-    artist = "La Ginger"
+    artist = "Le Ginger"
   },
 }

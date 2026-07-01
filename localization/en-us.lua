@@ -212,7 +212,7 @@ return {
           {
             "Apply {C:attention}Even Legacy{} to",
             "the {C:attention}rightmost{} Joker,",
-            "{C:attention}Rental{} and {C:attention}Perishable{}",
+            "{C:money}Rental{} and {C:abn_perishable}Perishable{}",
             "to {C:attention}leftmost{}"
           },
           {
@@ -7052,7 +7052,7 @@ return {
           },
           {
             "If your hand is composed of {C:attention}Stone Cards{}",
-            "with atleast {C:attention}4{} different suits,",
+            "with at least {C:attention}4{} different suits,",
             "gain {X:chips,C:white}X#1#{} Chips",
             "{C:inactive}(Currently {X:blue,C:white}X#2#{C:inactive} Chips)",
           },
@@ -7308,7 +7308,7 @@ return {
         name = "Scrapbook Joker",
         text = {
           {
-            "When a {C:blind}Blind{} is selected,",
+            "When {C:attention}Blind{} is selected,",
             "each {C:attention}Joker{} gains {C:chips}+#1#{} Chips",
             "per applied {C:attention}Sticker"
           },
@@ -7423,12 +7423,13 @@ return {
         text = {
           {
             "Gain {X:red,C:white}X#1#{} Mult per hand",
-            "played during a {C:blind}Boss Blind",
+            "played during a {C:attention}Boss Blind",
             "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
           },
           {
-            "When beating a {C:blind}Boss Blind{}, {C:attention}copy{} all cards",
-            "in your {C:attention}full deck{}",
+            "When {C:attention}Boss Blind{} is defeated,",
+            "{C:attention}copy{} all cards in",
+            "your {C:attention}full deck{}",
           }
         },
       },
@@ -7644,12 +7645,20 @@ return {
           "a {C:solid_state}Solid State{} card is used",
         },
       },
-      j_abn_advertisement_joker = { -- to relocalise
+      j_abn_advertisement_joker = {
         name = "Advertisement Joker",
         text = {
-          "Gains {X:mult,C:white}X#3#{} Mult when a {C:solid_state}Solid State{} card is used",
-          "Gains {C:chips}+#4#{} Chips when a {C:program_pack}Program Card{} is used",
-          "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
+          {
+            "This Joker gains",
+            "{X:mult,C:white}X#3#{} Mult every time",
+            "a {C:solid_state}Solid State{} card is used",
+          },
+          {
+            "This Joker gains",
+            "{C:chips}+#4#{} Chips every time",
+            "a {C:program_pack}Program Card{} is used",
+            "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
+          },
         },
       },
       j_abn_jester_vs_jester = {
@@ -7706,7 +7715,7 @@ return {
           "{C:dark_edition}Chromatic{} {C:attention}Jokers/Cards{} give {X:chips,C:white}^#4#{} Chips when scoring",
         },
       },
-      j_abn_grampa_joker = { -- to relocalise
+      j_abn_grampa_joker = {
         name = "Grampa Joker",
         text = {
           "Add {C:dark_edition}Vintage{} edition",
