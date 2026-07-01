@@ -8275,39 +8275,68 @@ return {
           },
         }
       },
-	  j_abn_sigil_joker = {
+      j_abn_sigil_joker = {
         name = "Sigil Joker",
         text = {
-          "When {C:attention}Boss Blind{} is selected create a {C:abn_sigil}Sigil{} for the {C:attention}last played hand",
-		  "{C:abn_sigil}Sigil Packs{} can be skipped",
+          {
+            "When {C:attention}Boss Blind{} is selected,",
+            "create a {C:abn_sigil}Sigil{} for",
+            "the {C:attention}last played{} hand",
+          },
+          {
+            "{C:abn_sigil}Sigil Packs{} can be skipped",
+          }
         }
       },
-	  j_abn_obra_dinn = {
+      j_abn_obra_dinn = {
         name = "Obra Dinn",
         text = {
-          "{C:diamonds}Light Suits{} give {C:mult}+1{} Mult per {C:spades}Dark Suit{} card destroyed this run {C:inactive}Currently:{} {C:mult}+#1#{}",
-		  "{C:spades}Dark Suits{} give {C:mult}+1{} Mult per {C:diamonds}Light Suit{} card destroyed this run {C:inactive}Currently:{} {C:mult}+#2#{}",
+          {
+            "{C:diamonds}Light Suits{} give {C:mult}+1{} Mult per",
+            "{C:spades}Dark Suit{} destroyed this run",
+            "{C:inactive}(Currently{} {C:mult}+#1#{C:inactive})",
+          },
+          {
+            "{C:spades}Dark Suits{} give {C:mult}+1{} Mult",
+            "per {C:diamonds}Light Suit{} destroyed this run",
+            "{C:inactive}(Currently{} {C:mult}+#2#{C:inactive})",
+          }
         }
       },
-	  j_abn_money_talk = {
+      j_abn_money_talk = {
         name = "Money Talk",
         text = {
-          "After {C:attention}Boss Blind{} defeated each held {C:attention}consumable{} gains {C:money}$#2# sell value",
-		  "Increase this amount by {C:money}$#1#{} per {C:attention}Boss Blind{} defeated",
+          {
+            "When {C:attention}Boss Blind{} is defeated,",
+            "add {C:money}$#2#{} of {C:attention}sell value",
+            "to each held {C:attention}consumable{}",
+          },
+          {
+            "Amount increases by {C:money}$#1#{}",
+            "when {C:attention}Boss Blind{} is defeated",
+          }
         }
       },
-	  j_abn_dnr_joker = {
+      j_abn_dnr_joker = {
         name = "DNR Joker",
         text = {
-          "Scored {C:dark_edition}Enhanced{} Cards are {C:mult}destroyed{}",
-		  "Each Joker gains {X:mult,C:white}X#1#{} Mult",
+          "When an {C:attention}Enhanced{} card is scored,",
+          "{C:mult}destroy{} them, each {C:attention}Joker",
+          "permanently gains {X:mult,C:white}X#1#{} Mult",
         }
       },
-	  j_abn_tesseract_joker = {
+      j_abn_tesseract_joker = {
         name = "Tesseract Joker",
         text = {
-          "When {C:attention}Boss Blind{} defeated place the {C:attention}Rightmost{} Joker in the {C:attention}Consumables{}",
-		  "Gain {C:attention}+1 Consumable Slot{} per different joker rarity in {C:attention}Consumables{}",
+          {
+            "When {C:attention}Boss Blind{} defeated,",
+            "place {C:attention}rightmost{} Joker in",
+            "your {C:attention}consumable slots{}",
+          },
+          {
+            "{C:attention}+1{} consumable slot per unique",
+            "Joker rarity in {C:attention}Consumables{}",
+          },
         }
       },
     },
