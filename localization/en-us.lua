@@ -8275,6 +8275,41 @@ return {
           },
         }
       },
+	  j_abn_sigil_joker = {
+        name = "Sigil Joker",
+        text = {
+          "When {C:attention}Boss Blind{} is selected create a {C:abn_sigil}Sigil{} for the {C:attention}last played hand",
+		  "{C:abn_sigil}Sigil Packs{} can be skipped",
+        }
+      },
+	  j_abn_obra_dinn = {
+        name = "Obra Dinn",
+        text = {
+          "{C:diamonds}Light Suits{} give {C:mult}+1{} Mult per {C:spades}Dark Suit{} card destroyed this run {C:inactive}Currently:{} {C:mult}+#1#{}",
+		  "{C:spades}Dark Suits{} give {C:mult}+1{} Mult per {C:diamonds}Light Suit{} card destroyed this run {C:inactive}Currently:{} {C:mult}+#2#{}",
+        }
+      },
+	  j_abn_money_talk = {
+        name = "Money Talk",
+        text = {
+          "After {C:attention}Boss Blind{} defeated each held {C:attention}consumable{} gains {C:money}$#2# sell value",
+		  "Increase this amount by {C:money}$#1#{} per {C:attention}Boss Blind{} defeated",
+        }
+      },
+	  j_abn_dnr_joker = {
+        name = "DNR Joker",
+        text = {
+          "Scored {C:dark_edition}Enhanced{} Cards are {C:mult}destroyed{}",
+		  "Each Joker gains {X:mult,C:white}X#1#{} Mult",
+        }
+      },
+	  j_abn_tesseract_joker = {
+        name = "Tesseract Joker",
+        text = {
+          "When {C:attention}Boss Blind{} defeated place the {C:attention}Rightmost{} Joker in the {C:attention}Consumables{}",
+		  "Gain {C:attention}+1 Consumable Slot{} per different joker rarity in {C:attention}Consumables{}",
+        }
+      },
     },
     Spectral = {
       c_abn_apotheosis = {
