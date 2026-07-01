@@ -117,12 +117,12 @@ ABN.config_tab = function()
                         },
                       }),
                       create_toggle({
-                        id = "enable_flipped_stakes",
+                        id = "disable_flipped_stakes",
                         ref_table = ABN.config,
-                        ref_value = "enable_flipped_stakes",
-                        label = localize("k_abn_config_enable_flipped_stakes"),
+                        ref_value = "disable_flipped_stakes",
+                        label = localize("k_abn_config_disable_flipped_stakes"),
                         info = {
-                          G.localization.misc.dictionary.abn_enable_flipped_stakes,
+                          G.localization.misc.dictionary.abn_disable_flipped_stakes,
                         },
                       }),
                     }

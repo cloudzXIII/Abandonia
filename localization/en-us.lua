@@ -11070,8 +11070,8 @@ return {
       abn_enable_logo = "(Requires Restart)",
 
 
-      k_abn_config_enable_flipped_stakes = "Disable Flipped Jokers in shop?",
-      abn_enable_flipped_stakes = "Flipped Jokers no longer spawn in Jimbo Stakes",
+      k_abn_config_disable_flipped_stakes = "Disable Flipped Jokers in shop?",
+      abn_disable_flipped_stakes = "Flipped Jokers no longer spawn in Jimbo Stakes",
 
       -- Mod badges for credits
       k_abn_artist = "Artist",

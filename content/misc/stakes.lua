@@ -89,7 +89,7 @@ function Game:update(dt)
     end
 
     -- Toxic Flip Mechanic
-    if not ABN.config.enable_flipped_stakes then
+    if not ABN.config.disable_flipped_stakes then
         if G.STATE == G.STATES.SHOP and G.GAME.modifiers.Toxic and G.shop_jokers and G.shop_jokers.cards then
             for _, v in ipairs(G.shop_jokers.cards) do
                 if v.config.center.set == 'Joker' and not v.ability.abn_toxic_checked then
