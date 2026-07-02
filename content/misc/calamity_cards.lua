@@ -94,24 +94,29 @@ SMODS.Consumable {
     discovered = false,
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = { key = "abn_flipped_card", set = "Other" }
-        return { vars = { (card and card.ability.extra.tags or self.config.extra.tags) } }
+        info_queue[#info_queue + 1] = { key = "abn_tsunami_info", set = "Other" }
+        return { vars = {} }
     end,
     can_use = function(self, card)
-        return #G.playing_cards > 0
+        return G.playing_cards and #G.playing_cards > 0 and
+            (G.GAME.abn_tsunamis_used or 0) < 4
+    end,
+    in_pool = function(self, args)
+        return (G.GAME.abn_tsunamis_used or 0) < 4
     end,
     use = function(self, card, area, copier)
         local used_tarot = copier or card
 
-        for i = 1, card.ability.extra.tags do
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    local tag_key = get_next_tag_key('abn_guaranteed_hazard_tag')
-                    add_tag(Tag(tag_key))
-                    play_sound('generic1', 0.9 + math.random() * 0.1, 0.8)
-                    play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
-                    return true
+        SMODS.change_booster_limit(1)
+        G.GAME.abn_tsunamis_used = (G.GAME.abn_tsunamis_used or 0) + 1
+
+        for _, joker in ipairs(G.jokers.cards) do
+            if not joker.ability.abn_perma_flipped then
+                if joker.facing == 'front' then
+                    joker:flip()
                 end
-            }))
+                joker.ability.abn_perma_flipped = true
+            end
         end
 
         G.E_MANAGER:add_event(Event({
@@ -156,43 +161,62 @@ SMODS.Consumable {
     cost = 4,
     discovered = false,
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'e_negative_consumable', set = 'Edition', config = { extra = 1 } }
         return { vars = {} }
     end,
     can_use = function(self, card)
-        local edition = false
-        for _, v in ipairs(G.jokers.cards) do
-            if v.edition then
-                edition = true
-            end
-        end
-        for _, v in ipairs(G.playing_cards) do
-            if v.edition then
-                edition = true
-            end
-        end
-        return edition
+        return G.jokers and ABN.count_stickers() > 0
     end,
     use = function(self, card)
-        for _, v in ipairs(G.jokers.cards) do
-            if v.edition then
-                SMODS.destroy_cards(v)
+        for key, _ in pairs(SMODS.Sticker.obj_table) do
+            for _, joker in pairs(G.jokers.cards) do
+                if joker.ability and joker.ability[key] then
+                    SMODS.destroy_cards(joker, { bypass_eternal = true })
+                end
             end
         end
-        for _, v in ipairs(G.playing_cards) do
-            if v.edition then
-                SMODS.destroy_cards(v)
-            end
+        for i = 1, 2 do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    play_sound('timpani')
+                    SMODS.add_card({ set = 'Tarot', key_append = "abn_cyclone", edition = "e_negative" })
+                    card:juice_up(0.3, 0.5)
+                    return true
+                end
+            }))
         end
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.4,
-            func = function()
-                play_sound('timpani')
-                card:juice_up(0.3, 0.5)
-                ease_dollars(G.GAME.dollars)
-                return true
+        for i = 1, 2 do
+            local voucher_pool = get_current_pool('Voucher')
+            local selected_voucher = pseudorandom_element(voucher_pool, 'abn_cyclone')
+            local it = 1
+            while selected_voucher == 'UNAVAILABLE' do
+                it = it + 1
+                selected_voucher = pseudorandom_element(voucher_pool, 'abn_cyclone' .. it)
             end
-        }))
+            local voucher_card = SMODS.create_card({ area = G.play, key = selected_voucher }) -- Ignore the previous code and just use a key for a prefined voucher
+            local prev_state = G.STATE
+            voucher_card:start_materialize()
+            voucher_card.cost = 0
+
+            G.play:emplace(voucher_card)
+
+            if i > 1 then
+                voucher_card.T.x = voucher_card.T.x + 2
+            end
+
+            voucher_card:redeem()
+
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.5,
+                func = function()
+                    voucher_card:start_dissolve()
+                    return true
+                end
+            }))
+        end
         delay(0.6)
     end,
     abn_artist_credits = {
@@ -356,6 +380,13 @@ SMODS.Consumable {
             func = function()
                 play_sound('tarot1')
                 used_tarot:juice_up(0.3, 0.5)
+
+                local cards_to_destroy = {}
+                for _, v in ipairs(G.consumeables.cards) do
+                    cards_to_destroy[#cards_to_destroy + 1] = v
+                end
+                SMODS.destroy_cards(cards_to_destroy)
+
 
                 --Filter for Snow suit fronts
                 local snow_fronts = {}
@@ -526,6 +557,7 @@ SMODS.Consumable {
     discovered = false,
 
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = "abn_fragile", set = "Other", vars = { 1, 4 } }
         return { vars = { (card and card.ability.extra.jokers / 2 or self.config.extra.jokers / 2) } }
     end,
 
@@ -538,11 +570,9 @@ SMODS.Consumable {
     end,
 
     use = function(self, card, area, copier)
-        -- Permadebuff all current jokers
-        for i = 1, #G.jokers.cards do
-            local j = G.jokers.cards[i]
-            j.ability.permadebuff = true
-            j:set_debuff(true)
+        for _, joker in ipairs(G.jokers.cards) do
+            joker:add_sticker("abn_fragile", true)
+            joker:juice_up()
         end
 
         -- Lose all money

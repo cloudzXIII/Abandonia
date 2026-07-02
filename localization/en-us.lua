@@ -8714,6 +8714,13 @@ return {
       },
     },
     Other = {
+      abn_tsunami_info = {
+        name = "Tsunami",
+        text = {
+          "Can only be used up to",
+          "{C:attention}4{} times in a run"
+        }
+      },
       abn_beneficial_sticker_info = {
         name = "Beneficial Stickers",
         text = {
@@ -10235,9 +10242,10 @@ return {
       c_abn_cyclone = {
         name = "Cyclone",
         text = {
-          "Doubles money,",
-          "{C:red}Destroy{} all {C:attention}Jokers{} and",
-          "{C:attention}playing cards{} with {C:dark_edition}Editions{}",
+          "{C:red}Destroy{} all {C:attention}Jokers{} with {C:attention}stickers{},",
+          "redeem {C:attention}2{} random {C:attention}Vouchers{}",
+          "and create {C:attention}2{} random",
+          "{C:dark_edition}Negative{} {C:tarot}Tarot{} cards"
         }
       },
       c_abn_eruption = {
@@ -10251,6 +10259,7 @@ return {
       c_abn_avalanche = {
         name = "Avalanche",
         text = {
+          "{C:red}Destroy{} all {C:attention}held{} consumables,",
           "Add {C:attention}#1#{} {C:abn_snow}Snow{} cards with",
           "random {C:dark_edition}Editions{} to your deck",
         }
@@ -10265,17 +10274,18 @@ return {
       c_abn_tsunami = {
         name = "Tsunami",
         text = {
-          "Create {C:attention}#1#{} random {C:abn_hazard}Hazard Tag{},",
-          "All cards in your {C:attention}full deck{}",
+          "{C:attention}+1{} Booster slot",
+          "All [C:attention}Jokers{} and cards in",
+          "your {C:attention}full deck{}",
           "become {C:attention}flipped{}",
         }
       },
       c_abn_drought = {
         name = "Drought",
         text = {
-          "{C:mult}Debuff{} all Jokers,",
+          "Apply {C:attention}Fragile{} to all Jokers,",
           "sets money to {C:money}$0{}",
-          "Summon {C:attention}#1#{} {C:abn_superrare}Super Rare{} {C:attention}Joker",
+          "Create {C:attention}#1#{} {C:abn_superrare}Super Rare{} {C:attention}Joker",
           "and {C:attention}#1#{} {C:abn_parallelrare}Parallel Rare{} {C:attention}Joker",
           "{C:inactive}(Must have room)",
         }
@@ -10284,9 +10294,9 @@ return {
         name = "Heatwave",
         text = {
           {
-            "{C:mult}Debuff{} all {C:spades}Spades{},",
-            "{C:clubs}Clubs{}, {C:abn_snow}Snows{},",
-            "{C:abn_tie}Ties{}, {C:abn_bow}Bows{}, and {C:abn_penumbra}Penumbras",
+            "{C:mult}Debuff{} all {C:spades}Spades{}, {C:clubs}Clubs{},",
+            "{C:abn_snow}Snows{}, {C:abn_tie}Ties{},",
+            "{C:abn_bow}Bows{}, and {C:abn_penumbra}Penumbras",
           },
           {
             "{C:diamonds}Diamonds{}, {C:hearts}Hearts{} and {C:inactive}Nulls{} gain",
@@ -10301,9 +10311,8 @@ return {
             "{C:mult}Debuff{} all {C:diamonds}Diamonds{}, {C:hearts}Hearts{} and {C:inactive}Nulls{}",
           },
           {
-            "{C:spades}Spades{}, {C:clubs}Clubs{},",
-            "{C:abn_snow}Snows{}, {C:abn_tie}Ties{},",
-            "{C:abn_bow}Bows{} and {C:abn_penumbra}Penumbras{} gain",
+            "{C:spades}Spades{}, {C:clubs}Clubs{}, {C:abn_snow}Snows{},",
+            "{C:abn_tie}Ties{}, {C:abn_bow}Bows{} and {C:abn_penumbra}Penumbras{} gain",
             "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
           },
         }
