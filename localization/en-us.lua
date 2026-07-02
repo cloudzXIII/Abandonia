@@ -7569,7 +7569,7 @@ return {
           {
             "Cards {C:attention}held{} in hand with",
             "the same {C:attention}rank{} or {C:attention}suit{}",
-            "count in scoring",
+            "as scoring cards count in scoring",
           },
         },
       },
