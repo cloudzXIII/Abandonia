@@ -10274,7 +10274,7 @@ return {
       c_abn_tsunami = {
         name = "Tsunami",
         text = {
-          "{C:attention}+1{} Booster slot",
+          "{C:attention}+1{} Booster Pack slot,",
           "All [C:attention}Jokers{} and cards in",
           "your {C:attention}full deck{}",
           "become {C:attention}flipped{}",
