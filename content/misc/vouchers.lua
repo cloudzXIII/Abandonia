@@ -15,7 +15,7 @@ SMODS.Voucher({ -- Overstock Maximum
 		local cae = card.ability.extra
 		return { vars = { cae.inc } }
 	end,
-	requires = {"v_overstock_plus"},
+	requires = { "v_overstock_plus" },
 	redeem = function(self, card)
 		local cae = card.ability.extra
 		change_shop_size(cae.inc)
@@ -36,14 +36,14 @@ SMODS.Voucher({ -- Tarot Master
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
 	end,
-	requires = {"v_tarot_tycoon"},
+	requires = { "v_tarot_tycoon" },
 	redeem = function(self, card)
 		local cae = card.ability.extra
 		G.GAME.modifiers.abn_tarot_odd = true
 	end,
 })
 
-SMODS.Voucher({ 
+SMODS.Voucher({
 	key = "planet_master",
 	atlas = "AbandoniaVouchers",
 	pos = {
@@ -54,7 +54,7 @@ SMODS.Voucher({
 		extra = {},
 	},
 	cost = 10,
-	requires = {"v_planet_tycoon"},
+	requires = { "v_planet_tycoon" },
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
 	end,
@@ -79,9 +79,9 @@ SMODS.Voucher({
 	cost = 10,
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
-		return{vars={cae.discount}}
+		return { vars = { cae.discount } }
 	end,
-	requires = {"v_liquidation"},
+	requires = { "v_liquidation" },
 	redeem = function(self, card)
 		local cae = card.ability.extra
 		G.GAME.discount_percent = cae.discount
@@ -99,7 +99,7 @@ SMODS.Voucher({
 		extra = {
 		},
 	},
-	requires = {"v_glow_up"},
+	requires = { "v_glow_up" },
 	cost = 10,
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
@@ -108,7 +108,7 @@ SMODS.Voucher({
 		local cae = card.ability.extra
 		G.GAME.modifiers.abn_all_edition = true
 	end,
-	
+
 })
 
 SMODS.Voucher({
@@ -120,17 +120,17 @@ SMODS.Voucher({
 	},
 	config = {
 		extra = {
-            lim = 1
+			lim = 1
 		},
 	},
 	cost = 10,
-	requires = {"v_nacho_tong"},
+	requires = { "v_nacho_tong" },
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
-        return{vars={cae.lim}}
+		return { vars = { cae.lim } }
 	end,
 	redeem = function(self, card)
-        local cae = card.ability.extra
+		local cae = card.ability.extra
 		SMODS.change_play_limit(cae.lim)
 	end,
 })
@@ -143,17 +143,17 @@ SMODS.Voucher({
 	},
 	config = {
 		extra = {
-            lim = 1
+			lim = 1
 		},
 	},
 	cost = 10,
-	requires = {"v_recyclomancy"},
+	requires = { "v_recyclomancy" },
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
-        return{vars={cae.lim}}
+		return { vars = { cae.lim } }
 	end,
 	redeem = function(self, card)
-        local cae = card.ability.extra
+		local cae = card.ability.extra
 		SMODS.change_discard_limit(cae.lim)
 	end,
 })
@@ -167,17 +167,17 @@ SMODS.Voucher({
 	},
 	config = {
 		extra = {
-            lim = 2
+			lim = 2
 		},
 	},
-	requires = {"v_antimatter"},
+	requires = { "v_antimatter" },
 	cost = 10,
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
-        return{vars={cae.lim}}
+		return { vars = { cae.lim } }
 	end,
 	redeem = function(self, card)
-        local cae = card.ability.extra
+		local cae = card.ability.extra
 		G.jokers.config.card_limit = G.jokers.config.card_limit + cae.lim
 	end,
 })
@@ -193,13 +193,13 @@ SMODS.Voucher({
 		},
 	},
 	cost = 10,
-	requires = {"v_reroll_glunt"},
+	requires = { "v_reroll_glunt" },
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
-        return{vars={cae.lim}}
+		return { vars = { cae.lim } }
 	end,
 	redeem = function(self, card)
-        local cae = card.ability.extra
+		local cae = card.ability.extra
 		G.GAME.modifiers.abn_no_reroll_increase = true
 	end,
 })
@@ -213,20 +213,23 @@ SMODS.Voucher({
 	},
 	config = {
 		extra = {
-            interest = 30
+			interest = 30
 		},
-	},	
+	},
 	cost = 10,
-	requires = {"v_money_tree"},
+	requires = { "v_money_tree" },
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
-        return{vars={cae.interest}}
+		return { vars = { cae.interest } }
 	end,
 	redeem = function(self, card)
-        local cae = card.ability.extra
-		G.E_MANAGER:add_event(Event({func = function()
-            G.GAME.interest_cap = cae.interest
-        return true end }))
+		local cae = card.ability.extra
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				G.GAME.interest_cap = cae.interest
+				return true
+			end
+		}))
 	end,
 })
 
@@ -239,18 +242,18 @@ SMODS.Voucher({
 	},
 	config = {
 		extra = {
-            interest = 30
+			interest = 30
 		},
 	},
 	cost = 10,
-	requires = {"v_omen_globe"},
+	requires = { "v_omen_globe" },
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
-        return{vars={cae.lim}}
+		return { vars = { cae.lim } }
 	end,
 	redeem = function(self, card)
 		local cae = card.ability.extra
-        G.GAME.modifiers.abn_guarantee_spectral_in_tarot = true
+		G.GAME.modifiers.abn_guarantee_spectral_in_tarot = true
 	end,
 })
 
@@ -263,27 +266,27 @@ SMODS.Voucher({
 	},
 	config = {
 		extra = {
-            interest = 30
+			interest = 30
 		},
 	},
 	cost = 10,
-	requires = {"v_observatory"},
+	requires = { "v_observatory" },
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
-        return{vars={cae.lim}}
+		return { vars = { cae.lim } }
 	end,
 	redeem = function(self, card)
 		local cae = card.ability.extra
 	end,
-    calculate = function(self,card,context)
-        if context.end_of_round and context.main_eval then
-            for k, v in pairs(G.consumeables.cards) do
-                if v.ability.set == "Planet" then
-                    v:set_edition("e_negative")
-                end
-            end
-        end
-    end
+	calculate = function(self, card, context)
+		if context.end_of_round and context.main_eval then
+			for k, v in pairs(G.consumeables.cards) do
+				if v.ability.set == "Planet" and not (v.edition and v.edition.negative) then
+					v:set_edition("e_negative")
+				end
+			end
+		end
+	end
 })
 
 SMODS.Voucher({
@@ -297,15 +300,15 @@ SMODS.Voucher({
 		extra = {
 		},
 	},
-	requires = {"v_illusion"},
+	requires = { "v_illusion" },
 	cost = 10,
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
 	end,
-    redeem = function(self,card)
+	redeem = function(self, card)
 		local cae = card.ability.extra
-        G.GAME.abn_guarantee_double_modif = true
-    end
+		G.GAME.abn_guarantee_double_modif = true
+	end
 })
 
 SMODS.Voucher({
@@ -317,18 +320,18 @@ SMODS.Voucher({
 	},
 	config = {
 		extra = {
-            ante = 2
+			ante = 2
 		},
 	},
-	requires = {"v_petroglyph"},
+	requires = { "v_petroglyph" },
 	cost = 10,
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
-        return{vars={cae.ante}}
+		return { vars = { cae.ante } }
 	end,
 	redeem = function(self, card)
 		local cae = card.ability.extra
-        ease_ante(-cae.ante)
+		ease_ante(-cae.ante)
 	end,
 })
 
@@ -341,18 +344,18 @@ SMODS.Voucher({
 	},
 	config = {
 		extra = {
-            cost = 5
+			cost = 5
 		},
 	},
-	requires = {"v_retcon"},
+	requires = { "v_retcon" },
 	cost = 10,
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
-        return{vars={cae.cost}}
+		return { vars = { cae.cost } }
 	end,
 	redeem = function(self, card)
 		local cae = card.ability.extra
-       	G.GAME.abn_boss_reroll_cost = cae.cost
+		G.GAME.abn_boss_reroll_cost = cae.cost
 	end,
 })
 
@@ -365,17 +368,17 @@ SMODS.Voucher({
 	},
 	config = {
 		extra = {
-            inc = 2
+			inc = 2
 		},
 	},
 	cost = 10,
-	requires = {"v_paltte"},
+	requires = { "v_paltte" },
 	loc_vars = function(self, info_queue, card)
 		local cae = card.ability.extra
-        return{vars={cae.inc}}
+		return { vars = { cae.inc } }
 	end,
 	redeem = function(self, card)
 		local cae = card.ability.extra
-       	G.hand:change_size(cae.inc)
+		G.hand:change_size(cae.inc)
 	end,
 })
