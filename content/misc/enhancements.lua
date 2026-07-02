@@ -303,7 +303,6 @@ SMODS.Enhancement({
 SMODS.Enhancement({
   key = "hazard",
   pos = { x = 6, y = 0 },
-  soul_pos = { x = 4, y = 3 },
   atlas = "AbandoniaEnhancements",
   replace_base_card = false,
   no_rank = false,
@@ -364,6 +363,10 @@ SMODS.Enhancement({
   abn_artist_credits = {
     artist = "Comykel",
   },
+  set_sprites = function(self, card, front)
+    card.children.center:set_sprite_pos({ x = 6, y = 0 })
+    card.children.center.hazard_card = true
+  end
 })
 
 SMODS.Enhancement({
@@ -838,6 +841,11 @@ SMODS.DrawStep {
       self.children.center:draw_shader('dissolve')
       self.children.center:set_sprite_pos({ x = 2, y = 2 })
     end
+    if self.children.center.hazard_card then
+      self.children.center:set_sprite_pos({ x = 4, y = 3 })
+      self.children.center:draw_shader('dissolve')
+      self.children.center:set_sprite_pos({ x = 6, y = 0 })
+    end
   end,
   conditions = { vortex = false, facing = 'front' }
 }
@@ -1050,8 +1058,9 @@ SMODS.Enhancement({
           table.insert(G.playing_cards, copy)
           copy:start_materialize(nil, nil)
 
-          playing_card_joker_effects({copy})
-          card_eval_status_text(card, 'extra', nil, nil, nil, { message = localize('k_duplicated_ex'), colour = G.C.ATTENTION })
+          playing_card_joker_effects({ copy })
+          card_eval_status_text(card, 'extra', nil, nil, nil,
+            { message = localize('k_duplicated_ex'), colour = G.C.ATTENTION })
           return true
         end
       }))
@@ -1062,7 +1071,7 @@ SMODS.Enhancement({
         cae.chips = cae.chips * 2
         cae.mult = cae.mult * 2
         cae.dollars = cae.dollars * 2
-        
+
         return {
           message = localize('k_upgrade_ex'),
           colour = G.C.ATTENTION,
@@ -1106,7 +1115,7 @@ SMODS.Enhancement({
 
     if context.remove_playing_cards and not context.blueprint then
       local destroyed_count = 0
-      
+
       for _, removed_card in ipairs(context.removed) do
         if removed_card ~= card then
           destroyed_count = destroyed_count + 1
@@ -1115,12 +1124,12 @@ SMODS.Enhancement({
 
       if destroyed_count > 0 then
         cae.chips = cae.chips + (cae.chipsadd * destroyed_count)
-        
+
         G.E_MANAGER:add_event(Event({
           func = function()
-            card_eval_status_text(card, 'extra', nil, nil, nil, { 
+            card_eval_status_text(card, 'extra', nil, nil, nil, {
               message = localize('k_upgrade_ex'),
-              colour = G.C.CHIPS 
+              colour = G.C.CHIPS
             })
             return true
           end
@@ -1130,7 +1139,7 @@ SMODS.Enhancement({
 
     if context.main_scoring and context.cardarea == G.play then
       local has_debuffed = false
-      
+
       if context.scoring_hand then
         for _, scoring_card in ipairs(context.scoring_hand) do
           if scoring_card.debuff then
@@ -1142,7 +1151,7 @@ SMODS.Enhancement({
 
       if has_debuffed then
         cae.mult = cae.mult + cae.multadd
-        
+
         return {
           chips = cae.chips,
           mult = cae.mult,
