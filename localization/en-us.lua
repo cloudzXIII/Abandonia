@@ -4884,7 +4884,7 @@ return {
         text = {
           "Gain {X:mult,C:white}X#3#{} Mult when a Joker is {C:attention}sold{}",
           "Gain {C:chips}+#4#{} Chips when a Joker is {C:mult}destroyed{}",
-          "{C:inactive}C(urrently{} {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
+          "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
           "{C:attention}Sold{} and {C:mult}destroyed{} Jokers cannot reappear",
         }
       },
@@ -6376,7 +6376,7 @@ return {
           },
           {
             "{C:red,E:1}lose the game{} if you own {C:attention}3{}",
-            "or morecopies of this Joker",
+            "or more copies of this Joker",
           },
         }
       },
