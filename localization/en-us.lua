@@ -7473,9 +7473,17 @@ return {
       j_abn_joker_totebag = {
         name = "Joker Totebag",
         text = {
-          "When {C:attention}Blind is selected{} gain {C:mult}+#2#{} Mult and {C:chips}+#1#{} Chips for each consumable that shares a name",
-          "If each one of those Consumables has a {C:attention}different{} {C:dark_edition}Edition{} double this Joker's {C:chips}chips{} and {C:mult}mult{}",
-          "{C:inactive}(Currently {C:mult}+#4#{} {C:inactive}Mult,{} {C:chips}+#3#{} {C:inactive}Chips){}"
+          {
+            "When {C:attention}Blind{} is selected,",
+            "gain {C:mult}+#2#{} Mult and {C:chips}+#1#{} Chips for each",
+            "consumable that shares a name",
+          },
+          {
+            "If each consumable has a",
+            "{C:attention}different{} {C:dark_edition}Edition{}, double",
+            "this Joker's {C:chips}Chips{} and {C:mult}Mult{}",
+            "{C:inactive}(Currently {C:mult}+#4#{} {C:inactive}Mult,{} {C:chips}+#3#{} {C:inactive}Chips){}"
+          },
         },
       },
       j_abn_agent_jimbo = {
