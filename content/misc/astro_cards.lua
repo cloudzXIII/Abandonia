@@ -828,48 +828,31 @@ SMODS.Consumable {
         if SMODS.pseudorandom_probability(card, 'taurus', 1, card.ability.extra.odds) then
             -- Success Case: Create and redeem the number of vouchers specified in config
             for i = 1, card.ability.extra.cards do
+                local voucher_pool = get_current_pool('Voucher')
+                local selected_voucher = pseudorandom_element(voucher_pool, 'abn_taurus')
+                local it = 1
+                while selected_voucher == 'UNAVAILABLE' do
+                    it = it + 1
+                    selected_voucher = pseudorandom_element(voucher_pool, 'abn_taurus' .. it)
+                end
+                local voucher_card = SMODS.create_card({ area = G.play, key = selected_voucher }) -- Ignore the previous code and just use a key for a prefined voucher
+                local prev_state = G.STATE
+                voucher_card:start_materialize()
+                voucher_card.cost = 0
+
+                G.play:emplace(voucher_card)
+
+                if i > 1 then
+                    voucher_card.T.x = voucher_card.T.x + 2
+                end
+
+                voucher_card:redeem()
+
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
-                    -- Stagger the vouchers: First one starts at 0.4s, second at 1.4s
-                    delay = (i == 1) and 0.4 or 1.0,
+                    delay = 0.5,
                     func = function()
-                        local _pool, _ = get_current_pool('Voucher', nil, nil, nil)
-                        local _voucher_key = nil
-                        local _pool_key = 'taurus_vouch'
-                        local iv = 1
-
-                        -- Pick a random voucher from the current pool
-                        _voucher_key = pseudorandom_element(_pool, pseudoseed(_pool_key))
-
-                        -- Loop until we find a voucher that isn't 'UNAVAILABLE'
-                        -- and doesn't require a Tier 1 the player doesn't have
-                        while _voucher_key == 'UNAVAILABLE' or (G.P_CENTERS[_voucher_key] and G.P_CENTERS[_voucher_key].requires) do
-                            iv = iv + 1
-                            _voucher_key = pseudorandom_element(_pool, pseudoseed(_pool_key .. '_resample' .. iv))
-                        end
-
-                        -- Create the card object
-                        local voucher_card = create_card('Voucher', G.play, nil, nil, nil, nil, _voucher_key, 'tau')
-
-                        -- Offset the second card slightly so they don't overlap perfectly
-                        if i > 1 then
-                            voucher_card.T.x = voucher_card.T.x + 2
-                        end
-
-                        -- Trigger visual effects and the redemption logic
-                        voucher_card:juice_up(0.3, 0.5)
-                        voucher_card:redeem()
-                        G.GAME.dollars = G.GAME.dollars + 10
-
-                        -- Cleanup: Remove the card object after the animation finishes
-                        G.E_MANAGER:add_event(Event({
-                            trigger = 'after',
-                            delay = 0.5,
-                            func = function()
-                                voucher_card:remove()
-                                return true
-                            end
-                        }))
+                        voucher_card:start_dissolve()
                         return true
                     end
                 }))
