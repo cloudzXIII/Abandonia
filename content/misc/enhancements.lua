@@ -64,12 +64,12 @@ SMODS.Enhancement({
       }
     end
     if
-    context.destroying_card
-    and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
-    and not card.getting_sliced
-    and context.destroying_card == card
-    and not card.ability.abn_just
-    and not next(SMODS.find_card("j_abn_immolation_joker"))
+        context.destroying_card
+        and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
+        and not card.getting_sliced
+        and context.destroying_card == card
+        and not card.ability.abn_just
+        and not next(SMODS.find_card("j_abn_immolation_joker"))
     then
       return {
         remove = true
@@ -103,10 +103,10 @@ SMODS.Enhancement({
       }
     end
     if
-    context.destroying_card
-    and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
-    and not card.getting_sliced
-    and context.destroying_card == card
+        context.destroying_card
+        and SMODS.pseudorandom_probability(card, "oilfire_abn", 1, card.ability.extra.odds)
+        and not card.getting_sliced
+        and context.destroying_card == card
     then
       return {
         remove = true
@@ -422,15 +422,15 @@ function SMODS.calculate_individual_effect(effect, scored_card, key, amount, fro
 
   -- Check if an Xmult modification just fired
   if (
-    key == "x_mult"
-    or key == "xmult"
-    or key == "Xmult"
-    or key == "x_mult_mod"
-    or key == "xmult_mod"
-    or key == "Xmult_mod"
-  )
-  and amount ~= 1
-  and mult then
+        key == "x_mult"
+        or key == "xmult"
+        or key == "Xmult"
+        or key == "x_mult_mod"
+        or key == "xmult_mod"
+        or key == "Xmult_mod"
+      )
+      and amount ~= 1
+      and mult then
     -- Iterate through all cards in the game to find ones with your enhancement
     if G.playing_cards then
       local scaled_count = 0
@@ -1169,5 +1169,89 @@ SMODS.Enhancement({
   end,
   abn_artist_credits = {
     artist = "Gud",
+  },
+})
+
+SMODS.Enhancement({
+  key = "ocean",
+  pos = { x = 6, y = 3 },
+  atlas = "AbandoniaEnhancements",
+  config = { extra = { chips = 0, chips_gain = 7 } },
+  no_suit = true,
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    return { vars = { cae.chips, cae.chips_gain } }
+  end,
+
+  calculate = function(self, card, context)
+    if context.before and context.cardarea == G.play then
+      local count = 0
+      local pos = ABN.get_pos(card, context.scoring_hand)
+      for _, v in ipairs(context.scoring_hand) do
+        local card_pos = ABN.get_pos(v, context.scoring_hand)
+        if card_pos < pos then
+          count = count + 1
+        end
+      end
+      SMODS.scale_card(card, {
+        ref_table = card.ability.extra,
+        ref_value = "chips",
+        scalar_value = "chips_gain",
+        message_key = "a_chips",
+        operation = function(ref_table, ref_value, initial, change)
+          ref_table[ref_value] = initial + count * change
+        end,
+      })
+    end
+    if context.main_scoring and context.cardarea == G.play then
+      return {
+        chips = card.ability.extra.chips
+      }
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Shrimpsnail",
+  },
+})
+
+SMODS.Enhancement({
+  key = "mountain",
+  pos = { x = 7, y = 3 },
+  atlas = "AbandoniaEnhancements",
+  config = { extra = { mult = 0, mult_gain = 2 } },
+  no_suit = true,
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    return { vars = { cae.mult, cae.mult_gain } }
+  end,
+
+  calculate = function(self, card, context)
+    if context.before and context.cardarea == G.play then
+      local count = 0
+      local pos = ABN.get_pos(card, context.scoring_hand)
+      for _, v in ipairs(context.scoring_hand) do
+        local card_pos = ABN.get_pos(v, context.scoring_hand)
+        if card_pos > pos then
+          count = count + 1
+        end
+      end
+      SMODS.scale_card(card, {
+        ref_table = card.ability.extra,
+        ref_value = "mult",
+        scalar_value = "mult_gain",
+        message_key = "a_mult",
+        operation = function(ref_table, ref_value, initial, change)
+          ref_table[ref_value] = initial + count * change
+        end,
+      })
+    end
+    if context.main_scoring and context.cardarea == G.play then
+      return {
+        mult = card.ability.extra.mult
+      }
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Shrimpsnail",
   },
 })

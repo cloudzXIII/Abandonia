@@ -10774,6 +10774,22 @@ return {
       },
     },
     Enhanced = {
+      m_abn_ocean = {
+        name = "Ocean Card",
+        text = {
+          "Gains {C:chips}+#2#{} Chips per scoring card",
+          "to the {C:attention}left{} of this card",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
+        }
+      },
+      m_abn_mountain = {
+        name = "Mountain Card",
+        text = {
+          "Gains {C:mult}+#2#{} Mult per scoring card",
+          "to the {C:attention}right{} of this card",
+          "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+        }
+      },
       m_abn_teabag = {
         name = "Tea Tag Card",
         text = {
