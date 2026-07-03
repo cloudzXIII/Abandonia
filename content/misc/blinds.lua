@@ -4207,8 +4207,6 @@ SMODS.Blind {
           ABN.level_up_rank(card, card.base.value, -1)
         end
       end
-
-      -- not working todo
       if G.GAME.hands[context.scoring_name] and G.GAME.hands[context.scoring_name].played > 0 then
         return {
           xblindsize = G.GAME.hands[context.scoring_name].played
@@ -4237,6 +4235,32 @@ SMODS.Blind {
         end
       end
       SMODS.destroy_cards(even)
+    end
+  end,
+}
+
+SMODS.Blind {
+  key = "murder_machine",
+  dollars = 6,
+  mult = 2,
+
+  debuff = { h_size_ge = 4, h_size_le = 4 },
+  boss = { min = 1, invasion_blind = true },
+  atlas = "InvasionBlinds",
+  pos = { x = 0, y = 0 },
+  boss_colour = HEX("f13938"),
+  calculate = function(self, blind, context)
+    if context.final_scoring_step then
+      local blind_chips = G.GAME.blind and G.GAME.blind.chips or 0
+      local result = SMODS.calculate_round_score() + G.GAME.chips
+
+      if G.GAME.current_round.hands_played == 0 or result >= blind_chips then
+        local cards_to_destroy = {}
+        for _, v in ipairs(context.full_hand) do
+          cards_to_destroy[#cards_to_destroy + 1] = v
+        end
+        SMODS.destroy_cards(cards_to_destroy)
+      end
     end
   end,
 }
