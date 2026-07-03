@@ -475,7 +475,7 @@ end
 ABN.get_positive_stickers = function()
   local positive_stickers = {
     'abn_pump_up', 'abn_bullseye', 'abn_shovel',
-    'abn_weight', 'abn_possiblity', 'abn_square',
+    'abn_weight', 'abn_possibility', 'abn_square',
     'abn_lightning_bolt', 'abn_top_hat', 'abn_spicy',
     'abn_lucky', 'abn_glove_hand', 'abn_x', 'abn_negative_plus',
     'abn_question_mark', 'abn_even_legacy', 'abn_odd_legacy', 'abn_jimbo_legacy', 'abn_rejok_legacy',

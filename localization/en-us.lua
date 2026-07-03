@@ -1795,7 +1795,7 @@ return {
       bl_abn_tumeric_chakra = {
         name = "Tumeric Chakra",
         text = {
-          "Hand must have atleast 3 suits",
+          "Hand must have at least 3 suits",
         },
       },
       bl_abn_azurite_axe = {
@@ -1841,7 +1841,7 @@ return {
         name = "Spectral Jewel",
         text = {
           "First drawn hand is debuffed",
-          "Must play atleast 2 suits",
+          "Must play at least 2 suits",
         },
       },
       bl_abn_equal_brass = {
@@ -1932,7 +1932,7 @@ return {
         name = "Hazard Jewel",
         text = {
           "First drawn hand is debuffed",
-          "Must play atleast 3 suits",
+          "Must play at least 3 suits",
           "Hand must not contain 3 or 5 cards",
         },
       },
@@ -1985,7 +1985,7 @@ return {
       bl_abn_hazard_chakra = {
         name = "Hazard Chakra",
         text = {
-          "Hand must have atleast 3 suits",
+          "Hand must have at least 3 suits",
           "and 0 discards",
         },
       },
