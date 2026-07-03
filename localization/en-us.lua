@@ -1608,6 +1608,42 @@ return {
           "Destroy discarded cards"
         }
       },
+      bl_abn_nauseous_numb = {
+        name = "Nauseous Numb",
+        text = {
+          "Must play 4 cards",
+          "Destroy played even cards",
+          "after scoring"
+        }
+      },
+      bl_abn_nocturnal_needle = {
+        name = "Nocturnal Needle",
+        text = {
+          "All Null cards",
+          "are debuffed",
+          "Remove seals from played",
+          "cards after scoring"
+        }
+      },
+      bl_abn_nostalgic_nail = {
+        name = "Nostalgic Nail",
+        text = {
+          "Decrease level of",
+          "played ranks",
+          "Multiply Blind Size by number of",
+          "times poker hand has",
+          "been played this run"
+        }
+      },
+      bl_abn_murder_machine = {
+        name = "Murder Machine",
+        text = {
+          "Destroy first hand",
+          "after scoring",
+          "Destroy Winning Hand",
+          "after scoring"
+        }
+      },
       --#endregion
       bl_abn_magenta_magnet = {
         name = "Magenta Magnet",

@@ -4161,3 +4161,82 @@ SMODS.Blind {
     end
   end,
 }
+
+SMODS.Blind {
+  key = "nocturnal_needle",
+  dollars = 6,
+  mult = 2,
+  boss = { min = 1, invasion_blind = true },
+  atlas = "InvasionBlinds",
+  pos = { x = 0, y = 1 },
+  boss_colour = HEX("f13938"),
+  calculate = function(self, blind, context)
+    if context.final_scoring_step then
+      for _, v in ipairs(context.full_hand) do
+        if v.seal then
+          G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+              v:set_seal(nil)
+              v:juice_up(0.3, 0.5)
+              return true
+            end
+          }))
+        end
+      end
+    end
+    if context.debuff_card and context.debuff_card.base.suit == "abn_suitless" then
+      return { debuff = true }
+    end
+  end,
+}
+
+SMODS.Blind {
+  key = "nostalgic_nail",
+  dollars = 6,
+  mult = 2,
+  boss = { min = 1, invasion_blind = true },
+  atlas = "InvasionBlinds",
+  pos = { x = 0, y = 2 },
+  boss_colour = HEX("f13938"),
+  calculate = function(self, blind, context)
+    if context.before then
+      for _, card in ipairs(context.scoring_hand) do
+        if G.GAME.abn_rank_upgrades[card.base.value] and G.GAME.abn_rank_upgrades[card.base.value].level > 1 then
+          ABN.level_up_rank(card, card.base.value, -1)
+        end
+      end
+
+      -- not working todo
+      if G.GAME.hands[context.scoring_name] and G.GAME.hands[context.scoring_name].played > 0 then
+        return {
+          xblindsize = G.GAME.hands[context.scoring_name].played
+        }
+      end
+    end
+  end,
+}
+
+SMODS.Blind {
+  key = "nauseous_numb",
+  dollars = 6,
+  mult = 2,
+
+  debuff = { h_size_ge = 4, h_size_le = 4 },
+  boss = { min = 1, invasion_blind = true },
+  atlas = "InvasionBlinds",
+  pos = { x = 0, y = 3 },
+  boss_colour = HEX("f13938"),
+  calculate = function(self, blind, context)
+    if context.final_scoring_step then
+      local even = {}
+      for _, v in ipairs(context.full_hand) do
+        if ABN.is_even(v) then
+          even[#even + 1] = v
+        end
+      end
+      SMODS.destroy_cards(even)
+    end
+  end,
+}
