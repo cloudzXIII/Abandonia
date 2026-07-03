@@ -1560,6 +1560,55 @@ return {
       --#endregion
     },
     Blind = {
+      --#region Invasion Blinds
+      bl_abn_blasphemous_bow = {
+        name = "Blasphemous Bow",
+        text = {
+          "All Bow cards",
+          "are debuffed",
+          "Pairs will not score",
+        }
+      },
+      bl_abn_pernicious_penumbra = {
+        name = "Pernicious Penumbra",
+        text = {
+          "All Penumbra cards",
+          "are debuffed",
+          "Full Houses will not score",
+        }
+      },
+      bl_abn_deductible_delirium = {
+        name = "Deductible Delirium",
+        text = {
+          "All Aces are debuffed",
+          "Three of a Kinds will not score",
+        }
+      },
+      bl_abn_genocidal_gene = {
+        name = "Tyrannic Tie",
+        text = {
+          "All Tie cards",
+          "are debuffed",
+          "Pairs will not score",
+        }
+      },
+      bl_abn_tyrannic_tie = {
+        name = "Genocidal Gene",
+        text = {
+          "Hand must contain",
+          "2 suits",
+          "Straights will not score",
+        }
+      },
+      bl_abn_key_knuckle = {
+        name = "Key Knuckle",
+        text = {
+          "Debuff all ranks",
+          "above 4",
+          "Destroy discarded cards"
+        }
+      },
+      --#endregion
       bl_abn_magenta_magnet = {
         name = "Magenta Magnet",
         text = {
