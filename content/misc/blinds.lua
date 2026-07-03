@@ -4101,6 +4101,18 @@ SMODS.Blind {
   end
 }
 
+local function abn_count_suits(cards)
+  local suits = {}
+  for _, v in ipairs(cards) do
+    suits[v.base.suit] = true
+  end
+
+  local unique_suits = 0
+  for _ in pairs(suits) do
+    unique_suits = unique_suits + 1
+  end
+  return unique_suits
+end
 SMODS.Blind {
   key = "genocidal_gene",
   dollars = 6,
@@ -4120,17 +4132,10 @@ SMODS.Blind {
     end
   end,
   debuff_hand = function(self, cards, hand, handname, check)
-    local suits = {}
-    for _, v in ipairs(cards) do
-      suits[v.base.suit] = true
+    if abn_count_suits(cards) ~= 2 then
+      return true
     end
-
-    local unique_suits = 0
-    for _ in pairs(suits) do
-      unique_suits = unique_suits + 1
-    end
-
-    return unique_suits == 2
+    return false
   end,
 }
 

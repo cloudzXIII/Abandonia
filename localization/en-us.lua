@@ -1584,7 +1584,7 @@ return {
           "Three of a Kinds will not score",
         }
       },
-      bl_abn_genocidal_gene = {
+      bl_abn_tyrannic_tie = {
         name = "Tyrannic Tie",
         text = {
           "All Tie cards",
@@ -1592,7 +1592,7 @@ return {
           "Pairs will not score",
         }
       },
-      bl_abn_tyrannic_tie = {
+      bl_abn_genocidal_gene = {
         name = "Genocidal Gene",
         text = {
           "Hand must contain",
@@ -1705,7 +1705,7 @@ return {
         name = "Rainbow Oracle",
         text = {
           "Hand must contain",
-          "atleast 4 different suits"
+          "at least 4 different suits"
         },
       },
       bl_abn_mint_e = {
@@ -2049,7 +2049,7 @@ return {
         name = "Hazard Oracle",
         text = {
           "Hand must contain",
-          "atleast 5 different suits",
+          "at least 5 different suits",
           "Debuff the rightmost Joker",
           "every hand"
         },
