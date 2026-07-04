@@ -846,6 +846,14 @@ return {
       },
     },
     Back = {
+      b_abn_cyber = {
+        name = "Cyber Deck",
+        text = {
+          "{C:solid_state}Solid State{} cards may",
+          "appear in the shop,",
+          "start with a {C:solid_state,T:c_abn_database}Database{} card",
+        }
+      },
       b_abn_CrimsonDeck = {
         name = "Crimson Deck",
         text = {

@@ -235,33 +235,33 @@ SMODS.Back {
         G.E_MANAGER:add_event(Event({
             trigger = 'immediate',
             func = function()
-                if not G.playing_cards or #G.playing_cards == 0 then 
-                    return false 
+                if not G.playing_cards or #G.playing_cards == 0 then
+                    return false
                 end
-                
+
                 local rank_mapping = {
                     [11] = 'abn_11',
                     [12] = 'abn_12',
                     [13] = 'abn_13',
-                    [14] = 'abn_14' 
+                    [14] = 'abn_14'
                 }
-                
+
                 for i = 1, #G.playing_cards do
                     local card = G.playing_cards[i]
                     local card_id = card:get_id()
-                    
+
                     if rank_mapping[card_id] then
                         local suit_prefix = string.sub(card.base.suit, 1, 1) .. '_'
                         local target_suffix = rank_mapping[card_id]
-                        
+
                         local target_card_def = G.P_CARDS[suit_prefix .. target_suffix]
-                        
+
                         if target_card_def then
                             card:set_base(target_card_def)
                         end
                     end
                 end
-                
+
                 if G.deck then G.deck:sort() end
                 return true
             end
@@ -353,15 +353,14 @@ SMODS.Back {
         G.E_MANAGER:add_event(Event({
 
             func = function()
-			
                 G.GAME.astro_cards_rate = 2
 
                 return true
             end
         }))
     end,
-	
-	calculate = function(self, card, context)
+
+    calculate = function(self, card, context)
         -- Check if a booster pack is currently open and has cards
         if G.shop_booster and G.shop_booster.cards and #G.shop_booster.cards >= 2 then
             for _, booster_card in ipairs(G.shop_booster.cards) do
@@ -445,9 +444,9 @@ SMODS.Back {
 
 
             local clean_suit_name = chosen_suit:gsub("^[^_]+_", "")
-            
 
-            clean_suit_name = clean_suit_name:sub(1,1):upper() .. clean_suit_name:sub(2)
+
+            clean_suit_name = clean_suit_name:sub(1, 1):upper() .. clean_suit_name:sub(2)
 
             -- display text
             G.E_MANAGER:add_event(Event({
@@ -473,8 +472,8 @@ SMODS.Back {
     loc_vars = function(self, info_queue)
         local display_suit = G.GAME.paint_deck_suit or 'Spades'
         local clean_display = display_suit:gsub("^[^_]+_", "")
-        clean_display = clean_display:sub(1,1):upper() .. clean_display:sub(2)
-        
+        clean_display = clean_display:sub(1, 1):upper() .. clean_display:sub(2)
+
         return { vars = { clean_display } }
     end,
 
@@ -491,7 +490,7 @@ SMODS.Back {
     calculate = function(self, card, context)
         -- boss defeated
         if context.end_of_round and G.GAME.blind.boss
-            and not context.repetition and not context.individual then
+        and not context.repetition and not context.individual then
             self:trigger_suit_change(G.GAME.round_resets.ante)
         end
     end
@@ -586,12 +585,12 @@ SMODS.Back {
     config = {
         hand_size = 0
     },
-	
-	apply = function()
+
+    apply = function()
         G.E_MANAGER:add_event(Event({
             func = function()
                 G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling * 2.5
-				return true
+                return true
             end
         }))
     end,
@@ -604,7 +603,7 @@ SMODS.Back {
             hand_chips = mod_chips(current_mult)
             mult = mod_mult(current_chips)
 
-            update_hand_text({delay = 0}, {chips = hand_chips, mult = mult})
+            update_hand_text({ delay = 0 }, { chips = hand_chips, mult = mult })
         end
     end,
 }
@@ -612,8 +611,8 @@ SMODS.Back {
 local original_game_update = Game.update
 function Game:update(dt)
     original_game_update(self, dt)
-	if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect and G.GAME.selected_back.effect.center and G.GAME.selected_back.effect.center.key == 'b_abn_JugglerDeck' and G.STATE ~= 8 then
-		G.GAME.round_resets.hands = G.GAME.current_round.hands_left
+    if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect and G.GAME.selected_back.effect.center and G.GAME.selected_back.effect.center.key == 'b_abn_JugglerDeck' and G.STATE ~= 8 then
+        G.GAME.round_resets.hands = G.GAME.current_round.hands_left
     end
 end
 
@@ -628,26 +627,26 @@ SMODS.Back {
     },
 
     calculate = function(self, card, context)
-		if context.selling_card and context.card ~= card and context.card.config.center.rarity and context.card.ability.set == 'Joker' then
+        if context.selling_card and context.card ~= card and context.card.config.center.rarity and context.card.ability.set == 'Joker' then
             local card_rarity = context.card.config.center.rarity
-			if card_rarity == 1 then
-				G.GAME.round_resets.hands = G.GAME.round_resets.hands + 1
-				ease_hands_played(1)
-			elseif card_rarity == 2 then
-				G.GAME.round_resets.hands = G.GAME.round_resets.hands + 2
-				ease_hands_played(2)
-			elseif card_rarity == 3 then
-				G.GAME.round_resets.hands = G.GAME.round_resets.hands + 5
-				ease_hands_played(5)
-			elseif card_rarity == 4 then
-				G.GAME.round_resets.hands = G.GAME.round_resets.hands + 10
-				ease_hands_played(10)
-			elseif card_rarity ~= 1 and card_rarity ~= 2 and card_rarity ~= 3 and card_rarity ~= 4 then
-				G.GAME.round_resets.hands = G.GAME.round_resets.hands + 3
-				ease_hands_played(3)
-			end
-		end
-	end,
+            if card_rarity == 1 then
+                G.GAME.round_resets.hands = G.GAME.round_resets.hands + 1
+                ease_hands_played(1)
+            elseif card_rarity == 2 then
+                G.GAME.round_resets.hands = G.GAME.round_resets.hands + 2
+                ease_hands_played(2)
+            elseif card_rarity == 3 then
+                G.GAME.round_resets.hands = G.GAME.round_resets.hands + 5
+                ease_hands_played(5)
+            elseif card_rarity == 4 then
+                G.GAME.round_resets.hands = G.GAME.round_resets.hands + 10
+                ease_hands_played(10)
+            elseif card_rarity ~= 1 and card_rarity ~= 2 and card_rarity ~= 3 and card_rarity ~= 4 then
+                G.GAME.round_resets.hands = G.GAME.round_resets.hands + 3
+                ease_hands_played(3)
+            end
+        end
+    end,
 }
 
 SMODS.Back {
@@ -685,10 +684,10 @@ SMODS.Back {
 
 SMODS.Back {
     key = 'treaty',
-	name = "Treaty Of Colors",
+    name = "Treaty Of Colors",
     atlas = 'AbandoniaDecks',
     pos = { x = 5, y = 4 },
-	config = {
+    config = {
         hand_size = 0,
     },
 
@@ -702,14 +701,14 @@ SMODS.Back {
 
                 for _, card in ipairs(original_cards) do
                     local new_card = copy_card(card)
-                    
+
 
                     if card.base.suit == 'Spades' then
-                        new_card:change_suit('abn_Snow')    
+                        new_card:change_suit('abn_Snow')
                     elseif card.base.suit == 'Hearts' then
-                        new_card:change_suit('abn_Penumbra') 
+                        new_card:change_suit('abn_Penumbra')
                     elseif card.base.suit == 'Diamonds' then
-                        new_card:change_suit('abn_Tie')     
+                        new_card:change_suit('abn_Tie')
                     elseif card.base.suit == 'Clubs' then
                         new_card:change_suit('abn_Bow')
                     end
@@ -759,10 +758,10 @@ SMODS.Back {
                 end
 
                 for _, card in ipairs(original_cards) do
-                    if card.base.suit == 'abn_Bow' then 
+                    if card.base.suit == 'abn_Bow' then
                         local new_card = copy_card(card)
-                        
-                        new_card:change_suit('abn_suitless') 
+
+                        new_card:change_suit('abn_suitless')
                         new_card:add_to_deck()
                         G.deck:emplace(new_card)
                         table.insert(G.playing_cards, new_card)
@@ -795,7 +794,7 @@ SMODS.Back {
                     Diamonds = 'abn_Tie',
                     Clubs = 'abn_Bow'
                 }
-                
+
                 local original_cards = {}
                 for _, v in pairs(G.playing_cards) do
                     table.insert(original_cards, v)
@@ -828,10 +827,10 @@ SMODS.Back {
                         new_card:add_to_deck()
                         G.deck:emplace(new_card)
                         table.insert(G.playing_cards, new_card)
-                        
-                        if current_suit == 'Clubs' then 
+
+                        if current_suit == 'Clubs' then
                             local suitless_card = copy_card(card)
-                            suitless_card:change_suit('abn_suitless') 
+                            suitless_card:change_suit('abn_suitless')
                             suitless_card:add_to_deck()
                             G.deck:emplace(suitless_card)
                             table.insert(G.playing_cards, suitless_card)
@@ -844,8 +843,8 @@ SMODS.Back {
             end
         }))
     end,
-	
-	calculate = function(self, card, context)
+
+    calculate = function(self, card, context)
         if context.end_of_round and context.main_eval and not context.blueprint and G.GAME.blind and G.GAME.blind.boss then
             G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling * 1.3
         end
@@ -854,17 +853,17 @@ SMODS.Back {
 
 SMODS.Back {
     key = 'epoch',
-	name = 'New Epoch',
+    name = 'New Epoch',
     atlas = 'AbandoniaDecks',
     pos = { x = 1, y = 6 },
 
     config = {
-		hand_size = 0,
-		vouchers = { "v_antimatter", "v_blank", "v_clearance_sale", "v_crystal_ball", "v_directors_cut", "v_glow_up", "v_grabber", "v_hieroglyph", "v_hone", "v_illusion", "v_liquidation", "v_magic_trick", "v_money_tree", "v_nacho_tong", "v_observatory", "v_omen_globe", "v_overstock_norm", "v_overstock_plus", "v_paint_brush", "v_palette", "v_petroglyph", "v_planet_merchant", "v_planet_tycoon", "v_recyclomancy", "v_reroll_glut", "v_reroll_surplus", "v_retcon", "v_seed_money", "v_tarot_merchant", "v_tarot_tycoon", "v_telescope", "v_wasteful", } 
+        hand_size = 0,
+        vouchers = { "v_antimatter", "v_blank", "v_clearance_sale", "v_crystal_ball", "v_directors_cut", "v_glow_up", "v_grabber", "v_hieroglyph", "v_hone", "v_illusion", "v_liquidation", "v_magic_trick", "v_money_tree", "v_nacho_tong", "v_observatory", "v_omen_globe", "v_overstock_norm", "v_overstock_plus", "v_paint_brush", "v_palette", "v_petroglyph", "v_planet_merchant", "v_planet_tycoon", "v_recyclomancy", "v_reroll_glut", "v_reroll_surplus", "v_retcon", "v_seed_money", "v_tarot_merchant", "v_tarot_tycoon", "v_telescope", "v_wasteful", }
     },
-	
-	
-	calculate = function(self, card, context)
+
+
+    calculate = function(self, card, context)
         if G.GAME.round_resets.blind_choices.Small then
             G.GAME.round_resets.blind_choices.Small = 'bl_big'
         end
@@ -885,9 +884,9 @@ SMODS.Back {
             func = function()
                 for _, card in ipairs(G.playing_cards) do
                     local current_suit = card.base.suit
-                    
-                    card:set_edition({abn_chthonian = true}, true, true)
-                    
+
+                    card:set_edition({ abn_chthonian = true }, true, true)
+
                     if current_suit == 'Hearts' then
                         card:change_suit('abn_Penumbra')
                     elseif current_suit == 'Diamonds' then
@@ -924,7 +923,7 @@ SMODS.Back {
                 for _, original_card in ipairs(original_cards) do
                     local copy = copy_card(original_card)
                     local current_suit = copy.base.suit
-                    
+
                     -- Assigning completely different suits and enhancements all at once
                     if current_suit == 'Clubs' then
                         copy:change_suit('abn_suitless')
@@ -938,16 +937,16 @@ SMODS.Back {
                         copy:change_suit('Hearts')                               -- Changes suit
                         copy:set_ability(G.P_CENTERS.m_stone, nil, true)          -- Appends Stone
                     end
-                    
+
                     -- Add the card data and physical reference directly into the engine
                     copy:add_to_deck()
                     G.deck:emplace(copy)
                     table.insert(G.playing_cards, copy)
                 end
 
-                -- 3. Instantly recalculate the card limit 
+                -- 3. Instantly recalculate the card limit
                 G.deck.config.card_limit = #G.playing_cards
-                
+
                 -- Briefly play a single screen-wide visual deck update instead of 52 tiny ones
                 G.deck:shuffle()
                 return true
@@ -956,3 +955,16 @@ SMODS.Back {
     end
 }
 --]]
+
+SMODS.Back {
+    key = "cyber",
+    atlas = 'AbandoniaDecks',
+    pos = { x = 3, y = 2 },
+    config = { solid_state_rate = 2, consumables = { 'c_abn_database' } },
+    loc_vars = function(self, info_queue, back)
+        return { vars = { self.config.solid_state_rate, self.config.consumables[1] } }
+    end,
+    apply = function(self, back)
+        G.GAME.solid_state_rate = self.config.solid_state_rate
+    end,
+}
