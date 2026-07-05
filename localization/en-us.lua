@@ -7905,13 +7905,20 @@ return {
           },
         }
       },
-      j_abn_alter_suits = { -- to relocalise
+      j_abn_alter_suits = {
         name = "Alter Suits",
         text = {
-          "If Scoring hand contains of {C:abn_snow}Snow{} {C:abn_penumbra}Penumbra{} {C:abn_tie}Tie{} and {C:abn_bow}Bow{}",
-          "Gain Mult equal the combined {C:attention}rank{} of all cards",
-          "Gain {C:chips}+#3#{} Chips per each hand without any scoring Vanilla Suits",
-          "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#1#{} {C:inactive}Chips){}",
+          {
+            "If scoring hand contains a {C:abn_snow}Snow{},",
+            "{C:abn_penumbra}Penumbra{}, {C:abn_tie}Tie{}, and {C:abn_bow}Bow{},",
+            "this Joker gains {C:mult}Mult{} equal to",
+            "the combined {C:attention}rank{} of all cards",
+          },
+          {
+            "If scoring hand contains no {C:attention}Vanilla{} suits,",
+            "this Joker gains {C:chips}+#3#{} Chips",
+            "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#1#{} {C:inactive}Chips){}",
+          },
         }
       },
       j_abn_meddlesome_naidemoc = {
