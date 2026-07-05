@@ -3442,8 +3442,10 @@ return {
             "up to {C:attention}6{} cards,",
           },
           {
-            "This Joker gains {C:mult}+#2#{} Mult",
-            "if played hand is a {C:attention}#4#{},",
+            "This Joker gains {C:mult}+#2#{} Mult if",
+            "played hand is a {C:attention}#4#{}",
+          },
+          {
             "Played {C:attention}Infra{} cards permanently",
             "gain {C:money}$#3#{} when scored",
             "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
@@ -4895,7 +4897,7 @@ return {
         name = "Annihilated Joker",
         text = {
           "Every {C:attention}#1#{} {C:inactive}(#2#){} {C:attention}Jokers{} destroyed,",
-          "Create a random {C:abn_Calamity}Calamity Card",
+          "Create a random {C:calamity_cards}Calamity{} Card",
           "{C:inactive}(Must have room)",
         }
       },
@@ -7582,11 +7584,15 @@ return {
       j_abn_agent_jimbo = {
         name = "Agent Jimbo",
         text = {
-          "All {C:attention}Consumables{} cost twice as much",
-          "but gain {C:attention}random{} {C:dark_edition}Editions{} upon purchase",
-          "When a {C:attention}6{} is scored, gain {X:chips,C:white}X#2#{} Chips",
-          "per unique {C:dark_edition}editioned{} consumable type",
-          "{C:inactive}(Currently{} {X:chips,C:white}X#1#{} {C:inactive}Chips){}",
+          {
+            "All {C:attention}Consumables{} cost twice as much",
+            "but gain {C:attention}random{} {C:dark_edition}Editions{} upon purchase",
+          },
+          {
+            "When a {C:attention}6{} is scored, gain {X:chips,C:white}X#2#{} Chips",
+            "per unique {C:dark_edition}editioned{} consumable type",
+            "{C:inactive}(Currently{} {X:chips,C:white}X#1#{} {C:inactive}Chips){}",
+          }
         },
       },
       j_abn_cowboy_poker = {
