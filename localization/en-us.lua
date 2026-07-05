@@ -7471,7 +7471,7 @@ return {
           {
             "If this Joker has an {C:dark_edition}edition{},",
             "{C:enhanced}Enhanced{} cards give {C:red}Mult",
-            "equal to their {C:attention}rank{}"
+            "equal to their {C:attention}rank{} when scored"
           }
         }
       },
