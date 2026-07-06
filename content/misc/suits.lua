@@ -114,3 +114,83 @@ SMODS.Suit {
     end
   end,
 }
+
+SMODS.Suit {
+  key = 'Chalice',
+  card_key = 'CHAL',
+  shade = "dark",
+  lc_atlas = "AbandoniaSpanishSuits",
+  hc_atlas = "AbandoniaSpanishSuits",
+  lc_ui_atlas = "AbandoniaSuitIcons",
+  hc_ui_atlas = "AbandoniaSuitIcons",
+  pos = { y = 0 },
+  ui_pos = { x = 1, y = 1 },
+  lc_colour = HEX("f0349c"),
+  in_pool = function(self, args)
+    if args and ((args.rank == '') or (args.initial_deck)) then
+      return false
+    else
+      return true
+    end
+  end,
+}
+
+SMODS.Suit {
+  key = 'Sword',
+  card_key = 'SW',
+  shade = "dark",
+  lc_atlas = "AbandoniaSpanishSuits",
+  hc_atlas = "AbandoniaSpanishSuits",
+  lc_ui_atlas = "AbandoniaSuitIcons",
+  hc_ui_atlas = "AbandoniaSuitIcons",
+  pos = { y = 1 },
+  ui_pos = { x = 2, y = 1 },
+  lc_colour = HEX("3c5168"),
+  in_pool = function(self, args)
+    if args and ((args.rank == '') or (args.initial_deck)) then
+      return false
+    else
+      return true
+    end
+  end,
+}
+
+SMODS.Suit {
+  key = 'Coin',
+  card_key = 'COI',
+  shade = "light",
+  lc_atlas = "AbandoniaSpanishSuits",
+  hc_atlas = "AbandoniaSpanishSuits",
+  lc_ui_atlas = "AbandoniaSuitIcons",
+  hc_ui_atlas = "AbandoniaSuitIcons",
+  pos = { y = 2 },
+  ui_pos = { x = 0, y = 1 },
+  lc_colour = HEX("f0ba3f"),
+  in_pool = function(self, args)
+    if args and ((args.rank == '') or (args.initial_deck)) then
+      return false
+    else
+      return true
+    end
+  end,
+}
+
+SMODS.Suit {
+  key = 'Baton',
+  card_key = 'BAT',
+  shade = "light",
+  lc_atlas = "AbandoniaSpanishSuits",
+  hc_atlas = "AbandoniaSpanishSuits",
+  lc_ui_atlas = "AbandoniaSuitIcons",
+  hc_ui_atlas = "AbandoniaSuitIcons",
+  pos = { y = 3 },
+  ui_pos = { x = 3, y = 1 },
+  lc_colour = HEX("235945"),
+  in_pool = function(self, args)
+    if args and ((args.rank == '') or (args.initial_deck)) then
+      return false
+    else
+      return true
+    end
+  end,
+}
