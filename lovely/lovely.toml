@@ -74,7 +74,7 @@ abn = {
     legendary_pool = {in_shop = false, rate = 1.00},
     cthonian = false,
     used_sigils = {},
-    rank_planet_rate = 0.5,
+    rank_planet_rate = 0.7,
 },
 '''
 match_indent = true
