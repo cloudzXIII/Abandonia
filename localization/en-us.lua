@@ -597,10 +597,17 @@ return {
       c_abn_exe = {
         name = ".EXE",
         text = {
-          "{C:green}#1# in #2#{} chance to add {C:dark_edition}Chthonian{},",
-          "{C:green}#3# in #4#{} chance to become {C:attention}Fossil{},",
-          "{C:green}#5# in #6#{} chance to {C:red}destroy{}",
-          "each card in your {C:attention}full deck{}",
+          {
+            "{s:0.8}Convert held {C:hearts,s:0.8}Hearts{s:0.8} into {C:abn_coin,s:0.8}Coins{}",
+            "{s:0.8}Convert held {C:diamonds,s:0.8}Diamonds{s:0.8} into {C:abn_baton,s:0.8}Batons{}",
+            "{s:0.8}Convert held {C:clubs,s:0.8}Clubs{s:0.8} into {C:abn_chalice,s:0.8}Chalices{}",
+            "{s:0.8}Convert held {C:spades,s:0.8}Spades{s:0.8} into {C:abn_sword,s:0.8}Swords{}",
+          },
+          {
+            "Enhance all cards that",
+            "have {C:attention}changed suit{} into",
+            "{C:dark_edition}Foil{} {C:attention}Bonus{} cards"
+          }
         }
       },
       c_abn_apk = {
@@ -638,10 +645,17 @@ return {
       c_abn_pdf = {
         name = ".PDF",
         text = {
-          "All held {C:hearts}Hearts{} become {C:abn_snow}Snows{}",
-          "All held {C:diamonds}Diamonds{} become {C:abn_penumbra}Penumbras{}",
-          "All held {C:clubs}Clubs{} become {C:abn_tie}Ties{}",
-          "All held {C:spades}Spades{} become {C:abn_bow}Bows{}",
+          {
+            "{s:0.8}Convert held {C:hearts,s:0.8}Hearts{s:0.8} into {C:abn_snow,s:0.8}Snows{}",
+            "{s:0.8}Convert held {C:diamonds,s:0.8}Diamonds{s:0.8} into {C:abn_penumbra,s:0.8}Penumbras{}",
+            "{s:0.8}Convert held {C:clubs,s:0.8}Clubs{s:0.8} into {C:abn_tie,s:0.8}Ties{}",
+            "{s:0.8}Convert held {C:spades,s:0.8}Spades{s:0.8} into {C:abn_bow,s:0.8}Bows{}",
+          },
+          {
+            "Enhance all cards that",
+            "have {C:attention}changed suit{} into",
+            "{C:dark_edition}Foil{} {C:attention}Mult{} cards"
+          }
         }
       },
       c_abn_jpg = {

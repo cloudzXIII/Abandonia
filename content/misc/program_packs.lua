@@ -402,46 +402,23 @@ SMODS.Consumable {
   cost = 4,
   atlas = "abn_AbandoniaProgramPack",
   pos = { x = 2, y = 0 },
-  hidden = true,
-  soul_set = 'Spectral', -- hmm, what should it be appearing in
 
   config = {
     extra = {
-      base1 = 7,
-      odds1 = 10,
-      base2 = 1,
-      odds2 = 10,
-      base3 = 1,
-      odds3 = 20,
     }
   },
 
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_chthonian
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_fossil
-    local cthonian_num, cthonian_denom = SMODS.get_probability_vars(card, card.ability.extra.base1,
-      card.ability.extra.odds1,
-      'abn_cthonian')
-    local fossil_num, fossil_denom = SMODS.get_probability_vars(card, card.ability.extra.base2,
-      card.ability.extra.odds2,
-      'abn_fossil')
-    local destroy_num, destroy_denom = SMODS.get_probability_vars(card, card.ability.extra.base3,
-      card.ability.extra.odds3,
-      'abn_destroy')
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_bonus
     return {
       vars = {
-        cthonian_num,
-        cthonian_denom,
-        fossil_num,
-        fossil_denom,
-        destroy_num,
-        destroy_denom,
       }
     }
   end,
 
   can_use = function(self, card)
-    return G.playing_cards and #G.playing_cards > 0
+    return G.hand and #G.hand.cards > 0
   end,
   use = function(self, card, area, copier)
     G.E_MANAGER:add_event(Event({
@@ -453,18 +430,73 @@ SMODS.Consumable {
         return true
       end
     }))
-    for _, deck_card in ipairs(G.playing_cards) do
-      if not deck_card.edition and SMODS.pseudorandom_probability(card, 'abn_exe1', card.ability.extra.base1, card.ability.extra.odds1, 'abn_chthonian') then
-        deck_card:set_edition("e_abn_chthonian", true)
-        --print("cthonian")
-      elseif SMODS.pseudorandom_probability(card, 'abn_exe2', card.ability.extra.base2, card.ability.extra.odds2, 'abn_fossil') then
-        deck_card:set_ability("m_abn_fossil")
-        --print("fossil")
-      elseif SMODS.pseudorandom_probability(card, 'abn_exe3', card.ability.extra.base3, card.ability.extra.odds3, 'abn_destroy') then
-        SMODS.destroy_cards(deck_card)
-        --print("destroyed")
+
+    local suit_mapping = {
+      Hearts = 'abn_Coin',
+      Diamonds = 'abn_Baton',
+      Clubs = 'abn_Chalice',
+      Spades = 'abn_Sword'
+    }
+
+    local to_enhance = {}
+
+    -- convert to suit
+    for _, hand_card in ipairs(G.hand.cards) do
+      local changed = false
+
+      for base_suit, target_suit in pairs(suit_mapping) do
+        if hand_card:is_suit(base_suit) then
+          hand_card:change_suit(target_suit)
+          to_enhance[#to_enhance + 1] = hand_card
+          changed = true
+          break
+        end
+      end
+
+      if changed then
+        hand_card:juice_up(0.3, 0.3)
       end
     end
+
+    delay(0.5)
+
+    -- enhancing
+    for i, c in ipairs(to_enhance) do
+      local percent = 1.15 - (i - 0.999) / (#to_enhance - 0.998) * 0.3
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.15,
+        func = function()
+          c:flip()
+          play_sound('card1', percent)
+          c:juice_up(0.3, 0.3)
+          return true
+        end
+      }))
+    end
+    for _, c in ipairs(to_enhance) do
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          c:set_ability("m_bonus")
+          c:set_edition("e_foil", true)
+          return true
+        end
+      }))
+    end
+    for i, c in ipairs(to_enhance) do
+      local percent = 0.85 + (i - 0.999) / (#to_enhance - 0.998) * 0.3
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.15,
+        func = function()
+          c:flip()
+          play_sound('tarot2', percent, 0.6)
+          c:juice_up(0.3, 0.3)
+          return true
+        end
+      }))
+    end
+    delay(0.5)
   end,
   abn_artist_credits = {
     artist = "Strawberry Cereal",
@@ -553,16 +585,15 @@ SMODS.Consumable {
   },
 
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_mult
     return {
       vars = {}
     }
   end,
 
   can_use = function(self, card)
-    if G.hand and #G.hand.cards > 0 then
-      return true
-    end
-    return false
+    return G.hand and #G.hand.cards > 0
   end,
 
   use = function(self, card, area, copier)
@@ -583,12 +614,16 @@ SMODS.Consumable {
       Spades = 'abn_Bow'
     }
 
+    local to_enhance = {}
+
+    -- convert to suit
     for _, hand_card in ipairs(G.hand.cards) do
       local changed = false
 
       for base_suit, target_suit in pairs(suit_mapping) do
         if hand_card:is_suit(base_suit) then
           hand_card:change_suit(target_suit)
+          to_enhance[#to_enhance + 1] = hand_card
           changed = true
           break
         end
@@ -598,6 +633,46 @@ SMODS.Consumable {
         hand_card:juice_up(0.3, 0.3)
       end
     end
+
+    delay(0.5)
+
+    -- enhancing
+    for i, c in ipairs(to_enhance) do
+      local percent = 1.15 - (i - 0.999) / (#to_enhance - 0.998) * 0.3
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.15,
+        func = function()
+          c:flip()
+          play_sound('card1', percent)
+          c:juice_up(0.3, 0.3)
+          return true
+        end
+      }))
+    end
+    for _, c in ipairs(to_enhance) do
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          c:set_ability("m_mult")
+          c:set_edition("e_foil", true)
+          return true
+        end
+      }))
+    end
+    for i, c in ipairs(to_enhance) do
+      local percent = 0.85 + (i - 0.999) / (#to_enhance - 0.998) * 0.3
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.15,
+        func = function()
+          c:flip()
+          play_sound('tarot2', percent, 0.6)
+          c:juice_up(0.3, 0.3)
+          return true
+        end
+      }))
+    end
+    delay(0.5)
   end,
 
   abn_artist_credits = {
