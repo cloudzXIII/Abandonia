@@ -4178,8 +4178,8 @@ return {
           },
           {
             "If {C:attention}Stunt Double{} is owned,",
-            "level up {C:planet}planet{} {C:attention}rank{}",
-            "of all {C:attention}face down{} cards scored",
+            "level up {C:planet}planet{} {C:attention}rank{} of",
+            "all {C:attention}face down{} cards scored",
           }
         }
       },
@@ -4792,7 +4792,7 @@ return {
         name = "Dead or Alive",
         text = {
           "When a {C:attention}#1#{} of {V:1}#2#{} is played,",
-          "permanently double it's {C:chips}chips{}",
+          "permanently {C:attention}double{} it's {C:chips}chips{}",
           "and gain {C:money}${} equal to it's rank",
           "{s:0.8}Card changes every round",
         },
@@ -7073,7 +7073,7 @@ return {
         text = {
           {
             "Scored {C:attention}numbered cards",
-            "above rank {c:attention}10",
+            "above rank {C:attention}10{}",
             "give their rank as {C:red}Mult",
           },
         }
@@ -7509,8 +7509,10 @@ return {
       j_abn_joker_reloaded = {
         name = "Joker Reloaded",
         text = {
-          "At {C:attention}end of round{} all Jokers gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
-          "Per different {C:dark_edition}Edition{} in held {C:attention}consumables{}",
+          "At end of round,",
+          "all Jokers gain {C:mult}+#1#{} Mult",
+          "and {C:chips}+#2#{} Chips per unique",
+          "{C:dark_edition}Edition{} in held {C:attention}consumables{}",
         },
       },
       j_abn_joker_unlimited = {
@@ -7888,10 +7890,12 @@ return {
           }
         }
       },
-      j_abn_hustler_joker = { -- to relocalise
+      j_abn_hustler_joker = {
         name = "Hustler Joker",
         text = {
-          "{C:money}+$#1#{} {C:mult}+#2#{} Mult and {C:chips}+#3#{} Chips if hand contains {C:abn_bow}Bows{} and {C:abn_tie}Ties{}"
+          "{C:money}+$#1#{}, {C:chips}+#3#{} Chips, and",
+          "{C:mult}+#2#{} Mult if played hand",
+          "contains {C:abn_bow}Bows{} and {C:abn_tie}Ties{}",
         }
       },
       j_abn_spanish_joker = {
