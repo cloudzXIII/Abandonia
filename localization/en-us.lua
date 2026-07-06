@@ -7913,19 +7913,19 @@ return {
           "contains {C:abn_bow}Bows{} and {C:abn_tie}Ties{}",
         }
       },
-      j_abn_spanish_joker = {
-        name = "Spanish Joker",
+      j_abn_jokester = {
+        name = "Jokester",
         text = {
           {
-            "Scoring {C:hearts}Hearts{} become {C:abn_snow}Snows{}",
-            "Scoring {C:spades}Spades{} become {C:abn_bow}Bows{}",
-            "Scoring {C:diamonds}Diamonds{} becomes {C:abn_tie}Ties{}",
-            "Scoring {C:clubs}Clubs{} become {C:abn_penumbra}Penumbras{}",
+            "{s:0.8}Scoring {C:hearts,s:0.8}Hearts{s:0.8} become {C:abn_snow,s:0.8}Snows{}",
+            "{s:0.8}Scoring {C:spades,s:0.8}Spades{s:0.8} become {C:abn_bow,s:0.8}Bows{}",
+            "{s:0.8}Scoring {C:diamonds,s:0.8}Diamonds{s:0.8} become {C:abn_tie,s:0.8}Ties{}",
+            "{s:0.8}Scoring {C:clubs,s:0.8}Clubs{s:0.8} become {C:abn_penumbra,s:0.8}Penumbras{}",
           },
           {
-            "If this Joker has {C:dark_edition}Vintage{} edition,",
-            "gain {C:mult}+#2#{} Mult and {C:money}$#2#{} of {C:attention}sell value{}",
-            "when a suit changes",
+            "If this Joker has {C:dark_edition}Collodion{} edition,",
+            "gain {C:mult}+#2#{} Mult and {C:money}$#2#{} of",
+            "{C:attention}sell value{} when a suit changes",
             "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult)",
           },
         }
