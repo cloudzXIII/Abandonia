@@ -24,30 +24,22 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
-            local other_card = context.other_card
-            local enhancements = SMODS.get_enhancements(other_card)
-            local is_bonus = enhancements and enhancements.m_bonus
-            if is_bonus then
-                local id = other_card:get_id()
-                if
-                    context.other_card.base.value == "abn_14" or
-                    context.other_card.base.value == "abn_13" or
-                    context.other_card.base.value == "abn_12" or
-                    context.other_card.base.value == "abn_11"
-                then
-                    id = context.other_card.base.nominal
-                end
-                local is_odd = (id <= 10 and id >= 0 and id % 2 == 1) or (id == 14)
+            local triggered = false
+            if SMODS.has_enhancement(context.other_card, "m_bonus") then
                 for _, scored_card in ipairs(context.scoring_hand) do
-                    local scored_enhancements = SMODS.get_enhancements(scored_card)
-                    local scored_is_bonus = scored_enhancements and scored_enhancements.m_bonus
-                    if not scored_is_bonus then
+                    if not SMODS.has_enhancement(scored_card, "m_bonus") then
                         scored_card.ability.perma_mult = (scored_card.ability.perma_mult or 0) +
                             card.ability.extra.perma_mult
-                        if is_odd then
+                        triggered = true
+
+                        if ABN.is_odd(context.other_card) then
                             scored_card.ability.perma_bonus = (scored_card.ability.perma_bonus or 0) +
                                 card.ability.extra.perma_chips
+                            triggered = true
                         end
+                    end
+                    if triggered then
+                        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, scored_card)
                     end
                 end
             end
@@ -58,24 +50,10 @@ SMODS.Joker {
     },
     check_for_unlock = function(self, args)
         if args.type == "modify_deck" then
-            for _, card in ipairs(G.playing_cards) do
-                local enhancements = SMODS.get_enhancements(card)
-                local is_bonus = enhancements and enhancements.m_bonus
-                if is_bonus then
-                    local id = card.base.id
-                    if
-                        card.base.value == "abn_14" or
-                        card.base.value == "abn_13" or
-                        card.base.value == "abn_12" or
-                        card.base.value == "abn_11"
-                    then
-                        id = card.base.nominal
-                    end
-                    local is_odd = (id <= 10 and id >= 0 and id % 2 == 1) or (id == 14)
-                    if is_odd then
-                        unlock_card(self)
-                        return true
-                    end
+            for _, card in ipairs(G.playing_cards or {}) do
+                if ABN.is_odd(card) and SMODS.has_enhancement(card, "m_bonus") then
+                    unlock_card(self)
+                    return true
                 end
             end
         end

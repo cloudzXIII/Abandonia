@@ -39,7 +39,7 @@ end
 
 ABN.is_dark = function(card)
   if SMODS.has_no_suit(card) then return false end
-  if (Card.is_suit_shade and card:is_suit_shade("dark")) or card:is_suit("Spades") or card:is_suit("Clubs") or card:is_suit('bunc_Halberds') or card:is_suit('paperback_Crowns') or card:is_suit("abn_Penumbra") or card:is_suit("abn_Bow") then
+  if (Card.is_suit_shade and card:is_suit_shade("dark")) or card:is_suit("Spades") or card:is_suit("Clubs") or card:is_suit('bunc_Halberds') or card:is_suit('paperback_Crowns') or card:is_suit("abn_Penumbra") or card:is_suit("abn_Bow") or card:is_suit("abn_Chalice") or card:is_suit("abn_Sword") then
     return true
   end
   return false
@@ -47,7 +47,7 @@ end
 
 ABN.is_light = function(card)
   if SMODS.has_no_suit(card) then return false end
-  if (Card.is_suit_shade and card:is_suit_shade("light")) or card:is_suit("Diamonds") or card:is_suit("Hearts") or card:is_suit('bunc_Fleurons') or card:is_suit('paperback_Stars') or card:is_suit("abn_Snow") or card:is_suit("abn_Tie") then
+  if (Card.is_suit_shade and card:is_suit_shade("light")) or card:is_suit("Diamonds") or card:is_suit("Hearts") or card:is_suit('bunc_Fleurons') or card:is_suit('paperback_Stars') or card:is_suit("abn_Snow") or card:is_suit("abn_Tie") or card:is_suit("abn_Coin") or card:is_suit("abn_Baton") then
     return true
   end
   return false
