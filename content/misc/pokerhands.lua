@@ -26,7 +26,7 @@ SMODS.Consumable {
   set = "Planet",
   cost = 4,
   atlas = "AbandoniaPlanets",
-  pos = { x = 0, y = 0 },
+  pos = { x = 4, y = 5 },
   config = { hand_type = "abn_6oak", softlock = true },
   loc_vars = function(self, info_queue, card)
     return {
@@ -118,7 +118,7 @@ SMODS.Consumable {
   set = "Planet",
   cost = 4,
   atlas = "AbandoniaPlanets",
-  pos = { x = 1, y = 0 },
+  pos = { x = 5, y = 5 },
   config = { hand_type = "abn_triple_pair", softlock = true },
   loc_vars = function(self, info_queue, card)
     return {
@@ -140,7 +140,7 @@ SMODS.Consumable {
 -- Spectrum Hands (Credits to SpectrumFramework, Paperback, Bunco and SixSuits)
 
 --if not next(SMODS.find_mod('Paperback')) then
-SMODS.PokerHandPart {   -- Spectrum Part - Copied from SpectrumFramework who got it from Bunco who got it from SixSuits
+SMODS.PokerHandPart { -- Spectrum Part - Copied from SpectrumFramework who got it from Bunco who got it from SixSuits
   key = 'spectrum',
   func = function(hand)
     if #hand < 5 then return {} end
@@ -181,7 +181,7 @@ SMODS.PokerHandPart {   -- Spectrum Part - Copied from SpectrumFramework who got
   end
 }
 
-SMODS.PokerHand {   -- Spectrum (Copied from Paperback who referenced it from SixSuits, thanks!)
+SMODS.PokerHand { -- Spectrum (Copied from Paperback who referenced it from SixSuits, thanks!)
   key = 'Spectrum',
   visible = false,
   chips = 50,
@@ -205,7 +205,7 @@ SMODS.Consumable {
   set = "Planet",
   cost = 4,
   atlas = "AbandoniaPlanets",
-  pos = { x = 3, y = 2 },
+  pos = { x = 0, y = 5 },
   config = { hand_type = "abn_Spectrum", softlock = true },
   loc_vars = function(self, info_queue, card)
     return {
@@ -222,7 +222,7 @@ SMODS.Consumable {
     artist = "Dallan"
   },
 }
-SMODS.PokerHand {   -- Straight Spectrum (Copied from Paperback who referenced it from SixSuits, thanks!)
+SMODS.PokerHand { -- Straight Spectrum (Copied from Paperback who referenced it from SixSuits, thanks!)
   key = 'Straight Spectrum',
   visible = false,
   chips = 120,
@@ -259,7 +259,7 @@ SMODS.Consumable {
   set = "Planet",
   cost = 4,
   atlas = "AbandoniaPlanets",
-  pos = { x = 4, y = 2 },
+  pos = { x = 0, y = 6 },
   config = { hand_type = "abn_Straight Spectrum", softlock = true },
   loc_vars = function(self, info_queue, card)
     return {
@@ -276,7 +276,7 @@ SMODS.Consumable {
     artist = "Dallan"
   },
 }
-SMODS.PokerHand {   -- Spectrum House (Copied from Paperback who referenced it from SixSuits, thanks!)
+SMODS.PokerHand { -- Spectrum House (Copied from Paperback who referenced it from SixSuits, thanks!)
   key = 'Spectrum House',
   above_hand = 'Flush House',
   visible = false,
@@ -319,7 +319,7 @@ SMODS.Consumable {
     artist = "Dallan"
   },
 }
-SMODS.PokerHand {   -- Spectrum Five (Copied from Paperback who referenced it from SixSuits, thanks!)
+SMODS.PokerHand { -- Spectrum Five (Copied from Paperback who referenced it from SixSuits, thanks!)
   key = 'Spectrum Five',
   above_hand = 'Flush Five',
   visible = false,
@@ -363,7 +363,7 @@ SMODS.Consumable {
   },
 }
 --end
-SMODS.PokerHand {   -- Spectrum Six
+SMODS.PokerHand { -- Spectrum Six
   key = 'Spectrum Six',
   above_hand = 'Spectrum Five',
   visible = false,
@@ -372,12 +372,12 @@ SMODS.PokerHand {   -- Spectrum Six
   l_chips = 55,
   l_mult = 3,
   example = {
-    { 'S_7',      true },
-    { 'D_7',      true },
+    { 'S_7', true },
+    { 'D_7', true },
     { 'abn_SN_7', true },
-    { 'H_7',      true },
-    { 'C_7',      true },
-    { 'H_7',      true, enhancement = "m_wild" },
+    { 'H_7', true },
+    { 'C_7', true },
+    { 'H_7', true, enhancement = "m_wild" },
   },
 
   evaluate = function(parts, hand)
@@ -386,7 +386,7 @@ SMODS.PokerHand {   -- Spectrum Six
   end
 }
 
-SMODS.PokerHand {   -- Specflush
+SMODS.PokerHand { -- Specflush
   key = 'Specflush',
   visible = false,
   chips = 75,
@@ -427,7 +427,7 @@ SMODS.Consumable {
     artist = "Dallan"
   },
 }
-SMODS.PokerHand {   -- Straight Specflush
+SMODS.PokerHand { -- Straight Specflush
   key = 'Straight Specflush',
   visible = false,
   chips = 130,
@@ -447,7 +447,7 @@ SMODS.PokerHand {   -- Straight Specflush
   end,
 }
 
-SMODS.PokerHand {   -- Specflush House
+SMODS.PokerHand { -- Specflush House
   key = 'Specflush House',
   visible = false,
   chips = 175,
@@ -467,7 +467,7 @@ SMODS.PokerHand {   -- Specflush House
   end,
 }
 
-SMODS.PokerHand {   -- Specflush Five
+SMODS.PokerHand { -- Specflush Five
   key = 'Specflush Five',
   visible = false,
   chips = 190,
@@ -597,9 +597,9 @@ SMODS.PokerHand {
   l_chips = 30,
   l_mult = 2,
   example = {
-    { 'S_Q',       true },
-    { 'D_Q',       true },
-    { 'C_Q',       true },
+    { 'S_Q', true },
+    { 'D_Q', true },
+    { 'C_Q', true },
     { 'abn_SUI_7', true },
     { 'abn_SUI_7', true },
     { 'abn_SUI_7', true },
@@ -682,8 +682,8 @@ SMODS.PokerHand {
     { 'abn_SUI_2', true },
     { 'abn_SUI_5', true },
     { 'abn_SUI_3', true },
-    { 'H_A',       true, enhancement = "m_abn_polkadot" },
-    { 'S_K',       true, enhancement = "m_abn_petroleum" },
+    { 'H_A', true, enhancement = "m_abn_polkadot" },
+    { 'S_K', true, enhancement = "m_abn_petroleum" },
   },
   evaluate = function(parts, hand)
     if #hand < 5 then return {} end
@@ -713,11 +713,11 @@ SMODS.PokerHand {
   l_chips = 25,
   l_mult = 3,
   example = {
-    { 'S_2',       true },
-    { 'D_7',       true },
-    { 'C_3',       true },
-    { 'H_5',       true },
-    { 'abn_SN_K',  true },
+    { 'S_2', true },
+    { 'D_7', true },
+    { 'C_3', true },
+    { 'H_5', true },
+    { 'abn_SN_K', true },
     { 'abn_SUI_A', true },
   },
   evaluate = function(parts, hand)
@@ -746,10 +746,10 @@ SMODS.PokerHand {
   l_chips = 40,
   l_mult = 4,
   example = {
-    { 'H_Q',       true },
-    { 'D_Q',       true },
-    { 'S_7',       true },
-    { 'C_7',       true },
+    { 'H_Q', true },
+    { 'D_Q', true },
+    { 'S_7', true },
+    { 'C_7', true },
     { 'abn_SUI_3', true },
     { 'abn_SUI_5', true },
   },
@@ -784,10 +784,10 @@ SMODS.PokerHand {
   l_chips = 45,
   l_mult = 4,
   example = {
-    { 'H_5',       true },
-    { 'D_6',       true },
-    { 'S_7',       true },
-    { 'C_8',       true },
+    { 'H_5', true },
+    { 'D_6', true },
+    { 'S_7', true },
+    { 'C_8', true },
     { 'abn_SUI_9', true },
     { 'abn_SUI_T', true },
   },
@@ -1118,7 +1118,7 @@ SMODS.PokerHand {
     { 'S_abn_13', true },
     { 'S_abn_12', true },
     { 'S_abn_11', true },
-    { 'S_A',      true },
+    { 'S_A', true },
   },
   evaluate = function(parts, hand)
     if #hand < 5 then return {} end

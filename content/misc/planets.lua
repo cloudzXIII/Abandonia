@@ -46,10 +46,10 @@ local rank_planets = {
   { key = "pergus", rank = "Queen", pos = { x = 0, y = 2 }, artist = "Bunnet" },
   { key = "vugmado", rank = "King", pos = { x = 1, y = 2 }, artist = "Bunnet" },
   { key = "abandia", rank = "Ace", pos = { x = 2, y = 2 }, artist = "Bunnet" },
-  { key = "clun_va", rank = "abn_11", pos = { x = 0, y = 5 }, artist = "Astellar" },
-  { key = "reart", rank = "abn_12", pos = { x = 4, y = 5 }, artist = "Astellar" },
-  { key = "oshprue", rank = "abn_13", pos = { x = 0, y = 6 }, artist = "Astellar" },
-  { key = "meisness", rank = "abn_14", pos = { x = 5, y = 5 }, artist = "Astellar" },
+  { key = "clun_va", rank = "abn_11", pos = { x = 3, y = 2 }, artist = "Astellar" },
+  { key = "reart", rank = "abn_12", pos = { x = 0, y = 0 }, artist = "Astellar" },
+  { key = "oshprue", rank = "abn_13", pos = { x = 4, y = 2 }, artist = "Astellar" },
+  { key = "meisness", rank = "abn_14", pos = { x = 1, y = 0 }, artist = "Astellar" },
 }
 SMODS.Attribute { key = "rank_planet" }
 
