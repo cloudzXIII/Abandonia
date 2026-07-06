@@ -7913,6 +7913,23 @@ return {
           "contains {C:abn_bow}Bows{} and {C:abn_tie}Ties{}",
         }
       },
+      j_abn_spanish_joker = {
+        name = "Spanish Joker",
+        text = {
+          {
+            "{s:0.8}Scoring {C:hearts,s:0.8}Hearts{s:0.8} become {C:abn_coin,s:0.8}Coins{}",
+            "{s:0.8}Scoring {C:diamonds,s:0.8}Diamonds{s:0.8} become {C:abn_baton,s:0.8}Batons{}",
+            "{s:0.8}Scoring {C:clubs,s:0.8}Clubs{s:0.8} become {C:abn_chalice,s:0.8}Chalices{}",
+            "{s:0.8}Scoring {C:spades,s:0.8}Spades{s:0.8} become {C:abn_sword,s:0.8}Swords{}",
+          },
+          {
+            "If this Joker has {C:dark_edition}Vintage{} edition,",
+            "gain {C:mult}+#2#{} Mult per scoring ",
+            "{C:abn_coin}Coin{}, {C:abn_baton}Baton{}, {C:abn_chalice}Chalice{} or {C:abn_sword}Sword{}",
+            "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult)",
+          },
+        }
+      },
       j_abn_jokester = {
         name = "Jokester",
         text = {
