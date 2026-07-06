@@ -968,3 +968,45 @@ SMODS.Back {
         G.GAME.solid_state_rate = self.config.solid_state_rate
     end,
 }
+
+SMODS.Back {
+    key = "calamity",
+    atlas = 'AbandoniaDecks',
+    pos = { x = 5, y = 0 },
+    config = {
+        extra = {
+            base = 1,
+            odds = 6,
+        }
+    },
+
+    loc_vars = function(self, info_queue, back)
+        local numerator, denominator = SMODS.get_probability_vars(self, self.config.extra.base, self.config.extra.odds)
+        return {
+            vars = {
+                numerator,
+                denominator
+            }
+        }
+    end,
+
+    calculate = function(self, card, context)
+        if context.discard then
+            if SMODS.pseudorandom_probability(card, 'abn_calamity', self.config.extra.base, self.config.extra.odds) then
+                SMODS.calculate_effect({ message = localize("k_abn_destroyed"), colour = G.C.RED },
+                    G.deck.cards[1] or G.deck)
+                return {
+                    remove = true
+                }
+            end
+        end
+        if context.setting_blind then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    SMODS.add_card { set = "sigils", edition = "e_negative" }
+                    return true
+                end
+            }))
+        end
+    end,
+}

@@ -860,6 +860,15 @@ return {
       },
     },
     Back = {
+      b_abn_calamity = {
+        name = "Calamity Deck",
+        text = {
+          "{C:green}#1# in #2#{} chance to",
+          "destroy discarded cards",
+          "When {C:attention}Blind{} is selected,",
+          "create a random {C:dark_edition}Negative{} {C:sigils}Sigil{} Card"
+        }
+      },
       b_abn_cyber = {
         name = "Cyber Deck",
         text = {
