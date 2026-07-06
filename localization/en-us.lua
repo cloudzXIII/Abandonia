@@ -7533,8 +7533,9 @@ return {
         name = "Joker Unlimited",
         text = {
           {
-            "Gain {X:red,C:white}X#1#{} Mult per hand",
-            "played during a {C:attention}Boss Blind",
+            "This Joker gains {X:red,C:white}X#1#{} Mult",
+            "per hand played",
+            "during a {C:attention}Boss Blind",
             "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
           },
           {
