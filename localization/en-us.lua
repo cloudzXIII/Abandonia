@@ -2243,6 +2243,29 @@ return {
       },
     },
     Joker = {
+      j_abn_july_jester = {
+        name = "July Jester",
+        text = {
+          {
+            "Scored {C:abn_coin}Coins{} give {X:mult,C:white}X#1#{} Mult,",
+            "increases by {X:mult,C:white}X#2#{} Mult",
+            "when a {C:abn_coin}Coin{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "played {C:abn_coin}Coins{} permanently",
+            "gain {C:money}$#3#{} per {C:abn_coin}Coin{}",
+            "in scoring hand"
+          }
+        }
+      },
+      -- WIP
+      j_abn_vjoker = {
+        name = "VJoker",
+        text = {
+          "Hey Vsauce, Michael here"
+        },
+      },
       j_abn_fraser_jester = {
         name = "Fraser Jester",
         text = {
@@ -2267,14 +2290,14 @@ return {
         name = "Juliana Jester",
         text = {
           {
-            "Scored {C:spades}Spades{} give {X:mult,C:white}X#1#{} Mult,",
-            "increases by {X:mult,C:white}X#2#{} Mult",
-            "when a {C:spades}Spade{} is scored",
+            "Scored {C:abn_coin}Coins{} give {X:chips,C:white}X#1#{} Chips,",
+            "increases by {X:chips,C:white}X#2#{} Chips",
+            "when a {C:abn_coin}Coin{} is scored",
           },
           {
             "If {C:attention}Joker{} is owned,",
             "level up {C:planet}planet{} {C:attention}rank{}",
-            "of all {C:spades}Spades{} scored",
+            "of all {C:abn_coin}Coins{} scored",
           }
         }
       },
@@ -11310,6 +11333,8 @@ return {
     challenge_names = {
     },
     dictionary = {
+
+
       -- sigil menu
       ph_abn_sigils_active = "Sigils Active",
       ph_abn_no_sigils_active = "No Sigils Active",
@@ -11360,12 +11385,6 @@ return {
       abn_astrobooster = "Astro Booster",
       k_solid_pack = "Solid State Pack",
       abn_programbooster = "Program Pack",
-      abn_joker_chip = "extra Chips",
-      abn_joker_mult = "extra Mult",
-      abn_joker_xmult = "Mult",
-      abn_joker_xchips = "Chips",
-      abn_joker_dollars = "extra Dollars",
-      abn_joker_rep = "extra Repetitions",
       k_abn_increased = "Increased!",
       b_abn_ranks = "Ranks",
       k_abn_merged = "Merged!",
