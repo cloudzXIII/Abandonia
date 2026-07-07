@@ -18,9 +18,11 @@ SMODS.Joker {
 
   --only appear if you have food
   in_pool = function(self)
-    for _, joker in ipairs(G.jokers.cards or {}) do
-      if joker.config.center.attributes and joker.config.center.attributes.food then
-        return true
+    if G.jokers then
+      for _, joker in ipairs(G.jokers.cards or {}) do
+        if joker and joker.config and joker.config.center and joker.config.center.attributes and joker.config.center.attributes.food then
+          return true
+        end
       end
     end
 
