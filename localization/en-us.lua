@@ -4,7 +4,7 @@ return {
       c_abn_digitization = {
         name = "Digitization",
         text = {
-          "Replace {C:attention}1{} selected Joker",
+          "Replace {C:attention}1{} selected {C:attention}Joker{}",
           "with a higher {C:attention}rarity{},",
           "sets money to {C:money}$-10{}",
           "{C:inactive,s:0.8}({C:attention,s:0.8}Stickers{C:inactive,s:0.8} and {C:dark_edition,s:0.8}Editions{C:inactive,s:0.8} are retained){}"
@@ -13,36 +13,47 @@ return {
       c_abn_paste = {
         name = "Paste",
         text = {
-          "Select a {C:attention}Joker{} and create a Copy",
-          "All other Jokers gain {C:inactive}Fragile{}",
+          {
+            "Create a copy of",
+            "{C:attention}1{} selected {C:attention}Joker{}",
+          },
+          {
+            "Apply {C:inactive}Fragile{} to",
+            "all other Jokers ",
+          }
         }
       },
       c_abn_power = {
         name = "Power",
         text = {
-          "Upgrade all {C:attention}poker hands{} to the",
-          "{C:attention}level{} of {C:attention}highest level{} hand",
+          "Upgrade all poker hands",
+          "to the level of",
+          "{C:attention}highest level{} hand",
         }
       },
       c_abn_hotspot = {
         name = "Hotspot",
         text = {
-          "Select a {C:attention}Rank{} turn all cards held in hand into that {C:attention}Rank{}",
-          "{C:attention}-1{} Joker slots",
+          "Select {C:attention}1{} card,",
+          "convert all held cards",
+          "into that card's {C:attention}rank",
+          "{C:red}-1{} Joker slots",
         }
       },
       c_abn_bookmark = {
         name = "Bookmark",
         text = {
-          "Destroy {C:attention}1{} selected {C:attention}face{} card,",
-          "create {C:attention}3{} random {C:attention}high level numbered{} cards",
+          "Destroys {C:attention}1{} selected {C:attention}face{} card,",
+          "create {C:attention}3{} random",
+          "{C:attention}high level numbered{} cards",
           "with random {C:attention}seals{}",
         }
       },
       c_abn_translate = {
         name = "Translate",
         text = {
-          "{C:green}Reroll{} all {C:attention}Jokers{} and their {C:dark_edition}Editions{}",
+          "{C:green}Reroll{} all {C:attention}Jokers{}",
+          "and their {C:dark_edition}Editions{}",
         }
       },
       c_abn_incognito = {
@@ -55,41 +66,57 @@ return {
       c_abn_upload = {
         name = "Upload",
         text = {
-          "Move {C:attention}leftmost{} Joker into the {C:attention}consumable slots{}",
-          "{C:attention}-1{} Consumable Slot",
+          "Move {C:attention}leftmost{} Joker",
+          "into the {C:attention}consumable slots{}",
+          "{C:red}-1{} Consumable Slot",
         }
       },
       c_abn_brightness = {
         name = "Brightness",
         text = {
-          "Apply {C:money}Bright{} to all {C:diamonds}Light Suit{} cards held in hand",
-          "{C:mult}Destroy{} all {C:spades}Dark Suit{} cards held in hand",
+          {
+            "Apply {C:money}Bright{} to all",
+            "held {C:diamonds}Light Suits{}",
+          },
+          {
+            "Destroys all {C:spades}Dark Suits{}",
+            "in your hand",
+          }
         }
       },
       c_abn_dark_web = {
         name = "Dark Web",
         text = {
-          "Apply {C:spades}Opaque{} to all {C:spades}Dark Suit{} cards held in hand",
-          "{C:mult}Destroy{} all {C:diamonds}Light Suit{} cards held in hand",
+          {
+            "Apply {C:dark_edition}Opaque{} edition to",
+            "all held {C:spades}Dark Suits{}",
+          },
+          {
+            "Destroys all {C:diamonds}Light Suits{}",
+            "in your hand",
+          }
         }
       },
       c_abn_database = {
         name = "Database",
         text = {
-          "{C:mult}Destroy{} selected {C:attention}Joker{}",
-          "Choose a new Joker of the same {C:attention}rarity{}",
+          "Destroys {C:attention}1{} selected {C:attention}Joker{},",
+          "Choose a new Joker of",
+          "the same {C:attention}rarity{}",
         }
       },
       c_abn_zoom = {
         name = "Zoom",
         text = {
-          "All cards in hand gain {C:attention}2{} {C:planet}Planet{} {C:attention}Rank{}",
+          "Level up the {C:planet}planet{} {C:attention}rank{}",
+          "of all cards in your hand",
+          "by {C:attention}2{}"
         }
       },
       c_abn_recycle = {
         name = "Recycle",
         text = {
-          "{C:mult}Destroy{} selected cards in hand",
+          "Destroys selected cards in hand,",
           "Gain {C:money}${} equal to their {C:attention}rank{}",
         }
       },
@@ -5936,8 +5963,8 @@ return {
         name = "Deceitful Joker",
         text = {
           "{X:mult,C:white}X#1#{} Mult",
-          "When an {C:attention}Boss Blind{} is defeated,",
-          "apply {C:attention}Flipped{} to all cards",
+          "When {C:attention}Boss Blind{} is defeated,",
+          "add {C:attention}Flipped{} to all cards",
           "of a {C:attention}random{} owned suit",
 
         }
@@ -10407,8 +10434,10 @@ return {
       c_abn_crossroad = {
         name = "Crossroad",
         text = {
-          "{C:attention}#1#{} selected card turns into a",
-          "{C:spades}Darkner{} or {C:diamonds}Lightner{} card depending on it {C:attention}Suit{}",
+          "Enhances {C:attention}#1#{} selected",
+          "card into a {C:spades}Darkner{}",
+          "or {C:diamonds}Lightner{} card",
+          "{s:0.8}Based on card's {C:attention,s:0.8}suit{}",
         },
       },
     },
@@ -11333,7 +11362,13 @@ return {
     challenge_names = {
     },
     dictionary = {
-
+      -- Joker Perma Bonuses
+      abn_perma_bonus = "{C:chips}+#1#{} extra Chips",
+      abn_perma_mult = "{C:mult}+#2#{} extra Mult",
+      abn_perma_xmult = "{C:white,X:mult}X#3#{} Mult",
+      abn_perma_xchips = "{C:white,X:chips}X#4#{} Chips",
+      abn_perma_dollars = "{C:money}$#5#{} extra Dollars",
+      abn_perma_rep = "{C:attention}+#6#{} extra Repetitions",
 
       -- sigil menu
       ph_abn_sigils_active = "Sigils Active",
