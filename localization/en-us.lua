@@ -2270,6 +2270,21 @@ return {
       },
     },
     Joker = {
+      j_abn_jack_of_all_trades = {
+        name = "Jack of All Trades",
+        text = {
+          {
+            "{C:attention}#3#s{} give {C:white,X:mult}X#1#{} Mult",
+            "per {C:attention}#3#{} discarded this run",
+            "when played and not scored",
+            "{C:inactive}(Will give {C:white,X:mult}X#4#{C:inactive})",
+          },
+          {
+            "{C:red,E:1}Self-destructs{} after scoring",
+            "if played hand contains no {C:attention}#3#s{}",
+          }
+        }
+      },
       j_abn_july_jester = {
         name = "July Jester",
         text = {
