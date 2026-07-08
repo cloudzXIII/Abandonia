@@ -11378,13 +11378,21 @@ return {
     challenge_names = {
     },
     dictionary = {
-      -- Joker Perma Bonuses
+      -- Joker Perma Bonuses (wip)
       abn_perma_bonus = "{C:chips}+#1#{} extra Chips",
       abn_perma_mult = "{C:mult}+#2#{} extra Mult",
       abn_perma_xmult = "{C:white,X:mult}X#3#{} Mult",
       abn_perma_xchips = "{C:white,X:chips}X#4#{} Chips",
       abn_perma_dollars = "{C:money}$#5#{} extra Dollars",
       abn_perma_rep = "{C:attention}+#6#{} extra Repetitions",
+
+      -- e
+      abn_joker_chip = "extra Chips",
+      abn_joker_mult = "extra Mult",
+      abn_joker_xmult = "Mult",
+      abn_joker_xchips = "Chips",
+      abn_joker_dollars = "extra Dollars",
+      abn_joker_rep = "extra Repetitions",
 
       -- sigil menu
       ph_abn_sigils_active = "Sigils Active",
