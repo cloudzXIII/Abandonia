@@ -11578,10 +11578,11 @@ return {
       abn_suitless = "Null",
       abn_Tie = "Tie",
       abn_Bow = "Bow",
-      abn_Chalice = "Chalice",
-      abn_Sword = "Sword",
-      abn_Coin = "Coin",
-      abn_Baton = "Baton",
+	  abn_Shield = "Shield",
+	  abn_Rose = "Rose",
+	  abn_Leaf = "Leaf",
+	  abn_Goblet = "Goblet",
+
     },
 
     suits_plural = {
@@ -11590,10 +11591,10 @@ return {
       abn_suitless = "Nulls",
       abn_Tie = "Ties",
       abn_Bow = "Bows",
-      abn_Chalice = "Chalices",
-      abn_Sword = "Swords",
-      abn_Coin = "Coins",
-      abn_Baton = "Batons",
+	  abn_Shield = "Shields",
+	  abn_Rose = "Roses",
+	  abn_Leaf = "Leafs",
+	  abn_Goblet = "Goblets",
     },
     poker_hands = {
       ['abn_Spectrum'] = "Spectrum",
