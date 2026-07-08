@@ -2270,6 +2270,26 @@ return {
       },
     },
     Joker = {
+      j_abn_1_2_joker_even = {
+        name = "1, 2 Joker",
+        text = {
+          "When an {C:red}even{} card is discarded,",
+          "destroy it, and permanently add",
+          "its {C:attention}rank{} to this {C:chips}Chips{}",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
+          "{C:inactive,s:0.8}(Changes to {C:blue,s:0.8}Odd{C:inactive,s:0.8} next round)",
+        }
+      },
+      j_abn_1_2_joker_odd = {
+        name = "1, 2 Joker",
+        text = {
+          "When an {C:blue}odd{} card is discarded,",
+          "destroy it, and permanently add",
+          "its {C:attention}rank{} to this {C:chips}Chips{}",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
+          "{C:inactive,s:0.8}(Changes to {C:red,s:0.8}Even{C:inactive,s:0.8} next round)",
+        }
+      },
       j_abn_jack_of_all_trades = {
         name = "Jack of All Trades",
         text = {
@@ -7457,9 +7477,9 @@ return {
         name = "Bad Director",
         text = {
           {
-            "Boss Blinds can be rerolled",
-            "at the base cost of {C:gold}$#1#{}",
-            "increase cost by {C:gold}$1{} per reroll"
+            "{C:attention}Boss Blinds{} can be rerolled",
+            "at the base cost of {C:money}$#1#{}",
+            "increase cost by {C:money}$1{} per reroll"
           },
         }
 

@@ -25,7 +25,7 @@ SMODS.Joker {
         }
       end
     end
-    if context.end_of_round and context.cardarea == G.jokers and not context.retrigger_joker_check and not context.blueprint then
+    if context.setting_blind and not context.blueprint then
       if card.ability.extra.current == "even" then
         SMODS.calculate_effect({ message = localize("k_abn_odd") }, card)
         card.ability.extra.current = "odd"
