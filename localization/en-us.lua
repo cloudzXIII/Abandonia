@@ -2275,7 +2275,7 @@ return {
         text = {
           "When an {C:red}even{} card is discarded,",
           "destroy it, and permanently add",
-          "its {C:attention}rank{} to this {C:chips}Chips{}",
+          "its {C:attention}rank{} to this Joker's {C:chips}Chips{}",
           "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
           "{C:inactive,s:0.8}(Changes to {C:blue,s:0.8}Odd{C:inactive,s:0.8} next round)",
         }
