@@ -2274,9 +2274,10 @@ return {
         name = "Jack of All Trades",
         text = {
           {
-            "{C:attention}#3#s{} give {C:white,X:mult}X#1#{} Mult",
-            "per {C:attention}#3#{} discarded this run",
-            "when played and not scored",
+            "Non-{C:attention}#3#s{} give {C:white,X:mult}X#1#{} Mult",
+            "per unique {C:attention}suit{} of {C:attention}#3#{}",
+            "discarded this run when",
+            "played and not {C:attention}scored{}",
             "{C:inactive}(Will give {C:white,X:mult}X#4#{C:inactive})",
           },
           {

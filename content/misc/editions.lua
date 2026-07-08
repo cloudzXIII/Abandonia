@@ -294,7 +294,7 @@ SMODS.Edition {
   calculate = function(self, card, context)
     if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
       return {
-        abn_balance_percent = card.ability.extra.percent
+        abn_balance_percent = card.edition.percent
       }
     end
   end,

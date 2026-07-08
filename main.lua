@@ -235,8 +235,8 @@ ABN.calculate = function(self, context)
     G.GAME.abn_has_played_royal_flush = true
   end
 
-  if context.discard and context.other_card:get_id() == 11 then
-    G.GAME.abn_total_jacks_discarded = (G.GAME.abn_total_jacks_discarded or 0) + 1
+  if context.discard and context.other_card:get_id() == 11 and not G.GAME.abn.total_jacks_discarded[context.other_card.base.suit] then
+    G.GAME.abn.total_jacks_discarded[context.other_card.base.suit] = true
   end
 end
 
