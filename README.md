@@ -26,7 +26,7 @@ As of 0.1.0, Abandonia currently adds
 
 # Installation
 - Requires [Steamodded 1814a+](https://github.com/Steamodded/smods/releases)
-- Requires [Amulet](https://github.com/frostice482/amulet)
-- Requires [Lovely](https://github.com/ethangreen-dev/lovely-injector)
+- Requires [Amulet 3.5.3+](https://github.com/frostice482/amulet)
+- Requires [Lovely 0.9.0+](https://github.com/ethangreen-dev/lovely-injector)
 
 Get the latest stable version from [Releases](https://github.com/cloudzXIII/Abandonia/releases), then download and extract the zip into the Mods folder.
