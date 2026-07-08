@@ -12,7 +12,7 @@ SMODS.Joker {
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.j_joker
     local cae = card.ability.extra
-    return { vars = { cae.x_mult, cae.x_mult_gain, cae.percent * 100 } }
+    return { vars = { cae.x_mult, cae.x_mult_gain, cae.percent } }
   end,
 
   rarity = 4,
@@ -24,12 +24,14 @@ SMODS.Joker {
   blueprint_compat = true,
   unlocked = false,
 
-  config = { extra = { x_mult = 1.5, x_mult_gain = 0.04, percent = 0.04 } },
+  config = { extra = { x_mult = 1.5, x_mult_gain = 0.04, percent = 4 } },
 
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and context.other_card:is_suit("abn_Tie") then
+    if context.individual and context.cardarea == G.play and context.other_card:is_suit("abn_Bow") then
       if next(SMODS.find_card("j_joker")) then
-        ABN.balance_percent(context.other_card, card.ability.extra.percent)
+        return {
+          abn_balance_percent = card.ability.extra.percent
+        }
       end
       if not context.blueprint then
         SMODS.scale_card(card, {

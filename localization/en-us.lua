@@ -2514,7 +2514,7 @@ return {
           {
             "If {C:attention}Joker{} is owned,",
             "scoring {C:abn_bow}Bows{} balance",
-            "{C:chips}Chips{} and {C:mult}Mult{} by {C:purple}#3#%{}"
+            "{C:chips}Chips{} and {C:mult}Mult{} by {C:white,X:abn_plasma}#3#%{}"
           }
         }
       },
@@ -5567,9 +5567,9 @@ return {
       j_abn_perrrkeo = {
         name = "Perrrkeo",
         text = {
-          "Balances {C:purple}#3#%{C:inactive}",
+          "Balances {C:white,X:abn_plasma}#3#%{C:inactive}",
           "of {C:mult}Mult{} and {C:chips}Chips{},",
-          "Adds {C:purple}#2#%{} for every",
+          "Adds {C:white,X:abn_plasma}#2#%{} for every",
           "consumable {C:attention}held",
         }
       },
@@ -8133,7 +8133,7 @@ return {
         name = "Stereogram",
         text = {
           "Scoring {C:attention}numbered{} cards",
-          "Balance {C:attention}#1#%{} of {C:chips}Chips{} and {C:mult}Mult{}"
+          "Balance {C:white,X:abn_plasma}#1#%{} of {C:chips}Chips{} and {C:mult}Mult{}"
         }
       },
       j_abn_suit_eradication = {
@@ -9947,7 +9947,7 @@ return {
       e_abn_collodion = {
         name = "Collodion",
         text = {
-          "Balances {C:purple}#1#%{} of",
+          "Balances {C:white,X:abn_plasma}#1#%{} of",
           "{C:chips}Chips{} and {C:mult}Mult{}"
         }
       },
