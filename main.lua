@@ -137,7 +137,7 @@ ABN.calculate = function(self, context)
         for _, v in ipairs(area.cards) do
           if v.facing == "front" then
             v:flip()
-            v.shadowy_flipped = true
+            v.ability.shadowy_flipped = true
           end
         end
       end

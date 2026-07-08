@@ -267,7 +267,7 @@ target = 'card.lua'
 pattern = "self.facing='back'"
 position = "after"
 payload = '''
-if self.config.center.key == 'j_abn_giacomo' and not self.ability.abn_perma_flipped and not self.shadowy_flipped then
+if self.config.center.key == 'j_abn_giacomo' and not self.ability.abn_perma_flipped and not self.ability.shadowy_flipped then
     self:flip()
     self:calculate_joker({flip = true})
 end

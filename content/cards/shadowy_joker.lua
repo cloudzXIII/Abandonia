@@ -47,9 +47,9 @@ SMODS.Joker {
     for _, area in ipairs(card_areas) do
       if area and area.cards then
         for _, v in ipairs(area.cards) do
-          if v.facing == "back" and v.shadowy_flipped then
+          if v.facing == "back" and v.ability.shadowy_flipped then
             v:flip()
-            v.shadowy_flipped = false
+            v.ability.shadowy_flipped = false
           end
         end
       end
