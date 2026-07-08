@@ -13,11 +13,11 @@ SMODS.Joker {
   end,
 
   add_to_deck = function(self, card)
-    G.GAME.win_ante = G.GAME.win_ante * 2
+    G.GAME.win_ante = G.GAME.win_ante + 2
   end,
 
   remove_from_deck = function(self, card)
-    G.GAME.win_ante = G.GAME.win_ante / 2
+    G.GAME.win_ante = G.GAME.win_ante - 2
   end,
 
   calculate = function(self, card, context)

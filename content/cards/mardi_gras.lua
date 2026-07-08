@@ -14,6 +14,6 @@ SMODS.Joker {
 
   config = { extra = {} },
   abn_artist_credits = {
-    artist = "iprefercheddar"
+    artist = "IPreferCheddar"
   },
 }

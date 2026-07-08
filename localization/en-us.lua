@@ -4971,9 +4971,13 @@ return {
       j_abn_ante_up = {
         name = "Ante Up!",
         text = {
-          "Cards {C:attention}held in hand{} give",
-          "{C:attention}double{} their ranks as {C:red}Mult{}.",
-          "Winning ante is {C:attention}doubled{}",
+          {
+            "Cards {C:attention}held in hand{} give",
+            "{C:attention}double{} their ranks as {C:red}Mult{}",
+          },
+          {
+            "{C:attention}+2{} Win Ante",
+          }
         }
       },
       j_abn_the_joker = {
@@ -6116,11 +6120,18 @@ return {
       j_abn_balatro_university = {
         name = "Balatro University",
         text = {
-          "Whenever you gain money during a blind",
-          "all Jokers gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
-          "If you own {C:attention}Lucrative Joker{},",
-          "{C:attention}level up{} hands with {C:money}Gold{} cards",
-          "If you own {C:attention}Slot Machine{} retrigger {C:gold}Gold seals{}",
+          {
+            "All Jokers gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
+            "when money is gained during a {C:attention}Blind",
+          },
+          {
+            "If you own {C:attention}Lucrative Joker{},",
+            "{C:attention}level up{} hands with {C:attention}Gold{} cards",
+          },
+          {
+            "If you own {C:attention}Slot Machine{},",
+            "retrigger played {C:gold}Gold Seals{}",
+          },
         }
       },
       j_abn_mad_petr = {
@@ -7897,12 +7908,17 @@ return {
       j_abn_clown_funk = { -- to relocalise
         name = "Clown Funk",
         text = {
-          "If the {C:attention}first hand{} of a round is",
-          "{C:attention}Flush{} with {C:hearts}Hearts{} {C:attention}leftmost{} Joker gains {C:dark_edition}Gloss{}",
-          "{C:attention}Straight{} with {C:spades}Spades{} {C:attention}leftmost{} Joker gains {C:dark_edition}Pearlescent{}",
-          "{C:attention}Full House{} with {C:diamonds}Diamonds{} {C:attention}leftmost{} Joker gains {C:dark_edition}Iridescent{}",
-          "{C:attention}Five of a Kind{} with {C:clubs}Clubs{} {C:attention}leftmost{} Joker gains {C:dark_edition}Chromatic{}",
-          "If this Joker has an {C:dark_edition}Edition{} Jokers with {C:dark_edition}Editions{} cannot be destroyed",
+          {
+            "If the {C:attention}first hand{} of a round is a",
+            "{C:attention,s:0.8}Flush{s:0.8} of {C:hearts,s:0.8}Hearts{s:0.8}, add {C:dark_edition,s:0.8}Gloss{s:0.8} to {C:attention,s:0.8}leftmost{s:0.8} Joker",
+            "{C:attention,s:0.8}Straight{s:0.8} of {C:spades,s:0.8}Spades{s:0.8}, add {C:dark_edition,s:0.8}Pearlescent{s:0.8} to {C:attention,s:0.8}leftmost{s:0.8} Joker",
+            "{C:attention,s:0.8}Full House{s:0.8} of {C:diamonds,s:0.8}Diamonds{s:0.8}, add {C:dark_edition,s:0.8}Iridescent{s:0.8} to {C:attention,s:0.8}leftmost{s:0.8} Joker ",
+            "{C:attention,s:0.8}Five of a Kind{s:0.8} of {C:clubs,s:0.8}Clubs{s:0.8}, add {C:dark_edition,s:0.8}Chromatic{s:0.8} to {C:attention,s:0.8}leftmost{s:0.8} Joker",
+          },
+          {
+            "If this Joker has an {C:dark_edition}edition{},",
+            "Jokers with {C:dark_edition}Editions{} cannot be destroyed",
+          },
         },
       },
       j_abn_galactic_consciousness = { -- to relocalise

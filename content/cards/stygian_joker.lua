@@ -50,7 +50,7 @@ SMODS.Joker {
   end,
 
   abn_artist_credits = {
-    artist = "Iprefercheddar",
+    artist = "IPreferCheddar",
   },
   in_pool = function(self)
     for _, playing_card in ipairs(G.playing_cards or {}) do
