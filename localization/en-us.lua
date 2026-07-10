@@ -6674,11 +6674,14 @@ return {
           "Flipped Jokers and Cards give {C:money}$#1#{}",
         }
       },
-      j_abn_joker_family = { -- sonion im crine (to relocalise)
+      j_abn_joker_family = {
         name = "Joker & Family",
         text = {
-          "If you own {C:common}Common{} {C:uncommon}Uncommon{} {C:rare}Rare{} and {C:attention}Comedian{} Jokers",
-          "Lower all {C:attention}blind requirements{} by {C:attention}50%{} and give {X:mult,C:white}X#2#{} Mult for each {C:attention}unique{} Joker {C:attention}rarity{}",
+          "If you have {C:common}Common{}, {C:uncommon}Uncommon{},",
+          "{C:rare}Rare{} and {C:attention}Comedian{} Jokers:",
+          "Lower {C:attention}blind requirements{} by {C:attention}50%{}",
+          "and give {X:mult,C:white}X#2#{} Mult per {C:attention}unique{}",
+          "{C:attention}rarity{} among your {C:attention}Jokers{}",
           "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
         }
       },
@@ -7930,10 +7933,10 @@ return {
         text = {
           {
             "If the {C:attention}first hand{} of a round is a",
-            "{C:attention,s:0.8}Flush{s:0.8} of {C:hearts,s:0.8}Hearts{s:0.8}, add {C:dark_edition,s:0.8}Gloss{s:0.8} to {C:attention,s:0.8}leftmost{s:0.8} Joker",
-            "{C:attention,s:0.8}Straight{s:0.8} of {C:spades,s:0.8}Spades{s:0.8}, add {C:dark_edition,s:0.8}Pearlescent{s:0.8} to {C:attention,s:0.8}leftmost{s:0.8} Joker",
-            "{C:attention,s:0.8}Full House{s:0.8} of {C:diamonds,s:0.8}Diamonds{s:0.8}, add {C:dark_edition,s:0.8}Iridescent{s:0.8} to {C:attention,s:0.8}leftmost{s:0.8} Joker ",
-            "{C:attention,s:0.8}Five of a Kind{s:0.8} of {C:clubs,s:0.8}Clubs{s:0.8}, add {C:dark_edition,s:0.8}Chromatic{s:0.8} to {C:attention,s:0.8}leftmost{s:0.8} Joker",
+            "{C:attention,s:0.8}Flush{s:0.8} of {C:abn_chalice,s:0.8}Chalices{s:0.8}, add {C:dark_edition,s:0.8}Gloss{s:0.8} to {C:attention,s:0.8}leftmost{s:0.8} Joker",
+            "{C:attention,s:0.8}Straight{s:0.8} of {C:abn_coin,s:0.8}Coins{s:0.8}, add {C:dark_edition,s:0.8}Pearlescent{s:0.8} to {C:attention,s:0.8}leftmost{s:0.8} Joker",
+            "{C:attention,s:0.8}Full House{s:0.8} of {C:abn_baton,s:0.8}Batons{s:0.8}, add {C:dark_edition,s:0.8}Iridescent{s:0.8} to {C:attention,s:0.8}leftmost{s:0.8} Joker ",
+            "{C:attention,s:0.8}Five of a Kind{s:0.8} of {C:abn_sword,s:0.8}Swords{s:0.8}, add {C:dark_edition,s:0.8}Chromatic{s:0.8} to {C:attention,s:0.8}leftmost{s:0.8} Joker",
           },
           {
             "If this Joker has an {C:dark_edition}edition{},",
