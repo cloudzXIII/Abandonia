@@ -1,3 +1,32 @@
+local function in_pool_check(card)
+    local suits = {
+        "abn_Sword",
+        "abn_Chalice",
+        "abn_Coin",
+        "abn_Baton",
+    }
+  for i,v in ipairs(suits) do
+    if card:is_suit(v) then return true end
+  end
+  return false
+end
+
+local evaluate_play_intro_f = evaluate_play_intro
+function evaluate_play_intro()
+
+  if G.GAME.abn_saturated_joker_in_pool == false then
+  for i,v in ipairs(G.play.cards) do
+    if in_pool_check(v) then
+        G.GAME.abn_saturated_joker_in_pool = true
+     end
+  end
+  end
+
+  local ret = evaluate_play_intro_f()
+  return ret
+
+end
+    
 local function includes_suit(card)
     local suits = {
         "abn_Sword",
@@ -60,4 +89,10 @@ SMODS.Joker {
   abn_artist_credits = {
     artist = "Gud"
   },
+  in_pool = function (self,card)
+    if G.GAME.abn_saturated_joker_in_pool then
+        return true
+    end
+    return false
+  end
 }
