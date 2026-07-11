@@ -21,14 +21,14 @@ SMODS.Joker {
                 if ABN.is_even(c) then
                     even_play[#even_play + 1] = c
                 end
-                total = total + rank
+                total = total + c.base.nominal
             end
 
             for _, c in ipairs(G.hand.cards) do
                 if ABN.is_even(c) then
                     even_held[#even_held + 1] = c
                 end
-                total = total + rank
+                total = total + c.base.nominal
             end
 
             if #even_play == #context.full_hand and #even_held == 0 then
