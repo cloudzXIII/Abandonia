@@ -97,7 +97,8 @@ for _, def in ipairs(rank_planets) do
     },
 
     in_pool = function(self, args)
-      if pseudorandom("seed") > G.GAME.abn.rank_planet_rate then
+      local rate = G.GAME.abn and G.GAME.abn.rank_planet_rate or 0.7
+      if pseudorandom("seed") > rate then
         return true
       end
     end
