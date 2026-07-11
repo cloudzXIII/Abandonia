@@ -8649,6 +8649,17 @@ return {
           },
         }
       },
+      j_abn_saturated_joker={
+       name="Saturated Joker",
+       text={
+         "Each Scoring {C:abn_coins}Coins{},{C:abn_batons} Batons{}, {C:abn_chalice}Chalice{} and {C:abn_swords}Swords{}",
+         "gains {C:mult}+#1#{} Mult",
+         "This {C:attention}Joker{} gains {C:chips}#2#{} Chips",
+         "per scoring cards with {C:abn_vintage}Vintage Edition",
+         "{C:inactive}Currently:[{C:chips}#3# chips{C:inactive}]",
+       },
+    },
+
     },
     Spectral = {
       c_abn_apotheosis = {
