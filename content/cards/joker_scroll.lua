@@ -4,15 +4,15 @@ SMODS.Joker {
   cost = 10,
   discovered = false,
   blueprint_compat = true,
-  atlas = 'ABNJokerSheet14', 
+  atlas = 'ABNJokerSheet14',
   pos = { x = 3, y = 2 },
   config = { extra = { xmult = 1, xmultadd = 0.1 } },
 
   loc_vars = function(self, info_queue, card)
-	info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_vintage
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_vintage
     return { vars = { card.ability.extra.xmult, card.ability.extra.xmultadd } }
   end,
-  
+
   in_pool = function(self)
     return G.jokers and #G.jokers.cards > 0
   end,
@@ -32,7 +32,7 @@ SMODS.Joker {
         -- Scaling
         if vintage_scoring_count > 0 and card.edition and card.edition.key == 'e_abn_abandond' then
           card.ability.extra.xmult = card.ability.extra.xmult + (vintage_scoring_count * card.ability.extra.xmultadd)
-          card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex'), colour = G.C.MULT})
+          card_eval_status_text(card, 'extra', nil, nil, nil, { message = localize('k_upgrade_ex'), colour = G.C.MULT })
         end
 
         if context.scoring_name == "Full House" then
@@ -56,11 +56,11 @@ SMODS.Joker {
 
           for _, v in ipairs(context.scoring_hand) do
             local rank_id = v.base.id
-            local is_even_card = (rank_id % 2 == 0)
-            local is_odd_card = (rank_id % 2 ~= 0)
+            local is_even_card = ABN.is_even(v)
+            local is_odd_card = ABN.is_odd(v)
 
             if (is_even_jokers and is_even_card) or (is_odd_jokers and is_odd_card) then
-              v:set_edition({abn_vintage = true}, true)
+              v:set_edition({ abn_vintage = true }, true)
             end
           end
         end

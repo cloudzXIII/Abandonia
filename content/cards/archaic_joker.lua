@@ -12,7 +12,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { chipsadd = 15, multadd = 5, chips = 0, mult = 0 } },
+  config = { extra = { chipsadd = 5, multadd = 2, chips = 0, mult = 0 } },
 
   calculate = function(self, card, context)
     if context.final_scoring_step and G.GAME.chips + SMODS.calculate_round_score() >= G.GAME.blind.chips then

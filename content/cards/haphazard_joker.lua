@@ -35,11 +35,16 @@ SMODS.Joker {
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
       local currentCard = context.other_card
-      local rank = currentCard:get_id()
 
 
-      if currentCard and rank >= 2 and rank <= 10 and rank % 2 == 0 and currentCard.config.center.set == "Enhanced" then
-        card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmultadd
+      if currentCard and ABN.is_even(currentCard) and currentCard.config.center.set == "Enhanced" then
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "xmult",
+          scalar_value = "xmultadd",
+          operation = '+',
+          no_message = true
+        })
         if SMODS.pseudorandom_probability(card, 'haphazard', 1, card.ability.extra.odds) then
           local tag_key = get_next_tag_key('abn_guaranteed_hazard_tag')
           add_tag(Tag(tag_key))
@@ -56,15 +61,27 @@ SMODS.Joker {
         return {
           xmult = card.ability.extra.xmult
         }
-      elseif currentCard and rank >= 2 and rank <= 10 and rank % 2 ~= 0 or rank == 14 then
-        card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmultadd
+      elseif currentCard and ABN.is_odd(currentCard) then
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "xmult",
+          scalar_value = "xmultadd",
+          operation = '+',
+          no_message = true
+        })
         return {
           message = localize('k_upgrade_ex'),
           colour = G.C.RED,
           card = card
         }
-      elseif currentCard and rank >= 2 and rank <= 10 and rank % 2 == 0 then
-        card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmultadd
+      elseif currentCard and ABN.is_even(currentCard) then
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "xmult",
+          scalar_value = "xmultadd",
+          operation = '+',
+          no_message = true
+        })
         if SMODS.pseudorandom_probability(card, 'haphazard', 1, card.ability.extra.odds) then
           local tag_key = get_next_tag_key('abn_guaranteed_hazard_tag')
           add_tag(Tag(tag_key))
@@ -78,7 +95,13 @@ SMODS.Joker {
           })
         end
       elseif currentCard then
-        card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmultadd
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "xmult",
+          scalar_value = "xmultadd",
+          operation = '+',
+          no_message = true
+        })
         return {
           message = localize('k_upgrade_ex'),
           colour = G.C.RED,

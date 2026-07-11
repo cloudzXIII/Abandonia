@@ -30,9 +30,8 @@ SMODS.Joker {
     if context.individual and context.cardarea == G.play then
       local currentCard = context.other_card
       local rank = currentCard:get_id()
-      local is_odd = (rank >= 2 and rank <= 10 and rank % 2 ~= 0) or rank == 14
 
-      if is_odd then
+      if ABN.is_odd(currentCard) then
         if SMODS.pseudorandom_probability(card, 'prenatural_vouch', 1, card.ability.extra.odds) then
           G.E_MANAGER:add_event(Event({
             trigger = 'before',

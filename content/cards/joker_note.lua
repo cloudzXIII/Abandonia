@@ -7,26 +7,33 @@ SMODS.Joker {
     discovered = false,
     blueprint_compat = true,
     abn_coder = "LasagnaFelidae",
-    config = { extra = { mult_mod = 5, chips_mod = 20, chips = 0 ,mult = 0 } },
+    config = { extra = { mult_mod = 5, chips_mod = 20, chips = 0, mult = 0 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult_mod, card.ability.extra.chips_mod, card.ability.extra.mult, card.ability.extra.chips } }
     end,
-    
+
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and not context.other_card:is_face() then
-            local id = context.other_card.base.nominal
-            if id >= 0 and context.other_card.seal then
-                if id % 2 == 0 then
-                    card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod
-                    SMODS.calculate_effect({message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult_mod } },
-                        colour = G.C.RED,
-                        }, card)
-                else 
+            if context.other_card.seal then
+                if ABN.is_even(context.other_card) then
+                    SMODS.scale_card(card, {
+                        ref_table = card.ability.extra,
+                        ref_value = "mult",
+                        scalar_value = "mult_mod",
+                        operation = '+',
+                        message_key = "a_mult",
+                        message_colour = G.C.RED
+                    })
+                else
                     card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
-                    SMODS.calculate_effect({message = "+"..card.ability.extra.chips_mod.." Chips",
-                        colour = G.C.BLUE,
-                        }, card)
-                    
+                    SMODS.scale_card(card, {
+                        ref_table = card.ability.extra,
+                        ref_value = "chips",
+                        scalar_value = "chips_mod",
+                        operation = '+',
+                        message_key = "a_chips",
+                        message_colour = G.C.CHIPS
+                    })
                 end
             end
         end
@@ -38,8 +45,8 @@ SMODS.Joker {
         end
     end,
 
-    in_pool = function(self,args)
-        for i, playing_card in ipairs(G.playing_cards) do
+    in_pool = function(self, args)
+        for i, playing_card in ipairs(G.playing_cards or {}) do
             if (not playing_card:is_face()) and playing_card.seal then
                 return true
             end
@@ -47,11 +54,9 @@ SMODS.Joker {
         return false
     end,
 
-    
-    
+
+
     abn_artist_credits = {
         artist = "Sustato",
     },
 }
-
-

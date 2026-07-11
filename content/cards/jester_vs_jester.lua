@@ -1,8 +1,8 @@
 SMODS.Joker {
   key = 'jester_vs_jester',
-  rarity = 3, 
+  rarity = 3,
   atlas = 'ABNJokerSheet14',
-  pos = { x = 8, y = 3 }, 
+  pos = { x = 8, y = 3 },
   cost = 10,
   discovered = false,
   blueprint_compat = true,
@@ -28,7 +28,7 @@ SMODS.Joker {
       },
     }
   end,
-  
+
   in_pool = function(self, args)
     if G.jokers and G.jokers.cards then
       for _, j in ipairs(G.jokers.cards) do
@@ -43,14 +43,9 @@ SMODS.Joker {
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
       local other = context.other_card
-      local rank = other:get_id()
-      
-      if not rank then return end
 
-      -- Even: 2, 4, 6, 8, 10
-      local is_even = (rank == 2 or rank == 4 or rank == 6 or rank == 8 or rank == 10)
-      -- Odd: 3, 5, 7, 9, 14 (Ace)
-      local is_odd = (rank == 3 or rank == 5 or rank == 7 or rank == 9 or rank == 14)
+      local is_even = ABN.is_even(other)
+      local is_odd = ABN.is_odd(other)
 
       if not is_even and not is_odd then return end
 
@@ -110,8 +105,8 @@ SMODS.Joker {
         }
         if ret_chips > 0 then ret.chips = ret_chips end
         if ret_xmult ~= 1 then ret.x_mult = ret_xmult end
-        if ret_xchips ~= 1 then ret.x_chips = ret_xchips end 
-        
+        if ret_xchips ~= 1 then ret.x_chips = ret_xchips end
+
         return ret
       end
     end

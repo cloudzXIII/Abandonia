@@ -256,7 +256,7 @@ return {
           {
             "Apply {C:attention}Odd Legacy{} to",
             "the {C:attention}rightmost{} Joker,",
-            "{C:attention}Eternal{} and {C:attention}Downgrade{}",
+            "{C:abn_eternal}Eternal{} and {C:attention}Downgrade{}",
             "to {C:attention}leftmost{}"
           },
           {
@@ -273,7 +273,7 @@ return {
           {
             "Apply {C:attention}Rejok Legacy{} to",
             "the {C:attention}rightmost{} Joker,",
-            "{C:attention}Eternal{} and {C:attention}Rental{}",
+            "{C:abn_eternal}Eternal{} and {C:money}Rental{}",
             "to {C:attention}leftmost{}"
           },
           {
@@ -290,7 +290,7 @@ return {
           {
             "Apply {C:attention}Obmij Legacy{} to",
             "the {C:attention}rightmost{} Joker,",
-            "{C:attention}Fragile{} and {C:attention}Rental{}",
+            "{C:attention}Fragile{} and {C:money}Rental{}",
             "to {C:attention}leftmost{}"
           },
           {
@@ -311,7 +311,7 @@ return {
             "and {C:attention}Possibility{}",
           },
           {
-            "Apply {C:attention}Eraser{} and {C:attention}Eternal{}",
+            "Apply {C:attention}Eraser{} and {C:abn_eternal}Eternal{}",
             "to {C:attention}leftmost{} Joker"
           },
         },
@@ -326,7 +326,7 @@ return {
             "and {C:attention}Glove Hand{}",
           },
           {
-            "Apply {C:attention}Eraser{} and {C:attention}Rental{}",
+            "Apply {C:attention}Eraser{} and {C:moneymoney}Rental{}",
             "to {C:attention}leftmost{} Joker"
           },
         },
@@ -341,7 +341,7 @@ return {
             "{C:attention}Jester Legacy{} and {C:attention}Shovel{}",
           },
           {
-            "Apply {C:attention}Eternal{} and {C:attention}Chain{}",
+            "Apply {C:abn_eternal}Eternal{} and {C:attention}Chain{}",
             "to {C:attention}leftmost{} Joker"
           },
         },
@@ -355,7 +355,7 @@ return {
             "to {C:attention}rightmost{} Joker"
           },
           {
-            "Apply {C:attention}Eternal{}, {C:attention}Lightning Bolt{},",
+            "Apply {C:abn_eternal}Eternal{}, {C:attention}Lightning Bolt{},",
             "and {C:attention}Even Legacy{}",
             "to {C:attention}leftmost{} Joker"
           },
@@ -2270,6 +2270,23 @@ return {
       },
     },
     Joker = {
+      j_abn_zauberer_magicians = {
+        name = "Zauberer Magicians",
+        text = {
+          {
+            "{s:0.8}Scoring {C:hearts,s:0.8}Hearts{s:0.8} become {C:abn_snow,s:0.8}Snows{}",
+            "{s:0.8}Scoring {C:diamonds,s:0.8}Diamonds{s:0.8} become {C:abn_tie,s:0.8}Ties{}",
+            "{s:0.8}Scoring {C:clubs,s:0.8}Clubs{s:0.8} become {C:abn_penumbra,s:0.8}Penumbras{}",
+            "{s:0.8}Scoring {C:spades,s:0.8}Spades{s:0.8} become {C:abn_bow,s:0.8}Bows{}",
+          },
+          {
+            "If this Joker has {C:dark_edition}Vintage{} edition,",
+            "gains {C:mult}+#2#{} Mult and {C:money}$#2#{} of {C:attention}sell value",
+            " when a card changes {C:attention}suit{}",
+            "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult)",
+          },
+        }
+      },
       j_abn_1_2_joker_even = {
         name = "1, 2 Joker",
         text = {
@@ -4182,11 +4199,11 @@ return {
         text = {
           {
             "When {C:attention}Blind{} is selected,",
-            "apply {C:attention}Rental{} sticker",
+            "apply {C:money}Rental{} sticker",
             "to leftmost Joker",
           },
           {
-            "{C:attention}Rental{} Jokers each give",
+            "{C:money}Rental{} Jokers each give",
             "{X:mult,C:white}X#2#{} Mult and {C:money}$#1#{}"
           }
         }
@@ -5377,23 +5394,28 @@ return {
       j_abn_joker_of_destruction = {
         name = "Joker Of Destruction",
         text = {
-          "if {C:attention}first hand{} of round",
-          "contains {C:attention}4{} cards,",
-          "{C:mult}Destroy{} them and create a summoning {C:spectral}Spectral{} card",
+          "If {C:attention}first hand{} of round",
+          "has {C:attention}4{} cards, destroy them and",
+          "create a {C:dark_edition}summoning{} {C:spectral}Spectral{} card",
         }
       },
       j_abn_tier_list = {
         name = "Tier List",
         text = {
-          "Based on the rarity of the last obtained Joker grant the following:",
-          "{C:common}Common{}: {C:chips}+#6#{} Chips",
-          "{C:uncommon}Uncommon{}: {C:mult}+#7#{} Mult",
-          "{C:rare}Rare{}: {X:mult,C:white}+X#8#{} Mult",
-          "{C:abn_superrare}Super Rare: {X:chips,C:white}+X#9#{} Chips ",
-          "{C:purple}Parallel Rare: {C:attention}+#10#{} Retriggers",
-          "{C:legendary}Legendary{}: Double all values",
-          "{C:inactive}(Currently {C:attention}#5#{} {C:inactive}Retriggers,{} {X:mult,C:white}X#3#{} {C:inactive}Mult,{} {X:chips,C:white}X#4#{} {C:inactive}Chips,{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips)",
-          "Last Rarity: {C:attention}#11#{}",
+          {
+            "This Joker gains bonuses based on",
+            "the {C:attention}rarity{} of {C:attention}last obtained{} Joker:",
+            "{C:inactive}Last rarity: {C:attention}#11#{}",
+            "{C:inactive,s:0.8}(Currently {C:attention,s:0.8}#5#{s:0.8} {C:inactive,s:0.8}Retriggers, {X:mult,C:white,s:0.8}X#3#{C:inactive,s:0.8}, {C:mult,s:0.8}+#2#{s:0.8}{C:inactive,s:0.8}, {X:chips,C:white,s:0.8}X#4#{C:inactive,s:0.8}, {C:chips,s:0.8}+#1#{s:0.8}{C:inactive,s:0.8})",
+          },
+          {
+            "{C:common,s:0.8}Common{s:0.8}: {C:chips,s:0.8}+#6#{s:0.8} Chips",
+            "{C:uncommon,s:0.8}Uncommon{s:0.8}: {C:mult,s:0.8}+#7#{s:0.8} Mult",
+            "{C:rare,s:0.8}Rare{s:0.8}: {X:mult,C:white,s:0.8}+X#8#{s:0.8} Mult",
+            "{C:abn_superrare,s:0.8}Super Rare: {X:chips,C:white,s:0.8}+X#9#{s:0.8} Chips ",
+            "{C:purple,s:0.8}Parallel Rare: {C:attention,s:0.8}+#10#{s:0.8} Retriggers",
+            "{C:legendary,s:0.8}Legendary{s:0.8}: Double all values",
+          },
         }
       },
       j_abn_hard_and_dry = {
@@ -5707,9 +5729,13 @@ return {
       j_abn_flawed_imitation = {
         name = "Flawed Imitation",
         text = {
-          "{C:attention}Jokers{} may appear multiple times",
-          "Each Joker gives {X:mult,C:white}X#1#{} Mult per copy of that Joker",
-
+          {
+            "{C:attention}Jokers{} may appear multiple times",
+          },
+          {
+            "Jokers each give {X:mult,C:white}X#1#{} Mult",
+            "per copy of that Joker",
+          },
         }
       },
       j_abn_pixelgrid_joker = {
@@ -6311,7 +6337,7 @@ return {
         name = "Handbook Of A Conman",
         text = {
           "Double the {C:chips}Chips{} and {C:mult}Mult{} values of all hands",
-          "{C:mult}Debuff{} all {C:attention}non-Plagued{} Jokers",
+          "{C:mult}Debuff{} all non-{C:abn_plagued}Plagued{} Jokers",
         }
       },
       j_abn_fit_to_shape = {
@@ -6340,7 +6366,7 @@ return {
         name = "Suspicious Icon",
         text = {
           "When {C:attention}Blind{} is selected,",
-          "{C:mult}Destroy{} {C:attention}#1#{} {C:attention}non-Plagued{} Joker",
+          "{C:mult}Destroy{} {C:attention}#1#{} non-{C:abn_plagued}Plagued{} Joker",
           "and create {C:attention}#1#{} {C:abn_plagued}Plagued{} Joker",
         }
       },
@@ -6669,9 +6695,14 @@ return {
       j_abn_joker_in_hiding = {
         name = "Joker In Hiding",
         text = {
-          "Whenever you select a {C:attention}Joker{} from a {C:attention}Pack{},",
-          "it gains {C:attention}Flipped{} and {C:dark_edition}Holographic{}",
-          "Flipped Jokers and Cards give {C:money}$#1#{}",
+          {
+            "Add {C:attention}Flipped{} and {C:dark_edition}Holographic{} edition",
+            "to {C:attention}Jokers{} selected from {C:attention}Booster Packs{}",
+          },
+          {
+            "{C:attention}Flipped{} Jokers and Cards",
+            "each give {C:money}$#1#{}",
+          },
         }
       },
       j_abn_joker_family = {
@@ -6853,11 +6884,10 @@ return {
         text = {
           {
             "When {C:attention}Blind{} is selected,",
-            "remove all {C:enhanced}Perishable{} stickers",
+            "remove all {C:abn_perishable}Perishable{} stickers",
           },
           {
-            "{C:enhanced}Eternal{} Jokers can",
-            "be sold"
+            "{C:abn_eternal}Eternal{} Jokers can be sold"
           }
         }
 
@@ -7143,7 +7173,9 @@ return {
       j_abn_flotsam_joker = {
         name = "Flotsam Joker",
         text = {
-          "If you play a {C:attention}Flush{} cards held in hand matching the same {C:attention}Suit{} score"
+          "If played hand contains a {C:attention}Flush{},",
+          "cards {C:attention}held in hand{} with the",
+          "same {C:attention}suit{} count in scoring"
         }
       },
       j_abn_baba_joker = {
@@ -7227,7 +7259,7 @@ return {
             "{C:red}Destroy{} every {C:attention}Joker{} held",
             "if no {C:attention}Joker{} was",
             "bought in the {C:attention}shop",
-            "{C:inactive}(Can destroy {C:dark_edition}Eternal{C:inactive})",
+            "{C:inactive}(Can destroy {C:abn_eternal}Eternal{C:inactive})",
             "{C:inactive}Joker Safety: {B:1,C:white}#1#"
           },
         }
@@ -7291,19 +7323,19 @@ return {
         name = "Harlequin Joker",
         text = {
           {
-            "If the {C:attention}first{} card scored is {C:attention}even{} and",
-            "the {C:attention}last{} card scored is {C:attention}odd:"
+            "If {C:attention}first{} scoring card is {C:attention}even{} and",
+            "{C:attention}last{} scoring card is {C:attention}odd:"
           },
           {
-            "Give a {C:dark_edition}Negative{} {C:abn_sigil}Sigil Card{}",
+            "Create a {C:dark_edition}Negative{} {C:sigils}Sigil{} card",
             "if they have matching {C:enhanced}Enhancements",
           },
           {
-            "Give a {C:dark_edition}Negative{} {C:abn_solidstate}Solid State Card{}",
+            "Create a {C:dark_edition}Negative{} {C:solid_state}Solid State{} card",
             "if they have matching {C:dark_edition}Editions",
           },
           {
-            "Give a {C:dark_edition}Negative{} {C:abn_lexica}Lexica Card{}",
+            "Create a {C:dark_edition}Negative{} {C:lexica}Lexica{} cards_copied",
             "if they have matching {C:attention}Seals",
           },
         },
@@ -7312,18 +7344,16 @@ return {
         name = "Ridiculous Joker",
         text = {
           {
-            "If your {C:attention}played hand{} is only {C:attention}even{} cards,",
-            "and the cards {C:attention}held{} are only {C:attention}odd{} cards,",
-            "gain {C:red}Mult{} equal to",
-            "the rank sum of all cards"
+            "If all cards in {C:attention}played{} hand are {C:attention}even{}",
+            "and all cards {C:attention}held{} in hand",
+            "are {C:attention}odd{}, gain {C:mult}Mult{} equal",
+            "to the rank sum of all cards"
           },
           {
-            "If your {C:attention}played hand{} is only {C:attention}odd{} ranks,",
-            "and the cards {C:attention}held{} are only {C:attention}even{} ranks,",
-            "gain {C:blue}Chips{} equal to",
-            "the rank sum of all cards",
-          },
-          {
+            "If all cards in {C:attention}played{} hand are {C:attention}odd{}",
+            "and all cards {C:attention}held{} in hand",
+            "are {C:attention}even{}, gain {C:chips}Chips{} equal",
+            "to the rank sum of all cards",
             "{C:inactive}(Currently {C:red}+#1#{C:inactive} Mult, {C:blue}+#2#{C:inactive} Chips)",
           },
         },
@@ -7826,8 +7856,15 @@ return {
       j_abn_gold_7 = {
         name = "Gold 7",
         text = {
-          "Scoring {C:attention}7's{} become {C:attention}Gold{} cards",
-          "Scored {C:attention}Gold{} cards{} give twice their ranks as {C:mult}mult",
+          {
+            "Played {C:attention}7s{} become",
+            "{C:attention}Gold{} cards when scored",
+          },
+          {
+            "Played {C:attention}Gold{} cards{}",
+            "give {C:attention}double{} their ranks",
+            "as {C:mult}Mult{} when scored",
+          },
         },
       },
       j_abn_7_slot = {
@@ -8890,14 +8927,14 @@ return {
       credit_abn_comykel = {
         name = "",
         text = {
-          "Made so much cool art!",
+          "Made so much cool {C:green}art{}!",
           "Check out {C:attention}CMYKL{}!"
         }
       },
       credit_abn_inky = {
         name = "",
         text = {
-          "Made so much cool art!",
+          "Made so much cool {C:green}art{}!",
           "{s:0.85}(aswell as these cool credit cards)",
           "Check out {C:attention}Inky's Bunch-O-Things{}!"
         }
@@ -8966,6 +9003,13 @@ return {
         text = {
           "Made some cool",
           "{C:green}Art{}!",
+        }
+      },
+      credit_abn_okronix = {
+        name = "",
+        text = {
+          "Made {C:green}art{} for the",
+          "{C:dark_edition}Deck Sleeves{}"
         }
       },
     },
@@ -10839,7 +10883,7 @@ return {
       c_abn_sepulture = {
         name = "Sepulture",
         text = {
-          "Destroy all {C:attention}non-Plagued{} Jokers,",
+          "Destroy all non-{C:abn_plagued}Plagued{} Jokers,",
           "Create a {C:abn_superrare}Super Rare{}",
           "{C:dark_edition}Negative{} {C:abn_plagued}Plagued{} Joker",
         }
@@ -10849,7 +10893,7 @@ return {
         text = {
           {
             "Add {C:mult}Fragile{} and {C:money}Rental{}",
-            "to all {C:attention}non-Plagued{} Jokers",
+            "to all non-{C:abn_plagued}Plagued{} Jokers",
           },
           {
             "Creates a random",

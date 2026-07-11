@@ -251,6 +251,15 @@ ABN.contributors = {
       { url = "github.com/Firch", pos = { x = 0, y = 0 }, name = "Github" },
     }
   },
+  {
+    key = "credit_abn_okronix",
+    name = "0kronix",
+    role = "Art",
+    colour = G.C.GREEN,
+    links = {
+      { url = "github.com/0kronix", pos = { x = 0, y = 0 }, name = "Github" },
+    }
+  },
 }
 
 --#region Credits Tab

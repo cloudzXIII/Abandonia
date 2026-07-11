@@ -1,0 +1,25 @@
+[manifest]
+version = "0.1.1"
+dump_lua = true
+priority = 0
+
+# Nabbed multibox tech from MoreFluff (very cool mod), check them out! (https://github.com/notmario/MoreFluff)
+[[patches]]
+[patches.pattern]
+target = '''functions/common_events.lua'''
+pattern = '''_c:generate_ui(info_queue, card, desc_nodes, specific_vars, full_UI_table)'''
+position = "after"
+payload = '''
+ABN.add_extra_multiboxes(_c, card, info_queue, desc_nodes, specific_vars, full_UI_table, cfg)
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''functions/common_events.lua'''
+pattern = '''localize{type = 'descriptions', key = _c.key, set = _c.set, nodes = desc_nodes, vars = specific_vars or {}}'''
+position = "after"
+payload = '''
+ABN.add_extra_multiboxes(_c, card, info_queue, desc_nodes, specific_vars, full_UI_table, cfg)
+'''
+match_indent = true

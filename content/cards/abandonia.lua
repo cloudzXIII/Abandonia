@@ -23,6 +23,8 @@ SMODS.Joker {
   key = 'abandonia',
 
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_vintage
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_abandond
     return {
       vars = {
         card.ability.extra.x_mult,

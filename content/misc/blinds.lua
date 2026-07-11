@@ -1020,18 +1020,10 @@ SMODS.Blind({
     local has_odd = false
 
     for i = 1, #cards do
-      local id = cards[i]:get_id()
-
-      if id == 14 then
-        -- Treat Ace as Odd
+      if ABN.is_odd(cards[i]) then
         has_odd = true
-      elseif id < 11 then
-        -- Check numeric cards 2 through 10
-        if id % 2 == 0 then
-          has_even = true
-        else
-          has_odd = true
-        end
+      elseif ABN.is_even(cards[i]) then
+        has_even = true
       end
     end
 

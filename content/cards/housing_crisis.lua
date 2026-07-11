@@ -35,18 +35,10 @@ SMODS.Joker {
             local total = 0
             local ret = {}
             for _, c in ipairs(context.scoring_hand) do
-                local rank = c.base.id
-                if c.base.value == "abn_14"
-                or c.base.value == "abn_13"
-                or c.base.value == "abn_12"
-                or c.base.value == "abn_11" then
-                    rank = c.base.nominal
-                end
-
-                if rank <= 10 and rank >= 0 and rank % 2 == 0 then
+                if ABN.is_even(c) then
                     evens[#evens + 1] = c
                 end
-                if rank <= 10 and rank >= 0 and rank % 2 == 1 then
+                if ABN.is_odd(c) then
                     odds[#odds + 1] = c
                 end
                 if ABN.is_dark(c) then
