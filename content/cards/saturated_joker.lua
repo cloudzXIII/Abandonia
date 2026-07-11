@@ -21,12 +21,6 @@ SMODS.Joker {
             card.ability.extra.mult_gain,
             card.ability.extra.chips_gain,
             card.ability.extra.chips,
-            colours={
-                HEX("f0ba3f"),
-                HEX("235945"),
-                HEX("f0349c"),
-                HEX("3c5168"),
-            },
         }
     }
   end,
