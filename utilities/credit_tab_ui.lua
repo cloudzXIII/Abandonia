@@ -92,6 +92,10 @@ ABN.CreditCard {
   key = "ginger",
   pos = { x = 9, y = 0 },
 }
+ABN.CreditCard {
+  key = "okronix",
+  pos = { x = 0, y = 2 },
+}
 --#endregion
 
 ABN.contributors = {
@@ -103,7 +107,7 @@ ABN.contributors = {
     colour = G.C.GOLD,
     links = {
       { url = "github.com/cloudzXIII", pos = { x = 0, y = 0 }, name = "Github" },
-      { url = "ko-fi.com/cloudzxiii", pos = { x = 0, y = 1 }, name = "Buy me a Coffee!" }
+      { url = "ko-fi.com/cloudzxiii",  pos = { x = 0, y = 1 }, name = "Buy me a Coffee!" }
     }
   },
   {
@@ -191,7 +195,7 @@ ABN.contributors = {
     colour = G.C.BLUE,
     links = {
       { url = "github.com/LasagnaFelidae", pos = { x = 0, y = 0 }, name = "Github" },
-      { url = "ko-fi.com/lasagnafelidae", pos = { x = 0, y = 1 }, name = "Buy me a Coffee!" }
+      { url = "ko-fi.com/lasagnafelidae",  pos = { x = 0, y = 1 }, name = "Buy me a Coffee!" }
     }
   },
   {
@@ -225,6 +229,16 @@ ABN.contributors = {
     }
   },
   {
+    key = "credit_abn_okronix",
+    name = "0kronix",
+    role = "Art",
+    has_icon = true,
+    colour = G.C.GREEN,
+    links = {
+      { url = "github.com/0kronix", pos = { x = 0, y = 0 }, name = "Github" },
+    }
+  },
+  {
     key = "credit_abn_marffe",
     name = "Marffe",
     role = "Programmer",
@@ -249,15 +263,6 @@ ABN.contributors = {
     colour = G.C.RED,
     links = {
       { url = "github.com/Firch", pos = { x = 0, y = 0 }, name = "Github" },
-    }
-  },
-  {
-    key = "credit_abn_okronix",
-    name = "0kronix",
-    role = "Art",
-    colour = G.C.GREEN,
-    links = {
-      { url = "github.com/0kronix", pos = { x = 0, y = 0 }, name = "Github" },
     }
   },
 }
