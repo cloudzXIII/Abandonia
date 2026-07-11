@@ -38,10 +38,10 @@ SMODS.Joker {
     if context.individual and context.cardarea == G.play then
         local multi = includes_suit(context.other_card)
         if multi >0 then
-            context.other_card.perma_mult=context.other_card.perma_mult or 0
-            context.other_card.perma_mult=context.other_card.perma_mult+(card.ability.extra.mult_gain*multi)
+            context.other_card.ability.perma_mult=context.other_card.ability.perma_mult or 0
+            context.other_card.ability.perma_mult=context.other_card.ability.perma_mult+(card.ability.extra.mult_gain*multi)
         end
-        if card.edition and card.edition.key == "abn_abn_vintage" then
+        if context.other_card.edition and context.other_card.edition.key == "abn_abn_vintage" then
             SMODS.scale_card(card,{
                 ref_table=card.ability.extra,
                 ref_value="chips",
