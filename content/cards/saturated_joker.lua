@@ -35,7 +35,7 @@ SMODS.Joker {
   config = { extra = {chips=0, mult_gain = 1, chips_gain = 5 } },
 
   calculate = function(self, card, context)
-    if context.indiivdual and context.cardarea == G.play then
+    if context.individual and context.cardarea == G.play then
         local multi = includes_suit(context.other_card)
         if multi >0 then
             context.other_card.perma_mult=context.other_card.perma_mult or 0
