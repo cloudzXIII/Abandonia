@@ -1,4 +1,4 @@
-local function in_pool_check(card)
+--[[local function in_pool_check(card)
     local suits = {
         "abn_Sword",
         "abn_Chalice",
@@ -25,7 +25,8 @@ function evaluate_play_intro()
   local ret = evaluate_play_intro_f()
   return ret
 
-end
+end]]
+--Remove the lines of code above cuz I think It's crashing
     
 local function includes_suit(card)
     local suits = {
@@ -90,9 +91,10 @@ SMODS.Joker {
     artist = "Gud"
   },
   in_pool = function (self,card)
-    if G.GAME.abn_saturated_joker_in_pool then
+    --[[if G.GAME.abn_saturated_joker_in_pool then
         return true
     end
     return false
-  end
+  end]]
+  return true
 }
