@@ -7,7 +7,7 @@ SMODS.Joker {
     discovered = false,
     blueprint_compat = true,
     abn_coder = "LasagnaFelidae",
-    config = { extra = { chips_mod = 2, chips = 1} },
+    config = { extra = { chips_mod = 2, chips = 1 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chips } }
     end,
@@ -21,23 +21,26 @@ SMODS.Joker {
                     trigger = 'after',
                     delay = 0.4,
                     func = function()
-                        SMODS.calculate_effect({message = "x"..card.ability.extra.chips_mod.." Chips",
-                        colour = G.C.BLUE,
+                        SMODS.calculate_effect({
+                            message = localize("k_abn_doubled_ex"),
+                            colour = G.C.BLUE,
                         }, card)
                         return true
                     end
                 }))
-                card.ability.extra.chips = card.ability.extra.chips * card.ability.extra.chips_mod
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = "chips",
+                    scalar_value = "chips_mod",
+                    operation = 'X',
+                })
             end
             return ret
-
-		end
+        end
     end,
-    
-    
+
+
     abn_artist_credits = {
         artist = "Littleroot",
     },
 }
-
-

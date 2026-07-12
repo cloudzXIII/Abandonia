@@ -7362,17 +7362,17 @@ return {
         name = "Housing Crisis",
         text = {
           {
-            "If the {C:attention}first played hand{} is a {C:attention}#1#{}",
-            "composed of {C:attention}2{} even cards and {C:attention}3{} odd cards,",
+            "If {C:attention}first{} played hand is a {C:attention}#1#{}",
+            "composed of {C:attention}2 even{} and {C:attention}3 odd{} cards,",
             "earn {C:gold}$#2#{} and gain {C:red}+#3#{} Mult and {C:blue}+#4#{} Chips",
           },
           {
-            "If the {C:attention}second played hand{} is a {C:attention}#1#{}",
-            "composed of {C:attention}2{} odd cards and {C:attention}3{} even cards,",
+            "If {C:attention}second{} played hand is a {C:attention}#1#{}",
+            "composed of {C:attention}2 odd{} and {C:attention}3 even{} cards,",
             "earn {C:gold}$#5#{} and gain {C:red}+#6#{} Mult and {C:blue}+#7#{} Chips",
           },
           {
-            "If the {C:attention}third played hand{} is a {C:attention}#1#{}",
+            "If {C:attention}third{} played hand is a {C:attention}#1#{}",
             "composed of {C:attention}2{} {C:diamonds}Light Suits{} and {C:attention}3{} {C:spades}Dark Suits{},",
             "{C:planet}level up{} the {C:attention}poker hand{}",
           },
@@ -11479,21 +11479,13 @@ return {
     challenge_names = {
     },
     dictionary = {
-      -- Joker Perma Bonuses (wip)
+      -- Joker Perma Bonuses
       abn_perma_bonus = "{C:chips}+#1#{} extra Chips",
       abn_perma_mult = "{C:mult}+#2#{} extra Mult",
       abn_perma_xmult = "{C:white,X:mult}X#3#{} Mult",
       abn_perma_xchips = "{C:white,X:chips}X#4#{} Chips",
       abn_perma_dollars = "{C:money}$#5#{} extra Dollars",
       abn_perma_rep = "{C:attention}+#6#{} extra Repetitions",
-
-      -- e
-      abn_joker_chip = "extra Chips",
-      abn_joker_mult = "extra Mult",
-      abn_joker_xmult = "Mult",
-      abn_joker_xchips = "Chips",
-      abn_joker_dollars = "extra Dollars",
-      abn_joker_rep = "extra Repetitions",
 
       -- sigil menu
       ph_abn_sigils_active = "Sigils Active",
@@ -11536,6 +11528,7 @@ return {
       k_abn_even = "Even",
       k_abn_tasty_ex = "Tasty!",
       k_abn_odd = "Odd",
+      k_abn_doubled_ex = "Doubled!",
       k_abn_rankless = "Rankless",
       k_abn_numbered = "numbered",
       abn_calamitybooster = "Calamity Pack",
