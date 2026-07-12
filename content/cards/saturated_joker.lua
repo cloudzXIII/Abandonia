@@ -95,6 +95,7 @@ SMODS.Joker {
         return true
     end
     return false
-  end]]
+  --]]
   return true
+  end
 }
