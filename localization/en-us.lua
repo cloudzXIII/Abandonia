@@ -4987,8 +4987,9 @@ return {
       j_abn_prime_paul = {
         name = "Prime Paul",
         text = {
-          "Each played {C:attention}#1#{}, {C:attention}#2#{}, {C:attention}#3#{} or {C:attention}#4#{}",
-          "gives {X:mult,C:white}X#5#{} Mult when scored"
+          "Each played {C:attention}#1#{}, {C:attention}#2#{}, {C:attention}#3#{},",
+          "{C:attention}#4#{}, {C:attention}#5#{}, or {C:attention}#6#{}",
+          "gives {X:mult,C:white}X#6#{} Mult when scored"
         }
       },
       j_abn_composite_charles = {
