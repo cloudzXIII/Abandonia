@@ -27,7 +27,7 @@ SMODS.Joker {
 
 
   calculate = function(self, card, context)
-    if context.pseudorandom_result and context.trigger_obj and context.trigger_obj.config and context.trigger_obj.config.center.set == "astro_cards" then
+    if context.pseudorandom_result and context.trigger_obj and context.trigger_obj.config and context.trigger_obj.config.center and context.trigger_obj.config.center.set == "astro_cards" then
       if context.result == false then
         SMODS.scale_card(card, {
           ref_table = card.ability.extra,
