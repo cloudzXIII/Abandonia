@@ -3244,7 +3244,7 @@ SMODS.Blind({
   calculate = function(self, blind, context)
     if not blind.disabled then
       if context.stay_flipped and context.to_area == G.hand and
-      SMODS.pseudorandom_probability(blind, 'hazard_arrow_flip', 1, 5) then
+          SMODS.pseudorandom_probability(blind, 'hazard_arrow_flip', 1, 5) then
         return {
           stay_flipped = true
         }
@@ -3998,7 +3998,7 @@ SMODS.Sound({
   speed = 1,
   select_music_track = function(self)
     if G.GAME.blind and G.GAME.blind.config and G.GAME.blind.config.blind
-    and G.GAME.blind.config.blind.boss and G.GAME.blind.config.blind.boss.invasion_blind then
+        and G.GAME.blind.config.blind.boss and G.GAME.blind.config.blind.boss.invasion_blind then
       return 1e10
     end
   end
@@ -4148,7 +4148,7 @@ SMODS.Blind {
     end
   end,
   recalc_debuff = function(self, card, from_blind)
-    if card:get_id() > 4 and not card.debuff then
+    if not SMODS.has_no_rank(card) and card:get_id() and card:get_id() > 4 and not card.debuff then
       return true
     end
   end,
