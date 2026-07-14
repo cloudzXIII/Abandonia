@@ -46,7 +46,7 @@ SMODS.Joker {
       }
     end
 
-    if context.pseudorandom_result and context.result == true and card.ability.extra.times_failed > 0 then
+    if context.pseudorandom_result and context.result == true and card.ability.extra.current_prob_up > 0 then
       card.ability.extra.current_prob_up = 0
       SMODS.calculate_effect({ message = localize('k_reset'), colour = G.C.FILTER }, card)
     end
