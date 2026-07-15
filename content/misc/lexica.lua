@@ -831,6 +831,11 @@ SMODS.Consumable {
   abn_artist_credits = {
     artist = "Lazy"
   },
+  set_card_type_badge = function(self, card, badges)
+      badges[#badges + 1] = create_badge(localize('k_old_lexica'),
+        get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.lexica.text_colour,
+        1.2)
+  end
 }
 
 SMODS.Consumable {
@@ -864,6 +869,11 @@ SMODS.Consumable {
   abn_artist_credits = {
     artist = "Le Ginger"
   },
+  set_card_type_badge = function(self, card, badges)
+      badges[#badges + 1] = create_badge(localize('k_old_lexica'),
+        get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.lexica.text_colour,
+        1.2)
+  end
 }
 
 SMODS.Consumable {
@@ -897,4 +907,88 @@ SMODS.Consumable {
   abn_artist_credits = {
     artist = "Le Ginger"
   },
+  set_card_type_badge = function(self, card, badges)
+      badges[#badges + 1] = create_badge(localize('k_old_lexica'),
+        get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.lexica.text_colour,
+        1.2)
+  end
 }
+
+SMODS.Consumable {
+  key = "v_hook",
+  set = 'lexica',
+  cost = 10,
+  atlas = "abn_AbandoniaLetters",
+  pos = { x = 0, y = 3 },
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS["m_abn_teatag"]
+    info_queue[#info_queue + 1] = G.P_SEALS["abn_violet"]
+    return { vars = { localize { type = 'name_text', set = 'Enhanced', key = "m_abn_teatag" }, localize { type = 'name_text', set = 'Other', key = "abn_violet_seal" } } }
+  end,
+
+  calculate = function(self, card, context)
+    if context.before then
+      local triggered = false
+      for _, scoring_card in ipairs(context.scoring_hand) do
+        if scoring_card:is_suit('abn_Tie') then
+          triggered = true
+          scoring_card:set_seal("abn_violet")
+          scoring_card:set_ability("abn_teatag")
+        end
+      end
+      if triggered then
+        abn_activate_letter(self, card)
+      end
+    end
+  end,
+
+  abn_artist_credits = {
+    artist = "Toyrapple"
+  },
+  set_card_type_badge = function(self, card, badges)
+      badges[#badges + 1] = create_badge(localize('k_old_lexica'),
+        get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.lexica.text_colour,
+        1.2)
+  end
+}
+
+SMODS.Consumable {
+  key = "vend",
+  set = 'lexica',
+  cost = 10,
+  atlas = "abn_AbandoniaLetters",
+  pos = { x = 1, y = 3 },
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS["m_abn_teatag"]
+    info_queue[#info_queue + 1] = G.P_SEALS["abn_brown"]
+    return { vars = { localize { type = 'name_text', set = 'Enhanced', key = "m_abn_teatag" }, localize { type = 'name_text', set = 'Other', key = "abn_brown_seal" } } }
+  end,
+
+  calculate = function(self, card, context)
+    if context.before then
+      local triggered = false
+      for _, scoring_card in ipairs(context.scoring_hand) do
+        if scoring_card:is_suit('abn_Bow') then
+          triggered = true
+          scoring_card:set_seal("abn_brown")
+          scoring_card:set_ability("m_abn_teatag")
+        end
+      end
+      if triggered then
+        abn_activate_letter(self, card)
+      end
+    end
+  end,
+
+  abn_artist_credits = {
+    artist = "Toyrapple"
+  },
+  set_card_type_badge = function(self, card, badges)
+      badges[#badges + 1] = create_badge(localize('k_old_lexica'),
+        get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.lexica.text_colour,
+        1.2)
+  end
+}
+
