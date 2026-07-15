@@ -134,7 +134,15 @@ return {
 					"Upgrade {C:attention}#1#{} selected",
 					"card\'s {C:dark_edition}Edition{}",
         },
-      }
+      },
+      c_abn_bug = {
+        name = "Bug",
+				text = {
+					"{C:red}Disable{} all held {C:tarot}Tarots{} and",
+					"double the selected {C:attention}Joker{}'s",
+          "listed values"
+        },
+      },
     },
     continent = {
       c_abn_africa = {

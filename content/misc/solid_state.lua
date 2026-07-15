@@ -938,76 +938,76 @@ ABN.SolidState {
 local sell_card_ref = Card.sell_card
 
 function Card:sell_card(...)
-    if self.config
-    and self.config.center
-    and self.config.center.set == "Joker" then
-        G.GAME.last_sold_joker = self.config.center.key
-    end
-
-    return sell_card_ref(self, ...)
+  if self.config
+  and self.config.center
+  and self.config.center.set == "Joker" then
+    G.GAME.last_sold_joker = self.config.center.key
+  end
+  
+  return sell_card_ref(self, ...)
 end
 
 ABN.SolidState {
-    key = 'watch_later',
-    pos = { x = 2, y = 2 },
-    use = function(self, card, area, copier)
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.4,
-            func = function()
-                play_sound('timpani')
-                local revived_card = SMODS.add_card({ 
-                  set = 'Joker', 
-                  key = G.GAME.last_sold_joker, 
-                  key_append = "abn_watch_later" , 
-                  edition = "e_negative", 
-                  area = G.jokers
-                })
-                revived_card.sell_cost = 0
-                card:juice_up(0.3, 0.5)
-                return true
-            end
-        }))
-        delay(0.6)
-    end,
-    can_use = function(self, card)
-        return G.jokers and #G.jokers.cards < G.jokers.config.card_limit and G.GAME.last_sold_joker
-    end,
-    loc_vars = function(self, info_queue, card)
-        local joker_info = G.GAME.last_sold_joker and G.P_CENTERS[G.GAME.last_sold_joker] or nil
-        local last_sold_joker = joker_info and localize { type = 'name_text', key = joker_info.key, set = joker_info.set } or
-            localize('k_none')
-        local colour = (not joker_info) and G.C.RED or G.C.GREEN
-        info_queue[#info_queue + 1] = G.P_CENTERS["e_negative"]
-        if not (not joker_info) then
-            info_queue[#info_queue + 1] = joker_info
-        end
-
-        local main_end = {
-            {
-                n = G.UIT.C,
-                config = { align = "bm", padding = 0.02 },
-                nodes = {
-                    {
-                        n = G.UIT.C,
-                        config = { align = "m", colour = colour, r = 0.05, padding = 0.05 },
-                        nodes = {
-                            { n = G.UIT.T, config = { text = ' ' .. last_sold_joker .. ' ', colour = G.C.UI.TEXT_LIGHT, scale = 0.3, shadow = true } },
-                        }
-                    }
-                }
+  key = 'watch_later',
+  pos = { x = 2, y = 2 },
+  use = function(self, card, area, copier)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('timpani')
+        local revived_card = SMODS.add_card({ 
+          set = 'Joker', 
+          key = G.GAME.last_sold_joker, 
+          key_append = "abn_watch_later" , 
+          edition = "e_negative", 
+          area = G.jokers
+        })
+        revived_card.sell_cost = 0
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+    delay(0.6)
+  end,
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.cards < G.jokers.config.card_limit and G.GAME.last_sold_joker
+  end,
+  loc_vars = function(self, info_queue, card)
+    local joker_info = G.GAME.last_sold_joker and G.P_CENTERS[G.GAME.last_sold_joker] or nil
+    local last_sold_joker = joker_info and localize { type = 'name_text', key = joker_info.key, set = joker_info.set } or
+    localize('k_none')
+    local colour = (not joker_info) and G.C.RED or G.C.GREEN
+    info_queue[#info_queue + 1] = G.P_CENTERS["e_negative"]
+    if not (not joker_info) then
+      info_queue[#info_queue + 1] = joker_info
+    end
+    
+    local main_end = {
+      {
+        n = G.UIT.C,
+        config = { align = "bm", padding = 0.02 },
+        nodes = {
+          {
+            n = G.UIT.C,
+            config = { align = "m", colour = colour, r = 0.05, padding = 0.05 },
+            nodes = {
+              { n = G.UIT.T, config = { text = ' ' .. last_sold_joker .. ' ', colour = G.C.UI.TEXT_LIGHT, scale = 0.3, shadow = true } },
             }
+          }
         }
-
-        return { vars = { last_sold_joker }, main_end = main_end }
-    end,
-    in_pool = function(self,args)
-      if G.GAME.last_sold_joker then return true end
-      return false
-    end,
-    abn_artist_credits = {
-      artist = "Toyrapple"
-    },
+      }
+    }
+    
+    return { vars = { last_sold_joker }, main_end = main_end }
+  end,
+  in_pool = function(self,args)
+    if G.GAME.last_sold_joker then return true end
+    return false
+  end,
+  abn_artist_credits = {
+    artist = "Toyrapple"
+  },
 }
 
 ABN.update_table = {
@@ -1020,50 +1020,138 @@ ABN.update_table = {
 }
 
 ABN.SolidState { -- Update
-  key = 'update',
-  pos = { x = 3, y = 2 },
-  config = { max_highlighted = 1},
-  loc_vars = function(self, info_queue, card)
-    local v = {card.ability.max_highlighted or 1}
-    local next_name = nil
+key = 'update',
+pos = { x = 3, y = 2 },
+config = { max_highlighted = 1},
+loc_vars = function(self, info_queue, card)
+  local v = {card.ability.max_highlighted or 1}
+  local next_name = nil
+  
+  if G.hand and #G.hand.highlighted == 1 then
+    local current_key = G.hand.highlighted[1].edition and G.hand.highlighted[1].edition.key or nil
     
-    if G.hand and #G.hand.highlighted == 1 then
-      local current_key = G.hand.highlighted[1].edition and G.hand.highlighted[1].edition.key or nil
-      
-      if current_key and ABN.update_table[current_key] then
-        local info = ABN.update_table[current_key]
-        if info.next then
-          info_queue[#info_queue + 1] = G.P_CENTERS[info.next]
-          
-          next_name = localize { type = 'name_text', set = 'Edition', key = info.next }
-        end
+    if current_key and ABN.update_table[current_key] then
+      local info = ABN.update_table[current_key]
+      if info.next then
+        info_queue[#info_queue + 1] = G.P_CENTERS[info.next]
+        
+        next_name = localize { type = 'name_text', set = 'Edition', key = info.next }
       end
     end
-    local display = next_name or localize('k_none')
-    local colour = (next_name == nil) and G.C.UI.TEXT_INACTIVE or HEX('757CDC')
-    local main_end = {
-      {
-        n = G.UIT.C,
-        config = { align = "bm", padding = 0.02 },
-        nodes = {
-          {
-            n = G.UIT.C,
-            config = { align = "m", colour = colour, r = 0.05, padding = 0.05 },
-            nodes = {
-              { n = G.UIT.T, config = { text = ' ' .. display .. ' ', colour = G.C.UI.TEXT_LIGHT, scale = 0.3, shadow = true } },
-            }
+  end
+  local display = next_name or localize('k_none')
+  local colour = (next_name == nil) and G.C.UI.TEXT_INACTIVE or HEX('757CDC')
+  local main_end = {
+    {
+      n = G.UIT.C,
+      config = { align = "bm", padding = 0.02 },
+      nodes = {
+        {
+          n = G.UIT.C,
+          config = { align = "m", colour = colour, r = 0.05, padding = 0.05 },
+          nodes = {
+            { n = G.UIT.T, config = { text = ' ' .. display .. ' ', colour = G.C.UI.TEXT_LIGHT, scale = 0.3, shadow = true } },
           }
         }
       }
     }
-    
-    if next_name then
-      return {vars = { v[1], display,}, main_end = main_end  }
-    else
-      return { vars = { v[1], "???",}, main_end = main_end  }
-    end
-  end,
+  }
+  
+  if next_name then
+    return {vars = { v[1], display,}, main_end = main_end  }
+  else
+    return { vars = { v[1], "???",}, main_end = main_end  }
+  end
+end,
 
+use = function(self, card, area, copier)
+  G.E_MANAGER:add_event(Event({
+    trigger = 'after',
+    delay = 0.4,
+    func = function()
+      play_sound('tarot1')
+      card:juice_up(0.3, 0.5)
+      return true
+    end
+  }))
+  for i = 1, #G.hand.highlighted do
+    local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        G.hand.highlighted[i]:flip()
+        play_sound('card1', percent)
+        G.hand.highlighted[i]:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+  end
+  delay(0.2)
+  for i = 1, #G.hand.highlighted do
+    local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after', 
+      delay = 0.35,
+      func = function()
+        local current_enh = G.hand.highlighted[i].edition and G.hand.highlighted[i].edition.key or nil
+        local upgrade = G.hand.highlighted[i].edition and ABN.update_table[current_enh] or nil
+        if upgrade then
+          play_sound('tarot2', percent, 0.6)
+          G.hand.highlighted[i]:set_edition(upgrade.next)
+          G.hand.highlighted[i]:juice_up(0.4, 0.4)
+        end
+        return true
+      end
+    }))
+  end
+  delay(0.2)
+  for i = 1, #G.hand.highlighted do
+    local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        G.hand.highlighted[i]:flip()
+        play_sound('tarot2', percent, 0.6)
+        G.hand.highlighted[i]:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+  end
+  G.E_MANAGER:add_event(Event({
+    trigger = 'after',
+    delay = 0.2,
+    func = function()
+      G.hand:unhighlight_all()
+      return true
+    end
+  }))
+  delay(0.5)
+end,
+can_use = function(self, card)
+  if not (G.hand and #G.hand.highlighted > 0 and #G.hand.highlighted <= card.ability.max_highlighted) then
+    return false
+  end
+  
+  for i = 1, #G.hand.highlighted do
+    if G.hand.highlighted[i].edition and ABN.update_table[G.hand.highlighted[i].edition.key] then
+      return true
+    end
+  end
+  
+  return false
+end,
+
+}
+
+ABN.SolidState { 
+  key = 'bug',
+  pos = { x = 2, y = 1 },
+  config = { max_highlighted = 1 }, 
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.max_highlighted } }
+  end,
   use = function(self, card, area, copier)
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
@@ -1074,75 +1162,56 @@ ABN.SolidState { -- Update
         return true
       end
     }))
-    for i = 1, #G.hand.highlighted do
-      local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
-      G.E_MANAGER:add_event(Event({
-        trigger = 'after',
-        delay = 0.15,
-        func = function()
-          G.hand.highlighted[i]:flip()
-          play_sound('card1', percent)
-          G.hand.highlighted[i]:juice_up(0.3, 0.3)
-          return true
-        end
-      }))
-    end
-    delay(0.2)
-    for i = 1, #G.hand.highlighted do
-      local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+    for i = 1, #G.jokers.highlighted do
+      local percent = 0.85 + (i - 0.999) / (#G.jokers.highlighted - 0.998) * 0.3
       G.E_MANAGER:add_event(Event({
         trigger = 'after', 
-        delay = 0.35,
-        func = function()
-          local current_enh = G.hand.highlighted[i].edition and G.hand.highlighted[i].edition.key or nil
-          local upgrade = G.hand.highlighted[i].edition and ABN.update_table[current_enh] or nil
-          if upgrade then
-            play_sound('tarot2', percent, 0.6)
-            G.hand.highlighted[i]:set_edition(upgrade.next)
-            G.hand.highlighted[i]:juice_up(0.4, 0.4)
-          end
-          return true
-        end
-      }))
-    end
-    delay(0.2)
-    for i = 1, #G.hand.highlighted do
-      local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
-      G.E_MANAGER:add_event(Event({
-        trigger = 'after',
         delay = 0.15,
         func = function()
-          G.hand.highlighted[i]:flip()
           play_sound('tarot2', percent, 0.6)
-          G.hand.highlighted[i]:juice_up(0.3, 0.3)
+          if G.jokers.highlighted[i].ability.extra and type(G.jokers.highlighted[i].ability.extra) == "table" then
+            for _, v in pairs(G.jokers.highlighted[i].ability.extra) do
+              if type(v) == "number" and v ~= 0 then
+                G.jokers.highlighted[i].ability.extra[_] = G.jokers.highlighted[i].ability.extra[_] * 2
+              end
+            end
+          end
+          if G.jokers.highlighted[i].ability and type(G.jokers.highlighted[i].ability) == "table" then
+            for _, v in pairs(G.jokers.highlighted[i].ability) do
+              if type(v) == "number" and _ ~= "order" and _ ~= "hands_played_at_create" and v ~= 0 and v ~= 1 then
+                G.jokers.highlighted[i].ability[_] = G.jokers.highlighted[i].ability[_] * 2
+              end
+            end
+          end
+          G.jokers.highlighted[i].sell_cost = G.jokers.highlighted[i].sell_cost * 2
+          play_sound('card1', percent)
+          G.jokers.highlighted[i]:juice_up(0.4, 0.4)
           return true
         end
       }))
     end
+    delay(0.4)
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.2,
       func = function()
-        G.hand:unhighlight_all()
+        G.jokers:unhighlight_all()
         return true
       end
     }))
     delay(0.5)
+    for _, v in pairs(G.I.CARD) do
+        if v.ability and v.ability.set and v.ability.set == "Tarot" then
+            SMODS.debuff_card(v, true, "tarotdebuff")
+            v:juice_up(0.1)
+        end
+    end
   end,
   can_use = function(self, card)
-    if not (G.hand and #G.hand.highlighted > 0 and #G.hand.highlighted <= card.ability.max_highlighted) then
+    if not (G.jokers and #G.jokers.highlighted > 0 and #G.jokers.highlighted <= card.ability.max_highlighted) then
       return false
     end
-    
-    for i = 1, #G.hand.highlighted do
-      if G.hand.highlighted[i].edition and ABN.update_table[G.hand.highlighted[i].edition.key] then
-        return true
-      end
-    end
-    
-    return false
-  end,
-  
+    return true
+  end
 }
-
 
