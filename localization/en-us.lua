@@ -3579,7 +3579,7 @@ return {
           {
             "If played hand is a",
             "{C:attention,s:0.8}#4#{s:0.8} of {C:abn_chalice,s:0.8}Chalices{s:0.8}, scoring cards gain {C:mult,s:0.8}+#3#{s:0.8} Mult",
-            "{C:attention,s:0.8}#4#{s:0.8} of {C:abn_coin,s:0.8}Coins{s:0.8}, scoring cards gain {C:money,s:0.8}$#1#{s:0.8}",
+            "{C:attention,s:0.8}#4#{s:0.8} of {C:abn_coin,s:0.8}Coins{s:0.8}, scoring cards gain {C:money,s:0.8}$#3#{s:0.8}",
             "{C:attention,s:0.8}#4#{s:0.8} of {C:abn_baton,s:0.8}Batons{s:0.8}, scoring cards gain {C:white,X:mult,s:0.8}X#6#{s:0.8} Mult",
             "{C:attention,s:0.8}#4#{s:0.8} of {C:abn_sword,s:0.8}Swords{s:0.8}, scoring cards gain {C:chips,s:0.8}+#5#{s:0.8} Chips",
           }
