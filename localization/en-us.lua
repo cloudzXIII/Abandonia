@@ -887,6 +887,16 @@ return {
       },
     },
     Back = {
+      b_abn_woebegone = {
+        name = "Woebegone Deck",
+        text = {
+          "Start with {C:tarot,T:v_abn_tarot_master}#1#{}",
+          "and a full set of",
+          "{C:abn_chalice}Chalices{}, {C:abn_sword}Swords{},",
+          "{C:abn_baton}Batons{} and {C:abn_coin}Coins{}",
+          "Lose {C:red}$1{} per discard"
+        }
+      },
       b_abn_calamity = {
         name = "Calamity Deck",
         text = {
@@ -966,8 +976,8 @@ return {
       b_abn_PenumbraDeck = {
         name = "Penumbra Deck",
         text = {
-          "Start with a set",
-          "of {C:abn_penumbra}Penumbra{} cards",
+          "Start with an additional",
+          "set of {C:abn_penumbra}Penumbra{} cards",
         }
       },
       b_abn_DarkNebulaDeck = {

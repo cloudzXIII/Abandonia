@@ -1016,3 +1016,56 @@ SMODS.Back {
         end
     end,
 }
+
+SMODS.Back {
+    key = "woebegone",
+    atlas = 'AbandoniaDecks',
+    pos = { x = 1, y = 5 },
+
+    config = {
+        vouchers = { "v_abn_tarot_master" }
+    },
+
+
+    loc_vars = function(self, info_queue, back)
+        return {
+            vars = {
+                localize { type = 'name_text', key = self.config.vouchers[1], set = 'Voucher' },
+            }
+        }
+    end,
+
+    apply = function(self, back)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                for _, playing_card in ipairs(G.playing_cards) do
+                    if playing_card.base.suit == 'Hearts' then
+                        playing_card:change_suit('abn_Chalice')
+                    end
+                    if playing_card.base.suit == 'Diamonds' then
+                        playing_card:change_suit('abn_Baton')
+                    end
+                    if playing_card.base.suit == 'Clubs' then
+                        playing_card:change_suit('abn_Coin')
+                    end
+                    if playing_card.base.suit == 'Spades' then
+                        playing_card:change_suit('abn_Sword')
+                    end
+                end
+                return true
+            end
+        }))
+    end,
+    calculate = function(self, card, context)
+        if context.pre_discard then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.2,
+                func = function()
+                    ease_dollars(-1)
+                    return true
+                end
+            }))
+        end
+    end,
+}
