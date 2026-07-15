@@ -515,7 +515,7 @@ SMODS.Consumable {
   },
 
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_teabag
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_teatag
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_collodion
     return {
       vars = {}
@@ -549,7 +549,7 @@ SMODS.Consumable {
 
     for _, hand_card in ipairs(G.hand.cards) do
       if target_ranks[hand_card.base.value] then
-        hand_card:set_ability("m_abn_teabag")
+        hand_card:set_ability("m_abn_teatag")
         hand_card:set_edition("e_abn_collodion", true)
 
         hand_card:juice_up(0.3, 0.3)

@@ -736,7 +736,7 @@ SMODS.Enhancement({
 })
 
 SMODS.Enhancement({
-  key = "teabag",
+  key = "teatag",
   pos = { x = 3, y = 0 },
   atlas = "AbandoniaEnhancements",
   config = { extra = { hands_remaining = 5, chips = 20 } },
@@ -744,7 +744,7 @@ SMODS.Enhancement({
     local cae = card.ability.extra
     local cuppa = 0
     for _, playing_card in ipairs(G.playing_cards or {}) do
-      if SMODS.has_enhancement(playing_card, 'm_abn_teabag') and playing_card ~= card then cuppa = cuppa + 1 end
+      if SMODS.has_enhancement(playing_card, 'm_abn_teatag') and playing_card ~= card then cuppa = cuppa + 1 end
     end
     return { vars = { cae.chips, cae.hands_remaining, cae.chips * cuppa } }
   end,
@@ -753,7 +753,7 @@ SMODS.Enhancement({
     if context.main_scoring and context.cardarea == G.play then
       local cuppa = 0
       for _, playing_card in ipairs(G.playing_cards) do
-        if SMODS.has_enhancement(playing_card, 'm_abn_teabag') and playing_card ~= card then cuppa = cuppa + 1 end
+        if SMODS.has_enhancement(playing_card, 'm_abn_teatag') and playing_card ~= card then cuppa = cuppa + 1 end
       end
       return {
         chips = cae.chips * cuppa,
@@ -768,7 +768,7 @@ SMODS.Enhancement({
           func = function()
             card:juice_up(0.3, 0.4)
             card:set_ability("m_abn_teastain")
-            card.children.center.teabag_card = false
+            card.children.center.teatag_card = false
             return true
           end
         }))
@@ -780,7 +780,7 @@ SMODS.Enhancement({
   },
   set_sprites = function(self, card, front)
     card.children.center:set_sprite_pos({ x = 2, y = 2 })
-    card.children.center.teabag_card = true
+    card.children.center.teatag_card = true
   end
 })
 
@@ -823,10 +823,10 @@ SMODS.Enhancement({
 
 -- credits to paperback for this, used so the enhancement is drawn on top of the card
 SMODS.DrawStep {
-  key = "teabag",
+  key = "teatag",
   order = 21,
   func = function(self, layer)
-    if self.children.center.teabag_card then
+    if self.children.center.teatag_card then
       self.children.center:set_sprite_pos({ x = 3, y = 2 })
       self.children.center:draw_shader('dissolve')
       self.children.center:set_sprite_pos({ x = 2, y = 2 })

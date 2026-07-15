@@ -120,6 +120,21 @@ return {
           "Gain {C:money}${} equal to their {C:attention}rank{}",
         }
       },
+      c_abn_watch_later = {
+        name = "Watch Later",
+				text = {
+					"Create a {C:dark_edition}Negative{} copy",
+					"of the last sold {C:attention}Joker",
+          "with a {C:money}$0{} sell value"
+        },
+      },
+      c_abn_update = {
+        name = "Update",
+				text = {
+					"Upgrade {C:attention}#1#{} selected",
+					"card\'s {C:dark_edition}Edition{}",
+        },
+      }
     },
     continent = {
       c_abn_africa = {
@@ -600,6 +615,24 @@ return {
           "Next time you play a hand containing",
           "{C:abn_snow}Snows{}, add {C:dark_edition}Collodion{}",
           "to played {C:abn_snow}Snows{}",
+        }
+      },
+      c_abn_v_hook = {
+        name = "V (Hooked)",
+        text = {
+          "Next time you play a hand",
+          "containing {C:abn_tie}Ties{}, add a {C:abn_violet_seal}#2#{}",
+          "and enhance played {C:abn_tie}Ties{}",
+          "to {C:enhanced}#1#s"
+        }
+      },
+      c_abn_vend = {
+        name = "VEND",
+        text = {
+          "Next time you play a hand",
+          "containing {C:abn_bow}Bows{}, add a {C:abn_brown_seal}#2#{}",
+          "and enhance played {C:abn_bow}Bows{}",
+          "to {C:enhanced}#1#s"
         }
       },
     },
@@ -11026,7 +11059,7 @@ return {
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
         }
       },
-      m_abn_teabag = {
+      m_abn_teatag = {
         name = "Tea Tag Card",
         text = {
           "Gives {C:chips}+#1#{} chips per",
@@ -11570,6 +11603,8 @@ return {
       k_abn_tenalp = "Tenalp",
       k_abn_split = "Split Planet",
 
+
+
       -- Consumable Types
       b_weather_report_cards = "Weather Reports",
       k_weather_report = "Weather Report",
@@ -11592,6 +11627,7 @@ return {
 
       b_lexica_cards = "Lexica Cards",
       k_lexica = "Lexica",
+      k_old_lexica = "Old Lexica",
 
       b_continent_cards = "Continent Cards",
       k_continent = "Continent",
