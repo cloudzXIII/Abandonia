@@ -4375,14 +4375,13 @@ return {
         name = "Sailor Joker",
         text = {
           {
-            "Played {C:attention}Wild Cards{} and {C:attention}Bonus Cards",
-            "give {C:chips}+#1#{} Chips when scored",
+            "Played {C:attention}odd{} cards",
+            "give {C:chips}+#1#{} Chips when played",
+            "and unscored"
           },
           {
-            "This Joker gains {C:mult}+#2#{} Mult",
-            "if played hand contains a",
-            "{C:attention}Wild Card{} or {C:attention}Bonus Card",
-            "{C:inactive}(Currently {C:mult}+#3#{} {C:inactive}Mult){}",
+            "Retrigger all",
+            "played {C:attention}Ocean{} cards",
           }
         }
       },
