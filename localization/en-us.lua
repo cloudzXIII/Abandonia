@@ -2285,6 +2285,7 @@ return {
           {
             "This Joker gains {C:mult}+#2#{} Mult if",
             "played hand contains a {C:attention}#4#{}",
+            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
           },
           {
             "If played hand is a",
@@ -3592,6 +3593,7 @@ return {
           {
             "This Joker gains {C:mult}+#2#{} Mult if",
             "played hand contains a {C:attention}#4#{}",
+            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
           },
           {
             "If played hand is a",
