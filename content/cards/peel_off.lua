@@ -26,21 +26,25 @@ SMODS.Joker {
   calculate = function(self, card, context)
     if context.setting_blind then
       local sticker_count, jokers = ABN.count_stickers()
-      for _, v in pairs(jokers or {}) do
-        for key, _ in pairs(SMODS.Sticker.obj_table) do
-          SMODS.Stickers[key]:apply(v, false)
-          v:juice_up()
+      if #jokers > 0 then
+        for _, v in pairs(jokers or {}) do
+          for key, _ in pairs(SMODS.Sticker.obj_table) do
+            SMODS.Stickers[key]:apply(v, false)
+            v:juice_up()
+          end
         end
       end
-      SMODS.scale_card(card, {
-        ref_table = card.ability.extra,
-        ref_value = 'x_mult',
-        scalar_value = 'x_mult_gain',
-        operation = function(ref_table, ref_value, initial, change)
-          ref_table[ref_value] = initial + (sticker_count * change)
-        end,
-        message_key = "a_xmult"
-      })
+      if sticker_count > 0 then
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = 'x_mult',
+          scalar_value = 'x_mult_gain',
+          operation = function(ref_table, ref_value, initial, change)
+            ref_table[ref_value] = initial + (sticker_count * change)
+          end,
+          message_key = "a_xmult"
+        })
+      end
     end
   end,
   abn_artist_credits = {

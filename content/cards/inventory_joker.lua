@@ -14,15 +14,18 @@ SMODS.Joker {
   end,
   calculate = function(self, card, context)
     if context.setting_blind and not context.blueprint and #G.consumeables.cards > 0 then
-      SMODS.scale_card(card, {
-        ref_table = card.ability.extra,
-        ref_value = "chips",
-        scalar_value = "chips_gain",
-        message_key = "a_chips",
-        operation = function(ref_table, ref_value, initial, change)
-          ref_table[ref_value] = initial + #G.consumeables.cards * change
-        end,
-      })
+      local count = #G.consumeables.cards or 0
+      if count > 0 then
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "chips",
+          scalar_value = "chips_gain",
+          message_key = "a_chips",
+          operation = function(ref_table, ref_value, initial, change)
+            ref_table[ref_value] = initial + count * change
+          end,
+        })
+      end
     end
     if context.joker_main then
       return {

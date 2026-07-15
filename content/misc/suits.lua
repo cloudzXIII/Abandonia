@@ -10,8 +10,16 @@ SMODS.Suit {
   ui_pos = { x = 0, y = 0 },
   lc_colour = HEX("5dacdf"),
   in_pool = function(self, args)
-    if args and ((args.rank == '') or (args.initial_deck)) then
-      return false
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_snows)
+          or (sleeve_config and sleeve_config.create_snows)
     else
       return true
     end
@@ -30,8 +38,16 @@ SMODS.Suit {
   ui_pos = { x = 1, y = 0 },
   lc_colour = HEX("8570c7"),
   in_pool = function(self, args)
-    if args and ((args.rank == '') or (args.initial_deck)) then
-      return false
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_penumbras)
+          or (sleeve_config and sleeve_config.create_penumbras)
     else
       return true
     end
@@ -50,8 +66,16 @@ SMODS.Suit {
   ui_pos = { x = 4, y = 0 },
   lc_colour = HEX("8d9fa3"),
   in_pool = function(self, args)
-    if args and ((args.rank == '') or (args.initial_deck)) then
-      return false
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_suitless)
+          or (sleeve_config and sleeve_config.create_suitless)
     else
       return true
     end
@@ -87,8 +111,16 @@ SMODS.Suit {
   ui_pos = { x = 2, y = 0 },
   lc_colour = HEX("82e888"),
   in_pool = function(self, args)
-    if args and ((args.rank == '') or (args.initial_deck)) then
-      return false
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_ties)
+          or (sleeve_config and sleeve_config.create_ties)
     else
       return true
     end
@@ -107,8 +139,16 @@ SMODS.Suit {
   ui_pos = { x = 3, y = 0 },
   lc_colour = HEX("3f2c6d"),
   in_pool = function(self, args)
-    if args and ((args.rank == '') or (args.initial_deck)) then
-      return false
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_bows)
+          or (sleeve_config and sleeve_config.create_bows)
     else
       return true
     end
@@ -127,8 +167,16 @@ SMODS.Suit {
   ui_pos = { x = 1, y = 1 },
   lc_colour = HEX("f0349c"),
   in_pool = function(self, args)
-    if args and ((args.rank == '') or (args.initial_deck)) then
-      return false
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_chalices)
+          or (sleeve_config and sleeve_config.create_chalices)
     else
       return true
     end
@@ -147,8 +195,16 @@ SMODS.Suit {
   ui_pos = { x = 2, y = 1 },
   lc_colour = HEX("3c5168"),
   in_pool = function(self, args)
-    if args and ((args.rank == '') or (args.initial_deck)) then
-      return false
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_swords)
+          or (sleeve_config and sleeve_config.create_swords)
     else
       return true
     end
@@ -167,8 +223,16 @@ SMODS.Suit {
   ui_pos = { x = 0, y = 1 },
   lc_colour = HEX("f0ba3f"),
   in_pool = function(self, args)
-    if args and ((args.rank == '') or (args.initial_deck)) then
-      return false
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_coins)
+          or (sleeve_config and sleeve_config.create_coins)
     else
       return true
     end
@@ -187,8 +251,16 @@ SMODS.Suit {
   ui_pos = { x = 3, y = 1 },
   lc_colour = HEX("235945"),
   in_pool = function(self, args)
-    if args and ((args.rank == '') or (args.initial_deck)) then
-      return false
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_batons)
+          or (sleeve_config and sleeve_config.create_batons)
     else
       return true
     end
@@ -207,8 +279,16 @@ SMODS.Suit {
   ui_pos = { x = 3, y = 1 },
   lc_colour = HEX("395c8b"),
   in_pool = function(self, args)
-    if args and ((args.rank == '') or (args.initial_deck)) then
-      return false
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_shields)
+          or (sleeve_config and sleeve_config.create_shields)
     else
       return true
     end
@@ -227,8 +307,16 @@ SMODS.Suit {
   ui_pos = { x = 3, y = 1 },
   lc_colour = HEX("f2db51"),
   in_pool = function(self, args)
-    if args and ((args.rank == '') or (args.initial_deck)) then
-      return false
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_roses)
+          or (sleeve_config and sleeve_config.create_roses)
     else
       return true
     end
@@ -247,8 +335,16 @@ SMODS.Suit {
   ui_pos = { x = 3, y = 1 },
   lc_colour = HEX("764a76"),
   in_pool = function(self, args)
-    if args and ((args.rank == '') or (args.initial_deck)) then
-      return false
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_leafs) -- should be leaves but keeping it the same as others :p
+          or (sleeve_config and sleeve_config.create_leafs)
     else
       return true
     end
@@ -267,11 +363,18 @@ SMODS.Suit {
   ui_pos = { x = 3, y = 1 },
   lc_colour = HEX("5edb61"),
   in_pool = function(self, args)
-    if args and ((args.rank == '') or (args.initial_deck)) then
-      return false
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_goblets)
+          or (sleeve_config and sleeve_config.create_goblets)
     else
       return true
     end
   end,
 }
-

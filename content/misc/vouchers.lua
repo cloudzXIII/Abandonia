@@ -258,7 +258,7 @@ SMODS.Voucher({
 })
 
 SMODS.Voucher({
-	key = "satelite",
+	key = "satellite",
 	atlas = "AbandoniaVouchers",
 	pos = {
 		x = 3,

@@ -2,9 +2,8 @@ SMODS.Joker {
   key = 'sailor_joker',
 
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_bonus
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
-    return { vars = { card.ability.extra.chips, card.ability.extra.mult_gain, card.ability.extra.mult } }
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_ocean
+    return { vars = { card.ability.extra.chips } }
   end,
 
   rarity = 2,
@@ -14,52 +13,22 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { chips = 40, mult = 0, mult_gain = 1 } },
+  config = { extra = { chips = 9, repetitions = 1 } },
 
   calculate = function(self, card, context)
-    if context.before then
-      local condition = false
-      for _, playing_card in ipairs(context.scoring_hand) do
-        if SMODS.has_enhancement(playing_card, "m_bonus") or SMODS.has_enhancement(playing_card, "m_wild") then
-          condition = true
-        end
-      end
-      if condition then
-        SMODS.scale_card(card, {
-          ref_table = card.ability.extra,
-          ref_value = "mult",
-          scalar_value = "mult_gain",
-          operation = '+',
-        })
-      end
-    end
-    if context.individual and context.cardarea == G.play then
-      if SMODS.has_enhancement(context.other_card, "m_bonus") or SMODS.has_enhancement(context.other_card, "m_wild") then
-        return {
-          chips = card.ability.extra.chips
-        }
-      end
-    end
-    if context.joker_main then
+    if context.individual and context.cardarea == "unscored" and ABN.is_odd(context.other_card) then
       return {
-        mult = card.ability.extra.mult
+        chips = card.ability.extra.chips,
+      }
+    end
+    if context.repetition and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, "m_abn_ocean") then
+      return {
+        repetitions = card.ability.extra.repetitions
       }
     end
   end,
   abn_artist_credits = {
     artist = "Morphine Milkshake",
   },
-  in_pool = function(self, args)
-    local bonus = false
-    local wild = false
-    for _, playing_card in ipairs(G.playing_cards or {}) do
-      if SMODS.has_enhancement(playing_card, "m_bonus") then
-        bonus = true
-      end
-      if SMODS.has_enhancement(playing_card, "m_wild") then
-        wild = true
-      end
-    end
-    return wild and bonus
-  end
+  enhancement_gate = "m_abn_ocean"
 }

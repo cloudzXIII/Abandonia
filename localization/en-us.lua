@@ -920,6 +920,25 @@ return {
       },
     },
     Back = {
+      b_abn_glue_deck = {
+        name = "Glue Deck",
+        text = {
+          "Start run with the",
+          "{C:attention,T:v_abn_gold_tree}#1#{} voucher",
+          "Cards cannot be deselected",
+          "{C:attention}Jokers{} cannot move"
+        }
+      },
+      b_abn_woebegone = {
+        name = "Woebegone Deck",
+        text = {
+          "Start with {C:tarot,T:v_abn_tarot_master}#1#{}",
+          "and a full set of",
+          "{C:abn_chalice}Chalices{}, {C:abn_sword}Swords{},",
+          "{C:abn_baton}Batons{} and {C:abn_coin}Coins{}",
+          "Lose {C:red}$1{} per discard"
+        }
+      },
       b_abn_calamity = {
         name = "Calamity Deck",
         text = {
@@ -977,13 +996,6 @@ return {
           "to be {C:dark_edition}Negative{}",
         }
       },
-      b_abn_CatastropheDeck = {
-        name = "Catastrophe Deck",
-        text = {
-          "Replace all {C:tarot}Tarot{} packs",
-          "with {C:abn_sigil}Sigil{} packs",
-        }
-      },
       b_abn_EvenOddDeck = {
         name = "Even and Odd deck",
         text = {
@@ -995,15 +1007,19 @@ return {
       b_abn_SnowDeck = {
         name = "Snow Deck",
         text = {
-          "Start with a set",
-          "of {C:abn_snow}Snow{} cards",
+          "Start with an additional",
+          "set of {C:abn_snow}Snow{} cards",
+          "and {C:spectral,T:v_omen_globe}#1#{}",
+          "{C:green}#2# in #3#{} chance to convert",
+          "a {C:attention}non-{C:abn_snow}Snow{} card into",
+          "a {C:abn_snow}Snow{} at end of round"
         }
       },
       b_abn_PenumbraDeck = {
         name = "Penumbra Deck",
         text = {
-          "Start with a set",
-          "of {C:abn_penumbra}Penumbra{} cards",
+          "Start with an additional",
+          "set of {C:abn_penumbra}Penumbra{} cards",
         }
       },
       b_abn_DarkNebulaDeck = {
@@ -1088,20 +1104,22 @@ return {
         }
       },
       b_abn_synesthic = {
-        name = "Synesthic Circle",
+        name = "Synesthetic Circle",
         text = {
-          "Start with all suits",
+          "Start with a full set of",
+          "{C:abn_chalice}Chalices{}, {C:abn_baton}Batons{}, {C:abn_coin}Coins{}, {C:abn_sword}Swords{}",
+          "{C:abn_bow}Bows{}, {C:abn_ties}Ties{}, {C:abn_penumbra}Penumbras{} and {C:abn_snow}Snows",
+          "No {C:attention}Face{} cards",
           "{C:attention}+1{} hand selection",
-          "No face cards",
-          "Beating boss blind increases",
-          "blind requirements by {C:white,X:mult}X1.3{}",
+          "Increase {C:attention}blind requirements{} by {C:white,X:mult}X1.3{}",
+          "when {C:attention}Boss Blind{} is defeated"
         }
       },
       b_abn_epoch = {
         name = "New Epoch",
         text = {
-          "Start with all",
-          "{C:attention}Vanilla{} Vouchers",
+          "Start with {C:planet,T:v_abn_satellite}#1#{}",
+          "and {C:sigils,T:v_abn_chaos}#2#{}",
           "{C:chips}Small Blinds{} are now {C:attention}Big Blinds{}",
         }
       },
@@ -2303,6 +2321,24 @@ return {
       },
     },
     Joker = {
+      j_abn_clown_vision = {
+        name = "Clown Vision",
+        text = {
+          {
+            "This Joker gains {C:mult}+#2#{} Mult if",
+            "played hand contains a {C:attention}#4#{}",
+            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+          },
+          {
+            "If played hand is a",
+            "{C:attention,s:0.8}#4#{s:0.8} of {C:abn_chalice,s:0.8}Chalices{s:0.8}, all {C:attention,s:0.8}Jokers{s:0.8} gain {C:mult,s:0.8}+#3#{s:0.8} Mult",
+            "{C:attention,s:0.8}#4#{s:0.8} of {C:abn_coin,s:0.8}Coins{s:0.8}, all {C:attention,s:0.8}Jokers{s:0.8} gain {C:money,s:0.8}$#3#{s:0.8} of sell value",
+            "{C:attention,s:0.8}#4#{s:0.8} of {C:abn_baton,s:0.8}Batons{s:0.8}, {C:green,s:0.8}#6# in #7#{s:0.8} chance to",
+            "{s:0.8}create a random {C:attention,s:0.8}consumable{}",
+            "{C:attention,s:0.8}#4#{s:0.8} of {C:abn_sword,s:0.8}Swords{s:0.8}, all {C:attention,s:0.8}Jokers{s:0.8} gain {C:chips,s:0.8}+#5#{s:0.8} Chips",
+          }
+        }
+      },
       j_abn_zauberer_magicians = {
         name = "Zauberer Magicians",
         text = {
@@ -3597,17 +3633,16 @@ return {
         name = "Alternate Outfit",
         text = {
           {
-            "You may play and discard",
-            "up to {C:attention}6{} cards,",
-          },
-          {
             "This Joker gains {C:mult}+#2#{} Mult if",
-            "played hand is a {C:attention}#4#{}",
+            "played hand contains a {C:attention}#4#{}",
+            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
           },
           {
-            "Played {C:attention}Infra{} cards permanently",
-            "gain {C:money}$#3#{} when scored",
-            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+            "If played hand is a",
+            "{C:attention,s:0.8}#4#{s:0.8} of {C:abn_chalice,s:0.8}Chalices{s:0.8}, scoring cards gain {C:mult,s:0.8}+#3#{s:0.8} Mult",
+            "{C:attention,s:0.8}#4#{s:0.8} of {C:abn_coin,s:0.8}Coins{s:0.8}, scoring cards gain {C:money,s:0.8}$#3#{s:0.8}",
+            "{C:attention,s:0.8}#4#{s:0.8} of {C:abn_baton,s:0.8}Batons{s:0.8}, scoring cards gain {C:white,X:mult,s:0.8}X#6#{s:0.8} Mult",
+            "{C:attention,s:0.8}#4#{s:0.8} of {C:abn_sword,s:0.8}Swords{s:0.8}, scoring cards gain {C:chips,s:0.8}+#5#{s:0.8} Chips",
           }
         }
       },
@@ -3877,9 +3912,16 @@ return {
       j_abn_superhero = {
         name = "Superhero",
         text = {
-          "Each played {C:attention}numbered{} card",
-          "gives their rank",
-          "as {C:chips}Chips{} when scored",
+          {
+            "Each played {C:attention}flipped numbered{} card",
+            "becomes {C:attention}unflipped{} and gives",
+            "their rank as {C:mult}Mult{} when scored",
+          },
+          {
+            "If played hand contains a {C:attention}#1#{}",
+            "containing only {C:attention}face down{} cards,",
+            "create a {C:dark_edition}Negative{} copy of this Joker"
+          }
         }
       },
       j_abn_mardi_gras = {
@@ -4408,14 +4450,13 @@ return {
         name = "Sailor Joker",
         text = {
           {
-            "Played {C:attention}Wild Cards{} and {C:attention}Bonus Cards",
-            "give {C:chips}+#1#{} Chips when scored",
+            "Played {C:attention}odd{} cards",
+            "give {C:chips}+#1#{} Chips when",
+            "played and unscored"
           },
           {
-            "This Joker gains {C:mult}+#2#{} Mult",
-            "if played hand contains a",
-            "{C:attention}Wild Card{} or {C:attention}Bonus Card",
-            "{C:inactive}(Currently {C:mult}+#3#{} {C:inactive}Mult){}",
+            "Retrigger all",
+            "played {C:attention}Ocean{} cards",
           }
         }
       },
@@ -11300,11 +11341,12 @@ return {
       v_abn_cataclysm_globe = {
         name = "Cataclysm Globe",
         text = {
-          "{C:dark_edition}Spectral{} cards always",
-          "show up in {C:tarot}Tarot{} packs"
+          "{C:spectral}Spectral{} cards {C:attention}always",
+          "appear in any of",
+          "the {C:attention}Arcana Packs",
         }
       },
-      v_abn_satelite = {
+      v_abn_satellite = {
         name = "Satellite",
         text = {
           "{C:planet}Planet{} cards in possession",
@@ -11343,15 +11385,19 @@ return {
       v_abn_chaos = {
         name = "Pendulum of Chaos",
         text = {
-          "{C:abn_sigil}Sigil{}, {C:abn_astro}Astro{}, {C:clubs}Solid State{}, {C:abn_nightshift}Nightshift{}, {C:abn_calamity}Calamity{}, and {C:lexica}Lexica",
-          "cards can appear in {C:tarot}Tarot{} packs",
+          "{C:sigils}Sigil{}, {C:astro_cards}Astro{}, {C:solid_state}Solid State{},",
+          " {C:nightshift_cards}Nightshift{}, {C:calamity_cards}Calamity{}, and {C:lexica}Lexica{}",
+          "cards may appear in any of",
+          "the {C:attention}Arcana Packs",
         }
       },
       v_abn_invasion = {
         name = "Parallel Invasion",
         text = {
-          "{C:abn_sigil}Sigil{}, {C:abn_astro}Astro{}, {C:clubs}Solid State{}, {C:abn_nightshift}Nightshift{}, and {C:abn_calamity}Calamity{}",
-          "cards can appear in the shop",
+          "{C:sigils}Sigil{}, {C:astro_cards}Astro{},",
+          "{C:solid_state}Solid State{}, {C:nightshift_cards}Nightshift{},",
+          "and {C:calamity_cards}Calamity{} cards",
+          "may appear in the shop",
         }
       },
     },
@@ -11553,6 +11599,7 @@ return {
       k_abn_unflipped = "Unflipped!",
       k_abn_rental = "Rental!",
       k_abn_oneshot = "Fire!",
+      k_abn_blizzard = "Blizzard!",
       k_abn_comedian = "Comedian",
       k_abn_plagued = "Plagued",
       k_abn_polychrome = "Polychrome!",

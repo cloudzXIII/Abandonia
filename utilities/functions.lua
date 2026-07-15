@@ -55,7 +55,7 @@ end
 
 
 ABN.is_number = function(card)
-  return not card:is_face() and card:get_id() ~= 14
+  return not SMODS.has_no_rank(card) and not card:is_face() and card:get_id() ~= 14
 end
 
 ABN.is_palindrome = function(table)

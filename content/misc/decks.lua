@@ -193,34 +193,6 @@ SMODS.Back {
 
 
 
-SMODS.Back {
-    name = 'Catastrophe Deck',
-    key = 'CatastropheDeck',
-    atlas = 'AbandoniaDecks',
-    pos = { x = 5, y = 0 },
-
-    config = {
-        hand_size = 0
-    },
-
-    calculate = function(self, card, context)
-        -- Check if a booster pack is currently open and has cards
-        if G.shop_booster and G.shop_booster.cards and #G.shop_booster.cards >= 2 then
-            for _, booster_card in ipairs(G.shop_booster.cards) do
-                if booster_card.config.center.key and string.find(booster_card.config.center.key, "arcana") then
-                    booster_card:start_dissolve()
-
-                    local new_card = SMODS.create_card {
-                        key = 'p_abn_sigil_normal_1',
-                        area = G.shop_booster
-                    }
-                    G.shop_booster:emplace(new_card)
-                    create_shop_card_ui(new_card)
-                end
-            end
-        end
-    end
-}
 
 SMODS.Back {
     key = 'EvenOddDeck',
@@ -275,8 +247,24 @@ SMODS.Back {
     pos = { x = 4, y = 2 },
 
     config = {
-        hand_size = 0,
+        vouchers = { "v_omen_globe", },
+        extra = {
+            base = 1,
+            odds = 6,
+        }
     },
+
+    loc_vars = function(self, info_queue, back)
+        local numerator, denominator = SMODS.get_probability_vars(self, self.config.extra.base, self.config.extra.odds)
+        return {
+            vars = {
+                localize { type = 'name_text', key = self.config.vouchers[1], set = 'Voucher' },
+                numerator,
+                denominator
+            }
+        }
+    end,
+
     apply = function(self)
         G.E_MANAGER:add_event(Event({
             func = function()
@@ -301,7 +289,17 @@ SMODS.Back {
                 return true
             end
         }))
-    end
+    end,
+
+    calculate = function(self, card, context)
+        if context.end_of_round and context.main_eval then
+            for _, playing_card in ipairs(G.playing_cards) do
+                if not playing_card.base.suit ~= "abn_Snow" and not SMODS.has_no_suit(playing_card) and SMODS.pseudorandom_probability(card, 'abn_snowdeck', self.config.extra.base, self.config.extra.odds) then
+                    assert(SMODS.change_base(playing_card, "abn_Snow"))
+                end
+            end
+        end
+    end,
 }
 
 SMODS.Back {
@@ -490,7 +488,7 @@ SMODS.Back {
     calculate = function(self, card, context)
         -- boss defeated
         if context.end_of_round and G.GAME.blind.boss
-        and not context.repetition and not context.individual then
+            and not context.repetition and not context.individual then
             self:trigger_suit_change(G.GAME.round_resets.ante)
         end
     end
@@ -777,68 +775,50 @@ SMODS.Back {
 
 SMODS.Back {
     key = 'synesthic',
-    name = "Synesthic Circle",
+    name = "Synesthetic Circle",
     atlas = 'AbandoniaDecks',
     pos = { x = 0, y = 6 },
     config = {
-        hand_size = 0,
+        no_faces = true
+    },
+    abandonia = {
+        create_bows = true,
+        create_ties = true,
+        create_penumbras = true,
+        create_snows = true
     },
 
-    apply = function(self)
+    apply = function(self, back)
         G.E_MANAGER:add_event(Event({
             func = function()
-                SMODS.change_play_limit(1)
-                local suit_map = {
-                    Spades = 'abn_Snow',
-                    Hearts = 'abn_Penumbra',
-                    Diamonds = 'abn_Tie',
-                    Clubs = 'abn_Bow'
-                }
-
+                for _, playing_card in ipairs(G.playing_cards) do
+                    if playing_card.base.suit == 'Hearts' then
+                        playing_card:change_suit('abn_Chalice')
+                    end
+                    if playing_card.base.suit == 'Diamonds' then
+                        playing_card:change_suit('abn_Baton')
+                    end
+                    if playing_card.base.suit == 'Clubs' then
+                        playing_card:change_suit('abn_Coin')
+                    end
+                    if playing_card.base.suit == 'Spades' then
+                        playing_card:change_suit('abn_Sword')
+                    end
+                end
+                return true
+            end
+        }))
+        G.E_MANAGER:add_event(Event({
+            func = function()
                 local original_cards = {}
                 for _, v in pairs(G.playing_cards) do
                     table.insert(original_cards, v)
                 end
-
-                for _, card in ipairs(original_cards) do
-                    if card.base.value == 'Jack' or card.base.value == 'Queen' or card.base.value == 'King' then
-                        card:start_dissolve()
-                        for i, gc in ipairs(G.playing_cards) do
-                            if gc == card then
-                                table.remove(G.playing_cards, i)
-                                break
-                            end
-                        end
-                        G.deck:remove_card(card)
-                        card:remove()
+                for _, v in ipairs(original_cards) do
+                    if v:is_face() then
+                        SMODS.destroy_cards(v)
                     end
                 end
-
-                local remaining_cards = {}
-                for _, v in pairs(G.playing_cards) do
-                    table.insert(remaining_cards, v)
-                end
-
-                for _, card in ipairs(remaining_cards) do
-                    local current_suit = card.base.suit
-                    if suit_map[current_suit] then
-                        local new_card = copy_card(card)
-                        new_card:change_suit(suit_map[current_suit])
-                        new_card:add_to_deck()
-                        G.deck:emplace(new_card)
-                        table.insert(G.playing_cards, new_card)
-
-                        if current_suit == 'Clubs' then
-                            local suitless_card = copy_card(card)
-                            suitless_card:change_suit('abn_suitless')
-                            suitless_card:add_to_deck()
-                            G.deck:emplace(suitless_card)
-                            table.insert(G.playing_cards, suitless_card)
-                        end
-                    end
-                end
-
-                G.deck.config.card_limit = #G.playing_cards
                 return true
             end
         }))
@@ -858,10 +838,18 @@ SMODS.Back {
     pos = { x = 1, y = 6 },
 
     config = {
-        hand_size = 0,
-        vouchers = { "v_antimatter", "v_blank", "v_clearance_sale", "v_crystal_ball", "v_directors_cut", "v_glow_up", "v_grabber", "v_hieroglyph", "v_hone", "v_illusion", "v_liquidation", "v_magic_trick", "v_money_tree", "v_nacho_tong", "v_observatory", "v_omen_globe", "v_overstock_norm", "v_overstock_plus", "v_paint_brush", "v_palette", "v_petroglyph", "v_planet_merchant", "v_planet_tycoon", "v_recyclomancy", "v_reroll_glut", "v_reroll_surplus", "v_retcon", "v_seed_money", "v_tarot_merchant", "v_tarot_tycoon", "v_telescope", "v_wasteful", }
+        vouchers = { "v_abn_satellite", "v_abn_chaos" }
     },
 
+
+    loc_vars = function(self, info_queue, back)
+        return {
+            vars = {
+                localize { type = 'name_text', key = self.config.vouchers[1], set = 'Voucher' },
+                localize { type = 'name_text', key = self.config.vouchers[2], set = 'Voucher' },
+            }
+        }
+    end,
 
     calculate = function(self, card, context)
         if G.GAME.round_resets.blind_choices.Small then
@@ -1007,6 +995,85 @@ SMODS.Back {
                     return true
                 end
             }))
+        end
+    end,
+}
+
+SMODS.Back {
+    key = "woebegone",
+    atlas = 'AbandoniaDecks',
+    pos = { x = 1, y = 5 },
+
+    config = {
+        vouchers = { "v_abn_tarot_master" }
+    },
+
+
+    loc_vars = function(self, info_queue, back)
+        return {
+            vars = {
+                localize { type = 'name_text', key = self.config.vouchers[1], set = 'Voucher' },
+            }
+        }
+    end,
+
+    apply = function(self, back)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                for _, playing_card in ipairs(G.playing_cards) do
+                    if playing_card.base.suit == 'Hearts' then
+                        playing_card:change_suit('abn_Chalice')
+                    end
+                    if playing_card.base.suit == 'Diamonds' then
+                        playing_card:change_suit('abn_Baton')
+                    end
+                    if playing_card.base.suit == 'Clubs' then
+                        playing_card:change_suit('abn_Coin')
+                    end
+                    if playing_card.base.suit == 'Spades' then
+                        playing_card:change_suit('abn_Sword')
+                    end
+                end
+                return true
+            end
+        }))
+    end,
+    calculate = function(self, card, context)
+        if context.pre_discard then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.2,
+                func = function()
+                    ease_dollars(-1)
+                    return true
+                end
+            }))
+        end
+    end,
+}
+
+-- Glue Deck (coded by cloudzXIII)
+SMODS.Back {
+    key = "glue_deck",
+    atlas = 'AbandoniaDecks',
+    pos = { x = 1, y = 4 },
+
+    config = {
+        vouchers = { "v_abn_gold_tree" }
+    },
+
+
+    loc_vars = function(self, info_queue, back)
+        return {
+            vars = {
+                localize { type = 'name_text', key = self.config.vouchers[1], set = 'Voucher' },
+            }
+        }
+    end,
+
+    calculate = function(self, card, context)
+        if context.card_added and context.card.ability.set == "Joker" then
+            context.card:add_sticker("pinned", true)
         end
     end,
 }
