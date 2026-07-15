@@ -3853,9 +3853,16 @@ return {
       j_abn_superhero = {
         name = "Superhero",
         text = {
-          "Each played {C:attention}numbered{} card",
-          "gives their rank",
-          "as {C:chips}Chips{} when scored",
+          {
+            "Each played {C:attention}flipped numbered{} card",
+            "becomes {C:attention}unflipped{} and gives",
+            "their rank as {C:chips}Chips{} when scored",
+          },
+          {
+            "If played hand contains a {C:attention}#1#{}",
+            "containing only {C:attention}face down{} cards,",
+            "create a {C:dark_edition}Negative{} copy of this Joker"
+          }
         }
       },
       j_abn_mardi_gras = {
