@@ -505,7 +505,7 @@ ABN.ContinentCard {
 
 ABN.ContinentCard {
   key = "avalon",
-  pos = { x = 1, y = 0 },
+  pos = { x = 2, y = 0 },
   config = { extra = { mult = 2, chips = 5 } },
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = { key = "abn_shovel", set = "Other", vars = { 2 } }
