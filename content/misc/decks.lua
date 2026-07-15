@@ -490,7 +490,7 @@ SMODS.Back {
     calculate = function(self, card, context)
         -- boss defeated
         if context.end_of_round and G.GAME.blind.boss
-        and not context.repetition and not context.individual then
+            and not context.repetition and not context.individual then
             self:trigger_suit_change(G.GAME.round_resets.ante)
         end
     end
@@ -858,10 +858,17 @@ SMODS.Back {
     pos = { x = 1, y = 6 },
 
     config = {
-        hand_size = 0,
-        vouchers = { "v_antimatter", "v_blank", "v_clearance_sale", "v_crystal_ball", "v_directors_cut", "v_glow_up", "v_grabber", "v_hieroglyph", "v_hone", "v_illusion", "v_liquidation", "v_magic_trick", "v_money_tree", "v_nacho_tong", "v_observatory", "v_omen_globe", "v_overstock_norm", "v_overstock_plus", "v_paint_brush", "v_palette", "v_petroglyph", "v_planet_merchant", "v_planet_tycoon", "v_recyclomancy", "v_reroll_glut", "v_reroll_surplus", "v_retcon", "v_seed_money", "v_tarot_merchant", "v_tarot_tycoon", "v_telescope", "v_wasteful", }
+        vouchers = { "v_abn_satellite", "v_abn_chaos" }
     },
 
+    loc_vars = function(self, info_queue, back)
+        return {
+            vars = {
+                localize { type = 'name_text', key = self.config.vouchers[1], set = 'Voucher' },
+                localize { type = 'name_text', key = self.config.vouchers[2], set = 'Voucher' },
+            }
+        }
+    end,
 
     calculate = function(self, card, context)
         if G.GAME.round_resets.blind_choices.Small then

@@ -1067,8 +1067,8 @@ return {
       b_abn_epoch = {
         name = "New Epoch",
         text = {
-          "Start with all",
-          "{C:attention}Vanilla{} Vouchers",
+          "Start with {C:planet,T:v_abn_satellite}#1#{}",
+          "and {C:sigils,T:v_abn_chaos}#2#{}",
           "{C:chips}Small Blinds{} are now {C:attention}Big Blinds{}",
         }
       },
@@ -11270,7 +11270,7 @@ return {
           "show up in {C:tarot}Tarot{} packs"
         }
       },
-      v_abn_satelite = {
+      v_abn_satellite = {
         name = "Satellite",
         text = {
           "{C:planet}Planet{} cards in possession",
@@ -11309,15 +11309,19 @@ return {
       v_abn_chaos = {
         name = "Pendulum of Chaos",
         text = {
-          "{C:abn_sigil}Sigil{}, {C:abn_astro}Astro{}, {C:clubs}Solid State{}, {C:abn_nightshift}Nightshift{}, {C:abn_calamity}Calamity{}, and {C:lexica}Lexica",
-          "cards can appear in {C:tarot}Tarot{} packs",
+          "{C:sigils}Sigil{}, {C:astro_cards}Astro{},",
+          "{C:solid_state}Solid State{}, {C:nightshift_cards}Nightshift{},",
+          "{C:calamity_cards}Calamity{}, and {C:lexica}Lexica{} cards",
+          "may appear in {C:tarot}Tarot{} packs",
         }
       },
       v_abn_invasion = {
         name = "Parallel Invasion",
         text = {
-          "{C:abn_sigil}Sigil{}, {C:abn_astro}Astro{}, {C:clubs}Solid State{}, {C:abn_nightshift}Nightshift{}, and {C:abn_calamity}Calamity{}",
-          "cards can appear in the shop",
+          "{C:sigils}Sigil{}, {C:astro_cards}Astro{},",
+          "{C:solid_state}Solid State{}, {C:nightshift_cards}Nightshift{},",
+          "and {C:calamity_cards}Calamity{} cards",
+          "may appear in the shop",
         }
       },
     },
