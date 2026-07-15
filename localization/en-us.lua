@@ -970,7 +970,7 @@ return {
           "and {C:spectral,T:v_omen_globe}#1#{}",
           "{C:green}#2# in #3#{} chance to convert",
           "a {C:attention}non-{C:abn_snow}Snow{} card into",
-          "a {C:snow}Snow{} at end of round"
+          "a {C:abn_snow}Snow{} at end of round"
         }
       },
       b_abn_PenumbraDeck = {
