@@ -782,11 +782,21 @@ SMODS.Sticker {
   },
 
   calculate = function(self, card, context)
-    if context.other_joker and context.other_joker:is_rarity("Common") then
-      return {
-        chips = card.ability[self.key].chips
-      }
-    end
+    if context.joker_main then
+			local triggered = false
+			for _, v in ipairs(G.jokers.cards) do
+				if v:is_rarity("Common") then
+						triggered = true
+						SMODS.calculate_effect(
+						{chips = self.config.chips, juice_card = v, message_card = v},
+						card
+					)
+					break
+
+				end
+			end
+			if triggered then return nil, true end
+		end
   end,
 }
 
@@ -808,11 +818,21 @@ SMODS.Sticker {
   },
 
   calculate = function(self, card, context)
-    if context.other_joker and context.other_joker:is_rarity("Uncommon") then
-      return {
-        chips = card.ability[self.key].chips
-      }
-    end
+    if context.joker_main then
+			local triggered = false
+			for _, v in ipairs(G.jokers.cards) do
+				if v:is_rarity("Uncommon") then
+						triggered = true
+						SMODS.calculate_effect(
+						{chips = self.config.chips, juice_card = v, message_card = v},
+						card
+					)
+					break
+
+				end
+			end
+			if triggered then return nil, true end
+		end
   end,
 }
 
@@ -834,11 +854,21 @@ SMODS.Sticker {
   },
 
   calculate = function(self, card, context)
-    if context.other_joker and context.other_joker:is_rarity("Rare") then
-      return {
-        mult = card.ability[self.key].mult
-      }
-    end
+    if context.joker_main then
+			local triggered = false
+			for _, v in ipairs(G.jokers.cards) do
+				if v:is_rarity("Rare") then
+						triggered = true
+						SMODS.calculate_effect(
+						{mult = self.config.mult, juice_card = v, message_card = v},
+						card
+					)
+					break
+
+				end
+			end
+			if triggered then return nil, true end
+		end
   end,
 }
 
@@ -860,11 +890,21 @@ SMODS.Sticker {
   },
 
   calculate = function(self, card, context)
-    if context.other_joker and context.other_joker:is_rarity("abn_SuperRare") then
-      return {
-        mult = card.ability[self.key].mult
-      }
-    end
+    if context.joker_main then
+			local triggered = false
+			for _, v in ipairs(G.jokers.cards) do
+				if v:is_rarity("abn_SuperRare") then
+						triggered = true
+						SMODS.calculate_effect(
+						{mult = self.config.mult, juice_card = v, message_card = v},
+						card
+					)
+					break
+
+				end
+			end
+			if triggered then return nil, true end
+		end
   end,
 }
 
