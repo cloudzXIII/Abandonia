@@ -887,6 +887,14 @@ return {
       },
     },
     Back = {
+      b_abn_glue_deck = {
+        name = "Glue Deck",
+        text = {
+          "Start run with the",
+          "{C:attention,T:v_abn_gold_tree}#1#{} voucher",
+          "Cards cannot be deselected"
+        }
+      },
       b_abn_woebegone = {
         name = "Woebegone Deck",
         text = {
@@ -3873,7 +3881,7 @@ return {
           {
             "Each played {C:attention}flipped numbered{} card",
             "becomes {C:attention}unflipped{} and gives",
-            "their rank as {C:chips}Chips{} when scored",
+            "their rank as {C:mult}Mult{} when scored",
           },
           {
             "If played hand contains a {C:attention}#1#{}",
