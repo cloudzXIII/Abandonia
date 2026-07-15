@@ -944,13 +944,6 @@ return {
           "to be {C:dark_edition}Negative{}",
         }
       },
-      b_abn_CatastropheDeck = {
-        name = "Catastrophe Deck",
-        text = {
-          "Replace all {C:tarot}Tarot{} packs",
-          "with {C:abn_sigil}Sigil{} packs",
-        }
-      },
       b_abn_EvenOddDeck = {
         name = "Even and Odd deck",
         text = {

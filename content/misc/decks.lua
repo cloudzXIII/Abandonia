@@ -193,34 +193,6 @@ SMODS.Back {
 
 
 
-SMODS.Back {
-    name = 'Catastrophe Deck',
-    key = 'CatastropheDeck',
-    atlas = 'AbandoniaDecks',
-    pos = { x = 5, y = 0 },
-
-    config = {
-        hand_size = 0
-    },
-
-    calculate = function(self, card, context)
-        -- Check if a booster pack is currently open and has cards
-        if G.shop_booster and G.shop_booster.cards and #G.shop_booster.cards >= 2 then
-            for _, booster_card in ipairs(G.shop_booster.cards) do
-                if booster_card.config.center.key and string.find(booster_card.config.center.key, "arcana") then
-                    booster_card:start_dissolve()
-
-                    local new_card = SMODS.create_card {
-                        key = 'p_abn_sigil_normal_1',
-                        area = G.shop_booster
-                    }
-                    G.shop_booster:emplace(new_card)
-                    create_shop_card_ui(new_card)
-                end
-            end
-        end
-    end
-}
 
 SMODS.Back {
     key = 'EvenOddDeck',
