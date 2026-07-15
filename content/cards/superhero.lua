@@ -2,6 +2,7 @@ SMODS.Joker {
   key = 'superhero',
 
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
     return { vars = { localize(card.ability.extra.poker_hand, 'poker_hands') } }
   end,
 
