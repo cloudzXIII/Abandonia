@@ -1062,13 +1062,15 @@ return {
         }
       },
       b_abn_synesthic = {
-        name = "Synesthic Circle",
+        name = "Synesthetic Circle",
         text = {
-          "Start with all suits",
+          "Start with a full set of",
+          "{C:abn_chalice}Chalices{}, {C:abn_baton}Batons{}, {C:abn_coin}Coins{}, {C:abn_sword}Swords{}",
+          "{C:abn_bow}Bows{}, {C:abn_ties}Ties{}, {C:abn_penumbra}Penumbras{} and {C:abn_snow}Snows",
+          "No {C:attention}Face{} cards",
           "{C:attention}+1{} hand selection",
-          "No face cards",
-          "Beating boss blind increases",
-          "blind requirements by {C:white,X:mult}X1.3{}",
+          "Increase {C:attention}blind requirements{} by {C:white,X:mult}X1.3{}",
+          "when {C:attention}Boss Blind{} is defeated"
         }
       },
       b_abn_epoch = {

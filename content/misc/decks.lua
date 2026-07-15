@@ -775,68 +775,50 @@ SMODS.Back {
 
 SMODS.Back {
     key = 'synesthic',
-    name = "Synesthic Circle",
+    name = "Synesthetic Circle",
     atlas = 'AbandoniaDecks',
     pos = { x = 0, y = 6 },
     config = {
-        hand_size = 0,
+        no_faces = true
+    },
+    abandonia = {
+        create_bows = true,
+        create_ties = true,
+        create_penumbras = true,
+        create_snows = true
     },
 
-    apply = function(self)
+    apply = function(self, back)
         G.E_MANAGER:add_event(Event({
             func = function()
-                SMODS.change_play_limit(1)
-                local suit_map = {
-                    Spades = 'abn_Snow',
-                    Hearts = 'abn_Penumbra',
-                    Diamonds = 'abn_Tie',
-                    Clubs = 'abn_Bow'
-                }
-
+                for _, playing_card in ipairs(G.playing_cards) do
+                    if playing_card.base.suit == 'Hearts' then
+                        playing_card:change_suit('abn_Chalice')
+                    end
+                    if playing_card.base.suit == 'Diamonds' then
+                        playing_card:change_suit('abn_Baton')
+                    end
+                    if playing_card.base.suit == 'Clubs' then
+                        playing_card:change_suit('abn_Coin')
+                    end
+                    if playing_card.base.suit == 'Spades' then
+                        playing_card:change_suit('abn_Sword')
+                    end
+                end
+                return true
+            end
+        }))
+        G.E_MANAGER:add_event(Event({
+            func = function()
                 local original_cards = {}
                 for _, v in pairs(G.playing_cards) do
                     table.insert(original_cards, v)
                 end
-
-                for _, card in ipairs(original_cards) do
-                    if card.base.value == 'Jack' or card.base.value == 'Queen' or card.base.value == 'King' then
-                        card:start_dissolve()
-                        for i, gc in ipairs(G.playing_cards) do
-                            if gc == card then
-                                table.remove(G.playing_cards, i)
-                                break
-                            end
-                        end
-                        G.deck:remove_card(card)
-                        card:remove()
+                for _, v in ipairs(original_cards) do
+                    if v:is_face() then
+                        SMODS.destroy_cards(v)
                     end
                 end
-
-                local remaining_cards = {}
-                for _, v in pairs(G.playing_cards) do
-                    table.insert(remaining_cards, v)
-                end
-
-                for _, card in ipairs(remaining_cards) do
-                    local current_suit = card.base.suit
-                    if suit_map[current_suit] then
-                        local new_card = copy_card(card)
-                        new_card:change_suit(suit_map[current_suit])
-                        new_card:add_to_deck()
-                        G.deck:emplace(new_card)
-                        table.insert(G.playing_cards, new_card)
-
-                        if current_suit == 'Clubs' then
-                            local suitless_card = copy_card(card)
-                            suitless_card:change_suit('abn_suitless')
-                            suitless_card:add_to_deck()
-                            G.deck:emplace(suitless_card)
-                            table.insert(G.playing_cards, suitless_card)
-                        end
-                    end
-                end
-
-                G.deck.config.card_limit = #G.playing_cards
                 return true
             end
         }))
