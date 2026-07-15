@@ -25,7 +25,7 @@ SMODS.Joker {
       if has_continent then
         local upgraded = false
         for i = 1, #G.hand.cards do
-          if ABN.is_number(G.hand.cards[i]) and not SMODS.has_no_rank(G.hand.cards[i]) then
+          if ABN.is_number(G.hand.cards[i]) then
             SMODS.scale_card(card, {
               ref_table = card.ability.extra,
               ref_value = "chips",
@@ -35,7 +35,7 @@ SMODS.Joker {
             })
             upgraded = true
           end
-          if G.hand.cards[i]:is_face() and not SMODS.has_no_rank(G.hand.cards[i]) then
+          if G.hand.cards[i]:is_face() then
             SMODS.scale_card(card, {
               ref_table = card.ability.extra,
               ref_value = "mult",
