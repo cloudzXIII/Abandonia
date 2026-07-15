@@ -64,7 +64,7 @@ SMODS.Joker {
         -- Retrigger Gold Seals
         if context.repetition and context.cardarea == G.play then
             -- Check for Gold Seal and slot machine
-            if context.other_card.seal == 'Gold' and next(SMODS.find_card("j_abn_slot_machine")) then
+            if context.other_card and context.other_card.seal == 'Gold' and next(SMODS.find_card("j_abn_slot_machine")) then
                 return {
                     message = localize('k_again_ex'),
                     repetitions = 1,
