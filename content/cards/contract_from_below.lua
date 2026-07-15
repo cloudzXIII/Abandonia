@@ -22,7 +22,7 @@ SMODS.Joker {
           local nightshift_pool = {
             "c_abn_furtive",
             "c_abn_intrusion",
-            "c_abn_aparition",
+            "c_abn_apparition",
             "c_abn_smirk",
             "c_abn_observer",
           }

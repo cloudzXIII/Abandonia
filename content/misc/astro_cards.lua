@@ -983,7 +983,7 @@ SMODS.Voucher({
                         "c_abn_eruption", "c_abn_tsunami", "c_abn_cyclone", "c_abn_flood",
                         "c_abn_tremor", "c_abn_avalanche", "c_abn_blizzard", "c_abn_plague",
                         "c_abn_drought", "c_abn_heatwave", "c_abn_humans", "c_abn_heatdeath",
-                        "c_abn_rapture", "c_abn_furtive", "c_abn_intrusion", "c_abn_aparition",
+                        "c_abn_rapture", "c_abn_furtive", "c_abn_intrusion", "c_abn_apparition",
                         "c_abn_bael", "c_abn_botis", "c_abn_vinea", "c_abn_morax", "c_abn_bune",
                         "c_abn_furfur", "c_abn_bifrons", "c_abn_crocell", "c_abn_belial",
                         "c_abn_astaroth", "c_abn_asmodeus", "c_abn_camio", "c_abn_digitization",

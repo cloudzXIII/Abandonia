@@ -164,7 +164,7 @@ SMODS.Consumable {
 }
 
 SMODS.Consumable {
-    key = "aparition",
+    key = "apparition",
     set = "nightshift_cards",
     config = { extra = { odds = 10 } },
     pos = { x = 3, y = 0 },
@@ -190,13 +190,13 @@ SMODS.Consumable {
 
         -- Loop to fill every available slot
         for i = 1, space_available do
-            local new_card = create_card('Spectral', G.consumeables, nil, nil, nil, nil, nil, 'aparition_spawn')
+            local new_card = create_card('Spectral', G.consumeables, nil, nil, nil, nil, nil, 'apparition_spawn')
             new_card:add_to_deck()
             G.consumeables:emplace(new_card)
         end
 
         -- Logic for the rare chance to increase Joker capacity
-        if pseudorandom('aparition') < G.GAME.probabilities.normal / card.ability.extra.odds then
+        if pseudorandom('apparition') < G.GAME.probabilities.normal / card.ability.extra.odds then
             G.jokers.config.card_limit = G.jokers.config.card_limit + 1
         end
     end,

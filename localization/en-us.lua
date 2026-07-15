@@ -10852,8 +10852,8 @@ return {
           "gain {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
         }
       },
-      c_abn_aparition = {
-        name = "Aparition",
+      c_abn_apparition = {
+        name = "Apparition",
         text = {
           "Fill consumable slots",
           "with {C:spectral}Spectral{} cards,",
