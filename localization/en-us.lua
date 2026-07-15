@@ -955,8 +955,12 @@ return {
       b_abn_SnowDeck = {
         name = "Snow Deck",
         text = {
-          "Start with a set",
-          "of {C:abn_snow}Snow{} cards",
+          "Start with an additional",
+          "set of {C:abn_snow}Snow{} cards",
+          "and {C:spectral,T:v_omen_globe}#1#{}",
+          "{C:green}#2# in #3#{} chance to convert",
+          "a {C:attention}non-{C:abn_snow}Snow{} card into",
+          "a {C:snow}Snow{} at end of round"
         }
       },
       b_abn_PenumbraDeck = {
@@ -4369,8 +4373,8 @@ return {
         text = {
           {
             "Played {C:attention}odd{} cards",
-            "give {C:chips}+#1#{} Chips when played",
-            "and unscored"
+            "give {C:chips}+#1#{} Chips when",
+            "played and unscored"
           },
           {
             "Retrigger all",
@@ -11259,8 +11263,9 @@ return {
       v_abn_cataclysm_globe = {
         name = "Cataclysm Globe",
         text = {
-          "{C:dark_edition}Spectral{} cards always",
-          "show up in {C:tarot}Tarot{} packs"
+          "{C:spectral}Spectral{} cards {C:attention}always",
+          "appear in any of",
+          "the {C:attention}Arcana Packs",
         }
       },
       v_abn_satellite = {
@@ -11302,10 +11307,10 @@ return {
       v_abn_chaos = {
         name = "Pendulum of Chaos",
         text = {
-          "{C:sigils}Sigil{}, {C:astro_cards}Astro{},",
-          "{C:solid_state}Solid State{}, {C:nightshift_cards}Nightshift{},",
-          "{C:calamity_cards}Calamity{}, and {C:lexica}Lexica{} cards",
-          "may appear in {C:tarot}Tarot{} packs",
+          "{C:sigils}Sigil{}, {C:astro_cards}Astro{}, {C:solid_state}Solid State{},",
+          " {C:nightshift_cards}Nightshift{}, {C:calamity_cards}Calamity{}, and {C:lexica}Lexica{}",
+          "cards may appear in any of",
+          "the {C:attention}Arcana Packs",
         }
       },
       v_abn_invasion = {
@@ -11516,6 +11521,7 @@ return {
       k_abn_unflipped = "Unflipped!",
       k_abn_rental = "Rental!",
       k_abn_oneshot = "Fire!",
+      k_abn_blizzard = "Blizzard!",
       k_abn_comedian = "Comedian",
       k_abn_plagued = "Plagued",
       k_abn_polychrome = "Polychrome!",

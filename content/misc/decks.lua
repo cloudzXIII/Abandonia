@@ -247,8 +247,24 @@ SMODS.Back {
     pos = { x = 4, y = 2 },
 
     config = {
-        hand_size = 0,
+        vouchers = { "v_omen_globe", },
+        extra = {
+            base = 1,
+            odds = 6,
+        }
     },
+
+    loc_vars = function(self, info_queue, back)
+        local numerator, denominator = SMODS.get_probability_vars(self, self.config.extra.base, self.config.extra.odds)
+        return {
+            vars = {
+                localize { type = 'name_text', key = self.config.vouchers[1], set = 'Voucher' },
+                numerator,
+                denominator
+            }
+        }
+    end,
+
     apply = function(self)
         G.E_MANAGER:add_event(Event({
             func = function()
@@ -273,7 +289,17 @@ SMODS.Back {
                 return true
             end
         }))
-    end
+    end,
+
+    calculate = function(self, card, context)
+        if context.end_of_round and context.main_eval then
+            for _, playing_card in ipairs(G.playing_cards) do
+                if not playing_card.base.suit ~= "abn_Snow" and not SMODS.has_no_suit(playing_card) and SMODS.pseudorandom_probability(card, 'abn_snowdeck', self.config.extra.base, self.config.extra.odds) then
+                    assert(SMODS.change_base(playing_card, "abn_Snow"))
+                end
+            end
+        end
+    end,
 }
 
 SMODS.Back {
@@ -832,6 +858,7 @@ SMODS.Back {
     config = {
         vouchers = { "v_abn_satellite", "v_abn_chaos" }
     },
+
 
     loc_vars = function(self, info_queue, back)
         return {
