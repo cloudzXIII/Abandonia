@@ -892,7 +892,8 @@ return {
         text = {
           "Start run with the",
           "{C:attention,T:v_abn_gold_tree}#1#{} voucher",
-          "Cards cannot be deselected"
+          "Cards cannot be deselected",
+          "{C:attention}Jokers{} cannot move"
         }
       },
       b_abn_woebegone = {

@@ -1051,3 +1051,29 @@ SMODS.Back {
         end
     end,
 }
+
+-- Glue Deck (coded by cloudzXIII)
+SMODS.Back {
+    key = "glue_deck",
+    atlas = 'AbandoniaDecks',
+    pos = { x = 1, y = 4 },
+
+    config = {
+        vouchers = { "v_abn_gold_tree" }
+    },
+
+
+    loc_vars = function(self, info_queue, back)
+        return {
+            vars = {
+                localize { type = 'name_text', key = self.config.vouchers[1], set = 'Voucher' },
+            }
+        }
+    end,
+
+    calculate = function(self, card, context)
+        if context.card_added and context.card.ability.set == "Joker" then
+            context.card:add_sticker("pinned", true)
+        end
+    end,
+}
