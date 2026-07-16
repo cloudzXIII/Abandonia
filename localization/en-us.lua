@@ -138,9 +138,25 @@ return {
       c_abn_bug = {
         name = "Bug",
 				text = {
-					"{C:red}Disable{} all held {C:tarot}Tarots{} and",
-					"double the selected {C:attention}Joker{}'s",
-          "listed values"
+					"Double the selected {C:attention}Joker{}'s",
+          "listed values and apply {C:enhanced}Bugged",
+        },
+      },
+      c_abn_chip = {
+        name = "Chip",
+				text = {
+          {
+            "Add {C:enhanced}Eternal{} and {C:dark_edition}Holographic{} to",
+            "the leftmost Joker",
+            "Add {C:enhanced}Eternal{} and {C:dark_edition}Foil{} to",
+            "the rightmost Joker",
+            "move them both into the",
+            "{C:attention}consumable area{}",
+          },
+          {
+            "{C:red}-1{} shop slot",
+            "{C:red}-1{} hand every round"
+          }
         },
       },
     },
@@ -9911,6 +9927,14 @@ return {
           "{C:attention}Stake{} difficulty",
         }
       },
+      abn_bugged_sticker = {
+        name = "Bugged",
+        text = {
+          "While this sticker is applied,",
+          "all {C:tarot}Tarots{} are {C:red}disabled",
+        }
+      },
+
 
       abn_spade = {
         name = "Spade Sticker",
@@ -11753,6 +11777,7 @@ return {
       abn_rejok_legacy = "Rejok Legacy",
       abn_obmij_legacy = "Obmij Legacy",
       abn_jester_legacy = "Jester Legacy",
+      abn_bugged_sticker = "Bugged",
       abn_currency = "Currency",
       abn_chain = "Chain",
 

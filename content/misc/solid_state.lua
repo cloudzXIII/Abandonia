@@ -1142,7 +1142,52 @@ can_use = function(self, card)
   
   return false
 end,
+abn_artist_credits = {
+    artist = "Toyrapple"
+  },
 
+}
+
+SMODS.Sticker{
+	key = "bugged_sticker",
+	badge_colour = HEX '4BC292',
+	atlas = "AbandoniaStickers",
+  pos = { x = 0, y = 1 },
+	needs_enable_flag = true,
+	sets = {Joker = true},
+	no_collection = true, 
+	config = { },
+	loc_vars = function(self, info_queue, card)
+		return { vars = { } }
+	end,
+	apply = function(self, card, val)
+		card.ability[self.key] = val
+    for _, v in ipairs(G.consumeables.cards) do
+      if v.ability and v.ability.set and v.ability.set == "Tarot" then
+        SMODS.debuff_card(v, val, "tarotdebuff")
+      end
+    end
+	end,
+
+	
+	calculate = function(self, card, context)
+		if context.card_added and context.card.ability and context.card.ability.set and context.card.ability.set == "Tarot" then
+      SMODS.debuff_card(context.card, true, "tarotdebuff")
+    end
+
+    if context.selling_self or ((context.selling_card or context.joker_type_destroyed) and context.card == card) then
+      for _, v in ipairs(G.consumeables.cards) do
+        if v.ability and v.ability.set and v.ability.set == "Tarot" then
+          SMODS.debuff_card(v, false, "tarotdebuff")
+        end
+      end
+    end
+	end,
+
+	draw = function (self, card, layer)
+		G.shared_stickers[self.key].role.draw_major = card
+		G.shared_stickers[self.key]:draw_shader('dissolve', nil, nil, nil, card.children.center)
+	end
 }
 
 ABN.SolidState { 
@@ -1150,6 +1195,7 @@ ABN.SolidState {
   pos = { x = 2, y = 1 },
   config = { max_highlighted = 1 }, 
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = {key = 'abn_bugged_sticker', set = 'Other'}
     return { vars = { card.ability.max_highlighted } }
   end,
   use = function(self, card, area, copier)
@@ -1184,6 +1230,7 @@ ABN.SolidState {
             end
           end
           G.jokers.highlighted[i].sell_cost = G.jokers.highlighted[i].sell_cost * 2
+          G.jokers.highlighted[i]:add_sticker("abn_bugged_sticker", true)
           play_sound('card1', percent)
           G.jokers.highlighted[i]:juice_up(0.4, 0.4)
           return true
@@ -1212,6 +1259,68 @@ ABN.SolidState {
       return false
     end
     return true
-  end
+  end,
+  abn_artist_credits = {
+    artist = "Da Gorbage Rat"
+  },
+}
+
+ABN.SolidState {
+  key = "chip",
+  pos = { x = 5, y = 3 },
+  hidden = true,
+  soul_set = 'solid_state',
+  
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.cards >= 2 and G.jokers.cards[1] and G.jokers.cards[#G.jokers.cards] and G.GAME.round_resets.hands > 1 and #G.consumeables.cards + 1 < G.consumeables.config.card_limit + 1
+  end,
+  
+  use = function(self, card, area, copier)
+    local lm_joker = G.jokers.cards[1]
+    local rm_joker = G.jokers.cards[#G.jokers.cards]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        play_sound('card1', 1)
+        lm_joker:juice_up(0.3, 0.3)
+        rm_joker:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.2,
+      func = function()
+        G.jokers:remove_card(lm_joker)
+        G.jokers:remove_card(rm_joker)
+        
+        G.consumeables:emplace(lm_joker)
+        lm_joker:add_sticker("eternal", true)
+        lm_joker:set_edition("e_holo")
+        G.consumeables:emplace(rm_joker)
+        rm_joker:add_sticker("eternal", true)
+        rm_joker:set_edition("e_foil")
+
+        change_shop_size(-1)
+        
+        
+
+        return true
+      end
+    }))
+    
+    delay(0.5)
+    G.GAME.round_resets.hands = G.GAME.round_resets.hands - 1
+  end,
+  in_pool = function(self,args)
+    if G.jokers and G.jokers.cards >= 2 and G.GAME.round_resets.hands > 1 then return true end
+    return false
+  end,
+  
+  abn_artist_credits = {
+    artist = "Yume"
+  },
 }
 
