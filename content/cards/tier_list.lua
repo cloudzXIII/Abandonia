@@ -212,7 +212,7 @@ SMODS.Joker {
     end
 
     -- Joker retrigger (only once, never self)
-    if context.retrigger_joker_check and not context.retrigger_joker and context.other_card and context.other_card.config.center and context.other_card.config.center.key and context.other_card.config.center.key == 'j_abn_tier_list' then
+    if context.retrigger_joker_check and not context.retrigger_joker and context.other_card and context.other_card.config and context.other_card.config.center and context.other_card.config.center.key and context.other_card.config.center.key == 'j_abn_tier_list' then
       G.GAME.pool_flags.clam = true
       return {
         repetitions = card.ability.extra.repetitions,
