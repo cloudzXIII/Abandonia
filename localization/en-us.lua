@@ -2448,15 +2448,31 @@ return {
       j_abn_mikhail_jester = {
         name = "Mikhail Jester",
         text = {
-          "{C:red}+#1#{} discards",
-          "each round",
+          {
+            "Scored {C:abn_bow}Bows{} give {X:chips,C:white}X#1#{} Chips,",
+            "increases by {X:chips,C:white}X#2#{} Chips",
+            "when a {C:abn_bow}Bow{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "scoring {C:abn_bow}Bows{} permanently gain",
+            "{C:mult}+#3#{} Mult per consumable {C:attention}held{}",
+          }
         },
       },
       j_abn_mitch_jester = {
         name = "Mitch Jester",
         text = {
-          "{C:blue}+#1#{} hands",
-          "each round",
+          {
+            "Scored {C:abn_tie}Ties{} give {X:mult,C:white}X#1#{} Mult,",
+            "increases by {X:mult,C:white}X#2#{} Mult",
+            "when a {C:abn_tie}Tie{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "scoring {C:abn_tie}Ties{} permanently gain",
+            "{C:attention}+#3#{} Retrigger per consumable {C:attention}held{}",
+          }
         },
       },
       j_abn_mateo_mime = {
@@ -6449,7 +6465,8 @@ return {
       j_abn_manga_panel_joker = {
         name = "Manga Panel Joker",
         text = {
-          "Scoring {C:spades}Dark{} Suits give {X:chips,C:white}^#1#{} Chips and {X:mult,C:white}^#2#{} Mult ",
+          "Scoring {C:spades}Dark Suits{} give",
+          "{X:chips,C:white}^#1#{} Chips and {X:mult,C:white}^#2#{} Mult ",
         }
       },
       j_abn_blood_money = {
