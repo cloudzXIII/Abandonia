@@ -33,6 +33,7 @@ ABN.CreditCard = SMODS.Center:extend({
   set = "abn_credit_card",
   atlas = "abn_ABNCredits",
   pos = { x = 0, y = 0 },
+  unlocked = true,
   discovered = true,
   required_params = {
     "key",
@@ -95,6 +96,16 @@ ABN.CreditCard {
 ABN.CreditCard {
   key = "okronix",
   pos = { x = 0, y = 2 },
+}
+ABN.CreditCard {
+  key = "flote",
+  pos = { x = 1, y = 2 },
+  soul_pos = { x = 1, y = 3 },
+}
+ABN.CreditCard {
+  key = "muddz",
+  pos = { x = 1, y = 2 },
+  soul_pos = { x = 1, y = 3 },
 }
 --#endregion
 
@@ -231,11 +242,28 @@ ABN.contributors = {
   {
     key = "credit_abn_okronix",
     name = "0kronix",
-    role = "Art",
+    role = "Artist",
     has_icon = true,
     colour = G.C.GREEN,
     links = {
       { url = "github.com/0kronix", pos = { x = 0, y = 0 }, name = "Github" },
+    }
+  },
+  {
+    key = "credit_abn_flote",
+    name = "Flote",
+    role = "Artist",
+    has_icon = true,
+    colour = G.C.GREEN,
+    links = {
+    }
+  },
+  {
+    key = "credit_abn_muddz",
+    name = "Muddz",
+    role = "Artist",
+    colour = G.C.GREEN,
+    links = {
     }
   },
   {

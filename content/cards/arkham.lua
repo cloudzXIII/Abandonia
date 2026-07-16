@@ -1,5 +1,22 @@
+-- Arkham (coded by cloudzXIII)
+
+function ABN.reset_arkham()
+  G.GAME.current_round.abn_arkham = { suit = 'Hearts' }
+  local valid_arkhams = {}
+  for _, playing_card in ipairs(G.playing_cards) do
+    if not SMODS.has_no_suit(playing_card) then
+      valid_arkhams[#valid_arkhams + 1] = playing_card
+    end
+  end
+  local arkham = pseudorandom_element(valid_arkhams, 'abn_seed' .. G.GAME.round_resets.ante)
+  if arkham then
+    G.GAME.current_round.abn_arkham.suit = arkham.base.suit
+  end
+end
+
 SMODS.Joker {
   key = 'arkham',
+
   loc_txt = {
     ['en-us'] = {
       unlock = {
@@ -7,62 +24,77 @@ SMODS.Joker {
       },
     }
   },
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    info_queue[#info_queue + 1] = G.P_CENTERS.j_joker
+    local arkham = G.GAME.current_round.abn_arkham or { suit = 'Hearts' }
+
+    return {
+      vars = {
+        cae.x_chips,
+        cae.x_chips_gain,
+        cae.mult_gain,
+        cae.chips_gain,
+        localize(arkham.suit, 'suits_plural'),
+        localize(arkham.suit, 'suits_singular'),
+        cae.x_mult,
+        cae.x_mult_gain,
+        colours = { G.C.SUITS[arkham.suit] },
+      }
+    }
+  end,
+
   rarity = 4,
   atlas = 'AbandoniaLegendary',
   pos = { x = 0, y = 7 },
   soul_pos = { x = 1, y = 7 },
-  cost = 20,
+  cost = 10,
   discovered = false,
   blueprint_compat = true,
   unlocked = false,
-  config = { extra = { dollars = 5 } },
+
+  config = { extra = { x_chips = 1.5, x_chips_gain = 0.04, mult_gain = 2, chips_gain = 2, x_mult = 1, x_mult_gain = 0.04 } },
+
+  calculate = function(self, card, context)
+    if context.individual and context.cardarea == G.hand and context.other_card:is_suit(G.GAME.current_round.abn_arkham and G.GAME.current_round.abn_arkham.suit or "Hearts") and not context.blueprint then
+      if next(SMODS.find_card("j_joker")) then
+        context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 1) +
+            card.ability.extra.mult_gain * #G.hand.cards
+        context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 1) +
+            card.ability.extra.chips_gain * #G.hand.cards
+        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, context.other_card)
+      end
+    end
+    if context.individual and context.cardarea == G.play and context.other_card:is_suit(G.GAME.current_round.abn_arkham and G.GAME.current_round.abn_arkham.suit or "Hearts") then
+      if not context.blueprint then
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "x_chips",
+          scalar_value = "x_chips_gain",
+        })
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "x_mult",
+          scalar_value = "x_mult_gain",
+          no_message = true,
+        })
+      end
+      return {
+        x_chips = card.ability.extra.x_chips,
+        x_mult = card.ability.extra.x_mult,
+        card = card,
+      }
+    end
+    if context.after and context.main_eval and not context.blueprint then
+      ABN.reset_arkham()
+    end
+  end,
 
   add_to_deck = function(self, card)
     unlock_card(self)
   end,
 
-  calculate = function(self, card, context)
-    if context.before and not context.blueprint then
-      local evens_count = 0
-      local odds_count = 0
-      local upgraded_ranks = {} 
-
-      -- Count evens and odds
-      for i = 1, #context.scoring_hand do
-        local sc = context.scoring_hand[i]
-        if ABN.is_even(sc) then evens_count = evens_count + 1 end
-        if ABN.is_odd(sc) then odds_count = odds_count + 1 end
-      end
-
-      -- level up
-      for i = 1, #context.scoring_hand do
-        local sc = context.scoring_hand[i]
-        local rank = sc.base.value
-
-        if not upgraded_ranks[rank] then
-          if ABN.is_even(sc) and odds_count > 0 then
-            if G.GAME.abn_rank_upgrades[rank] then
-              ABN.level_up_rank(card, rank, odds_count)
-              upgraded_ranks[rank] = true
-            end
-          elseif ABN.is_odd(sc) and evens_count > 0 then
-            if G.GAME.abn_rank_upgrades[rank] then
-              ABN.level_up_rank(card, rank, evens_count)
-              upgraded_ranks[rank] = true
-            end
-          end
-        end
-      end
-    end
-	
-	if context.joker_main then
-		return {
-			message = "muahahaha",
-		}
-	end
-  end,
-
   abn_artist_credits = {
-    artist = "Camostar34",
+    artist = "Dogg-Fly & Vlambambo",
   },
 }

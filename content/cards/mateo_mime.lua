@@ -12,7 +12,7 @@ SMODS.Joker {
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
     info_queue[#info_queue + 1] = G.P_CENTERS.j_joker
-    return { vars = { cae.x_chips, cae.x_chips_gain, cae.dollars } }
+    return { vars = { cae.x_chips, cae.x_chips_gain } }
   end,
 
   rarity = 4,
@@ -24,15 +24,10 @@ SMODS.Joker {
   blueprint_compat = true,
   unlocked = false,
 
-  config = { extra = { x_chips = 1.5, x_chips_gain = 0.04, dollars = 1 } },
+  config = { extra = { x_chips = 1.5, x_chips_gain = 0.04 } },
 
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and context.other_card.base.suit == "abn_suitless" then
-      if next(SMODS.find_card("j_joker")) then
-        context.other_card.ability.perma_p_dollars = (context.other_card.ability.perma_p_dollars or 0) +
-            (card.ability.extra.dollars * G.GAME.current_round.hands_left)
-        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, context.other_card)
-      end
+    if context.individual and context.cardarea == G.play and context.other_card:is_suit("abn_Coin") then
       if not context.blueprint then
         SMODS.scale_card(card, {
           ref_table = card.ability.extra,
@@ -43,8 +38,16 @@ SMODS.Joker {
       return {
         x_chips = card.ability.extra.x_chips,
         card = card,
-        colour = G.C.CHIPS
+        colour = G.C.MULT
       }
+    end
+    if context.after and next(SMODS.find_card("j_joker")) then
+      for _, scored_card in ipairs(context.scoring_hand) do
+        if scored_card:is_suit("abn_Coin") then
+          card:juice_up(0.3, 0.5)
+          ABN.level_up_rank(scored_card, scored_card.base.value)
+        end
+      end
     end
   end,
 
@@ -53,6 +56,13 @@ SMODS.Joker {
   end,
 
   abn_artist_credits = {
-    artist = "Dogg-Fly",
+    artist = "Qunumeru & Da Gorbage Rat",
   },
+  in_pool = function(self, args)
+    for _, playing in ipairs(G.playing_cards or {}) do
+      if playing:is_suit("abn_Coin") then
+        return true
+      end
+    end
+  end
 }

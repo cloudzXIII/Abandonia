@@ -122,29 +122,29 @@ return {
       },
       c_abn_watch_later = {
         name = "Watch Later",
-				text = {
-					"Create a {C:dark_edition}Negative{} copy",
-					"of the last sold {C:attention}Joker",
+        text = {
+          "Create a {C:dark_edition}Negative{} copy",
+          "of the last sold {C:attention}Joker",
           "with a {C:money}$0{} sell value"
         },
       },
       c_abn_update = {
         name = "Update",
-				text = {
-					"Upgrade {C:attention}#1#{} selected",
-					"card\'s {C:dark_edition}Edition{}",
+        text = {
+          "Upgrade {C:attention}#1#{} selected",
+          "card\'s {C:dark_edition}Edition{}",
         },
       },
       c_abn_bug = {
         name = "Bug",
-				text = {
-					"Double the selected {C:attention}Joker{}'s",
+        text = {
+          "Double the selected {C:attention}Joker{}'s",
           "listed values and apply {C:enhanced}Bugged",
         },
       },
       c_abn_chip = {
         name = "Chip",
-				text = {
+        text = {
           {
             "Add {C:enhanced}Eternal{} and {C:dark_edition}Holographic{} to",
             "the leftmost Joker",
@@ -2416,8 +2416,8 @@ return {
           }
         }
       },
-      j_abn_july_jester = {
-        name = "July Jester",
+      j_abn_klyde_clown = {
+        name = "Klyde Clown",
         text = {
           {
             "Scored {C:abn_coin}Coins{} give {X:mult,C:white}X#1#{} Mult,",
@@ -2459,8 +2459,8 @@ return {
           "each round",
         },
       },
-      j_abn_juliana_jester = {
-        name = "Juliana Jester",
+      j_abn_mateo_mime = {
+        name = "Mateo Mime",
         text = {
           {
             "Scored {C:abn_coin}Coins{} give {X:chips,C:white}X#1#{} Chips,",
@@ -2538,8 +2538,8 @@ return {
           }
         }
       },
-      j_abn_klyde_clown = {
-        name = "Klyde Clown",
+      j_abn_arkham = {
+        name = "Arkham",
         text = {
           {
             "Scored {V:1}#5#{} give {X:chips,C:white}X#1#{} Chips",
@@ -2556,8 +2556,8 @@ return {
           }
         }
       },
-      j_abn_mateo_mime = {
-        name = "Mateo Mime",
+      j_abn_july_jester = {
+        name = "July Jester",
         text = {
           {
             "Scored {C:abn_suitless}Nulls{} give {X:chips,C:white}X#1#{} Chips,",
@@ -6883,21 +6883,6 @@ return {
           "permanently gain {C:mult}+#1#{} Mult",
         }
       },
-      j_abn_arkham = {
-        name = "Arkham",
-        text = {
-          {
-            "Scoring {C:attention}Even{} cards level up",
-            "their {C:planet}planet{} {C:attention}rank{} equal to the",
-            "number of {C:attention}Odd{} scoring cards",
-          },
-          {
-            "Scoring {C:attention}Odd{} cards level up",
-            "their {C:planet}planet{} {C:attention}rank{} equal to the",
-            "number of {C:attention}Even{} scoring cards",
-          }
-        }
-      },
       j_abn_edition_anonymous = {
         name = "Edition Anonymous",
         text = {
@@ -9129,6 +9114,20 @@ return {
           "{C:dark_edition}Deck Sleeves{}"
         }
       },
+      credit_abn_flote = {
+        name = "",
+        text = {
+          "Made some cool",
+          "{C:green}Art{}!",
+        }
+      },
+      credit_abn_muddz = {
+        name = "",
+        text = {
+          "Made some cool",
+          "{C:green}Art{}!",
+        }
+      },
     },
     Other = {
       abn_tsunami_info = {
@@ -9242,6 +9241,15 @@ return {
         text = {
           'Choose {C:attention}#1#{} of up to',
           '{C:attention}#2#{} {C:continent}Continent{} cards'
+        }
+      },
+      undiscovered_solid_state = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
         }
       },
       undiscovered_continent = {
