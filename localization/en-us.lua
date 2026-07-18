@@ -2588,8 +2588,8 @@ return {
           }
         }
       },
-      j_abn_brulio_buffoon = {
-        name = "Brulio Buffoon",
+      j_abn_jenson = {
+        name = "Jenson",
         text = {
           {
             "Scored {C:abn_suitless}Nulls{} give {X:mult,C:white}X#1#{} Mult,",
@@ -2601,6 +2601,21 @@ return {
             "played {C:abn_suitless}Nulls{} permanently",
             "gain {C:mult}+#3#{} Mult per remaining",
             "hand when scored"
+          }
+        }
+      },
+      j_abn_brulio_buffoon = {
+        name = "Brulio Buffoon",
+        text = {
+          {
+            "Scored {C:abn_chalice}Chalices{} give {X:mult,C:white}X#1#{} Mult,",
+            "increases by {X:mult,C:white}X#2#{} Mult",
+            "when a {C:abn_chalice}Chalice{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "played {C:abn_chalice}Chalices{} permanently",
+            "gain {C:mult}+#3#{} Mult per {C:planet}planet{} {C:attention}rank{}",
           }
         }
       },

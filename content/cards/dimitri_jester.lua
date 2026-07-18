@@ -58,4 +58,12 @@ SMODS.Joker {
   abn_artist_credits = {
     artist = "Da Gorbage Rat & Vlambambo, Shinku",
   },
+
+  in_pool = function(self, args)
+    for _, playing in ipairs(G.playing_cards or {}) do
+      if playing:is_suit("Diamonds") then
+        return true
+      end
+    end
+  end
 }

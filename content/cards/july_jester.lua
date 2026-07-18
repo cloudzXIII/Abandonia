@@ -55,4 +55,12 @@ SMODS.Joker {
   abn_artist_credits = {
     artist = "Dogg-Fly",
   },
+
+  in_pool = function(self, args)
+    for _, playing in ipairs(G.playing_cards or {}) do
+      if playing.base.suit == "abn_suitless" then
+        return true
+      end
+    end
+  end
 }

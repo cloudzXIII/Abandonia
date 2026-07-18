@@ -56,4 +56,12 @@ SMODS.Joker {
   abn_artist_credits = {
     artist = "Camostar34",
   },
+
+  in_pool = function(self, args)
+    for _, playing in ipairs(G.playing_cards or {}) do
+      if ABN.is_light(playing) then
+        return true
+      end
+    end
+  end
 }
