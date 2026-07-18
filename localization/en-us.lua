@@ -2614,8 +2614,9 @@ return {
           },
           {
             "If {C:attention}Joker{} is owned,",
-            "played {C:abn_chalice}Chalices{} permanently",
-            "gain {C:mult}+#3#{} Mult per {C:planet}planet{} {C:attention}rank{}",
+            "played {C:abn_chalice}Chalices{} permanently gain",
+            "{C:mult}+#3#{} Mult for every {C:planet}planet{} {C:attention}rank{}",
+            "level on scoring card"
           }
         }
       },
