@@ -2345,6 +2345,38 @@ return {
       },
     },
     Joker = {
+      j_abn_curtis_clown = {
+        name = "Curtis Clown",
+        text = {
+          {
+            "Scored {C:abn_sword}Swords{} give {X:chips,C:white}X#1#{} Chips,",
+            "increases by {X:chips,C:white}X#2#{} Chips",
+            "when a {C:abn_sword}Sword{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "all cards {C:attention}held{} in hand",
+            "permanently gain {C:mult}+#3#{} Mult",
+            "when a {C:abn_sword}Sword{} is scored"
+          }
+        }
+      },
+      j_abn_corbin_clown = {
+        name = "Corbin Clown",
+        text = {
+          {
+            "Scored {C:abn_sword}Swords{} give {X:mult,C:white}X#1#{} Mult,",
+            "increases by {X:mult,C:white}X#2#{} Mult",
+            "when a {C:abn_sword}Sword{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "all cards {C:attention}held{} in hand",
+            "permanently gain {C:chips}+#3#{} Chips",
+            "when a {C:abn_sword}Sword{} is scored"
+          }
+        }
+      },
       j_abn_clown_vision = {
         name = "Clown Vision",
         text = {
