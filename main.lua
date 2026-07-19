@@ -144,6 +144,11 @@ ABN.calculate = function(self, context)
     end
   end
 
+
+  if context.setting_blind then
+    G.GAME.abn.suits_played_this_blind = {}
+  end
+
   if context.individual and context.cardarea == G.play then
     if context.other_card.ability.abn_perma_flipped then
       local target_xmult = 1.25
@@ -163,6 +168,10 @@ ABN.calculate = function(self, context)
     end
     if not G.GAME.abn_13_played_this_run and context.other_card:get_id() == SMODS.Ranks.abn_13.id then
       G.GAME.abn_13_played_this_run = true
+    end
+    if context.other_card.base.suit and not SMODS.has_no_suit(context.other_card) then
+      G.GAME.abn.suits_played_this_blind[context.other_card.base.suit] = (G.GAME.abn.suits_played_this_blind[context.other_card.base.suit] or 0) +
+          1
     end
   end
 
@@ -235,7 +244,7 @@ ABN.calculate = function(self, context)
     G.GAME.abn_has_played_royal_flush = true
   end
 
-  if G.GAME.abn.total_jacks_discarded and context.discard and context.other_card:get_id() == 11 and not SMODS.has_no_suit(context.other_card) and not G.GAME.abn.total_jacks_discarded[context.other_card.base.suit] then
+  if G.GAME.abn.total_jacks_discarded and context.discard and context.other_card:get_id() == 11 and not SMODS.has_no_rank(context.other_card) and not G.GAME.abn.total_jacks_discarded[context.other_card.base.suit] then
     G.GAME.abn.total_jacks_discarded[context.other_card.base.suit] = true
   end
 end

@@ -1,5 +1,104 @@
 return {
   descriptions = {
+    calligraphy = {
+      c_abn_azu = {
+        name = "Azǔ",
+        text = {
+          "Converts the {C:attention}leftmost{}",
+          "card in hand into a",
+          "{C:attention}First Aid{} {V:1}#1#{} card"
+        }
+      },
+      c_abn_buky = {
+        name = "Buky",
+        text = {
+          "Converts the {C:attention}rightmost{}",
+          "card in hand into a",
+          "{C:attention}Gold{} {C:attention}Ace{} of {V:1}#1#{}"
+        }
+      },
+      c_abn_vede = {
+        name = "Vede",
+        text = {
+          "Converts the {C:attention}rightmost{}",
+          "card in hand into a",
+          "{C:attention}Mountain{} {V:1}#1#{} card"
+        }
+      },
+      c_abn_ghe = {
+        name = "Ghe",
+        text = {
+          "Decreases rank of {C:attention}leftmost{}",
+          "card in hand by {C:attention}2",
+        }
+      },
+      c_abn_de = {
+        name = "De",
+        text = {
+          "Converts the {C:attention}rightmost{}",
+          "card in hand into an",
+          "{C:attention}Ocean{} {V:1}#1#{} card"
+        }
+      },
+      c_abn_ye = {
+        name = "Ye",
+        text = {
+          "Converts the {C:attention}leftmost{}",
+          "card in hand into a",
+          "{C:attention}Kintsugi{} {C:attention}4{} of {V:1}#1#{}"
+        }
+      },
+      c_abn_yo = {
+        name = "Yo",
+        text = {
+          "Converts the {C:attention}leftmost{}",
+          "card in hand into a",
+          "{C:attention}Glass{} {C:attention}13{} of {V:1}#1#{}"
+        }
+      },
+      c_abn_zhe = {
+        name = "Zhe",
+        text = {
+          "Converts the {C:attention}rightmost{}",
+          "card in hand into a",
+          "{C:attention}Wallpaper{} {C:attention}12{} of {V:1}#1#{}"
+        }
+      },
+      c_abn_ze = {
+        name = "Ze",
+        text = {
+          "Converts the {C:attention}leftmost{}",
+          "card in hand into a",
+          "{C:attention}Reinforcement{} {C:attention}12{} of {V:1}#1#{}"
+        }
+      },
+      c_abn_i = {
+        name = "I",
+        text = {
+          "Converts all cards in hand",
+          "to the {C:attention}leftmost{} card's {C:attention}suit{}",
+        }
+      },
+      c_abn_ka = {
+        name = "Ka",
+        text = {
+          "{C:attention}Leftmost{} card",
+          "permanently gains {C:chips}+#1#{} Chips",
+          "per card in hand",
+          "with the {C:attention}same suit{}",
+          "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+        }
+      },
+      c_abn_kratkoye = {
+        name = "Kratkoye",
+        text = {
+          "{C:attention}Rightmost{} card",
+          "permanently gains {C:mult}+#1#{} Mult",
+          "per unique {C:attention}suit{} in hand",
+          "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
+        }
+      },
+    },
     solid_state = {
       c_abn_digitization = {
         name = "Digitization",
@@ -2345,6 +2444,38 @@ return {
       },
     },
     Joker = {
+      j_abn_jinxie = {
+        name = "Jinxie",
+        text = {
+          {
+            "Scored {C:abn_rose}Roses{} give {X:mult,C:white}X#1#{} Mult,",
+            "increases by {X:mult,C:white}X#2#{} Mult",
+            "when a {C:abn_rose}Rose{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "scoring {C:abn_rose}Roses{} permanently gain",
+            "{C:mult}+#3#{} Mult for every {C:abn_rose}Rose{}",
+            "{C:abn_rose}Rose{} scored this Blind"
+          }
+        }
+      },
+      j_abn_jennia = {
+        name = "Jennia",
+        text = {
+          {
+            "Scored {C:abn_rose}Roses{} give {X:chips,C:white}X#1#{} Chips,",
+            "increases by {X:chips,C:white}X#2#{} Chips",
+            "when a {C:abn_rose}Rose{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "scoring {C:abn_rose}Roses{} permanently gain",
+            "{C:mult}+#3#{} Mult for every {C:abn_rose}Rose{}",
+            "{C:abn_rose}Rose{} scored this Blind"
+          }
+        }
+      },
       j_abn_curtis_clown = {
         name = "Curtis Clown",
         text = {
@@ -9308,6 +9439,39 @@ return {
           '{C:attention}#2#{} {C:continent}Continent{} cards'
         }
       },
+      p_abn_calligraphy_normal = {
+        name = "Calligraphy Pack",
+        text = {
+          "Choose {C:attention}#1#{} of up to",
+          "{C:attention}#2#{C:calligraphy} Calligraphy{} cards to",
+          "be used immediately",
+        },
+      },
+      p_abn_calligraphy_jumbo = {
+        name = "Jumbo Calligraphy Pack",
+        text = {
+          "Choose {C:attention}#1#{} of up to",
+          "{C:attention}#2#{C:calligraphy} Calligraphy{} cards to",
+          "be used immediately",
+        },
+      },
+      p_abn_calligraphy_mega = {
+        name = "Mega Calligraphy Pack",
+        text = {
+          "Choose {C:attention}#1#{} of up to",
+          "{C:attention}#2#{C:calligraphy} Calligraphy{} cards to",
+          "be used immediately",
+        },
+      },
+      undiscovered_calligraphy = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
+      },
       undiscovered_solid_state = {
         name = "Not Discovered",
         text = {
@@ -11189,6 +11353,43 @@ return {
       },
     },
     Enhanced = {
+      m_abn_wallpaper = {
+        name = "Wallpaper Card",
+        text = {
+          "Gains {C:mult}+#2#{} Mult per {C:attention}seal{}",
+          "in scoring hand, {C:chips}+#4#{} Chips ",
+          "per {C:attention}seal{} held in hand",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#3#{C:inactive} Mult)",
+        }
+      },
+      m_abn_reinforcement = {
+        name = "Reinforcement Card",
+        text = {
+          "{C:mult}+#1#{} Mult, {C:chips}+#2#{} Chips,",
+          "and {C:money}$#3#{} per {C:attention}sticker{}",
+          "among your {C:attention}Jokers{}",
+          "{C:red,E:1,s:0.85}self destructs if Mult is",
+          "{C:red,E:1,s:0.85}greater than Chips after scoring"
+        }
+      },
+      m_abn_kinship = {
+        name = "Kinship Card",
+        text = {
+          "Gains {C:white,X:mult}X#2#{} Mult for every",
+          "card with the same {C:attention}suit{}",
+          "or {C:dark_edition}Edition{} as this card",
+          "{C:inactive}(Currently {C:white,X:mult}X#1#{C:inactive})"
+        }
+      },
+      m_abn_zen = {
+        name = "Zen Card",
+        text = {
+          'When held in hand, {C:mult}+#3#{} Mult,',
+          '{C:mult}+#2#{} more for each other',
+          '{C:attention}Zen{} card held in hand',
+          '{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)'
+        }
+      },
       m_abn_ocean = {
         name = "Ocean Card",
         text = {
@@ -11746,6 +11947,7 @@ return {
       k_abn_chthonian = "Chthonian!",
       k_abn_brewed_ex = "Brewed!",
       k_abn_reduced_ex = "Reduced!",
+      k_tag = "Tag",
 
       abn_hidden_side = "Hidden Scoundral",
       abn_king_side = "King of Jesters",
@@ -11786,7 +11988,9 @@ return {
 
       b_solid_state_cards = "Solid State Cards",
       k_solid_state = "Solid State",
-      k_tag = "Tag",
+
+      b_calligraphy_cards = "Calligraphy Cards",
+      k_calligraphy = "Calligraphy"
     },
     labels = {
       -- Consumable Types
@@ -11799,6 +12003,7 @@ return {
       lexica = "Lexica",
       continent = "Continent",
       solid_state = "Solid State",
+      calligraphy = "Calligraphy",
       -- Editions
       abn_chthonian = "Chthonian",
       abn_iridescent = "Iridescent",

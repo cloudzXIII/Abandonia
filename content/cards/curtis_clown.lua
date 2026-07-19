@@ -55,7 +55,7 @@ SMODS.Joker {
   end,
 
   abn_artist_credits = {
-    artist = " Inky & Nrio",
+    artist = "Inky & Nrio",
   },
 
   in_pool = function(self, args)

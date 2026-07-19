@@ -150,6 +150,19 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+  key = "AbandoniaCalligraphy",
+  path = "calligraphy.png",
+  px = 71,
+  py = 95,
+})
+SMODS.Atlas({
+  key = "AbandoniaCalligraphyPack",
+  path = "caligraphy_booster.png",
+  px = 71,
+  py = 95,
+})
+
+SMODS.Atlas({
   key = "AbandoniaAstro",
   path = "astro.png",
   px = 71,

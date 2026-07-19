@@ -1255,3 +1255,172 @@ SMODS.Enhancement({
     artist = "Shrimpsnail",
   },
 })
+
+SMODS.Enhancement({
+  key = "zen",
+  pos = { x = 1, y = 4 },
+  atlas = "AbandoniaEnhancements",
+  config = { extra = { base_h_mult = 2, h_mult_mod = 1, } },
+  always_scores = true,
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    return { vars = { card.ability.h_mult, cae.h_mult_mod, cae.base_h_mult } }
+  end,
+
+  update = function(self, card, dt)
+    if G.hand and G.hand.cards then
+      local cards = {}
+      for k, v in pairs(G.hand.cards) do
+        if SMODS.get_enhancements(G.hand.cards[k]).m_abn_zen then
+          cards[#cards + 1] = v
+        end
+      end
+      if #cards - 1 >= 0 then
+        card.ability.h_mult = card.ability.extra.base_h_mult + (card.ability.extra.h_mult_mod * (#cards - 1))
+      end
+    else
+      card.ability.h_mult = card.ability.extra.base_h_mult
+    end
+  end,
+
+  abn_artist_credits = {
+    artist = "Shrimpsnail",
+  },
+})
+
+SMODS.Enhancement({
+  key = "kinship",
+  pos = { x = 0, y = 4 },
+  atlas = "AbandoniaEnhancements",
+  config = { extra = { xmult = 1, xmult_gain = 0.1 } },
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    return { vars = { cae.xmult, cae.xmult_gain } }
+  end,
+  calculate = function(self, card, context)
+    if context.before and context.cardarea == G.play then
+      local matching_editions = 0
+      local matching_suits = 0
+      for _, v in ipairs(context.scoring_hand) do
+        if card.edition and v.edition and v.edition.key == card.edition.key then
+          matching_editions = matching_editions + 1
+        end
+
+        if v:is_suit(card.base.suit) then
+          matching_suits = matching_suits + 1
+        end
+      end
+      local total = matching_editions + matching_suits
+      if total > 0 then
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "xmult",
+          scalar_value = "xmult_gain",
+          operation = function(ref_table, ref_value, initial, change)
+            ref_table[ref_value] = initial + total * change
+          end,
+        })
+      end
+    end
+    if context.main_scoring and context.cardarea == G.play then
+      return {
+        mult = card.ability.extra.xmult
+      }
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Shrimpsnail",
+  },
+})
+
+SMODS.Enhancement({
+  key = "reinforcement",
+  pos = { x = 5, y = 2 },
+  atlas = "AbandoniaEnhancements",
+  config = { extra = { chips = 2, mult = 1, dollars = 1 } },
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    return { vars = { cae.mult, cae.chips, cae.dollars } }
+  end,
+  calculate = function(self, card, context)
+    local cae = card.ability.extra
+    if context.main_scoring and context.cardarea == G.play then
+      local count, _ = ABN.count_stickers()
+      if count > 0 then
+        return {
+          mult = cae.mult * count,
+          chips = cae.chips * count,
+          dollars = cae.dollars * count
+        }
+      end
+    end
+    if context.final_scoring_step and hand_chips and mult and mult > hand_chips then
+      SMODS.calculate_effect({ message = localize("k_abn_destroyed"), colour = G.C.RED }, card)
+      SMODS.destroy_cards(card)
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Gud",
+  },
+})
+
+SMODS.Enhancement({
+  key = "wallpaper",
+  pos = { x = 6, y = 2 },
+  atlas = "AbandoniaEnhancements",
+  config = { extra = { mult = 0, mult_gain = 1, chips = 0, chips_gain = 2 } },
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    return { vars = { cae.mult, cae.mult_gain, cae.chips, cae.chips_gain } }
+  end,
+  calculate = function(self, card, context)
+    if context.before and context.cardarea == G.play then
+      local seals_scored = 0
+      local seals_held = 0
+      for _, v in ipairs(context.scoring_hand) do
+        if v.seal then
+          seals_scored = seals_scored + 1
+        end
+      end
+      for _, v in ipairs(G.hand.cards) do
+        if v and v.seal then
+          seals_held = seals_held + 1
+        end
+      end
+      if seals_scored > 0 then
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "mult",
+          scalar_value = "mult_gain",
+          operation = function(ref_table, ref_value, initial, change)
+            ref_table[ref_value] = initial + seals_scored * change
+          end,
+          no_message = true
+        })
+      end
+      if seals_held > 0 then
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "chips",
+          scalar_value = "chips_gain",
+          operation = function(ref_table, ref_value, initial, change)
+            ref_table[ref_value] = initial + seals_scored * change
+          end,
+          no_message = true
+        })
+      end
+      if seals_scored > 0 or seals_held > 0 then
+        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
+      end
+    end
+    if context.main_scoring and context.cardarea == G.play then
+      return {
+        mult = card.ability.extra.mult,
+        chips = card.ability.extra.chips
+      }
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Gud",
+  },
+})
