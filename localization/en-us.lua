@@ -9326,6 +9326,13 @@ return {
       },
     },
     Other = {
+      abn_calligraphy_info = {
+        name = "Calligraphy Card",
+        text = {
+          "{C:red}Cannot{} be used",
+          "during a {C:attention}Blind{}"
+        }
+      },
       abn_tsunami_info = {
         name = "Tsunami",
         text = {
