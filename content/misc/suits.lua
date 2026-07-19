@@ -21,7 +21,7 @@ SMODS.Suit {
       return (back_config and back_config.create_snows)
           or (sleeve_config and sleeve_config.create_snows)
     else
-      return true
+      return false
     end
   end,
 }
@@ -49,7 +49,7 @@ SMODS.Suit {
       return (back_config and back_config.create_penumbras)
           or (sleeve_config and sleeve_config.create_penumbras)
     else
-      return true
+      return false
     end
   end,
 }
@@ -77,7 +77,7 @@ SMODS.Suit {
       return (back_config and back_config.create_suitless)
           or (sleeve_config and sleeve_config.create_suitless)
     else
-      return true
+      return false
     end
   end,
 }
@@ -122,7 +122,7 @@ SMODS.Suit {
       return (back_config and back_config.create_ties)
           or (sleeve_config and sleeve_config.create_ties)
     else
-      return true
+      return false
     end
   end,
 }
@@ -150,7 +150,7 @@ SMODS.Suit {
       return (back_config and back_config.create_bows)
           or (sleeve_config and sleeve_config.create_bows)
     else
-      return true
+      return false
     end
   end,
 }
@@ -178,7 +178,7 @@ SMODS.Suit {
       return (back_config and back_config.create_chalices)
           or (sleeve_config and sleeve_config.create_chalices)
     else
-      return true
+      return false
     end
   end,
 }
@@ -206,7 +206,7 @@ SMODS.Suit {
       return (back_config and back_config.create_swords)
           or (sleeve_config and sleeve_config.create_swords)
     else
-      return true
+      return false
     end
   end,
 }
@@ -234,7 +234,7 @@ SMODS.Suit {
       return (back_config and back_config.create_coins)
           or (sleeve_config and sleeve_config.create_coins)
     else
-      return true
+      return false
     end
   end,
 }
@@ -262,7 +262,7 @@ SMODS.Suit {
       return (back_config and back_config.create_batons)
           or (sleeve_config and sleeve_config.create_batons)
     else
-      return true
+      return false
     end
   end,
 }
@@ -290,7 +290,7 @@ SMODS.Suit {
       return (back_config and back_config.create_shields)
           or (sleeve_config and sleeve_config.create_shields)
     else
-      return true
+      return false
     end
   end,
 }
@@ -318,7 +318,7 @@ SMODS.Suit {
       return (back_config and back_config.create_roses)
           or (sleeve_config and sleeve_config.create_roses)
     else
-      return true
+      return false
     end
   end,
 }
@@ -346,7 +346,7 @@ SMODS.Suit {
       return (back_config and back_config.create_leafs) -- should be leaves but keeping it the same as others :p
           or (sleeve_config and sleeve_config.create_leafs)
     else
-      return true
+      return false
     end
   end,
 }
@@ -374,7 +374,7 @@ SMODS.Suit {
       return (back_config and back_config.create_goblets)
           or (sleeve_config and sleeve_config.create_goblets)
     else
-      return true
+      return false
     end
   end,
 }
