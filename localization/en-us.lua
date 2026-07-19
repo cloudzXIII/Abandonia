@@ -61,7 +61,7 @@ return {
         text = {
           "Converts the {C:attention}rightmost{}",
           "card in hand into a",
-          "{C:attention}Wallpaper{} {C:attention}12{} of {V:1}#1#{}"
+          "{C:attention}Wallpaper{} {C:attention}10{} of {V:1}#1#{}"
         }
       },
       c_abn_ze = {

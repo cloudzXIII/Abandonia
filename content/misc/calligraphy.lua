@@ -472,7 +472,7 @@ ABN.CalligraphyCard {
     }
   end,
 
-  config = { extra = { suit_conv = "abn_Rose", mod_conv = "m_abn_wallpaper", rank = "abn_12" } },
+  config = { extra = { suit_conv = "abn_Rose", mod_conv = "m_abn_wallpaper", rank = "10" } },
   can_use = function(self, card)
     return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
   end,
