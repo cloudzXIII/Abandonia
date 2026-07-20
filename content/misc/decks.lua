@@ -1077,3 +1077,44 @@ SMODS.Back {
         end
     end,
 }
+
+SMODS.Back {
+    key = "das_goodtime",
+    atlas = 'AbandoniaDecks',
+    pos = { x = 4, y = 6 },
+
+    config = { hand_size = 2, },
+
+    loc_vars = function(self, info_queue, back)
+        return {
+            vars = {
+                self.config.hand_size
+            }
+        }
+    end,
+
+    apply = function(self, back)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                for _, playing_card in ipairs(G.playing_cards) do
+                    if playing_card.base.suit == 'Hearts' then
+                        playing_card:change_suit('abn_Florette')
+                    end
+                    if playing_card.base.suit == 'Diamonds' then
+                        playing_card:change_suit('abn_Bell')
+                    end
+                    if playing_card.base.suit == 'Clubs' then
+                        playing_card:change_suit('abn_Acorn')
+                    end
+                    if playing_card.base.suit == 'Spades' then
+                        playing_card:change_suit('abn_Leaf')
+                    end
+                end
+                SMODS.change_discard_limit(-4)
+                return true
+            end
+        }))
+    end,
+    calculate = function(self, card, context)
+    end,
+}

@@ -1083,6 +1083,16 @@ return {
       },
     },
     Back = {
+      b_abn_das_goodtime = {
+        name = "Das Goodtime",
+        text = {
+          "Start with a full set of",
+          "{C:abn_florette}Florettes{}, {C:abn_acorn}Acorns{},",
+          "{C:abn_bell}Bells{} and {C:abn_leaf}Leaves{}",
+          "{C:attention}+#1#{} hand size,",
+          "{C:red}-4{} Discard limit"
+        }
+      },
       b_abn_glue_deck = {
         name = "Glue Deck",
         text = {
