@@ -13,14 +13,29 @@ position = "after"
 payload = '''
 {
 	label = localize('b_abn_planet_ranks'),
+	colour = G.C.SECONDARY_SET.Planet,
 	tab_definition_function = create_UIBox_current_ranks,
 },
 {
 	label = localize('b_abn_sigils'),
+	colour = G.C.SECONDARY_SET.sigils,
 	tab_definition_function = create_UIBox_used_sigils,
 },
 '''
 match_indent = true
+
+# Allow individual tab buttons to be different colours (borrowed from Wormhole)
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''
+tab_buttons[#tab_buttons+1] = UIBox_button({id = 'tab_but_'..(v.label or ''), ref_table = v, button = 'change_tab', label = {v.label}, minh = 0.8*args.scale, minw = 2.5*args.scale, col = true, choice = true, scale = args.text_scale, chosen = v.chosen, func = v.func, colour = args.colour, focus_args = {type = 'none'}})
+'''
+match_indent = true
+position = "at"
+payload = '''
+tab_buttons[#tab_buttons+1] = UIBox_button({id = 'tab_but_'..(v.label or ''), ref_table = v, button = 'change_tab', label = {v.label}, minh = 0.8*args.scale, minw = 2.5*args.scale, col = true, choice = true, scale = args.text_scale, chosen = v.chosen, func = v.func, colour = v.colour or args.colour, focus_args = {type = 'none'}})
+'''
 
 # Add card descriptions for rank levels [1/2]
 [[patches]]
