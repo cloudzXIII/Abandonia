@@ -99,6 +99,7 @@ function SMODS.localize_perma_bonuses(specific_vars, desc_nodes)
   return ret
 end
 
+--#region Spanish Suits
 SMODS.Suit {
   key = 'Tie',
   card_key = 'TI',
@@ -266,7 +267,9 @@ SMODS.Suit {
     end
   end,
 }
+--#endregion
 
+--#region Misc suits
 SMODS.Suit {
   key = 'Shield',
   card_key = 'SH',
@@ -324,34 +327,6 @@ SMODS.Suit {
 }
 
 SMODS.Suit {
-  key = 'Leaf',
-  card_key = 'LE',
-  shade = "dark",
-  lc_atlas = "AbandoniaMoreSuits",
-  hc_atlas = "AbandoniaMoreSuits",
-  lc_ui_atlas = "AbandoniaSuitIcons",
-  hc_ui_atlas = "AbandoniaSuitIcons",
-  pos = { y = 2 },
-  ui_pos = { x = 3, y = 1 },
-  lc_colour = HEX("764a76"),
-  in_pool = function(self, args)
-    if args and args.initial_deck then
-      -- When creating a deck
-      local back = G.GAME.selected_back
-      local back_config = back and back.effect.center.abandonia
-
-      local sleeve = G.GAME.selected_sleeve
-      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
-
-      return (back_config and back_config.create_leafs) -- should be leaves but keeping it the same as others :p
-          or (sleeve_config and sleeve_config.create_leafs)
-    else
-      return false
-    end
-  end,
-}
-
-SMODS.Suit {
   key = 'Goblet',
   card_key = 'GO',
   shade = "light",
@@ -373,6 +348,151 @@ SMODS.Suit {
 
       return (back_config and back_config.create_goblets)
           or (sleeve_config and sleeve_config.create_goblets)
+    else
+      return false
+    end
+  end,
+}
+--#endregion
+
+--AbandoniaGermanSuits
+
+--#region German Suits
+SMODS.Suit {
+  key = 'Florette',
+  card_key = 'FL',
+  shade = "light",
+  lc_atlas = "AbandoniaGermanSuits",
+  hc_atlas = "AbandoniaGermanSuits",
+  lc_ui_atlas = "AbandoniaSuitIcons",
+  hc_ui_atlas = "AbandoniaSuitIcons",
+  pos = { y = 0 },
+  ui_pos = { x = 3, y = 2 },
+  lc_colour = HEX("c2413a"),
+  in_pool = function(self, args)
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_swords)
+          or (sleeve_config and sleeve_config.create_swords)
+    else
+      return false
+    end
+  end,
+}
+
+SMODS.Suit {
+  key = 'Acorn',
+  card_key = 'ACOR',
+  shade = "dark",
+  lc_atlas = "AbandoniaGermanSuits",
+  hc_atlas = "AbandoniaGermanSuits",
+  lc_ui_atlas = "AbandoniaSuitIcons",
+  hc_ui_atlas = "AbandoniaSuitIcons",
+  pos = { y = 1 },
+  ui_pos = { x = 0, y = 2 },
+  lc_colour = HEX("b95130"),
+  in_pool = function(self, args)
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_swords)
+          or (sleeve_config and sleeve_config.create_swords)
+    else
+      return false
+    end
+  end,
+}
+
+SMODS.Suit {
+  key = 'Acorn',
+  card_key = 'ACOR',
+  shade = "dark",
+  lc_atlas = "AbandoniaGermanSuits",
+  hc_atlas = "AbandoniaGermanSuits",
+  lc_ui_atlas = "AbandoniaSuitIcons",
+  hc_ui_atlas = "AbandoniaSuitIcons",
+  pos = { y = 1 },
+  ui_pos = { x = 0, y = 2 },
+  lc_colour = HEX("b95130"),
+  in_pool = function(self, args)
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_swords)
+          or (sleeve_config and sleeve_config.create_swords)
+    else
+      return false
+    end
+  end,
+}
+
+SMODS.Suit {
+  key = 'Bell',
+  card_key = 'BELL',
+  shade = "light",
+  lc_atlas = "AbandoniaGermanSuits",
+  hc_atlas = "AbandoniaGermanSuits",
+  lc_ui_atlas = "AbandoniaSuitIcons",
+  hc_ui_atlas = "AbandoniaSuitIcons",
+  pos = { y = 2 },
+  ui_pos = { x = 1, y = 2 },
+  lc_colour = HEX("d9a345"),
+  in_pool = function(self, args)
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_swords)
+          or (sleeve_config and sleeve_config.create_swords)
+    else
+      return false
+    end
+  end,
+}
+
+
+SMODS.Suit {
+  key = 'Leaf',
+  card_key = 'LE',
+  shade = "dark",
+  lc_atlas = "AbandoniaGermanSuits",
+  hc_atlas = "AbandoniaGermanSuits",
+  lc_ui_atlas = "AbandoniaSuitIcons",
+  hc_ui_atlas = "AbandoniaSuitIcons",
+  pos = { y = 3 },
+  ui_pos = { x = 2, y = 2 },
+  lc_colour = HEX("4d7968"),
+  in_pool = function(self, args)
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_leafs) -- should be leaves but keeping it the same as others :p
+          or (sleeve_config and sleeve_config.create_leafs)
     else
       return false
     end

@@ -98,6 +98,46 @@ return {
           "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
         }
       },
+      c_abn_el = {
+        name = "El",
+        text = {
+          "Converts the {C:attention}rightmost{}",
+          "card in hand into a",
+          "{C:attention}Hot Iron{} {V:1}#1#{} card"
+        }
+      },
+      c_abn_em = {
+        name = "Em",
+        text = {
+          "Converts the {C:attention}leftmost{}",
+          "card in hand into a",
+          "{C:attention}Zen{} {C:attention}8{} of {V:1}#1#{}"
+        }
+      },
+      c_abn_en = {
+        name = "En",
+        text = {
+          "Converts the {C:attention}rightmost{}",
+          "card in hand into a",
+          "{C:attention}Mountain{} {C:attention}Ace{} of {V:1}#1#{}"
+        }
+      },
+      c_abn_o_cal = { -- its o_cal cause theres already c_abn_o for lexica cards
+        name = "O",
+        text = {
+          "{C:attention}Leftmost{} card in hand",
+          "permanently gains {C:attention}triple{} it's",
+          "{C:attention}rank{} as {C:chips}Chips{} if it's below {C:attention}5{}"
+        }
+      },
+      c_abn_pe = {
+        name = "Pe",
+        text = {
+          "Converts the {C:attention}rightmost{}",
+          "card in hand into a",
+          "{C:attention}Kinship{} {C:attention}Ace{} of {V:1}#1#{}"
+        }
+      },
     },
     solid_state = {
       c_abn_digitization = {
@@ -12104,9 +12144,11 @@ return {
       abn_Baton = "Baton",
       abn_Shield = "Shield",
       abn_Rose = "Rose",
-      abn_Leaf = "Leaf",
       abn_Goblet = "Goblet",
-
+      abn_Florette = "Florette",
+      abn_Acorn = "Acorn",
+      abn_Bell = "Bell",
+      abn_Leaf = "Leaf",
     },
 
     suits_plural = {
@@ -12121,8 +12163,11 @@ return {
       abn_Baton = "Batons",
       abn_Shield = "Shields",
       abn_Rose = "Roses",
-      abn_Leaf = "Leafs",
       abn_Goblet = "Goblets",
+      abn_Florette = "Florettes",
+      abn_Acorn = "Acorns",
+      abn_Bell = "Bells",
+      abn_Leaf = "Leaves",
     },
     poker_hands = {
       ['abn_Spectrum'] = "Spectrum",

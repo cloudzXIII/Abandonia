@@ -798,3 +798,300 @@ ABN.CalligraphyCard {
   end,
 
 }
+
+
+ABN.CalligraphyCard {
+  key = "el",
+  pos = { x = 0, y = 2 },
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.extra.mod_conv]
+    return {
+      vars = {
+
+        localize(card.ability.extra.suit_conv, 'suits_singular'),
+        colours = { G.C.SUITS[card.ability.extra.suit_conv] }
+      }
+    }
+  end,
+
+  config = { extra = { suit_conv = "abn_Bell", mod_conv = "m_abn_hot_iron", } },
+  can_use = function(self, card)
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+  end,
+
+  use = function(self, card, area, copier)
+    local rightmost = G.hand.cards[#G.hand.cards]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        rightmost:flip()
+        play_sound('card1', 1)
+        rightmost:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      func = function()
+        SMODS.change_base(rightmost, card.ability.extra.suit_conv)
+        rightmost:set_ability(card.ability.extra.mod_conv)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        rightmost:flip()
+        play_sound('tarot2', 1, 0.6)
+        rightmost:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    delay(0.5)
+  end,
+
+}
+
+
+ABN.CalligraphyCard {
+  key = "em",
+  pos = { x = 1, y = 2 },
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.extra.mod_conv]
+    return {
+      vars = {
+
+        localize(card.ability.extra.suit_conv, 'suits_plural'),
+        colours = { G.C.SUITS[card.ability.extra.suit_conv] }
+      }
+    }
+  end,
+
+  config = { extra = { suit_conv = "abn_Leaf", mod_conv = "m_abn_zen", rank = "8" } },
+  can_use = function(self, card)
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+  end,
+
+  use = function(self, card, area, copier)
+    local leftmost = G.hand.cards[1]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        leftmost:flip()
+        play_sound('card1', 1)
+        leftmost:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      func = function()
+        SMODS.change_base(leftmost, card.ability.extra.suit_conv, card.ability.extra.rank)
+        leftmost:set_ability(card.ability.extra.mod_conv)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        leftmost:flip()
+        play_sound('tarot2', 1, 0.6)
+        leftmost:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    delay(0.5)
+  end,
+
+}
+
+ABN.CalligraphyCard {
+  key = "en",
+  pos = { x = 2, y = 2 },
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.extra.mod_conv]
+    return {
+      vars = {
+
+        localize(card.ability.extra.suit_conv, 'suits_plural'),
+        colours = { G.C.SUITS[card.ability.extra.suit_conv] }
+      }
+    }
+  end,
+
+  config = { extra = { suit_conv = "abn_Florette", mod_conv = "m_abn_mountain", rank = "Ace" } },
+  can_use = function(self, card)
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+  end,
+
+  use = function(self, card, area, copier)
+    local rightmost = G.hand.cards[#G.hand.cards]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        rightmost:flip()
+        play_sound('card1', 1)
+        rightmost:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      func = function()
+        SMODS.change_base(rightmost, card.ability.extra.suit_conv, card.ability.extra.rank)
+        rightmost:set_ability(card.ability.extra.mod_conv)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        rightmost:flip()
+        play_sound('tarot2', 1, 0.6)
+        rightmost:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    delay(0.5)
+  end,
+
+}
+
+ABN.CalligraphyCard {
+  key = "o_cal",
+  pos = { x = 3, y = 2 },
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+      }
+    }
+  end,
+
+  config = { extra = { amount = 3 } },
+  can_use = function(self, card)
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind and G.hand.cards[1]:get_id() < 5
+  end,
+
+  use = function(self, card, area, copier)
+    local leftmost = G.hand.cards[1]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        leftmost.ability.perma_bonus = (leftmost.ability.perma_bonus or 0) +
+            (leftmost.base.nominal * card.ability.extra.amount)
+        SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, leftmost)
+        return true
+      end
+    }))
+    delay(0.2)
+  end,
+
+}
+
+ABN.CalligraphyCard {
+  key = "pe",
+  pos = { x = 5, y = 2 },
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.extra.mod_conv]
+    return {
+      vars = {
+
+        localize(card.ability.extra.suit_conv, 'suits_plural'),
+        colours = { G.C.SUITS[card.ability.extra.suit_conv] }
+      }
+    }
+  end,
+
+  config = { extra = { suit_conv = "abn_Acorn", mod_conv = "m_abn_kinship", rank = "Ace" } },
+  can_use = function(self, card)
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+  end,
+
+  use = function(self, card, area, copier)
+    local rightmost = G.hand.cards[#G.hand.cards]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        rightmost:flip()
+        play_sound('card1', 1)
+        rightmost:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      func = function()
+        SMODS.change_base(rightmost, card.ability.extra.suit_conv, card.ability.extra.rank)
+        rightmost:set_ability(card.ability.extra.mod_conv)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        rightmost:flip()
+        play_sound('tarot2', 1, 0.6)
+        rightmost:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    delay(0.5)
+  end,
+
+}
