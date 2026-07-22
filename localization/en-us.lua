@@ -10479,13 +10479,17 @@ return {
       e_abn_bright = {
         name = "Bright",
         text = {
-          "{C:chips}+#1#{} Chips {C:mult}+#2#{} Mult per scoring {C:diamonds}Light Suit{} {C:planet}planet{} {C:attention}rank{}"
+          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+          "per {C:planet}planet{} {C:attention}rank{}",
+          "in scoring {C:diamonds}Light Suits{}"
         }
       },
       e_abn_dark = {
         name = "Opaque",
         text = {
-          "{C:chips}+#1#{} Chips {C:mult}+#2#{} Mult per scoring {C:spades}Dark Suit{} {C:planet}planet{} {C:attention}rank{}"
+          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+          "per {C:planet}planet{} {C:attention}rank{}",
+          "in scoring {C:spades}Dark Suits{}"
         }
       },
     },
@@ -12075,7 +12079,7 @@ return {
       abn_collodion = "Collodion",
       abn_vintage = "Vintage",
       abn_bright = "Bright",
-      abn_dark = "Dark",
+      abn_dark = "Opaque",
 
       -- STICKERS
       abn_pump_up = "Pump Up",
