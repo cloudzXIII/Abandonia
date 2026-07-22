@@ -10034,6 +10034,23 @@ return {
         }
       },
 
+      abn_aim = {
+        name = "Aim",
+        text = {
+          'Moves position after',
+          'each {C:blue}hand',
+          "Position cannot be",
+          "manually changed"
+        }
+      },
+
+      abn_stinker = {
+        name = "Stinker",
+        text = {
+          "While this sticker is applied,",
+          "all {C:spectral}Spectral{} are {C:red}disabled",
+        }
+      },
       abn_honor_sticker = {
         name = "Honor Jimbo",
         text = {
@@ -12119,6 +12136,8 @@ return {
       abn_bugged_sticker = "Bugged",
       abn_currency = "Currency",
       abn_chain = "Chain",
+      abn_aim = "Aim",
+      abn_stinker = "Stinker",
 
       -- Seals
       abn_orange_seal = "Orange Seal",

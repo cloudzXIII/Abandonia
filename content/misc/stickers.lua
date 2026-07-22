@@ -244,7 +244,7 @@ SMODS.Sticker {
   },
   calculate = function(self, card, context)
     if context.destroy_card and context.cardarea == G.play and context.destroy_card == card and
-    SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
+        SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
       card.glass_trigger = true
       return { remove = true }
     end
@@ -483,7 +483,7 @@ SMODS.Sticker {
   },
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and
-    SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
+        SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
       return {
         mult = card.ability[self.key].dollars
       }
@@ -783,20 +783,19 @@ SMODS.Sticker {
 
   calculate = function(self, card, context)
     if context.joker_main then
-			local triggered = false
-			for _, v in ipairs(G.jokers.cards) do
-				if v:is_rarity("Common") then
-						triggered = true
-						SMODS.calculate_effect(
-						{chips = self.config.chips, juice_card = v, message_card = v},
-						card
-					)
-					break
-
-				end
-			end
-			if triggered then return nil, true end
-		end
+      local triggered = false
+      for _, v in ipairs(G.jokers.cards) do
+        if v:is_rarity("Common") then
+          triggered = true
+          SMODS.calculate_effect(
+            { chips = self.config.chips, juice_card = v, message_card = v },
+            card
+          )
+          break
+        end
+      end
+      if triggered then return nil, true end
+    end
   end,
 }
 
@@ -819,20 +818,19 @@ SMODS.Sticker {
 
   calculate = function(self, card, context)
     if context.joker_main then
-			local triggered = false
-			for _, v in ipairs(G.jokers.cards) do
-				if v:is_rarity("Uncommon") then
-						triggered = true
-						SMODS.calculate_effect(
-						{chips = self.config.chips, juice_card = v, message_card = v},
-						card
-					)
-					break
-
-				end
-			end
-			if triggered then return nil, true end
-		end
+      local triggered = false
+      for _, v in ipairs(G.jokers.cards) do
+        if v:is_rarity("Uncommon") then
+          triggered = true
+          SMODS.calculate_effect(
+            { chips = self.config.chips, juice_card = v, message_card = v },
+            card
+          )
+          break
+        end
+      end
+      if triggered then return nil, true end
+    end
   end,
 }
 
@@ -855,20 +853,19 @@ SMODS.Sticker {
 
   calculate = function(self, card, context)
     if context.joker_main then
-			local triggered = false
-			for _, v in ipairs(G.jokers.cards) do
-				if v:is_rarity("Rare") then
-						triggered = true
-						SMODS.calculate_effect(
-						{mult = self.config.mult, juice_card = v, message_card = v},
-						card
-					)
-					break
-
-				end
-			end
-			if triggered then return nil, true end
-		end
+      local triggered = false
+      for _, v in ipairs(G.jokers.cards) do
+        if v:is_rarity("Rare") then
+          triggered = true
+          SMODS.calculate_effect(
+            { mult = self.config.mult, juice_card = v, message_card = v },
+            card
+          )
+          break
+        end
+      end
+      if triggered then return nil, true end
+    end
   end,
 }
 
@@ -891,20 +888,19 @@ SMODS.Sticker {
 
   calculate = function(self, card, context)
     if context.joker_main then
-			local triggered = false
-			for _, v in ipairs(G.jokers.cards) do
-				if v:is_rarity("abn_SuperRare") then
-						triggered = true
-						SMODS.calculate_effect(
-						{mult = self.config.mult, juice_card = v, message_card = v},
-						card
-					)
-					break
-
-				end
-			end
-			if triggered then return nil, true end
-		end
+      local triggered = false
+      for _, v in ipairs(G.jokers.cards) do
+        if v:is_rarity("abn_SuperRare") then
+          triggered = true
+          SMODS.calculate_effect(
+            { mult = self.config.mult, juice_card = v, message_card = v },
+            card
+          )
+          break
+        end
+      end
+      if triggered then return nil, true end
+    end
   end,
 }
 
@@ -947,4 +943,104 @@ SMODS.Sticker {
       end
     end
   end,
+}
+
+SMODS.Sticker {
+  key = 'aim',
+  atlas = "AbandoniaStickers",
+  pos = { x = 0, y = 9 },
+  badge_colour = HEX("ee7270"),
+  loc_vars = function(self, info_queue, card)
+  end,
+  config = {
+  },
+
+  set_ability = function(self, card)
+    if card.config.center.set == 'Joker' then
+      card.states.drag.can = false
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.7,
+        func = function()
+          local in_use = {}
+          for _, joker in pairs(G.jokers.cards) do
+            if joker.ability and joker.ability.extra.aim then
+              in_use[joker.ability.extra.aim] = true
+            end
+          end
+          if #G.jokers.cards == 1 then in_use[1] = false end
+          local position = pseudorandom(pseudoseed('aim_joker'), 1, #G.jokers.cards)
+          while in_use[position] do
+            position = pseudorandom(pseudoseed('aim_joker_reroll'), 1, #G.jokers.cards)
+          end
+          card.ability.extra.aim = position
+          return true
+        end
+      }))
+    end
+  end,
+  calculate = function(self, card, context)
+    if context.after and card.config.center.set == 'Joker' then
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.7,
+        func = function()
+          local in_use = {}
+          for _, joker in pairs(G.jokers.cards) do
+            if joker.ability and joker.ability.extra.aim then
+              in_use[joker.ability.extra.aim] = true
+            end
+          end
+          if #G.jokers.cards == 1 then in_use[1] = false end
+          local position = pseudorandom(pseudoseed('aim_joker'), 1, #G.jokers.cards)
+          while in_use[position] do
+            position = pseudorandom(pseudoseed('aim_joker_reroll'), 1, #G.jokers.cards)
+          end
+          card.ability.extra.aim = position
+          card.states.drag.can = false
+          return true
+        end
+      }))
+      return {
+        message = '!',
+        colour = self.badge_colour
+      }
+    end
+  end
+}
+
+SMODS.Sticker {
+  key = 'stinker',
+  atlas = "AbandoniaStickers",
+  pos = { x = 1, y = 9 },
+  badge_colour = HEX("86e631"),
+  loc_vars = function(self, info_queue, card)
+  end,
+  config = {
+  },
+  apply = function(self, card, val)
+    card.ability[self.key] = val
+    if G.consumeables then
+      for _, v in ipairs(G.consumeables.cards) do
+        if v.ability and v.ability.set and v.ability.set == "Spectral" then
+          SMODS.debuff_card(v, val, "spectraldebuff")
+        end
+      end
+    end
+  end,
+
+  calculate = function(self, card, context)
+    if context.card_added and context.card.ability and context.card.ability.set and context.card.ability.set == "Spectral" then
+      SMODS.debuff_card(context.card, true, "spectraldebuff")
+    end
+
+    if context.selling_self or ((context.selling_card or context.joker_type_destroyed) and context.card == card) and G.consumeables then
+      for _, v in ipairs(G.consumeables.cards) do
+        if v.ability and v.ability.set and v.ability.set == "Spectral" then
+          SMODS.debuff_card(v, false, "spectraldebuff")
+        end
+      end
+    end
+  end,
+
 }
