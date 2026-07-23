@@ -72,7 +72,7 @@ return {
           "{C:attention}Reinforcement{} {C:attention}12{} of {V:1}#1#{}"
         }
       },
-      c_abn_i = {
+      c_abn_i_cal = {
         name = "I",
         text = {
           "Converts all cards in hand",

@@ -585,7 +585,7 @@ ABN.CalligraphyCard {
 }
 
 ABN.CalligraphyCard {
-  key = "i",
+  key = "i_cal",
   pos = { x = 3, y = 1 },
 
   loc_vars = function(self, info_queue, card)
