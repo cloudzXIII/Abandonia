@@ -2494,6 +2494,26 @@ return {
       },
     },
     Joker = {
+      j_abn_yorick_deluxe = {
+        name = "Yorick {C:attention}Deluxe",
+        text = {
+          {
+            "This Joker gains {C:mult}+#5#{} Mult",
+            "per card discarded",
+            "{C:inactive}(Currently {C:mult}+#6#{C:inactive} Mult)"
+          },
+          {
+            "This Joker gains {X:chips,C:white}X#1#{} Chips",
+            "every {C:attention}#2#{C:inactive} [#3#]{} cards discarded",
+            "{C:inactive}(Currently {X:chips,C:white}X#4#{C:inactive} Chips)",
+          },
+          {
+            "If {C:attention}Jorik{} is owned,",
+            "discarded cards permanently",
+            "gain {C:mult}Mult{} equal to its {C:attention}rank{}"
+          }
+        }
+      },
       j_abn_jinxie = {
         name = "Jinxie",
         text = {

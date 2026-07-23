@@ -195,7 +195,8 @@ ABN.contributors = {
     role = "Artist",
     colour = G.C.GREEN,
     links = {
-      { url = "github.com/InkystA", pos = { x = 0, y = 0 }, name = "Github" }
+      { url = "github.com/InkystA",       pos = { x = 0, y = 0 }, name = "Github" },
+      { url = "ko-fi.com/inkystanderson", pos = { x = 0, y = 1 }, name = "Ko-fi" }
     }
   },
   {
