@@ -7201,8 +7201,8 @@ return {
           },
         }
       },
-      j_abn_tochic = {
-        name = "Tochic",
+      j_abn_tochic = { -- Chicot backwards
+        name = "Tocihc",
         text = {
           "When {C:attention}Blind{} is selected,",
           "reduce {C:attention}blind requirements{} by {C:attention}#1#%{}",
