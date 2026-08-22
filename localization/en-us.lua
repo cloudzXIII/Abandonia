@@ -2991,6 +2991,75 @@ return {
       },
     },
     Joker = {
+      j_abn_rectangular_joker = {
+        name = "Rectangular Joker",
+        text = {
+          "This Joker gains {C:gold}+#2#{} Asc. Power",
+          "if played hand has",
+          "exactly {C:attention}6{} scoring cards",
+          "{C:inactive}(Currently {C:gold}+#1#{C:inactive} Ascension Power)"
+        }
+      },
+      j_abn_dark_tie = {
+        name = "Dark Tie",
+        text = {
+          {
+            "This Joker gains {C:money}$#6#{} and",
+            "{C:mult}+#2#{} Mult if played hand",
+            "contains a {C:attention}#3#{}",
+            "{C:inactive}(Currently {C:money}$#5#{C:inactive}, {C:mult}+#1#{C:inactive})"
+          },
+          {
+            "If hand containing a",
+            "{C:attention}#3#{} has at least",
+            "one {C:abn_tie}Tie{}, scoring {C:abn_tie}Ties{} each",
+            "gain {C:money}+$#4#{} and {C:mult}+#4#{} Mult per",
+            "{C:spades}Dark Suit{} in scoring hand"
+          }
+        }
+      },
+      j_abn_spare_coat = {
+        name = "Spare Coat",
+        text = {
+          {
+            "This Joker gains {C:chips}+#6#{} Chips",
+            "and {C:mult}+#2#{} Mult if played hand",
+            "contains a {C:attention}#3#{}",
+            "{C:inactive}(Currently {C:chips}+#5#{C:inactive}, {C:mult}+#1#{C:inactive})"
+          },
+          {
+            "If hand containing a",
+            "{C:attention}#3#{} has",
+            "at least one {C:abn_snow}Snow{},",
+            "{C:abn_snow}Snows{} held in hand",
+            "each gain {C:purple}+#4#{} Score",
+          }
+        }
+      },
+      j_abn_ansatz_joker = {
+        name = "Ansatz Joker",
+        text = {
+          "This Joker gains {C:chips}+#2#{} Chips",
+          "per {C:attention}odd{} and {C:mult}+#4#{} Mult per",
+          "{C:attention}even{} card in a {C:attention}#5#{}",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#3#{C:inactive} Mult)"
+        }
+      },
+      j_abn_bokeh_joker = {
+        name = "Bokeh Joker",
+        text = {
+          {
+            "Before scoring, destroy all",
+            "played and {C:attention}unscoring{} cards",
+          },
+          {
+            "This Joker gains {C:chips}+#2#{} Chips",
+            "per {C:attention}odd{} and {C:mult}+#4#{} Mult",
+            "per {C:attention}even{} card destroyed",
+            "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#3#{C:inactive} Mult)"
+          }
+        }
+      },
       j_abn_worldwind_joker = {
         name = "Worldwind Joker",
         text = {
@@ -3669,8 +3738,8 @@ return {
           "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#1#{C:inactive} Mult)"
         }
       },
-      j_abn_dark_tie = { -- thank you Minus (they made FusionForce) and 0kronix for helping me localise this :>
-        name = "Dark Tie",
+      j_abn_void_emissary = { -- thank you Minus (they made FusionForce) and 0kronix for helping me localise this :>
+        name = "Void Emissary",
         text = {
           "This Joker gains {C:chips}+#4#{} Chips",
           "and {C:mult}+#2#{} Mult for every {C:attention}two{}",
@@ -4340,8 +4409,8 @@ return {
       j_abn_spare_suit = {
         name = "Spare Suit",
         text = {
-          "This Joker gains {C:mult}+#2#{} Mult",
-          "if played hand contains a {C:attention}#3#{},",
+          "This Joker gains {C:mult}+#2#{} Mult if",
+          "played hand contains a {C:attention}#3#{},",
           "Retrigger played {C:attention}Mercurial Cards{}",
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
         }
@@ -6163,7 +6232,7 @@ return {
         }
       },
       j_abn_forsake_joker = {
-        name = "Forsaken Joker",
+        name = "Disrepaired Joker",
         text = {
           "Earn {C:money}$#1#{} when {C:dark_edition}Abandoned{} edition triggers,",
           "If triggered on a {C:attention}Playing Card{},",
@@ -7574,12 +7643,12 @@ return {
             "copy of this Joker without {C:abn_eternal}Eternal{}",
           },
           {
-            "This Joker gives {X:mult,C:white}^#3#{} Mult and",
+            "This Joker gains {X:mult,C:white}^#3#{} Mult and",
             "{X:chips,C:white}^#4#{} Chips per copy of itself",
             "{C:inactive}(Currently{} {X:mult,C:white}^#1#{} {C:inactive}Mult,{} {X:chips,C:white}^#2#{} {C:inactive}Chips){}",
           },
           {
-            "{C:red,E:1}lose the game{} if you own {C:attention}3{}",
+            "{C:red,E:1}Lose the run{} if you own {C:attention}3{}",
             "or more copies of this Joker",
           },
         }
