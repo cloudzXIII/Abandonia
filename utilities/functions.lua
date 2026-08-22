@@ -98,12 +98,22 @@ ABN.get_pos = function(card, area)
   return nil
 end
 
--- Gets all cards with a specific prefix
-function ABN.get_resource_by_key(prefix)
+-- Returns all cards with a specific prefix
+function ABN.get_center_with_prefix(prefix)
   local results = {}
-  for k, v in pairs(G.P_CENTERS) do
-    if k:sub(1, #prefix) == prefix then
-      table.insert(results, k)
+  if type(prefix) == "string" then
+    for k, v in pairs(G.P_CENTERS) do
+      if k:sub(1, #prefix) == prefix then
+        table.insert(results, k)
+      end
+    end
+  elseif type(prefix) == "table" then
+    for k, v in pairs(G.P_CENTERS) do
+      for kk, vv in ipairs(prefix) do
+        if k:sub(1, #vv) == vv then
+          table.insert(results, k)
+        end
+      end
     end
   end
   return results

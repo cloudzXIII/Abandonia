@@ -9,7 +9,7 @@ ABN.custom_ui = function(modNodes)
     { card_limit = 5, type = 'title', highlight_limit = 0, collection = true }
   )
 
-  local abn_jokers = ABN.get_resource_by_key("j_abn")
+  local abn_jokers = ABN.get_center_with_prefix({ "j_abn", "c_abn", "v_abn", "m_abn" })
   local random_jokers = {}
 
   pseudoshuffle(abn_jokers, pseudoseed("abn_ui_seed"))
