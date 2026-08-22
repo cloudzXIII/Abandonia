@@ -2991,6 +2991,15 @@ return {
       },
     },
     Joker = {
+      j_abn_rectangular_joker = {
+        name = "Rectangular Joker",
+        text = {
+          "This Joker gains {C:gold}+#2#{} Asc. Power",
+          "if played hand has",
+          "exactly {C:attention}6{} scoring cards",
+          "{C:inactive}(Currently {C:gold}+#1#{C:inactive} Ascension Power)"
+        }
+      },
       j_abn_dark_tie = {
         name = "Dark Tie",
         text = {
