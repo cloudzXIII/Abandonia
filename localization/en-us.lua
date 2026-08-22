@@ -6205,7 +6205,7 @@ return {
         }
       },
       j_abn_forsake_joker = {
-        name = "Forsaken Joker",
+        name = "Disrepaired Joker",
         text = {
           "Earn {C:money}$#1#{} when {C:dark_edition}Abandoned{} edition triggers,",
           "If triggered on a {C:attention}Playing Card{},",
