@@ -2995,10 +2995,10 @@ return {
         name = "Spare Coat",
         text = {
           {
-            "This Joker gains {C:chips}+#5#{} Chips",
+            "This Joker gains {C:chips}+#6#{} Chips",
             "and {C:mult}+#2#{} Mult if played hand",
             "contains a {C:attention}#3#{},",
-            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+            "{C:inactive}(Currently {C:chips}+#5#{C:inactive}, {C:mult}+#1#{C:inactive})"
           },
           {
             "If hand containing a",
