@@ -2991,6 +2991,30 @@ return {
       },
     },
     Joker = {
+      j_abn_ansatz_joker = {
+        name = "Ansatz Joker",
+        text = {
+          "This Joker gains {C:chips}+#2#{} Chips",
+          "per {C:attention}odd{} and {C:mult}+#4#{} Mult per",
+          "{C:attention}even{} card in a {C:attention}#5#{}",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#3#{C:inactive} Mult)"
+        }
+      },
+      j_abn_bokeh_joker = {
+        name = "Bokeh Joker",
+        text = {
+          {
+            "Before scoring, destroy all",
+            "played and {C:attention}unscoring{} cards",
+          },
+          {
+            "This Joker gains {C:chips}+#2#{} Chips",
+            "per {C:attention}odd{} and {C:mult}+#4#{} Mult",
+            "per {C:attention}even{} card destroyed",
+            "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#3#{C:inactive} Mult)"
+          }
+        }
+      },
       j_abn_worldwind_joker = {
         name = "Worldwind Joker",
         text = {
@@ -4340,8 +4364,8 @@ return {
       j_abn_spare_suit = {
         name = "Spare Suit",
         text = {
-          "This Joker gains {C:mult}+#2#{} Mult",
-          "if played hand contains a {C:attention}#3#{},",
+          "This Joker gains {C:mult}+#2#{} Mult if",
+          "played hand contains a {C:attention}#3#{},",
           "Retrigger played {C:attention}Mercurial Cards{}",
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
         }
