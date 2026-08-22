@@ -7643,12 +7643,12 @@ return {
             "copy of this Joker without {C:abn_eternal}Eternal{}",
           },
           {
-            "This Joker gives {X:mult,C:white}^#3#{} Mult and",
+            "This Joker gains {X:mult,C:white}^#3#{} Mult and",
             "{X:chips,C:white}^#4#{} Chips per copy of itself",
             "{C:inactive}(Currently{} {X:mult,C:white}^#1#{} {C:inactive}Mult,{} {X:chips,C:white}^#2#{} {C:inactive}Chips){}",
           },
           {
-            "{C:red,E:1}lose the game{} if you own {C:attention}3{}",
+            "{C:red,E:1}Lose the run{} if you own {C:attention}3{}",
             "or more copies of this Joker",
           },
         }
