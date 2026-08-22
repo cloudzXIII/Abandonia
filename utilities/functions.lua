@@ -612,3 +612,25 @@ SMODS.calculate_individual_effect = function(effect, scored_card, key, amount, f
   return true
 end
 --#endregion
+
+ABN.enh_stickers_list = {
+    "abn_stk_bonus",
+    "abn_stk_mult",
+    "abn_stk_wild",
+    "abn_stk_glass",
+    "abn_stk_steel",
+    "abn_stk_stone",
+    "abn_stk_gold",
+    "abn_stk_lucky",
+}
+
+function ABN.get_joker_enh(card)
+  for _, key in ipairs(ABN.enh_stickers_list) do
+    if card.ability and card.ability[key] then return key end
+  end
+  return nil
+end
+function ABN.has_joker_enh(card, key)
+  if card.ability and card.ability[key] then return true end
+  return false
+end

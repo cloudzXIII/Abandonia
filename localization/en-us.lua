@@ -11247,6 +11247,62 @@ return {
           "the score {C:attention}catches fire{}"
         }
       },
+      -- ENHANCEMENT STICKERS --
+      abn_stk_bonus = {
+        name = "Bonus",
+        text = {
+          "{C:blue}+#1#{} Chips on scoring"
+        }
+      },
+      abn_stk_mult = {
+        name = "Mult",
+        text = {
+          "{C:red}+#1#{} Mult on scoring"
+        }
+      },
+      abn_stk_wild = {
+        name = "Wild",
+        text = {
+          "{C:attention}First played card{} is considered",
+          "to be {C:attention}every suit{} simultaneously"
+        }
+      },
+      abn_stk_stone = {
+        name = "Stone",
+        text = {
+          "{C:blue}+#1#{} Chips on scoring",
+          "Every {C:attention}played card{} counts in scoring",
+        }
+      },
+
+      abn_stk_glass = {
+        name = "Glass",
+        text = {
+          "{X:red,C:white}X#1#{} Mult on scoring",
+          "{C:green}#2# in #3#{} chance to destroy",
+          "joker after {C:attention}all scoring{} is finished"
+        }
+      },
+      abn_stk_steel = {
+        name = "Steel",
+        text = {
+          "{X:red,C:white}X#1#{} Mult after scoring",
+        }
+      },
+      abn_stk_gold = {
+        name = "Gold",
+        text = {
+          "{C:gold}$#1#{} at end of round",
+        }
+      },
+      abn_stk_lucky = {
+        name = "Lucky",
+        text = {
+          "{C:green}#1# in #2#{} chance to give {C:red}+#3#{} Mult",
+          "{C:green}#4# in #5#{} chance to give {C:gold}$#6#{}",
+        }
+      },
+      --
       abn_honor_sticker = {
         name = "Honor Jimbo",
         text = {
@@ -13824,6 +13880,15 @@ return {
       abn_unholy_relic = "Unholy Relic",
       abn_platano = "Platano",
       abn_cactus = "Cactus",
+      -- enhancement stickers
+      abn_stk_bonus = "Bonus",
+      abn_stk_mult = "Mult",
+      abn_stk_stone = "Stone",
+      abn_stk_glass = "Glass",
+      abn_stk_lucky = "Lucky",
+      abn_stk_steel = "Steel",
+      abn_stk_wild = "Wild",
+      abn_stk_gold = "Gold",
 
       -- Seals
       abn_orange_seal = "Orange Seal",

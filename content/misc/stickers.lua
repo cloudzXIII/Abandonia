@@ -1272,14 +1272,14 @@ SMODS.Sticker {
       local die = pseudorandom_element(G.hand.cards,pseudoseed("abn_tnt"))
       if die then
         G.E_MANAGER:add_event(Event({
-            func = function()
-              SMODS.destroy_cards(die)
-              return true
-            end
+          func = function()
+            SMODS.destroy_cards(die)
+            return true
+          end
         }))
       end
-			
-		end
+      
+    end
   end,
   
 }
@@ -1301,7 +1301,7 @@ SMODS.Sticker {
     if context.after and context.main_eval and not context.game_over and not context.blueprint then
       if SMODS.last_hand_oneshot then
         G.E_MANAGER:add_event(Event({
-					func = function()
+          func = function()
             SMODS.destroy_cards(G.play.cards)
             return true
           end
@@ -1326,14 +1326,14 @@ SMODS.Sticker {
       local die = pseudorandom_element(G.playing_cards,pseudoseed("abn_tnt"))
       if die then
         G.E_MANAGER:add_event(Event({
-            func = function()
-              SMODS.destroy_cards(die)
-              return true
-            end
+          func = function()
+            SMODS.destroy_cards(die)
+            return true
+          end
         }))
       end
-			
-		end
+      
+    end
   end,
   
 }
@@ -1364,14 +1364,14 @@ SMODS.Sticker {
     if context.after and SMODS.pseudorandom_probability(card,pseudoseed("abn_platano"),self.config.extra.n,self.config.extra.d,"abn_platano") then
       if G.jokers and G.jokers.cards then
         G.E_MANAGER:add_event(Event({
-            func = function()
-              SMODS.destroy_cards(G.jokers.cards)
-              return true
-            end
+          func = function()
+            SMODS.destroy_cards(G.jokers.cards)
+            return true
+          end
         }))
       end
-			
-		end
+      
+    end
   end,
   
 }
@@ -1450,6 +1450,8 @@ SMODS.Sticker {
   
 }
 
+
+
 SMODS.Sticker {
   key = 'cactus',
   atlas = "AbandoniaStickers",
@@ -1482,6 +1484,310 @@ SMODS.Sticker {
           SMODS.debuff_card(v, false, "cactusdebuff")
         end
       end
+    end
+  end,
+  
+}
+
+
+SMODS.Sticker {
+  key = 'stk_bonus',
+  atlas = "AbandoniaStickers",
+  pos = { x = 0, y = 13 },
+  badge_colour = HEX("1FAEFF"),
+  
+  loc_vars = function(self, info_queue, card)
+    return { vars = {self.config.extra.chips}}
+  end,
+  config = {
+    extra = { 
+      chips = 30,
+    }
+  },
+  apply = function(self, card, val)
+    if val then
+      for _, key in ipairs(ABN.enh_stickers_list) do
+        card:remove_sticker(key)
+      end
+    end
+    card.ability[self.key] = val
+  end,
+  
+  calculate = function(self, card, context)
+    if context.joker_main then
+      return {
+        chips = self.config.extra.chips
+      }
+    end
+  end,
+}
+
+SMODS.Sticker {
+  key = 'stk_mult',
+  atlas = "AbandoniaStickers",
+  pos = { x = 1, y = 13 },
+  badge_colour = HEX("FE5F55"),
+  
+  loc_vars = function(self, info_queue, card)
+    return { vars = {self.config.extra.mult}}
+  end,
+  config = {
+    extra = { 
+      mult = 4,
+    }
+  },
+  apply = function(self, card, val)
+    if val then
+      for _, key in ipairs(ABN.enh_stickers_list) do
+        card:remove_sticker(key)
+      end
+    end
+    card.ability[self.key] = val
+  end,
+  
+  calculate = function(self, card, context)
+    if context.joker_main then
+      return {
+        mult = self.config.extra.mult
+      }
+    end
+  end,
+  
+}
+
+SMODS.Sticker {
+  key = 'stk_wild',
+  atlas = "AbandoniaStickers",
+  pos = { x = 2, y = 13 },
+  badge_colour = HEX("4F6367"),
+  
+  loc_vars = function(self, info_queue, card)
+    return { vars = {}}
+  end,
+  config = {
+    extra = { 
+    }
+  },
+  apply = function(self, card, val)
+    if val then
+      for _, key in ipairs(ABN.enh_stickers_list) do
+        card:remove_sticker(key)
+      end
+    end
+    card.ability[self.key] = val
+  end,
+  
+}
+
+SMODS.Sticker {
+  key = 'stk_gold',
+  atlas = "AbandoniaStickers",
+  pos = { x = 3, y = 13 },
+  badge_colour = HEX("CCA757"),
+  
+  loc_vars = function(self, info_queue, card)
+    return { vars = {self.config.extra.dollars}}
+  end,
+  config = {
+    extra = { 
+      dollars = 3,
+    }
+  },
+  apply = function(self, card, val)
+    if val then
+      for _, key in ipairs(ABN.enh_stickers_list) do
+        card:remove_sticker(key)
+      end
+    end
+    card.ability[self.key] = val
+  end,
+  
+  calculate = function(self, card, context)
+    if context.end_of_round and context.game_over == false then
+      return {
+        dollars = self.config.extra.dollars,
+      }
+    end
+  end,
+  
+}
+
+SMODS.Sticker {
+  key = 'stk_steel',
+  atlas = "AbandoniaStickers",
+  pos = { x = 4, y = 13 },
+  badge_colour = HEX("ADBDD7"),
+  
+  loc_vars = function(self, info_queue, card)
+    return { vars = {self.config.extra.xmult}}
+  end,
+  config = {
+    extra = { 
+      xmult = 1.5,
+    }
+  },
+  apply = function(self, card, val)
+    if val then
+      for _, key in ipairs(ABN.enh_stickers_list) do
+        card:remove_sticker(key)
+      end
+    end
+    card.ability[self.key] = val
+  end,
+  
+  calculate = function(self, card, context)
+    if context.final_scoring_step then
+      return {
+        xmult = self.config.extra.xmult
+      }
+    end
+  end,
+}
+
+SMODS.Sticker {
+  key = 'stk_stone',
+  atlas = "AbandoniaStickers",
+  pos = { x = 0, y = 14 },
+  badge_colour = HEX("B9BDC2"),
+  
+  loc_vars = function(self, info_queue, card)
+    return { vars = {self.config.extra.chips}}
+  end,
+  config = {
+    extra = { 
+      chips = 15,
+    }
+  },
+  apply = function(self, card, val)
+    if val then
+      for _, key in ipairs(ABN.enh_stickers_list) do
+        card:remove_sticker(key)
+      end
+    end
+    card.ability[self.key] = val
+  end,
+  
+  calculate = function(self, card, context)
+    if context.joker_main then
+      return {
+        chips = self.config.extra.chips
+      }
+    end
+    if context.modify_scoring_hand and not context.blueprint then
+      return {
+        add_to_hand = true
+      }
+    end
+  end,
+}
+
+SMODS.Sticker {
+  key = 'stk_glass',
+  atlas = "AbandoniaStickers",
+  pos = { x = 1, y = 14 },
+  badge_colour = HEX("89D4E5"),
+  
+  loc_vars = function(self, info_queue, card)
+    local n, d = SMODS.get_probability_vars(card,self.config.extra.n,self.config.extra.d,"abn_stk_glass",pseudoseed("abn_stk_glass"))
+    return { vars = {self.config.extra.xmult, n, d}}
+  end,
+  config = {
+    extra = { 
+      n = 1,
+      d = 4,
+      xmult = 2,
+    }
+  },
+  apply = function(self, card, val)
+    if val then
+      for _, key in ipairs(ABN.enh_stickers_list) do
+        card:remove_sticker(key)
+      end
+    end
+    card.ability[self.key] = val
+  end,
+  
+  calculate = function(self, card, context)
+    if context.joker_main then
+      return {
+        xmult = self.config.extra.xmult
+      }
+    end
+    if (context.after and SMODS.pseudorandom_probability(card, "abn_stk_glass", self.config.extra.n,self.config.extra.d)) then
+      G.E_MANAGER:add_event(Event({
+        trigger = 'before',
+        delay = 0.0,
+        func = function()
+          card:shatter()
+          SMODS.calculate_context({ joker_type_destroyed = true, card = card, shatters = true })
+          return true
+        end
+      }))
+    end
+  end,
+}
+
+SMODS.Sticker {
+  key = 'stk_lucky',
+  atlas = "AbandoniaStickers",
+  pos = { x = 2, y = 14 },
+  badge_colour = HEX("5EA07D"),
+  
+  loc_vars = function(self, info_queue, card)
+    local n, d = SMODS.get_probability_vars(card,self.config.extra.n,self.config.extra.d,"abn_stk_lucky",pseudoseed("abn_stk_lucky"))
+    local n2, d2 = SMODS.get_probability_vars(card,self.config.extra.n2,self.config.extra.d2,"abn_stk_lucky2",pseudoseed("abn_stk_lucky2"))
+    return { vars = { n, d, self.config.extra.mult,n2, d2, self.config.extra.dollars,}}
+  end,
+  config = {
+    extra = { 
+      mult = 20,
+      dollars = 20,
+      n = 1,
+      d = 4,
+      n2 = 1,
+      d2 = 15,
+    }
+  },
+  apply = function(self, card, val)
+    if val then
+      for _, key in ipairs(ABN.enh_stickers_list) do
+        card:remove_sticker(key)
+      end
+    end
+    card.ability[self.key] = val
+  end,
+  
+  calculate = function(self, card, context)
+    if context.joker_main then
+      local ret = {}
+      
+      if SMODS.pseudorandom_probability(card, "abn_stk_lucky", self.config.extra.n,self.config.extra.d) then
+        card.lucky_trigger = true
+        ret.mult = self.config.extra.mult
+      end
+      if SMODS.pseudorandom_probability(card, "abn_stk_lucky2", self.config.extra.n2,self.config.extra.d2) then
+        card.lucky_trigger = true
+        ret.dollars = self.config.extra.dollars
+      end
+    end
+    if context.after then
+      local cats = SMODS.find_card("j_lucky_cat", false)
+      if card.lucky_trigger == true then
+        for _, cat in ipairs(cats) do
+          
+          SMODS.scale_card(cat, {
+            ref_table = cat.ability,
+            ref_value = "x_mult",
+            scalar_value = "extra",
+            scaling_message = {
+              message_key = 'a_xmult',
+              colour = G.C.RED
+            }
+          })
+        end
+        card.lucky_trigger = false
+      end
+      return ret
     end
   end,
   
