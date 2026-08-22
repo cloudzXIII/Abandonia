@@ -1,74 +1,62 @@
--- Dark Tie Joker (coded by cloudzXIII)
--- TODO: "If they're retrigger for like red seal or lavender it would increase more" - Bunnet :thonk:
+-- Dark Tie (coded by cloudzXIII)
 SMODS.Joker {
   key = 'dark_tie',
 
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_dark_suit", set = "Other" }
     local cae = card.ability.extra
-    return { vars = { cae.mult, cae.mult_gain, cae.chips, cae.chips_gain } }
+    return { vars = { cae.mult, cae.mult_gain, localize(cae.type, 'poker_hands'), cae.mollars, cae.dollars, cae.dollars_gain } }
   end,
 
-  rarity = 2,
+  rarity = 3,
   atlas = 'ABNJokerSheet13',
   pos = { x = 8, y = 1 },
-  cost = 6,
+  cost = 8,
   discovered = false,
   blueprint_compat = true,
-
-  config = { extra = { mult = 0, chips = 0, mult_gain = 4, chips_gain = 2 } },
+  config = { extra = { mult = 0, mult_gain = 5, type = "Full House", mollars = 1, dollars = 0, dollars_gain = 1 } },
 
   calculate = function(self, card, context)
-    if context.before and not context.blueprint then
-      local evens = 0
-      local odds = 0
-      for _, scoring_card in ipairs(context.full_hand) do
-        if scoring_card.base.suit == "abn_suitless" then
-          if ABN.is_even(scoring_card) then
-            evens = evens + 1
-          elseif ABN.is_odd(scoring_card) then
-            odds = odds + 1
-          end
+    if context.before and next(context.poker_hands[card.ability.extra.type]) then
+      SMODS.scale_card(card, {
+        ref_table = card.ability.extra,
+        ref_value = "mult",
+        scalar_value = "mult_gain",
+        operation = '+',
+        no_message = true
+      })
+      SMODS.scale_card(card, {
+        ref_table = card.ability.extra,
+        ref_value = "dollars",
+        scalar_value = "dollars_gain",
+        operation = '+',
+      })
+
+      local darks = 0
+      for _, v in ipairs(context.scoring_hand) do
+        if ABN.is_dark(v) then
+          darks = darks + 1
         end
       end
 
-      local pairs = math.floor((evens + odds) / 2)
-
-      if pairs > 0 then
-        SMODS.scale_card(card, {
-          ref_table = card.ability.extra,
-          ref_value = "mult",
-          scalar_value = "mult_gain",
-          operation = function(ref_table, ref_value, initial, change)
-            ref_table[ref_value] = initial + pairs * change
-          end,
-          no_message = true
-        })
-        SMODS.scale_card(card, {
-          ref_table = card.ability.extra,
-          ref_value = "chips",
-          scalar_value = "chips_gain",
-          operation = function(ref_table, ref_value, initial, change)
-            ref_table[ref_value] = initial + pairs * change
-          end,
-        })
+      for _, v in ipairs(context.scoring_hand) do
+        if v:is_suit("abn_Tie") then
+          v.ability.perma_mult = (v.ability.perma_mult or 0) + (card.ability.extra.mollars * darks)
+          v.ability.perma_p_dollars = (v.ability.perma_p_dollars or 0) + (card.ability.extra.mollars * darks)
+          SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, v)
+          break
+        end
       end
     end
     if context.joker_main then
       return {
         mult = card.ability.extra.mult,
-        chips = card.ability.extra.chips,
+        dollars = card.ability.extra.dollars,
       }
     end
   end,
+
   abn_artist_credits = {
     artist = "Donut",
   },
-  in_pool = function(self, args)
-    for _, playing_card in ipairs(G.playing_cards or {}) do
-      if playing_card.base.suit == "abn_suitless" then
-        return true
-      end
-    end
-    return false
-  end
 }

@@ -2991,20 +2991,38 @@ return {
       },
     },
     Joker = {
+      j_abn_dark_tie = {
+        name = "Dark Tie",
+        text = {
+          {
+            "This Joker gains {C:money}$#6#{} and",
+            "{C:mult}+#2#{} Mult if played hand",
+            "contains a {C:attention}#3#{}",
+            "{C:inactive}(Currently {C:money}$#5#{C:inactive}, {C:mult}+#1#{C:inactive})"
+          },
+          {
+            "If hand containing a",
+            "{C:attention}#3#{} has at least",
+            "one {C:abn_tie}Tie{}, scoring {C:abn_tie}Ties{} each",
+            "gain {C:money}+$#4#{} and {C:mult}+#4#{} Mult per",
+            "{C:spades}Dark Suit{} in scoring hand"
+          }
+        }
+      },
       j_abn_spare_coat = {
         name = "Spare Coat",
         text = {
           {
             "This Joker gains {C:chips}+#6#{} Chips",
             "and {C:mult}+#2#{} Mult if played hand",
-            "contains a {C:attention}#3#{},",
+            "contains a {C:attention}#3#{}",
             "{C:inactive}(Currently {C:chips}+#5#{C:inactive}, {C:mult}+#1#{C:inactive})"
           },
           {
             "If hand containing a",
             "{C:attention}#3#{} has",
             "at least one {C:abn_snow}Snow{},",
-            "{C:abn_snow}Snow{} cards held in hand",
+            "{C:abn_snow}Snows{} held in hand",
             "each gain {C:purple}+#4#{} Score",
           }
         }
@@ -3711,8 +3729,8 @@ return {
           "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#1#{C:inactive} Mult)"
         }
       },
-      j_abn_dark_tie = { -- thank you Minus (they made FusionForce) and 0kronix for helping me localise this :>
-        name = "Dark Tie",
+      j_abn_void_emissary = { -- thank you Minus (they made FusionForce) and 0kronix for helping me localise this :>
+        name = "Void Emissary",
         text = {
           "This Joker gains {C:chips}+#4#{} Chips",
           "and {C:mult}+#2#{} Mult for every {C:attention}two{}",
