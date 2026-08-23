@@ -11320,16 +11320,16 @@ return {
         name = "Pawn",
         text = {
           "While this sticker is applied,",
-          "all {C:abn_sigil}Sigil Cards{} and",
-          "{C:abn_astro}Astro Cards{} are {C:red}disabled",
+          "all {C:sigils}Sigil{} cards and",
+          "{C:astro_cards}Astro{} cards are {C:red}disabled",
         }
       },
       abn_lightbulb = {
         name = "Lightbulb",
         text = {
           "While this sticker is applied,",
-          "all {C:abn_solidstate}Solid State Cards{} and",
-          "{C:abn_program}Program Cards{} are {C:red}disabled",
+          "all {C:solid_state}Solid State{} cards and",
+          "{C:program_pack}Program{} cards are {C:red}disabled",
         }
       },
       abn_matchstick = {
@@ -11366,24 +11366,24 @@ return {
         name = "Cowboy Hat",
         text = {
           "While this sticker is applied,",
-          "all {C:abn_weather_report}Weather Report Cards{} and",
-          "{C:abn_lexica}Lexica Cards{} are {C:red}disabled",
+          "all {C:weather_report}Weather Report{} cards and",
+          "{C:lexica}Lexica{} cards are {C:red}disabled",
         }
       },
       abn_unholy_relic = {
         name = "Unholy Relic",
         text = {
           "While this sticker is applied,",
-          "all {C:abn_ruinous}Ruinous Power Cards{} and",
-          "{C:abn_nightshift}Nightshift Cards{} are {C:red}disabled",
+          "all {C:ruinous_power}Ruinous Power{} cards and",
+          "{C:nightshift_cards}Nightshift{} cards are {C:red}disabled",
         }
       },
       abn_cactus = {
         name = "Cactus",
         text = {
           "While this sticker is applied,",
-          "all {C:abn_artistry}Artistry Cards{} and",
-          "{C:abn_calligraphy}Calligraphy Cards{} are {C:red}disabled",
+          "all {C:artistry_cards}Artistry{} cards and",
+          "{C:calligraphy}Calligraphy{} cards are {C:red}disabled",
         }
       },
       abn_bomb = {
