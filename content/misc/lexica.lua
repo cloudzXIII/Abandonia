@@ -8,6 +8,12 @@ SMODS.ConsumableType {
   select_card = "consumeables"
 }
 
+SMODS.UndiscoveredSprite {
+  key = 'lexica',
+  atlas = 'abn_AbandoniaUndiscovered',
+  pos = { x = 2, y = 2 },
+}
+
 local set_cost_ref = Card.set_cost -- for some reason hooking Card:set_sell_value() didn't work?
 function Card:set_cost()
   local ret = set_cost_ref(self)
@@ -832,9 +838,9 @@ SMODS.Consumable {
     artist = "Lazy"
   },
   set_card_type_badge = function(self, card, badges)
-      badges[#badges + 1] = create_badge(localize('k_old_lexica'),
-        get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.lexica.text_colour,
-        1.2)
+    badges[#badges + 1] = create_badge(localize('k_old_lexica'),
+      get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.lexica.text_colour,
+      1.2)
   end
 }
 
@@ -870,9 +876,9 @@ SMODS.Consumable {
     artist = "Le Ginger"
   },
   set_card_type_badge = function(self, card, badges)
-      badges[#badges + 1] = create_badge(localize('k_old_lexica'),
-        get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.lexica.text_colour,
-        1.2)
+    badges[#badges + 1] = create_badge(localize('k_old_lexica'),
+      get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.lexica.text_colour,
+      1.2)
   end
 }
 
@@ -908,9 +914,9 @@ SMODS.Consumable {
     artist = "Le Ginger"
   },
   set_card_type_badge = function(self, card, badges)
-      badges[#badges + 1] = create_badge(localize('k_old_lexica'),
-        get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.lexica.text_colour,
-        1.2)
+    badges[#badges + 1] = create_badge(localize('k_old_lexica'),
+      get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.lexica.text_colour,
+      1.2)
   end
 }
 
@@ -947,9 +953,9 @@ SMODS.Consumable {
     artist = "Toyrapple"
   },
   set_card_type_badge = function(self, card, badges)
-      badges[#badges + 1] = create_badge(localize('k_old_lexica'),
-        get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.lexica.text_colour,
-        1.2)
+    badges[#badges + 1] = create_badge(localize('k_old_lexica'),
+      get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.lexica.text_colour,
+      1.2)
   end
 }
 
@@ -986,9 +992,8 @@ SMODS.Consumable {
     artist = "Toyrapple"
   },
   set_card_type_badge = function(self, card, badges)
-      badges[#badges + 1] = create_badge(localize('k_old_lexica'),
-        get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.lexica.text_colour,
-        1.2)
+    badges[#badges + 1] = create_badge(localize('k_old_lexica'),
+      get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.lexica.text_colour,
+      1.2)
   end
 }
-
