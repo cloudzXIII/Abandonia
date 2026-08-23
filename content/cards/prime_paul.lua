@@ -52,7 +52,4 @@ SMODS.Joker {
   abn_artist_credits = {
     artist = "Modlich_303"
   },
-  dependencies = {
-    "allinjest"
-  },
 }
