@@ -8,6 +8,12 @@ SMODS.ConsumableType {
   select_card = "consumeables",
 }
 
+SMODS.UndiscoveredSprite {
+  key = 'weather_report',
+  atlas = 'abn_AbandoniaWeatherReport',
+  pos = { x = 5, y = 3 },
+}
+
 ABN.WeatherReport = SMODS.Consumable:extend({
   set = 'weather_report',
   cost = 4,

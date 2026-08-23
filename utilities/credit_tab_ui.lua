@@ -69,6 +69,7 @@ ABN.CreditCard {
 ABN.CreditCard {
   key = "comykel",
   pos = { x = 4, y = 0 },
+  soul_pos = { x = 4, y = 1 },
 }
 ABN.CreditCard {
   key = "vega",
@@ -92,6 +93,7 @@ ABN.CreditCard {
 ABN.CreditCard {
   key = "ginger",
   pos = { x = 9, y = 0 },
+  soul_pos = { x = 9, y = 1 },
 }
 ABN.CreditCard {
   key = "okronix",
@@ -107,6 +109,11 @@ ABN.CreditCard {
   pos = { x = 1, y = 2 },
   soul_pos = { x = 1, y = 3 },
 }
+ABN.CreditCard {
+  key = "glitchkat",
+  pos = { x = 2, y = 2 },
+  soul_pos = { x = 2, y = 3 },
+}
 --#endregion
 
 ABN.contributors = {
@@ -118,7 +125,7 @@ ABN.contributors = {
     colour = G.C.GOLD,
     links = {
       { url = "github.com/cloudzXIII", pos = { x = 0, y = 0 }, name = "Github" },
-      { url = "ko-fi.com/cloudzxiii",  pos = { x = 0, y = 1 }, name = "Buy me a Coffee!" }
+      { url = "ko-fi.com/cloudzxiii", pos = { x = 0, y = 1 }, name = "Buy me a Coffee!" }
     }
   },
   {
@@ -195,7 +202,7 @@ ABN.contributors = {
     role = "Artist",
     colour = G.C.GREEN,
     links = {
-      { url = "github.com/InkystA",       pos = { x = 0, y = 0 }, name = "Github" },
+      { url = "github.com/InkystA", pos = { x = 0, y = 0 }, name = "Github" },
       { url = "ko-fi.com/inkystanderson", pos = { x = 0, y = 1 }, name = "Ko-fi" }
     }
   },
@@ -207,7 +214,7 @@ ABN.contributors = {
     colour = G.C.BLUE,
     links = {
       { url = "github.com/LasagnaFelidae", pos = { x = 0, y = 0 }, name = "Github" },
-      { url = "ko-fi.com/lasagnafelidae",  pos = { x = 0, y = 1 }, name = "Buy me a Coffee!" }
+      { url = "ko-fi.com/lasagnafelidae", pos = { x = 0, y = 1 }, name = "Buy me a Coffee!" }
     }
   },
   {
@@ -292,6 +299,16 @@ ABN.contributors = {
     colour = G.C.RED,
     links = {
       { url = "github.com/Firch", pos = { x = 0, y = 0 }, name = "Github" },
+    }
+  },
+  {
+    key = "credit_abn_glitchkat",
+    name = "Glitchkat10",
+    role = "Programmer",
+    has_icon = true,
+    colour = G.C.BLUE,
+    links = {
+      { url = "github.com/kierkat10", pos = { x = 0, y = 0 }, name = "Github" },
     }
   },
 }
