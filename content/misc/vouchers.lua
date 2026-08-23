@@ -382,3 +382,34 @@ SMODS.Voucher({
 		G.hand:change_size(cae.inc)
 	end,
 })
+
+SMODS.Voucher({
+	key = "athame",
+	atlas = "AbandoniaVouchers",
+	pos = {
+		x = 4,
+		y = 2,
+	},
+	cost = 10,
+})
+
+SMODS.Voucher({
+	key = "ink_and_quill",
+	atlas = "AbandoniaVouchers",
+	pos = {
+		x = 5,
+		y = 2,
+	},
+	cost = 10,
+})
+
+SMODS.Voucher({
+	key = "fountain_pen",
+	atlas = "AbandoniaVouchers",
+	pos = {
+		x = 6,
+		y = 2,
+	},
+	cost = 10,
+	requires = { "v_abn_ink_and_quill" },
+})

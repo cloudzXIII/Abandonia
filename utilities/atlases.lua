@@ -6,8 +6,8 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
-  key = "undiscovered",
-  path = "undiscoveredsprites.png",
+  key = "AbandoniaUndiscovered",
+  path = "undiscovered.png",
   px = 71,
   py = 95,
 })

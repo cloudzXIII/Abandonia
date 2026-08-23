@@ -11,6 +11,12 @@ SMODS.ConsumableType {
   secondary_colour = G.C.NIGHTSHIFT_SECONDARY,
 }
 
+SMODS.UndiscoveredSprite {
+  key = 'nightshift_cards',
+  atlas = 'abn_AbandoniaUndiscovered',
+  pos = { x = 1, y = 2 },
+}
+
 local original_game_update = Game.update
 function Game:update(dt)
   original_game_update(self, dt)

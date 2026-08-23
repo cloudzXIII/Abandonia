@@ -464,9 +464,9 @@ return {
       c_abn_soft_sign = {
         name = "Soft Sign",
         text = {
-          "Converts the {C:attention}Rightmost{}",
-          "card in hand into a",
-          "{C:attention}13{} {C:attention}Sew{} card"
+          "If the {C:attention}Rightmost{} card",
+          "in hand is a {C:attention}13{}",
+          "convert it into a {C:attention}Sew{} card"
         }
       },
 
@@ -3064,6 +3064,22 @@ return {
       },
     },
     Joker = {
+      j_abn_savy_joker = {
+        name = "Savy Joker",
+        text = {
+          "{C:mult}+#1#{} Mult if played",
+          "hand contains",
+          "{C:attention}#2# Even{} cards",
+        }
+      },
+      j_abn_shrewd_joker = {
+        name = "Shrewd Joker",
+        text = {
+          "{C:chips}+#1#{} Chips if played",
+          "hand contains",
+          "{C:attention}#2# Odd{} cards",
+        }
+      },
       j_abn_rectangular_joker = {
         name = "Rectangular Joker",
         text = {
@@ -4401,11 +4417,15 @@ return {
       j_abn_heart_of_glass = {
         name = "Heart of Glass",
         text = {
-          "{C:attention}Glass Cards{} give {C:white,X:chips}X#1#{} Chips",
-          "when scored, and always {C:attention}shatter",
-          "This Joker gains {C:chips}+#2#{} Chips",
-          "for every {C:hearts}Heart{} {C:attention}Glass Card{} destroyed",
-          "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)"
+          {
+            "{C:attention}Glass Cards{} give {C:white,X:chips}X#1#{} Chips",
+            "when scored, and always {C:attention}shatter",
+          },
+          {
+            "This Joker gains {C:chips}+#2#{} Chips for",
+            "every {C:hearts}Heart{} {C:attention}Glass Card{} destroyed",
+            "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)"
+          }
         }
       },
       j_abn_living_card = {
@@ -5787,10 +5807,15 @@ return {
       j_abn_vitamin_joker = {
         name = "Vitamin Joker",
         text = {
-          "Scoring cards with a {C:attention}seal",
-          "permanently gain {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult,",
-          "{C:green}#3# in #4#{} chance this card is",
-          "{C:attention}eaten{} after a hand is played"
+          {
+            "Scoring cards with a {C:attention}seal",
+            "permanently gain",
+            "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+          },
+          {
+            "{C:green}#3# in #4#{} chance this card is",
+            "{C:attention}eaten{} after a hand is played"
+          }
         },
       },
       j_abn_combo_maker = {
@@ -5876,8 +5901,8 @@ return {
       j_abn_missing_texture = {
         name = 'Missing Texture',
         text = {
-          "Turns every scored card",
-          "into an {C:attention}Ace{}",
+          "Converts every scored",
+          "card into an {C:attention}Ace{}",
           "before scoring"
         },
       },
@@ -6871,8 +6896,10 @@ return {
       j_abn_pong_joker = { -- I dont know who write this way but u scare me. with love, Marffe
         name = "Pong Joker",
         text = {
-          "Gain {X:chips,C:white}X#4#{} Chips when playing a {C:attention}Straight{} made of only {C:spades}Dark{} Suits",
-          "Gain {X:mult,C:white}X#3#{} Mult when playing a {C:attention}Straight{} made of only {C:diamonds}Light{} Suits",
+          "If played {C:attention}Straight{} has only",
+          "{C:spades}Dark Suits{}, this Joker gains",
+          "{X:chips,C:white}X#4#{} Chips, gains {X:mult,C:white}X#3#{} Mult",
+          "if {C:attention}Straight{} has only {C:diamonds}Light Suits{}",
           "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {X:chips,C:white}X#2#{} {C:inactive}Chips){}",
         }
       },
@@ -7753,7 +7780,7 @@ return {
             "{C:mult}+#5#{} Mult per {C:dark_edition}Negative{} {C:spades}Dark Suit{} played",
           },
           {
-            "If this Joker has {C:dark_edition}Negative{} edition",
+            "If this Joker has {C:dark_edition}Negative{} edition,",
             "gain {X:mult,C:white}X#4#{} Mult per {C:dark_edition}Negative{} card played",
             "{C:inactive}(Currently {C:chips}+#3#{} {C:inactive}Chips,{} {C:mult}+#2#{} {C:inactive}Mult,{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}"
           },
@@ -8626,7 +8653,7 @@ return {
         text = {
           "{C:green}#1# in #2#{} chance for each",
           "played {C:attention}14{} to create a",
-          "{C:clubs}Solid State{} card when scored",
+          "{C:solid_state}Solid State{} card when scored",
           "{C:inactive}(Must have room)",
         },
       },
@@ -10254,7 +10281,40 @@ return {
           "{C:planet}Planet{} Cards provide",
           "{C:red}%#1#{} more Mult",
         }
-      }
+      },
+
+      j_abn_maltese_cross = {
+        name = "Maltese Cross",
+        text = {
+          "Each scoring Domino card gains {C:chips}+#1#{} Chips",
+          "per time that {C:attention}Rank{} scored during this {C:attention}blind{}",
+        }
+      },
+
+      j_abn_backup_plan = {
+        name = "Backup Plan",
+        text = {
+          "{C:attention}Retrigger{} {C:attention}Leftmost{} scoring card",
+          "Once per each {C:attention}other{} scoring card",
+        }
+      },
+
+      j_abn_sikhs_joker = {
+        name = "Sikhs Joker",
+        text = {
+          "Scoring cards give {X:chips,C:white}X#2#{} Chips",
+          "for each {C:attention}unique{} {C:tarot}Minor Arcana{} card used this run",
+          "{C:inactive}Currently:{} {X:chips,C:white}X#1#{} {C:inactive}Chips{}",
+        }
+      },
+
+      j_abn_sol_iii = {
+        name = "Sol III",
+        text = {
+          "Scoring hands give {C:gold}+#1#{} Ascension Power",
+          "for each {C:attention}level{} they have",
+        }
+      },
       -- quick joker
     },
     Spectral = {
@@ -10458,14 +10518,16 @@ return {
         text = {
           "Made so much cool {C:green}art{}!",
           "{s:0.85}(aswell as these cool credit cards)",
-          "Check out {C:attention}Inky's Bunch-O-Things{}!"
+          "Check out",
+          "{C:attention}Inky's Bunch-O-Things{}!"
         }
       },
       credit_abn_feli = {
         name = "",
         text = {
-          "Added some {C:attention}Jokers{}",
-          "Check out {C:attention}Feli's Additions Gallery{}!"
+          "Added a bunch of things!",
+          "Check out",
+          "{C:attention}Feli's Additions Gallery{}!"
         }
       },
       credit_abn_j8bit = {
@@ -10548,6 +10610,12 @@ return {
           "{C:green}Art{}!",
         }
       },
+      credit_abn_glitchkat = {
+        name = "",
+        text = {
+          "Added some {C:attention}Jokers{}",
+        }
+      }
     },
     Other = {
       abn_calligraphy_info = {
@@ -10774,6 +10842,15 @@ return {
         }
       },
       undiscovered_weather_report = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
+      },
+      undiscovered_artistry_cards = {
         name = "Not Discovered",
         text = {
           "Purchase or use",
@@ -11316,16 +11393,16 @@ return {
         name = "Pawn",
         text = {
           "While this sticker is applied,",
-          "all {C:abn_sigil}Sigil Cards{} and",
-          "{C:abn_astro}Astro Cards{} are {C:red}disabled",
+          "all {C:sigils}Sigil{} cards and",
+          "{C:astro_cards}Astro{} cards are {C:red}disabled",
         }
       },
       abn_lightbulb = {
         name = "Lightbulb",
         text = {
           "While this sticker is applied,",
-          "all {C:abn_solidstate}Solid State Cards{} and",
-          "{C:abn_program}Program Cards{} are {C:red}disabled",
+          "all {C:solid_state}Solid State{} cards and",
+          "{C:program_pack}Program{} cards are {C:red}disabled",
         }
       },
       abn_matchstick = {
@@ -11362,24 +11439,24 @@ return {
         name = "Cowboy Hat",
         text = {
           "While this sticker is applied,",
-          "all {C:abn_weather_report}Weather Report Cards{} and",
-          "{C:abn_lexica}Lexica Cards{} are {C:red}disabled",
+          "all {C:weather_report}Weather Report{} cards and",
+          "{C:lexica}Lexica{} cards are {C:red}disabled",
         }
       },
       abn_unholy_relic = {
         name = "Unholy Relic",
         text = {
           "While this sticker is applied,",
-          "all {C:abn_ruinous}Ruinous Power Cards{} and",
-          "{C:abn_nightshift}Nightshift Cards{} are {C:red}disabled",
+          "all {C:ruinous_power}Ruinous Power{} cards and",
+          "{C:nightshift_cards}Nightshift{} cards are {C:red}disabled",
         }
       },
       abn_cactus = {
         name = "Cactus",
         text = {
           "While this sticker is applied,",
-          "all {C:abn_artistry}Artistry Cards{} and",
-          "{C:abn_calligraphy}Calligraphy Cards{} are {C:red}disabled",
+          "all {C:artistry_cards}Artistry{} cards and",
+          "{C:calligraphy}Calligraphy{} cards are {C:red}disabled",
         }
       },
       abn_bomb = {

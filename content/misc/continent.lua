@@ -7,6 +7,12 @@ SMODS.ConsumableType {
   shop_rate = 0.0,
 }
 
+SMODS.UndiscoveredSprite {
+  key = 'continent',
+  atlas = 'abn_AbandoniaContinents',
+  pos = { x = 5, y = 3 },
+}
+
 local set_cost_ref = Card.set_cost -- for some reason hooking Card:set_sell_value() didn't work?
 function Card:set_cost()
   local ret = set_cost_ref(self)

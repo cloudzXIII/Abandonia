@@ -24,6 +24,7 @@ ABN.AncientCalligraphyCard = SMODS.Consumable:extend({
   soul_set = "calligraphy",
   soul_rate = 0.003,
   atlas = "abn_AbandoniaAncientCalligraphy",
+  ancient_calligraphy = true,
   pos = { x = 0, y = 0 },
   abn_artist_credits = {
     artist = "0kronix"
@@ -75,6 +76,35 @@ SMODS.UndiscoveredSprite({ -- undiscovered sprite
 })
 
 
+SMODS.UndiscoveredSprite {
+  key = 'calligraphy',
+  atlas = 'abn_AbandoniaUndiscovered',
+  pos = { x = 0, y = 0 },
+}
+
+-- Seperate undiscovered sprites for calligraphy and ancient calligraphy cards
+local set_sprite_ref = Card.set_sprites
+function Card:set_sprites(_center, _front)
+  local ret = set_sprite_ref(self, _center, _front)
+
+  if not self.params.bypass_discovery_center and _center and _center.set == "calligraphy" and not _center.discovered then
+    if self.children.center then self.children.center:remove() end
+    local undiscovered_sprite = SMODS.UndiscoveredSprites[_center.set]
+    local atlas = SMODS.get_atlas((undiscovered_sprite and undiscovered_sprite.atlas)
+    ) or _center.set or SMODS.get_atlas("Joker")
+    local pos = undiscovered_sprite and (_center.ancient_calligraphy and { x = 1, y = 0 } or undiscovered_sprite.pos)
+    local sprite_args = (_center.undiscovered and _center.undiscovered.sprite_args) or
+        (undiscovered_sprite and undiscovered_sprite.sprite_args) or G.j_undiscovered.sprite_args
+    self.children.center = SMODS.create_sprite(self.T.x, self.T.y, self.T.w, self.T.h, atlas, pos, sprite_args)
+    self.children.center.states.hover = self.states.hover
+    self.children.center.states.click = self.states.click
+    self.children.center.states.drag = self.states.drag
+    self.children.center.states.collide.can = false
+    self.children.center:set_role({ major = self, role_type = 'Glued', draw_major = self })
+  end
+  return ret
+end
+
 ABN.CalligraphyCard {
   key = "azu",
   pos = { x = 0, y = 0 },
@@ -92,7 +122,7 @@ ABN.CalligraphyCard {
 
   config = { extra = { suit_conv = "abn_Sword", mod_conv = "m_abn_first_aid" } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -156,7 +186,7 @@ ABN.CalligraphyCard {
 
   config = { extra = { suit_conv = "abn_Coin", mod_conv = "m_gold", rank = "Ace" } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -220,7 +250,7 @@ ABN.CalligraphyCard {
 
   config = { extra = { suit_conv = "abn_Baton", mod_conv = "m_abn_mountain", } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -280,7 +310,7 @@ ABN.CalligraphyCard {
 
   config = { extra = { amount = 2 } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -343,7 +373,7 @@ ABN.CalligraphyCard {
 
   config = { extra = { suit_conv = "abn_Anchor", mod_conv = "m_abn_ocean", } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -407,7 +437,7 @@ ABN.CalligraphyCard {
 
   config = { extra = { suit_conv = "abn_Sword", mod_conv = "m_abn_kintsugi", rank = "4" } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -470,7 +500,7 @@ ABN.CalligraphyCard {
 
   config = { extra = { suit_conv = "Clubs", mod_conv = "m_glass", rank = "abn_13" } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -532,7 +562,7 @@ ABN.CalligraphyCard {
 
   config = { extra = { suit_conv = "abn_Rose", mod_conv = "m_abn_wallpaper", rank = "10" } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -596,7 +626,7 @@ ABN.CalligraphyCard {
 
   config = { extra = { suit_conv = "abn_Baton", mod_conv = "m_abn_reinforcement", rank = "abn_12" } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -655,7 +685,7 @@ ABN.CalligraphyCard {
 
   config = { extra = {} },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind and
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill")) and
         not SMODS.has_no_suit(G.hand.cards[1])
   end,
 
@@ -753,7 +783,7 @@ ABN.CalligraphyCard {
 
   config = { extra = { mult_gain = 1 } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -818,7 +848,7 @@ ABN.CalligraphyCard {
 
   config = { extra = { chips_gain = 8 } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind and
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill")) and
         not SMODS.has_no_suit(G.hand.cards[1])
   end,
 
@@ -875,7 +905,7 @@ ABN.CalligraphyCard {
 
   config = { extra = { suit_conv = "abn_Bell", mod_conv = "m_abn_hot_iron", } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -939,7 +969,7 @@ ABN.CalligraphyCard {
 
   config = { extra = { suit_conv = "abn_Leaf", mod_conv = "m_abn_zen", rank = "8" } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -1002,7 +1032,7 @@ ABN.CalligraphyCard {
 
   config = { extra = { suit_conv = "abn_Florette", mod_conv = "m_abn_mountain", rank = "Ace" } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -1061,7 +1091,7 @@ ABN.CalligraphyCard {
 
   config = { extra = { amount = 3 } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind and G.hand.cards[1]:get_id() < 5
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill")) and G.hand.cards[1]:get_id() < 5
   end,
 
   use = function(self, card, area, copier)
@@ -1108,7 +1138,7 @@ ABN.CalligraphyCard {
 
   config = { extra = { suit_conv = "abn_Acorn", mod_conv = "m_abn_kinship", rank = "Ace" } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -1172,7 +1202,7 @@ ABN.AncientCalligraphyCard {
 
   config = { extra = { mod_conv = "m_abn_kinship" } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
         and not SMODS.has_no_suit(G.hand.cards[1])
   end,
 
@@ -1244,7 +1274,7 @@ ABN.AncientCalligraphyCard {
 
   config = { extra = { mod_conv = "m_abn_wallpaper" } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -1319,7 +1349,7 @@ ABN.AncientCalligraphyCard {
 
   config = { extra = { suit_conv = "abn_Coin", mod_conv = "m_gold", e_conv = "e_gloss", rank = "abn_13" } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
         and G.jokers and #G.jokers.cards > 0
   end,
 
@@ -1396,7 +1426,7 @@ ABN.AncientCalligraphyCard {
 
   config = { extra = { suit_conv = "abn_Florette", mod_conv = "m_abn_reinforcement" } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
         and G.jokers and #G.jokers.cards > 0
   end,
 
@@ -1482,7 +1512,7 @@ ABN.AncientCalligraphyCard {
 
   config = { extra = { mod_conv = "m_abn_ocean" } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind and
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill")) and
         not SMODS.has_no_rank(G.hand.cards[1])
   end,
 
@@ -1556,7 +1586,7 @@ ABN.AncientCalligraphyCard {
 
   config = { extra = { mod_conv = "m_abn_mountain" } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind and
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill")) and
         not SMODS.has_no_rank(G.hand.cards[#G.hand.cards])
   end,
 
@@ -1632,7 +1662,7 @@ ABN.AncientCalligraphyCard {
 
   config = { extra = { mod_conv = "m_abn_zen" } },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind and
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill")) and
         not SMODS.has_no_rank(G.hand.cards[#G.hand.cards])
   end,
 
@@ -1709,7 +1739,7 @@ if next(SMODS.find_mod("Spectrallib")) then
 
     config = { extra = { mod_conv = "m_abn_kintsugi", asc_pow = 1 } },
     can_use = function(self, card)
-      return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+      return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
     end,
 
     use = function(self, card, area, copier)
@@ -1782,7 +1812,7 @@ if next(SMODS.find_mod("Spectrallib")) then
 
     config = { extra = { e_conv = "e_abn_chromatic", asc_pow = 1 } },
     can_use = function(self, card)
-      return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+      return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
     end,
 
     use = function(self, card, area, copier)
@@ -1856,9 +1886,9 @@ ABN.CalligraphyCard {
   end,
 
   config = { extra = { suit_conv = "abn_Star", mod_conv = "m_abn_flux" } },
-  
+
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -1919,7 +1949,7 @@ ABN.CalligraphyCard {
   config = { extra = { mod_conv = "m_abn_discontinued", rank_conv = "Ace" } },
 
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -1982,7 +2012,7 @@ ABN.CalligraphyCard {
   config = { extra = { suit_conv = "Spades", mod_conv = "m_abn_darkner", rank_conv = "abn_14" } },
 
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -2045,7 +2075,7 @@ ABN.CalligraphyCard {
   config = { extra = { suit_conv = "Hearts", mod_conv = "m_abn_lightner", rank_conv = "abn_14" } },
 
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -2108,7 +2138,7 @@ ABN.CalligraphyCard {
   config = { extra = { suit_conv = "abn_Crown", mod_conv = "m_abn_tile", rank_conv = "Ace" } },
 
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -2171,7 +2201,7 @@ ABN.CalligraphyCard {
   config = { extra = { suit_conv = "abn_Star", mod_conv = "m_abn_papermache", rank_conv = "10" } },
 
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -2234,7 +2264,7 @@ ABN.CalligraphyCard {
   config = { extra = { suit_conv = "abn_Moon", mod_conv = "m_abn_papermache", rank_conv = "9" } },
 
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -2296,7 +2326,7 @@ ABN.CalligraphyCard {
   config = { extra = { suit_conv = "abn_suitless", mod_conv = "m_lucky" } },
 
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -2355,7 +2385,7 @@ ABN.CalligraphyCard {
   config = { extra = { mod_conv = "m_abn_oilfire" } },
 
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -2416,7 +2446,7 @@ ABN.CalligraphyCard {
   config = { extra = { suit_conv = "abn_Talon", mod_conv = "m_abn_teastain" } },
 
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
 
   use = function(self, card, area, copier)
@@ -2469,15 +2499,19 @@ ABN.CalligraphyCard {
     info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.extra.mod_conv]
     return {
       vars = {
-        localize(card.ability.extra.rank_conv, 'ranks'),
+        localize(card.ability.extra.req_rank, 'ranks'),
       }
     }
   end,
 
-  config = { extra = { mod_conv = "m_abn_sew", rank_conv = "abn_13" } },
+  config = { extra = { mod_conv = "m_abn_sew", req_rank = "abn_13" } },
 
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+    if G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill")) then
+      local rightmost = G.hand.cards[#G.hand.cards]
+      return rightmost.base.nominal == 13 
+    end
+    return false
   end,
 
   use = function(self, card, area, copier)
@@ -2503,7 +2537,6 @@ ABN.CalligraphyCard {
     }))
     G.E_MANAGER:add_event(Event({
       func = function()
-        SMODS.change_base(rightmost, rightmost.base.suit, card.ability.extra.rank_conv)
         rightmost:set_ability(G.P_CENTERS[card.ability.extra.mod_conv])
         return true
       end

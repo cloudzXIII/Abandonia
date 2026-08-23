@@ -38,4 +38,9 @@ if self.config.center and self.config.center.key and string.find(self.config.cen
 		end
 	end
 end
+
+-- Fountain Pen logic: Extra pick count in Calligraphy packs
+if self.config.center and self.config.center.key and string.find(self.config.center.key, "calligraphy") and next(SMODS.find_card('v_abn_fountain_pen')) then
+	self.ability.choose = (self.ability.choose or 0) + 1
+end
 '''
