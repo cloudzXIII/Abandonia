@@ -6,6 +6,12 @@ SMODS.ConsumableType {
   secondary_colour = HEX("c3a37a"),
 }
 
+SMODS.UndiscoveredSprite {
+  key = 'calamity_cards',
+  atlas = 'abn_AbandoniaUndiscovered',
+  pos = { x = 3, y = 0 },
+}
+
 ABN.CalamityCard = SMODS.Consumable:extend({
   set = 'calamity_cards',
   cost = 4,
