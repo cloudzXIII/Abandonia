@@ -3064,6 +3064,22 @@ return {
       },
     },
     Joker = {
+      j_abn_double_hubble = {
+        name = 'Double Hubble',
+        text = {
+          '{C:mult}+#1#{} Mult if {C:attention}poker hand{}',
+          'has been played',
+          'an {C:attention}even{} number of times'
+        }
+      },
+      j_abn_triple_nicole = {
+        name = 'Triple Nicole',
+        text = {
+          '{C:chips}+#1#{} Chips if {C:attention}poker hand{}',
+          'has been played',
+          'an {C:attention}odd{} number of times'
+        }
+      },
       j_abn_savy_joker = {
         name = "Savy Joker",
         text = {
@@ -8146,7 +8162,7 @@ return {
           {
             "If an {C:dark_edition}Editioned{} {C:attention}Joker{} is purchased,",
             "this Joker gains {C:chips}+#1#{} Chips",
-            "per {C:money}${} of its {C:attention}cost",
+            "per {C:money}${} of it's {C:attention}cost",
 
           },
           {
