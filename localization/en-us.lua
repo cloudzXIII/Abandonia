@@ -2991,6 +2991,22 @@ return {
       },
     },
     Joker = {
+      j_abn_savy_joker = {
+        name = "Savy Joker",
+        text = {
+          "{C:mult}+#1#{} Mult if played",
+          "hand contains",
+          "{C:attention}#2# Even{} cards",
+        }
+      },
+      j_abn_shrewd_joker = {
+        name = "Shrewd Joker",
+        text = {
+          "{C:chips}+#1#{} Chips if played",
+          "hand contains",
+          "{C:attention}#2# Odd{} cards",
+        }
+      },
       j_abn_rectangular_joker = {
         name = "Rectangular Joker",
         text = {
