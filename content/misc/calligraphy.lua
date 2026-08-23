@@ -75,13 +75,6 @@ SMODS.UndiscoveredSprite({ -- undiscovered sprite
     no_overlay = true
 })
 
-
-SMODS.UndiscoveredSprite {
-  key = 'calligraphy',
-  atlas = 'abn_AbandoniaUndiscovered',
-  pos = { x = 0, y = 0 },
-}
-
 -- Seperate undiscovered sprites for calligraphy and ancient calligraphy cards
 local set_sprite_ref = Card.set_sprites
 function Card:set_sprites(_center, _front)
