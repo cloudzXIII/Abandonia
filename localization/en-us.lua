@@ -8144,18 +8144,17 @@ return {
         name = "Crass Joker",
         text = {
           {
-            "If an {C:dark_edition}editioned{} {C:attention}Joker{} is purchased,",
-            "gain {C:chips}+#1#{} Chips multiplied",
-            "by its {C:attention}cost",
+            "If an {C:dark_edition}Editioned{} {C:attention}Joker{} is purchased,",
+            "this Joker gains {C:chips}+#1#{} Chips",
+            "per {C:money}${} of its {C:attention}cost",
 
           },
           {
             "If a {C:attention}free{} {C:attention}Joker{} is purchased,",
-            "gain {C:chips}+#1#{} Chips multiplied ",
-            "by its {C:attention}original cost",
+            "this Joker gains {C:chips}+#1#{} Chips",
+            "per {C:money}${} of it's {C:attention}original cost",
             "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
           }
-
         }
 
       },
@@ -10304,7 +10303,7 @@ return {
         text = {
           "Scoring cards give {X:chips,C:white}X#2#{} Chips",
           "for each {C:attention}unique{} {C:tarot}Minor Arcana{} card used this run",
-          "{C:inactive}Currently:{} {X:chips,C:white}X#1#{} {C:inactive}Chips{}",
+          "{C:inactive}(Currently{} {X:chips,C:white}X#1#{} {C:inactive}Chips){}",
         }
       },
 
@@ -13532,15 +13531,16 @@ return {
       m_abn_flux = {
         name = "Flux",
         text = {
-          "{C:purple}+#1#{} Score when played",
-          "Gain {C:purple}+#2#{} Score if part of the winning hand",
+          "{C:purple}+#1#{} Score, gains {C:purple}+#2#{} Score",
+          "if part of the {C:attention}winning hand{}",
         }
       },
       m_abn_discontinued = {
         name = "Discontinued",
         text = {
-          "{C:gold}+#3#{} Ascension Power and {C:chips}+#4#{} Chips per {C:attention}unique tag{} obtained this run",
-          "{C:inactive}Currently: {C:gold}+#1#{} {C:inactive}Ascension Power{} {C:chips}+#2#{} {C:inactive}Chips",
+          "{C:gold}+#3#{} Asc. Power and {C:chips}+#4#{} Chips",
+          "per unique {C:attention}Tag{} obtained this run",
+          "{C:inactive}(Currently {C:gold}+#1#{C:inactive},{} {C:chips}+#2#{C:inactive})",
         }
       },
       m_abn_tile = {
