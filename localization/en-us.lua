@@ -678,6 +678,81 @@ return {
         }
       },
     },
+    crimson = {
+      c_abn_igoera = {
+        name = "Igoera",
+        text = {
+          {
+            "Enhance the {C:attention}leftmost{}",
+            "joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
+      c_abn_liskarra = {
+        name = "Liskarra",
+        text = {
+          {
+            "Enhance the {C:attention}rightmost{}",
+            "joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
+      c_abn_guztiak = {
+        name = "Guztiak",
+        text = {
+          {
+            "Enhance the {C:attention}leftmost{}",
+            "joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
+      c_abn_moztu = {
+        name = "Moztu",
+        text = {
+          {
+            "Enhance the {C:attention}rightmost{}",
+            "joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
+      c_abn_aleazioa = {
+        name = "Aleazioa",
+        text = {
+          {
+            "Enhance the {C:attention}leftmost{}",
+            "joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
+      c_abn_iraunkorrak = {
+        name = "Iraunkorrak",
+        text = {
+          {
+            "Enhance the {C:attention}rightmost{}",
+            "joker to a {C:enhanced}#1#{}",
+            "of a random {C:dark_edition}Suit"
+          }
+        }
+      },
+      c_abn_ahalegina = {
+        name = "Ahalegina",
+        text = {
+          {
+            "Enhance the {C:attention}leftmost{}",
+            "joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
+      c_abn_sakratua = {
+        name = "Sakratua",
+        text = {
+          {
+            "Enhance the {C:attention}rightmost{}",
+            "joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
+    },
     solid_state = {
       c_abn_digitization = {
         name = "Digitization",
@@ -10625,6 +10700,13 @@ return {
           "during a {C:attention}Blind{}"
         }
       },
+      abn_crimson_info = {
+        name = "Crimson Card",
+        text = {
+          "{C:red}Cannot{} be used",
+          "in {C:attention}Shop{}"
+        }
+      },
       abn_ultra_ego_info = {
         name = "Ultra Ego",
         text = {
@@ -11519,6 +11601,118 @@ return {
         text = {
           "{C:green}#1# in #2#{} chance to give {C:red}+#3#{} Mult",
           "{C:green}#4# in #5#{} chance to give {C:gold}$#6#{}",
+        }
+      },
+      abn_stk_fossil = {
+        name = "Fossil",
+        text = {
+          "{X:red,C:white}X#1#{} Mult, {C:gold}$#2#",
+          "After scoring, {C:green}#3# in #4#{} chance",
+          "to {C:red,E:2}self-destruct"
+        }
+      },
+      abn_stk_petroleum = {
+        name = "Petroleum",
+        text = {
+          "{C:chips}+#1#{} Chips, {C:gold}+$#2#",
+          "Turns into an {C:enhanced}Oilfire{} Sticker",
+          "if the score {C:red,E:2}catches fire"
+        }
+      },
+      abn_stk_oilfire = {
+        name = "Oilfire",
+        text = {
+          "{C:red}+#1#{} Mult, {C:red}-$#2#",
+          "After scoring, {C:green}#3# in #4#{} chance",
+          "to {C:red,E:2}self-destruct"
+        }
+      },
+      abn_stk_mercurial = {
+        name = "Mercurial",
+        text = {
+          "Gain {C:chips}+#1#{} Chips",
+          "for each unique {C:attention}suit{}",
+          "in scoring hand",
+          "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
+        }
+      },
+      abn_stk_kintsugi = {
+        name = "Kintsugi",
+        text = {
+          "{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult, {C:gold}+$#3#{}",
+          " ",
+          "{C:green}#6# in #7#{} chance to double",
+          "this sticker's value",
+          " ",
+          "Once per ante, {C:green}#4# in #5#{} chance", 
+          "to clone this joker after",
+          "destroying a {C:red,E:2}playing card",
+          "{C:inactive}(Must have room)"
+        }
+      },
+      abn_stk_wallpaper = {
+        name = "Wallpaper",
+        text = {
+          "Gains {C:mult}+#2#{} Mult per {C:attention}Seal{}",
+          "in scoring hand, {C:chips}+#4#{} Chips",
+          "per {C:attention}seal{} held in hand",
+          "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult, {C:chips}+#3#{C:inactive} Chips)",
+        }
+      },
+      abn_stk_infra = {
+        name = "Infra",
+        text = {
+          "Gain {C:mult}+#2#{} Mult and {C:chips}+#4#{} Chips",
+          "per scoring card",
+          "{C:red,E:2}Self-destruct{} if less than {C:attention}3{}",
+          "cards have been scored",
+          "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult, {C:chips}+#1#{C:inactive} Chips)",
+        }
+      },
+      abn_stk_hazard = {
+        name = "Hazard",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult",
+          "Gain {X:mult,C:white}+X#2#{} Mult for each other",
+          "{C:attention}Joker{} with this {C:enhanced}Sticker Enhancement{}",
+          "{C:green}#3# in #4#{} chance to retrigger",
+          "{X:blind,C:white}X#5#{} Blind Requirement",
+          
+        }
+      },
+      abn_stk_monitor = {
+        name = "Monitor",
+        text = {
+          "{X:mult,C:white}^Mult{} relative to",
+          "amount of scoring {C:dark_edition}<Suit>s",
+        }
+      },
+      abn_stk_monitor_hearts = {
+        name = "Monitor",
+        text = {
+          "{X:mult,C:white}^Mult{} relative to",
+          "amount of scoring {C:hearts}#1#",
+        }
+      },
+      abn_stk_monitor_diamonds = {
+        name = "Monitor",
+        text = {
+          "{X:mult,C:white}^Mult{} relative to",
+          "amount of scoring {C:diamonds}#1#",
+        }
+      },
+      abn_stk_monitor_clubs = {
+        name = "Monitor",
+        text = {
+          "{X:mult,C:white}^Mult{} relative to",
+          "amount of scoring {C:clubs}#1#",
+        }
+      },
+      abn_stk_monitor_spades = {
+        name = "Monitor",
+        text = {
+          "{X:mult,C:white}^Mult{} relative to",
+          "amount of scoring {C:spades}#1#",
         }
       },
       --
@@ -13944,6 +14138,7 @@ return {
       k_abn_plus_lexica = "+1 Lexica",
       k_abn_plus_continent = "+1 Continent",
       k_abn_plus_calligraphy = "+1 Calligraphy",
+      k_abn_plus_crimson = "+1 Crimson",
       k_abn_plus_glyph = "+1 Glyph",
       k_plus_tag = "+1 Tag!",
       k_abn_plus_solid_state = "+1 Solid State",
@@ -14006,6 +14201,9 @@ return {
       k_ancient_calligraphy = "Ancient Calligraphy",
       k_numeral_calligraphy = "Calligraphy Numeral",
 
+      b_crimson_cards = "Crimson Cards",
+      k_crimson = "Crimson",
+
       b_glyphs_cards = "Glyph Cards",
       k_glyphs = "Glyph",
 
@@ -14027,6 +14225,7 @@ return {
       continent = "Continent",
       solid_state = "Solid State",
       calligraphy = "Calligraphy",
+      crimson = "Crimson",
       glyphs = "Glyph",
       ruinous_power = "Ruinous Power",
       artistry_cards = "Artistry Cards",
@@ -14109,6 +14308,19 @@ return {
       abn_stk_steel = "Steel",
       abn_stk_wild = "Wild",
       abn_stk_gold = "Gold",
+      abn_stk_fossil = "Fossil",
+      abn_stk_petroleum = "Petroleum",
+      abn_stk_oilfire = "Oilfire",
+      abn_stk_mercurial = "Mercurial",
+      abn_stk_monitor = "Monitor",
+      abn_stk_monitor_hearts = "Monitor",
+      abn_stk_monitor_diamonds = "Monitor",
+      abn_stk_monitor_spades = "Monitor",
+      abn_stk_monitor_clubs = "Monitor",
+      abn_stk_infra = "Infra",
+      abn_stk_hazard = "Hazard",
+      abn_stk_kintsugi = "Kintsugi",
+      abn_stk_wallpaper = "Wallpaper",
 
       -- Seals
       abn_orange_seal = "Orange Seal",

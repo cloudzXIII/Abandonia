@@ -197,6 +197,9 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
 	if card and card.ability and card.ability.set == "calligraphy" then
 		generate_card_ui_ref({ key = "abn_calligraphy_info", set = "Other" }, UI_table)
 	end
+	if card and card.ability and card.ability.set == "crimson" then
+		generate_card_ui_ref({ key = "abn_crimson_info", set = "Other" }, UI_table)
+	end
 
 	return UI_table
 end
