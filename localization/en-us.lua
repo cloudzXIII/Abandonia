@@ -10434,14 +10434,16 @@ return {
         text = {
           "Made so much cool {C:green}art{}!",
           "{s:0.85}(aswell as these cool credit cards)",
-          "Check out {C:attention}Inky's Bunch-O-Things{}!"
+          "Check out",
+          "{C:attention}Inky's Bunch-O-Things{}!"
         }
       },
       credit_abn_feli = {
         name = "",
         text = {
-          "Added some {C:attention}Jokers{}",
-          "Check out {C:attention}Feli's Additions Gallery{}!"
+          "Added a bunch of things!",
+          "Check out",
+          "{C:attention}Feli's Additions Gallery{}!"
         }
       },
       credit_abn_j8bit = {
