@@ -4344,11 +4344,15 @@ return {
       j_abn_heart_of_glass = {
         name = "Heart of Glass",
         text = {
-          "{C:attention}Glass Cards{} give {C:white,X:chips}X#1#{} Chips",
-          "when scored, and always {C:attention}shatter",
-          "This Joker gains {C:chips}+#2#{} Chips",
-          "for every {C:hearts}Heart{} {C:attention}Glass Card{} destroyed",
-          "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)"
+          {
+            "{C:attention}Glass Cards{} give {C:white,X:chips}X#1#{} Chips",
+            "when scored, and always {C:attention}shatter",
+          },
+          {
+            "This Joker gains {C:chips}+#2#{} Chips for",
+            "every {C:hearts}Heart{} {C:attention}Glass Card{} destroyed",
+            "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)"
+          }
         }
       },
       j_abn_living_card = {
@@ -5730,10 +5734,15 @@ return {
       j_abn_vitamin_joker = {
         name = "Vitamin Joker",
         text = {
-          "Scoring cards with a {C:attention}seal",
-          "permanently gain {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult,",
-          "{C:green}#3# in #4#{} chance this card is",
-          "{C:attention}eaten{} after a hand is played"
+          {
+            "Scoring cards with a {C:attention}seal",
+            "permanently gain",
+            "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+          },
+          {
+            "{C:green}#3# in #4#{} chance this card is",
+            "{C:attention}eaten{} after a hand is played"
+          }
         },
       },
       j_abn_combo_maker = {
@@ -5819,8 +5828,8 @@ return {
       j_abn_missing_texture = {
         name = 'Missing Texture',
         text = {
-          "Turns every scored card",
-          "into an {C:attention}Ace{}",
+          "Converts every scored",
+          "card into an {C:attention}Ace{}",
           "before scoring"
         },
       },
@@ -6814,8 +6823,10 @@ return {
       j_abn_pong_joker = { -- I dont know who write this way but u scare me. with love, Marffe
         name = "Pong Joker",
         text = {
-          "Gain {X:chips,C:white}X#4#{} Chips when playing a {C:attention}Straight{} made of only {C:spades}Dark{} Suits",
-          "Gain {X:mult,C:white}X#3#{} Mult when playing a {C:attention}Straight{} made of only {C:diamonds}Light{} Suits",
+          "If played {C:attention}Straight{} has only",
+          "{C:spades}Dark Suits{}, this Joker gains",
+          "{X:chips,C:white}X#4#{} Chips, gains {X:mult,C:white}X#3#{} Mult",
+          "if {C:attention}Straight{} has only {C:diamonds}Light Suits{}",
           "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {X:chips,C:white}X#2#{} {C:inactive}Chips){}",
         }
       },
@@ -7696,7 +7707,7 @@ return {
             "{C:mult}+#5#{} Mult per {C:dark_edition}Negative{} {C:spades}Dark Suit{} played",
           },
           {
-            "If this Joker has {C:dark_edition}Negative{} edition",
+            "If this Joker has {C:dark_edition}Negative{} edition,",
             "gain {X:mult,C:white}X#4#{} Mult per {C:dark_edition}Negative{} card played",
             "{C:inactive}(Currently {C:chips}+#3#{} {C:inactive}Chips,{} {C:mult}+#2#{} {C:inactive}Mult,{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}"
           },
@@ -8569,7 +8580,7 @@ return {
         text = {
           "{C:green}#1# in #2#{} chance for each",
           "played {C:attention}14{} to create a",
-          "{C:clubs}Solid State{} card when scored",
+          "{C:solid_state}Solid State{} card when scored",
           "{C:inactive}(Must have room)",
         },
       },
