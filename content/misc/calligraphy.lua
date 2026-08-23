@@ -42,6 +42,7 @@ ABN.NumeralCalligraphyCard = SMODS.Consumable:extend({
   cost = 4,
   atlas = "abn_AbandoniaNumeralCalligraphy",
   pos = { x = 0, y = 0 },
+  numeral_calligraphy = true,
   abn_artist_credits = {
     artist = "0kronix"
   },
@@ -85,6 +86,7 @@ function Card:set_sprites(_center, _front)
     local undiscovered_sprite = SMODS.UndiscoveredSprites[_center.set]
     local atlas = SMODS.get_atlas((undiscovered_sprite and undiscovered_sprite.atlas)
     ) or _center.set or SMODS.get_atlas("Joker")
+    --local pos = undiscovered_sprite and ((_center.ancient_calligraphy and { x = 1, y = 0 }) or (_center.numeral_calligraphy and { x = ?, y = ? }) or undiscovered_sprite.pos)
     local pos = undiscovered_sprite and (_center.ancient_calligraphy and { x = 1, y = 0 } or undiscovered_sprite.pos)
     local sprite_args = (_center.undiscovered and _center.undiscovered.sprite_args) or
         (undiscovered_sprite and undiscovered_sprite.sprite_args) or G.j_undiscovered.sprite_args
