@@ -41,7 +41,7 @@ local set_debuff_ref = Card.set_debuff
 function Card:set_debuff(should_debuff)
   set_debuff_ref(self, should_debuff)
   
-  if self.config.abn_immortal then
+  if self.ability.abn_immortal then
     self.debuff = false
     self.perma_debuff = false
   end
@@ -50,7 +50,7 @@ end
 local can_sell_ref = Card.can_sell_card
 function Card:can_sell_card(context)
   local result = can_sell_ref(self, context)
-  if self.config.abn_immortal then
+  if self.ability.abn_immortal then
     return true
   end
   return result
@@ -199,7 +199,7 @@ SMODS.Sticker {
 }
 local set_edition_ref = Card.set_edition
 function Card:set_edition(edition, immediate, silent)
-  if self.config.abn_crown then
+  if self.ability.abn_crown then
     return
   end
   return set_edition_ref(self, edition, immediate, silent)
