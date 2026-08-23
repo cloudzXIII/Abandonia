@@ -10181,7 +10181,7 @@ return {
           "{C:planet}Planet{} Cards provide",
           "{C:red}%#1#{} more Mult",
         }
-      }
+      },
 	  
 	  j_abn_maltese_cross = {
         name = "Maltese Cross",
