@@ -8,6 +8,13 @@ SMODS.ConsumableType {
   shop_rate = 0,
 }
 
+SMODS.UndiscoveredSprite {
+  key = 'glyphs',
+  atlas = 'abn_AbandoniaUndiscovered',
+  pos = { x = 0, y = 1 },
+  overlay_pos = { x = 1, y = 1 },
+}
+
 ABN.GlyphCard = SMODS.Consumable:extend({
   set = 'glyphs',
   cost = 4,

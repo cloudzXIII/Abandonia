@@ -10748,6 +10748,15 @@ return {
           "learn what it does"
         }
       },
+      undiscovered_artistry_cards = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
+      },
       undiscovered_calamity_cards = {
         name = "Not Discovered",
         text = {

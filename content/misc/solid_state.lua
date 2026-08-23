@@ -7,6 +7,12 @@ SMODS.ConsumableType {
   shop_rate = 0,
 }
 
+SMODS.UndiscoveredSprite {
+  key = 'solid_state',
+  atlas = 'abn_AbandoniaUndiscovered',
+  pos = { x = 4, y = 0 },
+}
+
 ABN.SolidState = SMODS.Consumable:extend({
   set = 'solid_state',
   cost = 4,
@@ -939,8 +945,8 @@ local sell_card_ref = Card.sell_card
 
 function Card:sell_card(...)
   if self.config
-      and self.config.center
-      and self.config.center.set == "Joker" then
+  and self.config.center
+  and self.config.center.set == "Joker" then
     G.GAME.last_sold_joker = self.config.center.key
   end
 
@@ -1011,11 +1017,11 @@ ABN.SolidState {
 }
 
 ABN.update_table = {
-  ["e_foil"]            = { next = "e_abn_gloss", },
-  ["e_holo"]            = { next = "e_abn_pearlescent", },
-  ["e_polychrome"]      = { next = "e_abn_iridescent", },
-  ["e_abn_iridescent"]  = { next = "e_abn_chromatic", },
-  ["e_abn_gloss"]       = { next = "e_abn_reel", },
+  ["e_foil"] = { next = "e_abn_gloss", },
+  ["e_holo"] = { next = "e_abn_pearlescent", },
+  ["e_polychrome"] = { next = "e_abn_iridescent", },
+  ["e_abn_iridescent"] = { next = "e_abn_chromatic", },
+  ["e_abn_gloss"] = { next = "e_abn_reel", },
   ["e_abn_pearlescent"] = { next = "e_abn_bit_rot", },
 }
 

@@ -8,6 +8,12 @@ SMODS.ConsumableType {
   shop_rate = 1,
 }
 
+SMODS.UndiscoveredSprite {
+  key = 'program_pack',
+  atlas = 'abn_AbandoniaUndiscovered',
+  pos = { x = 4, y = 1 },
+}
+
 SMODS.Consumable {
   key = "png",
   set = 'program_pack',
