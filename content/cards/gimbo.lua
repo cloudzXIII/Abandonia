@@ -34,7 +34,4 @@ SMODS.Joker {
   abn_artist_credits = {
     artist = "Bunnet"
   },
-  dependencies = {
-    "allinjest"
-  },
 }
