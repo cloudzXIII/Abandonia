@@ -462,13 +462,13 @@ return {
         }
       },
       c_abn_soft_sign = {
-        name = "Soft Sign",
-        text = {
-          "Converts the {C:attention}Rightmost{}",
-          "card in hand into a",
-          "{C:attention}13{} {C:attention}Sew{} card"
-        }
-      },
+		name = "Soft Sign",
+		text = {
+			"If the {C:attention}Rightmost{} card",
+			"in hand is a {C:attention}13{}",
+			"convert it into a {C:attention}Sew{} card"
+		}
+	  },
 
 
 
@@ -10182,6 +10182,39 @@ return {
           "{C:red}%#1#{} more Mult",
         }
       }
+	  
+	  j_abn_maltese_cross = {
+        name = "Maltese Cross",
+        text = {
+          "Each scoring Domino card gains {C:chips}+#1#{} Chips",
+		  "per time that {C:attention}Rank{} scored during this {C:attention}blind{}",
+        }
+      },
+	  
+	  j_abn_backup_plan = {
+        name = "Backup Plan",
+        text = {
+          "{C:attention}Retrigger{} {C:attention}Leftmost{} scoring card",
+		  "Once per each {C:attention}other{} scoring card",
+        }
+      },
+	  
+	  j_abn_sikhs_joker= {
+        name = "Sikhs Joker",
+        text = {
+          "Scoring cards give {X:chips,C:white}X#2#{} Chips",
+		  "for each {C:attention}unique{} {C:tarot}Minor Arcana{} card used this run",
+		  "{C:inactive}Currently:{} {X:chips,C:white}X#1#{} {C:inactive}Chips{}",
+        }
+      },
+	  
+	  j_abn_sol_iii= {
+        name = "Sol III",
+        text = {
+          "Scoring hands give {C:gold}+#1#{} Ascension Power",
+		  "for each {C:attention}level{} they have",
+        }
+      },
       -- quick joker
     },
     Spectral = {
