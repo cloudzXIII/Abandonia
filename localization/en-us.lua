@@ -604,6 +604,79 @@ return {
           }
         }
       },
+      --CALLIGRAPHY NUMERALS
+      c_abn_adeen = {
+        name = "Adeen",
+        text = {
+          {
+            "Enhance the {C:attention}leftmost{}",
+            "joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
+      c_abn_dva = {
+        name = "Dva",
+        text = {
+          {
+            "Enhance the {C:attention}rightmost{}",
+            "joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
+      c_abn_tree = {
+        name = "Tree",
+        text = {
+          {
+            "Enhance the {C:attention}leftmost{}",
+            "joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
+      c_abn_chyetirye = {
+        name = "Chyetirye",
+        text = {
+          {
+            "Enhance the {C:attention}rightmost{}",
+            "joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
+      c_abn_pyat = {
+        name = "Pyat",
+        text = {
+          {
+            "Enhance the {C:attention}leftmost{}",
+            "joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
+      c_abn_shest = {
+        name = "Shest",
+        text = {
+          {
+            "Enhance the {C:attention}rightmost{}",
+            "joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
+      c_abn_syem = {
+        name = "Syem",
+        text = {
+          {
+            "Enhance the {C:attention}leftmost{}",
+            "joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
+      c_abn_vosyem = {
+        name = "Vosyem",
+        text = {
+          {
+            "Enhance the {C:attention}rightmost{}",
+            "joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
     },
     solid_state = {
       c_abn_digitization = {
@@ -13854,6 +13927,7 @@ return {
       b_calligraphy_cards = "Calligraphy Cards",
       k_calligraphy = "Calligraphy",
       k_ancient_calligraphy = "Ancient Calligraphy",
+      k_numeral_calligraphy = "Calligraphy Numeral",
 
       b_glyphs_cards = "Glyph Cards",
       k_glyphs = "Glyph",

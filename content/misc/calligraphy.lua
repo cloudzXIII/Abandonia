@@ -32,8 +32,48 @@ ABN.AncientCalligraphyCard = SMODS.Consumable:extend({
     badges[#badges + 1] = create_badge(localize('k_ancient_calligraphy'),
       get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.calligraphy.text_colour,
       1.2)
-  end
+  end,
+  
 })
+
+ABN.NumeralCalligraphyCard = SMODS.Consumable:extend({
+  set = 'calligraphy',
+  cost = 4,
+  atlas = "abn_AbandoniaNumeralCalligraphy",
+  pos = { x = 0, y = 0 },
+  abn_artist_credits = {
+    artist = "0kronix"
+  },
+  set_card_type_badge = function(self, card, badges)
+    badges[#badges + 1] = create_badge(localize('k_numeral_calligraphy'),
+      get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.calligraphy.text_colour,
+      1.2)
+  end,
+
+  loc_vars = function(self, info_queue, card)
+    local sticker = card.ability.extra.enh_key
+
+    if sticker then
+				local retvars = ABN.enh_stickers_vars[sticker] or {}
+				info_queue[#info_queue + 1] = { key = sticker, set = "Other", vars = retvars }
+		end
+    return {
+      vars = {
+        localize{type = 'name_text', key = card.ability.extra.enh_key, set='Other'},
+      }
+    }
+  end,
+  
+  
+})
+
+SMODS.UndiscoveredSprite({ -- undiscovered sprite
+    key = 'calligraphy',
+    atlas = "abn_undiscovered",
+    pos = { x = 0, y = 0 },
+    no_overlay = true
+})
+
 
 ABN.CalligraphyCard {
   key = "azu",
@@ -2475,6 +2515,405 @@ ABN.CalligraphyCard {
         rightmost:flip()
         play_sound('tarot2', 1, 0.6)
         rightmost:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    delay(0.5)
+  end,
+}
+
+ABN.NumeralCalligraphyCard {
+  key = "adeen",
+  pos = { x = 0, y = 0 },
+  config = { extra = { enh_key = "abn_stk_gold" } },
+  
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+  end,
+
+  use = function(self, card, area, copier)
+    local c = G.jokers.cards[1]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('card1', 1)
+        c:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      func = function()
+        c:add_sticker(card.ability.extra.enh_key, true)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('tarot2', 1, 0.6)
+        c:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    delay(0.5)
+  end,
+}
+
+ABN.NumeralCalligraphyCard {
+  key = "dva",
+  pos = { x = 1, y = 0 },
+  config = { extra = { enh_key = "abn_stk_mult" } },
+  
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+  end,
+
+  use = function(self, card, area, copier)
+    local c = G.jokers.cards[#G.jokers.cards]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('card1', 1)
+        c:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      func = function()
+        c:add_sticker(card.ability.extra.enh_key, true)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('tarot2', 1, 0.6)
+        c:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    delay(0.5)
+  end,
+}
+ABN.NumeralCalligraphyCard {
+  key = "tree",
+  pos = { x = 2, y = 0 },
+  config = { extra = { enh_key = "abn_stk_bonus" } },
+  
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+  end,
+
+  use = function(self, card, area, copier)
+    local c = G.jokers.cards[1]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('card1', 1)
+        c:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      func = function()
+        c:add_sticker(card.ability.extra.enh_key, true)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('tarot2', 1, 0.6)
+        c:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    delay(0.5)
+  end,
+}
+
+ABN.NumeralCalligraphyCard {
+  key = "chyetirye",
+  pos = { x = 2, y = 0 },
+  config = { extra = { enh_key = "abn_stk_lucky" } },
+  
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+  end,
+
+  use = function(self, card, area, copier)
+    local c = G.jokers.cards[#G.jokers.cards]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('card1', 1)
+        c:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      func = function()
+        c:add_sticker(card.ability.extra.enh_key, true)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('tarot2', 1, 0.6)
+        c:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    delay(0.5)
+  end,
+}
+
+ABN.NumeralCalligraphyCard {
+  key = "pyat",
+  pos = { x = 4, y = 0 },
+  config = { extra = { enh_key = "abn_stk_stone" } },
+  
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+  end,
+
+  use = function(self, card, area, copier)
+    local c = G.jokers.cards[1]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('card1', 1)
+        c:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      func = function()
+        c:add_sticker(card.ability.extra.enh_key, true)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('tarot2', 1, 0.6)
+        c:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    delay(0.5)
+  end,
+}
+
+ABN.NumeralCalligraphyCard {
+  key = "shest",
+  pos = { x = 5, y = 0 },
+  config = { extra = { enh_key = "abn_stk_steel" } },
+  
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+  end,
+
+  use = function(self, card, area, copier)
+    local c = G.jokers.cards[#G.jokers.cards]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('card1', 1)
+        c:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      func = function()
+        c:add_sticker(card.ability.extra.enh_key, true)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('tarot2', 1, 0.6)
+        c:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    delay(0.5)
+  end,
+}
+
+ABN.NumeralCalligraphyCard {
+  key = "syem",
+  pos = { x = 0, y = 1 },
+  config = { extra = { enh_key = "abn_stk_glass" } },
+  
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+  end,
+
+  use = function(self, card, area, copier)
+    local c = G.jokers.cards[1]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('card1', 1)
+        c:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      func = function()
+        c:add_sticker(card.ability.extra.enh_key, true)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('tarot2', 1, 0.6)
+        c:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    delay(0.5)
+  end,
+}
+
+
+ABN.NumeralCalligraphyCard {
+  key = "vosyem",
+  pos = { x = 1, y = 1 },
+  config = { extra = { enh_key = "abn_stk_wild" } },
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
+  end,
+
+  use = function(self, card, area, copier)
+    local c = G.jokers.cards[#G.jokers.cards]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('card1', 1)
+        c:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      func = function()
+        c:add_sticker(card.ability.extra.enh_key, true)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('tarot2', 1, 0.6)
+        c:juice_up(0.3, 0.3)
         return true
       end
     }))

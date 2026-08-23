@@ -1792,3 +1792,61 @@ SMODS.Sticker {
   end,
   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ABN.enh_stickers_vars = {
+    abn_stk_bonus     = SMODS.Stickers["abn_stk_bonus"] and {
+      SMODS.Stickers["abn_stk_bonus"].config.extra.chips
+    },
+    abn_stk_mult     =  SMODS.Stickers["abn_stk_mult"] and {
+      SMODS.Stickers["abn_stk_mult"].config.extra.mult 
+    },
+    abn_stk_gold     =  SMODS.Stickers["abn_stk_gold"] and {
+      SMODS.Stickers["abn_stk_gold"].config.extra.dollars 
+    },
+    abn_stk_stone     = SMODS.Stickers["abn_stk_stone"] and {
+      SMODS.Stickers["abn_stk_stone"].config.extra.chips
+    },
+    abn_stk_glass     = SMODS.Stickers["abn_stk_glass"] and {
+      SMODS.Stickers["abn_stk_glass"].config.extra.xmult, 
+      SMODS.Stickers["abn_stk_glass"].config.extra.n, 
+      SMODS.Stickers["abn_stk_glass"].config.extra.d,
+    },
+    abn_stk_steel     = SMODS.Stickers["abn_stk_steel"] and {
+      SMODS.Stickers["abn_stk_steel"].config.extra.xmult 
+    },
+    abn_stk_lucky     = SMODS.Stickers["abn_stk_lucky"] and {
+      SMODS.Stickers["abn_stk_lucky"].config.extra.n, 
+      SMODS.Stickers["abn_stk_lucky"].config.extra.d, 
+      SMODS.Stickers["abn_stk_lucky"].config.extra.mult,
+      SMODS.Stickers["abn_stk_lucky"].config.extra.n2, 
+      SMODS.Stickers["abn_stk_lucky"].config.extra.d2, 
+      SMODS.Stickers["abn_stk_lucky"].config.extra.dollars,},
+}

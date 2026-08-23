@@ -634,6 +634,8 @@ ABN.enh_stickers_list = {
     "abn_stk_lucky",
 }
 
+
+
 function ABN.get_joker_enh(card)
   for _, key in ipairs(ABN.enh_stickers_list) do
     if card.ability and card.ability[key] then return key end
