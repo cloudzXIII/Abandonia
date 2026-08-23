@@ -24,6 +24,7 @@ ABN.AncientCalligraphyCard = SMODS.Consumable:extend({
   soul_set = "calligraphy",
   soul_rate = 0.003,
   atlas = "abn_AbandoniaAncientCalligraphy",
+  ancient_calligraphy = true,
   pos = { x = 0, y = 0 },
   abn_artist_credits = {
     artist = "0kronix"
@@ -34,6 +35,35 @@ ABN.AncientCalligraphyCard = SMODS.Consumable:extend({
       1.2)
   end
 })
+
+SMODS.UndiscoveredSprite {
+  key = 'calligraphy',
+  atlas = 'abn_AbandoniaUndiscovered',
+  pos = { x = 0, y = 0 },
+}
+
+-- Seperate undiscovered sprites for calligraphy and ancient calligraphy cards
+local set_sprite_ref = Card.set_sprites
+function Card:set_sprites(_center, _front)
+  local ret = set_sprite_ref(self, _center, _front)
+
+  if not self.params.bypass_discovery_center and _center and _center.set == "calligraphy" and not _center.discovered then
+    if self.children.center then self.children.center:remove() end
+    local undiscovered_sprite = SMODS.UndiscoveredSprites[_center.set]
+    local atlas = SMODS.get_atlas((undiscovered_sprite and undiscovered_sprite.atlas)
+    ) or _center.set or SMODS.get_atlas("Joker")
+    local pos = undiscovered_sprite and (_center.ancient_calligraphy and { x = 1, y = 0 } or undiscovered_sprite.pos)
+    local sprite_args = (_center.undiscovered and _center.undiscovered.sprite_args) or
+        (undiscovered_sprite and undiscovered_sprite.sprite_args) or G.j_undiscovered.sprite_args
+    self.children.center = SMODS.create_sprite(self.T.x, self.T.y, self.T.w, self.T.h, atlas, pos, sprite_args)
+    self.children.center.states.hover = self.states.hover
+    self.children.center.states.click = self.states.click
+    self.children.center.states.drag = self.states.drag
+    self.children.center.states.collide.can = false
+    self.children.center:set_role({ major = self, role_type = 'Glued', draw_major = self })
+  end
+  return ret
+end
 
 ABN.CalligraphyCard {
   key = "azu",
@@ -1816,7 +1846,7 @@ ABN.CalligraphyCard {
   end,
 
   config = { extra = { suit_conv = "abn_Star", mod_conv = "m_abn_flux" } },
-  
+
   can_use = function(self, card)
     return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
