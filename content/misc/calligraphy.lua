@@ -70,7 +70,7 @@ ABN.NumeralCalligraphyCard = SMODS.Consumable:extend({
 
 SMODS.UndiscoveredSprite({ -- undiscovered sprite
     key = 'calligraphy',
-    atlas = "abn_undiscovered",
+    atlas = "abn_AbandoniaUndiscovered",
     pos = { x = 0, y = 0 },
     no_overlay = true
 })
