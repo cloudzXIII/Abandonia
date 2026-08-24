@@ -10,7 +10,7 @@ SMODS.Joker {
     extra = {
       xchips = 1,
       xchipsadd = 0.1,
-	  base = 1,
+      base = 1,
     }
   },
 
@@ -39,9 +39,9 @@ SMODS.Joker {
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
       if context.other_card then
-		return {
-			xchips = card.ability.extra.xchips,
-            card = card
+        return {
+          xchips = card.ability.extra.xchips,
+          card = card
         }
       end
     end
@@ -49,5 +49,8 @@ SMODS.Joker {
 
   abn_artist_credits = {
     artist = "Papermoon & B.b.b.b",
+  },
+  dependencies = {
+    "paperback"
   },
 }

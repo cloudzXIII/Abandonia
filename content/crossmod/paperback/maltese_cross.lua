@@ -14,6 +14,7 @@ SMODS.Joker {
   },
 
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_paperback_domino
     return {
       vars = {
         card.ability.extra.chips
@@ -29,7 +30,7 @@ SMODS.Joker {
         local rank_id = other:get_id()
         card.ability.extra.ranks_scored[rank_id] = (card.ability.extra.ranks_scored[rank_id] or 0) + 1
 
-        if other.config.center.key == 'm_paperback_domino' then
+        if SMODS.has_enhancement(other, "m_paperback_domino") then
           local rank_times_scored = card.ability.extra.ranks_scored[rank_id]
           local chip_bonus = card.ability.extra.chips * rank_times_scored
 
@@ -51,5 +52,8 @@ SMODS.Joker {
 
   abn_artist_credits = {
     artist = "Papermoon & B.b.b.b",
+  },
+  dependencies = {
+    "paperback"
   },
 }

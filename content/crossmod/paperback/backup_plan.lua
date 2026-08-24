@@ -27,4 +27,7 @@ SMODS.Joker {
   abn_artist_credits = {
     artist = "Papermoon & B.b.b.b",
   },
+  dependencies = {
+    "paperback"
+  },
 }

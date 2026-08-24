@@ -10385,24 +10385,28 @@ return {
       j_abn_maltese_cross = {
         name = "Maltese Cross",
         text = {
-          "Each scoring Domino card gains {C:chips}+#1#{} Chips",
-          "per time that {C:attention}Rank{} scored during this {C:attention}blind{}",
+          "Scoring {C:attention}Domino{} cards",
+          "permanently gain {C:chips}+#1#{} Chips",
+          "per time that {C:attention}rank{} has",
+          "scored during this {C:attention}Blind{}",
         }
       },
 
       j_abn_backup_plan = {
         name = "Backup Plan",
         text = {
-          "{C:attention}Retrigger{} {C:attention}Leftmost{} scoring card",
-          "Once per each {C:attention}other{} scoring card",
+          "Retrigger {C:attention}first{} scoring",
+          "card once for every",
+          "other card in scoring hand",
         }
       },
 
       j_abn_sikhs_joker = {
         name = "Sikhs Joker",
         text = {
-          "Scoring cards give {X:chips,C:white}X#2#{} Chips",
-          "for each {C:attention}unique{} {C:tarot}Minor Arcana{} card used this run",
+          "Scoring cards give {X:chips,C:white}X#2#{}",
+          "Chips for every {C:attention}unique{}",
+          "{C:tarot}Minor Arcana{} card used",
           "{C:inactive}(Currently{} {X:chips,C:white}X#1#{} {C:inactive}Chips){}",
         }
       },
@@ -10410,38 +10414,39 @@ return {
       j_abn_sol_iii = {
         name = "Sol III",
         text = {
-          "Scoring hands give {C:gold}+#1#{} Ascension Power",
+          "{C:attention}Poker hands{} give {C:gold}+#1#{} Asc. Power",
           "for each {C:attention}level{} they have",
         }
       },
-	  
-	  j_abn_librarian_joker = {
+
+      j_abn_librarian_joker = {
         name = "Librarian Joker",
         text = {
-          "When a {C:lexica}Lexica{} card triggers during a blind",
-		  "create a random {C:dark_edition}negative{} {C:calligraphy}Calligraphy{} card",
+          "When a {C:lexica}Lexica{} card triggers",
+          "during a {C:attention}Blind{}, create a",
+          "random {C:dark_edition}Negative{} {C:calligraphy}Calligraphy{} card",
         }
       },
-	  
-	  j_abn_eternian_joker = {
+
+      j_abn_eternian_joker = {
         name = "Eternian Joker",
         text = {
-          "Each different type of held {C:attention}consumable{}",
-		  "gives {C:gold}+#1#{} Ascension Power",
-		  "{C:inactive}Currently: {C:gold}+#2#{C:inactive} Ascension Power",
+          "{C:gold}+#1#{} Asc. Power for each",
+          "unique type of {C:attention}consumable{} held",
+          "{C:inactive}(Currently {C:gold}+#2#{C:inactive} Ascension Power)",
         }
       },
-	  
-	  j_abn_dungeon_crawler = {
+
+      j_abn_dungeon_crawler = { -- to relocalise
         name = "Dungeon Crawler",
         text = {
           "Pay {C:money}$#1#{} to add {C:attention}+1{} Joker slot",
-		  "Increase {C:attention}finishing Ante{} by {C:attention}+1{} for every Joker above {C:attention}5{}",
-		  "Jokers with {C:attention}Vanilla{} {C:dark_edition}Editions{} give {C:gold}+#2#{} Ascension Power",
-		  "Scoring cards with {C:attention}Vanilla{} {C:dark_edition}Editions{} give {C:gold}+#3#{} Ascension Power",
-		  "If a {C:attention}Vanilla{} Suit card with a {C:attention}Vanilla{} {C:dark_edition}Edition{} matches a Joker's {C:dark_edition}Edition{}",
-		  "this Joker gains {C:gold}+#4#{} Ascension Power",
-		  "{C:inactive}Currently:{} {C:gold}+#5#{} {C:inactive}Ascension Power{}",
+          "Increase {C:attention}finishing Ante{} by {C:attention}+1{} for every Joker above {C:attention}5{}",
+          "Jokers with {C:attention}Vanilla{} {C:dark_edition}Editions{} give {C:gold}+#2#{} Ascension Power",
+          "Scoring cards with {C:attention}Vanilla{} {C:dark_edition}Editions{} give {C:gold}+#3#{} Ascension Power",
+          "If a {C:attention}Vanilla{} Suit card with a {C:attention}Vanilla{} {C:dark_edition}Edition{} matches a Joker's {C:dark_edition}Edition{}",
+          "this Joker gains {C:gold}+#4#{} Ascension Power",
+          "{C:inactive}(Currently{} {C:gold}+#5#{} {C:inactive}Ascension Power){}",
         }
       },
     },
