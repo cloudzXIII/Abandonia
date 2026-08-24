@@ -379,7 +379,7 @@ SMODS.Consumable {
   key = 'whitehole',
   set = 'Spectral',
   atlas = "AbandoniaSpectrals",
-  pos = { x = 5, y = 3 },
+  pos = { x = 5, y = 2 },
   hidden = true,
   soul_set = 'Planet',
 

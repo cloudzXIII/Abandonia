@@ -3142,11 +3142,12 @@ return {
       j_abn_spare_bikini = {
         name = "Spare Bikini",
         text = {
-          "This Joker gains {C:mult}+#2#{} Mult if",
-          "played hand contains a {C:attention}#3#{},",
-          "gains {C:gold}+#5#{} Asc. Power if hand",
-          "contains {C:attention}5{} unique {C:attention}suits{}",
-          "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult, {C:gold}+#4#{C:inactive} Asc. Power)"
+          "This Joker gains {C:mult}+#2#{} Mult and",
+          "{C:chips}+#7#{} Chips if played hand contains",
+          "a {C:attention}#3#{}, gains {C:gold}+#5#{}",
+          "Asc. Power if hand contains",
+          "{C:attention}5{} unique {C:attention}suits{}",
+          "{C:inactive}(Currently {C:chips}+#6#{C:inactive}, {C:mult}+#1#{C:inactive}, {C:gold}+#4#{C:inactive})"
         }
       },
       -- for localisers, this a Joker based on Jevil from Deltarune, and it has a random effect based on the number of unique suits in played hand
