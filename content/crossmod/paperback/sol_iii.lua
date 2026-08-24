@@ -1,4 +1,4 @@
-if ((SMODS.Mods["Spectrallib"] or {}).can_load) then
+if next(SMODS.find_mod("Spectrallib")) then
   SMODS.Joker {
     key = 'sol_iii',
     rarity = 3,
