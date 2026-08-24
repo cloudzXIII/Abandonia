@@ -10449,6 +10449,17 @@ return {
           "{C:inactive}(Currently{} {C:gold}+#5#{} {C:inactive}Ascension Power){}",
         }
       },
+	  
+	  j_abn_metallic_upgrade = {
+        name = "Metallic Upgrade",
+        text = {
+          "The {C:attention}First{} scoring {C:attention}Vanilla{} {C:dark_edition}Enhancement{} card in a {C:attention}Spectrum{} hand",
+		  "Gives the same {C:dark_edition}Enhancement{} to the {C:attention}Leftmost{} Joker",
+		  "If a {C:attention}Spectrum{} hand is played with {C:attention}5 Vanilla{} {C:dark_edition}Enhancements{}",
+		  "all played cards permanently gain {C:chips}+#1#{} Chips {C:mult}+#2#{} Mult",
+		  "and all Jokers {C:purple}+#3#{} Score",
+        }
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
@@ -14122,6 +14133,7 @@ return {
       abn_perma_xchips = "{C:white,X:chips}X#4#{} Chips",
       abn_perma_dollars = "{C:money}$#5#{} extra Dollars",
       abn_perma_rep = "{C:attention}+#6#{} extra Repetitions",
+	  abn_perma_score = "{C:purple}+#7#{} extra Score",
 
       -- Jevil effects
       abn_unique_suit_1 = {
