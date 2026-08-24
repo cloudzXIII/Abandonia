@@ -34,6 +34,11 @@ local function abn_i_can_do_anything(card, suit_no)
   card.ability.extra[suit_no] = true
   return
 end
+
+to_number = to_number or function(x)
+  return tonumber(x)
+end
+
 SMODS.Joker {
   key = 'jevil',
 
@@ -124,7 +129,8 @@ SMODS.Joker {
     end
     if context.repetition and context.cardarea == G.play then
       local unique_suits = count_unique(context.scoring_hand, "suit")
-      if unique_suits == 1 and ABN.is_prime(G.GAME.dollars) then
+      local money = type(G.GAME.dollars) == "number" and G.GAME.dollars or to_number(G.GAME.dollars)
+      if unique_suits == 1 and ABN.is_prime(money) then
         abn_i_can_do_anything(card, "unique_suit_1")
         return {
           repetitions = card.ability.extra.repetitions
