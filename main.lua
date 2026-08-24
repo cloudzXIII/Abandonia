@@ -76,6 +76,13 @@ function loc_colour(_c, _default)
   G.ARGS.LOC_COLOURS.abn_silver_seal = HEX("bec7d4")
   G.ARGS.LOC_COLOURS.abn_duality_seal = HEX("a56be6")
 
+
+  G.ARGS.LOC_COLOURS.abn_j = HEX("000000")
+  G.ARGS.LOC_COLOURS.abn_e = HEX("6d6dc0")
+  G.ARGS.LOC_COLOURS.abn_v = HEX("a6bdd0")
+  G.ARGS.LOC_COLOURS.abn_i = HEX("fff200")
+  G.ARGS.LOC_COLOURS.abn_l = HEX("b5e61d")
+
   return abn(_c, _default)
 end
 

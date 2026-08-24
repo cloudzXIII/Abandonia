@@ -361,7 +361,7 @@ return {
         name = "O",
         text = {
           "{C:attention}Leftmost{} card in hand",
-          "permanently gains {C:attention}triple{} it's",
+          "permanently gains {C:attention}triple{} its",
           "{C:attention}rank{} as {C:chips}Chips{} if it's below {C:attention}5{}"
         }
       },
@@ -1231,7 +1231,7 @@ return {
         name = "J(unction)",
         text = {
           "Next time a {C:attention}Straight{} is played,",
-          "increase it's level by {C:attention}1{} for every",
+          "increase its level by {C:attention}1{} for every",
           "{C:attention}numbered{} card played"
         }
       },
@@ -1355,7 +1355,7 @@ return {
         name = "Y(onder)",
         text = {
           "Next time you use a {C:astro_cards}Astro{} card,",
-          "it's {C:green}probabilites{} succeed,",
+          "its {C:green}probabilities{} succeed,",
           "create a random {C:dark_edition}Negative{}",
           "{C:planet}Rank Planet{} card"
         }
@@ -3139,6 +3139,15 @@ return {
       },
     },
     Joker = {
+      -- for localisers, this a Joker based on Jevil from Deltarune, and it has a random effect based on the number of unique suits in played hand
+      -- The effects are in misc.dictionary and are abn_unique_suit_1, abn_unique_suit_2 etc.
+      j_abn_jevil = {
+        name = "{C:abn_j}J{C:abn_e}e{C:abn_v}v{C:abn_i}i{C:abn_l}l{} the Mad Jester",
+        text = {
+          "Play a {C:blue}hand{}, any hand!",
+          "{E:1,s:0.8,C:purple}\"I CAN DO ANYTHING!\"",
+        }
+      },
       j_abn_double_hubble = {
         name = 'Double Hubble',
         text = {
@@ -6135,8 +6144,8 @@ return {
         name = "Dead or Alive",
         text = {
           "When a {C:attention}#1#{} of {V:1}#2#{} is played,",
-          "permanently {C:attention}double{} it's {C:chips}chips{}",
-          "and gain {C:money}${} equal to it's rank",
+          "permanently {C:attention}double{} its {C:chips}chips{}",
+          "and gain {C:money}${} equal to its rank",
           "{s:0.8}Card changes every round",
         },
       },
@@ -8236,14 +8245,14 @@ return {
         text = {
           {
             "If an {C:dark_edition}Editioned{} {C:attention}Joker{} is purchased,",
-            "this Joker gains {C:chips}+#1#{} Chips",
-            "per {C:money}${} of it's {C:attention}cost",
+            "this Joker gains {C:chips}+#1#{} Chip",
+            "per {C:money}${} of its {C:attention}cost",
 
           },
           {
             "If a {C:attention}free{} {C:attention}Joker{} is purchased,",
-            "this Joker gains {C:chips}+#1#{} Chips",
-            "per {C:money}${} of it's {C:attention}original cost",
+            "this Joker gains {C:chips}+#1#{} Chip",
+            "per {C:money}${} of its {C:attention}original cost",
             "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
           }
         }
@@ -9741,7 +9750,7 @@ return {
           },
           {
             "If destroyed card was {C:abn_black_seal}Darkner{},",
-            "gain {C:chips}Chips{} equal to it's {C:attention}rank",
+            "gain {C:chips}Chips{} equal to its {C:attention}rank",
             "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips){}",
           }
         }
@@ -10167,7 +10176,7 @@ return {
           },
           {
             "When a {C:attention}Hazard{} card scores,",
-            "{C:mult}destroy{} it and gain it's {C:attention}rank{} as {C:chips}Chips{}",
+            "{C:mult}destroy{} it and gain its {C:attention}rank{} as {C:chips}Chips{}",
             "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}",
           }
         }
@@ -10189,7 +10198,7 @@ return {
           {
             "No {C:chips}chip{} gain on {C:attention}Kings{},",
             "When a {C:attention}King{} is scored, {C:mult}destroy{} it",
-            "and gain {C:attention}double{} it's {C:attention}rank{} as {C:chips}Chips{}",
+            "and gain {C:attention}double{} its {C:attention}rank{} as {C:chips}Chips{}",
             "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips)",
           },
           {
@@ -11659,7 +11668,7 @@ return {
           "{C:green}#6# in #7#{} chance to double",
           "this sticker's value",
           " ",
-          "Once per ante, {C:green}#4# in #5#{} chance", 
+          "Once per ante, {C:green}#4# in #5#{} chance",
           "to clone this joker after",
           "destroying a {C:red,E:2}playing card",
           "{C:inactive}(Must have room)"
@@ -11692,7 +11701,7 @@ return {
           "{C:attention}Joker{} with this {C:enhanced}Sticker Enhancement{}",
           "{C:green}#3# in #4#{} chance to retrigger",
           "{X:blind,C:white}X#5#{} Blind Requirement",
-          
+
         }
       },
       abn_stk_monitor = {
@@ -14071,6 +14080,36 @@ return {
       abn_perma_dollars = "{C:money}$#5#{} extra Dollars",
       abn_perma_rep = "{C:attention}+#6#{} extra Repetitions",
 
+      -- Jevil effects
+      abn_unique_suit_1 = {
+        "{E:1}1 Suit",
+        "Retrigger all cards {C:attention}#5#{} times",
+        "if {C:money}${} is a {C:attention}prime{} number",
+      },
+      abn_unique_suit_2 = {
+        "{E:1}2 Suits",
+        "Scoring cards give {C:white,X:blind}X#2#{} Blind Size"
+      },
+      abn_unique_suit_3 = {
+        "{E:1}3 Suits",
+        "Scoring cards give the {C:attention}rank{}",
+        "of {C:attention}adjacent{} cards as {C:chips}Chips{}"
+      },
+      abn_unique_suit_4 = {
+        "{E:1}4 Suits",
+        "Scoring cards give {C:white,X:mult}X#3#{} Mult",
+      },
+      abn_unique_suit_5 = {
+        "{E:1}5 Suits",
+        "Scoring cards permanently gain {C:gold}+#4#{} Asc. Power",
+      },
+      abn_unique_suit_6 = {
+        "{E:1}6 Suits",
+        "Destroy all {C:attention}Non-Legendary{} Jokers",
+        "and replace them with {C:legendary}Legendary{} Jokers",
+        "{C:abn_j,s:0.8}J{C:abn_e,s:0.8}e{C:abn_v,s:0.8}v{C:abn_i,s:0.8}i{C:abn_l,s:0.8}l{s:0.8} Excluded"
+      },
+
       -- sigil menu
       ph_abn_sigils_active = "Sigils Active",
       ph_abn_no_sigils_active = "No Sigils Active",
@@ -14130,6 +14169,7 @@ return {
       k_abn_even = "Even",
       k_abn_tasty_ex = "Tasty!",
       k_abn_odd = "Odd",
+      k_abn_i_can_do_anything = "I CAN DO ANYTHING!", -- (deltarune reference)
       k_abn_doubled_ex = "Doubled!",
       k_abn_rankless = "Rankless",
       k_abn_numbered = "numbered",
