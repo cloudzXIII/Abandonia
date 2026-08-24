@@ -10902,6 +10902,15 @@ return {
           "learn what it does"
         }
       },
+      undiscovered_crimson = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
+      },
       undiscovered_ruinous_power = {
         name = "Not Discovered",
         text = {
