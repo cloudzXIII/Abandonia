@@ -1,14 +1,5 @@
 -- Intergalactic Joker
 
-local abn_table_contains = function(table, element)
-  for _, value in pairs(table) do
-    if value == element then
-      return true
-    end
-  end
-  return false
-end
-
 SMODS.Joker {
   key = 'intergalactic_joker',
 
@@ -49,7 +40,7 @@ SMODS.Joker {
 
       local hands_to_upgrade = {}
       for k, v in ipairs((G.consumeables or {}).cards) do
-        if v and v.ability.set == 'Planet' and tostring(v.ability.consumeable.hand_type) and cph[v.ability.consumeable.hand_type] and not abn_table_contains(hands_to_upgrade, v.ability.consumeable.hand_type) then
+        if v and v.ability.set == 'Planet' and tostring(v.ability.consumeable.hand_type) and cph[v.ability.consumeable.hand_type] and not ABN.table_contains(hands_to_upgrade, v.ability.consumeable.hand_type) then
           hands_to_upgrade[#hands_to_upgrade + 1] = v.ability.consumeable.hand_type
         end
       end

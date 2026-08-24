@@ -22,8 +22,24 @@ function create_UIBox_customize_deck(page)
   local suitTabs = {}
 
   local index = 1
+
+  --#region order stuff
+  local vanilla = { "Hearts", "Spades", "Clubs", "Diamonds" }
+
+  for _, suit_key in ipairs(vanilla) do
+    if G.COLLABS.options[suit_key] then
+      suitTabs[index] = {
+        label = localize(suit_key, 'suits_plural'),
+        tab_definition_function = G.UIDEF.custom_deck_tab,
+        tab_definition_function_args = suit_key
+      }
+      index = index + 1
+    end
+  end
+  --#endregion
+
   for i, suit in ipairs(SMODS.Suit:obj_list(true)) do
-    if G.COLLABS.options[suit.key] then
+    if G.COLLABS.options[suit.key] and not ABN.table_contains(vanilla, suit.key) then
       suitTabs[index] = {
         label = localize(suit.key, 'suits_plural'),
         tab_definition_function = G.UIDEF.custom_deck_tab,
