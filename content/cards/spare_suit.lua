@@ -17,7 +17,7 @@ SMODS.Joker {
   config = { extra = { mult = 0, mult_gain = 5, type = "Straight", repetitions = 1 } },
 
   calculate = function(self, card, context)
-    if context.before and next(context.poker_hands[card.ability.extra.type]) then
+    if context.before and next(context.poker_hands[card.ability.extra.type]) and not context.blueprint then
       SMODS.scale_card(card, {
         ref_table = card.ability.extra,
         ref_value = "mult",

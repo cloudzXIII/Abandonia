@@ -4,7 +4,7 @@ SMODS.PokerHand {
   mult = 10,
   l_chips = 40,
   l_mult = 4,
-  visible = true,
+  visible = false,
   example = {
     { 'S_paperback_APOSTLE', true },
     { 'S_A', true },
@@ -31,7 +31,7 @@ SMODS.PokerHand {
   mult = 10,
   l_chips = 50,
   l_mult = 5,
-  visible = true,
+  visible = false,
   example = {
     { 'S_paperback_APOSTLE', true },
     { 'H_A', true },
@@ -58,7 +58,7 @@ SMODS.PokerHand {
   mult = 10,
   l_chips = 65,
   l_mult = 4,
-  visible = true,
+  visible = false,
   example = {
     { 'S_paperback_APOSTLE', true },
     { 'H_A', true },

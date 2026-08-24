@@ -3139,6 +3139,16 @@ return {
       },
     },
     Joker = {
+      j_abn_spare_bikini = {
+        name = "Spare Bikini",
+        text = {
+          "This Joker gains {C:mult}+#2#{} Mult if",
+          "played hand contains a {C:attention}#3#{},",
+          "gains {C:gold}+#5#{} Asc. Power if hand",
+          "contains {C:attention}5{} unique {C:attention}suits{}",
+          "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult, {C:gold}+#4#{C:inactive} Asc. Power)"
+        }
+      },
       -- for localisers, this a Joker based on Jevil from Deltarune, and it has a random effect based on the number of unique suits in played hand
       -- The effects are in misc.dictionary and are abn_unique_suit_1, abn_unique_suit_2 etc.
       j_abn_jevil = {
@@ -10449,15 +10459,15 @@ return {
           "{C:inactive}(Currently{} {C:gold}+#5#{} {C:inactive}Ascension Power){}",
         }
       },
-	  
-	  j_abn_metallic_upgrade = {
+
+      j_abn_metallic_upgrade = {
         name = "Metallic Upgrade",
         text = {
           "The {C:attention}First{} scoring {C:attention}Vanilla{} {C:dark_edition}Enhancement{} card in a {C:attention}Spectrum{} hand",
-		  "Gives the same {C:dark_edition}Enhancement{} to the {C:attention}Leftmost{} Joker",
-		  "If a {C:attention}Spectrum{} hand is played with {C:attention}5 Vanilla{} {C:dark_edition}Enhancements{}",
-		  "all played cards permanently gain {C:chips}+#1#{} Chips {C:mult}+#2#{} Mult",
-		  "and all Jokers {C:purple}+#3#{} Score",
+          "Gives the same {C:dark_edition}Enhancement{} to the {C:attention}Leftmost{} Joker",
+          "If a {C:attention}Spectrum{} hand is played with {C:attention}5 Vanilla{} {C:dark_edition}Enhancements{}",
+          "all played cards permanently gain {C:chips}+#1#{} Chips {C:mult}+#2#{} Mult",
+          "and all Jokers {C:purple}+#3#{} Score",
         }
       },
     },
@@ -14133,7 +14143,7 @@ return {
       abn_perma_xchips = "{C:white,X:chips}X#4#{} Chips",
       abn_perma_dollars = "{C:money}$#5#{} extra Dollars",
       abn_perma_rep = "{C:attention}+#6#{} extra Repetitions",
-	  abn_perma_score = "{C:purple}+#7#{} extra Score",
+      abn_perma_score = "{C:purple}+#7#{} extra Score",
 
       -- Jevil effects
       abn_unique_suit_1 = {
