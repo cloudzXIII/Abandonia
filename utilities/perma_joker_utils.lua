@@ -83,6 +83,7 @@ function ABN.add_extra_multiboxes(_c, info_queue, card, desc_nodes, specific_var
       "abn_perma_xchips",
       "abn_perma_dollars",
       "abn_perma_rep",
+	  "abn_perma_score",
     }
 
     local text = {}
@@ -104,7 +105,8 @@ function ABN.add_extra_multiboxes(_c, info_queue, card, desc_nodes, specific_var
                 ability.abn_perma_xmult or 0,
                 ability.abn_perma_xchips or 0,
                 ability.abn_perma_dollars or 0,
-                ability.abn_perma_rep or 0
+                ability.abn_perma_rep or 0,
+				ability.abn_perma_score or 0,
               }
             }
           end
