@@ -28,7 +28,7 @@ ABN.CrimsonCard = SMODS.Consumable:extend({
     }
   end,
   can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0 and (not (G.shop_jokers.cards or G.shop_booster.cards or G.shop_vouchers.cards) or G.pack_cards)
+    return G.jokers and #G.jokers.cards > 0 and G.GAME.blind and G.GAME.blind.in_blind
   end,
 })
 
