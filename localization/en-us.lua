@@ -9600,7 +9600,7 @@ return {
           {
             "If {C:attention}final hand{} of round is",
             "a {C:attention}High Card{}, add a {C:purple}Glitched Seal{}",
-            "to all C:attention}unscoring{} cards",
+            "to all {C:attention}unscoring{} cards",
           }
         }
       },
@@ -10414,7 +10414,36 @@ return {
           "for each {C:attention}level{} they have",
         }
       },
-      -- quick joker
+	  
+	  j_abn_librarian_joker = {
+        name = "Librarian Joker",
+        text = {
+          "When a {C:lexica}Lexica{} card triggers during a blind",
+		  "create a random {C:dark_edition}negative{} {C:calligraphy}Calligraphy{} card",
+        }
+      },
+	  
+	  j_abn_eternian_joker = {
+        name = "Eternian Joker",
+        text = {
+          "Each different type of held {C:attention}consumable{}",
+		  "gives {C:gold}+#1#{} Ascension Power",
+		  "{C:inactive}Currently: {C:gold}+#2#{C:inactive} Ascension Power",
+        }
+      },
+	  
+	  j_abn_dungeon_crawler = {
+        name = "Dungeon Crawler",
+        text = {
+          "Pay {C:money}$#1#{} to add {C:attention}+1{} Joker slot",
+		  "Increase {C:attention}finishing Ante{} by {C:attention}+1{} for every Joker above {C:attention}5{}",
+		  "Jokers with {C:attention}Vanilla{} {C:dark_edition}Editions{} give {C:gold}+#2#{} Ascension Power",
+		  "Scoring cards with {C:attention}Vanilla{} {C:dark_edition}Editions{} give {C:gold}+#3#{} Ascension Power",
+		  "If a {C:attention}Vanilla{} Suit card with a {C:attention}Vanilla{} {C:dark_edition}Edition{} matches a Joker's {C:dark_edition}Edition{}",
+		  "this Joker gains {C:gold}+#4#{} Ascension Power",
+		  "{C:inactive}Currently:{} {C:gold}+#5#{} {C:inactive}Ascension Power{}",
+        }
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
@@ -10727,8 +10756,8 @@ return {
       abn_crimson_info = {
         name = "Crimson Card",
         text = {
-          "{C:red}Cannot{} be used",
-          "in {C:attention}Shop{}"
+          "Can {C:attention}only{} be used",
+          "in {C:attention}blinds{}"
         }
       },
       abn_ultra_ego_info = {
