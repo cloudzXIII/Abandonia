@@ -3139,6 +3139,16 @@ return {
       },
     },
     Joker = {
+      j_abn_finalmix = {
+        name = "Final Mix",
+        text = {
+          "This Joker gains {C:white,X:mult}X#2#{} Mult",
+          "per unique {C:attention}Card Modifier{}",
+          "on scoring {C:hearts}Hearts{}",
+          "{C:inactive}(Currently {C:white,X:mult}X#1#{C:inactive} Mult)"
+        }
+      },
+
       j_abn_spare_bikini = {
         name = "Spare Bikini",
         text = {
@@ -8688,8 +8698,8 @@ return {
         name = "Harlequin Joker",
         text = {
           {
-            "If {C:attention}first{} scoring card is {C:attention}even{} and",
-            "{C:attention}last{} scoring card is {C:attention}odd:"
+            "If {C:attention}first{} scoring card is {C:attention}even{}",
+            "and {C:attention}last{} scoring card is {C:attention}odd{}:"
           },
           {
             "Create a {C:dark_edition}Negative{} {C:sigils}Sigil{} card",
@@ -8700,7 +8710,7 @@ return {
             "if they have matching {C:dark_edition}Editions",
           },
           {
-            "Create a {C:dark_edition}Negative{} {C:lexica}Lexica{} cards_copied",
+            "Create a {C:dark_edition}Negative{} {C:lexica}Lexica{} card",
             "if they have matching {C:attention}Seals",
           },
         },
@@ -10773,6 +10783,13 @@ return {
       }
     },
     Other = {
+      abn_cardmodifier_info = {
+        name = "Card Modifier",
+        text = {
+          "{C:attention}Enhancements{}, {C:dark_edition}Editions{},",
+          "and {C:attention}Seals{}"
+        }
+      },
       abn_calligraphy_info = {
         name = "Calligraphy Card",
         text = {
