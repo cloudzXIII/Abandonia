@@ -72,11 +72,16 @@ SMODS.PokerHand {
       local _strush = SMODS.merge_lists(parts.abn_spectrum, parts._straight)
       local rapture = true
       for j = 1, #_strush do
-        -- TODO: CHECK FOR AT LEAST ONE NULL suit
         local rank = SMODS.Ranks[_strush[j].base.value]
         rapture = rapture and (rank.key == 'paperback_Apostle' or rank.key == 'Ace' or rank.face or rank.key == '10')
       end
-      if rapture then return { _strush } end
+      local has_null = false
+      for _, v in ipairs(_strush) do
+        if v.base.suit == "abn_suitless" then
+          has_null = true
+        end
+      end
+      if rapture and has_null then return { _strush } end
     end
   end,
 }
