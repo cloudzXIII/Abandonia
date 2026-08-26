@@ -1,5 +1,186 @@
 return {
   descriptions = {
+    periodic = {
+      c_abn_hydrogen = {
+        name = "Hydrogen",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+
+      c_abn_helium = {
+        name = "Helium",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+
+      c_abn_lithium = {
+        name = "Lithium",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+
+      c_abn_beryllium = {
+        name = "Beryllium",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+
+      c_abn_boron = {
+        name = "Boron",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+
+      c_abn_carbon = {
+        name = "Carbon",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+
+      c_abn_nitrogen = {
+        name = "Nitrogen",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+
+      c_abn_oxygen = {
+        name = "Oxygen",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+
+      c_abn_fluorine = {
+        name = "Fluorine",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+
+      c_abn_neon = {
+        name = "Neon",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+
+      c_abn_sodium = {
+        name = "Sodium",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+
+      c_abn_magnesium = {
+        name = "Magnesium",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+
+      c_abn_aluminium = {
+        name = "Aluminium",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+
+      c_abn_silicon = {
+        name = "Silicon",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+
+      c_abn_phosphorus = {
+        name = "Phosphorus",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+
+      c_abn_sulfur = {
+        name = "Sulfur",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+
+      c_abn_chlorine = {
+        name = "Chlorine",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+
+      c_abn_argon = {
+        name = "Argon",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+
+      c_abn_potassium = {
+        name = "Potassium",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+
+      c_abn_calcium = {
+        name = "Calcium",
+        text = {
+          "Next played {C:attention}#1#{}",
+          "does not count towards your",
+          "{C:blue}Hands{} used this blind",
+        },
+      },
+    },
     glyphs = {
       c_abn_exile = {
         name = "Exile",
@@ -3139,6 +3320,15 @@ return {
       },
     },
     Joker = {
+      j_abn_periodic_table = {
+        name = "Periodic Table",
+        text = {
+          "Creates the {C:periodic}Periodic{} card",
+          "for played {C:attention}poker hand{}",
+          "if score {C:attention}catches on fire{}",
+        }
+      },
+
       j_abn_finalmix = {
         name = "Final Mix",
         text = {
@@ -10975,6 +11165,15 @@ return {
           "learn what it does"
         }
       },
+      undiscovered_periodic = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
+      },
       undiscovered_crimson = {
         name = "Not Discovered",
         text = {
@@ -14280,6 +14479,8 @@ return {
       k_abn_plus_crimson = "+1 Crimson",
       k_abn_plus_glyph = "+1 Glyph",
       k_plus_tag = "+1 Tag!",
+      k_plus_periodic = "+1 Periodic",
+      k_plus_crimson = "+1 Crimson",
       k_abn_plus_solid_state = "+1 Solid State",
       k_abn_activated_ex = "Activated!",
       k_lexica_pack = "Lexica Pack",
@@ -14350,7 +14551,10 @@ return {
       k_ruinous_power = "Ruinous Power",
 
       b_artistry_cards_cards = "Artistry Cards",
-      k_artistry_cards = "Artistry Cards",
+      k_artistry_cards = "Artistry",
+
+      b_periodic_cards = "Periodic Cards",
+      k_periodic = "Periodic",
     },
     labels = {
       -- Consumable Types
@@ -14367,7 +14571,8 @@ return {
       crimson = "Crimson",
       glyphs = "Glyph",
       ruinous_power = "Ruinous Power",
-      artistry_cards = "Artistry Cards",
+      artistry_cards = "Artistry",
+      periodic = "Periodic",
 
       -- Editions
       abn_chthonian = "Chthonian",

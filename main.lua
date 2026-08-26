@@ -35,6 +35,7 @@ function Game:init_game_object(...)
     rank_planet_rate = 0.7,
     total_jacks_discarded = {},
     suits_played_this_blind = {},
+    free_hand = false,
   }
   return ret
 end
@@ -245,7 +246,7 @@ ABN.calculate = function(self, context)
         x_mult = has_x_mult and ability.abn_perma_xmult or nil,
         x_chips = has_x_chips and ability.abn_perma_xchips or nil,
         dollars = has_dollars and ability.abn_perma_dollars or nil,
-		score = has_score and ability.abn_perma_score or nil,
+        score = has_score and ability.abn_perma_score or nil,
         card = context.other_joker,
         message_card = context.other_joker,
         no_juice = true,

@@ -707,3 +707,26 @@ ABN.table_contains = function(table, element)
   end
   return false
 end
+
+ABN.count_unique = function(area, type)
+  local cards = {}
+
+  if type == "suit" then
+    for _, v in ipairs(area) do
+      cards[v.base.suit] = true
+    end
+  end
+
+  if type == "rank" then
+    for _, v in ipairs(area) do
+      cards[v.base.value] = true
+    end
+  end
+
+  local unique = 0
+  for _ in pairs(cards) do
+    unique = unique + 1
+  end
+
+  return unique
+end

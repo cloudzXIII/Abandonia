@@ -1,0 +1,24 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = -1
+
+# Periodic Cards - Hands don't cost anything if G.GAME.abn.free_hand is true
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = '''ease_hands_played(-1)'''
+position = 'before'
+payload = '''
+if not G.GAME.abn.free_hand then'''
+match_indent = true
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = '''ease_hands_played(-1)'''
+position = 'after'
+payload = '''
+end
+G.GAME.abn.free_hand = false
+'''
+match_indent = true
