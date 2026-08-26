@@ -11575,14 +11575,9 @@ return {
           'be used immediately'
         }
       },
-      card_abn_rank_chips = {
+      abn_level_display = {
         text = {
-          "{C:planet}#1#{} chips",
-        },
-      },
-      card_abn_rank_mult = {
-        text = {
-          "{C:planet}#1#{} Mult",
+          "({V:1}lvl.#3#{}) {B:2,C:white} #1# {} {C:red,}X{} {B:3,C:white} #2# {}"
         },
       },
       --#region stickers
@@ -11623,7 +11618,7 @@ return {
         name = "Vessel",
         text = {
           "Increase {C:attention}blind requirements",
-          " by {C:attention}10%{}",
+          "by {C:attention}10%{}",
           "when scored"
         }
       },
@@ -14182,7 +14177,7 @@ return {
         name = "Pendulum of Chaos",
         text = {
           "{C:sigils}Sigil{}, {C:astro_cards}Astro{}, {C:solid_state}Solid State{},",
-          " {C:nightshift_cards}Nightshift{}, {C:calamity_cards}Calamity{}, and {C:lexica}Lexica{}",
+          "{C:nightshift_cards}Nightshift{}, {C:calamity_cards}Calamity{}, and {C:lexica}Lexica{}",
           "cards may appear in any of",
           "the {C:attention}Arcana Packs",
         }

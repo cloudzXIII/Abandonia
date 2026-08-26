@@ -1,9 +1,20 @@
 function ABN.localize_perma_bonuses(specific_vars, desc_nodes, card)
-  if card and card:get_abn_rank_chips() ~= 0 then
-    localize { type = 'other', key = 'card_abn_rank_chips', nodes = desc_nodes, vars = { SMODS.signed(card:get_abn_rank_chips()) } }
-  end
-  if card and card:get_abn_rank_mult() ~= 0 then
-    localize { type = 'other', key = 'card_abn_rank_mult', nodes = desc_nodes, vars = { SMODS.signed(card:get_abn_rank_mult()) } }
+  if card and not SMODS.has_no_rank(card) and card:get_abn_rank_chips() ~= 0 and card:get_abn_rank_mult() ~= 0 and G.GAME.abn_rank_upgrades and G.GAME.abn_rank_upgrades[card.base.value] then
+    localize {
+      type = 'other',
+      key = 'abn_level_display',
+      nodes = desc_nodes,
+      vars = {
+        card:get_abn_rank_chips(),
+        card:get_abn_rank_mult(),
+        G.GAME.abn_rank_upgrades[card.base.value].level,
+        colours = {
+          G.GAME.abn_rank_upgrades[card.base.value].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.abn_rank_upgrades[card.base.value].level)],
+          G.C.CHIPS,
+          G.C.MULT
+        },
+      }
+    }
   end
 end
 
@@ -206,14 +217,14 @@ end
 
 function Card:get_abn_rank_chips()
   if self.debuff then return 0 end
-  if self.ability.name == "Stone Card" then return 0 end
+  if SMODS.has_no_rank(self) then return 0 end
   local upgrade = G.GAME.abn_rank_upgrades[self.base.value]
   return upgrade and upgrade.chips or 0
 end
 
 function Card:get_abn_rank_mult()
   if self.debuff then return 0 end
-  if self.ability.name == "Stone Card" then return 0 end
+  if SMODS.has_no_rank(self) then return 0 end
   local upgrade = G.GAME.abn_rank_upgrades[self.base.value]
   return upgrade and upgrade.mult or 0
 end
