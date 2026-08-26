@@ -10671,6 +10671,18 @@ return {
           "and all Jokers {C:purple}+#3#{} Score",
         }
       },
+      
+      j_abn_answer_sheet = {
+        name = "Answer Sheet",
+        text = {
+          "Gains {C:mult}+#2#{} Mult when",
+          "a probability on a {C:attention}Consumable",
+          "successfully triggers",
+          "Gains {C:chips}+#1#{} Chips if the successful",
+          "trigger is on a {C:attention}Joker{}",
+          "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips & {C:mult}+#4#{C:inactive} Mult)"
+        }
+      }
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
