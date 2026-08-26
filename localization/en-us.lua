@@ -1389,8 +1389,8 @@ return {
         text = {
           "Next time a {C:attention}Full House{}",
           "{C:attention}triggers{}, {C:red}destroy{}",
-          "all {C:attention}face{} cards,",
-          "{C:attention}lowest rank{} held in hand",
+          "all held {C:attention}face{} cards,",
+          "{C:attention}lowest rank{} in hand",
           "gains all their {C:chips}Chips{}"
         }
       },
@@ -1527,8 +1527,8 @@ return {
       c_abn_x = {
         name = "X(enocentric)",
         text = {
-          "Next time you play a {C:attention}Spectrum{},",
-          "all Jokers gain",
+          "Next time you play",
+          "a {C:attention}Spectrum{}, all {C:attention}Jokers{} gain",
           "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult"
         }
       },
@@ -3363,16 +3363,16 @@ return {
         name = 'Double Hubble',
         text = {
           '{C:mult}+#1#{} Mult if {C:attention}poker hand{}',
-          'has been played',
-          'an {C:attention}even{} number of times'
+          'has been played an',
+          '{C:attention}even{} number of times'
         }
       },
       j_abn_triple_nicole = {
         name = 'Triple Nicole',
         text = {
           '{C:chips}+#1#{} Chips if {C:attention}poker hand{}',
-          'has been played',
-          'an {C:attention}odd{} number of times'
+          'has been played an',
+          '{C:attention}odd{} number of times'
         }
       },
       j_abn_savy_joker = {
@@ -4391,10 +4391,14 @@ return {
       j_abn_slippery_joker = {
         name = "Slippery Joker",
         text = {
-          "Earn {C:money}$#1#{} when a {C:weather_report}Weather Report{}",
-          "destroys itself without triggering,",
-          "This Joker gains {C:money}$#2#{} of {C:attention}sell value{}",
-          "when a {C:weather_report}Weather Report{} triggers"
+          {
+            "Earn {C:money}$#1#{} when a {C:weather_report}Weather Report{}",
+            "destroys itself without triggering",
+          },
+          {
+            "This Joker gains {C:money}$#2#{} of {C:attention}sell value{}",
+            "when a {C:weather_report}Weather Report{} triggers"
+          }
         }
       },
       j_abn_joker_stamp = {
@@ -4680,7 +4684,7 @@ return {
         name = "Cyber Half",
         text = {
           "{C:attention}Steel Cards{} give",
-          "gives {C:attention}twice{} their rank as",
+          "{C:attention}twice{} their rank as",
           "{C:chips}Chips{} when held in hand",
         }
       },
@@ -5920,9 +5924,9 @@ return {
             "leftmost Joker"
           },
           {
-            "Gives {C:mult}+#1#{} Mult",
-            "for each {C:dark_edition}#3#{} Joker",
-            "or card in your {C:attention}full deck{}",
+            "Gives {C:mult}+#1#{} Mult for",
+            "each {C:dark_edition}#3#{} Joker or",
+            "card in your {C:attention}full deck{}",
             "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
           }
         }
@@ -6317,9 +6321,8 @@ return {
         name = "Fatal Silhouette",
         text = {
           "First played {C:diamonds}Light Suit{}",
-          "card with a {C:abn_silver_seal}Silver Seal{} ",
-          "gives {C:white,X:chips}X#1#{} Chips",
-          "when scored",
+          "with a {C:abn_silver_seal}Silver Seal{} gives",
+          "{C:white,X:chips}X#1#{} Chips when scored",
         }
       },
       j_abn_joerror = {
@@ -6870,7 +6873,7 @@ return {
           "{C:inactive}(Currently{} {X:mult,C:white}X#3#{} {C:inactive}Mult){}",
         }
       },
-      j_abn_creechie_buffoon = {
+      j_abn_creechie_buffoon = { -- to relocalise
         name = "Creechie Buffoon",
         text = {
           "{C:dark_edition}Editioned{} cards give {X:mult,C:white}X#4#{} Mult for each {C:attention}Comedian{} you own",
@@ -6878,7 +6881,7 @@ return {
           "{C:inactive}(Currently{} {X:mult,C:white}X#3#{} {C:inactive}Mult){}",
         }
       },
-      j_abn_composite_creechie = {
+      j_abn_composite_creechie = { -- to relocalise
         name = "Composite Creechie",
         text = {
           "{C:attention}Enhanced{} cards give {X:mult,C:white}X#4#{} Mult for each {C:attention}Comedian{} you own",
@@ -7043,7 +7046,7 @@ return {
           }
         }
       },
-      j_abn_fraud_soul = {
+      j_abn_fraud_soul = { -- to relocalise
         name = "Fraud Soul",
         text = {
           "When {C:attention}Blind{} is selected,",
@@ -7112,9 +7115,9 @@ return {
       j_abn_york = {
         name = "York",
         text = {
-          "Scoring Cards give {X:mult,C:white}X#1#{} Mult",
-          "Cards held in hand give {X:chips,C:white}X#1#{} Chips",
-
+          "Played cards give {X:mult,C:white}X#1#{} Mult",
+          "when scored, {X:chips,C:white}X#1#{} Chips",
+          "when held in hand",
         }
       },
       j_abn_hammerspace_joker = {
@@ -7198,8 +7201,8 @@ return {
         name = "Whitenoise Joker",
         text = {
           "This Joker gains {X:mult,C:white}X#2#{} Mult",
-          "when playing an {C:attention}even{} number of",
-          "{C:diamonds}Light{} and {C:spades}Dark{} Suits",
+          "when playing an {C:attention}even{} number",
+          "of {C:diamonds}Light{} and {C:spades}Dark{} Suits",
           "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
 
         }
@@ -7610,7 +7613,7 @@ return {
         text = {
           {
             "All Jokers gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
-            "when money is gained during a {C:attention}Blind",
+            "when {C:money}${} is earned during a {C:attention}Blind",
           },
           {
             "If you own {C:attention}Lucrative Joker{},",
@@ -7884,11 +7887,11 @@ return {
         text = {
           {
             "{C:planet}Planet{} and {C:program_pack}Program{} cards",
-            "become {C:dark_edition}Negative{} when bought,",
+            "become {C:dark_edition}Negative{} when purchased",
           },
           {
             "Using {C:planet}Planet{} and {C:program_pack}Program{} cards",
-            "give held {C:attention}Steel{} Cards",
+            "give held {C:attention}Steel{} cards",
             "{C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
           },
         }
@@ -7903,7 +7906,7 @@ return {
             "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult)",
           },
           {
-            "{C:attention}Fossil{} Cards and {C:attention}Steel{} Cards",
+            "{C:attention}Fossil{} card and {C:attention}Steel{} cards",
             "cannot be {C:red}debuffed{} or {C:red}destroyed{}",
           },
         }
@@ -7976,7 +7979,7 @@ return {
           }
         }
       },
-      j_abn_suit_seal_joker = {
+      j_abn_suit_seal_joker = { -- to relocalise
         name = "Suit Seal Joker",
         text = {
           {
@@ -8227,7 +8230,7 @@ return {
           "permanently gain {C:mult}+#1#{} Mult",
         }
       },
-      j_abn_edition_anonymous = {
+      j_abn_edition_anonymous = { -- to relocalise
         name = "Edition Anonymous",
         text = {
           "When a card with an {C:dark_edition}Edition{} scores randomize its {C:dark_edition}Edition{}",
@@ -8587,7 +8590,7 @@ return {
           "{C:inactive}(Currently {C:mult}+#1#{} {C:inactive}Mult){}",
         }
       },
-      j_abn_collectible_joker = {
+      j_abn_collectible_joker = { -- to relocalise
         name = "Collectible Joker",
         text = {
           "Gain {C:chips}+#8#{} Chips per different {C:common}Common{} Joker obtained this run",
@@ -8791,24 +8794,19 @@ return {
       j_abn_paradox_chip = {
         name = "Paradox Chip",
         text = {
-          {
-            "Scored {C:attention}numbered cards",
-            "above rank {C:attention}10{}",
-            "give their rank as {C:red}Mult",
-          },
+          "Scored {C:attention}numbered{} cards",
+          "above rank {C:attention}10{}",
+          "give their rank as {C:red}Mult",
         }
-
       },
-      j_abn_joker_note = {
+      j_abn_joker_note = { -- to relocalise
         name = "Joker Note",
         text = {
-          {
-            "For every {C:attention}sealed{}",
-            "scoring card, this Joker:",
-            "Gains {C:red}+#1#{} Mult if the card is {C:attention}even{}",
-            "Gains {C:blue}+#2#{} Chips if the card is {C:attention}odd{}",
-            "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult, {C:blue}+#4#{C:inactive} Chips)",
-          },
+          "For every {C:attention}sealed{}",
+          "scoring card, this Joker:",
+          "Gains {C:red}+#1#{} Mult if the card is {C:attention}even{}",
+          "Gains {C:blue}+#2#{} Chips if the card is {C:attention}odd{}",
+          "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult, {C:blue}+#4#{C:inactive} Chips)",
         }
 
       },
@@ -9278,7 +9276,7 @@ return {
           "when scored"
         },
       },
-      j_abn_decollage_joker = {
+      j_abn_decollage_joker = { -- to relocalise
         name = "Decollage Joker",
         text = {
           "Give {X:mult,C:white}XMult{} equal to the number of {C:attention}different Suits",
@@ -9970,12 +9968,13 @@ return {
         name = "Telisyndrome Joker",
         text = {
           {
-            "Gives {X:chips,C:white}^#1#{} Chips per",
-            "{C:attention}unique{} scoring {C:attention}Enhancement{}",
+            "{X:chips,C:white}^#1#{} Chips per unique",
+            "{C:attention}Enhancement{} in scoring hand",
           },
           {
-            "Each {C:abn_plagued}Plagued{} Joker gives {C:mult}+#2#{} Mult",
-            "per {C:attention}unique{} {C:dark_edition}Edition",
+            "{C:abn_plagued}Plagued{} Jokers each give",
+            "{C:mult}+#2#{} Mult per {C:attention}unique{} {C:dark_edition}Edition{}",
+            "among your {C:attention}Jokers{}"
           }
         }
       },
@@ -9983,12 +9982,14 @@ return {
         name = "Malicious Code Joker",
         text = {
           {
-            "{C:green}#1# in #2#{} chance to {C:attention}enhance{} scoring",
-            "{C:attention}Mult{} cards into {C:purple}Contagion Mult{}",
+            "{C:green}#1# in #2#{} chance to convert",
+            "scoring {C:attention}Mult{} cards ",
+            "into {C:purple}Contagion Mult{}",
           },
           {
-            "{C:green}#1# in #2#{} chance to {C:attention}enhance{} scoring",
-            "{C:attention}Bonus{} cards into {C:purple}Contagion Bonus{}",
+            "{C:green}#1# in #2#{} chance to convert",
+            "scoring {C:attention}Bonus{} cards ",
+            "into {C:purple}Contagion Bonus{}",
           },
         }
       },
@@ -10464,7 +10465,7 @@ return {
         }
       },
 
-      j_abn_plug_in_joker = {
+      j_abn_plug_in_joker = { -- to relocalise
         name = "Plug In Joker",
         text = {
           "Gain {C:mult}+#4#{} Mult when a {C:attention}Mult{} card scores",
@@ -10661,7 +10662,7 @@ return {
         }
       },
 
-      j_abn_metallic_upgrade = {
+      j_abn_metallic_upgrade = { -- to relocalise
         name = "Metallic Upgrade",
         text = {
           "The {C:attention}First{} scoring {C:attention}Vanilla{} {C:dark_edition}Enhancement{} card in a {C:attention}Spectrum{} hand",
@@ -10671,8 +10672,8 @@ return {
           "and all Jokers {C:purple}+#3#{} Score",
         }
       },
-      
-      j_abn_answer_sheet = {
+
+      j_abn_answer_sheet = { -- to relocalise
         name = "Answer Sheet",
         text = {
           "Gains {C:mult}+#2#{} Mult when",
@@ -13458,8 +13459,8 @@ return {
             "{C:attention}full deck{} by {C:attention}#1#{}",
           },
           {
-            "Set {C:attention}most played{} poker hand",
-            "to level {C:attention}1{}",
+            "Set {C:attention}most played{} poker",
+            "hand to level {C:attention}1{}",
           },
         }
       },
