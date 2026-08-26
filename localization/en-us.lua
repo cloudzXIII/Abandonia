@@ -8189,7 +8189,7 @@ return {
           "All scoring cards gain {C:mult}+#1#{} Mult",
           "if scoring hand contains a",
           "{C:abn_penumbra}Penumbra{} card, another",
-          "{C:spades}Dark{} Suit and a {C:diamonds}Light{} Suit",
+          "{C:spades}Dark Suit{} and a {C:diamonds}Light Suit{}",
         }
       },
       j_abn_painyatta = {
@@ -8474,12 +8474,12 @@ return {
         text = {
           {
             "{X:mult,C:white}X#1#{} Mult for every",
-            "{C:dark_edition}Negative {C:attention}Mult{} scored card",
+            "{C:dark_edition}Negative {C:attention}Mult{} card scored",
 
           },
           {
             "Gains {C:mult}+#2#{} Mult per scored",
-            "{C:spades}Dark{} suited {C:attention}Mult Cards{}",
+            "{C:spades}Dark{} suited {C:attention}Mult Card{}",
             "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)"
           }
 
@@ -9319,8 +9319,8 @@ return {
       j_abn_gagman_joker = {
         name = "Gagman Joker",
         text = {
-          "Pokadot Cards retain their",
-          "{C:attention}rank{} and {C:attention}suit{}",
+          "{C:attention}Polkadot Cards{} retain",
+          "their {C:attention}rank{} and {C:attention}suit{}",
         },
       },
       j_abn_epic_joker = {
