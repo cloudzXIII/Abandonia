@@ -3663,15 +3663,14 @@ return {
         name = "Zauberer Magicians",
         text = {
           {
-            "{s:0.8}Scoring {C:hearts,s:0.8}Hearts{s:0.8} become {C:abn_snow,s:0.8}Snows{}",
-            "{s:0.8}Scoring {C:diamonds,s:0.8}Diamonds{s:0.8} become {C:abn_tie,s:0.8}Ties{}",
-            "{s:0.8}Scoring {C:clubs,s:0.8}Clubs{s:0.8} become {C:abn_penumbra,s:0.8}Penumbras{}",
-            "{s:0.8}Scoring {C:spades,s:0.8}Spades{s:0.8} become {C:abn_bow,s:0.8}Bows{}",
+            "After scoring, cards change {C:attention}suits{}:",
+            "{C:hearts,s:0.8}Hearts{s:0.8} -> {C:abn_snow,s:0.8}Snows{s:0.8} -> {C:diamonds,s:0.8}Diamonds{s:0.8} -> {C:abn_tie,s:0.8}Ties",
+            "{s:0.8} -> {C:clubs,s:0.8}Clubs{s:0.8} -> {C:abn_penumbra,s:0.8}Penumbras{s:0.8} -> {C:spades,s:0.8}Spades{s:0.8} -> {C:abn_bow,s:0.8}Bows{}",
           },
           {
             "If this Joker has {C:dark_edition}Vintage{} edition,",
             "gains {C:mult}+#2#{} Mult and {C:money}$#2#{} of {C:attention}sell value",
-            " when a card changes {C:attention}suit{}",
+            "when a card changes {C:attention}suit{}",
             "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult)",
           },
         }
@@ -9739,16 +9738,10 @@ return {
       j_abn_meddlesome_naidemoc = {
         name = "Meddlesome Naidemoc",
         text = {
-
           {
-            "Before scoring, cards change {C:attention}suits",
-            "{C:diamonds,s:0.8}Diamonds{s:0.8} -> {C:spades,s:0.8}Spades{}",
-            "{C:spades,s:0.8}Spades{s:0.8} -> {C:hearts,s:0.8}Hearts{}",
-            "{C:hearts,s:0.8}Hearts{s:0.8} -> {C:clubs,s:0.8}Clubs{}",
-            "{C:clubs,s:0.8}Clubs{s:0.8} -> {C:abn_snow,s:0.8}Snows{}",
-            "{C:abn_snow,s:0.8}Snows{s:0.8} -> {C:abn_penumbra,s:0.8}Penumbras{}",
-            "{C:abn_penumbra,s:0.8}Penumbras{s:0.8} -> {C:abn_tie}Ties{}",
-            "{C:abn_tie,s:0.8}Ties{s:0.8} -> {C:abn_bow,s:0.8}Bows{}",
+            "Before scoring, cards change {C:attention}suits{}:",
+            "{C:diamonds,s:0.8}Diamonds{s:0.8} -> {C:spades,s:0.8}Spades{s:0.8} -> {C:hearts,s:0.8}Hearts{s:0.8} -> {C:clubs,s:0.8}Clubs",
+            "{s:0.8} -> {C:abn_snow,s:0.8}Snows{s:0.8} -> {C:abn_penumbra,s:0.8}Penumbras{s:0.8} -> {C:abn_tie,s:0.8}Ties{s:0.8} -> {C:abn_bow,s:0.8}Bows{}",
           },
           {
             "This Joker gains {C:chips}+#3#{} Chips and",
