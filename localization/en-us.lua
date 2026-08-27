@@ -4978,7 +4978,18 @@ return {
           "This Joker gains",
           "{X:mult,C:white}X#2#{} Mult every time",
           "a {C:lexica}Lexica{} card is activated",
+          "{C:red}Resets{} if a {C:lexica}Lexica{} card is sold",
           "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
+        },
+      },
+      j_abn_crossword_puzzle = {
+        name = "Crossword Puzzle",
+        text = {
+          "This Joker gains",
+          "{X:chips,C:white}X#2#{} Chips every time",
+          "a {C:lexica}Lexica{} card is activated",
+          "{C:red}Resets{} if a {C:lexica}Lexica{} card is sold",
+          "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips)",
         },
       },
       j_abn_ishihara_joker = {
@@ -10687,6 +10698,28 @@ return {
           "{C:chips}+#1#{} Chips if the successful",
           "trigger is on a {C:attention}Joker{}",
           "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#4#{C:inactive} Mult)"
+        }
+      },
+
+      j_abn_pearls_of_worlds = {
+        name = "Pearls of Worlds",
+        text = {
+          "Gains {C:chips}Chips{} equal",
+          "to the {C:attention}sum{} of",
+          "all digits in the description",
+          "of the triggered {C:attention}Joker{}",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
+        }
+      },
+
+      j_abn_joker_deck = {
+        name = "Joker Deck",
+        text = {
+          "Gives {C:mult}+#2#{} Mult per",
+          "even card and",
+          "{C:chips}+#1#{} Chips{} per",
+          "odd card in remaining deck",
+          "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult & {C:chips}+#4#{C:inactive} Chips)"
         }
       },
 
