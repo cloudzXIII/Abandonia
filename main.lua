@@ -36,6 +36,7 @@ function Game:init_game_object(...)
     total_jacks_discarded = {},
     suits_played_this_blind = {},
     free_hand = false,
+    last_consumable_used = {},
   }
   return ret
 end

@@ -10677,88 +10677,315 @@ return {
           "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips & {C:mult}+#4#{C:inactive} Mult)"
         }
       },
-	  
-	  j_abn_wild_stone = {
+
+      j_abn_wild_stone = {
         name = "Wild Stone",
         text = {
-          "If played hand contains both a {C:attention}Stone Card{} and a {C:attention}Wild Card{}",
-		  "Each one gains {C:gold}+#1#{} Ascension Power and {C:purple}+#2#{} Score",
-		  "Scoring {C:attention}Jokers{} with {C:attention}Stone Enhancement{} gain {X:mult,C:white}X#3#{} Mult",
-		  "Scoring {C:attention}Jokers{} with {C:attention}Wild Enhancement{} gain {X:chips,C:white}X#4#{} Chips",
-		  "When {C:attention}Big Blind{} is selected create {C:attention}last used{} {C:astro_cards}Astro Card{}",
-		  "{C:inactive}Currently:{} {C:astro_cards}#5#{}"
+          {
+            "If played hand contains both a {C:attention}Stone{}",
+            "and {C:attention}Wild{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Stone{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Wild{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered"
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:astro_cards}Astro{} card used this run",
+            "{C:inactive}Currently:{} {C:astro_cards}#5#{}"
+          }
         }
       },
-	  
-	  j_abn_glass_stone = {
+
+      j_abn_glass_stone = {
         name = "Glass Stone",
         text = {
-          "If played hand contains both a {C:attention}Stone Card{} and a {C:attention}Glass Card{}",
-          "Each one gains {C:gold}+#1#{} Ascension Power and {C:purple}+#2#{} Score",
-          "Scoring {C:attention}Jokers{} with {C:attention}Stone Enhancement{} gain {X:mult,C:white}X#3#{} Mult",
-          "Scoring {C:attention}Jokers{} with {C:attention}Glass Enhancement{} gain {X:chips,C:white}X#4#{} Chips",
-          "When {C:attention}Big Blind{} is selected create {C:attention}last used{} {C:calligraphy}Calligraphy{} card",
-          "{C:inactive}Currently:{} {C:calligraphy}#5#{}"
+          {
+            "If played hand contains both a {C:attention}Stone{}",
+            "and {C:attention}Glass{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Stone{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Glass{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered"
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:calligraphy}Calligraphy{} card used this run",
+            "{C:inactive}Currently:{} {C:calligraphy}#5#{}"
+          }
         }
       },
-	  
-	  j_abn_mult_glass = {
+
+      j_abn_mult_glass = {
         name = "Mult Glass",
         text = {
-          "If played hand contains both a {C:attention}Mult Card{} and a {C:attention}Glass Card{}",
-          "Each one gains {C:gold}+#1#{} Ascension Power and {C:purple}+#2#{} Score",
-          "Scoring {C:attention}Jokers{} with {C:attention}Mult Enhancement{} gain {X:chips,C:white}X#3#{} Chips",
-          "Scoring {C:attention}Jokers{} with {C:attention}Glass Enhancement{} gain {X:chips,C:white}X#4#{} Chips",
-          "When {C:attention}Big Blind{} is selected create {C:attention}last used{} {C:program_pack}Program{} card",
-          "{C:inactive}Currently:{} {C:program_pack}#5#{}"
+          {
+            "If played hand contains both a {C:attention}Mult{}",
+            "and {C:attention}Glass{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Mult{} {C:attention}Jokers{} gain {X:chips,C:white}X#3#{} Chips, {C:enhanced}Glass{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered"
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:program_pack}Program{} card used this run",
+            "{C:inactive}Currently:{} {C:program_pack}#5#{}"
+          }
         }
       },
-	  
-	  j_abn_stone_bonus = {
+
+      j_abn_stone_bonus = {
         name = "Stone Bonus",
         text = {
-          "If played hand contains both a {C:attention}Stone Card{} and a {C:attention}Bonus Card{}",
-          "Each one gains {C:gold}+#1#{} Ascension Power and {C:purple}+#2#{} Score",
-          "Scoring {C:attention}Jokers{} with {C:attention}Stone Enhancement{} gain {X:mult,C:white}X#3#{} Mult",
-          "Scoring {C:attention}Jokers{} with {C:attention}Bonus Enhancement{} gain {X:chips,C:white}X#4#{} Chips",
-          "When {C:attention}Big Blind{} is selected create {C:attention}last used{} {C:lexica}Lexica{} card",
-          "{C:inactive}Currently:{} {C:lexica}#5#{}"
+          {
+            "If played hand contains both a {C:attention}Stone{}",
+            "and {C:attention}Bonus{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Stone{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Bonus{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered"
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:lexica}Lexica{} card used this run",
+            "{C:inactive}Currently:{} {C:lexica}#5#{}"
+          }
         }
       },
-	  
-	  j_abn_gold_lucky = {
+
+      j_abn_gold_lucky = {
         name = "Gold Lucky",
         text = {
-          "If played hand contains both a {C:attention}Gold Card{} and a {C:attention}Lucky Card{}",
-          "Each one gains {C:gold}+#1#{} Ascension Power and {C:purple}+#2#{} Score",
-          "Scoring {C:attention}Jokers{} with {C:attention}Gold Enhancement{} gain {X:mult,C:white}X#3#{} Mult",
-          "Scoring {C:attention}Jokers{} with {C:attention}Lucky Enhancement{} gain {X:chips,C:white}X#4#{} Chips",
-          "When {C:attention}Big Blind{} is selected create {C:attention}last used{} {C:continent}Continent{} card",
-          "{C:inactive}Currently:{} {C:continent}#5#{}"
+          {
+            "If played hand contains both a {C:attention}Gold{}",
+            "and {C:attention}Lucky{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Gold{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Lucky{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered"
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:continent}Continent{} card used this run",
+            "{C:inactive}Currently:{} {C:continent}#5#{}"
+          }
         }
       },
-	  
-	  j_abn_lucky_glass = {
+
+      j_abn_lucky_glass = {
         name = "Lucky Glass",
         text = {
-          "If played hand contains both a {C:attention}Lucky Card{} and a {C:attention}Glass Card{}",
-          "Each one gains {C:gold}+#1#{} Ascension Power and {C:purple}+#2#{} Score",
-          "Scoring {C:attention}Jokers{} with {C:attention}Lucky Enhancement{} gain {X:mult,C:white}X#3#{} Mult",
-          "Scoring {C:attention}Jokers{} with {C:attention}Glass Enhancement{} gain {X:chips,C:white}X#4#{} Chips",
-          "When {C:attention}Big Blind{} is selected create {C:attention}last used{} {C:glyphs}Glyph{} card",
-          "{C:inactive}Currently:{} {C:glyphs}#5#{}"
+          {
+            "If played hand contains both a {C:attention}Lucky{}",
+            "and {C:attention}Glass{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Lucky{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Glass{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered"
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:glyphs}Glyph{} card used this run",
+            "{C:inactive}Currently:{} {C:glyphs}#5#{}"
+          }
         }
       },
-	  
-	  j_abn_lucky_mult = {
+
+      j_abn_lucky_mult = { -- paradox cards dont exist yet :thonk:
         name = "Lucky Mult",
         text = {
-          "If played hand contains both a {C:attention}Lucky Card{} and a {C:attention}Mult Card{}",
-          "Each one gains {C:gold}+#1#{} Ascension Power and {C:purple}+#2#{} Score",
-          "Scoring {C:attention}Jokers{} with {C:attention}Lucky Enhancement{} gain {X:mult,C:white}X#3#{} Mult",
-          "Scoring {C:attention}Jokers{} with {C:attention}Mult Enhancement{} gain {X:chips,C:white}X#4#{} Chips",
-          "When {C:attention}Big Blind{} is selected create {C:attention}last used{} {C:paradox}Paradox{} card",
-          "{C:inactive}Currently:{} {C:paradox}#5#{}"
+          {
+            "If played hand contains both a {C:attention}Lucky{}",
+            "and {C:attention}Mult{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Lucky{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Mult{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered"
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:paradox}Paradox{} card used this run",
+            "{C:inactive}Currently:{} {C:paradox}#5#{}"
+          }
+        }
+      },
+
+      j_abn_stone_gold = {
+        name = "Stone Gold",
+        text = {
+          {
+            "If played hand contains both a {C:attention}Stone{}",
+            "and {C:attention}Gold{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Stone{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Gold{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered"
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:solid_state}Solid State{} card used this run",
+            "{C:inactive}Currently:{} {C:solid_state}#5#{}"
+          }
+        }
+      },
+      j_abn_glass_gold = {
+        name = "Glass Gold",
+        text = {
+          {
+            "If played hand contains both a {C:attention}Glass{}",
+            "and {C:attention}Gold{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Glass{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Gold{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered"
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:weather_report}Weather Report{} used this run",
+            "{C:inactive}Currently:{} {C:weather_report}#5#{}"
+          }
+        }
+      },
+      j_abn_steel_gold = {
+        name = "Steel Gold",
+        text = {
+          {
+            "If played hand contains both a {C:attention}Steel{}",
+            "and {C:attention}Gold{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Steel{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Gold{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered"
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:periodic}Periodic{} card used this run",
+            "{C:inactive}Currently:{} {C:periodic}#5#{}"
+          }
+        }
+      },
+      j_abn_wild_gold = { -- need to make atomic cards first :p
+        name = "Wild Gold",
+        text = {
+          {
+            "If played hand contains both a {C:attention}Wild{}",
+            "and {C:attention}Gold{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Wild{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Gold{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered"
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:atomic}Atomic{} card used this run",
+            "{C:inactive}Currently:{} {C:atomic}#5#{}"
+          }
+        }
+      },
+      j_abn_lucky_stone = {
+        name = "Lucky Stone",
+        text = {
+          {
+            "If played hand contains both a {C:attention}Stone{}",
+            "and {C:attention}Lucky{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Stone{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Lucky{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered"
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:artistry_cards}Artistry{} card used this run",
+            "{C:inactive}Currently:{} {C:artistry_cards}#5#{}"
+          }
+        }
+      },
+
+      -- TO CODE (cloudzXIII)
+      j_abn_discontinued_joker = {
+        name = "Discontinued Joker",
+        text = {
+          {
+            "When {C:attention}Blind{} is skipped,",
+            "create a random {C:attention}Tag{}",
+          },
+          {
+            "Played {C:attention}Discontinued{} cards",
+            "permanently gain {C:mult}+#1#{} Mult",
+            "per unique {C:attention}Tag{} obtained this run",
+            "{C:inactive}(Will gain {C:mult}+#2#{C:inactive})"
+          }
+        }
+      },
+      j_abn_big_baffoon = {
+        name = "Big Baffoon", -- this is an intentional misspelling of "Buffoon", kinda like Sanic (Big Sonic)
+        text = {
+          "This Joker gains {C:chips}+#2#{} Chips",
+          "if {C:attention}Blind{} is defeated",
+          "on {C:attention}final hand{} of round",
+          "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+        }
+      },
+      j_abn_cheerful_joker = {
+        name = "Cheerful Joker",
+        text = {
+          "This Joker gains {C:gold}+#2#{}",
+          "Asc. Power if a {C:attention}6 card{}",
+          "hand is played",
+          "{C:inactive}(Currently {C:gold}+#2#{C:inactive} Asc. Power)"
+        }
+      },
+      j_abn_foreign_id = {
+        name = "Foreign ID",
+        text = {
+          "This Joker gains the {C:attention}rank{}",
+          "of scoring cards with",
+          "{C:attention}Modded{} suits as {C:mult}Mult{}",
+          "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+        }
+      },
+      j_abn_deck_o_cards = {
+        name = "Deck of Cards",
+        text = {
+          "When a {C:attention}playing card{} is",
+          "added to your deck, this Joker",
+          "gains {C:chips}Chips{} equal to its {C:attention}rank{}",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
+        }
+      },
+      j_abn_jester_hat = {
+        name = "A Jester's Hat",
+        text = {
+          {
+            "If played hand contains {C:attention}2 Vanilla{} suits",
+            "and {C:attention}2 Modded{} suits, this Joker",
+            "gains double their {C:attention}ranks{} as {C:mult}Mult",
+          },
+          {
+            "If this Joker has {C:dark_edition}Vintage{} edition,",
+            "Retrigger all scoring cards",
+          }
+        }
+      },
+      j_abn_jokerian_dogma = {
+        name = "Jokerian Dogma",
+        text = {
+          "Played {C:attention}Enhanced{} cards with a",
+          "{C:attention}Modded{} {C:dark_edition}Edition{} give",
+          "{C:gold}+#1#{} Asc. Power when scored"
         }
       },
     },

@@ -203,3 +203,25 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
 
   return UI_table
 end
+
+-- Save last used consumable for every set
+local scu = set_consumeable_usage
+function set_consumeable_usage(card)
+  local ret = scu(card)
+  if card.config.center.set then
+    G.E_MANAGER:add_event(Event({
+      trigger = 'immediate',
+      func = function()
+        G.E_MANAGER:add_event(Event({
+          trigger = 'immediate',
+          func = function()
+            G.GAME.abn.last_consumable_used[card.config.center.set] = card.config.center.key
+            return true
+          end
+        }))
+        return true
+      end
+    }))
+  end
+  return ret
+end
