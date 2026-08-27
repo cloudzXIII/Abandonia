@@ -27,7 +27,7 @@ SMODS.Joker {
   calculate = function(self, card, context)
     if context.skip_blind then
       local _card = context.blueprint_card or card
-      ABN.create_random_tag(_card)
+      ABN.create_random_tag(_card, "abn_discontinued")
     end
     if context.individual and context.cardarea == G.play then
       if SMODS.has_enhancement(context.other_card, "m_abn_discontinued") then

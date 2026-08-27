@@ -731,14 +731,14 @@ ABN.count_unique = function(area, type)
   return unique
 end
 
-ABN.create_random_tag = function(card)
+ABN.create_random_tag = function(card, seed)
   seed = seed or "abn_seed"
   local tag_pool = get_current_pool('Tag')
   local selected_tag = pseudorandom_element(tag_pool, seed)
   local it = 1
   while selected_tag == 'UNAVAILABLE' do
     it = it + 1
-    selected_tag = pseudorandom_element(tag_pool, 'kh_kingdom_key_seed' .. it)
+    selected_tag = pseudorandom_element(tag_pool, seed .. it)
   end
 
   if card then
