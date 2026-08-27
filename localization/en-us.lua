@@ -10936,8 +10936,8 @@ return {
           },
           {
             "Played {C:attention}Discontinued{} cards",
-            "permanently gain {C:mult}+#1#{} Mult",
-            "per unique {C:attention}Tag{} obtained this run",
+            "permanently gain {C:mult}+#1#{} Mult per",
+            "unique {C:attention}Tag{} obtained this run",
             "{C:inactive}(Will gain {C:mult}+#2#{C:inactive})"
           }
         }

@@ -730,3 +730,25 @@ ABN.count_unique = function(area, type)
 
   return unique
 end
+
+ABN.create_random_tag = function(card)
+  seed = seed or "abn_seed"
+  local tag_pool = get_current_pool('Tag')
+  local selected_tag = pseudorandom_element(tag_pool, seed)
+  local it = 1
+  while selected_tag == 'UNAVAILABLE' do
+    it = it + 1
+    selected_tag = pseudorandom_element(tag_pool, 'kh_kingdom_key_seed' .. it)
+  end
+
+  if card then
+    SMODS.calculate_effect({ message = localize("k_abn_plus_tag_ex") }, card)
+  end
+
+  G.E_MANAGER:add_event(Event({
+    func = (function()
+      add_tag(Tag(selected_tag, false, 'Small'))
+      return true
+    end)
+  }))
+end
