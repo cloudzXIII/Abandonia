@@ -42,22 +42,26 @@ SMODS.Joker {
   },
   calculate = function(self, card, context)
     if context.setting_blind and G.GAME.blind.config.blind.key == "bl_big" and not context.blueprint and #G.consumeables.cards < G.consumeables.config.card_limit then
-      if G.GAME.abn.last_consumable_used["solid_state"] then
+      if G.GAME.abn.last_consumable_used[card.ability.extra.set] then
         G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
         G.E_MANAGER:add_event(Event({
           func = (function()
             G.E_MANAGER:add_event(Event({
               func = function()
                 SMODS.add_card {
-                  set = 'solid_state',
-                  key = G.GAME.abn.last_consumable_used["solid_state"]
+                  set = card.ability.extra.set,
+                  key = G.GAME.abn.last_consumable_used[card.ability.extra.set]
                 }
                 G.GAME.consumeable_buffer = 0
                 return true
               end
             }))
             SMODS.calculate_effect(
-              { message = localize('k_abn_plus_solid_state'), colour = G.C.SECONDARY_SET[card.ability.extra.set] },
+              {
+                message = localize('k_abn_plus_' .. card.ability.extra.set),
+                colour = G.C.SECONDARY_SET
+                    [card.ability.extra.set]
+              },
               context.blueprint_card or card)
             return true
           end)
