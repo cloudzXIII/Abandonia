@@ -6089,17 +6089,23 @@ return {
       j_abn_funambulist = {
         name = "Funambulist",
         text = {
-          "{C:chips}+#1#{} Chips per Joker to the {C:attention}right{},",
-          "{C:mult}+#2#{} Mult per Joker to the {C:attention}left{}"
+          "{C:mult}+#1#{} Mult per {C:attention}Joker{} to the {C:attention}left{}",
+          "{C:chips}+#2#{} Chips per {C:attention}Joker{} to the {C:attention}right{}",
+          "{C:inactive}(Currently {C:mult}+#3#{C:inactive}, {C:chips}+#4#{C:inactive})"
         }
       },
       j_abn_marques_the_joker = {
         name = "Marques the Joker",
         text = {
-          "Played {C:attention}Gold Cards{}",
-          "permanently gain {X:mult,C:white}+X#1#{} Mult",
-          "and {C:chips}+#2#{} chips when scored",
-          "Non-gold cards gets debuffed when scored",
+          {
+            "Played {C:attention}Gold Cards{} permanently",
+            "gain {X:mult,C:white}X#1#{} Mult and",
+            "{C:chips}+#2#{} chips when scored",
+          },
+          {
+            "Played Non-{C:attention}Gold{} cards",
+            "get {C:red}debuffed{} when scored",
+          }
         },
       },
       j_abn_alchemical_joker = {
@@ -7025,9 +7031,15 @@ return {
       j_abn_marmalize_joker = {
         name = "Marmalize Joker",
         text = {
-          "Jokers cannot be {C:mult}debuffed{} or have {C:abn_perishable}stickers{}",
-          "When {C:attention}Blind{} is selected, all Jokers",
-          "gain {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
+          {
+            "When {C:attention}Blind{} is selected,",
+            "all {C:attention}Jokers{} permanently gain",
+            "{C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
+          },
+          {
+            "Jokers cannot be {C:mult}debuffed{}",
+            "or have {C:abn_perishable}stickers{}",
+          },
         }
       },
       j_abn_backrooms_joker = {
@@ -10666,15 +10678,15 @@ return {
         }
       },
 
-      j_abn_answer_sheet = { -- to relocalise
+      j_abn_answer_sheet = {
         name = "Answer Sheet",
         text = {
-          "Gains {C:mult}+#2#{} Mult when",
-          "a probability on a {C:attention}Consumable",
-          "successfully triggers",
-          "Gains {C:chips}+#1#{} Chips if the successful",
+          "This Joker gains {C:mult}+#2#{} Mult when",
+          "a {C:green}probability{} on a {C:attention}Consumable{}",
+          "successfully triggers, gains",
+          "{C:chips}+#1#{} Chips if the successful",
           "trigger is on a {C:attention}Joker{}",
-          "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips & {C:mult}+#4#{C:inactive} Mult)"
+          "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#4#{C:inactive} Mult)"
         }
       },
 
