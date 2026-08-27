@@ -1,7 +1,7 @@
 local scu = set_consumeable_usage
 function set_consumeable_usage(card)
   local ret = scu(card)
-  if card.config.center.set == 'glyph' then
+  if card.config.center.set == 'glyphs' then
     G.E_MANAGER:add_event(Event({
       trigger = 'immediate',
       func = function()
