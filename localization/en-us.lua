@@ -10745,8 +10745,8 @@ return {
           "Each one gains {C:gold}+#1#{} Ascension Power and {C:purple}+#2#{} Score",
           "Scoring {C:attention}Jokers{} with {C:attention}Lucky Enhancement{} gain {X:mult,C:white}X#3#{} Mult",
           "Scoring {C:attention}Jokers{} with {C:attention}Glass Enhancement{} gain {X:chips,C:white}X#4#{} Chips",
-          "When {C:attention}Big Blind{} is selected create {C:attention}last used{} {C:glyph}Glyph{} card",
-          "{C:inactive}Currently:{} {C:glyph}#5#{}"
+          "When {C:attention}Big Blind{} is selected create {C:attention}last used{} {C:glyphs}Glyph{} card",
+          "{C:inactive}Currently:{} {C:glyphs}#5#{}"
         }
       },
 	  
@@ -10761,7 +10761,6 @@ return {
           "{C:inactive}Currently:{} {C:paradox}#5#{}"
         }
       },
-    },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
