@@ -10959,7 +10959,6 @@ return {
         }
       },
 
-      -- TO CODE (cloudzXIII)
       j_abn_discontinued_joker = {
         name = "Discontinued Joker",
         text = {
@@ -10990,7 +10989,7 @@ return {
           "This Joker gains {C:gold}+#2#{}",
           "Asc. Power if a {C:attention}6 card{}",
           "hand is played",
-          "{C:inactive}(Currently {C:gold}+#2#{C:inactive} Asc. Power)"
+          "{C:inactive}(Currently {C:gold}+#1#{C:inactive} Asc. Power)"
         }
       },
       j_abn_foreign_id = {
@@ -11011,13 +11010,14 @@ return {
           "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
         }
       },
-      j_abn_jester_hat = {
+      j_abn_a_jesters_hat = {
         name = "A Jester's Hat",
         text = {
           {
             "If played hand contains {C:attention}2 Vanilla{} suits",
             "and {C:attention}2 Modded{} suits, this Joker",
             "gains double their {C:attention}ranks{} as {C:mult}Mult",
+            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
           },
           {
             "If this Joker has {C:dark_edition}Vintage{} edition,",
@@ -11038,7 +11038,7 @@ return {
         text = {
           {
             "If the {C:attention}first scored card{} has",
-            "a {C:attention}Vanilla {C:enhanced}Enhancement,",
+            "a {C:attention}Vanilla {C:enhanced}Enhancement{},",
             "apply its equivalent {C:enhanced}Sticker",
             "to the {C:attention}rightmost {}Joker"
           },
@@ -11046,6 +11046,53 @@ return {
             "If a {C:attention}Joker{}'s {C:enhanced}Sticker{} matches",
             "a scored card's {C:enhanced}Vanilla Enhancement{},",
             "{C:attention}it{} gains {C:purple}+#1#{} Score"
+          }
+        }
+      },
+      j_abn_market_crash = {
+        name = "Market Crash",
+        text = {
+          {
+            "When {C:money}${} is earned, reduce",
+            "amount earned to {C:money}$1{} and gain",
+            "{C:attention}double{} the {C:money}${} lost as {C:mult}Mult{}",
+            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+          },
+          {
+            "When {C:attention}sold{}, earn all {C:money}${} lost",
+            "{C:inactive}(Will earn {C:money}$#2#{C:inactive})"
+          }
+        }
+      },
+      j_abn_ena_joker = {
+        name = "ENA Joker",
+        text = {
+          {
+            "Played cards with {C:attention}Vanilla{} suits",
+            "and {C:attention}Modded Enhancements{} give",
+            "{C:white,X:chips}X#1#{} Chips when scored"
+          },
+          {
+            "This Joker gains {C:chips}+#3#{}",
+            "Chips per unique {C:attention}Modded{}",
+            "{C:enhanced}Enhancement{} in scoring hand",
+            "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+          }
+        }
+      },
+      j_abn_joker_ena = {
+        name = "Joker ENA",
+        text = {
+          {
+            "Played cards with {C:attention}Vanilla{} suits",
+            "and {C:attention}Modded Enhancements{} give",
+            "{C:white,X:mult}X#1#{} Mult when scored"
+          },
+          {
+            "This Joker gains {C:mult}+#3#{}",
+            "Mult per unique {C:attention}Modded{}",
+            "{C:enhanced}Enhancement{} in scoring hand",
+            "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
           }
         }
       },
