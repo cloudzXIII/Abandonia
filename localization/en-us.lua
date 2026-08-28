@@ -11033,6 +11033,22 @@ return {
           "{C:gold}+#1#{} Asc. Power when scored"
         }
       },
+      j_abn_foreign_thunk = {
+        name = "ForeignThunk",
+        text = {
+          {
+            "If the {C:attention}first scored card{} has",
+            "a {C:attention}Vanilla {C:enhanced}Enhancement,",
+            "apply its equivalent {C:enhanced}Sticker",
+            "to the {C:attention}rightmost {}Joker"
+          },
+          {
+            "If a {C:attention}Joker{}'s {C:enhanced}Sticker{} matches",
+            "a scored card's {C:enhanced}Vanilla Enhancement{},",
+            "{C:attention}it{} gains {C:purple}+#1#{} Score"
+          }
+        }
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
