@@ -103,7 +103,7 @@ SMODS.Joker {
     if context.post_trigger and context.other_card then
       if context.other_card ~= card and context.other_card.ability then
         -- wild Sticker
-        if context.other_card.ability.abn_stk_wild or context.other_card.config.center == G.P_CENTERS.m_wild then
+        if ABN.has_sticker(context.other_card, "abn_stk_wild") then
           context.other_card.ability.abn_perma_xmult = (context.other_card.ability.abn_perma_xmult or 1) +
               card.ability.extra.xmult
           return {
@@ -113,7 +113,7 @@ SMODS.Joker {
         end
 
         -- Gold Sticker
-        if context.other_card.ability.abn_stk_gold or context.other_card.config.center == G.P_CENTERS.m_gold then
+        if ABN.has_sticker(context.other_card, "abn_stk_gold") then
           context.other_card.ability.abn_perma_xchips = (context.other_card.ability.abn_perma_xchips or 1) +
               card.ability.extra.xchips
           return {
