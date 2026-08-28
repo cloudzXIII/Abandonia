@@ -11038,7 +11038,7 @@ return {
         text = {
           {
             "If the {C:attention}first scored card{} has",
-            "a {C:attention}Vanilla {C:enhanced}Enhancement,",
+            "a {C:attention}Vanilla {C:enhanced}Enhancement{},",
             "apply its equivalent {C:enhanced}Sticker",
             "to the {C:attention}rightmost {}Joker"
           },
@@ -11046,6 +11046,53 @@ return {
             "If a {C:attention}Joker{}'s {C:enhanced}Sticker{} matches",
             "a scored card's {C:enhanced}Vanilla Enhancement{},",
             "{C:attention}it{} gains {C:purple}+#1#{} Score"
+          }
+        }
+      },
+      j_abn_market_crash = {
+        name = "Market Crash",
+        text = {
+          {
+            "When {C:money}${} is earned, reduce",
+            "amount earned to {C:money}$1{} and gain",
+            "{C:attention}double{} the {C:money}${} lost as {C:mult}Mult{}",
+            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+          },
+          {
+            "When {C:attention}sold{}, earn all {C:money}${} lost",
+            "{C:inactive}(Will earn {C:money}$#2#{C:inactive})"
+          }
+        }
+      },
+      j_abn_ena_joker = {
+        name = "ENA Joker",
+        text = {
+          {
+            "Played cards with {C:attention}Vanilla{} suits",
+            "and {C:attention}Modded Enhancements{} give",
+            "{C:white,X:chips}X#1#{} Chips when scored"
+          },
+          {
+            "This Joker gains {C:chips}+#3#{}",
+            "Chips per unique {C:attention}Modded{}",
+            "{C:enhanced}Enhancement{} in scoring hand",
+            "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+          }
+        }
+      },
+      j_abn_joker_ena = {
+        name = "Joker ENA",
+        text = {
+          {
+            "Played cards with {C:attention}Vanilla{} suits",
+            "and {C:attention}Modded Enhancements{} give",
+            "{C:white,X:mult}X#1#{} Mult when scored"
+          },
+          {
+            "This Joker gains {C:mult}+#3#{}",
+            "Mult per unique {C:attention}Modded{}",
+            "{C:enhanced}Enhancement{} in scoring hand",
+            "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
           }
         }
       },
