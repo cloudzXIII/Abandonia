@@ -291,6 +291,7 @@ ABN.most_played_hand = function()
       _handname = k
     end
   end
+  if _played == 0 then return "High Card" end -- return High Card if no hands have been played
   return _handname
 end
 

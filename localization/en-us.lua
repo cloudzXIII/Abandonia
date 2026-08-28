@@ -10959,7 +10959,6 @@ return {
         }
       },
 
-      -- TO CODE (cloudzXIII)
       j_abn_discontinued_joker = {
         name = "Discontinued Joker",
         text = {
@@ -10990,7 +10989,7 @@ return {
           "This Joker gains {C:gold}+#2#{}",
           "Asc. Power if a {C:attention}6 card{}",
           "hand is played",
-          "{C:inactive}(Currently {C:gold}+#2#{C:inactive} Asc. Power)"
+          "{C:inactive}(Currently {C:gold}+#1#{C:inactive} Asc. Power)"
         }
       },
       j_abn_foreign_id = {
@@ -11011,13 +11010,14 @@ return {
           "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
         }
       },
-      j_abn_jester_hat = {
+      j_abn_a_jesters_hat = {
         name = "A Jester's Hat",
         text = {
           {
             "If played hand contains {C:attention}2 Vanilla{} suits",
             "and {C:attention}2 Modded{} suits, this Joker",
             "gains double their {C:attention}ranks{} as {C:mult}Mult",
+            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
           },
           {
             "If this Joker has {C:dark_edition}Vintage{} edition,",
