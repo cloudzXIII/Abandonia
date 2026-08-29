@@ -10441,13 +10441,13 @@ return {
         name = "Bellman Joker",
         text = {
           {
-            "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
-            "if {C:attention}Consumable{} slots are full",
+            "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult if",
+            "{C:attention}Consumable{} slots are full",
           },
           {
-            "When {C:attention}Boss Blind{} is defeated",
+            "If {C:attention}Boss Blind{} is defeated",
             "with full {C:attention}Consumable{} slots,",
-            "gain {C:chips}+#3#{} Chips {C:mult}+#4#{} Mult",
+            "gains {C:chips}+#3#{} Chips and {C:mult}+#4#{} Mult",
           }
         }
       },
@@ -11096,7 +11096,7 @@ return {
           }
         }
       },
-	  j_abn_stone_mult = {
+      j_abn_stone_mult = {
         name = "Stone Mult",
         text = {
           {
@@ -11115,34 +11115,34 @@ return {
           }
         }
       },
-	  
-	  j_abn_canvas_joker = {
+
+      j_abn_canvas_joker = {
         name = "Canvas Joker",
         text = {
           "{C:attention}Modded{} Suits give {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
         }
       },
-	  j_abn_sweepstakes_card = {
+      j_abn_sweepstakes_card = {
         name = "Sweepstakes Card",
         text = {
           "Reduce {C:green}shop{} prices by {C:attention}#1#%{}",
-		  "{C:attention}Modded{} Jokers cost {C:money}$1{}",
+          "{C:attention}Modded{} Jokers cost {C:money}$1{}",
         }
       },
-	  j_abn_cosmic_light = {
+      j_abn_cosmic_light = {
         name = "Cosmic Light",
         text = {
           "{C:attention}Modded{} {C:diamond}Light{} Suits give {C:mult}+#1#{} Mult",
         }
       },
-	  j_abn_amplifier = {
+      j_abn_amplifier = {
         name = "Amplifier",
         text = {
           "{C:attention}Modded{} {C:dark_edition}Enhancements{} on {C:attention}Vanilla{} Suits give {C:attention}50%{} more {C:chips}Chips{} and {C:mult}Mult{}",
-		  "{C:attention}100%{} if they on {C:attention}modded{} Suits"
+          "{C:attention}100%{} if they on {C:attention}modded{} Suits"
         }
       },
-	  j_abn_shy_gall = {
+      j_abn_shy_gall = {
         name = "Shy Gall",
         text = {
           "{C:attention}Level up{} all hands composed entirely of {C:attention}Flipped{} cards",
@@ -14264,13 +14264,13 @@ return {
         }
       },
     },
-	
-	paradox = {
+
+    paradox = {
       c_abn_laplace = {
         name = "Laplace",
         text = {
           "On {C:attention}Even{} Antes all {C:attention}held{} cards gain {C:attention}Flipped{}",
-		  "On {C:attention}Odd{} Antes {C:attention}5{} random cards in {C:attention}deck{} gain {C:attention}Flipped{}",
+          "On {C:attention}Odd{} Antes {C:attention}5{} random cards in {C:attention}deck{} gain {C:attention}Flipped{}",
         }
       },
     },
@@ -14664,20 +14664,20 @@ return {
           "may appear in the shop",
         }
       },
-	  v_abn_athame = {
+      v_abn_athame = {
         name = "Athame",
         text = {
           "{C:sigils}Sigil{} packs always contain the {C:sigils}Sigil{} card",
-		  "for your {C:attention}most played poker hand{}",
+          "for your {C:attention}most played poker hand{}",
         }
       },
-	  v_abn_ink_and_quill = {
+      v_abn_ink_and_quill = {
         name = "Ink & Quill",
         text = {
           "{C:calligraphy}Calligraphy{} cards can be used during {C:attention}blinds{}",
         }
       },
-	  v_abn_fountain_pen = {
+      v_abn_fountain_pen = {
         name = "Fountain Pen",
         text = {
           "Pick {C:attention}+1{} more cards in {C:calligraphy}Calligraphy{} packs",
@@ -15045,8 +15045,8 @@ return {
 
       b_artistry_cards_cards = "Artistry Cards",
       k_artistry_cards = "Artistry",
-	  
-	  b_periodic_cards = "Periodic Cards",
+
+      b_periodic_cards = "Periodic Cards",
       k_periodic = "Periodic",
 
       b_paradox_cards = "Paradox Cards",
@@ -15069,7 +15069,7 @@ return {
       ruinous_power = "Ruinous Power",
       artistry_cards = "Artistry",
       periodic = "Periodic",
-	  paradox = "Paradox",
+      paradox = "Paradox",
 
       -- Editions
       abn_chthonian = "Chthonian",
