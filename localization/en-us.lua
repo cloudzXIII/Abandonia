@@ -11096,6 +11096,58 @@ return {
           }
         }
       },
+	  j_abn_stone_mult = {
+        name = "Stone Mult",
+        text = {
+          {
+            "If played hand contains both a {C:attention}Stone{}",
+            "and {C:attention}Mult{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Stone{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Mult{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered"
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:algebraic}Algebraic{} card used this run",
+            "{C:inactive}Currently:{} {C:algebraic}#5#{}"
+          }
+        }
+      },
+	  
+	  j_abn_canvas_joker = {
+        name = "Canvas Joker",
+        text = {
+          "{C:attention}Modded{} Suits give {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+        }
+      },
+	  j_abn_sweepstakes_card = {
+        name = "Sweepstakes Card",
+        text = {
+          "Reduce {C:green}shop{} prices by {C:attention}#1#%{}",
+		  "{C:attention}Modded{} Jokers cost {C:money}$1{}",
+        }
+      },
+	  j_abn_cosmic_light = {
+        name = "Cosmic Light",
+        text = {
+          "{C:attention}Modded{} {C:diamond}Light{} Suits give {C:mult}+#1#{} Mult",
+        }
+      },
+	  j_abn_amplifier = {
+        name = "Amplifier",
+        text = {
+          "{C:attention}Modded{} {C:dark_edition}Enhancements{} on {C:attention}Vanilla{} Suits give {C:attention}50%{} more {C:chips}Chips{} and {C:mult}Mult{}",
+		  "{C:attention}100%{} if they on {C:attention}modded{} Suits"
+        }
+      },
+	  j_abn_shy_gall = {
+        name = "Shy Gall",
+        text = {
+          "{C:attention}Level up{} all hands composed entirely of {C:attention}Flipped{} cards",
+        }
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
@@ -14212,6 +14264,16 @@ return {
         }
       },
     },
+	
+	paradox = {
+      c_abn_laplace = {
+        name = "Laplace",
+        text = {
+          "On {C:attention}Even{} Antes all {C:attention}held{} cards gain {C:attention}Flipped{}",
+		  "On {C:attention}Odd{} Antes {C:attention}5{} random cards in {C:attention}deck{} gain {C:attention}Flipped{}",
+        }
+      },
+    },
 
     Enhanced = {
       m_abn_wallpaper = {
@@ -14602,6 +14664,25 @@ return {
           "may appear in the shop",
         }
       },
+	  v_abn_athame = {
+        name = "Athame",
+        text = {
+          "{C:sigils}Sigil{} packs always contain the {C:sigils}Sigil{} card",
+		  "for your {C:attention}most played poker hand{}",
+        }
+      },
+	  v_abn_ink_and_quill = {
+        name = "Ink & Quill",
+        text = {
+          "{C:calligraphy}Calligraphy{} cards can be used during {C:attention}blinds{}",
+        }
+      },
+	  v_abn_fountain_pen = {
+        name = "Fountain Pen",
+        text = {
+          "Pick {C:attention}+1{} more cards in {C:calligraphy}Calligraphy{} packs",
+        }
+      },
     },
     Stake = {
       stake_abn_honor = {
@@ -14964,9 +15045,12 @@ return {
 
       b_artistry_cards_cards = "Artistry Cards",
       k_artistry_cards = "Artistry",
-
-      b_periodic_cards = "Periodic Cards",
+	  
+	  b_periodic_cards = "Periodic Cards",
       k_periodic = "Periodic",
+
+      b_paradox_cards = "Paradox Cards",
+      k_paradox = "Paradox",
     },
     labels = {
       -- Consumable Types
@@ -14985,6 +15069,7 @@ return {
       ruinous_power = "Ruinous Power",
       artistry_cards = "Artistry",
       periodic = "Periodic",
+	  paradox = "Paradox",
 
       -- Editions
       abn_chthonian = "Chthonian",
