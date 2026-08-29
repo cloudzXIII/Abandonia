@@ -10441,8 +10441,8 @@ return {
         name = "Bellman Joker",
         text = {
           {
-            "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult if",
-            "{C:attention}Consumable{} slots are full",
+            "Gives {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+            "if {C:attention}Consumable{} slots are full",
           },
           {
             "If {C:attention}Boss Blind{} is defeated",
