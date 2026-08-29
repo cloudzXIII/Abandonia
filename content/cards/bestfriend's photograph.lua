@@ -23,15 +23,16 @@ SMODS.Joker {
   },
 
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and not context.other_card:is_face() then
+    if context.individual and context.cardarea == G.play and ABN.is_number(context.other_card) then
       local first_number = nil
       for i = 1, #context.scoring_hand do
         local v = context.scoring_hand[i]
-        if not v:is_face() then
+        if ABN.is_number(v) then
           first_number = v
           break
         end
       end
+      
       if context.other_card == first_number then
         return {
           x_chips = card.ability.extra.x_chips,
