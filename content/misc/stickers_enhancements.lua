@@ -2,11 +2,11 @@ ABN.EnhSticker = SMODS.Sticker:extend{
     apply = function(self, card, val)
         if val then
             for _, key in ipairs(ABN.enh_stickers_list) do
-            card:remove_sticker(key)
+              card:remove_sticker(key)
             end
         end
+        card.ability[self.key] = val
     end,
-    sets = {Joker = true},
     default_compat = false,
     no_collection =  false,
 }
