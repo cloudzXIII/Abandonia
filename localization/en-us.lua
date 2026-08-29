@@ -1073,7 +1073,7 @@ return {
         name = "Bug",
         text = {
           "Double the selected {C:attention}Joker{}'s",
-          "listed values and apply {C:enhanced}Bugged",
+          "listed values and apply {C:enhanced}Bug",
         },
       },
       c_abn_chip = {
@@ -12628,14 +12628,6 @@ return {
           "{C:attention}Stake{} difficulty",
         }
       },
-      abn_bugged_sticker = {
-        name = "Bugged",
-        text = {
-          "While this sticker is applied,",
-          "all {C:tarot}Tarots{} are {C:red}disabled",
-        }
-      },
-
 
       abn_spade = {
         name = "Spade Sticker",
@@ -15045,7 +15037,6 @@ return {
       abn_rejok_legacy = "Rejok Legacy",
       abn_obmij_legacy = "Obmij Legacy",
       abn_jester_legacy = "Jester Legacy",
-      abn_bugged_sticker = "Bugged",
       abn_currency = "Currency",
       abn_chain = "Chain",
       abn_aim = "Aim",

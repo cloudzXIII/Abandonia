@@ -1154,54 +1154,13 @@ ABN.SolidState { -- Update
 
 }
 
-SMODS.Sticker {
-  key = "bugged_sticker",
-  badge_colour = HEX '4BC292',
-  atlas = "AbandoniaStickers",
-  pos = { x = 0, y = 1 },
-  needs_enable_flag = true,
-  sets = { Joker = true },
-  no_collection = true,
-  config = {},
-  loc_vars = function(self, info_queue, card)
-    return { vars = {} }
-  end,
-  apply = function(self, card, val)
-    card.ability[self.key] = val
-    for _, v in ipairs(G.consumeables.cards) do
-      if v.ability and v.ability.set and v.ability.set == "Tarot" then
-        SMODS.debuff_card(v, val, "tarotdebuff")
-      end
-    end
-  end,
-
-
-  calculate = function(self, card, context)
-    if context.card_added and context.card.ability and context.card.ability.set and context.card.ability.set == "Tarot" then
-      SMODS.debuff_card(context.card, true, "tarotdebuff")
-    end
-
-    if context.selling_self or ((context.selling_card or context.joker_type_destroyed) and context.card == card) then
-      for _, v in ipairs(G.consumeables.cards) do
-        if v.ability and v.ability.set and v.ability.set == "Tarot" then
-          SMODS.debuff_card(v, false, "tarotdebuff")
-        end
-      end
-    end
-  end,
-
-  draw = function(self, card, layer)
-    G.shared_stickers[self.key].role.draw_major = card
-    G.shared_stickers[self.key]:draw_shader('dissolve', nil, nil, nil, card.children.center)
-  end
-}
 
 ABN.SolidState {
   key = 'bug',
   pos = { x = 2, y = 1 },
   config = { max_highlighted = 1 },
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = { key = 'abn_bugged_sticker', set = 'Other' }
+    info_queue[#info_queue + 1] = { key = 'abn_bug', set = 'Other' }
     return { vars = { card.ability.max_highlighted } }
   end,
   use = function(self, card, area, copier)
@@ -1236,7 +1195,7 @@ ABN.SolidState {
             end
           end
           G.jokers.highlighted[i].sell_cost = G.jokers.highlighted[i].sell_cost * 2
-          G.jokers.highlighted[i]:add_sticker("abn_bugged_sticker", true)
+          G.jokers.highlighted[i]:add_sticker("abn_bug", true)
           play_sound('card1', percent)
           G.jokers.highlighted[i]:juice_up(0.4, 0.4)
           return true
