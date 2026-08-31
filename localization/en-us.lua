@@ -1,5 +1,40 @@
 return {
   descriptions = {
+	maths = {
+      c_abn_euler = {
+        name = "Euler",
+        text = {
+          "The next scoring {C:attention}Straight{}",
+		  "with no {C:attention}Ranks{} above {C:attention}6{}",
+		  "gives {C:white,X:chips}X#1#{} Chips",
+        },
+      },
+	  c_abn_golden = {
+        name = "Golden",
+        text = {
+          "The next scoring {C:attention}Straight{}",
+		  "with no {C:attention}Ranks{} above {C:attention}10{}",
+		  "gives {C:white,X:mult}X#1#{} Mult",
+        },
+      },
+	  c_abn_pi = {
+        name = "Pi",
+        text = {
+          "The next scoring {C:attention}High Card{}",
+		  "gives the {C:chips}Chips{} and {C:mult}Mult{}",
+		  "of your last scoring {C:attention}Flush{}",
+		  "{C:inactive}Currently: {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips",
+        },
+      },
+	  c_abn_number = {
+        name = "Number",
+        text = {
+          "Next Hand composed of only {C:attention}Numbered{} cards",
+		  "{C:attention}Level up{} for each {C:attention}unique{} scoring number",
+        },
+      },
+    },
+	
     periodic = {
       c_abn_hydrogen = {
         name = "Hydrogen",
@@ -11148,6 +11183,59 @@ return {
           "{C:attention}Level up{} all hands composed entirely of {C:attention}Flipped{} cards",
         }
       },
+	  j_abn_drawcia = {
+        name = "Drawcia",
+        text = {
+          "Hands composed of only {C:attention}modded{} suits {C:attention}always score{}",
+		  "Gain {X:mult,C:white}X#2#{} Mult for each {C:attention}different{} suit if no {C:attention}vanilla{} suits are played",
+		  "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{}",
+        }
+      },
+	  j_abn_fortlatro = {
+        name = "Fortlatro",
+        text = {
+          "{C:attention}Vanilla{} consumables and Jokers {C:attention}do not{} appear",
+		  "When a {C:chips}Small Blind{} is selected create a random {C:attention}Modded{} consumable",
+		  "When a {C:attention}Big Blind{} is selected create a random {C:attention}Modded{} Joker",
+		  "Gain {X:chips,C:white}X#2#{} Chips per {C:attention}unique Modded Consumable{} used this Run",
+		  "Gain {X:mult,C:white}X#4#{} Chips per {C:attention}unique Modded Joker{} used this Run",
+		  "{C:inactive}Currently:{} {X:chips,C:white}X#1#{} {C:inactive}Chips{} {X:mult,C:white}X#3#{} {C:inactive}Mult",
+        }
+      },
+	  j_abn_dirac = {
+        name = "Dirac",
+        text = {
+          "{C:dark_edition}Negative{} {C:attention}Modded{} Cards and Jokers can't {C:mult}debuffed{}",
+		  "If this Joker has {C:dark_edition}Negative{} increase {C:attention}handsize{} by {C:attention}+#5#{}",
+		  "Gain {X:chips,C:white}X#2#{} Chips per scoring {C:attention}Modded{} {C:dark_edition}Negative{} card",
+		  "Gain {X:mult,C:white}X#4#{} Mult per triggered {C:attention}Modded{} {C:dark_edition}Negative{} joker",
+		  "{C:inactive}Currently:{} {X:chips,C:white}X#1#{} {C:inactive}Chips{} {X:mult,C:white}X#3#{} {C:inactive}Mult{}",
+        }
+      },
+	  j_abn_super_eight = {
+        name = "Super Eight",
+        text = {
+          "{C:attention}8's{} can't be {C:mult}debuffed{} and are considered every {C:attention}Vanilla{} Suit",
+		  "Gain {C:mult}Mult{} equal to {C:attention}twice{} the {C:attention}rank{} of Scoring {C:attention}8's{}",
+		  "If no {C:attention}8's{} score {C:mult}destroy{} this Joker",
+		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{}",
+        }
+      },
+	  j_abn_editional_tag = {
+        name = "Editional Tag",
+		text = {
+          {
+            "Gain {X:mult,C:white}X#2#{} Mult when a {C:attention}Tag{} is obtained",
+			"If that Tag is a {C:attention}modded{} Tag cards with {C:attention}Discontinued{} {C:dark_edition}Enhancement{} gain {C:money}$#4#{} {C:mult}+#3#{} Mult",
+          },
+          {
+            "If this Joker has an {C:dark_edition}Edition{}",
+			"When a Joker gets an {C:dark_edition}Edition{} from a {C:attention}tag{}",
+			"One random {C:attention}Discontinued{} {C:dark_edition}Enhancement{} gains the same {C:dark_edition}Edition{}",
+			"{C:inactive}Currently: {X:mult,C:white}X#1#{} {C:inactive}Mult{}"
+		  },
+        }
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
@@ -15051,6 +15139,9 @@ return {
 
       b_paradox_cards = "Paradox Cards",
       k_paradox = "Paradox",
+	  
+	  b_maths_cards = "Math Cards",
+      k_maths = "Math",
     },
     labels = {
       -- Consumable Types
@@ -15070,6 +15161,7 @@ return {
       artistry_cards = "Artistry",
       periodic = "Periodic",
       paradox = "Paradox",
+	  maths = "Math", 
 
       -- Editions
       abn_chthonian = "Chthonian",
