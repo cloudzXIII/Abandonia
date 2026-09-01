@@ -1,4 +1,4 @@
---  huge thanks to All in Jest for the function :D // this may need some kind of checking since it doesnt work with dynatext stuff
+-- huge thanks to All in Jest for the function :D // this may need some kind of checking since it doesnt work with dynatext stuff
 
 local function ABN_retrieve_joker_text(joker, descip, name)
 	local function get_text(main)
@@ -70,7 +70,7 @@ local function ABN_retrieve_joker_text(joker, descip, name)
 				-- joker.ability_UIBox_table = joker:generate_UIBox_ability_table()
 				local other_vars, _, _ = joker:generate_UIBox_ability_table(true)
 				joker.ability_UIBox_table = generate_card_ui(joker.config.center, nil, other_vars)
-				text = retrieve_joker_text(joker)
+				text = ABN_retrieve_joker_text(joker) -- Fixed function name call here
 			end
 			local main = joker.ability_UIBox_table.main
 			text = text .. get_text(main)
@@ -116,8 +116,7 @@ SMODS.Joker({
 			local scale = {
 				chip_gain = 0,
 			}
-			local this_is_needed = ABN_retrieve_joker_text(context.other_card)
-            local text = ABN_retrieve_joker_text(context.other_card)
+			local text = ABN_retrieve_joker_text(context.other_card)
 			local number_regex = "%d"
 			for num in string.gmatch(text, number_regex) do
 				scale.chip_gain = scale.chip_gain + tonumber(num)
