@@ -9,6 +9,8 @@ SMODS.Edition {
   shader = "chthonian",
   discovered = true,
   config = { percent = 1.05 },
+  in_shop = true,
+  weight = 1.2,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.percent } }
   end,
@@ -38,6 +40,8 @@ SMODS.Edition {
   shader = "iridescent",
   discovered = true,
   config = { x_mult = 2, dollars = 3, },
+  in_shop = true,
+  weight = 0.2,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.x_mult, card.edition.dollars } }
   end,
@@ -65,6 +69,8 @@ SMODS.Edition {
   shader = "abandond",
   discovered = true,
   config = { repetitions = 1, dollars = 3 },
+  in_shop = true,
+  weight = 1.7,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.repetitions, card.edition.dollars } }
   end,
@@ -90,6 +96,8 @@ SMODS.Edition {
   shader = "sunscourge",
   discovered = true,
   config = { chips = 2, mult = 2, multiplier = 2 },
+  in_shop = true,
+  weight = 0.2,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.chips, card.edition.mult } }
   end,
@@ -134,6 +142,8 @@ SMODS.Edition {
   shader = "gloss",
   discovered = true,
   config = { x_chips = 2, dollars = 5, },
+  in_shop = true,
+  weight = 1,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.x_chips, card.edition.dollars } }
   end,
@@ -159,6 +169,8 @@ SMODS.Edition {
   shader = "pearlescent",
   discovered = true,
   config = { chips = 100, mult = 20, },
+  in_shop = true,
+  weight = 0.4,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.mult, card.edition.chips } }
   end,
@@ -185,6 +197,8 @@ SMODS.Edition {
   shader = "chromatic",
   discovered = true,
   config = { x_mult = 1.3, dollars = 4, x_chips = 1.5 },
+  in_shop = true,
+  weight = 0.01,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.x_chips, card.edition.x_mult, card.edition.dollars } }
   end,
@@ -211,6 +225,8 @@ SMODS.Edition {
   shader = "flash",
   discovered = true,
   config = {},
+  in_shop = true,
+  weight = 1.3,
   loc_vars = function(self, info_queue, card)
     return { vars = {} }
   end,
@@ -236,6 +252,8 @@ SMODS.Edition {
   shader = "exs",
   discovered = true,
   config = { emult = 1.3 },
+  in_shop = true,
+  weight = 0.01,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.emult } }
   end,
@@ -263,6 +281,8 @@ SMODS.Edition {
   shader = "cam",
   discovered = true,
   config = { echips = 1.2 },
+  in_shop = true,
+  weight = 0.01,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.echips } }
   end,
@@ -290,6 +310,8 @@ SMODS.Edition {
   shader = "orange",
   discovered = true,
   config = { percent = 20 },
+  in_shop = true,
+  weight = 1.5,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.percent } }
   end,
@@ -317,6 +339,8 @@ SMODS.Edition {
   shader = "plata",
   discovered = true,
   config = { chips = 2, mult = 1, dollars = 1 },
+  in_shop = true,
+  weight = 1.2,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.chips, card.edition.mult, card.edition.dollars } }
   end,
@@ -348,6 +372,8 @@ SMODS.Edition {
   shader = "white",
   discovered = true,
   config = { chips = 20, mult = 8 },
+  in_shop = true,
+  weight = 1.1,
 
   loc_vars = function(self, info_queue, card)
     if card and card.edition then
@@ -397,6 +423,8 @@ SMODS.Edition {
   shader = "balablack",
   discovered = true,
   config = { chips = 20, mult = 8 },
+  in_shop = true,
+  weight = 1.1,
 
   loc_vars = function(self, info_queue, card)
     if card and card.edition then
