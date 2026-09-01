@@ -330,6 +330,9 @@ SMODS.Consumable {
   in_pool = function(self)
     return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
   end,
+  abn_artist_credits = {
+    artist = "Lizzie",
+  },
 }
 
 SMODS.Consumable {
