@@ -11223,17 +11223,62 @@ return {
       },
       j_abn_editional_tag = {
         name = "Editional Tag",
-        text = {
+		text = {
           {
             "Gain {X:mult,C:white}X#2#{} Mult when a {C:attention}Tag{} is obtained",
-            "If that Tag is a {C:attention}modded{} Tag cards with {C:attention}Discontinued{} {C:dark_edition}Enhancement{} gain {C:money}$#4#{} {C:mult}+#3#{} Mult",
+			"If that Tag is a {C:attention}modded{} Tag cards with {C:attention}Discontinued{} {C:dark_edition}Enhancement{} gain {C:money}$#4#{} {C:mult}+#3#{} Mult",
           },
           {
             "If this Joker has an {C:dark_edition}Edition{}",
-            "When a Joker gets an {C:dark_edition}Edition{} from a {C:attention}tag{}",
-            "One random {C:attention}Discontinued{} {C:dark_edition}Enhancement{} gains the same {C:dark_edition}Edition{}",
-            "{C:inactive}Currently: {X:mult,C:white}X#1#{} {C:inactive}Mult{}"
-          },
+			"When a Joker gets an {C:dark_edition}Edition{} from a {C:attention}tag{}",
+			"One random {C:attention}Discontinued{} {C:dark_edition}Enhancement{} gains the same {C:dark_edition}Edition{}",
+			"{C:inactive}Currently: {X:mult,C:white}X#1#{} {C:inactive}Mult{}"
+		  },
+        }
+      },
+	  j_abn_consumable_tag = {
+        name = "Consumable Tag",
+        text = {
+          "Whenever a {C:attention}Tag{} is obtained create a {C:attention}Vanilla{} Consumable Tag",
+		  "Gain {X:mult,C:white}X#2#{} Mult when a tag gives a {C:attention}Consumable{} Pack",
+		  "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{}",
+        }
+      },
+	  j_abn_tri_tag = {
+        name = "Tri Tag",
+        text = {
+          "Whenever a {C:attention}Vanilla{} tag is obtained gain {X:mult,C:white}X#2#{} Mult",
+		  "Whenever a {C:attention}Modded{} tag is obtained gain {X:chips,C:white}X#4#{} Chips",
+		  "Whenever a {C:abn_hazard}Hazard{} tag is obtained gain {C:money}$#5#{}",
+		  "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{} {X:chips,C:white}X#3#{} {C:inactive}Chips{}"
+        }
+      },
+	  j_abn_salvation_tag = {
+        name = "Salvation Tag",
+        text = {
+          "Whenever a {C:attention}Vanilla{} Tag is obtained",
+		  "Convert it into it's {C:abn_hazard}Hazard{} variant",
+        }
+      },
+	  j_abn_magician_tag = {
+        name = "Maigican Tag",
+        text = {
+          "When you {C:green}reroll{} the shop",
+		  "{C:green}Reroll{} all held tags",
+        }
+      },
+	  j_abn_russian_roulette = {
+        name = "Russian Roulette",
+        text = {
+          "All {C:attention}Packs{} cost {C:money}$1{} but consumables have a {C:green}#1# in #2#{} chance of {C:mult}failing{}",
+		  "All {C:attention}Jokers{} cost {C:money}$1{} but gain {C:mult}Fragile{} upon purchase",
+		  "When a {C:green}probability{} succeeds gain {C:money}$#3#{}",
+        }
+      },
+	  j_abn_black_forest = {
+        name = "Black Forest",
+        text = {
+          "{C:attention}Modded{} {C:spades}Dark{} Suits give {C:mult}+#1#{} Mult",
         }
       },
     },
@@ -11538,6 +11583,13 @@ return {
       }
     },
     Other = {
+	  abn_empty_stamp = {
+        name = "Empty Stamp",
+        text = {
+			"If this Card has a unique {C:dark_edition}Edition,{} {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
+			"gain {C:attention}+1{} handsize",
+        }
+      },
       abn_cardmodifier_info = {
         name = "Card Modifier",
         text = {
@@ -14930,6 +14982,7 @@ return {
     challenge_names = {
     },
     dictionary = {
+	  abn_ui_stamps = "Stamps",
       abn_toggle_to_ruinous = "Show Ruinous",
       abn_toggle_to_consumables = "Show Consumables",
 
@@ -15144,6 +15197,8 @@ return {
       k_maths = "Math",
     },
     labels = {
+	  -- Stamps
+	  abn_empty_stamp = "Empty Stamp",
       -- Consumable Types
       weather_report = "Weather Report",
       calamity_cards = "Calamity",
