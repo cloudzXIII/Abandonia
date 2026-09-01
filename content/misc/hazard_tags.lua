@@ -1048,16 +1048,16 @@ SMODS.Tag {
 }
 
 SMODS.Tag {
-  key = "hazard_standard",
-  atlas = "AbandoniaHazardTags",
-  pos = { x = 3, y = 4 },
-  config = { hazard = true, rerolls = 2 },
-  
-  loc_vars = function(self, info_queue, tag)
-    return { vars = { tag.config.rerolls } }
-  end,
-  
-  apply = function(self, tag, context)
+    key = "hazard_standard",
+    atlas = "AbandoniaHazardTags",
+    pos = { x = 3, y = 4 },
+    config = { hazard = true, rerolls = 2 },
+    
+    loc_vars = function(self, info_queue, tag)
+        return { vars = { tag.config.rerolls } }
+    end,
+    
+    apply = function(self, tag, context)
         if context.type == 'new_blind_choice' then
             local lock = tag.ID
             G.CONTROLLER.locks[lock] = true
@@ -1075,23 +1075,26 @@ SMODS.Tag {
                 return true
             end)
             tag.triggered = true
-			add_tag(Tag('tag_standard'))
+            G.GAME.StandardPacks = (G.GAME.StandardPacks or 0) + 1
+            if G.GAME.StandardPacks % 2 == 1 then
+                add_tag(Tag('tag_abn_hazard_standard'))
+            end
             return true
         end
     end
 }
 
 SMODS.Tag {
-  key = "hazard_charm",
-  atlas = "AbandoniaHazardTags",
-  pos = { x = 4, y = 4 },
-  config = { hazard = true, rerolls = 2 },
-  
-  loc_vars = function(self, info_queue, tag)
-    return { vars = { tag.config.rerolls } }
-  end,
-  
-  apply = function(self, tag, context)
+    key = "hazard_charm",
+    atlas = "AbandoniaHazardTags",
+    pos = { x = 4, y = 4 },
+    config = { hazard = true, rerolls = 2 },
+    
+    loc_vars = function(self, info_queue, tag)
+        return { vars = { tag.config.rerolls } }
+    end,
+    
+    apply = function(self, tag, context)
         if context.type == 'new_blind_choice' then
             local lock = tag.ID
             G.CONTROLLER.locks[lock] = true
@@ -1109,23 +1112,26 @@ SMODS.Tag {
                 return true
             end)
             tag.triggered = true
-			add_tag(Tag('tag_charm'))
+            G.GAME.CharmPacks = (G.GAME.CharmPacks or 0) + 1
+            if G.GAME.CharmPacks % 2 == 1 then
+                add_tag(Tag('tag_abn_hazard_charm'))
+            end
             return true
         end
     end
 }
 
 SMODS.Tag {
-  key = "hazard_meteor",
-  atlas = "AbandoniaHazardTags",
-  pos = { x = 0, y = 5 },
-  config = { hazard = true, rerolls = 2 },
-  
-  loc_vars = function(self, info_queue, tag)
-    return { vars = { tag.config.rerolls } }
-  end,
-  
-  apply = function(self, tag, context)
+    key = "hazard_meteor",
+    atlas = "AbandoniaHazardTags",
+    pos = { x = 0, y = 5 },
+    config = { hazard = true, rerolls = 2 },
+    
+    loc_vars = function(self, info_queue, tag)
+        return { vars = { tag.config.rerolls } }
+    end,
+    
+    apply = function(self, tag, context)
         if context.type == 'new_blind_choice' then
             local lock = tag.ID
             G.CONTROLLER.locks[lock] = true
@@ -1143,23 +1149,26 @@ SMODS.Tag {
                 return true
             end)
             tag.triggered = true
-			add_tag(Tag('tag_meteor'))
+            G.GAME.MeteorPacks = (G.GAME.MeteorPacks or 0) + 1
+            if G.GAME.MeteorPacks % 2 == 1 then
+                add_tag(Tag('tag_abn_hazard_meteor'))
+            end
             return true
         end
     end
 }
 
 SMODS.Tag {
-  key = "hazard_buffoon",
-  atlas = "AbandoniaHazardTags",
-  pos = { x = 1, y = 5 },
-  config = { hazard = true, rerolls = 2 },
-  
-  loc_vars = function(self, info_queue, tag)
-    return { vars = { tag.config.rerolls } }
-  end,
-  
-  apply = function(self, tag, context)
+    key = "hazard_buffoon",
+    atlas = "AbandoniaHazardTags",
+    pos = { x = 1, y = 5 },
+    config = { hazard = true, rerolls = 2 },
+    
+    loc_vars = function(self, info_queue, tag)
+        return { vars = { tag.config.rerolls } }
+    end,
+    
+    apply = function(self, tag, context)
         if context.type == 'new_blind_choice' then
             local lock = tag.ID
             G.CONTROLLER.locks[lock] = true
@@ -1177,7 +1186,10 @@ SMODS.Tag {
                 return true
             end)
             tag.triggered = true
-			add_tag(Tag('tag_buffoon'))
+            G.GAME.BuffoonPacks = (G.GAME.BuffoonPacks or 0) + 1
+            if G.GAME.BuffoonPacks % 2 == 1 then
+                add_tag(Tag('tag_abn_hazard_buffoon'))
+            end
             return true
         end
     end
@@ -1527,7 +1539,7 @@ SMODS.Tag {
 }
 
 SMODS.Tag {
-  key = "hazard_speed",
+  key = "hazard_skip",
   atlas = "AbandoniaHazardTags",
   pos = { x = 2, y = 6 },
   config = { hazard = true, skip_bonus = 10 },
