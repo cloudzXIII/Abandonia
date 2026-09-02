@@ -10480,7 +10480,7 @@ return {
             "if {C:attention}Consumable{} slots are full",
           },
           {
-            "If {C:attention}Boss Blind{} is defeated",
+            "If any {C:attention}Blind{} is defeated",
             "with full {C:attention}Consumable{} slots,",
             "gains {C:chips}+#3#{} Chips and {C:mult}+#4#{} Mult",
           }
