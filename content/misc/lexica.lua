@@ -4,7 +4,7 @@ SMODS.ConsumableType {
   primary_colour = HEX("f4ae55"),
   secondary_colour = HEX("f4ae55"),
   collection_rows = { 6, 6 },
-  shop_rate = 1,
+  shop_rate = 0,
   select_card = "consumeables"
 }
 
