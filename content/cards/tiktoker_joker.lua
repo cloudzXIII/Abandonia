@@ -1,4 +1,3 @@
-
 SMODS.Joker {
     key = 'tiktoker_joker',
     
@@ -31,11 +30,11 @@ SMODS.Joker {
     
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
-            if context.other_card and context.other_card:is_suit("Hearts") == false then
+            if context.other_card and not context.other_card:is_suit("Hearts") then
 
                 local ct = 0
 
-                if G.play and G.play.cards then
+                if context.scoring_hand then
                     for _, played_card in ipairs(context.scoring_hand) do
                         if played_card:is_suit("Hearts") and not played_card.debuff then
                             ct = ct + 1
@@ -44,8 +43,14 @@ SMODS.Joker {
                 end
                 
                 if ct > 0 then
+                    local mult_gain = card.ability.extra.mult * ct
+                    
+                    context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) + mult_gain
+                    
                     return {
-                        mult = card.ability.extra.mult * ct,
+                        message = localize('k_upgrade_ex'),
+                        colour = G.C.MULT,
+                        card = card
                     }
                 end
 
@@ -54,4 +59,3 @@ SMODS.Joker {
     end,
     abn_artist_credits = { artist = "comykel" },
 }
-
