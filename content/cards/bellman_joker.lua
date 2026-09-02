@@ -10,8 +10,8 @@ SMODS.Joker {
     extra = { 
       chips = 5, 
       mult = 2, 
-      chipsadd = 3, 
-      multadd = 1 
+      chipsadd = 10, 
+      multadd = 4 
     } 
   },
 
@@ -27,19 +27,18 @@ SMODS.Joker {
   end,
 
   calculate = function(self, card, context)
-    if context.end_of_round and not context.blueprint and not context.repetition and not context.individual and context.main_eval then
-      if G.GAME.blind and G.GAME.blind.boss then
-        local current_consumables = G.consumeables and #G.consumeables.cards or 0
-        local max_consumables = G.consumeables and G.consumeables.config.card_limit or 0
+    if context.end_of_round and not context.blueprint and not context.repetition and not context.individual and context.game_over == false then
+      local current_consumables = G.consumeables and #G.consumeables.cards or 0
+      local max_consumables = G.consumeables and G.consumeables.config.card_limit or 0
 
-        if current_consumables >= max_consumables and max_consumables > 0 then
-          card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chipsadd
-          card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.multadd
+      if current_consumables >= max_consumables and max_consumables > 0 then
+        card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chipsadd
+        card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.multadd
 
-          return {
-            message = "come again!",
-          }
-        end
+        return {
+          message = "come again!",
+          colour = G.C.MULT
+        }
       end
     end
 
