@@ -11324,6 +11324,14 @@ return {
 		  "{C:inactive}Currently: {X:mult,C:white}X#3#{} {C:inactive}Mult{}",
         }
       },
+      j_abn_crease_joker = {
+        name = "Crease Joker",
+        text = {
+          "{X:attention,C:white}X#1#{} hand size,",
+          "Discard selection size",
+          "reduced to {C:red}#2#{}",
+        }
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
