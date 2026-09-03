@@ -15,6 +15,12 @@ return {
           "Add {C:abn_black_seal}Empty Stamp{} to {C:attention}all{} cards in hand",
         },
       },
+	  c_abn_sword_box = {
+        name = "Sword Box",
+        text = {
+          "Add {C:abn_black_seal}Jester Stamp{} to {C:attention}#1#{} card in hand",
+        },
+      },
     },
 	
     maths = {
@@ -11298,6 +11304,26 @@ return {
           "{C:attention}Modded{} {C:spades}Dark{} Suits give {C:mult}+#1#{} Mult",
         }
       },
+	  j_abn_efo_joker = {
+        name = "EFO Joker",
+        text = {
+          "{C:green}#1# in #2#{} chance to copy the first played {C:attention}Stamp Card{} into your hand",
+		  "Scoring cards with {C:attention}Stamps{} give {C:gold}+#3#{} Ascension power",
+		  "Played hands with {C:attention}5{} or more Stamps",
+		  "give this Joker {X:mult,C:white}X#4#{} Mult and {C:gold}+#5#{} Ascension Power per card",
+		  "{C:inactive}Currently: {X:mult,C:white}X#6#{} {C:inactive}Mult{} {C:gold}+#7#{} {C:inactive}Ascension Power{}",
+        }
+      },
+	  j_abn_globalist_joker = {
+        name = "Globalist Joker",
+        text = {
+          "When a {C:continent}Continent{} card is used create a {C:attention}random{} {C:dark_edition}Negative{} consumable",
+		  "After {C:attention}#1#{} {C:continent}Continent{} cards are used",
+		  "place a {C:attention}Stamp{} on each scoring card of the next played {C:attention}spectrum{}",
+		  "Gain {X:mult,C:white}X#2#{} Mult for every {C:attention}unique{} {C:continent}Continent{} used this run",
+		  "{C:inactive}Currently: {X:mult,C:white}X#3#{} {C:inactive}Mult{}",
+        }
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
@@ -11605,6 +11631,13 @@ return {
         text = {
           "If this Card has a unique {C:dark_edition}Edition,{} {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
           "gain {C:attention}+1{} handsize",
+        }
+      },
+	  abn_jester_stamp = {
+        name = "Jester Stamp",
+        text = {
+          "If this Card has a unique {C:dark_edition}Edition,{} {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
+          "gain {C:attention}+1{} Joker slot when it is {C:mult}Destroyed{} {C:inactive}(max:5){}",
         }
       },
       abn_cardmodifier_info = {
@@ -15219,6 +15252,7 @@ return {
     labels = {
       -- Stamps
       abn_empty_stamp = "Empty Stamp",
+	  abn_jester_stamp = "Jester Stamp",
       -- Consumable Types
       weather_report = "Weather Report",
       calamity_cards = "Calamity",
