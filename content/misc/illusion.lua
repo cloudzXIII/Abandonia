@@ -100,3 +100,38 @@ SMODS.Consumable {
         artist = "Grummy"
     },
 }
+
+SMODS.Consumable {
+    key = "sword_box",
+    set = 'illusion',
+    cost = 4,
+    atlas = "abn_AbandoniaIllusions",
+    pos = { x = 2, y = 0 },
+    config = { extra = { cards = 1, } },
+    loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = { key = "abn_jester_stamp", set = "Other", vars = {} }
+        return { vars = { card.ability.extra.cards, } }
+    end,
+
+    can_use = function(self, card)
+        if G and G.hand and G.hand.highlighted and card.ability and card.ability.extra and card.ability.extra.cards then
+            if #G.hand.highlighted > 0 and #G.hand.highlighted <= card.ability.extra.cards then
+                return true
+            end
+        end
+        return false
+    end,
+
+    use = function(self, card, area, copier)
+        if G and G.hand and G.hand.highlighted then
+            for i = 1, #G.hand.highlighted do
+                local c = G.hand.highlighted[i]
+                abn_add_stamp(c, "abn_jester_stamp")
+            end
+        end
+    end,
+
+    abn_artist_credits = {
+        artist = "0kronix"
+    },
+}

@@ -11,16 +11,16 @@ SMODS.current_mod.custom_collection_tabs = function()
   }
 end
 
--- Simple helper: checks if a Sticker is a Stamp
-local function is_stamp(key)
-  return string.find(key, "^abn_") and string.find(key, "_stamp$")
+function ABN_is_stamp(key)
+    if not key or not SMODS.Stickers[key] then return false end
+    return SMODS.Stickers[key].set == "stamp"
 end
 
 local function stamp_ui()
   local stamps = {}
 
   for k, v in pairs(SMODS.Stickers) do
-    if is_stamp(k) then
+    if ABN_is_stamp(k) then
       stamps[k] = v
     end
   end
@@ -50,7 +50,7 @@ local function wrap_without_stamps(func)
   -- Temporarily remove our stamps from SMODS.Stickers
   local removed = {}
   for k, v in pairs(SMODS.Stickers) do
-    if is_stamp(k) then
+    if ABN_is_stamp(k) then
       removed[k] = v
       SMODS.Stickers[k] = nil
     end
@@ -101,17 +101,12 @@ function stamp_tooltip(type)
   }
 end
 
-local function is_stamp(sticker_key)
-    if not sticker_key or not SMODS.Stickers[sticker_key] then return false end
-    return SMODS.Stickers[sticker_key].set == "stamp"
-end
-
 -- make remove from deck trigger on stamps
 local card_remove_from_deck_ref = Card.remove_from_deck
 function Card:remove_from_deck(from_debuff)
     if self.ability then
         for sticker_key, active in pairs(self.ability) do
-            if active and is_stamp(sticker_key) then
+            if active and ABN_is_stamp(sticker_key) then
                 local sticker_obj = SMODS.Stickers[sticker_key]
                 if sticker_obj and sticker_obj.remove_from_deck then
                     sticker_obj:remove_from_deck(self, from_debuff)
@@ -125,7 +120,7 @@ local card_remove_ref = Card.remove
 function Card:remove()
     if self.ability then
         for sticker_key, active in pairs(self.ability) do
-            if active and is_stamp(sticker_key) then
+            if active and ABN_is_stamp(sticker_key) then
                 local sticker_obj = SMODS.Stickers[sticker_key]
                 if sticker_obj and sticker_obj.remove_from_deck then
                     sticker_obj:remove_from_deck(self, false)
@@ -137,7 +132,7 @@ function Card:remove()
 end
 local card_remove_sticker_ref = Card.remove_sticker
 function Card:remove_sticker(sticker_key)
-    if self.ability and self.ability[sticker_key] and is_stamp(sticker_key) then
+    if self.ability and self.ability[sticker_key] and ABN_is_stamp(sticker_key) then
         local sticker_obj = SMODS.Stickers[sticker_key]
         if sticker_obj and sticker_obj.remove_from_deck then
             sticker_obj:remove_from_deck(self, false)
@@ -152,7 +147,7 @@ function Card:add_to_deck(from_debuff)
     card_add_to_deck_ref(self, from_debuff)
     if self.ability then
         for sticker_key, active in pairs(self.ability) do
-            if active and is_stamp(sticker_key) then
+            if active and ABN_is_stamp(sticker_key) then
                 local sticker_obj = SMODS.Stickers[sticker_key]
                 if sticker_obj and sticker_obj.add_to_deck then
                     sticker_obj:add_to_deck(self, from_debuff)
@@ -165,7 +160,7 @@ end
 local card_add_sticker_ref = Card.add_sticker
 function Card:add_sticker(sticker_key, silent)
     card_add_sticker_ref(self, sticker_key, silent)
-    if self.ability and self.ability[sticker_key] and is_stamp(sticker_key) then
+    if self.ability and self.ability[sticker_key] and ABN_is_stamp(sticker_key) then
         local sticker_obj = SMODS.Stickers[sticker_key]
         if sticker_obj and sticker_obj.add_to_deck and self.added_to_deck then
             sticker_obj:add_to_deck(self, false)
@@ -177,7 +172,7 @@ end
 function abn_add_stamp(card, new_stamp_key)
     if card and card.ability and SMODS and SMODS.Sticker and SMODS.Sticker.obj_buffer then
         for _, sticker in ipairs(SMODS.Sticker.obj_buffer) do
-            if card.ability[sticker] and is_stamp(sticker) then
+            if card.ability[sticker] and ABN_is_stamp(sticker) then
                 card:remove_sticker(sticker)
             end
         end
@@ -244,6 +239,60 @@ SMODS.Sticker {
         elseif not is_unique and card.ability.abn_stamp_extra.triggered then
             card.ability.abn_stamp_extra.triggered = false
             G.hand:change_size(-1)
+        end
+    end
+}
+
+SMODS.Sticker {
+    key = 'jester_stamp',
+    atlas = 'AbandoniaStamps',
+    pos = { x = 1, y = 0 }, 
+    badge_colour = HEX("3b2f38"),
+    set = "stamp",
+
+    calculate = function(self, card, context)
+        if not context.remove_playing_cards or not context.removed then return end
+
+        local is_destroyed = false
+        for _, removed_card in ipairs(context.removed) do
+            if removed_card == card then
+                is_destroyed = true
+                break
+            end
+        end
+
+        if not is_destroyed or not G.playing_cards then return end
+
+        local card_edition = card.edition and card.edition.key or nil
+        local card_enhancement = (card.config.center and card.config.center.key ~= 'c_base') and card.config.center.key or nil
+        local card_seal = card.seal or nil
+
+        if not (card_edition and card_enhancement and card_seal) then return end
+
+        local is_unique = true
+        for _, other_card in ipairs(G.playing_cards) do
+            if other_card ~= card then
+                local other_edition = other_card.edition and other_card.edition.key or nil
+                local other_enhancement = (other_card.config.center and other_card.config.center.key ~= 'c_base') and other_card.config.center.key or nil
+                local other_seal = other_card.seal or nil
+
+                if (card_edition == other_edition) or 
+                   (card_enhancement == other_enhancement) or 
+                   (card_seal == other_seal) then
+                    is_unique = false
+                    break
+                end
+            end
+        end
+
+        if is_unique then
+			G.GAME.JesterStampsTriggered = (G.GAME.JesterStampsTriggered or 0) + 1
+			if G.GAME.JesterStampsTriggered <= 5 then
+				G.jokers.config.card_limit = G.jokers.config.card_limit + 1
+				return {
+					message = "+1 Joker Slot!",
+				}
+			end
         end
     end
 }
