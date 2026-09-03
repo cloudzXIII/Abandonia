@@ -67,17 +67,24 @@ local function ABN_retrieve_joker_text(joker, descip, name)
 	else
 		if joker.generate_UIBox_ability_table then
 			if not joker.ability_UIBox_table then -- Removing this check causes memory leaks
-				-- joker.ability_UIBox_table = joker:generate_UIBox_ability_table()
-				local other_vars, _, _ = joker:generate_UIBox_ability_table(true)
-				joker.ability_UIBox_table = generate_card_ui(joker.config.center, nil, other_vars)
-				text = ABN_retrieve_joker_text(joker) -- Fixed function name call here
+				-- Safely resolve center object across standard and modified cards
+				local center = (joker.config and joker.config.center) or joker.center
+				if center then
+					local other_vars, _, _ = joker:generate_UIBox_ability_table(true)
+					joker.ability_UIBox_table = generate_card_ui(center, nil, other_vars)
+					text = ABN_retrieve_joker_text(joker)
+				end
 			end
-			local main = joker.ability_UIBox_table.main
-			text = text .. get_text(main)
-			local multi_box = joker.ability_UIBox_table.multi_box
-			if multi_box then
-				text = text .. " "
-				text = text .. get_text(multi_box)
+			if joker.ability_UIBox_table then
+				local main = joker.ability_UIBox_table.main
+				if main then
+					text = text .. get_text(main)
+				end
+				local multi_box = joker.ability_UIBox_table.multi_box
+				if multi_box then
+					text = text .. " "
+					text = text .. get_text(multi_box)
+				end
 			end
 		end
 	end
@@ -109,7 +116,10 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		if
 			context.post_trigger
+			and context.other_card
 			and context.other_card ~= card
+			and context.other_card.config
+			and context.other_card.config.center
 			and context.other_card.config.center.key ~= "j_abn_pearls_of_worlds"
 			and not context.blueprint
 		then
@@ -117,7 +127,7 @@ SMODS.Joker({
 				chip_gain = 0,
 			}
 			local text = ABN_retrieve_joker_text(context.other_card)
-			local number_regex = "%d"
+			local number_regex = "%d+"
 			for num in string.gmatch(text, number_regex) do
 				scale.chip_gain = scale.chip_gain + tonumber(num)
 			end

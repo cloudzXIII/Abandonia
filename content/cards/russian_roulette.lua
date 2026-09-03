@@ -35,7 +35,7 @@ function Card:use_consumeable(area, copier)
             roulette:juice_up(0.4, 0.4)
             return nil
         else
-			ease_dollars(card.ability.extra.dollars)
+			ease_dollars(roulette.ability.extra.dollars)
             card_eval_status_text(roulette, 'extra', nil, nil, nil, {
                 message = "Lady luck on your side!",
                 colour = G.C.GREEN
