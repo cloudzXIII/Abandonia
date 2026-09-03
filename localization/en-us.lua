@@ -11324,6 +11324,19 @@ return {
 		  "{C:inactive}Currently: {X:mult,C:white}X#3#{} {C:inactive}Mult{}",
         }
       },
+	  j_abn_khonsu_joker = {
+        name = "Khonsu Joker",
+        text = {
+          "If your first hand is a {C:attention}Pair{} that",
+          "contains {C:diamonds}Light{} and {C:spades}Dark{} Suit cards,",
+          "scoring cards gain the {C:money}Bright{} and",
+          "{C:dark_edition}Opaque{} Editions respectively",
+          "If Kohnsu Joker itself has the {C:money}Bright",
+          "or {C:dark_edition}Opaque{} Edition, scoring cards with",
+          "the matching {C:diamonds}Light{} or {C:spades}Dark{} Suit will",
+          "also give {C:attention}twice{} their rank as {C:mult}Mult"
+        }
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
