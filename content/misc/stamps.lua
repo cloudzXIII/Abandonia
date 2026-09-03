@@ -101,33 +101,126 @@ function stamp_tooltip(type)
   }
 end
 
+local function is_stamp(sticker_key)
+    if not sticker_key or not SMODS.Stickers[sticker_key] then return false end
+    return SMODS.Stickers[sticker_key].set == "stamp"
+end
+
+-- make remove from deck trigger on stamps
+local card_remove_from_deck_ref = Card.remove_from_deck
+function Card:remove_from_deck(from_debuff)
+    if self.ability then
+        for sticker_key, active in pairs(self.ability) do
+            if active and is_stamp(sticker_key) then
+                local sticker_obj = SMODS.Stickers[sticker_key]
+                if sticker_obj and sticker_obj.remove_from_deck then
+                    sticker_obj:remove_from_deck(self, from_debuff)
+                end
+            end
+        end
+    end
+    card_remove_from_deck_ref(self, from_debuff)
+end
+local card_remove_ref = Card.remove
+function Card:remove()
+    if self.ability then
+        for sticker_key, active in pairs(self.ability) do
+            if active and is_stamp(sticker_key) then
+                local sticker_obj = SMODS.Stickers[sticker_key]
+                if sticker_obj and sticker_obj.remove_from_deck then
+                    sticker_obj:remove_from_deck(self, false)
+                end
+            end
+        end
+    end
+    card_remove_ref(self)
+end
+local card_remove_sticker_ref = Card.remove_sticker
+function Card:remove_sticker(sticker_key)
+    if self.ability and self.ability[sticker_key] and is_stamp(sticker_key) then
+        local sticker_obj = SMODS.Stickers[sticker_key]
+        if sticker_obj and sticker_obj.remove_from_deck then
+            sticker_obj:remove_from_deck(self, false)
+        end
+    end
+    card_remove_sticker_ref(self, sticker_key)
+end
+
+-- trigger add to deck effects on stamps
+local card_add_to_deck_ref = Card.add_to_deck
+function Card:add_to_deck(from_debuff)
+    card_add_to_deck_ref(self, from_debuff)
+    if self.ability then
+        for sticker_key, active in pairs(self.ability) do
+            if active and is_stamp(sticker_key) then
+                local sticker_obj = SMODS.Stickers[sticker_key]
+                if sticker_obj and sticker_obj.add_to_deck then
+                    sticker_obj:add_to_deck(self, from_debuff)
+                end
+            end
+        end
+    end
+end
+
+local card_add_sticker_ref = Card.add_sticker
+function Card:add_sticker(sticker_key, silent)
+    card_add_sticker_ref(self, sticker_key, silent)
+    if self.ability and self.ability[sticker_key] and is_stamp(sticker_key) then
+        local sticker_obj = SMODS.Stickers[sticker_key]
+        if sticker_obj and sticker_obj.add_to_deck and self.added_to_deck then
+            sticker_obj:add_to_deck(self, false)
+        end
+    end
+end
+
+-- apply stamps with this function
+function abn_add_stamp(card, new_stamp_key)
+    if card and card.ability and SMODS and SMODS.Sticker and SMODS.Sticker.obj_buffer then
+        for _, sticker in ipairs(SMODS.Sticker.obj_buffer) do
+            if card.ability[sticker] and is_stamp(sticker) then
+                card:remove_sticker(sticker)
+            end
+        end
+    end
+
+    card:add_sticker(new_stamp_key, true)
+end
+
+
 SMODS.Sticker {
     key = 'empty_stamp',
     atlas = 'AbandoniaStamps',
     pos = { x = 0, y = 0 },
     badge_colour = HEX("45283c"),
+    set = "stamp",
 
-    set_ability = function(self, card)
-        if not card.ability.abn_stamp_extra then
-            card.ability.abn_stamp_extra = {
-                triggered = false
-            }
+	
+	add_to_deck = function(self, card, from_debuff)
+        card.ability.abn_stamp_extra = card.ability.abn_stamp_extra or {}
+        card.ability.abn_stamp_extra.triggered = false
+    end,
+	
+    remove_from_deck = function(self, card, from_debuff)
+        card.ability.abn_stamp_extra = card.ability.abn_stamp_extra or { triggered = false }
+        if card.ability.abn_stamp_extra.triggered then
+            card.ability.abn_stamp_extra.triggered = false
+            if G.hand then G.hand:change_size(-1) end
         end
     end,
 
-    update = function(self, card, dt)
+    calculate = function(self, card, context)
         if not G.playing_cards or not G.hand then return end
 
-        -- Extract key traits (treating 'c_base' / missing enhancement as nil)
+        card.ability.abn_stamp_extra = card.ability.abn_stamp_extra or { triggered = false }
+
         local card_edition = card.edition and card.edition.key or nil
         local card_enhancement = (card.config.center and card.config.center.key ~= 'c_base') and card.config.center.key or nil
         local card_seal = card.seal or nil
 
-        -- Must have at least one non-base trait to be unique
-        local has_any_trait = card_edition or card_enhancement or card_seal
+        local has_all_traits = card_edition and card_enhancement and card_seal
         local is_unique = false
 
-        if has_any_trait then
+        if has_all_traits then
             is_unique = true
             for _, other_card in ipairs(G.playing_cards) do
                 if other_card ~= card then
@@ -135,9 +228,9 @@ SMODS.Sticker {
                     local other_enhancement = (other_card.config.center and other_card.config.center.key ~= 'c_base') and other_card.config.center.key or nil
                     local other_seal = other_card.seal or nil
 
-                    if card_edition == other_edition and 
-                       card_enhancement == other_enhancement and 
-                       card_seal == other_seal then
+                    if (card_edition == other_edition) or 
+                       (card_enhancement == other_enhancement) or 
+                       (card_seal == other_seal) then
                         is_unique = false
                         break
                     end
@@ -145,14 +238,12 @@ SMODS.Sticker {
             end
         end
 
-        -- Dynamically adjust hand size limit
         if is_unique and not card.ability.abn_stamp_extra.triggered then
             card.ability.abn_stamp_extra.triggered = true
-            G.hand:change_config({card_limit = G.hand.config.card_limit + 1})
+            G.hand:change_size(1)
         elseif not is_unique and card.ability.abn_stamp_extra.triggered then
             card.ability.abn_stamp_extra.triggered = false
-            G.hand:change_config({card_limit = G.hand.config.card_limit - 1})
+            G.hand:change_size(-1)
         end
     end
 }
-
