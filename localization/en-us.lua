@@ -1,5 +1,22 @@
 return {
   descriptions = {
+	
+	illusion = {
+      c_abn_euclidean = {
+        name = "Euclidean",
+        text = {
+          "Add {C:abn_black_seal}Empty Stamp{} to {C:attention}#1#{} card in hand",
+		  "{C:green}#2# in #3#{} chance to create a {C:illusion}Penrose{}",
+        },
+      },
+	  c_abn_penrose = {
+        name = "Penrose",
+        text = {
+          "Add {C:abn_black_seal}Empty Stamp{} to {C:attention}all{} cards in hand",
+        },
+      },
+    },
+	
     maths = {
       c_abn_euler = {
         name = "Euler",
@@ -15195,6 +15212,9 @@ return {
 
       b_maths_cards = "Math Cards",
       k_maths = "Math",
+	  
+	  b_illusion_cards = "Illusion Cards",
+      k_illusion = "Illusion",
     },
     labels = {
       -- Stamps
@@ -15217,6 +15237,7 @@ return {
       periodic = "Periodic",
       paradox = "Paradox",
       maths = "Math",
+	  illusion = "Illusion",
 
       -- Editions
       abn_chthonian = "Chthonian",
