@@ -11486,6 +11486,13 @@ return {
           "{C:inactive}(Предыдущая рука: {C:attention}#3#{C:inactive})"
         }
       },
+      j_abn_supermember_card = {
+        name = "Членская карта",
+        text = {
+          "Джокеры дают свою {C:attention}цену продажи{}",
+          "как {C:mult}множ.",
+        }
+      }
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE

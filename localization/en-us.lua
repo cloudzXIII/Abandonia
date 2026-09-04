@@ -11304,27 +11304,27 @@ return {
           "{C:attention}Modded{} {C:spades}Dark{} Suits give {C:mult}+#1#{} Mult",
         }
       },
-	  j_abn_efo_joker = {
+	    j_abn_efo_joker = {
         name = "EFO Joker",
         text = {
           "{C:green}#1# in #2#{} chance to copy the first played {C:attention}Stamp Card{} into your hand",
-		  "Scoring cards with {C:attention}Stamps{} give {C:gold}+#3#{} Ascension power",
-		  "Played hands with {C:attention}5{} or more Stamps",
-		  "give this Joker {X:mult,C:white}X#4#{} Mult and {C:gold}+#5#{} Ascension Power per card",
-		  "{C:inactive}Currently: {X:mult,C:white}X#6#{} {C:inactive}Mult{} {C:gold}+#7#{} {C:inactive}Ascension Power{}",
+          "Scoring cards with {C:attention}Stamps{} give {C:gold}+#3#{} Ascension power",
+          "Played hands with {C:attention}5{} or more Stamps",
+          "give this Joker {X:mult,C:white}X#4#{} Mult and {C:gold}+#5#{} Ascension Power per card",
+          "{C:inactive}Currently: {X:mult,C:white}X#6#{} {C:inactive}Mult{} {C:gold}+#7#{} {C:inactive}Ascension Power{}",
         }
       },
-	  j_abn_globalist_joker = {
+	    j_abn_globalist_joker = {
         name = "Globalist Joker",
         text = {
           "When a {C:continent}Continent{} card is used create a {C:attention}random{} {C:dark_edition}Negative{} consumable",
-		  "After {C:attention}#1#{} {C:continent}Continent{} cards are used",
-		  "place a {C:attention}Stamp{} on each scoring card of the next played {C:attention}spectrum{}",
-		  "Gain {X:mult,C:white}X#2#{} Mult for every {C:attention}unique{} {C:continent}Continent{} used this run",
-		  "{C:inactive}Currently: {X:mult,C:white}X#3#{} {C:inactive}Mult{}",
+          "After {C:attention}#1#{} {C:continent}Continent{} cards are used",
+          "place a {C:attention}Stamp{} on each scoring card of the next played {C:attention}spectrum{}",
+          "Gain {X:mult,C:white}X#2#{} Mult for every {C:attention}unique{} {C:continent}Continent{} used this run",
+          "{C:inactive}Currently: {X:mult,C:white}X#3#{} {C:inactive}Mult{}",
         }
       },
-	  j_abn_khonsu_joker = {
+	    j_abn_khonsu_joker = {
         name = "Khonsu Joker",
         text = {
           "If your first hand is a {C:attention}Pair{} that",
@@ -11337,7 +11337,7 @@ return {
           "also give {C:attention}twice{} their rank as {C:mult}Mult"
         }
       },
-	  j_abn_bio_blueprint = {
+	    j_abn_bio_blueprint = {
         name = "Bio Blueprint",
         text = {
           "Allows you to store playing cards",
@@ -11348,7 +11348,7 @@ return {
           "{C:inactive}(Currently {C:red}+#1# {C:inactive}Mult and {C:chips}+#2# {C:inactive}Chips)"
         }
       },
-	  j_abn_gtp_joker = {
+	    j_abn_gtp_joker = {
         name = "GTP Joker",
         text = {
           "{X:mult,C:white}X#1#{} base hand Mult and {X:chips,C:white}X#2#{} base hand Chips",
@@ -11356,7 +11356,7 @@ return {
           "round, except for {C:attention}High Card"
         }
       },
-	  j_abn_gtp_joker_after = {
+	    j_abn_gtp_joker_after = {
         name = "GTP Joker",
         text = {
           "{X:mult,C:white}X#1#{} base hand Mult and {X:chips,C:white}X#2#{} base hand Chips",
@@ -11365,6 +11365,13 @@ return {
           "{C:inactive}(Previous hand: {C:attention}#3#{C:inactive})"
         }
       },
+      j_abn_supermember_card = {
+        name = "Supermember Card",
+        text = {
+          "Jokers give their {C:attention}sell value{}",
+          "as {C:mult}Mult",
+        }
+      }
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
