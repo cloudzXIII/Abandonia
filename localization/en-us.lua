@@ -11332,6 +11332,24 @@ return {
           "reduced to {C:red}#2#{}",
         }
       },
+      j_abn_double_dip = {
+        name = 'Double Dip',
+        text = {
+          "This Joker gives the base {C:chips}Chips{} and {C:red}Mult{}",
+          "of the played poker hand as",
+          "its own {C:chips}Chips{} and {C:red}Mult{}",
+        }
+      },
+      j_abn_big_raff = {
+        name = 'Big Riff',
+        text = {
+          "{C:common}Common{} and {C:uncommon}Uncommon{} Jokers",
+          "no longer appear in the Shop",
+          "When {C:attention}Blind{} is selected,",
+          "create a {C:rare}Rare{} Joker",
+          "{C:inactive}(Must have room)",
+        }
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
