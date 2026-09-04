@@ -14550,7 +14550,7 @@ return {
             "Select a card and a Joker",
             "{C:mult}Destroy{} the Joker",
             "{C:attention}All{} cards with the same {C:attention}suit{}",
-            "as selected card gain {C:chips}Chips{}",
+            "as selected card gain {X:chips,C:white}XChips{}",
             "based on the Joker's {C:attention}rarity",
           },
           {
@@ -14567,7 +14567,7 @@ return {
             "Select a card and a Joker",
             "{C:mult}Destroy{} the Joker",
             "{C:attention}All{} cards with the same {C:attention}suit{}",
-            "as selected card gain {C:mult}Mult{}",
+            "as selected card gain {X:mult,C:white}XMult{}",
             "based on the Joker's {C:attention}rarity",
           },
           {
