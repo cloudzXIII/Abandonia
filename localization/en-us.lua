@@ -11337,6 +11337,34 @@ return {
           "also give {C:attention}twice{} their rank as {C:mult}Mult"
         }
       },
+	  j_abn_bio_blueprint = {
+        name = "Bio Blueprint",
+        text = {
+          "Allows you to store playing cards",
+          "from your hand in consumable slots",
+          "You can then grant bonuses to played cards",
+          "that have the same rank as a stored card,",
+          "depending on what exactly is stored",
+          "{C:inactive}(Currently {C:red}+#1# {C:inactive}Mult and {C:chips}+#2# {C:inactive}Chips)"
+        }
+      },
+	  j_abn_gtp_joker = {
+        name = "GTP Joker",
+        text = {
+          "{X:mult,C:white}X#1#{} base hand Mult and {X:chips,C:white}X#2#{} base hand Chips",
+          "for each consecutive hand played in a",
+          "round, except for {C:attention}High Card"
+        }
+      },
+	  j_abn_gtp_joker_after = {
+        name = "GTP Joker",
+        text = {
+          "{X:mult,C:white}X#1#{} base hand Mult and {X:chips,C:white}X#2#{} base hand Chips",
+          "for each consecutive hand played in a",
+          "round, except for {C:attention}High Card",
+          "{C:inactive}(Previous hand: {C:attention}#3#{C:inactive})"
+        }
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
@@ -11651,6 +11679,116 @@ return {
         text = {
           "If this Card has a unique {C:dark_edition}Edition,{} {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
           "gain {C:attention}+1{} Joker slot when it is {C:mult}Destroyed{} {C:inactive}(max:5){}",
+        }
+      },
+      abn_bio_blueprint_incompatible_norank = {
+        name = "Incompatible",
+        text = {
+          "Cards that do not have a rank",
+          "cannot receive any bonuses"
+        }
+      },
+      abn_bio_blueprint_incompatible_rank = {
+        name = "Incompatible",
+        text = {
+          "Cards of rank '#1#'",
+          "cannot receive any bonuses"
+        }
+      },
+      abn_bio_blueprint_even = {
+        name = "#1# of #2# (Even)",
+        text = {
+          "All scoring #1#s grant {C:mult}+#3#{} Mult",
+          "If at least {C:attention}#1#{} #1#s are scored by the",
+          "end of the round, double Mult rate",
+          "{C:inactive}({C:attention}#4#{C:inactive}/#1# #1#s scored)"
+        }
+      },
+      abn_bio_blueprint_even_edi = {
+        name = "#5# #1# of #2# (Even)",
+        text = {
+          "All scoring #1#s grant {C:mult}+#3#{} Mult",
+          "All scoring {C:dark_edition}#5#{} #1#s also grant {C:mult}+#6#{} Mult",
+          "If at least {C:attention}#1#{} #1#s are scored by the",
+          "end of the round, double Mult rate",
+          "If at least {C:attention}#1#{} {C:dark_edition}#5#{} #1#s are scored by the",
+          "end of the round, double Mult rate",
+          "{C:inactive}({C:attention}#4#{C:inactive}/#1# #1#s and {C:attention}#7#{C:inactive}/#1# {C:dark_edition}#5# {C:inactive}#1#s scored)"
+        }
+      },
+      abn_bio_blueprint_even_enh = {
+        name = "#5# #1# of #2# (Even)",
+        text = {
+          "All scoring #1#s grant {C:mult}+#3#{} Mult",
+          "All scoring {C:attention}#5#{} #1#s also grant {C:chips}+#6#{} Chips",
+          "If at least {C:attention}#1#{} #1#s are scored by the",
+          "end of the round, double Mult rate",
+          "If at least {C:attention}#1# #5#{} #1#s are scored by the",
+          "end of the round, double Chip rate",
+          "{C:inactive}({C:attention}#4#{C:inactive}/#1# #1#s and {C:attention}#7#{C:inactive}/#1# {C:attention}#5# {C:inactive}#1#s scored)"
+        }
+      },
+      abn_bio_blueprint_even_edi_enh = {
+        name = "#5# #8# #1# of #2# (Even)",
+        text = {
+          "All scoring #1#s grant {C:mult}+#3#{} Mult",
+          "All scoring {C:dark_edition}#5#{} #1#s also grant {C:mult}+#6#{} Mult",
+          "All scoring {C:attention}#8#{} #1#s also grant {C:chips}+#9#{} Chips",
+          "If at least {C:attention}#1#{} #1#s are scored by the",
+          "end of the round, double Mult rate",
+          "If at least {C:attention}#1#{} {C:dark_edition}#5#{} #1#s are scored by the",
+          "end of the round, double Mult rate",
+          "If at least {C:attention}#1# #8#{} #1#s are scored by the",
+          "end of the round, double Chip rate",
+          "{C:inactive}({C:attention}#4#{C:inactive}/#1# #1#s, {C:attention}#7#{C:inactive}/#1# {C:dark_edition}#5# {C:inactive}#1#s, and {C:inactive}#10#/#1# {C:attention}#8# {C:inactive}#1#s scored)"
+        }
+      },
+      abn_bio_blueprint_odd = {
+        name = "#1# of #2# (Odd)",
+        text = {
+          "All scoring #1#s grant {C:chips}+#3#{} Chips",
+          "If at least {C:attention}#1#{} #1#s are scored by the",
+          "end of the round, double Chip rate",
+          "{C:inactive}({C:attention}#4#{C:inactive}/#1# #1#s scored)"
+        }
+      },
+      abn_bio_blueprint_odd_edi = {
+        name = "#5# #1# of #2# (Odd)",
+        text = {
+          "All scoring #1#s grant {C:chips}+#3#{} Chips",
+          "All scoring {C:dark_edition}#5#{} #1#s also grant {C:mult}+#6#{} Mult",
+          "If at least {C:attention}#1#{} #1#s are scored by the",
+          "end of the round, double Chip rate",
+          "If at least {C:attention}#1#{} {C:dark_edition}#5#{} #1#s are scored by the",
+          "end of the round, double Mult rate",
+          "{C:inactive}({C:attention}#4#{C:inactive}/#1# #1#s and {C:attention}#7#{C:inactive}/#1# {C:dark_edition}#5# {C:inactive}#1#s scored)"
+        }
+      },
+      abn_bio_blueprint_odd_enh = {
+        name = "#5# #1# of #2# (Odd)",
+        text = {
+          "All scoring #1#s grant {C:chips}+#3#{} Chips",
+          "All scoring {C:attention}#5#{} #1#s also grant {C:chips}+#6#{} Chips",
+          "If at least {C:attention}#1#{} #1#s are scored by the",
+          "end of the round, double Chip rate",
+          "If at least {C:attention}#1# #5#{} #1#s are scored by the",
+          "end of the round, double Chip rate",
+          "{C:inactive}({C:attention}#4#{C:inactive}/#1# #1#s and {C:attention}#7#{C:inactive}/#1# {C:attention}#5# {C:inactive}#1#s scored)"
+        }
+      },
+      abn_bio_blueprint_odd_edi_enh = {
+        name = "#5# #8# #1# of #2# (Odd)",
+        text = {
+          "All scoring #1#s grant {C:chips}+#3#{} Chips",
+          "All scoring {C:dark_edition}#5#{} #1#s also grant {C:mult}+#6#{} Mult",
+          "All scoring {C:attention}#8#{} #1#s also grant {C:chips}+#9#{} Chips",
+          "If at least {C:attention}#1#{} #1#s are scored by the",
+          "end of the round, double Chip rate",
+          "If at least {C:attention}#1#{} {C:dark_edition}#5#{} #1#s are scored by the",
+          "end of the round, double Mult rate",
+          "If at least {C:attention}#1# #8#{} #1#s are scored by the",
+          "end of the round, double Chip rate",
+          "{C:inactive}({C:attention}#4#{C:inactive}/#1# #1#s, {C:attention}#7#{C:inactive}/#1# {C:dark_edition}#5# {C:inactive}#1#s, and {C:inactive}#10#/#1# {C:attention}#8# {C:inactive}#1#s scored)"
         }
       },
       abn_cardmodifier_info = {
