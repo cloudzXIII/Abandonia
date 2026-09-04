@@ -1,5 +1,29 @@
 return {
   descriptions = {
+    illusion = {
+      c_abn_euclidean = {
+        name = "Евклидово",
+        text = {
+          "Добавляет {C:abn_black_seal}Пустой штамп{}",
+          "к {C:attention}#1#{} карте в руке",
+		      "Шанс {C:green}#2# к #3#{} создать {C:illusion}Пенроуз{}",
+        },
+      },
+	    c_abn_penrose = {
+        name = "Пенроуз",
+        text = {
+          "Добавляет {C:abn_black_seal}Пустой штамп{}",
+          "ко {C:attention}всем{} картам в руке",
+        },
+      },
+	    c_abn_sword_box = {
+        name = "Коробка с мечами",
+        text = {
+          "Добавляет {C:abn_black_seal}Джестер-штамп{}",
+          "к {C:attention}#1#{} карте в руке"
+        },
+      },
+    },
     maths = {
       c_abn_euler = {
         name = "Эйлер",
@@ -11391,6 +11415,77 @@ return {
           "дают {C:mult}+#1#{} множ."
         }
       },
+	    j_abn_efo_joker = {
+        name = "Почтовый купон",
+        text = {
+          "Шанс {C:green}#1# к #2#{} копировать первую сыгранную {C:attention}Штампованную карту{} в руку",
+          "{C:attention}Штампованные карты{} дают {C:gold}+#3#{} Вознесилы при подсчете",
+          "Игра руки с {C:attention}5{} иил более штампов,",
+          "дает этому Джокеру {X:mult,C:white}X#4#{} множ. и {C:gold}+#5#{} Вознесилы за каждую карту",
+          "{C:inactive}(сейчас: {X:mult,C:white}X#6#{} {C:inactive}множ., {C:gold}+#7#{} {C:inactive}Вознес.)",
+        }
+      },
+	    j_abn_globalist_joker = {
+        name = "Глобалист",
+        text = {
+          "Когда карта {C:continent}Континента{} использована, создает {C:attention}случайный{} {C:dark_edition}Негативный{} расходник",
+          "После использования {C:attention}#1#{} карт {C:continent}Континентов, добавляет",
+          "{C:attention}Штамп{} каждой карте в подсчете в следующем сыгранном {C:attention}Спектруме{}",
+          "Получает {X:mult,C:white}X#2#{} множ. за каждую использованную",
+          "в этой партии {C:attention}уникальную{} карту {C:continent}Континента{}",
+          "{C:inactive}(сейчас: {X:mult,C:white}X#3#{} {C:inactive}множ.)",
+        }
+      },
+	    j_abn_khonsu_joker = {
+        name = "Хонсу",
+        text = {
+          {
+            "Если первая рука раунда - это {C:attention}Пара{},",
+            "содержащая и {C:diamonds}Светлые{} и {C:spades}Темные{} масти,",
+            "Подсчитываемые карты получают {C:money}Светлый{} и",
+            "{C:dark_edition}Темный{} выпуск соответственно",
+          },
+          {
+            "Если этот Джокер {C:money}Светлый{} or {C:dark_edition}Темный{},",
+            "подсчитываемые карты с соответствующей",
+            "{C:diamonds}Светлой{} или {C:spades}Темной{} мастью",
+            "получат свой {C:attention}удвоенный{} ранг как {C:mult}множ."
+          }
+        }
+      },
+	    j_abn_bio_blueprint = {
+        name = "Bio Blueprint",
+        text = {
+          {
+            "Позволяет вам хранить в слотах",
+            "расходников игральные карты из руки",
+          },
+          {
+            "Вы можете получать бонусы за сыгранные карты,",
+            "которые имеют тот же ранг, что и хранимые карты",
+            "{C:inactive}(сейчас {C:red}+#1# {C:inactive}множ. и {C:chips}+#2# {C:inactive}фишек)"
+          }
+        }
+      },
+	    j_abn_gtp_joker = {
+        name = "GTP Джокер",
+        text = {
+          "{X:mult,C:white}X#1#{} базовый множ. и {X:chips,C:white}X#2#{} базовые фишки",
+          "за каждую одинаковую последовательно",
+          "сыгранную руку в течение раунда,",
+          "кроме {C:attention}Старшей карты",
+        }
+      },
+	    j_abn_gtp_joker_after = {
+        name = "GTP Joker",
+        text = {
+          "{X:mult,C:white}X#1#{} базовый множ. и {X:chips,C:white}X#2#{} базовые фишки",
+          "за каждую одинаковую последовательно",
+          "сыгранную руку в течение раунда,",
+          "кроме {C:attention}Старшей карты",
+          "{C:inactive}(Предыдущая рука: {C:attention}#3#{C:inactive})"
+        }
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
@@ -11584,7 +11679,7 @@ return {
       credit_abn_comykel = {
         name = "",
         text = {
-          "Нарисовал очень много крутых {C:green}артов{}!",
+          "Нарисовала очень много крутых {C:green}артов{}!",
           "Попробуйте {C:attention}CMYKL{}!"
         }
       },
@@ -11695,6 +11790,15 @@ return {
       },
     },
     Other = {
+	    abn_jester_stamp = {
+        name = "Джестер-штамп",
+        text = {
+          "Если эта карта имеет уникальные",
+          "{C:dark_edition}Выпуск{}, {C:attention}Печать{} и {C:dark_edition}Улучшение{},",
+          "получает {C:attention}+1{} слот Джокера, когда {C:mult}уничтожена{}",
+          "{C:inactive}(макс.:5){}",
+        }
+      },
 	    abn_empty_stamp = {
         name = "Пустой штамп",
         text = {
@@ -15308,6 +15412,7 @@ return {
     labels = {
       -- Stamps
       abn_empty_stamp = "Empty Stamp",
+	    abn_jester_stamp = "Jester Stamp",
       -- Consumable Types
       weather_report = "Weather Report",
       calamity_cards = "Calamity",
@@ -15325,7 +15430,8 @@ return {
       artistry_cards = "Artistry",
       periodic = "Periodic",
 	    paradox = "Paradox",
-	    maths = "Math", 
+	    maths = "Math",
+	    illusion = "Illusion",
 
       -- Editions
       abn_chthonian = "Chthonian",
