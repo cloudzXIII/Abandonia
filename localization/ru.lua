@@ -14477,14 +14477,14 @@ return {
         name = "Проклятая марка",
         text = {
           {
-            "Scoring карты give their {C:attention}rank{}",
-            "as {C:gold}Ascension Power{}, and become",
-            "{C:attention}Stone{} карты after scoring",
+            "Карты дают свой {C:attention}ранг{}",
+            "как {C:gold}Вознесилу{} и становятся",
+            "{C:attention}Каменными{} при подсчете",
           },
           {
-            "If a {C:attention}Rankless{} card scores,",
-            "{C:mult}self-destruct{} and destroy all",
-            "{C:attention}Rankless{} карты in your {C:attention}full deck",
+            "{C:mult}Уничтожает{} себя все карты",
+            "{C:attention}Без ранга{} в вашей {C:attention}полной колоде,",
+            "Если карта {C:attention}Без ранга{} подсчитывается",
           }
         }
       },
@@ -14492,14 +14492,14 @@ return {
         name = "Марка Гиас",
         text = {
           {
-            "If played hand contains a {V:1}#1#{},",
-            "scoring карты each give",
-            "{X:mult,C:white}^#2#{} Mult and {X:chips,C:white}^#3#{} Chips",
+            "Если сыгранная рука содержит {V:1}#1#{},",
+            "карты в подсчете дают",
+            "{X:mult,C:white}^#2#{} множ. и {X:chips,C:white}^#3#{} фишек",
           },
           {
-            "If played hand does {C:attention}not{}",
-            "contain a {V:1}#1#{}, {C:mult,E:1}lose the run",
-            "{s:0.8}Suit changes on Блайнд selection"
+            "{C:mult,E:1}Проигрываете партию{}, если сыгранная",
+            "рука {C:attention}НЕ{} содежит {V:1}#1#{}, ",
+            "{s:0.8}Масть меняется при выборе Блайнда"
           }
         }
       },
@@ -14544,15 +14544,15 @@ return {
         name = "Ластик",
         text = {
           {
-            "Select a {C:attention}Rankless{} card and a Joker",
-            "{C:mult}Destroy{} the Joker",
-            "{C:attention}All Rankless{} карты gain {C:chips}Chips{} and",
-            "{C:mult}Mult{} based on the Joker's {C:attention}rarity",
+            "Выберите карту {C:attention}без ранга{} и Джокера:",
+            "{C:mult}Уничтожает{} Джокера",
+            "{C:attention}Все безранговые{} получают {C:chips}фишки{} и {C:mult}множ.{},",
+            "зависящие от {C:attention}редкости{} Джокера",
           },
           {
-            "{C:common,s:0.8}Common{s:0.8}: {C:chips,s:0.8}+#1#{s:0.8} and {C:mult,s:0.8}+#2#{s:0.8}, {C:uncommon,s:0.8}Uncommon{s:0.8}: {C:chips,s:0.8}+#3#{s:0.8} and {C:mult,s:0.8}+#4#{}",
-            "{C:rare,s:0.8}Rare{s:0.8}: {C:chips,s:0.8}+#5#{s:0.8} and {C:mult,s:0.8}+#6#{s:0.8}, {C:abn_superrare,s:0.8}Super Rare{s:0.8}: {C:chips,s:0.8}+#7#{s:0.8} and {C:mult,s:0.8}+#8#{}",
-            "{C:legendary,s:0.8}Legendary{s:0.8}: {C:chips,s:0.8}+#9#{s:0.8} and {C:mult,s:0.8}+#10#{s:0.8}, {C:abn_parallelrare,s:0.8}Parallel Rare{s:0.8}: {C:chips,s:0.8}+#11#{s:0.8} and {C:mult,s:0.8}+#12#{}",
+            "{C:common,s:0.8}Обычный{s:0.8}: {C:chips,s:0.8}+#1#{s:0.8} и {C:mult,s:0.8}+#2#{s:0.8}, {C:uncommon,s:0.8}Необычный{s:0.8}: {C:chips,s:0.8}+#3#{s:0.8} и {C:mult,s:0.8}+#4#{}",
+            "{C:rare,s:0.8}Редкий{s:0.8}: {C:chips,s:0.8}+#5#{s:0.8} и {C:mult,s:0.8}+#6#{s:0.8}, {C:abn_superrare,s:0.8}Супер редкий{s:0.8}: {C:chips,s:0.8}+#7#{s:0.8} и {C:mult,s:0.8}+#8#{}",
+            "{C:legendary,s:0.8}Легендарный{s:0.8}: {C:chips,s:0.8}+#9#{s:0.8} и {C:mult,s:0.8}+#10#{s:0.8}, {C:abn_parallelrare,s:0.8}Праллель-редкий{s:0.8}: {C:chips,s:0.8}+#11#{s:0.8} и {C:mult,s:0.8}+#12#{}",
           }
         }
       },
@@ -14560,16 +14560,16 @@ return {
         name = "Пипетка",
         text = {
           {
-            "Select a card and a Joker",
-            "{C:mult}Destroy{} the Joker",
-            "{C:attention}All{} карты with the same {C:attention}suit{} as",
-            "selected card permanently gain {C:money}${}",
-            "based on the Joker's {C:attention}rarity",
+            "Выберите карту и Джокера:",
+            "{C:mult}Уничтожает{} Джокера",
+            "{C:attention}Все{} карты с такой же {C:attention}мастью{},",
+            "как у выбранной карты, получают {C:money}${},",
+            "зависящие от {C:attention}редкости{} Джокера",
           },
           {
-            "{C:common,s:0.8}Common{s:0.8}: {C:money,s:0.8}+$#1#{s:0.8}, {C:uncommon,s:0.8}Uncommon{s:0.8}: {C:money,s:0.8}+$#2#{}",
-            "{C:rare,s:0.8}Rare{s:0.8}: {C:money,s:0.8}+$#3#{s:0.8}, {C:abn_superrare,s:0.8}Super Rare{s:0.8}: {C:money,s:0.8}+$#4#{}",
-            "{C:legendary,s:0.8}Legendary{s:0.8}: {C:money,s:0.8}+$#5#{s:0.8}, {C:abn_parallelrare,s:0.8}Parallel Rare{s:0.8}: {C:money,s:0.8}+$#6#{}",
+            "{C:common,s:0.8}Обычный{s:0.8}: {C:money,s:0.8}+$#1#{s:0.8}, {C:uncommon,s:0.8}Необычный{s:0.8}: {C:money,s:0.8}+$#2#{}",
+            "{C:rare,s:0.8}Редкий{s:0.8}: {C:money,s:0.8}+$#3#{s:0.8}, {C:abn_superrare,s:0.8}Супер редкий{s:0.8}: {C:money,s:0.8}+$#4#{}",
+            "{C:legendary,s:0.8}Легендарный{s:0.8}: {C:money,s:0.8}+$#5#{s:0.8}, {C:abn_parallelrare,s:0.8}Параллель-редкий{s:0.8}: {C:money,s:0.8}+$#6#{}",
           }
         }
       },
@@ -14577,16 +14577,16 @@ return {
         name = "Рука",
         text = {
           {
-            "Select a card and a Joker",
-            "{C:mult}Destroy{} the Joker",
-            "{C:attention}All{} карты with the same {C:attention}suit{}",
-            "as selected card gain {C:chips}Chips{}",
-            "based on the Joker's {C:attention}rarity",
+            "Выберите карту и Джокера:",
+            "{C:mult}Уничтожает{} Джокера",
+            "{C:attention}Все{} карты с такой же {C:attention}мастью{},",
+            "как у выбранной карты, получают {X:chips,C:white,s:0.8}Хфишки{},",
+            "зависящие от {C:attention}редкости{} Джокера",
           },
           {
-            "{C:common,s:0.8}Common{s:0.8}: {X:chips,C:white,s:0.8}X#1#{s:0.8}, {C:uncommon,s:0.8}Uncommon{s:0.8}: {X:chips,C:white,s:0.8}X#2#{}",
-            "{C:rare,s:0.8}Rare{s:0.8}: {X:chips,C:white,s:0.8}X#3#{s:0.8}, {C:abn_superrare,s:0.8}Super Rare{s:0.8}: {X:chips,C:white,s:0.8}X#4#{}",
-            "{C:legendary,s:0.8}Legendary{s:0.8}: {X:chips,C:white,s:0.8}X#5#{s:0.8}, {C:abn_parallelrare,s:0.8}Parallel Rare{s:0.8}: {X:chips,C:white,s:0.8}X#6#{}",
+            "{C:common,s:0.8}Обычный{s:0.8}: {X:chips,C:white,s:0.8}X#1#{s:0.8}, {C:uncommon,s:0.8}Необычный{s:0.8}: {X:chips,C:white,s:0.8}X#2#{}",
+            "{C:rare,s:0.8}Редкий{s:0.8}: {X:chips,C:white,s:0.8}X#3#{s:0.8}, {C:abn_superrare,s:0.8}Супер редкий{s:0.8}: {X:chips,C:white,s:0.8}X#4#{}",
+            "{C:legendary,s:0.8}Легендарный{s:0.8}: {X:chips,C:white,s:0.8}X#5#{s:0.8}, {C:abn_parallelrare,s:0.8}Параллель-редкий{s:0.8}: {X:chips,C:white,s:0.8}X#6#{}",
           }
         }
       },
@@ -14594,16 +14594,16 @@ return {
         name = "Перемещение",
         text = {
           {
-            "Select a card and a Joker",
-            "{C:mult}Destroy{} the Joker",
-            "{C:attention}All{} карты with the same {C:attention}suit{}",
-            "as selected card gain {C:mult}Mult{}",
-            "based on the Joker's {C:attention}rarity",
+            "Выберите карту и Джокера:",
+            "{C:mult}Уничтожает{} Джокера",
+            "{C:attention}Все{} карты с такой же {C:attention}мастью{},",
+            "как у выбранной карты, получают {X:mult,C:white,s:0.8}Хмнож.{},",
+            "зависящие от {C:attention}редкости{} Джокера",
           },
           {
-            "{C:common,s:0.8}Common{s:0.8}: {X:mult,C:white,s:0.8}X#1#{s:0.8}, {C:uncommon,s:0.8}Uncommon{s:0.8}: {X:mult,C:white,s:0.8}X#2#{}",
-            "{C:rare,s:0.8}Rare{s:0.8}: {X:mult,C:white,s:0.8}X#3#{s:0.8}, {C:abn_superrare,s:0.8}Super Rare{s:0.8}: {X:mult,C:white,s:0.8}X#4#{}",
-            "{C:legendary,s:0.8}Legendary{s:0.8}: {X:mult,C:white,s:0.8}X#5#{s:0.8}, {C:abn_parallelrare,s:0.8}Parallel Rare{s:0.8}: {X:mult,C:white,s:0.8}X#6#{}",
+            "{C:common,s:0.8}Обычный{s:0.8}: {X:mult,C:white,s:0.8}X#1#{s:0.8}, {C:uncommon,s:0.8}Необычный{s:0.8}: {X:mult,C:white,s:0.8}X#2#{}",
+            "{C:rare,s:0.8}Редкий{s:0.8}: {X:mult,C:white,s:0.8}X#3#{s:0.8}, {C:abn_superrare,s:0.8}Супер редкий{s:0.8}: {X:mult,C:white,s:0.8}X#4#{}",
+            "{C:legendary,s:0.8}Легендарный{s:0.8}: {X:mult,C:white,s:0.8}X#5#{s:0.8}, {C:abn_parallelrare,s:0.8}Параллель-редкий{s:0.8}: {X:mult,C:white,s:0.8}X#6#{}",
           }
         }
       },
@@ -14611,42 +14611,44 @@ return {
         name = "Заливка",
         text = {
           {
-            "Select a card and a Joker",
-            "{C:mult}Destroy{} the Joker",
-            "Upgrade the {C:planet}Planet{} {C:attention}Rank{}",
-            "of the selected card's rank",
-            "based on the Joker's {C:attention}rarity",
+            "Выберите карту и Джокера:",
+            "{C:mult}Уничтожает{} Джокера",
+            "Повышает {C:planet}планетный{} уровень",
+            "{C:attention}ранга{} выбранной карты на количество,",
+            "зависящее от {C:attention}редкости{} Джокера",
           },
           {
-            "{C:common,s:0.8}Common{s:0.8}: {C:planet,s:0.8}+#1#{s:0.8}, {C:uncommon,s:0.8}Uncommon{s:0.8}: {C:planet,s:0.8}+#2#{}",
-            "{C:rare,s:0.8}Rare{s:0.8}: {C:planet,s:0.8}+#3#{s:0.8}, {C:abn_superrare,s:0.8}Super Rare{s:0.8}: {C:planet,s:0.8}+#4#{}",
-            "{C:legendary,s:0.8}Legendary{s:0.8}: {C:planet,s:0.8}+#5#{s:0.8}, {C:abn_parallelrare,s:0.8}Parallel Rare{s:0.8}: {C:planet,s:0.8}+#6#{}",
+            "{C:common,s:0.8}Обычный{s:0.8}: {C:planet,s:0.8}+#1#{s:0.8}, {C:uncommon,s:0.8}Необычный{s:0.8}: {C:planet,s:0.8}+#2#{}",
+            "{C:rare,s:0.8}Редкий{s:0.8}: {C:planet,s:0.8}+#3#{s:0.8}, {C:abn_superrare,s:0.8}Супер редкий{s:0.8}: {C:planet,s:0.8}+#4#{}",
+            "{C:legendary,s:0.8}Легендарный{s:0.8}: {C:planet,s:0.8}+#5#{s:0.8}, {C:abn_parallelrare,s:0.8}Параллель-редкий{s:0.8}: {C:planet,s:0.8}+#6#{}",
           }
         }
       },
       c_abn_line = {
         name = "Линия",
         text = {
-          "Select a card and a Joker",
-          "{C:mult}Destroy{} the Joker",
-          "{C:attention}All{} карты with the same {C:attention}suit{}",
-          "as selected card gain {C:attention}Retriggers{}",
-          "based on the Joker's {C:attention}rarity",
+          {
+            "Выберите карту и Джокера:",
+            "{C:mult}Уничтожает{} Джокера",
+            "{C:attention}Все{} карты с такой же {C:attention}мастью{},",
+            "как у выбранной карты, получают {C:attention}Перезапуски{},",
+            "зависящие от {C:attention}редкости{} Джокера",
+          },
+          {
+            "{C:common,s:0.8}Обычный{s:0.8}: {C:attention,s:0.8}+#1#{s:0.8}, {C:uncommon,s:0.8}Необычный{s:0.8}: {C:attention,s:0.8}+#2#{}",
+            "{C:rare,s:0.8}Редкий{s:0.8}: {C:attention,s:0.8}+#3#{s:0.8}, {C:abn_superrare,s:0.8}Супер редкий{s:0.8}: {C:attention,s:0.8}+#4#{}",
+            "{C:legendary,s:0.8}Легендарный{s:0.8}: {C:attention,s:0.8}+#5#{s:0.8}, {C:abn_parallelrare,s:0.8}Праллель-редкий{s:0.8}: {C:attention,s:0.8}+#6#{}",
+          }
         },
-        {
-          "{C:common,s:0.8}Common{s:0.8}: {C:attention,s:0.8}+#1#{s:0.8}, {C:uncommon,s:0.8}Uncommon{s:0.8}: {C:attention,s:0.8}+#2#{}",
-          "{C:rare,s:0.8}Rare{s:0.8}: {C:attention,s:0.8}+#3#{s:0.8}, {C:abn_superrare,s:0.8}Super Rare{s:0.8}: {C:attention,s:0.8}+#4#{}",
-          "{C:legendary,s:0.8}Legendary{s:0.8}: {C:attention,s:0.8}+#5#{s:0.8}, {C:abn_parallelrare,s:0.8}Parallel Rare{s:0.8}: {C:attention,s:0.8}+#6#{}",
-        }
       },
     },
 
 	  paradox = {
       c_abn_laplace = {
-        name = "Laplace",
+        name = "Лаплас",
         text = {
-          "On {C:attention}Even{} Antes all {C:attention}held{} cards gain {C:attention}Flipped{}",
-		      "On {C:attention}Odd{} Antes {C:attention}5{} random cards in {C:attention}deck{} gain {C:attention}Flipped{}",
+          "На {C:attention}Четных{} Анте {C:attention}Переворачивает{} все карты {C:attention}в руке{}",
+		      "На {C:attention}Нечетных{} Анте {C:attention}Переворачивает 5{} случайных карт в {C:attention}колоде{}",
         }
       },
     },
