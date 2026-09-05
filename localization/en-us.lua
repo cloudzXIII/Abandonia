@@ -11371,6 +11371,22 @@ return {
           "Jokers give their {C:attention}sell value{}",
           "as {C:mult}Mult",
         }
+      },
+      j_abn_joker_forge = {
+        name = "Joker Forge",
+        text = {
+          "{C:attention}Scoring{} cards give total",
+          "{C:attention}sell value{} of all current",
+          "Jokers as {C:red}Mult{}",
+          "{C:inactive}(Currently {C:red}+#1# {C:inactive}Mult)"
+        }
+      },
+      j_abn_galactic_night = {
+        name = "Galactic Night",
+        text = {
+          "Gives {X:mult,C:white}XMult{} equal to",
+          "played {C:attention}poker hand{} level"
+        }
       }
     },
     Spectral = {
