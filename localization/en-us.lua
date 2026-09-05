@@ -14847,14 +14847,14 @@ return {
       m_abn_darkner = {
         name = "Darkner Card",
         text = {
-          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult for played and held {C:spades}Dark Suits{}",
+          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult per played and held {C:spades}Dark Suits{}",
           "{C:mult}Self-destruct{} if played with {C:attention}#3#{} or more {C:diamonds}Light Suits",
         },
       },
       m_abn_lightner = {
         name = "Lightner Card",
         text = {
-          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult for played and held {C:diamonds}Light Suits{}",
+          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult per played and held {C:diamonds}Light Suits{}",
           "{C:mult}Self-destruct{} if played with {C:attention}#3#{} or more {C:spades}Dark Suits",
         },
       },
