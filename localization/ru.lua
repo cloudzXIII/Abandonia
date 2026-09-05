@@ -11496,19 +11496,35 @@ return {
       j_abn_joker_forge = {
         name = "Joker Forge",
         text = {
-          "{C:attention}Scoring{} cards give total",
-          "{C:attention}sell value{} of all current",
-          "Jokers as {C:red}Mult{}",
-          "{C:inactive}(Currently {C:red}+#1# {C:inactive}Mult)"
+          "Карты дают сумму {C:attention}цен продажи{}",
+          "всех имеющихся Джокеров как",
+          "{C:red}множ.{} при подсчете",
+          "{C:inactive}(сейчас {C:red}+#1# {C:inactive}множ.)"
         }
       },
       j_abn_galactic_night = {
-        name = "Galactic Night",
+        name = "Ночь галактик",
         text = {
-          "Gives {X:mult,C:white}XMult{} equal to",
-          "played {C:attention}poker hand{} level"
+          "Дает {X:mult,C:white}Xмнож.{}, равный",
+          "уровню сыгранной {C:attention}руки{}"
         }
       },
+      j_abn_prizefighter_inferno = {
+        name = "Сезонный чемпион Инферно",
+        text = {
+          "Получает {X:chips,C:white}X#3#{} фишки, когда",
+          "{C:attention}Тег{} срабатывает, получает {X:mult,C:white}X#4#{} множ.,",
+          "если это был {C:abn_hazard}Тег бедствия",
+          "{C:inactive}(сейчас {X:chips,C:white}X#1#{C:inactive} фишек, {X:mult,C:white}X#2#{C:inactive} множ.)"
+        }
+      },
+      j_abn_sticky_fingers = {
+        name = "Липкие пальцы",
+        text = {
+          "Карты {C:tarot}Таро{}, {C:planet}Планет{} и {C:spectral}Спектральные{}",
+          "можно {C:attention}сохранить{} из {C:attention}Бкстерных наборов"
+        }
+      }
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE

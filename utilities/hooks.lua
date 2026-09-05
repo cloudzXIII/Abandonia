@@ -225,3 +225,19 @@ function set_consumeable_usage(card)
   end
   return ret
 end
+
+-- thx for Toga's Stuff
+-- Allow cards to be saved from booster packs (for Sticky Fingers)
+local cardselarearef = SMODS.card_select_area
+function SMODS.card_select_area(card, pack)
+  local sa, cau = cardselarearef(card, pack)
+	if card and card.ability and card.ability.set and not sa then
+		if (card.ability.set == 'Planet' or
+      card.ability.set == 'Tarot' or
+      card.ability.set == 'Spectral') and
+      next(SMODS.find_card('j_abn_sticky_fingers')) then
+        sa = "consumeables"; cau = true 
+    end
+	end
+  return sa, cau
+end

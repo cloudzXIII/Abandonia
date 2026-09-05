@@ -11387,6 +11387,22 @@ return {
           "Gives {X:mult,C:white}XMult{} equal to",
           "played {C:attention}poker hand{} level"
         }
+      },
+      j_abn_prizefighter_inferno = {
+        name = "Prizefighter Inferno",
+        text = {
+          "Gains {X:chips,C:white}X#3#{} Chips when a",
+          "{C:attention}Tag{} triggers, gains {X:mult,C:white}X#4#{} Mult",
+          "if that was {C:abn_hazard}Hazard Tag",
+          "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips, {X:mult,C:white}X#2#{C:inactive} Mult)"
+        }
+      },
+      j_abn_sticky_fingers = {
+        name = "Sticky Fingers",
+        text = {
+          "{C:tarot}Tarot{}, {C:planet}Planet{} and {C:spectral}Spectral{} cards",
+          "can be {C:attention}saved{} from {C:attention}Booster packs"
+        }
       }
     },
     Spectral = {
