@@ -41,7 +41,7 @@ SMODS.UndiscoveredSprite({ -- undiscovered sprite
 
 ABN.CrimsonCard {
   key = "igoera",
-  pos = { x = 1, y = 1 },
+  pos = { x = 0, y = 0 },
   config = { extra = { enh_key = "abn_stk_hazard" } },
   
 
@@ -88,7 +88,7 @@ ABN.CrimsonCard {
 
 ABN.CrimsonCard {
   key = "liskarra",
-  pos = { x = 2, y = 1 },
+  pos = { x = 1, y = 0 },
   config = { extra = { enh_key = "abn_stk_fossil" } },
   use = function(self, card, area, copier)
     local c = G.jokers.cards[#G.jokers.cards]
@@ -133,7 +133,7 @@ ABN.CrimsonCard {
 
 ABN.CrimsonCard {
   key = "guztiak",
-  pos = { x = 3, y = 1 },
+  pos = { x = 2, y = 0 },
   config = { extra = { enh_key = "abn_stk_mercurial" } },
 
   use = function(self, card, area, copier)
@@ -179,7 +179,7 @@ ABN.CrimsonCard {
 
 ABN.CrimsonCard {
   key = "moztu",
-  pos = { x = 4, y = 1 },
+  pos = { x = 3, y = 0 },
   config = { extra = { enh_key = "abn_stk_petroleum" } },
 
   use = function(self, card, area, copier)
@@ -225,7 +225,7 @@ ABN.CrimsonCard {
 
 ABN.CrimsonCard {
   key = "aleazioa",
-  pos = { x = 5, y = 1 },
+  pos = { x = 4, y = 0 },
   config = { extra = { enh_key = "abn_stk_kintsugi" } },
 
   use = function(self, card, area, copier)
@@ -272,7 +272,7 @@ ABN.CrimsonCard {
 
 ABN.CrimsonCard {
   key = "iraunkorrak",
-  pos = { x = 6, y = 1 },
+  pos = { x = 5, y = 0 },
   config = { extra = { enh_key = "abn_stk_monitor" } },
   use = function(self, card, area, copier)
     local c = G.jokers.cards[#G.jokers.cards]
@@ -318,7 +318,7 @@ ABN.CrimsonCard {
 
 ABN.CrimsonCard {
   key = "ahalegina",
-  pos = { x = 7, y = 1 },
+  pos = { x = 6, y = 0 },
   config = { extra = { enh_key = "abn_stk_wallpaper" } },
   use = function(self, card, area, copier)
     local c = G.jokers.cards[1]
@@ -363,7 +363,7 @@ ABN.CrimsonCard {
 
 ABN.CrimsonCard {
   key = "sakratua",
-  pos = { x = 8, y = 1 },
+  pos = { x = 7, y = 0 },
   config = { extra = { enh_key = "abn_stk_infra" } },
   use = function(self, card, area, copier)
     local c = G.jokers.cards[#G.jokers.cards]
