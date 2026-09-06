@@ -16,7 +16,13 @@ SMODS.Joker {
   end,
 
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and context.other_card:is_suit("Diamonds") then
+    if context.individual and context.cardarea == G.play and (
+      context.other_card:is_suit("abn_Shield") or
+      context.other_card:is_suit("abn_Crown") or
+      context.other_card:is_suit("abn_Coin") or
+      context.other_card:is_suit("Diamonds") or
+      context.other_card:is_suit("abn_Talon")
+    ) then
       local continent_count = 0
       for _, v in ipairs(G.consumeables.cards) do
         if v.ability.set == "continent" then

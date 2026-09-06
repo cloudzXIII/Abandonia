@@ -17,7 +17,12 @@ SMODS.Joker {
   config = { extra = { chips = 0, chips_gain = 5, mult = 0, mult_gain = 2, spade_chips = 5, spade_mult = 2 } },
 
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and context.other_card:is_suit("Spades") then
+    if context.individual and context.cardarea == G.play and (
+      context.other_card:is_suit("abn_Rose") or 
+      context.other_card:is_suit("Clubs") or 
+      context.other_card:is_suit("abn_Leaf") or 
+      context.other_card:is_suit("abn_Florette")
+    ) then
       local continent_count = 0
       for _, v in ipairs(G.consumeables.cards) do
         if v.ability.set == "continent" then
