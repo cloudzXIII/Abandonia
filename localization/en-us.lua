@@ -11415,7 +11415,27 @@ return {
           "{C:tarot}Tarot{}, {C:planet}Planet{} and {C:spectral}Spectral{} cards",
           "can be {C:attention}saved{} from {C:attention}Booster packs"
         }
-      }
+      },
+	  j_abn_balance_brandon = {
+        name = "Balance Brandon",
+        text = {
+          "Converts {C:mult}+Mult{} effects into",
+          "{X:mult,C:white}XMult{} at a rate of {X:mult,C:white}X#1#",
+          "If this is a {C:attention}Mult Joker{},",
+          "{C:attention}Mult{} enhancements will also",
+          "trigger when held in hand"
+        }
+      },
+	  j_abn_unhinged_umar = {
+        name = "Unhinged Umar",
+        text = {
+          "Converts {C:chips}+Chips{} effects into",
+          "{X:chips,C:white}XChips{} at a rate of {X:chips,C:white}X#1#",
+          "If this is a {C:attention}Bonus Joker{},",
+          "{C:attention}Bonus{} enhancements will also",
+          "trigger when held in hand"
+        }
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
