@@ -11692,8 +11692,9 @@ return {
       credit_abn_okronix = {
         name = "",
         text = {
-          "Made {C:green}art{} for the",
-          "{C:dark_edition}Deck Sleeves{}"
+          "Added some Jokers and",
+          "made a ton of {C:green}art{}",
+          "for the new {C:attention}Consumables{}!"
         }
       },
       credit_abn_flote = {
