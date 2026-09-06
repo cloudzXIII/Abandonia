@@ -355,6 +355,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+  key = "IllusionBoosters",
+  path = "illusion_packs.png",
+  px = 71,
+  py = 95,
+})
+
+SMODS.Atlas({
   key = "AbandoniaCrossmod",
   path = "jokers/crossmod.png",
   px = 71,
