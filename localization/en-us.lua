@@ -23,6 +23,7 @@ return {
           "to all cards in hand",
         },
       },
+	  
       c_abn_sword_box = {
         name = "Sword Box",
         text = {
@@ -31,6 +32,30 @@ return {
             "to {C:attention}#1#{} selected",
             "card in your hand",
           },
+        },
+      },
+	  c_abn_illusionist = {
+        name = "Illusionist",
+        text = {
+          "Add {C:tarot}Icon Stamp{} to {C:attention}#1#{} card in hand",
+        },
+      },
+	  c_abn_cotard = {
+        name = "Cotard",
+        text = {
+          "Add {C:purple}Psychomancy Stamp{} to {C:attention}#1#{} card in hand",
+        },
+      },
+	  c_abn_stupification = {
+        name = "Stupification",
+        text = {
+          "Add {C:tarot}Membership Stamp{} to {C:attention}#1#{} card in hand",
+        },
+      },
+	  c_abn_misdirection = {
+        name = "Misdirection",
+        text = {
+          "Add {C:attention}Prehensile Stamp{} to {C:attention}#1#{} card in hand",
         },
       },
     },
@@ -11746,13 +11771,44 @@ return {
           "gain {C:attention}+1{} handsize",
         }
       },
-      abn_jester_stamp = {
+	  abn_jester_stamp = {
         name = "Jester Stamp",
         text = {
           "If this Card has a unique {C:dark_edition}Edition,{} {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
           "gain {C:attention}+1{} Joker slot when it is {C:mult}Destroyed{} {C:inactive}(max:5){}",
         }
       },
+	  abn_icon_stamp = {
+        name = "Icon Stamp",
+        text = {
+          "If this Card has a unique {C:dark_edition}Edition,{} {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
+          "Give {X:chips,C:white}X1{} Chips for each {C:attention}Seal{}/{C:dark_edition}Edition{}/{C:dark_edition}Enhancement{}",
+		  "If the round is won in {C:attention}1{} hand {C:mult}Destroy{} this card",
+		  "{C:inactive}Currently: {X:chips,C:white}X#1#{} {C:inactive}Chips{}",
+        }
+      },
+	  abn_psychomancy_stamp = {
+        name = "Psychomancy Stamp",
+        text = {
+          "Upon {C:mult}destroying{} this card {C:attention}Level up{} the {C:attention}most played hand{}",
+		  "for each {C:dark_edition}Edition,{} {C:dark_edition}Enhancement,{} and {C:attention}Seal{} on this card",
+        }
+      },
+	  abn_membership_stamp = {
+        name = "Membership Stamp",
+        text = {
+          "If this Card has a unique {C:dark_edition}Edition, {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
+		  "it gains {C:gold}+#1#{} Ascension Power when scoring",
+		  "{C:inactive}Currently:{} {C:gold}#2#{} {C:inactive}Ascension Power{}",
+        }
+      },
+	  abn_prehensile_stamp = {
+        name = "Prehensile Stamp",
+        text = {
+          "If this card has unique {C:dark_edition}Edition,{} {C:attention}Seal, and {C:dark_edition}Enhancement{}",
+		  "It {C:attention}always scores{} and {C:attention}ignores card selection limit{}",
+        }
+	  },
       abn_bio_blueprint_incompatible_norank = {
         name = "Incompatible",
         text = {
@@ -12472,6 +12528,30 @@ return {
         text = {
           "({V:1}lvl.#3#{}) {B:2,C:white} #1# {} {C:red,}X{} {B:3,C:white} #2# {}"
         },
+      },
+	  p_abn_illusion_normal = {
+        name = 'Illusion Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:illusion}Illusion{} cards to',
+          'be used immediately'
+        }
+      },
+      p_abn_illusion_jumbo = {
+        name = 'Jumbo Illusion Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:illusion}Illusion{} cards to',
+          'be used immediately'
+        }
+      },
+      p_abn_illusion_mega = {
+        name = 'Mega Illusion Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:illusion}Illusion{} cards to',
+          'be used immediately'
+        }
       },
       --#region stickers
       abn_pump_up = {
@@ -15486,7 +15566,11 @@ return {
     labels = {
       -- Stamps
       abn_empty_stamp = "Empty Stamp",
-      abn_jester_stamp = "Jester Stamp",
+	  abn_jester_stamp = "Jester Stamp",
+	  abn_icon_stamp = "Icon Stamp",
+	  abn_psychomancy_stamp = "Psychomancy Stamp",
+	  abn_membership_stamp = "Membership Stamp",
+	  abn_prehensile_stamp = "Prehensile Stamp",
       -- Consumable Types
       weather_report = "Weather Report",
       calamity_cards = "Calamity",
