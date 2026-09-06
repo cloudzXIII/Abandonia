@@ -273,7 +273,7 @@ SMODS.Suit {
 SMODS.Suit {
   key = 'Shield',
   card_key = 'SH',
-  shade = "dark",
+  shade = "light",
   lc_atlas = "AbandoniaMoreSuits",
   hc_atlas = "AbandoniaMoreSuits",
   lc_ui_atlas = "AbandoniaSuitIcons",
