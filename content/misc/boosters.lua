@@ -2376,3 +2376,315 @@ SMODS.Booster({
     artist = "Flote",
   },
 })
+
+SMODS.Booster({
+  key = 'illusion_normal_1',
+  atlas = 'IllusionBoosters',
+  pos = { x = 0, y = 0 },
+  config = { extra = 3, choose = 1 },
+  weight = 1,
+  cost = 4,
+  group_key = 'abn_illusionbooster',
+  draw_hand = true,
+  unlocked = true,
+  discovered = false,
+  create_card = function(self, card)
+    return {
+      set = "illusion",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+      key_append = "abn_illusion_cards"
+    }
+  end,
+
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
+  end,
+
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.illusion, special_colour = G.C.PURPLE, contrast = 3 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.illusion)
+    ease_background_colour(chosen_effect)
+  end,
+  abn_artist_credits = {
+    artist = "0kronix",
+  },
+})
+
+SMODS.Booster({
+  key = 'illusion_normal_2',
+  atlas = 'IllusionBoosters',
+  pos = { x = 1, y = 0 },
+  config = { extra = 3, choose = 1 },
+  weight = 1,
+  cost = 4,
+  group_key = 'abn_illusionbooster',
+  draw_hand = true,
+  unlocked = true,
+  discovered = false,
+  create_card = function(self, card)
+    return {
+      set = "illusion",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+      key_append = "abn_illusion_cards"
+    }
+  end,
+
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
+  end,
+
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.illusion, special_colour = G.C.PURPLE, contrast = 3 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.illusion)
+    ease_background_colour(chosen_effect)
+  end,
+  abn_artist_credits = {
+    artist = "0kronix",
+  },
+})
+
+SMODS.Booster({
+  key = 'illusion_normal_3',
+  atlas = 'IllusionBoosters',
+  pos = { x = 2, y = 0 },
+  config = { extra = 3, choose = 1 },
+  weight = 1,
+  cost = 4,
+  group_key = 'abn_illusionbooster',
+  draw_hand = true,
+  unlocked = true,
+  discovered = false,
+  create_card = function(self, card)
+    return {
+      set = "illusion",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+      key_append = "abn_illusion_cards"
+    }
+  end,
+
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
+  end,
+
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.illusion, special_colour = G.C.PURPLE, contrast = 3 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.illusion)
+    ease_background_colour(chosen_effect)
+  end,
+  abn_artist_credits = {
+    artist = "0kronix",
+  },
+})
+
+SMODS.Booster({
+  key = 'illusion_normal_4',
+  atlas = 'IllusionBoosters',
+  pos = { x = 3, y = 0 },
+  config = { extra = 3, choose = 1 },
+  weight = 1,
+  cost = 4,
+  group_key = 'abn_illusionbooster',
+  draw_hand = true,
+  unlocked = true,
+  discovered = false,
+  create_card = function(self, card)
+    return {
+      set = "illusion",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+      key_append = "abn_illusion_cards"
+    }
+  end,
+
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
+  end,
+
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.illusion, special_colour = G.C.PURPLE, contrast = 3 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.illusion)
+    ease_background_colour(chosen_effect)
+  end,
+  abn_artist_credits = {
+    artist = "0kronix",
+  },
+})
+
+SMODS.Booster({
+  key = 'illusion_jumbo_1',
+  atlas = 'IllusionBoosters',
+  pos = { x = 0, y = 1 },
+  config = { extra = 5, choose = 1 },
+  weight = 1,
+  cost = 6,
+  group_key = 'abn_illusionbooster_j',
+  draw_hand = true,
+  unlocked = true,
+  discovered = false,
+  create_card = function(self, card)
+    return {
+      set = "illusion",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+      key_append = "abn_illusion_cards"
+    }
+  end,
+
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
+  end,
+
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.illusion, special_colour = G.C.PURPLE, contrast = 3 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.illusion)
+    ease_background_colour(chosen_effect)
+  end,
+  abn_artist_credits = {
+    artist = "0kronix",
+  },
+})
+
+SMODS.Booster({
+  key = 'illusion_jumbo_2',
+  atlas = 'IllusionBoosters',
+  pos = { x = 1, y = 1 },
+  config = { extra = 5, choose = 1 },
+  weight = 1,
+  cost = 6,
+  group_key = 'abn_illusionbooster_j',
+  draw_hand = true,
+  unlocked = true,
+  discovered = false,
+  create_card = function(self, card)
+    return {
+      set = "illusion",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+      key_append = "abn_illusion_cards"
+    }
+  end,
+
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
+  end,
+
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.illusion, special_colour = G.C.PURPLE, contrast = 3 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.illusion)
+    ease_background_colour(chosen_effect)
+  end,
+  abn_artist_credits = {
+    artist = "0kronix",
+  },
+})
+
+SMODS.Booster({
+  key = 'illusion_mega_1',
+  atlas = 'IllusionBoosters',
+  pos = { x = 2, y = 1 },
+  config = { extra = 5, choose = 2 },
+  weight = 1,
+  cost = 8,
+  group_key = 'abn_illusionbooster_m',
+  draw_hand = true,
+  unlocked = true,
+  discovered = false,
+  create_card = function(self, card)
+    return {
+      set = "illusion",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+      key_append = "abn_illusion_cards"
+    }
+  end,
+
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
+  end,
+
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.illusion, special_colour = G.C.PURPLE, contrast = 3 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.illusion)
+    ease_background_colour(chosen_effect)
+  end,
+  abn_artist_credits = {
+    artist = "0kronix",
+  },
+})
+
+SMODS.Booster({
+  key = 'illusion_mega_2',
+  atlas = 'IllusionBoosters',
+  pos = { x = 3, y = 1 },
+  config = { extra = 5, choose = 2 },
+  weight = 1,
+  cost = 8,
+  group_key = 'abn_illusionbooster_m',
+  draw_hand = true,
+  unlocked = true,
+  discovered = false,
+  create_card = function(self, card)
+    return {
+      set = "illusion",
+      area = G.pack_cards,
+      skip_materialize = true,
+      soulable = true,
+      key_append = "abn_illusion_cards"
+    }
+  end,
+
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.choose, card.ability.extra }, key = self.key:sub(1, -3), }
+  end,
+
+  ease_background_colour = function(self)
+    local effects = {
+      { new_colour = G.C.SET.illusion, special_colour = G.C.PURPLE, contrast = 3 },
+    }
+    local random_index = math.random(#effects)
+    local chosen_effect = effects[random_index]
+    ease_colour(G.C.DYN_UI.MAIN, G.C.SET.illusion)
+    ease_background_colour(chosen_effect)
+  end,
+  abn_artist_credits = {
+    artist = "0kronix",
+  },
+})
