@@ -11304,52 +11304,79 @@ return {
           "{C:attention}Modded{} {C:spades}Dark{} Suits give {C:mult}+#1#{} Mult",
         }
       },
-	  j_abn_efo_joker = {
-        name = "EFO Joker",
-        text = {
-          "{C:green}#1# in #2#{} chance to copy the first played {C:attention}Stamp Card{} into your hand",
-		  "Scoring cards with {C:attention}Stamps{} give {C:gold}+#3#{} Ascension power",
-		  "Played hands with {C:attention}5{} or more Stamps",
-		  "give this Joker {X:mult,C:white}X#4#{} Mult and {C:gold}+#5#{} Ascension Power per card",
-		  "{C:inactive}Currently: {X:mult,C:white}X#6#{} {C:inactive}Mult{} {C:gold}+#7#{} {C:inactive}Ascension Power{}",
-        }
-      },
-	  j_abn_globalist_joker = {
-        name = "Globalist Joker",
-        text = {
-          "When a {C:continent}Continent{} card is used create a {C:attention}random{} {C:dark_edition}Negative{} consumable",
-		  "After {C:attention}#1#{} {C:continent}Continent{} cards are used",
-		  "place a {C:attention}Stamp{} on each scoring card of the next played {C:attention}spectrum{}",
-		  "Gain {X:mult,C:white}X#2#{} Mult for every {C:attention}unique{} {C:continent}Continent{} used this run",
-		  "{C:inactive}Currently: {X:mult,C:white}X#3#{} {C:inactive}Mult{}",
-        }
-      },
-      j_abn_crease_joker = {
-        name = "Crease Joker",
-        text = {
-          "{X:attention,C:white}X#1#{} hand size,",
-          "Discard selection size",
-          "reduced to {C:red}#2#{}",
-        }
-      },
-      j_abn_double_dip = {
-        name = 'Double Dip',
-        text = {
-          "This Joker gives the base {C:chips}Chips{} and {C:red}Mult{}",
-          "of the played poker hand as",
-          "its own {C:chips}Chips{} and {C:red}Mult{}",
-        }
-      },
-      j_abn_big_raff = {
-        name = 'Big Riff',
-        text = {
-          "{C:common}Common{} and {C:uncommon}Uncommon{} Jokers",
-          "no longer appear in the Shop",
-          "When {C:attention}Blind{} is selected,",
-          "create a {C:rare}Rare{} Joker",
-          "{C:inactive}(Must have room)",
-        }
-      },
+      j_abn_efo_joker = {
+          name = "EFO Joker",
+          text = {
+            "{C:green}#1# in #2#{} chance to copy the first played {C:attention}Stamp Card{} into your hand",
+        "Scoring cards with {C:attention}Stamps{} give {C:gold}+#3#{} Ascension power",
+        "Played hands with {C:attention}5{} or more Stamps",
+        "give this Joker {X:mult,C:white}X#4#{} Mult and {C:gold}+#5#{} Ascension Power per card",
+        "{C:inactive}Currently: {X:mult,C:white}X#6#{} {C:inactive}Mult{} {C:gold}+#7#{} {C:inactive}Ascension Power{}",
+          }
+          },
+      j_abn_globalist_joker = {
+          name = "Globalist Joker",
+          text = {
+            "When a {C:continent}Continent{} card is used create a {C:attention}random{} {C:dark_edition}Negative{} consumable",
+        "After {C:attention}#1#{} {C:continent}Continent{} cards are used",
+        "place a {C:attention}Stamp{} on each scoring card of the next played {C:attention}spectrum{}",
+        "Gain {X:mult,C:white}X#2#{} Mult for every {C:attention}unique{} {C:continent}Continent{} used this run",
+        "{C:inactive}Currently: {X:mult,C:white}X#3#{} {C:inactive}Mult{}",
+          }
+        },
+        j_abn_crease_joker = {  -- ImaginaryNeon jokers start here
+          name = "Crease Joker",
+          text = {
+            "{X:attention,C:white}X#1#{} hand size,",
+            "Discard selection size",
+            "reduced to {C:red}#2#{}",
+          }
+        },
+        j_abn_double_dip = {
+          name = 'Double Dip',
+          text = {
+            "This Joker gives the base {C:chips}Chips{} and {C:red}Mult{}",
+            "of the played poker hand as",
+            "its own {C:chips}Chips{} and {C:red}Mult{}",
+          }
+        },
+        j_abn_big_raff = {
+          name = 'Big Riff',
+          text = {
+            "{C:common}Common{} and {C:uncommon}Uncommon{} Jokers",
+            "no longer appear in the Shop",
+            "When {C:attention}Blind{} is selected,",
+            "create a {C:rare}Rare{} Joker",
+            "{C:inactive}(Must have room)",
+          }
+        },
+        j_abn_wiimotionplus = {
+          name = 'Wii Joker',
+          text = {
+            "This Joker gains {C:mult}+#2#{} Mult",
+            "at the start of each Blind",
+            "if it hasn't started a Blind",
+            "in that Joker slot before.",
+            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult){}",
+            "{s=0.8}{C:inactive}(Used slots: #3#){}"
+          }
+        },
+        j_abn_chips_to_mult = {
+          name = 'Mult Matthew',
+          text = {
+            "Whenever another Joker gives {C:chips}Chips{},",
+            "this Joker gives those Chips as {C:mult}Mult{}",
+            --"{s:0.7,C:inactive}(Does not affect Jokers that give Chips after another Joker triggers){}"
+          }
+        },
+        j_abn_mult_to_chips = {
+          name = 'Bonus Bradly',
+          text = {
+            "Whenever another Joker gives {C:chips}Chips{},",
+            "this Joker gives those Chips as {C:mult}Mult{}",
+            --"{s:0.7,C:inactive}(Does not affect Jokers that give Chips after another Joker triggers){}"
+          }
+        },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
