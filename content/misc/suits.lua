@@ -334,9 +334,9 @@ SMODS.Suit {
   hc_atlas = "AbandoniaMoreSuits",
   lc_ui_atlas = "AbandoniaSuitIcons",
   hc_ui_atlas = "AbandoniaSuitIcons",
-  pos = { y = 3 },
+  pos = { y = 2 },
   ui_pos = { x = 3, y = 3 },
-  lc_colour = HEX("5edb61"),
+  lc_colour = HEX("2d4959"),
   in_pool = function(self, args)
     if args and args.initial_deck then
       -- When creating a deck
@@ -348,6 +348,34 @@ SMODS.Suit {
 
       return (back_config and back_config.create_Anchors)
           or (sleeve_config and sleeve_config.create_Anchors)
+    else
+      return false
+    end
+  end,
+}
+
+SMODS.Suit {
+  key = 'Arrow',
+  card_key = 'AR',
+  shade = "dark",
+  lc_atlas = "AbandoniaMoreSuits",
+  hc_atlas = "AbandoniaMoreSuits",
+  lc_ui_atlas = "AbandoniaSuitIcons",
+  hc_ui_atlas = "AbandoniaSuitIcons",
+  pos = { y = 3 },
+  ui_pos = { x = 3, y = 3 },
+  lc_colour = HEX("764a76"),
+  in_pool = function(self, args)
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_Arrows)
+          or (sleeve_config and sleeve_config.create_Arrows)
     else
       return false
     end
