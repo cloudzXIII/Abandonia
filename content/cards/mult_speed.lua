@@ -25,29 +25,28 @@ SMODS.Joker {
 
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
-      if G.GAME.current_round.hands_left % 2 == 0 then
-        context.other_card.ability.perma_p_dollars = (context.other_card.ability.perma_p_dollars or 0) +
-            card.ability.extra.dollars
-        return {
-          message = localize('k_upgrade_ex'),
-          colour = G.C.MONEY
-        }
-      end
-
-      if G.GAME.current_round.hands_left % 2 == 1 then
-        context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) +
-            card.ability.extra.chips
-        return {
-          message = localize('k_upgrade_ex'),
-          colour = G.C.CHIPS
-        }
-      end
       if G.GAME.current_round.hands_left == 0 then
         context.other_card.ability.perma_p_dollars = (context.other_card.ability.perma_p_dollars or 0) +
             card.ability.extra.dollars
         return {
           message = localize('k_upgrade_ex'),
           colour = G.C.MONEY
+        }
+      end
+      if G.GAME.current_round.hands_left % 2 == 0 then
+        context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) +
+            card.ability.extra.mult
+        return {
+          message = localize('k_upgrade_ex'),
+          colour = G.C.MULT
+        }
+      end
+      if G.GAME.current_round.hands_left % 2 == 1 then
+        context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) +
+            card.ability.extra.chips
+        return {
+          message = localize('k_upgrade_ex'),
+          colour = G.C.CHIPS
         }
       end
     end

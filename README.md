@@ -6,27 +6,27 @@ A Balatro mod founded by Bunnet focused on expanding the base game with a bunch 
 
 # Additions
 
-As of 0.1.0, Abandonia currently adds
-* 540 Jokers
-* 22 Decks
-* 18 Vouchers
-* 10 new Consumable Types
+As of 0.1.1-DEV-4b, Abandonia currently adds
+* 630+ Jokers
+* 27 Decks
+* 21 Vouchers
+* 18 new Consumable Types
 * 18 Tarot Cards
 * 34 Planet Cards
-* 25 Spectral Cards
-* 20 Enhancements
+* 14 Spectral Cards
+* 29 Enhancements
 * 14 Editions
-* 16 Seals
-* 43 Booster Packs
+* 20 Seals
+* 53 Booster Packs
 * 70 Tags
 * 75 Boss Blinds
-* 28 Stickers
+* 68 Stickers
 * 24 Poker Hands
 * with more to come!
 
 # Installation
-- Requires [Steamodded 1814a+](https://github.com/Steamodded/smods/releases)
-- Requires [Amulet 3.5.3+](https://github.com/frostice482/amulet)
+- Requires [Steamodded v26.829.0+](https://github.com/Steamodded/smods/releases)
+- Requires [Amulet 3.5.4+](https://github.com/frostice482/amulet)
 - Requires [Lovely 0.9.0+](https://github.com/ethangreen-dev/lovely-injector)
 
 Get the latest stable version from [Releases](https://github.com/cloudzXIII/Abandonia/releases), then download and extract the zip into the Mods folder.

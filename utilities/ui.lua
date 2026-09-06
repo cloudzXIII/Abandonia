@@ -238,6 +238,14 @@ ABN.crossmod_tab = function()
                     tooltip = localize("k_abn_crossmod_fortlatro_info"),
                     col = true,
                   }),
+                  button_with_tooltip({
+                    minw = 2.5,
+                    colour = HEX("8b61ad"),
+                    button = "abn_paperback",
+                    label = { localize("k_abn_crossmod_paperback") },
+                    tooltip = localize("k_abn_crossmod_paperback_info"),
+                    col = true,
+                  }),
                 },
               },
               {
@@ -282,6 +290,10 @@ end
 
 G.FUNCS.abn_fortlatro = function(e)
   love.system.openURL("https://github.com/EricTheToon/Fortlatro")
+end
+
+G.FUNCS.abn_paperback = function(e)
+  love.system.openURL("https://github.com/Balatro-Paperback/paperback")
 end
 
 G.FUNCS.abn_ortalab = function(e)

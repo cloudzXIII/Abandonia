@@ -134,7 +134,7 @@ SMODS.Enhancement({
         chips = cae.chips
       }
     end
-    if context.before then
+    if context.before and context.cardarea ~= G.deck and context.cardarea ~= G.discard then
       local suits, num = {}, 0
       for k, v in pairs(context.scoring_hand) do
         if not suits[v.base.suit] then
