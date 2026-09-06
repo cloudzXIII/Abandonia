@@ -4405,7 +4405,7 @@ return {
         name = "Lawn Joker",
         text = {
           {
-            "Scoring {C:spades}Spades{} permanently",
+            "Scoring {C:abn_rose}Roses,{} {C:clubs}Clubs,{} {C:abn_leaf}Leaves{} and {C:abn_florette}Florettes{} permanently",
             "gain {C:chips}+#5#{} Chips and {C:mult}+#6#{} Mult",
             "per {C:continent}Continent{} card held",
           },
@@ -4612,7 +4612,7 @@ return {
         name = "Explorer Joker",
         text = {
           {
-            "Scoring {C:diamonds}Diamond{} cards gain",
+            "Scoring {C:abn_shield}Shields,{} {C:abn_crown}Crowns,{} {C:abn_coin}Coins,{} {C:diamonds}Diamonds{} and {C:abn_talon}Talons{} gain",
             "{C:chips}+#6#{} Chips and {C:mult}+#7#{} Mult",
             "per {C:continent}Continent{} card held"
           },
@@ -8516,7 +8516,7 @@ return {
           },
           {
             "If you play a {C:attention}#1#{} with",
-            "{C:abn_penumbra}Penumbras{}, {C:abn_snow}Snows{}, {C:abn_bow}Bows{} and {C:abn_tie}Ties{},",
+            "{C:abn_star}Stars{}, {C:abn_moon}Moons{}, {C:abn_crown}Crowns{} and {C:abn_talon}Talons{},",
             "level up the {C:planet}planet{} {C:attention}rank{} of",
             "each {C:attention}scoring{} card and",
             "gain {C:chips}+#3#{} Chips.",
