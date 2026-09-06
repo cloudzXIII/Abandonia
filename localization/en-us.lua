@@ -15318,6 +15318,8 @@ return {
       k_abn_crossmod_aij_info = "Adds 8 new Jokers!",
       k_abn_crossmod_ortalab = "Ortalab",
       k_abn_crossmod_ortalab_info = "Adds 6 new Jokers!",
+      k_abn_crossmod_paperback = "Paperback",
+      k_abn_crossmod_paperback_info = "Adds new Poker hands and 3 Jokers!",
       k_abn_crossmod_fortlatro = "Fortlatro",
       k_abn_crossmod_fortlatro_info = "Adds 9 new Jokers!",
       k_abn_crossmod_spectrallib = "Spectrallib",
