@@ -1,28 +1,40 @@
 return {
   descriptions = {
-	
-	illusion = {
+
+    illusion = {
       c_abn_euclidean = {
         name = "Euclidean",
         text = {
-          "Add {C:abn_black_seal}Empty Stamp{} to {C:attention}#1#{} card in hand",
-		  "{C:green}#2# in #3#{} chance to create a {C:illusion}Penrose{}",
+          {
+            "Add an {C:abn_black_seal}Empty Stamp{}",
+            "to {C:attention}#1#{} selected",
+            "card in your hand",
+          },
+          {
+            "{C:green}#2# in #3#{} chance to",
+            "create a {C:illusion}Penrose{}",
+          },
         },
       },
-	  c_abn_penrose = {
+      c_abn_penrose = {
         name = "Penrose",
         text = {
-          "Add {C:abn_black_seal}Empty Stamp{} to {C:attention}all{} cards in hand",
+          "Add an {C:abn_black_seal}Empty Stamp{}",
+          "to all cards in hand",
         },
       },
-	  c_abn_sword_box = {
+      c_abn_sword_box = {
         name = "Sword Box",
         text = {
-          "Add {C:abn_black_seal}Jester Stamp{} to {C:attention}#1#{} card in hand",
+          {
+            "Add a {C:abn_black_seal}Jester Stamp{}",
+            "to {C:attention}#1#{} selected",
+            "card in your hand",
+          },
         },
       },
     },
-	
+
     maths = {
       c_abn_euler = {
         name = "Euler",
@@ -11304,7 +11316,7 @@ return {
           "{C:attention}Modded{} {C:spades}Dark{} Suits give {C:mult}+#1#{} Mult",
         }
       },
-	    j_abn_efo_joker = {
+      j_abn_efo_joker = {
         name = "EFO Joker",
         text = {
           "{C:green}#1# in #2#{} chance to copy the first played {C:attention}Stamp Card{} into your hand",
@@ -11314,7 +11326,7 @@ return {
           "{C:inactive}Currently: {X:mult,C:white}X#6#{} {C:inactive}Mult{} {C:gold}+#7#{} {C:inactive}Ascension Power{}",
         }
       },
-	    j_abn_globalist_joker = {
+      j_abn_globalist_joker = {
         name = "Globalist Joker",
         text = {
           "When a {C:continent}Continent{} card is used create a {C:attention}random{} {C:dark_edition}Negative{} consumable",
@@ -11324,7 +11336,7 @@ return {
           "{C:inactive}Currently: {X:mult,C:white}X#3#{} {C:inactive}Mult{}",
         }
       },
-	    j_abn_khonsu_joker = {
+      j_abn_khonsu_joker = {
         name = "Khonsu Joker",
         text = {
           "If your first hand is a {C:attention}Pair{} that",
@@ -11337,7 +11349,7 @@ return {
           "also give {C:attention}twice{} their rank as {C:mult}Mult"
         }
       },
-	    j_abn_bio_blueprint = {
+      j_abn_bio_blueprint = {
         name = "Bio Blueprint",
         text = {
           "Allows you to store playing cards",
@@ -11348,7 +11360,7 @@ return {
           "{C:inactive}(Currently {C:red}+#1# {C:inactive}Mult and {C:chips}+#2# {C:inactive}Chips)"
         }
       },
-	    j_abn_gtp_joker = {
+      j_abn_gtp_joker = {
         name = "GTP Joker",
         text = {
           "{X:mult,C:white}X#1#{} base hand Mult and {X:chips,C:white}X#2#{} base hand Chips",
@@ -11356,7 +11368,7 @@ return {
           "round, except for {C:attention}High Card"
         }
       },
-	    j_abn_gtp_joker_after = {
+      j_abn_gtp_joker_after = {
         name = "GTP Joker",
         text = {
           "{X:mult,C:white}X#1#{} base hand Mult and {X:chips,C:white}X#2#{} base hand Chips",
@@ -11713,7 +11725,7 @@ return {
           "gain {C:attention}+1{} handsize",
         }
       },
-	  abn_jester_stamp = {
+      abn_jester_stamp = {
         name = "Jester Stamp",
         text = {
           "If this Card has a unique {C:dark_edition}Edition,{} {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
@@ -12012,6 +12024,15 @@ return {
           "{C:attention}#2# {C:glyphs}Glyph{} cards to",
           "be used immediately",
         },
+      },
+      undiscovered_illusion = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
       },
       undiscovered_calligraphy = {
         name = "Not Discovered",
@@ -15435,14 +15456,14 @@ return {
 
       b_maths_cards = "Math Cards",
       k_maths = "Math",
-	  
-	  b_illusion_cards = "Illusion Cards",
+
+      b_illusion_cards = "Illusion Cards",
       k_illusion = "Illusion",
     },
     labels = {
       -- Stamps
       abn_empty_stamp = "Empty Stamp",
-	  abn_jester_stamp = "Jester Stamp",
+      abn_jester_stamp = "Jester Stamp",
       -- Consumable Types
       weather_report = "Weather Report",
       calamity_cards = "Calamity",
@@ -15461,7 +15482,7 @@ return {
       periodic = "Periodic",
       paradox = "Paradox",
       maths = "Math",
-	  illusion = "Illusion",
+      illusion = "Illusion",
 
       -- Editions
       abn_chthonian = "Chthonian",
