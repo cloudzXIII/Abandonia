@@ -11377,6 +11377,37 @@ return {
             --"{s:0.7,C:inactive}(Does not affect Jokers that give Chips after another Joker triggers){}"
           }
         },
+        j_abn_spihcneve = {
+          name = 'Spihcneve Joker',
+          text = {
+            {
+            "When a {C:mult}Mult card{} scores,",
+            "scoring non-Mult cards permenantly",
+            "gain {C:chips}+#1#{} Chips",
+            },
+            {
+            "When an {C:attention}even-ranked {C:mult}Mult card{} scores,",
+            "scoring {C:attention}odd-ranked non-Mult{} cards",
+            "permenantly gain {C:mult}+#2#{} Mult",
+            }
+          },
+          --[[unlock = {
+            "Enhance an {C:attention}even-ranked{} card",
+            "into a {C:mult}Mult card{}"
+          }--]]
+        },
+        j_abn_meatkin = {
+          name = 'Meatkin Joker',
+          text = {
+            "When a {C:mult}Steel card{} scores,",
+            "each scoring non-Steel card",
+            "permenantly gains {X:mult,C:white}+X#1#{} Mult"
+          },
+          --[[unlock = {
+            "Have at least {C:attention}one-fourth{}",
+            "of your deck be {C:attention}Steel{} cards"
+          }--]]
+        },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
