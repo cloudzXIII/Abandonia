@@ -3,6 +3,262 @@ return {
         "mleaf233",
     },
     descriptions = {
+        illusion = {
+            c_abn_euclidean = {
+                name = "欧几里得",
+                text = {
+                    {
+                        "将{C:abn_black_seal}空白印章{}",
+                        "添加到{C:attention}#1#{}张选定",
+                        "手牌中",
+                    },
+                    {
+                        "有{C:green}#2#/#3#{}几率",
+                        "生成一张{C:illusion}彭罗斯{}牌",
+                    },
+                },
+            },
+            c_abn_penrose = {
+                name = "彭罗斯",
+                text = {
+                    "将{C:abn_black_seal}空白印章{}",
+                    "添加到所有手牌中",
+                },
+            },
+            c_abn_sword_box = {
+                name = "剑盒",
+                text = {
+                    {
+                        "将{C:abn_black_seal}小丑印章{}",
+                        "添加到{C:attention}#1#{}张选定",
+                        "手牌中",
+                    },
+                },
+            },
+            c_abn_illusionist = {
+                name = "幻术师",
+                text = {
+                    "将{C:tarot}圣像印章{}添加到{C:attention}#1#{}张手牌中",
+                },
+            },
+            c_abn_cotard = {
+                -- “Cotard” 在心理学/医学上指代“科塔尔综合征”（Cotard's Delusion），其最著名的俗称是“行尸综合征”（Walking Corpse Syndrome）。
+                -- 患者会强烈认为自己已经死亡、不存在、失去了灵魂或内脏已经腐烂。
+                name = "科塔尔",
+                text = {
+                    "将{C:purple}摄魂印章{}添加到{C:attention}#1#{}张手牌中",
+                },
+            },
+            c_abn_stupification = {
+                name = "呆滞",
+                text = {
+                    "将{C:tarot}会员印章{}添加到{C:attention}#1#{}张手牌中",
+                },
+            },
+            c_abn_misdirection = {
+                name = "误导",
+                text = {
+                    "将{C:attention}抓握印章{}添加到{C:attention}#1#{}张手牌中",
+                },
+            },
+        },
+        maths = {
+            c_abn_euler = {
+                name = "欧拉",
+                text = {
+                    "下一次计分的{C:attention}顺子{}",
+                    "若{C:attention}点数{}均不高于{C:attention}6{}",
+                    "则给予{X:chips,C:white}X#1#{}筹码",
+                },
+            },
+            c_abn_golden = {
+                name = "黄金",
+                text = {
+                    "下一次计分的{C:attention}顺子{}",
+                    "若{C:attention}点数{}均不高于{C:attention}10{}",
+                    "则给予{X:mult,C:white}X#1#{}倍率",
+                },
+            },
+            c_abn_pi = {
+                name = "圆周率",
+                text = {
+                    "下一次计分的{C:attention}高牌{}",
+                    "获得你上一次计分{C:attention}同花{}的",
+                    "{C:chips}筹码{}和{C:mult}倍率{}",
+                    "{C:inactive}当前：{C:mult}+#1#{}倍率 {C:chips}+#2#{}筹码",
+                },
+            },
+            c_abn_number = {
+                name = "数字",
+                text = {
+                    "下一次出牌仅由{C:attention}数字{}牌组成",
+                    "每有一个{C:attention}不同{}的计分数字",
+                    "便{C:attention}升级{}一次",
+                },
+            },
+        },
+        periodic = {
+            c_abn_hydrogen = {
+                name = "氢",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+            c_abn_helium = {
+                name = "氦",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+            c_abn_lithium = {
+                name = "锂",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+            c_abn_beryllium = {
+                name = "铍",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+            c_abn_boron = {
+                name = "硼",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+            c_abn_carbon = {
+                name = "碳",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+            c_abn_nitrogen = {
+                name = "氮",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+            c_abn_oxygen = {
+                name = "氧",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+            c_abn_fluorine = {
+                name = "氟",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+            c_abn_neon = {
+                name = "氖",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+            c_abn_sodium = {
+                name = "钠",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+            c_abn_magnesium = {
+                name = "镁",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+            c_abn_aluminium = {
+                name = "铝",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+            c_abn_silicon = {
+                name = "硅",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+            c_abn_phosphorus = {
+                name = "磷",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+            c_abn_sulfur = {
+                name = "硫",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+            c_abn_chlorine = {
+                name = "氯",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+            c_abn_argon = {
+                name = "氩",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+            c_abn_potassium = {
+                name = "钾",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+            c_abn_calcium = {
+                name = "钙",
+                text = {
+                    "下一次打出的{C:attention}#1#{}",
+                    "不计入本盲注使用的",
+                    "{C:blue}出牌次数{}",
+                },
+            },
+        },
         glyphs = {
             c_abn_exile = {
                 name = "流放",
@@ -285,6 +541,100 @@ return {
                     "转化为{V:1}#1#{}的{C:attention}亲缘{C:attention}A{}",
                 },
             },
+            c_abn_es = {
+                name = "Es",
+                text = {
+                    "将手牌中{C:attention}最左侧{}的牌",
+                    "转化为带有{C:purple}熔流{}的",
+                    "{C:abn_star}星{}牌",
+                },
+            },
+            c_abn_tje = {
+                name = "Tje",
+                text = {
+                    "将手牌中{C:attention}最右侧{}的牌",
+                    "转化为{C:attention}绝版{C:attention}A{}牌",
+                },
+            },
+            c_abn_u_cal = {
+                name = "U",
+                text = {
+                    "将手牌中{C:attention}最左侧{}的牌",
+                    "转化为带有{C:attention}木板{}的",
+                    "{C:abn_star}星{}牌",
+                },
+            },
+            c_abn_ef = {
+                name = "Ef",
+                text = {
+                    "将手牌中{C:attention}最右侧{}的牌",
+                    "转化为{C:attention}14{} {C:spades}黑桃{}",
+                    "{C:spades}暗之民{}牌",
+                },
+            },
+            c_abn_xe = {
+                name = "Xe",
+                text = {
+                    "将手牌中{C:attention}最左侧{}的牌",
+                    "转化为{C:attention}14{} {C:hearts}红桃{}",
+                    "{C:diamonds}光之民{}牌",
+                },
+            },
+            c_abn_ce = {
+                name = "Ce",
+                text = {
+                    "将手牌中{C:attention}最右侧{}的牌",
+                    "转化为{C:attention}A{} {C:abn_crown}王冠{}",
+                    "{C:blue}瓦片{}牌",
+                },
+            },
+            c_abn_che = {
+                name = "Che",
+                text = {
+                    "将手牌中{C:attention}最左侧{}的牌",
+                    "转化为{C:attention}10{} {C:abn_star}星{}",
+                    "{C:attention}纸糊{}牌",
+                },
+            },
+            c_abn_sha = {
+                name = "Sha",
+                text = {
+                    "将手牌中{C:attention}最右侧{}的牌",
+                    "转化为{C:attention}9{} {C:abn_moon}月{}",
+                    "{C:attention}纸糊{}牌",
+                },
+            },
+            c_abn_sa = {
+                name = "Sa",
+                text = {
+                    "将手牌中{C:attention}最左侧{}的牌",
+                    "转化为{C:abn_suitless}无色{}",
+                    "{C:money}幸运{}牌",
+                },
+            },
+            c_abn_be = {
+                name = "Be",
+                text = {
+                    "将手牌中{C:attention}最右侧{}的牌",
+                    "转化为{C:attention}油田火{}牌",
+                },
+            },
+            c_abn_yer = {
+                name = "Yer",
+                text = {
+                    "将手牌中{C:attention}最左侧{}的牌",
+                    "转化为带有{C:abn_talon}利爪{}的",
+                    "{C:attention}茶渍{}牌",
+                },
+            },
+            c_abn_soft_sign = {
+                name = "软音符",
+                text = {
+                    "若手牌中{C:attention}最右侧{}的牌",
+                    "是{C:attention}13{}，则将其转化为",
+                    "一张{C:attention}缝纫{}牌",
+                },
+            },
 
             -- 古代书法
             c_abn_izhitsa = {
@@ -383,6 +733,153 @@ return {
                     "手牌中所有牌永久获得",
                     "等同于{C:attention}最右侧{}牌点数的倍率",
                     "{C:inactive}（当前为{C:mult}+#1#{C:inactive}倍率）",
+                },
+            },
+            c_abn_adeen = {
+                name = "阿丁",
+                text = {
+                    {
+                        "将{C:attention}最左侧{}的小丑牌",
+                        "增强为{C:enhanced}#1#{}"
+                    }
+                },
+            },
+            c_abn_dva = {
+                name = "德瓦",
+                text = {
+                    {
+                        "将{C:attention}最右侧{}的小丑牌",
+                        "增强为{C:enhanced}#1#{}"
+                    }
+                },
+            },
+            c_abn_tree = {
+                name = "特里",
+                text = {
+                    {
+                        "将{C:attention}最左侧{}的小丑牌",
+                        "增强为{C:enhanced}#1#{}"
+                    }
+                },
+            },
+            c_abn_chyetirye = {
+                name = "切提列",
+                text = {
+                    {
+                        "将{C:attention}最右侧{}的小丑牌",
+                        "增强为{C:enhanced}#1#{}"
+                    }
+                },
+            },
+            c_abn_pyat = {
+                name = "皮亚特",
+                text = {
+                    {
+                        "将{C:attention}最左侧{}的小丑牌",
+                        "增强为{C:enhanced}#1#{}"
+                    }
+                },
+            },
+            c_abn_shest = {
+                name = "舍斯特",
+                text = {
+                    {
+                        "将{C:attention}最右侧{}的小丑牌",
+                        "增强为{C:enhanced}#1#{}"
+                    }
+                },
+            },
+            c_abn_syem = {
+                name = "谢姆",
+                text = {
+                    {
+                        "将{C:attention}最左侧{}的小丑牌",
+                        "增强为{C:enhanced}#1#{}"
+                    }
+                },
+            },
+            c_abn_vosyem = {
+                name = "沃谢姆",
+                text = {
+                    {
+                        "将{C:attention}最右侧{}的小丑牌",
+                        "增强为{C:enhanced}#1#{}"
+                    }
+                },
+            },
+        },
+        crimson = {
+            c_abn_igoera = {
+                name = "上升",
+                text = {
+                    {
+                        "将{C:attention}最左侧{}的小丑牌",
+                        "增强为{C:enhanced}#1#{}"
+                    }
+                },
+            },
+            c_abn_liskarra = {
+                name = "愤怒",
+                text = {
+                    {
+                        "将{C:attention}最右侧{}的小丑牌",
+                        "增强为{C:enhanced}#1#{}"
+                    }
+                },
+            },
+            c_abn_guztiak = {
+                name = "万物",
+                text = {
+                    {
+                        "将{C:attention}最左侧{}的小丑牌",
+                        "增强为{C:enhanced}#1#{}"
+                    }
+                },
+            },
+            c_abn_moztu = {
+                name = "切割",
+                text = {
+                    {
+                        "将{C:attention}最右侧{}的小丑牌",
+                        "增强为{C:enhanced}#1#{}"
+                    }
+                },
+            },
+            c_abn_aleazioa = {
+                name = "合金",
+                text = {
+                    {
+                        "将{C:attention}最左侧{}的小丑牌",
+                        "增强为{C:enhanced}#1#{}"
+                    }
+                },
+            },
+            c_abn_iraunkorrak = {
+                name = "永恒",
+                text = {
+                    {
+                        "将{C:attention}最右侧{}的小丑牌",
+                        "增强为{C:enhanced}#1#{}",
+                        "并随机赋予{C:dark_edition}花色"
+                    }
+                },
+            },
+            c_abn_ahalegina = {
+                name = "努力",
+                text = {
+                    {
+                        "将{C:attention}最左侧{}的小丑牌",
+                        "增强为{C:enhanced}#1#{}"
+                    }
+                },
+            },
+            c_abn_sakratua = {
+                name = "神圣",
+                text = {
+                    {
+                        "将{C:attention}最右侧{}的小丑牌",
+                        "增强为{C:enhanced}#1#{}"
+                    }
                 },
             },
         },
@@ -1584,6 +2081,14 @@ return {
                     "{C:chips}小盲注{}变为{C:attention}大盲注{}",
                 }
             },
+            b_abn_untamed = {
+                name = "未驯牌组",
+                text = {
+                    "开局时拥有{C:planet,T:v_abn_satellite}#1#{}",
+                    "和{C:sigils,T:v_abn_chaos}#2#{}",
+                    "{C:chips}小盲注{}现在变为{C:attention}大盲注{}",
+                },
+            },
             b_abn_shackle = {
                 name = "枷锁狂热者",
                 text = {
@@ -2773,6 +3278,83 @@ return {
             },
         },
         Joker = {
+            j_abn_periodic_table = {
+                name = "元素周期表",
+                text = {
+                    "若计分{C:attention}着火{}，则为打出的",
+                    "{C:attention}牌型{}生成对应的",
+                    "{C:periodic}元素周期{}牌",
+                },
+            },
+            j_abn_finalmix = {
+                -- 一个模组名称
+                name = "Final Mix",
+                text = {
+                    "计分{C:hearts}红桃{}时，每有一个",
+                    "{C:attention}不同的牌面修饰{}，",
+                    "这张小丑牌获得{X:mult,C:white}X#2#{}倍率",
+                    "{C:inactive}(当前 {X:mult,C:white}X#1#{C:inactive} 倍率)",
+                },
+            },
+            j_abn_spare_bikini = {
+                name = "备用比基尼",
+                text = {
+                    "若打出的牌型包含{C:attention}#3#{}，",
+                    "则这张小丑牌获得{C:mult}+#2#{}倍率",
+                    "和{C:chips}+#7#{}筹码；若牌型包含",
+                    "{C:attention}5{}种{C:attention}不同花色{}，",
+                    "获得{C:gold}+#5#{}晋升强度",
+                    "{C:inactive}(当前 {C:chips}+#6#{C:inactive} 筹码, {C:mult}+#1#{C:inactive} 倍率, {C:gold}+#4#{C:inactive} 晋升强度)",
+                },
+            },
+            j_abn_jevil = {
+                name = "Spare Bikini",
+                text = {
+                    "打出任意{C:blue}牌型{}即可！",
+                    "{E:1,s:0.8,C:purple}\"我什么都能做到！\"",
+                },
+            },
+            j_abn_double_hubble = {
+                name = "双哈勃",
+                text = {
+                    "若{C:attention}牌型{}已被打出过",
+                    "{C:attention}偶数{}次，",
+                    "则获得{C:mult}+#1#{}倍率",
+                },
+            },
+            j_abn_triple_nicole = {
+                name = "三尼可",
+                text = {
+                    "若{C:attention}牌型{}已被打出过",
+                    "{C:attention}奇数{}次，",
+                    "则获得{C:chips}+#1#{}筹码",
+                },
+            },
+            j_abn_savy_joker = {
+                name = "精明小丑",
+                text = {
+                    "若打出的牌型包含",
+                    "{C:attention}#2#张偶数{}牌，",
+                    "则获得{C:mult}+#1#{}倍率",
+                },
+            },
+            j_abn_shrewd_joker = {
+                name = "机敏小丑",
+                text = {
+                    "若打出的牌型包含",
+                    "{C:attention}#2#张奇数{}牌，",
+                    "则获得{C:chips}+#1#{}筹码",
+                },
+            },
+            j_abn_rectangular_joker = {
+                name = "矩形小丑",
+                text = {
+                    "若打出的牌型恰好有",
+                    "{C:attention}6{}张计分牌，",
+                    "则这张小丑牌获得{C:gold}+#2#{}晋升强度",
+                    "{C:inactive}(当前 {C:gold}+#1#{C:inactive} 晋升强度)",
+                },
+            },
             j_abn_aviator = {
                 name = "飞行员",
                 text = {
@@ -3377,6 +3959,17 @@ return {
                     "{C:inactive}（当前为{C:chips}+#3#{C:inactive}筹码，{C:mult}+#1#{C:inactive}倍率）",
                 }
             },
+            j_abn_void_emissary = {
+                name = "虚空使者",
+                text = {
+                    "打出的牌型中，每{C:attention}两张{}同为",
+                    "{C:attention}偶数{}或{C:attention}奇数{}的",
+                    "{C:abn_suitless}无色{}{C:attention}数字{}牌，",
+                    "这张小丑牌获得{C:chips}+#4#{}筹码",
+                    "和{C:mult}+#2#{}倍率",
+                    "{C:inactive}(当前 {C:chips}+#3#{C:inactive} 筹码, {C:mult}+#1#{C:inactive} 倍率)",
+                },
+            },
             j_abn_dark_tie = {
                 name = "黑领带",
                 text = {
@@ -3386,6 +3979,95 @@ return {
                     "这张小丑牌获得{C:chips}+#4#{}筹码和{C:mult}+#2#{}倍率",
                     "{C:inactive}（当前为{C:chips}+#3#{C:inactive}筹码，{C:mult}+#1#{C:inactive}倍率）",
                 }
+            },
+            j_abn_spare_coat = {
+                name = "备用外套",
+                text = {
+                    {
+                        "若打出的牌型包含{C:attention}#3#{}，",
+                        "则这张小丑牌获得{C:chips}+#6#{}筹码",
+                        "和{C:mult}+#2#{}倍率",
+                        "{C:inactive}(当前 {C:chips}+#5#{C:inactive} 筹码, {C:mult}+#1#{C:inactive} 倍率)",
+                    },
+                    {
+                        "若包含{C:attention}#3#{}的牌型中",
+                        "至少有一张{C:abn_snow}雪{}牌，则",
+                        "留在手牌中的每张{C:abn_snow}雪{}牌",
+                        "各获得{C:purple}+#4#{}计分",
+                    },
+                },
+            },
+            j_abn_ansatz_joker = {
+                name = "试探解小丑",
+                text = {
+                    "在{C:attention}#5#{}中，每张{C:attention}奇数{}牌",
+                    "使这张小丑牌获得{C:chips}+#2#{}筹码，",
+                    "每张{C:attention}偶数{}牌获得",
+                    "{C:mult}+#4#{}倍率",
+                    "{C:inactive}(当前 {C:chips}+#1#{C:inactive} 筹码, {C:mult}+#3#{C:inactive} 倍率)",
+                },
+            },
+            j_abn_bokeh_joker = {
+                name = "散景",
+                text = {
+                    {
+                        "计分前，摧毁所有打出的",
+                        "和{C:attention}未计分{}的牌",
+                    },
+                    {
+                        "每摧毁一张{C:attention}奇数{}牌获得",
+                        "{C:chips}+#2#{}筹码，每摧毁一张",
+                        "{C:attention}偶数{}牌获得{C:mult}+#4#{}倍率",
+                        "{C:inactive}(当前 {C:chips}+#1#{C:inactive} 筹码, {C:mult}+#3#{C:inactive} 倍率)",
+                    },
+                },
+            },
+            j_abn_worldwind_joker = {
+                -- 由 world（世界）和 wind（风）组合而成，通常用来形容席卷全球的风暴、世界狂风，或比喻影响全世界的巨大变革潮流。
+                name = "世界风",
+                text = {
+                    {
+                        "打出牌型时，{C:attention}小丑牌{}",
+                        "会被打乱顺序",
+                    },
+                    {
+                        "重新触发{C:attention}最左侧{}的小丑牌；",
+                        "若最左侧是{C:attention}世界风{}，",
+                        "则改为获得{X:mult,C:white}X#1#{}倍率",
+                    },
+                },
+            },
+            j_abn_omaha_joker = {
+                name = "奥马哈扑克",
+                text = {
+                    "若打出的牌型包含{C:attention}5{}张计分牌，",
+                    "则其中每组成一种{C:attention}牌型{}，",
+                    "这张小丑牌获得{C:mult}+#2#{}倍率",
+                    "{C:inactive}(当前 {C:mult}+#1#{} 倍率)",
+                },
+            },
+            j_abn_intergalactic_joker = {
+                name = "星际小丑牌",
+                text = {
+                    "持有与牌型对应的{C:planet}星球牌{}时，",
+                    "打出的牌型中所有牌型的",
+                    "晋升强度{C:gold}+#1#{}",
+                },
+            },
+            j_abn_improved_joker = {
+                name = "改良小丑牌",
+                text = {
+                    {
+                        "若{C:attention}计分牌型{}恰好包含",
+                        "{C:attention}5{}张牌，则{C:attention}计分前{}",
+                        "获得{X:mult,C:white}X#1#{}倍率",
+                    },
+                    {
+                        "若拥有{C:attention}小丑牌{}，",
+                        "则计分牌给予",
+                        "{C:gold}+#2#{}晋升强度",
+                    },
+                },
             },
             j_abn_punk_joker = {
                 name = "朋克小丑",
@@ -4199,6 +4881,15 @@ return {
                     "这张小丑牌获得",
                     "{X:mult,C:white}X#2#{}倍率",
                     "{C:inactive}（当前为{X:mult,C:white}X#1#{C:inactive}倍率）",
+                },
+            },
+            j_abn_crossword_puzzle = {
+                name = "填字游戏",
+                text = {
+                    "每当一张{C:lexica}辞典{}牌被激活，",
+                    "这张小丑牌获得{X:chips,C:white}X#2#{}筹码",
+                    "若售出{C:lexica}辞典{}牌则{C:red}重置{}",
+                    "{C:inactive}(当前 {X:chips,C:white}X#1#{C:inactive} 筹码)",
                 },
             },
             j_abn_ishihara_joker = {
@@ -7923,6 +8614,133 @@ return {
                     },
                 }
             },
+            j_abn_bloke_joker = {
+                name = "老兄小丑",
+                text = {
+                    {
+                        "额外{C:attention}#3#{}次重新触发",
+                        "{C:enhanced}#1#{}和{C:enhanced}#2#{}",
+                    },
+                },
+            },
+            j_abn_planetarian_joker = {
+                name = "行星学家",
+                text = {
+                    {
+                        "使用{C:planet}星球牌{}时，获得其",
+                        "筹码和倍率数值",
+                        "{C:inactive}(当前 {C:blue}+#1#{C:inactive} 和 {C:red}+#2#{C:inactive})",
+                    },
+                    {
+                        "使用{C:attention}#3# {C:inactive}[#4#]{}张不同的",
+                        "{C:abn_tie}点数星球牌{}后，",
+                        "生成一张{C:spectral}黑洞{}牌",
+                        "{C:inactive}(需有空间)",
+                    },
+                },
+            },
+            j_abn_lunar_conspiracy = {
+                name = "月球阴谋",
+                text = {
+                    {
+                        "每当打出与任一持有的{C:planet}星球牌{}",
+                        "相关的{C:attention}牌型{}时，",
+                        "获得{C:chips}+#3#{}筹码和{C:mult}+#4#{}倍率",
+                        "{C:inactive}(当前 {C:blue}+#1#{C:inactive} 筹码和 {C:red}+#2#{C:inactive} 倍率)",
+                    },
+                },
+            },
+            j_abn_facial_recognition = {
+                name = "面部识别",
+                text = {
+                    {
+                        "计分的{C:attention}翻转{}牌中每有",
+                        "一种{C:attention}不同点数{}，",
+                        "获得{X:red,C:white}X#1#{}倍率",
+                    },
+                    {
+                        "若此{C:attention}小丑牌{}处于{C:attention}翻转{}状态，",
+                        "则改为获得等同于计分{C:attention}翻转{}牌",
+                        "{C:blue}筹码{}值的{C:blue}筹码{}",
+                        "{C:inactive}(当前 {X:red,C:white}X#2#{C:inactive} 倍率 {C:blue}+#3#{C:inactive} 筹码)",
+                    },
+                },
+            },
+            j_abn_moirologist_joker = {
+                name = "哭丧人小丑牌",
+                text = {
+                    {
+                        "选择{C:attention}盲注{}时，将一张随机",
+                        "小丑牌变为{C:enhanced}易碎{}",
+                    },
+                    {
+                        "当小丑牌被摧毁时，获得{C:gold}$#1#{}",
+                        "以及与其稀有度相应的奖励：",
+                        "{C:common}普通{}：{C:blue}+#9#{C:inactive}[+#2#]{}筹码",
+                        "{C:uncommon}罕见{}：{C:red}+#10#{C:inactive}[+#3#]{}倍率",
+                        "{C:rare}稀有{}：{X:chips,C:white}X#11#{C:inactive}[X#4#]{}筹码",
+                        "{C:abn_superrare}超稀有{}：{X:red,C:white}X#12#{C:inactive}[X#5#]{}倍率",
+                        "{C:legendary}传说{}：{C:gold}+#13#{C:inactive}[+#6#]{}晋升强度",
+                        "{C:abn_parallelrare}平行稀有{}：{C:attention}+#14#{C:inactive}[+#7#]{}次重新触发",
+                        "{s:0.8}击败{C:attention,s:0.8}Boss盲注{}后，摧毁小丑牌",
+                        "{s:0.8}获得的金钱增加{C:gold,s:0.8}+$#8#{}",
+                    },
+                },
+            },
+            j_abn_rage_baiter = {
+                name = "愤怒诱饵",
+                text = {
+                    {
+                        "降低打出的{C:attention}牌型{}的等级，",
+                        "然后获得{C:chips}+#3#{}筹码和",
+                        "{C:mult}+#4#{}倍率",
+                        "{C:inactive}(当前 {C:blue}+#1#{C:inactive} 筹码和 {C:red}+#2#{C:inactive} 倍率)",
+                    },
+                },
+            },
+            j_abn_tiktoker_joker = {
+                -- Tiktoker（或称 TikToker），Tiktok是国外的一个短视频分享平台，TikToker是指在该平台上发布短视频的创作者/主播，国内的对应平台是抖音。
+                name = "抖音创作者",
+                text = {
+                    {
+                        "每有一张计分的{C:hearts}红桃{}，",
+                        "计分的非{C:hearts}红桃{}牌",
+                        "获得{C:mult}+#1#{}倍率",
+                    },
+                },
+            },
+            j_abn_witness_protection = {
+                name = "证人保护",
+                text = {
+                    {
+                        "当前处于{C:attention}翻转{}状态的小丑牌中，",
+                        "每有一种{C:attention}不同稀有度{}，",
+                        "获得{X:chips,C:white}X#1#{}筹码",
+                        "{C:inactive}(当前 {X:chips,C:white}X#3#{C:inactive} 筹码)",
+                    },
+                    {
+                        "若这张小丑牌{C:attention}翻转{}，则每拥有",
+                        "一张{C:attention}翻转{}小丑牌，计分牌",
+                        "给予{C:chips}+#2#{}筹码",
+                        "{C:inactive}(当前 {C:chips}+#4#{C:inactive} 筹码)",
+                    },
+                },
+            },
+            j_abn_buccaneer_joker = {
+                name = "海盗",
+                text = {
+                    {
+                        "计分的{C:abn_Anchor}锚{}牌有{C:green}#1#/#2#{}几率",
+                        "给予{C:gold}$#3#{}，有{C:green}#4#/#5#{}几率",
+                        "给予{C:mult}+#6#{}倍率",
+                    },
+                    {
+                        "已选中的{C:abn_Anchor}锚{}牌在",
+                        "{C:red}弃牌{}或{C:blue}打出{}前",
+                        "无法取消选择",
+                    },
+                },
+            },
             j_abn_wet_joker = {
                 name = "湿漉小丑",
                 text = {
@@ -9360,19 +10178,6 @@ return {
                     "就降低{C:attention}盲注需求{}的{C:attention}#1#%{}",
                 }
             },
-            j_abn_joker_in_a_nutshell = {
-                name = "简述小丑",
-                text = {
-                    {
-                        "不带{C:dark_edition}版本{}的{C:common}普通{}小丑牌",
-                        "不会被{C:red}削弱{}或{C:red}摧毁{}",
-                    },
-                    {
-                        "{C:rare}稀有{}和{C:uncommon}罕见{}小丑牌",
-                        "不会出现在{C:green}商店{}中",
-                    },
-                }
-            },
             j_abn_runedelta = {
                 -- 《Deltarune》是一款由独立游戏制作人Toby Fox开发的章节式电子角色扮演游戏，为其2015年作品《Undertale》的后续作品。
                 name = "三角符文",
@@ -9600,6 +10405,104 @@ return {
                     },
                 }
             },
+            j_abn_bellman_joker = {
+                name = "贝尔曼",
+                text = {
+                    {
+                        "若{C:attention}消耗牌槽位{}已满，",
+                        "则给予{C:chips}+#1#{}筹码和",
+                        "{C:mult}+#2#{}倍率",
+                    },
+                    {
+                        "若在{C:attention}消耗牌槽位{}已满时",
+                        "击败任意{C:attention}盲注{}，则获得",
+                        "{C:chips}+#3#{}筹码和{C:mult}+#4#{}倍率",
+                    },
+                },
+            },
+            j_abn_plank_joker = {
+                name = "木板小丑",
+                text = {
+                    "计分的{C:attention}木板{}牌",
+                    "获得{C:gold}+#1#{}晋升强度",
+                },
+            },
+            j_abn_bark_joker = {
+                name = "树皮小丑",
+                text = {
+                    "当{C:attention}木板{}牌计分时，",
+                    "这张小丑牌获得{X:mult,C:white}X#2#{}倍率",
+                    "和{C:gold}+#4#{}晋升强度",
+                    "{C:inactive}(当前 {X:mult,C:white}X#1#{} 倍率, {C:gold}+#3#{} 晋升强度)",
+                },
+            },
+            j_abn_old_growth_joker = {
+                name = "古木小丑",
+                text = {
+                    "计分的{C:attention}数字{} {C:attention}木板{}牌",
+                    "的{C:attention}点数{}的{C:attention}三倍{}作为倍率，",
+                    "并给予{C:gold}+#3#{}晋升强度",
+                    "{C:inactive}(当前 {C:mult}+#1#{} 倍率, {C:gold}+#2#{} 晋升强度)",
+                },
+            },
+            j_abn_plug_in_joker = {
+                name = "插件小丑",
+                text = {
+                    "当{C:attention}倍率{}牌计分时获得{C:mult}+#4#{}倍率",
+                    "当{C:attention}加成{}牌计分时获得{C:chips}+#5#{}筹码",
+                    "当{C:attention}木板{}牌计分时获得{C:gold}+#6#{}晋升强度",
+                    "{C:inactive}(当前 {C:mult}+#1#{} 倍率, {C:chips}+#2#{} 筹码, {C:gold}+#3#{} 晋升强度)",
+                },
+            },
+            j_abn_geiger_joker = {
+                name = "盖革小丑",
+                text = {
+                    "计分的{C:attention}数字{} {C:attention}险兆{}牌",
+                    "按其{C:attention}点数{}本回合计分的次数，",
+                    "每次给予{C:gold}+#1#{}晋升强度",
+                },
+            },
+            j_abn_bouba_joker = {
+                name = "布巴小丑",
+                text = {
+                    {
+                        "每有一张计分的{C:attention}奇数{}牌，",
+                        "这张小丑牌获得{C:chips}+#2#{}筹码",
+                    },
+                    {
+                        "击败{C:attention}Boss盲注{}时，每持有一张",
+                        "{C:lexica}辞典{}牌，再增加{C:chips}+#3#{}筹码",
+                        "{C:inactive}(当前 {C:chips}+#1#{} 筹码)",
+                    },
+                },
+            },
+            j_abn_kiki_joker = {
+                name = "琪琪小丑",
+                text = {
+                    {
+                        "每有一张计分的{C:attention}偶数{}牌，",
+                        "这张小丑牌获得{C:mult}+#2#{}倍率",
+                    },
+                    {
+                        "击败{C:attention}Boss盲注{}时，每持有一张",
+                        "{C:lexica}辞典{}牌，再增加{C:mult}+#3#{}倍率",
+                        "{C:inactive}(当前 {C:mult}+#1#{} 倍率)",
+                    },
+                },
+            },
+            j_abn_hd_joker = {
+                name = "高清小丑",
+                text = {
+                    {
+                        "没有{C:dark_edition}版本{}的{C:common}普通{}小丑牌",
+                        "不会被{C:red}削弱{}或{C:red}摧毁{}",
+                    },
+                    {
+                        "{C:uncommon}罕见{}和{C:rare}稀有{}小丑牌",
+                        "不再出现在{C:green}商店{}中",
+                    },
+                },
+            },
             j_abn_device_joker = {
                 name = "#1#",
                 text = {
@@ -9609,6 +10512,813 @@ return {
                     "如果它们都带有{C:dark_edition}#2#{}增强效果",
                     "则全部获得{C:dark_edition}#4#{}并{C:attention}翻转{}此小丑牌",
                 }
+            },
+            j_abn_cloud_screamer = {
+                name = "云之呐喊",
+                text = {
+                    "当{C:attention}第一张计分牌{}计分时，",
+                    "其永久获得",
+                    "{C:mult}+#1#{}倍率",
+                },
+            },
+            j_abn_child_drawing = {
+                name = "儿童涂鸦",
+                text = {
+                    "计分的{C:attention}数字{}牌",
+                    "给予{X:mult,C:white}X#1#{}倍率",
+                },
+            },
+            j_abn_oopsy_daisy = {
+                name = "哎呀糟糕",
+                text = {
+                    "{C:attention}+#1#{}消耗牌槽位",
+                    "此小丑牌及此后所有小丑牌都会放入{C:attention}消耗牌{}中",
+                    "若此小丑牌被{C:mult}售出{}或{C:mult}摧毁{}，",
+                    "则{C:mult}摧毁{}{C:attention}消耗牌{}中的所有{C:attention}小丑牌{}",
+                },
+            },
+            j_abn_napping_joker = {
+                name = "打盹小丑",
+                text = {
+                    "{C:planet}星球牌{}提供",
+                    "{C:chips}%#1#{}更多筹码",
+                    "使用{C:attention}9{C:inactive}（#2#）{}张{C:planet}星球牌{}后",
+                    "转化为{C:attention}酣睡小丑牌{}",
+                },
+            },
+            j_abn_snoozing_joker = {
+                name = "酣睡小丑",
+                text = {
+                    "{C:planet}星球牌{}提供",
+                    "{C:red}%#1#{}更多倍率",
+                },
+            },
+            j_abn_maltese_cross = {
+                name = "马耳他十字",
+                text = {
+                    "计分的{C:attention}多米诺{}牌",
+                    "按该{C:attention}点数{}本盲注中计分的次数，",
+                    "每次永久获得{C:chips}+#1#{}筹码",
+                },
+            },
+            j_abn_backup_plan = {
+                name = "备用计划",
+                text = {
+                    "计分牌型中每有一张其他牌，",
+                    "{C:attention}第一张{}计分牌",
+                    "便额外触发一次",
+                },
+            },
+            j_abn_sikhs_joker = {
+                name = "锡克小丑牌",
+                text = {
+                    "每使用过一张{C:attention}不同{}的",
+                    "{C:tarot}小秘术{}牌，计分牌",
+                    "给予{X:chips,C:white}X#2#{}筹码",
+                    "{C:inactive}(当前 {X:chips,C:white}X#1#{} 筹码)",
+                },
+            },
+            j_abn_sol_iii = {
+                name = "太阳III",
+                text = {
+                    "每有一级{C:attention}牌型{}等级，",
+                    "该{C:attention}牌型{}给予{C:gold}+#1#{}晋升强度",
+                },
+            },
+            j_abn_librarian_joker = {
+                name = "图书管理员",
+                text = {
+                    "当{C:lexica}辞典{}牌在{C:attention}盲注{}中触发时，",
+                    "生成一张随机的{C:dark_edition}负片{}",
+                    "{C:calligraphy}书法{}牌",
+                },
+            },
+            j_abn_eternian_joker = {
+                name = "永恒小丑",
+                text = {
+                    "每持有一种{C:attention}不同{}类型的消耗牌，",
+                    "获得{C:gold}+#1#{}晋升强度",
+                    "{C:inactive}(当前 {C:gold}+#2#{C:inactive} 晋升强度)",
+                },
+            },
+            j_abn_dungeon_crawler = {
+                name = "地牢探索者",
+                text = {
+                    "支付{C:money}$#1#{}以增加{C:attention}+1{}小丑牌槽位",
+                    "每有一个超过{C:attention}5{}个小丑牌，最终{C:attention}底注{}增加{C:attention}+1{}",
+                    "带有{C:attention}原版{C:dark_edition}版本{}的小丑牌给予{C:gold}+#2#{}晋升强度",
+                    "带有{C:attention}原版{C:dark_edition}版本{}的计分牌给予{C:gold}+#3#{}晋升强度",
+                    "若{C:attention}原版{}花色牌带有与某张小丑牌相同的{C:dark_edition}版本{}，",
+                    "这张小丑牌获得{C:gold}+#4#{}晋升强度",
+                    "{C:inactive}(当前 {C:gold}+#5#{} 晋升强度)",
+                },
+            },
+            j_abn_metallic_upgrade = {
+                name = "金属升级",
+                text = {
+                    "在{C:attention}全谱{}牌型中，第一张计分的",
+                    "{C:attention}原版{C:dark_edition}增强{}牌",
+                    "会将其{C:dark_edition}增强{}效果给予",
+                    "{C:attention}最左侧{}的小丑牌",
+                    "若以{C:attention}5{}张原版{C:dark_edition}增强{}牌",
+                    "打出{C:attention}全谱{}牌型，",
+                    "则所有打出的牌永久获得",
+                    "{C:chips}+#1#{}筹码 {C:mult}+#2#{}倍率，",
+                    "且所有小丑牌获得{C:purple}+#3#{}计分",
+                },
+            },
+            j_abn_answer_sheet = {
+                name = "答题卡",
+                text = {
+                    "当{C:attention}消耗牌{}上的{C:green}几率{}成功触发时，",
+                    "这张小丑牌获得{C:mult}+#2#{}倍率；",
+                    "若成功触发发生在{C:attention}小丑牌{}上，",
+                    "则获得{C:chips}+#1#{}筹码",
+                    "{C:inactive}(当前 {C:chips}+#3#{C:inactive} 筹码, {C:mult}+#4#{C:inactive} 倍率)",
+                },
+            },
+            j_abn_pearls_of_worlds = {
+                name = "世界之珠",
+                text = {
+                    "获得等同于所触发{C:attention}小丑牌{}描述中",
+                    "所有数字{C:attention}之和{}的",
+                    "{C:chips}筹码{}",
+                    "{C:inactive}(当前 {C:chips}+#1#{C:inactive} 筹码)",
+                },
+            },
+            j_abn_joker_deck = {
+                name = "小丑牌组",
+                text = {
+                    "剩余牌组中每有一张{C:attention}偶数{}牌",
+                    "给予{C:mult}+#2#{}倍率，每有一张",
+                    "{C:attention}奇数{}牌给予{C:chips}+#1#{}筹码",
+                    "{C:inactive}(当前 {C:mult}+#3#{C:inactive} 倍率 & {C:chips}+#4#{C:inactive} 筹码)",
+                },
+            },
+            j_abn_wild_stone = {
+                name = "万能石头牌",
+                text = {
+                    {
+                        "若打出的牌型同时包含{C:attention}石头{}牌",
+                        "和{C:attention}万能{}牌，它们各获得",
+                        "{C:gold}+#1#{}晋升强度和{C:purple}+#2#{}计分",
+                    },
+                    {
+                        "触发时，{C:enhanced}石头{}{C:attention}小丑{}获得",
+                        "{X:mult,C:white}X#3#{}倍率，{C:enhanced}万能{}",
+                        "{C:attention}小丑牌{}获得{X:chips,C:white}X#4#{}筹码",
+                    },
+                    {
+                        "选择{C:attention}大盲注{}时，生成",
+                        "本局最后使用的{C:astro_cards}星座{}牌",
+                        "{C:inactive}当前：{C:astro_cards}#5#{}",
+                    },
+                },
+            },
+            j_abn_glass_stone = {
+                name = "玻璃石牌",
+                text = {
+                    {
+                        "若打出的牌型同时包含{C:attention}石头{}牌",
+                        "和{C:attention}玻璃{}牌，它们各获得",
+                        "{C:gold}+#1#{}晋升强度和{C:purple}+#2#{}计分",
+                    },
+                    {
+                        "触发时，{C:enhanced}石头{}{C:attention}小丑{}获得",
+                        "{X:mult,C:white}X#3#{}倍率，{C:enhanced}玻璃{}",
+                        "{C:attention}小丑牌{}获得{X:chips,C:white}X#4#{}筹码",
+                    },
+                    {
+                        "选择{C:attention}大盲注{}时，生成",
+                        "本局最后使用的{C:calligraphy}书法{}牌",
+                        "{C:inactive}当前：{C:calligraphy}#5#{}",
+                    },
+                },
+            },
+            j_abn_mult_glass = {
+                name = "倍率玻璃牌",
+                text = {
+                    {
+                        "若打出的牌型同时包含{C:attention}倍率{}牌",
+                        "和{C:attention}玻璃{}牌，它们各获得",
+                        "{C:gold}+#1#{}晋升强度和{C:purple}+#2#{}计分",
+                    },
+                    {
+                        "触发时，{C:enhanced}倍率{} {C:attention}小丑牌{}获得",
+                        "{X:chips,C:white}X#3#{}筹码，{C:enhanced}玻璃{}",
+                        "{C:attention}小丑牌{}获得{X:chips,C:white}X#4#{}筹码",
+                    },
+                    {
+                        "选择{C:attention}大盲注{}时，生成",
+                        "本局最后使用的{C:program_pack}程序{}牌",
+                        "{C:inactive}当前：{C:program_pack}#5#{}",
+                    },
+                },
+            },
+            j_abn_stone_bonus = {
+                name = "石之加成牌",
+                text = {
+                    {
+                        "若打出的牌型同时包含{C:attention}石头{}牌",
+                        "和{C:attention}加成{}牌，它们各获得",
+                        "{C:gold}+#1#{}晋升强度和{C:purple}+#2#{}计分",
+                    },
+                    {
+                        "触发时，{C:enhanced}石头{}{C:attention}小丑{}获得",
+                        "{X:mult,C:white}X#3#{}倍率，{C:enhanced}加成{}",
+                        "{C:attention}小丑牌{}获得{X:chips,C:white}X#4#{}筹码",
+                    },
+                    {
+                        "选择{C:attention}大盲注{}时，生成",
+                        "本局最后使用的{C:lexica}辞典{}牌",
+                        "{C:inactive}当前：{C:lexica}#5#{}",
+                    },
+                },
+            },
+            j_abn_gold_lucky = {
+                name = "黄金幸运牌",
+                text = {
+                    {
+                        "若打出的牌型同时包含{C:attention}黄金{}牌",
+                        "和{C:attention}幸运{}牌，它们各获得",
+                        "{C:gold}+#1#{}晋升强度和{C:purple}+#2#{}计分",
+                    },
+                    {
+                        "触发时，{C:enhanced}黄金{} {C:attention}小丑牌{}获得",
+                        "{X:mult,C:white}X#3#{}倍率，{C:enhanced}幸运{}",
+                        "{C:attention}小丑牌{}获得{X:chips,C:white}X#4#{}筹码",
+                    },
+                    {
+                        "选择{C:attention}大盲注{}时，生成",
+                        "本局最后使用的{C:continent}大陆{}牌",
+                        "{C:inactive}当前：{C:continent}#5#{}",
+                    },
+                },
+            },
+            j_abn_lucky_glass = {
+                name = "幸运玻璃牌",
+                text = {
+                    {
+                        "若打出的牌型同时包含{C:attention}幸运{}牌",
+                        "和{C:attention}玻璃{}牌，它们各获得",
+                        "{C:gold}+#1#{}晋升强度和{C:purple}+#2#{}计分",
+                    },
+                    {
+                        "触发时，{C:enhanced}幸运{} {C:attention}小丑牌{}获得",
+                        "{X:mult,C:white}X#3#{}倍率，{C:enhanced}玻璃{}",
+                        "{C:attention}小丑牌{}获得{X:chips,C:white}X#4#{}筹码",
+                    },
+                    {
+                        "选择{C:attention}大盲注{}时，生成",
+                        "本局最后使用的{C:glyphs}符印{}牌",
+                        "{C:inactive}当前：{C:glyphs}#5#{}",
+                    },
+                },
+            },
+            j_abn_lucky_mult = {
+                name = "幸运倍率牌",
+                text = {
+                    {
+                        "若打出的牌型同时包含{C:attention}幸运{}牌",
+                        "和{C:attention}倍率{}牌，它们各获得",
+                        "{C:gold}+#1#{}晋升强度和{C:purple}+#2#{}计分",
+                    },
+                    {
+                        "触发时，{C:enhanced}幸运{} {C:attention}小丑牌{}获得",
+                        "{X:mult,C:white}X#3#{}倍率，{C:enhanced}倍率{}",
+                        "{C:attention}小丑牌{}获得{X:chips,C:white}X#4#{}筹码",
+                    },
+                    {
+                        "选择{C:attention}大盲注{}时，生成",
+                        "本局最后使用的{C:paradox}悖论{}牌",
+                        "{C:inactive}当前：{C:paradox}#5#{}",
+                    },
+                },
+            },
+            j_abn_stone_gold = {
+                name = "石之黄金牌",
+                text = {
+                    {
+                        "若打出的牌型同时包含{C:attention}石头{}牌",
+                        "和{C:attention}黄金{}牌，它们各获得",
+                        "{C:gold}+#1#{}晋升强度和{C:purple}+#2#{}计分",
+                    },
+                    {
+                        "触发时，{C:enhanced}石头{}{C:attention}小丑{}获得",
+                        "{X:mult,C:white}X#3#{}倍率，{C:enhanced}黄金{}",
+                        "{C:attention}小丑牌{}获得{X:chips,C:white}X#4#{}筹码",
+                    },
+                    {
+                        "选择{C:attention}大盲注{}时，生成",
+                        "本局最后使用的{C:solid_state}固态{}牌",
+                        "{C:inactive}当前：{C:solid_state}#5#{}",
+                    },
+                },
+            },
+            j_abn_glass_gold = {
+                name = "玻璃黄金牌",
+                text = {
+                    {
+                        "若打出的牌型同时包含{C:attention}玻璃{}牌",
+                        "和{C:attention}黄金{}牌，它们各获得",
+                        "{C:gold}+#1#{}晋升强度和{C:purple}+#2#{}计分",
+                    },
+                    {
+                        "触发时，{C:enhanced}玻璃{} {C:attention}小丑牌{}获得",
+                        "{X:mult,C:white}X#3#{}倍率，{C:enhanced}黄金{}",
+                        "{C:attention}小丑牌{}获得{X:chips,C:white}X#4#{}筹码",
+                    },
+                    {
+                        "选择{C:attention}大盲注{}时，生成",
+                        "本局最后使用的{C:weather_report}天气报告{}牌",
+                        "{C:inactive}当前：{C:weather_report}#5#{}",
+                    },
+                },
+            },
+            j_abn_steel_gold = {
+                name = "钢铁黄金牌",
+                text = {
+                    {
+                        "若打出的牌型同时包含{C:attention}钢铁{}牌",
+                        "和{C:attention}黄金{}牌，它们各获得",
+                        "{C:gold}+#1#{}晋升强度和{C:purple}+#2#{}计分",
+                    },
+                    {
+                        "触发时，{C:enhanced}钢铁{} {C:attention}小丑牌{}获得",
+                        "{X:mult,C:white}X#3#{}倍率，{C:enhanced}黄金{}",
+                        "{C:attention}小丑牌{}获得{X:chips,C:white}X#4#{}筹码",
+                    },
+                    {
+                        "选择{C:attention}大盲注{}时，生成",
+                        "本局最后使用的{C:periodic}元素周期{}牌",
+                        "{C:inactive}当前：{C:periodic}#5#{}",
+                    },
+                },
+            },
+            j_abn_wild_gold = {
+                name = "万能黄金牌",
+                text = {
+                    {
+                        "若打出的牌型同时包含{C:attention}万能{}牌",
+                        "和{C:attention}黄金{}牌，它们各获得",
+                        "{C:gold}+#1#{}晋升强度和{C:purple}+#2#{}计分",
+                    },
+                    {
+                        "触发时，{C:enhanced}万能{} {C:attention}小丑牌{}获得",
+                        "{X:mult,C:white}X#3#{}倍率，{C:enhanced}黄金{}",
+                        "{C:attention}小丑牌{}获得{X:chips,C:white}X#4#{}筹码",
+                    },
+                    {
+                        "选择{C:attention}大盲注{}时，生成",
+                        "本局最后使用的{C:atomic}原子{}牌",
+                        "{C:inactive}当前：{C:atomic}#5#{}",
+                    },
+                },
+            },
+            j_abn_lucky_stone = {
+                name = "幸运石头",
+                text = {
+                    {
+                        "若打出的牌型同时包含{C:attention}石头{}牌",
+                        "和{C:attention}幸运{}牌，它们各获得",
+                        "{C:gold}+#1#{}晋升强度和{C:purple}+#2#{}计分",
+                    },
+                    {
+                        "触发时，{C:enhanced}石头{}{C:attention}小丑{}获得",
+                        "{X:mult,C:white}X#3#{}倍率，{C:enhanced}幸运{}",
+                        "{C:attention}小丑牌{}获得{X:chips,C:white}X#4#{}筹码",
+                    },
+                    {
+                        "选择{C:attention}大盲注{}时，生成",
+                        "本局最后使用的{C:artistry_cards}技艺{}牌",
+                        "{C:inactive}当前：{C:artistry_cards}#5#{}",
+                    },
+                },
+            },
+            j_abn_discontinued_joker = {
+                name = "绝版小丑",
+                text = {
+                    {
+                        "跳过{C:attention}盲注{}时，",
+                        "生成一个随机{C:attention}标签{}",
+                    },
+                    {
+                        "本局每获得过一种{C:attention}不同标签{}，",
+                        "打出的{C:attention}绝版{}牌永久获得",
+                        "{C:mult}+#1#{}倍率",
+                        "{C:inactive}(将获得 {C:mult}+#2#{C:inactive})",
+                    },
+                },
+            },
+            j_abn_big_baffoon = {
+                -- this is an intentional misspelling of "Buffoon", kinda like Sanic (Big Sonic)
+                name = "大Baffoon",
+                text = {
+                    "若在回合的{C:attention}最后一次出牌{}时",
+                    "击败{C:attention}盲注{}，则此小丑牌",
+                    "获得{C:chips}+#2#{}筹码",
+                    "{C:inactive}(当前 {C:chips}+#2#{C:inactive} 筹码)",
+                },
+            },
+            j_abn_cheerful_joker = {
+                name = "欢快小丑",
+                text = {
+                    "若打出{C:attention}6{}张牌的牌型，",
+                    "则这张小丑牌获得{C:gold}+#2#{}",
+                    "晋升强度",
+                    "{C:inactive}(当前 {C:gold}+#1#{C:inactive} 晋升强度)",
+                },
+            },
+            j_abn_foreign_id = {
+                name = "异国身份",
+                text = {
+                    "计分的{C:attention}模组{}花色牌",
+                    "的{C:attention}点数{}作为{C:mult}倍率{}，",
+                    "使这张小丑牌获得倍率",
+                    "{C:inactive}(当前 {C:mult}+#1#{C:inactive} 倍率)",
+                },
+            },
+            j_abn_deck_o_cards = {
+                name = "游戏牌牌组",
+                text = {
+                    "当一张{C:attention}游戏牌{}被加入你的牌组时，",
+                    "这张小丑牌获得等同于其{C:attention}点数{}的筹码",
+                    "{C:inactive}(当前 {C:chips}+#1#{C:inactive} 筹码)",
+                },
+            },
+            j_abn_a_jesters_hat = {
+                name = "小丑之帽",
+                text = {
+                    {
+                        "若打出的牌型包含{C:attention}2{}种原版花色",
+                        "和{C:attention}2{}种模组花色，则此小丑牌",
+                        "获得其{C:attention}点数{}两倍的{C:mult}倍率{}",
+                        "{C:inactive}(当前 {C:mult}+#1#{C:inactive} 倍率)",
+                    },
+                    {
+                        "若此小丑牌带有{C:dark_edition}陈酿{}版本，",
+                        "则重新触发所有计分牌",
+                    },
+                },
+            },
+            j_abn_jokerian_dogma = {
+                name = "小丑教条",
+                text = {
+                    "打出带有{C:attention}模组{C:dark_edition}版本{}的",
+                    "{C:attention}增强{}牌，计分时给予",
+                    "{C:gold}+#1#{}晋升强度",
+                },
+            },
+            j_abn_foreign_thunk = {
+                name = "异国思扣",
+                text = {
+                    {
+                        "若{C:attention}第一张计分牌{}带有",
+                        "{C:attention}原版{C:enhanced}增强{}，则将其对应的",
+                        "{C:enhanced}贴纸{}赋予{C:attention}最右侧{}的小丑牌",
+                    },
+                    {
+                        "若某张{C:attention}小丑牌{}的{C:enhanced}贴纸{}与",
+                        "计分牌的{C:enhanced}原版增强{}相符，",
+                        "则{C:attention}其{}获得{C:purple}+#1#{}计分",
+                    },
+                },
+            },
+            j_abn_market_crash = {
+                name = "市场崩盘",
+                text = {
+                    {
+                        "获得{C:money}金钱{}时，将获得金额降至{C:money}$1{}，",
+                        "并将损失的{C:money}金钱{}的",
+                        "{C:attention}两倍{}作为{C:mult}倍率{}",
+                        "{C:inactive}(当前 {C:mult}+#1#{C:inactive} 倍率)",
+                    },
+                    {
+                        "{C:attention}售出{}时，取回所有",
+                        "损失的{C:money}金钱{}",
+                        "{C:inactive}(将获得 {C:money}$#2#{C:inactive})",
+                    },
+                },
+            },
+            j_abn_ena_joker = {
+                name = "ENA小丑",
+                text = {
+                    {
+                        "打出带有{C:attention}原版{}花色和",
+                        "{C:attention}模组增强{}的牌，计分时给予",
+                        "{X:chips,C:white}X#1#{}筹码",
+                    },
+                    {
+                        "计分手牌中每有一种{C:attention}不同{}的",
+                        "{C:attention}模组{C:enhanced}增强{}，这张小丑牌获得",
+                        "{C:chips}+#3#{}筹码",
+                        "{C:inactive}(当前 {C:chips}+#2#{C:inactive} 筹码)",
+                    },
+                },
+            },
+            j_abn_joker_ena = {
+                name = "小丑ENA",
+                text = {
+                    {
+                        "打出带有{C:attention}原版{}花色和",
+                        "{C:attention}模组增强{}的牌，计分时给予",
+                        "{X:mult,C:white}X#1#{}倍率",
+                    },
+                    {
+                        "计分手牌中每有一种{C:attention}不同{}的",
+                        "{C:attention}模组{C:enhanced}增强{}，这张小丑牌获得",
+                        "{C:mult}+#3#{}倍率",
+                        "{C:inactive}(当前 {C:mult}+#2#{C:inactive} 倍率)",
+                    },
+                },
+            },
+            j_abn_stone_mult = {
+                name = "石之倍率",
+                text = {
+                    {
+                        "若打出的牌型同时包含{C:attention}石头{}牌",
+                        "和{C:attention}倍率{}牌，它们各获得",
+                        "{C:gold}+#1#{}晋升强度和{C:purple}+#2#{}计分",
+                    },
+                    {
+                        "触发时，{C:enhanced}石头{} {C:attention}小丑{}获得",
+                        "{X:mult,C:white}X#3#{}倍率，{C:enhanced}倍率{}",
+                        "{C:attention}小丑牌{}获得{X:chips,C:white}X#4#{}筹码",
+                    },
+                    {
+                        "选择{C:attention}大盲注{}时，生成",
+                        "本局最后使用的{C:algebraic}代数{}牌",
+                        "{C:inactive}当前：{C:algebraic}#5#{}",
+                    },
+                },
+            },
+            j_abn_canvas_joker = {
+                name = "画布小丑",
+                text = {
+                    "{C:attention}模组{}花色给予{C:chips}+#1#{}筹码",
+                    "和{C:mult}+#2#{}倍率",
+                },
+            },
+            j_abn_sweepstakes_card = {
+                name = "抽奖牌",
+                text = {
+                    "商店价格降低{C:attention}#1#%{}",
+                    "{C:attention}模组{}小丑牌售价{C:money}$1{}",
+                },
+            },
+            j_abn_cosmic_light = {
+                name = "宇宙之光",
+                text = {
+                    "{C:attention}模组{} {C:diamond}光{}花色",
+                    "给予{C:mult}+#1#{}倍率",
+                },
+            },
+            j_abn_amplifier = {
+                name = "放大器",
+                text = {
+                    "{C:attention}模组{C:dark_edition}增强{}效果在{C:attention}原版{}花色上",
+                    "给予{C:attention}50%{}更多的{C:chips}筹码{}和{C:mult}倍率{}",
+                    "若在{C:attention}模组{}花色上则为{C:attention}100%{}",
+                },
+            },
+            j_abn_shy_gall = {
+                name = "羞怯的胆小鬼",
+                text = {
+                    "将所有完全由{C:attention}翻转{}牌组成的",
+                    "{C:attention}牌型{}升级",
+                },
+            },
+            j_abn_drawcia = {
+                name = "画西亚",
+                text = {
+                    "仅由{C:attention}模组{}花色组成的{C:attention}牌型{}",
+                    "{C:attention}必定计分{}",
+                    "若未打出{C:attention}原版{}花色，则每有一种",
+                    "{C:attention}不同{}花色获得{X:mult,C:white}X#2#{}倍率",
+                    "{C:inactive}当前：{X:mult,C:white}X#1#{} 倍率",
+                },
+            },
+            j_abn_fortlatro = {
+                name = "财富牌局",
+                text = {
+                    "{C:attention}原版{}消耗牌和小丑牌{C:attention}不会{}出现",
+                    "选择{C:chips}小盲注{}时，生成一个随机的{C:attention}模组{}消耗牌",
+                    "选择{C:attention}大盲注{}时，生成一张随机的{C:attention}模组{}小丑牌",
+                    "本局每使用过一种{C:attention}不同的模组消耗牌{}，获得{X:chips,C:white}X#2#{}筹码",
+                    "本局每使用过一张{C:attention}不同的模组小丑牌{}，获得{X:mult,C:white}X#4#{}倍率",
+                    "{C:inactive}当前：{X:chips,C:white}X#1#{} 筹码 {X:mult,C:white}X#3#{} 倍率",
+                },
+            },
+            j_abn_dirac = {
+                name = "狄拉克",
+                text = {
+                    "{C:dark_edition}负片{} {C:attention}模组{}牌和小丑牌不会被{C:mult}削弱{}",
+                    "若此小丑牌带有{C:dark_edition}负片{}，则{C:attention}手牌上限{}增加{C:attention}+#5#{}",
+                    "每有一张计分的{C:attention}模组{} {C:dark_edition}负片{}牌，获得{X:chips,C:white}X#2#{}筹码",
+                    "每有一张触发的{C:attention}模组{} {C:dark_edition}负片{}小丑牌，获得{X:mult,C:white}X#4#{}倍率",
+                    "{C:inactive}当前：{X:chips,C:white}X#1#{} 筹码 {X:mult,C:white}X#3#{} 倍率",
+                },
+            },
+            j_abn_super_eight = {
+                name = "超级8",
+                text = {
+                    "{C:attention}8{}不能被{C:mult}削弱{}，并被视为所有{C:attention}原版{}花色",
+                    "计分的{C:attention}8{}的{C:attention}点数{}的两倍作为{C:mult}倍率{}",
+                    "若没有{C:attention}8{}计分，则{C:mult}摧毁{}此小丑牌",
+                    "{C:inactive}当前：{C:mult}+#1#{} 倍率",
+                },
+            },
+            j_abn_editional_tag = {
+                name = "版本标签",
+                text = {
+                    {
+                        "获得{C:attention}标签{}时，获得{X:mult,C:white}X#2#{}倍率",
+                        "若该标签是{C:attention}模组{}标签，则带有{C:attention}绝版{}",
+                        "{C:dark_edition}增强{}的牌获得{C:money}$#4#{} {C:mult}+#3#{}倍率",
+                    },
+                    {
+                        "若此小丑牌带有{C:dark_edition}版本{}，",
+                        "则当小丑牌因{C:attention}标签{}获得{C:dark_edition}版本{}时，",
+                        "一张随机的{C:attention}绝版{C:dark_edition}增强{}牌",
+                        "获得相同的{C:dark_edition}版本{}",
+                        "{C:inactive}当前：{X:mult,C:white}X#1#{} 倍率",
+                    },
+                },
+            },
+            j_abn_consumable_tag = {
+                name = "消耗牌标签",
+                text = {
+                    "每当获得{C:attention}标签{}时，生成一个{C:attention}原版{}消耗牌标签",
+                    "当标签给予{C:attention}消耗牌{}补充包时，获得{X:mult,C:white}X#2#{}倍率",
+                    "{C:inactive}当前：{X:mult,C:white}X#1#{} 倍率",
+                },
+            },
+            j_abn_tri_tag = {
+                name = "三连标签",
+                text = {
+                    "每当获得{C:attention}原版{}标签时获得{X:mult,C:white}X#2#{}倍率",
+                    "每当获得{C:attention}模组{}标签时获得{X:chips,C:white}X#4#{}筹码",
+                    "每当获得{C:abn_hazard}险兆{}标签时获得{C:money}$#5#{}",
+                    "{C:inactive}当前：{X:mult,C:white}X#1#{} 倍率 {X:chips,C:white}X#3#{} 筹码",
+                },
+            },
+            j_abn_salvation_tag = {
+                name = "救赎标签",
+                text = {
+                    "每当获得{C:attention}原版{}标签时，",
+                    "将其转化为{C:abn_hazard}险兆{}变体",
+                },
+            },
+            j_abn_magician_tag = {
+                name = "魔术师标签",
+                text = {
+                    "重掷{C:green}商店{}时，",
+                    "{C:green}重掷{}所有持有的标签",
+                },
+            },
+            j_abn_russian_roulette = {
+                name = "俄罗斯轮盘赌",
+                text = {
+                    "所有{C:attention}补充包{}售价{C:money}$1{}，但其中的消耗牌有{C:green}#1#/#2#{}几率{C:mult}失效{}",
+                    "所有{C:attention}小丑牌{}售价{C:money}$1{}，但购买后获得{C:mult}易碎{}效果",
+                    "当{C:green}几率{}成功时，获得{C:money}$#3#{}",
+                },
+            },
+            j_abn_black_forest = {
+                name = "黑森林",
+                text = {
+                    "{C:attention}模组{}{C:spades}暗{}花色",
+                    "给予{C:mult}+#1#{}倍率",
+                },
+            },
+            j_abn_efo_joker = {
+                name = "EFO小丑",
+                text = {
+                    "有{C:green}#1#/#2#{}几率将第一张打出的",
+                    "{C:attention}印章牌{}复制到你的手牌中",
+                    "带有{C:attention}印章{}的计分牌给予{C:gold}+#3#{}晋升强度",
+                    "打出包含{C:attention}5{}张及以上印章牌的牌型时，",
+                    "每张牌给予此小丑牌{X:mult,C:white}X#4#{}倍率",
+                    "和{C:gold}+#5#{}晋升强度",
+                    "{C:inactive}当前：{X:mult,C:white}X#6#{} 倍率 {C:gold}+#7#{} 晋升强度",
+                },
+            },
+            j_abn_globalist_joker = {
+                name = "全球主义者",
+                text = {
+                    "使用{C:continent}大陆{}牌时，生成一个随机的{C:dark_edition}负片{}消耗牌",
+                    "使用{C:attention}#1#{}张{C:continent}大陆{}牌后，",
+                    "在下一次打出的{C:attention}全谱{}牌型的每张",
+                    "计分牌上放置一个{C:attention}印章{}",
+                    "本局每使用过一种{C:attention}不同{}的{C:continent}大陆{}牌，",
+                    "获得{X:mult,C:white}X#2#{}倍率",
+                    "{C:inactive}当前：{X:mult,C:white}X#3#{} 倍率",
+                },
+            },
+            j_abn_khonsu_joker = {
+                name = "孔苏",
+                text = {
+                    "若你的第一次出牌是包含{C:diamonds}光{}和",
+                    "{C:spades}暗{}花色的{C:attention}对子{}，则计分牌",
+                    "分别获得{C:money}明亮{}和{C:dark_edition}暗沉{}版本",
+                    "若孔苏小丑牌本身带有{C:money}明亮{}或",
+                    "{C:dark_edition}暗沉{}版本，则花色匹配的",
+                    "{C:diamonds}光{}或{C:spades}暗{}计分牌",
+                    "还会给予其{C:attention}点数{}两倍的{C:mult}倍率{}",
+                },
+            },
+            j_abn_bio_blueprint = {
+                name = "生物蓝图",
+                text = {
+                    "允许你将手牌中的游戏牌",
+                    "存入消耗牌槽位",
+                    "随后可给予打出的、与所存牌",
+                    "{C:attention}点数{}相同的牌加成，",
+                    "具体取决于所存的牌",
+                    "{C:inactive}(当前 {C:mult}+#1#{} 倍率和 {C:chips}+#2#{} 筹码)",
+                },
+            },
+            j_abn_gtp_joker = {
+                name = "GTP小丑",
+                text = {
+                    "回合中每连续打出一手牌，",
+                    "基础牌型的{C:mult}倍率{}和{C:chips}筹码{}",
+                    "分别获得{X:mult,C:white}X#1#{}和{X:chips,C:white}X#2#{}，",
+                    "{C:attention}高牌{}除外",
+                },
+            },
+            j_abn_gtp_joker_after = {
+                name = "GTP小丑",
+                text = {
+                    "回合中每连续打出一手牌，",
+                    "基础牌型的{C:mult}倍率{}和{C:chips}筹码{}",
+                    "分别获得{X:mult,C:white}X#1#{}和{X:chips,C:white}X#2#{}，",
+                    "{C:attention}高牌{}除外",
+                    "{C:inactive}(上一手牌：{C:attention}#3#{C:inactive})",
+                },
+            },
+            j_abn_supermember_card = {
+                name = "超级会员卡",
+                text = {
+                    "小丑牌将其{C:attention}售价{}",
+                    "作为{C:mult}倍率{}",
+                },
+            },
+            j_abn_joker_forge = {
+                -- joker forge是小丑牌社区的一个用于快速制作模组的项目，
+                -- 其简单的图形化操作界面让很多小丑牌爱好者
+                -- 能够低门槛地制作出自己的模组
+                name = "小丑工坊",
+                text = {
+                    "计分牌将所有当前小丑牌的",
+                    "{C:attention}售价{}总和作为",
+                    "{C:mult}倍率{}",
+                    "{C:inactive}(当前 {C:mult}+#1#{} 倍率)",
+                },
+            },
+            j_abn_galactic_night = {
+                name = "银河之夜",
+                text = {
+                    "给予等同于打出的{C:attention}牌型{}",
+                    "等级的{X:mult,C:white}X倍率{}",
+                },
+            },
+            j_abn_prizefighter_inferno = {
+                name = "拳击手地狱",
+                text = {
+                    "当{C:attention}标签{}触发时获得{X:chips,C:white}X#3#{}筹码，",
+                    "若该标签是{C:abn_hazard}险兆标签{}，则获得",
+                    "{X:mult,C:white}X#4#{}倍率",
+                    "{C:inactive}(当前 {X:chips,C:white}X#1#{C:inactive} 筹码, {X:mult,C:white}X#2#{C:inactive} 倍率)",
+                },
+            },
+            j_abn_sticky_fingers = {
+                name = "粘手",
+                text = {
+                    "{C:tarot}塔罗{}、{C:planet}星球{}和{C:spectral}幻灵{}牌",
+                    "可以从{C:attention}补充包{}中",
+                    "{C:attention}保留{}",
+                },
+            },
+            j_abn_balance_brandon = {
+                name = "平衡布兰登",
+                text = {
+                    "将{C:mult}+倍率{}效果以{X:mult,C:white}X#1#{}的比例",
+                    "转化为{X:mult,C:white}X倍率{}",
+                    "若这是{C:attention}倍率小丑牌{}，",
+                    "{C:attention}倍率{}增强效果在留在手牌中时",
+                    "也会触发",
+                },
+            },
+            j_abn_unhinged_umar = {
+                name = "疯狂乌马尔",
+                text = {
+                    "将{C:chips}+筹码{}效果以{X:chips,C:white}X#1#{}的比例",
+                    "转化为{X:chips,C:white}X筹码{}",
+                    "若这是{C:attention}加成小丑牌{}，",
+                    "{C:attention}加成{}增强效果在留在手牌中时",
+                    "也会触发",
+                },
             },
         },
         Spectral = {
@@ -9912,14 +11622,196 @@ return {
                     "{C:green}美术{}！",
                 }
             },
+            credit_abn_glitchkat = {
+                name = "Glitchkat",
+                text = {
+                    "新增了一些{C:attention}小丑牌{}",
+                },
+            },
         },
         Other = {
+            abn_empty_stamp = {
+                name = "空白印章",
+                text = {
+                    "若此牌带有{C:dark_edition}版本{}、{C:attention}蜡封{}和",
+                    "{C:dark_edition}增强{}，则{C:attention}手牌上限+1{}",
+                },
+            },
+            abn_jester_stamp = {
+                name = "小丑印章",
+                text = {
+                    "若此牌带有{C:dark_edition}版本{}、{C:attention}蜡封{}和",
+                    "{C:dark_edition}增强{}，则被{C:mult}摧毁{}时",
+                    "{C:attention}小丑牌槽位+1{}{C:inactive}(上限:5){}",
+                },
+            },
+            abn_icon_stamp = {
+                name = "圣像印章",
+                text = {
+                    "若此牌带有{C:dark_edition}版本{}、{C:attention}蜡封{}和",
+                    "{C:dark_edition}增强{}，则每有一种",
+                    "{C:attention}蜡封{}/{C:dark_edition}版本{}/{C:dark_edition}增强{}",
+                    "给予{X:chips,C:white}X1{}筹码",
+                    "若回合在{C:attention}1{}次出牌内获胜，",
+                    "则{C:mult}摧毁{}此牌",
+                    "{C:inactive}当前：{X:chips,C:white}X#1#{} 筹码",
+                },
+            },
+            abn_psychomancy_stamp = {
+                name = "摄魂印章",
+                text = {
+                    "{C:mult}摧毁{}此牌时，按其带有的每种",
+                    "{C:dark_edition}版本{}、{C:dark_edition}增强{}和{C:attention}蜡封{}，",
+                    "将{C:attention}最常用的牌型{}升级",
+                },
+            },
+            abn_membership_stamp = {
+                name = "会员印章",
+                text = {
+                    "若此牌带有{C:dark_edition}版本{}、{C:attention}蜡封{}和",
+                    "{C:dark_edition}增强{}，则计分时获得",
+                    "{C:gold}+#1#{}晋升强度",
+                    "{C:inactive}当前：{C:gold}#2#{} 晋升强度",
+                },
+            },
+            abn_prehensile_stamp = {
+                name = "抓握印章",
+                text = {
+                    "若此牌带有{C:dark_edition}版本{}、{C:attention}蜡封{}和",
+                    "{C:dark_edition}增强{}，则其{C:attention}必定计分{}",
+                    "并{C:attention}无视选牌上限{}",
+                },
+            },
+            abn_bio_blueprint_incompatible_norank = {
+                name = "不兼容",
+                text = {
+                    "没有{C:attention}点数{}的牌",
+                    "无法获得任何加成",
+                },
+            },
+            abn_bio_blueprint_incompatible_rank = {
+                name = "不兼容",
+                text = {
+                    "点数为'#1#'的牌",
+                    "无法获得任何加成",
+                },
+            },
+            abn_bio_blueprint_even = {
+                name = "#2#的#1#（偶数）",
+                text = {
+                    "所有计分的#1#给予{C:mult}+#3#{}倍率",
+                    "若回合结束时计分的#1#达到",
+                    "{C:attention}#1#{}张，则倍率翻倍",
+                    "{C:inactive}(已计分{C:attention}#4#{C:inactive}/#1#张#1#)",
+                },
+            },
+            abn_bio_blueprint_even_edi = {
+                name = "#5# #2#的#1#（偶数）",
+                text = {
+                    "所有计分的#1#给予{C:mult}+#3#{}倍率",
+                    "所有计分的{C:dark_edition}#5#{} #1#再给予{C:mult}+#6#{}倍率",
+                    "若回合结束时计分的#1#达到",
+                    "{C:attention}#1#{}张，则倍率翻倍",
+                    "若回合结束时计分的{C:dark_edition}#5#{} #1#达到",
+                    "{C:attention}#1#{}张，则倍率翻倍",
+                    "{C:inactive}(已计分{C:attention}#4#{C:inactive}/#1#张#1#和{C:attention}#7#{C:inactive}/#1#张{C:dark_edition}#5# {C:inactive}#1#)",
+                },
+            },
+            abn_bio_blueprint_even_enh = {
+                name = "#5# #2#的#1#（偶数）",
+                text = {
+                    "所有计分的#1#给予{C:mult}+#3#{}倍率",
+                    "所有计分的{C:attention}#5#{} #1#再给予{C:chips}+#6#{}筹码",
+                    "若回合结束时计分的#1#达到",
+                    "{C:attention}#1#{}张，则倍率翻倍",
+                    "若回合结束时计分的{C:attention}#1#张#5#{} #1#达到",
+                    "回合结束时，则筹码翻倍",
+                    "{C:inactive}(已计分{C:attention}#4#{C:inactive}/#1#张#1#和{C:attention}#7#{C:inactive}/#1#张{C:attention}#5# {C:inactive}#1#)",
+                },
+            },
+            abn_bio_blueprint_even_edi_enh = {
+                name = "#5# #8# #2#的#1#（偶数）",
+                text = {
+                    "所有计分的#1#给予{C:mult}+#3#{}倍率",
+                    "所有计分的{C:dark_edition}#5#{} #1#再给予{C:mult}+#6#{}倍率",
+                    "所有计分的{C:attention}#8#{} #1#再给予{C:chips}+#9#{}筹码",
+                    "若回合结束时计分的#1#达到",
+                    "{C:attention}#1#{}张，则倍率翻倍",
+                    "若回合结束时计分的{C:dark_edition}#5#{} #1#达到",
+                    "{C:attention}#1#{}张，则倍率翻倍",
+                    "若回合结束时计分的{C:attention}#1#张#8#{} #1#达到",
+                    "回合结束时，则筹码翻倍",
+                    "{C:inactive}(已计分{C:attention}#4#{C:inactive}/#1#张#1#、{C:attention}#7#{C:inactive}/#1#张{C:dark_edition}#5# {C:inactive}#1#和{C:inactive}#10#/#1#张{C:attention}#8# {C:inactive}#1#)",
+                },
+            },
+            abn_bio_blueprint_odd = {
+                name = "#2#的#1#（奇数）",
+                text = {
+                    "所有计分的#1#给予{C:chips}+#3#{}筹码",
+                    "若回合结束时计分的#1#达到",
+                    "{C:attention}#1#{}张，则筹码翻倍",
+                    "{C:inactive}(已计分{C:attention}#4#{C:inactive}/#1#张#1#)",
+                },
+            },
+            abn_bio_blueprint_odd_edi = {
+                name = "#5# #2#的#1#（奇数）",
+                text = {
+                    "所有计分的#1#给予{C:chips}+#3#{}筹码",
+                    "所有计分的{C:dark_edition}#5#{} #1#再给予{C:mult}+#6#{}倍率",
+                    "若回合结束时计分的#1#达到",
+                    "{C:attention}#1#{}张，则筹码翻倍",
+                    "若回合结束时计分的{C:dark_edition}#5#{} #1#达到",
+                    "{C:attention}#1#{}张，则倍率翻倍",
+                    "{C:inactive}(已计分{C:attention}#4#{C:inactive}/#1#张#1#和{C:attention}#7#{C:inactive}/#1#张{C:dark_edition}#5# {C:inactive}#1#)",
+                },
+            },
+            abn_bio_blueprint_odd_enh = {
+                name = "#5# #2#的#1#（奇数）",
+                text = {
+                    "所有计分的#1#给予{C:chips}+#3#{}筹码",
+                    "所有计分的{C:attention}#5#{} #1#再给予{C:chips}+#6#{}筹码",
+                    "若回合结束时计分的#1#达到",
+                    "{C:attention}#1#{}张，则筹码翻倍",
+                    "若回合结束时计分的{C:attention}#1#张#5#{} #1#达到",
+                    "回合结束时，则筹码翻倍",
+                    "{C:inactive}(已计分{C:attention}#4#{C:inactive}/#1#张#1#和{C:attention}#7#{C:inactive}/#1#张{C:attention}#5# {C:inactive}#1#)",
+                },
+            },
+            abn_bio_blueprint_odd_edi_enh = {
+                name = "#5# #8# #2#的#1#（奇数）",
+                text = {
+                    "所有计分的#1#给予{C:chips}+#3#{}筹码",
+                    "所有计分的{C:dark_edition}#5#{} #1#再给予{C:mult}+#6#{}倍率",
+                    "所有计分的{C:attention}#8#{} #1#再给予{C:chips}+#9#{}筹码",
+                    "若回合结束时计分的#1#达到",
+                    "{C:attention}#1#{}张，则筹码翻倍",
+                    "若回合结束时计分的{C:dark_edition}#5#{} #1#达到",
+                    "{C:attention}#1#{}张，则倍率翻倍",
+                    "若回合结束时计分的{C:attention}#1#张#8#{} #1#达到",
+                    "回合结束时，则筹码翻倍",
+                    "{C:inactive}(已计分{C:attention}#4#{C:inactive}/#1#张#1#、{C:attention}#7#{C:inactive}/#1#张{C:dark_edition}#5# {C:inactive}#1#和{C:inactive}#10#/#1#张{C:attention}#8# {C:inactive}#1#)",
+                },
+            },
+            abn_cardmodifier_info = {
+                name = "牌面修饰",
+                text = {
+                    "{C:attention}增强{}、{C:dark_edition}版本{}",
+                    "和{C:attention}蜡封{}",
+                },
+            },
             abn_calligraphy_info = {
                 name = "书法牌",
                 text = {
                     "{C:red}不能{}在",
                     "{C:attention}盲注{}中使用",
                 }
+            },
+            abn_crimson_info = {
+                name = "深红牌",
+                text = {
+                    "只能{C:attention}在盲注中{}",
+                    "使用",
+                },
             },
             abn_ultra_ego_info = {
                 name = "超自我",
@@ -10083,6 +11975,14 @@ return {
                     "即选即用",
                 },
             },
+            undiscovered_illusion = {
+                name = "未发现",
+                text = {
+                    "在无种子赛局中",
+                    "购买或使用此牌",
+                    "以了解其效果",
+                },
+            },
             undiscovered_calligraphy = {
                 name = "未发现",
                 text = {
@@ -10091,6 +11991,22 @@ return {
                     "此牌以了解",
                     "其效果",
                 }
+            },
+            undiscovered_periodic = {
+                name = "未发现",
+                text = {
+                    "在无种子赛局中",
+                    "购买或使用此牌",
+                    "以了解其效果",
+                },
+            },
+            undiscovered_crimson = {
+                name = "未发现",
+                text = {
+                    "在无种子赛局中",
+                    "购买或使用此牌",
+                    "以了解其效果",
+                },
             },
             undiscovered_ruinous_power = {
                 name = "未发现",
@@ -10145,6 +12061,14 @@ return {
                     "此牌以了解",
                     "其效果",
                 }
+            },
+            undiscovered_artistry_cards = {
+                name = "未发现",
+                text = {
+                    "在无种子赛局中",
+                    "购买或使用此牌",
+                    "以了解其效果",
+                },
             },
             undiscovered_calamity_cards = {
                 name = "未发现",
@@ -10467,14 +12391,33 @@ return {
                     "即选即用",
                 }
             },
-            card_abn_rank_chips = {
+            abn_level_display = {
                 text = {
-                    "{C:planet}#1#{}筹码",
+                    "({V:1}lvl.#3#{}) {B:2,C:white} #1# {} {C:red,}X{} {B:3,C:white} #2# {}",
                 },
             },
-            card_abn_rank_mult = {
+            p_abn_illusion_normal = {
+                name = "幻象包",
                 text = {
-                    "{C:planet}#1#{}倍率",
+                    "从最多{C:attention}#2#{}张{C:illusion}幻象{}牌中",
+                    "选择{C:attention}#1#{}张",
+                    "立即使用",
+                },
+            },
+            p_abn_illusion_jumbo = {
+                name = "大型幻象包",
+                text = {
+                    "从最多{C:attention}#2#{}张{C:illusion}幻象{}牌中",
+                    "选择{C:attention}#1#{}张",
+                    "立即使用",
+                },
+            },
+            p_abn_illusion_mega = {
+                name = "巨型幻象包",
+                text = {
+                    "从最多{C:attention}#2#{}张{C:illusion}幻象{}牌中",
+                    "选择{C:attention}#1#{}张",
+                    "立即使用",
                 },
             },
             --#region 贴纸
@@ -10650,6 +12593,267 @@ return {
                     "此贴纸生效时",
                     "所有{C:spectral}幻灵{}牌被{C:red}禁用{}",
                 }
+            },
+            abn_bug = {
+                name = "虫",
+                text = {
+                    "此贴纸生效期间，",
+                    "所有{C:tarot}塔罗牌{}被{C:red}禁用{}",
+                },
+            },
+            abn_martini = {
+                name = "马提尼",
+                text = {
+                    "此贴纸生效期间，",
+                    "所有{C:planet}星球牌{}被{C:red}禁用{}",
+                },
+            },
+            abn_road_block = {
+                name = "路障",
+                text = {
+                    "此贴纸生效期间，",
+                    "首次打出的牌型",
+                    "计分为{C:purple}0",
+                },
+            },
+            abn_pawn = {
+                name = "兵",
+                text = {
+                    "此贴纸生效期间，",
+                    "所有{C:sigils}符印{}牌和",
+                    "{C:astro_cards}星座{}牌被{C:red}禁用{}",
+                },
+            },
+            abn_lightbulb = {
+                name = "灯泡",
+                text = {
+                    "此贴纸生效期间，",
+                    "所有{C:solid_state}固态{}牌和",
+                    "{C:program_pack}程序{}牌被{C:red}禁用{}",
+                },
+            },
+            abn_matchstick = {
+                name = "火柴",
+                text = {
+                    "若分数{C:attention}着火{}，",
+                    "则{C:red,E:2}自毁{}",
+                },
+            },
+            abn_tnt = {
+                name = "炸药",
+                text = {
+                    "计分后，{X:mult,C:white}X#1#{}倍率并",
+                    "{C:red,E:2}摧毁{}一张随机",
+                    "{C:attention}留在手牌中{}的牌",
+                },
+            },
+            abn_cigarettes = {
+                name = "香烟",
+                text = {
+                    "{C:red,E:2}摧毁{}一张随机",
+                    "来自你的{C:attention}整个牌组{}的牌",
+                },
+            },
+            abn_platano = {
+                name = "香蕉",
+                text = {
+                    "{X:mult,C:white}^#1#{}倍率，并有{C:green}#2#/#3#{}几率",
+                    "{C:red,E:2}摧毁{}所有",
+                    "拥有的{C:attention}小丑牌{}",
+                },
+            },
+            abn_cowboy_hat = {
+                name = "牛仔帽",
+                text = {
+                    "此贴纸生效期间，",
+                    "所有{C:weather_report}天气报告{}牌和",
+                    "{C:lexica}辞典{}牌被{C:red}禁用{}",
+                },
+            },
+            abn_unholy_relic = {
+                name = "亵渎圣物",
+                text = {
+                    "此贴纸生效期间，",
+                    "所有{C:ruinous_power}毁灭之力{}牌和",
+                    "{C:nightshift_cards}夜班{}牌被{C:red}禁用{}",
+                },
+            },
+            abn_cactus = {
+                name = "仙人掌",
+                text = {
+                    "此贴纸生效期间，",
+                    "所有{C:artistry_cards}技艺{}牌和",
+                    "{C:calligraphy}书法{}牌被{C:red}禁用{}",
+                },
+            },
+            abn_bomb = {
+                name = "炸弹",
+                text = {
+                    "若分数{C:attention}着火{}，",
+                    "则{C:red,E:2}摧毁{}上一次打出的牌型",
+                },
+            },
+            abn_stk_bonus = {
+                name = "加成",
+                text = {
+                    "计分时{C:blue}+#1#{}筹码",
+                },
+            },
+            abn_stk_mult = {
+                name = "倍率",
+                text = {
+                    "计分时{C:red}+#1#{}倍率",
+                },
+            },
+            abn_stk_wild = {
+                name = "万能",
+                text = {
+                    "{C:attention}第一张计分牌{}同时被视为",
+                    "所有{C:attention}花色{}",
+                },
+            },
+            abn_stk_stone = {
+                name = "石头",
+                text = {
+                    "计分时{C:blue}+#1#{}筹码",
+                    "每张{C:attention}打出的牌{}都参与计分",
+                },
+            },
+            abn_stk_glass = {
+                name = "玻璃",
+                text = {
+                    "计分时{X:red,C:white}X#1#{}倍率",
+                    "所有计分结束后，有{C:green}#2#/#3#{}几率",
+                    "摧毁小丑牌",
+                },
+            },
+            abn_stk_steel = {
+                name = "钢铁",
+                text = {
+                    "计分后{X:red,C:white}X#1#{}倍率",
+                },
+            },
+            abn_stk_gold = {
+                name = "黄金",
+                text = {
+                    "回合结束时{C:gold}$#1#{}",
+                },
+            },
+            abn_stk_lucky = {
+                name = "幸运",
+                text = {
+                    "有{C:green}#1#/#2#{}几率给予{C:red}+#3#{}倍率",
+                    "有{C:green}#4#/#5#{}几率给予{C:gold}$#6#{}",
+                },
+            },
+            abn_stk_fossil = {
+                name = "化石",
+                text = {
+                    "{X:red,C:white}X#1#{}倍率，{C:gold}$#2#",
+                    "计分后，有{C:green}#3#/#4#{}几率",
+                    "{C:red,E:2}自毁{}",
+                },
+            },
+            abn_stk_petroleum = {
+                name = "石油",
+                text = {
+                    "{C:chips}+#1#{}筹码，{C:gold}+$#2#",
+                    "若分数{C:red,E:2}着火{}，",
+                    "则变为{C:enhanced}油田火{}贴纸",
+                },
+            },
+            abn_stk_oilfire = {
+                name = "油田火",
+                text = {
+                    "{C:red}+#1#{}倍率，{C:red}-$#2#",
+                    "计分后，有{C:green}#3#/#4#{}几率",
+                    "{C:red,E:2}自毁{}",
+                },
+            },
+            abn_stk_mercurial = {
+                name = "水星",
+                text = {
+                    "计分手牌中每有一种{C:attention}不同{}的花色，",
+                    "获得{C:chips}+#1#{}筹码",
+                    "{C:inactive}(当前 {C:chips}+#2#{C:inactive} 筹码)",
+                },
+            },
+            abn_stk_kintsugi = {
+                name = "金缮",
+                text = {
+                    "{C:chips}+#1#{}筹码，{C:mult}+#2#{}倍率，{C:gold}+$#3#{}",
+                    " ",
+                    "有{C:green}#6#/#7#{}几率使此贴纸",
+                    "的数值翻倍",
+                    " ",
+                    "每底注一次，摧毁一张{C:red,E:2}游戏牌{}后",
+                    "有{C:green}#4#/#5#{}几率克隆此小丑牌",
+                    "{C:inactive}(需有空间)",
+                },
+            },
+            abn_stk_wallpaper = {
+                name = "墙纸",
+                text = {
+                    "计分手牌中每有一张带{C:attention}蜡封{}的牌，",
+                    "获得{C:mult}+#2#{}倍率；留在手牌中的",
+                    "每有一张带{C:attention}蜡封{}的牌，获得{C:chips}+#4#{}筹码",
+                    "{C:inactive}(当前 {C:mult}+#1#{C:inactive} 倍率, {C:chips}+#3#{C:inactive} 筹码)",
+                },
+            },
+            abn_stk_infra = {
+                name = "红外观测",
+                text = {
+                    "每有一张计分牌，获得",
+                    "{C:mult}+#2#{}倍率和{C:chips}+#4#{}筹码",
+                    "若计分牌少于{C:attention}3{}张，",
+                    "则{C:red,E:2}自毁{}",
+                    "{C:inactive}(当前 {C:mult}+#3#{C:inactive} 倍率, {C:chips}+#1#{C:inactive} 筹码)",
+                },
+            },
+            abn_stk_hazard = {
+                name = "险兆",
+                text = {
+                    "{X:mult,C:white}X#1#{}倍率",
+                    "每有一张带有此{C:enhanced}贴纸增强{}的其他小丑牌，",
+                    "获得{X:mult,C:white}+X#2#{}倍率",
+                    "有{C:green}#3#/#4#{}几率重新触发",
+                    "{X:blind,C:white}X#5#{}盲注需求",
+                },
+            },
+            abn_stk_monitor = {
+                name = "监视器",
+                text = {
+                    "{X:mult,C:white}^倍率{}与计分的",
+                    "{C:dark_edition}<花色>{}数量相关",
+                },
+            },
+            abn_stk_monitor_hearts = {
+                name = "监视器",
+                text = {
+                    "{X:mult,C:white}^倍率{}与计分的",
+                    "{C:hearts}#1#{}数量相关",
+                },
+            },
+            abn_stk_monitor_diamonds = {
+                name = "监视器",
+                text = {
+                    "{X:mult,C:white}^倍率{}与计分的",
+                    "{C:diamonds}#1#{}数量相关",
+                },
+            },
+            abn_stk_monitor_clubs = {
+                name = "监视器",
+                text = {
+                    "{X:mult,C:white}^倍率{}与计分的",
+                    "{C:clubs}#1#{}数量相关",
+                },
+            },
+            abn_stk_monitor_spades = {
+                name = "监视器",
+                text = {
+                    "{X:mult,C:white}^倍率{}与计分的",
+                    "{C:spades}#1#{}数量相关",
+                },
             },
             abn_honor_sticker = {
                 name = "荣誉金宝",
@@ -10838,15 +13042,6 @@ return {
                     "难度下获胜",
                 }
             },
-            abn_bugged_sticker = {
-                name = "故障",
-                text = {
-                    "此贴纸生效时",
-                    "所有{C:tarot}塔罗{}牌被{C:red}禁用{}",
-                }
-            },
-
-
             abn_spade = {
                 name = "黑桃贴纸",
                 text = {
@@ -11257,6 +13452,33 @@ return {
                     "{C:chips}+#4#{}筹码",
                 },
             },
+            c_abn_coissa = {
+                name = "科伊萨",
+                text = {
+                    "{S:0.8}（{S:0.8,V:1}等级#1#{S:0.8}）{}升级",
+                    "{C:attention}#2#",
+                    "{C:mult}+#3#{}倍率并且",
+                    "{C:chips}+#4#{}筹码",
+                },
+            },
+            c_abn_proxima_c = {
+                name = "比邻星C",
+                text = {
+                    "{S:0.8}（{S:0.8,V:1}等级#1#{S:0.8}）{}升级",
+                    "{C:attention}#2#",
+                    "{C:mult}+#3#{}倍率并且",
+                    "{C:chips}+#4#{}筹码",
+                },
+            },
+            c_abn_proxima_b = {
+                name = "比邻星B",
+                text = {
+                    "{S:0.8}（{S:0.8,V:1}等级#1#{S:0.8}）{}升级",
+                    "{C:attention}#2#",
+                    "{C:mult}+#3#{}倍率并且",
+                    "{C:chips}+#4#{}筹码",
+                },
+            },
             -- 点数星球
             c_abn_lauto = {
                 name = "劳托",
@@ -11425,6 +13647,15 @@ return {
             },
             c_abn_queaor = {
                 name = "奎奥尔",
+                text = {
+                    "{S:0.8}（{S:0.8,V:1}等级#1#{S:0.8}）{}升级",
+                    "{C:attention}#2#",
+                    "{C:mult}+#3#{}倍率并且",
+                    "{C:chips}+#4#{}筹码",
+                },
+            },
+            c_abn_poltergeist = {
+                name = "吵闹鬼",
                 text = {
                     "{S:0.8}（{S:0.8,V:1}等级#1#{S:0.8}）{}升级",
                     "{C:attention}#2#",
@@ -11634,6 +13865,19 @@ return {
                         "{C:money}$#1#{}和{C:mult}+#2#{}倍率",
                     }
                 }
+            },
+            c_abn_tornado_calamity = {
+                name = "龙卷风",
+                text = {
+                    {
+                        "移除所有牌上的",
+                        "{C:attention}倍率{}和{C:attention}加成{}增强效果",
+                    },
+                    {
+                        "受影响的牌各获得",
+                        "{C:mult}+#1#{}倍率和{C:chips}+#2#{}筹码",
+                    },
+                },
             },
             c_abn_tornado = {
                 name = "龙卷风",
@@ -12403,6 +14647,17 @@ return {
                 }
             },
         },
+        paradox = {
+            c_abn_laplace = {
+                name = "拉普拉斯",
+                text = {
+                    "在{C:attention}偶数{}底注时，所有{C:attention}持有{}的牌",
+                    "获得{C:attention}翻转{}效果",
+                    "在{C:attention}奇数{}底注时，牌组中{C:attention}5{}张随机牌",
+                    "获得{C:attention}翻转{}效果",
+                },
+            },
+        },
         Enhanced = {
             m_abn_wallpaper = {
                 name = "壁纸牌",
@@ -12627,6 +14882,43 @@ return {
                     "{C:inactive}（当前为{C:mult}+#2#{C:inactive}倍率，{C:chips}+#1#{C:inactive}筹码）",
                 },
             },
+            m_abn_plank = {
+                name = "木板牌",
+                text = {
+                    "给予{C:gold}+#1#{}晋升强度",
+                },
+            },
+            m_abn_flux = {
+                name = "熔流牌",
+                text = {
+                    "{C:purple}+#1#{}计分，若属于",
+                    "{C:attention}获胜牌型{}，则再获得{C:purple}+#2#{}计分",
+                },
+            },
+            m_abn_discontinued = {
+                name = "绝版牌",
+                text = {
+                    "本局每获得过一种{C:attention}不同标签{}，",
+                    "获得{C:gold}+#3#{}晋升强度和{C:chips}+#4#{}筹码",
+                    "{C:inactive}(当前 {C:gold}+#1#{C:inactive}，{C:chips}+#2#{C:inactive})",
+                },
+            },
+            m_abn_tile = {
+                name = "瓦片牌",
+                text = {
+                    "{C:attention}打出{}后返回",
+                    "{C:attention}牌组{}",
+                },
+            },
+            m_abn_papermache = {
+                name = "纸糊牌",
+                text = {
+                    "若作为{C:attention}奇数{}牌未计分，",
+                    "则获得{X:chips,C:white}X#1#{}筹码",
+                    "若作为{C:attention}偶数{}牌未计分，",
+                    "则获得{X:mult,C:white}X#2#{}倍率",
+                },
+            },
         },
         Voucher = {
             v_abn_overstock_maximum = {
@@ -12759,6 +15051,28 @@ return {
                     "和{C:calamity_cards}灾厄{}牌",
                     "可能出现在商店中",
                 }
+            },
+            v_abn_athame = {
+                name = "仪式匕首",
+                text = {
+                    "{C:sigils}符印{}包总是包含你",
+                    "{C:attention}最常用的牌型{}对应的",
+                    "{C:sigils}符印{}牌",
+                },
+            },
+            v_abn_ink_and_quill = {
+                name = "墨与笔",
+                text = {
+                    "{C:calligraphy}书法{}牌可以在",
+                    "{C:attention}盲注{}期间使用",
+                },
+            },
+            v_abn_fountain_pen = {
+                name = "钢笔",
+                text = {
+                    "在{C:calligraphy}书法{}包中",
+                    "可多选{C:attention}+1{}张牌",
+                },
             },
         },
         Stake = {
@@ -12919,6 +15233,35 @@ return {
         challenge_names = {
         },
         dictionary = {
+            abn_ui_stamps = "印章",
+            abn_unique_suit_1 = {
+                "{E:1}1 种花色",
+                "若{C:money}资金{}为{C:attention}质数{}",
+                "则所有牌重新触发{C:attention}#5#{}次",
+            },
+            abn_unique_suit_2 = {
+                "{E:1}2 种花色",
+                "计分牌给予{X:blind,C:white}X#2#{}盲注需求",
+            },
+            abn_unique_suit_3 = {
+                "{E:1}3 种花色",
+                "计分牌将{C:attention}相邻{}牌的",
+                "{C:attention}点数{}作为{C:chips}筹码{}",
+            },
+            abn_unique_suit_4 = {
+                "{E:1}4 种花色",
+                "计分牌给予{X:mult,C:white}X#3#{}倍率",
+            },
+            abn_unique_suit_5 = {
+                "{E:1}5 种花色",
+                "计分牌永久获得{C:gold}+#4#{}晋升强度",
+            },
+            abn_unique_suit_6 = {
+                "{E:1}6 种花色",
+                "摧毁所有{C:attention}非传说{}小丑牌",
+                "并替换为{C:legendary}传说{}小丑牌",
+                "{C:abn_j,s:0.8}杰{C:abn_e,s:0.8}维{C:abn_v,s:0.8}尔{C:abn_i,s:0.8}除{C:abn_l,s:0.8}外{}",
+            },
             abn_toggle_to_ruinous = "显示业力",
             abn_toggle_to_consumables = "显示消耗牌",
 
@@ -12929,6 +15272,7 @@ return {
             abn_perma_xchips = "{C:white,X:chips}X#4#{}筹码",
             abn_perma_dollars = "{C:money}$#5#{}额外资金",
             abn_perma_rep = "{C:attention}+#6#{}额外重复触发次数",
+            abn_perma_score = "{C:purple}+#7#{}额外计分",
 
             -- 符印菜单
             ph_abn_sigils_active = "已激活符印",
@@ -12942,10 +15286,26 @@ return {
             abn_toggle_music = "启用后使用自定义标题界面音乐",
 
             k_abn_config_enable_logo = "启用自定义标题界面",
-            abn_enable_logo = "（需要重启）",
+            abn_requires_restart = "（* = 需要重启）",
+            k_abn_config_enable_update_popup = "启用检查更新*",
 
             k_abn_config_disable_flipped_stakes = "在商店中禁用翻转小丑牌？",
             abn_disable_flipped_stakes = "金宝赌注中不再生成翻转小丑牌",
+            k_dont_show_again = "不再显示",
+            k_abn_yes = "是",
+            k_abn_no = "否",
+            k_abn_update_question = "立即更新？（这将重启 Balatro。）",
+            k_abn_crossmod = "跨模组",
+            k_abn_crossmod_aij = "All in Jest",
+            k_abn_crossmod_aij_info = "新增 8 张小丑牌！",
+            k_abn_crossmod_ortalab = "Ortalab",
+            k_abn_crossmod_ortalab_info = "新增 6 张小丑牌！",
+            k_abn_crossmod_paperback = "Paperback",
+            k_abn_crossmod_paperback_info = "新增新的牌型和 3 张小丑牌！",
+            k_abn_crossmod_fortlatro = "Fortlatro",
+            k_abn_crossmod_fortlatro_info = "新增 9 张小丑牌！",
+            k_abn_crossmod_spectrallib = "Spectrallib",
+            k_abn_crossmod_spectrallib_info = "新增与晋升强度相关的内容！",
 
             -- 模组横标制作人员
             k_abn_artist = "美术",
@@ -12972,6 +15332,7 @@ return {
             k_abn_even = "偶数",
             k_abn_tasty_ex = "美味！",
             k_abn_odd = "奇数",
+            k_abn_i_can_do_anything = "我什么都能做到！",
             k_abn_doubled_ex = "翻倍！",
             k_abn_rankless = "无点数",
             k_abn_numbered = "数字牌",
@@ -12996,8 +15357,11 @@ return {
             k_abn_plus_lexica = "+1辞典牌",
             k_abn_plus_continent = "+1大陆牌",
             k_abn_plus_calligraphy = "+1书法牌",
+            k_abn_plus_crimson = "+1 深红",
             k_abn_plus_glyph = "+1符文牌",
             k_plus_tag = "+1标签！",
+            k_plus_periodic = "+1 元素周期",
+            k_plus_crimson = "+1 深红",
             k_abn_plus_solid_state = "+1固态牌",
             k_abn_activated_ex = "已激活！",
             k_lexica_pack = "辞典包",
@@ -13008,6 +15372,12 @@ return {
             k_abn_brewed_ex = "已调制！",
             k_abn_reduced_ex = "已减少！",
             k_tag = "标签",
+            k_abn_light = "光",
+            k_abn_dark = "暗",
+            k_abn_device_dark = "设备小丑",
+            k_abn_device_light = "备设小丑",
+            k_abn_darkner = "暗之民",
+            k_abn_lightner = "光之民",
 
             abn_hidden_side = "隐藏恶徒",
             abn_king_side = "小丑之王",
@@ -13050,6 +15420,9 @@ return {
             b_calligraphy_cards = "书法牌",
             k_calligraphy = "书法",
             k_ancient_calligraphy = "古代书法",
+            k_numeral_calligraphy = "书法数字",
+            b_crimson_cards = "深红牌",
+            k_crimson = "深红",
 
             b_glyphs_cards = "符文牌",
             k_glyphs = "符文",
@@ -13059,6 +15432,14 @@ return {
 
             b_artistry_cards_cards = "技艺牌",
             k_artistry_cards = "技艺牌",
+            b_periodic_cards = "元素周期牌",
+            k_periodic = "元素周期",
+            b_paradox_cards = "悖论牌",
+            k_paradox = "悖论",
+            b_maths_cards = "数学牌",
+            k_maths = "数学",
+            b_illusion_cards = "幻象牌",
+            k_illusion = "幻象",
         },
         labels = {
             -- 消耗牌类型
@@ -13075,6 +15456,11 @@ return {
             glyphs = "符文",
             ruinous_power = "业力",
             artistry_cards = "技艺牌",
+            crimson = "深红",
+            illusion = "幻象",
+            maths = "数学",
+            paradox = "悖论",
+            periodic = "元素周期",
 
             -- 版本
             abn_chthonian = "幽冥",
@@ -13154,6 +15540,52 @@ return {
             abn_rainbow_seal = "彩虹蜡封",
             abn_duality_seal = "二元蜡封",
             abn_lime_seal = "青柠蜡封",
+
+            -- 印章
+            abn_empty_stamp = "空白印章",
+            abn_jester_stamp = "小丑印章",
+            abn_icon_stamp = "圣像印章",
+            abn_membership_stamp = "会员印章",
+            abn_prehensile_stamp = "抓握印章",
+            abn_psychomancy_stamp = "摄魂印章",
+
+            -- 贴纸
+            abn_bomb = "炸弹",
+            abn_bug = "虫",
+            abn_cactus = "仙人掌",
+            abn_cigarettes = "香烟",
+            abn_cowboy_hat = "牛仔帽",
+            abn_lightbulb = "灯泡",
+            abn_martini = "马提尼",
+            abn_matchstick = "火柴",
+            abn_pawn = "兵",
+            abn_platano = "香蕉",
+            abn_road_block = "路障",
+            abn_tnt = "炸药",
+            abn_unholy_relic = "亵渎圣物",
+
+            -- 增强
+            abn_stk_bonus = "加成",
+            abn_stk_fossil = "化石",
+            abn_stk_glass = "玻璃",
+            abn_stk_gold = "黄金",
+            abn_stk_hazard = "险兆",
+            abn_stk_infra = "红外",
+            abn_stk_kintsugi = "金缮",
+            abn_stk_lucky = "幸运",
+            abn_stk_mercurial = "水星",
+            abn_stk_monitor = "显示器",
+            abn_stk_monitor_clubs = "显示器",
+            abn_stk_monitor_diamonds = "显示器",
+            abn_stk_monitor_hearts = "显示器",
+            abn_stk_monitor_spades = "显示器",
+            abn_stk_mult = "倍率",
+            abn_stk_oilfire = "油田火",
+            abn_stk_petroleum = "石油",
+            abn_stk_steel = "钢铁",
+            abn_stk_stone = "石头",
+            abn_stk_wallpaper = "壁纸",
+            abn_stk_wild = "万能",
         },
         ranks = {
             ["abn_11"] = "11",
@@ -13182,6 +15614,10 @@ return {
             abn_Bell = "铃",
             abn_Leaf = "叶",
             abn_Megido = "米吉多",
+            abn_Crown = "王冠",
+            abn_Moon = "月",
+            abn_Star = "星",
+            abn_Talon = "利爪",
         },
         suits_plural = {
             abn_Snow = "雪",
@@ -13202,6 +15638,10 @@ return {
             abn_Bell = "铃",
             abn_Leaf = "叶",
             abn_Megido = "米吉多", -- Megido（米吉多）源自希伯来语 Har Megiddo（米吉多山），在流行文化与游戏翻译中，它普遍被译为“米吉多”或音译为“梅基多”，其文化内涵直接指向圣经中象征世界末日决战的“哈米吉多顿”（Armageddon）
+            abn_Crown = "王冠",
+            abn_Moon = "月",
+            abn_Star = "星",
+            abn_Talon = "利爪",
         },
         poker_hands = {
             ['abn_Spectrum'] = "光谱",
@@ -13236,6 +15676,10 @@ return {
             ['abn_Mansion'] = "大宅",
             ['abn_Flush Mansion'] = "同花大宅",
             ['abn_Emperium Flush'] = "帝王同花",
+
+            ['abn_Rapture'] = "被提",
+            ['abn_Inverse Rapture'] = "逆被提",
+            ['abn_Rapture Spectrum'] = "被提光谱",
         },
         poker_hand_descriptions = {
             ['abn_Spectrum'] = {
@@ -13325,6 +15769,21 @@ return {
             ['abn_Emperium Flush'] = {
                 "14、13、12、11和A",
                 "所有牌花色相同",
+            },
+            ['abn_Rapture'] = {
+                "5张点数连续的牌",
+                "所有牌花色相同，仅由",
+                "使徒、A和人头牌组成",
+            },
+            ['abn_Inverse Rapture'] = {
+                "6张点数连续的牌，每张",
+                "花色不同并有1张无色牌，",
+                "仅由使徒、A、10和人头牌组成",
+            },
+            ['abn_Rapture Spectrum'] = {
+                "5张点数连续的牌，每张",
+                "花色不同，仅由使徒、",
+                "A和人头牌组成",
             },
         },
     }
