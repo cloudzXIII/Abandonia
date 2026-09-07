@@ -11782,9 +11782,9 @@ return {
         name = "Icon Stamp",
         text = {
           "If this Card has a unique {C:dark_edition}Edition,{} {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
-          "Give {X:chips,C:white}X1{} Chips for each {C:attention}Seal{}/{C:dark_edition}Edition{}/{C:dark_edition}Enhancement{}",
+          "Gains {X:chips,C:white}X1{} Chips for each {C:attention}Seal{}/{C:dark_edition}Edition{}/{C:dark_edition}Enhancement{}",
 		  "If the round is won in {C:attention}1{} hand {C:mult}Destroy{} this card",
-		  "{C:inactive}Currently: {X:chips,C:white}X#1#{} {C:inactive}Chips{}",
+		  "{C:inactive}(Currently {X:chips,C:white}X#1#{} {C:inactive}Chips)",
         }
       },
 	  abn_psychomancy_stamp = {
@@ -11799,7 +11799,7 @@ return {
         text = {
           "If this Card has a unique {C:dark_edition}Edition, {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
 		  "it gains {C:gold}+#1#{} Ascension Power when scoring",
-		  "{C:inactive}Currently:{} {C:gold}#2#{} {C:inactive}Ascension Power{}",
+		  "{C:inactive}(Currently{} {C:gold}#2#{} {C:inactive}Ascension Power)",
         }
       },
 	  abn_prehensile_stamp = {
@@ -11851,7 +11851,7 @@ return {
           "All scoring {C:attention}#5#{} #1#s also grant {C:chips}+#6#{} Chips",
           "If at least {C:attention}#1#{} #1#s are scored by the",
           "end of the round, double Mult rate",
-          "If at least {C:attention}#1# #5#{} #1#s are scored by the",
+          "If at least {C:attention}#1# {C:dark_edition}#5#{} #1#s are scored by the",
           "end of the round, double Chip rate",
           "{C:inactive}({C:attention}#4#{C:inactive}/#1# #1#s and {C:attention}#7#{C:inactive}/#1# {C:attention}#5# {C:inactive}#1#s scored)"
         }
