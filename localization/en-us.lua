@@ -1,6 +1,23 @@
 return {
   descriptions = {
-
+	
+	ram = {
+      c_abn_ram_00 = {
+        name = "RAM 00",
+        text = {
+          "Create the last",
+		  "{C:attention}Modded consumable{} used",
+        },
+      },
+	  c_abn_ram_01 = {
+        name = "RAM 01",
+        text = {
+          "Swap current held {C:attention}vanilla consumables{}",
+		  "with random {C:attention}modded consumables{}",
+        },
+      },
+    },
+	
     illusion = {
       c_abn_euclidean = {
         name = "Euclidean",
@@ -60,7 +77,7 @@ return {
       },
     },
 
-    maths = {
+    algebraic = {
       c_abn_euler = {
         name = "Euler",
         text = {
@@ -9824,10 +9841,10 @@ return {
         name = "Jokester",
         text = {
           {
-            "{s:0.8}Scoring {C:hearts,s:0.8}Hearts{s:0.8} become {C:abn_snow,s:0.8}Snows{}",
-            "{s:0.8}Scoring {C:spades,s:0.8}Spades{s:0.8} become {C:abn_bow,s:0.8}Bows{}",
-            "{s:0.8}Scoring {C:diamonds,s:0.8}Diamonds{s:0.8} become {C:abn_tie,s:0.8}Ties{}",
-            "{s:0.8}Scoring {C:clubs,s:0.8}Clubs{s:0.8} become {C:abn_penumbra,s:0.8}Penumbras{}",
+            "{s:0.8}Scoring {C:hearts,s:0.8}Hearts{s:0.8} become {C:abn_leaf,s:0.8}Leaves{}",
+            "{s:0.8}Scoring {C:spades,s:0.8}Spades{s:0.8} become {C:abn_bell,s:0.8}Bells{}",
+            "{s:0.8}Scoring {C:diamonds,s:0.8}Diamonds{s:0.8} become {C:abn_acorn,s:0.8}Acorns{}",
+            "{s:0.8}Scoring {C:clubs,s:0.8}Clubs{s:0.8} become {C:abn_florette,s:0.8}Florettes{}",
           },
           {
             "If this Joker has {C:dark_edition}Collodion{} edition,",
@@ -9859,7 +9876,7 @@ return {
           {
             "Before scoring, cards change {C:attention}suits{}:",
             "{C:diamonds,s:0.8}Diamonds{s:0.8} -> {C:spades,s:0.8}Spades{s:0.8} -> {C:hearts,s:0.8}Hearts{s:0.8} -> {C:clubs,s:0.8}Clubs",
-            "{s:0.8} -> {C:abn_snow,s:0.8}Snows{s:0.8} -> {C:abn_penumbra,s:0.8}Penumbras{s:0.8} -> {C:abn_tie,s:0.8}Ties{s:0.8} -> {C:abn_bow,s:0.8}Bows{}",
+            "{s:0.8} -> {C:abn_arrow,s:0.8}Arrows{s:0.8} -> {C:abn_anchor,s:0.8}Anchors{s:0.8} -> {C:abn_rose,s:0.8}Roses{s:0.8} -> {C:abn_shield,s:0.8}Shields{}",
           },
           {
             "This Joker gains {C:chips}+#3#{} Chips and",
@@ -15552,11 +15569,14 @@ return {
       b_paradox_cards = "Paradox Cards",
       k_paradox = "Paradox",
 
-      b_maths_cards = "Math Cards",
-      k_maths = "Math",
+      b_algebraic_cards = "Algebraic Cards",
+      k_algebraic = "Algebraic",
 
       b_illusion_cards = "Illusion Cards",
       k_illusion = "Illusion",
+	  
+	  b_ram_cards = "RAM Cards",
+      k_ram = "RAM",
     },
     labels = {
       -- Stamps
@@ -15583,8 +15603,9 @@ return {
       artistry_cards = "Artistry",
       periodic = "Periodic",
       paradox = "Paradox",
-      maths = "Math",
+      algebraic = "Algebraic",
       illusion = "Illusion",
+	  ram = "RAM",
 
       -- Editions
       abn_chthonian = "Chthonian",
