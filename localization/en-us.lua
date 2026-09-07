@@ -15125,8 +15125,8 @@ return {
         text = {
           "{C:attention}Playing cards{} in shop",
           "are guaranteed to spawn",
-          "with either an {C:dark_edition}Edition{} and a {C:attention}Seal{}",
-          "or with an {C:dark_edition}Edition{} and an {C:attention}Enhancement{}"
+          "with either an {C:dark_edition}Edition{} and",
+          "{C:attention}Seal{} or {C:attention}Enhancement{}"
         }
       },
       v_abn_forget_fossil = {
@@ -15424,11 +15424,7 @@ return {
       k_abn_crossmod_fortlatro_info = "Adds 9 new Jokers!",
       k_abn_crossmod_spectrallib = "Spectrallib",
       k_abn_crossmod_spectrallib_info = "Adds new Content related to Ascension Power!",
-      -- Mod badges for credits
-      k_abn_artist = "Artist",
-      k_abn_founder = "Founder",
-      k_abn_coder = "Coder",
-      k_abn_music = "Music",
+
       k_abn_rank_planet = "Rank Planet",
       b_abn_planet_ranks = "Planet Ranks",
       k_abn_limit_reached = "Max Level Reached!",
@@ -15478,7 +15474,6 @@ return {
       k_abn_plus_glyph = "+1 Glyph",
       k_plus_tag = "+1 Tag!",
       k_plus_periodic = "+1 Periodic",
-      k_plus_crimson = "+1 Crimson",
       k_abn_plus_solid_state = "+1 Solid State",
       k_abn_activated_ex = "Activated!",
       k_lexica_pack = "Lexica Pack",
@@ -15844,7 +15839,7 @@ return {
       },
 
       ["abn_triple_pair"] = { "3 pairs of cards with different ranks", },
-      ["abn_double_triple"] = { "2 pairs of 3 cards with the same rank.", },
+      ["abn_double_triple"] = { "2 three of a kind with different ranks", },
       ["abn_6oak"] = { "6 cards with the same rank", },
       ["abn_Flush Six"] = { "6 cards with the same rank and suit", },
 

@@ -170,7 +170,7 @@ ABN.contributors = {
   },
   {
     key = "credit_abn_okronix",
-    name = "0kronix",
+    name = "Okronix",
     role = "Artist/Coder",
     has_icon = true,
     colour = G.C.PURPLE,
