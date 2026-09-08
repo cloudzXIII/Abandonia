@@ -19,7 +19,8 @@
   "icon_width": 34,
   "dependencies": [
     "Steamodded (>=26.829.0)",
-    "Amulet | Cryptlib"
+    "Amulet | Cryptlib",
+	"Spectrallib",
   ],
   "conflicts": []
 }
