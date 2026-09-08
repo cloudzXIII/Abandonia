@@ -11478,6 +11478,62 @@ return {
           "trigger when held in hand"
         }
       },
+	  j_abn_spitting_imagine = {
+        name = "Spitting Imagine",
+        text = {
+          "Gains {C:mult}Mult{} or {C:chips}Chips{} whenever",
+          "you copy a card with an {C:mult}even",
+          "or {C:chips}odd{} rank, respectively",
+          "{C:inactive}(Currently: {C:mult}+#1# {C:inactive}Mult, {C:chips}+#2# {C:inactive}Chips)"
+        }
+      },
+	  j_abn_amateur_artist = {
+        name = "Amateur Artist",
+        text = {
+          "When any hand is played,",
+          "add a permanent copy of",
+          "the first scoring {C:attention}Kinship",
+          "{C:attention}Card{} and draw it to hand",
+          "If the scored hand contains",
+          "only {C:attention}Kinship Cards{}, and is",
+          "not {C:attention}High Card{}, an equal amount",
+          "of cards in your deck become",
+          "copies of the played cards"
+        }
+      },
+	  j_abn_eccentric_artist = {
+        name = "Eccentric Artist",
+        text = {
+          "Each scoring Kinship Card gives",
+          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult if it has",
+          "both a {C:inactive}Vanilla {C:attention}Suit{} and {C:attention}Edition,",
+          "or {C:chips}+#3#{} Chips and {C:mult}+#4#{} Mult if it",
+          "has both a {C:dark_edition}Modded {C:attention}Suit{} and {C:attention}Edition",
+          "{C:chips}+#5#{} Chips and {C:mult}+#6#{} Mult if your",
+          "full deck contains only Kinship Cards"
+        }
+      },
+	  j_abn_early_sketch = {
+        name = "Early Sketch",
+        text = {
+          "If your {C:attention}first hand{} contains only",
+          "scoring {C:dark_edition}Vintage {C:attention}Kinship Cards",
+          "and is not a {C:attention}High Card{}, it will",
+          "score as if it were {C:attention}#1#{} levels higher",
+          "Hands of only {C:dark_edition}Vintage {C:attention}Kinship Cards",
+          "cannot have their level reduced"
+        }
+      },
+	  j_abn_entitled_fool = {
+        name = "Entitled Fool",
+        text = {
+          "Gains {X:chips,C:white}X#1#{} Chips or {X:mult,C:white}X#2#{} Mult",
+          "each time you score the exact same",
+          "{C:chips}odd{} or {C:mult}even{} ranked {C:attention}Tile Card{},",
+          "respectively, more than once in a round",
+          "{C:inactive}(Currently {X:chips,C:white}X#3#{C:inactive} Chips, {X:mult,C:white}X#4#{C:inactive} Mult)"
+        }
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
@@ -15577,6 +15633,9 @@ return {
 	  
 	  b_ram_cards = "RAM Cards",
       k_ram = "RAM",
+    },
+	v_dictionary = {
+      k_abn_more_copies = "+#1# more copies!"
     },
     labels = {
       -- Stamps

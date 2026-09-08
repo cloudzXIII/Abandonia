@@ -1324,7 +1324,7 @@ SMODS.Enhancement({
     end
     if context.main_scoring and context.cardarea == G.play then
       return {
-        mult = card.ability.extra.xmult
+        xmult = card.ability.extra.xmult
       }
     end
   end,
@@ -1466,34 +1466,19 @@ SMODS.Enhancement({
     loc_vars = function(self, info_queue, card)
         return { vars = {} }
     end,
-    calculate = function(self, card, context)
-        if context.before and context.cardarea == G.play then
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.1,
-                func = function()
-                    local copy = copy_card(card)
-                    if not copy then return true end
-
-                    G.deck:emplace(copy)
-                    copy:add_to_deck()
-                    G.deck.config.card_limit = G.deck.config.card_limit + 1
-                    table.insert(G.playing_cards, copy)
-                    copy:start_materialize(nil, nil)
-
-                    return true
-                end
-            }))
-        end
-
-        if context.destroying_card and context.cardarea == G.play then
-            return { remove = true }
-        end
-    end,
     abn_artist_credits = {
         artist = "Gud",
     },
 })
+
+local old_draw_card = draw_card
+function draw_card(from, to, percent, dir, sort, card, delay, mute, stay_flipped, vol, discarded_only)
+	if from == G.play and to == G.discard and not card.debuff and SMODS.has_enhancement(card, "m_abn_tile") then
+		return old_draw_card(from, G.deck, percent, dir, sort, card, delay, mute, stay_flipped, vol, discarded_only)
+	else
+		return old_draw_card(from, to, percent, dir, sort, card, delay, mute, stay_flipped, vol, discarded_only)
+	end
+end
 
 SMODS.Enhancement({
   key = "papermache",
