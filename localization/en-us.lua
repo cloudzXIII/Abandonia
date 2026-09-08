@@ -1,23 +1,23 @@
 return {
   descriptions = {
-	
-	ram = {
+
+    ram = {
       c_abn_ram_00 = {
         name = "RAM 00",
         text = {
           "Create the last",
-		  "{C:attention}Modded consumable{} used",
+          "{C:attention}Modded consumable{} used",
         },
       },
-	  c_abn_ram_01 = {
+      c_abn_ram_01 = {
         name = "RAM 01",
         text = {
           "Swap current held {C:attention}vanilla consumables{}",
-		  "with random {C:attention}modded consumables{}",
+          "with random {C:attention}modded consumables{}",
         },
       },
     },
-	
+
     illusion = {
       c_abn_euclidean = {
         name = "Euclidean",
@@ -40,7 +40,7 @@ return {
           "to all cards in hand",
         },
       },
-	  
+
       c_abn_sword_box = {
         name = "Sword Box",
         text = {
@@ -51,25 +51,25 @@ return {
           },
         },
       },
-	  c_abn_illusionist = {
+      c_abn_illusionist = {
         name = "Illusionist",
         text = {
           "Add {C:tarot}Icon Stamp{} to {C:attention}#1#{} card in hand",
         },
       },
-	  c_abn_cotard = {
+      c_abn_cotard = {
         name = "Cotard",
         text = {
           "Add {C:purple}Psychomancy Stamp{} to {C:attention}#1#{} card in hand",
         },
       },
-	  c_abn_stupification = {
+      c_abn_stupification = {
         name = "Stupification",
         text = {
           "Add {C:tarot}Membership Stamp{} to {C:attention}#1#{} card in hand",
         },
       },
-	  c_abn_misdirection = {
+      c_abn_misdirection = {
         name = "Misdirection",
         text = {
           "Add {C:attention}Prehensile Stamp{} to {C:attention}#1#{} card in hand",
@@ -5132,15 +5132,15 @@ return {
       j_abn_vintage_joker = {
         name = "Vintage Joker",
         text = {
-		 {
-          "{C:attention}Level up{} the {C:attention}first played hand{}",
-		  "if it not a {C:attention}secret{} and is only composed of {C:attention}vanilla{} suits",
-		 },
-		 {
-          "If this Joker has {C:dark_edition}Vintage{} edition",
-		  "Every time a hand {C:attention}levels up{}",
-		  "{C:attention}level up{} another {C:attention}random{} hand",
-		 }
+          {
+            "{C:attention}Level up{} the {C:attention}first played hand{}",
+            "if it not a {C:attention}secret{} and is only composed of {C:attention}vanilla{} suits",
+          },
+          {
+            "If this Joker has {C:dark_edition}Vintage{} edition",
+            "Every time a hand {C:attention}levels up{}",
+            "{C:attention}level up{} another {C:attention}random{} hand",
+          }
         }
       },
       j_abn_egg_arrival = {
@@ -11464,7 +11464,7 @@ return {
           "can be {C:attention}saved{} from {C:attention}Booster packs"
         }
       },
-	  j_abn_balance_brandon = {
+      j_abn_balance_brandon = {
         name = "Balance Brandon",
         text = {
           "Converts {C:mult}+Mult{} effects into",
@@ -11474,7 +11474,7 @@ return {
           "trigger when held in hand"
         }
       },
-	  j_abn_unhinged_umar = {
+      j_abn_unhinged_umar = {
         name = "Unhinged Umar",
         text = {
           "Converts {C:chips}+Chips{} effects into",
@@ -11484,7 +11484,7 @@ return {
           "trigger when held in hand"
         }
       },
-	  j_abn_spitting_imagine = {
+      j_abn_spitting_imagine = {
         name = "Spitting Imagine",
         text = {
           "Gains {C:mult}Mult{} or {C:chips}Chips{} whenever",
@@ -11493,7 +11493,7 @@ return {
           "{C:inactive}(Currently: {C:mult}+#1# {C:inactive}Mult, {C:chips}+#2# {C:inactive}Chips)"
         }
       },
-	  j_abn_amateur_artist = {
+      j_abn_amateur_artist = {
         name = "Amateur Artist",
         text = {
           "When any hand is played,",
@@ -11507,7 +11507,7 @@ return {
           "copies of the played cards"
         }
       },
-	  j_abn_eccentric_artist = {
+      j_abn_eccentric_artist = {
         name = "Eccentric Artist",
         text = {
           "Each scoring Kinship Card gives",
@@ -11519,7 +11519,7 @@ return {
           "full deck contains only Kinship Cards"
         }
       },
-	  j_abn_early_sketch = {
+      j_abn_early_sketch = {
         name = "Early Sketch",
         text = {
           "If your {C:attention}first hand{} contains only",
@@ -11530,7 +11530,7 @@ return {
           "cannot have their level reduced"
         }
       },
-	  j_abn_entitled_fool = {
+      j_abn_entitled_fool = {
         name = "Entitled Fool",
         text = {
           "Gains {X:chips,C:white}X#1#{} Chips or {X:mult,C:white}X#2#{} Mult",
@@ -11540,13 +11540,13 @@ return {
           "{C:inactive}(Currently {X:chips,C:white}X#3#{C:inactive} Chips, {X:mult,C:white}X#4#{C:inactive} Mult)"
         }
       },
-	  j_abn_dreamtime_sphinx = {
+      j_abn_dreamtime_sphinx = {
         name = "Dreamtime Sphinx",
         text = {
           "This Joker gains {C:chips}+#2#{} Chips",
           "when a {C:attention}Fossil Card{} is scored",
-		  "If that {C:attention}Fossil Card{} is {C:mult}destroyed{} gain {C:mult}Mult{} equal to its {C:attention}rank{}",
-		  "{C:attention}Fossil Cards{} with {C:dark_edition}Opaque{} {C:attention}level up{} their {C:planet}planet{} {C:attention}rank{} upon scoring",
+          "If that {C:attention}Fossil Card{} is {C:mult}destroyed{} gain {C:mult}Mult{} equal to its {C:attention}rank{}",
+          "{C:attention}Fossil Cards{} with {C:dark_edition}Opaque{} {C:attention}level up{} their {C:planet}planet{} {C:attention}rank{} upon scoring",
           "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips {C:mult}+#3#{} {C:inactive}Mult{})"
         }
       },
@@ -11860,44 +11860,44 @@ return {
           "gain {C:attention}+1{} handsize",
         }
       },
-	  abn_jester_stamp = {
+      abn_jester_stamp = {
         name = "Jester Stamp",
         text = {
           "If this Card has a unique {C:dark_edition}Edition,{} {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
           "gain {C:attention}+1{} Joker slot when it is {C:mult}Destroyed{} {C:inactive}(max:5){}",
         }
       },
-	  abn_icon_stamp = {
+      abn_icon_stamp = {
         name = "Icon Stamp",
         text = {
           "If this Card has a unique {C:dark_edition}Edition,{} {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
           "Gains {X:chips,C:white}X1{} Chips for each {C:attention}Seal{}/{C:dark_edition}Edition{}/{C:dark_edition}Enhancement{}",
-		  "If the round is won in {C:attention}1{} hand {C:mult}Destroy{} this card",
-		  "{C:inactive}(Currently {X:chips,C:white}X#1#{} {C:inactive}Chips)",
+          "If the round is won in {C:attention}1{} hand {C:mult}Destroy{} this card",
+          "{C:inactive}(Currently {X:chips,C:white}X#1#{} {C:inactive}Chips)",
         }
       },
-	  abn_psychomancy_stamp = {
+      abn_psychomancy_stamp = {
         name = "Psychomancy Stamp",
         text = {
           "Upon {C:mult}destroying{} this card {C:attention}Level up{} the {C:attention}most played hand{}",
-		  "for each {C:dark_edition}Edition,{} {C:dark_edition}Enhancement,{} and {C:attention}Seal{} on this card",
+          "for each {C:dark_edition}Edition,{} {C:dark_edition}Enhancement,{} and {C:attention}Seal{} on this card",
         }
       },
-	  abn_membership_stamp = {
+      abn_membership_stamp = {
         name = "Membership Stamp",
         text = {
           "If this Card has a unique {C:dark_edition}Edition, {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
-		  "it gains {C:gold}+#1#{} Ascension Power when scoring",
-		  "{C:inactive}(Currently{} {C:gold}#2#{} {C:inactive}Ascension Power)",
+          "it gains {C:gold}+#1#{} Ascension Power when scoring",
+          "{C:inactive}(Currently{} {C:gold}#2#{} {C:inactive}Ascension Power)",
         }
       },
-	  abn_prehensile_stamp = {
+      abn_prehensile_stamp = {
         name = "Prehensile Stamp",
         text = {
           "If this card has unique {C:dark_edition}Edition,{} {C:attention}Seal, and {C:dark_edition}Enhancement{}",
-		  "It {C:attention}always scores{} and {C:attention}ignores card selection limit{}",
+          "It {C:attention}always scores{} and {C:attention}ignores card selection limit{}",
         }
-	  },
+      },
       abn_bio_blueprint_incompatible_norank = {
         name = "Incompatible",
         text = {
@@ -12618,7 +12618,7 @@ return {
           "({V:1}lvl.#3#{}) {B:2,C:white} #1# {} {C:red,}X{} {B:3,C:white} #2# {}"
         },
       },
-	  p_abn_illusion_normal = {
+      p_abn_illusion_normal = {
         name = 'Illusion Pack',
         text = {
           'Choose {C:attention}#1#{} of up to',
@@ -15433,6 +15433,14 @@ return {
     challenge_names = {
     },
     dictionary = {
+      k_abn_lead_dev = "Lead Dev",
+      k_abn_coder = "Coder",
+      k_abn_artist = "Artist",
+      k_abn_founder = "Founder",
+      k_abn_music = "Music",
+      k_abn_hybrid_art_code = "Artist/Coder",
+
+
       abn_ui_stamps = "Stamps",
       abn_toggle_to_ruinous = "Show Ruinous",
       abn_toggle_to_consumables = "Show Consumables",
@@ -15646,21 +15654,21 @@ return {
 
       b_illusion_cards = "Illusion Cards",
       k_illusion = "Illusion",
-	  
-	  b_ram_cards = "RAM Cards",
+
+      b_ram_cards = "RAM Cards",
       k_ram = "RAM",
     },
-	v_dictionary = {
+    v_dictionary = {
       k_abn_more_copies = "+#1# more copies!"
     },
     labels = {
       -- Stamps
       abn_empty_stamp = "Empty Stamp",
-	  abn_jester_stamp = "Jester Stamp",
-	  abn_icon_stamp = "Icon Stamp",
-	  abn_psychomancy_stamp = "Psychomancy Stamp",
-	  abn_membership_stamp = "Membership Stamp",
-	  abn_prehensile_stamp = "Prehensile Stamp",
+      abn_jester_stamp = "Jester Stamp",
+      abn_icon_stamp = "Icon Stamp",
+      abn_psychomancy_stamp = "Psychomancy Stamp",
+      abn_membership_stamp = "Membership Stamp",
+      abn_prehensile_stamp = "Prehensile Stamp",
       -- Consumable Types
       weather_report = "Weather Report",
       calamity_cards = "Calamity",
@@ -15680,7 +15688,7 @@ return {
       paradox = "Paradox",
       algebraic = "Algebraic",
       illusion = "Illusion",
-	  ram = "RAM",
+      ram = "RAM",
 
       -- Editions
       abn_chthonian = "Chthonian",
