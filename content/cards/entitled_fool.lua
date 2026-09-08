@@ -57,7 +57,7 @@ SMODS.Joker{
 		end
 	end,
 	abn_artist_credits = {
-		artist = "Tisisrealnow"
+		artist = "Omicra"
 	},
 	in_pool = function(self, args)
 		for _, card in ipairs(G.playing_cards or {}) do
