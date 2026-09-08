@@ -5132,9 +5132,15 @@ return {
       j_abn_vintage_joker = {
         name = "Vintage Joker",
         text = {
-          "This Joker gains {C:chips}+#2#{} Chips",
-          "when a {C:attention}Fossil Card{} is scored",
-          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
+		 {
+          "{C:attention}Level up{} the {C:attention}first played hand{}",
+		  "if it not a {C:attention}secret{} and is only composed of {C:attention}vanilla{} suits",
+		 },
+		 {
+          "If this Joker has {C:dark_edition}Vintage{} edition",
+		  "Every time a hand {C:attention}levels up{}",
+		  "{C:attention}level up{} another {C:attention}random{} hand",
+		 }
         }
       },
       j_abn_egg_arrival = {
@@ -11532,6 +11538,16 @@ return {
           "{C:chips}odd{} or {C:mult}even{} ranked {C:attention}Tile Card{},",
           "respectively, more than once in a round",
           "{C:inactive}(Currently {X:chips,C:white}X#3#{C:inactive} Chips, {X:mult,C:white}X#4#{C:inactive} Mult)"
+        }
+      },
+	  j_abn_dreamtime_sphinx = {
+        name = "Dreamtime Sphinx",
+        text = {
+          "This Joker gains {C:chips}+#2#{} Chips",
+          "when a {C:attention}Fossil Card{} is scored",
+		  "If that {C:attention}Fossil Card{} is {C:mult}destroyed{} gain {C:mult}Mult{} equal to its {C:attention}rank{}",
+		  "{C:attention}Fossil Cards{} with {C:dark_edition}Opaque{} {C:attention}level up{} their {C:planet}planet{} {C:attention}rank{} upon scoring",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips {C:mult}+#3#{} {C:inactive}Mult{})"
         }
       },
     },
