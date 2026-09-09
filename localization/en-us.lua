@@ -11529,38 +11529,54 @@ return {
       j_abn_amateur_artist = {
         name = "Amateur Artist",
         text = {
-          "When any hand is played,",
-          "add a permanent copy of",
-          "the first scoring {C:attention}Kinship",
-          "{C:attention}Card{} and draw it to hand",
-          "If the scored hand contains",
-          "only {C:attention}Kinship Cards{}, and is",
-          "not {C:attention}High Card{}, an equal amount",
-          "of cards in your deck become",
-          "copies of the played cards"
+          {
+            "When a hand is played,",
+            "add a permanent copy of {C:attention}first{}",
+            "scoring {C:attention}Kinship Card{} to deck",
+            "and draw it to {C:attention}hand",
+          },
+          {
+            "If scoring hand contains",
+            "only {C:attention}Kinship Cards{}, convert",
+            "that many cards in your deck",
+            "into {C:attention}copies{} of scored cards",
+            "{C:attention,s:0.8}High Card{s:0.8} excluded"
+          }
         }
       },
       j_abn_eccentric_artist = {
         name = "Eccentric Artist",
         text = {
-          "Each scoring Kinship Card gives",
-          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult if it has",
-          "both a {C:inactive}Vanilla {C:attention}Suit{} and {C:attention}Edition,",
-          "or {C:chips}+#3#{} Chips and {C:mult}+#4#{} Mult if it",
-          "has both a {C:dark_edition}Modded {C:attention}Suit{} and {C:attention}Edition",
-          "{C:chips}+#5#{} Chips and {C:mult}+#6#{} Mult if your",
-          "full deck contains only Kinship Cards"
+          {
+            "Scoring {C:attention}Kinship{} cards with both",
+            "a {C:inactive}Vanilla {C:attention}suit{} and {C:attention}Edition{}",
+            "give {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+          },
+          {
+            "Scoring {C:attention}Kinship{} cards with both",
+            "a {C:dark_edition}Modded {C:attention}suit{} and {C:attention}Edition{}",
+            "give {C:chips}+#3#{} Chips and {C:mult}+#4#{} Mult",
+          },
+          {
+            "{C:chips}+#5#{} Chips and {C:mult}+#6#{} Mult if your",
+            "{C:attention}full deck{} contains only {C:attention}Kinship{} Cards"
+          }
         }
       },
       j_abn_early_sketch = {
         name = "Early Sketch",
         text = {
-          "If your {C:attention}first hand{} contains only",
-          "scoring {C:dark_edition}Vintage {C:attention}Kinship Cards",
-          "and is not a {C:attention}High Card{}, it will",
-          "score as if it were {C:attention}#1#{} levels higher",
-          "Hands of only {C:dark_edition}Vintage {C:attention}Kinship Cards",
-          "cannot have their level reduced"
+          {
+            "If {C:attention}first hand{} of round has",
+            "only {C:dark_edition}Vintage {C:attention}Kinship Cards{},",
+            "hand will score as if it",
+            "were {C:attention}#1#{} levels higher",
+          },
+          {
+            "Hands containing only",
+            "{C:dark_edition}Vintage{} {C:attention}Kinship Cards{}",
+            "cannot {C:red}level down{}"
+          }
         }
       },
       j_abn_entitled_fool = {
