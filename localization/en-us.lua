@@ -11441,6 +11441,27 @@ return {
           "can be {C:attention}saved{} from {C:attention}Booster packs"
         }
       },
+      j_abn_the_feast = {
+        name = "The Feast",
+        text = {
+          {
+          "Upon purchasing a {C:attention}Food{} Joker,",
+          "create a {C:dark_edition}Negative{} copy of it",
+          },
+          {
+          "When a {C:attention}Food{} Joker is {C:gold}sold{},",
+          "gain {X:red,C:white}X#1#{} Mult per round that",
+          "{C:attention}Food{} Joker has been held",
+          },
+          {
+          "If it is destroyed instead,",
+          "gain {X:blue,C:white}X#2#{} Chips per round that",
+          "{C:attention}Food{} Joker has been held",
+          "{C:inactive}(Currently {X:red,C:white}X#3#{C:inactive} Mult, {X:blue,C:white}X#4#{C:inactive} Chips)",
+          "{C:inactive,s:0.8}(Rounds are tracked from owning this joker)"
+          },
+        }
+      },
 	  j_abn_balance_brandon = {
         name = "Balance Brandon",
         text = {
