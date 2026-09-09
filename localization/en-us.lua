@@ -15129,6 +15129,29 @@ return {
           "{X:mult,C:white}X#2#{} Mult if unscoring on an {C:attention}Even{} card",
         }
       },
+	  m_abn_honey = {
+        name = "Honey",
+        text = {
+          "This card is {C:attention}always{} drawn to hand",
+		  "If this card is in {C:attention}hand{} during scoring {C:attention}play{} it",
+		  "{C:green}#1# in #2#{} chance to turn other scoring cards into {C:attention}Honey{} cards",
+        }
+      },
+	  m_abn_bubble = {
+        name = "Bubble",
+        text = {
+          "Gives {C:chips}+#1#{} Chips per {C:attention}different{} scoring {C:dark_edition}enhancement{}",
+		  "and {C:mult}+#2#{} Mult per {C:attention}different{} scoring {C:dark_edition}edition{}",
+		  "If this card is {C:mult}destroyed{} all scoring cards gain {C:chips}+#3#{} Chips",
+        }
+      },
+	  m_abn_bramble = {
+        name = "Bramble",
+        text = {
+          "If this is a {C:attention}vanillia{} suit it {C:attention}Always scores{}",
+		  "If this is on a {C:attention}modded{} suit increase hand level by {C:attention}#1#{}",
+        }
+      },
     },
     Voucher = {
       v_abn_overstock_maximum = {
