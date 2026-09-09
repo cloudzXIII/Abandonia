@@ -11607,6 +11607,37 @@ return {
           "{C:inactive}(Will give {C:mult}+#1#{C:inactive} Mult)"
         }
       },
+      j_abn_wicked_witch = {
+        name = "Wicked Witch",
+        text={
+          "Gains {X:mult,C:white}X#1#{} {C:mult}Mult{} when a Modded {C:tarot}Tarot{} is used",
+          "{C:red}Destroyed{} If a {C:abn_weather_report}Weather{} card is used",
+          "{C:inactive}[Currently {X:mult,C:white}X#2#{C:inactive} Mult]",
+        },
+      },
+      j_abn_apprentice_wizard = {
+        name = "Apprentice Wizard",
+        text={
+          "Gains {X:mult,C:white}X#1#{} {C:mult}Mult{} when a Modded {C:spectral}Spectral{} is used",
+          "Resets If you use a Vanilla {C:spectral}Spectral{}",
+          "{C:inactive}[Currently {X:mult,C:white}X#2#{C:inactive} Mult]"
+        },
+      },
+      j_abn_the_contrarian = {
+        name = "The Contrarian",
+        text={
+          "{X:mult,C:white}X#1#{} {C:mult}Mult{} per scoring debuffed card",
+        },
+      },
+      j_abn_genetically_modified_food = {
+        name = "Genetically Modified Food",
+        text={
+          "When a Joker is bought or sold",
+          "Gains {C:chips}Chips{} equal to the price of Modded Food {C:attention}Jokers",
+          "When a Joker is bought or sold",
+          "Gains {C:mult}Mult{} equal to the price of Vanilla {C:attention}Jokers",
+        },
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
