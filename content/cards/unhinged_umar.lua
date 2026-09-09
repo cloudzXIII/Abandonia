@@ -29,7 +29,7 @@ local chip_map = {
 
 local old_calc = SMODS.calculate_effect
 function SMODS.calculate_effect(effect, scored_card, from_edition, pre_jokers)
-	local brandons = SMODS.find_card("j_abn_balance_brandon")
+	local brandons = SMODS.find_card("j_abn_unhinged_umar")
 	if #brandons > 0 then
 		local rate = brandons[1].ability.extra.rate
 		for chips, xchips in pairs(chip_map) do

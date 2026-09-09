@@ -1,14 +1,14 @@
 loc_colour()
-G.C.MATHS = HEX("273f45")
-G.C.MATHS_SECONDARY = HEX("273f45")
-G.ARGS.LOC_COLOURS["abn_Maths"] = G.C.MATHS
+G.C.ALGEBRAIC = HEX("273f45")
+G.C.ALGEBRAIC_SECONDARY = HEX("273f45")
+G.ARGS.LOC_COLOURS["abn_Algebraic"] = G.C.ALGEBRAIC
 
 SMODS.ConsumableType {
-  key = "maths",
+  key = "algebraic",
   collection_rows = { 5, 5 },
   shop_rate = 0.0,
-  primary_colour = G.C.MATHS,
-  secondary_colour = G.C.MATHS_SECONDARY,
+  primary_colour = G.C.ALGEBRAIC,
+  secondary_colour = G.C.ALGEBRAIC_SECONDARY,
   text_colour = HEX("f1ba5b"),
 }
 
@@ -17,12 +17,12 @@ local function abn_activate_math(self, card)
   SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.GREEN, sound = 'tarot1', }, card)
   SMODS.destroy_cards(card)
   SMODS.calculate_context({ abn_math_activated = true })
-  G.GAME.abn_maths_activated = (G.GAME.abn_maths_activated or 0) + 1
+  G.GAME.abn_algebraic_activated = (G.GAME.abn_algebraic_activated or 0) + 1
 end
 
 SMODS.Consumable {
   key = "euler",
-  set = 'maths',
+  set = 'algebraic',
   cost = 4,
   atlas = "abn_AbandoniaMath",
   pos = { x = 1, y = 3 },
@@ -59,7 +59,7 @@ SMODS.Consumable {
 
 SMODS.Consumable {
   key = "golden",
-  set = 'maths',
+  set = 'algebraic',
   cost = 4,
   atlas = "abn_AbandoniaMath",
   pos = { x = 2, y = 3 },
@@ -96,7 +96,7 @@ SMODS.Consumable {
 
 SMODS.Consumable {
   key = "pi",
-  set = 'maths',
+  set = 'algebraic',
   cost = 4,
   atlas = "abn_AbandoniaMath",
   pos = { x = 3, y = 3 },
@@ -131,7 +131,7 @@ SMODS.Consumable {
 
 SMODS.Consumable {
   key = "number",
-  set = 'maths',
+  set = 'algebraic',
   cost = 4,
   atlas = "abn_AbandoniaMath",
   pos = { x = 4, y = 3 },

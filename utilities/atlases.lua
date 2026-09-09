@@ -361,6 +361,7 @@ SMODS.Atlas({
   py = 95,
 })
 
+
 SMODS.Atlas({
   key = "AbandoniaCrossmod",
   path = "jokers/crossmod.png",
@@ -414,6 +415,13 @@ SMODS.Atlas({
 SMODS.Atlas({
   key = "AbandoniaIllusions",
   path = "Illusions.png",
+  px = 71,
+  py = 95,
+})
+
+SMODS.Atlas({
+  key = "AbandoniaRam",
+  path = "RAM.png",
   px = 71,
   py = 95,
 })

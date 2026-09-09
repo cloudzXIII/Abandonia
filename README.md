@@ -7,7 +7,7 @@ A Balatro mod founded by Bunnet focused on expanding the base game with a bunch 
 # Additions
 
 As of 0.1.1-DEV-4b, Abandonia currently adds
-* 630+ Jokers
+* 680+ Jokers
 * 27 Decks
 * 21 Vouchers
 * 18 new Consumable Types
@@ -26,6 +26,7 @@ As of 0.1.1-DEV-4b, Abandonia currently adds
 
 # Installation
 - Requires [Steamodded v26.829.0+](https://github.com/Steamodded/smods/releases)
+- Requires [Spectrallib](https://github.com/SpectralPack/Spectrallib)
 - Requires [Amulet 3.5.4+](https://github.com/frostice482/amulet)
 - Requires [Lovely 0.9.0+](https://github.com/ethangreen-dev/lovely-injector)
 

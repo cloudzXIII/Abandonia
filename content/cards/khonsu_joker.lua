@@ -19,9 +19,9 @@ SMODS.Joker{
 	end,
 	calculate = function(self, joker, context)
 		if context.blueprint then return end
-        if context.first_hand_drawn then
-            juice_card_until(joker, function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end, true)
-        elseif context.before and G.GAME.current_round.hands_played == 0 and context.scoring_name == "Pair" then
+		if context.first_hand_drawn then
+			juice_card_until(joker, function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end, true)
+		elseif context.before and G.GAME.current_round.hands_played == 0 and context.scoring_name == "Pair" then
 			local any, light, dark, wilds = false, 0, 0, 0
 			for k, card in ipairs(context.scoring_hand) do
 				if not card.debuff then
