@@ -673,51 +673,51 @@ ABN.enh_stickers_list = {
 -- please extend so that we can use
 ABN.maps_enhancement_to_sticker = {
   -- Vanilla
-  ["m_bonus"]              = { mod = "Vanilla",    sticker = "abn_stk_bonus" },
-  ["m_mult"]               = { mod = "Vanilla",    sticker = "abn_stk_mult" },
-  ["m_wild"]               = { mod = "Vanilla",    sticker = "abn_stk_wild" },
-  ["m_glass"]              = { mod = "Vanilla",    sticker = "abn_stk_glass" },
-  ["m_steel"]              = { mod = "Vanilla",    sticker = "abn_stk_steel" },
-  ["m_stone"]              = { mod = "Vanilla",    sticker = "abn_stk_stone" },
-  ["m_gold"]               = { mod = "Vanilla",    sticker = "abn_stk_gold" },
-  ["m_lucky"]              = { mod = "Vanilla",    sticker = "abn_stk_lucky" },
+  ["m_bonus"] = { mod = "Vanilla", sticker = "abn_stk_bonus" },
+  ["m_mult"] = { mod = "Vanilla", sticker = "abn_stk_mult" },
+  ["m_wild"] = { mod = "Vanilla", sticker = "abn_stk_wild" },
+  ["m_glass"] = { mod = "Vanilla", sticker = "abn_stk_glass" },
+  ["m_steel"] = { mod = "Vanilla", sticker = "abn_stk_steel" },
+  ["m_stone"] = { mod = "Vanilla", sticker = "abn_stk_stone" },
+  ["m_gold"] = { mod = "Vanilla", sticker = "abn_stk_gold" },
+  ["m_lucky"] = { mod = "Vanilla", sticker = "abn_stk_lucky" },
 
   -- Abandonia
-  ["m_abn_wallpaper"]      = { mod = "Abandonia",  sticker = "abn_stk_wallpaper" },
-  ["m_abn_reinforcement"]  = { mod = "Abandonia",  sticker = "abn_stk_reinforcement" },
-  ["m_abn_kinship"]        = { mod = "Abandonia",  sticker = "abn_stk_kinship" },
-  ["m_abn_zen"]            = { mod = "Abandonia",  sticker = "abn_stk_zen" },
-  ["m_abn_ocean"]          = { mod = "Abandonia",  sticker = "abn_stk_ocean" },
-  ["m_abn_mountain"]       = { mod = "Abandonia",  sticker = "abn_stk_mountain" },
-  ["m_abn_teatag"]         = { mod = "Abandonia",  sticker = "abn_stk_teatag" },
-  ["m_abn_teastain"]       = { mod = "Abandonia",  sticker = "abn_stk_teastain" },
-  ["m_abn_polkadot"]       = { mod = "Abandonia",  sticker = "abn_stk_polkadot" },
-  ["m_abn_petroleum"]      = { mod = "Abandonia",  sticker = "abn_stk_petroleum" },
-  ["m_abn_oilfire"]        = { mod = "Abandonia",  sticker = "abn_stk_oilfire" },
-  ["m_abn_fossil"]         = { mod = "Abandonia",  sticker = "abn_stk_fossil" },
-  ["m_abn_mercurial"]      = { mod = "Abandonia",  sticker = "abn_stk_mercurial" },
-  ["m_abn_hot_iron"]       = { mod = "Abandonia",  sticker = "abn_stk_hot_iron" },
-  ["m_abn_infra"]          = { mod = "Abandonia",  sticker = "abn_stk_infra" },
-  ["m_abn_hazard"]         = { mod = "Abandonia",  sticker = "abn_stk_hazard" },
-  ["m_abn_contagion_seal"]= { mod = "Abandonia",  sticker = "abn_stk_contagion_seal" },
-  ["m_abn_contagion_bonus"]= { mod = "Abandonia",  sticker = "abn_stk_contagion_bonus" },
-  ["m_abn_contagion_mult"] = { mod = "Abandonia",  sticker = "abn_stk_contagion_mult" },
-  ["m_abn_monitor"]        = { mod = "Abandonia",  sticker = "abn_stk_monitor" },
-  ["m_abn_monitor_spades"] = { mod = "Abandonia",  sticker = "abn_stk_monitor_spades" },
-  ["m_abn_monitor_clubs"]  = { mod = "Abandonia",  sticker = "abn_stk_monitor_clubs" },
-  ["m_abn_monitor_diamonds"]= { mod = "Abandonia", sticker = "abn_stk_monitor_diamonds" },
-  ["m_abn_monitor_hearts"] = { mod = "Abandonia",  sticker = "abn_stk_monitor_hearts" },
-  ["m_abn_cotton"]         = { mod = "Abandonia",  sticker = "abn_stk_cotton" },
-  ["m_abn_sew"]            = { mod = "Abandonia",  sticker = "abn_stk_sew" },
-  ["m_abn_darkner"]        = { mod = "Abandonia",  sticker = "abn_stk_darkner" },
-  ["m_abn_lightner"]       = { mod = "Abandonia",  sticker = "abn_stk_lightner" },
-  ["m_abn_kintsugi"]       = { mod = "Abandonia",  sticker = "abn_stk_kintsugi" },
-  ["m_abn_first_aid"]      = { mod = "Abandonia",  sticker = "abn_stk_first_aid" },
-  ["m_abn_plank"]          = { mod = "Abandonia",  sticker = "abn_stk_plank" },
-  ["m_abn_flux"]           = { mod = "Abandonia",  sticker = "abn_stk_flux" },
-  ["m_abn_discontinued"]   = { mod = "Abandonia",  sticker = "abn_stk_discontinued" },
-  ["m_abn_tile"]           = { mod = "Abandonia",  sticker = "abn_stk_tile" },
-  ["m_abn_papermache"]     = { mod = "Abandonia",  sticker = "abn_stk_papermache" },
+  ["m_abn_wallpaper"] = { mod = "Abandonia", sticker = "abn_stk_wallpaper" },
+  ["m_abn_reinforcement"] = { mod = "Abandonia", sticker = "abn_stk_reinforcement" },
+  ["m_abn_kinship"] = { mod = "Abandonia", sticker = "abn_stk_kinship" },
+  ["m_abn_zen"] = { mod = "Abandonia", sticker = "abn_stk_zen" },
+  ["m_abn_ocean"] = { mod = "Abandonia", sticker = "abn_stk_ocean" },
+  ["m_abn_mountain"] = { mod = "Abandonia", sticker = "abn_stk_mountain" },
+  ["m_abn_teatag"] = { mod = "Abandonia", sticker = "abn_stk_teatag" },
+  ["m_abn_teastain"] = { mod = "Abandonia", sticker = "abn_stk_teastain" },
+  ["m_abn_polkadot"] = { mod = "Abandonia", sticker = "abn_stk_polkadot" },
+  ["m_abn_petroleum"] = { mod = "Abandonia", sticker = "abn_stk_petroleum" },
+  ["m_abn_oilfire"] = { mod = "Abandonia", sticker = "abn_stk_oilfire" },
+  ["m_abn_fossil"] = { mod = "Abandonia", sticker = "abn_stk_fossil" },
+  ["m_abn_mercurial"] = { mod = "Abandonia", sticker = "abn_stk_mercurial" },
+  ["m_abn_hot_iron"] = { mod = "Abandonia", sticker = "abn_stk_hot_iron" },
+  ["m_abn_infra"] = { mod = "Abandonia", sticker = "abn_stk_infra" },
+  ["m_abn_hazard"] = { mod = "Abandonia", sticker = "abn_stk_hazard" },
+  ["m_abn_contagion_seal"] = { mod = "Abandonia", sticker = "abn_stk_contagion_seal" },
+  ["m_abn_contagion_bonus"] = { mod = "Abandonia", sticker = "abn_stk_contagion_bonus" },
+  ["m_abn_contagion_mult"] = { mod = "Abandonia", sticker = "abn_stk_contagion_mult" },
+  ["m_abn_monitor"] = { mod = "Abandonia", sticker = "abn_stk_monitor" },
+  ["m_abn_monitor_spades"] = { mod = "Abandonia", sticker = "abn_stk_monitor_spades" },
+  ["m_abn_monitor_clubs"] = { mod = "Abandonia", sticker = "abn_stk_monitor_clubs" },
+  ["m_abn_monitor_diamonds"] = { mod = "Abandonia", sticker = "abn_stk_monitor_diamonds" },
+  ["m_abn_monitor_hearts"] = { mod = "Abandonia", sticker = "abn_stk_monitor_hearts" },
+  ["m_abn_cotton"] = { mod = "Abandonia", sticker = "abn_stk_cotton" },
+  ["m_abn_sew"] = { mod = "Abandonia", sticker = "abn_stk_sew" },
+  ["m_abn_darkner"] = { mod = "Abandonia", sticker = "abn_stk_darkner" },
+  ["m_abn_lightner"] = { mod = "Abandonia", sticker = "abn_stk_lightner" },
+  ["m_abn_kintsugi"] = { mod = "Abandonia", sticker = "abn_stk_kintsugi" },
+  ["m_abn_first_aid"] = { mod = "Abandonia", sticker = "abn_stk_first_aid" },
+  ["m_abn_plank"] = { mod = "Abandonia", sticker = "abn_stk_plank" },
+  ["m_abn_flux"] = { mod = "Abandonia", sticker = "abn_stk_flux" },
+  ["m_abn_discontinued"] = { mod = "Abandonia", sticker = "abn_stk_discontinued" },
+  ["m_abn_tile"] = { mod = "Abandonia", sticker = "abn_stk_tile" },
+  ["m_abn_papermache"] = { mod = "Abandonia", sticker = "abn_stk_papermache" },
 }
 
 --- Lookup between enhs and equivalent stickers, reversible :)
@@ -761,7 +761,7 @@ end
 --- Returns true if joker has sticker
 --- @param card table e.g. joker you want to check
 --- @param key table specific sticker
---- @return boolean 
+--- @return boolean
 function ABN.has_sticker(card, key)
   if card.ability and card.ability[key] then return true end
   return false
@@ -835,4 +835,11 @@ ABN.create_random_tag = function(card, seed)
       return true
     end)
   }))
+end
+
+ABN.is_modded_rank = function(card)
+  if SMODS.has_no_rank(card) then return false end
+  if SMODS.Ranks[card.base.value] and SMODS.Ranks[card.base.value].mod and SMODS.Ranks[card.base.value].mod.id then
+    return true
+  end
 end

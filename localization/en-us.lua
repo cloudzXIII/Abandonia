@@ -11653,6 +11653,21 @@ return {
           "equal to the {C:money}price{} of {C:inactive}Vanilla{} {C:attention}Jokers",
         },
       },
+      j_abn_demon_sphere = {
+        name = "Demon Sphere",
+        text = {
+          {
+            "Played cards with {C:dark_edition}Modded{}",
+            "{C:attention}ranks{} give {C:gold}+#1#{} Asc.",
+            "Power when scored",
+          },
+          {
+            "Played cards have a",
+            "{C:green}#2# in #3#{} chance to be",
+            "{C:red}destroyed{} after scoring"
+          }
+        }
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
