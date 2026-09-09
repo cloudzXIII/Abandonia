@@ -11550,6 +11550,14 @@ return {
           "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips {C:mult}+#3#{} {C:inactive}Mult{})"
         }
       },
+      j_abn_losers_dice = {
+        name = "Loser's Dice",
+        text = {
+          "Played and scored {C:attention}2s{} give {C:mult}+#2#{} Mult",
+          "for each owned {C:common}Common{} Joker",
+          "{C:inactive}(Will give {C:mult}+#1#{C:inactive} Mult)"
+        }
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
