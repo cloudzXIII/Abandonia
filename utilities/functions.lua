@@ -844,3 +844,16 @@ ABN.is_modded_rank = function(card)
     return true
   end
 end
+
+ABN.is_vanilla_enh = function(enh_key)
+  local vanilla = false
+  local data = enh_key and ABN.get_enh_sticker(enh_key)
+
+  if data and data.mod == "Vanilla" then
+    vanilla = data
+  end
+
+  if vanilla then
+    return true
+  end
+end

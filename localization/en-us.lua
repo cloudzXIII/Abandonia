@@ -11873,6 +11873,17 @@ return {
           "{C:inactive}(Currently {C:gold}+#1# {C:inactive}Ascension Power)"
         }
       },
+      j_abn_foreign_advert = {
+        name = "Foreign Advertisement",
+        text = {
+          "When a hand is played, this",
+          "Joker gains {C:white,X:mult}X#2#{} Mult per",
+          "{C:inactive}Vanilla{} {C:attention}enhancement{}, {C:white,X:chips}X#4#{}",
+          "Chips per {C:dark_edition}Modded{} {C:attention}enhancement{}",
+          "in scoring hand",
+          "{C:inactive}(Currently {C:white,X:mult}X#1#{C:inactive} Mult, {C:white,X:chips}X#3#{C:inactive} Chips)"
+        }
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
