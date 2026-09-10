@@ -254,6 +254,12 @@ SMODS.Atlas({
   px = 71,
   py = 95,
 })
+SMODS.Atlas({
+  key = "AbandoniaAtomic",
+  path = "atomic.png",
+  px = 71,
+  py = 95,
+})
 
 SMODS.Atlas({
   key = "AbandoniaWeatherReport",
@@ -582,6 +588,13 @@ SMODS.Atlas({
 SMODS.Atlas({
   key = "ABNJokerSheet24",
   path = "jokers/joker24.png",
+  px = 71,
+  py = 95,
+})
+
+SMODS.Atlas({
+  key = "ABNJokerSheet25",
+  path = "jokers/joker25.png",
   px = 71,
   py = 95,
 })
