@@ -25,7 +25,7 @@ SMODS.Joker {
           card.ability.extra.discard_limit
     end
     -- change values
-    G.hand:change_size(((card.ability.extra.x_size) - 1) * card.ability.immutable.size_store)     -- hand size increase
+    G.hand:change_size(((card.ability.extra.x_size) - 1) * card.ability.immutable.size_store) -- hand size increase
     SMODS.change_discard_limit(-1 * card.ability.immutable.discard_limit_store)
   end,
   remove_from_deck = function(self, card, from_debuff)
@@ -71,10 +71,10 @@ SMODS.Joker {
   loc_vars = function(self, info_queue, card)
     return { vars = { "the" } }
   end,
-  calculate = function(self, card, context)   --attempt to work around weird bugs with prior method that no longer are relevant (probably)
+  calculate = function(self, card, context) --attempt to work around weird bugs with prior method that no longer are relevant (probably)
     if context.joker_main or context.forcetrigger then
       local text = context.scoring_name
-      if next(SMODS.find_card("j_neonmod_flowery")) then       -- Literally just for compatibility with my own mod because I can
+      if next(SMODS.find_card("j_neonmod_flowery")) then -- Literally just for compatibility with my own mod because I can
         return {
           chips = math.max(G.GAME.hands[text].chips, 999),
           mult = math.max(G.GAME.hands[text].mult, 99)
@@ -114,7 +114,7 @@ SMODS.Joker {
     G.GAME.uncommon_mod = 0
     G.GAME.joker_rate = G.GAME.joker_rate * (2 * G.GAME.rare_mod)
   end,
-  remove_from_deck = function(self, card, from_debuff)   -- probably janky as hell with multiple copies but fuck you
+  remove_from_deck = function(self, card, from_debuff) -- probably janky as hell with multiple copies but fuck you
     G.GAME.common_mod = (card.ability.immutable.common_rate or 0.7)
     G.GAME.uncommon_mod = (card.ability.immutable.common_rate or 0.25)
     G.GAME.joker_rate = (card.ability.immutable.joker_rate or 10)
@@ -196,7 +196,7 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-  key = 'chips_to_mult',   -- Mult Matthew
+  key = 'chips_to_mult', -- Mult Matthew
   rarity = 3,
   abn_coder = "ImaginaryNeon",
   atlas = 'ABNJokerSheet23',
@@ -230,7 +230,7 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-  key = 'mult_to_chips',   -- Bonus Bradly
+  key = 'mult_to_chips', -- Bonus Bradly
   rarity = 2,
   abn_coder = "ImaginaryNeon",
   atlas = 'ABNJokerSheet23',
@@ -262,7 +262,7 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-  key = 'spihcneve',   -- what the hell is a 'Spihcneve' even supposed to be? oh wait it's "even chips" backwards okay
+  key = 'spihcneve', -- what the hell is a 'Spihcneve' even supposed to be? oh wait it's "even chips" backwards okay
   rarity = 3,
   abn_coder = "ImaginaryNeon",
   atlas = 'ABNJokerSheet11',
@@ -338,7 +338,7 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-  key = 'meatkin',   -- Meatkin Joker
+  key = 'meatkin', -- Meatkin Joker
   rarity = 3,
   abn_coder = "ImaginaryNeon",
   atlas = 'ABNJokerSheet11',
@@ -401,7 +401,7 @@ SMODS.Joker {
       end
     end
   end,
-  in_pool = function(self, args)   --equivalent to `enhancement_gate = 'm_steel'`
+  in_pool = function(self, args) --equivalent to `enhancement_gate = 'm_steel'`
     for _, playing_card in ipairs(G.playing_cards or {}) do
       if SMODS.has_enhancement(playing_card, 'm_steel') then
         return true
@@ -415,7 +415,7 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-  key = 'triskaidekaphobia',   -- Triskaidekaphobia
+  key = 'triskaidekaphobia', -- Triskaidekaphobia
   rarity = 3,
   abn_coder = "ImaginaryNeon",
   atlas = 'ABNJokerSheet11',
@@ -458,7 +458,7 @@ SMODS.Joker {
         for _, scored_card in ipairs(context.scoring_hand) do
           if not SMODS.has_enhancement(scored_card, "m_lucky") then
             count = count + 1
-            scored_card.ability.perma_bonus = scored_card:get_chip_bonus()             --(card.ability.extra.xperm * ((scored_card.ability.perma_bonus or 0) + ((scored_card.base.nominal) or 0))) - (scored_card.ability.perma_bonus or 0)
+            scored_card.ability.perma_bonus = scored_card:get_chip_bonus() --(card.ability.extra.xperm * ((scored_card.ability.perma_bonus or 0) + ((scored_card.base.nominal) or 0))) - (scored_card.ability.perma_bonus or 0)
             G.E_MANAGER:add_event(Event({
               func = function()
                 scored_card:juice_up()
@@ -482,7 +482,7 @@ SMODS.Joker {
           message_colour = G.C.ATTENTION
         })
         card.ability.immutable.active = true
-        G.jokers:change_size(card.ability.extra.slots)         -- Add 1 Joker slot
+        G.jokers:change_size(card.ability.extra.slots) -- Add 1 Joker slot
         return {
           xblind = card.ability.extra.xblind
         }
@@ -491,7 +491,7 @@ SMODS.Joker {
       --end
     end
   end,
-  in_pool = function(self, args)   --equivalent to `watergate = 'true and real'`
+  in_pool = function(self, args) --equivalent to `watergate = 'true and real'`
     local check = false
     for _, playing_card in ipairs(G.playing_cards or {}) do
       if SMODS.has_enhancement(playing_card, 'm_lucky') then
@@ -513,11 +513,11 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-  key = 'rorrim',   -- Rorrim Joker
+  key = 'rorrim', -- Rorrim Joker
   rarity = 3,
   abn_coder = "ImaginaryNeon",
   atlas = 'ABNJokerSheet15',
-  pos = { x = 6, y = 5 },
+  pos = { x = 7, y = 5 },
   --atlas = 'jonklers',     -- test sprites from my own mod
   --pos = { x = 4, y = 4 }, -- Hideous Mass
   cost = 8,
@@ -572,7 +572,7 @@ SMODS.Joker {
       end
     end
   end,
-  in_pool = function(self, args)   --equivalent to `enhancement_gate = 'm_steel'`
+  in_pool = function(self, args) --equivalent to `enhancement_gate = 'm_steel'`
     for _, playing_card in ipairs(G.playing_cards or {}) do
       if SMODS.has_enhancement(playing_card, 'm_glass') then
         return true
