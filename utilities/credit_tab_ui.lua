@@ -124,8 +124,8 @@ ABN.contributors = {
     has_icon = true,
     colour = G.C.GOLD,
     links = {
-      { url = "github.com/cloudzXIII", pos = { x = 0, y = 0 }, name = "Github" },
-      { url = "ko-fi.com/cloudzxiii", pos = { x = 0, y = 1 }, name = "Buy me a Coffee!" }
+      { url = "github.com/cloudzXIII", pos = { x = 0, y = 0 }, name = "k_abn_github" },
+      { url = "ko-fi.com/cloudzxiii", pos = { x = 0, y = 1 }, name = "k_abn_kofi" }
     }
   },
   {
@@ -135,7 +135,7 @@ ABN.contributors = {
     role = "k_abn_founder",
     colour = G.C.DARK_EDITION,
     links = {
-      { url = "github.com/Bunnetdeluz", pos = { x = 0, y = 0 }, name = "Github" },
+      { url = "github.com/Bunnetdeluz", pos = { x = 0, y = 0 }, name = "k_abn_github" },
     }
   },
   {
@@ -145,7 +145,7 @@ ABN.contributors = {
     has_icon = true,
     colour = G.C.GOLD,
     links = {
-      { url = "github.com/EricTheToon", pos = { x = 0, y = 0 }, name = "Github" },
+      { url = "github.com/EricTheToon", pos = { x = 0, y = 0 }, name = "k_abn_github" },
     }
   },
   {
@@ -155,17 +155,8 @@ ABN.contributors = {
     has_icon = true,
     colour = G.C.BLUE,
     links = {
-      { url = "github.com/LasagnaFelidae", pos = { x = 0, y = 0 }, name = "Github" },
-      { url = "ko-fi.com/lasagnafelidae", pos = { x = 0, y = 1 }, name = "Buy me a Coffee!" }
-    }
-  },
-  {
-    key = "credit_abn_coderevo",
-    name = "Revo",
-    role = "k_abn_coder",
-    colour = G.C.BLUE,
-    links = {
-      { url = "github.com/Cdrvo", pos = { x = 0, y = 0 }, name = "Github" }
+      { url = "github.com/LasagnaFelidae", pos = { x = 0, y = 0 }, name = "k_abn_github" },
+      { url = "ko-fi.com/lasagnafelidae", pos = { x = 0, y = 1 }, name = "k_abn_kofi" }
     }
   },
   {
@@ -175,7 +166,34 @@ ABN.contributors = {
     has_icon = true,
     colour = G.C.PURPLE,
     links = {
-      { url = "github.com/0kronix", pos = { x = 0, y = 0 }, name = "Github" },
+      { url = "github.com/0kronix", pos = { x = 0, y = 0 }, name = "k_abn_github" },
+    }
+  },
+  {
+    key = "credit_abn_noodle",
+    name = "Noodlemire",
+    role = "k_abn_coder",
+    colour = G.C.BLUE,
+    links = {
+      { url = "github.com/Noodlemire", pos = { x = 0, y = 0 }, name = "k_abn_github" },
+    }
+  },
+  {
+    key = "credit_abn_imaginaryneon",
+    name = "ImaginaryNeon",
+    role = "k_abn_coder",
+    colour = G.C.BLUE,
+    links = {
+      { url = "github.com/ImaginaryNeon", pos = { x = 0, y = 0 }, name = "k_abn_github" },
+    }
+  },
+  {
+    key = "credit_abn_coderevo",
+    name = "Revo",
+    role = "k_abn_coder",
+    colour = G.C.BLUE,
+    links = {
+      { url = "github.com/Cdrvo", pos = { x = 0, y = 0 }, name = "k_abn_github" }
     }
   },
   {
@@ -185,7 +203,7 @@ ABN.contributors = {
     role = "k_abn_artist",
     colour = G.C.GREEN,
     links = {
-      { url = "github.com/VegaTheAvali", pos = { x = 0, y = 0 }, name = "Github" }
+      { url = "github.com/VegaTheAvali", pos = { x = 0, y = 0 }, name = "k_abn_github" }
     }
   },
   {
@@ -195,7 +213,7 @@ ABN.contributors = {
     role = "k_abn_artist",
     colour = G.C.GREEN,
     links = {
-      { url = "github.com/comykel", pos = { x = 0, y = 0 }, name = "Github" }
+      { url = "github.com/comykel", pos = { x = 0, y = 0 }, name = "k_abn_github" }
     }
   },
   {
@@ -205,8 +223,8 @@ ABN.contributors = {
     role = "k_abn_artist",
     colour = G.C.GREEN,
     links = {
-      { url = "github.com/InkystA", pos = { x = 0, y = 0 }, name = "Github" },
-      { url = "ko-fi.com/inkystanderson", pos = { x = 0, y = 1 }, name = "Ko-fi" }
+      { url = "github.com/InkystA", pos = { x = 0, y = 0 }, name = "k_abn_github" },
+      { url = "ko-fi.com/inkystanderson", pos = { x = 0, y = 1 }, name = "k_abn_kofi" }
     }
   },
   {
@@ -216,7 +234,7 @@ ABN.contributors = {
     has_icon = true,
     colour = G.C.GREEN,
     links = {
-      { url = "github.com/Dogg-Fly", pos = { x = 0, y = 0 }, name = "Github" },
+      { url = "github.com/Dogg-Fly", pos = { x = 0, y = 0 }, name = "k_abn_github" },
     }
   },
   {
@@ -226,7 +244,7 @@ ABN.contributors = {
     has_icon = true,
     colour = G.C.GREEN,
     links = {
-      { url = "github.com/gfsgfsPunchlineGuy", pos = { x = 0, y = 0 }, name = "Github" },
+      { url = "github.com/gfsgfsPunchlineGuy", pos = { x = 0, y = 0 }, name = "k_abn_github" },
     }
   },
   {
@@ -236,7 +254,7 @@ ABN.contributors = {
     has_icon = true,
     colour = G.C.GREEN,
     links = {
-      { url = "github.com/LeGinger-Ginger", pos = { x = 0, y = 0 }, name = "Github" },
+      { url = "github.com/LeGinger-Ginger", pos = { x = 0, y = 0 }, name = "k_abn_github" },
     }
   },
   {
@@ -262,7 +280,7 @@ ABN.contributors = {
     role = "k_abn_coder",
     colour = G.C.BLUE,
     links = {
-      { url = "github.com//orangequilavaburst", pos = { x = 0, y = 0 }, name = "Github" }
+      { url = "github.com//orangequilavaburst", pos = { x = 0, y = 0 }, name = "k_abn_github" }
     }
   },
   {
@@ -271,7 +289,7 @@ ABN.contributors = {
     role = "k_abn_coder",
     colour = G.C.BLUE,
     links = {
-      { url = "github.com/Marffe", pos = { x = 0, y = 0 }, name = "Github" },
+      { url = "github.com/Marffe", pos = { x = 0, y = 0 }, name = "k_abn_github" },
     }
   },
   {
@@ -289,7 +307,7 @@ ABN.contributors = {
     role = "k_abn_music",
     colour = G.C.RED,
     links = {
-      { url = "github.com/Firch", pos = { x = 0, y = 0 }, name = "Github" },
+      { url = "github.com/Firch", pos = { x = 0, y = 0 }, name = "k_abn_github" },
     }
   },
   {
@@ -299,7 +317,7 @@ ABN.contributors = {
     has_icon = true,
     colour = G.C.BLUE,
     links = {
-      { url = "github.com/kierkat10", pos = { x = 0, y = 0 }, name = "Github" },
+      { url = "github.com/kierkat10", pos = { x = 0, y = 0 }, name = "k_abn_github" },
     }
   },
 }
@@ -364,7 +382,7 @@ function ABN.generate_credit_card(contributor)
               config = {
                 object = sprite,
                 tooltip = {
-                  title = link.name,
+                  title = localize(link.name),
                 },
               },
             },

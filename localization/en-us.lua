@@ -12170,6 +12170,22 @@ return {
         text = {
           "Added some {C:attention}Jokers{}",
         }
+      },
+      credit_abn_imaginaryneon = {
+        name = "",
+        text = {
+          "Added some {C:attention}Jokers{}",
+          "Check out {C:attention}Manlatro{}!",
+        }
+      },
+      credit_abn_noodle = {
+        name = "",
+        text = {
+          "Added some {C:attention}Jokers{}",
+          "+ helped with {C:green}bugfixing{}",
+          "Check out their {C:attention}DreamBBQ{}",
+          "and {C:attention}Mewgenics{} mods!"
+        }
       }
     },
     Other = {
@@ -15782,6 +15798,8 @@ return {
       k_abn_founder = "Founder",
       k_abn_music = "Music",
       k_abn_hybrid_art_code = "Artist/Coder",
+      k_abn_github = "Github",
+      k_abn_kofi = "Ko-fi",
 
 
       abn_ui_stamps = "Stamps",
