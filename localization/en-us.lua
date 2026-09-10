@@ -4503,12 +4503,16 @@ return {
         name = "Slippery Joker",
         text = {
           {
-            "Earn {C:money}$#1#{} when a {C:weather_report}Weather Report{}",
-            "destroys itself without triggering",
+            "When a {C:weather_report}Weather Report{} is used,",
+            "add {C:dark_edition}Abandoned{} to {C:attention}lowest{}",
+            "ranked card held in hand",
           },
           {
-            "This Joker gains {C:money}$#2#{} of {C:attention}sell value{}",
-            "when a {C:weather_report}Weather Report{} triggers"
+            "This Joker gains {C:chips}+#4#{} Chips{}",
+            "and {C:mult}+#2#{} Mult when an",
+            "{C:dark_edition}Abandoned{} card is scored",
+            "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#1#{C:inactive} Mult)",
+
           }
         }
       },
@@ -4937,25 +4941,36 @@ return {
       j_abn_underblackcloudz = {
         name = "Under Black Cloud",
         text = {
-          "Retrigger all {C:weather_report}Weather{} effects,",
-          "This Joker gains {C:chips}+#4#{} Chips and {C:mult}+#2#{} Mult",
-          "when a {C:weather_report}Weather{} effect {C:attention}triggers",
-          "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#1#{C:inactive} Mult)",
+          {
+            "Retrigger all {C:weather_report}Weather{} effects",
+          },
+          {
+            "This Joker gains {C:chips}+#4#{} Chips, {C:mult}+#2#{} Mult,",
+            "and {C:money}$#6#{} of {C:attention}sell value{} when a",
+            "{C:weather_report}Weather{} effect {C:attention}triggers",
+          },
+		  {
+			"Earn {C:money}$#5#{} when a {C:weather_report}Weather Report{}",
+            "destroys itself without triggering",
+			"{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#1#{C:inactive} Mult)",
+		  }
         }
       },
       j_abn_monocromator_joker = {
         name = "Monocromator Joker",
         text = {
           {
-            "When a {C:weather_report}Weather Report{} is used,",
-            "add {C:dark_edition}Abandoned{} to {C:attention}lowest{}",
-            "ranked card held in hand",
+            "If played hand contains a {C:attention}Straight{}",
+			"gains {C:chips}+#3#{} Chips for each {C:attention}unique{} scoring {C:attention}suit{}",
           },
           {
-            "This Joker gains {C:chips}+#4#{} Chips{}",
-            "and {C:mult}+#2#{} Mult when an",
-            "{C:dark_edition}Abandoned{} card is scored",
-            "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#1#{C:inactive} Mult)",
+            "If played hand contains a {C:attention}Straight Spectrum{}",
+			"gain {C:mult}Mult{} equal to the {C:attention}rank{} of each {C:attention}modded{} Suit",
+          },
+		  {
+            "If played hand contains a {C:attention}Straight Spectrum{}",
+			"with no {C:attention}Vanilla{} suits all {C:spades}Dark{} suits gain {C:dark_edition}Opaque{}",
+			"{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}",
 
           }
         }
@@ -11666,6 +11681,22 @@ return {
             "{C:green}#2# in #3#{} chance to be",
             "{C:red}destroyed{} after scoring"
           }
+        }
+      },
+	  j_abn_bubbly_joker = {
+        name = "Bubbly Joker",
+        text = {
+          "Gain {X:mult,C:white}X#1#{} Mult when a {C:attention}Bubble{} Card is {C:attention}added{}",
+		  "Gain {X:chips,C:white}X#2#{} Chips when a {C:attention}Bubble{} Card is {C:mult}destroyed{}",
+		  "{C:inactive}Currently:{} {X:mult,C:white}X#3#{} {C:inactive}Mult{} {X:chips,C:white}X#4#{} {C:inactive}Chips{}",
+        }
+      },
+	  j_abn_stiff_drink = {
+        name = "Stiff Drink",
+        text = {
+          "When clearing a Blind for the {C:attention}first time{}",
+		  "Repeat it {C:attention}instead{} of advancing to the {C:attention}next blind{}",
+		  "All {C:chips}hands{} and {C:mult}discards{} are considered the {C:attention}first{} and {C:attention}last{} of round",
         }
       },
     },
