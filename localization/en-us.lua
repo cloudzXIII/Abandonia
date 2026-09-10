@@ -11396,6 +11396,142 @@ return {
         }
       },
       j_abn_efo_joker = {
+          name = "EFO Joker",
+          text = {
+            "{C:green}#1# in #2#{} chance to copy the first played {C:attention}Stamp Card{} into your hand",
+        "Scoring cards with {C:attention}Stamps{} give {C:gold}+#3#{} Ascension power",
+        "Played hands with {C:attention}5{} or more Stamps",
+        "give this Joker {X:mult,C:white}X#4#{} Mult and {C:gold}+#5#{} Ascension Power per card",
+        "{C:inactive}Currently: {X:mult,C:white}X#6#{} {C:inactive}Mult{} {C:gold}+#7#{} {C:inactive}Ascension Power{}",
+          }
+          },
+      j_abn_globalist_joker = {
+          name = "Globalist Joker",
+          text = {
+            "When a {C:continent}Continent{} card is used create a {C:attention}random{} {C:dark_edition}Negative{} consumable",
+        "After {C:attention}#1#{} {C:continent}Continent{} cards are used",
+        "place a {C:attention}Stamp{} on each scoring card of the next played {C:attention}spectrum{}",
+        "Gain {X:mult,C:white}X#2#{} Mult for every {C:attention}unique{} {C:continent}Continent{} used this run",
+        "{C:inactive}Currently: {X:mult,C:white}X#3#{} {C:inactive}Mult{}",
+          }
+        },
+        j_abn_crease_joker = {  -- ImaginaryNeon jokers start here
+          name = "Crease Joker",
+          text = {
+            "{X:attention,C:white}X#1#{} hand size,",
+            "Discard selection size",
+            "reduced to {C:red}#2#{}",
+          }
+        },
+        j_abn_double_dip = {
+          name = 'Double Dip',
+          text = {
+            "This Joker gives the base {C:chips}Chips{} and {C:red}Mult{}",
+            "of the played poker hand as",
+            "its own {C:chips}Chips{} and {C:red}Mult{}",
+          }
+        },
+        j_abn_big_raff = {
+          name = 'Big Riff',
+          text = {
+            "{C:common}Common{} and {C:uncommon}Uncommon{} Jokers",
+            "no longer appear in the Shop",
+            "When {C:attention}Blind{} is selected,",
+            "create a {C:rare}Rare{} Joker",
+            "{C:inactive}(Must have room)",
+          }
+        },
+        j_abn_wiimotionplus = {
+          name = 'Wii Joker',
+          text = {
+            "This Joker gains {C:mult}+#2#{} Mult",
+            "at the start of each Blind",
+            "if it hasn't started a Blind",
+            "in that Joker slot before.",
+            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult){}",
+            "{s=0.8}{C:inactive}(Used slots: #3#){}"
+          }
+        },
+        j_abn_chips_to_mult = {
+          name = 'Mult Matthew',
+          text = {
+            "Whenever another Joker gives {C:chips}Chips{},",
+            "this Joker gives those Chips as {C:mult}Mult{}",
+            --"{s:0.7,C:inactive}(Does not affect Jokers that give Chips after another Joker triggers){}"
+          }
+        },
+        j_abn_mult_to_chips = {
+          name = 'Bonus Bradly',
+          text = {
+            "Whenever another Joker gives {C:chips}Chips{},",
+            "this Joker gives those Chips as {C:mult}Mult{}",
+            --"{s:0.7,C:inactive}(Does not affect Jokers that give Chips after another Joker triggers){}"
+          }
+        },
+        j_abn_spihcneve = {
+          name = 'Spihcneve Joker',
+          text = {
+            {
+            "When a {C:mult}Mult card{} scores,",
+            "scoring non-Mult cards permenantly",
+            "gain {C:chips}+#1#{} Chips",
+            },
+            {
+            "When an {C:attention}even-ranked {C:mult}Mult card{} scores,",
+            "scoring {C:attention}odd-ranked non-Mult{} cards",
+            "permenantly gain {C:mult}+#2#{} Mult",
+            }
+          },
+          --[[unlock = {
+            "Enhance an {C:attention}even-ranked{} card",
+            "into a {C:mult}Mult card{}"
+          }--]]
+        },
+        j_abn_meatkin = {
+          name = 'Meatkin Joker',
+          text = {
+            "When a {C:mult}Steel card{} scores,",
+            "each scoring non-Steel card",
+            "permenantly gains {X:mult,C:white}+X#1#{} Mult"
+          },
+          --[[unlock = {
+            "Have at least {C:attention}one-fourth{}",
+            "of your deck be {C:attention}Steel{} cards"
+          }--]]
+        },
+        j_abn_triskaidekaphobia = {
+          name = 'Triskaidekaphobia',
+          text = {
+            {
+              "When a {C:attention}Lucky card{} scores,",
+              "scoring non-Lucky cards permenantly",
+              "have their base {C:chips}Chips{} doubled"
+            },
+            {
+              "When a {C:attention}13{} scores,",
+              "gain {C:attention}+#3#{} Joker slot at the cost",
+              "of {X:blind,C:white}X#2#{} Blind size and",
+              "{X:blind,C:white}+X#4#{} starting Blind size",
+              "{C:inactive}(Currently {X:blind,C:white}X#5#{C:inactive} Blind size){}"
+            }
+          },
+        },
+        j_abn_rorrim = {
+          name = 'Rorrim Joker',
+          text = {
+            {
+              "When a {C:attention}Glass card{} scores,",
+              "scoring non-Glass cards gain",
+              "{C:chips}+#2#{} Chips and {C:mult}+#1#{} Mult",
+              "per scoring card played"
+            },
+            {
+              "When a {C:attention}Glass card{} breaks",
+              "other scoring cards have their",
+              "base Chips {C:attention}doubled{}"
+            }
+          },
+        }, -- ImaginaryNeon Jokers end here (for now)
         name = "EFO Joker",
         text = {
           "{C:green}#1# in #2#{} chance to copy the first played {C:attention}Stamp Card{} into your hand",
