@@ -134,7 +134,7 @@ SMODS.Enhancement({
         chips = cae.chips
       }
     end
-    if context.before then
+    if context.before and context.cardarea ~= G.deck and context.cardarea ~= G.discard then
       local suits, num = {}, 0
       for k, v in pairs(context.scoring_hand) do
         if not suits[v.base.suit] then
@@ -1458,6 +1458,7 @@ SMODS.Enhancement({
   },
 })
 
+
 SMODS.Enhancement({
     key = "tile",
     pos = { x = 2, y = 4 },
@@ -1466,34 +1467,19 @@ SMODS.Enhancement({
     loc_vars = function(self, info_queue, card)
         return { vars = {} }
     end,
-    calculate = function(self, card, context)
-        if context.before and context.cardarea == G.play then
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.1,
-                func = function()
-                    local copy = copy_card(card)
-                    if not copy then return true end
-
-                    G.deck:emplace(copy)
-                    copy:add_to_deck()
-                    G.deck.config.card_limit = G.deck.config.card_limit + 1
-                    table.insert(G.playing_cards, copy)
-                    copy:start_materialize(nil, nil)
-
-                    return true
-                end
-            }))
-        end
-
-        if context.destroying_card and context.cardarea == G.play then
-            return { remove = true }
-        end
-    end,
     abn_artist_credits = {
         artist = "Gud",
     },
 })
+
+local old_draw_card = draw_card
+function draw_card(from, to, percent, dir, sort, card, delay, mute, stay_flipped, vol, discarded_only)
+	if from == G.play and to == G.discard and not card.debuff and SMODS.has_enhancement(card, "m_abn_tile") then
+		return old_draw_card(from, G.deck, percent, dir, sort, card, delay, mute, stay_flipped, vol, discarded_only)
+	else
+		return old_draw_card(from, to, percent, dir, sort, card, delay, mute, stay_flipped, vol, discarded_only)
+	end
+end
 
 SMODS.Enhancement({
   key = "papermache",
@@ -1525,3 +1511,218 @@ SMODS.Enhancement({
     artist = "Gud",
   },
 })
+
+SMODS.Enhancement({
+  key = "plank",
+  pos = { x = 5, y = 4 },
+  atlas = "AbandoniaEnhancements",
+  replace_base_card = false,
+  no_rank = false,
+  no_suit = false,
+  always_scores = false,
+  config = { extra = { ascension = 0.25 } },
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    return { vars = { cae.ascension } }
+  end,
+
+  calculate = function(self, card, context)
+    local cae = card.ability.extra
+    if context.main_scoring and context.cardarea == G.play then
+      return {
+        asc = cae.ascension,
+      }
+    end
+  end,
+
+  abn_artist_credits = {
+    artist = "Super Thing",
+  },
+})
+
+abandonia = abandonia or {}
+
+SMODS.Enhancement{
+	key = 'honey',
+	atlas = "AbandoniaEnhancements",
+	pos = { x = 2, y = 5 },
+	config = {
+		extra = {
+			odds = 8
+		}
+	},
+	loc_vars = function(self, info_queue, card)
+		return {
+			vars = {
+				G.GAME.probabilities.normal,
+				card.ability.extra.odds
+			}
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.hand_drawn then
+			if card.area == G.deck then
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						draw_card(G.deck, G.hand, 100, 'up', true, card)
+						card:juice_up(0.3, 0.4)
+						return true
+					end
+				}))
+			end
+		end
+
+		-- Transformation logic using config.extra.odds
+		if context.before and context.cardarea == G.play then
+			for _, played_card in ipairs(G.play.cards) do
+				if played_card.config.center_key ~= self.key then
+					if pseudorandom('honey_transform') < G.GAME.probabilities.normal / card.ability.extra.odds then
+						G.E_MANAGER:add_event(Event({
+							func = function()
+								played_card:set_ability(G.P_CENTERS[self.key], nil, true)
+								played_card:juice_up(0.5, 0.5)
+								return true
+							end
+						}))
+					end
+				end
+			end
+		end
+	end,
+	abn_artist_credits = {
+		artist = "Criyo",
+	},
+}
+
+abandonia.playextracards = function()
+	if not G.hand or not G.hand.cards then return end
+
+	local honey_in_hand = {}
+	for i = 1, #G.hand.cards do
+		if SMODS.has_enhancement(G.hand.cards[i], 'm_abn_honey') then
+			table.insert(honey_in_hand, G.hand.cards[i])
+		end
+	end
+
+	if #honey_in_hand > 0 then
+		for i, card in ipairs(honey_in_hand) do
+			if card:is_face() then 
+				inc_career_stat('c_face_cards_played', 1) 
+			end
+			card.base.times_played = card.base.times_played + 1
+			G.GAME.round_scores.cards_played.amt = G.GAME.round_scores.cards_played.amt + 1
+			
+			draw_card(G.hand, G.play, i * 100 / #honey_in_hand, 'up', nil, card)
+		end
+	end
+end
+
+SMODS.Enhancement{
+	key = "bubble",
+	atlas = "AbandoniaEnhancements",
+	pos = { x = 0, y = 5 },
+	config = {
+		extra = {
+			chips = 10,
+			mult = 2,
+			chipsadd = 5
+		}
+	},
+	loc_vars = function(self, info_queue, card)
+		return {
+			vars = {
+				card.ability.extra.chips,
+				card.ability.extra.mult,
+				card.ability.extra.chipsadd
+			}
+		}
+	end,
+	calculate = function(self, card, context)
+		if context.main_scoring and context.cardarea == G.play then
+			local unique_enhancements = {}
+			local unique_editions = {}
+
+			for _, scoring_card in ipairs(context.scoring_hand or G.play.cards) do
+				if scoring_card.config.center and scoring_card.config.center.key ~= 'c_base' then
+					unique_enhancements[scoring_card.config.center.key] = true
+				end
+				if scoring_card.edition and scoring_card.edition.key then
+					unique_editions[scoring_card.edition.key] = true
+				end
+			end
+
+			local enh_count = 0
+			for _ in pairs(unique_enhancements) do enh_count = enh_count + 1 end
+
+			local ed_count = 0
+			for _ in pairs(unique_editions) do ed_count = ed_count + 1 end
+
+			return {
+				chips = enh_count * card.ability.extra.chips,
+				mult = ed_count * card.ability.extra.mult,
+			}
+		end
+
+		if context.destroying_card == card then
+			local target_cards = context.scoring_hand or (G.play and G.play.cards)
+			
+			if target_cards then
+				for _, target_card in ipairs(target_cards) do
+					if target_card ~= card then
+						target_card.ability.perma_bonus = (target_card.ability.perma_bonus or 0) + card.ability.extra.chipsadd
+					end
+				end
+
+				card_eval_status_text(card, 'extra', nil, nil, nil, {
+					message = localize('k_upgrade_ex'),
+					colour = G.C.CHIPS
+				})
+			end
+		end
+	end,
+	abn_artist_credits = {
+		artist = "Criyo",
+	},
+}
+
+
+SMODS.Enhancement{
+	key = "bramble",
+	atlas = "AbandoniaEnhancements",
+	pos = { x = 1, y = 5 },
+	config = {
+		extra = {
+			level_up = 1
+		}
+	},
+	
+	loc_vars = function(self, info_queue, card)
+		return {
+			vars = {
+				card.ability.extra.level_up
+			}
+		}
+	end,
+	
+	calculate = function(self, card, context)
+		if context.modify_scoring_hand then
+			if card:is_suit('Hearts') or card:is_suit('Diamonds') or card:is_suit('Spades') or card:is_suit('Clubs') then
+				return {
+					add_to_hand = true
+				}
+			end
+		end
+
+		if context.before and context.cardarea == G.play then
+			if not card:is_suit('Hearts') and not card:is_suit('Diamonds') and not card:is_suit('Spades') and not card:is_suit('Clubs') then
+				return {
+					message = localize('k_level_up_ex'),
+					level_up = card.ability.extra.level_up,
+				}
+			end
+		end
+	end,
+	abn_artist_credits = {
+		artist = "Criyo",
+	},
+}

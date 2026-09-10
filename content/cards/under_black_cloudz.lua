@@ -2,22 +2,38 @@
 SMODS.Joker {
   key = 'underblackcloudz',
 
-  rarity = 3,
+  rarity = 2,
   atlas = 'ABNJokerSheet10',
   pos = { x = 0, y = 5 },
   cost = 8,
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { chips = 0, chips_gain = 5, mult = 0, mult_gain = 2 } },
+  config = { 
+    extra = { 
+      chips = 0, 
+      chips_gain = 5, 
+      mult = 0, 
+      mult_gain = 2,
+      dollars = 3,
+      sell_value = 1 
+    } 
+  },
+
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
-    return { vars = { cae.mult, cae.mult_gain, cae.chips, cae.chips_gain } }
+    return { vars = { cae.mult, cae.mult_gain, cae.chips, cae.chips_gain, cae.dollars, cae.sell_value } }
   end,
 
   calculate = function(self, card, context)
     if context.retrigger_joker_check and context.other_card.ability.set == "weather_report" then
       return { repetitions = 1 }
+    end
+
+    if context.abn_weather_destroyed_but_not_triggered then
+      return {
+        dollars = card.ability.extra.dollars
+      }
     end
 
     if (context.using_consumeable and context.consumeable.ability.set == "weather_report") or (context.post_trigger and context.other_card.ability.set == "weather_report") then
@@ -34,6 +50,11 @@ SMODS.Joker {
         scalar_value = "mult_gain",
         operation = '+',
       })
+      
+      if card.set_cost then
+        card.ability.extra_value = (card.ability.extra_value or 0) + card.ability.extra.sell_value
+        card:set_cost()
+      end
     end
 
     if context.joker_main then
@@ -43,9 +64,11 @@ SMODS.Joker {
       }
     end
   end,
+
   abn_artist_credits = {
     artist = "Grass",
   },
+
   in_pool = function(self)
     return G.GAME.consumeable_usage_total and G.GAME.consumeable_usage_total.weather_report and
         G.GAME.consumeable_usage_total.weather_report > 0

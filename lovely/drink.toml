@@ -1,0 +1,44 @@
+[manifest]
+version = "1.0.0"
+priority = -2
+
+# end_round()
+# Prevent logic for advancing to next Blind
+# if G.GAME.abn.stiff_drink_trigger is true.
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "G.GAME.voucher_restock = nil"
+position = "before"
+match_indent = true
+payload = "if not G.GAME.abn.stiff_drink_trigger then"
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "G.FUNCS.draw_from_discard_to_deck()"
+position = "before"
+match_indent = true
+payload = "end"
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''
+G.STATE = G.STATES.ROUND_EVAL
+G.STATE_COMPLETE = false
+'''
+position = "after"
+match_indent = true
+payload = "if not G.GAME.abn.stiff_drink_trigger then"
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''
+if G.GAME.round_resets.temp_handsize then G.hand:change_size(-G.GAME.round_resets.temp_handsize); G.GAME.round_resets.temp_handsize = nil end
+'''
+position = "before"
+match_indent = true
+payload = "end"

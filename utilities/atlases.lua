@@ -254,6 +254,12 @@ SMODS.Atlas({
   px = 71,
   py = 95,
 })
+SMODS.Atlas({
+  key = "AbandoniaAtomic",
+  path = "atomic.png",
+  px = 71,
+  py = 95,
+})
 
 SMODS.Atlas({
   key = "AbandoniaWeatherReport",
@@ -355,6 +361,14 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+  key = "IllusionBoosters",
+  path = "illusion_packs.png",
+  px = 71,
+  py = 95,
+})
+
+
+SMODS.Atlas({
   key = "AbandoniaCrossmod",
   path = "jokers/crossmod.png",
   px = 71,
@@ -407,6 +421,13 @@ SMODS.Atlas({
 SMODS.Atlas({
   key = "AbandoniaIllusions",
   path = "Illusions.png",
+  px = 71,
+  py = 95,
+})
+
+SMODS.Atlas({
+  key = "AbandoniaRam",
+  path = "RAM.png",
   px = 71,
   py = 95,
 })
@@ -572,6 +593,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+  key = "ABNJokerSheet25",
+  path = "jokers/joker25.png",
+  px = 71,
+  py = 95,
+})
+
+SMODS.Atlas({
   key = "AbandoniaParallel",
   path = "jokers/parallel.png",
   px = 71,
@@ -581,6 +609,13 @@ SMODS.Atlas({
 SMODS.Atlas({
   key = "AbandoniaLegendary",
   path = "jokers/legendary.png",
+  px = 71,
+  py = 95,
+})
+
+SMODS.Atlas({
+  key = "AbandoniaLegendary2",
+  path = "jokers/legendaries.png",
   px = 71,
   py = 95,
 })

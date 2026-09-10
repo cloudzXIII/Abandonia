@@ -296,3 +296,213 @@ SMODS.Sticker {
         end
     end
 }
+
+SMODS.Sticker {
+    key = 'icon_stamp',
+    atlas = 'AbandoniaStamps',
+    pos = { x = 2, y = 0 },
+    badge_colour = HEX("7357bb"),
+    set = "stamp",
+	
+	loc_vars = function(self, info_queue, card)
+        local trait_count = 1
+
+        if card then
+            local card_edition = card.edition and card.edition.key or nil
+            local card_enhancement = (card.config.center and card.config.center.key ~= 'c_base') and card.config.center.key or nil
+            local card_seal = card.seal or nil
+
+            if card_edition and card_enhancement and card_seal then
+                local is_unique = true
+                if G.playing_cards then
+                    for _, other_card in ipairs(G.playing_cards) do
+                        if other_card ~= card then
+                            local other_edition = other_card.edition and other_card.edition.key or nil
+                            local other_enhancement = (other_card.config.center and other_card.config.center.key ~= 'c_base') and other_card.config.center.key or nil
+                            local other_seal = other_card.seal or nil
+
+                            if (card_edition == other_edition) or 
+                               (card_enhancement == other_enhancement) or 
+                               (card_seal == other_seal) then
+                                is_unique = false
+                                break
+                            end
+                        end
+                    end
+                end
+
+                if is_unique then
+                    local total = 0
+                    if G.playing_cards then
+                        for _, c in ipairs(G.playing_cards) do
+                            if c.edition then total = total + 1 end
+                            if c.config.center and c.config.center.key ~= 'c_base' then total = total + 1 end
+                            if c.seal then total = total + 1 end
+                        end
+                    end
+                    if total > 0 then trait_count = total end
+                end
+            end
+        end
+
+        return { vars = { trait_count } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.cardarea == G.play and context.main_scoring then
+            local card_edition = card.edition and card.edition.key or nil
+            local card_enhancement = (card.config.center and card.config.center.key ~= 'c_base') and card.config.center.key or nil
+            local card_seal = card.seal or nil
+
+            if not (card_edition and card_enhancement and card_seal) then return end
+
+            local is_unique = true
+            if G.playing_cards then
+                for _, other_card in ipairs(G.playing_cards) do
+                    if other_card ~= card then
+                        local other_edition = other_card.edition and other_card.edition.key or nil
+                        local other_enhancement = (other_card.config.center and other_card.config.center.key ~= 'c_base') and other_card.config.center.key or nil
+                        local other_seal = other_card.seal or nil
+
+                        if (card_edition == other_edition) or 
+                           (card_enhancement == other_enhancement) or 
+                           (card_seal == other_seal) then
+                            is_unique = false
+                            break
+                        end
+                    end
+                end
+            end
+
+            if is_unique then
+                local trait_count = 0
+                if G.playing_cards then
+                    for _, c in ipairs(G.playing_cards) do
+                        if c.edition then trait_count = trait_count + 1 end
+                        if c.config.center and c.config.center.key ~= 'c_base' then trait_count = trait_count + 1 end
+                        if c.seal then trait_count = trait_count + 1 end
+                    end
+                end
+
+                if trait_count > 0 then
+                    return {
+                        xchips = trait_count,
+                        colour = G.C.CHIPS
+                    }
+                end
+            end
+        end
+
+        if context.end_of_round and G.GAME.current_round.hands_played <= 1 then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'before',
+                delay = 0.2,
+                func = function()
+                    card:start_dissolve()
+                    return true
+                end
+            }))
+        end
+    end
+}
+
+
+SMODS.Sticker {
+    key = 'psychomancy_stamp',
+    atlas = 'AbandoniaStamps',
+    pos = { x = 3, y = 0 }, 
+    badge_colour = HEX("5b1746"),
+    set = "stamp",
+
+    calculate = function(self, card, context)
+        if not context.remove_playing_cards or not context.removed then return end
+
+        local is_destroyed = false
+        for _, removed_card in ipairs(context.removed) do
+            if removed_card == card then
+                is_destroyed = true
+                break
+            end
+        end
+
+        if not is_destroyed then return end
+
+        local trait_count = 0
+        if card.edition then trait_count = trait_count + 1 end
+        if card.config.center and card.config.center.key ~= 'c_base' then trait_count = trait_count + 1 end
+        if card.seal then trait_count = trait_count + 1 end
+
+        if trait_count <= 0 then return end
+
+        local tempuse = -1
+        local target_hand = nil
+        for k, v in pairs(G.GAME.hands) do
+            if v.played > tempuse and v.visible then
+                tempuse = v.played
+                target_hand = k
+            end
+        end
+
+        if target_hand then
+            update_hand_text({sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3}, {
+                handname = G.GAME.hands[target_hand].loc_name or localize(target_hand, 'poker_hands'),
+                level = G.GAME.hands[target_hand].level + trait_count,
+                mult = G.GAME.hands[target_hand].mult,
+                chips = G.GAME.hands[target_hand].chips
+            })
+
+            level_up_hand(card, target_hand, nil, trait_count)
+
+            return {
+                message = localize('k_level_up_ex'),
+            }
+        end
+    end
+}
+
+SMODS.Sticker {
+    key = 'prehensile_stamp',
+    atlas = 'AbandoniaStamps',
+    pos = { x = 0, y = 1 },
+    badge_colour = HEX("916b09"),
+    set = "stamp",
+
+    calculate = function(self, card, context)
+        if context.modify_scoring_hand and context.other_card == card then
+            if not G.playing_cards then return end
+
+            local card_edition = card.edition and card.edition.key
+            local card_seal = card.seal
+            local card_enhancement = (card.config.center and card.config.center.key ~= 'c_base') and card.config.center.key or nil
+            if not card_edition and not card_seal and not card_enhancement then return end
+
+            local edition_count = 0
+            local seal_count = 0
+            local enhancement_count = 0
+
+            for _, other in ipairs(G.playing_cards) do
+                if card_edition and other.edition and other.edition.key == card_edition then
+                    edition_count = edition_count + 1
+                end
+                if card_seal and other.seal == card_seal then
+                    seal_count = seal_count + 1
+                end
+                if card_enhancement then
+                    local other_enhancement = (other.config.center and other.config.center.key ~= 'c_base') and other.config.center.key or nil
+                    if other_enhancement == card_enhancement then
+                        enhancement_count = enhancement_count + 1
+                    end
+                end
+            end
+            local edition_valid = not card_edition or (edition_count == 1)
+            local seal_valid = not card_seal or (seal_count == 1)
+            local enhancement_valid = not card_enhancement or (enhancement_count == 1)
+
+            if edition_valid and seal_valid and enhancement_valid then
+                return {
+                    add_to_hand = true
+                }
+            end
+        end
+    end
+}

@@ -1,29 +1,83 @@
 return {
   descriptions = {
-	
-	illusion = {
-      c_abn_euclidean = {
-        name = "Euclidean",
+
+    ram = {
+      c_abn_ram_00 = {
+        name = "RAM 00",
         text = {
-          "Add {C:abn_black_seal}Empty Stamp{} to {C:attention}#1#{} card in hand",
-		  "{C:green}#2# in #3#{} chance to create a {C:illusion}Penrose{}",
+          "Create the last",
+          "{C:attention}Modded consumable{} used",
         },
       },
-	  c_abn_penrose = {
-        name = "Penrose",
+      c_abn_ram_01 = {
+        name = "RAM 01",
         text = {
-          "Add {C:abn_black_seal}Empty Stamp{} to {C:attention}all{} cards in hand",
-        },
-      },
-	  c_abn_sword_box = {
-        name = "Sword Box",
-        text = {
-          "Add {C:abn_black_seal}Jester Stamp{} to {C:attention}#1#{} card in hand",
+          "Swap current held {C:attention}vanilla consumables{}",
+          "with random {C:attention}modded consumables{}",
         },
       },
     },
-	
-    maths = {
+
+    illusion = {
+      c_abn_euclidean = {
+        name = "Euclidean",
+        text = {
+          {
+            "Add an {C:abn_black_seal}Empty Stamp{}",
+            "to {C:attention}#1#{} selected",
+            "card in your hand",
+          },
+          {
+            "{C:green}#2# in #3#{} chance to",
+            "create a {C:illusion}Penrose{}",
+          },
+        },
+      },
+      c_abn_penrose = {
+        name = "Penrose",
+        text = {
+          "Add an {C:abn_black_seal}Empty Stamp{}",
+          "to all cards in hand",
+        },
+      },
+
+      c_abn_sword_box = {
+        name = "Sword Box",
+        text = {
+          {
+            "Add a {C:abn_black_seal}Jester Stamp{}",
+            "to {C:attention}#1#{} selected",
+            "card in your hand",
+          },
+        },
+      },
+      c_abn_illusionist = {
+        name = "Illusionist",
+        text = {
+          "Add {C:tarot}Icon Stamp{} to {C:attention}#1#{} card in hand",
+        },
+      },
+      c_abn_cotard = {
+        name = "Cotard",
+        text = {
+          "Add {C:purple}Psychomancy Stamp{} to {C:attention}#1#{} card in hand",
+        },
+      },
+      c_abn_stupification = {
+        name = "Stupification",
+        text = {
+          "Add {C:tarot}Membership Stamp{} to {C:attention}#1#{} card in hand",
+        },
+      },
+      c_abn_misdirection = {
+        name = "Misdirection",
+        text = {
+          "Add {C:attention}Prehensile Stamp{} to {C:attention}#1#{} card in hand",
+        },
+      },
+    },
+
+    algebraic = {
       c_abn_euler = {
         name = "Euler",
         text = {
@@ -2136,7 +2190,7 @@ return {
       b_abn_treaty = {
         name = "Treaty of Colours",
         text = {
-          "Start with all {C:attention}vanilla{} suits,",
+          "Start with all {C:inactive}vanilla{} suits,",
           "{C:abn_snow}Snows{}, {C:abn_penumbra}Penumbras{},",
           "{C:abn_tie}Ties{} and {C:abn_bow}Bows{}",
         }
@@ -2165,7 +2219,7 @@ return {
         name = "New Epoch",
         text = {
           "Start with a full set of",
-          "{C:attention}Vanilla{}, {C:abn_talon}Talons{},",
+          "{C:inactive}Vanilla{}, {C:abn_talon}Talons{},",
           "{C:abn_crown}Crowns{}, {C:abn_moon}Moons,",
           "and {C:abn_star}Stars{}",
           "{C:white,X:mult}+X1{} to all {C:attention}Blind requirements{}",
@@ -4368,7 +4422,7 @@ return {
         name = "Lawn Joker",
         text = {
           {
-            "Scoring {C:spades}Spades{} permanently",
+            "Scoring {C:abn_rose}Roses,{} {C:clubs}Clubs,{} {C:abn_leaf}Leaves{} and {C:abn_florette}Florettes{} permanently",
             "gain {C:chips}+#5#{} Chips and {C:mult}+#6#{} Mult",
             "per {C:continent}Continent{} card held",
           },
@@ -4449,12 +4503,16 @@ return {
         name = "Slippery Joker",
         text = {
           {
-            "Earn {C:money}$#1#{} when a {C:weather_report}Weather Report{}",
-            "destroys itself without triggering",
+            "When a {C:weather_report}Weather Report{} is used,",
+            "add {C:dark_edition}Abandoned{} to {C:attention}lowest{}",
+            "ranked card held in hand",
           },
           {
-            "This Joker gains {C:money}$#2#{} of {C:attention}sell value{}",
-            "when a {C:weather_report}Weather Report{} triggers"
+            "This Joker gains {C:chips}+#4#{} Chips{}",
+            "and {C:mult}+#2#{} Mult when an",
+            "{C:dark_edition}Abandoned{} card is scored",
+            "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#1#{C:inactive} Mult)",
+
           }
         }
       },
@@ -4464,12 +4522,12 @@ return {
           "{C:continent}Continent{} cards may appear",
           "in any {C:attention}Booster Pack{}",
           --[[
-                      --i swear this is like impossible to check... or idk :p
-                      --(maybe we do a context or something? but for EVERY continent card is a bit excessive)
-                      "Cards affected by {C:continent}Continent{} cards",
-                      "permanently gain {C:chips}+5{} Chips",
-                      "and {C:mult}+2{} Mult"
-                      --]]
+                    --i swear this is like impossible to check... or idk :p
+                    --(maybe we do a context or something? but for EVERY continent card is a bit excessive)
+                    "Cards affected by {C:continent}Continent{} cards",
+                    "permanently gain {C:chips}+5{} Chips",
+                    "and {C:mult}+2{} Mult"
+                    --]]
         }
       },
       j_abn_penultimate_joker = {
@@ -4575,7 +4633,7 @@ return {
         name = "Explorer Joker",
         text = {
           {
-            "Scoring {C:diamonds}Diamond{} cards gain",
+            "Scoring {C:abn_shield}Shields,{} {C:abn_crown}Crowns,{} {C:abn_coin}Coins,{} {C:diamonds}Diamonds{} and {C:abn_talon}Talons{} gain",
             "{C:chips}+#6#{} Chips and {C:mult}+#7#{} Mult",
             "per {C:continent}Continent{} card held"
           },
@@ -4883,25 +4941,36 @@ return {
       j_abn_underblackcloudz = {
         name = "Under Black Cloud",
         text = {
-          "Retrigger all {C:weather_report}Weather{} effects,",
-          "This Joker gains {C:chips}+#4#{} Chips and {C:mult}+#2#{} Mult",
-          "when a {C:weather_report}Weather{} effect {C:attention}triggers",
-          "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#1#{C:inactive} Mult)",
+          {
+            "Retrigger all {C:weather_report}Weather{} effects",
+          },
+          {
+            "This Joker gains {C:chips}+#4#{} Chips, {C:mult}+#2#{} Mult,",
+            "and {C:money}$#6#{} of {C:attention}sell value{} when a",
+            "{C:weather_report}Weather{} effect {C:attention}triggers",
+          },
+		  {
+			"Earn {C:money}$#5#{} when a {C:weather_report}Weather Report{}",
+            "destroys itself without triggering",
+			"{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#1#{C:inactive} Mult)",
+		  }
         }
       },
       j_abn_monocromator_joker = {
         name = "Monocromator Joker",
         text = {
           {
-            "When a {C:weather_report}Weather Report{} is used,",
-            "add {C:dark_edition}Abandoned{} to {C:attention}lowest{}",
-            "ranked card held in hand",
+            "If played hand contains a {C:attention}Straight{}",
+			"gains {C:chips}+#3#{} Chips for each {C:attention}unique{} scoring {C:attention}suit{}",
           },
           {
-            "This Joker gains {C:chips}+#4#{} Chips{}",
-            "and {C:mult}+#2#{} Mult when an",
-            "{C:dark_edition}Abandoned{} card is scored",
-            "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {C:mult}+#1#{C:inactive} Mult)",
+            "If played hand contains a {C:attention}Straight Spectrum{}",
+			"gain {C:mult}Mult{} equal to the {C:attention}rank{} of each {C:attention}modded{} Suit",
+          },
+		  {
+            "If played hand contains a {C:attention}Straight Spectrum{}",
+			"with no {C:attention}Vanilla{} suits all {C:spades}Dark{} suits gain {C:dark_edition}Opaque{}",
+			"{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips{}",
 
           }
         }
@@ -4983,15 +5052,13 @@ return {
         name = "Jimbo 10",
         text = {
           {
-            "This Joker gains {C:chips}+#4#{} Chips",
-            "and {C:white,X:mult}X#2#{} Mult",
-            "when a {C:attention}10{} is scored",
+            "This Joker gains {C:chips}+#4#{} Chips and",
+            "{C:white,X:mult}X#2#{} Mult when a {C:attention}10{} is scored",
             "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips, {X:mult,C:white}X#1#{C:inactive} Mult)",
           },
           {
-            "Earn {C:money}$#5#{} for each",
-            "{C:attention}10{} in your {C:attention}full deck",
-            "at end of round",
+            "Earn {C:money}$#5#{} for each {C:attention}10{} in your",
+            "{C:attention}full deck{} at end of round",
             "{C:inactive}(Currently {C:money}$#6#{}{C:inactive})",
           }
         }
@@ -5078,9 +5145,15 @@ return {
       j_abn_vintage_joker = {
         name = "Vintage Joker",
         text = {
-          "This Joker gains {C:chips}+#2#{} Chips",
-          "when a {C:attention}Fossil Card{} is scored",
-          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
+          {
+            "{C:attention}Level up{} the {C:attention}first played hand{}",
+            "if it not a {C:attention}secret{} and is only composed of {C:inactive}vanilla{} suits",
+          },
+          {
+            "If this Joker has {C:dark_edition}Vintage{} edition",
+            "Every time a hand {C:attention}levels up{}",
+            "{C:attention}level up{} another {C:attention}random{} hand",
+          }
         }
       },
       j_abn_egg_arrival = {
@@ -5207,10 +5280,14 @@ return {
       j_abn_attack_777 = {
         name = "Attack 777",
         text = {
-          "{X:mult,C:white}X#3#{} Mult if played hand contains",
-          "only {C:hearts}Hearts{} and {C:diamonds}Diamonds{}.",
-          "{C:green}#1# in #2#{} chance to retrigger",
-          "each {C:attention}played{} card",
+          {
+            "{X:mult,C:white}X#3#{} Mult if played hand contains",
+            "only {C:hearts}Hearts{} and {C:diamonds}Diamonds{}",
+          },
+          {
+            "{C:green}#1# in #2#{} chance to retrigger",
+            "each {C:attention}played{} card",
+          }
         }
       },
       j_abn_ancient_prophet = {
@@ -6549,9 +6626,14 @@ return {
       j_abn_astro_joker = {
         name = "Astro Joker",
         text = {
-          "{C:astro_cards}Astro{} cards always {C:green}succeed",
-          "{C:green}#1# in #2# chance{} this {C:attention}Joker{} is",
-          "{C:red}destroyed{} at end of round.",
+          {
+            "{C:astro_cards}Astro{} cards always",
+            "{C:green}succeed"
+          },
+          {
+            "{C:green}#1# in #2# chance{} this {C:attention}Joker{}",
+            "is {C:red}destroyed{} at end of round.",
+          }
         }
       },
       j_abn_archaic_joker = {
@@ -6584,10 +6666,17 @@ return {
       j_abn_prenatural_joker = {
         name = "Prenatural Joker",
         text = {
-          "Enhanced {C:attention}Odd{} cards give {X:chips,C:white}X#4#{} Chips",
-          "Increase this by {X:chips,C:white}X#3#{} for each card scored",
-          "{C:green}#1# in #2#{} chance for a {C:attention}Voucher{}",
-          "to be created when {C:attention}Odd{} cards score",
+          {
+            "Played {C:attention}Enhanced{} {C:attention}odd{} cards",
+            "give {X:chips,C:white}X#4#{} Chips when scored,",
+            "increases by {X:chips,C:white}X#3#{} when",
+            "a card is scored"
+          },
+          {
+            "Played {C:attention}Odd{} cards have a",
+            "{C:green}#1# in #2#{} chance to create",
+            "a {C:attention}Voucher{} when scored",
+          },
         }
       },
       j_abn_jokerge = {
@@ -7923,7 +8012,7 @@ return {
       j_abn_rom_hack_balatro = {
         name = "ROM Hack Balatro",
         text = {
-          "{C:attention}Vanilla{} Jokers each give",
+          "{C:inactive}Vanilla{} Jokers each give",
           "{X:mult,C:white}X#1#{} Mult, {X:chips,C:white}X#2#{} Chips, and {C:money}$#3#{}",
         }
       },
@@ -8479,7 +8568,7 @@ return {
           },
           {
             "If you play a {C:attention}#1#{} with",
-            "{C:abn_penumbra}Penumbras{}, {C:abn_snow}Snows{}, {C:abn_bow}Bows{} and {C:abn_tie}Ties{},",
+            "{C:abn_star}Stars{}, {C:abn_moon}Moons{}, {C:abn_crown}Crowns{} and {C:abn_talon}Talons{},",
             "level up the {C:planet}planet{} {C:attention}rank{} of",
             "each {C:attention}scoring{} card and",
             "gain {C:chips}+#3#{} Chips.",
@@ -9220,7 +9309,8 @@ return {
           },
           {
             "If {C:attention}Joker{} is owned,",
-            "scored cards give", "{C:gold}+#2#{} Asc. Power",
+            "scored cards give",
+            "{C:gold}+#2#{} Asc. Power",
           }
         }
 
@@ -9237,7 +9327,8 @@ return {
           },
           {
             "If this {C:attention}Joker{} is {C:dark_edition}editioned{},",
-            "scored cards gain", "{C:gold}+#3#{} Asc. Power",
+            "scored cards gain",
+            "{C:gold}+#3#{} Asc. Power",
           }
         }
 
@@ -9753,7 +9844,7 @@ return {
           },
           {
             "If played hand contains at least one of",
-            "each {C:attention}Vanilla{} suit, level up the {C:planet}planet{} {C:attention}rank{}",
+            "each {C:inactive}Vanilla{} suit, level up the {C:planet}planet{} {C:attention}rank{}",
             "of all cards scored by {C:attention}4{}",
           }
         }
@@ -9787,10 +9878,10 @@ return {
         name = "Jokester",
         text = {
           {
-            "{s:0.8}Scoring {C:hearts,s:0.8}Hearts{s:0.8} become {C:abn_snow,s:0.8}Snows{}",
-            "{s:0.8}Scoring {C:spades,s:0.8}Spades{s:0.8} become {C:abn_bow,s:0.8}Bows{}",
-            "{s:0.8}Scoring {C:diamonds,s:0.8}Diamonds{s:0.8} become {C:abn_tie,s:0.8}Ties{}",
-            "{s:0.8}Scoring {C:clubs,s:0.8}Clubs{s:0.8} become {C:abn_penumbra,s:0.8}Penumbras{}",
+            "{s:0.8}Scoring {C:hearts,s:0.8}Hearts{s:0.8} become {C:abn_leaf,s:0.8}Leaves{}",
+            "{s:0.8}Scoring {C:spades,s:0.8}Spades{s:0.8} become {C:abn_bell,s:0.8}Bells{}",
+            "{s:0.8}Scoring {C:diamonds,s:0.8}Diamonds{s:0.8} become {C:abn_acorn,s:0.8}Acorns{}",
+            "{s:0.8}Scoring {C:clubs,s:0.8}Clubs{s:0.8} become {C:abn_florette,s:0.8}Florettes{}",
           },
           {
             "If this Joker has {C:dark_edition}Collodion{} edition,",
@@ -9810,7 +9901,7 @@ return {
             "the combined {C:attention}rank{} of all cards",
           },
           {
-            "If scoring hand contains no {C:attention}Vanilla{} suits,",
+            "If scoring hand contains no {C:inactive}Vanilla{} suits,",
             "this Joker gains {C:chips}+#3#{} Chips",
             "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#1#{} {C:inactive}Chips){}",
           },
@@ -9822,7 +9913,7 @@ return {
           {
             "Before scoring, cards change {C:attention}suits{}:",
             "{C:diamonds,s:0.8}Diamonds{s:0.8} -> {C:spades,s:0.8}Spades{s:0.8} -> {C:hearts,s:0.8}Hearts{s:0.8} -> {C:clubs,s:0.8}Clubs",
-            "{s:0.8} -> {C:abn_snow,s:0.8}Snows{s:0.8} -> {C:abn_penumbra,s:0.8}Penumbras{s:0.8} -> {C:abn_tie,s:0.8}Ties{s:0.8} -> {C:abn_bow,s:0.8}Bows{}",
+            "{s:0.8} -> {C:abn_arrow,s:0.8}Arrows{s:0.8} -> {C:abn_anchor,s:0.8}Anchors{s:0.8} -> {C:abn_rose,s:0.8}Roses{s:0.8} -> {C:abn_shield,s:0.8}Shields{}",
           },
           {
             "This Joker gains {C:chips}+#3#{} Chips and",
@@ -10728,9 +10819,9 @@ return {
         text = {
           "Pay {C:money}$#1#{} to add {C:attention}+1{} Joker slot",
           "Increase {C:attention}finishing Ante{} by {C:attention}+1{} for every Joker above {C:attention}5{}",
-          "Jokers with {C:attention}Vanilla{} {C:dark_edition}Editions{} give {C:gold}+#2#{} Ascension Power",
-          "Scoring cards with {C:attention}Vanilla{} {C:dark_edition}Editions{} give {C:gold}+#3#{} Ascension Power",
-          "If a {C:attention}Vanilla{} Suit card with a {C:attention}Vanilla{} {C:dark_edition}Edition{} matches a Joker's {C:dark_edition}Edition{}",
+          "Jokers with {C:inactive}Vanilla{} {C:dark_edition}Editions{} give {C:gold}+#2#{} Ascension Power",
+          "Scoring cards with {C:inactive}Vanilla{} {C:dark_edition}Editions{} give {C:gold}+#3#{} Ascension Power",
+          "If a {C:inactive}Vanilla{} Suit card with a {C:inactive}Vanilla{} {C:dark_edition}Edition{} matches a Joker's {C:dark_edition}Edition{}",
           "this Joker gains {C:gold}+#4#{} Ascension Power",
           "{C:inactive}(Currently{} {C:gold}+#5#{} {C:inactive}Ascension Power){}",
         }
@@ -10739,7 +10830,7 @@ return {
       j_abn_metallic_upgrade = { -- to relocalise
         name = "Metallic Upgrade",
         text = {
-          "The {C:attention}First{} scoring {C:attention}Vanilla{} {C:dark_edition}Enhancement{} card in a {C:attention}Spectrum{} hand",
+          "The {C:attention}First{} scoring {C:inactive}Vanilla{} {C:dark_edition}Enhancement{} card in a {C:attention}Spectrum{} hand",
           "Gives the same {C:dark_edition}Enhancement{} to the {C:attention}Leftmost{} Joker",
           "If a {C:attention}Spectrum{} hand is played with {C:attention}5 Vanilla{} {C:dark_edition}Enhancements{}",
           "all played cards permanently gain {C:chips}+#1#{} Chips {C:mult}+#2#{} Mult",
@@ -11126,7 +11217,7 @@ return {
         name = "ENA Joker",
         text = {
           {
-            "Played cards with {C:attention}Vanilla{} suits",
+            "Played cards with {C:inactive}Vanilla{} suits",
             "and {C:attention}Modded Enhancements{} give",
             "{C:white,X:chips}X#1#{} Chips when scored"
           },
@@ -11142,7 +11233,7 @@ return {
         name = "Joker ENA",
         text = {
           {
-            "Played cards with {C:attention}Vanilla{} suits",
+            "Played cards with {C:inactive}Vanilla{} suits",
             "and {C:attention}Modded Enhancements{} give",
             "{C:white,X:mult}X#1#{} Mult when scored"
           },
@@ -11196,7 +11287,7 @@ return {
       j_abn_amplifier = {
         name = "Amplifier",
         text = {
-          "{C:attention}Modded{} {C:dark_edition}Enhancements{} on {C:attention}Vanilla{} Suits give {C:attention}50%{} more {C:chips}Chips{} and {C:mult}Mult{}",
+          "{C:attention}Modded{} {C:dark_edition}Enhancements{} on {C:inactive}Vanilla{} Suits give {C:attention}50%{} more {C:chips}Chips{} and {C:mult}Mult{}",
           "{C:attention}100%{} if they on {C:attention}modded{} Suits"
         }
       },
@@ -11210,14 +11301,14 @@ return {
         name = "Drawcia",
         text = {
           "Hands composed of only {C:attention}modded{} suits {C:attention}always score{}",
-          "Gain {X:mult,C:white}X#2#{} Mult for each {C:attention}different{} suit if no {C:attention}vanilla{} suits are played",
+          "Gain {X:mult,C:white}X#2#{} Mult for each {C:attention}different{} suit if no {C:inactive}vanilla{} suits are played",
           "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{}",
         }
       },
       j_abn_fortlatro = {
         name = "Fortlatro",
         text = {
-          "{C:attention}Vanilla{} consumables and Jokers {C:attention}do not{} appear",
+          "{C:inactive}Vanilla{} consumables and Jokers {C:attention}do not{} appear",
           "When a {C:chips}Small Blind{} is selected create a random {C:attention}Modded{} consumable",
           "When a {C:attention}Big Blind{} is selected create a random {C:attention}Modded{} Joker",
           "Gain {X:chips,C:white}X#2#{} Chips per {C:attention}unique Modded Consumable{} used this Run",
@@ -11238,7 +11329,7 @@ return {
       j_abn_super_eight = {
         name = "Super Eight",
         text = {
-          "{C:attention}8's{} can't be {C:mult}debuffed{} and are considered every {C:attention}Vanilla{} Suit",
+          "{C:attention}8's{} can't be {C:mult}debuffed{} and are considered every {C:inactive}Vanilla{} Suit",
           "Gain {C:mult}Mult{} equal to {C:attention}twice{} the {C:attention}rank{} of Scoring {C:attention}8's{}",
           "If no {C:attention}8's{} score {C:mult}destroy{} this Joker",
           "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{}",
@@ -11262,7 +11353,7 @@ return {
       j_abn_consumable_tag = {
         name = "Consumable Tag",
         text = {
-          "Whenever a {C:attention}Tag{} is obtained create a {C:attention}Vanilla{} Consumable Tag",
+          "Whenever a {C:attention}Tag{} is obtained create a {C:inactive}Vanilla{} Consumable Tag",
           "Gain {X:mult,C:white}X#2#{} Mult when a tag gives a {C:attention}Consumable{} Pack",
           "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{}",
         }
@@ -11270,8 +11361,8 @@ return {
       j_abn_tri_tag = {
         name = "Tri Tag",
         text = {
-          "Whenever a {C:attention}Vanilla{} tag is obtained gain {X:mult,C:white}X#2#{} Mult",
-          "Whenever a {C:attention}Modded{} tag is obtained gain {X:chips,C:white}X#4#{} Chips",
+          "Whenever a {C:inactive}Vanilla{} tag is obtained gain {X:mult,C:white}X#2#{} Mult",
+          "Whenever a {C:dark_edition}Modded{} tag is obtained gain {X:chips,C:white}X#4#{} Chips",
           "Whenever a {C:abn_hazard}Hazard{} tag is obtained gain {C:money}$#5#{}",
           "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{} {X:chips,C:white}X#3#{} {C:inactive}Chips{}"
         }
@@ -11279,7 +11370,7 @@ return {
       j_abn_salvation_tag = {
         name = "Salvation Tag",
         text = {
-          "Whenever a {C:attention}Vanilla{} Tag is obtained",
+          "Whenever a {C:inactive}Vanilla{} Tag is obtained",
           "Convert it into it's {C:abn_hazard}Hazard{} variant",
         }
       },
@@ -11440,7 +11531,351 @@ return {
               "base Chips {C:attention}doubled{}"
             }
           },
+        }, -- ImaginaryNeon Jokers end here (for now)
+        name = "EFO Joker",
+        text = {
+          "{C:green}#1# in #2#{} chance to copy the first played {C:attention}Stamp Card{} into your hand",
+          "Scoring cards with {C:attention}Stamps{} give {C:gold}+#3#{} Ascension power",
+          "Played hands with {C:attention}5{} or more Stamps",
+          "give this Joker {X:mult,C:white}X#4#{} Mult and {C:gold}+#5#{} Ascension Power per card",
+          "{C:inactive}Currently: {X:mult,C:white}X#6#{} {C:inactive}Mult{} {C:gold}+#7#{} {C:inactive}Ascension Power{}",
+        }
+      },
+      j_abn_globalist_joker = {
+        name = "Globalist Joker",
+        text = {
+          "When a {C:continent}Continent{} card is used create a {C:attention}random{} {C:dark_edition}Negative{} consumable",
+          "After {C:attention}#1#{} {C:continent}Continent{} cards are used",
+          "place a {C:attention}Stamp{} on each scoring card of the next played {C:attention}spectrum{}",
+          "Gain {X:mult,C:white}X#2#{} Mult for every {C:attention}unique{} {C:continent}Continent{} used this run",
+          "{C:inactive}Currently: {X:mult,C:white}X#3#{} {C:inactive}Mult{}",
+        }
+      },
+      j_abn_khonsu_joker = {
+        name = "Khonsu Joker",
+        text = {
+          {
+            "If {C:attention}first hand{} of round is a {C:attention}Pair{}",
+            "containing {C:diamonds}Light{} and {C:spades}Dark{} suits,",
+            "add {C:dark_edition}Bright{} and {C:dark_edition}Opaque{} edition",
+            "respectively to each card scored",
+          },
+          {
+            "If this Joker has {C:dark_edition}Bright{} edition,",
+            "scoring {C:diamonds}Light{} suits give",
+            "double their {C:attention}rank{} as {C:mult}Mult{}",
+          },
+          {
+            "If this Joker has {C:dark_edition}Opaque{} edition,",
+            "scoring {C:spades}Dark{} suits give",
+            "double their {C:attention}rank{} as {C:mult}Mult{}",
+          }
+        }
+      },
+      j_abn_bio_blueprint = {
+        name = "Bio Blueprint",
+        text = {
+          {
+            "{C:attention}Playing Cards{} may be moved from",
+            "your hand to {C:attention}consumable slots{}",
+          },
+          {
+            "Cards with the same {C:attention}rank{}",
+            "as stored card can give",
+            "{C:dark_edition}special effects{} when scored",
+            "{C:inactive}(Currently {C:red}+#1# {C:inactive}Mult, {C:chips}+#2# {C:inactive}Chips)",
+          },
+        }
+      },
+      j_abn_gtp_joker = {
+        name = "GTP Joker",
+        text = {
+          "{X:mult,C:white}X#1#{} base hand Mult and {X:chips,C:white}X#2#{} base hand Chips",
+          "for each consecutive hand played in a",
+          "round, except for {C:attention}High Card"
+        }
+      },
+      j_abn_gtp_joker_after = {
+        name = "GTP Joker",
+        text = {
+          "{X:mult,C:white}X#1#{} base hand Mult and {X:chips,C:white}X#2#{} base hand Chips",
+          "for each consecutive hand played in a",
+          "round, except for {C:attention}High Card",
+          "{C:inactive}(Previous hand: {C:attention}#3#{C:inactive})"
+        }
+      },
+      j_abn_supermember_card = {
+        name = "Supermember Card",
+        text = {
+          "Jokers give their {C:attention}sell value{}",
+          "as {C:mult}Mult",
+        }
+      },
+      j_abn_joker_forge = {
+        name = "Joker Forge",
+        text = {
+          "{C:attention}Scoring{} cards give total",
+          "{C:attention}sell value{} of all current",
+          "Jokers as {C:red}Mult{}",
+          "{C:inactive}(Currently {C:red}+#1# {C:inactive}Mult)"
+        }
+      },
+      j_abn_galactic_night = {
+        name = "Galactic Night",
+        text = {
+          "Gives {X:mult,C:white}XMult{} equal to",
+          "played {C:attention}poker hand{} level"
+        }
+      },
+      j_abn_prizefighter_inferno = {
+        name = "Prizefighter Inferno",
+        text = {
+          "Gains {X:chips,C:white}X#3#{} Chips when a",
+          "{C:attention}Tag{} triggers, gains {X:mult,C:white}X#4#{} Mult",
+          "if that was {C:abn_hazard}Hazard Tag",
+          "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips, {X:mult,C:white}X#2#{C:inactive} Mult)"
+        }
+      },
+      j_abn_sticky_fingers = {
+        name = "Sticky Fingers",
+        text = {
+          "{C:tarot}Tarot{}, {C:planet}Planet{} and {C:spectral}Spectral{} cards",
+          "can be {C:attention}saved{} from {C:attention}Booster packs"
+        }
+      },
+      j_abn_the_feast = {
+        name = "The Feast",
+        text = {
+          {
+            "Upon purchasing a {C:attention}Food{} Joker,",
+            "create a {C:dark_edition}Negative{} copy of it",
+          },
+          {
+            "When a {C:attention}Food{} Joker is {C:gold}sold{},",
+            "gain {X:red,C:white}X#1#{} Mult per round that",
+            "{C:attention}Food{} Joker has been held",
+          },
+          {
+            "If it is destroyed instead,",
+            "gain {X:blue,C:white}X#2#{} Chips per round that",
+            "{C:attention}Food{} Joker has been held",
+            "{C:inactive}(Currently {X:red,C:white}X#3#{C:inactive} Mult, {X:blue,C:white}X#4#{C:inactive} Chips)",
+            "{C:inactive,s:0.8}(Rounds are tracked from owning this joker)"
+          },
+        }
+      },
+      j_abn_balance_brandon = {
+        name = "Balance Brandon",
+        text = {
+          {
+            "Converts {C:mult}+Mult{} effects of playing cards into",
+            "{X:mult,C:white}XMult{} at a rate of {X:mult,C:white}X#1#"
+          },
+          {
+            "If this is a {C:attention}Mult Joker{},",
+            "{C:attention}Mult{} enhancements will also",
+            "trigger when held in hand"
+          }
+        }
+      },
+      j_abn_unhinged_umar = {
+        name = "Unhinged Umar",
+        text = {
+          {
+            "Converts {C:chips}+Chips{} effects of playing cards into",
+            "{X:chips,C:white}XChips{} at a rate of {X:chips,C:white}X#1#",
+          },
+          {
+            "If this is a {C:attention}Bonus Joker{},",
+            "{C:attention}Bonus{} enhancements will also",
+            "trigger when held in hand"
+          }
+        }
+      },
+      j_abn_spitting_imagine = {
+        name = "Spitting Imagine",
+        text = {
+          "Gains {C:mult}Mult{} or {C:chips}Chips{} whenever",
+          "you copy a card with an {C:mult}even",
+          "or {C:chips}odd{} rank, respectively",
+          "{C:inactive}(Currently: {C:mult}+#1# {C:inactive}Mult, {C:chips}+#2# {C:inactive}Chips)"
+        }
+      },
+      j_abn_amateur_artist = {
+        name = "Amateur Artist",
+        text = {
+          {
+            "When a hand is played,",
+            "add a permanent copy of {C:attention}first{}",
+            "scoring {C:attention}Kinship Card{} to deck",
+            "and draw it to {C:attention}hand",
+          },
+          {
+            "If scoring hand contains",
+            "only {C:attention}Kinship Cards{}, convert",
+            "that many cards in your deck",
+            "into {C:attention}copies{} of scored cards",
+            "{C:attention,s:0.8}High Card{s:0.8} excluded"
+          }
+        }
+      },
+      j_abn_eccentric_artist = {
+        name = "Eccentric Artist",
+        text = {
+          {
+            "Scoring {C:attention}Kinship{} cards with both",
+            "a {C:inactive}Vanilla {C:attention}suit{} and {C:attention}Edition{}",
+            "give {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+          },
+          {
+            "Scoring {C:attention}Kinship{} cards with both",
+            "a {C:dark_edition}Modded {C:attention}suit{} and {C:attention}Edition{}",
+            "give {C:chips}+#3#{} Chips and {C:mult}+#4#{} Mult",
+          },
+          {
+            "{C:chips}+#5#{} Chips and {C:mult}+#6#{} Mult if your",
+            "{C:attention}full deck{} contains only {C:attention}Kinship{} Cards"
+          }
+        }
+      },
+      j_abn_early_sketch = {
+        name = "Early Sketch",
+        text = {
+          {
+            "If {C:attention}first hand{} of round has",
+            "only {C:dark_edition}Vintage {C:attention}Kinship Cards{},",
+            "hand will score as if it",
+            "were {C:attention}#1#{} levels higher",
+          },
+          {
+            "Hands containing only",
+            "{C:dark_edition}Vintage{} {C:attention}Kinship Cards{}",
+            "cannot {C:red}level down{}"
+          }
+        }
+      },
+      j_abn_entitled_fool = {
+        name = "Entitled Fool",
+        text = {
+          "Gains {X:chips,C:white}X#1#{} Chips or {X:mult,C:white}X#2#{} Mult",
+          "each time you score the exact same",
+          "{C:chips}odd{} or {C:mult}even{} ranked {C:attention}Tile Card{},",
+          "respectively, more than once in a round",
+          "{C:inactive}(Currently {X:chips,C:white}X#3#{C:inactive} Chips, {X:mult,C:white}X#4#{C:inactive} Mult)"
+        }
+      },
+      j_abn_dreamtime_sphinx = {
+        name = "Dreamtime Sphinx",
+        text = {
+          "This Joker gains {C:chips}+#2#{} Chips",
+          "when a {C:attention}Fossil Card{} is scored",
+          "If that {C:attention}Fossil Card{} is {C:mult}destroyed{} gain {C:mult}Mult{} equal to its {C:attention}rank{}",
+          "{C:attention}Fossil Cards{} with {C:dark_edition}Opaque{} {C:attention}level up{} their {C:planet}planet{} {C:attention}rank{} upon scoring",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips {C:mult}+#3#{} {C:inactive}Mult{})"
+        }
+      },
+      j_abn_losers_dice = {
+        name = "Loser's Dice",
+        text = {
+          "Played and scored {C:attention}2s{} give {C:mult}+#2#{} Mult",
+          "for each owned {C:common}Common{} Joker",
+          "{C:inactive}(Will give {C:mult}+#1#{C:inactive} Mult)"
+        }
+      },
+      j_abn_wicked_witch = {
+        name = "Wicked Witch",
+        text = {
+          {
+            "This Joker gains {X:mult,C:white}X#1#{} Mult when",
+            "when a {C:dark_edition}Modded{} {C:tarot}Tarot{} card is used",
+            "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+          },
+          {
+            "{C:red}Self Destructs{} if a",
+            "{C:weather_report}Weather Report{} is used",
+          }
         },
+      },
+      j_abn_apprentice_wizard = {
+        name = "Apprentice Wizard",
+        text = {
+          {
+            "This Joker gains {X:mult,C:white}X#1#{} Mult when a",
+            "{C:dark_edition}Modded{} {C:spectral}Spectral{} card is used, resets",
+            "when a {C:inactive}Vanilla{} {C:spectral}Spectral{} card is used",
+            "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+          },
+        },
+      },
+      j_abn_the_contrarian = {
+        name = "The Contrarian",
+        text = {
+          "Gives {X:mult,C:white}X#1#{} Mult per",
+          "{C:red}Debuffed{} card scored",
+        },
+      },
+      j_abn_genetically_modified_food = {
+        name = "Genetically Modified Food",
+        text = {
+          "When a Joker is {C:attention}purchased{} or {C:attention}sold{},",
+          "this Joker gains {C:chips}Chips{} equal to the",
+          "{C:money}price{} of Modded {C:attention}Food Jokers{}, {C:mult}Mult{}",
+          "equal to the {C:money}price{} of {C:inactive}Vanilla{} {C:attention}Jokers",
+        },
+      },
+      j_abn_demon_sphere = {
+        name = "Demon Sphere",
+        text = {
+          {
+            "Played cards with {C:dark_edition}Modded{}",
+            "{C:attention}ranks{} give {C:gold}+#1#{} Asc.",
+            "Power when scored",
+          },
+          {
+            "Played cards have a",
+            "{C:green}#2# in #3#{} chance to be",
+            "{C:red}destroyed{} after scoring"
+          }
+        }
+      },
+	    j_abn_bubbly_joker = {
+        name = "Bubbly Joker",
+        text = {
+          "Gain {X:mult,C:white}X#1#{} Mult when a {C:attention}Bubble{} Card is {C:attention}added{}",
+          "Gain {X:chips,C:white}X#2#{} Chips when a {C:attention}Bubble{} Card is {C:mult}destroyed{}",
+          "{C:inactive}Currently:{} {X:mult,C:white}X#3#{} {C:inactive}Mult{} {X:chips,C:white}X#4#{} {C:inactive}Chips{}",
+        }
+      },
+	    j_abn_stiff_drink = {
+        name = "Stiff Drink",
+        text = {
+          "When clearing a Blind for the {C:attention}first time{}",
+          "Repeat it {C:attention}instead{} of advancing to the {C:attention}next blind{}",
+          "All {C:chips}hands{} and {C:mult}discards{} are considered the {C:attention}first{} and {C:attention}last{} of round",
+        }
+      },
+      j_abn_dagonet = {
+        name = "Dagonet",
+        text = {
+          "{C:attention}Steel{} cards held in hand",
+          "give {C:gold}+#1#{} Ascension Power"
+        }
+      },
+      j_abn_cloten = {
+        name = "Cloten",
+        text = {
+          "Scored {C:attention}Bonus{} cards give",
+          "{X:chips,C:white}XChips{} equal to their {C:attention}rank"
+        }
+      },
+      j_abn_nasreddin = {
+        name = "Nasreddin",
+        text = {
+          "Scored {C:attention}Lucky{} cards",
+          "give {X:mult,C:white}^#1#{} Mult, {X:chips,C:white}^#2#{} Chips",
+          "or {C:gold}+#3#{} Ascension Power"
+        }
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
@@ -11717,8 +12152,9 @@ return {
       credit_abn_okronix = {
         name = "",
         text = {
-          "Made {C:green}art{} for the",
-          "{C:dark_edition}Deck Sleeves{}"
+          "Added some Jokers and",
+          "made a ton of {C:green}art{}",
+          "for the new {C:attention}Consumables{}!"
         }
       },
       credit_abn_flote = {
@@ -11750,11 +12186,152 @@ return {
           "gain {C:attention}+1{} handsize",
         }
       },
-	  abn_jester_stamp = {
+      abn_jester_stamp = {
         name = "Jester Stamp",
         text = {
           "If this Card has a unique {C:dark_edition}Edition,{} {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
           "gain {C:attention}+1{} Joker slot when it is {C:mult}Destroyed{} {C:inactive}(max:5){}",
+        }
+      },
+      abn_icon_stamp = {
+        name = "Icon Stamp",
+        text = {
+          "If this Card has a unique {C:dark_edition}Edition,{} {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
+          "Gains {X:chips,C:white}X1{} Chips for each {C:attention}Seal{}/{C:dark_edition}Edition{}/{C:dark_edition}Enhancement{}",
+          "If the round is won in {C:attention}1{} hand {C:mult}Destroy{} this card",
+          "{C:inactive}(Currently {X:chips,C:white}X#1#{} {C:inactive}Chips)",
+        }
+      },
+      abn_psychomancy_stamp = {
+        name = "Psychomancy Stamp",
+        text = {
+          "Upon {C:mult}destroying{} this card {C:attention}Level up{} the {C:attention}most played hand{}",
+          "for each {C:dark_edition}Edition,{} {C:dark_edition}Enhancement,{} and {C:attention}Seal{} on this card",
+        }
+      },
+      abn_membership_stamp = {
+        name = "Membership Stamp",
+        text = {
+          "If this Card has a unique {C:dark_edition}Edition, {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
+          "it gains {C:gold}+#1#{} Ascension Power when scoring",
+          "{C:inactive}(Currently{} {C:gold}#2#{} {C:inactive}Ascension Power)",
+        }
+      },
+      abn_prehensile_stamp = {
+        name = "Prehensile Stamp",
+        text = {
+          "If this card has unique {C:dark_edition}Edition,{} {C:attention}Seal, and {C:dark_edition}Enhancement{}",
+          "It {C:attention}always scores{} and {C:attention}ignores card selection limit{}",
+        }
+      },
+      abn_bio_blueprint_incompatible_norank = {
+        name = "Incompatible",
+        text = {
+          "Cards that do not have a rank",
+          "cannot receive any bonuses"
+        }
+      },
+      abn_bio_blueprint_incompatible_rank = {
+        name = "Incompatible",
+        text = {
+          "Cards of rank '#1#'",
+          "cannot receive any bonuses"
+        }
+      },
+      abn_bio_blueprint_even = {
+        name = "#1# of #2# (Even)",
+        text = {
+          "All scoring #1#s grant {C:mult}+#3#{} Mult",
+          "If at least {C:attention}#1#{} #1#s are scored by the",
+          "end of the round, double Mult rate",
+          "{C:inactive}({C:attention}#4#{C:inactive}/#1# #1#s scored)"
+        }
+      },
+      abn_bio_blueprint_even_edi = {
+        name = "#5# #1# of #2# (Even)",
+        text = {
+          "All scoring #1#s grant {C:mult}+#3#{} Mult",
+          "All scoring {C:dark_edition}#5#{} #1#s also grant {C:mult}+#6#{} Mult",
+          "If at least {C:attention}#1#{} #1#s are scored by the",
+          "end of the round, double Mult rate",
+          "If at least {C:attention}#1#{} {C:dark_edition}#5#{} #1#s are scored by the",
+          "end of the round, double Mult rate",
+          "{C:inactive}({C:attention}#4#{C:inactive}/#1# #1#s and {C:attention}#7#{C:inactive}/#1# {C:dark_edition}#5# {C:inactive}#1#s scored)"
+        }
+      },
+      abn_bio_blueprint_even_enh = {
+        name = "#5# #1# of #2# (Even)",
+        text = {
+          "All scoring #1#s grant {C:mult}+#3#{} Mult",
+          "All scoring {C:attention}#5#{} #1#s also grant {C:chips}+#6#{} Chips",
+          "If at least {C:attention}#1#{} #1#s are scored by the",
+          "end of the round, double Mult rate",
+          "If at least {C:attention}#1# {C:dark_edition}#5#{} #1#s are scored by the",
+          "end of the round, double Chip rate",
+          "{C:inactive}({C:attention}#4#{C:inactive}/#1# #1#s and {C:attention}#7#{C:inactive}/#1# {C:attention}#5# {C:inactive}#1#s scored)"
+        }
+      },
+      abn_bio_blueprint_even_edi_enh = {
+        name = "#5# #8# #1# of #2# (Even)",
+        text = {
+          "All scoring #1#s grant {C:mult}+#3#{} Mult",
+          "All scoring {C:dark_edition}#5#{} #1#s also grant {C:mult}+#6#{} Mult",
+          "All scoring {C:attention}#8#{} #1#s also grant {C:chips}+#9#{} Chips",
+          "If at least {C:attention}#1#{} #1#s are scored by the",
+          "end of the round, double Mult rate",
+          "If at least {C:attention}#1#{} {C:dark_edition}#5#{} #1#s are scored by the",
+          "end of the round, double Mult rate",
+          "If at least {C:attention}#1# #8#{} #1#s are scored by the",
+          "end of the round, double Chip rate",
+          "{C:inactive}({C:attention}#4#{C:inactive}/#1# #1#s, {C:attention}#7#{C:inactive}/#1# {C:dark_edition}#5# {C:inactive}#1#s, and {C:inactive}#10#/#1# {C:attention}#8# {C:inactive}#1#s scored)"
+        }
+      },
+      abn_bio_blueprint_odd = {
+        name = "#1# of #2# (Odd)",
+        text = {
+          "All scoring #1#s grant {C:chips}+#3#{} Chips",
+          "If at least {C:attention}#1#{} #1#s are scored by the",
+          "end of the round, double Chip rate",
+          "{C:inactive}({C:attention}#4#{C:inactive}/#1# #1#s scored)"
+        }
+      },
+      abn_bio_blueprint_odd_edi = {
+        name = "#5# #1# of #2# (Odd)",
+        text = {
+          "All scoring #1#s grant {C:chips}+#3#{} Chips",
+          "All scoring {C:dark_edition}#5#{} #1#s also grant {C:mult}+#6#{} Mult",
+          "If at least {C:attention}#1#{} #1#s are scored by the",
+          "end of the round, double Chip rate",
+          "If at least {C:attention}#1#{} {C:dark_edition}#5#{} #1#s are scored by the",
+          "end of the round, double Mult rate",
+          "{C:inactive}({C:attention}#4#{C:inactive}/#1# #1#s and {C:attention}#7#{C:inactive}/#1# {C:dark_edition}#5# {C:inactive}#1#s scored)"
+        }
+      },
+      abn_bio_blueprint_odd_enh = {
+        name = "#5# #1# of #2# (Odd)",
+        text = {
+          "All scoring #1#s grant {C:chips}+#3#{} Chips",
+          "All scoring {C:attention}#5#{} #1#s also grant {C:chips}+#6#{} Chips",
+          "If at least {C:attention}#1#{} #1#s are scored by the",
+          "end of the round, double Chip rate",
+          "If at least {C:attention}#1# #5#{} #1#s are scored by the",
+          "end of the round, double Chip rate",
+          "{C:inactive}({C:attention}#4#{C:inactive}/#1# #1#s and {C:attention}#7#{C:inactive}/#1# {C:attention}#5# {C:inactive}#1#s scored)"
+        }
+      },
+      abn_bio_blueprint_odd_edi_enh = {
+        name = "#5# #8# #1# of #2# (Odd)",
+        text = {
+          "All scoring #1#s grant {C:chips}+#3#{} Chips",
+          "All scoring {C:dark_edition}#5#{} #1#s also grant {C:mult}+#6#{} Mult",
+          "All scoring {C:attention}#8#{} #1#s also grant {C:chips}+#9#{} Chips",
+          "If at least {C:attention}#1#{} #1#s are scored by the",
+          "end of the round, double Chip rate",
+          "If at least {C:attention}#1#{} {C:dark_edition}#5#{} #1#s are scored by the",
+          "end of the round, double Mult rate",
+          "If at least {C:attention}#1# #8#{} #1#s are scored by the",
+          "end of the round, double Chip rate",
+          "{C:inactive}({C:attention}#4#{C:inactive}/#1# #1#s, {C:attention}#7#{C:inactive}/#1# {C:dark_edition}#5# {C:inactive}#1#s, and {C:inactive}#10#/#1# {C:attention}#8# {C:inactive}#1#s scored)"
         }
       },
       abn_cardmodifier_info = {
@@ -11939,6 +12516,15 @@ return {
           "{C:attention}#2# {C:glyphs}Glyph{} cards to",
           "be used immediately",
         },
+      },
+      undiscovered_illusion = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
       },
       undiscovered_calligraphy = {
         name = "Not Discovered",
@@ -12357,6 +12943,30 @@ return {
         text = {
           "({V:1}lvl.#3#{}) {B:2,C:white} #1# {} {C:red,}X{} {B:3,C:white} #2# {}"
         },
+      },
+      p_abn_illusion_normal = {
+        name = 'Illusion Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:illusion}Illusion{} cards to',
+          'be used immediately'
+        }
+      },
+      p_abn_illusion_jumbo = {
+        name = 'Jumbo Illusion Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:illusion}Illusion{} cards to',
+          'be used immediately'
+        }
+      },
+      p_abn_illusion_mega = {
+        name = 'Mega Illusion Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:illusion}Illusion{} cards to',
+          'be used immediately'
+        }
       },
       --#region stickers
       abn_pump_up = {
@@ -14509,7 +15119,7 @@ return {
             "Select a card and a Joker",
             "{C:mult}Destroy{} the Joker",
             "{C:attention}All{} cards with the same {C:attention}suit{}",
-            "as selected card gain {C:chips}Chips{}",
+            "as selected card gain {X:chips,C:white}XChips{}",
             "based on the Joker's {C:attention}rarity",
           },
           {
@@ -14526,7 +15136,7 @@ return {
             "Select a card and a Joker",
             "{C:mult}Destroy{} the Joker",
             "{C:attention}All{} cards with the same {C:attention}suit{}",
-            "as selected card gain {C:mult}Mult{}",
+            "as selected card gain {X:mult,C:white}XMult{}",
             "based on the Joker's {C:attention}rarity",
           },
           {
@@ -14774,14 +15384,14 @@ return {
       m_abn_darkner = {
         name = "Darkner Card",
         text = {
-          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult for played and held {C:spades}Dark Suits{}",
+          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult per played and held {C:spades}Dark Suits{}",
           "{C:mult}Self-destruct{} if played with {C:attention}#3#{} or more {C:diamonds}Light Suits",
         },
       },
       m_abn_lightner = {
         name = "Lightner Card",
         text = {
-          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult for played and held {C:diamonds}Light Suits{}",
+          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult per played and held {C:diamonds}Light Suits{}",
           "{C:mult}Self-destruct{} if played with {C:attention}#3#{} or more {C:spades}Dark Suits",
         },
       },
@@ -14835,6 +15445,29 @@ return {
         text = {
           "{X:chips,C:white}X#1#{} Chips if unscoring on an {C:attention}Odd{} card",
           "{X:mult,C:white}X#2#{} Mult if unscoring on an {C:attention}Even{} card",
+        }
+      },
+      m_abn_honey = {
+        name = "Honey",
+        text = {
+          "This card is {C:attention}always{} drawn to hand",
+          "If this card is in {C:attention}hand{} during scoring {C:attention}play{} it",
+          "{C:green}#1# in #2#{} chance to turn other scoring cards into {C:attention}Honey{} cards",
+        }
+      },
+      m_abn_bubble = {
+        name = "Bubble",
+        text = {
+          "Gives {C:chips}+#1#{} Chips per {C:attention}different{} scoring {C:dark_edition}enhancement{}",
+          "and {C:mult}+#2#{} Mult per {C:attention}different{} scoring {C:dark_edition}edition{}",
+          "If this card is {C:mult}destroyed{} all scoring cards gain {C:chips}+#3#{} Chips",
+        }
+      },
+      m_abn_bramble = {
+        name = "Bramble",
+        text = {
+          "If this is a {C:inactive}vanillia{} suit it {C:attention}Always scores{}",
+          "If this is on a {C:attention}modded{} suit increase hand level by {C:attention}#1#{}",
         }
       },
     },
@@ -14930,8 +15563,8 @@ return {
         text = {
           "{C:attention}Playing cards{} in shop",
           "are guaranteed to spawn",
-          "with either an {C:dark_edition}Edition{} and a {C:attention}Seal{}",
-          "or with an {C:dark_edition}Edition{} and an {C:attention}Enhancement{}"
+          "with either an {C:dark_edition}Edition{} and",
+          "{C:attention}Seal{} or {C:attention}Enhancement{}"
         }
       },
       v_abn_forget_fossil = {
@@ -15149,6 +15782,14 @@ return {
     challenge_names = {
     },
     dictionary = {
+      k_abn_lead_dev = "Lead Dev",
+      k_abn_coder = "Coder",
+      k_abn_artist = "Artist",
+      k_abn_founder = "Founder",
+      k_abn_music = "Music",
+      k_abn_hybrid_art_code = "Artist/Coder",
+
+
       abn_ui_stamps = "Stamps",
       abn_toggle_to_ruinous = "Show Ruinous",
       abn_toggle_to_consumables = "Show Consumables",
@@ -15223,15 +15864,13 @@ return {
       k_abn_crossmod_aij_info = "Adds 8 new Jokers!",
       k_abn_crossmod_ortalab = "Ortalab",
       k_abn_crossmod_ortalab_info = "Adds 6 new Jokers!",
+      k_abn_crossmod_paperback = "Paperback",
+      k_abn_crossmod_paperback_info = "Adds new Poker hands and 3 Jokers!",
       k_abn_crossmod_fortlatro = "Fortlatro",
       k_abn_crossmod_fortlatro_info = "Adds 9 new Jokers!",
       k_abn_crossmod_spectrallib = "Spectrallib",
       k_abn_crossmod_spectrallib_info = "Adds new Content related to Ascension Power!",
-      -- Mod badges for credits
-      k_abn_artist = "Artist",
-      k_abn_founder = "Founder",
-      k_abn_coder = "Coder",
-      k_abn_music = "Music",
+
       k_abn_rank_planet = "Rank Planet",
       b_abn_planet_ranks = "Planet Ranks",
       k_abn_limit_reached = "Max Level Reached!",
@@ -15281,7 +15920,6 @@ return {
       k_abn_plus_glyph = "+1 Glyph",
       k_plus_tag = "+1 Tag!",
       k_plus_periodic = "+1 Periodic",
-      k_plus_crimson = "+1 Crimson",
       k_abn_plus_solid_state = "+1 Solid State",
       k_abn_activated_ex = "Activated!",
       k_lexica_pack = "Lexica Pack",
@@ -15360,16 +15998,26 @@ return {
       b_paradox_cards = "Paradox Cards",
       k_paradox = "Paradox",
 
-      b_maths_cards = "Math Cards",
-      k_maths = "Math",
-	  
-	  b_illusion_cards = "Illusion Cards",
+      b_algebraic_cards = "Algebraic Cards",
+      k_algebraic = "Algebraic",
+
+      b_illusion_cards = "Illusion Cards",
       k_illusion = "Illusion",
+
+      b_ram_cards = "RAM Cards",
+      k_ram = "RAM",
+    },
+    v_dictionary = {
+      k_abn_more_copies = "+#1# more copies!"
     },
     labels = {
       -- Stamps
       abn_empty_stamp = "Empty Stamp",
-	  abn_jester_stamp = "Jester Stamp",
+      abn_jester_stamp = "Jester Stamp",
+      abn_icon_stamp = "Icon Stamp",
+      abn_psychomancy_stamp = "Psychomancy Stamp",
+      abn_membership_stamp = "Membership Stamp",
+      abn_prehensile_stamp = "Prehensile Stamp",
       -- Consumable Types
       weather_report = "Weather Report",
       calamity_cards = "Calamity",
@@ -15387,8 +16035,9 @@ return {
       artistry_cards = "Artistry",
       periodic = "Periodic",
       paradox = "Paradox",
-      maths = "Math",
-	  illusion = "Illusion",
+      algebraic = "Algebraic",
+      illusion = "Illusion",
+      ram = "RAM",
 
       -- Editions
       abn_chthonian = "Chthonian",
@@ -15643,7 +16292,7 @@ return {
       },
 
       ["abn_triple_pair"] = { "3 pairs of cards with different ranks", },
-      ["abn_double_triple"] = { "2 pairs of 3 cards with the same rank.", },
+      ["abn_double_triple"] = { "2 three of a kind with different ranks", },
       ["abn_6oak"] = { "6 cards with the same rank", },
       ["abn_Flush Six"] = { "6 cards with the same rank and suit", },
 

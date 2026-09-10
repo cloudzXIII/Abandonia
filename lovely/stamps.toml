@@ -1,0 +1,198 @@
+[manifest]
+version = "0.1.0"
+dump_lua = true
+priority = 214748365
+
+# Prehensile Stamp (1/4)
+# Force Prehensile Stamp Cards to always be selectable
+# CardArea:can_highlight()
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = '''
+if G.CONTROLLER.HID.controller then
+'''
+position = "before"
+payload = '''
+if self.config.type == 'hand' then
+    local function is_prehensile(c)
+        if not (c and c.ability and c.ability.abn_prehensile_stamp) or c.debuff or not G.playing_cards then return false end
+        local ed = c.edition and c.edition.key
+        local sl = c.seal
+        local eh = (c.config.center and c.config.center.key ~= 'c_base') and c.config.center.key or nil
+        
+        -- MUST have ALL THREE traits present
+        if not ed or not sl or not eh then return false end
+
+        local ed_c, sl_c, eh_c = 0, 0, 0
+        for _, o in ipairs(G.playing_cards) do
+            if o.edition and o.edition.key == ed then ed_c = ed_c + 1 end
+            if o.seal == sl then sl_c = sl_c + 1 end
+            local o_eh = (o.config.center and o.config.center.key ~= 'c_base') and o.config.center.key or nil
+            if o_eh == eh then eh_c = eh_c + 1 end
+        end
+        return ed_c == 1 and sl_c == 1 and eh_c == 1
+    end
+    if is_prehensile(card) then
+        return true
+    end
+end
+'''
+match_indent = true
+
+# Prehensile Stamp (2/4)
+# Force Prehensile Stamp Cards to always be selectable past selection limit
+# CardArea:can_highlight()
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = '''
+if #self.highlighted >= self.config.highlighted_limit then
+    card:highlight(false)
+else
+    self.highlighted[#self.highlighted+1] = card
+    card:highlight(true)
+    if not silent then play_sound('cardSlide1') end
+end
+'''
+position = "after"
+payload = '''
+local function is_prehensile(c)
+    if not (c and c.ability and c.ability.abn_prehensile_stamp) or c.debuff or not G.playing_cards then return false end
+    local ed = c.edition and c.edition.key
+    local sl = c.seal
+    local eh = (c.config.center and c.config.center.key ~= 'c_base') and c.config.center.key or nil
+    
+    if not ed or not sl or not eh then return false end
+
+    local ed_c, sl_c, eh_c = 0, 0, 0
+    for _, o in ipairs(G.playing_cards) do
+        if o.edition and o.edition.key == ed then ed_c = ed_c + 1 end
+        if o.seal == sl then sl_c = sl_c + 1 end
+        local o_eh = (o.config.center and o.config.center.key ~= 'c_base') and o.config.center.key or nil
+        if o_eh == eh then eh_c = eh_c + 1 end
+    end
+    return ed_c == 1 and sl_c == 1 and eh_c == 1
+end
+
+local prehensile = {}
+for k, v in pairs(self.highlighted) do
+    if is_prehensile(v) then
+        prehensile[#prehensile+1] = v
+    end
+end
+
+if not card.highlighted and #prehensile >= 1 then
+    if (#self.highlighted - #prehensile) >= self.config.highlighted_limit then
+        card:highlight(false)
+    else
+        self.highlighted[#self.highlighted+1] = card
+        card:highlight(true)
+        if not silent then play_sound('cardSlide1') end
+    end
+end
+if is_prehensile(card) and not card.highlighted then
+    self.highlighted[#self.highlighted+1] = card
+    card:highlight(true)
+    if not silent then play_sound('cardSlide1') end
+end
+'''
+match_indent = true
+
+# Prehensile Stamp (3/4)
+# Exclude prehensile stamp cards that exceed hand limit from determining poker hand type
+# evaluate_poker_hand()
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = "for _, v in ipairs(SMODS.PokerHandPart.obj_buffer) do"
+position = "before"
+payload = '''
+do
+    local function is_prehensile(c)
+        if not (c and c.ability and c.ability.abn_prehensile_stamp) or c.debuff or not G.playing_cards then return false end
+        local ed = c.edition and c.edition.key
+        local sl = c.seal
+        local eh = (c.config.center and c.config.center.key ~= 'c_base') and c.config.center.key or nil
+        
+        if not ed or not sl or not eh then return false end
+
+        local ed_c, sl_c, eh_c = 0, 0, 0
+        for _, o in ipairs(G.playing_cards) do
+            if o.edition and o.edition.key == ed then ed_c = ed_c + 1 end
+            if o.seal == sl then sl_c = sl_c + 1 end
+            local o_eh = (o.config.center and o.config.center.key ~= 'c_base') and o.config.center.key or nil
+            if o_eh == eh then eh_c = eh_c + 1 end
+        end
+        return ed_c == 1 and sl_c == 1 and eh_c == 1
+    end
+
+    local prehensile = {}
+    local non_prehensile = {}
+    for k, v in pairs(hand) do
+        if is_prehensile(v) then
+            prehensile[#prehensile+1] = v
+        else
+            non_prehensile[#non_prehensile+1] = v
+        end
+    end
+    if #prehensile > 0 then
+        hand = {}
+        local temp_var = 0
+        for k, v in pairs(non_prehensile) do
+            hand[temp_var+1] = v
+            temp_var = temp_var + 1
+        end
+        for k, v in pairs(prehensile) do
+            if (math.max(G.GAME.starting_params.play_limit, 1) - temp_var) > 0 then
+                hand[temp_var+1] = v
+                temp_var = temp_var + 1
+            end
+        end
+    end
+end
+'''
+match_indent = true
+
+# Prehensile Stamp (4/4)
+# Make play button active regardless of if prehensile stamp cards exceed limit
+# G.FUNCS.can_play()
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "if #G.hand.highlighted <= 0 or G.GAME.blind.block_play or #G.hand.highlighted > math.max(G.GAME.starting_params.play_limit, 1) then"
+position = "before"
+payload = '''
+do
+    local function is_prehensile(c)
+        if not (c and c.ability and c.ability.abn_prehensile_stamp) or c.debuff or not G.playing_cards then return false end
+        local ed = c.edition and c.edition.key
+        local sl = c.seal
+        local eh = (c.config.center and c.config.center.key ~= 'c_base') and c.config.center.key or nil
+        
+        if not ed or not sl or not eh then return false end
+
+        local ed_c, sl_c, eh_c = 0, 0, 0
+        for _, o in ipairs(G.playing_cards) do
+            if o.edition and o.edition.key == ed then ed_c = ed_c + 1 end
+            if o.seal == sl then sl_c = sl_c + 1 end
+            local o_eh = (o.config.center and o.config.center.key ~= 'c_base') and o.config.center.key or nil
+            if o_eh == eh then eh_c = eh_c + 1 end
+        end
+        return ed_c == 1 and sl_c == 1 and eh_c == 1
+    end
+
+    local prehensile_exceeds_limit = 0
+    for k, v in pairs(G.hand.highlighted) do
+        if is_prehensile(v) then
+            prehensile_exceeds_limit = prehensile_exceeds_limit + 1
+        end
+    end
+    if prehensile_exceeds_limit > 0 and not ((#G.hand.highlighted - prehensile_exceeds_limit) > math.max(G.GAME.starting_params.play_limit, 1) or G.GAME.blind.block_play or #G.hand.highlighted <= 0) then
+        e.config.colour = G.C.BLUE
+        e.config.button = 'play_cards_from_highlighted'
+        return
+    end
+end
+'''
+match_indent = true

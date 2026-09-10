@@ -3,8 +3,9 @@ SMODS.Joker {
   key = 'slippery_joker',
 
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_abandond
     local cae = card.ability.extra
-    return { vars = { cae.dollars, cae.sell_value } }
+    return { vars = { cae.mult, cae.mult_gain, cae.chips, cae.chips_gain } }
   end,
 
   rarity = 1,
@@ -14,21 +15,43 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { dollars = 3, sell_value = 1 } },
+  config = { extra = { mult = 0, mult_gain = 2, chips = 0, chips_gain = 5 } },
   calculate = function(self, card, context)
-    if context.abn_weather_destroyed_but_not_triggered then
-      return {
-        dollars = card.ability.extra.dollars
-      }
-    end
-    if (context.using_consumeable and context.consumeable.ability.set and context.consumeable.ability.set == "weather_report") or (context.post_trigger and context.other_card.ability.set == "weather_report") then
-      if card.set_cost then
-        card.ability.extra_value = (card.ability.extra_value or 0) + card.ability.extra.sell_value
-        card:set_cost()
+    if context.using_consumeable and context.consumeable.ability.set == "weather_report" and #G.hand.cards > 0 and not context.blueprint then
+      local temp_ID = 15
+      local raised_card = nil
+      for i = 1, #G.hand.cards do
+        if not G.hand.cards[i].edition and temp_ID >= G.hand.cards[i].base.id and not SMODS.has_no_rank(G.hand.cards[i]) then
+          temp_ID = G.hand.cards[i].base.id
+          raised_card = G.hand.cards[i]
+        end
       end
+      if raised_card then
+        raised_card:set_edition("e_abn_abandond", true)
+        card:juice_up(0.3, 0.5)
+      end
+    end
+    if context.individual and context.cardarea == G.play then
+      if context.other_card.edition and context.other_card.edition.key == "e_abn_abandond" then
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "mult",
+          scalar_value = "mult_gain",
+          operation = '+',
+          no_message = true
+        })
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "chips",
+          scalar_value = "chips_gain",
+          operation = '+',
+        })
+      end
+    end
+    if context.joker_main then
       return {
-        message = localize('k_val_up'),
-        colour = G.C.MONEY
+        chips = card.ability.extra.chips,
+        mult = card.ability.extra.mult
       }
     end
   end,

@@ -28,10 +28,10 @@ SMODS.Joker {
         ['Diamonds']     = 'Spades',
         ['Spades']       = 'Hearts',
         ['Hearts']       = 'Clubs',
-        ['Clubs']        = 'abn_Snow',
-        ['abn_Snow']     = 'abn_Penumbra',
-        ['abn_Penumbra'] = 'abn_Tie',
-        ['abn_Tie']      = 'abn_Bow'
+        ['Clubs']        = 'abn_Arrow',
+        ['abn_Arrow']    = 'abn_Anchor',
+        ['abn_Anchor']   = 'abn_Rose',
+        ['abn_Rose']     = 'abn_Shield'
       }
 
       for i = 1, #context.scoring_hand do

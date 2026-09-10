@@ -1,0 +1,12 @@
+[manifest]
+version = "0.1.0"
+dump_lua = true
+priority = -12
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "check_for_unlock({type = 'run_card_replays'})"
+position = "before"
+payload = "if abandonia and abandonia.playextracards then abandonia.playextracards() end"
+match_indent = true

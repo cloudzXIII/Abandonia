@@ -22,10 +22,10 @@ SMODS.Joker {
     end
     if context.final_scoring_step and not context.blueprint then
       local suit_mapping = {
-        Hearts = 'abn_Snow',
-        Diamonds = 'abn_Tie',
-        Clubs = 'abn_Penumbra',
-        Spades = 'abn_Bow'
+        Hearts = 'abn_Leaf',
+        Diamonds = 'abn_Bell',
+        Clubs = 'abn_Acorn',
+        Spades = 'abn_Florette'
       }
 
       for _, scoring_card in ipairs(context.scoring_hand) do
