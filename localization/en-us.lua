@@ -11428,27 +11428,30 @@ return {
         name = 'Double Dip',
         text = {
           "This Joker gives the base {C:chips}Chips{} and {C:red}Mult{}",
-          "of the played poker hand as",
-          "its own {C:chips}Chips{} and {C:red}Mult{}",
+          "of the played poker hand",
         }
       },
       j_abn_big_raff = {
         name = 'Big Riff',
         text = {
-          "{C:common}Common{} and {C:uncommon}Uncommon{} Jokers",
-          "no longer appear in the Shop",
-          "When {C:attention}Blind{} is selected,",
-          "create a {C:rare}Rare{} Joker",
-          "{C:inactive}(Must have room)",
+          {
+            "{C:common}Common{} and {C:uncommon}Uncommon{} Jokers",
+            "no longer appear in the Shop",
+          },
+          {
+            "When {C:attention}Blind{} is selected,",
+            "create a {C:rare}Rare{} Joker",
+            "{C:inactive}(Must have room)",
+          }
         }
       },
       j_abn_wiimotionplus = {
         name = 'Wii Joker',
         text = {
           "This Joker gains {C:mult}+#2#{} Mult",
-          "at the start of each Blind",
-          "if it hasn't started a Blind",
-          "in that Joker slot before.",
+          "at the start of each {C:attention}Blind",
+          "if it hasn't started a {C:attention}Blind",
+          "in that {C:attention}joker slot{} before",
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult){}",
           "{s=0.8}{C:inactive}(Used slots: #3#){}"
         }
@@ -11464,9 +11467,9 @@ return {
       j_abn_mult_to_chips = {
         name = 'Bonus Bradly',
         text = {
-          "Whenever another Joker gives {C:chips}Chips{},",
-          "this Joker gives those Chips as {C:mult}Mult{}",
-          --"{s:0.7,C:inactive}(Does not affect Jokers that give Chips after another Joker triggers){}"
+          "Whenever another Joker gives {C:mult}Mult{},",
+          "this Joker gives this Mult as {C:chips}Chips{}",
+          --"{s:0.7,C:inactive}(Does not affect Jokers that give Mult after another Joker triggers){}"
         }
       },
       j_abn_spihcneve = {
@@ -11478,8 +11481,8 @@ return {
             "gain {C:chips}+#1#{} Chips",
           },
           {
-            "When an {C:attention}even-ranked {C:mult}Mult card{} scores,",
-            "scoring {C:attention}odd-ranked non-Mult{} cards",
+            "When an {C:attention}Even {C:mult}Mult card{} scores,",
+            "scoring {C:attention}Odd non-Mult{} cards",
             "permenantly gain {C:mult}+#2#{} Mult",
           }
         },
@@ -11491,7 +11494,7 @@ return {
       j_abn_meatkin = {
         name = 'Meatkin Joker',
         text = {
-          "When a {C:mult}Steel card{} scores,",
+          "When a {C:attention}Steel card{} scores,",
           "each scoring non-Steel card",
           "permenantly gains {X:mult,C:white}+X#1#{} Mult"
         },
