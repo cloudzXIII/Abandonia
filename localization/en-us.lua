@@ -11408,6 +11408,39 @@ return {
             "of your deck be {C:attention}Steel{} cards"
           }--]]
         },
+        j_abn_triskaidekaphobia = {
+          name = 'Triskaidekaphobia',
+          text = {
+            {
+              "When a {C:attention}Lucky card{} scores,",
+              "scoring non-Lucky cards permenantly",
+              "have their base {C:chips}Chips{} doubled"
+            },
+            {
+              "When a {C:attention}13{} scores,",
+              "gain {C:attention}+#3#{} Joker slot at the cost",
+              "of {X:blind,C:white}X#2#{} Blind size and",
+              "{X:blind,C:white}+X#4#{} starting Blind size",
+              "{C:inactive}(Currently {X:blind,C:white}X#5#{C:inactive} Blind size){}"
+            }
+          },
+        },
+        j_abn_rorrim = {
+          name = 'Rorrim Joker',
+          text = {
+            {
+              "When a {C:attention}Glass card{} scores,",
+              "scoring non-Glass cards gain",
+              "{C:chips}+#2#{} Chips and {C:mult}+#1#{} Mult",
+              "per scoring card played"
+            },
+            {
+              "When a {C:attention}Glass card{} breaks",
+              "other scoring cards have their",
+              "base Chips {C:attention}doubled{}"
+            }
+          },
+        },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
