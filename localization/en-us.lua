@@ -11858,6 +11858,18 @@ return {
           "or {C:gold}+#3#{} Ascension Power"
         }
       },
+      j_abn_rereleased_special_collector_edition = {
+        name = "Re-Released Special Collector Edition",
+        text = {
+          "If scored hand consists entirely of cards with {C:dark_edition}Editions{},",
+          "and it has an even amount of {C:inactive}Vanilla Editions{} and an odd",
+          "number of {C:attention}Modded Editions{}, or it has an odd amount of",
+          "{C:inactive}Vanilla Editions{} and an even number of {C:attention}Modded",
+          "{C:attention}Editions{}, this Joker gains {C:gold}+#2#{} Ascension Power",
+          "multiplied by whichever {C:dark_edition}Edition{} count is even.",
+          "{C:inactive}(Currently {C:gold}+#1# {C:inactive}Ascension Power)"
+        }
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
@@ -15885,6 +15897,8 @@ return {
       k_solid_pack = "Solid State Pack",
       abn_glyphbooster = "Glyph Pack",
       abn_programbooster = "Program Pack",
+      abn_calligraphybooster = "Calligraphy Pack",
+      abn_illusionbooster = "Illusion Pack",
       k_abn_increased = "Increased!",
       b_abn_ranks = "Ranks",
       k_abn_merged = "Merged!",

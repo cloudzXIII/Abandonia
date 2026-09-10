@@ -559,7 +559,7 @@ if next(SMODS.find_mod("Spectrallib")) then
     key = "sinkhole",
     pos = { x = 1, y = 4 },
 
-    config = { extra = { planet_rank = 1, bonus = { "perma_p_dollars", "slib_perma_plus_asc" }, slib_perma_plus_asc = 0.25, perma_p_dollars = 2 } },
+    config = { extra = { planet_rank = 1, bonus = { "perma_p_dollars", "slib_perma_plus_asc" }, slib_perma_plus_asc = 0.25, perma_p_dollars = 2, level_loss = 1 } },
     loc_vars = function(self, info_queue, card)
       local affected_cards = {}
       for _, v in ipairs(G.playing_cards or {}) do
@@ -575,7 +575,7 @@ if next(SMODS.find_mod("Spectrallib")) then
         local rank = v.base.value
         if not upgrade[rank] then
           upgrade[rank] = true
-          levels_lost = levels_lost + 1
+          levels_lost = levels_lost + card.ability.extra.level_loss
         end
       end
       return {
@@ -584,6 +584,7 @@ if next(SMODS.find_mod("Spectrallib")) then
           card.ability.extra.slib_perma_plus_asc,
           card.ability.extra.perma_p_dollars * levels_lost,
           card.ability.extra.slib_perma_plus_asc * levels_lost,
+          card.ability.extra.level_loss
         }
       }
     end,
@@ -614,8 +615,8 @@ if next(SMODS.find_mod("Spectrallib")) then
         local rank = v.base.value
         if not upgrade[rank] then
           upgrade[rank] = true
-          ABN.level_up_rank(card, rank, -1, true)
-          levels_lost = levels_lost + 1
+          ABN.level_up_rank(card, rank, -card.ability.extra.level_loss, true)
+          levels_lost = levels_lost + card.ability.extra.level_loss
         end
       end
 
