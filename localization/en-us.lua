@@ -5280,10 +5280,14 @@ return {
       j_abn_attack_777 = {
         name = "Attack 777",
         text = {
-          "{X:mult,C:white}X#3#{} Mult if played hand contains",
-          "only {C:hearts}Hearts{} and {C:diamonds}Diamonds{}.",
-          "{C:green}#1# in #2#{} chance to retrigger",
-          "each {C:attention}played{} card",
+          {
+            "{X:mult,C:white}X#3#{} Mult if played hand contains",
+            "only {C:hearts}Hearts{} and {C:diamonds}Diamonds{}",
+          },
+          {
+            "{C:green}#1# in #2#{} chance to retrigger",
+            "each {C:attention}played{} card",
+          }
         }
       },
       j_abn_ancient_prophet = {
@@ -6622,9 +6626,14 @@ return {
       j_abn_astro_joker = {
         name = "Astro Joker",
         text = {
-          "{C:astro_cards}Astro{} cards always {C:green}succeed",
-          "{C:green}#1# in #2# chance{} this {C:attention}Joker{} is",
-          "{C:red}destroyed{} at end of round.",
+          {
+            "{C:astro_cards}Astro{} cards always",
+            "{C:green}succeed"
+          },
+          {
+            "{C:green}#1# in #2# chance{} this {C:attention}Joker{}",
+            "is {C:red}destroyed{} at end of round.",
+          }
         }
       },
       j_abn_archaic_joker = {
@@ -11520,21 +11529,29 @@ return {
       j_abn_balance_brandon = {
         name = "Balance Brandon",
         text = {
-          "Converts {C:mult}+Mult{} effects into",
-          "{X:mult,C:white}XMult{} at a rate of {X:mult,C:white}X#1#",
-          "If this is a {C:attention}Mult Joker{},",
-          "{C:attention}Mult{} enhancements will also",
-          "trigger when held in hand"
+          {
+            "Converts {C:mult}+Mult{} effects of playing cards into",
+            "{X:mult,C:white}XMult{} at a rate of {X:mult,C:white}X#1#"
+          },
+          {
+            "If this is a {C:attention}Mult Joker{},",
+            "{C:attention}Mult{} enhancements will also",
+            "trigger when held in hand"
+          }
         }
       },
       j_abn_unhinged_umar = {
         name = "Unhinged Umar",
         text = {
-          "Converts {C:chips}+Chips{} effects into",
-          "{X:chips,C:white}XChips{} at a rate of {X:chips,C:white}X#1#",
-          "If this is a {C:attention}Bonus Joker{},",
-          "{C:attention}Bonus{} enhancements will also",
-          "trigger when held in hand"
+          {
+            "Converts {C:chips}+Chips{} effects of playing cards into",
+            "{X:chips,C:white}XChips{} at a rate of {X:chips,C:white}X#1#",
+          },
+          {
+            "If this is a {C:attention}Bonus Joker{},",
+            "{C:attention}Bonus{} enhancements will also",
+            "trigger when held in hand"
+          }
         }
       },
       j_abn_spitting_imagine = {
