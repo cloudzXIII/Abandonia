@@ -6618,7 +6618,7 @@ return {
       j_abn_annihilated_joker = {
         name = "Annihilated Joker",
         text = {
-          "Every {C:attention}#1#{} {C:inactive}(#2#){} {C:attention}Jokers{} destroyed,",
+          "Every {C:attention}#1#{} {C:inactive}[#2#]{} {C:attention}Jokers{} destroyed,",
           "Create a random {C:calamity_cards}Calamity{} Card",
           "{C:inactive}(Must have room)",
         }
@@ -10747,7 +10747,7 @@ return {
           "{C:planet}Planet{} Cards provide",
           "{C:chips}%#1#{} more Chips",
           "Transforms into {C:attention}Snoozing Joker{}",
-          "after {C:attention}9{C:inactive} (#2#){} {C:planet}Planet{} Cards",
+          "after {C:attention}9{C:inactive} [#2#]{} {C:planet}Planet{} Cards",
           "used"
         }
       },
@@ -11163,8 +11163,8 @@ return {
         name = "A Jester's Hat",
         text = {
           {
-            "If played hand contains {C:attention}2 Vanilla{} suits",
-            "and {C:attention}2 Modded{} suits, this Joker",
+            "If played hand contains {C:attention}2 {C:inactive}Vanilla{} suits",
+            "and {C:attention}2 {C:dark_edition}Modded{} suits, this Joker",
             "gains double their {C:attention}ranks{} as {C:mult}Mult",
             "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
           },
@@ -11287,8 +11287,9 @@ return {
       j_abn_amplifier = {
         name = "Amplifier",
         text = {
-          "{C:attention}Modded{} {C:dark_edition}Enhancements{} on {C:inactive}Vanilla{} Suits give {C:attention}50%{} more {C:chips}Chips{} and {C:mult}Mult{}",
-          "{C:attention}100%{} if they on {C:attention}modded{} Suits"
+          "{C:inactive}Vanilla{} Suits with {C:attention}Modded{} {C:dark_edition}Enhancements{}",
+          "give {C:attention}50%{} more {C:chips}Chips{} and {C:mult}Mult{},",
+          "{C:attention}100%{} if they on {C:dark_edition}Modded{} Suits"
         }
       },
       j_abn_shy_gall = {
@@ -11415,7 +11416,7 @@ return {
           "{C:inactive}Currently: {X:mult,C:white}X#3#{} {C:inactive}Mult{}",
         }
       },
-      j_abn_crease_joker = {   -- ImaginaryNeon jokers start here
+      j_abn_crease_joker = { -- ImaginaryNeon jokers start here
         name = "Crease Joker",
         text = {
           "{X:attention,C:white}X#1#{} hand size,",
@@ -11531,7 +11532,7 @@ return {
             "base Chips {C:attention}doubled{}"
           }
         },
-      },   -- ImaginaryNeon Jokers end here (for now)
+      }, -- ImaginaryNeon Jokers end here (for now)
       j_abn_khonsu_joker = {
         name = "Khonsu Joker",
         text = {
