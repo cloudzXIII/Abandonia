@@ -521,7 +521,7 @@ SMODS.Joker {
     --atlas = 'jonklers',     -- test sprites from my own mod
     --pos = { x = 4, y = 4 }, -- Hideous Mass
     cost = 8,
-    discovered = true,
+    discovered = false,
     blueprint_compat = true,
     demicoloncompat = false,
     config = { extra = { mult_per = 1, chips_per = 2 } },
