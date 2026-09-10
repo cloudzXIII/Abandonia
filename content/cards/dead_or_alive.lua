@@ -61,8 +61,7 @@ SMODS.Joker {
     -- Trigger when the specific card is played and scored
     if target and context.individual and context.cardarea == G.play then
       if context.other_card:get_id() == target.id and context.other_card:is_suit(target.suit) then
-        context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) +
-        context.other_card.base.nominal
+        context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) + context.other_card:get_chip_bonus()
         return {
           -- context.other_card.base.nominal is the numeric value (2-11)
           message = localize('k_upgrade_ex'),
