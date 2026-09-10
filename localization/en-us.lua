@@ -9309,7 +9309,8 @@ return {
           },
           {
             "If {C:attention}Joker{} is owned,",
-            "scored cards give", "{C:gold}+#2#{} Asc. Power",
+            "scored cards give",
+            "{C:gold}+#2#{} Asc. Power",
           }
         }
 
@@ -9326,7 +9327,8 @@ return {
           },
           {
             "If this {C:attention}Joker{} is {C:dark_edition}editioned{},",
-            "scored cards gain", "{C:gold}+#3#{} Asc. Power",
+            "scored cards gain",
+            "{C:gold}+#3#{} Asc. Power",
           }
         }
 
@@ -11700,20 +11702,42 @@ return {
           }
         }
       },
-	  j_abn_bubbly_joker = {
+	    j_abn_bubbly_joker = {
         name = "Bubbly Joker",
         text = {
           "Gain {X:mult,C:white}X#1#{} Mult when a {C:attention}Bubble{} Card is {C:attention}added{}",
-		  "Gain {X:chips,C:white}X#2#{} Chips when a {C:attention}Bubble{} Card is {C:mult}destroyed{}",
-		  "{C:inactive}Currently:{} {X:mult,C:white}X#3#{} {C:inactive}Mult{} {X:chips,C:white}X#4#{} {C:inactive}Chips{}",
+          "Gain {X:chips,C:white}X#2#{} Chips when a {C:attention}Bubble{} Card is {C:mult}destroyed{}",
+          "{C:inactive}Currently:{} {X:mult,C:white}X#3#{} {C:inactive}Mult{} {X:chips,C:white}X#4#{} {C:inactive}Chips{}",
         }
       },
-	  j_abn_stiff_drink = {
+	    j_abn_stiff_drink = {
         name = "Stiff Drink",
         text = {
           "When clearing a Blind for the {C:attention}first time{}",
-		  "Repeat it {C:attention}instead{} of advancing to the {C:attention}next blind{}",
-		  "All {C:chips}hands{} and {C:mult}discards{} are considered the {C:attention}first{} and {C:attention}last{} of round",
+          "Repeat it {C:attention}instead{} of advancing to the {C:attention}next blind{}",
+          "All {C:chips}hands{} and {C:mult}discards{} are considered the {C:attention}first{} and {C:attention}last{} of round",
+        }
+      },
+      j_abn_dagonet = {
+        name = "Dagonet",
+        text = {
+          "{C:attention}Steel{} cards held in hand",
+          "give {C:gold}+#1#{} Ascension Power"
+        }
+      },
+      j_abn_cloten = {
+        name = "Cloten",
+        text = {
+          "Scored {C:attention}Bonus{} cards give",
+          "{X:chips,C:white}XChips{} equal to their {C:attention}rank"
+        }
+      },
+      j_abn_nasreddin = {
+        name = "Nasreddin",
+        text = {
+          "Scored {C:attention}Lucky{} cards",
+          "give {X:mult,C:white}^#1#{} Mult, {X:chips,C:white}^#2#{} Chips",
+          "or {C:gold}+#3#{} Ascension Power"
         }
       },
     },
