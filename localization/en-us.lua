@@ -11909,6 +11909,24 @@ return {
           "{C:inactive}(Currently {C:white,X:mult}X#1#{C:inactive} Mult, {C:white,X:chips}X#3#{C:inactive} Chips)"
         }
       },
+	  j_abn_forgotten_joker = {
+        name = "Forgotten Joker",
+        text = {
+          "{C:attention}Ante{} increases {C:attention}twice as fast{}",
+		  "When upgrading a {C:attention}Vanilla{} hand create a random {C:dark_edition}negative{} {C:attention}vanilla{} consumable",
+		  "When upgrading a {C:attention}Modded{} hand create a random {C:dark_edition}negative{} {C:attention}modded{} consumable",
+		  "When a {C:attention}Vanilla{} hand is played with {C:attention}2+{} levels {C:mult}downgrade{} {C:attention}level{} and gain {C:attention}Triple{} the {C:chips}Chips{} lost",
+		  "When a {C:attention}Modded{} hand is played with {C:attention}2+{} levels {C:mult}downgrade{} {C:attention}level{} and gain {C:attention}Triple{} the {C:mult}Mult{} lost",
+		  "{C:inactive}Currently:{} {C:chips}+#1#{} {C:inactive}Chips{} {C:mult}+#2#{} {C:inactive}Mult{}",
+        }
+      },
+	  j_abn_hot_mult_in_your_area = {
+        name = "Hot Mult In Your Area",
+        text = {
+          "Held {C:attention}Modded{} consumables give {X:mult,C:white}X#1#{} Mult",
+		  "When a hand is played {C:green}#2# in #3#{} to {C:mult}destroy{} those {C:attention}consumables{}",
+        }
+      },
     },
     Spectral = {
       c_abn_promotion = { -- TO CODE
