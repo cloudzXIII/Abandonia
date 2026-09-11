@@ -346,7 +346,7 @@ SMODS.Edition {
   end,
   calculate = function(self, card, context)
     if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
-      local level = ABN.count_planet_ranks_played(context.scoring_hand)
+      local level = G.GAME.hands[context.scoring_name].level
       return {
         chips = card.edition.chips * level,
         mult = card.edition.mult * level,
