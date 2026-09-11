@@ -11851,7 +11851,7 @@ return {
         text = {
           "Scored {C:attention}Bonus{} cards give",
           "{X:chips,C:white}XChips{} equal to their {C:attention}rank",
-		  "{C:attention}Retrigger{} all {C:attention}Bonus{} cards",
+          "{C:attention}Retrigger{} all {C:attention}Bonus{} cards",
         }
       },
       j_abn_nasreddin = {
@@ -15954,6 +15954,7 @@ return {
       k_solid_pack = "Solid State Pack",
       abn_glyphbooster = "Glyph Pack",
       abn_programbooster = "Program Pack",
+      abn_crimsonbooster = "Crimson Pack",
       abn_calligraphybooster = "Calligraphy Pack",
       abn_illusionbooster = "Illusion Pack",
       k_abn_increased = "Increased!",
