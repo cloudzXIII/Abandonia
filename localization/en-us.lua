@@ -12542,6 +12542,30 @@ return {
           "be used immediately",
         },
       },
+      p_abn_crimson_normal = {
+        name = "Crimson Pack",
+        text = {
+          "Choose {C:attention}#1#{} of up to",
+          "{C:attention}#2# {C:crimson}Crimson{} cards to",
+          "be used immediately",
+        },
+      },
+      p_abn_crimson_jumbo = {
+        name = "Jumbo Crimson Pack",
+        text = {
+          "Choose {C:attention}#1#{} of up to",
+          "{C:attention}#2# {C:crimson}Crimson{} cards to",
+          "be used immediately",
+        },
+      },
+      p_abn_crimson_mega = {
+        name = "Mega Crimson Pack",
+        text = {
+          "Choose {C:attention}#1#{} of up to",
+          "{C:attention}#2# {C:crimson}Crimson{} cards to",
+          "be used immediately",
+        },
+      },
       undiscovered_illusion = {
         name = "Not Discovered",
         text = {
