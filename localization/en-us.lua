@@ -5,15 +5,17 @@ return {
       c_abn_ram_00 = {
         name = "RAM 00",
         text = {
-          "Create the last",
-          "{C:attention}Modded consumable{} used",
+          "Creates the last",
+          "{C:dark_edition}Modded{} {C:attention}consumable{}",
+          "used during this run"
         },
       },
       c_abn_ram_01 = {
         name = "RAM 01",
         text = {
-          "Swap current held {C:attention}vanilla consumables{}",
-          "with random {C:attention}modded consumables{}",
+          "Replace held {C:inactive}Vanilla{}",
+          "{C:attention}consumables{} with random",
+          "{C:dark_edition}Modded{} {C:attention}consumables{}",
         },
       },
     },
@@ -44,35 +46,41 @@ return {
       c_abn_sword_box = {
         name = "Sword Box",
         text = {
-          {
-            "Add a {C:abn_black_seal}Jester Stamp{}",
-            "to {C:attention}#1#{} selected",
-            "card in your hand",
-          },
+          "Add a {C:abn_black_seal}Jester Stamp{}",
+          "to {C:attention}#1#{} selected",
+          "card in your hand",
         },
       },
       c_abn_illusionist = {
         name = "Illusionist",
         text = {
-          "Add {C:tarot}Icon Stamp{} to {C:attention}#1#{} card in hand",
+          "Add a {C:tarot}Icon Stamp{}",
+          "to {C:attention}#1#{} selected",
+          "card in your hand",
         },
       },
       c_abn_cotard = {
         name = "Cotard",
         text = {
-          "Add {C:purple}Psychomancy Stamp{} to {C:attention}#1#{} card in hand",
+          "Add a {C:purple}Psychomancy Stamp{}",
+          "to {C:attention}#1#{} selected",
+          "card in your hand",
         },
       },
       c_abn_stupification = {
         name = "Stupification",
         text = {
-          "Add {C:tarot}Membership Stamp{} to {C:attention}#1#{} card in hand",
+          "Add a {C:tarot}Membership Stamp{}",
+          "to {C:attention}#1#{} selected",
+          "card in your hand",
         },
       },
       c_abn_misdirection = {
         name = "Misdirection",
         text = {
-          "Add {C:attention}Prehensile Stamp{} to {C:attention}#1#{} card in hand",
+          "Add a {C:attention}Prehensile Stamp{}",
+          "to {C:attention}#1#{} selected",
+          "card in your hand",
         },
       },
     },
@@ -100,14 +108,16 @@ return {
           "The next scoring {C:attention}High Card{}",
           "gives the {C:chips}Chips{} and {C:mult}Mult{}",
           "of your last scoring {C:attention}Flush{}",
-          "{C:inactive}Currently: {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips",
+          "{C:inactive}(Currently {C:white,X:mult}#1#{} {C:red}X{} {C:white,X:chips}#2#{} {C:inactive})",
         },
       },
       c_abn_number = {
         name = "Number",
         text = {
-          "Next Hand composed of only {C:attention}Numbered{} cards",
-          "{C:attention}Level up{} for each {C:attention}unique{} scoring number",
+          "The next {C:attention}poker hand{} containing",
+          "only {C:attention}numbered{} cards has",
+          "its level upgraded once per",
+          "{C:attention}unique{} number in scoring hand",
         },
       },
     },
@@ -903,7 +913,7 @@ return {
         text = {
           {
             "Enhance the {C:attention}leftmost{}",
-            "joker to {C:enhanced}#1#{}"
+            "Joker to {C:enhanced}#1#{}"
           }
         }
       },
@@ -912,7 +922,7 @@ return {
         text = {
           {
             "Enhance the {C:attention}rightmost{}",
-            "joker to {C:enhanced}#1#{}"
+            "Joker to {C:enhanced}#1#{}"
           }
         }
       },
@@ -921,7 +931,7 @@ return {
         text = {
           {
             "Enhance the {C:attention}leftmost{}",
-            "joker to {C:enhanced}#1#{}"
+            "Joker to {C:enhanced}#1#{}"
           }
         }
       },
@@ -930,7 +940,7 @@ return {
         text = {
           {
             "Enhance the {C:attention}rightmost{}",
-            "joker to {C:enhanced}#1#{}"
+            "Joker to {C:enhanced}#1#{}"
           }
         }
       },
@@ -939,7 +949,7 @@ return {
         text = {
           {
             "Enhance the {C:attention}leftmost{}",
-            "joker to {C:enhanced}#1#{}"
+            "Joker to {C:enhanced}#1#{}"
           }
         }
       },
@@ -948,7 +958,7 @@ return {
         text = {
           {
             "Enhance the {C:attention}rightmost{}",
-            "joker to {C:enhanced}#1#{}"
+            "Joker to {C:enhanced}#1#{}"
           }
         }
       },
@@ -957,7 +967,7 @@ return {
         text = {
           {
             "Enhance the {C:attention}leftmost{}",
-            "joker to {C:enhanced}#1#{}"
+            "Joker to {C:enhanced}#1#{}"
           }
         }
       },
@@ -966,7 +976,7 @@ return {
         text = {
           {
             "Enhance the {C:attention}rightmost{}",
-            "joker to {C:enhanced}#1#{}"
+            "Joker to {C:enhanced}#1#{}"
           }
         }
       },
@@ -977,7 +987,7 @@ return {
         text = {
           {
             "Enhance the {C:attention}leftmost{}",
-            "joker to {C:enhanced}#1#{}"
+            "Joker to {C:enhanced}#1#{}"
           }
         }
       },
@@ -986,7 +996,7 @@ return {
         text = {
           {
             "Enhance the {C:attention}rightmost{}",
-            "joker to {C:enhanced}#1#{}"
+            "Joker to {C:enhanced}#1#{}"
           }
         }
       },
@@ -995,7 +1005,7 @@ return {
         text = {
           {
             "Enhance the {C:attention}leftmost{}",
-            "joker to {C:enhanced}#1#{}"
+            "Joker to {C:enhanced}#1#{}"
           }
         }
       },
@@ -1004,7 +1014,7 @@ return {
         text = {
           {
             "Enhance the {C:attention}rightmost{}",
-            "joker to {C:enhanced}#1#{}"
+            "Joker to {C:enhanced}#1#{}"
           }
         }
       },
@@ -1013,7 +1023,7 @@ return {
         text = {
           {
             "Enhance the {C:attention}leftmost{}",
-            "joker to {C:enhanced}#1#{}"
+            "Joker to {C:enhanced}#1#{}"
           }
         }
       },
@@ -1022,7 +1032,7 @@ return {
         text = {
           {
             "Enhance the {C:attention}rightmost{}",
-            "joker to a {C:enhanced}#1#{}",
+            "Joker to a {C:enhanced}#1#{}",
             "of a random {C:dark_edition}Suit"
           }
         }
@@ -1032,7 +1042,7 @@ return {
         text = {
           {
             "Enhance the {C:attention}leftmost{}",
-            "joker to {C:enhanced}#1#{}"
+            "Joker to {C:enhanced}#1#{}"
           }
         }
       },
@@ -1041,7 +1051,7 @@ return {
         text = {
           {
             "Enhance the {C:attention}rightmost{}",
-            "joker to {C:enhanced}#1#{}"
+            "Joker to {C:enhanced}#1#{}"
           }
         }
       },
