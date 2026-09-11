@@ -8817,8 +8817,8 @@ return {
         name = "Bloke Joker",
         text = {
           {
-            "Retrigger {C:35 bytes}#1#s",
-            "and {C:35 bytes}#2#s",
+            "Retrigger {C:attention}#1#s",
+            "and {C:attention}#2#s",
             "{C:attention}#3#{} additional times"
           },
         }
