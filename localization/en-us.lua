@@ -11886,6 +11886,56 @@ return {
           "or {C:gold}+#3#{} Ascension Power"
         }
       },
+      j_abn_feste2 = { -- cuz we already have Feste lol
+        name = "Feste",
+        text = {
+          "Scored {C:attention}Wild{} cards",
+          "give {X:mult,C:white}^#1#{} Mult or {X:chips,C:white}^#2#{} Chips"
+        }
+      },
+      j_abn_costard = {
+        name = "Costard",
+        text = {
+          {
+            "Gains {X:chips,C:white}^#2#{} Chips when",
+            "a {C:planet}Planet{} card is used",
+            "{C:inactive}(Currently {X:chips,C:white}^#1#{} {C:inactive}Chips)",
+
+          },
+          {
+            "Each {C:attention}shop{} always contain",
+            "a {C:attention}Mega Planet Pack"
+          }
+        }
+      },
+      j_abn_erwyd = {
+        name = "Erwyd",
+        text = {
+          {
+            "Gains {X:chips,C:white}^#2#{} Chips when",
+            "a {C:tarot}Tarot{} card is used",
+            "{C:inactive}(Currently {X:chips,C:white}^#1#{} {C:inactive}Chips)",
+          },
+          {
+            "Each {C:attention}shop{} always contain",
+            "a {C:attention}Mega Tarot Pack"
+          }
+        }
+      },
+      j_abn_towser = {
+        name = "Towser",
+        text = {
+          {
+            "Gains {X:chips,C:white}^#2#{} Chips when",
+            "a {C:spectral}Spectral{} card is used",
+            "{C:inactive}(Currently {X:chips,C:white}^#1#{} {C:inactive}Chips)",
+          },
+          {
+            "Each {C:attention}shop{} always contain",
+            "a {C:attention}Mega Spectral Pack"
+          }
+        }
+      },
       j_abn_rereleased_special_collector_edition = {
         name = "Re-Released Special Collector Edition",
         text = {
