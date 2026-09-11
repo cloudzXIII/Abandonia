@@ -149,7 +149,7 @@ SMODS.Joker {
   rarity = 2,
   abn_coder = "ImaginaryNeon",
   atlas = 'ABNJokerSheet21',
-  pos = { x = 8, y = 2 },
+  pos = { x = 3, y = 4 },
   --atlas = 'jonklers', -- test sprites from my own mod
   --pos = { x = 3, y = 0 }, -- Wii Remote (a MUCH more convoluted rendition than this one, though)
   cost = 6,

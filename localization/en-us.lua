@@ -11503,7 +11503,7 @@ return {
           "if it hasn't started a {C:attention}Blind",
           "in that {C:attention}joker slot{} before",
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult){}",
-          "{s=0.8}{C:inactive}(Used slots: #3#){}"
+          "{C:inactive,s:0.8}(Used slots: #3#){}"
         }
       },
       j_abn_chips_to_mult = {
