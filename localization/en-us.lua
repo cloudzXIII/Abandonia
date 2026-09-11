@@ -2787,6 +2787,14 @@ return {
           "Has a free {C:abn_black_seal}Virus{} Joker",
         },
       },
+      tag_abn_hazard_skip = {
+        name = "Hazard Skip",
+        text = {
+          "Gives {C:money}$#1#{} per skipped",
+          "Blind this run",
+          "{C:inactive}(Will give {C:money}$#2#{C:inactive})",
+        }
+      }
       --#endregion
     },
     Blind = {
@@ -8779,14 +8787,15 @@ return {
           "{C:inactive}(Currently {C:mult}+#1#{} {C:inactive}Mult){}",
         }
       },
-      j_abn_collectible_joker = { -- to relocalise
+      j_abn_collectible_joker = { -- to relocalise (at a reasonable state now but may change later)
         name = "Collectible Joker",
         text = {
-          "Gain {C:chips}+#8#{} Chips per different {C:common}Common{} Joker obtained this run",
-          "Gain {C:mult}+#7#{} Mult per different {C:uncommon}Uncommon{} Joker obtained this run",
-          "Gain {X:mult,C:white}X#5#{} Mult per different {C:rare}Rare{} Joker obtained this run",
-          "Gain {X:mult,C:white}X#6#{} Chips per different {C:legendary}Legendary{} Joker obtained this run",
-          "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult{} {C:mult}+#3#{} {C:inactive}Mult,{} {X:chips,C:white}X#2#{} {C:inactive}Chips,{} {C:chips}+#4#{} {C:inactive}Chips){}"
+          "This Joker gains {C:chips}+#8#{} Chips per unique",
+          "{C:common}Common{} Joker, {C:mult}+#7#{} Mult per unique",
+          "{C:uncommon}Uncommon{} Joker, {X:mult,C:white}X#5#{} Mult per unique",
+          "{C:rare}Rare{} Joker and {X:chips,C:white}X#6#{} Chips per unique",
+          "{C:legendary}Legendary{} Joker obtained this run",
+          "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive},{} {C:mult}+#3#{C:inactive},{} {X:chips,C:white}X#2#{C:inactive}, {C:chips}+#4#{C:inactive}){}"
         }
       },
       j_abn_flotsam_joker = {
@@ -11964,7 +11973,7 @@ return {
           {
             "Scoring {C:dark_edition}Vintage{} cards give {C:chips}+Chips{} and {C:mult}+Mult",
             "equal to your highest level {C:attention}poker hand",
-			"{C:inactive}(Currently: {C:attention}#1#{C:inactive}, {C:chips}+#2# {C:inactive}Chips, {C:mult}+#3# {C:inactive}Mult)"
+            "{C:inactive}(Currently: {C:attention}#1#{C:inactive}, {C:chips}+#2# {C:inactive}Chips, {C:mult}+#3# {C:inactive}Mult)"
           },
           {
             "If this joker is {C:dark_edition}Vintage{}, all {C:dark_edition}Vintage{} playing",
@@ -12403,7 +12412,7 @@ return {
         }
       },
       p_abn_illusion_kiddy = {
-        name = 'Illusion Pack',
+        name = 'Kiddy Illusion Pack',
         text = {
           'Choose {C:attention}#1#{} of up to',
           '{C:attention}#2#{} {C:illusion}Illusion{} cards to',
