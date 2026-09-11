@@ -4740,7 +4740,7 @@ return {
         name = "Caesar Joker",
         text = {
           {
-            "Scoring {C:hearts}Hearts{} permanently",
+            "Scoring {C:abn_crown}Crowns{} permanently",
             "gain {C:chips}+#5#{} Chips and {C:mult}+#6#{} Mult",
             "per {C:continent}Continent{} card {C:attention}held{}",
           },
@@ -11850,7 +11850,8 @@ return {
         name = "Cloten",
         text = {
           "Scored {C:attention}Bonus{} cards give",
-          "{X:chips,C:white}XChips{} equal to their {C:attention}rank"
+          "{X:chips,C:white}XChips{} equal to their {C:attention}rank",
+		  "{C:attention}Retrigger{} all {C:attention}Bonus{} cards",
         }
       },
       j_abn_nasreddin = {
