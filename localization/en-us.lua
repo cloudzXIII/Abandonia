@@ -5217,20 +5217,18 @@ return {
       j_abn_will = {
         name = "Will",
         text = {
-          "Gain {X:chips,C:white}X#2#{} Chips when",
-          "scoring hands with",
-          "{C:attention}odd{} ranked cards",
-          "{C:inactive}(A, 9, 7, 5, 3)",
+          "This Joker gains {X:chips,C:white}X#2#{} Chips",
+          "if played hand contains",
+          "scoring {C:attention}odd{} cards",
           "{C:inactive}(Currently {C:white,X:chips}X#1#{C:inactive} Chips){}"
         }
       },
       j_abn_archibald = {
         name = "Archibald",
         text = {
-          "Gain {X:chips,C:white}X#2#{} Chips when",
-          "scoring hands with",
-          "{C:attention}even{} ranked cards",
-          "{C:inactive}(10, 8, 6, 4, 2)",
+          "This Joker gains {X:chips,C:white}X#2#{} Chips",
+          "if played hand contains",
+          "scoring {C:attention}even{} cards",
           "{C:inactive}(Currently {C:white,X:chips}X#1#{C:inactive} Chips){}"
         }
       },
@@ -6657,10 +6655,17 @@ return {
       j_abn_haphazard_joker = {
         name = "Haphazard Joker",
         text = {
-          "Enhanced {C:attention}Even{} cards give {X:mult,C:white}X#4#{} Mult",
-          "Increase this by {X:mult,C:white}X#3#{} for each card scored",
-          "{C:green}#1# in #2#{} chance for a {C:abn_hazard}Hazard Tag{}",
-          "to be created when {C:attention}Even{} cards score",
+          {
+            "Played {C:attention}Enhanced{} {C:attention}even{} cards",
+            "give {X:mult,C:white}X#4#{} Mult when scored,",
+            "increases by {X:mult,C:white}X#3#{} when",
+            "a card is scored"
+          },
+          {
+            "Played {C:attention}Even{} cards have a",
+            "{C:green}#1# in #2#{} chance to create",
+            "a {C:abn_hazard}Hazard Tag{} when scored",
+          },
         }
       },
       j_abn_prenatural_joker = {
@@ -7031,25 +7036,30 @@ return {
       j_abn_bonus_buffoon = {
         name = "Bonus Buffoon",
         text = {
-          "{C:attention}Enhanced{} cards give {X:mult,C:white}X#4#{} Mult for each {C:attention}Comedian{} you own",
-          "{C:green}#1# in #2#{} chance this is destroyed at the end of round",
+          "{C:attention}Enhanced{} cards give {X:mult,C:white}X#4#{} Mult",
+          "for each {C:attention}Comedian{} you own,",
+          "{C:green}#1# in #2#{} chance this Joker is",
+          "destroyed at end of round",
           "{C:inactive}(Currently{} {X:mult,C:white}X#3#{} {C:inactive}Mult){}",
         }
       },
-      j_abn_creechie_buffoon = { -- to relocalise
+      j_abn_creechie_buffoon = {
         name = "Creechie Buffoon",
         text = {
-          "{C:dark_edition}Editioned{} cards give {X:mult,C:white}X#4#{} Mult for each {C:attention}Comedian{} you own",
-          "{C:green}#1# in #2#{} chance this is destroyed at the end of round",
+          "{C:dark_edition}Editioned{} cards give {X:mult,C:white}X#4#{} Mult",
+          "for each {C:attention}Comedian{} you own,",
+          "{C:green}#1# in #2#{} chance this Joker is",
+          "destroyed at end of round",
           "{C:inactive}(Currently{} {X:mult,C:white}X#3#{} {C:inactive}Mult){}",
         }
       },
-      j_abn_composite_creechie = { -- to relocalise
+      j_abn_composite_creechie = {
         name = "Composite Creechie",
         text = {
-          "{C:attention}Enhanced{} cards give {X:mult,C:white}X#4#{} Mult for each {C:attention}Comedian{} you own",
-          "{C:dark_edition}Editioned{} cards give {X:mult,C:white}X#4#{} Mult for each {C:attention}Comedian{} you own",
-          "{C:green}#1# in #2#{} chance this is destroyed at the end of round",
+          "{C:attention}Enhanced{} or {C:dark_edition}Editioned{} cards give",
+          "{X:mult,C:white}X#4#{} Mult for each {C:attention}Comedian{} you own,",
+          "{C:green}#1# in #2#{} chance this Joker is",
+          "destroyed at end of round",
           "{C:inactive}(Currently{} {X:mult,C:white}X#3#{} {C:inactive}Mult){}",
         }
       },
@@ -7482,9 +7492,9 @@ return {
       j_abn_health_stickers = {
         name = "Health Stickers",
         text = {
-          "When {C:attention}Blind{} is defeated",
-          "Place a random {C:green}Beneficial{} {C:abn_perishable}Sticker{}",
-          "on {C:attention}leftmost{} Joker",
+          "When {C:attention}Blind{} is defeated,",
+          "apply a random {C:green}Beneficial{}",
+          "{C:attention}Sticker{} on {C:attention}leftmost{} Joker",
         }
       },
       j_abn_the_joker_dance = {
@@ -8797,8 +8807,8 @@ return {
         name = "Bloke Joker",
         text = {
           {
-            "Retrigger {C:enhanced}#1#s",
-            "and {C:enhanced}#2#s",
+            "Retrigger {C:35 bytes}#1#s",
+            "and {C:35 bytes}#2#s",
             "{C:attention}#3#{} additional times"
           },
         }
@@ -9243,7 +9253,7 @@ return {
         text = {
           {
             "{C:attention}Boss Blinds{} can be rerolled",
-            "at the base cost of {C:money}$#1#{}",
+            "at the base cost of {C:money}$#1#{},",
             "increase cost by {C:money}$1{} per reroll"
           },
         }
@@ -9636,11 +9646,11 @@ return {
         name = "Ballistic Glass Joker",
         text = {
           {
-            "{C:attention}Glass{} cards don't break",
+            "{C:attention}Glass{} cards don't {C:attention}shatter{}",
           },
           {
-            "Each {C:attention}Glass{} card held in hand",
-            "gives {X:mult,C:white}X#1#{} Mult",
+            "Each {C:attention}Glass{} card {C:attention}held{} in",
+            "hand gives {X:mult,C:white}X#1#{} Mult",
           },
           {
             "{C:attention}Glass{} cards give {X:chips,C:white}X#2#{} Chips",
@@ -11287,15 +11297,17 @@ return {
       j_abn_amplifier = {
         name = "Amplifier",
         text = {
-          "{C:inactive}Vanilla{} Suits with {C:attention}Modded{} {C:dark_edition}Enhancements{}",
+          "{C:inactive}Vanilla{} Suits with {C:dark_edition}Modded{} {C:attention}Enhancements{}",
           "give {C:attention}50%{} more {C:chips}Chips{} and {C:mult}Mult{},",
-          "{C:attention}100%{} if they on {C:dark_edition}Modded{} Suits"
+          "{C:attention}100%{} if they're {C:dark_edition}Modded{} Suits"
         }
       },
       j_abn_shy_gall = {
         name = "Shy Gall",
         text = {
-          "{C:attention}Level up{} all hands composed entirely of {C:attention}Flipped{} cards",
+          "If played hand contains only",
+          "{C:attention}Flipped{} cards, upgrade level",
+          "of played {C:attention}poker hand{}"
         }
       },
       j_abn_drawcia = {
@@ -11393,7 +11405,9 @@ return {
       j_abn_black_forest = {
         name = "Black Forest",
         text = {
-          "{C:attention}Modded{} {C:spades}Dark{} Suits give {C:mult}+#1#{} Mult",
+          "Played cards with {C:dark_edition}Modded{}",
+          "{C:spades}Dark{} Suits give {C:mult}+#1#{} Mult",
+          "when scored"
         }
       },
       j_abn_efo_joker = {
@@ -11653,8 +11667,8 @@ return {
         name = "Balance Brandon",
         text = {
           {
-            "Converts {C:mult}+Mult{} effects of playing cards into",
-            "{X:mult,C:white}XMult{} at a rate of {X:mult,C:white}X#1#"
+            "Converts {C:mult}+Mult{} effects of playing cards",
+            "into {X:mult,C:white}XMult{} at a rate of {X:mult,C:white}X#1#"
           },
           {
             "If this is a {C:attention}Mult Joker{},",
@@ -11667,8 +11681,8 @@ return {
         name = "Unhinged Umar",
         text = {
           {
-            "Converts {C:chips}+Chips{} effects of playing cards into",
-            "{X:chips,C:white}XChips{} at a rate of {X:chips,C:white}X#1#",
+            "Converts {C:chips}+Chips{} effects of playing cards",
+            "into {X:chips,C:white}XChips{} at a rate of {X:chips,C:white}X#1#",
           },
           {
             "If this is a {C:attention}Bonus Joker{},",
