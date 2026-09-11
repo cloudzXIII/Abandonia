@@ -11694,7 +11694,7 @@ return {
         name = "Balance Brandon",
         text = {
           {
-            "Converts {C:mult}+Mult{} effects of playing cards",
+            "Converts {C:mult}+Mult{} effects of all cards",
             "into {X:mult,C:white}XMult{} at a rate of {X:mult,C:white}X#1#"
           },
           {
@@ -11708,7 +11708,7 @@ return {
         name = "Unhinged Umar",
         text = {
           {
-            "Converts {C:chips}+Chips{} effects of playing cards",
+            "Converts {C:chips}+Chips{} effects of all cards",
             "into {X:chips,C:white}XChips{} at a rate of {X:chips,C:white}X#1#",
           },
           {
@@ -11948,6 +11948,27 @@ return {
             "When a hand is played,",
             "{C:green}#2# in #3#{} chance to {C:red}destroy{}",
             "held {C:dark_edition}Modded{} consumables",
+          }
+        }
+      },
+      j_abn_phasetransfer_joker = {
+        name = "Phasetransfer Joker",
+        text = {
+          "Converts {C:mult}+Mult{} effects of jokers",
+          "into {C:gold}Ascension Power{} at a rate of {C:gold}X#1#"
+        }
+      },
+      j_abn_authenticated_graded_joker = {
+        name = "Authenticated Graded Joker",
+        text = {
+          {
+            "Scoring {C:dark_edition}Vintage{} cards give {C:chips}+Chips{} and {C:mult}+Mult",
+            "equal to your highest level {C:attention}poker hand",
+			"{C:inactive}(Currently: {C:attention}#1#{C:inactive}, {C:chips}+#2# {C:inactive}Chips, {C:mult}+#3# {C:inactive}Mult)"
+          },
+          {
+            "If this joker is {C:dark_edition}Vintage{}, all {C:dark_edition}Vintage{} playing",
+            "cards are moved to the top of your deck"
           }
         }
       },
