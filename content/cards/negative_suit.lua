@@ -21,7 +21,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { chips = 20 } },
+  config = { extra = { chips = 50 } },
 
   calculate = function(self, card, context)
     if context.joker_main then
