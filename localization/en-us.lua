@@ -2044,7 +2044,7 @@ return {
         text = {
           "Start with {C:tarot,T:v_abn_tarot_master}#1#{}",
           "and a full set of",
-          "{C:attention}Vanillia{} and {C:attention}Spanish{} suits",
+          "{C:inactive}Vanilla{} and {C:attention}Spanish{} suits",
           "Earn no {C:attention}interest{}",
           "Earn {C:money}$2{} when {C:mult}Discarding {C:attention}5{} Cards"
         }
@@ -2200,7 +2200,7 @@ return {
       b_abn_treaty = {
         name = "Treaty of Colours",
         text = {
-          "Start with all {C:inactive}vanilla{} suits,",
+          "Start with all {C:inactive}Vanilla{} suits,",
           "{C:abn_snow}Snows{}, {C:abn_penumbra}Penumbras{},",
           "{C:abn_tie}Ties{} and {C:abn_bow}Bows{}",
         }
@@ -2210,7 +2210,7 @@ return {
         text = {
           "Start with {C:abn_snow}Snows{}, {C:abn_penumbra}Penumbras{},",
           "{C:abn_tie}Ties{}, {C:abn_bow}Bows{} and {C:inactive}Nulls{}",
-          "No {C:attention}vanillia{} suits",
+          "No {C:inactive}Vanilla{} suits",
         }
       },
       b_abn_synesthic = {
@@ -4975,7 +4975,7 @@ return {
           },
           {
             "If played hand contains a {C:attention}Straight Spectrum{}",
-            "gain {C:mult}Mult{} equal to the {C:attention}rank{} of each {C:attention}modded{} Suit",
+            "gain {C:mult}Mult{} equal to the {C:attention}rank{} of each {C:dark_edition}Modded{} Suit",
           },
           {
             "If played hand contains a {C:attention}Straight Spectrum{}",
@@ -10030,8 +10030,8 @@ return {
         name = "Joker = Fortnite",
         text = {
           "If {C:purple}Fortnite{} is {C:attention}installed{},",
-          "{X:mult,C:white}X#2#{} Mult per {C:attention}modded{} Joker",
-          "Otherwise {C:mult}+#4#{} Mult per {C:attention}modded{} Joker",
+          "{X:mult,C:white}X#2#{} Mult per {C:dark_edition}Modded{} Joker",
+          "Otherwise {C:mult}+#4#{} Mult per {C:dark_edition}Modded{} Joker",
           "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult,{} {C:mult}+#3#{} {C:inactive}Mult){}"
         }
       },
@@ -11166,7 +11166,7 @@ return {
         text = {
           "This Joker gains the {C:attention}rank{}",
           "of scoring cards with",
-          "{C:attention}Modded{} suits as {C:mult}Mult{}",
+          "{C:dark_edition}Modded{} suits as {C:mult}Mult{}",
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
         }
       },
@@ -11198,7 +11198,7 @@ return {
         name = "Jokerian Dogma",
         text = {
           "Played {C:attention}Enhanced{} cards with a",
-          "{C:attention}Modded{} {C:dark_edition}Edition{} give",
+          "{C:dark_edition}Modded{} {C:dark_edition}Edition{} give",
           "{C:gold}+#1#{} Asc. Power when scored"
         }
       },
@@ -11243,7 +11243,7 @@ return {
           },
           {
             "This Joker gains {C:chips}+#3#{}",
-            "Chips per unique {C:attention}Modded{}",
+            "Chips per unique {C:dark_edition}Modded{}",
             "{C:enhanced}Enhancement{} in scoring hand",
             "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
           }
@@ -11259,7 +11259,7 @@ return {
           },
           {
             "This Joker gains {C:mult}+#3#{}",
-            "Mult per unique {C:attention}Modded{}",
+            "Mult per unique {C:dark_edition}Modded{}",
             "{C:enhanced}Enhancement{} in scoring hand",
             "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
           }
@@ -11288,20 +11288,30 @@ return {
       j_abn_canvas_joker = {
         name = "Canvas Joker",
         text = {
-          "{C:attention}Modded{} Suits give {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+          "Played cards with {C:dark_edition}Modded{}",
+          "Suits give {C:chips}+#1#{} Chips and",
+          "{C:mult}+#2#{} Mult chwhen scored"
         }
       },
       j_abn_sweepstakes_card = {
         name = "Sweepstakes Card",
         text = {
-          "Reduce {C:green}shop{} prices by {C:attention}#1#%{}",
-          "{C:attention}Modded{} Jokers cost {C:money}$1{}",
+          {
+            "All items in the shop",
+            "are {C:attention}#1#%{} off",
+          },
+          {
+            "{C:dark_edition}Modded{} Jokers",
+            "cost {C:money}$1{}",
+          }
         }
       },
       j_abn_cosmic_light = {
         name = "Cosmic Light",
         text = {
-          "{C:attention}Modded{} {C:diamond}Light{} Suits give {C:mult}+#1#{} Mult",
+          "Played cards with {C:dark_edition}Modded{}",
+          "{C:diamond}Light{} Suits give {C:mult}+#1#{} Mult",
+          "when scored"
         }
       },
       j_abn_amplifier = {
@@ -11323,17 +11333,24 @@ return {
       j_abn_drawcia = {
         name = "Drawcia",
         text = {
-          "Hands composed of only {C:attention}modded{} suits {C:attention}always score{}",
-          "Gain {X:mult,C:white}X#2#{} Mult for each {C:attention}different{} suit if no {C:inactive}vanilla{} suits are played",
-          "{C:inactive}Currently:{} {X:mult,C:white}X#1#{} {C:inactive}Mult{}",
+          {
+            "Hands containing only {C:dark_edition}Modded{}",
+            "suits {C:attention}always score{}",
+          },
+          {
+            "This Joker gains {X:mult,C:white}X#2#{} Mult",
+            "per {C:attention}unique{} suit in scoring hand",
+            "if no {C:inactive}Vanilla{} suits are played",
+            "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
+          }
         }
       },
       j_abn_fortlatro = {
         name = "Fortlatro",
         text = {
           "{C:inactive}Vanilla{} consumables and Jokers {C:attention}do not{} appear",
-          "When a {C:chips}Small Blind{} is selected create a random {C:attention}Modded{} consumable",
-          "When a {C:attention}Big Blind{} is selected create a random {C:attention}Modded{} Joker",
+          "When a {C:chips}Small Blind{} is selected create a random {C:dark_edition}Modded{} consumable",
+          "When a {C:attention}Big Blind{} is selected create a random {C:dark_edition}Modded{} Joker",
           "Gain {X:chips,C:white}X#2#{} Chips per {C:attention}unique Modded Consumable{} used this Run",
           "Gain {X:mult,C:white}X#4#{} Chips per {C:attention}unique Modded Joker{} used this Run",
           "{C:inactive}Currently:{} {X:chips,C:white}X#1#{} {C:inactive}Chips{} {X:mult,C:white}X#3#{} {C:inactive}Mult",
@@ -11342,10 +11359,10 @@ return {
       j_abn_dirac = {
         name = "Dirac",
         text = {
-          "{C:dark_edition}Negative{} {C:attention}Modded{} Cards and Jokers can't {C:mult}debuffed{}",
+          "{C:dark_edition}Negative{} {C:dark_edition}Modded{} Cards and Jokers can't {C:mult}debuffed{}",
           "If this Joker has {C:dark_edition}Negative{} increase {C:attention}handsize{} by {C:attention}+#5#{}",
-          "Gain {X:chips,C:white}X#2#{} Chips per scoring {C:attention}Modded{} {C:dark_edition}Negative{} card",
-          "Gain {X:mult,C:white}X#4#{} Mult per triggered {C:attention}Modded{} {C:dark_edition}Negative{} joker",
+          "Gain {X:chips,C:white}X#2#{} Chips per scoring {C:dark_edition}Modded{} {C:dark_edition}Negative{} card",
+          "Gain {X:mult,C:white}X#4#{} Mult per triggered {C:dark_edition}Modded{} {C:dark_edition}Negative{} joker",
           "{C:inactive}Currently:{} {X:chips,C:white}X#1#{} {C:inactive}Chips{} {X:mult,C:white}X#3#{} {C:inactive}Mult{}",
         }
       },
@@ -11363,7 +11380,7 @@ return {
         text = {
           {
             "Gain {X:mult,C:white}X#2#{} Mult when a {C:attention}Tag{} is obtained",
-            "If that Tag is a {C:attention}modded{} Tag cards with {C:attention}Discontinued{} {C:dark_edition}Enhancement{} gain {C:money}$#4#{} {C:mult}+#3#{} Mult",
+            "If that Tag is a {C:dark_edition}Modded{} Tag cards with {C:attention}Discontinued{} {C:dark_edition}Enhancement{} gain {C:money}$#4#{} {C:mult}+#3#{} Mult",
           },
           {
             "If this Joker has an {C:dark_edition}Edition{}",
@@ -11914,9 +11931,9 @@ return {
         text = {
           "{C:attention}Ante{} increases {C:attention}twice as fast{}",
           "When upgrading a {C:attention}Vanilla{} hand create a random {C:dark_edition}negative{} {C:attention}vanilla{} consumable",
-          "When upgrading a {C:attention}Modded{} hand create a random {C:dark_edition}negative{} {C:attention}modded{} consumable",
+          "When upgrading a {C:dark_edition}Modded{} hand create a random {C:dark_edition}negative{} {C:dark_edition}Modded{} consumable",
           "When a {C:attention}Vanilla{} hand is played with {C:attention}2+{} levels {C:mult}downgrade{} {C:attention}level{} and gain {C:attention}Triple{} the {C:chips}Chips{} lost",
-          "When a {C:attention}Modded{} hand is played with {C:attention}2+{} levels {C:mult}downgrade{} {C:attention}level{} and gain {C:attention}Triple{} the {C:mult}Mult{} lost",
+          "When a {C:dark_edition}Modded{} hand is played with {C:attention}2+{} levels {C:mult}downgrade{} {C:attention}level{} and gain {C:attention}Triple{} the {C:mult}Mult{} lost",
           "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips{} {C:mult}+#2#{} {C:inactive}Mult){}",
         }
       },
@@ -15564,8 +15581,8 @@ return {
       m_abn_bramble = {
         name = "Bramble",
         text = {
-          "If this is a {C:inactive}vanillia{} suit it {C:attention}Always scores{}",
-          "If this is on a {C:attention}modded{} suit increase hand level by {C:attention}#1#{}",
+          "If this is a {C:inactive}Vanilla{} suit it {C:attention}Always scores{}",
+          "If this is on a {C:dark_edition}Modded{} suit increase hand level by {C:attention}#1#{}",
         }
       },
     },
