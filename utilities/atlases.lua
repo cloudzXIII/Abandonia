@@ -634,6 +634,13 @@ SMODS.Atlas({
   py = 95,
 })
 
+SMODS.Atlas({
+  key = "ABNJokerPopup",
+  path = "jokers/joker_popup.png",
+  px = 144,
+  py = 86,
+})
+
 -- Animated Jokers (Popup Joker and Malware Joker)
 SMODS.Atlas {
   key = "popup_joker_atlas",
@@ -674,3 +681,15 @@ SMODS.Atlas {
   fps = 2,
   atlas_table = 'ANIMATION_ATLAS'
 }
+
+--[[ - this atlas is too big i think? doesn't load properly. ~Eric
+SMODS.Atlas {
+  key = "best_atlas",
+  path = "jokers/best joker ever.png",
+  px = 71,
+  py = 95,
+  frames = 176,
+  fps = 2,
+  atlas_table = 'ANIMATION_ATLAS'
+}
+--]]
