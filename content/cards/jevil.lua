@@ -145,7 +145,7 @@ SMODS.Joker {
 
 local add_multiboxes_ref = ABN.add_extra_multiboxes
 ---@diagnostic disable-next-line: duplicate-set-field
-function ABN.add_extra_multiboxes(_c, info_queue, card, desc_nodes, specific_vars, full_UI_table, ability, ...)
+function ABN.add_extra_multiboxes(_c, card, info_queue, desc_nodes, specific_vars, full_UI_table, ability, ...)
   add_multiboxes_ref(_c, info_queue, card, desc_nodes, specific_vars, full_UI_table, ability, ...)
   if G.jokers and _c.set == "Joker" and _c.key == "j_abn_jevil" then
     local suit_conditions = {

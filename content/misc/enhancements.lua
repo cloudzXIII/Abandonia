@@ -1590,7 +1590,7 @@ SMODS.Enhancement{
 		end
 	end,
 	abn_artist_credits = {
-		artist = "Criyo",
+		artist = "th30ne",
 	},
 }
 
@@ -1681,7 +1681,7 @@ SMODS.Enhancement{
 		end
 	end,
 	abn_artist_credits = {
-		artist = "Criyo",
+		artist = "th30ne",
 	},
 }
 
@@ -1723,6 +1723,6 @@ SMODS.Enhancement{
 		end
 	end,
 	abn_artist_credits = {
-		artist = "Criyo",
+		artist = "th30ne",
 	},
 }

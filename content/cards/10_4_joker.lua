@@ -2,8 +2,8 @@ SMODS.Joker {
   key = '10_4_joker',
 
   rarity = 1,
-  atlas = 'ABNJokerSheet6',
-  pos = { x = 6, y = 3 },
+  atlas = 'ABNJokerSheet25',
+  pos = { x = 7, y = 6 },
   cost = 6,
   discovered = false,
   blueprint_compat = true,
@@ -33,6 +33,6 @@ SMODS.Joker {
     end
   end,
   abn_artist_credits = {
-    artist = "DrSmey",
+    artist = "0kronix",
   },
 }

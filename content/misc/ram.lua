@@ -107,7 +107,7 @@ SMODS.Consumable {
     end,
 
     abn_artist_credits = {
-        artist = "0kronix"
+        artist = "GM36"
     },
 }
 
@@ -168,6 +168,6 @@ SMODS.Consumable {
     end,
 
     abn_artist_credits = {
-        artist = "0kronix"
+        artist = "GM36"
     },
 }

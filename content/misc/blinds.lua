@@ -4236,7 +4236,6 @@ SMODS.Blind {
   dollars = 6,
   mult = 2,
 
-  debuff = { h_size_ge = 4, h_size_le = 4 },
   boss = { min = 4, invasion_blind = true },
   atlas = "InvasionBlinds",
   pos = { x = 0, y = 0 },

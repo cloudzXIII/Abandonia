@@ -6,8 +6,8 @@ A Balatro mod founded by Bunnet focused on expanding the base game with a bunch 
 
 # Additions
 
-As of 0.1.1-DEV-4b, Abandonia currently adds
-* 680+ Jokers
+As of 0.1.1-DEV-4c, Abandonia currently adds
+* 700+ Jokers
 * 27 Decks
 * 21 Vouchers
 * 18 new Consumable Types
@@ -30,4 +30,6 @@ As of 0.1.1-DEV-4b, Abandonia currently adds
 - Requires [Amulet 3.5.4+](https://github.com/frostice482/amulet)
 - Requires [Lovely 0.9.0+](https://github.com/ethangreen-dev/lovely-injector)
 
-Get the latest stable version from [Releases](https://github.com/cloudzXIII/Abandonia/releases), then download and extract the zip into the Mods folder.
+Get the latest development version from [here](https://github.com/cloudzXIII/Abandonia/archive/refs/heads/main.zip), then download and extract the zip into the Mods folder. 
+~~Get the latest stable version from [Releases](https://github.com/cloudzXIII/Abandonia/releases), then download and extract the zip into the Mods folder.~~
+~~hold off from grabbing from the releases till 0.1.1-DEV-5a is out as that's a big one~~

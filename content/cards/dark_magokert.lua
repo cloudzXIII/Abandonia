@@ -1,11 +1,11 @@
 local shuffle_ref = CardArea.shuffle
 function CardArea:shuffle(_seed)
   local g = shuffle_ref(self, _seed)
-  if self == G.deck then
+  if next(SMODS.find_card("j_abn_dark_magokert")) and self == G.deck then
     local priorities = {}
     local others = {}
     for k, v in pairs(self.cards) do
-      if next(SMODS.find_card("j_abn_dark_magokert")) and ABN.is_dark(v) then
+      if ABN.is_dark(v) then
         table.insert(priorities, v)
       else
         table.insert(others, v)

@@ -221,6 +221,12 @@ SMODS.Atlas({
   px = 71,
   py = 95,
 })
+SMODS.Atlas({
+  key = "AbandoniaCrimsonPack",
+  path = "crimson_packs.png",
+  px = 71,
+  py = 95,
+})
 
 SMODS.Atlas({
   key = "AbandoniaCrimsonPack",
@@ -249,8 +255,21 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+  key = "ABNKiddyPack",
+  path = "kiddy_packs.png",
+  px = 71,
+  py = 95,
+})
+
+SMODS.Atlas({
   key = "AbandoniaAstro",
   path = "astro.png",
+  px = 71,
+  py = 95,
+})
+SMODS.Atlas({
+  key = "AbandoniaAtomic",
+  path = "atomic.png",
   px = 71,
   py = 95,
 })
@@ -587,6 +606,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+  key = "ABNJokerSheet25",
+  path = "jokers/joker25.png",
+  px = 71,
+  py = 95,
+})
+
+SMODS.Atlas({
   key = "AbandoniaParallel",
   path = "jokers/parallel.png",
   px = 71,
@@ -599,6 +625,13 @@ SMODS.Atlas({
   px = 71,
   py = 95,
 })
+
+SMODS.Atlas({
+  key = "AbandoniaLegendary2",
+  path = "jokers/legendaries.png",
+  px = 71,
+  py = 95,
+})
 --#endregion
 
 SMODS.Atlas({
@@ -606,6 +639,13 @@ SMODS.Atlas({
   path = "jokers/cracked.png",
   px = 71,
   py = 95,
+})
+
+SMODS.Atlas({
+  key = "ABNJokerPopup",
+  path = "jokers/joker_popup.png",
+  px = 144,
+  py = 86,
 })
 
 -- Animated Jokers (Popup Joker and Malware Joker)
@@ -648,3 +688,15 @@ SMODS.Atlas {
   fps = 2,
   atlas_table = 'ANIMATION_ATLAS'
 }
+
+--[[ - this atlas is too big i think? doesn't load properly. ~Eric
+SMODS.Atlas {
+  key = "best_atlas",
+  path = "jokers/best joker ever.png",
+  px = 71,
+  py = 95,
+  frames = 176,
+  fps = 2,
+  atlas_table = 'ANIMATION_ATLAS'
+}
+--]]
