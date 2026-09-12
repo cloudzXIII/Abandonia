@@ -8544,6 +8544,22 @@ j_abn_ancient_tapestry = {
     
   }
 },
+j_abn_joke_22 = {
+  name = "Joke 22",
+  text = {
+    {
+      "If {C:attention}poker hand{} is {C:dark_edition}Vanilla{},",
+      "gain {C:red}Mult{} equal to the sum of",
+      "{C:attention}scored{} ranks with {C:dark_edition}Modded{} suits",
+    },
+    {
+      "If {C:attention}poker hand{} is {C:dark_edition}Modded{},",
+      "gain {C:blue}Chips{} equal to the sum of",
+      "{C:attention}scored{} ranks with {C:dark_edition}Vanilla{} suits",
+      "{C:inactive}(Currently {C:red}+#1#{C:inactive} Mult,{} {C:blue}+#2#{C:inactive} Chips){}",
+    },
+  }
+},
 j_abn_illegal_ante = {
   name = "Illegal Ante",
   text = {
