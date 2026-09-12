@@ -27,7 +27,15 @@ SMODS.Rank {
     abn_Florette = 13,
     abn_Acorn = 14,
     abn_Bell = 15,
-    abn_Leaf = 16
+    abn_Leaf = 16,
+    abn_Talon = 17,
+    abn_Crown = 18,
+    abn_Moon = 19,
+    abn_Star = 20,
+    abn_Shield = 21,
+    abn_Rose = 22,
+    abn_Anchor = 23,
+    abn_Arrow = 24
   },
 
   in_pool = function(self, args)
@@ -68,7 +76,15 @@ SMODS.Rank {
     abn_Florette = 13,
     abn_Acorn = 14,
     abn_Bell = 15,
-    abn_Leaf = 16
+    abn_Leaf = 16,
+    abn_Talon = 17,
+    abn_Crown = 18,
+    abn_Moon = 19,
+    abn_Star = 20,
+    abn_Shield = 21,
+    abn_Rose = 22,
+    abn_Anchor = 23,
+    abn_Arrow = 24
   },
 
   in_pool = function(self, args)
@@ -109,7 +125,15 @@ SMODS.Rank {
     abn_Florette = 13,
     abn_Acorn = 14,
     abn_Bell = 15,
-    abn_Leaf = 16
+    abn_Leaf = 16,
+    abn_Talon = 17,
+    abn_Crown = 18,
+    abn_Moon = 19,
+    abn_Star = 20,
+    abn_Shield = 21,
+    abn_Rose = 22,
+    abn_Anchor = 23,
+    abn_Arrow = 24
   },
 
   in_pool = function(self, args)
@@ -151,7 +175,15 @@ SMODS.Rank {
     abn_Florette = 13,
     abn_Acorn = 14,
     abn_Bell = 15,
-    abn_Leaf = 16
+    abn_Leaf = 16,
+    abn_Talon = 17,
+    abn_Crown = 18,
+    abn_Moon = 19,
+    abn_Star = 20,
+    abn_Shield = 21,
+    abn_Rose = 22,
+    abn_Anchor = 23,
+    abn_Arrow = 24
   },
 
 

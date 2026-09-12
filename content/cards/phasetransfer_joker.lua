@@ -24,7 +24,7 @@ local mult_map = {
 
 local old_calc = SMODS.calculate_effect
 function SMODS.calculate_effect(effect, scored_card, from_edition, pre_jokers)
-	if scored_card.ability.set == "Joker" then
+	if next(SMODS.find_card("j_abn_phasetransfer_joker")) and scored_card.ability.set == "Joker" then
 		local phasetransfers = SMODS.find_card("j_abn_phasetransfer_joker")
 		if #phasetransfers > 0 then
 			local rate = phasetransfers[1].ability.extra.rate

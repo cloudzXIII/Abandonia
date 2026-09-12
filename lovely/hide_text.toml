@@ -1,0 +1,44 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[vars]
+unknown = 'next(SMODS.find_card("j_abn_la_bete_noire")) and localize ("abn_hidden_score") or'
+unknown_total = 'next(SMODS.find_card("j_abn_la_bete_noire")) and localize ("abn_hidden_score_total") or'
+
+# Round score
+# G.FUNCS.chip_UI_set
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.GAME.chips_text = new_chips_text"
+position = "at"
+match_indent = true
+payload = '''
+G.GAME.chips_text = {{lovely:unknown_total}} new_chips_text
+'''
+
+# Mult and Chips
+# G.FUNCS.hand_type_UI_set
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/ui.lua"]'
+pattern = "G.GAME.current_round.current_hand[e.config.text] = new_mult_text"
+position = "at"
+match_indent = true
+payload = '''
+G.GAME.current_round.current_hand[e.config.text] = {{lovely:unknown}} new_mult_text
+'''
+
+# Chip total
+# G.FUNCS.hand_chip_total_UI_set
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.GAME.current_round.current_hand.chip_total_text = new_chip_total_text"
+position = "at"
+match_indent = true
+payload = '''
+G.GAME.current_round.current_hand.chip_total_text = {{lovely:unknown_total}} new_chip_total_text
+'''

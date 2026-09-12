@@ -149,7 +149,7 @@ SMODS.Joker {
   rarity = 2,
   abn_coder = "ImaginaryNeon",
   atlas = 'ABNJokerSheet21',
-  pos = { x = 8, y = 2 },
+  pos = { x = 3, y = 4 },
   --atlas = 'jonklers', -- test sprites from my own mod
   --pos = { x = 3, y = 0 }, -- Wii Remote (a MUCH more convoluted rendition than this one, though)
   cost = 6,
@@ -248,9 +248,10 @@ SMODS.Joker {
   calculate = function(self, card, context)
     if context.post_trigger and not context.blueprint then
       local other_ret = context.other_ret.jokers or {}
-      if other_ret.mult --[[and not (context.other_card.config.center.key == card.config.center.key)]] then
+      local mult = (other_ret.mult or 0) + (other_ret.h_mult or 0) + (other_ret.mult_mod or 0)
+      if mult > 0 --[[and not (context.other_card.config.center.key == card.config.center.key)]] then
         return {
-          chips = tonumber(other_ret.mult),
+          chips = mult,
           message_card = card,
         }
       end

@@ -17,13 +17,13 @@ SMODS.Edition {
   calculate = function(self, card, context)
   end,
   on_apply = function(card)
-    ABN.mod_card_values(card, { multiplier = 2 })
+    Spectrallib.manipulate(card, {type = "X", value = 2})
     if G.GAME.abn then
       G.GAME.abn.cthonian = true
     end
   end,
   on_remove = function(card)
-    ABN.mod_card_values(card, { multiplier = 0.5 })
+    Spectrallib.manipulate(card, {type = "X", value = 0.5})
   end,
   abn_artist_credits = {
     artist = "Bro-Fly"
