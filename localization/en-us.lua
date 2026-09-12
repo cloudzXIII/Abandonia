@@ -8539,326 +8539,326 @@ j_abn_ancient_tapestry = {
       "gain {B:1,C:white}x#3#{} equal to",
       "the amount of {C:attention}scoring cards{}",
       "then {C:attention}flip{} this Joker",
-        "{C:inactive}(Currently {V:1}+#1#{C:inactive} #3#,{} {B:1,C:white}X#2#{C:inactive} #3#){}",
-      },
-      
-    }
-  },
-  j_abn_illegal_ante = {
-    name = "Illegal Ante",
-    text = {
-      "During {C:attention}Even{} Antes, {C:attention}double{} all {C:green,E:1}probabilities",
-      "During {C:attention}Odd{} Antes, {C:attention}double{} all {C:money}money{} earned",
-    }
-  },
-  j_abn_enigma_comedian = {
-    name = "Enigma Comedian",
-    text = {
-      {
-        "When {C:attention}Blind{} is selected,",
-        "create {C:attention}1{} {C:dark_edition}Pearlescent{}",
-        "{C:planet}Vanilla{} {C:attention}Joker",
-        "{C:inactive}(Must have room)",
-      },
-      {
-        "{X:mult,C:white}^#1#{} Mult and {X:chips,C:white}^#2#{} Chips",
-        "for every {C:planet}Vanilla{} {C:attention}Joker{}",
-        "triggered"
-        
-      }
-    }
+      "{C:inactive}(Currently {V:1}+#1#{C:inactive} #3#,{} {B:1,C:white}X#2#{C:inactive} #3#){}",
+    },
     
-  },
-  j_abn_golden_apple = {
-    name = "Golden Apple",
-    text = {
-      {
-        "When {C:attention}Blind{} is selected,",
-        "remove all {C:abn_perishable}Perishable{} stickers",
-      },
-      {
-        "{C:abn_eternal}Eternal{} Jokers can be sold"
-      }
-    }
-    
-  },
-  j_abn_spare_overall = {
-    name = "Spare Overalls",
-    text = {
-      {
-        "This Joker gains {C:red}+#1#{} Mult",
-        "if played hand contains",
-        "a {C:attention}#2#{}",
-        "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult)",
-      },
-      {
-        "{C:attention}Odd Bonus{} cards permanently",
-        "gain {C:chips}+#4#{} Chips when scored,",
-        "{C:attention}Even Mult{} cards permanently",
-        "gain {C:mult}+#5#{} Mult when scored"
-      }
-    }
-    
-  },
-  j_abn_boulevard_of_alters = {
-    name = "Boulevard of Alters",
-    text = {
-      {
-        "Whenever a {C:rare}Rare{} Joker triggers,",
-        "all {C:common}Common{} Jokers gain {C:chips}+10{} Chips"
-      },
-      {
-        "Whenever a {C:uncommon}Uncommon{} Joker triggers,",
-        "all {C:rare}Rare{} Jokers gain {X:mult,C:white}x0.1{} Mult"
-      },
-      {
-        "Whenever a {C:common}Common{} Joker triggers,",
-        "all {C:uncommon}Uncommon{} Jokers gain {X:chips,C:white}x0.1{} Chips"
-      },
-    }
-    
-  },
-  j_abn_memory_dump_joker = {
-    name = "Memory Dump Joker",
-    text = {
-      {
-        "Each Joker gains {X:mult,C:white}X#1#{} Mult",
-        "every scored hand"
-      },
-      {
-        "Scored hand size must be",
-        "larger than {C:attention}#2#{}",
-        "{C:inactive}(Changes to highest played hand size)",
-        "{C:inactive}(Resets when defeating a blind)"
-      },
-    }
-    
-  },
-  j_abn_palindromic_beetle = {
-    name = "Palindromic Beetle",
-    text = {
-      {
-        "If the {C:attention}full hand{} is a {C:attention}palindromic sequence",
-        "and is composed of {C:attention}both {C:diamonds}Light{} and {C:spades}Dark{} suits,",
-        "level up the {C:planet}planet{} {C:attnention}Rank{} of each {C:attention}scoring{} card by",
-        "the amount of times the {C:attention}rank{} has been {C:attention}repeated{} in hand",
-      },
-    }
-    
-  },
-  j_abn_orphic_joker = {
-    name = "Orphic Joker",
-    text = {
-      {
-        "If you play a {C:attention}#1#{} with",
-        "{C:hearts}Hearts{}, {C:diamonds}Diamonds{}, {C:spades}Spades{} and {C:clubs}Clubs{},",
-        "level up the {C:attention}poker hand{} and",
-        "gain {C:mult}+#2#{} Mult.",
-        "{C:inactive}(Currently {C:mult}+#4#{C:inactive} Mult)",
-      },
-      {
-        "If you play a {C:attention}#1#{} with",
-        "{C:abn_star}Stars{}, {C:abn_moon}Moons{}, {C:abn_crown}Crowns{} and {C:abn_talon}Talons{},",
-        "level up the {C:planet}planet{} {C:attention}rank{} of",
-        "each {C:attention}scoring{} card and",
-        "gain {C:chips}+#3#{} Chips.",
-        "{C:inactive}(Currently {C:chips}+#5#{C:inactive} Chips)",
-      },
-    }
-    
-  },
-  j_abn_edition_design_joker = {
-    name = "Edition & Design Joker",
-    text = {
-      {
-        "When an {C:dark_edition}editioned{} {C:attention}Joker{},",
-        "is purchased, gains {C:mult}Mult{}",
-        "based on its {C:legendary}rarity",
-        "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
-      },
-      {
-        "{C:common,s:0.8}Common{s:0.8}: {C:red,s:0.8}+#2#{s:0.8} Mult",
-        "{C:uncommon,s:0.8}Uncommon{s:0.8}: {C:red,s:0.8}+#3#{s:0.8} Mult",
-        "{C:rare,s:0.8}Rare{s:0.8}: {C:red,s:0.8}+#4#{s:0.8} Mult",
-        "{C:abn_superrare,s:0.8}Super Rare{s:0.8}: {C:red,s:0.8}+#5#{s:0.8} Mult",
-        "{C:abn_parallelrare,s:0.8}Parallel Rare{s:0.8}: {C:red,s:0.8}+#6#{s:0.8} Mult",
-        "{C:legendary,s:0.8}Legendary{s:0.8}: {C:red,s:0.8}+#7#{s:0.8} Mult",
-        "{C:abn_virusrare,s:0.8}Virus Rare{s:0.8}: {C:red,s:0.8}+#8#{s:0.8} Mult",
-      },
-    }
-    
-  },
-  j_abn_ppe_joker = {
-    name = "PPE Joker",
-    text = {
-      "{X:mult,C:white}X#1#{} Mult for",
-      "every {C:red}debuffed{} Joker",
-      "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
-    }
-    
-  },
-  j_abn_sherlock_joker = {
-    name = "Sherlock Joker",
-    text = {
-      {
-        "Reveals the name of a",
-        "selected {C:attention}flipped{} card",
-        "{C:inactive}(#1#){}",
-      },
-      {
-        "Reveals the next card",
-        "to be {C:attention}drawn",
-        "{C:inactive}(#2#){}",
-      },
-    }
-    
-  },
-  j_abn_crass_joker = {
-    name = "Crass Joker",
-    text = {
-      {
-        "If an {C:dark_edition}Editioned{} {C:attention}Joker{} is purchased,",
-        "this Joker gains {C:chips}+#1#{} Chip",
-        "per {C:money}${} of its {C:attention}cost",
-        
-      },
-      {
-        "If a {C:attention}free{} {C:attention}Joker{} is purchased,",
-        "this Joker gains {C:chips}+#1#{} Chip",
-        "per {C:money}${} of its {C:attention}original cost",
-        "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
-      }
-    }
-    
-  },
-  j_abn_mult_disco = {
-    name = "Mult Disco",
-    text = {
-      {
-        "{X:mult,C:white}X#1#{} Mult for every",
-        "{C:dark_edition}Negative {C:attention}Mult{} card scored",
-        
-      },
-      {
-        "Gains {C:mult}+#2#{} Mult per scored",
-        "{C:spades}Dark{} suited {C:attention}Mult Card{}",
-        "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)"
-      }
-      
-    }
-    
-  },
-  j_abn_prizefighter_joker = {
-    name = "Prizefighter Joker",
-    text = {
-      {
-        "If the played {C:attention}hand size{} is bigger than {C:attention}#1#{},",
-        "gain {C:chips}+#2#{} Chips and {C:mult}+#3#{} Mult",
-        "{C:inactive}(Currently {C:chips}+#4#{C:inactive} Chips and {C:mult}+#5#{C:inactive} Mult)"
-        
-      },
-      {
-        "If the played {C:attention}hand size{} is double of {C:attention}#1#{},",
-        "{C:attention}double{} this Joker's {C:chips}Chips{} and {C:mult}Mult",
-        "{C:inactive}(Hand size resets when beating a blind)"
-      },
-      
-    }
-    
-  },
-  j_abn_symbol_of_peace = {
-    name = "Symbol Of Peace",
-    text = {
-      "{C:enhanced}+#1#{} selection limit,",
-      "{C:blue}+#1#{} hand, {C:red}+#1#{} discard,",
-      "{C:attention}+#1#{} Joker slot,",
-      "{C:tarot}+#1#{} Consumable slot,",
-      "{C:attention}+#1#{} Voucher in shop,",
-      "{C:tarot}+#1#{} Booster Pack in shop,",
-      "{C:red}disables{} the {C:attention}Boss Blind{}",
-    }
-    
-  },
-  j_abn_invisible_ink_joker = {
-    name = "Invisible Ink Joker",
-    text = {
-      {
-        "This Joker gains {C:mult}+#3#{} Mult",
-        "per unique {C:attention}suit{}",
-        "in scoring {C:attention}Lucky{} cards",
-        "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {X:chips,C:white}X#2#{} {C:inactive}Chips){}",
-      },
-      {
-        "If played hand contains a {C:attention}Spectrum{}",
-        "containing only {C:attention}Lucky{} cards,",
-        "gain {X:chips,C:white}X#4#{} Chips for each one",
-      },
-    }
-  },
-  j_abn_jimbos_love_letter = {
-    name = "Jimbo's Love Letter",
-    text = {
-      "{C:hearts}Hearts{} held in hand count in scoring",
-      "Once per round, if played hand",
-      "contains a {C:attention}Flush{} of {C:hearts}Hearts{},",
-      "level up {C:planet}planet{} {C:attention}rank{} of all scoring cards"
-    }
-  },
-  j_abn_immolation_joker = {
-    name = "Immolation Joker",
-    text = {
-      "{C:attention}Oilfire{} cards are not",
-      "{C:mult}destroyed{} when triggered",
-    }
-  },
-  j_abn_mariner_joker = {
-    name = "Mariner Joker",
-    text = {
-      "Create a random {C:attention}Rank{}",
-      "{C:planet}Planet{} card every time",
-      "a {C:continent}Continent{} card is used",
-    }
-  },
-  j_abn_fortune_joker = {
-    name = "Fortune Joker",
-    text = {
-      {
-        "Level up {C:planet}planet{} {C:attention}rank{}",
-        "of all {C:attention}Lucky{} cards scored",
-      },
-      {
-        "Retrigger scoring {C:attention}Lucky{} cards",
-        "when they {C:green}successfully{} trigger",
-      }
-    }
-  },
-  j_abn_darkest_joker = {
-    name = "Darkest Joker",
-    text = {
-      "Gain {C:mult}+#3#{} Mult per Scoring {C:spades}Dark Suit{} with an {C:dark_edition}Edition{}",
-      "Gain {C:chips}+#4#{} Chips per Scoring {C:spades}Dark Suit{} with an {C:attention}Enhancement{}",
-      "{C:inactive}(Currently {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
-    }
-  },
-  j_abn_bodyguard_joker = {
-    name = "Bodyguard Joker",
-    text = {
-      "Gain {C:mult}+#2#{} Mult per scoring {C:attention}Flipped{} card",
-      "Remove {C:attention}Flipped{} from scoring {C:attention}Flipped{} cards",
-      "Unscoring Cards gain {C:attention}Flipped{}",
-      "{C:inactive}(Currently {C:mult}+#1#{} {C:inactive}Mult){}",
-    }
-  },
-  j_abn_collectible_joker = { -- to relocalise (at a reasonable state now but may change later)
-  name = "Collectible Joker",
-  text = {
-    "This Joker gains {C:chips}+#8#{} Chips per unique",
-    "{C:common}Common{} Joker, {C:mult}+#7#{} Mult per unique",
-    "{C:uncommon}Uncommon{} Joker, {X:mult,C:white}X#5#{} Mult per unique",
-    "{C:rare}Rare{} Joker and {X:chips,C:white}X#6#{} Chips per unique",
-    "{C:legendary}Legendary{} Joker obtained this run",
-    "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive},{} {C:mult}+#3#{C:inactive},{} {X:chips,C:white}X#2#{C:inactive}, {C:chips}+#4#{C:inactive}){}"
   }
+},
+j_abn_illegal_ante = {
+  name = "Illegal Ante",
+  text = {
+    "During {C:attention}Even{} Antes, {C:attention}double{} all {C:green,E:1}probabilities",
+    "During {C:attention}Odd{} Antes, {C:attention}double{} all {C:money}money{} earned",
+  }
+},
+j_abn_enigma_comedian = {
+  name = "Enigma Comedian",
+  text = {
+    {
+      "When {C:attention}Blind{} is selected,",
+      "create {C:attention}1{} {C:dark_edition}Pearlescent{}",
+      "{C:planet}Vanilla{} {C:attention}Joker",
+      "{C:inactive}(Must have room)",
+    },
+    {
+      "{X:mult,C:white}^#1#{} Mult and {X:chips,C:white}^#2#{} Chips",
+      "for every {C:planet}Vanilla{} {C:attention}Joker{}",
+      "triggered"
+      
+    }
+  }
+  
+},
+j_abn_golden_apple = {
+  name = "Golden Apple",
+  text = {
+    {
+      "When {C:attention}Blind{} is selected,",
+      "remove all {C:abn_perishable}Perishable{} stickers",
+    },
+    {
+      "{C:abn_eternal}Eternal{} Jokers can be sold"
+    }
+  }
+  
+},
+j_abn_spare_overall = {
+  name = "Spare Overalls",
+  text = {
+    {
+      "This Joker gains {C:red}+#1#{} Mult",
+      "if played hand contains",
+      "a {C:attention}#2#{}",
+      "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult)",
+    },
+    {
+      "{C:attention}Odd Bonus{} cards permanently",
+      "gain {C:chips}+#4#{} Chips when scored,",
+      "{C:attention}Even Mult{} cards permanently",
+      "gain {C:mult}+#5#{} Mult when scored"
+    }
+  }
+  
+},
+j_abn_boulevard_of_alters = {
+  name = "Boulevard of Alters",
+  text = {
+    {
+      "Whenever a {C:rare}Rare{} Joker triggers,",
+      "all {C:common}Common{} Jokers gain {C:chips}+10{} Chips"
+    },
+    {
+      "Whenever a {C:uncommon}Uncommon{} Joker triggers,",
+      "all {C:rare}Rare{} Jokers gain {X:mult,C:white}x0.1{} Mult"
+    },
+    {
+      "Whenever a {C:common}Common{} Joker triggers,",
+      "all {C:uncommon}Uncommon{} Jokers gain {X:chips,C:white}x0.1{} Chips"
+    },
+  }
+  
+},
+j_abn_memory_dump_joker = {
+  name = "Memory Dump Joker",
+  text = {
+    {
+      "Each Joker gains {X:mult,C:white}X#1#{} Mult",
+      "every scored hand"
+    },
+    {
+      "Scored hand size must be",
+      "larger than {C:attention}#2#{}",
+      "{C:inactive}(Changes to highest played hand size)",
+      "{C:inactive}(Resets when defeating a blind)"
+    },
+  }
+  
+},
+j_abn_palindromic_beetle = {
+  name = "Palindromic Beetle",
+  text = {
+    {
+      "If the {C:attention}full hand{} is a {C:attention}palindromic sequence",
+      "and is composed of {C:attention}both {C:diamonds}Light{} and {C:spades}Dark{} suits,",
+      "level up the {C:planet}planet{} {C:attnention}Rank{} of each {C:attention}scoring{} card by",
+      "the amount of times the {C:attention}rank{} has been {C:attention}repeated{} in hand",
+    },
+  }
+  
+},
+j_abn_orphic_joker = {
+  name = "Orphic Joker",
+  text = {
+    {
+      "If you play a {C:attention}#1#{} with",
+      "{C:hearts}Hearts{}, {C:diamonds}Diamonds{}, {C:spades}Spades{} and {C:clubs}Clubs{},",
+      "level up the {C:attention}poker hand{} and",
+      "gain {C:mult}+#2#{} Mult.",
+      "{C:inactive}(Currently {C:mult}+#4#{C:inactive} Mult)",
+    },
+    {
+      "If you play a {C:attention}#1#{} with",
+      "{C:abn_star}Stars{}, {C:abn_moon}Moons{}, {C:abn_crown}Crowns{} and {C:abn_talon}Talons{},",
+      "level up the {C:planet}planet{} {C:attention}rank{} of",
+      "each {C:attention}scoring{} card and",
+      "gain {C:chips}+#3#{} Chips.",
+      "{C:inactive}(Currently {C:chips}+#5#{C:inactive} Chips)",
+    },
+  }
+  
+},
+j_abn_edition_design_joker = {
+  name = "Edition & Design Joker",
+  text = {
+    {
+      "When an {C:dark_edition}editioned{} {C:attention}Joker{},",
+      "is purchased, gains {C:mult}Mult{}",
+      "based on its {C:legendary}rarity",
+      "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+    },
+    {
+      "{C:common,s:0.8}Common{s:0.8}: {C:red,s:0.8}+#2#{s:0.8} Mult",
+      "{C:uncommon,s:0.8}Uncommon{s:0.8}: {C:red,s:0.8}+#3#{s:0.8} Mult",
+      "{C:rare,s:0.8}Rare{s:0.8}: {C:red,s:0.8}+#4#{s:0.8} Mult",
+      "{C:abn_superrare,s:0.8}Super Rare{s:0.8}: {C:red,s:0.8}+#5#{s:0.8} Mult",
+      "{C:abn_parallelrare,s:0.8}Parallel Rare{s:0.8}: {C:red,s:0.8}+#6#{s:0.8} Mult",
+      "{C:legendary,s:0.8}Legendary{s:0.8}: {C:red,s:0.8}+#7#{s:0.8} Mult",
+      "{C:abn_virusrare,s:0.8}Virus Rare{s:0.8}: {C:red,s:0.8}+#8#{s:0.8} Mult",
+    },
+  }
+  
+},
+j_abn_ppe_joker = {
+  name = "PPE Joker",
+  text = {
+    "{X:mult,C:white}X#1#{} Mult for",
+    "every {C:red}debuffed{} Joker",
+    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
+  }
+  
+},
+j_abn_sherlock_joker = {
+  name = "Sherlock Joker",
+  text = {
+    {
+      "Reveals the name of a",
+      "selected {C:attention}flipped{} card",
+      "{C:inactive}(#1#){}",
+    },
+    {
+      "Reveals the next card",
+      "to be {C:attention}drawn",
+      "{C:inactive}(#2#){}",
+    },
+  }
+  
+},
+j_abn_crass_joker = {
+  name = "Crass Joker",
+  text = {
+    {
+      "If an {C:dark_edition}Editioned{} {C:attention}Joker{} is purchased,",
+      "this Joker gains {C:chips}+#1#{} Chip",
+      "per {C:money}${} of its {C:attention}cost",
+      
+    },
+    {
+      "If a {C:attention}free{} {C:attention}Joker{} is purchased,",
+      "this Joker gains {C:chips}+#1#{} Chip",
+      "per {C:money}${} of its {C:attention}original cost",
+      "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+    }
+  }
+  
+},
+j_abn_mult_disco = {
+  name = "Mult Disco",
+  text = {
+    {
+      "{X:mult,C:white}X#1#{} Mult for every",
+      "{C:dark_edition}Negative {C:attention}Mult{} card scored",
+      
+    },
+    {
+      "Gains {C:mult}+#2#{} Mult per scored",
+      "{C:spades}Dark{} suited {C:attention}Mult Card{}",
+      "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)"
+    }
+    
+  }
+  
+},
+j_abn_prizefighter_joker = {
+  name = "Prizefighter Joker",
+  text = {
+    {
+      "If the played {C:attention}hand size{} is bigger than {C:attention}#1#{},",
+      "gain {C:chips}+#2#{} Chips and {C:mult}+#3#{} Mult",
+      "{C:inactive}(Currently {C:chips}+#4#{C:inactive} Chips and {C:mult}+#5#{C:inactive} Mult)"
+      
+    },
+    {
+      "If the played {C:attention}hand size{} is double of {C:attention}#1#{},",
+      "{C:attention}double{} this Joker's {C:chips}Chips{} and {C:mult}Mult",
+      "{C:inactive}(Hand size resets when beating a blind)"
+    },
+    
+  }
+  
+},
+j_abn_symbol_of_peace = {
+  name = "Symbol Of Peace",
+  text = {
+    "{C:enhanced}+#1#{} selection limit,",
+    "{C:blue}+#1#{} hand, {C:red}+#1#{} discard,",
+    "{C:attention}+#1#{} Joker slot,",
+    "{C:tarot}+#1#{} Consumable slot,",
+    "{C:attention}+#1#{} Voucher in shop,",
+    "{C:tarot}+#1#{} Booster Pack in shop,",
+    "{C:red}disables{} the {C:attention}Boss Blind{}",
+  }
+  
+},
+j_abn_invisible_ink_joker = {
+  name = "Invisible Ink Joker",
+  text = {
+    {
+      "This Joker gains {C:mult}+#3#{} Mult",
+      "per unique {C:attention}suit{}",
+      "in scoring {C:attention}Lucky{} cards",
+      "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {X:chips,C:white}X#2#{} {C:inactive}Chips){}",
+    },
+    {
+      "If played hand contains a {C:attention}Spectrum{}",
+      "containing only {C:attention}Lucky{} cards,",
+      "gain {X:chips,C:white}X#4#{} Chips for each one",
+    },
+  }
+},
+j_abn_jimbos_love_letter = {
+  name = "Jimbo's Love Letter",
+  text = {
+    "{C:hearts}Hearts{} held in hand count in scoring",
+    "Once per round, if played hand",
+    "contains a {C:attention}Flush{} of {C:hearts}Hearts{},",
+    "level up {C:planet}planet{} {C:attention}rank{} of all scoring cards"
+  }
+},
+j_abn_immolation_joker = {
+  name = "Immolation Joker",
+  text = {
+    "{C:attention}Oilfire{} cards are not",
+    "{C:mult}destroyed{} when triggered",
+  }
+},
+j_abn_mariner_joker = {
+  name = "Mariner Joker",
+  text = {
+    "Create a random {C:attention}Rank{}",
+    "{C:planet}Planet{} card every time",
+    "a {C:continent}Continent{} card is used",
+  }
+},
+j_abn_fortune_joker = {
+  name = "Fortune Joker",
+  text = {
+    {
+      "Level up {C:planet}planet{} {C:attention}rank{}",
+      "of all {C:attention}Lucky{} cards scored",
+    },
+    {
+      "Retrigger scoring {C:attention}Lucky{} cards",
+      "when they {C:green}successfully{} trigger",
+    }
+  }
+},
+j_abn_darkest_joker = {
+  name = "Darkest Joker",
+  text = {
+    "Gain {C:mult}+#3#{} Mult per Scoring {C:spades}Dark Suit{} with an {C:dark_edition}Edition{}",
+    "Gain {C:chips}+#4#{} Chips per Scoring {C:spades}Dark Suit{} with an {C:attention}Enhancement{}",
+    "{C:inactive}(Currently {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
+  }
+},
+j_abn_bodyguard_joker = {
+  name = "Bodyguard Joker",
+  text = {
+    "Gain {C:mult}+#2#{} Mult per scoring {C:attention}Flipped{} card",
+    "Remove {C:attention}Flipped{} from scoring {C:attention}Flipped{} cards",
+    "Unscoring Cards gain {C:attention}Flipped{}",
+    "{C:inactive}(Currently {C:mult}+#1#{} {C:inactive}Mult){}",
+  }
+},
+j_abn_collectible_joker = { -- to relocalise (at a reasonable state now but may change later)
+name = "Collectible Joker",
+text = {
+  "This Joker gains {C:chips}+#8#{} Chips per unique",
+  "{C:common}Common{} Joker, {C:mult}+#7#{} Mult per unique",
+  "{C:uncommon}Uncommon{} Joker, {X:mult,C:white}X#5#{} Mult per unique",
+  "{C:rare}Rare{} Joker and {X:chips,C:white}X#6#{} Chips per unique",
+  "{C:legendary}Legendary{} Joker obtained this run",
+  "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive},{} {C:mult}+#3#{C:inactive},{} {X:chips,C:white}X#2#{C:inactive}, {C:chips}+#4#{C:inactive}){}"
+}
 },
 j_abn_flotsam_joker = {
   name = "Flotsam Joker",
