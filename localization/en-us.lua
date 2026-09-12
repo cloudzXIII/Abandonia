@@ -8425,11 +8425,73 @@ j_abn_confirm_joker = {
     },
   }
 },
+j_abn_la_bete_noire ={
+  name = "{f:abn_m6x11}La  Bête  Noire",
+  text = {
+    {
+      "Your {C:purple}score{} is hidden",
+    },
+    {
+      "Adds {C:attention}+#1#{} to finish ante",
+      "per {C:attention}Calamity{} card used this run",
+    },
+    {
+      "Gains {C:gold}+#2#{} Ascension",
+      "when a hand is played while",
+      "holding a {C:attention}Calamity{} card",
+      "{C:inactive}(Currently {C:gold}+#3#{C:inactive} Asc. Power)"
+    },
+    {
+      "When you sell a {C:spectral}Spectral{} card,",
+      "create a random {C:attention}Calamity{} card"
+    }
+  }
+},
 j_abn_illegal_ante = {
   name = "Illegal Ante",
   text = {
     "During {C:attention}Even{} Antes, {C:attention}double{} all {C:green,E:1}probabilities",
     "During {C:attention}Odd{} Antes, {C:attention}double{} all {C:money}money{} earned",
+  }
+},
+j_abn_voucher_jimbo = {
+  name = "Voucher Jimbo",
+  text = {
+    "Gain {C:red}+#1#{} Mult and {C:blue}+#2#{} Chips",
+    "per {C:attention}Voucher{} redeemed",
+    "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult,{} {C:blue}+#4#{C:inactive} Chips){}",
+  }
+},
+j_abn_swag_voucher = {
+  name = "Swag Voucher",
+  text = {
+    "Gain {X:red,C:white}X#1#{} Mult and {X:blue,C:white}X#2#{} Chips",
+    "per {C:attention}Voucher{} redeemed",
+    "{C:inactive}(Currently {X:red,C:white}X#3#{C:inactive} Mult,{} {X:blue,C:white}X#4#{C:inactive} Chips){}",
+  }
+},
+j_abn_ancient_tapestry = {
+  name = "Ancient Tapestry",
+  text = {
+    {
+      "{C:attention}Wallpaper Cards{} get shuffled",
+      "to the top of the deck",
+    },
+    {
+      "If {C:attention}scoring hand{} is composed",
+      "of only {C:dark_edition}Vanilla{} Seals,",
+      "gain {V:1}#3#{} equal to",
+      "the amount of {C:attention}scoring cards{}"
+    },
+    {
+      "If {C:attention}scoring hand{} is composed",
+      "of only {C:dark_edition}Modded{} Seals,",
+      "gain {B:1,C:white}x#3#{} equal to",
+      "the amount of {C:attention}scoring cards{}",
+      "then {C:attention}flip{} this Joker",
+      "{C:inactive}(Currently {V:1}+#1#{C:inactive} #3#,{} {B:1,C:white}X#2#{C:inactive} #3#){}",
+    },
+    
   }
 },
 j_abn_enigma_comedian = {
@@ -15709,6 +15771,9 @@ misc = {
     
     b_ram_cards = "RAM Cards",
     k_ram = "RAM",
+
+    abn_hidden_score = "???",
+    abn_hidden_score_total = "???",
   },
   v_dictionary = {
     k_abn_more_copies = "+#1# more copies!"
