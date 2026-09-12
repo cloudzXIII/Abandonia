@@ -189,6 +189,20 @@ SMODS.Sticker {
   end
 }
 
+--card.states.drag.can does not automatically save between runs, so it needs to be restored manually
+local old_start_run = Game.start_run
+function Game:start_run(args)
+	old_start_run(self, args)
+
+	for _, area in ipairs({G.jokers.cards, G.consumeables.cards}) do
+		for _, joker in ipairs(area) do
+			if joker.ability.abn_weight then
+				joker.states.drag.can = false
+			end
+		end
+	end
+end
+
 --region Crown: Card cannot change editions
 SMODS.Sticker {
   key = "crown",

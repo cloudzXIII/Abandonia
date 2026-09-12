@@ -75,7 +75,7 @@ SMODS.Joker{
     end,
 
     in_pool = function(self, args)
-        return (G.GAME.consumeable_usage_total and G.GAME.consumeable_usage_total.calamity_cards > 0)
+        return (G.GAME.consumeable_usage_total and G.GAME.consumeable_usage_total.calamity_cards and G.GAME.consumeable_usage_total.calamity_cards > 0)
     end,
 
     add_to_deck = function(self, card, from_debuff)

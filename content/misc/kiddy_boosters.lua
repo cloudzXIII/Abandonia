@@ -397,7 +397,7 @@ SMODS.Booster({
 
   create_card = function(self, card)
     return {
-      set = "Lexica",
+      set = "lexica",
       area = G.pack_cards,
       skip_materialize = true,
       soulable = true,

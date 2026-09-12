@@ -1916,7 +1916,7 @@ weather_report = {
   c_abn_tornado = {
     name = "Tornado",
     text = {
-      "{C:blue}+#1#{} Hand every round",
+      "{C:blue}+#1#{} Hand this round",
       "Discarded cards",
       "are {C:red}destroyed",
       "{C:inactive}(Destroyed at end of round)",
@@ -1932,7 +1932,7 @@ weather_report = {
   c_abn_ash_cloud = {
     name = "Ash Cloud",
     text = {
-      "{C:blue}+#1#{} Hand every round",
+      "{C:blue}+#1#{} Hand this round",
       "Debuffs all {C:diamonds}light suits{}",
       "{C:inactive}(Destroyed at end of round)",
     }
@@ -2013,7 +2013,7 @@ weather_report = {
             c_abn_dew = {
               name = "Dew",
               text = {
-                "{C:blue}+#1#{} Hand every round",
+                "{C:blue}+#1#{} Hand this round",
                 "Debuffs all {C:spades}dark suits{}",
                 "{C:inactive}(Destroyed at end of round)",
               }
@@ -12059,6 +12059,45 @@ j_abn_authenticated_graded_joker = {
     }
   }
 },
+      j_abn_topsy_turvy_joker = {
+        name = "Topsy Turvy Joker",
+        text = {
+          {
+            "When a {C:dark_edition}Reversal{} card scores,",
+            "this joker gains {C:mult}Mult{} equal",
+            "to however much {C:mult}Mult{} was",
+            "gained from the swap, if any",
+            "{C:inactive}(Currently {C:mult}+#1# {C:inactive}Mult)"
+          },
+          {
+            "If this joker has {C:dark_edition}Reversal{},",
+            "whenever {C:mult}Mult{} increases as a",
+            "result of {C:dark_edition}Reversal{}, that",
+            "increase will be boosted by {C:mult}X#2#"
+          }
+        }
+      },
+      j_abn_abysmal_joker = {
+        name = "Abysmal Joker",
+        text = {
+          {
+            "{C:dark_edition}Chthonian{} cards have {C:attention}X#1#",
+            "values while being scored"
+          },
+          {
+            "If the score catches fire from",
+            "a hand of only {C:dark_edition}Chthonian{} cards,",
+            "create a number of {C:dark_edition}Negative {C:attention}modded",
+            "consumable cards equal to the",
+            "number of scoring cards"
+          },
+          {
+            "If this joker is {C:dark_edition}Chthonian,",
+            "{C:attention}6{}s increase their level of",
+            "{C:green}Planet Rank{} when scored by {C:attention}#2#"
+          }
+        }
+      },
 },
 Spectral = {
   c_abn_promotion = { -- TO CODE
