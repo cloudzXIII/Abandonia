@@ -738,8 +738,8 @@ SMODS.Booster({
   cost = 2,
   kind = "abn_Crimson",
   group_key = 'k_crimson_kiddy',
-  draw_hand = true,
   discovered = false,
+  select_card = "consumeables",
 
   create_card = function(self, card)
     return {

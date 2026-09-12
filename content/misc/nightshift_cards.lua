@@ -203,7 +203,7 @@ SMODS.Consumable {
     end
 
     -- Logic for the rare chance to increase Joker capacity
-    if SMODS.pseudorandom_probability(card, 'apparition', card.ability.extra.base, card.ability.extra.odds) then
+    if SMODS.pseudorandom_probability(card, 'apparition', 1, card.ability.extra.odds) then
       G.jokers.config.card_limit = G.jokers.config.card_limit + 1
     end
   end,

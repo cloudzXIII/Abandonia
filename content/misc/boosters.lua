@@ -2700,6 +2700,7 @@ SMODS.Booster({
   group_key = 'abn_crimsonbooster',
   unlocked = true,
   discovered = false,
+  select_card = "consumeables",
   create_card = function(self, card)
     return {
       set = "crimson",
@@ -2737,6 +2738,7 @@ SMODS.Booster({
   group_key = 'abn_crimsonbooster',
   unlocked = true,
   discovered = false,
+  select_card = "consumeables",
   create_card = function(self, card)
     return {
       set = "crimson",
@@ -2774,6 +2776,7 @@ SMODS.Booster({
   group_key = 'abn_crimsonbooster',
   unlocked = true,
   discovered = false,
+  select_card = "consumeables",
   create_card = function(self, card)
     return {
       set = "crimson",
@@ -2811,6 +2814,7 @@ SMODS.Booster({
   group_key = 'abn_crimsonbooster',
   unlocked = true,
   discovered = false,
+  select_card = "consumeables",
   create_card = function(self, card)
     return {
       set = "crimson",

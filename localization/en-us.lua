@@ -13034,8 +13034,7 @@ Other = {
     name = "Kiddy Crimson Pack",
     text = {
       "Choose {C:attention}#1#{} of up to",
-      "{C:attention}#2# {C:crimson}Crimson{} cards to",
-      "be used immediately",
+      "{C:attention}#2# {C:crimson}Crimson{} cards",
     },
   },
   --#endregion
@@ -13381,24 +13380,21 @@ Other = {
       name = "Crimson Pack",
       text = {
         "Choose {C:attention}#1#{} of up to",
-        "{C:attention}#2# {C:crimson}Crimson{} cards to",
-        "be used immediately",
+        "{C:attention}#2# {C:crimson}Crimson{} cards",
       },
     },
     p_abn_crimson_jumbo = {
       name = "Jumbo Crimson Pack",
       text = {
         "Choose {C:attention}#1#{} of up to",
-        "{C:attention}#2# {C:crimson}Crimson{} cards to",
-        "be used immediately",
+        "{C:attention}#2# {C:crimson}Crimson{} cards",
       },
     },
     p_abn_crimson_mega = {
       name = "Mega Crimson Pack",
       text = {
         "Choose {C:attention}#1#{} of up to",
-        "{C:attention}#2# {C:crimson}Crimson{} cards to",
-        "be used immediately",
+        "{C:attention}#2# {C:crimson}Crimson{} cards",
       },
     },
     undiscovered_illusion = {
