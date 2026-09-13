@@ -534,7 +534,7 @@ ABN.EnhSticker {
   
   calculate = function(self, card, context)
     if context.before then
-      if #context.scoring_hand > 3 then
+      if #context.scoring_hand >= 3 then
         SMODS.scale_card(card, {
             ref_table = card.ability[self.key .. "_t"],
             ref_value = "mult",
@@ -557,17 +557,14 @@ ABN.EnhSticker {
         if #context.scoring_hand > 0 then
           SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
         end
-        return {
-          mult = card.ability[self.key .. "_t"].mult,
-          chips = card.ability[self.key .. "_t"].chips,
-        }
       else
         SMODS.destroy_cards(card)
       end
-    end
-
-    if context.destroy_card and (context.cardarea == G.play or context.cardarea == 'unscored') and (#context.scoring_hand or 0) <= 3 and context.destroy_card == card then
-      return { remove = true }
+    elseif context.joker_main then
+      return {
+        mult = card.ability[self.key .. "_t"].mult,
+        chips = card.ability[self.key .. "_t"].chips,
+      }
     end
   end,
 }

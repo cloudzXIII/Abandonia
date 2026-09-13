@@ -22,11 +22,17 @@ SMODS.Joker {
             if (#context.scoring_hand > card.ability.imm.hand_size) then
                 card.ability.imm.hand_size = #context.scoring_hand
                 for _, j in ipairs(G.jokers.cards) do
-                    j.ability.abn_perma_xmult = (j.ability.abn_perma_xmult or 1) + card.ability.extra.xmult
-                    return {
-                        message = 'Upgraded!',
-                        colour = G.C.RED
-                    }
+                    j.ability.abn_perma_xmult = (j.ability.abn_perma_xmult or 1)
+					SMODS.scale_card(j, {
+						ref_table = j.ability,
+						ref_value = "abn_perma_xmult",
+						scalar_table =  card.ability.extra,
+						scalar_value = "xmult",
+						scaling_message = {
+							message = localize("k_upgrade_ex"),
+							colour = G.C.RED
+						}
+					})
                 end
             else
                 for _, j in ipairs(G.jokers.cards) do

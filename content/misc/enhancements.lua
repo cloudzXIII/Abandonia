@@ -279,11 +279,26 @@ SMODS.Enhancement({
     return { vars = { cae.mult, cae.multadd, cae.chips, cae.chipsadd } }
   end,
   calculate = function(self, card, context)
-    local cae = card.ability.extra
-
     if context.main_scoring and context.cardarea == G.play then
-      cae.mult = cae.mult + (#context.scoring_hand * cae.multadd)
-      cae.chips = cae.chips + (#context.scoring_hand * cae.chipsadd)
+      local cae = card.ability.extra
+      SMODS.scale_card(card, {
+          ref_table = cae,
+          ref_value = "mult",
+          scalar_value = "multadd",
+          operation = function(ref_table, ref_value, initial, change)
+            ref_table[ref_value] = initial + #context.scoring_hand * change
+          end,
+          no_message = true
+      })
+      SMODS.scale_card(card, {
+          ref_table = cae,
+          ref_value = "chips",
+          scalar_value = "chipsadd",
+          operation = function(ref_table, ref_value, initial, change)
+            ref_table[ref_value] = initial + #context.scoring_hand * change
+          end,
+          no_message = true
+      })
 
       return {
         mult = cae.mult,
@@ -291,7 +306,7 @@ SMODS.Enhancement({
       }
     end
 
-    if context.destroy_card and (context.cardarea == G.play or context.cardarea == 'unscored') and (#context.scoring_hand or 0) <= 3 and context.destroy_card == card then
+    if context.destroy_card and (context.cardarea == G.play or context.cardarea == 'unscored') and #context.scoring_hand < 3 and context.destroy_card == card then
       return { remove = true }
     end
   end,

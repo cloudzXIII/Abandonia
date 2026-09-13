@@ -1819,7 +1819,7 @@ return {
       c_abn_snow = {
         name = "Snow",
         text = {
-          "{C:red}+#1#{} discard every round,",
+          "{C:red}+#1#{} discard this round,",
           "{C:attention}Destroy{} all played",
           "{C:attention}non-{C:abn_snow}Snow{} cards",
           "{C:inactive}(Destroyed at end of round)",
