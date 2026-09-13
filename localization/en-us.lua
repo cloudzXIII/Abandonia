@@ -15910,7 +15910,7 @@ return {
 	  v_abn_silver_spoon = {
 		name = "Silver Spoon",
 		text = {
-          "{C:money}refund{} {C:attention}%50{} of the {C:attention}first{} store purchase",
+          "{C:money}Refund{} {C:attention}50%{} of the {C:attention}first{} purchase each round",
 		}
       },
 	  v_abn_heirloom = {
