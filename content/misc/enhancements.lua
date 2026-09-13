@@ -1358,8 +1358,8 @@ SMODS.Enhancement({
     return { vars = { cae.mult, cae.chips, cae.dollars } }
   end,
   calculate = function(self, card, context)
-    local cae = card.ability.extra
     if context.main_scoring and context.cardarea == G.play then
+      local cae = card.ability.extra
       local count, _ = ABN.count_stickers()
       if count > 0 then
         return {
@@ -1369,7 +1369,7 @@ SMODS.Enhancement({
         }
       end
     end
-    if context.final_scoring_step and hand_chips and mult and mult > hand_chips then
+    if context.final_scoring_step and mult > hand_chips then
       SMODS.calculate_effect({ message = localize("k_abn_destroyed"), colour = G.C.RED }, card)
       SMODS.destroy_cards(card)
     end

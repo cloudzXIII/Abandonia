@@ -822,7 +822,42 @@ for _, suit in ipairs(ABN.monitor_suits) do
   }
 end
 
-
+ABN.EnhSticker {
+  key = 'stk_reinforcement',
+  atlas = "AbandoniaStickers",
+  pos = { x = 0, y = 19 },
+  badge_colour = HEX("C7BB9C"),
+  
+  loc_vars = function(self, info_queue, card)
+    return { vars = {self.config.extra.mult, self.config.extra.chips, self.config.extra.money}}
+  end,
+  config = {
+    extra = { 
+      mult = 1,
+      chips = 2,
+      money = 1,
+    }
+  },
+  
+  calculate = function(self, card, context)
+    if context.joker_main then
+      local cae = self.config.extra
+      local count, _ = ABN.count_stickers()
+      if count > 0 then
+        return {
+          mult = cae.mult * count,
+          chips = cae.chips * count,
+          dollars = cae.money * count
+        }
+      end
+    end
+    if context.final_scoring_step and mult > hand_chips then
+      SMODS.calculate_effect({ message = localize("k_abn_destroyed"), colour = G.C.RED }, card)
+      SMODS.destroy_cards(card)
+    end
+  end,
+  
+}
 
 
 
@@ -921,5 +956,10 @@ ABN.enh_stickers_vars = {
     SMODS.Stickers["abn_stk_hazard"].config.extra.n1,
     SMODS.Stickers["abn_stk_hazard"].config.extra.d1,
     SMODS.Stickers["abn_stk_hazard"].config.extra.xblind,
+  },
+  abn_stk_reinforcement     = SMODS.Stickers["abn_stk_reinforcement"] and {
+    SMODS.Stickers["abn_stk_reinforcement"].config.extra.mult,
+    SMODS.Stickers["abn_stk_reinforcement"].config.extra.chips,
+    SMODS.Stickers["abn_stk_reinforcement"].config.extra.money,
   },
 }

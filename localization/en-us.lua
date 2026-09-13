@@ -1009,6 +1009,15 @@ return {
           }
         }
       },
+      c_abn_anarkia = {
+        name = "Anarkia",
+        text = {
+          {
+            "Enhance the {C:attention}leftmost{}",
+            "Joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
     },
 
     solid_state = {
@@ -13717,6 +13726,16 @@ return {
           "amount of scoring {C:spades}#1#",
         }
       },
+      abn_stk_reinforcement = {
+        name = "Reinforcement",
+        text = {
+          "{C:mult}+#1#{} Mult, {C:chips}+#2#{} Chips,",
+          "and {C:money}$#3#{} per {C:attention}sticker{}",
+          "among your {C:attention}Jokers{}",
+          "{C:red,E:1,s:0.85}self destructs if Mult is",
+          "{C:red,E:1,s:0.85}greater than Chips after scoring"
+        }
+      },
       abn_honor_sticker = {
         name = "Honor Jimbo",
         text = {
@@ -16464,6 +16483,7 @@ return {
       abn_stk_monitor_spades = "Monitor",
       abn_stk_monitor_clubs = "Monitor",
       abn_stk_infra = "Infra",
+      abn_stk_reinforcement = "Reinforcement",
       abn_stk_hazard = "Hazard",
       abn_stk_kintsugi = "Kintsugi",
       abn_stk_wallpaper = "Wallpaper",
