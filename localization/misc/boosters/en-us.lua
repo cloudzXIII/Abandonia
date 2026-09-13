@@ -1,7 +1,6 @@
 return {
   descriptions = {
     Other = {
-
       --#region Kiddy Packs
       p_abn_standard_kiddy = {
         name = "Kiddy Standard Pack",
