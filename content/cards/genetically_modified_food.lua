@@ -26,11 +26,11 @@ local function vanilla(card,s)
     })
 end
 local function handle(card,s)
-    if s.config and s.config.center and s.config.center.mod then
+    if s.config and s.config.center and s.config.center.mod and s.config.center.set == "Joker" then
         if s.config.center.pools and s.config.center.pools["Food"] then
             modded(card,s)
         end
-    elseif not s.config.center.mod then
+    elseif not s.config.center.mod and s.config.center.set == "Joker" then
         vanilla(card,s)
     end
 end
