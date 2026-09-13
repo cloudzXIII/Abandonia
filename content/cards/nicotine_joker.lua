@@ -14,7 +14,7 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
         if context.joker_main then
-            return card.ability.extra.chips
+            return {chips = card.ability.extra.chips}
         elseif context.after and SMODS.last_hand_oneshot then
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
