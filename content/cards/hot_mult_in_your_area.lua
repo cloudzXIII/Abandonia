@@ -34,7 +34,7 @@ SMODS.Joker {
   rarity = 1,
   atlas = 'ABNJokerPopup',
   pixel_size = { w = 144, h = 86 },
-  display_size = { w = 144, h = 86 },
+  display_size = { w = 144 * 0.6, h = 86 * 0.6 },
   pos = { x = 0, y = 0 },
   cost = 4,
   config = { extra = { xmult = 2, odds = 5 } },
