@@ -24,6 +24,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
   unlocked = false,
+  attributes = { "abn_double_sided_joker" },
 
   config = { extra = { e_mult = 1.8, side = "king" } },
 
@@ -56,7 +57,7 @@ SMODS.Joker {
     if context.individual and context.cardarea == G.play then
       local id = context.other_card:get_id()
       local triggered = false
-      print(card.ability.extra.side)
+      --print(card.ability.extra.side)
       if id == SMODS.Ranks["abn_11"].id or id == SMODS.Ranks["abn_12"].id or id == SMODS.Ranks["abn_13"].id or id == SMODS.Ranks["abn_14"].id then
         if card.ability.extra.side == "king" and (context.other_card:is_suit("Clubs") or context.other_card:is_suit("Diamonds")) then
           triggered = true
