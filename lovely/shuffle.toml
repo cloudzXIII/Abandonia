@@ -3,34 +3,108 @@ version = "0.1.0"
 dump_lua = true
 priority = 214748364
 
-# Clown Degree
-# Move cards with seals to the top of the deck after shuffling
-# CardArea:shuffle()
+# ==========================================
+# Track play counts when a hand is played
+# ==========================================
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "G.FUNCS.evaluate_play()"
+position = "before"
+payload = '''
+if G.play and G.play.cards then
+    for _, card in ipairs(G.play.cards) do
+        card.ability.play_count = (card.ability.play_count or 0) + 1
+    end
+end
+'''
+match_indent = true
+
+
+# ==========================================
+# Abandonia Shuffle Modifiers
+# ==========================================
 [[patches]]
 [patches.pattern]
 target = "cardarea.lua"
 pattern = "pseudoshuffle(self.cards, pseudoseed(_seed or 'shuffle'))"
 position = "after"
 payload = '''
-local has_clown_degree = next(SMODS.find_card("j_abn_clown_degree"))
-if has_clown_degree then
-    for i = #self.cards, 1, -1 do
-        local card = self.cards[i]
-        if card.seal then 
-            table.remove(self.cards, i)
-            table.insert(self.cards, card) -- Inserts at the end (top of deck)
+if self == G.deck then
+    local has_clown_degree = next(SMODS.find_card("j_abn_clown_degree"))
+    if has_clown_degree then
+        for i = #self.cards, 1, -1 do
+            local card = self.cards[i]
+            if card.seal then 
+                table.remove(self.cards, i)
+                table.insert(self.cards, card)
+            end
         end
     end
-end
 
--- Lucrative Joker: Moves Gold Seals and Gold Cards to the top
-local has_lucrative = next(SMODS.find_card("j_abn_lucrative_joker"))
-if has_lucrative then
-    for i = #self.cards, 1, -1 do
-        local card = self.cards[i]
-        if (card.seal == 'Gold') or (card.config.center.key == 'm_gold') then
-            table.remove(self.cards, i)
-            table.insert(self.cards, card)
+    -- Lucrative Joker: Moves Gold Seals and Gold Cards to the top
+    local has_lucrative = next(SMODS.find_card("j_abn_lucrative_joker"))
+    if has_lucrative then
+        for i = #self.cards, 1, -1 do
+            local card = self.cards[i]
+            if (card.seal == 'Gold') or (card.config.center.key == 'm_gold') then
+                table.remove(self.cards, i)
+                table.insert(self.cards, card)
+            end
+        end
+    end
+
+    -- Magnet: Moves the 1 most played card to the top
+    local has_magnet = next(SMODS.find_card("v_abn_magnet"))
+    if has_magnet then
+        local most_played_card = nil
+        local highest_count = -1
+
+        for _, card in ipairs(self.cards) do
+            local count = card.ability.play_count or 0
+            if count > highest_count then
+                highest_count = count
+                most_played_card = card
+            end
+        end
+
+        if most_played_card and highest_count > 0 then
+            for i = #self.cards, 1, -1 do
+                if self.cards[i] == most_played_card then
+                    table.remove(self.cards, i)
+                    break
+                end
+            end
+
+            table.insert(self.cards, most_played_card)
+        end
+    end
+
+    -- Electromagnet: Moves the 3 most played cards to the top
+    local has_electromagnet = next(SMODS.find_card("v_abn_electromagnet"))
+    if has_electromagnet then
+        -- Gather all cards in the deck with their play counts
+        local deck_cards = {}
+        for _, card in ipairs(self.cards) do
+            if (card.ability.play_count or 0) > 0 then
+                table.insert(deck_cards, card)
+            end
+        end
+
+        table.sort(deck_cards, function(a, b)
+            return (a.ability.play_count or 0) > (b.ability.play_count or 0)
+        end)
+
+        local targets = {}
+        for i = 1, math.min(3, #deck_cards) do
+            targets[deck_cards[i]] = true
+        end
+
+        for i = #self.cards, 1, -1 do
+            if targets[self.cards[i]] then
+                local card = table.remove(self.cards, i)
+                table.insert(self.cards, card)
+            end
         end
     end
 end
