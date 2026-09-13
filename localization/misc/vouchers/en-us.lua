@@ -136,34 +136,39 @@ return {
       v_abn_athame = {
         name = "Athame",
         text = {
-          "{C:sigils}Sigil{} packs always contain the {C:sigils}Sigil{} card",
-          "for your {C:attention}most played poker hand{}",
+          "{C:sigils}Sigil Packs{} always contain",
+          "the {C:sigils}Sigil{} card for your",
+          "{C:attention}most played poker hand{}",
         }
       },
       v_abn_ink_and_quill = {
         name = "Ink & Quill",
         text = {
-          "{C:calligraphy}Calligraphy{} cards can be used during {C:attention}Blinds{}",
+          "{C:calligraphy}Calligraphy{} cards can now",
+          "be used during {C:attention}Blinds{}",
         }
       },
       v_abn_fountain_pen = {
         name = "Fountain Pen",
         text = {
-          "Pick {C:attention}+1{} more cards in {C:calligraphy}Calligraphy{} packs",
+          "You may choose {C:attention}1{} more",
+          "card from {C:calligraphy}Calligraphy Packs{}",
         }
       },
       v_abn_magnet = {
         name = "Magnet",
         text = {
-          "Your {C:attention}most played card this run{}",
-          "is always drawn to hand at {C:attention}start of round{}",
+          "Your {C:attention}most played{} card",
+          "this run is always drawn",
+          "to hand at {C:attention}start of round{}",
         }
       },
       v_abn_electromagnet = {
         name = "Electromagnet",
         text = {
-          "Your {C:attention}3 most played cards this run{}",
-          "are always drawn to hand at {C:attention}start of round{}",
+          "Your {C:attention}3 most played{} cards",
+          "this run are always drawn",
+          "to hand at {C:attention}start of round{}",
         }
       },
       v_abn_pattern = {
@@ -187,7 +192,8 @@ return {
       v_abn_silver_spoon = {
         name = "Silver Spoon",
         text = {
-          "{C:money}Refund{} {C:attention}50%{} of the {C:attention}first{} purchase each round",
+          "{C:money}Refund{} {C:attention}50%{} of your",
+          "{C:attention}first{} purchase each round",
         }
       },
       v_abn_heirloom = {
