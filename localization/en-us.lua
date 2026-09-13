@@ -508,7 +508,7 @@ return {
         text = {
           "Converts the {C:attention}rightmost{}",
           "card in hand into a",
-          "{C:attention}Gold{} {C:attention}Ace{} of {V:1}#1#{}"
+          "{C:attention}Bubbles{} {C:attention}Ace{} of {V:1}#1#{}"
         }
       },
       c_abn_vede = {
@@ -547,7 +547,7 @@ return {
         text = {
           "Converts the {C:attention}leftmost{}",
           "card in hand into a",
-          "{C:attention}Glass{} {C:attention}13{} of {V:1}#1#{}"
+          "{C:attention}Honey{} {C:attention}13{} of {V:1}#1#{}"
         }
       },
       c_abn_zhe = {
@@ -597,7 +597,7 @@ return {
         text = {
           "Converts the {C:attention}rightmost{}",
           "card in hand into a",
-          "{C:attention}Hot Iron{} {V:1}#1#{} card"
+          "{C:attention}Bramble{} {V:1}#1#{} card"
         }
       },
       c_abn_em = {
@@ -12007,6 +12007,25 @@ return {
             "If this joker is {C:dark_edition}Chthonian,",
             "{C:attention}6{}s increase their level of",
             "{C:green}Planet Rank{} when scored by {C:attention}#2#"
+          }
+        }
+      },
+	  j_abn_steel_bonus = {
+        name = "Steel Bonus",
+        text = {
+          {
+            "If played hand contains both a {C:attention}Steel{}",
+            "and {C:attention}Bonus{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Steel{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Bonus{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered"
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:crimson}Crimson{} card used this run",
+            "{C:inactive}Currently:{} {C:crimson}#5#{}"
           }
         }
       },
