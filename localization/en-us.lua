@@ -15878,46 +15878,47 @@ return {
         }
       },
 	  v_abn_magnet = {
-      name = "Magent",
-      text = {
-        "Your {C:attention}most played card this run{}",
-		"is always drawn to hand at {C:attention}start of round{}",
-      }
-    },
-	v_abn_electromagnet = {
-      name = "Electromagent",
-      text = {
-        "Your {C:attention}3 most played cards this run{}",
-		"are always drawn to hand at {C:attention}start of round{}",
-      }
-    },
-	v_abn_pattern = {
-      name = "Pattern",
-      text = {
-        "When {C:attention}blind is selected{}",
-		"Spawn your all time {C:attention}most used{} {C:tarot}Tarot{}/{C:planet}Planet{} card",
-		"{C:inactive}(Must have room)",
-      }
-    },
-	v_abn_tesselation = {
-      name = "Tesselation",
-      text = {
-        "When {C:attention}blind is selected{}",
-		"Spawn your {C:attention}2{} all time {C:attention}most used{} Consumables",
-		"{C:inactive}(Must have room)",
-      }
-    },
-	v_abn_silver_spoon = {
-      name = "Silver Spoon",
-      text = {
-        "{C:money}refund{} {C:attention}%50{} of the {C:attention}first{} store purchase",
-      }
-    },
-	v_abn_heirloom = {
-      name = "Heirloom",
-      text = {
-        "Earn {C:money}$2{} on every purchase",
-      }
+		name = "Magent",
+		text = {
+		  "Your {C:attention}most played card this run{}",
+		  "is always drawn to hand at {C:attention}start of round{}",
+		}
+	  },
+	  v_abn_electromagnet = {
+		name = "Electromagent",
+		text = {
+          "Your {C:attention}3 most played cards this run{}",
+		  "are always drawn to hand at {C:attention}start of round{}",
+		}
+	  },
+	  v_abn_pattern = {
+		name = "Pattern",
+		text = {
+          "When {C:attention}blind is selected{}",
+		  "Spawn your all time {C:attention}most used{} {C:tarot}Tarot{}/{C:planet}Planet{} card",
+		  "{C:inactive}(Must have room)",
+		}
+      },
+	  v_abn_tesselation = {
+		name = "Tesselation",
+		text = {
+          "When {C:attention}blind is selected{}",
+		  "Spawn your {C:attention}2{} all time {C:attention}most used{} Consumables",
+		  "{C:inactive}(Must have room)",
+		}
+      },
+	  v_abn_silver_spoon = {
+		name = "Silver Spoon",
+		text = {
+          "{C:money}refund{} {C:attention}%50{} of the {C:attention}first{} store purchase",
+		}
+      },
+	  v_abn_heirloom = {
+		name = "Heirloom",
+		text = {
+          "Earn {C:money}$2{} on every purchase",
+		}
+      },
     },
 
     Stake = {
