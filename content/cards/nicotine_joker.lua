@@ -14,28 +14,25 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
         if context.joker_main then
-            local ret = {}
-            ret.chips = card.ability.extra.chips
-            if SMODS.calculate_round_score() > G.GAME.blind.chips then
-                G.E_MANAGER:add_event(Event({
-                    trigger = 'after',
-                    delay = 0.4,
-                    func = function()
-                        SMODS.calculate_effect({
-                            message = localize("k_abn_doubled_ex"),
-                            colour = G.C.BLUE,
-                        }, card)
-                        return true
-                    end
-                }))
-                SMODS.scale_card(card, {
-                    ref_table = card.ability.extra,
-                    ref_value = "chips",
-                    scalar_value = "chips_mod",
-                    operation = 'X',
-                })
-            end
-            return ret
+            return card.ability.extra.chips
+        elseif context.after and SMODS.last_hand_oneshot then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    SMODS.calculate_effect({
+                        message = localize("k_abn_doubled_ex"),
+                        colour = G.C.BLUE,
+                    }, card)
+                    return true
+                end
+            }))
+            SMODS.scale_card(card, {
+                ref_table = card.ability.extra,
+                ref_value = "chips",
+                scalar_value = "chips_mod",
+                operation = 'X',
+            })
         end
     end,
 

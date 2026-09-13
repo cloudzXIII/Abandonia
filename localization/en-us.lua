@@ -11845,6 +11845,7 @@ return {
           "this Joker gains {C:chips}Chips{} equal to the",
           "{C:money}price{} of Modded {C:attention}Food Jokers{}, {C:mult}Mult{}",
           "equal to the {C:money}price{} of {C:inactive}Vanilla{} {C:attention}Jokers",
+          "{C:inactive}(Currently {C:chips}+#1# {C:inactive}Chips, {C:mult}+#2# {C:inactive}Mult)",
         },
       },
       j_abn_demon_sphere = {
@@ -15285,9 +15286,8 @@ return {
         name = "Geas Mark",
         text = {
           {
-            "If played hand contains a {V:1}#1#{},",
-            "scoring cards each give",
             "{X:mult,C:white}^#2#{} Mult and {X:chips,C:white}^#3#{} Chips",
+            "If played hand contains a {V:1}#1#{},",
           },
           {
             "If played hand does {C:attention}not{}",

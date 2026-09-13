@@ -186,7 +186,7 @@ ABN.EnhSticker {
         xmult = self.config.extra.xmult
       }
     end
-    if (context.after and SMODS.pseudorandom_probability(card, "abn_stk_glass", self.config.extra.n,self.config.extra.d)) then
+    if context.after and not SMODS.is_eternal(card) and SMODS.pseudorandom_probability(card, "abn_stk_glass", self.config.extra.n,self.config.extra.d) then
       G.E_MANAGER:add_event(Event({
         trigger = 'before',
         delay = 0.0,
@@ -324,7 +324,8 @@ ABN.EnhSticker {
         dollars = -self.config.extra.dollars
       }
     end
-    if (context.after 
+    if (context.after
+    and not SMODS.is_eternal(card)
     and SMODS.pseudorandom_probability(card, "abn_stk_oilfire", self.config.extra.n,self.config.extra.d)) 
     and not card.getting_sliced 
     and not card.ability.abn_burnt then
@@ -753,7 +754,7 @@ ABN.EnhSticker {
         dollars = self.config.extra.dollars
       }
     end
-    if (context.after and SMODS.pseudorandom_probability(card, "abn_stk_fossil", self.config.extra.n,self.config.extra.d)) then
+    if context.after and not SMODS.is_eternal(card) and SMODS.pseudorandom_probability(card, "abn_stk_fossil", self.config.extra.n,self.config.extra.d) then
       G.E_MANAGER:add_event(Event({
         trigger = 'before',
         delay = 0.0,

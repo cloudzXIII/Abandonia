@@ -1599,7 +1599,7 @@ abandonia.playextracards = function()
 
 	local honey_in_hand = {}
 	for i = 1, #G.hand.cards do
-		if SMODS.has_enhancement(G.hand.cards[i], 'm_abn_honey') then
+		if not G.hand.cards[i].highlighted and SMODS.has_enhancement(G.hand.cards[i], 'm_abn_honey') then
 			table.insert(honey_in_hand, G.hand.cards[i])
 		end
 	end

@@ -2638,7 +2638,7 @@ SMODS.Blind({
     if not blind.disabled and context.debuff_hand then
       -- context.scoring_name is the internal key of the played hand (e.g., 'Flush')
       local hand_level = G.GAME.hands[context.scoring_name].level
-      if hand_level >= 3 then
+      if hand_level > 3 then
         blind.triggered = true
         return {
           debuff = true
