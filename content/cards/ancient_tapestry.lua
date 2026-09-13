@@ -56,8 +56,12 @@ SMODS.Joker{
         }))
     end,
     set_sprites = function(self, card, front)
-        local flipped = card.ability.extra.flipped == true and 3 or 2
-        card.children.center:set_sprite_pos({ x = flipped, y = 5 })
+        if card.ability and card.ability.extra then
+            local flipped = card.ability.extra.flipped == true and 3 or 2
+            card.children.center:set_sprite_pos({ x = flipped, y = 5 })
+        else
+            card.children.center:set_sprite_pos({ x = 2, y = 5 })
+        end
     end,
     load = function(self, card, card_table, other_card)
         if card and card.ability and card.ability.extra and card.ability.extra.flipped then
