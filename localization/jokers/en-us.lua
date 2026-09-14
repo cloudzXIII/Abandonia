@@ -3491,6 +3491,26 @@ return {
         }
       },
 
+      j_abn_glass_bonus = {
+        name = "Glass Bonus",
+        text = {
+          {
+            "If played hand contains both a {C:attention}Glass{}",
+            "and {C:attention}Bonus{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Glass{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Bonus{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered"
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:crepuscular}Crepuscular{} card used this run",
+            "{C:inactive}Currently:{} {C:crepuscular}#5#{}"
+          }
+        }
+      },
+
       j_abn_glass_gold = {
         name = "Glass Gold",
         text = {
@@ -4651,6 +4671,28 @@ return {
           "has {C:attention}4{} cards, destroy them and",
           "create a {C:dark_edition}summoning{} {C:spectral}Spectral{} card",
         }
+      },
+
+      j_abn_joker_of_recca = {
+        name = "Joker of Recca",
+        text = {
+          {
+            "{C:spades}Darkner{}/{C:diamonds}Lightner{} enhanced Jokers will",
+            "not be destroyed by hands that have",
+            "too many of the opposite suit type"
+          },
+          {
+            "{C:dark_edition}Reversal {C:spades}Darkner{} cards give {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+            "{C:dark_edition}Reversal {C:diamonds}Lightner{} cards give {C:chips}+#3#{} Chips and {C:mult}+#4#{} Mult"
+          },
+          {
+            "If this joker is {C:dark_edition}Abandoned{}, it",
+            "gains {X:mult,C:white}X#5#{} Mult for each scoring",
+            "{C:spades}Darkner{} card and {X:chips,C:white}X#6#{} Chips for",
+            "each scoring {C:diamonds}Lightner{} card",
+            "{C:inactive}(Currently {X:mult,C:white}X#7#{C:inactive} Mult, {X:chips,C:white}X#8#{C:inactive} Chips)"
+          }
+        },
       },
 
       j_abn_joker_of_the_week = {
@@ -7763,26 +7805,6 @@ return {
         }
       },
 
-      j_abn_glass_bonus = {
-        name = "Glass Bonus",
-        text = {
-          {
-            "If played hand contains both a {C:attention}Glass{}",
-            "and {C:attention}Bonus{} card, they each gain",
-            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
-          },
-          {
-            "{C:enhanced}Glass{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Bonus{}",
-            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered"
-          },
-          {
-            "When {C:attention}Big Blind{} is selected, create",
-            "the last {C:crepuscular}Crepuscular{} card used this run",
-            "{C:inactive}Currently:{} {C:crepuscular}#5#{}"
-          }
-        }
-      },
-
       j_abn_stereogram = {
         name = "Stereogram",
         text = {
@@ -9185,28 +9207,6 @@ return {
           "if hand played contains",
           "an {C:attention}Ace{} and a {C:attention}numbered card{}",
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
-        },
-      },
-
-      j_abn_joker_of_recca = {
-        name = "Joker of Recca",
-        text = {
-          {
-            "{C:spades}Darkner{}/{C:diamonds}Lightner{} enhanced Jokers will",
-            "not be destroyed by hands that have",
-            "too many of the opposite suit type"
-          },
-          {
-            "{C:dark_edition}Reversal {C:spades}Darkner{} cards give {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
-            "{C:dark_edition}Reversal {C:diamonds}Lightner{} cards give {C:chips}+#3#{} Chips and {C:mult}+#4#{} Mult"
-          },
-          {
-            "If this joker is {C:dark_edition}Abandoned{}, it",
-            "gains {X:mult,C:white}X#5#{} Mult for each scoring",
-            "{C:spades}Darkner{} card and {X:chips,C:white}X#6#{} Chips for",
-            "each scoring {C:diamonds}Lightner{} card",
-            "{C:inactive}(Currently {X:mult,C:white}X#7#{C:inactive} Mult, {X:chips,C:white}X#8#{C:inactive} Chips)"
-          }
         },
       },
     },
