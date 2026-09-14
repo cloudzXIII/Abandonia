@@ -1492,6 +1492,15 @@ return {
           "learn what it does"
         }
       },
+      undiscovered_crepuscular = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
+      },
       --#endregion
 
       --#region Stake Stickers

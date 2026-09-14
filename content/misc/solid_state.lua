@@ -172,7 +172,7 @@ ABN.SolidState {
   use = function(self, card, area, copier)
     G.jokers.config.card_limit = G.jokers.config.card_limit - 1
     local target_card = G.hand.highlighted[1]
-    local target_rank_key = target_card.base.value
+    local target_rank = target_card.base.value
 
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
@@ -184,84 +184,48 @@ ABN.SolidState {
       end
     }))
 
-    if G.hand and G.hand.cards then
-      for i = 1, #G.hand.cards do
-        local percent = 1.15 - (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
-        local hand_card = G.hand.cards[i]
-        G.E_MANAGER:add_event(Event({
-          trigger = 'after',
-          delay = 0.15,
-          func = function()
-            hand_card:flip()
-            play_sound('card1', percent)
-            hand_card:juice_up(0.3, 0.3)
-            return true
-          end
-        }))
-      end
+    for i = 1, #G.hand.cards do
+      local percent = 1.15 - (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
+      local hand_card = G.hand.cards[i]
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.15,
+        func = function()
+          hand_card:flip()
+          play_sound('card1', percent)
+          hand_card:juice_up(0.3, 0.3)
+          return true
+        end
+      }))
     end
 
     delay(0.2)
 
-    if G.hand and G.hand.cards then
-      for i = 1, #G.hand.cards do
-        local hand_card = G.hand.cards[i]
-        G.E_MANAGER:add_event(Event({
-          trigger = 'after',
-          delay = 0.1,
-          func = function()
-            local full_suit = hand_card.base.suit
-            local lookup_key = ""
-            local rank_obj = SMODS.Ranks[target_rank_key]
-
-            if rank_obj and rank_obj.key and not rank_obj.modName then
-              local suit_prefix = string.sub(full_suit, 1, 1)
-              local rank_shorthand = target_rank_key
-              if target_rank_key == 'Ace' then
-                rank_shorthand = 'A'
-              elseif target_rank_key == 'King' then
-                rank_shorthand = 'K'
-              elseif target_rank_key == 'Queen' then
-                rank_shorthand = 'Q'
-              elseif target_rank_key == 'Jack' then
-                rank_shorthand = 'J'
-              elseif target_rank_key == '10' then
-                rank_shorthand = 'T'
-              end
-              lookup_key = suit_prefix .. '_' .. rank_shorthand
-            else
-              lookup_key = full_suit .. '_' .. target_rank_key
-            end
-
-            if G.P_CARDS[lookup_key] then
-              hand_card:set_base(G.P_CARDS[lookup_key])
-            else
-              local fallback_key = string.sub(full_suit, 1, 1) .. '_' .. target_rank_key
-              if G.P_CARDS[fallback_key] then
-                hand_card:set_base(G.P_CARDS[fallback_key])
-              end
-            end
-            return true
-          end
-        }))
-      end
+    for i = 1, #G.hand.cards do
+      local hand_card = G.hand.cards[i]
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.1,
+        func = function()
+          SMODS.change_base(hand_card, nil, target_rank)
+          return true
+        end
+      }))
     end
 
-    if G.hand and G.hand.cards then
-      for i = 1, #G.hand.cards do
-        local percent = 0.85 + (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
-        local hand_card = G.hand.cards[i]
-        G.E_MANAGER:add_event(Event({
-          trigger = 'after',
-          delay = 0.15,
-          func = function()
-            hand_card:flip()
-            play_sound('tarot2', percent, 0.6)
-            hand_card:juice_up(0.3, 0.3)
-            return true
-          end
-        }))
-      end
+    for i = 1, #G.hand.cards do
+      local percent = 0.85 + (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
+      local hand_card = G.hand.cards[i]
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.15,
+        func = function()
+          hand_card:flip()
+          play_sound('tarot2', percent, 0.6)
+          hand_card:juice_up(0.3, 0.3)
+          return true
+        end
+      }))
     end
 
     G.E_MANAGER:add_event(Event({
