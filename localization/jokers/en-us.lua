@@ -1159,12 +1159,14 @@ return {
         }
       },
 
-      j_abn_bubbly_joker = { -- TO RELOCALISE
+      j_abn_bubbly_joker = {
         name = "Bubbly Joker",
         text = {
-          "Gain {X:mult,C:white}X#1#{} Mult when a {C:attention}Bubble{} Card is {C:attention}added{}",
-          "Gain {X:chips,C:white}X#2#{} Chips when a {C:attention}Bubble{} Card is {C:mult}destroyed{}",
-          "{C:inactive}Currently:{} {X:mult,C:white}X#3#{} {C:inactive}Mult{} {X:chips,C:white}X#4#{} {C:inactive}Chips{}",
+          "This Joker gains {X:mult,C:white}X#1#{} Mult",
+          "when a {C:attention}Bubble{} card is {C:attention}added{},",
+          "gains {X:chips,C:white}X#2#{} Chips when a",
+          "{C:attention}Bubble{} card is {C:mult}destroyed{}",
+          "{C:inactive}(Currently{} {X:mult,C:white}X#3#{} {C:inactive}Mult,{} {X:chips,C:white}X#4#{} {C:inactive}Chips){}",
         }
       },
 
@@ -1848,9 +1850,9 @@ return {
       j_abn_cupon_joker = {
         name = "Coupon Joker",
         text = {
-          "{C:attnetion}Consumables that only select",
-          "{C:attention}1{} target may now",
-          "select {C:attention}2{}"
+          "{C:attention}Consumables{} that only",
+          "select {C:attention}1{} target may",
+          "now select {C:attention}2{}"
         }
       },
 
@@ -1967,15 +1969,16 @@ return {
         }
       },
 
-      j_abn_darkest_joker = { -- to relocalise
+      j_abn_darkest_joker = {
         name = "Darkest Joker",
         text = {
-          "Gain {C:mult}+#3#{} Mult per Scoring {C:spades}Dark Suit{} with an {C:dark_edition}Edition{}",
-          "Gain {C:chips}+#4#{} Chips per Scoring {C:spades}Dark Suit{} with an {C:attention}Enhancement{}",
+          "This Joker gains {C:mult}+#3#{} Mult per",
+          "scoring {C:dark_edition}Editioned{} {C:spades}Dark Suit{},",
+          "gains {C:chips}+#4#{} Chips per scoring",
+          "{C:attention}Enhanced{} {C:spades}Dark Suit{}",
           "{C:inactive}(Currently {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
         }
       },
-
 
       j_abn_darknet_joker = { -- prolly based off of the dark web
         name = "Darknet Joker",
@@ -3144,13 +3147,13 @@ return {
         }
       },
 
-      j_abn_fractured_identity_joker = { -- to relocalise
+      j_abn_fractured_identity_joker = {
         name = "Fractured Identity Joker",
         text = {
-          "Scoring {C:attention}Mult{} cards give {X:chips,C:white}^#1#{} Chips,",
-          "Scoring {C:attention}Glass{} cards give {X:mult,C:white}^#2#{} Mult,",
-          "Scoring {C:attention}Steel{} cards give {X:chips,C:white}^#3#{} Chips,",
-          "Scoring {C:attention}Stone{} cards give {X:mult,C:white}^#4#{} Mult",
+          "Scoring {C:attention}Mult{} or {C:Steel}Gold{} cards",
+          "give {X:chips,C:white}^#1#{} Chips, scoring",
+          "{C:attention}Glass{} or {C:attention}Stone{} cards",
+          "give {X:mult,C:white}^#2#{} Mult",
         }
       },
 
@@ -3552,14 +3555,23 @@ return {
         }
       },
 
-      j_abn_globalist_joker = { -- to relocalise
+      j_abn_globalist_joker = {
         name = "Globalist Joker",
         text = {
-          "When a {C:continent}Continent{} card is used create a {C:attention}random{} {C:dark_edition}Negative{} consumable",
-          "After {C:attention}#1#{} {C:continent}Continent{} cards are used",
-          "place a {C:attention}Stamp{} on each scoring card of the next played {C:attention}spectrum{}",
-          "Gain {X:mult,C:white}X#2#{} Mult for every {C:attention}unique{} {C:continent}Continent{} used this run",
-          "{C:inactive}Currently: {X:mult,C:white}X#3#{} {C:inactive}Mult{}",
+          {
+            "When a {C:continent}Continent{} card is used,",
+            "create a {C:attention}random{} {C:dark_edition}Negative{} consumable",
+          },
+          {
+            "After using {C:attention}#4#{} {C:inactive}[#1#]{} {C:continent}Continent{} cards,",
+            "add a {C:attention}Stamp{} to every scoring",
+            "card in next played {C:attention}Spectrum{}",
+          },
+          {
+            "This Joker gains {X:mult,C:white}X#2#{} Mult for every",
+            "{C:attention}unique{} {C:continent}Continent{} card used this run",
+            "{C:inactive}(Currently {X:mult,C:white}X#3#{} {C:inactive}Mult){}",
+          }
         }
       },
 
@@ -4177,20 +4189,14 @@ return {
         },
       },
 
-      j_abn_invisible_ink_joker = { -- slightly relocalise
+      j_abn_invisible_ink_joker = {
         name = "Invisible Ink Joker",
         text = {
-          {
-            "This Joker gains {C:mult}+#3#{} Mult",
-            "per unique {C:attention}suit{}",
-            "in scoring {C:attention}Lucky{} cards",
-            "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {X:chips,C:white}X#2#{} {C:inactive}Chips){}",
-          },
-          {
-            "If played hand contains a {C:attention}Spectrum{}",
-            "containing only {C:attention}Lucky{} cards,",
-            "gain {X:chips,C:white}X#4#{} Chips for each one",
-          },
+          "If played hand contains a {C:attention}Spectrum{}",
+          "with only {C:attention}Lucky{} cards, this Joker",
+          "gains {C:mult}+#3#{} Mult per unique {C:attention}suit{}",
+          "and {X:chips,C:white}X#4#{} Chips per card scored",
+          "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {X:chips,C:white}X#2#{} {C:inactive}Chips){}",
         }
       },
 
@@ -4654,13 +4660,13 @@ return {
         }
       },
 
-      j_abn_joker_note = { -- to relocalise
+      j_abn_joker_note = {
         name = "Joker Note",
         text = {
-          "For every {C:attention}sealed{}",
-          "scoring card, this Joker:",
-          "Gains {C:red}+#1#{} Mult if the card is {C:attention}even{}",
-          "Gains {C:blue}+#2#{} Chips if the card is {C:attention}odd{}",
+          "When a {C:attention}sealed{} card is scored,",
+          "this Joker gains {C:mult}+#1#{} Mult",
+          "if the card is {C:attention}even{},",
+          "{C:blue}+#2#{} Chips if its {C:attention}odd{}",
           "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult, {C:blue}+#4#{C:inactive} Chips)",
         }
       },
@@ -7316,12 +7322,22 @@ return {
         }
       },
 
-      j_abn_russian_roulette = { -- to reloclalise
+      j_abn_russian_roulette = {
         name = "Russian Roulette",
         text = {
-          "All {C:attention}Packs{} cost {C:money}$1{} but consumables have a {C:green}#1# in #2#{} chance of {C:mult}failing{}",
-          "All {C:attention}Jokers{} cost {C:money}$1{} but gain {C:mult}Fragile{} upon purchase",
-          "When a {C:green}probability{} succeeds gain {C:money}$#3#{}",
+          {
+            "All {C:attention}Booster Packs{} cost {C:money}$1{}",
+            "but {C:attention}consumables{} have a",
+            "{C:green}#1# in #2#{} chance to {C:mult}fail{}",
+          },
+          {
+            "All {C:attention}Jokers{} cost {C:money}$1{}, and",
+            "become {C:mult}Fragile{} upon purchase",
+          },
+          {
+            "When a {C:green}probability{}",
+            "{C:attention}succeeds{}, earn {C:money}$#3#{}",
+          }
         }
       },
 
