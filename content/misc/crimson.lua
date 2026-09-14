@@ -450,3 +450,93 @@ ABN.CrimsonCard {
     delay(0.5)
   end,
 }
+
+ABN.CrimsonCard {
+  key = "ilun",
+  pos = { x = 6, y = 3 },
+  config = { extra = { enh_key = "abn_stk_darkner" } },
+  use = function(self, card, area, copier)
+    local c = G.jokers.cards[1]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('card1', 1)
+        c:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      func = function()
+        c:add_sticker(card.ability.extra.enh_key, true)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('tarot2', 1, 0.6)
+        c:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    delay(0.5)
+  end,
+}
+
+ABN.CrimsonCard {
+  key = "argia",
+  pos = { x = 5, y = 3 },
+  config = { extra = { enh_key = "abn_stk_lightner" } },
+  use = function(self, card, area, copier)
+    local c = G.jokers.cards[#G.jokers.cards]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('card1', 1)
+        c:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      func = function()
+        c:add_sticker(card.ability.extra.enh_key, true)
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.15,
+      func = function()
+        c:flip()
+        play_sound('tarot2', 1, 0.6)
+        c:juice_up(0.3, 0.3)
+        return true
+      end
+    }))
+    delay(0.5)
+  end,
+}

@@ -9187,6 +9187,28 @@ return {
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
         },
       },
+
+      j_abn_joker_of_recca = {
+        name = "Joker of Recca",
+        text = {
+          {
+            "{C:spades}Darkner{}/{C:diamonds}Lightner{} enhanced Jokers will",
+            "not be destroyed by hands that have",
+            "too many of the opposite suit type"
+          },
+          {
+            "{C:dark_edition}Reversal {C:spades}Darkner{} cards give {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+            "{C:dark_edition}Reversal {C:diamonds}Lightner{} cards give {C:chips}+#3#{} Chips and {C:mult}+#4#{} Mult"
+          },
+          {
+            "If this joker is {C:dark_edition}Abandoned{}, it",
+            "gains {X:mult,C:white}X#5#{} Mult for each scoring",
+            "{C:spades}Darkner{} card and {X:chips,C:white}X#6#{} Chips for",
+            "each scoring {C:diamonds}Lightner{} card",
+            "{C:inactive}(Currently {X:mult,C:white}X#7#{C:inactive} Mult, {X:chips,C:white}X#8#{C:inactive} Chips)"
+          }
+        },
+      },
     },
   },
   misc = {

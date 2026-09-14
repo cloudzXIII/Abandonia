@@ -873,22 +873,6 @@ SMODS.Enhancement({
 
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
-    local dark_count = 0
-
-    if G.playing_cards then
-      if G.play and G.play.cards then
-        for _, playing_card in ipairs(G.play.cards) do
-          if ABN.is_dark(playing_card) then dark_count = dark_count + 1 end
-        end
-      end
-      if G.hand and G.hand.cards then
-        for _, playing_card in ipairs(G.hand.cards) do
-          if ABN.is_dark(playing_card) and playing_card ~= card then
-            dark_count = dark_count + 1
-          end
-        end
-      end
-    end
 
     return {
       vars = {
@@ -900,8 +884,6 @@ SMODS.Enhancement({
   end,
 
   calculate = function(self, card, context)
-    local cae = card.ability.extra
-
 
     if context.main_scoring and context.cardarea == G.play then
       local dark_count = 0
@@ -924,8 +906,8 @@ SMODS.Enhancement({
 
       if dark_count > 0 then
         return {
-          chips = dark_count * cae.chips,
-          mult = dark_count * cae.mult
+          chips = dark_count * card.ability.extra.chips,
+          mult = dark_count * card.ability.extra.mult
         }
       end
     end
@@ -941,7 +923,7 @@ SMODS.Enhancement({
         end
       end
 
-      if light_count >= cae.light_threshold and not next(SMODS.find_card('j_abn_device_joker')) then
+      if light_count >= card.ability.extra.light_threshold and not next(SMODS.find_card('j_abn_device_joker')) then
         return { remove = true }
       end
     end
@@ -960,22 +942,6 @@ SMODS.Enhancement({
 
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
-    local light_count = 0
-
-    if G.playing_cards then
-      if G.play and G.play.cards then
-        for _, playing_card in ipairs(G.play.cards) do
-          if ABN.is_light(playing_card) then light_count = light_count + 1 end
-        end
-      end
-      if G.hand and G.hand.cards then
-        for _, playing_card in ipairs(G.hand.cards) do
-          if ABN.is_light(playing_card) and playing_card ~= card then
-            light_count = light_count + 1
-          end
-        end
-      end
-    end
 
     return {
       vars = {
@@ -987,8 +953,6 @@ SMODS.Enhancement({
   end,
 
   calculate = function(self, card, context)
-    local cae = card.ability.extra
-
 
     if context.main_scoring and context.cardarea == G.play then
       local light_count = 0
@@ -1011,8 +975,8 @@ SMODS.Enhancement({
 
       if light_count > 0 then
         return {
-          chips = light_count * cae.chips,
-          mult = light_count * cae.mult
+          chips = light_count * card.ability.extra.chips,
+          mult = light_count * card.ability.extra.mult
         }
       end
     end
@@ -1027,7 +991,7 @@ SMODS.Enhancement({
         end
       end
 
-      if dark_count >= cae.dark_threshold then
+      if dark_count >= card.ability.extra.dark_threshold then
         return { remove = true }
       end
     end

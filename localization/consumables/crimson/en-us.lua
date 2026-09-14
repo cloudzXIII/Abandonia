@@ -83,6 +83,24 @@ return {
           }
         }
       },
+      c_abn_ilun = {
+        name = "Ilun",
+        text = {
+          {
+            "Enhance the {C:attention}leftmost{}",
+            "Joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
+      c_abn_argia = {
+        name = "Anarkia",
+        text = {
+          {
+            "Enhance the {C:attention}rightmost{}",
+            "Joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
     },
   },
 }

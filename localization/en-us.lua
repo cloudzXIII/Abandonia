@@ -637,6 +637,20 @@ return {
           "{C:red,E:1,s:0.85}greater than Chips after scoring"
         }
       },
+      abn_stk_darkner = {
+        name = "Darkner",
+        text = {
+          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult per played and held {C:spades}Dark Suits{}",
+          "{C:mult}Self-destruct{} if played with {C:attention}#3#{} or more {C:diamonds}Light Suits",
+        },
+      },
+      abn_stk_lightner = {
+        name = "Lightner",
+        text = {
+          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult per played and held {C:diamonds}Light Suits{}",
+          "{C:mult}Self-destruct{} if played with {C:attention}#3#{} or more {C:spades}Dark Suits",
+        },
+      },
       --#endregion
 
 
@@ -1897,6 +1911,8 @@ return {
       abn_stk_kintsugi = "Kintsugi",
       abn_stk_wallpaper = "Wallpaper",
       abn_stk_reinforcement = "Reinforcement",
+      abn_stk_darkner = "Darkner",
+      abn_stk_lightner = "Lightner",
 
       -- Stamps
       abn_empty_stamp = "Empty Stamp",

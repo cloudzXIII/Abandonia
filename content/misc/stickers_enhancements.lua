@@ -245,10 +245,8 @@ ABN.EnhSticker {
             ref_table = cat.ability,
             ref_value = "x_mult",
             scalar_value = "extra",
-            scaling_message = {
-              message_key = 'a_xmult',
-              colour = G.C.RED
-            }
+            message_key = 'a_xmult',
+            message_colour = G.C.RED
           })
         end
         card.lucky_trigger = false
@@ -856,7 +854,96 @@ ABN.EnhSticker {
       SMODS.destroy_cards(card)
     end
   end,
+}
+
+ABN.EnhSticker {
+  key = 'stk_darkner',
+  atlas = "AbandoniaStickers",
+  pos = { x = 4, y = 14 },
+  badge_colour = HEX("5b7276"),
   
+  loc_vars = function(self, info_queue, card)
+    return { vars = {self.config.extra.chips, self.config.extra.mult, self.config.extra.cards}}
+  end,
+  config = {
+    extra = {
+      chips = 5,
+      mult = 2,
+      cards = 2,
+    }
+  },
+  
+  calculate = function(self, card, context)
+	if context.before and #SMODS.find_card("j_abn_joker_of_recca") == 0 then
+      local lights = 0
+      for _, playing_card in ipairs(context.scoring_hand) do
+        if ABN.is_light(playing_card) then lights = lights + 1 end
+      end
+      if lights >= self.config.extra.cards then
+        SMODS.calculate_effect({ message = localize("k_abn_destroyed"), colour = G.C.RED }, card)
+        SMODS.destroy_cards(card)
+      end
+    elseif context.joker_main then
+      local darks = 0
+      for _, playing_card in ipairs(context.scoring_hand) do
+        if ABN.is_dark(playing_card) then darks = darks + 1 end
+      end
+      for _, playing_card in ipairs(G.hand.cards) do
+        if ABN.is_dark(playing_card) then darks = darks + 1 end
+      end
+      if darks > 0 then
+        return {
+          chips = self.config.extra.chips * darks,
+          mult = self.config.extra.mult * darks
+        }
+      end
+    end
+  end,
+}
+
+ABN.EnhSticker {
+  key = 'stk_lightner',
+  atlas = "AbandoniaStickers",
+  pos = { x = 3, y = 14 },
+  badge_colour = HEX("bfc7d5"),
+  
+  loc_vars = function(self, info_queue, card)
+    return { vars = {self.config.extra.chips, self.config.extra.mult, self.config.extra.cards}}
+  end,
+  config = {
+    extra = {
+      chips = 5,
+      mult = 2,
+      cards = 2,
+    }
+  },
+  
+  calculate = function(self, card, context)
+	if context.after and #SMODS.find_card("j_abn_joker_of_recca") == 0 then
+      local darks = 0
+      for _, playing_card in ipairs(context.scoring_hand) do
+        if ABN.is_dark(playing_card) then darks = darks + 1 end
+      end
+      if darks >= self.config.extra.cards then
+        SMODS.calculate_effect({ message = localize("k_abn_destroyed"), colour = G.C.RED }, card)
+        SMODS.destroy_cards(card)
+      end
+    elseif context.joker_main then
+      local lights = 0
+      for _, playing_card in ipairs(context.scoring_hand) do
+        if ABN.is_light(playing_card) then lights = lights + 1 end
+      end
+      for _, playing_card in ipairs(G.hand.cards) do
+        if ABN.is_light(playing_card) then lights = lights + 1 end
+      end
+      if lights > 0 then
+        return {
+          chips = self.config.extra.chips * lights,
+          mult = self.config.extra.mult * lights
+        }
+      end
+    end
+  end,
 }
 
 
@@ -961,5 +1048,15 @@ ABN.enh_stickers_vars = {
     SMODS.Stickers["abn_stk_reinforcement"].config.extra.mult,
     SMODS.Stickers["abn_stk_reinforcement"].config.extra.chips,
     SMODS.Stickers["abn_stk_reinforcement"].config.extra.money,
+  },
+  abn_stk_darkner     = SMODS.Stickers["abn_stk_darkner"] and {
+    SMODS.Stickers["abn_stk_darkner"].config.extra.chips,
+    SMODS.Stickers["abn_stk_darkner"].config.extra.mult,
+    SMODS.Stickers["abn_stk_darkner"].config.extra.cards,
+  },
+  abn_stk_lightner     = SMODS.Stickers["abn_stk_lightner"] and {
+    SMODS.Stickers["abn_stk_lightner"].config.extra.chips,
+    SMODS.Stickers["abn_stk_lightner"].config.extra.mult,
+    SMODS.Stickers["abn_stk_lightner"].config.extra.cards,
   },
 }
