@@ -7763,6 +7763,26 @@ return {
         }
       },
 
+      j_abn_glass_bonus = {
+        name = "Glass Bonus",
+        text = {
+          {
+            "If played hand contains both a {C:attention}Glass{}",
+            "and {C:attention}Bonus{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Glass{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Bonus{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered"
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:crepuscular}Crepuscular{} card used this run",
+            "{C:inactive}Currently:{} {C:crepuscular}#5#{}"
+          }
+        }
+      },
+
       j_abn_stereogram = {
         name = "Stereogram",
         text = {
