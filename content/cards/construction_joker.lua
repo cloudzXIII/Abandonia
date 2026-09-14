@@ -2,7 +2,11 @@ SMODS.Joker {
   key = 'construction_joker',
 
   loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.chips, card.ability.extra.xmult } }
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
+    local cae = card.ability.extra
+
+    return { vars = { cae.chips, cae.xmult } }
   end,
 
   rarity = 2,
@@ -16,18 +20,16 @@ SMODS.Joker {
 
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
-      local target_card = context.other_card
-	  -- steel cards
-      if target_card and target_card.config.center and target_card.config.center == G.P_CENTERS.m_steel then
-		return {
-			chips = card.ability.extra.chips
-		}
+      if SMODS.has_enhancement(context.other_card, "m_steel") then
+        return {
+          chips = card.ability.extra.chips
+        }
       end
-      -- stone cards
-      if target_card and target_card.config.center and target_card.config.center == G.P_CENTERS.m_stone then
-		return {
-			xmult = card.ability.extra.xmult
-		}
+
+      if SMODS.has_enhancement(context.other_card, "m_stone") then
+        return {
+          xmult = card.ability.extra.xmult
+        }
       end
     end
   end,

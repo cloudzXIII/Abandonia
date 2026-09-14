@@ -1641,11 +1641,12 @@ return {
         }
       },
 
-      j_abn_construction_joker = { -- to slightly relocalise
+      j_abn_construction_joker = {
         name = "Construction Joker",
         text = {
-          "Each scoring {C:attention}Steel{} Card gives {C:chips}+#1#{} Chips",
-          "Each scoring {C:attention}Stone{} Card gives {X:mult,C:white}X#2#{} Mult",
+          "Scoring {C:attention}Steel{} cards give",
+          "{C:chips}+#1#{} Chips, {C:attention}Stone{} cards",
+          "give {X:mult,C:white}X#2#{} Mult",
         }
       },
 
@@ -2520,14 +2521,23 @@ return {
         }
       },
 
-      j_abn_efo_joker = { -- to relocalise
+      j_abn_efo_joker = {
         name = "EFO Joker",
         text = {
-          "{C:green}#1# in #2#{} chance to copy the first played {C:attention}Stamp Card{} into your hand",
-          "Scoring cards with {C:attention}Stamps{} give {C:gold}+#3#{} Ascension power",
-          "Played hands with {C:attention}5{} or more Stamps",
-          "give this Joker {X:mult,C:white}X#4#{} Mult and {C:gold}+#5#{} Ascension Power per card",
-          "{C:inactive}Currently: {X:mult,C:white}X#6#{} {C:inactive}Mult{} {C:gold}+#7#{} {C:inactive}Ascension Power{}",
+          {
+            "{C:green}#1# in #2#{} chance to copy first played",
+            "{C:attention}Stamped{} card into your hand",
+          },
+          {
+            "Played cards with {C:attention}Stamps{} give",
+            "{C:gold}+#3#{} Asc. Power when scored",
+          },
+          {
+            "If played hand has {C:attention}5{} or more {C:attention}Stamps{},",
+            "this Joker gains {X:mult,C:white}X#4#{} Mult and",
+            "{C:gold}+#5#{} Asc. Power per card scored",
+            "{C:inactive}(Currently {X:mult,C:white}X#6#{} {C:inactive}Mult,{} {C:gold}+#7#{} {C:inactive}Ascension Power){}",
+          }
         }
       },
 
@@ -3832,27 +3842,22 @@ return {
         },
       },
 
-      j_abn_hawk = { -- to relocalise
+      j_abn_hawk = {
         name = "Hawk",
         text = {
           {
-            "{C:mult}Destroy{} the first scoring card",
-          },
-          {
-            "If it was {C:attention}Even{}",
-            "all scoring cards gain {C:mult}+#5#{} Mult and this gains {X:mult,C:white}X#3#{} Mult",
-          },
-          {
-            "If it was {C:attention}Odd{}",
-            "all scoring cards gain {C:chips}+#6#{} Chips and this gains {X:chips,C:white}X#4#{} Chips",
-          },
-          {
-            "If the {C:attention}winning hand{} has both {C:attention}Odd{} and {C:attention}Even{} cards",
-            "level up the {C:planet}planet{} {C:attention}rank{} of all scoring cards",
-          },
-          {
+            "{C:mult}Destroy{} the first scoring card, if",
+            "its {C:attention}even{}, all scoring cards gain {C:mult}+#5#{}",
+            "Mult and this Joker gains {X:mult,C:white}X#3#{} Mult,",
+            "if its {C:attention}odd{}, cards gain {C:chips}+#6#{} Chips",
+            "and this Joker gains {X:chips,C:white}X#4#{} Chips",
             "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult{} {X:chips,C:white}X#2#{} {C:inactive}Chips){}",
-          }
+          },
+          {
+            "If {C:attention}winning hand{} has both",
+            "{C:attention}odd{} and {C:attention}even{} cards, level up the",
+            "{C:planet}planet{} {C:attention}rank{} of all scoring cards",
+          },
         }
       },
 
@@ -4100,7 +4105,7 @@ return {
         }
       },
 
-      j_abn_inferno_comedian = { -- to relocalise
+      j_abn_inferno_comedian = {
         name = "Inferno Comedian",
         text = {
           {
@@ -4108,14 +4113,15 @@ return {
           },
           {
             "If score {C:attention}catches on fire{},",
-            "Add {C:dark_edition}Sunscourge{} edition to a random Joker,",
-            "and enhance all cards in hand into",
-            "{C:dark_edition}Sunscourge{} {C:attention}Oilfire{} cards",
+            "add {C:dark_edition}Sunscourge{} edition to a random",
+            "Joker and {C:attention}enhance{} all cards in hand",
+            "into {C:dark_edition}Sunscourge{} {C:attention}Oilfire{} cards",
           },
           {
-            "{C:attention}Oilfire{} cards give {C:white,X:mult}X#1#{} Mult",
-            "{C:attention}Oilfire{} cards retain their {C:attention}ranks{}",
-            "When they are {C:mult}destroyed{} gain {C:mult}Mult{} {C:attention}equal{} to their {C:attention}ranks{}",
+            "{C:attention}Oilfire{} cards give {C:white,X:mult}X#1#{} Mult,",
+            "{C:attention}Oilfire{} cards retain their {C:attention}ranks{},",
+            "this Joker gains their {C:attention}ranks{} as",
+            "{C:mult}Mult{} when they are {C:mult}destroyed{}",
             "{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult)",
           }
         }
@@ -5661,18 +5667,18 @@ return {
         }
       },
 
-      j_abn_memory_dump_joker = { -- to relocalise
+      j_abn_memory_dump_joker = {
         name = "Memory Dump Joker",
         text = {
           {
-            "Each Joker gains {X:mult,C:white}X#1#{} Mult",
-            "every scored hand"
+            "Each Joker gains {X:mult,C:white}X#1#{}",
+            "Mult every hand played"
           },
           {
-            "Scored hand size must be",
-            "larger than {C:attention}#2#{}",
-            "{C:inactive}(Changes to highest played hand size)",
-            "{C:inactive}(Resets when defeating a blind)"
+            "Played hand must contain",
+            "more than {C:attention}#2#{} cards",
+            "{C:inactive,s:0.8}(Changes to highest played hand size)",
+            "{s:0.8}(Resets when {C:attention,s:0.8}Blind{s:0.8} is defeated)"
           },
         }
       },
@@ -5898,21 +5904,24 @@ return {
         },
       },
 
-      j_abn_monocromator_joker = { -- to relocalise
+      j_abn_monocromator_joker = {
         name = "Monocromator Joker",
         text = {
           {
             "If played hand contains a {C:attention}Straight{},",
-            "gains {C:chips}+#3#{} Chips per {C:attention}unique{} scoring {C:attention}suit{}",
+            "this Joker gains {C:chips}+#3#{} Chips",
+            "per unique {C:attention}suit{} scored",
           },
           {
-            "If played hand contains a {C:attention}Straight Spectrum{},",
-            "gains {C:mult}Mult{} equal to the {C:attention}rank{} of each {C:dark_edition}Modded{} Suit",
+            "If played hand is a {C:attention}Straight Spectrum{},",
+            "this Joker gains the {C:attention}rank{} of",
+            "all scoring {C:dark_edition}Modded{} suits as {C:mult}Mult{}",
+            "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
           },
           {
-            "If played hand contains a {C:attention}Straight Spectrum{},",
-            "with no {C:inactive}Vanilla{} suits all {C:spades}Dark{} suits gain {C:dark_edition}Opaque{}",
-            "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#2#{} {C:inactive}Chips){}",
+            "If played hand is a {C:attention}Straight Spectrum{},",
+            "with no {C:inactive}Vanilla{} suits, add {C:dark_edition}Opaque{}",
+            "edition to all scoring {C:spades}Dark Suits{}",
           }
         }
       },
@@ -5990,12 +5999,14 @@ return {
         }
       },
 
-      j_abn_mult_speed = { -- to relocalise
+      j_abn_mult_speed = {
         name = 'Mult Speed',
         text = {
-          "Scoring cards in {C:attention}even hands{} permanently gain {C:mult}+#1#{} mult",
-          "Scoring cards in {C:attention}odd hands{} permanently gain {C:chips}+#2#{} chips",
-          "Scoring cards in {C:attention}final hands{} permanently gain {C:money}$#3#",
+          "All scoring cards permanently gain",
+          "{C:mult}+#1#{} Mult if you have an {C:attention}even{}",
+          "number of hands remaining,",
+          "{C:chips}+#2#{} Chips if {C:attention}odd{}, and {C:money}$#3#{}",
+          "if {C:attention}final hand{} of round",
         }
       },
 
@@ -6298,16 +6309,18 @@ return {
         },
       },
 
-      j_abn_oopsy_daisy = { -- to relocalise
+      j_abn_oopsy_daisy = {
         name = "Oopsy Daisy",
         text = {
           {
             "{C:attention}+#1#{} Consumable Slots, this Joker",
-            "and all future Jokers are placed into {C:attention}Consumables{}",
+            "and all future Jokers are placed",
+            "into your {C:attention}consumable slots{}",
           },
           {
-            "If this Joker is {C:mult}sold or destroyed{},",
-            "{C:mult}destroy{} all {C:attention}Jokers{} in {C:attention}Consumables{}",
+            "If this Joker is {C:attention}sold{}",
+            "or {C:attention}destroyed{}, {C:mult}destroy{} all",
+            "{C:attention}Jokers{} in your {C:attention}consumable slots{}",
           },
         }
       },
@@ -6323,22 +6336,21 @@ return {
         }
       },
 
-      j_abn_orphic_joker = { -- to relocalise
+      j_abn_orphic_joker = {
         name = "Orphic Joker",
         text = {
           {
-            "If you play a {C:attention}#1#{} with",
-            "{C:hearts}Hearts{}, {C:diamonds}Diamonds{}, {C:spades}Spades{} and {C:clubs}Clubs{},",
-            "level up the {C:attention}poker hand{} and",
-            "gain {C:mult}+#2#{} Mult.",
-            "{C:inactive}(Currently {C:mult}+#4#{C:inactive} Mult)",
+            "If played hand is a {C:attention}#1#{}",
+            "with {C:hearts}Hearts{}, {C:diamonds}Diamonds{}, {C:spades}Spades{}, and",
+            "{C:clubs}Clubs{}, upgrade level of played",
+            "{C:attention}poker hand{} and gain {C:mult}+#2#{} Mult",
           },
           {
             "If played hand is a {C:attention}#1#{}",
-            "{C:abn_star}Stars{}, {C:abn_moon}Moons{}, {C:abn_crown}Crowns{} and {C:abn_talon}Talons{},",
-            "level up the {C:planet}planet{} {C:attention}rank{} of each",
-            "{C:attention}scoring{} card and gain {C:chips}+#3#{} Chips.",
-            "{C:inactive}(Currently {C:chips}+#5#{C:inactive} Chips)",
+            "with {C:abn_star}Stars{}, {C:abn_moon}Moons{}, {C:abn_crown}Crowns{}, and",
+            "{C:abn_talon}Talons{}, level up the {C:planet}planet{} {C:attention}rank{} of",
+            "each scoring card and gain {C:chips}+#3#{} Chips",
+            "{C:inactive}(Currently {C:mult}+#4#{C:inactive} Mult, {C:chips}+#5#{C:inactive} Chips)",
           },
         }
       },
@@ -6684,13 +6696,14 @@ return {
         }
       },
 
-      j_abn_plug_in_joker = { -- to relocalise
+      j_abn_plug_in_joker = {
         name = "Plug In Joker",
         text = {
-          "Gain {C:mult}+#4#{} Mult when a {C:attention}Mult{} card scores",
-          "Gain {C:chips}+#5#{} Chips when a {C:attention}Bonus{} card scores",
-          "Gain {C:gold}+#6#{} Ascension Power when a {C:attention}Plank{} card scores",
-          "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips,{} {C:gold}+#3#{} {C:inactive}Asc. Power){}",
+          "This Joker gains {C:mult}+#4#{} Mult when",
+          "a {C:attention}Mult{} card scores, {C:chips}+#5#{} Chips",
+          "when a {C:attention}Bonus{} card scores, {C:gold}+#6#{} Asc.",
+          "Power when a {C:attention}Plank{} card scores",
+          "{C:inactive}(Currently{} {C:mult}+#1#{C:inactive}, {C:chips}+#2#{C:inactive}, {C:gold}+#3#{} {C:inactive})",
         }
       },
 

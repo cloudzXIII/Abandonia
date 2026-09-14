@@ -50,18 +50,15 @@ SMODS.Joker {
     if context.individual and context.cardarea == G.play then
       local ret = {}
       if SMODS.has_enhancement(context.other_card, "m_lucky") or SMODS.has_enhancement(context.other_card, "m_gold") then
-        ret[#ret + 1] = {
+        return {
           echips = card.ability.extra.echips
         }
       end
 
       if SMODS.has_enhancement(context.other_card, "m_bonus") or SMODS.has_enhancement(context.other_card, "m_wild") then
-        ret[#ret + 1] = {
+        return {
           emult = card.ability.extra.emult
         }
-      end
-      if #ret > 0 then
-        return ret
       end
     end
   end,
