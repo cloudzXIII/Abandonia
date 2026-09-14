@@ -1863,6 +1863,10 @@ return {
 
       b_ram_cards = "RAM Cards",
       k_ram = "RAM",
+
+      b_crepuscular_cards = "Crepuscular Tarot Cards",
+      k_crepuscular = "Crepuscular Tarot",
+      
     },
 
     v_dictionary = {
@@ -1922,6 +1926,7 @@ return {
       algebraic = "Algebraic",
       illusion = "Illusion",
       ram = "RAM",
+      crepuscular = "Crepuscular Tarot",
 
       -- Seals
       abn_orange_seal = "Orange Seal",
