@@ -5,7 +5,7 @@ SMODS.Joker {
   pos = { x = 3, y = 3 },
   cost = 6,
   discovered = false,
-  blueprint_compat = true,
+  blueprint_compat = false,
 
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_hot_iron
@@ -13,6 +13,7 @@ SMODS.Joker {
   end,
 
   calculate = function(self, card, context)
+    if context.blueprint then return end
     -- Trigger before scoring starts
     if context.cardarea == G.jokers and context.before then
       local scoringSet = {}
@@ -32,6 +33,11 @@ SMODS.Joker {
           }))
         end
       end
+    end
+    if context.modify_scoring_hand and SMODS.has_enhancement(context.other_card, "m_abn_hot_iron") then
+      return {
+        add_to_hand = true
+      }
     end
   end,
 
