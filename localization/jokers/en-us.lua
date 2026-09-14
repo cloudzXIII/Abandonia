@@ -1737,14 +1737,14 @@ return {
         name = "Costard",
         text = {
           {
-            "Gains {X:chips,C:white}^#2#{} Chips when",
+            "This Joker gains",
+            "{X:chips,C:white}^#2#{} Chips every time",
             "a {C:planet}Planet{} card is used",
-            "{C:inactive}(Currently {X:chips,C:white}^#1#{} {C:inactive}Chips)",
 
           },
           {
-            "Each {C:attention}shop{} always contain",
-            "a {C:attention}Mega Planet Pack"
+            "Each {C:attention}shop{} always contains",
+            "a {C:attention}Mega Celestial Pack"
           }
         }
       },
@@ -2733,13 +2733,14 @@ return {
         name = "Erwyd",
         text = {
           {
-            "Gains {X:chips,C:white}^#2#{} Chips when",
+            "This Joker gains",
+            "{X:chips,C:white}^#2#{} Chips every time",
             "a {C:tarot}Tarot{} card is used",
             "{C:inactive}(Currently {X:chips,C:white}^#1#{} {C:inactive}Chips)",
           },
           {
-            "Each {C:attention}shop{} always contain",
-            "a {C:attention}Mega Tarot Pack"
+            "Each {C:attention}shop{} always contains",
+            "a {C:attention}Mega Arcana Pack"
           }
         }
       },
@@ -8447,12 +8448,13 @@ return {
         name = "Towser",
         text = {
           {
-            "Gains {X:chips,C:white}^#2#{} Chips when",
+            "This Joker gains",
+            "{X:chips,C:white}^#2#{} Chips every time",
             "a {C:spectral}Spectral{} card is used",
             "{C:inactive}(Currently {X:chips,C:white}^#1#{} {C:inactive}Chips)",
           },
           {
-            "Each {C:attention}shop{} always contain",
+            "Each {C:attention}shop{} always contains",
             "a {C:attention}Mega Spectral Pack"
           }
         }
