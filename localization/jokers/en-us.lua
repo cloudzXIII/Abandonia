@@ -3347,13 +3347,19 @@ return {
         },
       },
 
-      j_abn_galactic_consciousness = { -- to relocalise
+      j_abn_galactic_consciousness = {
         name = "Galactic Consciousness",
         text = {
-          "{C:dark_edition}Gloss{} {C:attention}Jokers/Cards{} give {C:mult}+#1#{} Mult when scoring",
-          "{C:dark_edition}Pearlescent{} {C:attention}Jokers/Cards{} give {X:chips,C:white}X#2#{} Chips when scoring",
-          "{C:dark_edition}Iridescent{} {C:attention}Jokers/Cards{} give {X:mult,C:white}X#3#{} Mult when scoring",
-          "{C:dark_edition}Chromatic{} {C:attention}Jokers/Cards{} give {X:chips,C:white}^#4#{} Chips when scoring",
+          {
+            "{C:dark_edition}Editioned{} Jokers and cards give",
+            "different {C:attention}effects{} when triggered:"
+          },
+          {
+            "{C:dark_edition}Gloss{} cards give {C:mult}+#1#{} Mult,",
+            "{C:dark_edition}Pearlescent{} cards give {X:chips,C:white}X#2#{} Chips,",
+            "{C:dark_edition}Iridescent{} cards give {X:mult,C:white}X#3#{} Mult,",
+            "{C:dark_edition}Chromatic{} cards give {X:chips,C:white}^#4#{} Chips",
+          },
         },
       },
 
@@ -4164,9 +4170,9 @@ return {
       j_abn_intergalactic_joker = {
         name = "Intergalactic Joker",
         text = {
-          "Upgrade {C:attention}every{} poker hand in",
-          "played hand's Asc. Power by {C:gold}+#1#{}",
-          "when holding their",
+          "Upgrade {C:attention}every{} poker hand",
+          "in played hand's Asc. Power",
+          "by {C:gold}+#1#{} when holding their",
           "{C:attention}respective{} {C:planet}Planet{} card"
         },
       },
@@ -5692,14 +5698,20 @@ return {
         }
       },
 
-      j_abn_metallic_upgrade = { -- to relocalise
+      j_abn_metallic_upgrade = {
         name = "Metallic Upgrade",
         text = {
-          "The {C:attention}First{} scoring {C:inactive}Vanilla{} {C:attention}Enhanced{} card in a {C:attention}Spectrum{} hand",
-          "Gives the same {C:dark_edition}Enhancement{} to the {C:attention}Leftmost{} Joker",
-          "If a {C:attention}Spectrum{} hand is played with {C:attention}5 Vanilla{} {C:dark_edition}Enhancements{}",
-          "all played cards permanently gain {C:chips}+#1#{} Chips {C:mult}+#2#{} Mult",
-          "and all Jokers {C:purple}+#3#{} Score",
+          {
+            "First scoring {C:inactive}Vanilla{} {C:attention}Enhanced{} card",
+            "in a {C:attention}Spectrum{} hand enhances the",
+            "{C:attention}leftmost{} Joker into its {C:enhanced}Enhancement{}",
+          },
+          {
+            "If a {C:attention}Spectrum{} hand is played with",
+            "{C:attention}5{} {C:inactive}Vanilla{} {C:enhanced}Enhancements{}, all scoring",
+            "cards gain {C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult,",
+            "and all {C:attention}Jokers{} gain {C:purple}+#3#{} Score",
+          },
         }
       },
 
