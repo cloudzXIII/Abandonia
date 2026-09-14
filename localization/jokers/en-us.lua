@@ -5132,16 +5132,22 @@ return {
         }
       },
 
-      j_abn_light_collage = { -- TO relocalise (oh hell nah)
+      j_abn_light_collage = {
         name = "Light Collage",
         text = {
-          "Gains {C:chips}+#1#{} Chips when a {C:dark_edition}Foil{} card scores",
-          "Gains {C:mult}+#2#{} Mult when a {C:dark_edition}Gloss{} card scores",
-          "{C:green}#3# in {C:green}#4#{} chance to convert 1 random non edition card",
-          "in the deck into a {C:dark_edition}Foil{} card when {C:sigils}Sigil card{} is used",
-          "{C:green}#5# in {C:green}#6#{} chance to convert 1 random non edition card",
-          "in the deck into a {C:dark_edition}Gloss{} card when {C:sigils}Sigil card{} is used",
-          "{C:inactive}(Currently {C:chips}+#7#{C:inactive} Chips, {C:mult}+#8#{C:inactive} Mult)"
+          {
+            "This Joker gains {C:chips}+#1#{} Chips when",
+            "a {C:dark_edition}Foil{} card scores, {C:mult}+#2#{} Mult",
+            "when a {C:dark_edition}Gloss{} card scores",
+            "{C:inactive}(Currently {C:chips}+#7#{C:inactive} Chips, {C:mult}+#8#{C:inactive} Mult)"
+          },
+          {
+            "When a {C:sigils}Sigil{} card is used,",
+            "{C:green}#5# in #6#{} chance to convert",
+            "a random {C:attention}non-editioned{} card",
+            "in your deck into a {C:dark_edition}Foil{} card,",
+            "{C:green}#5# in #6#{} chance to a {C:dark_edition}Gloss{} card",
+          },
         },
       },
 
@@ -5364,14 +5370,14 @@ return {
         }
       },
 
-      j_abn_malefactor_comedian = { -- to relocalise
+      j_abn_malefactor_comedian = {
         name = "Malefactor Comedian",
         text = {
-          "This Joker gains {C:chips}Chips{} {C:attention}equal{}",
-          "to the the ranks of scoring {C:diamonds{}Light Suits,",
-          "{C:mult}Mult{} {C:attention}equal{} to the",
-          "ranks of scoring {C:spades{}Dark Suits",
-          "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult, {C:chips}+#2# {C:inactive}Chips)",
+          "This Joker gains the",
+          "{C:attention}ranks{} of all scoring",
+          "{C:diamonds}Light Suits{} as {C:chips}Chips{}, ",
+          "{C:spades}Dark Suits{} as {C:mult}Mult{}",
+          "{C:inactive}(Currently {C:mult}+#1#{C:inactive}, {C:chips}+#2#{C:inactive})",
         }
       },
 
@@ -7397,13 +7403,13 @@ return {
         }
       },
 
-      j_abn_scantron_joker = { -- to relocalise
+      j_abn_scantron_joker = {
         name = "Scantron Joker",
         text = {
-          "Scoring {C:attention}Lucky{} cards give {X:chips,C:white}^#1#{} Chips",
-          "Scoring {C:attention}Bonus{} cards give {X:mult,C:white}^#2#{} Mult",
-          "Scoring {C:attention}Gold{} cards give {X:chips,C:white}^#3#{} Chips",
-          "Scoring {C:attention}Wild{} cards give {X:mult,C:white}^#4#{} Mult",
+          "Scoring {C:attention}Lucky{} or {C:attention}Gold{} cards",
+          "give {X:chips,C:white}^#1#{} Chips, scoring",
+          "{C:attention}Bonus{} or {C:attention}Wild{} cards",
+          "give {X:mult,C:white}^#2#{} Mult",
         }
       },
 
@@ -7754,15 +7760,21 @@ return {
         }
       },
 
-      j_abn_statue_joker = { -- to relocalise
+      j_abn_statue_joker = {
         name = "Statue Joker",
         text = {
-          "Gain {C:mult}+#2#{} Mult per {C:attention}rankless{} card scored",
-          "{C:attention}Stone{} cards gain {C:dark_edition}Chromatic{}",
-          "{C:attention}Petroleum{} cards gain {C:dark_edition}Collodion{}",
-          "{C:attention}Pokladot{} cards gain {C:dark_edition}Gloss{}",
-          "{C:attention}Oilfire{} cards gain {C:dark_edition}Abandoned{}",
-          "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+          {
+            "This Joker gains {C:mult}+#2#{} Mult",
+            "per {C:attention}Rankless{} card scored",
+            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+          },
+          {
+            "Add {C:dark_edition}Collodion{} edition to",
+            "scoring {C:attention}Petroleum{} cards,",
+            "{C:dark_edition}Petroleum{} to {C:attention}Stone{} cards,",
+            "{C:dark_edition}Gloss{} to {C:attention}Polkadot{} cards,",
+            "{C:dark_edition}Abandoned{} to {C:attention}Oilfire{} cards",
+          }
         }
       },
 

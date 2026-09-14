@@ -12,7 +12,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { luckyechips = 1.7, bonusemult = 1.4, goldechips = 1.7, wildemult = 1.4 } },
+  config = { extra = { echips = 1.7, emult = 1.4, } },
   pools = { ["Plagued"] = true, },
 
   loc_vars = function(self, info_queue, card)
@@ -22,30 +22,23 @@ SMODS.Joker {
     info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
     return {
       vars = {
-        card.ability.extra.luckyechips,
-        card.ability.extra.bonusemult,
-        card.ability.extra.goldechips,
-        card.ability.extra.wildemult,
+        card.ability.extra.echips,
+        card.ability.extra.emult,
       }
     }
   end,
 
   in_pool = function(self)
-    -- is jimbo stake?
     local is_jimbo_stake = G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
     if not is_jimbo_stake then return false end
 
-    if not G.playing_cards then return false end
-
-    -- do we have any of the cards for it?
-    for _, card in ipairs(G.playing_cards) do
-      if card and card.config and card.config.center then
-        local center = card.config.center
-        if center == G.P_CENTERS.m_bonus or
-        center == G.P_CENTERS.m_lucky or
-        center == G.P_CENTERS.m_gold or
-        center == G.P_CENTERS.m_wild then
-          return true -- Both conditions met!
+    for _, card in ipairs(G.playing_cards or {}) do
+      if card and next(SMODS.get_enhancements(card)) then
+        if SMODS.has_enhancement(card, "m_lucky") or
+        SMODS.has_enhancement(card, "m_gold") or
+        SMODS.has_enhancement(card, "m_wild") or
+        SMODS.has_enhancement(card, "m_bonus") then
+          return true
         end
       end
     end
@@ -55,24 +48,20 @@ SMODS.Joker {
 
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
-      local target_card = context.other_card
+      local ret = {}
+      if SMODS.has_enhancement(context.other_card, "m_lucky") or SMODS.has_enhancement(context.other_card, "m_gold") then
+        ret[#ret + 1] = {
+          echips = card.ability.extra.echips
+        }
+      end
 
-      if target_card.config.center == G.P_CENTERS.m_lucky then
-        return {
-          echips = card.ability.extra.luckyechips
+      if SMODS.has_enhancement(context.other_card, "m_bonus") or SMODS.has_enhancement(context.other_card, "m_wild") then
+        ret[#ret + 1] = {
+          emult = card.ability.extra.emult
         }
-      elseif target_card.config.center == G.P_CENTERS.m_bonus then
-        return {
-          emult = card.ability.extra.bonusemult
-        }
-      elseif target_card.config.center == G.P_CENTERS.m_gold then
-        return {
-          echips = card.ability.extra.goldechips
-        }
-      elseif target_card.config.center == G.P_CENTERS.m_wild then
-        return {
-          emult = card.ability.extra.wildemult
-        }
+      end
+      if #ret > 0 then
+        return ret
       end
     end
   end,
