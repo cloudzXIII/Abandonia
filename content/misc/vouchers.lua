@@ -650,3 +650,31 @@ SMODS.Voucher({
 		end
     end,
 })
+
+SMODS.Voucher({
+    key = "power_rank",
+    atlas = "AbandoniaVouchers",
+    pos = {
+        x = 0,
+        y = 3,
+    },
+    cost = 10,
+    --requires = { "v_abn_silver_spoon" },
+    
+    redeem = function(self, card)
+        --G.GAME.abn_power_rank = true
+    end,
+})
+
+local old_card_for_shop = create_card_for_shop
+function create_card_for_shop(area)
+	local card = old_card_for_shop(area)
+	if card and card.ability and card.ability.set == "Joker" and pseudorandom(pseudoseed("v_abn_power_rank")) > 0.8 then
+		local enh_sticker = SMODS.poll_object({pool = ABN.EnhStickerPool, seed = "abn_enhstickerpool"})
+		if enh_sticker then
+			card:add_sticker(enh_sticker, true)
+		end
+	end
+
+	return card
+end

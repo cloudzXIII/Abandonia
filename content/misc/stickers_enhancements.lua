@@ -1,4 +1,9 @@
+ABN.EnhStickerPool = {}
 ABN.EnhSticker = SMODS.Sticker:extend{
+	inject = function(self)
+		table.insert(ABN.EnhStickerPool, self.key)
+		ABN.EnhSticker.super.inject(self)
+	end,
     apply = function(self, card, val)
         if val then
             for _, key in ipairs(ABN.enh_stickers_list) do

@@ -505,6 +505,13 @@ SMODS.Atlas({
   py = 86,
 })
 
+SMODS.Atlas({
+  key = "AbandoniaFlies",
+  path = "flies.png",
+  px = 71,
+  py = 95,
+})
+
 -- Animated Jokers (Popup Joker and Malware Joker)
 SMODS.Atlas {
   key = "popup_joker_atlas",

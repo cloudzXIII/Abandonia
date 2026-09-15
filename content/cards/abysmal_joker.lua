@@ -1,20 +1,5 @@
 -- Abysmal Joker (code by Noodlemire)
 
---[[
-Chthonian cards have X4
-values while being scored
-
-If the score catches fire from
-a hand of only Chthonian cards,
-create a number of Negative modded
-consumable cards equal to the
-number of scoring cards
-
-If this joker is Chthonian,
-6s increase their level of
-Planet Rank when scored by 1
---]]
-
 SMODS.Joker{
 	key = "abysmal_joker",
 	atlas = "ABNJokerSheet24",
@@ -88,19 +73,3 @@ SMODS.Joker{
 		return false
 	end
 }
-
---[[local old_calculate_individual_effect = SMODS.calculate_individual_effect
-function SMODS.calculate_individual_effect(effect, scored_card, key, amount, from_edition)
-	if scored_card.area == G.play and scored_card.edition and scored_card.edition.key == "e_abn_chthonian" and type(amount) == "number" then
-		for _, joker in ipairs(SMODS.find_card("j_abn_abysmal_joker")) do
-			amount = amount * joker.ability.extra.boost
-			G.E_MANAGER:add_event(Event({
-				func = function()
-					joker:juice_up()
-					return true
-				end
-			}))
-		end
-	end
-	return old_calculate_individual_effect(effect, scored_card, key, amount, from_edition)
-end--]]

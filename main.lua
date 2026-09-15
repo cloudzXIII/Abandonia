@@ -302,6 +302,18 @@ ABN.calculate = function(self, context)
   if context.using_consumeable and context.consumeable.ability.set == "ruinous_power" and not G.GAME.abn_ruinous then
     G.GAME.abn_ruinous = true
   end
+
+  -- Used by the Grasshopper insect in context/misc/flypaper.lua
+  if context.mod_probability and not context.blueprint then
+    for _, card in ipairs(#G.play.cards > 0 and G.play.cards or G.hand.highlighted) do
+      if SMODS.has_enhancement(card, "m_abn_flypaper") then
+        local grasshopper = ABN.flies.abn_grasshopper:get_insect(card)
+        if grasshopper then
+          return {numerator = math.ceil(context.denominator * grasshopper.config.prob / 100)}
+        end
+      end
+    end
+  end
 end
 
 

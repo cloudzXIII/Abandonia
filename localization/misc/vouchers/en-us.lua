@@ -202,6 +202,12 @@ return {
           "Earn {C:money}$2{} on every purchase",
         }
       },
+      v_abn_power_rank = {
+        name = "Power Rank",
+        text = {
+          "{C:attention}Jokers{} in shop may have an {C:attention}Enhancement",
+        }
+      },
     },
   },
 }

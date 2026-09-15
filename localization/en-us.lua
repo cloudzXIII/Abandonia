@@ -330,8 +330,105 @@ return {
       },
       --#endregion
 
-      --#region Undiscovered ConsumableTypes
+      --#region Flypaper Fly Types
+      abn_red_beetle = {
+        name = "Red Beetle",
+        text = {
+          "Gains {X:mult,C:white}X#1#{} Mult if",
+          "score catches fire",
+          "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+          "{C:white}.",
+          "Can be caught if the {C:attention}Flypaper",
+          "card is in a winning hand with",
+          "an {C:attention}even{} number of scoring cards"
+        }
+      },
+      abn_red_beetle_inactive = {
+        name = "Red Beetle",
+        text = {
+          "Only the most recent {C:purple}insect",
+          "is allowed to scale",
+          "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+          "{C:white}.",
+          "Can be caught if the {C:attention}Flypaper",
+          "card is in a winning hand with",
+          "an {C:attention}even{} number of scoring cards"
+        }
+      },
 
+      abn_green_beetle = {
+        name = "Green Beetle",
+        text = {
+          "Gains {X:chips,C:white}X#1#{} Chips if",
+          "score catches fire",
+          "{C:inactive}(Currently {X:chips,C:white}X#2#{C:inactive} Chips)",
+          "{C:white}.",
+          "Can be caught if the {C:attention}Flypaper",
+          "card is in a winning hand with",
+          "an {C:attention}odd{} number of scoring cards"
+        }
+      },
+      abn_green_beetle_inactive = {
+        name = "Green Beetle",
+        text = {
+          "Only the most recent {C:purple}insect",
+          "is allowed to scale",
+          "{C:inactive}(Currently {X:chips,C:white}X#2#{C:inactive} Chips)",
+          "{C:white}.",
+          "Can be caught if the {C:attention}Flypaper",
+          "card is in a winning hand with",
+          "an {C:attention}odd{} number of scoring cards"
+        }
+      },
+
+      abn_fly = {
+        name = "Fly",
+        text = {
+          "Retrigger {C:attention}#1#{} random",
+          "scoring cards",
+          "{C:white}.",
+          "Can be caught if the {C:attention}Flypaper",
+          "card is in a winning hand with",
+          "all scoring cards being {C:attention}enhanced"
+        }
+      },
+
+      abn_grasshopper = {
+        name = "Grasshopper",
+        text = {
+          "All listed probabilities become",
+          "{C:attention}#1#%{} if this is in scoring hand",
+          "{C:white}.",
+          "Can be caught if the {C:attention}Flypaper",
+          "card is in a winning hand with",
+          "all scoring cards having {C:dark_edition}editions"
+        }
+      },
+
+      abn_dragonfly = {
+        name = "Dragonfly",
+        text = {
+          "{X:black,C:white}X#1#{} Score if your hand is not on fire",
+          "{C:white}.",
+          "Can be caught if the {C:attention}Flypaper",
+          "card is held in hand when you",
+          "play your winning hand"
+        }
+      },
+
+      abn_mysterious_bug = {
+        name = "Mysterious Bug",
+        text = {
+          "{C:gold}+#1#{} Ascension Power",
+          "{C:white}.",
+          "Can be caught if the {C:attention}Flypaper",
+          "card also has a {C:attention}seal{} when you",
+          "play it in your winning hand"
+        }
+      },
+      --#endregion
+
+      --#region Undiscovered ConsumableTypes
       undiscovered_illusion = {
         name = "Not Discovered",
         text = {

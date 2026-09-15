@@ -277,6 +277,16 @@ return {
           "If this is on a {C:dark_edition}Modded{} suit increase hand level by {C:attention}#1#{}",
         }
       },
+      m_abn_flypaper = {
+        name = "Flypaper",
+        text = {
+          "Will catch an {C:purple}insect{} if present for",
+          "your winning hand, whether its in",
+          "the scoring hand or held in hand",
+          "Catches different {C:purple}insects",
+          "depending on the circumstance"
+        }
+      },
     },
     Other = {
       --#region ENHANCEMENT STICKERS
