@@ -468,6 +468,34 @@ return {
           "{C:mult}Self-destruct{} if played with {C:attention}#3#{} or more {C:spades}Dark Suits",
         },
       },
+      abn_stk_first_aid = {
+        name = "First Aid",
+        text = {
+          "If a {C:mult}debuffed{} card is played gain {C:mult}+#2#{} Mult",
+		  "If a card is {C:mult}destroyed{} gain {C:chips}+#4#{} Chips",
+		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#3#{} {C:inactive}Chips{}",
+        },
+      },
+	    abn_stk_flux = {
+        name = "Flux",
+        text = {
+          "{C:purple}+#1#{} Score",
+		  "Gain {C:purple}+#2#{} Score upon playing the winning hand",
+        },
+      },
+	    abn_stk_zen = {
+        name = "Zen",
+        text = {
+          "{C:mult}+#1#{} Mult",
+		  "gain {C:mult}+#2#{} Mult for every card {C:attention}held in hand{]",
+        },
+      },
+	    abn_stk_plank = {
+        name = "Plank",
+        text = {
+          "{C:gold}+#1#{} Ascension Power",
+        },
+      },
       --#endregion
     }
   },
@@ -498,6 +526,10 @@ return {
       abn_stk_reinforcement = "Reinforcement",
       abn_stk_darkner = "Darkner",
       abn_stk_lightner = "Lightner",
+      abn_stk_first_aid = "First Aid",
+	    abn_stk_flux = "Flux",
+	    abn_stk_zen = "Zen",
+	    abn_stk_plank = "Plank",
     }
   }
 }
