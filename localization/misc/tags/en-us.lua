@@ -299,6 +299,14 @@ return {
           "{C:program_pack}Jumbo Program Packs",
         }
       },
+      tag_abn_hazard_skip = {
+        name = "Hazard Skip",
+        text = {
+          "Gives {C:money}$#1#{} per skipped",
+          "Blind this run",
+          "{C:inactive}(Will give {C:money}$#2#{C:inactive})",
+        }
+      },
       --#endregion
       --#region Normal Tags
       tag_abn_gloss = {
@@ -525,14 +533,6 @@ return {
           "Has a free {C:abn_black_seal}Virus{} Joker",
         },
       },
-      tag_abn_hazard_skip = {
-        name = "Hazard Skip",
-        text = {
-          "Gives {C:money}$#1#{} per skipped",
-          "Blind this run",
-          "{C:inactive}(Will give {C:money}$#2#{C:inactive})",
-        }
-      }
       --#endregion
     },
   }

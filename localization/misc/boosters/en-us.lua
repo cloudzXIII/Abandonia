@@ -415,8 +415,6 @@ return {
     dictionary = {
 
       abn_calamitybooster = "Calamity Pack",
-      abn_calamitybooster_j = "Jumbo Calamity Pack",
-      abn_calamitybooster_m = "Mega Calamity Pack",
       abn_sigilbooster = "Sigil Pack",
       abn_astrobooster = "Astro Pack",
       k_solid_pack = "Solid State Pack",

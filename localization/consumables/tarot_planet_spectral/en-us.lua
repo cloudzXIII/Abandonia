@@ -322,7 +322,7 @@ return {
           "{C:chips}+#4#{} chips",
         },
       },
-      -- Rank Planets
+      --#region Rank Planets
       c_abn_lauto = {
         name = "Lauto",
         text = {
@@ -494,6 +494,7 @@ return {
           "{C:chips}+#4#{} chips",
         },
       },
+      --#endregion
     },
 
     Spectral = {

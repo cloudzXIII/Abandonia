@@ -175,56 +175,7 @@ return {
         }
       }
     },
-
     Other = {
-      --#region Stamps
-      abn_empty_stamp = {
-        name = "Empty Stamp",
-        text = {
-          "If this Card has a unique {C:dark_edition}Edition,{} {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
-          "gain {C:attention}+1{} handsize",
-        }
-      },
-      abn_jester_stamp = {
-        name = "Jester Stamp",
-        text = {
-          "If this Card has a unique {C:dark_edition}Edition,{} {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
-          "gain {C:attention}+1{} Joker slot when it is {C:mult}Destroyed{} {C:inactive}(max:5){}",
-        }
-      },
-      abn_icon_stamp = {
-        name = "Icon Stamp",
-        text = {
-          "If this Card has a unique {C:dark_edition}Edition,{} {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
-          "Gains {X:chips,C:white}X1{} Chips for each {C:attention}Seal{}/{C:dark_edition}Edition{}/{C:dark_edition}Enhancement{}",
-          "If the round is won in {C:attention}1{} hand {C:mult}Destroy{} this card",
-          "{C:inactive}(Currently {X:chips,C:white}X#1#{} {C:inactive}Chips)",
-        }
-      },
-      abn_psychomancy_stamp = {
-        name = "Psychomancy Stamp",
-        text = {
-          "Upon {C:mult}destroying{} this card {C:attention}Level up{} the {C:attention}most played hand{}",
-          "for each {C:dark_edition}Edition,{} {C:dark_edition}Enhancement,{} and {C:attention}Seal{} on this card",
-        }
-      },
-      abn_membership_stamp = {
-        name = "Membership Stamp",
-        text = {
-          "If this Card has a unique {C:dark_edition}Edition, {C:attention}Seal,{} and {C:dark_edition}Enhancement{}",
-          "it gains {C:gold}+#1#{} Ascension Power when scoring",
-          "{C:inactive}(Currently{} {C:gold}#2#{} {C:inactive}Ascension Power)",
-        }
-      },
-      abn_prehensile_stamp = {
-        name = "Prehensile Stamp",
-        text = {
-          "If this card has unique {C:dark_edition}Edition,{} {C:attention}Seal, and {C:dark_edition}Enhancement{}",
-          "It {C:attention}always scores{} and {C:attention}ignores card selection limit{}",
-        }
-      },
-      --#endregion
-
       --#region Misc Tooltips
       abn_dark_suit = {
         name = "Dark Suit",
@@ -784,6 +735,38 @@ return {
     quips = {},
     challenge_names = {},
     dictionary = {
+      -- Misc
+      abn_ui_stamps = "Stamps",
+      abn_toggle_to_ruinous = "Show Ruinous",
+      abn_toggle_to_consumables = "Show Consumables",
+
+      k_abn_rank_planet = "Rank Planet",
+      b_abn_planet_ranks = "Planet Ranks",
+
+      k_abn_superrare = "Super Rare",
+      k_abn_parallelrare = "Parallel Rare",
+      k_abn_virusrare = "Virus Rare",
+      k_abn_comedian = "Comedian",
+      k_abn_plagued = "Plagued",
+
+      abn_hazard_tags = "Hazard Tags",
+      k_tag = "Tag",
+
+      k_abn_odd = "Odd",
+      k_abn_even = "Even",
+      k_abn_rankless = "Rankless",
+      k_abn_numbered = "numbered",
+      b_abn_ranks = "Ranks",
+
+      k_abn_light = "Light",
+      k_abn_dark = "Dark",
+      k_abn_lightner = "Lightner",
+      k_abn_darkner = "Darkner",
+
+      k_abn_device_dark = "DEVICE Joker",
+      k_abn_device_light = "ECIVED Joker", -- i think this is DEVICE just backwards
+
+      -- Credits
       k_abn_lead_dev = "Lead Dev",
       k_abn_coder = "Coder",
       k_abn_artist = "Artist",
@@ -792,10 +775,6 @@ return {
       k_abn_hybrid_art_code = "Artist/Coder",
       k_abn_github = "Github",
       k_abn_kofi = "Ko-fi",
-
-      abn_ui_stamps = "Stamps",
-      abn_toggle_to_ruinous = "Show Ruinous",
-      abn_toggle_to_consumables = "Show Consumables",
 
       -- Joker Perma Bonuses
       abn_perma_bonus = "{C:chips}+#1#{} extra Chips",
@@ -806,9 +785,10 @@ return {
       abn_perma_rep = "{C:attention}+#6#{} extra Repetitions",
       abn_perma_score = "{C:purple}+#7#{} extra Score",
 
-      -- sigil menu
+      -- Sigil menu
       ph_abn_sigils_active = "Sigils Active",
       ph_abn_no_sigils_active = "No Sigils Active",
+
       -- Config options
       k_abn_config_show_credits = "Artist Credits",
       abn_show_credits = "Shows credits under mod badge when enabled",
@@ -842,22 +822,7 @@ return {
       k_abn_crossmod_spectrallib = "Spectrallib",
       k_abn_crossmod_spectrallib_info = "Adds new Content related to Ascension Power!",
 
-      k_abn_rank_planet = "Rank Planet",
-      b_abn_planet_ranks = "Planet Ranks",
-      k_abn_superrare = "Super Rare",
-      k_abn_parallelrare = "Parallel Rare",
-      k_abn_virusrare = "Virus Rare",
-      abn_hazard_tags = "Hazard Tags",
-      k_abn_odd = "Odd",
-      k_abn_even = "Even",
-      k_tag = "Tag",
-      k_abn_light = "Light",
-      k_abn_dark = "Dark",
-      k_abn_device_dark = "DEVICE Joker",
-      k_abn_device_light = "ECIVED Joker", -- i think this is DEVICE just backwards
-      k_abn_darkner = "Darkner",
-      k_abn_lightner = "Lightner",
-
+      -- +1 smth
       k_abn_plus_nightshift = "+1 Nightshift",
       k_abn_plus_astro = "+1 Astro",
       k_abn_plus_sigil = "+1 Sigil",
@@ -873,6 +838,7 @@ return {
       k_abn_plus_solid_state = "+1 Solid State",
       k_plus_tag = "+1 Tag!",
 
+      -- Smth!
       k_abn_i_can_do_anything = "I CAN DO ANYTHING!", -- (deltarune reference)
       k_abn_limit_reached = "Max Level Reached!",
       k_abn_destroyed = "Destroyed!",
@@ -880,17 +846,12 @@ return {
       k_abn_rental = "Rental!",
       k_abn_oneshot = "Fire!",
       k_abn_blizzard = "Blizzard!",
-      k_abn_comedian = "Comedian",
-      k_abn_plagued = "Plagued",
       k_abn_polychrome = "Polychrome!",
       k_abn_onfire = "On Fire!",
       abn_kept = "Kept!",
       k_abn_tasty_ex = "Tasty!",
       k_abn_doubled_ex = "Doubled!",
-      k_abn_rankless = "Rankless",
-      k_abn_numbered = "numbered",
       k_abn_increased = "Increased!",
-      b_abn_ranks = "Ranks",
       k_abn_merged = "Merged!",
       k_abn_holo = "Holographic!",
       k_abn_activated_ex = "Activated!",
@@ -899,9 +860,11 @@ return {
       k_abn_brewed_ex = "Brewed!",
       k_abn_reduced_ex = "Reduced!",
 
+      -- Sides
       abn_hidden_side = "Hidden Scoundral",
       abn_king_side = "King of Jesters",
 
+      -- Planets?
       k_abn_satellite = "Satellite",
       k_abn_asteroid = "Asteroid",
       k_abn_tenalp = "Tenalp",
@@ -971,7 +934,6 @@ return {
 
       b_crepuscular_cards = "Crepuscular Tarot Cards",
       k_crepuscular = "Crepuscular Tarot",
-
     },
 
     v_dictionary = {
@@ -979,14 +941,6 @@ return {
     },
 
     labels = {
-      -- Stamps
-      abn_empty_stamp = "Empty Stamp",
-      abn_jester_stamp = "Jester Stamp",
-      abn_icon_stamp = "Icon Stamp",
-      abn_psychomancy_stamp = "Psychomancy Stamp",
-      abn_membership_stamp = "Membership Stamp",
-      abn_prehensile_stamp = "Prehensile Stamp",
-
       -- Consumable Types
       weather_report = "Weather Report",
       calamity_cards = "Calamity",

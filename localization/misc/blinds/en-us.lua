@@ -1,4 +1,3 @@
--- Decks, Blinds, Vouchers, Stakes
 return {
   descriptions = {
     Blind = {
