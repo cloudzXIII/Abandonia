@@ -927,7 +927,8 @@ return {
         text = {
           "Every played card gives",
           "{C:chips}+#1#{} Chips when scored if",
-          "a {C:program_pack}Program{} card is {C:attention}held{}"
+          "a {C:program_pack}Program{} card is {C:attention}held{}",
+		  "and {C:mult}+#2#{} Mult per {C:solid_state}Solid State{} card {C:attention}held",
         }
       },
 
