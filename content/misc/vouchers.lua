@@ -669,7 +669,7 @@ SMODS.Voucher({
 local old_card_for_shop = create_card_for_shop
 function create_card_for_shop(area)
 	local card = old_card_for_shop(area)
-	if card and card.ability and card.ability.set == "Joker" and pseudorandom(pseudoseed("v_abn_power_rank")) > 0.8 then
+	if G.GAME.used_vouchers["v_abn_power_rank"] and card and card.ability and card.ability.set == "Joker" and pseudorandom(pseudoseed("v_abn_power_rank")) > 0.8 then
 		local enh_sticker = SMODS.poll_object({pool = ABN.EnhStickerPool, seed = "abn_enhstickerpool"})
 		if enh_sticker then
 			card:add_sticker(enh_sticker, true)
