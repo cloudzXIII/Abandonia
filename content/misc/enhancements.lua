@@ -1303,7 +1303,7 @@ SMODS.Enhancement({
     end
     if context.main_scoring and context.cardarea == G.play then
       return {
-        mult = card.ability.extra.xmult
+        xmult = card.ability.extra.xmult
       }
     end
   end,
