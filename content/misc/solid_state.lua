@@ -39,7 +39,7 @@ ABN.SolidState {
       trigger = 'after',
       delay = 0.4,
       func = function()
-        local copy = copy_card(selected, nil, nil, nil, selected.edition)
+        local copy = SMODS.copy_card(selected)
         copy:add_to_deck()
         G.jokers:emplace(copy)
         copy:start_materialize()
