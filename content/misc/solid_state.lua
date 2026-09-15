@@ -40,9 +40,9 @@ ABN.SolidState {
       delay = 0.4,
       func = function()
         local copy = SMODS.copy_card(selected)
-        copy:add_to_deck()
-        G.jokers:emplace(copy)
-        copy:start_materialize()
+        --copy:add_to_deck()
+        --G.jokers:emplace(copy)
+        --copy:start_materialize()
         play_sound('card1', 1.2, 1.2)
 
         for _, joker in ipairs(G.jokers.cards) do
