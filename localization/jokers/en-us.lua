@@ -276,9 +276,9 @@ return {
           },
           {
             "If {C:attention}scoring hand{} is composed",
-            "of only {C:dark_edition}Vanilla{} Seals,",
-            "gain {V:1}#3#{} equal to",
-            "the amount of {C:attention}scoring cards{}"
+            "of only {C:inactive}Vanilla{} Seals, gain",
+            "{V:1}#3#{} equal to the amount",
+            "of {C:attention}scoring cards{}"
           },
           {
             "If {C:attention}scoring hand{} is composed",
