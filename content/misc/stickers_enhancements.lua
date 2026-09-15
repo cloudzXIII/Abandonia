@@ -1,7 +1,9 @@
 ABN.EnhStickerPool = {}
 ABN.EnhSticker = SMODS.Sticker:extend{
 	inject = function(self)
-		table.insert(ABN.EnhStickerPool, self.key)
+		if self.in_pool ~= false then
+			table.insert(ABN.EnhStickerPool, self.key)
+		end
 		ABN.EnhSticker.super.inject(self)
 	end,
     apply = function(self, card, val)
@@ -783,6 +785,7 @@ ABN.EnhSticker {
     badge_colour = HEX("56A786"),
     needs_enable_flag = true,
     rate = 0,
+	in_pool = false
     
 }
 for _, suit in ipairs(ABN.monitor_suits) do
