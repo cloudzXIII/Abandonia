@@ -946,11 +946,229 @@ ABN.EnhSticker {
   end,
 }
 
+ABN.EnhSticker {
+  key = 'stk_first_aid',
+  atlas = "AbandoniaStickers",
+  pos = { x = 2, y = 19 }, 
+  badge_colour = HEX("e6bb83"),
+  
+  loc_vars = function(self, info_queue, card)
+    local _key = card.ability[self.key .. "_t"] and card.ability[self.key .. "_t"] or self.config.extra
+    return { vars = { _key.mult, _key.mult_mod, _key.chips, _key.chips_mod } }
+  end,
+  config = {
+    extra = { 
+      mult = 0, 
+      mult_mod = 10, 
+      chips = 0, 
+      chips_mod = 10,
+    }
+  },
+  apply = function(self, card, val)
+    if val then
+      for _, key in ipairs(ABN.enh_stickers_list) do
+        card:remove_sticker(key)
+      end
+      card.ability[self.key .. "_t"] = {}
 
+      for k, v in pairs(self.config.extra) do
+        card.ability[self.key .. "_t"][k] = v
+      end
+    end
+    card.ability[self.key] = val
+  end,
+  
+  calculate = function(self, card, context)
+    if context.before then
+      local debuffed_count = 0
+      for _, playing_card in ipairs(context.scoring_hand) do
+        if playing_card.debuff then
+          debuffed_count = debuffed_count + 1
+        end
+      end
 
+      if debuffed_count > 0 then
+        SMODS.scale_card(card, {
+          ref_table = card.ability[self.key .. "_t"],
+          ref_value = "mult",
+          scalar_value = "mult_mod",
+          operation = function(ref_table, ref_value, initial, change)
+            ref_table[ref_value] = initial + (debuffed_count * change)
+          end,
+          no_message = true
+        })
+        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
+      end
+    end
 
+    if context.remove_playing_cards and not context.blueprint then
+      local destroyed_count = #context.removed or 0
+      if destroyed_count > 0 then
+        SMODS.scale_card(card, {
+          ref_table = card.ability[self.key .. "_t"],
+          ref_value = "chips",
+          scalar_value = "chips_mod",
+          operation = function(ref_table, ref_value, initial, change)
+            ref_table[ref_value] = initial + (destroyed_count * change)
+          end,
+          no_message = true
+        })
+        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
+      end
+    end
 
+    if context.joker_main then
+      return {
+        mult = card.ability[self.key .. "_t"].mult,
+        chips = card.ability[self.key .. "_t"].chips,
+      }
+    end
+  end,
+}
 
+ABN.EnhSticker {
+  key = 'stk_flux',
+  atlas = "AbandoniaStickers",
+  pos = { x = 4, y = 21 },
+  badge_colour = HEX("c86ed7"),
+  
+  loc_vars = function(self, info_queue, card)
+    local _key = card.ability[self.key .. "_t"] and card.ability[self.key .. "_t"] or self.config.extra
+    return { vars = { _key.score, _key.score_mod } }
+  end,
+  config = {
+    extra = { 
+      score = 100, 
+      score_mod = 100,
+    }
+  },
+  apply = function(self, card, val)
+    if val then
+      for _, key in ipairs(ABN.enh_stickers_list) do
+        card:remove_sticker(key)
+      end
+      card.ability[self.key .. "_t"] = {}
+
+      for k, v in pairs(self.config.extra) do
+        card.ability[self.key .. "_t"][k] = v
+      end
+    end
+    card.ability[self.key] = val
+  end,
+  
+  calculate = function(self, card, context)
+    if context.joker_main then
+      return {
+        score = card.ability[self.key .. "_t"].score
+      }
+    end
+
+    if context.end_of_round and not context.blueprint and context.game_over == false then
+      SMODS.scale_card(card, {
+        ref_table = card.ability[self.key .. "_t"],
+        ref_value = "score",
+        scalar_value = "score_mod",
+        no_message = true
+      })
+      return {
+        message = localize('k_upgrade_ex'),
+        colour = HEX("c86ed7")
+      }
+    end
+  end,
+}
+
+ABN.EnhSticker {
+  key = 'stk_zen',
+  atlas = "AbandoniaStickers",
+  pos = { x = 1, y = 21 },
+  badge_colour = HEX("fff5bb"),
+  
+  loc_vars = function(self, info_queue, card)
+    local _key = card.ability[self.key .. "_t"] and card.ability[self.key .. "_t"] or self.config.extra
+    return { vars = { _key.mult, _key.mult_mod } }
+  end,
+  config = {
+    extra = { 
+      mult = 2, 
+      mult_mod = 1,
+    }
+  },
+  apply = function(self, card, val)
+    if val then
+      for _, key in ipairs(ABN.enh_stickers_list) do
+        card:remove_sticker(key)
+      end
+      card.ability[self.key .. "_t"] = {}
+
+      for k, v in pairs(self.config.extra) do
+        card.ability[self.key .. "_t"][k] = v
+      end
+    end
+    card.ability[self.key] = val
+  end,
+  
+  calculate = function(self, card, context)
+    if context.joker_main then
+      local hand_count = G.hand and #G.hand.cards or 0
+
+      if hand_count > 0 then
+        SMODS.scale_card(card, {
+          ref_table = card.ability[self.key .. "_t"],
+          ref_value = "mult",
+          scalar_value = "mult_mod",
+          operation = function(ref_table, ref_value, initial, change)
+            ref_table[ref_value] = initial + (hand_count * change)
+          end,
+          no_message = true
+        })
+        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
+      end
+
+      return {
+        mult = card.ability[self.key .. "_t"].mult
+      }
+    end
+  end,
+}
+
+ABN.EnhSticker {
+  key = 'stk_plank',
+  atlas = "AbandoniaStickers",
+  pos = { x = 0, y = 22 }, 
+  badge_colour = HEX("c99164"),
+  
+  loc_vars = function(self, info_queue, card)
+    local _key = card.ability[self.key .. "_t"] and card.ability[self.key .. "_t"] or self.config.extra
+    return { vars = { _key.asc } }
+  end,
+  config = {
+    extra = { 
+      asc = 0.25,
+    }
+  },
+  apply = function(self, card, val)
+    if val then
+      for _, key in ipairs(ABN.enh_stickers_list) do
+        card:remove_sticker(key)
+      end
+      card.ability[self.key .. "_t"] = {}
+
+      for k, v in pairs(self.config.extra) do
+        card.ability[self.key .. "_t"][k] = v
+      end
+    end
+    card.ability[self.key] = val
+  end,
+  
+  calculate = function(self, card, context)
+    if context.joker_main then
+      return {
+        asc = card.ability[self.key .. "_t"].asc
+      }
+    end
+  end,
+}
 
 
 
@@ -1058,5 +1276,22 @@ ABN.enh_stickers_vars = {
     SMODS.Stickers["abn_stk_lightner"].config.extra.chips,
     SMODS.Stickers["abn_stk_lightner"].config.extra.mult,
     SMODS.Stickers["abn_stk_lightner"].config.extra.cards,
+  },
+  abn_stk_first_aid     = SMODS.Stickers["abn_stk_first_aid"] and {
+    SMODS.Stickers["abn_stk_first_aid"].config.extra.mult,
+    SMODS.Stickers["abn_stk_first_aid"].config.extra.mult_mod,
+    SMODS.Stickers["abn_stk_first_aid"].config.extra.chips,
+    SMODS.Stickers["abn_stk_first_aid"].config.extra.chips_mod,
+  },
+  abn_stk_flux          = SMODS.Stickers["abn_stk_flux"] and {
+    SMODS.Stickers["abn_stk_flux"].config.extra.score,
+    SMODS.Stickers["abn_stk_flux"].config.extra.score_mod,
+  },
+  abn_stk_zen           = SMODS.Stickers["abn_stk_zen"] and {
+    SMODS.Stickers["abn_stk_zen"].config.extra.mult,
+    SMODS.Stickers["abn_stk_zen"].config.extra.mult_mod,
+  },
+  abn_stk_plank         = SMODS.Stickers["abn_stk_plank"] and {
+    SMODS.Stickers["abn_stk_plank"].config.extra.asc,
   },
 }
