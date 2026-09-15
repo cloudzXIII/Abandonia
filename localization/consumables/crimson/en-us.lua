@@ -101,6 +101,42 @@ return {
           }
         }
       },
+	  c_abn_zauri = {
+        name = "Zauri",
+        text = {
+          {
+            "Enhance the {C:attention}leftmost{}",
+            "Joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
+	  c_abn_okertua = {
+        name = "Okertua",
+        text = {
+          {
+            "Enhance the {C:attention}leftmost{}",
+            "Joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
+	  c_abn_amaigabea = {
+        name = "Amaigabea",
+        text = {
+          {
+            "Enhance the {C:attention}leftmost{}",
+            "Joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
+	  c_abn_basua = {
+        name = "Basua",
+        text = {
+          {
+            "Enhance the {C:attention}rightmost{}",
+            "Joker to {C:enhanced}#1#{}"
+          }
+        }
+      },
     },
   },
 }
