@@ -282,10 +282,10 @@ return {
           },
           {
             "If {C:attention}scoring hand{} is composed",
-            "of only {C:dark_edition}Modded{} Seals,",
-            "gain {B:1,C:white}x#3#{} equal to",
-            "the amount of {C:attention}scoring cards{}",
-            "then {C:attention}flip{} this Joker",
+            "of only {C:dark_edition}Modded{} Seals, gain",
+            "{B:1,C:white}x#3#{} equal to the amount",
+            "of {C:attention}scoring cards{} then",
+            "{C:attention}flip{} this Joker",
             "{C:inactive}(Currently {V:1}+#1#{C:inactive} #3#,{} {B:1,C:white}X#2#{C:inactive} #3#){}",
           },
         }
@@ -928,7 +928,7 @@ return {
           "Every played card gives",
           "{C:chips}+#1#{} Chips when scored if",
           "a {C:program_pack}Program{} card is {C:attention}held{}",
-		  "and {C:mult}+#2#{} Mult per {C:solid_state}Solid State{} card {C:attention}held",
+          "and {C:mult}+#2#{} Mult per {C:solid_state}Solid State{} card {C:attention}held",
         }
       },
 
@@ -1667,13 +1667,21 @@ return {
         }
       },
 
-      j_abn_contagion_joker = { -- to relocalise
+      j_abn_contagion_joker = {
         name = "Contagion Joker",
         text = {
-          "{C:green}#1# in #2#{} chance for cards with {C:attention}seals{} to turn into {C:purple}Contagion Seals{}",
-          "{C:green}#3# in #4#{} chance for {C:dark_edition}enhanced{} cards to turn into {C:purple}Contagion Bonus cards{}",
-          "{C:green}#5# in #6#{} chance for played cards with {C:dark_edition}editions{} to turn into {C:purple}Contagion Mult{}",
-          "Other {C:abn_plagued}Plagued{} Jokers give {X:mult,C:white}^#7#{} Mult",
+          {
+            "{C:green}#1# in #2#{} chance to convert {C:attention}Sealed{}",
+            "cards into {C:purple}Contagion Seals{},",
+            "{C:green}#3# in #4#{} chance to convert {C:attention}Enhanced{}",
+            "cards into {C:purple}Contagion Bonus Cards{},",
+            "{C:green}#5# in #6#{} chance to convert {C:dark_edition}Editioned{}",
+            "cards into {C:purple}Contagion Mult{}",
+          },
+          {
+            "Other {C:abn_plagued}Plagued{} Jokers",
+            "each give {X:mult,C:white}^#7#{} Mult",
+          },
         }
       },
 
@@ -2229,14 +2237,24 @@ return {
         }
       },
 
-      j_abn_dirac = { -- to relocalise
+      j_abn_dirac = {
         name = "Dirac",
         text = {
-          "{C:dark_edition}Negative{} {C:dark_edition}Modded{} Cards and Jokers can't {C:mult}debuffed{}",
-          "If this Joker has {C:dark_edition}Negative{} increase {C:attention}handsize{} by {C:attention}+#5#{}",
-          "Gain {X:chips,C:white}X#2#{} Chips per scoring {C:dark_edition}Modded{} {C:dark_edition}Negative{} card",
-          "Gain {X:mult,C:white}X#4#{} Mult per triggered {C:dark_edition}Modded{} {C:dark_edition}Negative{} joker",
-          "{C:inactive}(Currently{} {X:chips,C:white}X#1#{} {C:inactive}Chips{} {X:mult,C:white}X#3#{} {C:inactive}Mult){}",
+          {
+            "{C:dark_edition}Modded{} {C:dark_edition}Negative{} Jokers and",
+            "cards cannot be {C:red}debuffed{}",
+          },
+          {
+            "If this Joker has {C:dark_edition}Negative{}",
+            "edition, {C:attention}+#5#{} hand size",
+          },
+          {
+            "This Joker gains {X:chips,C:white}X#2#{} Chips per",
+            "scoring {C:dark_edition}Modded{} {C:dark_edition}Negative{} card,",
+            "gains {X:mult,C:white}X#4#{} Mult when a {C:dark_edition}Modded{}",
+            "{C:dark_edition}Negative{} Joker is triggered",
+            "{C:inactive}(Currently{} {X:chips,C:white}X#1#{} {C:inactive}Chips{} {X:mult,C:white}X#3#{} {C:inactive}Mult){}",
+          },
         }
       },
 
@@ -2403,16 +2421,24 @@ return {
         }
       },
 
-      j_abn_dungeon_crawler = { -- to relocalise
+      j_abn_dungeon_crawler = {
         name = "Dungeon Crawler",
         text = {
-          "Pay {C:money}$#1#{} to add {C:attention}+1{} Joker slot",
-          "Increase {C:attention}finishing Ante{} by {C:attention}+1{} for every Joker above {C:attention}5{}",
-          "Jokers with {C:inactive}Vanilla{} {C:dark_edition}Editions{} give {C:gold}+#2#{} Ascension Power",
-          "Scoring cards with {C:inactive}Vanilla{} {C:dark_edition}Editions{} give {C:gold}+#3#{} Ascension Power",
-          "If a {C:inactive}Vanilla{} Suit card with a {C:inactive}Vanilla{} {C:dark_edition}Edition{} matches a Joker's {C:dark_edition}Edition{}",
-          "this Joker gains {C:gold}+#4#{} Ascension Power",
-          "{C:inactive}(Currently{} {C:gold}+#5#{} {C:inactive}Ascension Power){}",
+          {
+            "Pay {C:money}$#1#{} to add {C:attention}+1{} Joker slot,",
+            "increase finishing {C:attention}Ante{} by {C:attention}+1{}",
+            "for every Joker above {C:attention}5{}",
+          },
+          {
+            "Jokers and cards with {C:inactive}Vanilla{}",
+            "{C:dark_edition}Editions{} give {C:gold}+#2#{} Asc. Power",
+          },
+          {
+            "If a card with a {C:inactive}Vanilla{} suit and {C:dark_edition}Edition{}",
+            "matches a held {C:attention}Joker{}'s {C:dark_edition}Edition{},",
+            "this Joker gains {C:gold}+#4#{} Asc. Power",
+            "{C:inactive}(Currently{} {C:gold}+#5#{} {C:inactive}Ascension Power){}",
+          }
         }
       },
 
@@ -2464,19 +2490,19 @@ return {
         }
       },
 
-      j_abn_edition_anonymous = { -- to maybe relocalise
+      j_abn_edition_anonymous = {
         name = "Edition Anonymous",
         text = {
           {
             "When an {C:dark_edition}Editioned{} card scores,",
-            "{C:attention}randomise{} its {C:dark_edition}Edition{}",
-            "Each card that changes {C:dark_edition}Editions{}",
+            "{C:attention}randomise{} its {C:dark_edition}Edition{}, each",
+            "card that changes {C:dark_edition}Edition{}",
             "gains {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
           },
           {
             "When {C:attention}Blind{} is defeated, {C:attention}randomise{}",
             "the {C:dark_edition}Edition{} of all owned Jokers,",
-            "Each Joker that changes {C:dark_edition}Edition{}",
+            "each Joker that changes {C:dark_edition}Edition{}",
             "gains {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
           },
         }
@@ -3119,15 +3145,25 @@ return {
         }
       },
 
-      j_abn_forgotten_joker = { -- to relocalise
+      j_abn_forgotten_joker = {
         name = "Forgotten Joker",
         text = {
-          "{C:attention}Ante{} increases {C:attention}twice as fast{}",
-          "When upgrading a {C:attention}Vanilla{} hand create a random {C:dark_edition}negative{} {C:attention}vanilla{} consumable",
-          "When upgrading a {C:dark_edition}Modded{} hand create a random {C:dark_edition}negative{} {C:dark_edition}Modded{} consumable",
-          "When a {C:attention}Vanilla{} hand is played with {C:attention}2+{} levels {C:mult}downgrade{} {C:attention}level{} and gain {C:attention}Triple{} the {C:chips}Chips{} lost",
-          "When a {C:dark_edition}Modded{} hand is played with {C:attention}2+{} levels {C:mult}downgrade{} {C:attention}level{} and gain {C:attention}Triple{} the {C:mult}Mult{} lost",
-          "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips{} {C:mult}+#2#{} {C:inactive}Mult){}",
+          {
+            "{C:attention}Ante{} scaling is {C:attention}twice{} as fast",
+          },
+          {
+            "When upgrading a {C:inactive}Vanilla{} hand, create",
+            "a random {C:dark_edition}Negative{} {C:inactive}Vanilla{} consumable",
+            "When upgrading a {C:dark_edition}Modded{} hand, create",
+            "a random {C:dark_edition}Negative{} {C:dark_edition}Modded{} consumable",
+          },
+          {
+            "When a level {C:attention}2+{} {C:inactive}Vanilla{} hand is played,",
+            "{C:mult}level down{} and gain {C:attention}triple{} the {C:chips}Chips{} lost,",
+            "When a level {C:attention}2+{} {C:dark_edition}Modded{} hand is played,",
+            "{C:mult}level down{} and gain {C:attention}triple{} the {C:mult}Mult{} lost,",
+            "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips,{} {C:mult}+#2#{} {C:inactive}Mult){}",
+          },
         }
       },
 
@@ -4706,7 +4742,7 @@ return {
             "{C:dark_edition}Reversal {C:diamonds}Lightner{} cards give {C:chips}+#3#{} Chips and {C:mult}+#4#{} Mult"
           },
           {
-            "If this joker is {C:dark_edition}Abandoned{}, it",
+            "If this Joker has {C:dark_edition}Abandoned{} edition, it",
             "gains {X:mult,C:white}X#5#{} Mult for each scoring",
             "{C:spades}Darkner{} card and {X:chips,C:white}X#6#{} Chips for",
             "each scoring {C:diamonds}Lightner{} card",
@@ -6523,13 +6559,19 @@ return {
         }
       },
 
-      j_abn_perfidious_comedian = { -- to relocalise
+      j_abn_perfidious_comedian = {
         name = "Perfidious Comedian",
         text = {
-          "{C:attention}Even{} and {C:attention}Odd{} cards with {C:attention}Seals{} held in hand count in scoring",
-          "When an {C:attention}Even{} card with a {C:attention}Seal{} scores gain {C:mult}Mult{} equal to its {C:attention}rank{}",
-          "When an {C:attention}Odd{} card with a {C:attention}Seal{} scores gain {C:chips}Chips{} equal to its {C:attention}rank{}",
-          "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}"
+          {
+            "{C:attention}Sealed{} {C:attention}even{} and {C:attention}odd{} cards",
+            "{C:attention}held in hand{} count in scoring",
+          },
+          {
+            "When a {C:attention}Sealed{} {C:attention}even{} card scores,",
+            "gain its {C:attention}rank{} as {C:mult}Mult{}, if its",
+            "{C:attention}odd{} gain its {C:attention}rank{} as {C:chips}Chips{}",
+            "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}"
+          }
         }
       },
 
@@ -8053,21 +8095,21 @@ return {
         }
       },
 
-      j_abn_suit_seal_joker = { -- to relocalise
+      j_abn_suit_seal_joker = {
         name = "Suit Seal Joker",
         text = {
           {
-            "If hand has {C:attention}4 unique{} suits",
-            "Add a {C:abn_violet_seal}Violet Seal{} to all",
-            "{C:spades}dark suit{} cards without seals,",
+            "If played hand has {C:attention}4{} unique {C:attention}suits{},",
+            "add a {C:abn_violet_seal}Violet Seal{} to all",
+            "{C:spades}Dark Suits{} without seals,",
             "add a {C:abn_brown_seal}Brown Seal{} to all",
-            "{C:diamonds}light suit{} cards without seals",
+            "{C:diamonds}Light Suits{} without seals",
           },
           {
-            "This Joker gains {C:chips}+#4#{} chips and {C:mult}+#3#{} Mult",
-            "per played {C:diamonds}light suit{} with a seal,",
-            "Gains {C:chips}+#3#{} chips and {C:mult}+#4#{} Mult",
-            "per played {C:spades}dark suit{} with a seal",
+            "This Joker gains {C:chips}+#4#{} Chips and {C:mult}+#3#{} Mult",
+            "per played {C:diamonds}Light Suit{} with a {C:attention}seal{},",
+            "gains {C:chips}+#3#{} Chips and {C:mult}+#4#{} Mult per",
+            "played {C:spades}Dark Suit{} with a {C:attention}seal{}",
             "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips){}",
           },
         }
@@ -9139,12 +9181,13 @@ return {
         }
       },
 
-      j_abn_yanga_joker = { -- to relocalise
+      j_abn_yanga_joker = { -- slightly relocalise, not too sure about the second multibox (lots of repetition that prolly could be cut down)
         name = "Yanga Joker",
         text = {
           {
-            "Gain {C:chips}+#4#{} Chips when an {C:attention}Opaque{} card scores",
-            "Gains {C:mult}+#3#{} Mult when a {C:dark_edition}Chthonian{} card scores",
+            "This Joker gains {C:chips}+#4#{} Chips when an",
+            "{C:dark_edition}Opaque{} card scores, gains {C:mult}+#3#{} Mult",
+            "when a {C:dark_edition}Chthonian{} card scores",
             "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {C:chips}+#2#{} {C:inactive}Chips)",
           },
           {

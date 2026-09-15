@@ -147,11 +147,10 @@ return {
         text = {
           {
             "Add {C:abn_eternal}Eternal{} and {C:dark_edition}Holographic{} to",
-            "the {C:attention}leftmost{} Joker",
-            "Add {C:abn_eternal}Eternal{} and {C:dark_edition}Foil{} to",
-            "the {C:attention}rightmost{} Joker",
-            "move them both into the",
-            "{C:attention}consumable area{}",
+            "the {C:attention}leftmost{} Joker, add {C:abn_eternal}Eternal{}",
+            "and {C:dark_edition}Foil{} to the {C:attention}rightmost{} Joker,",
+            "and move them both into",
+            "your {C:attention}consumable slots{}",
           },
           {
             "{C:red}-1{} shop slot",
