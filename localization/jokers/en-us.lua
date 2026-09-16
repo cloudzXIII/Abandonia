@@ -682,6 +682,21 @@ return {
         }
       },
 
+      j_abn_balatro_mod_manager = {
+        name = "Balatro Mod Manager",
+        text = {
+          {
+            "When {C:attention}Boss Blind{} is defeated,",
+            "each Joker gains a random {C:attention}Enhancement{}"
+          },
+          {
+            "Whenever a Joker changes",
+            "{C:attention}Enhancement{}, it gains",
+            "{C:gold}+#1#{} Ascension Power"
+          },
+        }
+      },
+
       j_abn_balatro_the_movie = {
         name = "Balatro: The Movie",
         text = {
@@ -4535,6 +4550,28 @@ return {
             "{C:mult}+#3#{} Mult for every {C:abn_rose}Rose{}",
             "{C:abn_rose}Rose{} scored this Blind"
           }
+        }
+      },
+
+      j_abn_jjjokea = {
+        name = "J.J.Jokea",
+        text = {
+          {
+            "If {V:1}first played hand{} is a",
+            "{C:attention}#1#{}, copy the {C:attention}Enhancement{},",
+            "{C:dark_edition}Edition{}, and {C:red}Seal{} of the",
+            "{C:attention}right{} card to the {C:attention}left{} card"
+          },
+          {
+            "If {V:2}second played hand{} is a {C:attention}#2#{},",
+            "each card gains a new {C:tarot}Stamp"
+          },
+          {
+            "If {V:3}third played hand{} is a",
+            "{C:attention}#3#{}, each scoring",
+            "card gains {C:attention}Plank{}, {C:dark_edition}Chromatic{},",
+            "and {C:red}Red Seal"
+          },
         }
       },
 
@@ -9326,43 +9363,6 @@ return {
           "an {C:attention}Ace{} and a {C:attention}numbered card{}",
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
         },
-      },
-
-      j_abn_jjjokea = {
-        name = "J.J.Jokea",
-        text = {
-          {
-            "If {V:1}first played hand{} is a",
-            "{C:attention}#1#{}, copy the {C:attention}Enhancement{},",
-            "{C:dark_edition}Edition{}, and {C:red}Seal{} of the",
-            "{C:attention}right{} card to the {C:attention}left{} card"
-          },
-          {
-            "If {V:2}second played hand{} is a {C:attention}#2#{},",
-            "each card gains a new {C:tarot}Stamp"
-          },
-          {
-            "If {V:3}third played hand{} is a",
-            "{C:attention}#3#{}, each scoring",
-            "card gains {C:attention}Plank{}, {C:dark_edition}Chromatic{},",
-            "and {C:red}Red Seal"
-          },
-        }
-      },
-
-      j_abn_balatro_mod_manager = {
-        name = "Balatro Mod Manager",
-        text = {
-          {
-            "When {C:attention}Boss Blind{} is defeated,",
-            "each Joker gains a random {C:attention}Enhancement{}"
-          },
-          {
-            "Whenever a Joker changes",
-            "{C:attention}Enhancement{}, it gains",
-            "{C:gold}+#1#{} Ascension Power"
-          },
-        }
       },
     },
   },
