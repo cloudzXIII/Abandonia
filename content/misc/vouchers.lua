@@ -659,11 +659,13 @@ SMODS.Voucher({
         y = 3,
     },
     cost = 10,
-    --requires = { "v_abn_silver_spoon" },
-    
-    redeem = function(self, card)
-        --G.GAME.abn_power_rank = true
-    end,
+    in_pool = function(self, args)
+		for _, area in ipairs(SMODS.get_card_areas("jokers")) do
+			for __, joker in ipairs(area.cards) do
+				if ABN.get_joker_enh(joker) then return true end
+			end
+		end
+	end
 })
 
 local old_card_for_shop = create_card_for_shop
