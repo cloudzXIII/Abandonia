@@ -29,8 +29,8 @@ return {
         name = "RAM 03",
         text = {
           "Creates a random {C:dark_edition}Modded{}",
-          "{C:attention}consumable{} once per held",
-          "{C:inactive}Vanilla{} {C:attention}consumable{}",
+          "{C:attention}consumable{} once per",
+          "held {C:inactive}Vanilla{} {C:attention}consumable{}",
           "{C:inactive}(Max of {C:attention}#1#{C:inactive})",
           "{C:inactive}(Will create {C:attention}#2#{C:inactive})",
         },

@@ -230,6 +230,84 @@ SMODS.Consumable {
 }
 
 SMODS.Consumable {
+  key = "ram_03",
+  set = 'ram',
+
+  atlas = "abn_AbandoniaRam",
+  pos = { x = 3, y = 0 },
+  cost = 4,
+
+  config = { extra = { max = 20 } },
+
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    local consumables = 0
+    for _, v in ipairs(G.consumeables and G.consumeables.cards or {}) do
+      if v ~= card and not v.config.center.mod then
+        consumables = consumables + 1
+      end
+    end
+    return {
+      vars = {
+        cae.max,
+        math.min(consumables, cae.max)
+      }
+    }
+  end,
+
+  can_use = function(self, card)
+    local consumables = {}
+    for _, v in ipairs(G.consumeables and G.consumeables.cards or {}) do
+      if v ~= card and not v.config.center.mod then
+        consumables[#consumables + 1] = v
+      end
+    end
+    return #consumables > 0
+  end,
+
+  use = function(self, card, area, copier)
+    card:juice_up(0.3, 0.5)
+    local consumables = 0
+    for _, v in ipairs(G.consumeables and G.consumeables.cards or {}) do
+      if v ~= card and not v.config.center.mod then
+        consumables = consumables + 1
+      end
+    end
+    local to_create = math.min(consumables, card.ability.extra.max)
+
+    if consumables > 0 then
+      local pool = {}
+      for k, v in pairs(G.P_CENTERS) do
+        if v.mod and v.consumeable and v.set and v.set ~= 'ram' then
+          pool[#pool + 1] = v
+        end
+      end
+
+
+      for i = 1, to_create do
+        local key = (pseudorandom_element(pool, "abn_ram003")).key
+        G.E_MANAGER:add_event(Event({
+          trigger = 'after',
+          delay = 0.4,
+          func = function()
+            play_sound('timpani')
+            SMODS.add_card({ key = key })
+            card:juice_up(0.3, 0.5)
+            return true
+          end
+        }))
+      end
+
+      delay(0.5)
+    end
+  end,
+
+  abn_artist_credits = {
+    artist = "GM36"
+  },
+}
+
+SMODS.Consumable {
   key = "ram_04",
   set = 'ram',
 
@@ -237,7 +315,7 @@ SMODS.Consumable {
   pos = { x = 4, y = 0 },
   cost = 4,
 
-  config = { extra = { dollars = 5 } },
+  config = { extra = {} },
 
   loc_vars = function(self, info_queue, card)
     return {
@@ -318,6 +396,61 @@ SMODS.Consumable {
 
       delay(0.5)
     end
+  end,
+
+  abn_artist_credits = {
+    artist = "GM36"
+  },
+}
+
+SMODS.Consumable {
+  key = "ram_06",
+  set = 'ram',
+
+  atlas = "abn_AbandoniaRam",
+  pos = { x = 0, y = 1 },
+  cost = 4,
+
+  config = { extra = {} },
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_chromatic
+    return {
+      vars = {
+      }
+    }
+  end,
+
+  can_use = function(self, card)
+    local cards = {}
+    for _, v in ipairs(G.consumeables.cards) do
+      if not v.edition and v.config.center.mod and v ~= card then
+        cards[#cards + 1] = v
+      end
+    end
+    return #cards > 0
+  end,
+
+  use = function(self, card, area, copier)
+    local cards = {}
+    for _, v in ipairs(G.consumeables.cards) do
+      if not v.edition and v.config.center.mod and v ~= card then
+        cards[#cards + 1] = v
+      end
+    end
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        for _, v in ipairs(cards) do
+          v:set_edition("e_abn_chromatic")
+        end
+
+        card:juice_up(0.3, 0.5)
+        return true
+      end
+    }))
   end,
 
   abn_artist_credits = {
