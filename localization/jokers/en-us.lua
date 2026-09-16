@@ -837,7 +837,7 @@ return {
           "Gains {X:mult,C:white}X#5#{} Mult if a {C:lexica}Lexica{} Card is {C:attention}held{}",
           "Gains {C:mult}+#6#{} Mult if a {C:program_pack}Program{} Card is {C:attention}held{}",
           "Gains {C:chips}+#8#{} Chips if a {C:weather_report}Weather Report{} is {C:attention}held{}",
-          "Gains {X:chips,C:white}X#7#{} Mult if a {C:calamity_cards}Calamity{} Card is {C:attention}held{}",
+          "Gains {X:chips,C:white}X#7#{} Chips if a {C:calamity_cards}Calamity{} Card is {C:attention}held{}",
           "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive},{} {C:mult}+#2#{} {C:inactive},{} {X:chips,C:white}X#3#{} {C:inactive},{} {C:chips}+#4#{} {C:inactive}){}"
         }
       },
@@ -848,7 +848,7 @@ return {
           "This Joker gains {C:chips}+#2#{} Chips",
           "if {C:attention}Blind{} is defeated",
           "on {C:attention}final hand{} of round",
-          "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
         }
       },
 
@@ -1252,7 +1252,7 @@ return {
         text = {
           "Played cards with {C:dark_edition}Modded{}",
           "Suits give {C:chips}+#1#{} Chips and",
-          "{C:mult}+#2#{} Mult chwhen scored"
+          "{C:mult}+#2#{} Mult when scored"
         }
       },
 
@@ -1752,6 +1752,7 @@ return {
             "This Joker gains",
             "{X:chips,C:white}^#2#{} Chips every time",
             "a {C:planet}Planet{} card is used",
+            "{C:inactive}(Currently {X:chips,C:white}^#1#{} {C:inactive}Chips)",
 
           },
           {
@@ -1945,8 +1946,8 @@ return {
         name = "Dark Magoker", -- note for localisers: this is Magician + Joker or something
         text = {
           "Cards with a {C:spades}Dark Suit{}",
-          "are moved to the top of",
-          "your {C:attention}full deck{}",
+          "are moved to the top",
+          "of your {C:attention}deck{}",
         }
       },
 
@@ -2387,7 +2388,7 @@ return {
           },
           {
             "If a {C:attention}Fossil Card{} is {C:mult}destroyed{},",
-            "its {C:attention}rank{} as {C:mult}Mult",
+            "give its {C:attention}rank{} as {C:mult}Mult",
             "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#3#{} {C:inactive}Mult{})"
           },
         }
@@ -2396,10 +2397,14 @@ return {
       j_abn_drifter_joker = {
         name = "Drifter Joker",
         text = {
-          "If {C:attention}first discard{} of round,",
-          "discarded cards become {C:attention}Fossil Cards{},",
-          "{C:attention}Rankless{} cards {C:attention}return{} to hand",
-          "when played for the first time"
+          {
+            "If {C:attention}first discard{} of round,",
+            "discarded cards become {C:attention}Fossil Cards{}",
+          },
+          {
+            "{C:attention}Rankless{} cards {C:attention}return{} to hand",
+            "when played for the first time"
+          }
         }
       },
 
