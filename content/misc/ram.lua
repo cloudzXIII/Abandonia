@@ -240,17 +240,8 @@ SMODS.Consumable {
   config = { extra = { dollars = 5 } },
 
   loc_vars = function(self, info_queue, card)
-    local cae = card.ability.extra
-    local money = 0
-    for _, v in ipairs(G.consumeables and G.consumeables.cards or {}) do
-      if v ~= card and v.config.center.mod then
-        money = money + card.ability.extra.dollars
-      end
-    end
     return {
       vars = {
-        money,
-        cae.dollars
       }
     }
   end,
