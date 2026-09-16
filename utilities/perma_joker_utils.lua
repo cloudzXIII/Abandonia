@@ -84,13 +84,16 @@ function ABN.add_extra_multiboxes(_c, card, info_queue, desc_nodes, specific_var
       "abn_perma_dollars",
       "abn_perma_rep",
       "abn_perma_score",
+      "abn_perma_asc",
     }
 
     local text = {}
+    local vars = {}
     for _, perma_bonus in ipairs(joker_bonuses) do
-      if ability and ability[perma_bonus] and ability[perma_bonus] > 0 then
+      if ability[perma_bonus] and ability[perma_bonus] > 0 then
         text[#text + 1] = G.localization.misc.dictionary[perma_bonus]
       end
+      table.insert(vars, ability[perma_bonus] or 0)
     end
 
     if #text > 0 then
@@ -98,17 +101,7 @@ function ABN.add_extra_multiboxes(_c, card, info_queue, desc_nodes, specific_var
         {
           localized_text = text,
           loc_vars = function(self, card, center)
-            return {
-              vars = {
-                ability.abn_perma_bonus or 0,
-                ability.abn_perma_mult or 0,
-                ability.abn_perma_xmult or 0,
-                ability.abn_perma_xchips or 0,
-                ability.abn_perma_dollars or 0,
-                ability.abn_perma_rep or 0,
-                ability.abn_perma_score or 0,
-              }
-            }
+            return {vars = vars}
           end
         }
       })(_c, info_queue, card, desc_nodes, specific_vars, full_UI_table)

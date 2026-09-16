@@ -794,6 +794,7 @@ return {
       abn_perma_dollars = "{C:money}$#5#{} extra Dollars",
       abn_perma_rep = "{C:attention}+#6#{} extra Repetitions",
       abn_perma_score = "{C:purple}+#7#{} extra Score",
+      abn_perma_asc = "{C:gold}+#8#{} Ascension Power",
 
       -- Sigil menu
       ph_abn_sigils_active = "Sigils Active",
@@ -869,6 +870,7 @@ return {
       k_abn_chthonian = "Chthonian!",
       k_abn_brewed_ex = "Brewed!",
       k_abn_reduced_ex = "Reduced!",
+      k_abn_enhanced_ex = "Enhanced!",
 
       -- Sides
       abn_hidden_side = "Hidden Scoundral",

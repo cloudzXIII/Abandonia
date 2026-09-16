@@ -1,3 +1,5 @@
+ABN.StampPool = {}
+
 -- Create collection entry for Stamps
 SMODS.current_mod.custom_collection_tabs = function()
   return {
@@ -170,7 +172,11 @@ end
 
 -- apply stamps with this function
 function abn_add_stamp(card, new_stamp_key)
-    if card and card.ability and SMODS and SMODS.Sticker and SMODS.Sticker.obj_buffer then
+	if not new_stamp_key then
+		new_stamp_key = SMODS.poll_object({pool = ABN.StampPool, seed = "abn_stamppool"})
+	end
+
+    if card.ability and SMODS and SMODS.Sticker and SMODS.Sticker.obj_buffer then
         for _, sticker in ipairs(SMODS.Sticker.obj_buffer) do
             if card.ability[sticker] and ABN_is_stamp(sticker) then
                 card:remove_sticker(sticker)
@@ -181,6 +187,13 @@ function abn_add_stamp(card, new_stamp_key)
     card:add_sticker(new_stamp_key, true)
 end
 
+local old_sticker_inject = SMODS.Sticker.inject
+function SMODS.Sticker:inject()
+	old_sticker_inject(self)
+	if self.set == "stamp" then
+		table.insert(ABN.StampPool, self.key)
+	end
+end
 
 SMODS.Sticker {
     key = 'empty_stamp',

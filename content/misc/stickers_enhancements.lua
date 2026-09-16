@@ -8,16 +8,21 @@ ABN.EnhSticker = SMODS.Sticker:extend{
 	end,
     apply = function(self, card, val)
         if val then
+            local oldkey = nil
             for _, key in ipairs(ABN.enh_stickers_list) do
-              card:remove_sticker(key)
+              if card.ability[key] then
+		        oldkey = key
+                card:remove_sticker(key)
+		        break
+              end
             end
+            SMODS.calculate_context({abn_joker_enhanced = true, card = card, sticker = self.key, previous_enhancement = oldkey})
         end
         card.ability[self.key] = val
     end,
     default_compat = false,
     no_collection =  false,
 }
-
 
 ABN.EnhSticker {
   key = 'stk_bonus',

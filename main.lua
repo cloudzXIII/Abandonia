@@ -239,8 +239,9 @@ ABN.calculate = function(self, context)
     local has_x_chips = ability.abn_perma_xchips and ability.abn_perma_xchips ~= 1
     local has_dollars = ability.abn_perma_dollars and ability.abn_perma_dollars ~= 0
     local has_score = ability.abn_perma_score and ability.abn_perma_score ~= 0
+    local has_asc = ability.abn_perma_asc and ability.abn_perma_asc ~= 0
 
-    if has_chips or has_mult or has_x_mult or has_x_chips or has_dollars or has_score then
+    if has_chips or has_mult or has_x_mult or has_x_chips or has_dollars or has_score or has_asc then
       return {
         chips = has_chips and ability.abn_perma_bonus or nil,
         mult = has_mult and ability.abn_perma_mult or nil,
@@ -248,6 +249,7 @@ ABN.calculate = function(self, context)
         x_chips = has_x_chips and ability.abn_perma_xchips or nil,
         dollars = has_dollars and ability.abn_perma_dollars or nil,
         score = has_score and ability.abn_perma_score or nil,
+        asc = has_asc and ability.abn_perma_asc or nil,
         card = context.other_joker,
         message_card = context.other_joker,
         no_juice = true,
