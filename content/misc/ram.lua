@@ -228,3 +228,108 @@ SMODS.Consumable {
     artist = "GM36"
   },
 }
+
+SMODS.Consumable {
+  key = "ram_04",
+  set = 'ram',
+
+  atlas = "abn_AbandoniaRam",
+  pos = { x = 4, y = 0 },
+  cost = 4,
+
+  config = { extra = { dollars = 5 } },
+
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    local money = 0
+    for _, v in ipairs(G.consumeables and G.consumeables.cards or {}) do
+      if v ~= card and v.config.center.mod then
+        money = money + card.ability.extra.dollars
+      end
+    end
+    return {
+      vars = {
+        money,
+        cae.dollars
+      }
+    }
+  end,
+
+  can_use = function(self, card)
+    local consumables = {}
+    for _, v in ipairs(G.consumeables and G.consumeables.cards or {}) do
+      if v ~= card and not v.config.center.mod then
+        consumables[#consumables + 1] = v
+      end
+    end
+    return #consumables > 0
+  end,
+
+  use = function(self, card, area, copier)
+    card:juice_up(0.3, 0.5)
+    local consumables = {}
+    for _, v in ipairs(G.consumeables.cards) do
+      if v ~= card and not v.config.center.mod then
+        consumables[#consumables + 1] = v
+      end
+    end
+
+    if #consumables > 0 then
+      local pool = {}
+      for k, v in pairs(G.P_CENTERS) do
+        if v.mod and v.consumeable and v.set and v.set ~= 'ram' then
+          pool[#pool + 1] = v
+        end
+      end
+
+      for i, v in ipairs(consumables) do
+        local percent = 1.15 - (i - 0.999) / (#consumables - 0.998) * 0.3
+        G.E_MANAGER:add_event(Event({
+          trigger = 'after',
+          delay = 0.15,
+          func = function()
+            v:flip()
+            play_sound('card1', percent)
+            v:juice_up(0.3, 0.3)
+            return true
+          end
+        }))
+      end
+
+      for i, v in ipairs(consumables) do
+        local new_key = (pseudorandom_element(pool, "abn_ram004")).key
+        local center = G.P_CENTERS[new_key]
+        if center then
+          G.E_MANAGER:add_event(Event({
+            func = function()
+              v:set_ability(G.P_CENTERS[new_key])
+              local slots_used = center.size == "XL" and 2 or center.size == "XS" and -1
+              v.ability.extra_slots_used = slots_used or 0
+              return true
+            end
+          }))
+        end
+      end
+
+      for i, v in ipairs(consumables) do
+        local percent = 0.85 + (i - 0.999) / (#consumables - 0.998) * 0.3
+        G.E_MANAGER:add_event(Event({
+          trigger = 'after',
+          delay = 0.15,
+          func = function()
+            v:flip()
+            play_sound('tarot2', percent, 0.6)
+            v:juice_up(0.3, 0.3)
+            return true
+          end
+        }))
+      end
+
+      delay(0.5)
+    end
+  end,
+
+  abn_artist_credits = {
+    artist = "GM36"
+  },
+}
