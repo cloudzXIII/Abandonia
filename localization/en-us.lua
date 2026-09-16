@@ -380,6 +380,16 @@ return {
       --#endregion
 
       --#region Undiscovered ConsumableTypes
+      undiscovered_paradox = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
+      },
+
       undiscovered_ram = {
         name = "Not Discovered",
         text = {
