@@ -2137,7 +2137,7 @@ return {
           },
           {
             "Gains {C:blue}+#2#{} Chips per scored card with",
-            "matching {C:planet}suits {}and {C:enhanced}enhancements{}",
+            "matching {C:attention}suits{} and {C:enhanced}enhancements{}",
             "but different {C:attention}ranks",
             "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult, {C:blue}+#4#{C:inactive} Chips)",
           }
@@ -2203,7 +2203,7 @@ return {
           {
             "When {C:attention}Blind{} is selected,",
             "add {C:dark_edition}#3#{} edition",
-            "to rightmost Joker",
+            "to {C:attention}rightmost{} Joker",
           },
           {
             "{C:green}#1# in #2#{} chance this",
@@ -2478,7 +2478,7 @@ return {
             "give {C:chips}+#3#{} Chips and {C:mult}+#4#{} Mult",
           },
           {
-            "{C:chips}+#5#{} Chips and {C:mult}+#6#{} Mult if your",
+            "Gives {C:chips}+#5#{} Chips and {C:mult}+#6#{} Mult if your",
             "{C:attention}full deck{} contains only {C:attention}Kinship{} Cards"
           }
         }
@@ -2499,17 +2499,20 @@ return {
         name = "Edition Anonymous",
         text = {
           {
-            "When an {C:dark_edition}Editioned{} card scores,",
-            "{C:attention}randomise{} its {C:dark_edition}Edition{}, each",
-            "card that changes {C:dark_edition}Edition{}",
-            "gains {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
+            "When an {C:dark_edition}Editioned{}",
+            "card scores, {C:attention}randomise{}",
+            "its {C:dark_edition}Edition{}",
           },
           {
-            "When {C:attention}Blind{} is defeated, {C:attention}randomise{}",
-            "the {C:dark_edition}Edition{} of all owned Jokers,",
-            "each Joker that changes {C:dark_edition}Edition{}",
-            "gains {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
+            "When {C:attention}Blind{} is defeated,",
+            "{C:attention}randomise{} the {C:dark_edition}Edition{}",
+            "of all owned Jokers"
           },
+          {
+            "Each Card or Joker that changes",
+            "{C:dark_edition}Edition{} gains {C:mult}+#1#{} Mult",
+            "and {C:chips}+#2#{} Chips"
+          }
         }
       },
 
@@ -2659,7 +2662,7 @@ return {
         text = {
           {
             "Played cards with {C:inactive}Vanilla{} suits",
-            "and {C:attention}Modded Enhancements{} give",
+            "and {C:dark_edition}Modded {C:enhanced}Enhancements{} give",
             "{C:white,X:chips}X#1#{} Chips when scored"
           },
           {
@@ -2685,12 +2688,12 @@ return {
           {
             "When {C:attention}Blind{} is selected,",
             "create {C:attention}1{} {C:dark_edition}Pearlescent{}",
-            "{C:planet}Vanilla{} {C:attention}Joker",
+            "{C:inactive}Vanilla{} Joker",
             "{C:inactive}(Must have room)",
           },
           {
             "{X:mult,C:white}^#1#{} Mult and {X:chips,C:white}^#2#{} Chips",
-            "for every {C:planet}Vanilla{} {C:attention}Joker{}",
+            "for every {C:inactive}Vanilla{} Joker",
             "triggered"
           }
         }
@@ -2989,7 +2992,7 @@ return {
         }
       },
 
-      j_abn_feste2 = { -- cuz we already have Feste lol
+      j_abn_feste2 = {
         name = "Feste the Fool",
         text = {
           "Played {C:attention}Wild{} cards give",
@@ -3175,12 +3178,23 @@ return {
       j_abn_fortlatro = {
         name = "Fortlatro",
         text = {
-          "{C:inactive}Vanilla{} consumables and Jokers {C:attention}do not{} appear",
-          "When a {C:chips}Small Blind{} is selected create a random {C:dark_edition}Modded{} consumable",
-          "When a {C:attention}Big Blind{} is selected create a random {C:dark_edition}Modded{} Joker",
-          "Gain {X:chips,C:white}X#2#{} Chips per {C:attention}unique Modded Consumable{} used this Run",
-          "Gain {X:mult,C:white}X#4#{} Chips per {C:attention}unique Modded Joker{} used this Run",
-          "{C:inactive}Currently:{} {X:chips,C:white}X#1#{} {C:inactive}Chips{} {X:mult,C:white}X#3#{} {C:inactive}Mult",
+          {
+            "{C:inactive}Vanilla{} consumables and",
+            "Jokers {C:attention}do not{} appear"
+          },
+          {
+            "When a {C:chips}Small Blind{} is selected create",
+            "a random {C:dark_edition}Modded{} consumable",
+            "When a {C:attention}Big Blind{} is selected create",
+            "a random {C:dark_edition}Modded{} Joker"
+          },
+          {
+            "Gain {X:chips,C:white}X#2#{} Chips per {C:attention}unique",
+            "{C:dark_edition}Modded{} Consumable used this Run",
+            "Gain {X:mult,C:white}X#4#{} Mult per {C:attention}unique",
+            "{C:dark_edition}Modded{} Joker obtained this Run",
+            "{C:inactive}(Currently{} {X:chips,C:white}X#1#{} {C:inactive}Chips{} {X:mult,C:white}X#3#{} {C:inactive}Mult)",
+          }
         }
       },
 
@@ -3202,7 +3216,7 @@ return {
       j_abn_fractured_identity_joker = {
         name = "Fractured Identity Joker",
         text = {
-          "Scoring {C:attention}Mult{} or {C:Steel}Gold{} cards",
+          "Scoring {C:attention}Mult{} or {C:attention}Gold{} cards",
           "give {X:chips,C:white}^#1#{} Chips, scoring",
           "{C:attention}Glass{} or {C:attention}Stone{} cards",
           "give {X:mult,C:white}^#2#{} Mult",
