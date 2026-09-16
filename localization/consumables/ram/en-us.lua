@@ -20,8 +20,8 @@ return {
       c_abn_ram_02 = {
         name = "RAM 02",
         text = {
-          "Gives the total {C:attention}sell value",
-          "of all held {C:dark_edition}Modded{} {C:attention}consumables{}",
+          "Gives {C:money}$#2#{} per held",
+          "{C:dark_edition}Modded{} {C:attention}consumable{}",
           "{C:inactive}(Currently {C:money}$#1#{C:inactive})",
         },
       },

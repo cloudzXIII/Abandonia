@@ -380,6 +380,16 @@ return {
       --#endregion
 
       --#region Undiscovered ConsumableTypes
+      undiscovered_ram = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
+      },
+
       undiscovered_illusion = {
         name = "Not Discovered",
         text = {
