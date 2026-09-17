@@ -409,12 +409,38 @@ return {
           'be used immediately'
         }
       },
+	  p_abn_paradox_normal = {
+        name = 'Paradox Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:paradox}Paradox{} cards to',
+          'be used immediately'
+        }
+      },
+      p_abn_paradox_jumbo = {
+        name = 'Jumbo Paradox Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:paradox}Paradox{} cards to',
+          'be used immediately'
+        }
+      },
+      p_abn_paradox_mega = {
+        name = 'Mega Paradox Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:paradox}Paradox{} cards to',
+          'be used immediately'
+        }
+      },
     }
   },
   misc = {
     dictionary = {
 
       abn_calamitybooster = "Calamity Pack",
+      abn_calamitybooster_j = "Jumbo Calamity Pack",
+      abn_calamitybooster_m = "Mega Calamity Pack",
       abn_sigilbooster = "Sigil Pack",
       abn_astrobooster = "Astro Pack",
       k_solid_pack = "Solid State Pack",
@@ -426,6 +452,7 @@ return {
       k_lexica_pack = "Lexica Pack",
       k_weather_pack = "Forecast Pack",
       k_continent_pack = "Continent Pack",
+	  abn_paradoxbooster = "Paradox Pack",
 
       -- kiddy pack thingys
       k_standard_kiddy = "Kiddy Standard Pack",
