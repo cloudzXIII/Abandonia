@@ -1197,7 +1197,6 @@ SMODS.Enhancement({
   pos = { x = 7, y = 3 },
   atlas = "AbandoniaEnhancements",
   config = { extra = { mult = 0, mult_gain = 2 } },
-  no_suit = true,
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
     return { vars = { cae.mult, cae.mult_gain } }
