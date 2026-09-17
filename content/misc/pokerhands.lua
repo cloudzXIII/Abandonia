@@ -747,3 +747,29 @@ SMODS.PokerHand {
     return { SMODS.merge_lists(parts._straight, parts._flush) }
   end,
 }
+
+SMODS.PokerHand {
+  key = 'Royal Flush',
+  visible = false,
+  chips = 160,
+  mult = 10,
+  l_chips = 160,
+  l_mult = 10,
+  above_hand = 'Straight Flush',
+  example = {
+    { 'S_A', true },
+    { 'S_K', true },
+    { 'S_Q', true },
+    { 'S_J', true },
+    { 'S_T', true }
+  },
+
+  evaluate = function(parts, hand)
+    if not next(parts._straight) or not next(parts._flush) then return {} end
+    for j = 1, #hand do
+      local rank = not SMODS.has_no_rank(hand[j]) and SMODS.Ranks[hand[j].base.value]
+      if not rank or (rank.key ~= 'Ace' and rank.key ~= '10' and not rank.face) then return {} end
+    end
+    return { SMODS.merge_lists(parts._straight, parts._flush) }
+  end
+}

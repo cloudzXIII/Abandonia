@@ -494,6 +494,15 @@ return {
           "{C:chips}+#4#{} chips",
         },
       },
+      c_abn_rao = {
+        name = "Rao",
+        text = {
+          "({V:1}lvl.#1#{}) Level up",
+          "{C:attention}#2#",
+          "{C:mult}+#3#{} Mult and",
+          "{C:chips}+#4#{} chips",
+        },
+      },
       --#endregion
     },
 

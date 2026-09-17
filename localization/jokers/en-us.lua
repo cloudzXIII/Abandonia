@@ -3396,6 +3396,27 @@ return {
         }
       },
 
+      j_abn_gambit = {
+        name = "Gambit",
+        text = {
+          {
+            "Swaps current {C:chips}Chips{} with",
+            "current {C:attention}Score{} and",
+            "multiplies both by {X:black,C:white}X#1#"
+          },
+          {
+            "Each scoring card has a",
+            "{C:green}#2# in #3#{} chance to be destroyed"
+          },
+          {
+            "Each destroyed card will",
+            "increase this joker's multiplier",
+            "by {X:black,C:white}#4#X{} and draw a copy",
+            "of the destroyed card to hand"
+          }
+        }
+      },
+
       j_abn_gachapon = {
         name = "Gachapon",
         text = {
