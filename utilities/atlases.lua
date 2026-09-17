@@ -387,6 +387,13 @@ SMODS.Atlas({
   py = 95,
 })
 
+SMODS.Atlas({
+  key = "ParadoxBoosters",
+  path = "paradox packs.png",
+  px = 71,
+  py = 95,
+})
+
 
 SMODS.Atlas({
   key = "AbandoniaCrossmod",
