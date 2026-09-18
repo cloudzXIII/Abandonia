@@ -752,7 +752,35 @@ return {
 
   },
   misc = {
-    quips = {},
+    quips = {
+      abn_gambit_destroy = {
+        "Every man has a price to",
+		"charge, and a price to pay."
+      },
+      abn_gambit_discard = {
+        "I'm a thief when all else",
+		"fails... and all else failed."
+      },
+      abn_gambit_facedown = {
+        "Playing for keeps is",
+		"still playing, mon ami,",
+		"so take a card... any card!"
+      },
+      abn_gambit_fivecards = {
+        "Gambit ain't no pirate,",
+		"chère. He only take what",
+		"deserve to be taken!"
+      },
+      abn_gambit_greeting = {
+        "The name's Remy LeBeau,",
+        "Le Diable Blanc. But you",
+        "can call me the Gambit."
+      },
+      abn_gambit_moddedhand = {
+        "Gonna get flashier than",
+		"Mardi Gras 'round here!"
+      },
+    },
     challenge_names = {},
     dictionary = {
       -- Misc
@@ -1078,6 +1106,7 @@ return {
       ['abn_Mansion'] = "Mansion",
       ['abn_Flush Mansion'] = "Flush Mansion",
       ['abn_Emperium Flush'] = "Emperium Flush",
+      ['abn_Royal Flush'] = "Royal Flush",
 
       -- Paperback Crossmod
       ['abn_Rapture'] = 'Rapture',
@@ -1170,6 +1199,10 @@ return {
       ['abn_Emperium Flush'] = {
         "14, 13, 12, 11, and Ace",
         "all sharing the same suit",
+      },
+      ['abn_Royal Flush'] = {
+        "A hand containing a Straight, a Flush,",
+        "and only ranks 10 through Ace",
       },
 
       -- Paperback Crossmod
