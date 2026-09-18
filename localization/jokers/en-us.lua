@@ -2892,6 +2892,15 @@ return {
         }
       },
 
+      j_abn_exciton_event = {
+       name = "Exciton Event",
+       text = {
+        "When using a Planet card,",
+        "upgrade a random poker hand by 2",
+        "1 in 6 chance to destroy 75% of your deck"
+    }
+      },
+
       j_abn_facial_recognition = {
         name = "Facial Recognition",
         text = {
