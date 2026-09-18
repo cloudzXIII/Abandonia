@@ -261,6 +261,63 @@ return {
                     "则获得{X:mult,C:white}X#2#{}倍率",
                 },
             },
+      m_abn_bramble = {
+                name = "荆棘",
+                text = {
+                    "若这是游戏{C:inactive}原版{}花色，则{C:attention}总是计分{}",
+                    "若这是{C:dark_edition}模组{}花色，打出并计分时牌型等级提升{C:attention}#1#{}",
+                }
+            },
+      m_abn_bubble = {
+                name = "气泡",
+                text = {
+                    "每有一种{C:attention}不同{}的计分{C:dark_edition}增强{}",
+                    "给予{C:chips}+#1#{}筹码",
+                    "每有一种{C:attention}不同{}的计分{C:dark_edition}版本{}",
+                    "给予{C:mult}+#2#{}倍率",
+                    "若这张牌被{C:mult}摧毁{}，所有计分牌获得{C:chips}+#3#{}筹码",
+                }
+            },
+      m_abn_flypaper = {
+                name = "捕蝇纸",
+                text = {
+                    "若你的获胜牌型中存在{C:purple}昆虫{}，",
+                    "将会捕获它，无论它",
+                    "作为计分牌还是{C:attention}留在手牌{}",
+                    "根据不同情况",
+                    "捕获不同的{C:purple}昆虫{}",
+                }
+            },
+      m_abn_honey = {
+                name = "蜂蜜",
+                text = {
+                    "这张牌{C:attention}总是{}被抽到手牌",
+                    "若计分时这张牌在{C:attention}打出的牌{}中，",
+                    "{C:green}#1#/#2#{}几率将其他计分牌",
+                    "变为{C:attention}蜂蜜{}牌",
+                }
+            },
+      m_abn_flux = {
+                name = "流动",
+                text = {
+                    "{C:purple}+#1#{}分数",
+                    "打出获胜牌型时获得{C:purple}+#2#{}分数",
+                },
+            },
+      m_abn_plank = {
+                name = "木板",
+                text = {
+                    "{C:gold}+#1#{}晋升强度",
+                },
+            },
+      m_abn_zen = {
+                name = "禅",
+                text = {
+                    "{C:mult}+#1#{}倍率",
+                    "每有一张{C:attention}留在手牌{}中的牌",
+                    "获得{C:mult}+#2#{}倍率",
+                },
+            },
     },
     Other = {
             -- 增强
@@ -426,6 +483,63 @@ return {
                     "{C:spades}#1#{}数量相关",
                 },
             },
+      abn_stk_darkner = {
+                name = "暗之民",
+                text = {
+                    "每打出和{C:attention}持有{}一张{C:spades}暗色花色{}",
+                    "获得{C:chips}+#1#{}筹码和{C:mult}+#2#{}倍率",
+                    "若与{C:attention}#3#{}张或更多{C:diamonds}亮色花色{}一起打出",
+                    "则{C:mult}自毁{}",
+                },
+            },
+      abn_stk_lightner = {
+                name = "光之民",
+                text = {
+                    "每打出和{C:attention}持有{}一张{C:diamonds}亮色花色{}",
+                    "获得{C:chips}+#1#{}筹码和{C:mult}+#2#{}倍率",
+                    "若与{C:attention}#3#{}张或更多{C:spades}暗色花色{}一起打出",
+                    "则{C:mult}自毁{}",
+                },
+            },
+      abn_stk_first_aid = {
+                name = "急救",
+                text = {
+                    "若打出一张{C:mult}被削弱{}的牌，获得{C:mult}+#2#{}倍率",
+                    "若一张牌被{C:mult}摧毁{}，获得{C:chips}+#4#{}筹码",
+                    "{C:inactive}当前为：{}{C:mult}+#1#{}倍率 {}{C:chips}+#3#{}筹码",
+                },
+            },
+      abn_stk_flux = {
+                name = "流动",
+                text = {
+                    "{C:purple}+#1#{}分数",
+                    "打出获胜牌型时获得{C:purple}+#2#{}分数",
+                },
+            },
+      abn_stk_zen = {
+                name = "禅",
+                text = {
+                    "{C:mult}+#1#{}倍率",
+                    "每有一张{C:attention}留在手牌{}中的牌，获得{C:mult}+#2#{}倍率",
+                },
+            },
+      abn_stk_plank = {
+                name = "木板",
+                text = {
+                    "{C:gold}+#1#{}晋升强度",
+                },
+            },
+      abn_stk_reinforcement = {
+                name = "增援",
+                text = {
+                    "你的{C:attention}小丑牌{}上每有一个",
+                    "{C:attention}贴纸{}，",
+                    "获得{C:mult}+#1#{}倍率、{C:chips}+#2#{}筹码",
+                    "和{C:money}$#3#{}",
+                    "{C:red,E:1,s:0.85}若计分后倍率大于筹码，",
+                    "{C:red,E:1,s:0.85}则自毁",
+                }
+            },
     },
   },
   misc = {
@@ -451,7 +565,13 @@ return {
       abn_stk_hazard = "险兆",
       abn_stk_kintsugi = "金缮",
       abn_stk_wallpaper = "壁纸",
+      abn_stk_reinforcement = "增援",
+      abn_stk_darkner = "暗之民",
+      abn_stk_lightner = "光之民",
+      abn_stk_first_aid = "急救",
+      abn_stk_flux = "流动",
+      abn_stk_zen = "禅",
+      abn_stk_plank = "木板",
     },
   },
 }
-

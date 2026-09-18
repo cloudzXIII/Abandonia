@@ -402,7 +402,7 @@ return {
                 name = "险兆箭矢",
                 text = {
                     "必须包含奇数和偶数牌",
-                    "每5张牌中有1张被翻转",
+                    "5张牌中有{C:attention}#1#{}张被翻转",
                 },
             },
       bl_abn_hazard_chalice = {

@@ -212,9 +212,12 @@ return {
       b_abn_epoch = {
                 name = "新纪元牌组",
                 text = {
-                    "开局时拥有{C:planet,T:v_abn_satellite}#1#{}",
-                    "和{C:sigils,T:v_abn_chaos}#2#{}",
-                    "{C:chips}小盲注{}变为{C:attention}大盲注{}",
+                    "开局时拥有全套",
+                    "{C:inactive}原版{}、{C:abn_talon}利爪{}、",
+                    "{C:abn_crown}王冠{}、{C:abn_moon}月亮{}",
+                    "和{C:abn_star}群星{}",
+                    "本局每跳过一个{C:attention}盲注{}",
+                    "所有{C:attention}盲注需求{}增加{C:white,X:mult}+X1{}",
                 }
             },
       b_abn_untamed = {

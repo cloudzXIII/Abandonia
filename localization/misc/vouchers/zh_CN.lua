@@ -154,6 +154,59 @@ return {
                     "可多选{C:attention}+1{}张牌",
                 },
             },
+      v_abn_electromagnet = {
+                name = "电磁铁",
+                text = {
+                    "本局中你{C:attention}最常打出{}的3张牌",
+                    "在{C:attention}回合开始时{}",
+                    "总是被抽到手牌",
+                }
+            },
+      v_abn_heirloom = {
+                name = "传家宝",
+                text = {
+                    "每次购买获得{C:money}$2{}",
+                }
+            },
+      v_abn_magnet = {
+                name = "磁铁",
+                text = {
+                    "本局中你{C:attention}最常打出{}的牌",
+                    "在{C:attention}回合开始时{}",
+                    "总是被抽到手牌",
+                }
+            },
+      v_abn_pattern = {
+                name = "规律",
+                text = {
+                    "选择{C:attention}盲注{}时，",
+                    "生成你历来{C:attention}最常{}",
+                    "{C:attention}使用{}的{C:tarot}塔罗{}或{C:planet}星球{}牌",
+                    "{C:inactive}（必须有空位）",
+                }
+            },
+      v_abn_power_rank = {
+                name = "力量等级",
+                text = {
+                    "商店中的{C:attention}小丑牌{}可能带有{C:attention}增强{}",
+                }
+            },
+      v_abn_silver_spoon = {
+                name = "银勺",
+                text = {
+                    "退还每回合{C:attention}第一次{}",
+                    "购买所花费的{C:attention}50%{}资金",
+                }
+            },
+      v_abn_tesselation = {
+                name = "镶嵌",
+                text = {
+                    "选择{C:attention}盲注{}时，",
+                    "生成2张你历来",
+                    "{C:attention}最常使用{}的消耗牌",
+                    "{C:inactive}（必须有空位）",
+                }
+            },
     },
   },
 }
