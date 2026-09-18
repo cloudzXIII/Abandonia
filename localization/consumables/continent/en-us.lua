@@ -199,7 +199,7 @@ return {
             "and {C:attention}Glove Hand{}",
           },
           {
-            "Apply {C:attention}Eraser{} and {C:moneymoney}Rental{}",
+            "Apply {C:attention}Eraser{} and {C:money}Rental{}",
             "to {C:attention}leftmost{} Joker"
           },
         },

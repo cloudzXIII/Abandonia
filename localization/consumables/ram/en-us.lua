@@ -22,7 +22,7 @@ return {
         text = {
           "Gives {C:money}$#2#{} per held",
           "{C:dark_edition}Modded{} {C:attention}consumable{}",
-          "{C:inactive}(Currently {C:money}$#1#{C:inactive})",
+          "{C:inactive}(Will give {C:money}$#1#{C:inactive})",
         },
       },
       c_abn_ram_03 = {
@@ -39,8 +39,8 @@ return {
         name = "RAM 04",
         text = {
           "Replace all held {C:inactive}Vanilla{}",
-          "{C:attention}consumables{} with",
-          "{C:dark_edition}Modded{} {C:attention}consumables{}",
+          "{C:attention}Tarot/Planet/Spectral{} cards with {C:dark_edition}Modded{}",
+          "{C:attention}Tarot/Planet/Spectral{} cards, respectively",
         },
       },
       c_abn_ram_05 = {

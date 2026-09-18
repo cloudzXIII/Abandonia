@@ -19,7 +19,7 @@ return {
         name = "Schrodinger",
         text = {
           {
-            "On {C:attention}Even{} Antes give all Jokers {C:mult}fragile{} and",
+            "On {C:attention}Even{} Antes give all Jokers {C:mult}Fragile{} and",
             "Create a {C:attention}random{} {C:abn_superrare}Super Rare{} Joker with {C:abn_perishable}Perishable{}",
           },
           {
@@ -57,7 +57,7 @@ return {
 		  },
 		  {
 			"On {C:attention}Odd{} Antes {C:attention}reduce{} the next Boss Blind {C:attention}requirement{}",
-			"by {C:attention}%50{} but {C:attention}halve{} the {C:money}payout{}",
+			"by {C:attention}50%{} but {C:attention}halve{} the {C:money}payout{}",
 		  },
         }
       },
@@ -93,7 +93,7 @@ return {
         text = {
 		  {
 			"On {C:attention}Even{} Antes go back to Ante {C:attention}2{}",
-			"{C:mult}destroy{} all Jokers and gain {C:money}$5{} per joker {C:mult}destroyed{}",
+			"{C:mult}destroy{} all Jokers and gain {C:money}$5{} per Joker {C:mult}destroyed{}",
 		  },
 		  {
 			"On {C:attention}Odd{} Antes go back to Ante {C:attention}3{}",
