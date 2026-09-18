@@ -2919,6 +2919,14 @@ return {
         }
       },
 
+      j_abn_failed_test = {
+        name = "failed test",
+        text = {
+        "Played {C:attention}#1#{}, give their +Chips as XMult",
+        "{C:attention}(hand changes after each hand is played)"
+        }
+      },
+
       j_abn_fairytale_book = {
         name = "Fairytale Book",
         text = {
