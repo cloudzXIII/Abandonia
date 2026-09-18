@@ -3506,7 +3506,7 @@ return {
         text = {
           "When a Joker is {C:attention}purchased{} or {C:attention}sold{},",
           "this Joker gains {C:chips}Chips{} equal to the",
-          "{C:money}price{} of Modded {C:attention}Food Jokers{}, {C:mult}Mult{}",
+          "{C:money}price{} of {C:dark_edition}Modded{} {C:attention}Food Jokers{}, {C:mult}Mult{}",
           "equal to the {C:money}price{} of {C:inactive}Vanilla{} {C:attention}Jokers",
           "{C:inactive}(Currently {C:chips}+#1# {C:inactive}Chips, {C:mult}+#2# {C:inactive}Mult)",
         },
@@ -3618,7 +3618,7 @@ return {
           {
             "When {C:attention}Big Blind{} is selected, create",
             "the last {C:crepuscular}Crepuscular{} card used this run",
-            "{C:inactive}Currently:{} {C:crepuscular}#5#{}"
+            "{C:inactive}(Currently{} {C:crepuscular}#5#{C:inactive})"
           }
         }
       },
@@ -4297,8 +4297,8 @@ return {
         name = "Invisible Ink Joker",
         text = {
           "If played hand contains a {C:attention}Spectrum{}",
-          "with only {C:attention}Lucky{} cards, this Joker",
-          "gains {C:mult}+#3#{} Mult per unique {C:attention}suit{}",
+          "with only {C:attention}Lucky{} cards",
+          "This Joker gains {C:mult}+#3#{} Mult per unique {C:attention}suit{}",
           "and {X:chips,C:white}X#4#{} Chips per card scored",
           "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult,{} {X:chips,C:white}X#2#{} {C:inactive}Chips){}",
         }
@@ -6508,12 +6508,10 @@ return {
       j_abn_palindromic_beetle = {
         name = "Palindromic Beetle",
         text = {
-          {
-            "If the {C:attention}full hand{} is a {C:attention}palindromic sequence",
-            "and is composed of {C:attention}both {C:diamonds}Light{} and {C:spades}Dark{} suits,",
-            "level up the {C:planet}planet{} {C:attnention}Rank{} of each {C:attention}scoring{} card by",
-            "the amount of times the {C:attention}rank{} has been {C:attention}repeated{} in hand",
-          },
+          "If the {C:attention}full hand{} is a {C:attention}palindromic sequence",
+          "and is composed of {C:attention}both {C:diamonds}Light{} and {C:spades}Dark{} suits,",
+          "level up the {C:planet}planet{} {C:attnention}Rank{} of each {C:attention}scoring{} card by",
+          "the amount of times the {C:attention}rank{} has been {C:attention}repeated{} in hand",
         }
       },
 
@@ -6755,7 +6753,7 @@ return {
       },
 
       j_abn_planet_rejok = {
-        name = "Planet Rejok",
+        name = "Planet Rekoj",
         text = {
           "Gives {C:mult}Mult{} and {C:chips}Chips",
           "of all {C:attention}hand types{} contained",
@@ -7239,10 +7237,9 @@ return {
         text = {
           "If scored hand consists entirely of cards with {C:dark_edition}Editions{},",
           "and it has an even amount of {C:inactive}Vanilla Editions{} and an odd",
-          "number of {C:attention}Modded Editions{}, or it has an odd amount of",
-          "{C:inactive}Vanilla Editions{} and an even number of {C:attention}Modded",
-          "{C:attention}Editions{}, this Joker gains {C:gold}+#2#{} Ascension Power",
-          "multiplied by whichever {C:dark_edition}Edition{} count is even.",
+          "number of {C:attention}Modded Editions{} or vice versa",
+          "this Joker gains {C:gold}+#2#{} Ascension Power",
+          "multiplied by whichever {C:dark_edition}Edition{} count is even",
           "{C:inactive}(Currently {C:gold}+#1# {C:inactive}Ascension Power)"
         }
       },
@@ -7954,7 +7951,7 @@ return {
           {
             "When {C:attention}Big Blind{} is selected, create",
             "the last {C:crimson}Crimson{} card used this run",
-            "{C:inactive}Currently:{} {C:crimson}#5#{}"
+            "{C:inactive}(Currently{} {C:crimson}#5#{C:inactive})"
           }
         }
       },
@@ -7974,7 +7971,7 @@ return {
           {
             "When {C:attention}Big Blind{} is selected, create",
             "the last {C:periodic}Periodic{} card used this run",
-            "{C:inactive}Currently:{} {C:periodic}#5#{}"
+            "{C:inactive}(Currently{} {C:periodic}#5#{C:inactive})"
           }
         }
       },
