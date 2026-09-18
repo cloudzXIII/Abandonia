@@ -6977,7 +6977,7 @@ return {
                     "张小丑牌时获得{X:mult,C:white}X#1#{}倍率",
                 }
             },
-            j_abn_evenly_split = {
+            j_abn_that_one_evenly_split = {
                 name = "均匀分割",
                 text = {
                     {

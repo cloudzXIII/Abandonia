@@ -1,5 +1,5 @@
 SMODS.Joker {
-  key = 'evenly_split',
+  key = 'that_one_evenly_split',
 
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.chips, card.ability.extra.xmult } }
