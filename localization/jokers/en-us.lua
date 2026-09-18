@@ -7903,7 +7903,7 @@ return {
           "Gains {C:mult}Mult{} or {C:chips}Chips{} whenever",
           "you copy a card with an {C:mult}even",
           "or {C:chips}odd{} rank, respectively",
-          "{C:inactive}(Currently: {C:mult}+#1# {C:inactive}Mult, {C:chips}+#2# {C:inactive}Chips)"
+          "{C:inactive}(Currently {C:mult}+#1# {C:inactive}Mult, {C:chips}+#2# {C:inactive}Chips)"
         }
       },
 
@@ -9086,7 +9086,7 @@ return {
         text = {
           {
             "This Joker gains {X:mult,C:white}X#1#{} Mult when",
-            "when a {C:dark_edition}Modded{} {C:tarot}Tarot{} card is used",
+            "a {C:dark_edition}Modded{} {C:tarot}Tarot{} card is used",
             "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
           },
           {
