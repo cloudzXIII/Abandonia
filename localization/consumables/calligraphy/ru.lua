@@ -114,7 +114,7 @@ return {
                     "{C:attention}Дзен{} {C:attention}8{} с мастью {V:1}#1#{}"
                 }
             },
-                c_abn_en = {
+            c_abn_en = {
                 name = "Н",
                 text = {
                     "Преобразует {C:attention}самую правую{}",
@@ -211,11 +211,11 @@ return {
                 }
             },
             c_abn_be = {
-                name = "Ь",
+                name = "Ъ",
                 text = {
-                    "Если {C:attention}самая правая{} карта",
-                    "в руке - это {C:attention}13{},",
-                    "преобразовать ее в {C:attention}Сшитую{} карту"
+                    "Преобразует {C:attention}самую правую{}",
+                    "карту в руке в",
+                    "{C:attention}Oilfire{} card"
                 }
             },
             c_abn_yer = {
@@ -229,9 +229,9 @@ return {
             c_abn_soft_sign = {
                 name = "Ь",
                 text = {
-                    "Преобразует {C:attention}самую правую{}",
-                    "карту в руке в",
-                    "{C:attention}Сшитую{} {C:attention}13{}"
+                    "Если {C:attention}самая правая{}",
+                    "карта в руке - это {C:attention}13{},",
+                    "преобразует ее в {C:attention}Сшитую{} карту"
                 }
             },
 

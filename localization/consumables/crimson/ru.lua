@@ -59,49 +59,49 @@ return {
                 }
             },
             c_abn_anarkia = {
-                name = "Anarkia",
+                name = "Анаркиа",
                 text = {
                     "Улучшает {C:attention}самого левого{}",
                     "Джокера до {C:enhanced}#1#{}"
                 }
             },
             c_abn_ilun = {
-                name = "Ilun",
+                name = "Илун",
                 text = {
                     "Улучшает {C:attention}самого левого{}",
                     "Джокера до {C:enhanced}#1#{}"
                 }
             },
             c_abn_argia = {
-                name = "Anarkia",
+                name = "Аргиа",
                 text = {
                     "Улучшает {C:attention}самого правого{}",
                     "Джокера до {C:enhanced}#1#{}"
                 }
             },
             c_abn_zauri = {
-                name = "Zauri",
+                name = "Заури",
                 text = {
                     "Улучшает {C:attention}самого левого{}",
                     "Джокера до {C:enhanced}#1#{}"
                 }
             },
             c_abn_okertua = {
-                name = "Okertua",
+                name = "Окертуа",
                 text = {
                     "Улучшает {C:attention}самого левого{}",
                     "Джокера до {C:enhanced}#1#{}"
                 }
             },
             c_abn_amaigabea = {
-                name = "Amaigabea",
+                name = "Амаигобея",
                 text = {
                     "Улучшает {C:attention}самого левого{}",
                     "Джокера до {C:enhanced}#1#{}"
                 }
             },
             c_abn_basua = {
-                name = "Basua",
+                name = "Басуа",
                 text = {
                     "Улучшает {C:attention}самого правого{}",
                     "Джокера до {C:enhanced}#1#{}"

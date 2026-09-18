@@ -47,7 +47,7 @@ return {
                     {
                         "{C:abn_superrare}Супер редкие{} Джокеры",
                         "получают {C:chips}+#2#{} фишек и {C:mult}+#1#{} множ.",
-                    },
+                    }
                 }
             },
             c_abn_tunnel = {
@@ -61,7 +61,7 @@ return {
                     {
                         "Устанавливает уровень {C:attention}самой частой{}",
                         "руки на {C:attention}1{}",
-                    },
+                    }
                 }
             },
             c_abn_sepulture = {

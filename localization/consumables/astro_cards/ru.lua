@@ -84,7 +84,7 @@ return {
                 name = "Дева",
                 text = {
                     "Шанс {C:green}#1# к #2#{} создать",
-                    "{C:dark_edition}Негативную{} {C:attention}Серную дыру{}",
+                    "{C:dark_edition}Негативную{} {C:attention}Черную дыру{}",
                 }
             },
             c_abn_serpentarius = {

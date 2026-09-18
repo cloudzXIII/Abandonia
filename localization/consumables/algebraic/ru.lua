@@ -1,6 +1,6 @@
 return {
     descriptions = {
-        maths = {
+        algebraic = {
             c_abn_euler = {
                 name = "Эйлер",
                 text = {
@@ -23,14 +23,14 @@ return {
                     "Следующая сыгранная {C:attention}Старшая карта{}",
                     "дает {C:chips}фишки{} и {C:mult}множ.{}",
                     "последнего сыгранного {C:attention}Флеша{}",
-                    "{C:inactive}(сейчас: {C:mult}+#1#{} {C:inactive}множ.{} {C:chips}+#2#{} {C:inactive}фишек)",
+                    "{C:inactive}(сейчас {C:white,X:mult}#1#{} {C:inactive}X{} {C:white,X:chips}#2#{} {C:inactive})",
                 },
             },
             c_abn_number = {
                 name = "Цифра",
                 text = {
                     "Следующая рука только с {C:attention}номерными{} картами",
-                    "Повышает свой {C:attention}уровень{} на {C:attention}1{} за",
+                    "повышает свой {C:attention}уровень{} на {C:attention}1{} за",
                     "каждое {C:attention}уникальное{} число в подсчете"
                 },
             },

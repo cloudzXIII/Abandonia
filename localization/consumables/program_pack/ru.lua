@@ -29,7 +29,7 @@ return {
                     },
                     {
                         "Улучшает все карты",
-                        "котрые {C:attention}поменяли масть{} до",
+                        "которые {C:attention}поменяли масть{} до",
                         "{C:dark_edition}Фольговых{} {C:attention}Бонусных{} карт"
                     }
                 }
@@ -94,27 +94,27 @@ return {
                 name = ".JPG",
                 text = {
                     {
-                        "{C:mult}Отключает{} все {C:diamonds}Бубны{}, {C:hearts}Черви{} и {C:inactive}Нули{}",
+                        "{C:mult}Ослабляет{} все {C:diamonds}Бубны{}, {C:hearts}Черви{} и {C:inactive}Нули{}",
                     },
                     {
                         "{C:spades}Пики{}, {C:clubs}Трефы{}, {C:abn_snow}Снежинки{},",
                         "{C:abn_tie}Галстуки{}, {C:abn_bow}Бабочки{} и {C:abn_penumbra}Полутени{} получают",
                         "{C:chips}+#1#{} фишек и {C:mult}+#2#{} множ.",
-                    },
+                    }
                 }
             },
             c_abn_gif = {
                 name = ".GIF",
                 text = {
                     {
-                        "{C:mult}Отключает{} все {C:spades}Пики{}, {C:clubs}Трефы{},",
+                        "{C:mult}Ослабляет{} все {C:spades}Пики{}, {C:clubs}Трефы{},",
                         "{C:abn_snow}Снежинки{}, {C:abn_tie}Галстуки{},",
                         "{C:abn_bow}Бабочки{}, и {C:abn_penumbra}Полутени",
                     },
                     {
                         "{C:diamonds}Бубны{}, {C:hearts}Черви{} и {C:inactive}Нули{} получают",
                         "{C:chips}+#1#{} фишек и {C:mult}+#2#{} множ.",
-                    },
+                    }
                 }
             },
         }
