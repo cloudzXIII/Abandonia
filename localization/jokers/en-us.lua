@@ -2901,13 +2901,13 @@ return {
         }
       },
 
-      j_abn_exciton_event = { -- i think we should use placeholders (#1#, #2#, etc.) and colors ({C:attention}, {C:green} and etc.) :< (I agree, fixed that! - cloudzXIII)
+      j_abn_exciton_event = {
         name = "Exciton Event",
         text = {
           "When a {C:planet}Planet{} card is used,",
           "upgrade level of a random",
           "{C:attention}poker hand{} by {C:attention}#3#{},",
-          "{C:green}#1# in #2# chance{} to destroy",
+          "{C:green}#1# in #2#{} chance to destroy",
           "{C:attention}75%{} of your {C:attention}full deck"
         }
       },
@@ -6703,14 +6703,22 @@ return {
       j_abn_percy = {
         name = "Percy",
         text = {
-          "This Joker is always {C:attention}pinned{} to the {C:attention}left{} of your Jokers",
-          "When a Joker {C:attention}triggers{} gain {C:chips}chips{} depending on its {C:attention}rarity{}",
-          "{C:common}Common{} {C:chips}+#1#{} Chips",
-          "{C:uncommon}Uncommon{} {C:chips}+#2#{} Chips",
-          "{C:rare}Rare{} {C:chips}+#3#{} Chips",
-          "{C:legendary}Legendary{} {C:chips}+#4#{} Chips",
-          "If you own Pierre {C:attention}retrigger{} every Joker per owned {C:attention}rarity{}",
-          "{C:inactive}Currently:{} {C:chips}+#5#{} {C:inactive}Chips",
+          {
+            "This Joker is always {C:attention}pinned{}",
+            "to the {C:attention}left{} of your Jokers",
+            "When a Joker {C:attention}triggers{} gain {C:chips}chips{}",
+            "depending on its {C:attention}rarity{}",
+            "{C:common}Common{} {C:chips}+#1#{} Chips",
+            "{C:uncommon}Uncommon{} {C:chips}+#2#{} Chips",
+            "{C:rare}Rare{} {C:chips}+#3#{} Chips",
+            "{C:legendary}Legendary{} {C:chips}+#4#{} Chips",
+          },
+          {
+            "If you own {C:attention}Pierre{},",
+            "{C:attention}retrigger{} every Joker",
+            "per owned {C:attention}rarity{}",
+            "{C:inactive}(Currently{} {C:chips}+#5#{} {C:inactive}Chips)",
+          }
         }
       },
 
@@ -6800,14 +6808,22 @@ return {
       j_abn_pierre = {
         name = "Pierre",
         text = {
-          "This Joker is always {C:attention}pinned{} to the {C:attention}right{} of your Jokers",
-          "When a Joker {C:attention}triggers{} gain {C:mult}mult{} depending on its {C:attention}rarity{}",
-          "{C:common}Common{} {C:mult}+#1#{} Mult",
-          "{C:uncommon}Uncommon{} {C:mult}+#2#{} Mult",
-          "{C:rare}Rare{} {C:mult}+#3#{} Mult",
-          "{C:legendary}Legendary{} {C:mult}+#4#{} Mult",
-          "If you own Percy {C:attention}retrigger{} every scoring card per owned {C:attention}rarity{}",
-          "{C:inactive}Currently:{} {C:mult}+#5#{} {C:inactive}Mult",
+          {
+            "This Joker is always {C:attention}pinned{}",
+            "to the {C:attention}right{} of your Jokers",
+            "When a Joker {C:attention}triggers{} gain {C:mult}mult{}",
+            "depending on its {C:attention}rarity{}:",
+            "{C:common}Common{} {C:mult}+#1#{} Mult",
+            "{C:uncommon}Uncommon{} {C:mult}+#2#{} Mult",
+            "{C:rare}Rare{} {C:mult}+#3#{} Mult",
+            "{C:legendary}Legendary{} {C:mult}+#4#{} Mult",
+          },
+          {
+            "If you own {C:attention}Percy{},",
+            "{C:attention}retrigger{} every scoring card",
+            "per owned {C:attention}rarity{}",
+            "{C:inactive}(Currently{} {C:mult}+#5#{} {C:inactive}Mult)",
+          }
         }
       },
 
