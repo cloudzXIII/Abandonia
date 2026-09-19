@@ -652,6 +652,107 @@ return {
         },
       },
       --#endregion
+
+      --#region Newestia Blinds
+      bl_abn_new_small = {
+        name = "Small Blind",
+        text = {},
+      },
+      bl_abn_new_big = {
+        name = "Big Blind",
+        text = {},
+      },
+      bl_abn_new_yak = {
+        name = "The Yak",
+        text = {
+          "Only your most played",
+          "hand may score",
+          "({C:attention}#1#{})"
+        },
+      },
+      bl_abn_new_yak_collection = {
+        name = "The Yak",
+        text = {
+          "Only your most played",
+          "hand may score"
+        },
+      },
+      bl_abn_new_residence = {
+        name = "The Residence",
+        text = {
+          "All cards drawn after first",
+          "played hand are face down"
+        },
+      },
+      bl_abn_new_guild = {
+        name = "The Guild",
+        text = {
+          "{C:clubs}Clubs{} give {C:chips}double{} Chips, all",
+          "other suits give only {C:chips}1{} Chip"
+        },
+      },
+      bl_abn_new_trawl = {
+        name = "The Trawl",
+        text = {
+          "Shuffle played cards",
+          "before scoring"
+        },
+      },
+      bl_abn_new_aperture = {
+        name = "The Aperture",
+        text = {
+          "{C:diamonds}Diamonds{} give {C:chips}double{} Chips, all",
+          "other suits give only {C:chips}1{} Chip"
+        },
+      },
+      bl_abn_new_grapple = {
+        name = "The Grapple",
+        text = {
+          "Draw 2 cards after",
+          "playing a hand"
+        },
+      },
+      bl_abn_new_shakes = {
+        name = "The Shakes",
+        text = {
+          "-1 card selection limit"
+        },
+      },
+      bl_abn_new_blockade = {
+        name = "The Blockade",
+        text = {
+          "Played hand will only",
+          "score leftmost card"
+        },
+      },
+      bl_abn_new_pulley = {
+        name = "The Pulley",
+        text = {
+          "{C:green}#1# in #2#{} cards get",
+          "drawn face down"
+        },
+      },
+      bl_abn_new_limb = {
+        name = "The Limb",
+        text = {
+          "Must play an upgraded hand"
+        },
+      },
+      bl_abn_new_provoke = {
+        name = "The Provoke",
+        text = {
+          "{C:spades}Spades{} give {C:chips}double{} Chips, all",
+          "other suits give only {C:chips}1{} Chip"
+        },
+      },
+      bl_abn_new_cranium = {
+        name = "The Cranium",
+        text = {
+          "{C:hearts}Hearts{} give {C:chips}double{} Chips, all",
+          "other suits give only {C:chips}1{} Chip"
+        },
+      },
+      --#endregion
     },
   },
 }

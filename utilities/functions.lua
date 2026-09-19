@@ -286,11 +286,13 @@ function ABN.get_random_nightshift()
 end
 
 -- Gets most played Poker Hand
-ABN.most_played_hand = function()
+-- Set just_played to a hand name if using this function immediately after playing a hand, in order to exclude that hand
+ABN.most_played_hand = function(just_played)
   local _handname, _played, _order = 'High Card', -1, 100
   for k, v in pairs(G.GAME.hands) do
-    if v.played > _played or (v.played == _played and _order > v.order) then
-      _played = v.played
+	local vplayed = v.played - (k == just_played and 1 or 0)
+    if vplayed > _played or (vplayed == _played and _order > v.order) then
+      _played = vplayed
       _handname = k
     end
   end
@@ -299,6 +301,7 @@ ABN.most_played_hand = function()
 end
 
 -- Gets highest level poker hand
+-- If you include_hidden_hands, it will also check the levels of locked hidden hands like Flush Six
 ABN.highest_level_hand = function(include_hidden_hands)
   local _handname, _played, _order, _level = 'High Card', -1, 100, -1
   for k, v in pairs(G.GAME.hands) do

@@ -131,6 +131,20 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+  key = 'NewestiaBlinds',
+  path = 'square_blinds_2.png',
+  px = 66,
+  py = 66,
+})
+
+SMODS.Atlas({
+  key = 'Newestia',
+  path = 'newestia.png',
+  px = 390,
+  py = 58,
+})
+
+SMODS.Atlas({
   key = "AbandoniaSpectrals",
   path = "spectrals.png",
   px = 71,
