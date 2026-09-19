@@ -9453,6 +9453,33 @@ return {
 		  "gains {X:mult,C:white}X#1#{} Mult per round held",
         }
       },
+      j_abn_big_otis = {
+        name = "Big Otis",
+        text = {
+          "If {C:attention}scored hand{} has more than",
+          "{C:attention}#3#{} card and",
+          "is only made of",
+          "modded ranks,",
+          "{C:mult}+#2#{} Mult and {C:chips}+#1#{} Chips"
+        }
+      },
+      j_abn_tiny_waldo = {
+        name = "Tiny Waldo",
+        text = {
+          "{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult",
+          "when scoring hand compose of",
+          "{C:attention}#3#{} modded Ranks and {C:attention}#4#{} vanilla ranks"
+        }
+      },
+      j_abn_hipster = {
+        name = "Hipster",
+        text = {
+          "Scored {C:attention}cards{} with",
+          "a modded rank",
+          "permanently gains",
+          "{C:mult}+#1#{} Mult"
+        }
+      }
     },
   },
   misc = {
