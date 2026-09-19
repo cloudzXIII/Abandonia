@@ -2901,7 +2901,7 @@ return {
         }
       },
 
-      j_abn_exciton_event = { -- i think we should use placeholders (#1#, #2#, etc.) and colors ({C:attention}, {C:green} and etc.) :<
+      j_abn_exciton_event = { -- i think we should use placeholders (#1#, #2#, etc.) and colors ({C:attention}, {C:green} and etc.) :< (I agree, fixed that! - cloudzXIII)
         name = "Exciton Event",
         text = {
           "When a {C:planet}Planet{} card is used,",

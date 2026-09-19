@@ -333,6 +333,7 @@ SMODS.Consumable {
   },
 }
 
+--[[
 SMODS.Consumable {
   key = "ram_04",
   set = 'ram',
@@ -435,7 +436,7 @@ SMODS.Consumable {
     artist = "GM36"
   },
 }
-
+--]]
 SMODS.Consumable {
   key = "ram_06",
   set = 'ram',
