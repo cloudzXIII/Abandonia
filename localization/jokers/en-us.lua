@@ -2901,12 +2901,12 @@ return {
         }
       },
 
-      j_abn_exciton_event = {
+      j_abn_exciton_event = { -- i think we should use placeholders (#1#, #2#, etc.) and colors ({C:attention}, {C:green} and etc.) :<
         name = "Exciton Event",
         text = {
-          "When using a Planet card,",
-          "upgrade a random poker hand by 2",
-          "1 in 6 chance to destroy 75% of your deck"
+          "When using a {C:planet}Planet{} card,",
+          "{C:attention}level up{} random poker hand by {C:attention}2",
+          "{C:green}1 in 6{} chance to destroy {C:red}75%{} of your deck"
         }
       },
 
@@ -2938,10 +2938,10 @@ return {
       },
 
       j_abn_failed_test = {
-        name = "failed test",
+        name = "Failed test",
         text = {
-          "Played {C:attention}#1#{}, give their +Chips as XMult",
-          "{C:attention}(hand changes after each hand is played)"
+          "Played {C:attention}#1#{} give their +Chips as XMult",
+          "{C:attention}(hand changes after each hand)"
         }
       },
 

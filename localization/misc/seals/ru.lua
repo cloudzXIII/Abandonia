@@ -18,7 +18,7 @@ return {
                 }
             },
             abn_silver_seal = {
-                name = "Серебрянная печать",
+                name = "Серебряная печать",
                 text = {
                     "Создает {C:weather_report}Прогноз погоды{}",
                     "при {C:attention}сбросе",
@@ -26,7 +26,7 @@ return {
                 },
             },
             abn_copper_seal = {
-                name = "Бронзовая печать",
+                name = "Медная печать",
                 text = {
                     "Создает {C:program_pack}Программную{}",
                     "карту при {C:attention}сбросе",
@@ -157,30 +157,30 @@ return {
                     "{C:inactive}(сейчас {C:mult}+#1#{C:inactive} множ.)"
                 },
             },
-        },
-        misc = {
-            labels = {
-                abn_orange_seal = "Оранжевая печать",
-                abn_grey_seal = "Серая печать",
-                abn_pink_seal = "Розовая печать",
-                abn_black_seal = "Черная печать",
-                abn_teal_seal = "Бирюзовая печать",
-                abn_white_seal = "Белая печать",
-                abn_brown_seal = "Коричневая печать",
-                abn_violet_seal = "Пурпурная печать",
-                abn_lavender_seal = "Лавандовая печать",
-                abn_skyblue_seal = "Небесная печать",
-                abn_oxidized_seal = "Окисленная печать",
-                abn_brass_seal = "Латунная печать",
-                abn_copper_seal = "Медная печать",
-                abn_silver_seal = "Серебрянная",
-                abn_linguistic_seal = "Лингвистическая печать",
-                abn_rubicund_seal = "Румяная печать",
-                abn_brine_seal = "Морская печать",
-                abn_rainbow_seal = "Радужная печать",
-                abn_duality_seal = "Дуальная печать",
-                abn_lime_seal = "Лаймовая печать"
-            }
+        }
+    },
+    misc = {
+        labels = {
+            abn_orange_seal = "Оранжевая печать",
+            abn_grey_seal = "Серая печать",
+            abn_pink_seal = "Розовая печать",
+            abn_black_seal = "Черная печать",
+            abn_teal_seal = "Бирюзовая печать",
+            abn_white_seal = "Белая печать",
+            abn_brown_seal = "Коричневая печать",
+            abn_violet_seal = "Пурпурная печать",
+            abn_lavender_seal = "Лавандовая печать",
+            abn_skyblue_seal = "Небесная печать",
+            abn_oxidized_seal = "Окисленная печать",
+            abn_brass_seal = "Латунная печать",
+            abn_copper_seal = "Медная печать",
+            abn_silver_seal = "Серебряная печать",
+            abn_linguistic_seal = "Лингвистическая печать",
+            abn_rubicund_seal = "Румяная печать",
+            abn_brine_seal = "Морская печать",
+            abn_rainbow_seal = "Радужная печать",
+            abn_duality_seal = "Дуальная печать",
+            abn_lime_seal = "Лаймовая печать"
         }
     }
 }

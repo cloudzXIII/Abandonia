@@ -193,7 +193,7 @@ return {
                 }
             },
             p_abn_calligraphy_normal = {
-                name = "Набор каллиграфии",
+                name = "Каллиграфический набор",
                 text = {
                     "Выберите {C:attention}#1#{} из",
                     "{C:attention}#2# {C:calligraphy}Каллиграфических{} карт,",
@@ -201,7 +201,7 @@ return {
                 },
             },
             p_abn_calligraphy_jumbo = {
-                name = "Набор каллиграфии Джамбо",
+                name = "Каллиграфический набор Джамбо",
                 text = {
                     "Выберите {C:attention}#1#{} из",
                     "{C:attention}#2# {C:calligraphy}Каллиграфических{} карт,",
@@ -209,7 +209,7 @@ return {
                 },
             },
             p_abn_calligraphy_mega = {
-                name = "Меганабор каллиграфии",
+                name = "Меггакаллиграфический набор",
                 text = {
                     "Выберите {C:attention}#1#{} из",
                     "{C:attention}#2# {C:calligraphy}Каллиграфических{} карт,",
@@ -411,6 +411,30 @@ return {
                     'чтобы использовать сразу',
                 }
             },
+            p_abn_paradox_normal = {
+                name = 'Набор парадоксов',
+                text = {
+                    'Выберите {C:attention}#1#{} из',
+                    '{C:attention}#2#{} карт {C:paradox}Парадокса{},',
+                    'чтобы использовать сразу',
+                }
+            },
+            p_abn_paradox_jumbo = {
+                name = 'Набор парадоксов Джамбо',
+                text = {
+                    'Выберите {C:attention}#1#{} из',
+                    '{C:attention}#2#{} карт {C:paradox}Парадокса{},',
+                    'чтобы использовать сразу',
+                }
+            },
+            p_abn_paradox_mega = {
+                name = 'Меганабор парадоксов',
+                text = {
+                    'Выберите {C:attention}#1#{} из',
+                    '{C:attention}#2#{} карт {C:paradox}Парадокса{},',
+                    'чтобы использовать сразу',
+                }
+            },
         }
     },
     misc = {
@@ -427,6 +451,7 @@ return {
             k_lexica_pack = "Набор лексики",
             k_weather_pack = "Набор прогнозов",
             k_continent_pack = "Набор континентов",
+	        abn_paradoxbooster = "Набор парадоксов",
 
             -- kiddy pack thingys
             k_standard_kiddy = "Детский стандартный набор",

@@ -2,13 +2,13 @@ return {
     descriptions = {
         Other = {
             abn_pump_up = {
-                name = "Подкаченный",
+                name = "Накаченный",
                 text = {
                     "{C:mult}+#1#{} множ."
                 }
             },
             abn_bullseye = {
-                name = "Булсай",
+                name = "Яблочко",
                 text = {
                     "{C:chips}+#1#{} фишек"
                 }
@@ -109,7 +109,7 @@ return {
                 }
             },
             abn_top_hat = {
-                name = "Циллиндр",
+                name = "Цилиндр",
                 text = {
                     "Перезапускает {C:attention}первую{} сыгранную",
                     "{C:attention}улучшенную карту{} в подсчете",
@@ -268,7 +268,7 @@ return {
                 text = {
                     "Пока есть этот стикер,",
                     "все {C:artistry_cards}Художественные{} и",
-                    "{C:calligraphy}Каллиграфические{} карты {C:red}disabled"
+                    "{C:calligraphy}Каллиграфические{} карты {C:red}ослаблены"
                 }
             },
             abn_bomb = {
@@ -395,9 +395,9 @@ return {
     },
     misc = {
         labels = {
-            abn_pump_up = "Подкаченный",
+            abn_pump_up = "Накаченный",
             abn_immortal = "Бессмертный",
-            abn_bullseye = "Булсай",
+            abn_bullseye = "Яблочко",
             abn_shovel = "Лопата",
             abn_downgrade = "Ухудшенный",
             abn_vessel = "Сосуд",
@@ -409,7 +409,7 @@ return {
             abn_question_mark = "Знак вопроса?",
             abn_square = "Кубический",
             abn_lightning_bolt = "Молния",
-            abn_top_hat = "Циллиндр",
+            abn_top_hat = "Цилиндр",
             abn_cat_eye = "Кошачий глаз",
             abn_eraser = "Ластик",
             abn_lucky = "Удачливый",
@@ -427,7 +427,7 @@ return {
             abn_odd_legacy = "Наследие Нечетного",
             abn_jimbo_legacy = "Наследие Джимбо",
             abn_rejok_legacy = "Наследие Рекожда",
-            abn_obmij_legacy = "Наследие Обмиджа",
+            abn_obmij_legacy = "Наследие Обмижда",
             abn_jester_legacy = "Наследие Шута",
             abn_currency = "Валюта",
             abn_chain = "Цепной",

@@ -257,9 +257,13 @@ return {
       m_abn_honey = {
         name = "Honey",
         text = {
-          "This card is {C:attention}always{} drawn to hand",
-          "If this card is in {C:attention}hand{} during scoring {C:attention}play{} it",
-          "{C:green}#1# in #2#{} chance to turn other scoring cards into {C:attention}Honey{} cards",
+          {
+            "This card is {C:attention}always{} drawn to hand",
+            "If this card is in {C:attention}hand{} during scoring {C:attention}play{} it",
+          },
+          {
+            "{C:green}#1# in #2#{} chance to turn other scoring cards into {C:attention}Honey{} cards",
+          }
         }
       },
       m_abn_bubble = {
@@ -468,14 +472,14 @@ return {
         name = "Darkner",
         text = {
           "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult per played and held {C:spades}Dark Suits{}",
-          "{C:mult}Self-destruct{} if played with {C:attention}#3#{} or more {C:diamonds}Light Suits",
+          "{C:mult}Self-destruct{} if {C:attention}#3#{} or more {C:diamonds}Light Suits{} played",
         },
       },
       abn_stk_lightner = {
         name = "Lightner",
         text = {
           "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult per played and held {C:diamonds}Light Suits{}",
-          "{C:mult}Self-destruct{} if played with {C:attention}#3#{} or more {C:spades}Dark Suits",
+          "{C:mult}Self-destruct{} if {C:attention}#3#{} or more {C:spades}Dark Suits{} played",
         },
       },
       abn_stk_first_aid = {
@@ -483,7 +487,7 @@ return {
         text = {
           "If a {C:mult}debuffed{} card is played gain {C:mult}+#2#{} Mult",
 		  "If a card is {C:mult}destroyed{} gain {C:chips}+#4#{} Chips",
-		  "{C:inactive}Currently:{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#3#{} {C:inactive}Chips{}",
+		  "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#3#{} {C:inactive}Chips)",
         },
       },
 	    abn_stk_flux = {
@@ -497,7 +501,7 @@ return {
         name = "Zen",
         text = {
           "{C:mult}+#1#{} Mult",
-		  "gain {C:mult}+#2#{} Mult for every card {C:attention}held in hand{]",
+		  "Gain {C:mult}+#2#{} Mult for every card {C:attention}held in hand{}",
         },
       },
 	    abn_stk_plank = {

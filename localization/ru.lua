@@ -292,7 +292,118 @@ return {
       },
       --#endregion
 
+      --#region Flypaper Fly Types
+      abn_red_beetle = {
+        name = "Красный жук",
+        text = {
+          "Получает {X:mult,C:white}X#1#{} множ., если",
+          "очки загораются",
+          "{C:inactive}(Сейчас {X:mult,C:white}X#2#{C:inactive} множ.)",
+          "{C:white}.",
+          "Может быть пойман, если {C:attention}Липучая",
+          "карта находится в победной руке с",
+          "{C:attention}четным{} числом подсчитываемых карт"
+        }
+      },
+      abn_red_beetle_inactive = {
+        name = "Красный жук",
+        text = {
+          "Только недавнее {C:purple}насекомое",
+          "может масштабироваться",
+          "{C:inactive}(Сейчас {X:mult,C:white}X#2#{C:inactive} множ.)",
+          "{C:white}.",
+          "Может быть пойман, если {C:attention}Липучая",
+          "карта находится в победной руке с",
+          "{C:attention}четным{} числом подсчитываемых карт"
+        }
+      },
+      abn_green_beetle = {
+        name = "Зеленый жук",
+        text = {
+          "Получает {X:chips,C:white}X#1#{} фишек, если",
+          "очки загораются",
+          "{C:inactive}(сейчас {X:chips,C:white}X#2#{C:inactive} фишек)",
+          "{C:white}.",
+          "Может быть пойман, если {C:attention}Липучая",
+          "карта находится в победной руке с",
+          "{C:attention}нечетным{} числом подсчитываемых карт"
+        }
+      },
+      abn_green_beetle_inactive = {
+        name = "Зеленый жук",
+        text = {
+          "Только недавнее {C:purple}насекомое",
+          "может масштабироваться",
+          "{C:inactive}(сейчас {X:chips,C:white}X#2#{C:inactive} фишек)",
+          "{C:white}.",
+          "Может быть пойман, если {C:attention}Липучая",
+          "карта находится в победной руке с",
+          "{C:attention}нечетным{} числом подсчитываемых карт"
+        }
+      },
+      abn_fly = {
+        name = "Муха",
+        text = {
+          "Перезапускает {C:attention}#1#{} случайные",
+          "карты в подсете",
+          "{C:white}.",
+          "Может быть пойман, если {C:attention}Липучая",
+          "карта находится в победной руке с",
+          "всеми {C:attention}улучшенными{} картами в подсчете"
+        }
+      },
+      abn_grasshopper = {
+        name = "Кузнечик",
+        text = {
+          "Все представленные вероятности",
+          "становятся {C:attention}#1#%{}, если в подсчете",
+          "{C:white}.",
+          "Может быть пойман, если {C:attention}Липучая",
+          "карта находится в победной руке с",
+          "всеми картами с {C:dark_edition}выпуском{} в подсчете"
+        }
+      },
+      abn_dragonfly = {
+        name = "Стрекоза",
+        text = {
+          "{X:black,C:white}X#1#{} к Счету,",
+          "если рука не в огне",
+          "{C:white}.",
+          "Может быть пойман, если {C:attention}Липучая",
+          "карта находится в победной руке",
+        }
+      },
+      abn_mysterious_bug = {
+        name = "Мистический жук",
+        text = {
+          "{C:gold}+#1#{} Вознесилы",
+          "{C:white}.",
+          "Может быть пойман, если {C:attention}Липучая",
+          "карта находится в победной",
+          "руке и имеет {C:attention}печать"
+        }
+      },
+      --#endregion
+
       --#region Undiscovered ConsumableTypes
+      undiscovered_paradox = {
+        name = "Не открыто",
+        text = {
+          "Купите или используйте",
+          "эту карту в партии",
+          "без сида, чтобы",
+          "узнать, что она делает",
+        }
+      },
+      undiscovered_ram = {
+        name = "Не открыто",
+        text = {
+          "Купите или используйте",
+          "эту карту в партии",
+          "без сида, чтобы",
+          "узнать, что она делает",
+        }
+      },
       undiscovered_illusion = {
         name = "Не открыто",
         text = {
@@ -429,6 +540,15 @@ return {
         }
       },
       undiscovered_astro_cards = {
+        name = "Не открыто",
+        text = {
+          "Купите или используйте",
+          "эту карту в партии",
+          "без сида, чтобы",
+          "узнать, что она делает",
+        }
+      },
+      undiscovered_crepuscular = {
         name = "Не открыто",
         text = {
           "Купите или используйте",
@@ -686,6 +806,7 @@ return {
       abn_perma_dollars = "{C:money}$#5#{} доп. $",
       abn_perma_rep = "{C:attention}+#6#{} доп. перезапусков",
 	    abn_perma_score = "{C:purple}+#7#{} доп. Очков",
+      abn_perma_asc = "{C:gold}+#8#{} Вознесилы",
 
       -- Sigil menu
       ph_abn_sigils_active = "Активные Символы",
@@ -703,7 +824,7 @@ return {
       k_abn_config_enable_update_popup = "Включить окно обновления*",
 
 
-      k_abn_config_disable_flipped_stakes = "Оключить перевернутых Джокеров в лавке?*",
+      k_abn_config_disable_flipped_stakes = "Отключить перевернутых Джокеров в лавке?*",
       abn_disable_flipped_stakes = "Перевернуты Джокеры больше не будут появляться на Ставках Джимбо",
 
       -- Auto Updater stuff
@@ -762,6 +883,7 @@ return {
       k_abn_chthonian = "Хтонический!",
       k_abn_brewed_ex = "Сварено!",
       k_abn_reduced_ex = "Уменьшено!",
+      k_abn_enhanced_ex = "Улучшено!",
 
       -- Sides
       abn_hidden_side = "Скрытый негодяй",
@@ -805,7 +927,7 @@ return {
 
       b_calligraphy_cards = "Каллиграфические карты",
       k_calligraphy = "Каллиграфия",
-      k_ancient_calligraphy = "Дервняя каллиграфия",
+      k_ancient_calligraphy = "Древняя каллиграфия",
       k_numeral_calligraphy = "Номерная каллиграфия",
 
       b_crimson_cards = "Багряные карты",
@@ -861,8 +983,8 @@ return {
       artistry_cards = "Художественная",
       periodic = "Периодическая",
 	    paradox = "Парадокс",
-      algebraic = "Algebraic",
-      illusion = "Illusion",
+      algebraic = "Алгебраическая",
+      illusion = "Иллюзия",
 	    ram = "RAM",
       crepuscular = "Сумеречное таро",
     },
@@ -953,7 +1075,7 @@ return {
       ['abn_Void Space'] = "Пустота",
 
       ['abn_Inverse Spectrum'] = "Инверс-спектрум",
-      ['abn_Divider Conquered'] = "Раздаляй и властвуй",
+      ['abn_Divider Conquered'] = "Разделяй и властвуй",
       ['abn_Twilight Distillation'] = "Сумеречная дистилляция",
 
       ['abn_Haunted Mansion'] = "Одержимый особняк",
@@ -1051,16 +1173,16 @@ return {
       },
       ['abn_Flush Mansion'] = {
         "2 Сета со всеми картами",
-        "однаковых мастей",
+        "одинаковых мастей",
       },
       ['abn_Emperium Flush'] = {
         "14, 13, 12, 11 и Туз",
-        "с одинковыми мастями",
+        "с одинаковыми мастями",
       },
 
       -- Paperback Crossmod
       ['abn_Rapture'] = {
-        '5 карт по порядку с одинковыми мастями',
+        '5 карт по порядку с одинаковыми мастями',
         'только из Апостолов, Тузов и карт с лицом'
       },
       ['abn_Rapture Spectrum'] = {

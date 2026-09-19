@@ -94,7 +94,7 @@ return {
                 }
             },
             tag_abn_hazard_abandon = {
-                name = "Забытое бедствие",
+                name = "Заброшенное бедствие",
                 text = {
                     "Добавить {C:dark_edition}#2#{} к",
                     "случайному {C:attention}Джокеру{} и {C:attention}#1#{}",
@@ -262,7 +262,7 @@ return {
                 name = "Погодное бедствие",
                 text = {
                     "Дает {C:attention}2{} бесплатных",
-                    "{C:weather_report}Мегапогодных набора{}",
+                    "{C:weather_report}Мегапогодных наборов{}",
                 }
             },
             tag_abn_hazard_calamity = {
@@ -276,14 +276,14 @@ return {
                 name = "Бедствие символа",
                 text = {
                     "Дает {C:attention}2{} бесплатных",
-                    "{C:sigils}Мегасимвольных набора{}",
+                    "{C:sigils}Мегасимвольных наборов{}",
                 }
             },
             tag_abn_hazard_astro = {
                 name = "Астро бедствие",
                 text = {
                     "Дает {C:attention}2{} бесплатных",
-                    "{C:astro_cards}Астро меганаборов{}",
+                    "{C:astro_cards}Мегаастронаборов{}",
                 }
             },
             tag_abn_hazard_nightshift = {
@@ -297,14 +297,14 @@ return {
                 name = "Программное бедствие",
                 text = {
                     "Дает {C:attention}2{} бесплатных",
-                    "{C:program_pack}Программных набора Джимбо",
+                    "{C:program_pack}Программных набора Джамбо",
                 }
             },
             tag_abn_hazard_skip = {
                 name = "Бедствие пропуска",
                 text = {
                     "Дает {C:money}$#1#{} за каждый",
-                    "блайнд в этой партии",
+                    "Блайнд, пропущенный в этой партии",
                     "{C:inactive}(Даст {C:money}$#2#{C:inactive})",
                 }
             },
@@ -335,7 +335,7 @@ return {
                 }
             },
             tag_abn_abandon = {
-                name = "Забытый тег",
+                name = "Заброшенный тег",
                 text = {
                     "Следующий Джокер базового",
                     "выпуска из лавки бесплатен и",

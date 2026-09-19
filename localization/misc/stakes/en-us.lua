@@ -123,7 +123,7 @@ return {
         },
       },
       stake_abn_abhorent = {
-        name = "Abhorent Jimbo",
+        name = "Abhorrent Jimbo",
         text = {
           "Finish at Ante {C:attention}26{}",
           "{s:0.8}Applies {C:attention,s:0.8}Toxic Jimbo",

@@ -30,15 +30,6 @@ return {
                     "{C:inactive}（当前为{C:white,X:mult}X#1#{C:inactive}）",
                 }
             },
-      m_abn_zen = {
-                name = "禅牌",
-                text = {
-                    "留在手牌中时，获得{C:mult}+#3#{}倍率",
-                    "手牌中每多一张",
-                    "{C:attention}禅{}牌额外获得{C:mult}+#2#{}倍率",
-                    "{C:inactive}（当前为{C:mult}+#1#{C:inactive}倍率）",
-                }
-            },
       m_abn_ocean = {
                 name = "海洋牌",
                 text = {
@@ -222,19 +213,6 @@ return {
                     "如果与{C:mult}被削弱{}的牌一同打出则获得{C:mult}+#4#{}倍率",
                     "如果有牌被{C:mult}摧毁{}则获得{C:chips}+#3#{}筹码",
                     "{C:inactive}（当前为{C:mult}+#2#{C:inactive}倍率，{C:chips}+#1#{C:inactive}筹码）",
-                },
-            },
-      m_abn_plank = {
-                name = "木板牌",
-                text = {
-                    "给予{C:gold}+#1#{}晋升强度",
-                },
-            },
-      m_abn_flux = {
-                name = "熔流牌",
-                text = {
-                    "{C:purple}+#1#{}计分，若属于",
-                    "{C:attention}获胜牌型{}，则再获得{C:purple}+#2#{}计分",
                 },
             },
       m_abn_discontinued = {

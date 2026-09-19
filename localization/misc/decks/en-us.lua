@@ -116,7 +116,7 @@ return {
       b_abn_DarkNebulaDeck = {
         name = "Dark Nebula Deck",
         text = {
-          "{C:planet}Planet{} Packs don't appear in the shop",
+          "{C:planet}Celestial{} Packs don't appear in the shop",
           "{C:astro_cards}Astro{} Cards appear {C:attention}2X{} more often",
         }
       },
