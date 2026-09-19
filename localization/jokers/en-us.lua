@@ -867,6 +867,17 @@ return {
         }
       },
 
+      j_abn_big_otis = {
+        name = "Big Otis",
+        text = {
+          "If {C:attention}scored hand{} has more than",
+          "{C:attention}#3#{} card and",
+          "is only made of",
+          "modded ranks,",
+          "{C:mult}+#2#{} Mult and {C:chips}+#1#{} Chips"
+        }
+      },
+
       j_abn_big_raff = {
         name = 'Big Riff',
         text = {
@@ -1294,12 +1305,10 @@ return {
       j_abn_castle_jester = {
         name = "Castle Jester",
         text = {
-          "If a {C:continent}Continent{} card is held",
-          "after scoring, adds the {C:attention}rank{}",
-          "of all {C:attention}face{} cards in hand to",
-          "this Joker's {C:mult}Mult{}, and the",
-          "{C:attention}rank{} of all {C:attention}numbered{} cards",
-          "in hand to this Joker's {C:chips}Chips{}",
+          "If a {C:continent}Continent{} card is held after scoring,",
+          "adds the {C:attention}rank{} of all {C:attention}face{} cards in hand",
+          "to this Joker's {C:mult}Mult{}, and the {C:attention}rank{} of all",
+          "{C:attention}numbered{} cards in hand to this Joker's {C:chips}Chips{}",
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult, {C:chips}+#2#{C:inactive} Chips)"
         }
       },
@@ -2893,12 +2902,12 @@ return {
       },
 
       j_abn_exciton_event = {
-       name = "Exciton Event",
-       text = {
-        "When using a Planet card,",
-        "upgrade a random poker hand by 2",
-        "1 in 6 chance to destroy 75% of your deck"
-    }
+        name = "Exciton Event",
+        text = {
+          "When using a Planet card,",
+          "upgrade a random poker hand by 2",
+          "1 in 6 chance to destroy 75% of your deck"
+        }
       },
 
       j_abn_facial_recognition = {
@@ -2931,8 +2940,8 @@ return {
       j_abn_failed_test = {
         name = "failed test",
         text = {
-        "Played {C:attention}#1#{}, give their +Chips as XMult",
-        "{C:attention}(hand changes after each hand is played)"
+          "Played {C:attention}#1#{}, give their +Chips as XMult",
+          "{C:attention}(hand changes after each hand is played)"
         }
       },
 
@@ -3774,6 +3783,16 @@ return {
         }
       },
 
+      j_abn_gone_on_vacation = {
+        name = "Gone On Vacation",
+        text = {
+          "Played cards permanently gain",
+          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+          "per {C:attention}empty{} Joker Slot",
+          "when scored",
+        }
+      },
+
       j_abn_goth_gabe = {
         name = "Goth Gabe",
         text = {
@@ -4025,6 +4044,16 @@ return {
         text = {
           "{C:attention}Unscored{} cards become",
           "{C:attention}Fossil Cards{} when played"
+        }
+      },
+
+      j_abn_hipster = {
+        name = "Hipster",
+        text = {
+          "Scored {C:attention}cards{} with",
+          "a {C:dark_edition}Modded{} {C:attention}rank{}",
+          "permanently gains",
+          "{C:mult}+#1#{} Mult"
         }
       },
 
@@ -5253,6 +5282,13 @@ return {
             "When you sell a {C:spectral}Spectral{} card,",
             "create a random {C:attention}Calamity{} card"
           }
+        }
+      },
+
+      j_abn_late_pass = {
+        name = "Late pass",
+        text = {
+          "{C:chips}+#1#{} Chips but always trigger {C:attention}last{}",
         }
       },
 
@@ -6532,6 +6568,15 @@ return {
         }
       },
 
+      j_abn_pandemonium_jester = {
+        name = "Pandemonium Jester",
+        text = {
+          "Upon purchase give {C:attention}Oilfire{} {C:dark_edition}Enhancement{} to all Jokers",
+          "When Blind is defeated each Joker with {C:attention}Oilfire{} {C:dark_edition}Enhancements{}",
+          "gains {X:mult,C:white}X#1#{} Mult per round held",
+        }
+      },
+
       j_abn_pankert = {
         name = "Pankert",
         text = {
@@ -6651,6 +6696,20 @@ return {
         }
       },
 
+      j_abn_percy = {
+        name = "Percy",
+        text = {
+          "This Joker is always {C:attention}pinned{} to the {C:attention}left{} of your Jokers",
+          "When a Joker {C:attention}triggers{} gain {C:chips}chips{} depending on its {C:attention}rarity{}",
+          "{C:common}Common{} {C:chips}+#1#{} Chips",
+          "{C:uncommon}Uncommon{} {C:chips}+#2#{} Chips",
+          "{C:rare}Rare{} {C:chips}+#3#{} Chips",
+          "{C:legendary}Legendary{} {C:chips}+#4#{} Chips",
+          "If you own Pierre {C:attention}retrigger{} every Joker per owned {C:attention}rarity{}",
+          "{C:inactive}Currently:{} {C:chips}+#5#{} {C:inactive}Chips",
+        }
+      },
+
       j_abn_perfidious_comedian = {
         name = "Perfidious Comedian",
         text = {
@@ -6731,6 +6790,20 @@ return {
             "gain {X:mult,C:white}X#6#{} Mult for matching suits",
             "{C:inactive}(Currently{} {X:mult,C:white}X#3#{} {C:inactive}Mult,{} {C:mult}+#2#{} {C:inactive}Mult,{} {C:chips}+#1#{} {C:inactive}Chips){}"
           },
+        }
+      },
+
+      j_abn_pierre = {
+        name = "Pierre",
+        text = {
+          "This Joker is always {C:attention}pinned{} to the {C:attention}right{} of your Jokers",
+          "When a Joker {C:attention}triggers{} gain {C:mult}mult{} depending on its {C:attention}rarity{}",
+          "{C:common}Common{} {C:mult}+#1#{} Mult",
+          "{C:uncommon}Uncommon{} {C:mult}+#2#{} Mult",
+          "{C:rare}Rare{} {C:mult}+#3#{} Mult",
+          "{C:legendary}Legendary{} {C:mult}+#4#{} Mult",
+          "If you own Percy {C:attention}retrigger{} every scoring card per owned {C:attention}rarity{}",
+          "{C:inactive}Currently:{} {C:mult}+#5#{} {C:inactive}Mult",
         }
       },
 
@@ -7252,11 +7325,11 @@ return {
       j_abn_rereleased_special_collector_edition = {
         name = "Re-Released Special Collector Edition",
         text = {
-          "If scored hand consists entirely of cards with {C:dark_edition}Editions{},",
-          "and it has an even amount of {C:inactive}Vanilla Editions{} and an odd",
-          "number of {C:attention}Modded Editions{} or vice versa",
-          "this Joker gains {C:gold}+#2#{} Ascension Power",
-          "multiplied by whichever {C:dark_edition}Edition{} count is even",
+          "If played hand contains only {C:dark_edition}Editioned{} cards,",
+          "has an {C:attention}even{} number of {C:inactive}Vanilla{} and an {C:attention}odd{}",
+          "number of {C:dark_edition}Modded Editions{} or vice versa,",
+          "this Joker gains {C:gold}+#2#{} Asc. Power multiplied",
+          "by whichever {C:dark_edition}Edition{} count is {C:attention}even{}",
           "{C:inactive}(Currently {C:gold}+#1# {C:inactive}Ascension Power)"
         }
       },
@@ -8565,6 +8638,15 @@ return {
         }
       },
 
+      j_abn_tiny_waldo = {
+        name = "Tiny Waldo",
+        text = {
+          "{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult",
+          "when scoring hand compose of",
+          "{C:attention}#3#{} modded Ranks and {C:attention}#4#{} vanilla ranks"
+        }
+      },
+
       j_abn_tlumddo = {
         name = "Tlumddo Joker",
         text = {
@@ -8743,6 +8825,14 @@ return {
           "Played cards with",
           "{C:spades}dark{} suit give",
           "{X:mult,C:white}X#1#{} Mult when scored",
+        }
+      },
+
+      j_abn_tv_evangelist = {
+        name = "TV Evangelist",
+        text = {
+          "Gives {C:chips}+#1#{} Chips {C:mult}+#2#{} Mult and {C:money}+$#3#{}",
+          "when a {C:attention}vanilla{} 5 card hand is played with {C:attention}6{} cards",
         }
       },
 
@@ -9399,87 +9489,6 @@ return {
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
         },
       },
-	  j_abn_gone_on_vacation = {
-        name = "Gone On Vacation",
-        text = {
-          "Scoring Cards gain {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
-		  "per {C:attention}empty{} Joker Slot",
-        }
-      },
-	  j_abn_late_pass = {
-        name = "Late pass",
-        text = {
-          "{C:chips}+#1#{} Chips but always trigger {C:attention}last{}",
-        }
-      },
-	  j_abn_percy = {
-        name = "Percy",
-        text = {
-          "This Joker is always {C:attention}pinned{} to the {C:attention}left{} of your Jokers",
-		  "When a Joker {C:attention}triggers{} gain {C:chips}chips{} depending on its {C:attention}rarity{}",
-		  "{C:common}Common{} {C:chips}+#1#{} Chips",
-		  "{C:uncommon}Uncommon{} {C:chips}+#2#{} Chips",
-		  "{C:rare}Rare{} {C:chips}+#3#{} Chips",
-		  "{C:legendary}Legendary{} {C:chips}+#4#{} Chips",
-		  "If you own Pierre {C:attention}retrigger{} every Joker per owned {C:attention}rarity{}",
-		  "{C:inactive}Currently:{} {C:chips}+#5#{} {C:inactive}Chips",
-        }
-      },
-	  j_abn_pierre = {
-        name = "Pierre",
-        text = {
-          "This Joker is always {C:attention}pinned{} to the {C:attention}right{} of your Jokers",
-		  "When a Joker {C:attention}triggers{} gain {C:mult}mult{} depending on its {C:attention}rarity{}",
-		  "{C:common}Common{} {C:mult}+#1#{} Mult",
-		  "{C:uncommon}Uncommon{} {C:mult}+#2#{} Mult",
-		  "{C:rare}Rare{} {C:mult}+#3#{} Mult",
-		  "{C:legendary}Legendary{} {C:mult}+#4#{} Mult",
-		  "If you own Percy {C:attention}retrigger{} every scoring card per owned {C:attention}rarity{}",
-		  "{C:inactive}Currently:{} {C:mult}+#5#{} {C:inactive}Mult",
-        }
-      },
-	  j_abn_tv_evangelist = {
-        name = "TV Evangelist",
-        text = {
-          "Gives {C:chips}+#1#{} Chips {C:mult}+#2#{} Mult and {C:money}+$#3#{}",
-		  "when a {C:attention}vanilla{} 5 card hand is played with {C:attention}6{} cards",
-        }
-      },
-	  j_abn_pandemonium_jester = {
-        name = "Pandemonium Jester",
-        text = {
-          "Upon purchase give {C:attention}Oilfire{} {C:dark_edition}Enhancement{} to all Jokers",
-		  "When Blind is defeated each Joker with {C:attention}Oilfire{} {C:dark_edition}Enhancements{}",
-		  "gains {X:mult,C:white}X#1#{} Mult per round held",
-        }
-      },
-      j_abn_big_otis = {
-        name = "Big Otis",
-        text = {
-          "If {C:attention}scored hand{} has more than",
-          "{C:attention}#3#{} card and",
-          "is only made of",
-          "modded ranks,",
-          "{C:mult}+#2#{} Mult and {C:chips}+#1#{} Chips"
-        }
-      },
-      j_abn_tiny_waldo = {
-        name = "Tiny Waldo",
-        text = {
-          "{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult",
-          "when scoring hand compose of",
-          "{C:attention}#3#{} modded Ranks and {C:attention}#4#{} vanilla ranks"
-        }
-      },
-      j_abn_hipster = {
-        name = "Hipster",
-        text = {
-          "Scored {C:attention}cards{} with",
-          "a modded rank",
-          "permanently gains",
-          "{C:mult}+#1#{} Mult"
-        }
-      }
     },
   },
   misc = {
