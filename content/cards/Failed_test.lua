@@ -38,31 +38,7 @@ SMODS.Joker {
     end
 
     if context.after and not context.blueprint then
-      local hands = {
-        ["High Card"] = 10,
-        ["Pair"] = 30,
-        ["Two Pair"] = 25,
-        ["Three of a Kind"] = 15,
-        ["Straight"] = 10,
-        ["Flush"] = 10,
-        ["Full House"] = 7,
-        ["Four of a Kind"] = 3,
-        ["Straight Flush"] = 1
-      }
-
-      local pool = {}
-
-      for hand, weight in pairs(hands) do
-        if G.GAME.hands[hand] and G.GAME.hands[hand].visible then
-          for _ = 1, weight do
-            pool[#pool + 1] = hand
-          end
-        end
-      end
-
-      if #pool > 0 then
-        card.ability.extra.hand = pseudorandom_element(pool, pseudoseed("failed_test"))
-      end
+      card.ability.extra.hand = ABN.poll_poker_hand("abn_failed_test")
     end
   end,
 }

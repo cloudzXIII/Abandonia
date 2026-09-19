@@ -131,41 +131,67 @@ SMODS.Consumable {
   end,
 
   use = function(self, card, area, copier)
-    local modded_centers = {}
-    for key, center in pairs(G.P_CENTERS) do
-      if center.mod and center.consumeable and center.set and center.set ~= 'ram' then
-        table.insert(modded_centers, center)
+    card:juice_up(0.3, 0.5)
+    local consumables = {}
+    for _, v in ipairs(G.consumeables.cards) do
+      if v ~= card and not v.config.center.mod then
+        consumables[#consumables + 1] = v
       end
     end
 
-    if #modded_centers == 0 then return end
-
-    G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = 0.4,
-      func = function()
-        play_sound('timpani')
-
-        local to_replace = {}
-        for _, c in ipairs(G.consumeables.cards) do
-          if c ~= card and c.config and c.config.center and not c.config.center.mod then
-            table.insert(to_replace, c)
-          end
+    if #consumables > 0 then
+      local pool = {}
+      for k, v in pairs(G.P_CENTERS) do
+        if v.mod and v.consumeable and v.set and v.set ~= 'ram' then
+          pool[#pool + 1] = v
         end
-        for _, target in ipairs(to_replace) do
-          target:juice_up(0.3, 0.3)
-          local chosen_center = pseudorandom_element(modded_centers, pseudoseed('ram01'))
-          local new_card = create_card(chosen_center.set, G.consumeables, nil, nil, nil, nil, chosen_center.key, 'ram01')
-          new_card:add_to_deck()
-          G.consumeables:emplace(new_card)
-          target:start_dissolve()
-        end
-
-        card:juice_up(0.3, 0.5)
-        return true
       end
-    }))
-    delay(0.6)
+
+      for i, v in ipairs(consumables) do
+        local percent = 1.15 - (i - 0.999) / (#consumables - 0.998) * 0.3
+        G.E_MANAGER:add_event(Event({
+          trigger = 'after',
+          delay = 0.15,
+          func = function()
+            v:flip()
+            play_sound('card1', percent)
+            v:juice_up(0.3, 0.3)
+            return true
+          end
+        }))
+      end
+
+      for i, v in ipairs(consumables) do
+        local new_key = (pseudorandom_element(pool, "abn_ram004")).key
+        local center = G.P_CENTERS[new_key]
+        if center then
+          G.E_MANAGER:add_event(Event({
+            func = function()
+              v:set_ability(G.P_CENTERS[new_key])
+              local slots_used = center.size == "XL" and 2 or center.size == "XS" and -1
+              v.ability.extra_slots_used = slots_used or 0
+              return true
+            end
+          }))
+        end
+      end
+
+      for i, v in ipairs(consumables) do
+        local percent = 0.85 + (i - 0.999) / (#consumables - 0.998) * 0.3
+        G.E_MANAGER:add_event(Event({
+          trigger = 'after',
+          delay = 0.15,
+          func = function()
+            v:flip()
+            play_sound('tarot2', percent, 0.6)
+            v:juice_up(0.3, 0.3)
+            return true
+          end
+        }))
+      end
+
+      delay(0.5)
+    end
   end,
 
   abn_artist_credits = {
@@ -365,15 +391,22 @@ SMODS.Consumable {
         }))
       end
 
-      for i, v in ipairs(consumables) do
+      for i, consumable in ipairs(consumables) do
         local new_key = (pseudorandom_element(pool, "abn_ram004")).key
-        local center = G.P_CENTERS[new_key]
+        local new_pool = {}
+        for k, vv in pairs(G.P_CENTERS) do
+          if vv.mod and vv.consumeable and vv.set and vv.set == consumable.config.center.set then
+            new_pool[#new_pool + 1] = vv
+          end
+        end
+        local random = pseudorandom_element(new_pool, "abn_ram004")
+        local center = G.P_CENTERS[random]
         if center then
           G.E_MANAGER:add_event(Event({
             func = function()
-              v:set_ability(G.P_CENTERS[new_key])
+              consumable:set_ability(G.P_CENTERS[new_key])
               local slots_used = center.size == "XL" and 2 or center.size == "XS" and -1
-              v.ability.extra_slots_used = slots_used or 0
+              consumable.ability.extra_slots_used = slots_used or 0
               return true
             end
           }))

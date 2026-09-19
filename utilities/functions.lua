@@ -204,7 +204,7 @@ function ABN.random_sticker(card, seed)
   local compatible = {}
 
   for sticker in pairs(SMODS.Stickers) do
-    print(sticker)
+    --print(sticker)
     if sticker ~= 'pinned' then
       table.insert(compatible, sticker)
     end
@@ -321,6 +321,30 @@ ABN.count_planet_ranks_played = function(hand)
   return total_level
 end
 
+-- get random poker hand
+ABN.poll_poker_hand = function(seed)
+  seed = seed or "funny"
+  local poker_hands = {}
+  local total_weight = 0
+  for _, handname in ipairs(G.handlist) do
+    if G.GAME.hands[handname].visible then
+      local weight = G.GAME.hands[handname].played + 1
+      total_weight = total_weight + weight
+      poker_hands[#poker_hands + 1] = { handname, total_weight }
+    end
+  end
+
+  local weight = pseudorandom(seed) * total_weight
+  local hand
+  for _, h in ipairs(poker_hands) do
+    if weight < h[2] then
+      hand = h[1]
+      break
+    end
+  end
+
+  return hand
+end
 
 --allow tags to be in the shop
 

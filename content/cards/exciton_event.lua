@@ -1,59 +1,57 @@
 SMODS.Joker {
-    key = "exciton_event",
-    name = "Exciton Event",
-    rarity = 3,
-    cost = 6,
-    atlas = "ABNJokerSheet26",
-    pos = {x = 7, y = 2},
+  key = 'exciton_event',
 
-    config = {
-        extra = {}
-    },
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    local numerator, denominator = SMODS.get_probability_vars(card, cae.base, cae.odds)
 
-    loc_vars = function(self, info_queue, card)
-        card.ability.extra = card.ability.extra or {}
+    return {
+      vars = {
+        numerator,
+        denominator,
+        cae.amount
+      }
+    }
+  end,
 
-        return {
-            vars = {
-                card.ability.extra.hand or ""
-            }
-        }
-    end,
+  rarity = 3,
+  atlas = "ABNJokerSheet26",
+  pos = { x = 7, y = 2 },
+  cost = 6,
+  discovered = false,
+  blueprint_compat = false,
 
-    calculate = function(self, card, context)
-        if context.using_consumeable and context.consumeable.ability.set == "Planet" then
-            local hands = {}
+  config = { extra = { base = 1, odds = 8, amount = 2 } },
+  calculate = function(self, card, context)
+    if context.using_consumeable and context.consumeable and context.consumeable.ability.set == 'Planet' then
+      local hand = ABN.poll_poker_hand("abn_exciton_event")
+      SMODS.calculate_effect({ message = localize('k_level_up_ex'), colour = G.C.GREEN },
+        context.blueprint_card or card)
 
-            for hand, data in pairs(G.GAME.hands) do
-                if data.visible then
-                    hands[#hands + 1] = hand
-                end
-            end
+      SMODS.smart_level_up_hand(card, hand, nil, card.ability.extra.amount)
 
-            if #hands > 0 then
-                local hand = pseudorandom_element(hands, pseudoseed("exciton_event"))
+      if SMODS.pseudorandom_probability(card, 'abn_exciton_event', card.ability.extra.base, card.ability.extra.odds) then
+        local deck_cards = {}
 
-                card.ability.extra = card.ability.extra or {}
-                card.ability.extra.hand = hand
-
-                level_up_hand(card, hand, nil, 2)
-            end
-
-            if pseudorandom("exciton_destroy") < 1 / 6 then
-                local deck_cards = {}
-
-                for _, c in ipairs(G.deck.cards) do
-                    deck_cards[#deck_cards + 1] = c
-                end
-
-                for i = 1, math.floor(#deck_cards * 0.75) do
-                    if #deck_cards > 0 then
-                        local index = pseudorandom("exciton_destroy_card", 1, #deck_cards)
-                        local c = table.remove(deck_cards, index)
-                        c:start_dissolve()
-                    end
-                end
-            end
+        for _, c in ipairs(G.deck.cards) do
+          deck_cards[#deck_cards + 1] = c
         end
+
+        local cards_to_destroy = {}
+
+        for i = 1, math.floor(#deck_cards * 0.75) do
+          if #deck_cards > 0 then
+            local index = pseudorandom("exciton_destroy_card", 1, #deck_cards)
+            cards_to_destroy[#cards_to_destroy + 1] = deck_cards[index]
+          end
+        end
+
+        SMODS.destroy_cards(cards_to_destroy)
+        return {
+          message = localize("k_abn_destroyed"),
+          colour = G.C.RED,
+        }
+      end
     end
+  end,
 }
