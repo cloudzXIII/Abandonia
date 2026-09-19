@@ -41,4 +41,7 @@ SMODS.Joker {
       card.ability.extra.hand = ABN.poll_poker_hand("abn_failed_test")
     end
   end,
+  abn_artist_credits = {
+    artist = "Morphine Milkshake"
+  },
 }
