@@ -2938,10 +2938,12 @@ return {
       },
 
       j_abn_failed_test = {
-        name = "failed test",
+        name = "Failed Test",
         text = {
-          "Played {C:attention}#1#{}, give their +Chips as XMult",
-          "{C:attention}(hand changes after each hand is played)"
+          "If played hand is a {C:attention}#1#{},",
+          "all scoring cards give",
+          "their {C:chips}Chips{} as {C:white,X:mult}XMult{}",
+          "{C:inactive,s:0.8}({C:attention,s:0.8}poker hand{s:0.8,C:inactive} changes every hand)"
         }
       },
 
