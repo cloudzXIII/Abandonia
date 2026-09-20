@@ -157,6 +157,110 @@ return {
           },
         }
       },
+	  c_abn_ipos = {
+        name = "Ipos",
+        text = {
+          {
+            "Next eligible hand is",
+            "transformed into",
+            "{C:attention}Royal Flush{}",
+          },
+          {
+            "{C:attention}Royal Flush{} gains {C:attention}1{} level",
+          },
+        }
+      },
+	  c_abn_forneus = {
+        name = "Forneus",
+        text = {
+          {
+            "Next eligible hand is",
+            "transformed into",
+            "{C:attention}Flush Six{}",
+          },
+          {
+            "{C:attention}Flush Six{} gains {C:attention}1{} level",
+          },
+        }
+      },
+	  c_abn_oso = {
+        name = "Oso",
+        text = {
+          {
+            "Next eligible hand is",
+            "transformed into",
+            "{C:attention}Six of a Kind{}",
+          },
+          {
+            "{C:attention}Six of a Kind{} gains {C:attention}1{} level",
+          },
+        }
+      },
+	  c_abn_alocas = {
+        name = "Alocas",
+        text = {
+          {
+            "Next eligible hand is",
+            "transformed into",
+            "{C:attention}Double Triple{}",
+          },
+          {
+            "{C:attention}Double Triple{} gains {C:attention}1{} level",
+          },
+        }
+      },
+	  c_abn_gaap = {
+        name = "Gaap",
+        text = {
+          {
+            "Next eligible hand is",
+            "transformed into",
+            "{C:attention}Triple Pair{}",
+          },
+          {
+            "{C:attention}Triple Pair{} gains {C:attention}1{} level",
+          },
+        }
+      },
+	  c_abn_bathin = {
+        name = "Bathin",
+        text = {
+          {
+            "Next eligible hand is",
+            "transformed into",
+            "{C:attention}Emperium Flush{}",
+          },
+          {
+            "{C:attention}Emperium Flush{} gains {C:attention}1{} level",
+          },
+        }
+      },
+	  c_abn_vassago = {
+        name = "Vassago",
+        text = {
+          {
+            "Next eligible hand is",
+            "transformed into",
+            "{C:attention}Mansion{}",
+          },
+          {
+            "{C:attention}Mansion{} gains {C:attention}1{} level",
+          },
+        }
+      },
+	  c_abn_murmur = {
+        name = "Murmur",
+        text = {
+          {
+            "Next eligible hand is",
+            "transformed into",
+            "{C:attention}Flush Mansion{}",
+          },
+          {
+            "{C:attention}Flush Mansion{} gains {C:attention}1{} level",
+          },
+        }
+      },
     },
   },
 }
