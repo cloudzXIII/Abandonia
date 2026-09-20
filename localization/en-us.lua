@@ -1189,12 +1189,13 @@ return {
       },
 
       ['abn_Mansion'] = {
-        "4 cards of one suit",
-        "2 cards of another suit",
+        "4 cards of one rank",
+        "2 cards of another rank",
       },
       ['abn_Flush Mansion'] = {
-        "2 Three of a Kinds with",
-        "all cards sharing the same suit",
+        "4 cards of one rank",
+        "2 cards of another rank",
+		"all cards sharing the same suit",
       },
       ['abn_Emperium Flush'] = {
         "14, 13, 12, 11, and Ace",
