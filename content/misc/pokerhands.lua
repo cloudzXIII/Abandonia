@@ -638,44 +638,23 @@ SMODS.PokerHand {
     { 'H_Q', true },
   },
   evaluate = function(parts, hand)
-    if #hand < 6 then return {} end
-    local suits = {}
+    if #parts._4 < 1 or #parts._2 < 2 then return {} end
 
-    for _, card in ipairs(hand) do
-      for suit, _ in pairs(SMODS.Suits) do
-        if card:is_suit(suit, nil, true) then
-          suits[suit] = (suits[suit] or 0) + 1
-          break
-        end
+    local four_cards = parts._4[1]
+    local four_rank = four_cards[1]:get_id()
+
+    local pair_cards = nil
+    for _, pair in ipairs(parts._2) do
+      if pair[1]:get_id() ~= four_rank then
+        pair_cards = pair
+        break
       end
     end
 
-    local has_two = false
-    local has_four = false
-    local two_suits = {}
-    local four_suits = {}
-
-    for suit, count in pairs(suits) do
-      if count >= 4 then
-        has_four = true
-        for _, card in ipairs(hand) do
-          if card:is_suit(suit, nil, true) and #four_suits < 4 then
-            table.insert(four_suits, card)
-          end
-        end
-      elseif count >= 2 then
-        has_two = true
-        for _, card in ipairs(hand) do
-          if card:is_suit(suit, nil, true) and #two_suits < 2 then
-            table.insert(two_suits, card)
-          end
-        end
-      end
+    if pair_cards then
+      return { SMODS.merge_lists(four_cards, pair_cards) }
     end
 
-    if has_two and has_four then
-      return { SMODS.merge_lists(two_suits, four_suits) }
-    end
     return {}
   end
 }
@@ -687,20 +666,51 @@ SMODS.PokerHand {
   mult = 16,
   l_chips = 50,
   l_mult = 4,
-  above_hand = 'Flush House',
+  above_hand = 'Flush Five',
   example = {
     { 'D_7', true },
     { 'D_7', true },
     { 'D_7', true },
-    { 'D_4', true },
+    { 'D_7', true },
     { 'D_4', true },
     { 'D_4', true },
   },
   evaluate = function(parts, hand)
     if #hand < 6 then return {} end
-    if #parts._3 < 2 or not next(parts._flush) then return {} end
+    if #parts._4 < 1 or #parts._2 < 2 then return {} end
 
-    return { SMODS.merge_lists(parts._flush, parts._all_pairs) }
+    local four_cards = parts._4[1]
+    local four_rank = four_cards[1]:get_id()
+
+    local pair_cards = nil
+    for _, pair in ipairs(parts._2) do
+      if pair[1]:get_id() ~= four_rank then
+        pair_cards = pair
+        break
+      end
+    end
+
+    if pair_cards then
+      local candidate_cards = {}
+      for _, c in ipairs(four_cards) do table.insert(candidate_cards, c) end
+      for _, c in ipairs(pair_cards) do table.insert(candidate_cards, c) end
+
+      local first_suit = candidate_cards[1].base.suit
+      local is_all_same_suit = true
+
+      for i = 1, #candidate_cards do
+        if not candidate_cards[i]:is_suit(first_suit, nil, true) then
+          is_all_same_suit = false
+          break
+        end
+      end
+
+      if is_all_same_suit then
+        return { candidate_cards }
+      end
+    end
+
+    return {}
   end
 }
 
