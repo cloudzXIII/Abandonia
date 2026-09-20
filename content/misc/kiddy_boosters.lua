@@ -8,6 +8,13 @@ SMODS.Booster({
   kind = "Standard",
   group_key = 'k_standard_kiddy',
   discovered = false,
+  select_card = function(self, card, pack)
+    if card.config.center.use then
+      return "consumeables", true
+    else
+      return "consumeables"
+    end
+  end,
 
   create_card = function(self, card, i)
     local _edition = SMODS.poll_edition { key = "standard_kiddy" .. G.GAME.round_resets.ante, mod = 2, no_negative = true }
@@ -64,6 +71,13 @@ SMODS.Booster({
   group_key = 'k_arcana_kiddy',
   draw_hand = true,
   discovered = false,
+  select_card = function(self, card, pack)
+    if card.config.center.use then
+      return "consumeables", true
+    else
+      return "consumeables"
+    end
+  end,
 
   create_card = function(self, card, i)
     local _card
@@ -130,6 +144,13 @@ SMODS.Booster({
   group_key = 'k_spectral_kiddy',
   draw_hand = true,
   discovered = false,
+  select_card = function(self, card, pack)
+    if card.config.center.use then
+      return "consumeables", true
+    else
+      return "consumeables"
+    end
+  end,
 
   create_card = function(self, card, i)
     return {
@@ -182,6 +203,13 @@ SMODS.Booster({
   group_key = 'k_celestial_kiddy',
   draw_hand = true,
   discovered = false,
+  select_card = function(self, card, pack)
+    if card.config.center.use then
+      return "consumeables", true
+    else
+      return "consumeables"
+    end
+  end,
 
   create_card = function(self, card, i)
     local _card
@@ -267,6 +295,13 @@ SMODS.Booster({
   kind = "abn_Astro",
   group_key = 'k_astro_kiddy',
   discovered = false,
+  select_card = function(self, card, pack)
+    if card.config.center.use then
+      return "consumeables", true
+    else
+      return "consumeables"
+    end
+  end,
 
   create_card = function(self, card)
     return {
@@ -309,6 +344,13 @@ SMODS.Booster({
   kind = "abn_Sigil",
   group_key = 'k_sigil_kiddy',
   discovered = false,
+  select_card = function(self, card, pack)
+    if card.config.center.use then
+      return "consumeables", true
+    else
+      return "consumeables"
+    end
+  end,
 
   create_card = function(self, card)
     return {
@@ -351,6 +393,13 @@ SMODS.Booster({
   kind = "abn_Weather",
   group_key = 'k_weather_kiddy',
   discovered = false,
+  select_card = function(self, card, pack)
+    if card.config.center.use then
+      return "consumeables", true
+    else
+      return "consumeables"
+    end
+  end,
 
   create_card = function(self, card)
     return {
@@ -394,6 +443,13 @@ SMODS.Booster({
   group_key = 'k_lexica_kiddy',
   select_card = 'consumeables',
   discovered = false,
+  select_card = function(self, card, pack)
+    if card.config.center.use then
+      return "consumeables", true
+    else
+      return "consumeables"
+    end
+  end,
 
   create_card = function(self, card)
     return {
@@ -437,6 +493,13 @@ SMODS.Booster({
   group_key = 'k_continent_kiddy',
   select_card = 'consumeables',
   discovered = false,
+  select_card = function(self, card, pack)
+    if card.config.center.use then
+      return "consumeables", true
+    else
+      return "consumeables"
+    end
+  end,
 
   create_card = function(self, card)
     return {
@@ -480,6 +543,13 @@ SMODS.Booster({
   group_key = 'k_solid_state_kiddy',
   draw_hand = true,
   discovered = false,
+  select_card = function(self, card, pack)
+    if card.config.center.use then
+      return "consumeables", true
+    else
+      return "consumeables"
+    end
+  end,
 
   create_card = function(self, card)
     return {
@@ -523,6 +593,13 @@ SMODS.Booster({
   group_key = 'k_program_kiddy',
   draw_hand = true,
   discovered = false,
+  select_card = function(self, card, pack)
+    if card.config.center.use then
+      return "consumeables", true
+    else
+      return "consumeables"
+    end
+  end,
 
   create_card = function(self, card)
     return {
@@ -566,6 +643,13 @@ SMODS.Booster({
   group_key = 'k_calligraphy_kiddy',
   draw_hand = true,
   discovered = false,
+  select_card = function(self, card, pack)
+    if card.config.center.use then
+      return "consumeables", true
+    else
+      return "consumeables"
+    end
+  end,
 
   create_card = function(self, card)
     return {
@@ -609,6 +693,13 @@ SMODS.Booster({
   group_key = 'k_glyph_kiddy',
   draw_hand = true,
   discovered = false,
+  select_card = function(self, card, pack)
+    if card.config.center.use then
+      return "consumeables", true
+    else
+      return "consumeables"
+    end
+  end,
 
   create_card = function(self, card)
     return {
@@ -652,6 +743,13 @@ SMODS.Booster({
   group_key = 'k_calamity_kiddy',
   draw_hand = true,
   discovered = false,
+  select_card = function(self, card, pack)
+    if card.config.center.use then
+      return "consumeables", true
+    else
+      return "consumeables"
+    end
+  end,
 
   create_card = function(self, card)
     return {
@@ -695,7 +793,14 @@ SMODS.Booster({
   kind = "abn_Illusion",
   group_key = 'k_illusion_kiddy',
   draw_hand = true,
-  discovered = false,
+    discovered = false,
+  select_card = function(self, card, pack)
+    if card.config.center.use then
+      return "consumeables", true
+    else
+      return "consumeables"
+    end
+  end,
 
   create_card = function(self, card)
     return {
@@ -739,6 +844,13 @@ SMODS.Booster({
   kind = "abn_Crimson",
   group_key = 'k_crimson_kiddy',
   discovered = false,
+  select_card = function(self, card, pack)
+    if card.config.center.use then
+      return "consumeables", true
+    else
+      return "consumeables"
+    end
+  end,
   select_card = "consumeables",
 
   create_card = function(self, card)

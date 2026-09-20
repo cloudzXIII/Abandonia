@@ -69,6 +69,13 @@ ABN.create_boosters_for_set = function(args)
       abn_artist_credits = {
         artist = args.artist or "???",
       },
+      select_card = function(self, card, pack)
+        if card.config.center.use then
+          return "consumeables", true
+        else
+          return "consumeables"
+        end
+      end,
     })
   end
 
@@ -123,6 +130,13 @@ ABN.create_boosters_for_set = function(args)
       abn_artist_credits = {
         artist = args.artist or "???",
       },
+      select_card = function(self, card, pack)
+        if card.config.center.use then
+          return "consumeables", true
+        else
+          return "consumeables"
+        end
+      end,
     })
   end
 
@@ -179,6 +193,13 @@ ABN.create_boosters_for_set = function(args)
       abn_artist_credits = {
         artist = args.artist or "???",
       },
+      select_card = function(self, card, pack)
+        if card.config.center.use then
+          return "consumeables", true
+        else
+          return "consumeables"
+        end
+      end,
     })
   end
 end
@@ -519,5 +540,5 @@ ABN.create_boosters_for_set {
 ABN.create_boosters_for_set {
   atlas = "AbandoniaRAMPack",
   set = "ram",
-  special_colour = G.C.GREEN
+  special_colour = G.C.GREEN,
 }

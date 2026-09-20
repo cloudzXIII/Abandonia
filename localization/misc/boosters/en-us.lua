@@ -475,6 +475,7 @@ return {
       k_abn_solid_pack = "Solid State Pack",
       k_abn_program_pack = "Program Pack",
       k_abn_calamity_pack = "Calamity Pack",
+      k_abn_ram_pack = "RAM Pack",
 
       -- kiddy pack thingys
       k_standard_kiddy = "Kiddy Standard Pack",
