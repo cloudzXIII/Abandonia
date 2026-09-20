@@ -2805,6 +2805,22 @@ return {
         }
       },
 
+      j_abn_envy = {
+        name = "Envy",
+        text = {
+          {
+            "Upon purchase, all Jokers become {C:abn_eternal}Eternal{}",
+          },
+          {
+
+            "{X:mult,C:white}X#1#{} Mult on {C:attention}second hand{}",
+            "of round, increases by {X:mult,C:white}X#2#{}",
+            "every time you don't play your",
+            "{C:attention}highest level poker hand{}",
+          },
+        },
+      },
+
       j_abn_epic_joker = {
         name = "Epic Joker",
         text = {
@@ -3754,6 +3770,22 @@ return {
         }
       },
 
+      j_abn_gluttony = {
+        name = "Gluttony",
+        text = {
+          {
+            "Upon purchase, all Jokers become {C:abn_eternal}Eternal{}",
+          },
+          {
+
+            "{X:mult,C:white}X#1#{} Mult on {C:attention}first hand{}",
+            "of round, then destroy all held {C:attention}consumables{},",
+            "increases by {X:mult,C:white}X#2#{} Mult",
+            "for each unique {C:attention}consumable{} destroyed",
+          },
+        },
+      },
+
       j_abn_gold_7 = {
         name = "Gold 7",
         text = {
@@ -3820,6 +3852,21 @@ return {
           "per {C:attention}empty{} Joker Slot",
           "when scored",
         }
+      },
+
+      j_abn_goody_two_shoes = {
+        name = "Goody Two Shoes",
+        text = {
+          {
+            "When {C:attention}Blind{} is selected,",
+            "{C:attention}lose all discards{} and",
+            "gain amount lost as {C:blue}Hands{}",
+          },
+          {
+            "Played {C:red}debuffed{} cards",
+            "give {C:money}$#1#{} when scored",
+          }
+        },
       },
 
       j_abn_goth_gabe = {
@@ -7887,6 +7934,21 @@ return {
         }
       },
 
+      j_abn_sloth = {
+        name = "Sloth",
+        text = {
+          {
+            "Upon purchase, all Jokers become {C:abn_eternal}Eternal{}",
+          },
+          {
+
+            "{X:mult,C:white}X#1#{} Mult on {C:attention}final hand{}",
+            "of round, increases by {X:mult,C:white}X#2#{}",
+            "per unique {C:attention}poker hand{} played this run",
+          }
+        },
+      },
+
       j_abn_snoozing_joker = {
         name = "Snoozing Joker",
         text = {
@@ -9565,45 +9627,7 @@ return {
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
         },
       },
-      j_abn_goody_two_shoes = {
-        name="Goody Two Shoes",
-        text={
-          "When {C:attention}Blind{} is selected {C:attention}lose all discards",
-          "and gain Hands{} equivalent to lost discard's",
-          "Scored {C:red}debuffed{} {C:attention}cards{} give {C:money}$#1#",
-        },
-      },
-
-      j_abn_sloth = {
-        name="Sloth",
-        text={
-          "Upon purchase give it and all other Jokers Eternal",
-          "{X:mult,C:white}X#1#{} {C:mult}Mult{} on {C:attention}final hand{} of round.",
-          "Increases by {X:mult,C:white}X#2#{} for each unique {C:attention}poker hand{} played this run",
-        },
-      },
-
-      j_abn_gluttony = {
-        name="Gluttony",
-        text={
-          "Upon purchase give it and all other Jokers Eternal",
-          "{X:mult,C:white}X#1#{} {C:mult}Mult{} on {C:attention}first hand{} of round",
-          "Destroy all held consumables and gains {X:mult,C:white}X#2#{} {C:mult}Mult",
-          "for each unique consumable destroyed",
-        },
-      },
-
-      j_abn_envy = {
-        name="Envy",
-        text={
-          "Upon purchase give it and all other Jokers Eternal",
-          "{X:mult,C:white}X#1#{} {C:mult}Mult{} on {C:attention}second hand{} of round",
-          "Gains {X:mult,C:white}X#2#{} {C:mult}Mult{}, each time you don't play your highest-level hand",
-        },
-      },
-
     },
-    
   },
   misc = {
     dictionary = {

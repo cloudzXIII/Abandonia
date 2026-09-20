@@ -58,6 +58,28 @@ return {
           "held {C:dark_edition}Modded{} {C:attention}consumables{}",
         },
       },
+      c_abn_ram_07 = {
+        name = "RAM 07",
+        text = {
+          "Creates all {C:dark_edition}Modded{} {C:attention}consumables{}",
+          "mentioned by your {C:attention}Jokers{}",
+          -- have thingy like the fool but match the colour of the consumable type
+        }
+      },
+      c_abn_ram_08 = {
+        name = "RAM 08",
+        text = {
+          "Retrigger next used",
+          "{C:dark_edition}Modded{} {C:planet}Planet{} card",
+        }
+      },
+      c_abn_ram_09 = {
+        name = "RAM 09",
+        text = {
+          "Next used {C:dark_edition}Modded{} {C:attention}consumable{}",
+          "does not get {C:attention}consumed{}",
+        }
+      },
     },
   },
 }
