@@ -887,3 +887,11 @@ ABN.is_vanilla_enh = function(enh_key)
     return true
   end
 end
+
+ABN.get_unique_played_poker_hands = function ()
+  local played = 0
+  for i,v in pairs(G.GAME.hands) do
+    if v.played >0 then played=played+1 end
+  end
+  return played
+end
