@@ -1327,6 +1327,954 @@ SMODS.Consumable {
 }
 
 SMODS.Consumable {
+  key = "ipos",
+  set = "sigils",
+  config = { extra = { used = 0 } },
+  pos = { x = 4, y = 1 },
+  atlas = "AbandoniaSigils",
+  cost = 4,
+  discovered = false,
+
+  can_use = function(self, card)
+    return true
+  end,
+
+  use = function(self, card, area, copier)
+    G.GAME.abn.used_sigils[card.config.center.key] = true
+    local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_ipos')
+    _card:add_to_deck()
+    G.vouchers:emplace(_card)
+  end,
+
+  calculate = function(self, card, context)
+    if context.press_play and card.area == G.vouchers and card.ability.extra.used == 0 then
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          if G.play and G.play.cards and #G.play.cards >= 5 then
+            local royal_ranks = { '10', 'Jack', 'Queen', 'King', 'Ace' }
+            local potential_indices = {}
+            for i = 1, #G.play.cards do table.insert(potential_indices, i) end
+
+            local idx_s1 = pseudorandom_element(potential_indices, pseudoseed('ipos_s1'))
+            local s1 = G.play.cards[idx_s1]
+            local target_suit = s1.base.suit
+
+            for k, v in ipairs(potential_indices) do
+              if v == idx_s1 then
+                table.remove(potential_indices, k)
+                break
+              end
+            end
+
+            local targets = {}
+            for i = 1, 4 do
+              local idx_t = pseudorandom_element(potential_indices, pseudoseed('ipos_t' .. i))
+              table.insert(targets, G.play.cards[idx_t])
+              for k, v in ipairs(potential_indices) do
+                if v == idx_t then
+                  table.remove(potential_indices, k)
+                  break
+                end
+              end
+            end
+
+            if s1 and #targets == 4 then
+              local final_hand = { s1, targets[1], targets[2], targets[3], targets[4] }
+
+              for i = #G.play.cards, 1, -1 do
+                local c = G.play.cards[i]
+                local is_reserved = false
+                for _, fh in ipairs(final_hand) do
+                  if c == fh then is_reserved = true end
+                end
+                if not is_reserved then
+                  c:start_dissolve({ G.C.RED }, nil, 1.6)
+                end
+              end
+
+              for i = 1, 5 do
+                SMODS.change_base(final_hand[i], target_suit, royal_ranks[i])
+                final_hand[i]:juice_up(0.3, 0.3)
+              end
+
+              play_sound('card1', 1)
+              card.ability.extra.used = 1
+            end
+          end
+          return true
+        end
+      }))
+      return true
+    end
+
+    if context.before and card.area == G.vouchers and card.ability.extra.used == 1 and context.scoring_name == "abn_Royal Flush" then
+      return { level_up = true }
+    end
+
+    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+      G.GAME.abn.used_sigils[card.config.center.key] = nil
+      card:start_dissolve()
+    end
+  end,
+
+  abn_artist_credits = { artist = "0kronix" },
+}
+
+SMODS.Consumable {
+  key = "forneus",
+  set = "sigils",
+  config = { extra = { used = 0 } },
+  pos = { x = 5, y = 1 },
+  atlas = "AbandoniaSigils",
+  cost = 4,
+  discovered = false,
+
+  can_use = function(self, card)
+    return true
+  end,
+
+  use = function(self, card, area, copier)
+    G.GAME.abn.used_sigils[card.config.center.key] = true
+    local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_forneus')
+    _card:add_to_deck()
+    G.vouchers:emplace(_card)
+  end,
+
+  calculate = function(self, card, context)
+    if context.press_play and card.area == G.vouchers and card.ability.extra.used == 0 then
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          if G.play and G.play.cards and #G.play.cards >= 6 then
+            local rank_list = { '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace' }
+            local potential_indices = {}
+            for i = 1, #G.play.cards do table.insert(potential_indices, i) end
+
+            local idx_s1 = pseudorandom_element(potential_indices, pseudoseed('forneus_s1'))
+            local s1 = G.play.cards[idx_s1]
+            local target_suit = s1.base.suit
+            local target_rank = s1.base.value
+
+            for k, v in ipairs(potential_indices) do
+              if v == idx_s1 then
+                table.remove(potential_indices, k)
+                break
+              end
+            end
+
+            local targets = {}
+            for i = 1, 5 do
+              local idx_t = pseudorandom_element(potential_indices, pseudoseed('forneus_t' .. i))
+              table.insert(targets, G.play.cards[idx_t])
+              for k, v in ipairs(potential_indices) do
+                if v == idx_t then
+                  table.remove(potential_indices, k)
+                  break
+                end
+              end
+            end
+
+            if s1 and #targets == 5 then
+              local final_hand = { s1, targets[1], targets[2], targets[3], targets[4], targets[5] }
+
+              for i = #G.play.cards, 1, -1 do
+                local c = G.play.cards[i]
+                local is_reserved = false
+                for _, fh in ipairs(final_hand) do
+                  if c == fh then is_reserved = true end
+                end
+                if not is_reserved then
+                  c:start_dissolve({ G.C.RED }, nil, 1.6)
+                end
+              end
+
+              for _, t in ipairs(targets) do
+                SMODS.change_base(t, target_suit, target_rank)
+                t:juice_up(0.3, 0.3)
+              end
+              s1:juice_up(0.3, 0.3)
+
+              play_sound('card1', 1)
+              card.ability.extra.used = 1
+            end
+          end
+          return true
+        end
+      }))
+      return true
+    end
+
+    if context.before and card.area == G.vouchers and card.ability.extra.used == 1 and context.scoring_name == "abn_Flush Six" then
+      return { level_up = true }
+    end
+
+    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+      G.GAME.abn.used_sigils[card.config.center.key] = nil
+      card:start_dissolve()
+    end
+  end,
+
+  abn_artist_credits = { artist = "0kronix" },
+}
+
+SMODS.Consumable {
+  key = "oso",
+  set = "sigils",
+  config = { extra = { used = 0 } },
+  pos = { x = 6, y = 1 },
+  atlas = "AbandoniaSigils",
+  cost = 4,
+  discovered = false,
+
+  can_use = function(self, card)
+    return true
+  end,
+
+  use = function(self, card, area, copier)
+    G.GAME.abn.used_sigils[card.config.center.key] = true
+    local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_oso')
+    _card:add_to_deck()
+    G.vouchers:emplace(_card)
+  end,
+
+  calculate = function(self, card, context)
+    if context.press_play and card.area == G.vouchers and card.ability.extra.used == 0 then
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          if G.play and G.play.cards and #G.play.cards >= 6 then
+            local suit_list = { 'Spades', 'Hearts', 'Clubs', 'Diamonds' }
+            local potential_indices = {}
+            for i = 1, #G.play.cards do table.insert(potential_indices, i) end
+
+            local idx_s1 = pseudorandom_element(potential_indices, pseudoseed('oso_s1'))
+            local s1 = G.play.cards[idx_s1]
+            local target_rank = s1.base.value
+
+            for k, v in ipairs(potential_indices) do
+              if v == idx_s1 then
+                table.remove(potential_indices, k)
+                break
+              end
+            end
+
+            local targets = {}
+            for i = 1, 5 do
+              local idx_t = pseudorandom_element(potential_indices, pseudoseed('oso_t' .. i))
+              table.insert(targets, G.play.cards[idx_t])
+              for k, v in ipairs(potential_indices) do
+                if v == idx_t then
+                  table.remove(potential_indices, k)
+                  break
+                end
+              end
+            end
+
+            if s1 and #targets == 5 then
+              local final_hand = { s1, targets[1], targets[2], targets[3], targets[4], targets[5] }
+
+              for i = #G.play.cards, 1, -1 do
+                local c = G.play.cards[i]
+                local is_reserved = false
+                for _, fh in ipairs(final_hand) do
+                  if c == fh then is_reserved = true end
+                end
+                if not is_reserved then
+                  c:start_dissolve({ G.C.RED }, nil, 1.6)
+                end
+              end
+
+              for _, t in ipairs(targets) do
+                SMODS.change_base(t, t.base.suit, target_rank)
+              end
+
+              local suits_present = {}
+              for _, c in ipairs(final_hand) do suits_present[c.base.suit] = true end
+
+              local unique_suit_count = 0
+              local first_suit = nil
+              for s, _ in pairs(suits_present) do
+                unique_suit_count = unique_suit_count + 1
+                first_suit = s
+              end
+
+              if unique_suit_count == 1 then
+                local break_idx = pseudorandom(pseudoseed('oso_suit_break'), 1, 6)
+                local target_card = final_hand[break_idx]
+
+                local new_suit = nil
+                for _, s in ipairs(suit_list) do
+                  if s ~= first_suit then
+                    new_suit = s
+                    break
+                  end
+                end
+
+                SMODS.change_base(target_card, new_suit, target_card.base.value)
+              end
+
+              for _, c in ipairs(final_hand) do c:juice_up(0.3, 0.3) end
+              play_sound('card1', 1)
+              card.ability.extra.used = 1
+            end
+          end
+          return true
+        end
+      }))
+      return true
+    end
+
+    if context.before and card.area == G.vouchers and card.ability.extra.used == 1 and context.scoring_name == "abn_6oak" then
+      return { level_up = true }
+    end
+
+    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+      G.GAME.abn.used_sigils[card.config.center.key] = nil
+      card:start_dissolve()
+    end
+  end,
+
+  abn_artist_credits = { artist = "0kronix" },
+}
+
+SMODS.Consumable {
+  key = "alocas",
+  set = "sigils",
+  config = { extra = { used = 0 } },
+  pos = { x = 0, y = 2 },
+  atlas = "AbandoniaSigils",
+  cost = 4,
+  discovered = false,
+
+  can_use = function(self, card)
+    return true
+  end,
+
+  use = function(self, card, area, copier)
+    G.GAME.abn.used_sigils[card.config.center.key] = true
+    local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_alocas')
+    _card:add_to_deck()
+    G.vouchers:emplace(_card)
+  end,
+
+  calculate = function(self, card, context)
+    if context.press_play and card.area == G.vouchers and card.ability.extra.used == 0 then
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          if G.play and G.play.cards and #G.play.cards >= 6 then
+            local rank_list = { '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace' }
+            local potential_indices = {}
+            for i = 1, #G.play.cards do table.insert(potential_indices, i) end
+
+            local idx_s1 = pseudorandom_element(potential_indices, pseudoseed('alocas_s1'))
+            local s1 = G.play.cards[idx_s1]
+            local rank1 = s1.base.value
+
+            for k, v in ipairs(potential_indices) do
+              if v == idx_s1 then
+                table.remove(potential_indices, k)
+                break
+              end
+            end
+
+            local idx_s2 = pseudorandom_element(potential_indices, pseudoseed('alocas_s2'))
+            local s2 = G.play.cards[idx_s2]
+            local rank2 = s2.base.value
+
+            if rank1 == rank2 then
+              local valid_ranks = {}
+              for _, r in ipairs(rank_list) do
+                if r ~= rank1 then table.insert(valid_ranks, r) end
+              end
+              rank2 = pseudorandom_element(valid_ranks, pseudoseed('alocas_r2'))
+            end
+
+            for k, v in ipairs(potential_indices) do
+              if v == idx_s2 then
+                table.remove(potential_indices, k)
+                break
+              end
+            end
+
+            local trio1_targets = {}
+            for i = 1, 2 do
+              local idx_t = pseudorandom_element(potential_indices, pseudoseed('alocas_t1_' .. i))
+              table.insert(trio1_targets, G.play.cards[idx_t])
+              for k, v in ipairs(potential_indices) do
+                if v == idx_t then
+                  table.remove(potential_indices, k)
+                  break
+                end
+              end
+            end
+
+            local trio2_targets = {}
+            for i = 1, 2 do
+              local idx_t = pseudorandom_element(potential_indices, pseudoseed('alocas_t2_' .. i))
+              table.insert(trio2_targets, G.play.cards[idx_t])
+              for k, v in ipairs(potential_indices) do
+                if v == idx_t then
+                  table.remove(potential_indices, k)
+                  break
+                end
+              end
+            end
+
+            if s1 and s2 and #trio1_targets == 2 and #trio2_targets == 2 then
+              local trio1 = { s1, trio1_targets[1], trio1_targets[2] }
+              local trio2 = { s2, trio2_targets[1], trio2_targets[2] }
+
+              for i = #G.play.cards, 1, -1 do
+                local c = G.play.cards[i]
+                local is_reserved = false
+                for _, fh in ipairs(trio1) do if c == fh then is_reserved = true end end
+                for _, fh in ipairs(trio2) do if c == fh then is_reserved = true end end
+                if not is_reserved then
+                  c:start_dissolve({ G.C.RED }, nil, 1.6)
+                end
+              end
+
+              for _, c in ipairs(trio1) do
+                SMODS.change_base(c, c.base.suit, rank1)
+                c:juice_up(0.3, 0.3)
+              end
+
+              for _, c in ipairs(trio2) do
+                SMODS.change_base(c, c.base.suit, rank2)
+                c:juice_up(0.3, 0.3)
+              end
+
+              play_sound('card1', 1)
+              card.ability.extra.used = 1
+            end
+          end
+          return true
+        end
+      }))
+      return true
+    end
+
+    if context.before and card.area == G.vouchers and card.ability.extra.used == 1 and context.scoring_name == "abn_double_triple" then
+      return { level_up = true }
+    end
+
+    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+      G.GAME.abn.used_sigils[card.config.center.key] = nil
+      card:start_dissolve()
+    end
+  end,
+
+  abn_artist_credits = { artist = "0kronix" },
+}
+
+SMODS.Consumable {
+  key = "gaap",
+  set = "sigils",
+  config = { extra = { used = 0 } },
+  pos = { x = 1, y = 2 },
+  atlas = "AbandoniaSigils",
+  cost = 4,
+  discovered = false,
+
+  can_use = function(self, card)
+    return true
+  end,
+
+  use = function(self, card, area, copier)
+    G.GAME.abn.used_sigils[card.config.center.key] = true
+    local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_gaap')
+    _card:add_to_deck()
+    G.vouchers:emplace(_card)
+  end,
+
+  calculate = function(self, card, context)
+    if context.press_play and card.area == G.vouchers and card.ability.extra.used == 0 then
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          if G.play and G.play.cards and #G.play.cards >= 6 then
+            local rank_list = { '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace' }
+            local potential_indices = {}
+            for i = 1, #G.play.cards do table.insert(potential_indices, i) end
+
+            local idx_s1 = pseudorandom_element(potential_indices, pseudoseed('gaap_s1'))
+            local s1 = G.play.cards[idx_s1]
+            local rank1 = s1.base.value
+
+            for k, v in ipairs(potential_indices) do
+              if v == idx_s1 then
+                table.remove(potential_indices, k)
+                break
+              end
+            end
+
+            local idx_s2 = pseudorandom_element(potential_indices, pseudoseed('gaap_s2'))
+            local s2 = G.play.cards[idx_s2]
+            local rank2 = s2.base.value
+
+            for k, v in ipairs(potential_indices) do
+              if v == idx_s2 then
+                table.remove(potential_indices, k)
+                break
+              end
+            end
+
+            local idx_s3 = pseudorandom_element(potential_indices, pseudoseed('gaap_s3'))
+            local s3 = G.play.cards[idx_s3]
+            local rank3 = s3.base.value
+
+            for k, v in ipairs(potential_indices) do
+              if v == idx_s3 then
+                table.remove(potential_indices, k)
+                break
+              end
+            end
+
+            local used_ranks = {}
+            used_ranks[rank1] = true
+
+            if used_ranks[rank2] then
+              local valid_ranks = {}
+              for _, r in ipairs(rank_list) do
+                if not used_ranks[r] then table.insert(valid_ranks, r) end
+              end
+              rank2 = pseudorandom_element(valid_ranks, pseudoseed('gaap_r2'))
+            end
+            used_ranks[rank2] = true
+
+            if used_ranks[rank3] then
+              local valid_ranks = {}
+              for _, r in ipairs(rank_list) do
+                if not used_ranks[r] then table.insert(valid_ranks, r) end
+              end
+              rank3 = pseudorandom_element(valid_ranks, pseudoseed('gaap_r3'))
+            end
+
+            local idx_t1 = pseudorandom_element(potential_indices, pseudoseed('gaap_t1'))
+            local t1 = G.play.cards[idx_t1]
+            for k, v in ipairs(potential_indices) do
+              if v == idx_t1 then
+                table.remove(potential_indices, k)
+                break
+              end
+            end
+
+            local idx_t2 = pseudorandom_element(potential_indices, pseudoseed('gaap_t2'))
+            local t2 = G.play.cards[idx_t2]
+            for k, v in ipairs(potential_indices) do
+              if v == idx_t2 then
+                table.remove(potential_indices, k)
+                break
+              end
+            end
+
+            local idx_t3 = pseudorandom_element(potential_indices, pseudoseed('gaap_t3'))
+            local t3 = G.play.cards[idx_t3]
+            for k, v in ipairs(potential_indices) do
+              if v == idx_t3 then
+                table.remove(potential_indices, k)
+                break
+              end
+            end
+
+            if s1 and s2 and s3 and t1 and t2 and t3 then
+              local pair1 = { s1, t1 }
+              local pair2 = { s2, t2 }
+              local pair3 = { s3, t3 }
+
+              for i = #G.play.cards, 1, -1 do
+                local c = G.play.cards[i]
+                local is_reserved = false
+                for _, fh in ipairs(pair1) do if c == fh then is_reserved = true end end
+                for _, fh in ipairs(pair2) do if c == fh then is_reserved = true end end
+                for _, fh in ipairs(pair3) do if c == fh then is_reserved = true end end
+                if not is_reserved then
+                  c:start_dissolve({ G.C.RED }, nil, 1.6)
+                end
+              end
+
+              for _, c in ipairs(pair1) do
+                SMODS.change_base(c, c.base.suit, rank1)
+                c:juice_up(0.3, 0.3)
+              end
+
+              for _, c in ipairs(pair2) do
+                SMODS.change_base(c, c.base.suit, rank2)
+                c:juice_up(0.3, 0.3)
+              end
+
+              for _, c in ipairs(pair3) do
+                SMODS.change_base(c, c.base.suit, rank3)
+                c:juice_up(0.3, 0.3)
+              end
+
+              play_sound('card1', 1)
+              card.ability.extra.used = 1
+            end
+          end
+          return true
+        end
+      }))
+      return true
+    end
+
+    if context.before and card.area == G.vouchers and card.ability.extra.used == 1 and context.scoring_name == "abn_triple_pair" then
+      return { level_up = true }
+    end
+
+    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+      G.GAME.abn.used_sigils[card.config.center.key] = nil
+      card:start_dissolve()
+    end
+  end,
+
+  abn_artist_credits = { artist = "0kronix" },
+}
+
+SMODS.Consumable {
+  key = "bathin",
+  set = "sigils",
+  config = { extra = { used = 0 } },
+  pos = { x = 2, y = 2 },
+  atlas = "AbandoniaSigils",
+  cost = 4,
+  discovered = false,
+
+  can_use = function(self, card)
+    return true
+  end,
+
+  use = function(self, card, area, copier)
+    G.GAME.abn.used_sigils[card.config.center.key] = true
+    local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_bathin')
+    _card:add_to_deck()
+    G.vouchers:emplace(_card)
+  end,
+
+  calculate = function(self, card, context)
+    if context.press_play and card.area == G.vouchers and card.ability.extra.used == 0 then
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          if G.play and G.play.cards and #G.play.cards >= 5 then
+            local emperium_ranks = { 'abn_14', 'abn_13', 'abn_12', 'abn_11', 'Ace' }
+            local potential_indices = {}
+            for i = 1, #G.play.cards do table.insert(potential_indices, i) end
+
+            local idx_s1 = pseudorandom_element(potential_indices, pseudoseed('bathin_s1'))
+            local s1 = G.play.cards[idx_s1]
+            local target_suit = s1.base.suit
+
+            for k, v in ipairs(potential_indices) do
+              if v == idx_s1 then
+                table.remove(potential_indices, k)
+                break
+              end
+            end
+
+            local targets = {}
+            for i = 1, 4 do
+              local idx_t = pseudorandom_element(potential_indices, pseudoseed('bathin_t' .. i))
+              table.insert(targets, G.play.cards[idx_t])
+              for k, v in ipairs(potential_indices) do
+                if v == idx_t then
+                  table.remove(potential_indices, k)
+                  break
+                end
+              end
+            end
+
+            if s1 and #targets == 4 then
+              local final_hand = { s1, targets[1], targets[2], targets[3], targets[4] }
+
+              for i = #G.play.cards, 1, -1 do
+                local c = G.play.cards[i]
+                local is_reserved = false
+                for _, fh in ipairs(final_hand) do
+                  if c == fh then is_reserved = true end
+                end
+                if not is_reserved then
+                  c:start_dissolve({ G.C.RED }, nil, 1.6)
+                end
+              end
+
+              for i = 1, 5 do
+                SMODS.change_base(final_hand[i], target_suit, emperium_ranks[i])
+                final_hand[i]:juice_up(0.3, 0.3)
+              end
+
+              play_sound('card1', 1)
+              card.ability.extra.used = 1
+            end
+          end
+          return true
+        end
+      }))
+      return true
+    end
+
+    if context.before and card.area == G.vouchers and card.ability.extra.used == 1 and context.scoring_name == "abn_Emperium Flush" then
+      return { level_up = true }
+    end
+
+    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+      G.GAME.abn.used_sigils[card.config.center.key] = nil
+      card:start_dissolve()
+    end
+  end,
+
+  abn_artist_credits = { artist = "0kronix" },
+}
+
+SMODS.Consumable {
+  key = "vassago",
+  set = "sigils",
+  config = { extra = { used = 0 } },
+  pos = { x = 7, y = 1 },
+  atlas = "AbandoniaSigils",
+  cost = 4,
+  discovered = false,
+
+  can_use = function(self, card)
+    return true
+  end,
+
+  use = function(self, card, area, copier)
+    G.GAME.abn.used_sigils[card.config.center.key] = true
+    local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_vassago')
+    _card:add_to_deck()
+    G.vouchers:emplace(_card)
+  end,
+
+  calculate = function(self, card, context)
+    if context.press_play and card.area == G.vouchers and card.ability.extra.used == 0 then
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          if G.play and G.play.cards and #G.play.cards >= 6 then
+            local suit_list = { 'Spades', 'Hearts', 'Clubs', 'Diamonds' }
+            local potential_indices = {}
+            for i = 1, #G.play.cards do table.insert(potential_indices, i) end
+
+            local idx_s1 = pseudorandom_element(potential_indices, pseudoseed('vassago_s1'))
+            local s1 = G.play.cards[idx_s1]
+            local suit1 = s1.base.suit
+
+            for k, v in ipairs(potential_indices) do
+              if v == idx_s1 then
+                table.remove(potential_indices, k)
+                break
+              end
+            end
+
+            local idx_s2 = pseudorandom_element(potential_indices, pseudoseed('vassago_s2'))
+            local s2 = G.play.cards[idx_s2]
+            local suit2 = s2.base.suit
+
+            if suit1 == suit2 then
+              local valid_suits = {}
+              for _, s in ipairs(suit_list) do
+                if s ~= suit1 then table.insert(valid_suits, s) end
+              end
+              suit2 = pseudorandom_element(valid_suits, pseudoseed('vassago_s2_alt'))
+            end
+
+            for k, v in ipairs(potential_indices) do
+              if v == idx_s2 then
+                table.remove(potential_indices, k)
+                break
+              end
+            end
+
+            local trio_targets = {}
+            for i = 1, 3 do
+              local idx_t = pseudorandom_element(potential_indices, pseudoseed('vassago_t1_' .. i))
+              table.insert(trio_targets, G.play.cards[idx_t])
+              for k, v in ipairs(potential_indices) do
+                if v == idx_t then
+                  table.remove(potential_indices, k)
+                  break
+                end
+              end
+            end
+
+            local idx_t2 = pseudorandom_element(potential_indices, pseudoseed('vassago_t2'))
+            local t2 = G.play.cards[idx_t2]
+
+            if s1 and s2 and #trio_targets == 3 and t2 then
+              local quad_suit = { s1, trio_targets[1], trio_targets[2], trio_targets[3] }
+              local pair_suit = { s2, t2 }
+
+              for i = #G.play.cards, 1, -1 do
+                local c = G.play.cards[i]
+                local is_reserved = false
+                for _, fh in ipairs(quad_suit) do if c == fh then is_reserved = true end end
+                for _, fh in ipairs(pair_suit) do if c == fh then is_reserved = true end end
+                if not is_reserved then
+                  c:start_dissolve({ G.C.RED }, nil, 1.6)
+                end
+              end
+
+              for _, c in ipairs(quad_suit) do
+                SMODS.change_base(c, suit1, c.base.value)
+                c:juice_up(0.3, 0.3)
+              end
+
+              for _, c in ipairs(pair_suit) do
+                SMODS.change_base(c, suit2, c.base.value)
+                c:juice_up(0.3, 0.3)
+              end
+
+              play_sound('card1', 1)
+              card.ability.extra.used = 1
+            end
+          end
+          return true
+        end
+      }))
+      return true
+    end
+
+    if context.before and card.area == G.vouchers and card.ability.extra.used == 1 and context.scoring_name == "abn_Mansion" then
+      return { level_up = true }
+    end
+
+    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+      G.GAME.abn.used_sigils[card.config.center.key] = nil
+      card:start_dissolve()
+    end
+  end,
+
+  abn_artist_credits = { artist = "0kronix" },
+}
+
+SMODS.Consumable {
+  key = "murmur",
+  set = "sigils",
+  config = { extra = { used = 0 } },
+  pos = { x = 3, y = 2 },
+  atlas = "AbandoniaSigils",
+  cost = 4,
+  discovered = false,
+
+  can_use = function(self, card)
+    return true
+  end,
+
+  use = function(self, card, area, copier)
+    G.GAME.abn.used_sigils[card.config.center.key] = true
+    local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'c_abn_murmur')
+    _card:add_to_deck()
+    G.vouchers:emplace(_card)
+  end,
+
+  calculate = function(self, card, context)
+    if context.press_play and card.area == G.vouchers and card.ability.extra.used == 0 then
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          if G.play and G.play.cards and #G.play.cards >= 6 then
+            local rank_list = { '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace' }
+            local potential_indices = {}
+            for i = 1, #G.play.cards do table.insert(potential_indices, i) end
+
+            local idx_s1 = pseudorandom_element(potential_indices, pseudoseed('murmur_s1'))
+            local s1 = G.play.cards[idx_s1]
+            local target_suit = s1.base.suit
+            local rank1 = s1.base.value
+
+            for k, v in ipairs(potential_indices) do
+              if v == idx_s1 then
+                table.remove(potential_indices, k)
+                break
+              end
+            end
+
+            local idx_s2 = pseudorandom_element(potential_indices, pseudoseed('murmur_s2'))
+            local s2 = G.play.cards[idx_s2]
+            local rank2 = s2.base.value
+
+            if rank1 == rank2 then
+              local valid_ranks = {}
+              for _, r in ipairs(rank_list) do
+                if r ~= rank1 then table.insert(valid_ranks, r) end
+              end
+              rank2 = pseudorandom_element(valid_ranks, pseudoseed('murmur_r2'))
+            end
+
+            for k, v in ipairs(potential_indices) do
+              if v == idx_s2 then
+                table.remove(potential_indices, k)
+                break
+              end
+            end
+
+            local trio1_targets = {}
+            for i = 1, 2 do
+              local idx_t = pseudorandom_element(potential_indices, pseudoseed('murmur_t1_' .. i))
+              table.insert(trio1_targets, G.play.cards[idx_t])
+              for k, v in ipairs(potential_indices) do
+                if v == idx_t then
+                  table.remove(potential_indices, k)
+                  break
+                end
+              end
+            end
+
+            local trio2_targets = {}
+            for i = 1, 2 do
+              local idx_t = pseudorandom_element(potential_indices, pseudoseed('murmur_t2_' .. i))
+              table.insert(trio2_targets, G.play.cards[idx_t])
+              for k, v in ipairs(potential_indices) do
+                if v == idx_t then
+                  table.remove(potential_indices, k)
+                  break
+                end
+              end
+            end
+
+            if s1 and s2 and #trio1_targets == 2 and #trio2_targets == 2 then
+              local trio1 = { s1, trio1_targets[1], trio1_targets[2] }
+              local trio2 = { s2, trio2_targets[1], trio2_targets[2] }
+
+              for i = #G.play.cards, 1, -1 do
+                local c = G.play.cards[i]
+                local is_reserved = false
+                for _, fh in ipairs(trio1) do if c == fh then is_reserved = true end end
+                for _, fh in ipairs(trio2) do if c == fh then is_reserved = true end end
+                if not is_reserved then
+                  c:start_dissolve({ G.C.RED }, nil, 1.6)
+                end
+              end
+
+              for _, c in ipairs(trio1) do
+                SMODS.change_base(c, target_suit, rank1)
+                c:juice_up(0.3, 0.3)
+              end
+
+              for _, c in ipairs(trio2) do
+                SMODS.change_base(c, target_suit, rank2)
+                c:juice_up(0.3, 0.3)
+              end
+
+              play_sound('card1', 1)
+              card.ability.extra.used = 1
+            end
+          end
+          return true
+        end
+      }))
+      return true
+    end
+
+    if context.before and card.area == G.vouchers and card.ability.extra.used == 1 and context.scoring_name == "abn_Flush Mansion" then
+      return { level_up = true }
+    end
+
+    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+      G.GAME.abn.used_sigils[card.config.center.key] = nil
+      card:start_dissolve()
+    end
+  end,
+
+  abn_artist_credits = { artist = "0kronix" },
+}
+
+SMODS.Consumable {
   key = "baphomet",
   set = "Spectral",
   config = { extra = { cards = 1 } },
