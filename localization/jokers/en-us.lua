@@ -7201,6 +7201,24 @@ return {
         }
       },
 
+      j_abn_ram_joker = {
+        name = "RAM Joker",
+        text = {
+          {
+            "This Joker gains {C:white,X:mult}X#4#{} Chips",
+            "when a {C:dark_edition}Modded{} consumable is sold,",
+            "gains {C:white,X:mult}X#2#{} Mult when a",
+            "{C:inactive}Vanilla{} consumable is sold",
+            "{C:inactive}(Currently {C:white,X:mult}X#1#{} Chips, {C:white,X:mult}X#3#{C:inactive} Mult)"
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:ram}RAM{} card used this run",
+            "{C:inactive}Currently:{} {C:ram}#5#{}"
+          }
+        }
+      },
+
       j_abn_rampegous_jester = {
         name = "Rampegous Jester",
         text = {
