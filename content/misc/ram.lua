@@ -491,3 +491,75 @@ SMODS.Consumable {
     artist = "GM36"
   },
 }
+
+SMODS.Consumable {
+  key = "ram_08",
+  set = 'ram',
+
+  atlas = "abn_AbandoniaRam",
+  pos = { x = 1, y = 1 },
+  cost = 4,
+
+  config = { extra = {} },
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+      }
+    }
+  end,
+
+  calculate = function(self, card, context)
+    if context.abn_ram_08_triggered then
+      set_consumeable_usage(card)
+      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.GREEN, sound = 'tarot1', }, card)
+      SMODS.destroy_cards(card)
+    end
+  end,
+
+  abn_artist_credits = {
+    artist = "GM36"
+  },
+}
+local use_consumeable_ref = Card.use_consumeable
+function Card:use_consumeable(area, copier)
+  local g = use_consumeable_ref(self, area, copier)
+  if next(SMODS.find_card('c_abn_ram_08')) and self.ability.set == "Planet" and self.config.center.mod then
+    for k, v in pairs(SMODS.find_card('c_abn_ram_08')) do
+      SMODS.calculate_effect({ message = localize('k_again_ex') }, self)
+      SMODS.calculate_context({ abn_ram_08_triggered = true })
+      use_consumeable_ref(self, area, copier)
+    end
+  end
+  return g
+end
+
+SMODS.Consumable {
+  key = "ram_09",
+  set = 'ram',
+
+  atlas = "abn_AbandoniaRam",
+  pos = { x = 2, y = 1 },
+  cost = 4,
+
+  config = { extra = {} },
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+      }
+    }
+  end,
+
+  calculate = function(self, card, context)
+    if context.abn_ram_09_triggered then
+      set_consumeable_usage(card)
+      SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.GREEN, sound = 'tarot1', }, card)
+      SMODS.destroy_cards(card)
+    end
+  end,
+
+  abn_artist_credits = {
+    artist = "GM36"
+  },
+}

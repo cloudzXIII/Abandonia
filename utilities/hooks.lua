@@ -132,7 +132,7 @@ end
 local use_and_sell_ref = G.UIDEF.use_and_sell_buttons
 function G.UIDEF.use_and_sell_buttons(card)
   local buttons = use_and_sell_ref(card)
-  if card.ability and (card.ability.set == "continent" or card.ability.set == "weather_report" or card.ability.set == "lexica" or card.ability.set == "periodic") and not card.config.center.use and card.area == G.pack_cards and G.pack_cards then
+  if card.ability and (card.ability.set == "ram" or card.ability.set == "continent" or card.ability.set == "weather_report" or card.ability.set == "lexica" or card.ability.set == "periodic") and not card.config.center.use and card.area == G.pack_cards and G.pack_cards then
     return {
       n = G.UIT.ROOT,
       config = { padding = 0, colour = G.C.CLEAR },
@@ -231,13 +231,13 @@ end
 local cardselarearef = SMODS.card_select_area
 function SMODS.card_select_area(card, pack)
   local sa, cau = cardselarearef(card, pack)
-	if card and card.ability and card.ability.set and not sa then
-		if (card.ability.set == 'Planet' or
-      card.ability.set == 'Tarot' or
-      card.ability.set == 'Spectral') and
-      next(SMODS.find_card('j_abn_sticky_fingers')) then
-        sa = "consumeables"; cau = true 
+  if card and card.ability and card.ability.set and not sa then
+    if (card.ability.set == 'Planet' or
+          card.ability.set == 'Tarot' or
+          card.ability.set == 'Spectral') and
+        next(SMODS.find_card('j_abn_sticky_fingers')) then
+      sa = "consumeables"; cau = true
     end
-	end
+  end
   return sa, cau
 end

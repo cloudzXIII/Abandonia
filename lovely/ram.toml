@@ -1,0 +1,22 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = -1
+
+# RAM Card 009 - next consumable does not get consumed
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+pattern = '''
+if obj.keep_on_use and type(obj.keep_on_use) == 'function' then
+  nc = obj:keep_on_use(card)
+end
+'''
+position = 'before'
+payload = '''
+if not nc and card.ability.consumeable and card.config.center.mod and next(SMODS.find_mod("c_abn_ram_09")) then
+  SMODS.calculate_context({ abn_ram_09_triggered = true })
+  nc = true
+end
+'''
+match_indent = true
