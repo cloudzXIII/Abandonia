@@ -9565,7 +9565,45 @@ return {
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
         },
       },
+      j_abn_goody_two_shoes = {
+        name="Goody Two Shoes",
+        text={
+          "When {C:attention}Blind{} is selected {C:attention}lose all discards",
+          "and gain Hands{} equivalent to lost discard's",
+          "Scored {C:red}debuffed{} {C:attention}cards{} give {C:money}$#1#",
+        },
+      },
+
+      j_abn_sloth = {
+        name="Sloth",
+        text={
+          "Upon purchase give it and all other Jokers Eternal",
+          "{X:mult,C:white}X#1#{} {C:mult}Mult{} on {C:attention}final hand{} of round.",
+          "Increases by {X:mult,C:white}X#2#{} for each unique {C:attention}poker hand{} played this run",
+        },
+      },
+
+      j_abn_gluttony = {
+        name="Gluttony",
+        text={
+          "Upon purchase give it and all other Jokers Eternal",
+          "{X:mult,C:white}X#1#{} {C:mult}Mult{} on {C:attention}first hand{} of round",
+          "Destroy all held consumables and gains {X:mult,C:white}X#2#{} {C:mult}Mult",
+          "for each unique consumable destroyed",
+        },
+      },
+
+      j_abn_envy = {
+        name="Envy",
+        text={
+          "Upon purchase give it and all other Jokers Eternal",
+          "{X:mult,C:white}X#1#{} {C:mult}Mult{} on {C:attention}second hand{} of round",
+          "Gains {X:mult,C:white}X#2#{} {C:mult}Mult{}, each time you don't play your highest-level hand",
+        },
+      },
+
     },
+    
   },
   misc = {
     dictionary = {
