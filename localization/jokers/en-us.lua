@@ -2809,7 +2809,8 @@ return {
         name = "Envy",
         text = {
           {
-            "Upon purchase, all Jokers become {C:abn_eternal}Eternal{}",
+            "All {C:attention}Jokers{} become {C:abn_eternal}Eternal{}",
+            "upon purchase"
           },
           {
 
@@ -3774,14 +3775,15 @@ return {
         name = "Gluttony",
         text = {
           {
-            "Upon purchase, all Jokers become {C:abn_eternal}Eternal{}",
+            "All {C:attention}Jokers{} become {C:abn_eternal}Eternal{}",
+            "upon purchase"
           },
           {
 
-            "{X:mult,C:white}X#1#{} Mult on {C:attention}first hand{}",
-            "of round, then destroy all held {C:attention}consumables{},",
-            "increases by {X:mult,C:white}X#2#{} Mult",
-            "for each unique {C:attention}consumable{} destroyed",
+            "{X:mult,C:white}X#1#{} Mult on {C:attention}first hand{} of round,",
+            "then destroy all held {C:attention}consumables{},",
+            "increases by {X:mult,C:white}X#2#{} Mult for",
+            "each unique {C:attention}consumable{} destroyed",
           },
         },
       },
@@ -7938,13 +7940,14 @@ return {
         name = "Sloth",
         text = {
           {
-            "Upon purchase, all Jokers become {C:abn_eternal}Eternal{}",
+            "All {C:attention}Jokers{} become {C:abn_eternal}Eternal{}",
+            "upon purchase"
           },
           {
 
-            "{X:mult,C:white}X#1#{} Mult on {C:attention}final hand{}",
-            "of round, increases by {X:mult,C:white}X#2#{}",
-            "per unique {C:attention}poker hand{} played this run",
+            "{X:mult,C:white}X#1#{} Mult on {C:attention}final hand{} of round,",
+            "increases by {X:mult,C:white}X#2#{} for every",
+            "{C:attention}poker hand{} played this run",
           }
         },
       },
