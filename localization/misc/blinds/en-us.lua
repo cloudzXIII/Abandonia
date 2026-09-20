@@ -738,6 +738,13 @@ return {
           "Must play an upgraded hand"
         },
       },
+      bl_abn_new_telepath = {
+        name = "The Telepath",
+        text = {
+          "All played cards must score,",
+          "Cannot play {C:attention}High Card"
+        },
+      },
       bl_abn_new_provoke = {
         name = "The Provoke",
         text = {
@@ -745,11 +752,129 @@ return {
           "other suits give only {C:chips}1{} Chip"
         },
       },
+      bl_abn_new_liquid = {
+        name = "The Liquid",
+        text = {
+          "First hand must",
+          "contain only 1 card"
+        },
+      },
+      bl_abn_new_snake = {
+        name = "The Snake",
+        text = {
+          "Draw #1# card after hand played,",
+          "Increase by 1 per played hand"
+        },
+      },
+      bl_abn_new_snake_plural = {
+        name = "The Snake",
+        text = {
+          "Draw #1# cards after hand played,",
+          "Increase by 1 per played hand"
+        },
+      },
+      bl_abn_new_column = {
+        name = "The Column",
+        text = {
+          "Cards that haven't been played",
+          "previously this Ante are debuffed"
+        },
+      },
+      bl_abn_new_oculus = {
+        name = "The Oculus",
+        text = {
+          "Must play any hand",
+          "type twice in a row"
+        },
+      },
+      bl_abn_new_oculus_repeat = {
+        name = "The Oculus",
+        text = {
+          "Must play any hand",
+          "type twice in a row",
+          "(Must play {C:attention}#1#{} again)"
+        },
+      },
+      bl_abn_new_oculus_change = {
+        name = "The Oculus",
+        text = {
+          "Must play any hand",
+          "type twice in a row",
+          "(Must not play {C:attention}#1#{})"
+        },
+      },
+      bl_abn_new_maw = {
+        name = "The Maw",
+        text = {
+          "Cannot play the same",
+          "hand twice in a row"
+        },
+      },
+      bl_abn_new_maw_change = {
+        name = "The Maw",
+        text = {
+          "Cannot play the same",
+          "hand twice in a row",
+          "(Must not play {C:attention}#1#{})"
+        },
+      },
+      bl_abn_new_flora = {
+        name = "The Flora",
+        text = {
+          "Debuffs a different rank",
+          "after each discard/play",
+        },
+      },
+      bl_abn_new_flora_rank = {
+        name = "The Flora",
+        text = {
+          "Debuffs a different rank",
+          "after each discard/play",
+          "({C:attention}#1#s{} are debuffed)"
+        },
+      },
+      bl_abn_new_syringe = {
+        name = "The Syringe",
+        text = {
+          "Selects a different hand",
+          "after each discard/play,",
+          "Only that hand is playable"
+        },
+      },
+      bl_abn_new_syringe_hand = {
+        name = "The Syringe",
+        text = {
+          "Selects a different hand",
+          "after each discard/play,",
+          "Only that hand is playable",
+          "(You must play {C:attention}#1#{})"
+        },
+      },
       bl_abn_new_cranium = {
         name = "The Cranium",
         text = {
           "{C:hearts}Hearts{} give {C:chips}double{} Chips, all",
           "other suits give only {C:chips}1{} Chip"
+        },
+      },
+      bl_abn_new_molar = {
+        name = "The Molar",
+        text = {
+          "Lose {C:gold}$1{} per card held in hand"
+        },
+      },
+      bl_abn_new_sign = {
+        name = "The Sign",
+        text = {
+          "Randomize ranks and suits",
+          "of played cards before scoring"
+        },
+      },
+      bl_abn_new_firestone = {
+        name = "The Firestone",
+        text = {
+          "If played hand catches",
+          "fire, reset score to 0"
         },
       },
       --#endregion

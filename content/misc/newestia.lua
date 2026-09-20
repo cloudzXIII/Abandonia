@@ -375,6 +375,30 @@ ABN.NewestiaBlind({
 })
 
 ABN.NewestiaBlind({
+	key = "new_telepath",
+	dollars = 10,
+	mult = 4,
+	pos = {x = 0, y = 2},
+	boss = {},
+	boss_colour = HEX("efc03c"),
+	calculate = function(self, blind, context)
+		if context.debuff_hand and not blind.disabled then
+			if context.check then
+				local scoring_name, _, _, scoring_hand = G.FUNCS.get_poker_hand_info(G.hand.highlighted)
+				if #context.scoring_hand < #G.hand.highlighted or context.scoring_name == "High Card" then
+					return {debuff = true}
+				end
+			else
+				blind.triggered = #context.scoring_hand < #context.full_hand or context.scoring_name == "High Card"
+				if blind.triggered then
+					return {debuff = true}
+				end
+			end
+		end
+	end,
+})
+
+ABN.NewestiaBlind({
 	key = "new_provoke",
 	dollars = 12,
 	mult = 5,
@@ -390,6 +414,234 @@ ABN.NewestiaBlind({
 })
 
 ABN.NewestiaBlind({
+	key = "new_liquid",
+	dollars = 10,
+	mult = 4,
+	pos = {x = 2, y = 2},
+	boss = {},
+	boss_colour = HEX("c6e0eb"),
+	calculate = function(self, blind, context)
+		if context.debuff_hand and not blind.disabled and G.GAME.current_round.hands_played == 0 then
+			blind.triggered = context.check and #G.hand.highlighted ~= 1 or #context.full_hand ~= 1
+			if blind.triggered then
+				return {debuff = true}
+			end
+		end
+	end,
+})
+
+ABN.NewestiaBlind({
+	key = "new_snake",
+	dollars = 10,
+	mult = 4,
+	pos = {x = 3, y = 2},
+	boss = {},
+	boss_colour = HEX("439a4f"),
+	modifies_draw = true,
+	loc_vars = function(self)
+		local ret = {vars = {G.GAME.current_round.hands_played + 1}}
+		if ret.vars[1] > 1 then
+			ret.key = self.key.."_plural"
+		end
+		return ret
+	end,
+	collection_loc_vars = function(self)
+		return {1}
+	end,
+	calculate = function(self, blind, context)
+		if blind.disabled then return end
+		if context.before then
+			blind.triggered = true
+			G.GAME.bl_abn_new_snake_draw_modifier = true
+		elseif context.drawing_cards and G.GAME.bl_abn_new_snake_draw_modifier then
+			G.GAME.bl_abn_new_snake_draw_modifier = nil
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					blind:set_text()
+					return true
+				end
+			}))
+			return {cards_to_draw = G.GAME.current_round.hands_played}
+		end
+	end,
+})
+
+ABN.NewestiaBlind({
+	key = "new_column",
+	dollars = 10,
+	mult = 4,
+	pos = {x = 4, y = 2},
+	boss = {},
+	boss_colour = HEX("7e6752"),
+	calculate = function(self, blind, context)
+		if not blind.disabled and context.debuff_card and context.debuff_card.area ~= G.jokers and not context.debuff_card.ability.played_this_ante then
+			return {debuff = true}
+		end
+	end,
+})
+
+ABN.NewestiaBlind({
+	key = "new_oculus",
+	dollars = 10,
+	mult = 4,
+	pos = {x = 5, y = 2},
+	boss = {},
+	boss_colour = HEX("4b71e4"),
+	loc_vars = function(self)
+		if G.GAME and G.GAME.bl_abn_new_oculus_previous_hand then
+			return {
+				key = self.key..'_'..G.GAME.bl_abn_new_oculus_mode,
+				vars = {G.GAME.bl_abn_new_oculus_previous_hand}
+			}
+		end
+	end,
+	calculate = function(self, blind, context)
+		if context.setting_blind and not blind.disabled then
+			G.GAME.bl_abn_new_oculus_mode = "change"
+		elseif context.debuff_hand and not blind.disabled and
+				((G.GAME.bl_abn_new_oculus_mode == "change" and G.GAME.bl_abn_new_oculus_previous_hand == context.scoring_name) or
+				(G.GAME.bl_abn_new_oculus_mode == "repeat" and G.GAME.bl_abn_new_oculus_previous_hand ~= context.scoring_name)) then
+			blind.triggered = true
+			return {debuff = true}
+		elseif context.after and not blind.disabled and not blind.triggered then
+			G.GAME.bl_abn_new_oculus_previous_hand = context.scoring_name
+			if G.GAME.bl_abn_new_oculus_mode == "change" then
+				G.GAME.bl_abn_new_oculus_mode = "repeat"
+			else
+				G.GAME.bl_abn_new_oculus_mode = "change"
+			end
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					blind:set_text()
+					return true
+				end
+			}))
+		elseif context.blind_defeated then
+			G.GAME.bl_abn_new_oculus_previous_hand = nil
+			G.GAME.bl_abn_new_oculus_mode = nil
+		end
+	end,
+})
+
+ABN.NewestiaBlind({
+	key = "new_maw",
+	dollars = 10,
+	mult = 4,
+	pos = {x = 0, y = 3},
+	boss = {},
+	boss_colour = HEX("ae718e"),
+	loc_vars = function(self)
+		if G.GAME and G.GAME.bl_abn_new_maw_previous_hand then
+			return {
+				key = self.key.."_change",
+				vars = {G.GAME.bl_abn_new_maw_previous_hand}
+			}
+		end
+	end,
+	calculate = function(self, blind, context)
+		if context.debuff_hand and not blind.disabled and G.GAME.bl_abn_new_maw_previous_hand == context.scoring_name then
+			blind.triggered = true
+			return {debuff = true}
+		elseif context.after and not blind.disabled and not blind.triggered then
+			G.GAME.bl_abn_new_maw_previous_hand = context.scoring_name
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					blind:set_text()
+					return true
+				end
+			}))
+		elseif context.blind_defeated then
+			G.GAME.bl_abn_new_maw_previous_hand = nil
+		end
+	end,
+})
+
+ABN.NewestiaBlind({
+	key = "new_flora",
+	dollars = 10,
+	mult = 4,
+	pos = {x = 1, y = 3},
+	boss = {},
+	boss_colour = HEX("709284"),
+	loc_vars = function(self)
+		if G.GAME and G.GAME.bl_abn_new_flora_value then
+			return {
+				key = self.key.."_rank",
+				vars = {localize(G.GAME.bl_abn_new_flora_value, "ranks")}
+			}
+		end
+	end,
+	calculate = function(self, blind, context)
+		if not blind.disabled and context.debuff_card and context.debuff_card.area ~= G.jokers and context.debuff_card:get_id() == G.GAME.bl_abn_new_flora_id then
+			return {debuff = true}
+		elseif not blind.disabled and (context.after or context.pre_discard or context.setting_blind) then
+			local cards = {}
+			for _, card in ipairs(G.playing_cards) do
+				if not SMODS.has_no_rank(card) and card:get_id() ~= G.GAME.bl_abn_new_flora_id then
+					table.insert(cards, card)
+				end
+			end
+			local card = pseudorandom_element(cards, "bl_abn_new_flora_rank")
+			if card then
+				G.GAME.bl_abn_new_flora_id = card.base.id
+				G.GAME.bl_abn_new_flora_value = card.base.value
+			end
+			for _, card in ipairs(G.playing_cards) do
+				SMODS.recalc_debuff(card)
+			end
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					blind:set_text()
+					return true
+				end
+			}))
+		elseif context.blind_defeated then
+			G.GAME.bl_abn_new_flora_id = nil
+			G.GAME.bl_abn_new_flora_value = nil
+		end
+	end
+})
+
+ABN.NewestiaBlind({
+	key = "new_syringe",
+	dollars = 10,
+	mult = 4,
+	pos = {x = 2, y = 3},
+	boss = {},
+	boss_colour = HEX("5c6e31"),
+	loc_vars = function(self)
+		if G.GAME and G.GAME.bl_abn_new_syringe_hand then
+			return {
+				key = self.key.."_hand",
+				vars = {localize(G.GAME.bl_abn_new_syringe_hand, "poker_hands")}
+			}
+		end
+	end,
+	calculate = function(self, blind, context)
+		if not blind.disabled and context.debuff_hand and context.scoring_name ~= G.GAME.bl_abn_new_syringe_hand then
+			blind.triggered = true
+			return {debuff = true}
+		elseif not blind.disabled and (context.after or context.pre_discard or context.setting_blind) then
+			local hands = {}
+			for handname in pairs(G.GAME.hands) do
+				if SMODS.is_poker_hand_visible(handname) and handname ~= G.GAME.bl_abn_new_syringe_hand then
+					table.insert(hands, handname)
+				end
+			end
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					G.GAME.bl_abn_new_syringe_hand = pseudorandom_element(hands, "bl_abn_new_syringe_hand")
+					blind:set_text()
+					return true
+				end
+			}))
+		elseif context.blind_defeated then
+			G.GAME.bl_abn_new_syringe_hand = nil
+		end
+	end
+})
+
+ABN.NewestiaBlind({
 	key = "new_cranium",
 	dollars = 12,
 	mult = 5,
@@ -400,6 +652,131 @@ ABN.NewestiaBlind({
 	calculate = function(self, blind, context)
 		if #G.play.cards > 0 and context.before and not blind.disabled then
 			blind.triggered = true
+		end
+	end
+})
+
+ABN.NewestiaBlind({
+	key = "new_molar",
+	dollars = 10,
+	mult = 4,
+	pos = {x = 4, y = 3},
+	boss = {},
+	boss_colour = HEX("b52d2d"),
+	calculate = function(self, blind, context)
+		if blind.disabled then return end
+		if context.press_play and #G.hand.highlighted < #G.hand.cards then
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.2,
+				func = function()
+					for i = 1, #G.hand.cards do
+						G.E_MANAGER:add_event(Event({
+							func = function()
+								G.hand.cards[i]:juice_up()
+								return true
+							end,
+						}))
+						ease_dollars(-1)
+						delay(0.23)
+					end
+					return true
+				end
+			}))
+			G.E_MANAGER:add_event(Event({
+				trigger = 'immediate',
+				func = (function()
+					SMODS.juice_up_blind()
+					G.E_MANAGER:add_event(Event({
+						trigger = 'after',
+						delay = 0.06 * G.SETTINGS.GAMESPEED,
+						blockable = false,
+						blocking = false,
+						func = function()
+							play_sound('tarot2', 0.76, 0.4)
+							return true
+						end
+					}))
+					play_sound('tarot2', 1, 0.4)
+					return true
+				end)
+			}))
+			delay(0.4)
+		elseif context.before and #G.hand.cards > 0 then
+			blind.triggered = true
+		end
+	end
+})
+
+ABN.NewestiaBlind({
+	key = "new_sign",
+	dollars = 10,
+	mult = 4,
+	pos = {x = 5, y = 3},
+	boss = {},
+	boss_colour = HEX("6a3847"),
+	calculate = function(self, blind, context)
+		if blind.disabled then return end
+		if context.press_play and #G.hand.highlighted > 0 then
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.2,
+				func = function()
+					for i = 1, #G.play.cards do
+						G.play.cards[i]:flip()
+						G.E_MANAGER:add_event(Event({
+							func = function()
+								local suit = pseudorandom_element(SMODS.Suits, pseudoseed("bl_abn_new_sign")).key
+								local rank = pseudorandom_element(SMODS.Ranks, pseudoseed("bl_abn_new_sign")).key
+								SMODS.change_base(G.play.cards[i], suit, rank)
+								G.play.cards[i]:flip()
+								return true
+							end,
+						}))
+						--delay(0.23)
+					end
+					return true
+				end
+			}))
+			G.E_MANAGER:add_event(Event({
+				trigger = 'immediate',
+				func = (function()
+					SMODS.juice_up_blind()
+					G.E_MANAGER:add_event(Event({
+						trigger = 'after',
+						delay = 0.06 * G.SETTINGS.GAMESPEED,
+						blockable = false,
+						blocking = false,
+						func = function()
+							play_sound('tarot2', 0.76, 0.4)
+							return true
+						end
+					}))
+					play_sound('tarot2', 1, 0.4)
+					return true
+				end)
+			}))
+			delay(0.4)
+		elseif context.before and #G.play.cards > 0 then
+			blind.triggered = true
+		end
+	end
+})
+
+ABN.NewestiaBlind({
+	key = "new_firestone",
+	dollars = 10,
+	mult = 4,
+	pos = {x = 0, y = 4},
+	boss = {},
+	boss_colour = HEX("e56a2f"),
+	calculate = function(self, blind, context)
+		if not blind.disabled and context.final_scoring_step and SMODS.calculate_round_score() + G.GAME.chips >= G.GAME.blind.chips then
+			return {
+				Xmult_mod = 0,
+				Xchip_mod = 0,
+				xscore = 0
+			}
 		end
 	end
 })
