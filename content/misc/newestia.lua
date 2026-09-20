@@ -114,18 +114,18 @@ end
 
 local old_generate_ui = generate_card_ui
 function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
-	local only_suit = G.GAME.blind.config.blind.abn_newestia_only_suit
+	local only_suit = G.GAME and G.GAME.blind and G.GAME.blind.config and G.GAME.blind.config.blind and G.GAME.blind.config.blind.abn_newestia_only_suit
 	if specific_vars and specific_vars.nominal_chips and only_suit and not G.GAME.blind.disabled then
 		local new_vars = {}
 		for k, var in pairs(specific_vars) do
 			if k == "nominal_chips" then
-				if card:is_suit(only_suit) then
+				if card and card:is_suit(only_suit) then
 					new_vars[k] = var * 2
 				else
 					new_vars[k] = 1
 				end
 			elseif k == "bonus_chips" then
-				if card:is_suit(only_suit) then
+				if card and card:is_suit(only_suit) then
 					new_vars[k] = var * 2
 				elseif _c.name == 'Stone Card' or _c.replace_base_card then
 					new_vars[k] = 1
