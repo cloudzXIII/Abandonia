@@ -14,7 +14,7 @@ end
 '''
 position = 'before'
 payload = '''
-if not nc and card.ability.consumeable and card.config.center.mod and next(SMODS.find_mod("c_abn_ram_09")) then
+if not nc and card.ability.consumeable and card.config.center.mod and next(SMODS.find_card("c_abn_ram_09")) then
   SMODS.calculate_context({ abn_ram_09_triggered = true })
   nc = true
 end

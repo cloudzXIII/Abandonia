@@ -563,3 +563,50 @@ SMODS.Consumable {
     artist = "GM36"
   },
 }
+
+SMODS.Consumable {
+  key = "ram_10",
+  set = 'Spectral',
+
+  atlas = "abn_AbandoniaRam",
+  pos = { x = 5, y = 1 },
+  cost = 4,
+
+  config = { extra = {} },
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = 'e_negative_consumable', set = 'Edition', config = { extra = 1 } }
+    return {
+      vars = {
+      }
+    }
+  end,
+
+  can_use = function(self, card)
+    local modded = 0
+    for _, v in ipairs(G.consumeables and G.consumeables.cards or {}) do
+      if v ~= card and v.config.center.mod then
+        modded = modded + 1
+      end
+    end
+    return modded > 0
+  end,
+
+  use = function(self, card, area, copier)
+    card:juice_up(0.3, 0.5)
+    local modded = {}
+    for _, v in ipairs(G.consumeables and G.consumeables.cards) do
+      if v ~= card and v.config.center.mod then
+        modded[#modded + 1] = v.config.center.key
+      end
+    end
+    for _, v in ipairs(modded) do
+      SMODS.add_card { key = v, edition = "e_negative" }
+    end
+    delay(0.5)
+  end,
+
+  abn_artist_credits = {
+    artist = "GM36"
+  },
+}

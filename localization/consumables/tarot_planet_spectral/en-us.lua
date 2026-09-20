@@ -507,6 +507,13 @@ return {
     },
 
     Spectral = {
+      c_abn_ram_10 = {
+        name = "RAM 10",
+        text = {
+          "Create a {C:dark_edition}Negative{} copy of",
+          "all held {C:dark_edition}Modded{} {C:attention}consumables{}"
+        }
+      },
       c_abn_promotion = { -- TO CODE
         name = "Promotion",
         text = {
