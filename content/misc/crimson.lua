@@ -4,6 +4,7 @@ SMODS.ConsumableType {
   secondary_colour = HEX("9C4457"),
   collection_rows = { 5, 5 },
   shop_rate = 0,
+  select_card = "consumeables",
 }
 
 ABN.CrimsonCard = SMODS.Consumable:extend({
@@ -18,12 +19,12 @@ ABN.CrimsonCard = SMODS.Consumable:extend({
     local sticker = card.ability.extra.enh_key
 
     if sticker then
-				local retvars = ABN.enh_stickers_vars[sticker] or {}
-				info_queue[#info_queue + 1] = { key = sticker, set = "Other", vars = retvars }
-		end
+      local retvars = ABN.enh_stickers_vars[sticker] or {}
+      info_queue[#info_queue + 1] = { key = sticker, set = "Other", vars = retvars }
+    end
     return {
       vars = {
-        localize{type = 'name_text', key = card.ability.extra.enh_key, set='Other'},
+        localize { type = 'name_text', key = card.ability.extra.enh_key, set = 'Other' },
       }
     }
   end,
@@ -33,17 +34,17 @@ ABN.CrimsonCard = SMODS.Consumable:extend({
 })
 
 SMODS.UndiscoveredSprite({ -- undiscovered sprite
-    key = 'crimson',
-    atlas = "abn_AbandoniaUndiscovered",
-    pos = { x = 3, y = 2 },
-    no_overlay = true
+  key = 'crimson',
+  atlas = "abn_AbandoniaUndiscovered",
+  pos = { x = 3, y = 2 },
+  no_overlay = true
 })
 
 ABN.CrimsonCard {
   key = "igoera",
   pos = { x = 0, y = 0 },
   config = { extra = { enh_key = "abn_stk_hazard" } },
-  
+
 
   use = function(self, card, area, copier)
     local c = G.jokers.cards[1]
@@ -297,8 +298,8 @@ ABN.CrimsonCard {
     }))
     G.E_MANAGER:add_event(Event({
       func = function()
-        local _key = "_"..pseudorandom_element(ABN.monitor_suits, pseudoseed("abn_iraunkorrak")).key
-        c:add_sticker(card.ability.extra.enh_key.._key, true)
+        local _key = "_" .. pseudorandom_element(ABN.monitor_suits, pseudoseed("abn_iraunkorrak")).key
+        c:add_sticker(card.ability.extra.enh_key .. _key, true)
         return true
       end
     }))

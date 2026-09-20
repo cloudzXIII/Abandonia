@@ -237,6 +237,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+  key = "AbandoniaRAMPack",
+  path = "ram_pack.png",
+  px = 71,
+  py = 95,
+})
+
+SMODS.Atlas({
   key = "AbandoniaCrimson",
   path = "crimson_cards.png",
   px = 71,
@@ -483,8 +490,8 @@ SMODS.Atlas({
 --#region Jokers
 for i = 1, 26 do
   SMODS.Atlas({
-    key = "ABNJokerSheet"..i,
-    path = "jokers/joker"..i..".png",
+    key = "ABNJokerSheet" .. i,
+    path = "jokers/joker" .. i .. ".png",
     px = 71,
     py = 95,
   })

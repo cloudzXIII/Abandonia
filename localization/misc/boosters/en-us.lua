@@ -409,7 +409,7 @@ return {
           'be used immediately'
         }
       },
-	  p_abn_paradox_normal = {
+      p_abn_paradox_normal = {
         name = 'Paradox Pack',
         text = {
           'Choose {C:attention}#1#{} of up to',
@@ -433,24 +433,48 @@ return {
           'be used immediately'
         }
       },
+
+      p_abn_ram_normal = {
+        name = 'RAM Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:ram}RAM{} cards to',
+          'be used immediately'
+        }
+      },
+      p_abn_ram_jumbo = {
+        name = 'Jumbo RAM Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:ram}RAM{} cards to',
+          'be used immediately'
+        }
+      },
+      p_abn_ram_mega = {
+        name = 'Mega RAM Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:ram}RAM{} cards to',
+          'be used immediately'
+        }
+      },
     }
   },
   misc = {
     dictionary = {
-
-      abn_calamitybooster = "Calamity Pack",
-      abn_sigilbooster = "Sigil Pack",
-      abn_astrobooster = "Astro Pack",
-      k_solid_pack = "Solid State Pack",
-      abn_glyphbooster = "Glyph Pack",
-      abn_programbooster = "Program Pack",
-      abn_crimsonbooster = "Crimson Pack",
-      abn_calligraphybooster = "Calligraphy Pack",
-      abn_illusionbooster = "Illusion Pack",
-      k_lexica_pack = "Lexica Pack",
-      k_weather_pack = "Forecast Pack",
-      k_continent_pack = "Continent Pack",
-	  abn_paradoxbooster = "Paradox Pack",
+      k_abn_astro_pack = "Astro Pack",
+      k_abn_sigil_pack = "Sigil Pack",
+      k_abn_paradox_pack = "Paradox Pack",
+      k_abn_crimson_pack = "Crimson Pack",
+      k_abn_calligraphy_pack = "Calligraphy Pack",
+      k_abn_illusion_pack = "Illusion Pack",
+      k_abn_glyph_pack = "Glyph Pack",
+      k_abn_weather_pack = "Forecast Pack",
+      k_abn_lexica_pack = "Lexica Pack",
+      k_abn_continent_pack = "Continent Pack",
+      k_abn_solid_pack = "Solid State Pack",
+      k_abn_program_pack = "Program Pack",
+      k_abn_calamity_pack = "Calamity Pack",
 
       -- kiddy pack thingys
       k_standard_kiddy = "Kiddy Standard Pack",
