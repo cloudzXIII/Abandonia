@@ -1066,6 +1066,15 @@ return {
         },
       },
 
+      j_abn_bootleg_joker = {
+        name = "Bootleg Joker",
+        text = {
+          "Gives {X:chips,C:white}X#2#{} Chips, if played",
+          "hand is a {C:attention}#1#{} with",
+          "only {C:dark_edition}modded{} suits",
+        }
+      },
+
       j_abn_boozy_joker = {
         name = "Boozy Joker",
         text = {
@@ -6213,6 +6222,14 @@ return {
         }
       },
 
+      j_abn_movie_poster = {
+        name = "Movie Poster",
+        text = {
+          "Gives {C:attention}+1{} hand size per every",
+          "{C:attention}Steel{} card held in hand"
+        }
+      },
+
       j_abn_mult_disco = {
         name = "Mult Disco",
         text = {
@@ -8135,6 +8152,14 @@ return {
           "you copy a card with an {C:mult}even",
           "or {C:chips}odd{} rank, respectively",
           "{C:inactive}(Currently {C:mult}+#1# {C:inactive}Mult, {C:chips}+#2# {C:inactive}Chips)"
+        }
+      },
+
+      j_abn_sponge_joker = {
+        name = "Sponge Joker",
+        text = {
+          "Scored {C:diamonds}Light Suit{} {C:attention}Bubble{} cards gains {C:mult}+#1#{} Mult",
+          "Scored {C:spades}Dark Suit{} {C:attention}Bubble{} cards gains {C:chips}+#2#{} Chips"
         }
       },
 

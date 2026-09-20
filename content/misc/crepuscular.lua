@@ -12,7 +12,7 @@ SMODS.Consumable {
   set = 'crepuscular',
   cost = 4,
   atlas = "AbandoniaCrepuscular",
-  pos = { x = 1, y = 0 },
+  pos = { x = 0, y = 7 },
   config = { max_highlighted = 2, mod_conv = 'm_abn_ocean' },
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
@@ -28,7 +28,7 @@ SMODS.Consumable {
   set = 'crepuscular',
   cost = 4,
   atlas = "AbandoniaCrepuscular",
-  pos = { x = 2, y = 0 },
+  pos = { x = 2, y = 1 },
   config = { max_highlighted = 2, mod_conv = 'm_abn_kinship' },
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
