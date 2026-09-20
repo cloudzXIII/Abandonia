@@ -1368,6 +1368,20 @@ return {
         }
       },
 
+      j_abn_chocolate_coin = {
+        name = 'Chocolate Coin',
+        text = {
+          {
+            "If played hand contains only {C:attention}Gold{} {C:abn_coin}Coins{},",
+            "gives the base {C:mult}Mult{} of played hand as {C:money}${}",
+          },
+          {
+            "Scoring {C:abn_coin}Coin{} {C:attention}Honey{} cards",
+            "give their {C:chips}Chips{} as {C:mult}Mult{}",
+          }
+        },
+      },
+
       j_abn_classified_joker = {
         name = "Classified Joker",
         text = {
@@ -1722,6 +1736,17 @@ return {
             "to the {C:attention}leftmost{} Joker",
           }
         }
+      },
+
+      j_abn_cookie_joker = {
+        name = 'Cookie Joker',
+        text = {
+          "When a {C:attention}Honey{} card is added to a hand by it own effect",
+          "Gain {C:gold}+#1#{} Asc. Power per added {C:attention}Honey{} card",
+          "If hand has both a {C:attention}Tea Stain{} and {C:attention}Honey{} card",
+          "this Joker gains {C:mult}Mult{} equal to {C:attention}twice{} the {C:attention}rank{} of the scoring cards",
+          "{C:inactive}Currently:{} {C:gold}+#2#{} {C:inactive}Asc. Power{} {C:mult}+#3#{} {C:inactive}Mult{}",
+        },
       },
 
       j_abn_corbin_clown = {
@@ -4814,6 +4839,19 @@ return {
           "{C:mult}+#1#{} Mult if",
           "hand is played",
           "with {C:money}$#2#{} or less"
+        }
+      },
+
+      j_abn_jokers_knight = {
+        name = "Jokers Knight",
+        text = {
+          "Played {C:attention}Straights{} are considered {C:attention}Straight Flushes{}",
+          "Played {C:attention}Straight Flushes{} are considered {C:attention}Emporium Flushes{}",
+          "If this Joker has {C:attention}Wild{} {C:dark_edition}Enhancement{}",
+          "gain {C:chips}+#5#{} Chips and {C:mult}+#6#{} Mult per suit {C:attention}Wild{} cards count as",
+          "If this Joker has {C:attention}Kinship{} {C:dark_edition}Enhancement{} gain {X:chips,C:white}X0.025{} Chips and {X:mult,C:white}X0.025{} Mult",
+          "per card sharing the same {C:attention}suit{} and {C:dark_edition}edition{} in played hand",
+          "{C:inactive}Currently: {C:chips}+#1#{} {C:inactive}Chips{} {C:mult}+#2#{} {C:inactive}Mult{} {X:chips,C:white}X#3#{} {C:inactive}Chips{} {X:mult,C:white}X#4#{} {C:inactive}Mult{}",
         }
       },
 
@@ -9525,38 +9563,6 @@ return {
           "if hand played contains",
           "an {C:attention}Ace{} and a {C:attention}numbered card{}",
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
-        },
-      },
-	  j_abn_jokers_knight = {
-        name = "Jokers Knight",
-        text = {
-          "Played {C:attention}Straights{} are considered {C:attention}Straight Flushes{}",
-		  "Played {C:attention}Straight Flushes{} are considered {C:attention}Emporium Flushes{}",
-		  "If this Joker has {C:attention}Wild{} {C:dark_edition}Enhancement{}", 
-		  "gain {C:chips}+#5#{} Chips and {C:mult}+#6#{} Mult per suit {C:attention}Wild{} cards count as",
-		  "If this Joker has {C:attention}Kinship{} {C:dark_edition}Enhancement{} gain {X:chips,C:white}X0.025{} Chips and {X:mult,C:white}X0.025{} Mult",
-		  "per card sharing the same {C:attention}suit{} and {C:dark_edition}edition{} in played hand",
-		  "{C:inactive}Currently: {C:chips}+#1#{} {C:inactive}Chips{} {C:mult}+#2#{} {C:inactive}Mult{} {X:chips,C:white}X#3#{} {C:inactive}Chips{} {X:mult,C:white}X#4#{} {C:inactive}Mult{}",
-        }
-      },
-	  
-	  j_abn_cookie_joker = {
-        name = 'Cookie Joker',
-        text = {
-          "When a {C:attention}Honey{} card is added to a hand by it own effect",
-		  "Gain {C:gold}+#1#{} Asc. Power per added {C:attention}Honey{} card",
-		  "If hand has both a {C:attention}Tea Stain{} and {C:attention}Honey{} card",
-		  "this Joker gains {C:mult}Mult{} equal to {C:attention}twice{} the {C:attention}rank{} of the scoring cards",
-		  "{C:inactive}Currently:{} {C:gold}+#2#{} {C:inactive}Asc. Power{} {C:mult}+#3#{} {C:inactive}Mult{}",
-        },
-      },
-	  
-	  j_abn_chocolate_coin = {
-        name = 'Chocolate Coin',
-        text = {
-          "If hand is composed of {C:attention}Gold{} {C:abn_coin}Coin{} cards",
-		  "Give the base {C:mult}Mult{} of played hand as {C:money}${}",
-		  "Scoring {C:abn_coin}Coin{} {C:attention}Honey{} cards also give their {C:chips}Chips{} as {C:mult}Mult{}",
         },
       },
     },
