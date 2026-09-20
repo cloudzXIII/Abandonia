@@ -6083,6 +6083,23 @@ return {
                     "{C:inactive}(сейчас{} {C:mult}+#1#{} {C:inactive}множ.,{} {C:gold}+#2#{} {C:inactive}Вознес.){}",
                 }
             },
+            j_abn_old_scratch = {
+                name = "Старый Скретч",
+                text = {
+                    {
+                        "Первая подсчитываемая {C:attention}#1#-ка{} получает",
+                        "{C:dark_edition}Хтонический{} выпуск"
+                    },
+                    {
+                        "Подсчитываемые {C:attention}#1#-ки{} с {C:dark_edition}Хтоническим{}",
+                        "выпуском становятся {C:attention}Темнейшими{}"
+                    },
+                    {
+                        "{C:attention}#2#{} из {C:attention}#1#-ок{} дает",
+                        "свои утроенные {C:chips}фишки{} и {C:mult{}множ."
+                    }
+                }
+            },
             j_abn_omaha_joker = {
                 name = "Омаха-холдем",
                 text = {

@@ -6574,6 +6574,24 @@ return {
         }
       },
 
+      j_abn_old_scratch = {
+        name = "Old Scratch",
+        text = {
+          {
+            "First scoring {C:attention}#1#{} gains",
+            "{C:dark_edition}Chthonian{} edition"
+          },
+          {
+            "Scoring {C:attention}#1#s{} with {C:dark_edition}Chthonian{}",
+            "edition becomes {C:attention}Darkner{} card"
+          },
+          {
+            "{C:attention}#2#{} made of {C:attention}#1#s{}",
+            "gives triple its {C:chips}Chips{} and {C:mult{}Mult"
+          }
+        }
+      },
+
       j_abn_omaha_joker = {
         name = "Omaha Poker",
         text = {
