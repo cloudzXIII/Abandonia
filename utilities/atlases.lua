@@ -482,7 +482,7 @@ SMODS.Atlas({
 
 SMODS.Atlas({
   key = "AbandoniaCrepuscular",
-  path = "consumable.png",
+  path = "crepuscular.png",
   px = 71,
   py = 95,
 })

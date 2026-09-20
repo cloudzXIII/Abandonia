@@ -996,6 +996,14 @@ return {
                     "при подсчете"
                 }
             },
+            j_abn_bootleg_joker = {
+                name = "Контрабандный джокер",
+                text = {
+                    "Дает {X:chips,C:white}X#2#{} фишек, если",
+                    "сыгранная рука - это {C:attention}#1#{}",
+                    "только с {C:dark_edition}модовыми{} мастями",
+                }
+            },
             j_abn_boozy_joker = {
                 name = "Пьяный джокер",
                 text = {
@@ -5737,6 +5745,13 @@ return {
                     }
                 }
             },
+            j_abn_movie_poster = {
+                name = "Movie Poster",
+                text = {
+                    "Дает {C:attention}+1{} к размеру руки за каждую",
+                    "{C:attention}Стальную{} карту в руке"
+                }
+            },
             j_abn_mult_disco = {
                 name = "Диск с множителем",
                 text = {
@@ -7501,6 +7516,15 @@ return {
                     "когда вы копируете карту с {C:mult}четным",
                     "и {C:chips}нечетным{} рангом соответственно",
                     "{C:inactive}(сейчас {C:mult}+#1# {C:inactive}множ., {C:chips}+#2# {C:inactive}фишек)"
+                }
+            },
+            j_abn_sponge_joker = {
+                name = "Губка",
+                text = {
+                    "{C:attention}Пузырьковые{} карты {C:diamonds}Светлой масти{}",
+                    "получают {C:mult}+#1#{} множ.",
+                    "{C:attention}Пузырьковые{} карты  {C:spades}Темной масти{}",
+                    "получают {C:chips}+#2#{} фишек"
                 }
             },
             j_abn_square_rekoj = {
