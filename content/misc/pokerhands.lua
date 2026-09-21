@@ -783,3 +783,67 @@ SMODS.PokerHand {
     return { SMODS.merge_lists(parts._straight, parts._flush) }
   end
 }
+
+SMODS.PokerHand {
+  key = 'Emperium Spectrum',
+  loc_txt = {
+    name = 'Emperium Spectrum',
+    description = {
+      "6 cards of distinct suits",
+      "consisting of 14, 13, 12, 11, Ace, and King"
+    }
+  },
+  visible = false,
+  chips = 400,
+  mult = 200,
+  l_chips = 100,
+  l_mult = 50,
+  above_hand = 'Flush Five',
+  example = {
+    { 'S_abn_14', true },
+    { 'H_abn_13', true },
+    { 'D_abn_12', true },
+    { 'C_abn_11', true },
+    { 'abn_SN_A', true },
+    { 'abn_TI_K', true },
+  },
+  evaluate = function(parts, hand)
+    if #hand < 6 then return {} end
+
+    local r_14 = SMODS.Ranks['abn_14'] and SMODS.Ranks['abn_14'].id
+    local r_13 = SMODS.Ranks['abn_13'] and SMODS.Ranks['abn_13'].id
+    local r_12 = SMODS.Ranks['abn_12'] and SMODS.Ranks['abn_12'].id
+    local r_11 = SMODS.Ranks['abn_11'] and SMODS.Ranks['abn_11'].id
+    local r_A  = SMODS.Ranks['Ace'] and SMODS.Ranks['Ace'].id
+    local r_K  = SMODS.Ranks['King'] and SMODS.Ranks['King'].id
+
+    local target_ranks = { r_14, r_13, r_12, r_11, r_A, r_K }
+
+    local matched_cards = {}
+    local rank_tracker = {}
+
+    for _, card in ipairs(hand) do
+      local id = card:get_id()
+      for _, target_id in ipairs(target_ranks) do
+        if target_id and id == target_id and not rank_tracker[id] then
+          rank_tracker[id] = true
+          table.insert(matched_cards, card)
+          break
+        end
+      end
+    end
+
+    if #matched_cards < 6 then return {} end
+
+    local suits_seen = {}
+    for _, card in ipairs(matched_cards) do
+      local suit = card.base.suit
+      if suits_seen[suit] then
+        return {}
+      end
+      suits_seen[suit] = true
+    end
+
+    return { matched_cards }
+  end,
+}
