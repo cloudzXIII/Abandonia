@@ -1107,6 +1107,7 @@ return {
       ['abn_Flush Mansion'] = "Flush Mansion",
       ['abn_Emperium Flush'] = "Emperium Flush",
       ['abn_Royal Flush'] = "Royal Flush",
+	  ['abn_Emperium Spectrum'] = "Emperium Spectrum",
 
       -- Paperback Crossmod
       ['abn_Rapture'] = 'Rapture',
@@ -1204,6 +1205,10 @@ return {
       ['abn_Royal Flush'] = {
         "A hand containing a Straight, a Flush,",
         "and only ranks 10 through Ace",
+      },
+	  ['abn_Emperium Spectrum'] = {
+        "14, 13, 12, 11, Ace and King",
+        "all with different suits",
       },
 
       -- Paperback Crossmod
