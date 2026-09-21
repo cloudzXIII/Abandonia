@@ -7975,14 +7975,14 @@ return {
         name = "Sloth",
         text = {
           {
-            "All {C:attention}Jokers{} become {C:abn_eternal}Eternal{}",
-            "upon purchase"
+            "All eligible {C:attention}Jokers{} become",
+            "{C:abn_eternal}Eternal{} upon purchase"
           },
           {
 
             "{X:mult,C:white}X#1#{} Mult on {C:attention}final hand{} of round,",
             "increases by {X:mult,C:white}X#2#{} for every",
-            "{C:attention}poker hand{} played this run",
+            "unique {C:attention}poker hand{} played this run",
           }
         },
       },

@@ -25,10 +25,9 @@ SMODS.Joker {
   },
 
   calculate = function(self, card, context)
-    if context.buying_card and context.buying_self then
-        card:add_sticker("s_eternal")
+    if context.buying_self then
         for i,v in ipairs(G.jokers.cards) do
-            v:add_sticker("s_eternal")
+            v:set_eternal(true)
         end
     end
     if context.joker_main and G.GAME.current_round.hands_left == 0 then
