@@ -3874,8 +3874,8 @@ return {
             "gain amount lost as {C:blue}Hands{}",
           },
           {
-            "Played {C:red}debuffed{} cards",
-            "give {C:money}$#1#{} when scored",
+            "{C:red}Debuffed{} cards each",
+            "give {C:money}$#1#{} when played",
           }
         },
       },

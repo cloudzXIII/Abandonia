@@ -30,12 +30,12 @@ SMODS.Joker {
         local context_blueprint_card = context.blueprint_card
         card_eval_status_text(context_blueprint_card or card, 'extra', nil, nil, nil, {message = localize{type = 'variable', key = 'a_hands', vars = {hands_gained}}})
     end
-    if context.individual and context.cardarea == G.play then
-        if context.other_card.debuff then
-            return {
-                dollars=card.ability.extra.dollars,
-            }
-        end
+    if context.before then
+		for _, other_card in ipairs(context.full_hand) do
+			if other_card.debuff then
+				SMODS.calculate_effect({dollars=card.ability.extra.dollars, message_card=other_card}, card)
+			end
+		end
     end
   end,
 
