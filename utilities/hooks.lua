@@ -241,3 +241,49 @@ function SMODS.card_select_area(card, pack)
   end
   return sa, cau
 end
+
+-- Prevents dragging of jokers in a way that is guaranteed to persist
+-- both between reloads, and when removing one source while another still exists
+local original_game_update = Game.update
+function Game:update(dt)
+    original_game_update(self, dt)
+
+    if G.STAGE ~= G.STAGES.RUN then return end
+	
+	if G.jokers and G.jokers.cards and (next(SMODS.find_card('j_abn_the_joker_dance')) or (not G.GAME.blind.disabled and G.GAME.blind.config.blind.key == "bl_abn_new_golden_nut")) then
+		for _, j in ipairs(G.jokers.cards) do
+			j.states.drag.can = false
+		end
+	end
+end
+
+--Custom context for dragging and releasing playing cards
+local cardarea_order_cache = nil
+
+local old_click_card = Controller.L_cursor_press
+function Controller:L_cursor_press(x, y)
+	old_click_card(self, x, y)
+	if G.hand and G.hand.cards then
+		cardarea_order_cache = {}
+		for i, card in ipairs(G.hand.cards) do
+			cardarea_order_cache[i] = card
+		end
+	end
+end
+
+local old_release_card = Controller.L_cursor_release
+function Controller:L_cursor_release(x, y)
+	old_release_card(self, x, y)
+	if G.hand and G.hand.cards and cardarea_order_cache then
+		for i, card in ipairs(G.hand.cards) do
+			if cardarea_order_cache[i] ~= card then
+				SMODS.calculate_context({
+					abn_playing_cards_rearranged = true,
+					old_order = cardarea_order_cache,
+					new_order = G.hand.cards
+				})
+				break
+			end
+		end
+	end
+end

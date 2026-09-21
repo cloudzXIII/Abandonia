@@ -728,7 +728,7 @@ return {
       bl_abn_new_pulley = {
         name = "The Pulley",
         text = {
-          "{C:green}#1# in #2#{} cards get",
+          "#1# in #2# cards get",
           "drawn face down"
         },
       },
@@ -875,6 +875,43 @@ return {
         text = {
           "If played hand catches",
           "fire, reset score to 0"
+        },
+      },
+      bl_abn_new_scarlet_cardiac = {
+        name = "Scarlet Cardiac",
+        text = {
+          "All but one random Joker",
+          "disabled every hand"
+        },
+      },
+      bl_abn_new_azure_chime = {
+        name = "Azure Chime",
+        text = {
+          "Forces all but 1 card",
+          "to always be selected"
+        },
+      },
+      bl_abn_new_golden_nut = {
+        name = "Golden Nut",
+        text = {
+          "Flips and shuffles all",
+          "cards before scoring,",
+          "Jokers cannot be moved"
+        },
+      },
+      bl_abn_new_lush_vegetation = {
+        name = "Lush Vegetation",
+        text = {
+          "All Jokers debuffed until",
+          "no discards are left"
+        },
+      },
+      bl_abn_new_lavender_basin = {
+        name = "Lavender Basin",
+        text = {
+          "#1# in #2# chance to double",
+          "blind requirement each time you",
+          "play, discard, or rearrange cards"
         },
       },
       --#endregion

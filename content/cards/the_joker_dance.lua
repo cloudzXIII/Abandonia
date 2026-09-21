@@ -1,21 +1,4 @@
-local original_game_update = Game.update
-
-function Game:update(dt)
-    original_game_update(self, dt)
-
-    if G.STAGE ~= G.STAGES.RUN then return end
-	
-	if G.jokers and G.jokers.cards and next(SMODS.find_card('j_abn_the_joker_dance')) then
-		for i = 1, #G.jokers.cards do
-            local j = G.jokers.cards[i]
-			
-			j.states.drag.can = false
-			
-		end
-	end
-	
-end
-
+--See update hook in utlities/hooks.lua
 
 SMODS.Joker {
   key = 'the_joker_dance',

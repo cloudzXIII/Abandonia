@@ -39,29 +39,29 @@ ABN.NewestiaBlind = SMODS.Blind:extend({
 		self.atlas = self.atlas ~= "blind_chips" and self.atlas or "abn_NewestiaBlinds"
 		if self.in_pool then
 			self.in_new_pool = self.in_pool
-			self.in_pool = nil
+		end
+		self.in_pool = function()
+			return false
 		end
 		ABN.NewestiaBlind.super.register(self)
 	end,
 	inject = function(self, i)
 		ABN.NewestiaBlind.super.inject(self, i)
 		ABN.NewestiaBlinds[self.key] = self
-	end,
-	in_pool = function()
-		return false
 	end
 })
 
 function ABN.new_newestia_boss()
-	if not G.GAME.abn_newestia_boss_pool or #G.GAME.abn_newestia_boss_pool == 0 then
-		G.GAME.abn_newestia_boss_pool = {}
+	local pool = G.GAME.round_resets.ante % G.GAME.win_ante == 0 and "abn_newestia_showdown_pool" or "abn_newestia_boss_pool"
+	if not G.GAME[pool] or #G.GAME[pool] == 0 then
+		G.GAME[pool] = {}
 		for key, def in pairs(ABN.NewestiaBlinds) do
-			if def.boss then
-				table.insert(G.GAME.abn_newestia_boss_pool, key)
+			if def.boss and (not def.boss.showdown) == (G.GAME.round_resets.ante % G.GAME.win_ante ~= 0) and (not def.in_new_pool or def:in_new_pool()) then
+				table.insert(G.GAME[pool], key)
 			end
 		end
 	end
-	return table.remove(G.GAME.abn_newestia_boss_pool, pseudorandom("abn_new_newestia_boss", 1, #G.GAME.abn_newestia_boss_pool))
+	return table.remove(G.GAME[pool], pseudorandom("abn_new_newestia_boss", 1, #G.GAME[pool]))
 end
 
 local old_reset_blind_choices = SMODS.reset_blind_choices
@@ -140,6 +140,51 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
 	end
 
 	return old_generate_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
+end
+
+function ABN.shorten_money_text(nodes)
+	if not nodes then return end
+	if nodes.nodes then nodes = nodes.nodes end
+	for _, node in ipairs(nodes) do
+		if node.config and node.config.text and node.config.text:len() >= 15 and node.config.text == string.rep(localize("$"), node.config.text:len()-1).."+" then
+			node.config.text = localize("$")..(node.config.text:len()-1).."+"
+		elseif node.config and node.config.object and type(node.config.object.string) == "string" and node.config.object.string:len() >= 15 and node.config.object.string == string.rep(localize("$"), node.config.object.string:len()) then
+			node.config.object = DynaText({string = {localize("$")..node.config.object.string:len()}, colours = {G.C.MONEY}, rotate = true, bump = true, silent = true, scale = 0.45})
+		end
+		if node.nodes then
+			ABN.shorten_money_text(node.nodes)
+		end
+	end
+end
+
+local old_ui_blind_choice = create_UIBox_blind_choice
+function create_UIBox_blind_choice(type, run_info)
+	local t = old_ui_blind_choice(type, run_info)
+	ABN.shorten_money_text(t)
+	return t
+end
+
+local old_ui_blind_popup = create_UIBox_blind_popup
+function create_UIBox_blind_popup(blind, discovered, vars)
+	local t = old_ui_blind_popup(blind, discovered, vars)
+	ABN.shorten_money_text(t)
+	return t
+end
+
+local old_set_blind = Blind.set_blind
+function Blind:set_blind(blind, reset, silent)
+	old_set_blind(self, blind, reset, silent)
+	if G.GAME.current_round.dollars_to_be_earned:len() >= 15 then
+		G.GAME.current_round.dollars_to_be_earned = localize("$")..G.GAME.current_round.dollars_to_be_earned:len()
+	end
+end
+
+local old_blind_load = Blind.load
+function Blind:load(blindTable)
+	old_blind_load(self, blindTable)
+	if G.GAME.current_round.dollars_to_be_earned:len() >= 15 then
+		G.GAME.current_round.dollars_to_be_earned = localize("$")..G.GAME.current_round.dollars_to_be_earned:len()
+	end
 end
 
 ABN.NewestiaBlind({
@@ -779,4 +824,217 @@ ABN.NewestiaBlind({
 			}
 		end
 	end
+})
+
+ABN.NewestiaBlind({
+	key = "new_scarlet_cardiac",
+	dollars = 20,
+	mult = 10,
+	pos = {x = 1, y = 4},
+	boss = {showdown = true},
+	boss_colour = HEX("ac3232"),
+	calculate = function(self, blind, context)
+		if context.blind_disabled or context.blind_defeated then
+			for _, joker in ipairs(G.jokers.cards) do
+				joker.ability.abn_new_scarlet_cardiac_chosen = nil
+			end
+		end
+		if blind.disabled then return end
+		if context.debuff_card and context.debuff_card.area == G.jokers and context.debuff_card.ability.abn_new_scarlet_cardiac_chosen then
+			return {debuff = true}
+		elseif (context.after or context.setting_blind) and #G.jokers.cards > 0 then
+			blind.abn_prepared = true
+			if context.after and #G.jokers.cards >= 2 then
+				blind.triggered = true
+			end
+		elseif context.hand_drawn and blind.abn_prepared then
+			blind.abn_prepared = nil
+			local already_one_safe = false
+			local choices = {}
+			for _, joker in ipairs(G.jokers.cards) do
+				if joker.ability.abn_new_scarlet_cardiac_chosen or already_one_safe or context.first_hand_drawn then
+					table.insert(choices, joker)
+				else
+					already_one_safe = true
+				end
+			end
+			local safe = pseudorandom_element(choices, "bl_abn_new_scarlet_cardiac")
+			for _, joker in ipairs(G.jokers.cards) do
+				local v1 = joker.ability.abn_new_scarlet_cardiac_chosen
+				local v2 = joker ~= safe
+				if v1 ~= v2 then
+					joker.ability.abn_new_scarlet_cardiac_chosen = joker ~= safe
+					SMODS.recalc_debuff(joker)
+					joker:juice_up()
+				end
+			end
+			blind:wiggle()
+		end
+	end
+})
+
+ABN.NewestiaBlind({
+	key = "new_azure_chime",
+	dollars = 20,
+	mult = 10,
+	pos = {x = 2, y = 4},
+	boss = {showdown = true},
+	boss_colour = HEX("009cfd"),
+	calculate = function(self, blind, context)
+		if context.setting_blind and not blind.disabled then
+			G.GAME.abn_new_azure_chime_original_handsize = G.hand.config.highlighted_limit
+			G.GAME.abn_new_azure_chime_original_handsize = G.hand.config.highlighted_limit
+		elseif context.blind_disabled or context.blind_defeated then
+			if G.GAME.abn_new_azure_chime_original_handsize then
+				G.hand.config.highlighted_limit = G.GAME.abn_new_azure_chime_original_handsize
+				G.GAME.abn_new_azure_chime_original_handsize = nil
+			end
+			for _, card in ipairs(G.playing_cards) do
+				card.ability.forced_selection = nil
+			end
+		end
+		if blind.disabled then return end
+		if context.hand_drawn then
+			local new_hand_size = #G.hand.cards - 1
+			if G.hand.config.highlighted_limit ~= G.GAME.abn_new_azure_chime_original_handsize then
+				G.GAME.abn_new_azure_chime_original_handsize = G.GAME.abn_new_azure_chime_original_handsize + G.GAME.abn_new_azure_chime_original_handsize - G.hand.config.highlighted_limit
+				G.GAME.abn_new_azure_chime_original_handsize = G.hand.config.highlighted_limit
+			end
+			if new_hand_size ~= G.GAME.abn_new_azure_chime_original_handsize then
+				G.GAME.abn_new_azure_chime_original_handsize = math.max(G.GAME.abn_new_azure_chime_original_handsize, new_hand_size)
+				G.hand.config.highlighted_limit = G.GAME.abn_new_azure_chime_original_handsize
+			end
+			local non_forced = {}
+			for _, card in ipairs(G.hand.cards) do
+				if not card.ability.forced_selection then
+					table.insert(non_forced, card)
+				end
+			end
+			if #non_forced >= 2 then
+				G.hand:unhighlight_all()
+				local unforced_card = pseudorandom_element(non_forced, "bl_abn_new_azure_chime")
+				for _, card in ipairs(non_forced) do
+					if card ~= unforced_card then
+						card.ability.forced_selection = true
+						G.hand:add_to_highlighted(card)
+					end
+				end
+			end
+		end
+	end
+})
+
+local old_can_play = G.FUNCS.can_play
+function G.FUNCS.can_play(e)
+	if G.GAME.current_round.hands_left > 0 and not G.GAME.blind.disabled and G.GAME.blind.config.blind.key == "bl_abn_new_azure_chime" and G.GAME.abn_new_azure_chime_original_handsize and #G.hand.highlighted <= G.GAME.abn_new_azure_chime_original_handsize then
+		e.config.colour = G.C.BLUE
+		e.config.button = "play_cards_from_highlighted"
+	else
+		old_can_play(e)
+	end
+end
+
+local old_can_discard = G.FUNCS.can_discard
+function G.FUNCS.can_discard(e)
+	if G.GAME.current_round.discards_left > 0 and not G.GAME.blind.disabled and G.GAME.blind.config.blind.key == "bl_abn_new_azure_chime" and G.GAME.abn_new_azure_chime_original_handsize and #G.hand.highlighted <= G.GAME.abn_new_azure_chime_original_handsize then
+		e.config.colour = G.C.RED
+		e.config.button = "discard_cards_from_highlighted"
+	else
+		old_can_discard(e)
+	end
+end
+
+local old_cardarea_update = CardArea.update
+function CardArea:update(dt)
+	old_cardarea_update(self, dt)
+	if self == G.hand then
+		for k, v in pairs(self.cards) do
+			if v.ability.forced_selection and not v.highlighted then 
+				self:add_to_highlighted(v)
+			end
+		end
+	end
+end
+
+--See update hook in utlities/hooks.lua
+ABN.NewestiaBlind({
+	key = "new_golden_nut",
+	dollars = 20,
+	mult = 10,
+	pos = {x = 3, y = 4},
+	boss = {showdown = true},
+	boss_colour = HEX("fdad1f"),
+	calculate = function(self, blind, context)
+		if context.blind_disabled or context.blind_defeated then
+			--Because the blind still exists for a short period after being defeated, the update hook will re-disable joker dragging if given the opportunity. Setting blind.disabled here prevents this.
+			blind.disabled = true
+			for _, joker in ipairs(G.jokers.cards) do
+				joker.states.drag.can = true
+			end
+		elseif context.before and not blind.disabled then
+			for _, area in ipairs({G.jokers, G.play, G.hand}) do
+				if #area.cards > 1 then
+					area:shuffle("bl_abn_new_trawl")
+					play_sound('cardSlide1', 0.85)
+					blind.triggered = true
+				end
+			end
+		end
+	end,
+})
+
+ABN.NewestiaBlind({
+	key = "new_lush_vegetation",
+	dollars = 20,
+	mult = 10,
+	pos = {x = 4, y = 4},
+	boss = {showdown = true},
+	boss_colour = HEX("56a786"),
+	calculate = function(self, blind, context)
+		if blind.disabled then return end
+		if context.debuff_card and context.debuff_card.area == G.jokers and G.GAME.current_round.discards_left > 0 then
+			return {debuff = true}
+		elseif context.pre_discard and G.GAME.current_round.discards_left <= 1 then
+			G.E_MANAGER:add_event(Event({
+				trigger = 'immediate',
+				func = function()
+					blind:disable()
+					return true
+				end
+			}))
+		end
+	end,
+})
+
+ABN.NewestiaBlind({
+	key = "new_lavender_basin",
+	dollars = 20,
+	mult = 2,
+	pos = {x = 5, y = 4},
+	boss = {showdown = true},
+	boss_colour = HEX("7963c5"),
+	loc_vars = function(self)
+		return {vars = {SMODS.get_probability_vars(self, 1, 4)}}
+	end,
+	collection_loc_vars = function(self)
+		return {vars = {1, 4}}
+	end,
+	calculate = function(self, blind, context)
+		if blind.disabled then return end
+		if context.blind_disabled and G.GAME.bl_abn_new_lavender_basin_mult then
+			blind.chips = blind.chips / G.GAME.bl_abn_new_lavender_basin_mult
+			blind.chip_text = number_format(blind.chips)
+			blind:set_text()
+			blind:wiggle()
+			blind.triggered = true
+			G.GAME.bl_abn_new_lavender_basin_mult = nil
+		elseif not blind.disabled and (context.before or context.pre_discard or context.abn_playing_cards_rearranged) and SMODS.pseudorandom_probability(blind, "bl_abn_new_lavender_basin", 1, 4) then
+			G.GAME.bl_abn_new_lavender_basin_mult = (G.GAME.bl_abn_new_lavender_basin_mult or 1) * 2
+			blind.chips = blind.chips * 2
+			blind.chip_text = number_format(blind.chips)
+			blind:set_text()
+			blind:wiggle()
+			blind.triggered = true
+		end
+	end,
 })
