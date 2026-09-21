@@ -14,7 +14,7 @@ SMODS.Joker {
         if context.individual and context.cardarea == G.play then
             local id = context.other_card:get_id()
             local value = context.other_card.base.value
-            if id == 2 or id == 3 or id == 5 or id == 7 or value == "abn_11" or value == "abn_14" then
+            if id == 2 or id == 3 or id == 5 or id == 7 or value == "abn_11" or value == "abn_13" then
                 return {
                     xchips = card.ability.extra.xchips,
                     mult = card.ability.extra.mult
