@@ -2845,6 +2845,22 @@ return {
         },
       },
 
+
+      j_abn_equationerror = {
+        name = "Equation Error",
+        text = {
+          "Each scored card has a {C:attention}1 in 4{} chance to",
+          "give this Joker {C:chips}+1{} Chip and {C:mult}+1{} Mult",
+          "{C:blue}Doubles{} its Chips and Mult whenever",
+          "a Joker is {C:red}destroyed{} {C:inactive}(not sold){}",
+          "When a hand {C:inactive}(not High Card){} is played,",
+          "{C:attention}1 in 4{} chance to also double its Chips",
+          "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips,{}",
+          "{C:mult}+#2#{} {C:inactive}Mult)",
+        },
+      },
+
+
       j_abn_erratic_joker = {
         name = "Erratic Joker",
         text = {
