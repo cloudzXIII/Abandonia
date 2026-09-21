@@ -58,6 +58,31 @@ return {
                     "{C:attention}расходникам{} в руке"
                 }
             },
+            c_abn_ram_07 = {
+                name = "RAM 07",
+                text = {
+                    "Создает все {C:dark_edition}модовые{} {C:attention}расходники{},",
+                    "упоминающийеся в описании всех",
+                    "ваших {C:attention}Джокеров{}"
+                    -- have thingy like the fool but match the colour of the consumable type
+                }
+            },
+            c_abn_ram_08 = {
+                name = "RAM 08",
+                text = {
+                    "Перезапускает следующую",
+                    "использованную {C:dark_edition}модовую{}",
+                    "карту {C:planet}Планеты{}"
+                }
+            },
+            c_abn_ram_09 = {
+                name = "RAM 09",
+                text = {
+                    "Следующий {C:dark_edition}модовый{}",
+                    "{C:attention}расходник{} не {C:attention}поглощается{}",
+                    "после использования"
+                }
+            },
         }
     }
 }

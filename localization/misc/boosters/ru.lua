@@ -435,12 +435,36 @@ return {
           'чтобы использовать сразу',
         }
       },
+      p_abn_ram_normal = {
+        name = 'RAM набор',
+        text = {
+          'Выберите {C:attention}#1#{} из',
+          '{C:attention}#2#{} {C:ram}RAM{} карт,',
+          'чтобы использовать сразу',
+        }
+      },
+      p_abn_ram_jumbo = {
+        name = 'RAM набор Джамбо',
+        text = {
+          'Выберите {C:attention}#1#{} из',
+          '{C:attention}#2#{} {C:ram}RAM{} карт,',
+          'чтобы использовать сразу',
+        }
+      },
+      p_abn_ram_mega = {
+        name = 'Мега-RAM набор',
+        text = {
+          'Выберите {C:attention}#1#{} из',
+          '{C:attention}#2#{} {C:ram}RAM{} карт,',
+          'чтобы использовать сразу',
+        }
+      },
     }
   },
   misc = {
     dictionary = {
       k_abn_astro_pack = "Астронабор",
-      abn_sigilbooster = "Набор символов",
+      k_abn_sigil_pack = "Набор символов",
       k_abn_paradox_pack = "Набор парадоксов",
       k_abn_crimson_pack = "Багряный набор",
       k_abn_calligraphy_pack = "Каллиграфический набор",
@@ -452,6 +476,7 @@ return {
       k_abn_solid_pack = "Твердотельный набор",
       k_abn_program_pack = "Программный набор",
       k_abn_calamity_pack = "Набор бедствий",
+      k_abn_ram_pack = "RAM набор",
 
       -- kiddy pack thingys
       k_standard_kiddy = "Детский стандартный набор",

@@ -507,6 +507,14 @@ return {
         },
 
         Spectral = {
+            c_abn_ram_10 = {
+                name = "RAM 10",
+                text = {
+                    "Создает {C:dark_edition}Негативную{}",
+                    "копию всех имеющихся",
+                    "{C:dark_edition}модовых{} {C:attention}расходников{}"
+                }
+            },
             c_abn_promotion = { -- TO CODE
                 name = "Повышение",
                 text = {
