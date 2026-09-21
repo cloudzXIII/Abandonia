@@ -2818,11 +2818,10 @@ return {
         name = "Envy",
         text = {
           {
-            "All {C:attention}Jokers{} become {C:abn_eternal}Eternal{}",
-            "upon purchase"
+            "All eligible {C:attention}Jokers{} become",
+            "{C:abn_eternal}Eternal{} upon purchase"
           },
           {
-
             "{X:mult,C:white}X#1#{} Mult on {C:attention}second hand{}",
             "of round, increases by {X:mult,C:white}X#2#{}",
             "every time you don't play your",
@@ -3784,8 +3783,8 @@ return {
         name = "Gluttony",
         text = {
           {
-            "All {C:attention}Jokers{} become {C:abn_eternal}Eternal{}",
-            "upon purchase"
+            "All eligible {C:attention}Jokers{} become",
+            "{C:abn_eternal}Eternal{} upon purchase"
           },
           {
 

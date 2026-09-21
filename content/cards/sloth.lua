@@ -15,7 +15,7 @@ SMODS.Joker {
   pos = { x = 3, y = 0 },
   cost = 1,
   discovered = false,
-  blueprint_compat = false,
+  blueprint_compat = true,
 
   config = {
     extra = {
@@ -25,7 +25,7 @@ SMODS.Joker {
   },
 
   calculate = function(self, card, context)
-    if context.buying_self then
+    if context.buying_self and not context.blueprint then
         for i,v in ipairs(G.jokers.cards) do
             v:set_eternal(true)
         end

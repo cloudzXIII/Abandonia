@@ -14,7 +14,7 @@ SMODS.Joker {
   pos = { x = 1, y = 0 },
   cost = 1,
   discovered = false,
-  blueprint_compat = false,
+  blueprint_compat = true,
 
   config = {
     extra = {
@@ -25,15 +25,14 @@ SMODS.Joker {
   },
 
   calculate = function(self, card, context)
-    if context.buying_card and context.buying_self then
-        card:add_sticker("s_eternal")
+    if context.buying_self and not context.blueprint then
         for i,v in ipairs(G.jokers.cards) do
-            v:add_sticker("s_eternal")
+            v:set_eternal(true)
         end
     end
     if context.joker_main then
         local hand=ABN.highest_level_hand()
-        if context.scoring_name ~= hand then
+        if context.scoring_name ~= hand and not context.blueprint then
           SMODS.scale_card(card,{
               ref_table=card.ability.extra,
               ref_value="x_mult",
@@ -42,7 +41,6 @@ SMODS.Joker {
               message_colour=G.C.RED,
           })
         end
-        print("hands played is:",G.GAME.current_round.hands_played)
         if G.GAME.current_round.hands_played == 1 then
           return {
             x_mult=card.ability.extra.x_mult,
