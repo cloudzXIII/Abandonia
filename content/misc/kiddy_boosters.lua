@@ -58,6 +58,10 @@ SMODS.Booster({
     G.booster_pack_sparkles.fade_alpha = 1
     G.booster_pack_sparkles:fade(1, 0)
   end,
+
+  abn_artist_credits = {
+    artist = "Creechie",
+  },
 })
 
 SMODS.Booster({
@@ -131,6 +135,10 @@ SMODS.Booster({
     G.booster_pack_sparkles.fade_alpha = 1
     G.booster_pack_sparkles:fade(1, 0)
   end,
+
+  abn_artist_credits = {
+    artist = "Creechie",
+  },
 })
 
 SMODS.Booster({
@@ -190,6 +198,10 @@ SMODS.Booster({
     G.booster_pack_sparkles.fade_alpha = 1
     G.booster_pack_sparkles:fade(1, 0)
   end,
+
+  abn_artist_credits = {
+    artist = "Creechie",
+  },
 })
 
 SMODS.Booster({
@@ -283,6 +295,10 @@ SMODS.Booster({
       fill = true
     })
   end,
+
+  abn_artist_credits = {
+    artist = "Creechie",
+  },
 })
 
 SMODS.Booster({

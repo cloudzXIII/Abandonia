@@ -294,7 +294,7 @@ ABN.create_boosters_for_set {
   set = "paradox",
   special_colour = G.C.GREEN,
   draw_hand = true,
-  artist = "Tatsu",
+  artist = "Okronix",
 }
 
 ABN.create_boosters_for_set {
@@ -541,4 +541,5 @@ ABN.create_boosters_for_set {
   atlas = "AbandoniaRAMPack",
   set = "ram",
   special_colour = G.C.GREEN,
+  artist = "Okronix",
 }
