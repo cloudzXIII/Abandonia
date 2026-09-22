@@ -52,5 +52,9 @@ SMODS.Joker{
         }
       end
     end
-  end
+  end,
+
+abn_artist_credits = {
+    artist = "Inky & Lapsem"
+  }
 }
