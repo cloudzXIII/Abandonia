@@ -284,11 +284,11 @@ return {
       m_abn_flypaper = {
         name = "Flypaper",
         text = {
-          "Will catch an {C:purple}insect{} if present for",
-          "your winning hand, whether its in",
-          "the scoring hand or held in hand",
+          "Will {C:attention}catch{} an {C:purple}insect{}, if present for",
+          "your {C:attention}winning hand{}, whether its in",
+          "the {C:attention}scoring hand{} or {C:attention}held in hand",
           "Catches different {C:purple}insects",
-          "depending on the circumstance"
+          "depending on the {C:attention}circumstance"
         }
       },
     },

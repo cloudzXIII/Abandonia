@@ -464,6 +464,10 @@ ABN.CalamityCard {
       end
     end
   end,
+
+  abn_artist_credits = {
+      artist = "Okronix"
+  },
 }
 
 ABN.CalamityCard {
@@ -482,6 +486,10 @@ ABN.CalamityCard {
       }
     }
   end,
+
+  abn_artist_credits = {
+      artist = "Okronix"
+  },
 }
 
 
@@ -552,6 +560,9 @@ ABN.CalamityCard {
     }))
   end,
 
+  abn_artist_credits = {
+      artist = "Okronix"
+  },
 }
 
 if next(SMODS.find_mod("Spectrallib")) then
@@ -627,6 +638,9 @@ if next(SMODS.find_mod("Spectrallib")) then
       end
     end,
 
+    abn_artist_credits = {
+        artist = "Okronix"
+    },
   }
 
   ABN.CalamityCard {
@@ -661,6 +675,10 @@ if next(SMODS.find_mod("Spectrallib")) then
         }
       }
     end,
+
+    abn_artist_credits = {
+        artist = "Okronix"
+    },
   }
 
   SMODS.Consumable {
