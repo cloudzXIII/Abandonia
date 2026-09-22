@@ -3518,6 +3518,15 @@ return {
         }
       },
 
+    j_abn_Garth = {
+    name = "Garth",
+    text = {
+      "Scored {C:attention}Arrows{} give {X:mult,C:white}X#1#{} Mult,",
+      "increase by {X:mult,C:white}X#2#{} Mult when Arrow scored",
+      "Scoring Arrows gain {C:attention}+#3#{} Score"
+     }
+    },
+
       j_abn_gachapon = {
         name = "Gachapon",
         text = {
