@@ -625,3 +625,62 @@ SMODS.Consumable {
     artist = "Da Gorbage Rat",
   },
 }
+
+SMODS.Consumable {
+  key = "psychosis",
+  set = "nightshift_cards",
+  pos = { x = 0, y = 1 },
+  atlas = "AbandoniaNightshift",
+  cost = 4,
+  discovered = false,
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_newestia_only", set = "Other" }
+    info_queue[#info_queue + 1] = { key = "e_negative", set = "Edition", config = { extra = 1 } }
+  end,
+
+  in_pool = function(self)
+    return G.GAME.abn_newestia
+  end,
+
+  can_use = function(self, card)
+    local selected = false
+
+	for _, area in ipairs(SMODS.get_card_areas("jokers")) do
+		for __, other in ipairs(area.highlighted) do
+			if other.ability and other.ability.set == "Joker" then
+				if selected then
+					return false
+				else
+					selected = other
+				end
+			end
+		end
+	end
+
+    return selected and selected.config.center.rarity == 4
+  end,
+
+  use = function(self, card, area, copier)
+    local selected = nil
+
+	for _, area in ipairs(SMODS.get_card_areas("jokers")) do
+		for __, other in ipairs(area.highlighted) do
+			if other.ability and other.ability.set == "Joker" then
+				selected = other
+				break
+			end
+		end
+	end
+
+	if not selected then return end
+
+	local copy = SMODS.copy_card(selected)
+	copy:set_edition("e_negative", true)
+	copy.sell_cost = 0
+  end,
+
+  abn_artist_credits = {
+    artist = "Smoliconboi",
+  },
+}

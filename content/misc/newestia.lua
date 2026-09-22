@@ -24,8 +24,10 @@ function G.UIDEF.shop()
 end
 
 G.FUNCS.abn_toggle_newestia = function(e)
-	G.GAME.abn_newestia = not G.GAME.abn_newestia
-	button_cache.nodes[1].nodes[1].nodes[1].config.object:set_sprite_pos({x = 0, y = G.GAME.abn_newestia and 0 or 1})
+	G.GAME.abn_newestia = G.GAME.abn_newestia_permanent or not G.GAME.abn_newestia
+	if button_cache and button_cache.nodes[1].nodes[1].nodes[1].config.object then
+		button_cache.nodes[1].nodes[1].nodes[1].config.object:set_sprite_pos({x = 0, y = G.GAME.abn_newestia and 0 or 1})
+	end
 	for blindtype in pairs(G.GAME.round_resets.blind_choices) do
 		if G.GAME.round_resets.blind_states[blindtype] == "Upcoming" and G.GAME.abn_newestia_current_blinds[blindtype] then
 			G.GAME.round_resets.blind_choices[blindtype] = (G.GAME.abn_newestia and G.GAME.abn_newestia_current_blinds or G.GAME.abn_newestia_original_blinds)[blindtype]

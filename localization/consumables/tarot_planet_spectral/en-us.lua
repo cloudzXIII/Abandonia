@@ -587,6 +587,14 @@ return {
           "Gain {C:attention}#1#{} random {C:abn_hazard}Hazard Tags{}",
         },
       },
+      c_abn_eon2 = {
+        name = "Eon",
+        text = {
+          "Return to Ante {C:attention}#1#{},",
+          "Newestia mode",
+          "becomes permanent",
+        },
+      },
       c_abn_whitehole = {
         name = "White Hole",
         text = {

@@ -83,6 +83,13 @@ return {
           }
         }
       },
+      c_abn_psychosis = {
+        name = "Psychosis",
+        text = {
+          "Create a {C:dark_edition}Negative{}, {C:gold}$0{} sell value",
+          "copy of selected {C:legendary}Legendary{} Joker",
+        }
+      },
     },
   },
 }

@@ -1201,8 +1201,11 @@ ABN.SolidState {
   soul_set = 'solid_state',
 
   can_use = function(self, card)
-    return G.jokers and #G.jokers.cards >= 2 and G.jokers.cards[1] and G.jokers.cards[#G.jokers.cards] and
-        G.GAME.round_resets.hands > 1 and #G.consumeables.cards + 1 < G.consumeables.config.card_limit + 1
+	local needed_slots = 2
+	if card.area == G.consumeables and (not card.edition or not card.edition.negative) then
+		needed_slots = 1
+	end
+    return G.jokers and #G.jokers.cards >= 2 and G.GAME.round_resets.hands > 1 and #G.consumeables.cards + needed_slots <= G.consumeables.config.card_limit
   end,
 
   use = function(self, card, area, copier)
@@ -1235,8 +1238,6 @@ ABN.SolidState {
 
         change_shop_size(-1)
 
-
-
         return true
       end
     }))
@@ -1251,5 +1252,69 @@ ABN.SolidState {
 
   abn_artist_credits = {
     artist = "Yume"
+  },
+}
+
+ABN.SolidState {
+  key = "solid_state_entity",
+  pos = { x = 0, y = 4 },
+  soul_pos = { x = 1, y = 4 },
+  hidden = true,
+  soul_set = 'solid_state',
+  soul_rate = 0.035,
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_newestia_only", set = "Other" }
+	if not card.edition or card.edition ~= "e_abn_chromatic" then
+    	info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_chromatic
+	end
+	info_queue[#info_queue + 1] = { key = "eternal", set = "Other"}
+  end,
+
+  in_pool = function(self)
+    return G.GAME.abn_newestia
+  end,
+
+  can_use = function(self, card)
+    return #G.consumeables.cards < G.consumeables.config.card_limit or card.area == G.consumeables
+  end,
+
+  use = function(self, card, area, copier)
+	G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.4,
+        func = function()
+            if G.consumeables.config.card_limit > #G.consumeables.cards then
+				local joker = SMODS.add_card({
+					area = G.consumeables,
+					key = SMODS.poll_object({
+					  set = "Joker",
+					  seed = "c_abn_solid_state_entity",
+					  rarities = {"Legendary"},
+					  allow_legendaries = true,
+					  filter = function(pool)
+						local filtered = {}
+						for _, obj in ipairs(pool) do
+						  if G.P_CENTERS[obj.key] and G.P_CENTERS[obj.key].original_mod then
+							table.insert(filtered, obj)
+						  end
+						end
+						return filtered
+					  end
+					})
+				})
+				if not joker then return end
+				joker:set_eternal(true)
+				joker:set_edition("e_abn_chromatic")
+				card:juice_up(0.3, 0.5)
+				play_sound("timpani")
+			end
+			return true
+		end
+	}))
+  end,
+
+  abn_artist_credits = {
+    artist = "Comkyel"
   },
 }

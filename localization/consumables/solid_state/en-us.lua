@@ -158,6 +158,14 @@ return {
           }
         },
       },
+      c_abn_solid_state_entity = {
+        name = "Solid State Entity",
+        text = {
+          "Create a {C:attention}modded {C:legendary}Legendary{} Joker",
+          "that is also {C:dark_edition}Chromatic{} and {C:purple}Eternal,",
+          "and put it in your {C:attention}Consumables{} area"
+        },
+      },
     },
   },
 }

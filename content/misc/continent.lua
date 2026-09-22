@@ -598,3 +598,49 @@ ABN.ContinentCard {
     return G.jokers and #G.jokers.cards > 0
   end,
 }
+
+ABN.ContinentCard {
+  key = "pangea",
+  pos = { x = 1, y = 3 },
+  hidden = true,
+  soul_set = 'Spectral',
+  soul_rate = 0.035,
+  config = { extra = {multiplier = 2.5} },
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_newestia_only", set = "Other" }
+    info_queue[#info_queue + 1] = { key = "abn_jester_legacy", set = "Other", vars = { 40 } }
+    return { vars = { card.ability.extra.multiplier } }
+  end,
+  in_pool = function(self)
+    return G.GAME.abn_newestia
+  end,
+  use = function(self, card, area, copier)
+    for _, area in ipairs(SMODS.get_card_areas("jokers")) do
+		for __, other in ipairs(area.cards) do
+			if other.ability and other.ability.set == "Joker" then
+				other:start_dissolve()
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						SMODS.add_card({
+							set = 'Joker',
+							rarity = "abn_SuperRare",
+							stickers = { "abn_jester_legacy" },
+							force_stickers = true,
+							area = area
+						})
+						return true
+					end
+				}))
+				G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling * card.ability.extra.multiplier
+			end
+		end
+    	area:unhighlight_all()
+	end
+  end,
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.cards > 0
+  end,
+  abn_artist_credits = {
+    artist = "Pitissaria 2"
+  },
+}

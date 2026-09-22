@@ -20,6 +20,10 @@ SMODS.Voucher({ -- Overstock Maximum
 		local cae = card.ability.extra
 		change_shop_size(cae.inc)
 	end,
+    
+    abn_artist_credits = {
+        artist = "This is a test.",
+    },
 })
 
 SMODS.Voucher({ -- Tarot Master

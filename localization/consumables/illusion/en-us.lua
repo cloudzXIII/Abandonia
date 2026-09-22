@@ -62,6 +62,13 @@ return {
           "card in your hand",
         },
       },
+      c_abn_god_complex = {
+        name = "God Complex",
+        text = {
+          "Add a random {C:attention}Stamp{} to each card",
+          "with an {C:dark_edition}Edition{} in your full deck",
+        },
+      },
     },
   },
 }

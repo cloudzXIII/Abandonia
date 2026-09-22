@@ -279,6 +279,14 @@ return {
           "are not visible",
         }
       },
+
+      abn_newestia_only = {
+        name = "Limited",
+        text = {
+          "Only spawns while",
+          "{C:red}Newestia{} is active"
+        }
+      },
       --#endregion
 
       --#region Flypaper Fly Types

@@ -240,3 +240,35 @@ SMODS.Consumable {
         artist = "Astellar Blue"
     },
 }
+
+SMODS.Consumable {
+    key = "god_complex",
+    set = 'illusion',
+    cost = 4,
+    atlas = "abn_AbandoniaIllusions",
+    pos = { x = 1, y = 1 },
+	hidden = true,
+	soul_set = 'illusion',
+	soul_rate = 0.035,
+    loc_vars = function(self, info_queue, card)
+    	info_queue[#info_queue + 1] = { key = "abn_newestia_only", set = "Other" }
+    end,
+    can_use = function(self, card)
+        for _, playing_card in ipairs(G.playing_cards) do
+			if playing_card.edition then
+				return true
+			end
+		end
+        return false
+    end,
+    use = function(self, card, area, copier)
+        for _, playing_card in ipairs(G.playing_cards) do
+			if playing_card.edition then
+				abn_add_stamp(playing_card)
+			end
+		end
+    end,
+    abn_artist_credits = {
+        artist = "Grummy"
+    },
+}

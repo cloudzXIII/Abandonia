@@ -639,3 +639,36 @@ SMODS.Consumable {
     artist = "Grass",
   },
 }
+
+SMODS.Consumable {
+  key = "eon2",
+  set = "Spectral",
+  config = { extra = { ante = 1 } },
+  pos = { x = 7, y = 4 },
+  atlas = "AbandoniaSpectrals",
+  cost = 4,	
+  discovered = false,
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_newestia_only", set = "Other" }
+    return { vars = { card.ability.extra.ante } }
+  end,
+
+  can_use = function(self, card)
+    return G.GAME.round_resets.ante > 1 and G.STATE ~= G.STATES.BLIND_SELECT and not G.GAME.blind.in_blind and not G.GAME.abn_newestia_permanent
+  end,
+
+  in_pool = function(self, args)
+    return G.GAME.abn_newestia and not G.GAME.abn_newestia_permanent
+  end,
+
+  use = function(self, card, area, copier)
+    G.GAME.abn_newestia_permanent = true
+	G.FUNCS.abn_toggle_newestia()
+	ease_ante(card.ability.extra.ante - G.GAME.round_resets.ante)
+  end,
+
+  abn_artist_credits = {
+    artist = "Triangle Snack",
+  },
+}
