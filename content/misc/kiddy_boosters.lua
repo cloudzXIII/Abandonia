@@ -8,13 +8,13 @@ SMODS.Booster({
   kind = "Standard",
   group_key = 'k_standard_kiddy',
   discovered = false,
-  select_card = function(self, card, pack)
+  --[[select_card = function(self, card, pack)
     if card.config.center.use then
       return "consumeables", true
     else
       return "consumeables"
     end
-  end,
+  end,--]]
 
   create_card = function(self, card, i)
     local _edition = SMODS.poll_edition { key = "standard_kiddy" .. G.GAME.round_resets.ante, mod = 2, no_negative = true }
@@ -75,13 +75,6 @@ SMODS.Booster({
   group_key = 'k_arcana_kiddy',
   draw_hand = true,
   discovered = false,
-  select_card = function(self, card, pack)
-    if card.config.center.use then
-      return "consumeables", true
-    else
-      return "consumeables"
-    end
-  end,
 
   create_card = function(self, card, i)
     local _card
@@ -152,13 +145,6 @@ SMODS.Booster({
   group_key = 'k_spectral_kiddy',
   draw_hand = true,
   discovered = false,
-  select_card = function(self, card, pack)
-    if card.config.center.use then
-      return "consumeables", true
-    else
-      return "consumeables"
-    end
-  end,
 
   create_card = function(self, card, i)
     return {
@@ -215,13 +201,6 @@ SMODS.Booster({
   group_key = 'k_celestial_kiddy',
   draw_hand = true,
   discovered = false,
-  select_card = function(self, card, pack)
-    if card.config.center.use then
-      return "consumeables", true
-    else
-      return "consumeables"
-    end
-  end,
 
   create_card = function(self, card, i)
     local _card
