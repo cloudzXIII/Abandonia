@@ -3391,11 +3391,31 @@ return {
         }
       },
 
-      j_abn_frenemy_joker = { -- slightly relocalise
+      j_abn_frenemy_joker = {
         name = "Frenemy Joker",
         text = {
-          "Each unique {C:attention}rarity{} among Jokers",
-          "decreases {C:attention}blind requirements{} by {C:attention}#1#%",
+            {
+                "Scoring {C:attention}Even{} cards give",
+                "{X:mult,C:white}X#1#{} Mult per {C:common}Common{} Joker",
+                "{X:mult,C:white}X#2#{} Mult per {C:uncommon}Uncommon{} Joker",
+                "{X:mult,C:white}X#3#{} Mult per {C:rare}Rare{} Joker",
+                "{X:mult,C:white}X#4#{} Mult per {C:abn_superrare}Super Rare{} Joker",
+                "{X:mult,C:white}X#5#{} Mult per {C:legendary}Legendary{} Joker",
+                "{X:mult,C:white}X#6#{} Mult per {C:abn_parallelrare}Parallel Rare{} Joker",
+            },
+            {
+                "Scoring {C:attention}Odd{} cards give",
+                "{X:chips,C:white}X#7#{} Chips per {C:common}Common{} Joker",
+                "{X:chips,C:white}X#8#{} Chips per {C:uncommon}Uncommon{} Joker",
+                "{X:chips,C:white}X#9#{} Chips per {C:rare}Rare{} Joker",
+                "{X:chips,C:white}X#10#{} Chips per {C:abn_superrare}Super Rare{} Joker",
+                "{X:chips,C:white}X#11#{} Chips per {C:legendary}Legendary{} Joker",
+                "{X:chips,C:white}X#12#{} Chips per {C:abn_parallelrare}Parallel Rare{} Joker",
+            },
+            {
+                "If you own {C:attention}6{} different {C:attention}rarities{} of Jokers",
+                "reduce all {C:attention}blind requirements{} by {C:attention}98%{}",
+            }
         }
       },
 
@@ -4811,16 +4831,22 @@ return {
         name = "Joker Besties",
         text = {
           {
-            "Jokers/cards with {C:inactive}edition 1{} become",
-            "{C:inactive}edition 2{} when triggered",
-            "Jokers/cards gain {C:chips}+#1#{} Chips",
-            "when changing {C:dark_edition}editions{}",
+            "Matching numbers of {C:attention}Vanilla{} and {C:attention}Modded{}",
+            "{C:dark_edition}Foil{}, {C:dark_edition}Holo{}, and {C:dark_edition}Polychrome{} give",
+            "{X:chips,C:white}X#1#{}, {X:chips,C:white}X#2#{}, and {X:chips,C:white}X#3#{} Chips respectively",
           },
           {
-            "{C:inactive}(ex: edition 1 -> edition 2)",
-            "{C:dark_edition}Foil{} -> {C:dark_edition}Holographic{}",
-            "{C:dark_edition}Holographic{} -> {C:dark_edition}Polychrome{}",
-            "{C:dark_edition}Polychrome{} -> {C:dark_edition}Chromatic{}",
+            "Matching sets of {C:attention}Vanilla{} and {C:attention}Modded{}",
+            "Jokers with editions give",
+            "{X:mult,C:white}X#4#{}, {X:mult,C:white} X#5# {}, and {X:mult,C:white}X#6#{} Mult respectively",
+          },
+          {
+            "If this Joker is {C:dark_edition}Foil{}, scoring cards",
+            "and Jokers upgrade their {C:dark_edition}edition{} and",
+            "gain {C:chips}+#7#{} Chips and {C:mult}+#8#{} Mult",
+          },
+          {
+            "{C:inactive}(Foil -> Holo -> Poly -> Chromatic)",
           }
         },
       },
@@ -9732,6 +9758,39 @@ return {
           "if hand played contains",
           "an {C:attention}Ace{} and a {C:attention}numbered card{}",
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+        },
+      },
+	  j_abn_proxy_joker = {
+        name = 'Proxy Joker',
+        text = {
+          "If all Jokers are {C:attention}Modded{} and you score a {C:attention}Modded{} hand with only {C:attention}Modded{} cards",
+		  "Gain {C:gold}+#1#{} Asc. Power per scoring card",
+		  "{C:inactive}Currently:{} {C:gold}+#2#{} Asc. Power",
+        },
+      },
+	  
+	  j_abn_comedy_gold = {
+        name = 'Comedy Gold',
+        text = {
+          "{C:attention}+1{} {C:chips}Play{} Limit",
+		  "If your hand is Composed of Only {C:attention}Gold{} cards",
+		  "Double your current {C:money}${} and each {C:attention}Gold{} card gains",
+		  "{X:mult,C:white}X#3#{} Mult and {C:gold}+#4#{} Asc. Power for each {C:money}$20{} you have",
+		  "After playing {C:attention}#2#{} hands of {C:attention}6{} Gold cards",
+		  "{C:mult}destroy{} this Joker and {C:attention}double{} your Joker slots",
+		  "{C:attention}#1#{}{C:inactive}/{}{C:attention}#2#{}",
+        },
+      },
+	  
+	  j_abn_metalizing_joker = {
+        name = 'Metalizing Joker',
+        text = {
+          "{C:attention}+1{} {C:chips}Play{} Limit",
+		  "If your hand is Composed of Only {C:attention}Steel{} cards",
+		  "Each {C:attention}Steel{} card gains {C:gold}+#3#{} Asc. Power per scoring card",
+		  "After playing {C:attention}#2#{} hands of {C:attention}6{} Steel cards",
+		  "{C:mult}destroy{} this Joker and {C:attention}double{} your Handsize",
+		  "{C:attention}#1#{}{C:inactive}/{}{C:attention}#2#{}",
         },
       },
     },
