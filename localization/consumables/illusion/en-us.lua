@@ -62,13 +62,15 @@ return {
           "card in your hand",
         },
       },
+      --#region Newestia
       c_abn_god_complex = {
         name = "God Complex",
         text = {
           "Add a random {C:attention}Stamp{} to each card",
-          "with an {C:dark_edition}Edition{} in your full deck",
+          "with an {C:dark_edition}Edition{} in your {C:attention}full deck",
         },
       },
+      --#endregion
     },
   },
 }

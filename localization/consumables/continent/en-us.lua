@@ -234,17 +234,19 @@ return {
           },
         }
       },
+      --#endregion
+      --#region Newestia
       c_abn_pangea = {
         name = "Pangea",
         text = {
           {
-			"Replace all Jokers with {C:abn_superrare}Super Rare",
-			"Jokers with {C:attention}Jester Legacy"
+            "Replace all Jokers with {C:abn_superrare}Super Rare",
+            "Jokers with {C:attention}Jester Legacy"
           },
           {
-            "Increase all future blind",
-			"requirements by {X:black,C:white}X#1#",
-			"per replaced Joker"
+            "Increase all future {C:attention}Blind",
+            "{C:attention}requirements{} by {X:black,C:white}X#1#",
+            "per replaced Joker"
           },
         },
       },

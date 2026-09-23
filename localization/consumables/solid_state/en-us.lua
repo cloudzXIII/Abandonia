@@ -158,14 +158,16 @@ return {
           }
         },
       },
+      --#region Newestia
       c_abn_solid_state_entity = {
         name = "Solid State Entity",
         text = {
           "Create a {C:attention}modded {C:legendary}Legendary{} Joker",
-          "that is also {C:dark_edition}Chromatic{} and {C:purple}Eternal,",
+          "that is also {C:dark_edition}Chromatic{} and {C:abn_eternal}Eternal{},",
           "and put it in your {C:attention}Consumables{} area"
         },
       },
+      --#endregion
     },
   },
 }

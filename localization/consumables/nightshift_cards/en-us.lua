@@ -83,6 +83,7 @@ return {
           }
         }
       },
+      --#region Newestia
       c_abn_psychosis = {
         name = "Psychosis",
         text = {
@@ -90,6 +91,7 @@ return {
           "copy of selected {C:legendary}Legendary{} Joker",
         }
       },
+      --#endregion
     },
   },
 }
