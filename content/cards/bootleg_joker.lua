@@ -40,6 +40,19 @@ SMODS.Joker {
         end
     end,
 
+    in_pool = function(self, args)
+        local has_modded_suit = false
+        local vanilla_suits = { "Hearts", "Clubs", "Spades", "Diamonds" }
+
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if not SMODS.has_no_suit(playing_card) and not ABN.table_contains(vanilla_suits, playing_card.base.suit) then
+                has_modded_suit = true
+            end
+        end
+
+        return has_modded_suit
+    end,
+
     abn_artist_credits = {
         artist = "Inky",
     },

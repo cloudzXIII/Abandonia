@@ -24,13 +24,8 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
         if context.using_consumeable and context.consumeable.ability.set == "Tarot" and not context.blueprint then
-            SMODS.scale_card(card, {
-                ref_table = card.ability.extra,
-                ref_value = "echips",
-                scalar_value = "echips_gain",
-                operation = '+',
-                message_colour = G.C.CHIPS,
-            })
+            card.ability.extra.echips = card.ability.extra.chips + card.ability.extra.echips_gain
+            return { message = localize("k_upgrade_ex"), colour = G.C.CHIPS }
         end
 
         if context.joker_main then

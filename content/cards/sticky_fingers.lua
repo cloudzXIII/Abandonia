@@ -18,9 +18,6 @@ SMODS.Joker {
         }
     end,
 
-    calculate = function(self, card, context)
-        
-    end,
     abn_artist_credits = {
         artist = "Omicra",
     },
