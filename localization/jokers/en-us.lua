@@ -1595,6 +1595,19 @@ return {
         }
       },
 
+      j_abn_comedy_gold = { -- to relocalise
+        name = 'Comedy Gold',
+        text = {
+          "{C:attention}+1{} {C:chips}Play{} Limit",
+          "If your hand is Composed of Only {C:attention}Gold{} cards",
+          "Double your current {C:money}${} and each {C:attention}Gold{} card gains",
+          "{X:mult,C:white}X#3#{} Mult and {C:gold}+#4#{} Asc. Power for each {C:money}$20{} you have",
+          "After playing {C:attention}#2#{} hands of {C:attention}6{} Gold cards",
+          "{C:mult}destroy{} this Joker and {C:attention}double{} your Joker slots",
+          "{C:attention}#1#{}{C:inactive}/{}{C:attention}#2#{}",
+        },
+      },
+
       j_abn_communist_bear = {
         name = "Communist Bear",
         text = {
@@ -3391,31 +3404,31 @@ return {
         }
       },
 
-      j_abn_frenemy_joker = {
+      j_abn_frenemy_joker = { -- to relocalise
         name = "Frenemy Joker",
         text = {
-            {
-                "Scoring {C:attention}Even{} cards give",
-                "{X:mult,C:white}X#1#{} Mult per {C:common}Common{} Joker",
-                "{X:mult,C:white}X#2#{} Mult per {C:uncommon}Uncommon{} Joker",
-                "{X:mult,C:white}X#3#{} Mult per {C:rare}Rare{} Joker",
-                "{X:mult,C:white}X#4#{} Mult per {C:abn_superrare}Super Rare{} Joker",
-                "{X:mult,C:white}X#5#{} Mult per {C:legendary}Legendary{} Joker",
-                "{X:mult,C:white}X#6#{} Mult per {C:abn_parallelrare}Parallel Rare{} Joker",
-            },
-            {
-                "Scoring {C:attention}Odd{} cards give",
-                "{X:chips,C:white}X#7#{} Chips per {C:common}Common{} Joker",
-                "{X:chips,C:white}X#8#{} Chips per {C:uncommon}Uncommon{} Joker",
-                "{X:chips,C:white}X#9#{} Chips per {C:rare}Rare{} Joker",
-                "{X:chips,C:white}X#10#{} Chips per {C:abn_superrare}Super Rare{} Joker",
-                "{X:chips,C:white}X#11#{} Chips per {C:legendary}Legendary{} Joker",
-                "{X:chips,C:white}X#12#{} Chips per {C:abn_parallelrare}Parallel Rare{} Joker",
-            },
-            {
-                "If you own {C:attention}6{} different {C:attention}rarities{} of Jokers",
-                "reduce all {C:attention}blind requirements{} by {C:attention}98%{}",
-            }
+          {
+            "Scoring {C:attention}Even{} cards give",
+            "{X:mult,C:white}X#1#{} Mult per {C:common}Common{} Joker",
+            "{X:mult,C:white}X#2#{} Mult per {C:uncommon}Uncommon{} Joker",
+            "{X:mult,C:white}X#3#{} Mult per {C:rare}Rare{} Joker",
+            "{X:mult,C:white}X#4#{} Mult per {C:abn_superrare}Super Rare{} Joker",
+            "{X:mult,C:white}X#5#{} Mult per {C:legendary}Legendary{} Joker",
+            "{X:mult,C:white}X#6#{} Mult per {C:abn_parallelrare}Parallel Rare{} Joker",
+          },
+          {
+            "Scoring {C:attention}Odd{} cards give",
+            "{X:chips,C:white}X#7#{} Chips per {C:common}Common{} Joker",
+            "{X:chips,C:white}X#8#{} Chips per {C:uncommon}Uncommon{} Joker",
+            "{X:chips,C:white}X#9#{} Chips per {C:rare}Rare{} Joker",
+            "{X:chips,C:white}X#10#{} Chips per {C:abn_superrare}Super Rare{} Joker",
+            "{X:chips,C:white}X#11#{} Chips per {C:legendary}Legendary{} Joker",
+            "{X:chips,C:white}X#12#{} Chips per {C:abn_parallelrare}Parallel Rare{} Joker",
+          },
+          {
+            "If you own {C:attention}6{} different {C:attention}rarities{} of Jokers",
+            "reduce all {C:attention}blind requirements{} by {C:attention}98%{}",
+          }
         }
       },
 
@@ -3538,14 +3551,14 @@ return {
         }
       },
 
-    j_abn_Garth = {
-    name = "Garth",
-    text = {
-      "Scored {C:attention}Arrows{} give {X:mult,C:white}X#1#{} Mult,",
-      "increase by {X:mult,C:white}X#2#{} Mult when Arrow scored",
-      "Scoring Arrows gain {C:attention}+#3#{} Score"
-     }
-    },
+      j_abn_Garth = {
+        name = "Garth",
+        text = {
+          "Scored {C:attention}Arrows{} give {X:mult,C:white}X#1#{} Mult,",
+          "increase by {X:mult,C:white}X#2#{} Mult when Arrow scored",
+          "Scoring Arrows gain {C:attention}+#3#{} Score"
+        }
+      },
 
       j_abn_gachapon = {
         name = "Gachapon",
@@ -5567,25 +5580,25 @@ return {
       },
 
       j_abn_Lorenz = {
-      name = "Lorenz",
-      text = {
-      "Scored {C:attention}Acorns{} give {X:mult,C:white}X#1#{} Mult,",
-      "increase by {X:mult,C:white}X#2#{} Mult when Acorns scored",
-      "Scored Acorns gain {C:chips}+#3#{} Chips per rarity",
-      "of Jokers owned"
+        name = "Lorenz",
+        text = {
+          "Scored {C:attention}Acorns{} give {X:mult,C:white}X#1#{} Mult,",
+          "increase by {X:mult,C:white}X#2#{} Mult when Acorns scored",
+          "Scored Acorns gain {C:chips}+#3#{} Chips per rarity",
+          "of Jokers owned"
         }
       },
 
 
       j_abn_Liam = {
-      name = "Liam",
-      text = {
-     "Scored {C:attention}Acorns{} give {X:chips,C:white}X#1#{} Chips,",
-     "increase by {X:chips,C:white}X#2#{} Chips when Acorns scored",
-     "Scored Acorns gain {C:attention}+#3#{} Score per rarity",
-     "of Jokers owned"
-    }
-  },
+        name = "Liam",
+        text = {
+          "Scored {C:attention}Acorns{} give {X:chips,C:white}X#1#{} Chips,",
+          "increase by {X:chips,C:white}X#2#{} Chips when Acorns scored",
+          "Scored Acorns gain {C:attention}+#3#{} Score per rarity",
+          "of Jokers owned"
+        }
+      },
 
 
 
@@ -6056,6 +6069,18 @@ return {
           "among your {C:attention}Jokers{}",
           "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
         }
+      },
+
+      j_abn_metalizing_joker = { -- to relocalise
+        name = 'Metalizing Joker',
+        text = {
+          "{C:attention}+1{} {C:chips}Play{} Limit",
+          "If your hand is Composed of Only {C:attention}Steel{} cards",
+          "Each {C:attention}Steel{} card gains {C:gold}+#3#{} Asc. Power per scoring card",
+          "After playing {C:attention}#2#{} hands of {C:attention}6{} Steel cards",
+          "{C:mult}destroy{} this Joker and {C:attention}double{} your Handsize",
+          "{C:attention}#1#{}{C:inactive}/{}{C:attention}#2#{}",
+        },
       },
 
       j_abn_metallic_upgrade = {
@@ -7335,6 +7360,17 @@ return {
           "{C:green}#1# in #2#{} chance to create a",
           "copy of the {C:attention}first{} scoring card",
         }
+      },
+
+      j_abn_proxy_joker = {
+        name = 'Proxy Joker',
+        text = {
+          "If all owned Jokers are {C:dark_edition}Modded{}",
+          "and a {C:dark_edition}Modded{} {C:attention}poker hand{}",
+          "with only {C:dark_edition}Modded{} suits, this",
+          "Joker gains {C:gold}+#1#{} Asc. Power per scoring card",
+          "{C:inactive}(Currently {C:gold}+#2#{C:inactive} Asc. Power)",
+        },
       },
 
       j_abn_psychokinesis_joker = {
@@ -9294,19 +9330,19 @@ return {
         }
       },
 
-      j_abn_venom_comedian = { -- to slightly relocalise
+      j_abn_venom_comedian = {
         name = "Venom Comedian",
         text = {
           {
-            "This Joker gains {C:inactive}reward{} per scoring {C:inactive}(suit){}",
-            "if played hand contains a {C:attention}Spectrum{}",
+            "If played hand contains a {C:attention}Spectrum{},",
+            "this Joker gains {C:attention}bonuses{} per scoring {C:inactive}(suit){}",
           },
           {
-            "{C:abn_tie}Ties{}: {C:mult}+#5#{} Mult",
-            "{C:abn_bow}Bows{}: {X:chips,C:white}X#6#{} Chips",
-            "{C:abn_snow}Snows{}: {X:mult,C:white}X#7#{} Mult",
-            "{C:abn_penumbra}Penumbras{}: {C:chips}+#8#{} Chips",
-            "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult, {C:mult}+#1#{} {C:inactive}Mult,{} {X:chips,C:white}X#4#{C:inactive} Chips, {C:chips}+#3#{} {C:inactive}Chips){}"
+            "{C:abn_tie,s:0.8}Ties{s:0.8}: {C:mult,s:0.8}+#5#{s:0.8} Mult",
+            "{C:abn_bow,s:0.8}Bows{s:0.8}: {X:chips,C:white,s:0.8}X#6#{s:0.8} Chips",
+            "{C:abn_snow,s:0.8}Snows{s:0.8}: {X:mult,C:white,s:0.8}X#7#{s:0.8} Mult",
+            "{C:abn_penumbra,s:0.8}Penumbras{s:0.8}: {C:chips,s:0.8}+#8#{s:0.8} Chips",
+            "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive}, {C:mult}+#1#{} {C:inactive},{} {X:chips,C:white}X#4#{C:inactive}, {C:chips}+#3#{} {C:inactive}){}"
           },
           {
             "If this Joker has an {C:dark_edition}edition{},",
@@ -9320,12 +9356,13 @@ return {
         name = "Vintage Joker",
         text = {
           {
-            "{C:attention}Level up{} the {C:attention}first played hand{}",
-            "if it not a {C:attention}secret{} and is only composed of {C:inactive}vanilla{} suits",
+            "Level up {C:attention}first hand{} of round",
+            "if it is not a {C:attention}secret{} hand",
+            "and only contains {C:inactive}Vanilla{} suits",
           },
           {
-            "If this Joker has {C:dark_edition}Vintage{} edition",
-            "Every time a hand {C:attention}levels up{}",
+            "If this Joker has {C:dark_edition}Vintage{} edition,",
+            "every time a hand {C:attention}levels up{}",
             "{C:attention}level up{} another {C:attention}random{} hand",
           }
         }
@@ -9758,39 +9795,6 @@ return {
           "if hand played contains",
           "an {C:attention}Ace{} and a {C:attention}numbered card{}",
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
-        },
-      },
-	  j_abn_proxy_joker = {
-        name = 'Proxy Joker',
-        text = {
-          "If all Jokers are {C:attention}Modded{} and you score a {C:attention}Modded{} hand with only {C:attention}Modded{} cards",
-		  "Gain {C:gold}+#1#{} Asc. Power per scoring card",
-		  "{C:inactive}Currently:{} {C:gold}+#2#{} Asc. Power",
-        },
-      },
-	  
-	  j_abn_comedy_gold = {
-        name = 'Comedy Gold',
-        text = {
-          "{C:attention}+1{} {C:chips}Play{} Limit",
-		  "If your hand is Composed of Only {C:attention}Gold{} cards",
-		  "Double your current {C:money}${} and each {C:attention}Gold{} card gains",
-		  "{X:mult,C:white}X#3#{} Mult and {C:gold}+#4#{} Asc. Power for each {C:money}$20{} you have",
-		  "After playing {C:attention}#2#{} hands of {C:attention}6{} Gold cards",
-		  "{C:mult}destroy{} this Joker and {C:attention}double{} your Joker slots",
-		  "{C:attention}#1#{}{C:inactive}/{}{C:attention}#2#{}",
-        },
-      },
-	  
-	  j_abn_metalizing_joker = {
-        name = 'Metalizing Joker',
-        text = {
-          "{C:attention}+1{} {C:chips}Play{} Limit",
-		  "If your hand is Composed of Only {C:attention}Steel{} cards",
-		  "Each {C:attention}Steel{} card gains {C:gold}+#3#{} Asc. Power per scoring card",
-		  "After playing {C:attention}#2#{} hands of {C:attention}6{} Steel cards",
-		  "{C:mult}destroy{} this Joker and {C:attention}double{} your Handsize",
-		  "{C:attention}#1#{}{C:inactive}/{}{C:attention}#2#{}",
         },
       },
     },
