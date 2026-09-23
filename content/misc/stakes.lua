@@ -24,7 +24,7 @@ function Game:update(dt)
     end
 
     -- Logic for forcing specific Blinds (Hazards/Showdowns)
-    if G.STATE == G.STATES.BLIND_SELECT and G.GAME then
+    if G.STATE == G.STATES.BLIND_SELECT and G.GAME and not G.GAME.abn_newestia then
         local is_honor = G.GAME.modifiers.Honor
         local is_menacing = G.GAME.modifiers.Menacing
         local is_toxic = G.GAME.modifiers.Toxic

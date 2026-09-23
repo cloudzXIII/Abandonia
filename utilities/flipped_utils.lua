@@ -58,28 +58,3 @@ SMODS.DrawStep {
   end,
   conditions = { vortex = false, facing = 'back' },
 }
-
-SMODS.DrawStep {
-  key = 'stickers_flipped',
-  order = 40,
-  func = function(self, layer)
-    if self.sticker and G.shared_stickers[self.sticker] and self.ability and self.ability.abn_perma_flipped then
-      G.shared_stickers[self.sticker].role.draw_major = self
-      G.shared_stickers[self.sticker]:draw_shader('dissolve', nil, nil, nil, self.children.center)
-      G.shared_stickers[self.sticker]:draw_shader('voucher', nil, self.ARGS.send_to_shader, nil, self.children.center)
-    end
-
-    for k, v in pairs(SMODS.Stickers) do
-      if self.ability[v.key] then
-        if v and v.draw and type(v.draw) == 'function' then
-          v:draw(self, layer)
-        else
-          G.shared_stickers[v.key].role.draw_major = self
-          G.shared_stickers[v.key]:draw_shader('dissolve', nil, nil, nil, self.children.center)
-          G.shared_stickers[v.key]:draw_shader('voucher', nil, self.ARGS.send_to_shader, nil, self.children.center)
-        end
-      end
-    end
-  end,
-  conditions = { vortex = false, facing = 'back' },
-}
