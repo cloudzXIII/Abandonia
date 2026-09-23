@@ -1391,6 +1391,16 @@ return {
         },
       },
 
+      j_abn_chubby_joker = {
+        name = "Chubby Joker",
+        text = {
+          "Gains {C:chips}+#3#{} Chips and {C:mult}+#4#{} Mult",
+          "when {C:attention}Blind{} is selected with all",
+          "{C:attention}consumable slots{} are filled",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips and {C:mult}+#2#{C:inactive} Mult)"
+        }
+      },
+
       j_abn_classified_joker = {
         name = "Classified Joker",
         text = {
@@ -5559,6 +5569,14 @@ return {
         },
       },
 
+      j_abn_livestream_joker = {
+        name = "Livestream Joker",
+        text = {
+          "{C:dark_edition}Modded{} ranks {C:attention}held in hand",
+          "give {C:attention}X#1#{} their {C:chips}Chips{} value"
+        }
+      },
+
       j_abn_living_card = {
         name = "Living Card",
         text = {
@@ -8105,6 +8123,16 @@ return {
           {
             "{C:sigils}Sigil Packs{} can be skipped",
           }
+        }
+      },
+
+      j_abn_skinny_joker = {
+        name = "Skinny Joker",
+        text = {
+          "Gains {C:chips}+#3#{} Chips and {C:mult}+#4#{} Mult",
+          "when {C:attention}Blind{} is selected with",
+          "no consumables {C:attention}held",
+          "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips and {C:mult}+#2#{C:inactive} Mult)"
         }
       },
 
