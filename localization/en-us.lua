@@ -177,6 +177,12 @@ return {
     },
     Other = {
       --#region Misc Tooltips
+	  abn_perma_asc = {
+        name = "Ascension",
+        text = {
+          "{C:gold}+#1#{} Asc. Power",
+        }
+      },
       abn_dark_suit = {
         name = "Dark Suit",
         text = {
