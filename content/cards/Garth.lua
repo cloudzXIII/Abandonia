@@ -32,7 +32,7 @@ SMODS.Joker {
   },
 
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and context.other_card:is_suit("abn_Penumbra") then
+    if context.individual and context.cardarea == G.play and context.other_card:is_suit("abn_Arrow") then
       if next(SMODS.find_card("j_joker")) then
         context.other_card.ability.perma_score = (context.other_card.ability.perma_score or 0) + card.ability.extra
             .score
@@ -55,5 +55,13 @@ SMODS.Joker {
 
   abn_artist_credits = {
     artist = "Inky"
-  }
+  },
+
+  in_pool = function(self, args)
+    for _, playing in ipairs(G.playing_cards or {}) do
+      if playing:is_suit("abn_Acorn") then
+        return true
+      end
+    end
+  end
 }
