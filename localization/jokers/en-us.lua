@@ -3551,12 +3551,19 @@ return {
         }
       },
 
-      j_abn_Garth = {
+      j_abn_garth = {
         name = "Garth",
         text = {
-          "Scored {C:attention}Arrows{} give {X:mult,C:white}X#1#{} Mult,",
-          "increase by {X:mult,C:white}X#2#{} Mult when Arrow scored",
-          "Scoring Arrows gain {C:attention}+#3#{} Score"
+          {
+            "Scored {C:abn_arrow}Arrows{} give {X:mult,C:white}X#1#{} Mult,",
+            "increases by {X:mult,C:white}X#2#{} Mult",
+            "when a {C:abn_arrow}Arrow{} is scored",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "played {C:abn_arrow}Arrows{} permanently",
+            "gain {C:purple}+#3#{} Score when scored"
+          }
         }
       },
 
@@ -4608,6 +4615,26 @@ return {
         }
       },
 
+      j_abn_jenna_jester_girl = {
+        name = "Jenna the Jester Girl",
+        text = {
+          {
+            "If an {C:attention}odd{} number of {C:inactive}Vanilla{}",
+            "Jokers is owned, they each give {C:chips}+#1#{} Chips",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "scoring {C:inactive}Vanilla{} suits",
+            "give {C:mult}+#2#{} Mult when scored",
+          },
+          {
+            "If {C:attention}Jinxie{} is owned,",
+            "this Joker gains {C:gold}+#3#{} Asc. Power",
+            "when a {C:inactive}Vanilla{} Joker is triggered",
+          }
+        }
+      },
+
       j_abn_jennia = {
         name = "Jennia",
         text = {
@@ -4765,6 +4792,26 @@ return {
             "scoring {C:abn_rose}Roses{} permanently gain",
             "{C:mult}+#3#{} Mult for every {C:abn_rose}Rose{}",
             "{C:abn_rose}Rose{} scored this Blind"
+          }
+        }
+      },
+
+      j_abn_jinxie_clown_girl = {
+        name = "Jinxie the Clown Girl",
+        text = {
+          {
+            "If an {C:attention}even{} number of {C:inactive}Vanilla{}",
+            "Jokers is owned, they each give {C:mult}+#1#{} Mult",
+          },
+          {
+            "If {C:attention}Joker{} is owned,",
+            "scoring {C:inactive}Vanilla{} suits",
+            "give {C:chips}+#2#{} Chips when scored",
+          },
+          {
+            "If {C:attention}Jenna{} is owned,",
+            "this Joker gains {C:gold}+#3#{} Asc. Power",
+            "when a {C:inactive}Vanilla{} Joker is triggered",
           }
         }
       },
