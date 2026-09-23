@@ -59,7 +59,7 @@ SMODS.Joker {
 
   in_pool = function(self, args)
     for _, playing in ipairs(G.playing_cards or {}) do
-      if playing:is_suit("abn_Acorn") then
+      if playing:is_suit("abn_Arrow") then
         return true
       end
     end
