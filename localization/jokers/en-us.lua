@@ -4818,16 +4818,16 @@ return {
         text = {
           {
             "If an {C:attention}even{} number of {C:inactive}Vanilla{}",
-            "Jokers is owned, they each give {C:mult}+#1#{} Mult",
+            "Jokers is owned, they each give {C:mult}+#2#{} Mult",
           },
           {
             "If {C:attention}Joker{} is owned,",
             "scoring {C:inactive}Vanilla{} suits",
-            "give {C:chips}+#2#{} Chips when scored",
+            "give {C:chips}+#1#{} Chips when scored",
           },
           {
             "If {C:attention}Jenna{} is owned,",
-            "this Joker gains {C:gold}+#3#{} Asc. Power",
+            "this Joker gains {C:gold}+#4#{} Asc. Power",
             "when a {C:inactive}Vanilla{} Joker is triggered",
             "{C:inactive}(Currently {c:gold}+#3#{C:inactive} Asc. Power)"
           }
