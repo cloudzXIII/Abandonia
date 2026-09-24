@@ -4635,8 +4635,8 @@ return {
         name = "Jenna the Jester Girl",
         text = {
           {
-            "If an {C:attention}odd{} number of {C:inactive}Vanilla{}",
-            "Jokers is owned, they each give {C:chips}+#1#{} Chips",
+            "If an {C:attention}odd{} number of {C:inactive}Vanilla{} Jokers",
+            "is owned, they each give {C:chips}+#1#{} Chips",
           },
           {
             "If {C:attention}Joker{} is owned,",
@@ -4647,7 +4647,7 @@ return {
             "If {C:attention}Jinxie{} is owned,",
             "this Joker gains {C:gold}+#4#{} Asc. Power",
             "when a {C:inactive}Vanilla{} Joker is triggered",
-            "{C:inactive}(Currently {c:gold}+#3#{C:inactive} Asc. Power)"
+            "{C:inactive}(Currently {C:gold}+#3#{C:inactive} Asc. Power)"
           }
         }
       },
@@ -4817,8 +4817,8 @@ return {
         name = "Jinxie the Clown Girl",
         text = {
           {
-            "If an {C:attention}even{} number of {C:inactive}Vanilla{}",
-            "Jokers is owned, they each give {C:mult}+#2#{} Mult",
+            "If an {C:attention}even{} number of {C:inactive}Vanilla{} Jokers",
+            "is owned, they each give {C:mult}+#2#{} Mult",
           },
           {
             "If {C:attention}Joker{} is owned,",
@@ -4829,7 +4829,7 @@ return {
             "If {C:attention}Jenna{} is owned,",
             "this Joker gains {C:gold}+#4#{} Asc. Power",
             "when a {C:inactive}Vanilla{} Joker is triggered",
-            "{C:inactive}(Currently {c:gold}+#3#{C:inactive} Asc. Power)"
+            "{C:inactive}(Currently {C:gold}+#3#{C:inactive} Asc. Power)"
           }
         }
       },

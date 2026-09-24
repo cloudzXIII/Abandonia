@@ -4,6 +4,7 @@ SMODS.Joker {
 
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
+    info_queue[#info_queue + 1] = G.P_CENTERS.j_abn_jinxie_clown_girl
     return { vars = { cae.chips, cae.mult, cae.asc, cae.asc_gain } }
   end,
 
