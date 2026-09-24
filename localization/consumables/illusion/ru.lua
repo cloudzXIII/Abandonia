@@ -18,7 +18,7 @@ return {
                 name = "Пенроуз",
                 text = {
                     "Добавляет {C:abn_black_seal}Пустой штамп{}",
-                    "ко {C:attention}всем{} выбранным картам в руке",
+                    "к {C:attention}всем{} выбранным картам в руке",
                 }
             },
             c_abn_sword_box = {
@@ -56,6 +56,16 @@ return {
                     "к {C:attention}#1#{} выбранной карте в руке"
                 }
             },
+            --#region Newestia
+            c_abn_god_complex = {
+                name = "Комплекс бога",
+                text = {
+                    "Добавляет случайный {C:attention}Штамп{}",
+                    "к каждой карте с {C:dark_edition}выпуском{}",
+                    "в вашей {C:attention}полной колоде"
+                }
+            },
+            --#endregion
         }
     }
 }

@@ -6,35 +6,35 @@ return {
                 name = "Необычное бедствие",
                 text = {
                     "В лавке есть {C:attention}#1#{} бесплатных",
-                    "{C:green}необычных{} Джокера",
+                    "{C:green}Необычных{} Джокера",
                 }
             },
             tag_abn_hazard_rare = {
                 name = "Редкое бедствие",
                 text = {
                     "В лавке есть {C:attention}#1#{} бесплатных",
-                    "{C:red}редких{} Джокера",
+                    "{C:red}Редких{} Джокера",
                 }
             },
             tag_abn_hazard_super = {
                 name = "Супер бедствие",
                 text = {
                     "В лавке есть бесплатный",
-                    "{C:abn_superrare}Супер редкий Джокер",
+                    "{C:abn_superrare}Супер редкий{} Джокер",
                 }
             },
             tag_abn_hazard_parallel = {
                 name = "Параллельное бедствие",
                 text = {
                     "В лавке есть бесплатный",
-                    "{C:abn_parallelrare}Параллель-редкий Джокер",
+                    "{C:abn_parallelrare}Параллель-редкий{} Джокер",
                 }
             },
             tag_abn_hazard_legendary = {
                 name = "Легендарное бедствие",
                 text = {
                     "В лавке есть бесплатный",
-                    "{C:legendary}легендарный Джокер",
+                    "{C:legendary}Легендарный{} Джокер",
                 }
             },
             tag_abn_hazard_negative = {
@@ -96,7 +96,7 @@ return {
             tag_abn_hazard_abandon = {
                 name = "Заброшенное бедствие",
                 text = {
-                    "Добавить {C:dark_edition}#2#{} к",
+                    "Добавить {C:dark_edition}#1#{} к",
                     "случайному {C:attention}Джокеру{} и {C:attention}#1#{}",
                     "картам в вашей {C:attention}полной колоде"
                 }
@@ -119,15 +119,15 @@ return {
             tag_abn_hazard_voucher = {
                 name = "Бедствие ваучера",
                 text = {
-                    "Добавит {C:attention}#1#{} ваучера",
+                    "Добавить {C:attention}#1#{} ваучера",
                     "в следующей лавке"
                 }
             },
             tag_abn_hazard_reroll = {
                 name = "Бедствие переброса",
                 text = {
-                    "Перебрасывает следующий {C:attention}Босс-блайнд",
-                    "{C:attention}2{} раза"
+                    "Перебрасывает следующий",
+                    "{C:attention}Босс-блайнд 2{} раза"
                 }
             },
             tag_abn_hazard_standard = {
@@ -169,7 +169,7 @@ return {
             tag_abn_hazard_chromatic = {
                 name = "Хроматическое бедствие",
                 text = {
-                    "Добавьте {C:dark_edition}Хроматический{} к",
+                    "Добавить {C:dark_edition}Хроматический{} к",
                     "случайному {C:attention}Джокеру{} и {C:attention}#1#{}",
                     "карте в вашей {C:attention}полной колоде"
                 }
@@ -177,7 +177,7 @@ return {
             tag_abn_hazard_reversal = {
                 name = "Реверс бедствие",
                 text = {
-                    "Добавьте {C:dark_edition}Реверс{} к",
+                    "Добавить {C:dark_edition}Реверс{} к",
                     "случайному {C:attention}Джокеру{} и {C:attention}#1#{}",
                     "карте в вашей {C:attention}полной колоде"
                 }
@@ -185,7 +185,7 @@ return {
             tag_abn_hazard_bit_rot = {
                 name = "Побитное бедствие",
                 text = {
-                    "Добавьте {C:dark_edition}Побитный{} к",
+                    "Добавить {C:dark_edition}Побитный{} к",
                     "случайному {C:attention}Джокеру{} и {C:attention}#1#{}",
                     "карте в вашей {C:attention}полной колоде"
                 }
@@ -193,7 +193,7 @@ return {
             tag_abn_hazard_reel = {
                 name = "Пленочное бедствие",
                 text = {
-                    "Добавьте {C:dark_edition}Пленочный{} к",
+                    "Добавить {C:dark_edition}Пленочный{} к",
                     "случайному {C:attention}Джокеру{} и {C:attention}#1#{}",
                     "карте в вашей {C:attention}полной колоде"
                 }
@@ -201,7 +201,7 @@ return {
             tag_abn_hazard_collodion = {
                 name = "Коллодиевое бедствие",
                 text = {
-                    "Добавьте {C:dark_edition}Коллодиевый{} к",
+                    "Добавить {C:dark_edition}Коллодиевый{} к",
                     "случайному {C:attention}Джокеру{} и {C:attention}#1#{}",
                     "карте в вашей {C:attention}полной колоде"
                 }
@@ -209,7 +209,7 @@ return {
             tag_abn_hazard_vintage = {
                 name = "Винтажное бедствие",
                 text = {
-                    "Добавьте {C:dark_edition}Винтажный{} к",
+                    "Добавить {C:dark_edition}Винтажный{} к",
                     "случайному {C:attention}Джокеру{} и {C:attention}#1#{}",
                     "карте в вашей {C:attention}полной колоде"
                 }
@@ -254,29 +254,29 @@ return {
             tag_abn_hazard_orbital = {
                 name = "Орбитальное бедствие",
                 text = {
-                    "Улучшить {C:attention}#1#{} и {C:attention}#2#{}",
-                    "на {C:attention}#3#{} уровня",
+                    "Улучшить {C:attention}#1#{} и",
+                    "{C:attention}#2#{} на {C:attention}#3#{} уровня",
                 }
             },
             tag_abn_hazard_weather = {
                 name = "Погодное бедствие",
                 text = {
                     "Дает {C:attention}2{} бесплатных",
-                    "{C:weather_report}Мегапогодных наборов{}",
+                    "{C:weather_report}Меганаборов прогноза{}",
                 }
             },
             tag_abn_hazard_calamity = {
                 name = "Бедствие катастрофы",
                 text = {
                     "Дает {C:attention}2{} бесплатных",
-                    "{C:abn_calamity}Набора мегакатастрофы{}",
+                    "{C:abn_calamity}Меганабора бедствий{}",
                 }
             },
             tag_abn_hazard_sigil = {
                 name = "Бедствие символа",
                 text = {
                     "Дает {C:attention}2{} бесплатных",
-                    "{C:sigils}Мегасимвольных наборов{}",
+                    "{C:sigils}Меганабора символов{}",
                 }
             },
             tag_abn_hazard_astro = {
@@ -304,7 +304,8 @@ return {
                 name = "Бедствие пропуска",
                 text = {
                     "Дает {C:money}$#1#{} за каждый",
-                    "Блайнд, пропущенный в этой партии",
+                    "Блайнд, пропущенный в",
+                    "этой партии",
                     "{C:inactive}(Даст {C:money}$#2#{C:inactive})",
                 }
             },
@@ -402,7 +403,7 @@ return {
                 name = "Неизвестный тег",
                 text = {
                     "Следующий Джокер базового",
-                    "выпуска из лавки бесплатен с ",
+                    "выпуска из лавки бесплатен с",
                     "случайной редкостью и является",
                     "{C:attention}Перевернутым{} Джокером"
                 }
@@ -411,21 +412,21 @@ return {
                 name = "Тег катастрофы",
                 text = {
                     "Дает бесплатный",
-                    "{C:attention}набор катастрофы",
+                    "{C:abn_calamity}набор бедствий",
                 }
             },
             tag_abn_sigil = {
                 name = "Тег символа",
                 text = {
                     "Дает бесплатный",
-                    "{C:attention}набор символа",
+                    "{C:sigils}набор символов",
                 }
             },
             tag_abn_astro = {
                 name = "Астро тег",
                 text = {
                     "Дает бесплатный",
-                    "{C:attention}астро набор",
+                    "{C:astro_cards}астронабор",
                 }
             },
             tag_abn_lefty = {
@@ -489,7 +490,7 @@ return {
                 name = "Программный тег",
                 text = {
                     "дает бесплатный ",
-                    "{C:program_pack}Программный набор Джамбо",
+                    "{C:program_pack}программный набор Джамбо",
                 }
             },
             tag_abn_rank_planet = {
@@ -503,14 +504,14 @@ return {
                 name = "Тег континента",
                 text = {
                     "Дает бесплатный",
-                    "набор {C:continent}континентов{}",
+                    "{C:continent}набор континентов{}",
                 }
             },
             tag_abn_solid = {
                 name = "Твердотельный тег",
                 text = {
                     "Дает бесплатный",
-                    "Твердотельный набор",
+                    "{C:solid_state}Твердотельный набор",
                 }
             },
             tag_abn_patch = {

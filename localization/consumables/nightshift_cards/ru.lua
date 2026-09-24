@@ -13,7 +13,7 @@ return {
                 name = "Вторжение",
                 text = {
                     "{C:attention}Переворачивает{} всех Джокеров и",
-                    "получает {C:chips}+#1#{} фишек и {C:mult}+#2#{} множ.",
+                    "дает им {C:chips}+#1#{} фишек и {C:mult}+#2#{} множ.",
                 }
             },
             c_abn_apparition = {
@@ -59,8 +59,8 @@ return {
                         "{C:attention}полной колоде{} на {C:attention}#1#{}",
                     },
                     {
-                        "Устанавливает уровень {C:attention}самой частой{}",
-                        "руки на {C:attention}1{}",
+                        "Устанавливает уровень вашей",
+                        "{C:attention}самой частой{} руки на {C:attention}1{}",
                     }
                 }
             },
@@ -85,6 +85,16 @@ return {
                     }
                 }
             },
+            --#region Newestia
+            c_abn_psychosis = {
+                name = "Психоз",
+                text = {
+                    "Создает {C:dark_edition}Негативную{} копию",
+                    "выбранного {C:legendary}Легендарного{} Джокера",
+                    "с {C:gold}$0{} ценой продажи"
+                }
+            },
+            --#endregion
         }
     }
 }

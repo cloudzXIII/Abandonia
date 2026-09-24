@@ -1306,6 +1306,15 @@ return {
                     }
                 }
             },
+            j_abn_chubby_joker = {
+                name = "Пухлый джокер",
+                text = {
+                    "Получает {C:chips}+#3#{} фишек {C:mult}+#4#{} множ.,",
+                    "когда {C:attention}Блайнд{} выбран c полностью",
+                    "заполненными {C:attention}слотами расходников",
+                    "{C:inactive}(сейчас {C:chips}+#1#{C:inactive} фишек и {C:mult}+#2#{C:inactive} множ.)"
+                }
+            },
             j_abn_classified_joker = {
                 name = "Классифицированный джокер",
                 text = {
@@ -1491,6 +1500,18 @@ return {
                     "Когда {C:attention}Блайнд{} выбран,",
                     "уничтожает {C:attention}самого левого{} Джокера и",
                     "создает Джокера такой же {C:attention}редкости{}",
+                }
+            },
+            j_abn_comedy_gold = { -- to relocalise
+                name = 'Золотой Комик',
+                text = {
+                    "{C:attention}+1{} {C:chips}Play{} Limit",
+                    "If your hand is Composed of Only {C:attention}Gold{} cards",
+                    "Double your current {C:money}${} and each {C:attention}Gold{} card gains",
+                    "{X:mult,C:white}X#3#{} Mult and {C:gold}+#4#{} Asc. Power for each {C:money}$20{} you have",
+                    "After playing {C:attention}#2#{} hands of {C:attention}6{} Gold cards",
+                    "{C:mult}destroy{} this Joker and {C:attention}double{} your Joker slots",
+                    "{C:attention}#1#{}{C:inactive}/{}{C:attention}#2#{}",
                 }
             },
             j_abn_communist_bear = {
@@ -3149,11 +3170,31 @@ return {
                     }
                 }
             },
-            j_abn_frenemy_joker = {
-                name = "Недруг джокер",
+            j_abn_frenemy_joker = { -- to relocalise
+                name = "Недруг",
                 text = {
-                    "Каждая уникальная {C:attention}редкость{} ваших Джокеров",
-                    "уменьшает {C:attention}требование Блайнда{} на {C:attention}#1#%",
+                    {
+                        "{C:attention}Четные{} карты при подсчете дают",
+                        "{X:mult,C:white}X#1#{} множ. за каждого {C:common}Обычного{} Джокера",
+                        "{X:mult,C:white}X#2#{} множ. за каждого {C:uncommon}Необычного{} Джокера",
+                        "{X:mult,C:white}X#3#{} множ. за каждого {C:rare}Редкого{} Джокера",
+                        "{X:mult,C:white}X#4#{} множ. за каждого {C:abn_superrare}Супер редкого{} Джокера",
+                        "{X:mult,C:white}X#5#{} множ. за каждого {C:legendary}Легендарного{} Джокера",
+                        "{X:mult,C:white}X#6#{} множ. за каждого {C:abn_parallelrare}Параллель-редкого{} Джокера",
+                    },
+                    {
+                        "{C:attention}Нечетные{} карты при подсчете дают",
+                        "{X:chips,C:white}X#7#{} фишек за каждого {C:common}Обычного{} Джокера",
+                        "{X:chips,C:white}X#8#{} фишек за каждого {C:uncommon}Необычного{} Джокера",
+                        "{X:chips,C:white}X#9#{} фишек за каждого {C:rare}Редкого{} Джокера",
+                        "{X:chips,C:white}X#10#{} фишек за каждого {C:abn_superrare}Супер редкого{} Джокера",
+                        "{X:chips,C:white}X#11#{} фишек за каждого {C:legendary}Легендарного{} Джокера",
+                        "{X:chips,C:white}X#12#{} фишек за каждого {C:abn_parallelrare}Параллель-редкого{} Джокера",
+                    },
+                    {
+                        "Если у вас есть {C:attention}6{} Джокеров разных {C:attention}редкостей{},",
+                        "уменьшает {C:attention}размер Блайндов{} на {C:attention}98%{}",
+                    }
                 }
             },
             j_abn_friend_jimbo = {
@@ -3272,6 +3313,21 @@ return {
                         "увеличивает множитель этого Джокера",
                         "на {X:black,C:white}#4#X{} и вы вытягиваете",
                         "копию уничтоженной карты в руку"
+                    }
+                }
+            },
+            j_abn_garth = {
+                name = "Гарт",
+                text = {
+                    {
+                        "{C:abn_arrow}Стрелы{} дают {X:mult,C:white}X#1#{} множ.",
+                        "при подсчете, увеличивается на {X:mult,C:white}X#2#{} множ.,",
+                        "когда {C:abn_arrow}Стрела{} подсчитывается",
+                    },
+                    {
+                        "Если есть {C:attention}Джокер{},",
+                        "сыгранные {C:abn_arrow}Стрелы{} навсегда",
+                        "получают {C:purple}+#3#{} к Счету при подсчете"
                     }
                 }
             },
@@ -3610,7 +3666,7 @@ return {
                 }
             },
             j_abn_goody_two_shoes = {
-                name = "Goody Two Shoes",
+                name = "Гуди в сапожках",
                 text = {
                     {
                         "Когда {C:attention}Блайнд{} выбран,",
@@ -4884,7 +4940,7 @@ return {
                         "{s:0.8}{C:clubs,s:0.8}Трефы{s:0.8} становятся {C:abn_florette,s:0.8}Цветами{} при подсчете",
                     },
                     {
-                        "Если этот Джокер {C:dark_edition}Коллоидный{},",
+                        "Если этот Джокер {C:dark_edition}Коллодиевый{},",
                         "он получает {C:mult}+#2#{} множ. и {C:money}$#2#{}",
                         "{C:attention}цены продажи{}, когда масть меняется",
                         "{C:inactive}(сейчас{} {C:mult}+#1#{} {C:inactive}множ.)",
@@ -5115,6 +5171,13 @@ return {
                     }
                 }
             },
+            j_abn_livestream_joker = {
+                name = "Livestream Joker",
+                text = {
+                    "{C:dark_edition}Модовые{} достоинства {C:attention}в руке",
+                    "дают {C:attention}X#1#{} своих {C:chips}фишек{}"
+                }
+            },
             j_abn_living_card = {
                 name = "Живая карта",
                 text = {
@@ -5177,6 +5240,36 @@ return {
                         "создает последнюю использованную в",
                         "этой партии {C:glyphs}Глифовую{} карту",
                         "{C:inactive}сейчас:{} {C:glyphs}#5#{}"
+                    }
+                }
+            },
+            j_abn_Lorenz = {
+                name = "Лоренс",
+                text = {
+                    {
+                        "{C:abn_acorn}Желуди{} дают {X:mult,C:white}X#1#{} множ.",
+                        "при подсчете, множ. увеличивается на {X:mult,C:white}X#2#{},",
+                        "когда {C:abn_acorn}Желуди{} подсчитываются",
+                    },
+                    {
+                        "{C:abn_acorn}Желуди{} дают {C:chips}+#3#{} фишек",
+                        "за каждую {C:attention}редкость{} имеющихся",
+                        "Джокеров при подсчете"
+                    }
+                }
+            },
+            j_abn_Liam = {
+                name = "Лиам",
+                text = {
+                    {
+                        "{C:abn_acorn}Желуди{} дают {X:chips,C:white}X#1#{} множ.",
+                        "при подсчете, множ. увеличивается на {X:chips,C:white}X#2#{},",
+                        "когда {C:abn_acorn}Желуди{} подсчитываются",
+                    },
+                    {
+                        "{C:abn_acorn}Желуди{} дают {C:purple}+#3#{} к Счету",
+                        "за каждую {C:attention}редкость{} имеющихся",
+                        "Джокеров при подсчете"
                     }
                 }
             },
@@ -5612,6 +5705,17 @@ return {
                     "каждую {C:attention}уникальную редкость{}",
                     "среди ваших {C:attention}Джокеров{}",
                     "{C:inactive}(сейчас {X:mult,C:white}X#2#{C:inactive} множ.)",
+                }
+            },
+            j_abn_metalizing_joker = { -- to relocalise
+                name = 'Металлизация',
+                text = {
+                    "{C:attention}+1{} {C:chips}Play{} Limit",
+                    "If your hand is Composed of Only {C:attention}Steel{} cards",
+                    "Each {C:attention}Steel{} card gains {C:gold}+#3#{} Asc. Power per scoring card",
+                    "After playing {C:attention}#2#{} hands of {C:attention}6{} Steel cards",
+                    "{C:mult}destroy{} this Joker and {C:attention}double{} your Handsize",
+                    "{C:attention}#1#{}{C:inactive}/{}{C:attention}#2#{}",
                 }
             },
             j_abn_metallic_upgrade = {
@@ -6788,6 +6892,16 @@ return {
                     "копию {C:attention}первой{} карты в подсчете",
                 }
             },
+            j_abn_proxy_joker = {
+                name = 'Прокси-джокер',
+                text = {
+                    "Если все ваши Джокеры - {C:dark_edition}модовые{}",
+                    "и сыграна {C:dark_edition}модовая{} {C:attention}рука{}",
+                    "только с {C:dark_edition}модовыми{} мастями, этот Джокер",
+                    "получает {C:gold}+#1#{} Вознес. за каждую карту в подсчете",
+                    "{C:inactive}(сейчас {C:gold}+#2#{C:inactive} Вознес.)",
+                }
+            },
             j_abn_psychokinesis_joker = {
                 name = "Психокинетический джокер",
                 text = {
@@ -7442,6 +7556,15 @@ return {
                     {
                         "{C:sigils}Символьные паки{} можно пропустить",
                     }
+                }
+            },
+            j_abn_skinny_joker = {
+                name = "Тощий джокер",
+                text = {
+                    "Получает {C:chips}+#3#{} фишек {C:mult}+#4#{} множ.,",
+                    "когда {C:attention}Блайнд{} выбран без",
+                    "расходников {C:attention}в руке",
+                    "{C:inactive}(сейчас {C:chips}+#1#{C:inactive} фишек и {C:mult}+#2#{C:inactive} множ.)"
                 }
             },
             j_abn_slippery_joker = {
@@ -8651,15 +8774,15 @@ return {
                 name = "Комик-веном",
                 text = {
                     {
-                        "Этот Джокер получает {C:inactive}награду{} за {C:inactive}(масти){} при подсчете,",
-                        "если сыгранная рука содержит {C:attention}Спектрум{}",
+                        "Если сыгранная рука содержит {C:attention}Спектрум{},",
+                        "этот Джокер содержит {C:attention}бонусы{} при подсчете {C:inactive}(масти){}",
                     },
                     {
-                        "{C:abn_tie}Галстуки{}: {C:mult}+#5#{} множ.",
-                        "{C:abn_bow}Бабочки{}: {X:chips,C:white}X#6#{} фишек",
-                        "{C:abn_snow}Снежинки{}: {X:mult,C:white}X#7#{} множ.",
-                        "{C:abn_penumbra}Полутени{}: {C:chips}+#8#{} фишек",
-                        "{C:inactive}(сейчас {X:mult,C:white}X#2#{C:inactive} множ., {C:mult}+#1#{} {C:inactive}множ.,{} {X:chips,C:white}X#4#{C:inactive} фишек, {C:chips}+#3#{} {C:inactive}фишек){}"
+                        "{C:abn_tie,s:0.8}Галстуки{s:0.8}: {C:mult,s:0.8}+#5#{s:0.8} множ.",
+                        "{C:abn_bow,s:0.8}Бабочки{s:0.8}: {X:chips,C:white,s:0.8}X#6#{s:0.8} фишек",
+                        "{C:abn_snow,s:0.8}Снежинки{s:0.8}: {X:mult,C:white,s:0.8}X#7#{s:0.8} множ.",
+                        "{C:abn_penumbra,s:0.8}Полутени{s:0.8}: {C:chips,s:0.8}+#8#{s:0.8} фишек",
+                        "{C:inactive}(сейчас {X:mult,C:white}X#2#{C:inactive}, {C:mult}+#1#{} {C:inactive},{} {X:chips,C:white}X#4#{C:inactive}, {C:chips}+#3#{} {C:inactive}){}"
                     },
                     {
                         "Если этот Джокер с {C:dark_edition}выпуском{},",

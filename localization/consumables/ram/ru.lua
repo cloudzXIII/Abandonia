@@ -4,23 +4,25 @@ return {
             c_abn_ram_00 = {
                 name = "RAM 00",
                 text = {
-                    "Создает последний использованный",
-                    "в этой партии {C:dark_edition}модовый",
-                    "{C:attention}расходник{}",
+                    "Создает {C:attention}последний{}",
+                    "использованный в этой партии",
+                    "{C:dark_edition}модовый {C:attention}расходник{}",
                 }
             },
             c_abn_ram_01 = {
                 name = "RAM 01",
                 text = {
-                    "Заменяет {C:inactive}ванильные {C:attention}расходники{} в руке",
-                    "на случайные {C:dark_edition}модовые {C:attention}расходники{}",
+                    "Заменяет {C:inactive}ванильные",
+                    "{C:attention}расходники{} в руке на случайные",
+                    "{C:dark_edition}модовые {C:attention}расходники{}"
                 }
             },
             c_abn_ram_02 = {
                 name = "RAM 02",
                 text = {
                     "Дает {C:money}$#2#{} за каждый",
-                    "имеющийся {C:dark_edition}модовый{} {C:attention}расходник{}",
+                    "имеющийся {C:dark_edition}модовый{}",
+                    "{C:attention}расходник{}",
                     "{C:inactive}(даст {C:money}$#1#{C:inactive})",
                 }
             },

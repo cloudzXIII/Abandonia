@@ -4,7 +4,7 @@ return {
             e_abn_chthonian = {
                 name = "Хтонический",
                 text = {
-                    "{C:attention}Удваивает{} все значения*,",
+                    "{C:attention}Удваивает{} все значения*",
                     "{C:attention}+2%{} к требованию Блайнда",
                     "{C:inactive,s:0.7}*там, где это возможно"
                 },
@@ -12,23 +12,23 @@ return {
             e_abn_iridescent = {
                 name = "Переливающийся",
                 text = {
-                    "{C:white,X:mult}X#1#{} множ.,",
-                    "Получите {C:money}$#2#{},",
-                    "когда срабатывает"
+                    "{C:white,X:mult}X#1#{} множ.",
+                    "Получите {C:money}$#2#{}, когда",
+                    "эта карта срабатывает"
                 },
             },
             e_abn_abandond = {
                 name = "Заброшенный",
                 text = {
                     "{C:attention}+#1#{} Перезапуск",
-                    "{C:red}-$#2#{} за каждый перезапуск"
+                    "{C:red}-$#2#{} за каждый",
+                    "перезапуск"
                 },
             },
             e_abn_sunscourge = {
                 name = "Солнечный",
                 text = {
-                    "{C:mult}+#1#{} множ.,",
-                    "{C:chips}+#2#{} фишек,",
+                    "{C:mult}+#1#{} множ. и {C:chips}+#2#{} фишек",
                     "{C:attention}Удваивается{}, когда",
                     "очки {C:attention}загораются{}"
                 }
@@ -36,9 +36,9 @@ return {
             e_abn_gloss = {
                 name = "Блестящий",
                 text = {
-                    "{C:white,X:chips}X#1#{} фишек,",
-                    "Получите {C:money}$#2#{},",
-                    "когда срабатывает"
+                    "{C:white,X:chips}X#1#{} фишек",
+                    "Получите {C:money}$#2#{}, когда",
+                    "эта карта срабатывает"
                 }
             },
             e_abn_pearlescent = {
@@ -52,13 +52,15 @@ return {
                 name = "Хроматический",
                 text = {
                     "{C:white,X:chips}X#1#{} фишек, {C:white,X:mult}x#2#{} множ.",
-                    "и {C:money}$#3#{}, когда срабатывает"
+                    "и {C:money}$#3#{}, когда эта",
+                    "карта срабатывает"
                 }
             },
             e_abn_reversal = {
                 name = "Реверс",
                 text = {
-                    "Меняет {C:chips}фишки{} и {C:mult}множ.",
+                    "Меняет {C:chips}фишки{} и",
+                    "{C:mult}множ.{} местами"
                 }
             },
             e_abn_bit_rot = {
@@ -74,7 +76,7 @@ return {
                 },
             },
             e_abn_collodion = {
-                name = "Коллоидный",
+                name = "Коллодиевый",
                 text = {
                     "Балансирует {C:white,X:abn_plasma}#1#%{}",
                     "{C:chips}фишек{} и {C:mult}множ.{}"
@@ -83,8 +85,9 @@ return {
             e_abn_vintage = {
                 name = "Винтажный",
                 text = {
-                    "{C:money}+$#3#{}, {C:chips}+#2#{} фишек и {C:mult}+#1#{} множ.",
-                    "за каждый уровень сыгранной руки"
+                    "{C:money}+$#3#{}, {C:chips}+#2#{} фишек",
+                    "и {C:mult}+#1#{} множ. за каждый",
+                    "уровень сыгранной руки"
                 }
             },
             e_abn_bright = {
@@ -117,7 +120,7 @@ return {
             abn_reversal = "Реверс",
             abn_bit_rot = "Побитный",
             abn_reel = "Пленочный",
-            abn_collodion = "Коллоидный",
+            abn_collodion = "Коллодиевый",
             abn_vintage = "Винтажный",
             abn_bright = "Светлый",
             abn_opaque = "Темный",

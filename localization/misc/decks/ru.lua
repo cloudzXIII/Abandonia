@@ -1,57 +1,6 @@
 return {
     descriptions = {
         Back = {
-            b_abn_das_goodtime = {
-                name = "Хорошие времена",
-                text = {
-                    "Начинаете с полным набором",
-                    "карт {C:abn_florette}Цветов{}, {C:abn_acorn}Желудей{},",
-                    "{C:abn_bell}Колокольчиков{} и {C:abn_leaf}Листьев{}",
-                    "{C:attention}+#1#{} размер руки,",
-                    "{C:red}-4{} лимит сброса"
-                }
-            },
-            b_abn_glue_deck = {
-                name = "Клейкая колода",
-                text = {
-                    "Начинаете с ваучером",
-                    "{C:attention,T:v_abn_gold_tree}#1#{}",
-                    "Выделение карт",
-                    "не может быть отменено",
-                    "{C:attention}Джокеров{} нельзя",
-                    "перемещать"
-                }
-            },
-            b_abn_woebegone = {
-                name = "Удрученная колода",
-                text = {
-                    "Начинаете с {C:tarot,T:v_abn_tarot_master}#1#{}",
-                    "и полным набором",
-                    "{C:inactive}ванильных{} и {C:attention}испанских{} мастей",
-                    "Без набора {C:attention}процентов",
-                    "Получите {C:money}$2{}, когда {C:mult}сбрасываете {C:attention}5{} карт"
-                }
-            },
-            b_abn_calamity = {
-                name = "Бедственная колода",
-                text = {
-                    "Шанс {C:green}#1# к #2#{}, что",
-                    "сброшенная карта",
-                    "будет уничтожена",
-                    "При выборе {C:attention}Блайнда{} создает",
-                    "случайную {C:dark_edition}Негативную{}",
-                    "карту {C:sigils}Символа{}"
-                }
-            },
-            b_abn_cyber = {
-                name = "Кибер-колода",
-                text = {
-                    "{C:solid_state}Твердотельные{} карты могут",
-                    "появляться в лавке,",
-                    "начинаете с картой",
-                    "{C:solid_state,T:c_abn_database}База данных{}",
-                }
-            },
             b_abn_CrimsonDeck = {
                 name = "Багровая колода",
                 text = {
@@ -159,7 +108,7 @@ return {
                     "{C:dark_edition}Улучшенные{} карты",
                     "{C:mult}ослабляются{} после {C:attention}подсчета",
                     "не улучшенные карты не",
-                    "могут быть {C:mult}отключены{}",
+                    "могут быть {C:mult}ослаблены{}",
                 }
             },
             b_abn_PlatinumDeck = {
@@ -221,46 +170,95 @@ return {
             b_abn_synesthic = {
                 name = "Синестетический круг",
                 text = {
-                    "Начинаете с полным",
-                    "набором карт {C:abn_chalice}Чаш{},",
-                    "{C:abn_baton}Дубин{}, {C:abn_coin}Монет{}, {C:abn_sword}Мечей{}",
-                    "{C:abn_bow}Бабочек{}, {C:abn_tie}Галстуков{}, {C:abn_penumbra}Полутеней{}",
-                    "и {C:abn_snow}Снежинок",
-                    "Без {C:attention}лицевых{} карт",
-                    "{C:attention}+1{} лимит выбора карт",
-                    "Увеличивает {C:attention}требование",
-                    "{C:attention}блайнда{} на {C:white,X:mult}X1.3{}",
-                    "когда {C:attention}Босс-блайнд{} побежден"
+                    "Начинаете с набором номерных",
+                    "{C:abn_chalice}Чаш{}, {C:abn_baton}Дубин{}, {C:abn_coin}Монет{},",
+                    "{C:abn_sword}Мечей{}, {C:abn_bow}Бабочек{}, {C:abn_tie}Галстуков{},",
+                    "{C:abn_penumbra}Полутеней{} и {C:abn_snow}Снежинок",
+                    "Увеличивает {C:attention}размер {C:attention}блайнда{} на",
+                    "{C:white,X:mult}X1.3{}, когда {C:attention}Босс-блайнд{} побежден",
+                    "{C:attention}+1{} лимит выбора карт"
                 }
             },
             b_abn_epoch = {
                 name = "Новая эпоха",
                 text = {
                     "Начинаете с полным",
-                    "набором карт {C:inactive}Ванильных{} мастей,",
-                    "{C:abn_talon}Талонов{}, {C:abn_crown}Корон{},",
+                    "набором карт {C:inactive}Ванильных{}",
+                    "мастей, {C:abn_talon}Талонов{}, {C:abn_crown}Корон{},",
                     "{C:abn_moon}Лун{} и {C:abn_star}Звезд{}",
                     "{C:white,X:mult}+X1{} к {C:attention}требованиям Блайнда{}",
                     "за каждый {C:attention}пропущенный{}",
                     "Блайнд в этой партии",
                 }
             },
-            b_abn_untamed = {
-                name = "Необузданная колода",
-                text = {
-                    "Начинаете с ваучером",
-                    "{C:planet,T:v_abn_satellite}#1#{}",
-                    "и {C:sigils,T:v_abn_chaos}#2#{}",
-                    "{C:chips}Малые Блайнды{} теперь",
-                    "{C:attention}Большие Блайнды{}"
-                }
-            },
             b_abn_shackle = {
                 name = "Скованное безумие",
                 text = {
                     "Начинаете только с",
-                    "{C:spades}темными мастями{} с",
-                    "{C:dark_edition}Хтоническим выпуском{}",
+                    "{C:spades}Темными мастями{} с",
+                    "{C:dark_edition}Хтоническим{} выпуском",
+                }
+            },
+            b_abn_cyber = {
+                name = "Кибер-колода",
+                text = {
+                    "{C:solid_state}Твердотельные{} карты могут",
+                    "появляться в лавке,",
+                    "начинаете с картой",
+                    "{C:solid_state,T:c_abn_database}База данных{}",
+                }
+            },
+            b_abn_calamity = {
+                name = "Бедственная колода",
+                text = {
+                    "Шанс {C:green}#1# к #2#{}, что",
+                    "сброшенная карта",
+                    "будет уничтожена",
+                    "При выборе {C:attention}Блайнда{} создает",
+                    "случайную {C:dark_edition}Негативную{}",
+                    "карту {C:sigils}Символа{}"
+                }
+            },
+            b_abn_woebegone = {
+                name = "Удрученная колода",
+                text = {
+                    "Начинаете с {C:tarot,T:v_abn_tarot_master}#1#{}",
+                    "и полным набором",
+                    "{C:inactive}ванильных{} и {C:attention}испанских{} мастей",
+                    "Без набора {C:attention}процентов",
+                    "Получите {C:money}$2{}, когда",
+                    "{C:mult}сбрасываете {C:attention}5{} карт"
+                }
+            },
+            b_abn_glue_deck = {
+                name = "Клейкая колода",
+                text = {
+                    "Начинаете с ваучером",
+                    "{C:attention,T:v_abn_gold_tree}#1#{}",
+                    "Выделение карт",
+                    "не может быть отменено",
+                    "{C:attention}Джокеров{} нельзя",
+                    "перемещать"
+                }
+            },
+            b_abn_das_goodtime = {
+                name = "Хорошие времена",
+                text = {
+                    "Начинаете с полным набором",
+                    "карт {C:abn_florette}Цветов{}, {C:abn_acorn}Желудей{},",
+                    "{C:abn_bell}Колокольчиков{} и {C:abn_leaf}Листьев{}",
+                    "{C:attention}+#1#{} размер руки,",
+                    "{C:red}-4{} лимит сброса"
+                }
+            },
+            b_abn_untamed = {
+                name = "Необузданная колода",
+                text = {
+                    "Начинаете с ваучерами",
+                    "{C:sigils,T:v_abn_chaos}#2#{}",
+                    "и {C:planet,T:v_abn_satellite}#1#{}",
+                    "{C:chips}Малые Блайнды{} теперь",
+                    "{C:attention}Большие Блайнды{}"
                 }
             },
             b_abn_poneglyph = {

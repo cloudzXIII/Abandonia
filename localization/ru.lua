@@ -189,6 +189,12 @@ return {
     },
     Other = {
       --#region Misc Tooltips
+	    abn_perma_asc = {
+        name = "Вознесила",
+        text = {
+          "{C:gold}+#1#{} Вознесилы",
+        }
+      },
       abn_dark_suit = {
         name = "Темная масть",
         text = {
@@ -288,6 +294,13 @@ return {
           "{C:white,X:mult}X1.25{} множ.",
           "достоинство и масть",
           "не видно",
+        }
+      },
+      abn_newestia_only = {
+        name = "Лимитированный",
+        text = {
+          "Появляется только",
+          "в режиме {C:red}Ньюэстии{}"
         }
       },
       --#endregion
