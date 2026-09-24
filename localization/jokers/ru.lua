@@ -2672,6 +2672,26 @@ return {
                     "{C:inactive}(сейчас{} {X:mult,C:white}X#1#{} {C:inactive}множ.)",
                 }
             },
+            j_abn_equationerror = {
+                name = "Ошибка в уравнении",
+                text = {
+                    {
+                        "Шанс {C:green}#3# к #4#{}, что этот",
+                        "Джокер получит {C:chips}+#5#{} фишек и",
+                        "{C:mult}+#6#{} множ. при подсчете карты",
+                        "{C:inactive}(сейчас {C:chips}+#1# {C:inactive}фишек, {C:mult}+#2# {C:inactive}множ.)",
+                    },
+                    {
+                        "Когда рука сыграна, шанс {C:green}#3# к #4#{}",
+                        "{C:attention}удвоить{} {C:chips}фишки{} этого Джокера",
+                        "{C:attention,s:0.8}Старшая карта{C:inactive,s:0.8} не в счет"
+                    },
+                    {
+                        "Удваивает свои {C:chips}фишки{} и {C:mult}множ.{},",
+                        "когда {C:attention}Джокер{} {C:red}уничтожен{}",
+                    }
+                },
+            },
             j_abn_erratic_joker = {
                 name = "Неустойчивый джокер",
                 text = {
@@ -3321,7 +3341,7 @@ return {
                 text = {
                     {
                         "{C:abn_arrow}Стрелы{} дают {X:mult,C:white}X#1#{} множ.",
-                        "при подсчете, увеличивается на {X:mult,C:white}X#2#{} множ.,",
+                        "при подсчете, множ. увеличивается на {X:mult,C:white}X#2#{},",
                         "когда {C:abn_arrow}Стрела{} подсчитывается",
                     },
                     {
@@ -5243,7 +5263,7 @@ return {
                     }
                 }
             },
-            j_abn_Lorenz = {
+            j_abn_lorenz = {
                 name = "Лоренс",
                 text = {
                     {
@@ -8702,6 +8722,13 @@ return {
                     {
                         "Ослабляет все карты {C:attention}с лицом{}"
                     }
+                }
+            },
+            j_abn_unfamiliar_joker = {
+                name = "Незнакомый джокер",
+                text = {
+                    "{C:dark_edition}Модовые{} карты {C:attention}Без достоинства{} дают",
+                    "{X:chips,C:white}2X{} своих {C:chips}фишек{} при подсчете"
                 }
             },
             j_abn_unhinged_umar = {

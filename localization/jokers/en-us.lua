@@ -9359,6 +9359,14 @@ return {
         }
       },
 
+      j_abn_unfamiliar_joker = {
+        name = "Unfamiliar Joker",
+        text = {
+          "{C:dark_edition}Modded {C:attention}rankless{} cards give {X:chips,C:white}2X",
+          "of their {C:chips}Chips{} when scoring"
+        }
+      },
+
       j_abn_unhinged_umar = {
         name = "Unhinged Umar",
         text = {

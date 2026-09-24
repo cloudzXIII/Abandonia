@@ -7,17 +7,16 @@ SMODS.Enhancement({
   no_suit = true,
   always_scores = true,
   weight = 0,
-  config = { extra = { chips = 100, dollars = 2 } },
+  config = { bonus = 100, dollars = 2 },
   loc_vars = function(self, info_queue, card)
-    local cae = card.ability.extra
-    return { vars = { cae.chips, cae.dollars } }
+    local ca = card.ability
+    return { vars = { ca.bonus, ca.dollars } }
   end,
   calculate = function(self, card, context)
-    local cae = card.ability.extra
+    local ca = card.ability
     if context.main_scoring and context.cardarea == G.play then
       return {
-        chips = cae.chips,
-        dollars = cae.dollars
+        dollars = ca.dollars
       }
     end
     if context.final_scoring_step and SMODS.calculate_round_score() > G.GAME.blind.chips then
@@ -122,18 +121,13 @@ SMODS.Enhancement({
   key = "mercurial",
   pos = { x = 0, y = 0 },
   atlas = "AbandoniaEnhancements",
-  config = { extra = { chips = 0, chipsadd = 5 } },
+  config = { bonus = 0, bonus_gain = 5 },
   loc_vars = function(self, info_queue, card)
-    local cae = card.ability.extra
-    return { vars = { cae.chips, cae.chipsadd } }
+    local ca = card.ability
+    return { vars = { ca.bonus, ca.bonus_gain } }
   end,
   calculate = function(self, card, context)
-    local cae = card.ability.extra
-    if context.main_scoring and context.cardarea == G.play then
-      return {
-        chips = cae.chips
-      }
-    end
+    local ca = card.ability
     if context.before and context.cardarea ~= G.deck and context.cardarea ~= G.discard then
       local suits, num = {}, 0
       for k, v in pairs(context.scoring_hand) do
@@ -144,9 +138,9 @@ SMODS.Enhancement({
       end
       for i = 1, num do
         SMODS.scale_card(card, {
-          ref_table = cae,
-          ref_value = "chips",
-          scalar_value = "chipsadd"
+          ref_table = ca,
+          ref_value = "bonus",
+          scalar_value = "bonus_gain"
         })
       end
     end
@@ -164,24 +158,18 @@ SMODS.Enhancement({
   no_rank = true,
   no_suit = true,
   always_scores = true,
-  config = { extra = { chips = 10, chipsadd = 5 } },
+  config = { bonus = 10, bonus_gain = 5 },
   loc_vars = function(self, info_queue, card)
-    local cae = card.ability.extra
-    return { vars = { cae.chips, cae.chipsadd } }
+    local ca = card.ability
+    return { vars = { ca.bonus, ca.bonus_gain } }
   end,
   calculate = function(self, card, context)
-    local cae = card.ability.extra
-    if context.main_scoring and context.cardarea == G.play then
-      return {
-        chips = cae.chips,
-      }
-    end
-
+    local ca = card.ability
     if context.final_scoring_step and context.cardarea == G.play then
       SMODS.scale_card(card, {
-        ref_table = cae,
-        ref_value = "chips",
-        scalar_value = "chipsadd"
+        ref_table = ca,
+        ref_value = "bonus",
+        scalar_value = "bonus_gain"
       })
     end
   end,
