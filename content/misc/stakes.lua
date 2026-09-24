@@ -6,6 +6,34 @@ function Game:init_game_object(...)
     return ret
 end
 
+local hazard_ante_map = {
+	[4] = "Honor",
+	[5] = "Menacing",
+	[6] = "Toxic",
+	[8] = "Honor",
+	[9] = "Honor",
+	[10] = "Menacing",
+	[11] = "Toxic",
+}
+
+-- See utilities/hooks.lua "Conditional boss replacements", and content/misc/newestia.lua "ABN.new_newestia_boss()" for how hazard bosses are spawned
+function ABN.is_hazard_ante()
+	return G.GAME and hazard_ante_map[G.GAME.round_resets.ante] and G.GAME.modifiers[hazard_ante_map[G.GAME.round_resets.ante]]
+end
+
+function ABN.new_hazard_boss()
+	local pool = "abn_hazard_boss_pool"
+	if not G.GAME[pool] or #G.GAME[pool] == 0 then
+		G.GAME[pool] = {}
+		for key in pairs(G.P_BLINDS) do
+			if key:find("bl_abn_hazard") then
+				table.insert(G.GAME[pool], key)
+			end
+		end
+	end
+	return table.remove(G.GAME[pool], pseudorandom("abn_new_hazard_boss", 1, #G.GAME[pool]))
+end
+
 local original_game_update = Game.update
 function Game:update(dt)
     original_game_update(self, dt)
@@ -23,7 +51,8 @@ function Game:update(dt)
         end
     end
 
-    -- Logic for forcing specific Blinds (Hazards/Showdowns)
+	--[[
+    -- Logic for forcing specific Blinds (Hazards/Showdowns - DEPRECATED)
     if G.STATE == G.STATES.BLIND_SELECT and G.GAME and not G.GAME.abn_newestia then
         local is_honor = G.GAME.modifiers.Honor
         local is_menacing = G.GAME.modifiers.Menacing
@@ -87,6 +116,7 @@ function Game:update(dt)
             end
         end
     end
+	--]]
 
     -- Toxic Flip Mechanic
     if not ABN.config.disable_flipped_stakes then

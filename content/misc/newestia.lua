@@ -53,12 +53,21 @@ ABN.NewestiaBlind = SMODS.Blind:extend({
 	end
 })
 
+--See utilities/hooks.lua "Conditional boss replacements" for how this is used
 function ABN.new_newestia_boss()
-	local pool = G.GAME.round_resets.ante % G.GAME.win_ante == 0 and "abn_newestia_showdown_pool" or "abn_newestia_boss_pool"
+	local category
+	if ABN.is_hazard_ante() then
+		category = "abn_hazard"
+	elseif G.GAME.round_resets.ante % G.GAME.win_ante == 0 then
+		category = "showdown"
+	else
+		category = "boss"
+	end
+	local pool = "abn_newestia_"..category.."_pool"
 	if not G.GAME[pool] or #G.GAME[pool] == 0 then
 		G.GAME[pool] = {}
 		for key, def in pairs(ABN.NewestiaBlinds) do
-			if def.boss and (not def.boss.showdown) == (G.GAME.round_resets.ante % G.GAME.win_ante ~= 0) and (not def.in_new_pool or def:in_new_pool()) then
+			if def.boss and ((category == "boss" and not def.boss.showdown and not def.boss.abn_hazard) or (category ~= "boss" and def.boss[category])) and (not def.in_new_pool or def:in_new_pool()) then
 				table.insert(G.GAME[pool], key)
 			end
 		end
@@ -66,83 +75,7 @@ function ABN.new_newestia_boss()
 	return table.remove(G.GAME[pool], pseudorandom("abn_new_newestia_boss", 1, #G.GAME[pool]))
 end
 
-local old_reset_blind_choices = SMODS.reset_blind_choices
-function SMODS.reset_blind_choices(choices)
-	old_reset_blind_choices(choices)
-	G.GAME.abn_newestia_original_blinds = G.GAME.abn_newestia_original_blinds or {}
-	G.GAME.abn_newestia_current_blinds = G.GAME.abn_newestia_current_blinds or {}
-	for _, k in ipairs(G.GAME.round_resets.blind_order) do
-		if k == "Small" or k == "Big" then
-			G.GAME.abn_newestia_original_blinds[k] = choices[k]
-			G.GAME.abn_newestia_current_blinds[k] = "bl_abn_new_"..k:lower()
-		elseif k == "Boss" then
-			G.GAME.abn_newestia_original_blinds[k] = choices[k]
-			G.GAME.abn_newestia_current_blinds[k] = ABN.new_newestia_boss()
-		end
-	end
-	if G.GAME.abn_newestia then
-		for _, k in ipairs(G.GAME.round_resets.blind_order) do
-			choices[k] = G.GAME.abn_newestia_current_blinds[k] or choices[k]
-		end
-	end
-end
-
-local get_old_boss = get_new_boss
-function get_new_boss()
-	local boss = nil
-	if G.GAME.abn_newestia then
-		boss = ABN.new_newestia_boss()
-		G.GAME.abn_newestia_current_blinds.Boss = boss
-	else
-		boss = get_old_boss()
-		G.GAME.abn_newestia_original_blinds.Boss = boss
-	end
-	return boss
-end
-
-local old_card_chips = Card.get_chip_bonus
-function Card:get_chip_bonus()
-	local chips = old_card_chips(self)
-	local only_suit = G.GAME.blind.config.blind.abn_newestia_only_suit
-	if only_suit and not G.GAME.blind.disabled then
-		if self:is_suit(only_suit) then
-			chips = chips * 2
-		else 
-			chips = 1
-		end
-	end
-	return chips
-end
-
-local old_generate_ui = generate_card_ui
-function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
-	local only_suit = G.GAME and G.GAME.blind and G.GAME.blind.config and G.GAME.blind.config.blind and G.GAME.blind.config.blind.abn_newestia_only_suit
-	if specific_vars and specific_vars.nominal_chips and only_suit and not G.GAME.blind.disabled then
-		local new_vars = {}
-		for k, var in pairs(specific_vars) do
-			if k == "nominal_chips" then
-				if card and card:is_suit(only_suit) then
-					new_vars[k] = var * 2
-				else
-					new_vars[k] = 1
-				end
-			elseif k == "bonus_chips" then
-				if card and card:is_suit(only_suit) then
-					new_vars[k] = var * 2
-				elseif _c.name == 'Stone Card' or _c.replace_base_card then
-					new_vars[k] = 1
-				else
-					new_vars[k] = 0
-				end
-			else
-				new_vars[k] = var
-			end
-		end
-		specific_vars = new_vars
-	end
-
-	return old_generate_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
-end
+--Also see utilities/hooks.lua for cases where Newestia Bosses tamper with cards' chip bonuses
 
 function ABN.shorten_money_text(nodes)
 	if not nodes then return end
@@ -928,7 +861,7 @@ ABN.NewestiaBlind({
 
 local old_can_play = G.FUNCS.can_play
 function G.FUNCS.can_play(e)
-	if G.GAME.current_round.hands_left > 0 and not G.GAME.blind.disabled and G.GAME.blind.config.blind.key == "bl_abn_new_azure_chime" and G.GAME.abn_new_azure_chime_original_handsize and #G.hand.highlighted <= G.GAME.abn_new_azure_chime_original_handsize then
+	if G.GAME.current_round.hands_left > 0 and not G.GAME.blind.disabled and G.GAME.abn_new_azure_chime_original_handsize and #G.hand.highlighted <= G.GAME.abn_new_azure_chime_original_handsize then
 		e.config.colour = G.C.BLUE
 		e.config.button = "play_cards_from_highlighted"
 	else
@@ -938,7 +871,7 @@ end
 
 local old_can_discard = G.FUNCS.can_discard
 function G.FUNCS.can_discard(e)
-	if G.GAME.current_round.discards_left > 0 and not G.GAME.blind.disabled and G.GAME.blind.config.blind.key == "bl_abn_new_azure_chime" and G.GAME.abn_new_azure_chime_original_handsize and #G.hand.highlighted <= G.GAME.abn_new_azure_chime_original_handsize then
+	if G.GAME.current_round.discards_left > 0 and not G.GAME.blind.disabled and G.GAME.abn_new_azure_chime_original_handsize and #G.hand.highlighted <= G.GAME.abn_new_azure_chime_original_handsize then
 		e.config.colour = G.C.RED
 		e.config.button = "discard_cards_from_highlighted"
 	else
@@ -946,6 +879,7 @@ function G.FUNCS.can_discard(e)
 	end
 end
 
+--Vanilla behavior only forces one card to be auto-selected if you reload into Azure Chime
 local old_cardarea_update = CardArea.update
 function CardArea:update(dt)
 	old_cardarea_update(self, dt)
@@ -1039,4 +973,213 @@ ABN.NewestiaBlind({
 			blind.triggered = true
 		end
 	end,
+})
+
+--See utilities/hooks.lua for implementation of abn_disable blinds modifiers
+ABN.NewestiaBlind({
+	key = "new_runic_heart",
+	dollars = 20,
+	mult = 8,
+	atlas = "NewestiaHazards",
+	pos = {x = 0, y = 0},
+	boss = {abn_hazard = true},
+	boss_colour = HEX("ac3232"),
+	abn_disable_seals = true,
+	abn_disable_editions = true,
+	calculate = function(self, blind, context)
+		if blind.disabled then return end
+		if context.after then
+			local jokers = {}
+			for _, joker in ipairs(G.jokers.cards) do
+				if not SMODS.is_eternal(joker, blind) and not joker.getting_sliced then
+					table.insert(jokers, joker)
+				end
+			end
+			local target = pseudorandom_element(jokers, "bl_abn_new_runic_heart")
+			if target then
+				blind.triggered = true
+				target.getting_sliced = true
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						blind:juice_up(0.8, 0.8)
+						target:start_dissolve({G.C.RED}, nil, 1.6)
+						return true
+					end
+				}))
+			end
+		end
+	end
+})
+
+ABN.NewestiaBlind({
+	key = "new_runic_acorn",
+	dollars = 20,
+	mult = 8,
+	atlas = "NewestiaHazards",
+	pos = {x = 0, y = 1},
+	boss = {abn_hazard = true},
+	boss_colour = HEX("fdad1f"),
+	abn_disable_enhancements = true,
+	abn_disable_stamps = true,
+	calculate = function(self, blind, context)
+		if context.blind_disabled then
+			for _, card in ipairs(G.hand.cards) do
+				if card.facing == 'back' and card.ability.abn_new_runic_acorn_flipped then
+					card:flip()
+				end
+			end
+			for _, area in ipairs(SMODS.get_card_areas("jokers")) do
+				for __, other in ipairs(area.cards) do
+					if other.ability and other.ability.set == "Joker" and other.ability.abn_new_runic_acorn_flipped then
+						other:flip()
+					end
+				end
+			end
+		end
+		if context.blind_disabled or context.blind_defeated then
+			for _, card in pairs(G.playing_cards) do
+				card.ability.abn_new_runic_acorn_flipped = nil
+			end
+			for _, area in ipairs(SMODS.get_card_areas("jokers")) do
+				for __, other in ipairs(area.cards) do
+					if other.ability and other.ability.set == "Joker" then
+						other.ability.abn_new_runic_acorn_flipped = nil
+					end
+				end
+			end
+		end
+		if blind.disabled then return end
+		if context.setting_blind then
+			for _, area in ipairs(SMODS.get_card_areas("jokers")) do
+				for __, other in ipairs(area.cards) do
+					if other.ability and other.ability.set == "Joker" then
+						other.ability.abn_new_runic_acorn_flipped = true
+						other:flip()
+					end
+				end
+			end
+		elseif context.stay_flipped and context.to_area == G.hand then
+			context.other_card.ability.abn_new_runic_acorn_flipped = true
+			return {
+				stay_flipped = true
+			}
+		elseif context.before then
+			local any = false
+			for _, area in ipairs({G.jokers, G.play, G.hand}) do
+				if #area.cards > 0 then
+					area:shuffle("bl_abn_new_runic_acorn")
+					any = true
+				end
+			end
+			if any then blind.triggered = true end
+		end
+	end
+})
+
+ABN.NewestiaBlind({
+	key = "new_runic_leaf",
+	dollars = 20,
+	mult = 8,
+	atlas = "NewestiaHazards",
+	pos = {x = 0, y = 2},
+	boss = {abn_hazard = true},
+	boss_colour = HEX("56a786"),
+	abn_disable_enhancements = true,
+	abn_disable_editions = true,
+	loc_vars = function(self)
+		if G.GAME.bl_abn_new_runic_leaf_satisfied then
+			return {key = self.key.."_satisfied"}
+		end
+	end,
+	collection_loc_vars = function(self)
+	end,
+	calculate = function(self, blind, context)
+		if context.blind_defeated then
+			G.GAME.bl_abn_new_runic_leaf_satisfied = nil
+		end
+		if blind.disabled then return end
+		if context.selling_card and context.card.ability.set == 'Joker' and not G.GAME.bl_abn_new_runic_leaf_satisfied then
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					G.GAME.bl_abn_new_runic_leaf_satisfied = true
+					blind:set_text()
+					return true
+				end
+			}))
+		elseif context.debuff_hand and not G.GAME.bl_abn_new_runic_leaf_satisfied then
+			blind.triggered = true
+			return {debuff = true}
+		elseif context.after and G.GAME.bl_abn_new_runic_leaf_satisfied then
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					G.GAME.bl_abn_new_runic_leaf_satisfied = nil
+					blind:set_text()
+					return true
+				end
+			}))
+		end
+	end
+})
+
+--Reusing Azure Chime's variable to also easily reuse its hooks without modifying them
+ABN.NewestiaBlind({
+	key = "new_runic_bell",
+	dollars = 20,
+	mult = 8,
+	atlas = "NewestiaHazards",
+	pos = {x = 0, y = 3},
+	boss = {abn_hazard = true},
+	boss_colour = HEX("009cfd"),
+	abn_disable_seals = true,
+	abn_disable_stamps = true,
+	calculate = function(self, blind, context)
+		if context.setting_blind and not blind.disabled then
+			G.GAME.abn_new_azure_chime_original_handsize = G.hand.config.highlighted_limit
+			G.GAME.abn_new_azure_chime_original_handsize = G.hand.config.highlighted_limit
+		elseif context.blind_disabled or context.blind_defeated then
+			if G.GAME.abn_new_azure_chime_original_handsize then
+				G.hand.config.highlighted_limit = G.GAME.abn_new_azure_chime_original_handsize
+				G.GAME.abn_new_azure_chime_original_handsize = nil
+			end
+			for _, card in ipairs(G.playing_cards) do
+				card.ability.forced_selection = nil
+			end
+		end
+		if blind.disabled then return end
+		if context.hand_drawn then
+			local new_hand_size = math.min(#G.jokers.cards, #G.hand.cards)
+			if G.hand.config.highlighted_limit ~= G.GAME.abn_new_azure_chime_original_handsize then
+				G.GAME.abn_new_azure_chime_original_handsize = G.GAME.abn_new_azure_chime_original_handsize + G.GAME.abn_new_azure_chime_original_handsize - G.hand.config.highlighted_limit
+				G.GAME.abn_new_azure_chime_original_handsize = G.hand.config.highlighted_limit
+			end
+			if new_hand_size ~= G.GAME.abn_new_azure_chime_original_handsize then
+				G.GAME.abn_new_azure_chime_original_handsize = math.max(G.GAME.abn_new_azure_chime_original_handsize, new_hand_size)
+				G.hand.config.highlighted_limit = G.GAME.abn_new_azure_chime_original_handsize
+			end
+			local non_forced = {}
+			for _, card in ipairs(G.hand.cards) do
+				if not card.ability.forced_selection then
+					table.insert(non_forced, card)
+				end
+			end
+			G.hand:unhighlight_all()
+			while #non_forced > 0 and #G.hand.highlighted < #G.jokers.cards do
+				local forced_card = table.remove(non_forced, pseudorandom("bl_abn_new_azure_chime", 1, #non_forced))
+				forced_card.ability.forced_selection = true
+				G.hand:add_to_highlighted(forced_card)
+			end
+		end
+	end
+})
+
+ABN.NewestiaBlind({
+	key = "new_runic_vessel",
+	dollars = 20,
+	mult = 12,
+	atlas = "NewestiaHazards",
+	pos = {x = 0, y = 4},
+	boss = {abn_hazard = true},
+	boss_colour = HEX("7963c5"),
+	abn_disable_enhancements = true,
+	abn_disable_stamps = true,
 })

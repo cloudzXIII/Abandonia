@@ -138,6 +138,15 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+  key = 'NewestiaHazards',
+  path = 'runic_blinds.png',
+  px = 71,
+  py = 71,
+  frames = 40,
+  atlas_table = 'ANIMATION_ATLAS'
+})
+
+SMODS.Atlas({
   key = 'Newestia',
   path = 'newestia.png',
   px = 390,

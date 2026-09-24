@@ -1,0 +1,56 @@
+[manifest]
+version = "0.1.0"
+dump_lua = true
+priority = 0
+
+# Force blue seals to respect disabling seal calculation
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.seal == 'Blue' and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit and not self.ability.extra_enhancement then"
+position = "at"
+match_indent = true
+payload = '''
+if self.seal == 'Blue' and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit and not self.ability.extra_enhancement and (G.GAME.blind.disabled or not G.GAME.blind.config.blind.abn_disable_seals) then
+'''
+
+# Force gold seals to respect disabling seal calculation
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+    elseif self.seal == 'Gold' and not self.ability.extra_enhancement then
+        ret = ret +  3
+'''
+position = "at"
+match_indent = true
+payload = '''
+    elseif self.seal == 'Gold' and not self.ability.extra_enhancement and (G.GAME.blind.disabled or not G.GAME.blind.config.blind.abn_disable_seals) then
+        ret = ret +  3
+'''
+
+# Force lucky cards to avoid triggering when enhancements are disabled
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+if SMODS.pseudorandom_probability(self, 'lucky_mult', 1, 5) then
+'''
+position = "at"
+match_indent = true
+payload = '''
+if SMODS.pseudorandom_probability(self, 'lucky_mult', 1, 5) and (G.GAME.blind.disabled or not G.GAME.blind.config.blind.abn_disable_enhancements) then
+'''
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+if SMODS.pseudorandom_probability(self, 'lucky_money', 1, 15) then
+'''
+position = "at"
+match_indent = true
+payload = '''
+if SMODS.pseudorandom_probability(self, 'lucky_money', 1, 15) and (G.GAME.blind.disabled or not G.GAME.blind.config.blind.abn_disable_enhancements) then
+'''
+
+

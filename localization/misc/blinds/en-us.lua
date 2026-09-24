@@ -914,6 +914,49 @@ return {
           "play, discard, or rearrange cards"
         },
       },
+      bl_abn_new_runic_heart = {
+        name = "Runic Heart",
+        text = {
+          "Seals and Editions do not trigger",
+          "One random joker destroyed",
+          "after each hand played"
+        },
+      },
+      bl_abn_new_runic_acorn = {
+        name = "Runic Acorn",
+        text = {
+          "Enhancements and Stamps do not trigger",
+          "All cards and Jokers are face down,",
+          "and each played hand shuffles both"
+        },
+      },
+      bl_abn_new_runic_leaf = {
+        name = "Runic Leaf",
+        text = {
+          "Enhancements and Editions do not trigger",
+          "You must sell a Joker to play each hand"
+        },
+      },
+      bl_abn_new_runic_leaf_satisfied = {
+        name = "Runic Leaf",
+        text = {
+          "Enhancements and Editions do not trigger"
+        },
+      },
+      bl_abn_new_runic_bell = {
+        name = "Runic Bell",
+        text = {
+          "Seals and Stamps do not trigger",
+          "A number of cards will always be",
+          "selected, equal to number of Jokers"
+        },
+      },
+      bl_abn_new_runic_vessel = {
+        name = "Runic Vessel",
+        text = {
+          "Enhancements and Stamps do not trigger"
+        },
+      },
       --#endregion
     },
   },
