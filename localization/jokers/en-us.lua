@@ -5644,41 +5644,39 @@ return {
         }
       },
 
-      j_abn_Lorenz = {
+      j_abn_lorenz = {
         name = "Lorenz",
         text = {
           {
             "Scored {C:abn_acorn}Acorns{} give {X:mult,C:white}X#1#{} Mult,",
-            "increase by {X:mult,C:white}X#2#{} Mult",
-            "when {C:abn_acorn}Acorns{} scored"
+            "increases by {X:mult,C:white}X#2#{} Mult",
+            "when an {C:abn_acorn}Acorn{} is scored",
           },
           {
-            "Scored {C:abn_acorn}Acorns{} gain",
-            "{C:chips}+#3#{} Chips per {C:attention}rarity",
-            "of Jokers owned"
-          }
+            "If {C:attention}Joker{} is owned,",
+            "scoring {C:abn_acorn}Acorns{} permanently",
+            "gain {C:chips}+#3#{} Chips per unique {C:attention}rarity{}",
+            "among your Jokers"
+          },
         }
       },
 
-
-      j_abn_Liam = {
+      j_abn_liam = {
         name = "Liam",
         text = {
           {
-            "Scored C:abn_acorn}Acorns{} give {X:chips,C:white}X#1#{} Chips,",
-            "increase by {X:chips,C:white}X#2#{} Chips",
-            "when {C:abn_acorn}Acorns{} scored"
+            "Scored {C:abn_acorn}Acorns{} give {X:chips,C:white}X#1#{} Chips,",
+            "increases by {X:chips,C:white}X#2#{} Chips",
+            "when an {C:abn_acorn}Acorn{} is scored",
           },
           {
-            "Scored {C:abn_acorn}Acorns{} gain",
-            "{C:purple}+#3#{} Score per {C:attention}rarity",
-            "of Jokers owned"
-          }
+            "If {C:attention}Joker{} is owned,",
+            "scoring {C:abn_acorn}Acorns{} permanently",
+            "gain {C:purple}+#3#{} Score per unique {C:attention}rarity{}",
+            "among your Jokers"
+          },
         }
       },
-
-
-
 
       j_abn_lucky_mult = {
         name = "Lucky Mult",
