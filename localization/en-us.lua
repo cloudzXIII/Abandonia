@@ -998,6 +998,9 @@ return {
 
       b_crepuscular_cards = "Crepuscular Tarot Cards",
       k_crepuscular = "Crepuscular Tarot",
+	  
+	  b_atomic_cards = "Atomic Cards",
+      k_atomic = "Atomic",
     },
 
     v_dictionary = {
@@ -1026,6 +1029,7 @@ return {
       illusion = "Illusion",
       ram = "RAM",
       crepuscular = "Crepuscular Tarot",
+	  atomic = "Atomic",
     },
 
     ranks = {
