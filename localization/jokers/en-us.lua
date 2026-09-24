@@ -4645,8 +4645,9 @@ return {
           },
           {
             "If {C:attention}Jinxie{} is owned,",
-            "this Joker gains {C:gold}+#3#{} Asc. Power",
+            "this Joker gains {C:gold}+#4#{} Asc. Power",
             "when a {C:inactive}Vanilla{} Joker is triggered",
+            "{C:inactive}(Currently {c:gold}+#3#{C:inactive} Asc. Power)"
           }
         }
       },
@@ -4828,6 +4829,7 @@ return {
             "If {C:attention}Jenna{} is owned,",
             "this Joker gains {C:gold}+#3#{} Asc. Power",
             "when a {C:inactive}Vanilla{} Joker is triggered",
+            "{C:inactive}(Currently {c:gold}+#3#{C:inactive} Asc. Power)"
           }
         }
       },

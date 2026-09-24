@@ -82,18 +82,16 @@ return {
       m_abn_petroleum = {
         name = "Petroleum Card",
         text = {
-          "{C:chips}+#1#{} Chips",
-          "{C:money}+$#2#{}",
-          "Turns into {C:attention}Oilfire{}",
-          "if the score catches fire",
+          "{C:chips}+#1#{} Chips, {C:gold}+$#2#",
+          "Turns into an {C:attention}Oilfire{} card",
+          "if the score {C:red,E:2}catches fire",
           "no rank or suit"
         },
       },
       m_abn_oilfire = {
         name = "Oilfire Card",
         text = {
-          "{C:mult}+#1#{} Mult",
-          "{C:red}-$#2#{}",
+          "{C:mult}+#1#{} Mult, {C:red}-$#2#{}",
           "{C:green}#3# in #4#{} Chance",
           "to {C:red}self-destruct{}",
           "no rank or suit",
@@ -102,8 +100,7 @@ return {
       m_abn_fossil = {
         name = "Fossil Card",
         text = {
-          "{X:mult,C:white}X#1#{} Mult",
-          "{C:money}+$#2#{}",
+          "{X:mult,C:white}X#1#{} Mult, {C:money}+$#2#{}",
           "has a {C:green}#3# in #4#{} chance",
           "to {C:red}self-destruct{}"
         },
@@ -130,17 +127,17 @@ return {
         name = "Infra Card",
         text = {
           "Gain {C:mult}+#2#{} Mult and {C:chips}+#4#{} Chips per scoring card",
-          "{C:mult}Self-destruct{} if played with {C:attention}3{} or less scoring cards",
+          "{C:mult}self-destructs{} if played with {C:attention}3{} or less scoring cards",
           "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#3# {C:inactive}Chips)",
         },
       },
       m_abn_hazard = {
         name = "Hazard Card",
         text = {
-          "{X:mult,C:white}X#1#{} Mult",
-          "Add {X:mult,C:white}+X#2#{} Mult for each other scoring Hazard card",
-          "{C:green}#3# in #4#{} chance to {C:attention}retrigger{}",
-          "Increase {C:attention}blind requirement{} by {C:attention}10%{}",
+          "{X:mult,C:white}X#1#{} Mult, increases by {X:mult,C:white}X#2#{} Mult",
+          "for every other scoring {C:attention,s:0.8}Hazard card",
+          "{C:green}#3# in #4#{} chance to retrigger",
+          "{X:blind,C:white}X#5#{} Blind Requirement",
         },
       },
       m_abn_contagion_seal = {
@@ -192,15 +189,19 @@ return {
       m_abn_darkner = {
         name = "Darkner Card",
         text = {
-          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult per played and held {C:spades}Dark Suits{}",
-          "{C:mult}Self-destruct{} if played with {C:attention}#3#{} or more {C:diamonds}Light Suits",
+          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+          "per played and held {C:spades}Dark Suits{}",
+          "{C:mult}self-destructs{} if played with",
+          "{C:attention}#3#{} or more {C:diamonds}Light Suits",
         },
       },
       m_abn_lightner = {
         name = "Lightner Card",
         text = {
-          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult per played and held {C:diamonds}Light Suits{}",
-          "{C:mult}Self-destruct{} if played with {C:attention}#3#{} or more {C:spades}Dark Suits",
+          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+          "per played and held {C:diamonds}Light Suits{}",
+          "{C:mult}self-destructs{} if played with",
+          "{C:attention}#3#{} or more {C:spades}Dark Suits",
         },
       },
       m_abn_kintsugi = {
@@ -262,23 +263,27 @@ return {
             "If this card is in {C:attention}hand{} during scoring {C:attention}play{} it",
           },
           {
-            "{C:green}#1# in #2#{} chance to turn other scoring cards into {C:attention}Honey{} cards",
+            "When scored, {C:green}#1# in #2#{} chance to convert",
+            "other scoring cards into {C:attention,s:0.8}Honey Cards{}",
           }
         }
       },
       m_abn_bubble = {
         name = "Bubble",
         text = {
-          "Gives {C:chips}+#1#{} Chips per {C:attention}different{} scoring {C:dark_edition}enhancement{}",
-          "and {C:mult}+#2#{} Mult per {C:attention}different{} scoring {C:dark_edition}edition{}",
-          "If this card is {C:mult}destroyed{} all scoring cards gain {C:chips}+#3#{} Chips",
+          "{C:chips}+#1#{} Chips per unique {C:attention}Enhancement{} and",
+          "{C:mult}+#2#{} Mult per unique {C:dark_edition}Edition{} in scoring hand",
+          "If this card is {C:mult}destroyed{}, all",
+          "scoring cards gain {C:chips}+#3#{} Chips",
         }
       },
       m_abn_bramble = {
         name = "Bramble",
         text = {
-          "If this is a {C:inactive}Vanilla{} suit it {C:attention}Always scores{}",
-          "If this is on a {C:dark_edition}Modded{} suit increase hand level by {C:attention}#1#{}",
+          "If this card has a {C:inactive}Vanilla{} suit,",
+          "it {C:attention}always scores{}",
+          "If this card has a {C:dark_edition}Modded{} suit,",
+          "increase hand level by {C:attention}#1#{}",
         }
       },
       m_abn_flypaper = {
@@ -486,25 +491,25 @@ return {
         name = "First Aid",
         text = {
           "If a {C:mult}debuffed{} card is played gain {C:mult}+#2#{} Mult",
-		  "If a card is {C:mult}destroyed{} gain {C:chips}+#4#{} Chips",
-		  "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#3#{} {C:inactive}Chips)",
+          "If a card is {C:mult}destroyed{} gain {C:chips}+#4#{} Chips",
+          "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult{} {C:chips}+#3#{} {C:inactive}Chips)",
         },
       },
-	    abn_stk_flux = {
+      abn_stk_flux = {
         name = "Flux",
         text = {
           "{C:purple}+#1#{} Score",
-		  "Gain {C:purple}+#2#{} Score upon playing the winning hand",
+          "Gain {C:purple}+#2#{} Score upon playing the winning hand",
         },
       },
-	    abn_stk_zen = {
+      abn_stk_zen = {
         name = "Zen",
         text = {
           "{C:mult}+#1#{} Mult",
-		  "Gain {C:mult}+#2#{} Mult for every card {C:attention}held in hand{}",
+          "Gain {C:mult}+#2#{} Mult for every card {C:attention}held in hand{}",
         },
       },
-	    abn_stk_plank = {
+      abn_stk_plank = {
         name = "Plank",
         text = {
           "{C:gold}+#1#{} Ascension Power",
@@ -541,9 +546,9 @@ return {
       abn_stk_darkner = "Darkner",
       abn_stk_lightner = "Lightner",
       abn_stk_first_aid = "First Aid",
-	    abn_stk_flux = "Flux",
-	    abn_stk_zen = "Zen",
-	    abn_stk_plank = "Plank",
+      abn_stk_flux = "Flux",
+      abn_stk_zen = "Zen",
+      abn_stk_plank = "Plank",
     }
   }
 }

@@ -290,7 +290,7 @@ end
 ABN.most_played_hand = function(just_played)
   local _handname, _played, _order = 'High Card', -1, 100
   for k, v in pairs(G.GAME.hands) do
-	local vplayed = v.played - (k == just_played and 1 or 0)
+    local vplayed = v.played - (k == just_played and 1 or 0)
     if vplayed > _played or (vplayed == _played and _order > v.order) then
       _played = vplayed
       _handname = k
@@ -875,6 +875,13 @@ ABN.is_modded_rank = function(card)
   end
 end
 
+ABN.is_modded_suit = function(card)
+  if SMODS.has_no_suit(card) then return false end
+  if SMODS.Suits[card.base.suit] and SMODS.Ranks[card.base.suit].mod and SMODS.Suits[card.base.suit].mod.id then
+    return true
+  end
+end
+
 ABN.is_vanilla_enh = function(enh_key)
   local vanilla = false
   local data = enh_key and ABN.get_enh_sticker(enh_key)
@@ -888,10 +895,10 @@ ABN.is_vanilla_enh = function(enh_key)
   end
 end
 
-ABN.get_unique_played_poker_hands = function ()
+ABN.get_unique_played_poker_hands = function()
   local played = 0
-  for i,v in pairs(G.GAME.hands) do
-    if v.played >0 then played=played+1 end
+  for i, v in pairs(G.GAME.hands) do
+    if v.played > 0 then played = played + 1 end
   end
   return played
 end

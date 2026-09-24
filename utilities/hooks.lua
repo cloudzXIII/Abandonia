@@ -233,9 +233,9 @@ function SMODS.card_select_area(card, pack)
   local sa, cau = cardselarearef(card, pack)
   if card and card.ability and card.ability.set and not sa then
     if (card.ability.set == 'Planet' or
-          card.ability.set == 'Tarot' or
-          card.ability.set == 'Spectral') and
-        next(SMODS.find_card('j_abn_sticky_fingers')) then
+      card.ability.set == 'Tarot' or
+      card.ability.set == 'Spectral') and
+    next(SMODS.find_card('j_abn_sticky_fingers')) then
       sa = "consumeables"; cau = true
     end
   end
@@ -246,15 +246,15 @@ end
 -- both between reloads, and when removing one source while another still exists
 local original_game_update = Game.update
 function Game:update(dt)
-    original_game_update(self, dt)
+  original_game_update(self, dt)
 
-    if G.STAGE ~= G.STAGES.RUN then return end
-	
-	if G.jokers and G.jokers.cards and (next(SMODS.find_card('j_abn_the_joker_dance')) or (not G.GAME.blind.disabled and G.GAME.blind.config.blind.key == "bl_abn_new_golden_nut")) then
-		for _, j in ipairs(G.jokers.cards) do
-			j.states.drag.can = false
-		end
-	end
+  if G.STAGE ~= G.STAGES.RUN then return end
+
+  if G.jokers and G.jokers.cards and (next(SMODS.find_card('j_abn_the_joker_dance')) or (not G.GAME.blind.disabled and G.GAME.blind.config.blind.key == "bl_abn_new_golden_nut")) then
+    for _, j in ipairs(G.jokers.cards) do
+      j.states.drag.can = false
+    end
+  end
 end
 
 --Custom context for dragging and releasing playing cards
@@ -262,198 +262,199 @@ local cardarea_order_cache = nil
 
 local old_click_card = Controller.L_cursor_press
 function Controller:L_cursor_press(x, y)
-	old_click_card(self, x, y)
-	if G.hand and G.hand.cards then
-		cardarea_order_cache = {}
-		for i, card in ipairs(G.hand.cards) do
-			cardarea_order_cache[i] = card
-		end
-	end
+  old_click_card(self, x, y)
+  if G.hand and G.hand.cards then
+    cardarea_order_cache = {}
+    for i, card in ipairs(G.hand.cards) do
+      cardarea_order_cache[i] = card
+    end
+  end
 end
 
 local old_release_card = Controller.L_cursor_release
 function Controller:L_cursor_release(x, y)
-	old_release_card(self, x, y)
-	if G.hand and G.hand.cards and cardarea_order_cache then
-		for i, card in ipairs(G.hand.cards) do
-			if cardarea_order_cache[i] ~= card then
-				SMODS.calculate_context({
-					abn_playing_cards_rearranged = true,
-					old_order = cardarea_order_cache,
-					new_order = G.hand.cards
-				})
-				break
-			end
-		end
-	end
+  old_release_card(self, x, y)
+  if G.hand and G.hand.cards and cardarea_order_cache then
+    for i, card in ipairs(G.hand.cards) do
+      if cardarea_order_cache[i] ~= card then
+        SMODS.calculate_context({
+          abn_playing_cards_rearranged = true,
+          old_order = cardarea_order_cache,
+          new_order = G.hand.cards
+        })
+        break
+      end
+    end
+  end
 end
 
 --Conditional boss replacements for Newestia Mode, Jimbo Stakes, or both at once.
 local smods_get_old_blind = SMODS.get_new_blind
 function SMODS.get_new_blind(blind_type)
-	if blind_type == "boss" and ABN.is_hazard_ante() then
-		return ABN.new_hazard_boss()
-	else
-		return smods_get_old_blind(blind_type)
-	end
+  if blind_type == "boss" and ABN.is_hazard_ante() then
+    return ABN.new_hazard_boss()
+  else
+    return smods_get_old_blind(blind_type)
+  end
 end
 
 local old_reset_blind_choices = SMODS.reset_blind_choices
 function SMODS.reset_blind_choices(choices)
-	old_reset_blind_choices(choices)
-	G.GAME.abn_newestia_original_blinds = G.GAME.abn_newestia_original_blinds or {}
-	G.GAME.abn_newestia_current_blinds = G.GAME.abn_newestia_current_blinds or {}
-	for _, k in ipairs(G.GAME.round_resets.blind_order) do
-		if k == "Small" or k == "Big" then
-			G.GAME.abn_newestia_original_blinds[k] = choices[k]
-			G.GAME.abn_newestia_current_blinds[k] = "bl_abn_new_"..k:lower()
-		elseif k == "Boss" then
-			G.GAME.abn_newestia_original_blinds[k] = choices[k]
-			G.GAME.abn_newestia_current_blinds[k] = ABN.new_newestia_boss()
-		end
-	end
-	if G.GAME.abn_newestia then
-		for _, k in ipairs(G.GAME.round_resets.blind_order) do
-			choices[k] = G.GAME.abn_newestia_current_blinds[k] or choices[k]
-		end
-	end
+  old_reset_blind_choices(choices)
+  G.GAME.abn_newestia_original_blinds = G.GAME.abn_newestia_original_blinds or {}
+  G.GAME.abn_newestia_current_blinds = G.GAME.abn_newestia_current_blinds or {}
+  for _, k in ipairs(G.GAME.round_resets.blind_order) do
+    if k == "Small" or k == "Big" then
+      G.GAME.abn_newestia_original_blinds[k] = choices[k]
+      G.GAME.abn_newestia_current_blinds[k] = "bl_abn_new_" .. k:lower()
+    elseif k == "Boss" then
+      G.GAME.abn_newestia_original_blinds[k] = choices[k]
+      G.GAME.abn_newestia_current_blinds[k] = ABN.new_newestia_boss()
+    end
+  end
+  if G.GAME.abn_newestia then
+    for _, k in ipairs(G.GAME.round_resets.blind_order) do
+      choices[k] = G.GAME.abn_newestia_current_blinds[k] or choices[k]
+    end
+  end
 end
 
 local get_old_boss = get_new_boss
 function get_new_boss()
-	local boss = nil
-	if G.GAME.abn_newestia then
-		boss = ABN.new_newestia_boss()
-		G.GAME.abn_newestia_current_blinds.Boss = boss
-	else
-		if ABN.is_hazard_ante() then
-			boss = ABN.new_hazard_boss()
-		else
-			boss = get_old_boss()
-		end
-		G.GAME.abn_newestia_original_blinds.Boss = boss
-	end
-	return boss
+  local boss = nil
+  if G.GAME.abn_newestia then
+    boss = ABN.new_newestia_boss()
+    G.GAME.abn_newestia_current_blinds.Boss = boss
+  else
+    if ABN.is_hazard_ante() then
+      boss = ABN.new_hazard_boss()
+    else
+      boss = get_old_boss()
+    end
+    G.GAME.abn_newestia_original_blinds.Boss = boss
+  end
+  return boss
 end
 
 --Prevent specific kinds of card modifications from scoring based on Newestia Hazard Blind
 --Also see lovely/newestia_hazard_blinds.toml for some vanilla card modifiers that ignore these functions
 local old_calculate_enhancement = Card.calculate_enhancement
 function Card:calculate_enhancement(context)
-	if G.GAME.blind.disabled or not G.GAME.blind.config.blind.abn_disable_enhancements then
-		return old_calculate_enhancement(self, context)
-	end
+  if G.GAME.blind.disabled or not G.GAME.blind.config.blind.abn_disable_enhancements then
+    return old_calculate_enhancement(self, context)
+  end
 end
 
 local old_calculate_edition = Card.calculate_edition
 function Card:calculate_edition(context)
-	if G.GAME.blind.disabled or not G.GAME.blind.config.blind.abn_disable_editions then
-		return old_calculate_edition(self, context)
-	end
+  if G.GAME.blind.disabled or not G.GAME.blind.config.blind.abn_disable_editions then
+    return old_calculate_edition(self, context)
+  end
 end
 
 local old_calculate_seal = Card.calculate_seal
 function Card:calculate_seal(context)
-	if G.GAME.blind.disabled or not G.GAME.blind.config.blind.abn_disable_seals then
-		return old_calculate_seal(self, context)
-	end
+  if G.GAME.blind.disabled or not G.GAME.blind.config.blind.abn_disable_seals then
+    return old_calculate_seal(self, context)
+  end
 end
 
 local old_calculate_sticker = Card.calculate_sticker
 function Card:calculate_sticker(context, sticker)
-	if G.GAME.blind.disabled or ((not G.GAME.blind.config.blind.abn_disable_stamps or not ABN_is_stamp(sticker)) and (not G.GAME.blind.config.blind.abn_disable_enhancements or not ABN.EnhStickers[sticker])) then
-		return old_calculate_sticker(self, context, sticker)
-	end
+  if G.GAME.blind.disabled or ((not G.GAME.blind.config.blind.abn_disable_stamps or not ABN_is_stamp(sticker)) and (not G.GAME.blind.config.blind.abn_disable_enhancements or not ABN.EnhStickers[sticker])) then
+    return old_calculate_sticker(self, context, sticker)
+  end
 end
 
 --Modify card bonuses depending on Newestia Boss
 local old_card_chips = Card.get_chip_bonus
 function Card:get_chip_bonus()
-	local chips = old_card_chips(self)
-	if not G.GAME.blind.disabled and G.GAME.blind.config.blind.abn_disable_enhancements then
-		chips = chips - self.ability.bonus
-	end
-	local only_suit = G.GAME.blind.config.blind.abn_newestia_only_suit
-	if only_suit and not G.GAME.blind.disabled then
-		if self:is_suit(only_suit) then
-			chips = chips * 2
-		else 
-			chips = 1
-		end
-	end
-	return chips
+  local chips = old_card_chips(self)
+  if not G.GAME.blind.disabled and G.GAME.blind.config.blind.abn_disable_enhancements then
+    chips = chips - self.ability.bonus
+  end
+  local only_suit = G.GAME.blind.config.blind.abn_newestia_only_suit
+  if only_suit and not G.GAME.blind.disabled then
+    if self:is_suit(only_suit) then
+      chips = chips * 2
+    else
+      chips = 1
+    end
+  end
+  return chips
 end
 
 local old_card_mult = Card.get_chip_mult
 function Card:get_chip_mult()
-	local mult = old_card_mult(self)
-	if not G.GAME.blind.disabled and G.GAME.blind.config.blind.abn_disable_enhancements and self.ability.effect ~= "Lucky Card" then
-		mult = mult - self.ability.mult
-	end
-	return mult
+  local mult = old_card_mult(self)
+  if not G.GAME.blind.disabled and G.GAME.blind.config.blind.abn_disable_enhancements and self.ability.effect ~= "Lucky Card" then
+    mult = mult - self.ability.mult
+  end
+  return mult
 end
 
 local other_bonuses = {
-	chip_h_mult = "h_mult",
-	chip_h_bonus = "h_chips",
-	h_dollars = "h_dollars"
+  chip_h_mult = "h_mult",
+  chip_h_bonus = "h_chips",
+  h_dollars = "h_dollars"
 }
 
 local other_bonuses_x = {
-	chip_x_mult = "x_mult",
-	chip_h_x_mult = "h_x_mult",
-	chip_x_bonus = "x_chips",
-	chip_h_x_bonus = "h_x_chips"
+  chip_x_mult = "x_mult",
+  chip_h_x_mult = "h_x_mult",
+  chip_x_bonus = "x_chips",
+  chip_h_x_bonus = "h_x_chips"
 }
 
 for f, v in pairs(other_bonuses) do
-	local ref = Card["get_"..f]
-	Card["get_"..f] = function(self)
-		local r = ref(self)
-		if not G.GAME.blind.disabled and G.GAME.blind.config.blind.abn_disable_enhancements then
-			r = r - self.ability[v]
-		end
-		return r
-	end
+  local ref = Card["get_" .. f]
+  Card["get_" .. f] = function(self)
+    local r = ref(self)
+    if G.GAME.blind and not G.GAME.blind.disabled and G.GAME.blind.config.blind.abn_disable_enhancements then
+      r = r - self.ability[v]
+    end
+    return r
+  end
 end
 
 for f, v in pairs(other_bonuses_x) do
-	local ref = Card["get_"..f]
-	Card["get_"..f] = function(self)
-		local r = ref(self)
-		if not G.GAME.blind.disabled and G.GAME.blind.config.blind.abn_disable_enhancements then
-			r = SMODS.multiplicative_stacking(r, -self.ability[v])
-		end
-		return r
-	end
+  local ref = Card["get_" .. f]
+  Card["get_" .. f] = function(self)
+    local r = ref(self)
+    if G.GAME.blind and not G.GAME.blind.disabled and G.GAME.blind.config.blind.abn_disable_enhancements then
+      r = SMODS.multiplicative_stacking(r, -self.ability[v])
+    end
+    return r
+  end
 end
 
 local old_generate_ui = generate_card_ui
 function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
-	local only_suit = G.GAME and G.GAME.blind and G.GAME.blind.config and G.GAME.blind.config.blind and G.GAME.blind.config.blind.abn_newestia_only_suit
-	if specific_vars and specific_vars.nominal_chips and only_suit and not G.GAME.blind.disabled then
-		local new_vars = {}
-		for k, var in pairs(specific_vars) do
-			if k == "nominal_chips" then
-				if card and card:is_suit(only_suit) then
-					new_vars[k] = var * 2
-				else
-					new_vars[k] = 1
-				end
-			elseif k == "bonus_chips" then
-				if card and card:is_suit(only_suit) then
-					new_vars[k] = var * 2
-				elseif _c.name == 'Stone Card' or _c.replace_base_card then
-					new_vars[k] = 1
-				else
-					new_vars[k] = 0
-				end
-			else
-				new_vars[k] = var
-			end
-		end
-		specific_vars = new_vars
-	end
+  local only_suit = G.GAME and G.GAME.blind and G.GAME.blind.config and G.GAME.blind.config.blind and
+      G.GAME.blind.config.blind.abn_newestia_only_suit
+  if specific_vars and specific_vars.nominal_chips and only_suit and not G.GAME.blind.disabled then
+    local new_vars = {}
+    for k, var in pairs(specific_vars) do
+      if k == "nominal_chips" then
+        if card and card:is_suit(only_suit) then
+          new_vars[k] = var * 2
+        else
+          new_vars[k] = 1
+        end
+      elseif k == "bonus_chips" then
+        if card and card:is_suit(only_suit) then
+          new_vars[k] = var * 2
+        elseif _c.name == 'Stone Card' or _c.replace_base_card then
+          new_vars[k] = 1
+        else
+          new_vars[k] = 0
+        end
+      else
+        new_vars[k] = var
+      end
+    end
+    specific_vars = new_vars
+  end
 
-	return old_generate_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
+  return old_generate_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
 end
