@@ -57,7 +57,10 @@ SMODS.Joker {
         ref_value = "chips",
         scalar_value = "chips",
         operation = '+',
-        scaling_message = localize("k_abn_doubled_ex")
+        scaling_message = {
+          message = localize("k_abn_doubled_ex"),
+          colour = G.C.GREEN
+        }
       })
     end
     if context.before and context.scoring_name ~= "High Card" and not context.blueprint then
@@ -66,7 +69,10 @@ SMODS.Joker {
         ref_value = "chips",
         scalar_value = "chips",
         operation = '+',
-        scaling_message = localize("k_abn_doubled_ex")
+        scaling_message = {
+          message = localize("k_abn_doubled_ex"),
+          colour = G.C.CHIPS
+        }
       })
     end
     if context.joker_main then
