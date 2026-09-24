@@ -1,67 +1,83 @@
-SMODS.Joker{
-    key = "equationerror",
-    atlas = "ABNJokerSheet15",
-    pos = { x = 2, y = 5 },
+-- Equation Error (coded by cloudzXIII)
+SMODS.Joker {
+  key = 'equationerror',
 
-    rarity = 2,
-    cost = 4.5,
+  loc_vars = function(self, info_queue, card)
+    local cae = card.ability.extra
+    local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds)
+    return {
+      vars = {
+        cae.chips,
+        cae.mult,
+        numerator,
+        denominator,
+        cae.mult_gain,
+        cae.chips_gain
+      }
+    }
+  end,
 
-    config = {
-        extra = {
-            chips = 0,
-            mult = 0,
-            last_joker_count = nil
-        }
-    },
+  rarity = 2,
+  atlas = "ABNJokerSheet15",
+  pos = { x = 2, y = 5 },
+  cost = 4.5,
+  discovered = false,
+  blueprint_compat = true,
 
-    loc_vars = function(self, info_queue, card)
-        return {
-            vars = {
-                card.ability.extra.chips,
-                card.ability.extra.mult
-            }
-        }
-    end,
+  config = { extra = { odds = 4, chips = 1, mult = 1, chips_gain = 1, mult_gain = 1 } },
 
-    calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play then
-            if math.random(4) == 1 then
-                card.ability.extra.chips = card.ability.extra.chips + 1
-                card.ability.extra.mult = card.ability.extra.mult + 1
-            end
-        end
-
-        if context.joker_main then
-            local current_count = G.jokers and G.jokers.cards and #G.jokers.cards or 0
-
-            if card.ability.extra.last_joker_count == nil then
-                card.ability.extra.last_joker_count = current_count
-            elseif current_count < card.ability.extra.last_joker_count
-                and not G.CONTROLLER.locks.selling_card then
-                card.ability.extra.chips = card.ability.extra.chips * 2
-                card.ability.extra.mult = card.ability.extra.mult * 2
-            end
-
-            card.ability.extra.last_joker_count = current_count
-
-            local result = {
-                chips = card.ability.extra.chips,
-                mult = card.ability.extra.mult
-            }
-
- if context.scoring_name
-    and context.scoring_name ~= 'High Card'
-    and math.random(4) == 1 then
-
-    local hand_chips = (
-        G.GAME.current_round.current_hand
-        and G.GAME.current_round.current_hand.chips
-    ) or 0
-
-    result.chips = result.chips + hand_chips
-end
-
-            return result
-        end
+  calculate = function(self, card, context)
+    if context.individual and context.cardarea == G.play then
+      if SMODS.pseudorandom_probability(card, 'abn_equationerror', 1, card.ability.extra.odds) then
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "mult",
+          scalar_value = "mult_gain",
+          operation = '+',
+          no_message = true
+        })
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "chips",
+          scalar_value = "chips_gain",
+          operation = '+',
+        })
+      end
     end
-} 
+    if context.joker_type_destroyed and not context.blueprint then
+      SMODS.scale_card(card, {
+        ref_table = card.ability.extra,
+        ref_value = "mult",
+        scalar_value = "mult",
+        operation = '+',
+        no_message = true,
+      })
+      SMODS.scale_card(card, {
+        ref_table = card.ability.extra,
+        ref_value = "chips",
+        scalar_value = "chips",
+        operation = '+',
+        scaling_message = localize("k_abn_doubled_ex")
+      })
+    end
+    if context.before and context.scoring_name ~= "High Card" and not context.blueprint then
+      SMODS.scale_card(card, {
+        ref_table = card.ability.extra,
+        ref_value = "chips",
+        scalar_value = "chips",
+        operation = '+',
+        scaling_message = localize("k_abn_doubled_ex")
+      })
+    end
+    if context.joker_main then
+      return {
+        chips = card.ability.extra.chips,
+        mult = card.ability.extra.mult
+      }
+    end
+  end,
+
+  abn_artist_credits = {
+    artist = "???",
+  },
+}

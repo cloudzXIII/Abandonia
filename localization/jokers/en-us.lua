@@ -2872,14 +2872,20 @@ return {
       j_abn_equationerror = {
         name = "Equation Error",
         text = {
-          "Each scored card has a {C:attention}1 in 4{} chance to",
-          "give this Joker {C:chips}+1{} Chip and {C:mult}+1{} Mult",
-          "{C:blue}Doubles{} its Chips and Mult whenever",
-          "a Joker is {C:red}destroyed{} {C:inactive}(not sold){}",
-          "When a hand {C:inactive}(not High Card){} is played,",
-          "{C:attention}1 in 4{} chance to also double its Chips",
-          "{C:inactive}(Currently{} {C:chips}+#1#{} {C:inactive}Chips,{}",
-          "{C:mult}+#2#{} {C:inactive}Mult)",
+          {
+            "Each scored card has a {C:green}#3# in #4#{} chance to",
+            "add {C:chips}+#5#{} Chip and {C:mult}+#6#{} Mult to this Joker",
+            "{C:inactive}(Currently {C:chips}+#1# {C:inactive}Chips, {C:mult}+#2# {C:inactive}Mult)",
+          },
+          {
+            "When a hand is played, {C:green}#3# in #4#{}",
+            "chance to {C:attention}double{} this Joker's {C:chips}Chips",
+            "{C:attention,s:0.8}High Card{C:inactive,s:0.8} Excluded"
+          },
+          {
+            "Double this Joker's {C:chips}Chips{} and {C:mult}Mult{}",
+            "when a {C:attention}Joker{} is {C:red}destroyed{}",
+          },
         },
       },
 
