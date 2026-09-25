@@ -3348,17 +3348,17 @@ return {
             "Jokers {C:attention}do not{} appear"
           },
           {
-            "When a {C:chips}Small Blind{} is selected create",
-            "a random {C:dark_edition}Modded{} consumable",
-            "When a {C:attention}Big Blind{} is selected create",
-            "a random {C:dark_edition}Modded{} Joker"
+            "When {C:chips}Small Blind{} is selected, create",
+            "a random {C:dark_edition}Modded{} consumable,",
+            "when {C:attention}Big Blind{} is selected,",
+            "create a random {C:dark_edition}Modded{} Joker"
           },
           {
-            "Gain {X:chips,C:white}X#2#{} Chips per {C:attention}unique",
-            "{C:dark_edition}Modded{} Consumable used this Run",
-            "Gain {X:mult,C:white}X#4#{} Mult per {C:attention}unique",
-            "{C:dark_edition}Modded{} Joker obtained this Run",
-            "{C:inactive}(Currently{} {X:chips,C:white}X#1#{} {C:inactive}Chips{} {X:mult,C:white}X#3#{} {C:inactive}Mult)",
+            "This Joker gains {X:chips,C:white}X#2#{} Chips per",
+            "{C:attention}unique{} {C:dark_edition}Modded{} consumable used this",
+            "run, gains {X:mult,C:white}X#4#{} Mult per {C:attention}unique{}",
+            "{C:dark_edition}Modded{} Joker obtained this run",
+            "{C:inactive}(Currently {X:chips,C:white}X#1#{} {C:inactive}Chips, {X:mult,C:white}X#3#{} {C:inactive}Mult)",
           }
         }
       },
@@ -4673,7 +4673,7 @@ return {
       },
 
       j_abn_jennia = {
-        name = "Jennia",
+        name = "Jenna",
         text = {
           {
             "Scored {C:abn_rose}Roses{} give {X:chips,C:white}X#1#{} Chips,",
@@ -7185,7 +7185,7 @@ return {
         name = "Pincushion Joker",
         text = {
           {
-            "Retrigger the Joker to the {C:attention}left{}",
+            "Retrigger {C:attention}Joker{} to the left",
           },
           {
             "This Joker gains {X:mult,C:white}X#2#{} Mult",
@@ -9433,10 +9433,13 @@ return {
         name = "Usury Joker",
         text = {
           {
-            "{C:abn_tie}Ties{}, {C:abn_bow}Bows{} and {C:clubs}Clubs",
-            "become {C:attention}Lucky{} when {C:attention}scored",
-            "Lose {C:gold}-$#1#{} when a",
-            "{C:attention}Lucky Card{} triggers"
+            "Enhance played {C:abn_tie}Ties{}, {C:abn_bow}Bows{}",
+            "and {C:clubs}Clubs into {C:attention}Lucky{}",
+            "cards when {C:attention}scored",
+          },
+          {
+            "{C:red}-$#1#{} when a",
+            "{C:attention}Lucky{} card scores"
           },
           {
             "Go up to",
