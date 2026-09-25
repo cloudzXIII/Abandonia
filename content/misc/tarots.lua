@@ -422,3 +422,17 @@ SMODS.Consumable {
     artist = "Firch",
   },
 }
+
+SMODS.Consumable {
+  key = 'peace',
+  set = 'Tarot',
+  pos = { x = 3, y = 3 },
+  atlas = "AbandoniaTarots",
+  config = { max_highlighted = 3, suit_conv = 'abn_Vortex' },
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] } } }
+  end,
+  abn_artist_credits = {
+    artist = "Dogg-Fly",
+  },
+}

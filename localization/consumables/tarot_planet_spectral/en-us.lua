@@ -148,6 +148,14 @@ return {
           "{s:0.8}Based on card's {C:attention,s:0.8}suit{}",
         },
       },
+      c_abn_peace = {
+        name = "Peace",
+        text = {
+          "Converts up to",
+          "{C:attention}#1#{} selected cards",
+          "to {V:1}#2#{}",
+        },
+      },
     },
 
     Planet = {
