@@ -551,7 +551,7 @@ ABN.create_boosters_for_set {
   special_colour = G.C.BLACK,
   artist = "Scruffy",
   draw_hand = true,
-  
+
   normal_weight = 0.2,
   jumbo_weight = 0.2,
   mega_weight = 0.06,
@@ -560,16 +560,26 @@ ABN.create_boosters_for_set {
     normal = {
       { x = 0, y = 0 },
       { x = 1, y = 0 },
-	  { x = 2, y = 0 },
-	  { x = 3, y = 0 },
+      { x = 2, y = 0 },
+      { x = 3, y = 0 },
     },
     jumbo = {
       { x = 0, y = 1 },
-	  { x = 1, y = 1 },
+      { x = 1, y = 1 },
     },
     mega = {
       { x = 2, y = 1 },
-	  { x = 3, y = 1 },
+      { x = 3, y = 1 },
     }
   },
+}
+
+
+ABN.create_boosters_for_set {
+  atlas = "AbandoniaArtistryPack",
+  set = "artistry_cards",
+  key_prefix = "artistry",
+  special_colour = G.C.BLUE,
+  draw_hand = true,
+  artist = "Okronix",
 }

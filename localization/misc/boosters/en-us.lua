@@ -458,8 +458,8 @@ return {
           'be used immediately'
         }
       },
-	  
-	  p_abn_atomic_normal = {
+
+      p_abn_atomic_normal = {
         name = 'Atomic Pack',
         text = {
           'Choose {C:attention}#1#{} of up to',
@@ -483,6 +483,33 @@ return {
           'be used immediately'
         }
       },
+
+      p_abn_artistry_normal = {
+        name = "Artistry Pack",
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:artistry_cards}Artistry{} cards to',
+          'be used immediately'
+        }
+      },
+
+      p_abn_artistry_jumbo = {
+        name = "Jumbo Artistry Pack",
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:artistry_cards}Artistry{} cards to',
+          'be used immediately'
+        }
+      },
+
+      p_abn_artistry_mega = {
+        name = "Mega Artistry Pack",
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:artistry_cards}Artistry{} cards to',
+          'be used immediately'
+        }
+      }
     }
   },
   misc = {
@@ -501,7 +528,8 @@ return {
       k_abn_program_pack = "Program Pack",
       k_abn_calamity_pack = "Calamity Pack",
       k_abn_ram_pack = "RAM Pack",
-	  k_abn_atomic_pack = "Atomic Pack",
+      k_abn_atomic_pack = "Atomic Pack",
+      k_abn_artistry_pack = "Artistry Pack",
 
       -- kiddy pack thingys
       k_standard_kiddy = "Kiddy Standard Pack",
