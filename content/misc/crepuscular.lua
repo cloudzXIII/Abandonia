@@ -7,6 +7,12 @@ SMODS.ConsumableType {
   shop_rate = 4,
 }
 
+SMODS.UndiscoveredSprite {
+  key = 'crepuscular',
+  atlas = 'abn_AbandoniaUndiscovered',
+  pos = { x = 3, y = 3 },
+}
+
 SMODS.Consumable {
   key = "sailboat",
   set = 'crepuscular',

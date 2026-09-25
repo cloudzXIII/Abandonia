@@ -12,6 +12,12 @@ SMODS.ConsumableType {
   text_colour = HEX("4f6367"),
 }
 
+SMODS.UndiscoveredSprite {
+  key = 'atomic',
+  atlas = 'abn_AbandoniaUndiscovered',
+  pos = { x = 1, y = 3 },
+}
+
 SMODS.Consumable {
   key = "1h",
   set = "atomic",
@@ -20,7 +26,7 @@ SMODS.Consumable {
   atlas = "AbandoniaAtomic",
   cost = 4,
   discovered = false,
-  
+
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
@@ -43,7 +49,7 @@ SMODS.Consumable {
         for _, v in ipairs(G.playing_cards) do
           table.insert(all_cards, v)
         end
-        
+
         if #all_cards == 0 then return true end
 
         for i = #all_cards, 2, -1 do
@@ -59,11 +65,11 @@ SMODS.Consumable {
         for _, target in ipairs(targets) do
           target:juice_up(0.8, 0.5)
           target.base.nominal = 1
-		  if target.ability.perma_x_mult < card.ability.extra.xmult - 1 then
-			target.ability.perma_x_mult = target.ability.perma_x_mult + card.ability.extra.xmult - 1
-		  else
-			target.ability.perma_x_mult = target.ability.perma_x_mult + card.ability.extra.xmult
-		  end
+          if target.ability.perma_x_mult < card.ability.extra.xmult - 1 then
+            target.ability.perma_x_mult = target.ability.perma_x_mult + card.ability.extra.xmult - 1
+          else
+            target.ability.perma_x_mult = target.ability.perma_x_mult + card.ability.extra.xmult
+          end
         end
 
         return true
@@ -85,7 +91,7 @@ SMODS.Consumable {
   hidden = true,
   soul_set = "atomic",
   soul_rate = 0.03,
-  
+
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
@@ -108,7 +114,7 @@ SMODS.Consumable {
         for _, v in ipairs(G.playing_cards) do
           table.insert(all_cards, v)
         end
-        
+
         if #all_cards == 0 then return true end
 
         for i = #all_cards, 2, -1 do
@@ -123,13 +129,13 @@ SMODS.Consumable {
 
         for _, target in ipairs(targets) do
           target:juice_up(0.8, 0.5)
-          
+
           local rank_key = target.base and target.base.value
           local rank_data = (rank_key and G.GAME.abn_rank_upgrades) and G.GAME.abn_rank_upgrades[rank_key]
           local rank_level = rank_data and rank_data.level or 1
-          
+
           target.ability.abn_perma_asc = target.ability.abn_perma_asc or 0
-          
+
           local total_gain = card.ability.extra.asc_add * rank_level
           target.ability.abn_perma_asc = target.ability.abn_perma_asc + total_gain
         end
@@ -150,7 +156,7 @@ SMODS.Consumable {
   atlas = "AbandoniaAtomic",
   cost = 4,
   discovered = false,
-  
+
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
@@ -173,7 +179,7 @@ SMODS.Consumable {
         for _, v in ipairs(G.playing_cards) do
           table.insert(all_cards, v)
         end
-        
+
         if #all_cards == 0 then return true end
 
         for i = #all_cards, 2, -1 do
@@ -207,7 +213,7 @@ SMODS.Consumable {
   atlas = "AbandoniaAtomic",
   cost = 4,
   discovered = false,
-  
+
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
@@ -230,7 +236,7 @@ SMODS.Consumable {
         for _, v in ipairs(G.playing_cards) do
           table.insert(all_cards, v)
         end
-        
+
         if #all_cards == 0 then return true end
 
         for i = #all_cards, 2, -1 do
@@ -262,11 +268,11 @@ SMODS.Consumable {
   key = "be4",
   set = "atomic",
   config = { extra = { cards = 2 } },
-  pos = { x = 4, y = 0 }, 
+  pos = { x = 4, y = 0 },
   atlas = "AbandoniaAtomic",
   cost = 4,
   discovered = false,
-  
+
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
@@ -288,7 +294,7 @@ SMODS.Consumable {
         for _, v in ipairs(G.playing_cards) do
           table.insert(all_cards, v)
         end
-        
+
         if #all_cards == 0 then return true end
 
         for i = #all_cards, 2, -1 do
@@ -331,7 +337,7 @@ SMODS.Consumable {
   atlas = "AbandoniaAtomic",
   cost = 4,
   discovered = false,
-  
+
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
@@ -353,7 +359,7 @@ SMODS.Consumable {
         for _, v in ipairs(G.playing_cards) do
           table.insert(all_cards, v)
         end
-        
+
         if #all_cards == 0 then return true end
 
         for i = #all_cards, 2, -1 do
@@ -387,7 +393,7 @@ SMODS.Consumable {
   atlas = "AbandoniaAtomic",
   cost = 4,
   discovered = false,
-  
+
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
@@ -409,7 +415,7 @@ SMODS.Consumable {
         for _, v in ipairs(G.playing_cards) do
           table.insert(all_cards, v)
         end
-        
+
         if #all_cards == 0 then return true end
 
         for i = #all_cards, 2, -1 do
@@ -445,7 +451,7 @@ SMODS.Consumable {
   atlas = "AbandoniaAtomic",
   cost = 4,
   discovered = false,
-  
+
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
@@ -456,7 +462,7 @@ SMODS.Consumable {
 
   can_use = function(self, card)
     if not G.playing_cards or #G.playing_cards < 2 then return false end
-    
+
     local has_donor = false
     for _, v in ipairs(G.playing_cards) do
       if v.edition or v.seal then
@@ -464,7 +470,7 @@ SMODS.Consumable {
         break
       end
     end
-    
+
     return has_donor
   end,
 
@@ -475,14 +481,14 @@ SMODS.Consumable {
       func = function()
         local all_cards = {}
         local donor_pool = {}
-        
+
         for _, v in ipairs(G.playing_cards) do
           table.insert(all_cards, v)
           if v.edition or v.seal then
             table.insert(donor_pool, v)
           end
         end
-        
+
         if #all_cards < 2 or #donor_pool == 0 then return true end
 
         for i = #all_cards, 2, -1 do
@@ -504,11 +510,11 @@ SMODS.Consumable {
           local donor = donor_pool[((idx - 1) % #donor_pool) + 1]
           if donor and target ~= donor then
             target:juice_up(0.8, 0.5)
-            
+
             if donor.edition then
               target:set_edition(donor.edition, true, true)
             end
-            
+
             if donor.seal then
               target:set_seal(donor.seal, true)
             end
@@ -531,7 +537,7 @@ SMODS.Consumable {
   atlas = "AbandoniaAtomic",
   cost = 4,
   discovered = false,
-  
+
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
@@ -555,7 +561,7 @@ SMODS.Consumable {
         for _, v in ipairs(G.playing_cards) do
           table.insert(all_cards, v)
         end
-        
+
         if #all_cards == 0 then return true end
 
         for i = #all_cards, 2, -1 do
@@ -590,7 +596,7 @@ SMODS.Consumable {
   atlas = "AbandoniaAtomic",
   cost = 4,
   discovered = false,
-  
+
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
@@ -612,7 +618,7 @@ SMODS.Consumable {
         for _, v in ipairs(G.playing_cards) do
           table.insert(all_cards, v)
         end
-        
+
         if #all_cards < 2 then return true end
 
         for i = #all_cards, 2, -1 do

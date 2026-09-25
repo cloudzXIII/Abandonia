@@ -177,7 +177,7 @@ return {
     },
     Other = {
       --#region Misc Tooltips
-	  abn_perma_asc = {
+      abn_perma_asc = {
         name = "Ascension",
         text = {
           "{C:gold}+#1#{} Asc. Power",
@@ -568,6 +568,24 @@ return {
           "learn what it does"
         }
       },
+      undiscovered_atomic = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
+      },
+      undiscovered_algebraic = {
+        name = "Not Discovered",
+        text = {
+          "Purchase or use",
+          "this card in an",
+          "unseeded run to",
+          "learn what it does"
+        }
+      },
       --#endregion
 
       --#region Stake Stickers
@@ -769,21 +787,21 @@ return {
     quips = {
       abn_gambit_destroy = {
         "Every man has a price to",
-		"charge, and a price to pay."
+        "charge, and a price to pay."
       },
       abn_gambit_discard = {
         "I'm a thief when all else",
-		"fails... and all else failed."
+        "fails... and all else failed."
       },
       abn_gambit_facedown = {
         "Playing for keeps is",
-		"still playing, mon ami,",
-		"so take a card... any card!"
+        "still playing, mon ami,",
+        "so take a card... any card!"
       },
       abn_gambit_fivecards = {
         "Gambit ain't no pirate,",
-		"chère. He only take what",
-		"deserve to be taken!"
+        "chère. He only take what",
+        "deserve to be taken!"
       },
       abn_gambit_greeting = {
         "The name's Remy LeBeau,",
@@ -792,7 +810,7 @@ return {
       },
       abn_gambit_moddedhand = {
         "Gonna get flashier than",
-		"Mardi Gras 'round here!"
+        "Mardi Gras 'round here!"
       },
     },
     challenge_names = {},
@@ -899,7 +917,7 @@ return {
       k_abn_plus_glyph = "+1 Glyph",
       k_plus_periodic = "+1 Periodic",
       k_abn_plus_solid_state = "+1 Solid State",
-	  k_abn_plus_atomic = "+1 Atomic",
+      k_abn_plus_atomic = "+1 Atomic",
       k_plus_tag = "+1 Tag!",
 
       -- Smth!
@@ -999,8 +1017,8 @@ return {
 
       b_crepuscular_cards = "Crepuscular Tarot Cards",
       k_crepuscular = "Crepuscular Tarot",
-	  
-	  b_atomic_cards = "Atomic Cards",
+
+      b_atomic_cards = "Atomic Cards",
       k_atomic = "Atomic",
     },
 
@@ -1030,7 +1048,7 @@ return {
       illusion = "Illusion",
       ram = "RAM",
       crepuscular = "Crepuscular Tarot",
-	  atomic = "Atomic",
+      atomic = "Atomic",
     },
 
     ranks = {
@@ -1126,7 +1144,7 @@ return {
       ['abn_Flush Mansion'] = "Flush Mansion",
       ['abn_Emperium Flush'] = "Emperium Flush",
       ['abn_Royal Flush'] = "Royal Flush",
-	  ['abn_Emperium Spectrum'] = "Emperium Spectrum",
+      ['abn_Emperium Spectrum'] = "Emperium Spectrum",
 
       -- Paperback Crossmod
       ['abn_Rapture'] = 'Rapture',
@@ -1215,7 +1233,7 @@ return {
       ['abn_Flush Mansion'] = {
         "4 cards of one rank",
         "2 cards of another rank",
-		"all cards sharing the same suit",
+        "all cards sharing the same suit",
       },
       ['abn_Emperium Flush'] = {
         "14, 13, 12, 11, and Ace",
@@ -1225,7 +1243,7 @@ return {
         "A hand containing a Straight, a Flush,",
         "and only ranks 10 through Ace",
       },
-	  ['abn_Emperium Spectrum'] = {
+      ['abn_Emperium Spectrum'] = {
         "14, 13, 12, 11, Ace and King",
         "all with different suits",
       },

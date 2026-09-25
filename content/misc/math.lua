@@ -12,6 +12,12 @@ SMODS.ConsumableType {
   text_colour = HEX("f1ba5b"),
 }
 
+SMODS.UndiscoveredSprite {
+  key = 'algebraic',
+  atlas = 'abn_AbandoniaUndiscovered',
+  pos = { x = 0, y = 4 },
+}
+
 local function abn_activate_math(self, card)
   set_consumeable_usage(card)
   SMODS.calculate_effect({ message = localize('k_abn_activated_ex'), colour = G.C.GREEN, sound = 'tarot1', }, card)
@@ -33,7 +39,6 @@ SMODS.Consumable {
   calculate = function(self, card, context)
     if context.final_scoring_step then
       if context.scoring_name == "Straight" then
-        
         local valid_ranks = true
         for _, scoring_card in ipairs(context.scoring_hand) do
           if scoring_card:get_id() > 6 then
@@ -48,7 +53,6 @@ SMODS.Consumable {
             xchips = card.ability.extra.xchips
           }
         end
-
       end
     end
   end,
@@ -70,7 +74,6 @@ SMODS.Consumable {
   calculate = function(self, card, context)
     if context.final_scoring_step then
       if context.scoring_name == "Straight" then
-        
         local valid_ranks = true
         for _, scoring_card in ipairs(context.scoring_hand) do
           if scoring_card:get_id() > 10 then
@@ -85,7 +88,6 @@ SMODS.Consumable {
             xmult = card.ability.extra.xmult
           }
         end
-
       end
     end
   end,
@@ -106,20 +108,20 @@ SMODS.Consumable {
   end,
   calculate = function(self, card, context)
     if context.final_scoring_step then
-	  if context.scoring_name == "Flush" then
-          card.ability.extra.mult = G.GAME.hands["Flush"].mult
-		  card.ability.extra.chips = G.GAME.hands["Flush"].chips
-		  return {
-			message = localize('k_upgrade_ex'),
-			card = card,
-		  }
+      if context.scoring_name == "Flush" then
+        card.ability.extra.mult = G.GAME.hands["Flush"].mult
+        card.ability.extra.chips = G.GAME.hands["Flush"].chips
+        return {
+          message = localize('k_upgrade_ex'),
+          card = card,
+        }
       end
-	  
+
       if context.scoring_name == "High Card" and card.ability.extra.mult > 0 then
         abn_activate_math(self, card)
         return {
           mult = card.ability.extra.mult,
-		  chips = card.ability.extra.chips,
+          chips = card.ability.extra.chips,
         }
       end
     end
@@ -163,9 +165,9 @@ SMODS.Consumable {
         if count > 0 then
           abn_activate_math(self, card)
           return {
-			level_up = count,
-			message = localize('k_level_up_ex')
-		  }
+            level_up = count,
+            message = localize('k_level_up_ex')
+          }
         end
       end
     end
