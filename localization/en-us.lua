@@ -1109,7 +1109,7 @@ return {
       abn_Crown = "Crowns",
       abn_Moon = "Moons",
       abn_Star = "Stars",
-      abn_Vortex = "Vortexes",
+      abn_Vortex = "Vortices",
     },
 
     poker_hands = {
