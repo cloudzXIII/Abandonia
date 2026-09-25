@@ -42,14 +42,11 @@ SMODS.Blind({
   atlas = "AbandoniaBlinds",
   pos = { x = 0, y = 10 },
   boss_colour = HEX("9facc4"),
-  recalc_debuff = function(self, card, from_blind)
-    if G.GAME.blind.disabled then
-      return false
+  calculate = function(self, blind, context)
+    if not blind.disabled and context.debuff_card and context.debuff_card.area ~= G.jokers and ABN.is_light(context.debuff_card, true) then
+      return {debuff = true}
     end
-    if ABN.is_light(card) and not card.debuff then -- <- add hre for more debuffs
-      return true
-    end
-  end,
+  end
 })
 
 SMODS.Blind({
@@ -64,7 +61,7 @@ SMODS.Blind({
     if G.GAME.blind.disabled then
       return false
     end
-    if ABN.is_light(card) then
+    if ABN.is_light(card, true) then
       return true
     end
     return false
@@ -434,7 +431,7 @@ SMODS.Blind({
     if G.GAME.blind.disabled then
       return false
     end
-    if ABN.is_dark(card) and not card.debuff then --- <- add hre for more debuffs
+    if ABN.is_dark(card, true) and not card.debuff then --- <- add hre for more debuffs
       return true
     end
   end,
@@ -1618,7 +1615,7 @@ SMODS.Blind({
     if G.GAME.blind.disabled then
       return false
     end
-    if ABN.is_light(card) and not card.debuff then -- <- add hre for more debuffs
+    if ABN.is_light(card, true) and not card.debuff then -- <- add hre for more debuffs
       return true
     end
   end,
@@ -1674,7 +1671,7 @@ SMODS.Blind({
     if G.GAME.blind.disabled then
       return false
     end
-    if ABN.is_light(card) then
+    if ABN.is_light(card, true) then
       return true
     end
     return false
@@ -2149,42 +2146,6 @@ SMODS.Blind({
     if context.after and not self.triggered and not G.GAME.blind.disabled then
       self.triggered = true
       for k, v in pairs(G.jokers.cards) do
-        SMODS.debuff_card(v, true, "hazard_shield")
-      end
-    end
-  end,
-  disable = function(self)
-    self.triggered = false
-    for k, v in pairs(G.jokers.cards) do
-      SMODS.debuff_card(v, false, "hazard_shield")
-    end
-  end,
-  defeat = function(self)
-    self.triggered = false
-    for k, v in pairs(G.jokers.cards) do
-      SMODS.debuff_card(v, false, "hazard_shield")
-    end
-  end
-})
-
-SMODS.Blind({
-  key = "hazard_shield",
-  atlas = "AbandoniaBlinds",
-  pos = { x = 0, y = 19 },
-  boss = { showdown = true, hazard_blind = true },
-  boss_colour = HEX("4bdbcb"),
-  recalc_debuff = function(self, card, from_blind)
-    if G.GAME.blind.disabled then
-      return false
-    end
-    if ABN.is_dark(card) and not card.debuff then --- <- add hre for more debuffs
-      return true
-    end
-  end,
-  calculate = function(self, blind, context)
-    if context.after and not self.triggered and not G.GAME.blind.disabled then
-      self.triggered = true
-      for k, v in pairs(G.jokers.cards) do
         SMODS.debuff_card(v, true, "hazard_tear_debuff")
       end
     end
@@ -2199,6 +2160,30 @@ SMODS.Blind({
     self.triggered = false
     for k, v in pairs(G.jokers.cards) do
       SMODS.debuff_card(v, false, "hazard_tear_debuff")
+    end
+  end
+})
+
+SMODS.Blind({
+  key = "hazard_shield",
+  atlas = "AbandoniaBlinds",
+  pos = { x = 0, y = 19 },
+  boss = { showdown = true, hazard_blind = true },
+  boss_colour = HEX("4bdbcb"),
+  calculate = function(self, blind, context)
+	if blind.disabled then return end
+	if context.debuff_card and ((context.debuff_card.area ~= G.jokers and ABN.is_dark(context.debuff_card, true)) or (context.debuff_card.area == G.jokers and G.GAME.current_round.hands_played > 0)) then
+	  return {debuff = true}
+    elseif context.after and G.GAME.current_round.hands_played == 0 then
+      self.triggered = true
+	  G.E_MANAGER:add_event(Event({
+		func = function()
+		  for k, v in pairs(G.jokers.cards) do
+		    SMODS.recalc_debuff(v)
+		  end
+		  return true
+		end
+	  }))
     end
   end
 })

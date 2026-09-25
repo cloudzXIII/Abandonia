@@ -426,7 +426,7 @@ ABN.NewestiaBlind({
 		return ret
 	end,
 	collection_loc_vars = function(self)
-		return {1}
+		return {vars = {1}}
 	end,
 	calculate = function(self, blind, context)
 		if blind.disabled then return end
@@ -566,11 +566,11 @@ ABN.NewestiaBlind({
 				G.GAME.bl_abn_new_flora_id = card.base.id
 				G.GAME.bl_abn_new_flora_value = card.base.value
 			end
-			for _, card in ipairs(G.playing_cards) do
-				SMODS.recalc_debuff(card)
-			end
 			G.E_MANAGER:add_event(Event({
 				func = function()
+					for _, card in ipairs(G.playing_cards) do
+						SMODS.recalc_debuff(card)
+					end
 					blind:set_text()
 					return true
 				end

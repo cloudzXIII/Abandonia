@@ -231,7 +231,7 @@ ABN.calculate = function(self, context)
   end
 
   -- Perma Bonuses on Jokers
-  if context.other_joker then
+  if context.other_joker and not context.other_joker.debuff then
     local ability = context.other_joker.ability
     local has_chips = ability.abn_perma_bonus and ability.abn_perma_bonus ~= 0
     local has_mult = ability.abn_perma_mult and ability.abn_perma_mult ~= 0

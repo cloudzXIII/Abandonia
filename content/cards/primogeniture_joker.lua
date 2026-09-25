@@ -27,7 +27,7 @@ SMODS.Joker {
     end,
     
     calculate = function(self, card, context)
-        if context.other_joker and context.other_joker.config.center.rarity and context.other_joker.config.center.rarity == 1 and not next(SMODS.find_card('j_joker')) then
+        if context.other_joker and not context.other_joker.debuff and context.other_joker.config.center.rarity == 1 and not next(SMODS.find_card('j_joker')) then
             return {
                 xmult = card.ability.extra.xmult
             }

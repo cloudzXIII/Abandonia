@@ -1009,7 +1009,7 @@ SMODS.Enhancement({
   calculate = function(self, card, context)
     local cae = card.ability.extra
 
-    if context.remove_playing_cards and not context.blueprint and SMODS.pseudorandom_probability(card, "kintsugi_dup_abn", 1, cae.odds_dup) then
+    if context.remove_playing_cards and not context.blueprint and SMODS.pseudorandom_probability(card, "kintsugi_dup_abn", 1, cae.odds_dup) and (context.cardarea == G.play or context.cardarea == G.hand) then
       G.E_MANAGER:add_event(Event({
         func = function()
           local copy = copy_card(card)

@@ -40,17 +40,21 @@ ABN.listStickers = function(card)
   return #sticker_list > 0 and sticker_list or nil
 end
 
-ABN.is_dark = function(card)
+--IMPORTANT:
+--"bypass_debuff = true" means it still count as its suit, or as any suit when wild, while debuffed
+--"flush_calc = true" means it still counts as its base suit when debuffed, but won't count as other suits if wild
+--If both of these are false, or not set, debuffed cards calculate as if they are suitless!
+ABN.is_dark = function(card, bypass_debuff, flush_calc)
   if SMODS.has_no_suit(card) then return false end
-  if (Card.is_suit_shade and card:is_suit_shade("dark")) or card:is_suit("Spades") or card:is_suit("Clubs") or card:is_suit('bunc_Halberds') or card:is_suit('paperback_Crowns') or card:is_suit("abn_Penumbra") then
+  if (Card.is_suit_shade and card:is_suit_shade("dark")) or card:is_suit("Spades", bypass_debuff, flush_calc) or card:is_suit("Clubs", bypass_debuff, flush_calc) or card:is_suit('bunc_Halberds', bypass_debuff, flush_calc) or card:is_suit('paperback_Crowns', bypass_debuff, flush_calc) or card:is_suit("abn_Penumbra", bypass_debuff, flush_calc) then
     return true
   end
   return false
 end
 
-ABN.is_light = function(card)
+ABN.is_light = function(card, bypass_debuff, flush_calc)
   if SMODS.has_no_suit(card) then return false end
-  if (Card.is_suit_shade and card:is_suit_shade("light")) or card:is_suit("Diamonds") or card:is_suit("Hearts") or card:is_suit('bunc_Fleurons') or card:is_suit('paperback_Stars') then
+  if (Card.is_suit_shade and card:is_suit_shade("light")) or card:is_suit("Diamonds", bypass_debuff, flush_calc) or card:is_suit("Hearts", bypass_debuff, flush_calc) or card:is_suit('bunc_Fleurons', bypass_debuff, flush_calc) or card:is_suit('paperback_Stars', bypass_debuff, flush_calc) then
     return true
   end
   return false
@@ -877,7 +881,7 @@ end
 
 ABN.is_modded_suit = function(card)
   if SMODS.has_no_suit(card) then return false end
-  if SMODS.Suits[card.base.suit] and SMODS.Ranks[card.base.suit].mod and SMODS.Suits[card.base.suit].mod.id then
+  if SMODS.Suits[card.base.suit] and SMODS.Suits[card.base.suit].mod and SMODS.Suits[card.base.suit].mod.id then
     return true
   end
 end

@@ -65,6 +65,7 @@ ABN.WeatherReport {
   can_use = function(self, card)
     return G.GAME.blind and G.GAME.blind.in_blind
         and G.jokers and #G.jokers.highlighted == 1
+        and not SMODS.is_eternal(G.jokers.highlighted[1])
         and #G.jokers.cards > 1
         and #G.jokers.cards <= G.jokers.config.card_limit
   end,
