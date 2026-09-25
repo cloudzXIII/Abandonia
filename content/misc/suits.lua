@@ -84,7 +84,7 @@ SMODS.Suit {
 
 local has_no_suit_ref = SMODS.has_no_suit
 function SMODS.has_no_suit(card)
-  if card.base.suit == 'abn_suitless' then
+  if card.base.suit == 'abn_suitless' or card.base.suit == "abn_Vortex" then
     return true
   end
   return has_no_suit_ref(card)
@@ -93,7 +93,7 @@ end
 local perma_ref = SMODS.localize_perma_bonuses
 function SMODS.localize_perma_bonuses(specific_vars, desc_nodes)
   local ret = perma_ref(specific_vars, desc_nodes)
-  if specific_vars and specific_vars.suit == "abn_suitless" then
+  if specific_vars and (specific_vars.suit == "abn_suitless" or specific_vars.suit == "abn_Vortex") then
     localize { type = 'other', key = 'abn_suitless', nodes = desc_nodes, vars = {} }
   end
   return ret
@@ -607,6 +607,34 @@ SMODS.Suit {
 
       return (back_config and back_config.create_stars)
           or (sleeve_config and sleeve_config.create_stars)
+    else
+      return false
+    end
+  end,
+}
+
+SMODS.Suit {
+  key = 'Vortex',
+  card_key = 'VOR',
+  shade = "suitless",
+  lc_atlas = "AbandoniaSuits",
+  hc_atlas = "AbandoniaSuits",
+  lc_ui_atlas = "AbandoniaSuitIcons",
+  hc_ui_atlas = "AbandoniaSuitIcons",
+  pos = { y = 5 },
+  ui_pos = { x = 4, y = 5 },
+  lc_colour = HEX("788383"),
+  in_pool = function(self, args)
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_vortex)
+          or (sleeve_config and sleeve_config.create_vortex)
     else
       return false
     end

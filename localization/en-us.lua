@@ -1083,6 +1083,7 @@ return {
       abn_Crown = "Crown",
       abn_Moon = "Moon",
       abn_Star = "Star",
+      abn_Vortex = "Vortex",
     },
 
     suits_plural = {
@@ -1108,6 +1109,7 @@ return {
       abn_Crown = "Crowns",
       abn_Moon = "Moons",
       abn_Star = "Stars",
+      abn_Vortex = "Vortexes",
     },
 
     poker_hands = {

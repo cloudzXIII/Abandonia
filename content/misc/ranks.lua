@@ -133,7 +133,8 @@ SMODS.Rank {
     abn_Shield = 21,
     abn_Rose = 22,
     abn_Anchor = 23,
-    abn_Arrow = 24
+    abn_Arrow = 24,
+    abn_Vortex = 26
   },
 
   in_pool = function(self, args)
