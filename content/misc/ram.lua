@@ -333,7 +333,6 @@ SMODS.Consumable {
   },
 }
 
---[[
 SMODS.Consumable {
   key = "ram_04",
   set = 'ram',
@@ -363,18 +362,20 @@ SMODS.Consumable {
 
   use = function(self, card, area, copier)
     card:juice_up(0.3, 0.5)
+
     local consumables = {}
     for _, v in ipairs(G.consumeables.cards) do
-      if v ~= card and not v.config.center.mod then
+      if v ~= card and v.config.center.consumeable and not v.config.center.mod then
         consumables[#consumables + 1] = v
       end
     end
 
     if #consumables > 0 then
-      local pool = {}
-      for k, v in pairs(G.P_CENTERS) do
+      local pools = {}
+      for _, v in pairs(G.P_CENTERS) do
         if v.mod and v.consumeable and v.set and v.set ~= 'ram' then
-          pool[#pool + 1] = v
+          pools[v.set] = pools[v.set] or {}
+          pools[v.set][#pools[v.set] + 1] = v
         end
       end
 
@@ -392,20 +393,13 @@ SMODS.Consumable {
         }))
       end
 
-      for i, consumable in ipairs(consumables) do
-        local new_key = (pseudorandom_element(pool, "abn_ram004")).key
-        local new_pool = {}
-        for k, vv in pairs(G.P_CENTERS) do
-          if vv.mod and vv.consumeable and vv.set and vv.set == consumable.config.center.set then
-            new_pool[#new_pool + 1] = vv
-          end
-        end
-        local random = pseudorandom_element(new_pool, "abn_ram004")
-        local center = G.P_CENTERS[random]
-        if center then
+      for _, consumable in ipairs(consumables) do
+        local pool = pools[consumable.config.center.set]
+        if pool and #pool > 0 then
+          local center = pseudorandom_element(pool, "abn_ram004")
           G.E_MANAGER:add_event(Event({
             func = function()
-              consumable:set_ability(G.P_CENTERS[new_key])
+              consumable:set_ability(center)
               local slots_used = center.size == "XL" and 2 or center.size == "XS" and -1
               consumable.ability.extra_slots_used = slots_used or 0
               return true
@@ -436,7 +430,6 @@ SMODS.Consumable {
     artist = "GM36"
   },
 }
---]]
 SMODS.Consumable {
   key = "ram_06",
   set = 'ram',
