@@ -8,7 +8,7 @@ SMODS.Joker {
     return { vars = { cae.mult, cae.mult_gain, localize(cae.type, 'poker_hands'), cae.mollars, cae.dollars, cae.dollars_gain } }
   end,
 
-  rarity = 3,
+  rarity = 2,
   atlas = 'ABNJokerSheet13',
   pos = { x = 8, y = 1 },
   cost = 8,

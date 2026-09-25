@@ -77,7 +77,7 @@ SMODS.Consumable {
     }))
   end,
 
-  abn_artist_credits = { artist = "Scruffy" },
+  abn_artist_credits = { artist = "Tatsu" },
 }
 
 SMODS.Consumable {
@@ -145,7 +145,7 @@ SMODS.Consumable {
     }))
   end,
 
-  abn_artist_credits = { artist = "Scruffy" },
+  abn_artist_credits = { artist = "Tatsu" },
 }
 
 SMODS.Consumable {
@@ -202,7 +202,7 @@ SMODS.Consumable {
     }))
   end,
 
-  abn_artist_credits = { artist = "Scruffy" },
+  abn_artist_credits = { artist = "Tatsu" },
 }
 
 SMODS.Consumable {
@@ -261,7 +261,7 @@ SMODS.Consumable {
     delay(0.4)
   end,
 
-  abn_artist_credits = { artist = "Scruffy" },
+  abn_artist_credits = { artist = "Tatsu" },
 }
 
 SMODS.Consumable {
@@ -326,7 +326,7 @@ SMODS.Consumable {
     }))
   end,
 
-  abn_artist_credits = { artist = "Scruffy" },
+  abn_artist_credits = { artist = "Tatsu" },
 }
 
 SMODS.Consumable {
@@ -382,7 +382,7 @@ SMODS.Consumable {
     }))
   end,
 
-  abn_artist_credits = { artist = "Scruffy" },
+  abn_artist_credits = { artist = "Tatsu" },
 }
 
 SMODS.Consumable {
@@ -440,7 +440,7 @@ SMODS.Consumable {
     }))
   end,
 
-  abn_artist_credits = { artist = "Scruffy" },
+  abn_artist_credits = { artist = "Tatsu" },
 }
 
 SMODS.Consumable {
@@ -526,7 +526,7 @@ SMODS.Consumable {
     }))
   end,
 
-  abn_artist_credits = { artist = "Scruffy" },
+  abn_artist_credits = { artist = "Tatsu" },
 }
 
 SMODS.Consumable {
@@ -585,7 +585,7 @@ SMODS.Consumable {
     }))
   end,
 
-  abn_artist_credits = { artist = "Scruffy" },
+  abn_artist_credits = { artist = "Tatsu" },
 }
 
 SMODS.Consumable {
@@ -659,5 +659,5 @@ SMODS.Consumable {
     }))
   end,
 
-  abn_artist_credits = { artist = "Scruffy" },
+  abn_artist_credits = { artist = "Tatsu" },
 }
