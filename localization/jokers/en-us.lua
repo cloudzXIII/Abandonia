@@ -8973,11 +8973,41 @@ return {
         }
       },
 
+      j_abn_the_gleam = {
+        name = "The Gleam",
+        text = {
+          {
+            "{C:white,X:mult}X#1#{} Mult if played hand contains",
+            "{C:attention}5{} or more scoring {C:diamonds}Light Suits{}",
+          },
+          {
+            "If played hand contains only {C:dark_edition}Bright{}",
+            "cards, level up the {C:planet}planet{}",
+            "{C:attention}rank{} of all cards scored",
+          }
+        }
+      },
+
+      j_abn_the_gloom = {
+        name = "The Gloom",
+        text = {
+          {
+            "{C:white,X:mult}X#1#{} Mult if played hand contains",
+            "{C:attention}5{} or more scoring {C:spades}Dark Suits{}",
+          },
+          {
+            "If played hand contains only {C:dark_edition}Opaque{}",
+            "cards, level up the {C:planet}planet{}",
+            "{C:attention}rank{} of all cards scored",
+          }
+        }
+      },
+
       j_abn_the_great_gig_in_the_sky = {
         name = "The Great Gig In The Sky",
         text = {
           {
-            "If played {C:attention}Spectrum{} contains ",
+            "If played {C:attention}Spectrum{} contains",
             "no {C:inactive}Vanilla{} suits, this Joker",
             "gains {C:gold}+#2#{} Ascension Power",
             "{C:inactive}(Currently {C:gold}+#1#{C:inactive} Asc. Power)",

@@ -37,6 +37,9 @@ function Game:init_game_object(...)
     suits_played_this_blind = {},
     free_hand = false,
     last_consumable_used = {},
+
+    dark_suits_played = 0,
+    light_suits_played = 0,
   }
   return ret
 end
@@ -191,6 +194,28 @@ ABN.calculate = function(self, context)
     G.GAME.abn.suits_played_this_blind = {}
   end
 
+  if context.before then
+    --#region Counting number of hands containing only light/dark suits (used for an in pool condition)
+    local all_light = true
+    local all_dark = true
+    for _, v in ipairs(context.scoring_hand) do
+      if not ABN.is_light(v) then
+        all_light = false
+      end
+      if not ABN.is_dark(v) then
+        all_dark = false
+      end
+    end
+
+    if all_light then
+      G.GAME.abn.light_suits_played = G.GAME.abn.light_suits_played + 1
+    end
+    if all_dark then
+      G.GAME.abn.dark_suits_played = G.GAME.abn.dark_suits_played + 1
+    end
+    --#endregion
+  end
+
   if context.individual and context.cardarea == G.play then
     if context.other_card.ability.abn_perma_flipped then
       local target_xmult = 1.25
@@ -208,9 +233,11 @@ ABN.calculate = function(self, context)
         x_mult = target_xmult
       }
     end
+
     if not G.GAME.abn_13_played_this_run and context.other_card:get_id() == SMODS.Ranks.abn_13.id then
       G.GAME.abn_13_played_this_run = true
     end
+
     if context.other_card.base.suit and not SMODS.has_no_suit(context.other_card) and G.GAME.abn.suits_played_this_blind then
       G.GAME.abn.suits_played_this_blind[context.other_card.base.suit] = (G.GAME.abn.suits_played_this_blind[context.other_card.base.suit] or 0) +
           1
@@ -311,7 +338,7 @@ ABN.calculate = function(self, context)
       if SMODS.has_enhancement(card, "m_abn_flypaper") then
         local grasshopper = ABN.flies.abn_grasshopper:get_insect(card)
         if grasshopper then
-          return {numerator = math.ceil(context.denominator * grasshopper.config.prob / 100)}
+          return { numerator = math.ceil(context.denominator * grasshopper.config.prob / 100) }
         end
       end
     end
