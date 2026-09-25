@@ -7,6 +7,12 @@ SMODS.ConsumableType {
   shop_rate = 0,
 }
 
+SMODS.UndiscoveredSprite {
+  key = 'ram',
+  atlas = 'abn_AbandoniaUndiscovered',
+  pos = { x = 2, y = 3 },
+}
+
 local smu = set_consumeable_usage
 set_consumeable_usage = function(card)
   local ret = smu(card)
@@ -430,6 +436,89 @@ SMODS.Consumable {
     artist = "GM36"
   },
 }
+
+SMODS.Consumable {
+  key = "ram_05",
+  set = 'ram',
+
+  atlas = "abn_AbandoniaRam",
+  pos = { x = 5, y = 0 },
+  cost = 4,
+
+  config = { extra = {} },
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+      }
+    }
+  end,
+
+  can_use = function(self, card)
+    if G.jokers then
+      local rightmost = G.jokers.cards[#G.jokers.cards]
+      local colours = ABN.retrieve_joker_text(rightmost, false, false, true)
+
+      local sets = {}
+      local seen = {}
+
+      for _, v in ipairs(colours) do
+        if v == "planet" then v = "Planet" end
+        if v == "spectral" then v = "Spectral" end
+        if v == "tarot" then v = "Tarot" end
+        if G.P_CENTER_POOLS[v] and G.P_CENTER_POOLS[v][1] and G.P_CENTER_POOLS[v][1].consumeable and not seen[v] then
+          seen[v] = true
+          sets[#sets + 1] = v
+        end
+      end
+
+      return #sets > 0
+    end
+  end,
+
+  use = function(self, card, area, copier)
+    card:juice_up(0.3, 0.5)
+
+    local rightmost = G.jokers.cards[#G.jokers.cards]
+
+    local colours = ABN.retrieve_joker_text(rightmost, false, false, true)
+
+    local sets = {}
+    local seen = {}
+
+    for _, v in ipairs(colours) do
+      if v == "planet" then v = "Planet" end
+      if v == "spectral" then v = "Spectral" end
+      if v == "tarot" then v = "Tarot" end
+      if G.P_CENTER_POOLS[v] and G.P_CENTER_POOLS[v][1] and G.P_CENTER_POOLS[v][1].consumeable and not seen[v] then
+        seen[v] = true
+        sets[#sets + 1] = v
+      end
+    end
+
+    for _, v in ipairs(sets) do
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.4,
+        func = function()
+          if G.consumeables.config.card_limit > #G.consumeables.cards then -- TODO: should this need room?
+            play_sound('timpani')
+            SMODS.add_card({ set = v, key_append = "abn_ram005" })
+            card:juice_up(0.3, 0.5)
+          end
+          return true
+        end
+      }))
+    end
+
+    delay(0.6)
+  end,
+
+  abn_artist_credits = {
+    artist = "GM36"
+  },
+}
+
 SMODS.Consumable {
   key = "ram_06",
   set = 'ram',
@@ -478,6 +567,87 @@ SMODS.Consumable {
         return true
       end
     }))
+  end,
+
+  abn_artist_credits = {
+    artist = "GM36"
+  },
+}
+
+SMODS.Consumable {
+  key = "ram_07",
+  set = 'ram',
+
+  atlas = "abn_AbandoniaRam",
+  pos = { x = 1, y = 1 },
+  cost = 4,
+
+  config = { extra = {} },
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+      }
+    }
+  end,
+
+  can_use = function(self, card)
+    if G.jokers then
+      local sets = {}
+      local seen = {}
+      for _, joker in ipairs(G.jokers.cards) do
+        local colours = ABN.retrieve_joker_text(joker, false, false, true)
+
+        for _, v in ipairs(colours) do
+          if v == "planet" then v = "Planet" end
+          if v == "spectral" then v = "Spectral" end
+          if v == "tarot" then v = "Tarot" end
+          if G.P_CENTER_POOLS[v] and G.P_CENTER_POOLS[v][1] and G.P_CENTER_POOLS[v][1].consumeable and G.P_CENTER_POOLS[v][1].mod and not seen[v] then
+            seen[v] = true
+            sets[#sets + 1] = v
+          end
+        end
+      end
+
+      return #sets > 0
+    end
+  end,
+
+  use = function(self, card, area, copier)
+    card:juice_up(0.3, 0.5)
+
+    local sets = {}
+    local seen = {}
+    for _, joker in ipairs(G.jokers.cards) do
+      local colours = ABN.retrieve_joker_text(joker, false, false, true)
+
+      for _, v in ipairs(colours) do
+        if v == "planet" then v = "Planet" end
+        if v == "spectral" then v = "Spectral" end
+        if v == "tarot" then v = "Tarot" end
+        if G.P_CENTER_POOLS[v] and G.P_CENTER_POOLS[v][1] and G.P_CENTER_POOLS[v][1].consumeable and G.P_CENTER_POOLS[v][1].mod and not seen[v] then
+          seen[v] = true
+          sets[#sets + 1] = v
+        end
+      end
+    end
+
+    for _, v in ipairs(sets) do
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.4,
+        func = function()
+          if G.consumeables.config.card_limit > #G.consumeables.cards then -- TODO: should this need room?
+            play_sound('timpani')
+            SMODS.add_card({ set = v, key_append = "abn_ram007" })
+            card:juice_up(0.3, 0.5)
+          end
+          return true
+        end
+      }))
+    end
+
+    delay(0.6)
   end,
 
   abn_artist_credits = {

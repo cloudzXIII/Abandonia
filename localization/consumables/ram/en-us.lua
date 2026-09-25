@@ -46,9 +46,9 @@ return {
       c_abn_ram_05 = {
         name = "RAM 05",
         text = {
-          "Creates the {C:attention}consumable{} mentioned",
-          "in {C:attention}rightmost{} Joker",
-          -- have thingy like the fool but match the colour of the consumable type
+          "Creates all {C:attention}consumables{}",
+          "mentioned by {C:attention}rightmost{} Joker",
+          "{C:inactive}(Must have room)", -- TODO: ask bunnet if this needs room
         },
       },
       c_abn_ram_06 = {
@@ -63,7 +63,7 @@ return {
         text = {
           "Creates all {C:dark_edition}Modded{} {C:attention}consumables{}",
           "mentioned by your {C:attention}Jokers{}",
-          -- have thingy like the fool but match the colour of the consumable type
+          "{C:inactive}(Must have room)", -- TODO: ask bunnet if this needs room
         }
       },
       c_abn_ram_08 = {
