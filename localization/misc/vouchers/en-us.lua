@@ -205,7 +205,8 @@ return {
       v_abn_power_rank = {
         name = "Power Rank",
         text = {
-          "{C:attention}Jokers{} in shop may have an {C:attention}Enhancement",
+          "{C:attention}Jokers{} may appear in the",
+          "shop with an {C:attention}Enhancement",
         }
       },
     },

@@ -559,6 +559,26 @@ return {
         },
       },
 
+      j_abn_avatar_of_luck = {
+        name = "Avatar of Luck",
+        text = {
+          {
+            "You may play and discard",
+            "up to {C:attention}6{} cards",
+          },
+          {
+            "If played hand contains only {C:attention}Lucky{} cards,",
+            "they each gain {C:gold}+#3#{} Asc. Power for every",
+            "time a {C:attention}Lucky{} card has scored this round"
+          },
+          {
+            "After playing {C:attention}#2#{} {C:inactive}[#1#]{} hands containing",
+            "{C:attention}#2# Lucky{} cards, destroy this Joker and",
+            "{C:attention}double{} the level of all {C:attention}poker hands{}"
+          },
+        },
+      },
+
       j_abn_aviator = {
         name = 'Aviator',
         text = {
@@ -1040,8 +1060,8 @@ return {
       j_abn_mult_to_chips = {
         name = 'Bonus Bradly',
         text = {
-          "Whenever another Joker gives {C:mult}Mult{},",
-          "this Joker gives this Mult as {C:chips}Chips{}",
+          "When another Joker gives {C:mult}Mult{}, this",
+          "Joker gives this Mult as {C:chips}Chips{}",
           --"{s:0.7,C:inactive}(Does not affect Jokers that give Mult after another Joker triggers){}"
         }
       },
@@ -1080,7 +1100,7 @@ return {
         text = {
           {
             "You may play and discard",
-            "up to {C:attention}6{} cards,",
+            "up to {C:attention}6{} cards",
           },
           {
             "{C:attention}6{} card hands",
@@ -1524,7 +1544,7 @@ return {
         text = {
           {
             "You may play and discard",
-            "up to {C:attention}6{} cards,",
+            "up to {C:attention}6{} cards",
           },
           {
             "This Joker gains {X:mult,C:white}X#2#{} Mult",
@@ -2392,8 +2412,8 @@ return {
       j_abn_double_dip = {
         name = 'Double Dip',
         text = {
-          "This Joker gives the base {C:chips}Chips{} and {C:red}Mult{}",
-          "of the played poker hand",
+          "Gives the {C:attention}base{} {C:chips}Chips{} and",
+          "{C:red}Mult{} of played {C:attention}poker hand",
         }
       },
 
@@ -6049,8 +6069,8 @@ return {
       j_abn_meatkin = {
         name = 'Meatkin Joker',
         text = {
-          "When a {C:attention}Steel card{} scores,",
-          "each scoring non-Steel card",
+          "When a {C:attention}Steel{} card scores,",
+          "each scoring non-{C:attention}Steel{} card",
           "permenantly gains {X:mult,C:white}+X#1#{} Mult"
         },
         --[[unlock = {
@@ -6347,7 +6367,7 @@ return {
         text = {
           {
             "You may play and discard",
-            "up to {C:attention}6{} cards,",
+            "up to {C:attention}6{} cards",
           },
           {
             "First played {C:attention}6 card{} hand",
@@ -6972,9 +6992,9 @@ return {
       j_abn_pearls_of_worlds = {
         name = "Pearls of Worlds",
         text = {
-          "Gains {C:chips}Chips{} equal",
-          "to the {C:attention}sum{} of",
-          "all digits in the description",
+          "Gains {C:chips}Chips{} equal to",
+          "the {C:attention}sum{} of all digits",
+          "in the description",
           "of the triggered {C:attention}Joker{}",
           "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
         }
@@ -8371,14 +8391,14 @@ return {
         name = 'Spihcneve Joker',
         text = {
           {
-            "When a {C:mult}Mult card{} scores,",
-            "scoring non-Mult cards permenantly",
-            "gain {C:chips}+#1#{} Chips",
+            "When a {C:attention}Mult{} card scores,",
+            "scoring non-{C:attention}Mult{} cards",
+            "permanently gain {C:chips}+#1#{} Chips",
           },
           {
-            "When an {C:attention}Even {C:mult}Mult card{} scores,",
-            "scoring {C:attention}Odd non-Mult{} cards",
-            "permenantly gain {C:mult}+#2#{} Mult",
+            "When an {C:attention}Even {C:attention}Mult{} card scores,",
+            "scoring {C:attention}Odd{} non-{C:attention}Mult{} cards cards",
+            "permanently gain {C:mult}+#2#{} Mult",
           }
         },
         --[[unlock = {
@@ -8957,13 +8977,13 @@ return {
         name = "The Great Gig In The Sky",
         text = {
           {
-            "If a {C:attention}Spectrum{} is played without",
-            "any {C:diamonds}Vanilla {C:spades}Suits{}, this {C:attention}Joker",
+            "If played {C:attention}Spectrum{} contains ",
+            "no {C:inactive}Vanilla{} suits, this Joker",
             "gains {C:gold}+#2#{} Ascension Power",
             "{C:inactive}(Currently {C:gold}+#1#{C:inactive} Asc. Power)",
           },
           {
-            "If this {C:attention}Joker{} is {C:dark_edition}editioned{},",
+            "If this {C:attention}Joker{} has an {C:dark_edition}edition{},",
             "scored cards gain",
             "{C:gold}+#3#{} Asc. Power",
           }
