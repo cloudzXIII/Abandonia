@@ -23,11 +23,6 @@ local function face_down_hand(hand)
 	return false
 end
 
-local function is_modded_hand(hand)
-	local text = G.FUNCS.get_poker_hand_info(hand)
-	return SMODS.PokerHands[text] and SMODS.PokerHands[text].original_mod
-end
-
 SMODS.Joker{
 	key = "gambit",
 	atlas = "AbandoniaLegendary",
@@ -54,7 +49,7 @@ SMODS.Joker{
 		elseif context.before and not context.blueprint then
 			if G.GAME.current_round.hands_played == 0 and not joker.abn_greeting_quipped then
 				joker.abn_greeting_quipped = self:abn_say_stuff(joker, "abn_gambit_greeting", 19)
-			elseif is_modded_hand(context.scoring_hand) then
+			elseif ABN.is_modded_hand(context.scoring_name) then
 				self:abn_say_stuff(joker, "abn_gambit_moddedhand", 12)
 			elseif #context.scoring_hand == 5 then
 				self:abn_say_stuff(joker, "abn_gambit_fivecards", 18)

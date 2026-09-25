@@ -51,10 +51,8 @@ SMODS.Joker{
             
             card.ability.extra.mod = 0
             local flipped = self:is_modded_hand(context.scoring_name) == true and "chips" or "mult"
-            print(context.scoring_name, "is modded hand?", self:is_modded_hand(context.scoring_name) and "yes" or "no")
             
             for _, c in ipairs(scoring) do
-                print(c.base.suit, "is modded suit?", self:is_modded_suit(c) and "yes" or "no")
                 if self:is_modded_suit(c) == true and flipped == "mult" then
                     card.ability.extra.mod = card.ability.extra.mod + c.base.nominal
                 elseif self:is_modded_suit(c) == false and flipped == "chips" then

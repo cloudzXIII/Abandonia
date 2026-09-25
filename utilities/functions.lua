@@ -873,17 +873,21 @@ ABN.create_random_tag = function(card, seed)
 end
 
 ABN.is_modded_rank = function(card)
-  if SMODS.has_no_rank(card) then return false end
+  if not card.base or SMODS.has_no_rank(card) then return false end
   if SMODS.Ranks[card.base.value] and SMODS.Ranks[card.base.value].mod and SMODS.Ranks[card.base.value].mod.id then
     return true
   end
 end
 
 ABN.is_modded_suit = function(card)
-  if SMODS.has_no_suit(card) then return false end
+  if not card.base or SMODS.has_no_suit(card) then return false end
   if SMODS.Suits[card.base.suit] and SMODS.Suits[card.base.suit].mod and SMODS.Suits[card.base.suit].mod.id then
     return true
   end
+end
+
+ABN.is_modded_hand = function(handname)
+	return SMODS.PokerHands[handname] and SMODS.PokerHands[handname].original_mod
 end
 
 ABN.is_vanilla_enh = function(enh_key)
@@ -1023,4 +1027,57 @@ function ABN.retrieve_joker_text(joker, descip, name, colours_only)
     end
   end
   return text
+end
+
+--Spawn either a normal boss, or a showdown boss, without a win ante check
+function ABN.new_vanilla_boss(showdown)
+	local eligible_bosses = {}
+
+    local boss_already_chosen = function(key)
+        for _, k in pairs(G.GAME.round_resets.blind_choices) do
+            if k == key then return true end
+        end
+    end
+
+    for k, v in pairs(G.P_BLINDS) do
+        if v.boss and (v.boss.showdown or false) == (showdown or false) then
+            local res, options = SMODS.add_to_pool(v)
+            options = options or {}
+            if not boss_already_chosen(k) and ((v.boss.min or G.GAME.round_resets.ante) <= math.max(1, G.GAME.round_resets.ante)) and ((v.boss.max or G.GAME.round_resets.ante) >= G.GAME.round_resets.ante) then
+                eligible_bosses[k] = res and true or nil
+            end
+        end
+    end
+    for k, v in pairs(G.GAME.banned_keys) do
+        if eligible_bosses[k] then eligible_bosses[k] = nil end
+    end
+
+	local min_use = 100
+    for k, v in pairs(G.GAME.bosses_used.boss or G.GAME.bosses_used) do
+        if eligible_bosses[k] then
+            eligible_bosses[k] = v
+            if eligible_bosses[k] <= min_use then 
+                min_use = eligible_bosses[k]
+            end
+        end
+    end
+    local final_pool = {}
+    for k, v in pairs(eligible_bosses) do
+        if eligible_bosses[k] then
+            if eligible_bosses[k] > min_use and not G.P_BLINDS[k].boss.allow_duplicates then 
+                eligible_bosses[k] = nil
+            else
+                final_pool[#final_pool + 1] = k
+            end
+        end
+    end
+
+    local output = {}
+    for k, _ in pairs(eligible_bosses) do
+        output[#output + 1] = k
+    end
+    
+	local ret_boss = pseudorandom_element(output, pseudoseed("boss"))
+	SMODS.add_boss_to_used_table(ret_boss, "boss")
+    return ret_boss
 end

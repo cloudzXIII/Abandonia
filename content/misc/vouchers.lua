@@ -22,7 +22,7 @@ SMODS.Voucher({ -- Overstock Maximum
 	end,
     
     abn_artist_credits = {
-        artist = "This is a test.",
+        artist = "tarkandragonbird",
     },
 })
 
@@ -45,6 +45,10 @@ SMODS.Voucher({ -- Tarot Master
 		local cae = card.ability.extra
 		G.GAME.modifiers.abn_tarot_odd = true
 	end,
+    
+    abn_artist_credits = {
+        artist = "tarkandragonbird",
+    },
 })
 
 SMODS.Voucher({
@@ -66,6 +70,10 @@ SMODS.Voucher({
 		local cae = card.ability.extra
 		G.GAME.modifiers.abn_planet_odd = true
 	end,
+    
+    abn_artist_credits = {
+        artist = "tarkandragonbird",
+    },
 })
 
 SMODS.Voucher({
@@ -90,6 +98,10 @@ SMODS.Voucher({
 		local cae = card.ability.extra
 		G.GAME.discount_percent = cae.discount
 	end,
+    
+    abn_artist_credits = {
+        artist = "tarkandragonbird",
+    },
 })
 
 SMODS.Voucher({
@@ -112,7 +124,10 @@ SMODS.Voucher({
 		local cae = card.ability.extra
 		G.GAME.modifiers.abn_all_edition = true
 	end,
-
+    
+    abn_artist_credits = {
+        artist = "tarkandragonbird",
+    },
 })
 
 SMODS.Voucher({
@@ -137,6 +152,10 @@ SMODS.Voucher({
 		local cae = card.ability.extra
 		SMODS.change_play_limit(cae.lim)
 	end,
+    
+    abn_artist_credits = {
+        artist = "tarkandragonbird",
+    },
 })
 SMODS.Voucher({
 	key = "recycle_master",
@@ -160,6 +179,10 @@ SMODS.Voucher({
 		local cae = card.ability.extra
 		SMODS.change_discard_limit(cae.lim)
 	end,
+    
+    abn_artist_credits = {
+        artist = "tarkandragonbird",
+    },
 })
 
 SMODS.Voucher({
@@ -184,6 +207,10 @@ SMODS.Voucher({
 		local cae = card.ability.extra
 		G.jokers.config.card_limit = G.jokers.config.card_limit + cae.lim
 	end,
+    
+    abn_artist_credits = {
+        artist = "tarkandragonbird",
+    },
 })
 SMODS.Voucher({
 	key = "reroll_master",
@@ -206,6 +233,10 @@ SMODS.Voucher({
 		local cae = card.ability.extra
 		G.GAME.modifiers.abn_no_reroll_increase = true
 	end,
+    
+    abn_artist_credits = {
+        artist = "tarkandragonbird",
+    },
 })
 
 SMODS.Voucher({
@@ -235,6 +266,10 @@ SMODS.Voucher({
 			end
 		}))
 	end,
+    
+    abn_artist_credits = {
+        artist = "tarkandragonbird",
+    },
 })
 
 SMODS.Voucher({
@@ -259,6 +294,10 @@ SMODS.Voucher({
 		local cae = card.ability.extra
 		G.GAME.modifiers.abn_guarantee_spectral_in_tarot = true
 	end,
+    
+    abn_artist_credits = {
+        artist = "tarkandragonbird",
+    },
 })
 
 SMODS.Voucher({
@@ -290,7 +329,11 @@ SMODS.Voucher({
 				end
 			end
 		end
-	end
+	end,
+    
+    abn_artist_credits = {
+        artist = "tarkandragonbird",
+    },
 })
 
 SMODS.Voucher({
@@ -312,7 +355,11 @@ SMODS.Voucher({
 	redeem = function(self, card)
 		local cae = card.ability.extra
 		G.GAME.abn_guarantee_double_modif = true
-	end
+	end,
+    
+    abn_artist_credits = {
+        artist = "tarkandragonbird",
+    },
 })
 
 SMODS.Voucher({
@@ -337,6 +384,10 @@ SMODS.Voucher({
 		local cae = card.ability.extra
 		ease_ante(-cae.ante)
 	end,
+    
+    abn_artist_credits = {
+        artist = "tarkandragonbird",
+    },
 })
 
 SMODS.Voucher({
@@ -361,6 +412,10 @@ SMODS.Voucher({
 		local cae = card.ability.extra
 		G.GAME.abn_boss_reroll_cost = cae.cost
 	end,
+    
+    abn_artist_credits = {
+        artist = "tarkandragonbird",
+    },
 })
 
 SMODS.Voucher({
@@ -385,6 +440,10 @@ SMODS.Voucher({
 		local cae = card.ability.extra
 		G.hand:change_size(cae.inc)
 	end,
+    
+    abn_artist_credits = {
+        artist = "tarkandragonbird",
+    },
 })
 
 SMODS.Voucher({
@@ -405,6 +464,10 @@ SMODS.Voucher({
 		y = 2,
 	},
 	cost = 10,
+    
+    abn_artist_credits = {
+        artist = "0kronix",
+    },
 })
 
 SMODS.Voucher({
@@ -416,6 +479,10 @@ SMODS.Voucher({
 	},
 	cost = 10,
 	requires = { "v_abn_ink_and_quill" },
+    
+    abn_artist_credits = {
+        artist = "0kronix",
+    },
 })
 
 SMODS.Voucher({
@@ -669,7 +736,11 @@ SMODS.Voucher({
 				if ABN.get_joker_enh(joker) then return true end
 			end
 		end
-	end
+	end,
+    
+    abn_artist_credits = {
+        artist = "0kronix",
+    },
 })
 
 local old_card_for_shop = create_card_for_shop
@@ -684,3 +755,221 @@ function create_card_for_shop(area)
 
 	return card
 end
+
+SMODS.Voucher({
+    key = "bios_utility",
+    atlas = "NewestiaVouchers",
+    pos = {x = 3, y = 0},
+    cost = 10,
+    requires = { "v_hieroglyph" },
+	config = {extra = {selection = 2, hand_size = 1, win_ante = 4}},
+	loc_vars = function(self, info_queue, voucher)
+		info_queue[#info_queue + 1] = {key = "abn_newestia_only", set = "Other"}
+		return {vars = {voucher.ability.extra.selection, voucher.ability.extra.hand_size, voucher.ability.extra.win_ante}}
+	end,
+    in_pool = function(self, args)
+		return G.GAME.abn_newestia and G.GAME.round_resets.ante % 2 == 0
+	end,
+    redeem = function(self, voucher)
+        SMODS.change_play_limit(voucher.ability.extra.selection)
+		SMODS.change_discard_limit(voucher.ability.extra.selection)
+		G.hand:change_size(voucher.ability.extra.hand_size)
+		G.GAME.win_ante = G.GAME.win_ante + voucher.ability.extra.win_ante
+    end,
+    abn_artist_credits = {
+        artist = "Vega",
+    },
+})
+
+SMODS.Voucher({
+    key = "thorn_field",
+    atlas = "NewestiaVouchers",
+    pos = {x = 7, y = 0},
+    cost = 10,
+    requires = { "v_grabber" },
+	config = {extra = {asc = 0.25, hand_min = 5, blind_size = 1.5, win_ante = 1}},
+	loc_vars = function(self, info_queue, voucher)
+		info_queue[#info_queue + 1] = {key = "abn_newestia_only", set = "Other"}
+		return {vars = {voucher.ability.extra.asc, voucher.ability.extra.hand_min, voucher.ability.extra.blind_size, voucher.ability.extra.win_ante}}
+	end,
+    in_pool = function(self, args)
+		return G.GAME.abn_newestia and G.GAME.abn_newestia_asc_hand_played --See ABN.calculate in main.lua
+	end,
+    redeem = function(self, voucher)
+		G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling * voucher.ability.extra.blind_size
+		G.GAME.win_ante = G.GAME.win_ante + voucher.ability.extra.win_ante
+    end,
+	calculate = function(self, voucher, context)
+		if context.initial_scoring_step and #context.scoring_hand > voucher.ability.extra.hand_min then
+			return {asc = voucher.ability.extra.asc * (#context.scoring_hand - voucher.ability.extra.hand_min)}
+		end
+	end,
+    abn_artist_credits = {
+        artist = "0kronix",
+    },
+})
+
+SMODS.Voucher({
+    key = "out_of_stock",
+    atlas = "NewestiaVouchers",
+    pos = {x = 6, y = 0},
+    cost = 10,
+    requires = { "v_overstock" },
+	config = {extra = {add = 1}},
+	loc_vars = function(self, info_queue, voucher)
+		info_queue[#info_queue + 1] = {key = "abn_newestia_only", set = "Other"}
+		return {vars = {voucher.ability.extra.add}}
+	end,
+    in_pool = function(self, args)
+		return G.GAME.abn_newestia and G.GAME.abn_voucher_purchased_during_newestia --See ABN.calculate in main.lua
+	end,
+	calculate = function(self, voucher, context)
+		if context.starting_shop then
+			local voucher = SMODS.poll_object({
+				type = "Voucher",
+				seed = "v_abn_out_of_stock",
+				filter = function(pool)
+					local filtered = {}
+					for _, obj in pairs(pool) do
+						if G.P_CENTERS[obj.key] and G.P_CENTERS[obj.key].original_mod then
+                        	table.insert(filtered, obj)
+                    	end
+					end
+					if #filtered == 0 then filtered[1] = "v_blank" end --Prevents crash from returning an empty pool
+					return filtered
+				end
+			})
+			if voucher and voucher ~= "v_blank" then
+				SMODS.add_voucher_to_shop(voucher, true)
+			end
+		end
+	end,
+    abn_artist_credits = {
+        artist = "0kronix",
+    },
+})
+
+SMODS.Voucher({
+    key = "counterfeit_chip",
+    atlas = "NewestiaVouchers",
+    pos = {x = 0, y = 0},
+    cost = 10,
+    requires = { "v_magic_trick" },
+	config = {extra = {blind_size = 1.3}},
+	loc_vars = function(self, info_queue, voucher)
+		info_queue[#info_queue + 1] = {key = "abn_newestia_only", set = "Other"}
+		return {vars = {voucher.ability.extra.blind_size}}
+	end,
+    in_pool = function(self, args)
+		return G.GAME.abn_newestia and G.GAME.abn_newestia_modded_suit_played --See ABN.calculate in main.lua
+	end,
+    redeem = function(self, voucher)
+		G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling * voucher.ability.extra.blind_size
+    end,
+	calculate = function(self, voucher, context)
+		if context.modify_booster_card or context.modify_shop_card then
+			if ABN.is_modded_suit(context.card) or ABN.is_modded_rank(context.card) then
+				abn_add_stamp(context.card)
+			end
+		end
+	end,
+    abn_artist_credits = {
+        artist = "Vega",
+    },
+})
+
+SMODS.Voucher({
+    key = "earth_mover",
+    atlas = "NewestiaVouchers",
+    pos = {x = 5, y = 0},
+    cost = 10,
+    requires = { "v_telescope" },
+	config = {extra = {xmult = 2, xchips = 2, win_ante = 1}},
+	loc_vars = function(self, info_queue, voucher)
+		info_queue[#info_queue + 1] = {key = "abn_newestia_only", set = "Other"}
+		return {vars = {voucher.ability.extra.xmult, voucher.ability.extra.xchips, voucher.ability.extra.win_ante}}
+	end,
+    in_pool = function(self, args)
+		return G.GAME.abn_newestia and G.GAME.abn_newestia_modded_planet_used --See ABN.calculate in main.lua
+	end,
+    redeem = function(self, voucher)
+		G.GAME.win_ante = G.GAME.win_ante + voucher.ability.extra.win_ante
+    end,
+	calculate = function(self, voucher, context)
+		if context.setting_blind then
+			G.GAME.v_abn_earth_mover_first_modded_hand = false
+			G.GAME.v_abn_earth_mover_first_vanilla_hand = false
+		elseif context.final_scoring_step then
+			local modded = ABN.is_modded_hand(context.scoring_name)
+			if modded and not G.GAME.v_abn_earth_mover_first_modded_hand then
+				G.GAME.v_abn_earth_mover_first_modded_hand = true
+				return {x_mult = voucher.ability.extra.xmult}
+			elseif not modded and not G.GAME.v_abn_earth_mover_first_vanilla_hand then
+				G.GAME.v_abn_earth_mover_first_vanilla_hand = true
+				return {x_chips = voucher.ability.extra.xchips}
+			end
+		end
+	end,
+    abn_artist_credits = {
+        artist = "0kronix",
+    },
+})
+
+SMODS.Voucher({
+    key = "carbon_dating",
+    atlas = "NewestiaVouchers",
+    pos = {x = 2, y = 0},
+    cost = 10,
+    requires = { "v_crystal_ball" },
+	config = {extra = {draw_bonus = 1}},
+	loc_vars = function(self, info_queue, voucher)
+		info_queue[#info_queue + 1] = {key = "abn_newestia_only", set = "Other"}
+		return {vars = {voucher.ability.extra.draw_bonus}}
+	end,
+    in_pool = function(self, args)
+		return G.GAME.abn_newestia and G.GAME.abn_newestia_small_blind_beaten_with_no_hands_discards_left --See ABN.calculate in main.lua
+	end,
+    redeem = function(self, voucher)
+		if G.GAME.round_resets.blind_states.Small == "Upcoming" then
+			G.GAME.abn_newestia_current_blinds.Small = ABN.new_newestia_boss("boss")
+			G.GAME.abn_newestia_original_blinds.Small = ABN.new_vanilla_boss()
+			G.GAME.round_resets.blind_choices.Small = (G.GAME.abn_newestia and G.GAME.abn_newestia_current_blinds or G.GAME.abn_newestia_original_blinds).Small
+		end
+    end,
+	calculate = function(self, voucher, context)
+		if context.drawing_cards then
+			return {cards_to_draw = context.amount + voucher.ability.extra.draw_bonus}
+		end
+	end,
+    abn_artist_credits = {
+        artist = "Vega",
+    },
+})
+
+SMODS.Voucher({
+    key = "carnival_coupon",
+    atlas = "NewestiaVouchers",
+    pos = {x = 4, y = 0},
+    cost = 10,
+    requires = { "v_blank" },
+	config = {extra = {joker_slots = 2, win_ante = 1}},
+	loc_vars = function(self, info_queue, voucher)
+		info_queue[#info_queue + 1] = {key = "abn_newestia_only", set = "Other"}
+		return {vars = {voucher.ability.extra.joker_slots, voucher.ability.extra.win_ante}}
+	end,
+    in_pool = function(self, args)
+		return G.GAME.abn_newestia and G.GAME.abn_newestia_big_blind_beaten_with_over_five_jokers --See ABN.calculate in main.lua
+	end,
+    redeem = function(self, voucher)
+		G.jokers.config.card_limit = G.jokers.config.card_limit + voucher.ability.extra.joker_slots
+		G.GAME.win_ante = G.GAME.win_ante + voucher.ability.extra.win_ante
+		if G.GAME.round_resets.blind_states.Big == "Upcoming" then
+			G.GAME.abn_newestia_current_blinds.Big = ABN.new_newestia_boss("showdown")
+			G.GAME.abn_newestia_original_blinds.Big = ABN.new_vanilla_boss(true)
+			G.GAME.round_resets.blind_choices.Big = (G.GAME.abn_newestia and G.GAME.abn_newestia_current_blinds or G.GAME.abn_newestia_original_blinds).Big
+		end
+    end,
+    abn_artist_credits = {
+        artist = "Okronix",
+    },
+})

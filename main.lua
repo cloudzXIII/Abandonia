@@ -189,6 +189,33 @@ ABN.calculate = function(self, context)
     end
   end
 
+  --#region Various flags used by special spawning conditions of Newestia-only vouchers
+  if G.GAME.abn_newestia then
+	if context.before and #context.scoring_hand >= 6 then
+	  G.GAME.abn_newestia_asc_hand_played = true
+	end
+	if context.buying_card and context.card.abilty and context.card.ability.set == 'Voucher' then
+	  G.GAME.abn_voucher_purchased_during_newestia = true
+	end
+	if not G.GAME.abn_newestia_modded_suit_played and context.after then
+	  for _, card in ipairs(context.scoring_hand) do
+	    if ABN.is_modded_suit(card) then
+		  G.GAME.abn_newestia_modded_suit_played = true
+		  break
+	    end
+	  end
+	end
+	if context.using_consumeable and context.consumeable.ability.set == 'Planet' and context.consumeable.config.center.original_mod then
+	  G.GAME.abn_newestia_modded_planet_used = true
+	end
+	if context.blind_defeated and G.GAME.blind_on_deck == "Small" and G.GAME.current_round.hands_left == 0 and G.GAME.current_round.discards_left == 0 then
+		G.GAME.abn_newestia_small_blind_beaten_with_no_hands_discards_left = true
+	end
+	if context.blind_defeated and G.GAME.blind_on_deck == "Big" and #G.jokers.cards > 5 then
+		G.GAME.abn_newestia_big_blind_beaten_with_over_five_jokers = true
+	end
+  end
+  --#endregion
 
   if context.setting_blind then
     G.GAME.abn.suits_played_this_blind = {}

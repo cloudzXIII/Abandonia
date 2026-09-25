@@ -304,17 +304,28 @@ function SMODS.reset_blind_choices(choices)
   G.GAME.abn_newestia_original_blinds = G.GAME.abn_newestia_original_blinds or {}
   G.GAME.abn_newestia_current_blinds = G.GAME.abn_newestia_current_blinds or {}
   for _, k in ipairs(G.GAME.round_resets.blind_order) do
-    if k == "Small" or k == "Big" then
+    local rep_k = k
+	if (k == "Small" and G.GAME.used_vouchers.v_abn_carbon_dating) or (k == "Big" and G.GAME.used_vouchers.v_abn_carnival_coupon) then
+      rep_k = "Boss"
+    end
+    if rep_k == "Small" or rep_k == "Big" then
       G.GAME.abn_newestia_original_blinds[k] = choices[k]
       G.GAME.abn_newestia_current_blinds[k] = "bl_abn_new_" .. k:lower()
-    elseif k == "Boss" then
-      G.GAME.abn_newestia_original_blinds[k] = choices[k]
-      G.GAME.abn_newestia_current_blinds[k] = ABN.new_newestia_boss()
+    elseif rep_k == "Boss" then
+      G.GAME.abn_newestia_original_blinds[k] = k == "Boss" and choices[k] or ABN.new_vanilla_boss(k == "Big")
+      G.GAME.abn_newestia_current_blinds[k] = ABN.new_newestia_boss((k == "Small" and "boss") or (k == "Big" and "showdown"))
     end
   end
   if G.GAME.abn_newestia then
     for _, k in ipairs(G.GAME.round_resets.blind_order) do
       choices[k] = G.GAME.abn_newestia_current_blinds[k] or choices[k]
+    end
+  else
+    if G.GAME.used_vouchers.v_abn_carbon_dating and choices.Small then
+      choices.Small = G.GAME.abn_newestia_original_blinds.Small
+    end
+    if G.GAME.used_vouchers.v_abn_carnival_coupon and choices.Big then
+      choices.Big = G.GAME.abn_newestia_original_blinds.Big
     end
   end
 end

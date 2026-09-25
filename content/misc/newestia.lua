@@ -54,14 +54,15 @@ ABN.NewestiaBlind = SMODS.Blind:extend({
 })
 
 --See utilities/hooks.lua "Conditional boss replacements" for how this is used
-function ABN.new_newestia_boss()
-	local category
-	if ABN.is_hazard_ante() then
-		category = "abn_hazard"
-	elseif G.GAME.round_resets.ante % G.GAME.win_ante == 0 then
-		category = "showdown"
-	else
-		category = "boss"
+function ABN.new_newestia_boss(category)
+	if not category then
+		if ABN.is_hazard_ante() then
+			category = "abn_hazard"
+		elseif G.GAME.round_resets.ante % G.GAME.win_ante == 0 then
+			category = "showdown"
+		else
+			category = "boss"
+		end
 	end
 	local pool = "abn_newestia_"..category.."_pool"
 	if not G.GAME[pool] or #G.GAME[pool] == 0 then

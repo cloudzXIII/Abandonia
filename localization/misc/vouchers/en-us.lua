@@ -209,6 +209,66 @@ return {
           "shop with an {C:attention}Enhancement",
         }
       },
+      v_abn_bios_utility = {
+        name = "Bios Utility",
+        text = {
+          "{C:attention}+#1#{} Card Selection Limit",
+          "{C:blue}+#2#{} Hand Size",
+          "{C:red}+#3# Winning Ante",
+        }
+      },
+      v_abn_thorn_field = {
+        name = "Thorn Field",
+        text = {
+          "{C:gold}+#1#{} Ascension Power per scoring",
+          "card past {C:attention}#2#{} in played hand",
+          "{C:red}X#3# Blind size, +#4# Winning Ante"
+        }
+      },
+      v_abn_out_of_stock = {
+        name = "Out of Stock",
+        text = {
+          "{C:attention}+#1# {C:green}Modded{} Voucher",
+          "offered per shop visit"
+        }
+      },
+      v_abn_counterfeit_chip = {
+        name = "Counterfeit Chip",
+        text = {
+          "Playing cards available in",
+          "shops and packs always come",
+          "with {C:attention}Stamps{} if they have",
+          "a modded suit or rank",
+          "{C:red}X#1# Blind size"
+        }
+      },
+      v_abn_earth_mover = {
+        name = "Earth Mover",
+        text = {
+          "First modded hand each",
+          "round gives {X:mult,C:white}X#1#{} Mult",
+          "First vanilla hand each",
+          "round gives {X:chips,C:white}X#2#{} Chips",
+          "{C:red}+#3# Winning Ante"
+        }
+      },
+      v_abn_carbon_dating = {
+        name = "Carbon Dating",
+        text = {
+          "{C:attention}+#1#{} card drawn each",
+          "time cards are drawn",
+          "{C:red}Small Blinds become Boss Blinds"
+        }
+      },
+      v_abn_carnival_coupon = {
+        name = "Carnival Coupon",
+        text = {
+          "{C:attention}+#1#{} Joker Slots",
+          "{C:red}+#2# Win Ante",
+          "{C:red}Big Blinds become",
+          "{C:red}Showdown Blinds"
+        }
+      },
     },
   },
 }
