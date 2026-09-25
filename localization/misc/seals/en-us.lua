@@ -100,7 +100,7 @@ return {
       abn_teal_seal = {
         name = "Teal Seal",
         text = {
-          "Creates a {C:abn_calamity}Calamity{} card",
+          "Creates a {C:calamity_cards}Calamity{} card",
           "if {C:attention}held{} in hand",
           "at end of round",
           "{C:inactive}(Must have room)",
@@ -155,6 +155,15 @@ return {
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
         },
       },
+      abn_mirage_seal = {
+        name = "Mirage Seal",
+        text = {
+          "Creates an {C:illusion}Illusion{} card",
+          "if {C:attention}held{} in hand",
+          "at end of round",
+          "{C:inactive}(Must have room)",
+        }
+      },
       --#endregion
     },
   },
@@ -181,6 +190,7 @@ return {
       abn_rainbow_seal = "Rainbow Seal",
       abn_duality_seal = "Duality Seal",
       abn_lime_seal = "Lime Seal",
+      abn_mirage_seal = "Mirage Seal",
     }
   }
 }

@@ -181,7 +181,7 @@ SMODS.Seal {
           return true
         end
       }))
-      return { message = localize('k_abn_plus_calamity'), colour = G.C.SECONDARY_SET.Planet }
+      return { message = localize('k_abn_plus_calamity'), colour = G.C.SECONDARY_SET.calamity_cards }
     end
   end,
   abn_artist_credits = {
@@ -804,3 +804,41 @@ if next(SMODS.find_mod("Spectrallib")) then
     },
   }
 end
+
+SMODS.Seal {
+  key = "mirage",
+  badge_colour = HEX("8e408f"),
+  atlas = "AbandoniaSeals",
+  pos = { x = 2, y = 3 },
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+      }
+    }
+  end,
+
+  config = {
+    extra = {
+    }
+  },
+
+  calculate = function(self, card, context)
+    if context.playing_card_end_of_round and context.cardarea == G.hand and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+      G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+      G.E_MANAGER:add_event(Event({
+        trigger = 'before',
+        delay = 0.0,
+        func = function()
+          SMODS.add_card({ set = "illusion" })
+          G.GAME.consumeable_buffer = 0
+          return true
+        end
+      }))
+      return { message = localize('k_abn_plus_illusion'), colour = G.C.SECONDARY_SET.illusion }
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Vega",
+  },
+}

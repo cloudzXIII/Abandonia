@@ -918,6 +918,7 @@ return {
       k_plus_periodic = "+1 Periodic",
       k_abn_plus_solid_state = "+1 Solid State",
       k_abn_plus_atomic = "+1 Atomic",
+      k_abn_plus_illusion = "+1 Illusion",
       k_plus_tag = "+1 Tag!",
 
       -- Smth!
