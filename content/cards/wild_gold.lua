@@ -1,5 +1,3 @@
---[[ TODO: CODE ATOMIC CARDS (my job, will be done soon - cloudzXIII)
-
 SMODS.Joker {
   key = 'wild_gold',
 
