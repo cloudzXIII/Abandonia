@@ -6854,14 +6854,21 @@ return {
       },
 
       j_abn_owen = {
-      name = "Owen",
-      text = {
-     "Scored {C:attention}Arrows{} give {X:chips,C:white}X#1#{} Chips,",
-     "increase by {X:chips,C:white}X#2#{} Chips when Arrow scored",
-     "Scoring Arrows gain {C:mult}+#3#{} Mult",
-     "equal to the combined sell value of all Jokers"
-     }
-   },
+        name = "Owen",
+        text = {
+          {
+            "Scored {C:abn_arrow}Arrows{} give {X:chips,C:white}X#1#{} Chips,",
+            "increases by {X:chips,C:white}X#2#{} Chips",
+            "when a {C:abn_arrow}Arrow{} is scored",
+          },
+          {
+            "Scoring {C:abn_arrow}Arrows{} permanently",
+            "gain {C:mult}Mult{} equal to the total",
+            "{C:attention}sell value{} of all Jokers",
+            "{C:inactive}(Wil gain {C:mult}+#3#{C:inactive} Mult)"
+          }
+        }
+      },
 
       j_abn_paint_by_numbers = {
         name = "Paint by Numbers",
