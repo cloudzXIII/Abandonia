@@ -9968,6 +9968,46 @@ return {
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
         },
       },
+
+      j_abn_color_dismissal = {
+        name = "Color Dismissal",
+        text = {
+          {
+            "Turns scored {C:attention}even{}",
+            "cards to {C:abn_suitless}Null{}",
+            "and permanently adds {C:chips}+#1#{} Chips",
+            "to that card"
+          },
+          {
+            "Turns scored {C:attention}odd{}",
+            "cards to {C:abn_Vortex}Vortices{}",
+            "and permanently adds {C:mult}+#2#{} Mult",
+            "to that card"
+          },
+        }
+      },
+
+      j_abn_stress_doll = {
+        name = "Stress Doll",
+        text = {
+         { 
+          "If you play an {C:attention}Abyss{},",
+          "using {C:abn_Vortex}Vortices{} this {C:attention}Joker",
+          "gains {C:mult}mult{} equal to the sum",
+          "of all ranks"
+          },
+          { 
+          "If you play an {C:attention}Abyss{},",
+          "using {C:abn_suitless}Nulls{} this {C:attention}Joker",
+          "gains {C:chips}chips{} equal to the sum",
+          "of all ranks"
+        },
+        {"If the {C:attention}Abyss{}","is made of mixed",
+        "{C:abn_Vortex}Vortices{} and {C:abn_suitless}Nulls",
+        "this {C:attention}Joker{} levels up{} the hand instead"},
+        {"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult and {C:chips}+#2#{C:inactive} Chips)"}
+        }
+      }
     },
   },
   misc = {

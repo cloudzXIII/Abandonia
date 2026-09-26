@@ -217,11 +217,11 @@ function ABN.random_sticker(card, seed)
   return #compatible > 0 and pseudorandom_element(compatible, seed or 'abandonia') or 'perishable'
 end
 
-function ABN.msg(card, message, type)
+function ABN.msg(card, message, type, c)
   if not type then
     type = "extra"
   end
-  card_eval_status_text(card, type, nil, nil, nil, { message = message })
+  card_eval_status_text(card, type, nil, nil, nil, { message = message, colour = c })
 end
 
 function ABN.get_all_cards()
