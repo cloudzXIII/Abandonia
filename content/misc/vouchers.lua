@@ -973,3 +973,125 @@ SMODS.Voucher({
         artist = "Okronix",
     },
 })
+
+SMODS.Voucher({
+    key = "masterworks",
+    atlas = "AbandoniaVouchers",
+    pos = {
+        x = 0,
+        y = 4,
+    },
+    cost = 10,
+    config = {
+        extra = {
+            set = "None",
+        }
+    },
+
+    calculate = function(self, card, context)
+        if G.GAME.blind and G.GAME.blind.boss and context.using_consumeable and context.consumeable and context.consumeable.ability and context.consumeable.ability.set then
+            card.ability.extra.set = context.consumeable.ability.set
+        end
+
+        if context.starting_shop and card.ability.extra.set ~= "None" then
+            local set_to_booster = {
+                ["Tarot"]        = "p_abn_arcana_kiddy",
+                ["Spectral"]     = "p_abn_spectral_kiddy",
+                ["Planet"]       = "p_abn_celestial_kiddy",
+                ["astro_cards"]  = "p_abn_astro_kiddy",
+                ["sigils"]       = "p_abn_sigil_kiddy",
+                ["weather_report"] = "p_abn_weather_kiddy",
+                ["lexica"]       = "p_abn_lexica_kiddy",
+                ["continent"]    = "p_abn_continent_kiddy",
+                ["solid_state"]  = "p_abn_solid_state_kiddy",
+                ["program_pack"] = "p_abn_program_kiddy",
+                ["calligraphy"]  = "p_abn_calligraphy_kiddy",
+                ["glyphs"]       = "p_abn_glyph_kiddy",
+                ["calamity_cards"] = "p_abn_calamity_kiddy",
+                ["illusion"]     = "p_abn_illusion_kiddy",
+                ["crimson"]      = "p_abn_crimson_kiddy",
+            }
+
+            local pack_key = set_to_booster[card.ability.extra.set]
+
+            if pack_key and G.P_CENTERS[pack_key] and G.shop_booster then
+                local booster_card = Card(
+                    G.shop_booster.T.x + G.shop_booster.T.w / 2,
+                    G.shop_booster.T.y,
+                    G.CARD_W * 1.27,
+                    G.CARD_H * 1.27,
+                    G.P_CARDS.empty,
+                    G.P_CENTERS[pack_key],
+                    { bypass_discovery_center = true, bypass_discovery_ui = true }
+                )
+                create_shop_card_ui(booster_card, 'Booster', G.shop_booster)
+                booster_card.ability.booster_pos = #G.shop_booster.cards + 1
+                booster_card:start_materialize()
+                G.shop_booster:emplace(booster_card)
+            end
+
+            card.ability.extra.set = "None"
+        end
+    end,
+
+    abn_artist_credits = {
+        artist = "Superthing",
+    },
+})
+
+SMODS.Voucher({
+    key = "smelting",
+    atlas = "AbandoniaVouchers",
+    pos = {
+        x = 7,
+        y = 3,
+    },
+    cost = 10,
+    requires = { "v_abn_masterworks" },
+    config = {
+        extra = {
+            dollars = 2,
+        }
+    },
+	
+	loc_vars = function(self, info_queue, card)
+		local cae = card.ability.extra
+		return { vars = { cae.dollars } }
+	end,
+
+    update = function(self, card)
+        if card.area == G.vouchers and G.consumeables then
+            for _, _card in ipairs(G.consumeables.cards) do
+                if not _card.ability.masterworked then
+                    _card.ability.masterworked = true
+                    _card.ability.extra_value = (_card.ability.extra_value or 0) + card.ability.extra.dollars
+                    _card:set_cost()
+                end
+            end
+        end
+    end,
+
+    calculate = function(self, card, context)
+        if context.selling_card and context.card and context.card.ability and context.card.ability.consumeable then
+            if context.card.edition and context.card.edition.key then
+                local edition_donor = context.card.edition.key
+                local valid_targets = {}
+
+                for _, cons in ipairs(G.consumeables.cards) do
+                    if cons ~= context.card and (not cons.edition or cons.edition.key ~= edition_to_transfer) then
+                        table.insert(valid_targets, cons)
+                    end
+                end
+
+                if #valid_targets > 0 then
+                    local target = pseudorandom_element(valid_targets, pseudoseed('smelting_edition'))
+                    target:set_edition(edition_donor, true)
+                end
+            end
+        end
+    end,
+
+    abn_artist_credits = {
+        artist = "Superthing",
+    },
+})
