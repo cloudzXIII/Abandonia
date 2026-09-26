@@ -12,7 +12,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { xchips = 1.5 } },
+  config = { extra = { xchips = 0.5 } },
   pools = { ["Plagued"] = true, },
 
   loc_vars = function(self, info_queue, card)
@@ -74,16 +74,15 @@ SMODS.Joker {
       end
     end
 
-    -- Scoring logic for individual cards
+    -- Scoring logic for granting permanent xchips to scoring cards
     if context.individual and context.cardarea == G.play then
-      local target_card = context.other_card
-
-      if target_card then
-        return {
-          xchips = card.ability.extra.xchips,
-          card = card
-        }
-      end
+      SMODS.scale_card(context.other_card, {
+        ref_table = context.other_card.ability,
+        ref_value = "perma_x_chips",
+        scalar_table = card.ability.extra,
+        scalar_value = "xchips",
+        message_colour = G.C.BLUE
+      })
     end
 
     -- Reset the trigger at the end of the round
