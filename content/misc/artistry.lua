@@ -702,7 +702,7 @@ SMODS.Consumable {
     }
   end,
 
-  can_use = one_select_card_and_one_select_joker_to_destroy
+  can_use = one_select_card_and_one_select_joker_to_destroy,
 
   use = function(self, card, area, copier)
     local target_card = G.hand.highlighted[1]
