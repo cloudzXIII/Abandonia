@@ -17,6 +17,9 @@ SMODS.UndiscoveredSprite {
   pos = { x = 0, y = 2 },
 }
 
+local function one_select_card_and_one_select_joker_to_destroy()
+	return G.hand and G.hand.highlighted and #G.hand.highlighted == 1 and G.jokers and G.jokers.highlighted and #G.jokers.highlighted == 1 and not G.jokers.highlighted[1].ability.eternal
+end
 
 SMODS.Consumable {
   key = "marquee",
@@ -40,12 +43,7 @@ SMODS.Consumable {
     }
   end,
 
-  can_use = function(self, card)
-    if G.hand and G.hand.highlighted and #G.hand.highlighted == 1 and G.jokers and G.jokers.highlighted and #G.jokers.highlighted == 1 then
-      return true
-    end
-    return false
-  end,
+  can_use = one_select_card_and_one_select_joker_to_destroy,
 
   use = function(self, card, area, copier)
     local target_card = G.hand.highlighted[1]
@@ -130,12 +128,7 @@ SMODS.Consumable {
     }
   end,
 
-  can_use = function(self, card)
-    if G.hand and G.hand.highlighted and #G.hand.highlighted == 1 and G.jokers and G.jokers.highlighted and #G.jokers.highlighted == 1 then
-      return true
-    end
-    return false
-  end,
+  can_use = one_select_card_and_one_select_joker_to_destroy,
 
   use = function(self, card, area, copier)
     local target_card = G.hand.highlighted[1]
@@ -230,7 +223,7 @@ SMODS.Consumable {
   end,
 
   can_use = function(self, card)
-    if G.hand and G.hand.highlighted and #G.hand.highlighted == 1 and G.jokers and G.jokers.highlighted and #G.jokers.highlighted == 1 then
+    if one_select_card_and_one_select_joker_to_destroy() then
       local target_card = G.hand.highlighted[1]
       if SMODS.has_no_rank(target_card) then
         return true
@@ -332,12 +325,7 @@ SMODS.Consumable {
     }
   end,
 
-  can_use = function(self, card)
-    if G.hand and G.hand.highlighted and #G.hand.highlighted == 1 and G.jokers and G.jokers.highlighted and #G.jokers.highlighted == 1 then
-      return true
-    end
-    return false
-  end,
+  can_use = one_select_card_and_one_select_joker_to_destroy,
 
   use = function(self, card, area, copier)
     local target_card = G.hand.highlighted[1]
@@ -431,12 +419,7 @@ SMODS.Consumable {
     }
   end,
 
-  can_use = function(self, card)
-    if G.hand and G.hand.highlighted and #G.hand.highlighted == 1 and G.jokers and G.jokers.highlighted and #G.jokers.highlighted == 1 then
-      return true
-    end
-    return false
-  end,
+  can_use = one_select_card_and_one_select_joker_to_destroy,
 
   use = function(self, card, area, copier)
     local target_card = G.hand.highlighted[1]
@@ -530,12 +513,7 @@ SMODS.Consumable {
     }
   end,
 
-  can_use = function(self, card)
-    if G.hand and G.hand.highlighted and #G.hand.highlighted == 1 and G.jokers and G.jokers.highlighted and #G.jokers.highlighted == 1 then
-      return true
-    end
-    return false
-  end,
+  can_use = one_select_card_and_one_select_joker_to_destroy,
 
   use = function(self, card, area, copier)
     local target_card = G.hand.highlighted[1]
@@ -629,12 +607,7 @@ SMODS.Consumable {
     }
   end,
 
-  can_use = function(self, card)
-    if G.hand and G.hand.highlighted and #G.hand.highlighted == 1 and G.jokers and G.jokers.highlighted and #G.jokers.highlighted == 1 then
-      return true
-    end
-    return false
-  end,
+  can_use = one_select_card_and_one_select_joker_to_destroy,
 
   use = function(self, card, area, copier)
     local target_card = G.hand.highlighted[1]
@@ -729,12 +702,7 @@ SMODS.Consumable {
     }
   end,
 
-  can_use = function(self, card)
-    if G.hand and G.hand.highlighted and #G.hand.highlighted == 1 and G.jokers and G.jokers.highlighted and #G.jokers.highlighted == 1 then
-      return true
-    end
-    return false
-  end,
+  can_use = one_select_card_and_one_select_joker_to_destroy
 
   use = function(self, card, area, copier)
     local target_card = G.hand.highlighted[1]
@@ -830,12 +798,7 @@ SMODS.Consumable {
         }
     end,
 
-    can_use = function(self, card)
-        if G.hand and G.hand.highlighted and #G.hand.highlighted == 1 and G.jokers and G.jokers.highlighted and #G.jokers.highlighted == 1 then
-            return true
-        end
-        return false
-    end,
+    can_use = one_select_card_and_one_select_joker_to_destroy,
 
     use = function(self, card, area, copier)
         local target_card = G.hand.highlighted[1]
