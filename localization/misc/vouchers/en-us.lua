@@ -209,12 +209,13 @@ return {
           "shop with an {C:attention}Enhancement",
         }
       },
+      --#region Newestia
       v_abn_bios_utility = {
-        name = "Bios Utility",
+        name = "BIOS Utility",
         text = {
-          "{C:attention}+#1#{} Card Selection Limit",
-          "{C:blue}+#2#{} Hand Size",
-          "{C:red}+#3# Winning Ante",
+          "{C:attention}+#1#{} card selection limit",
+          "{C:blue}+#2#{} hand size",
+          "{C:red}+#3# winning Ante",
         }
       },
       v_abn_thorn_field = {
@@ -222,21 +223,21 @@ return {
         text = {
           "{C:gold}+#1#{} Ascension Power per scoring",
           "card past {C:attention}#2#{} in played hand",
-          "{C:red}X#3# Blind size, +#4# Winning Ante"
+          "{C:red}X#3# Blind size, +#4# winning Ante"
         }
       },
       v_abn_out_of_stock = {
         name = "Out of Stock",
         text = {
-          "{C:attention}+#1# {C:green}Modded{} Voucher",
+          "{C:attention}+#1# {C:dark_edition}Modded{} Voucher",
           "offered per shop visit"
         }
       },
       v_abn_counterfeit_chip = {
         name = "Counterfeit Chip",
         text = {
-          "Playing cards available in",
-          "shops and packs always come",
+          "{C:attention}Playing cards{} available in",
+          "{C:attention}shops and packs{} always come",
           "with {C:attention}Stamps{} if they have",
           "a modded suit or rank",
           "{C:red}X#1# Blind size"
@@ -245,11 +246,11 @@ return {
       v_abn_earth_mover = {
         name = "Earth Mover",
         text = {
-          "First modded hand each",
+          "First {C:dark_edition}modded{} hand each",
           "round gives {X:mult,C:white}X#1#{} Mult",
-          "First vanilla hand each",
+          "First {C:inactive}vanilla{} hand each",
           "round gives {X:chips,C:white}X#2#{} Chips",
-          "{C:red}+#3# Winning Ante"
+          "{C:red}+#3# winning Ante"
         }
       },
       v_abn_carbon_dating = {
@@ -263,12 +264,13 @@ return {
       v_abn_carnival_coupon = {
         name = "Carnival Coupon",
         text = {
-          "{C:attention}+#1#{} Joker Slots",
-          "{C:red}+#2# Win Ante",
+          "{C:attention}+#1#{} Joker slots",
+          "{C:red}+#2# winning Ante",
           "{C:red}Big Blinds become",
           "{C:red}Showdown Blinds"
         }
       },
+      --#endregion
     },
   },
 }

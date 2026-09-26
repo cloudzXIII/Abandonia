@@ -179,8 +179,7 @@ return {
       credit_abn_noodle = {
         name = "",
         text = {
-          "Добавил некоторых",
-          "{C:attention}Джокеров{}",
+          "Добавил много всего",
           "+ помог с {C:green}багами{}",
           "Попробуйте {C:attention}DreamBBQ{}",
           "и {C:attention}Mewgenics{} моды!"
@@ -221,6 +220,13 @@ return {
         text = {
           "{C:red}Нельзя{} использовать в",
           "течение {C:attention}Блайнда{}"
+        }
+      },
+      abn_weather_info = {
+        name = "Прогноз погоды",
+        text = {
+          "Можно использовать {C:attention}только{}",
+          "в течение {C:attention}Блайнда{}"
         }
       },
       abn_crimson_info = {
@@ -891,6 +897,8 @@ return {
       k_abn_plus_glyph = "+1 Глифа",
       k_plus_periodic = "+1 Периодическая",
       k_abn_plus_solid_state = "+1 Твердотельная",
+      k_abn_plus_atomic = "+1 Атомная",
+      k_abn_plus_illusion = "+1 Иллюзия",
       k_plus_tag = "+1 Тег",
 
       -- Smth!
@@ -990,6 +998,9 @@ return {
 
       b_crepuscular_cards = "Карты сумеречного таро",
       k_crepuscular = "Сумеречное таро",
+
+      b_atomic_cards = "Атомные карты",
+      k_atomic = "Атомная",
     },
 
     v_dictionary = {
@@ -1018,6 +1029,7 @@ return {
       illusion = "Иллюзия",
       ram = "RAM",
       crepuscular = "Сумеречное таро",
+      atomic = "Атомная",
     },
 
     ranks = {
@@ -1052,6 +1064,7 @@ return {
       abn_Crown = "Корона",
       abn_Moon = "Луна",
       abn_Star = "Звезда",
+      abn_Vortex = "Вихрь",
     },
 
     suits_plural = {
@@ -1077,6 +1090,7 @@ return {
       abn_Crown = "Короны",
       abn_Moon = "Луны",
       abn_Star = "Звезды",
+      abn_Vortex = "Вихри",
     },
 
     poker_hands = {

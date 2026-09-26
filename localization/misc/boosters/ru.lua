@@ -459,6 +459,84 @@ return {
           'использовать сразу',
         }
       },
+      p_abn_atomic_normal = {
+        name = 'Атомный набор',
+        text = {
+          'Выберите {C:attention}#1#{} из {C:attention}#2#{}',
+          '{C:atomic}Атомных{} карт, чтобы',
+          'использовать сразу',
+        }
+      },
+      p_abn_atomic_jumbo = {
+        name = 'Атомный набор Джамбо',
+        text = {
+          'Выберите {C:attention}#1#{} из {C:attention}#2#{}',
+          '{C:atomic}Атомных{} карт, чтобы',
+          'использовать сразу',
+        }
+      },
+      p_abn_atomic_mega = {
+        name = 'Мегаатомный набор',
+        text = {
+          'Выберите {C:attention}#1#{} из {C:attention}#2#{}',
+          '{C:atomic}Атомных{} карт, чтобы',
+          'использовать сразу',
+        }
+      },
+
+      p_abn_artistry_normal = {
+        name = "Художественный набор",
+        text = {
+          'Выберите {C:attention}#1#{} из {C:attention}#2#{}',
+          '{C:artistry_cards}Художественных{} карт, чтобы',
+          'использовать сразу',
+        }
+      },
+
+      p_abn_artistry_jumbo = {
+        name = "Художественный набор Джамбо",
+        text = {
+          'Выберите {C:attention}#1#{} из {C:attention}#2#{}',
+          '{C:artistry_cards}Художественных{} карт, чтобы',
+          'использовать сразу',
+        }
+      },
+
+      p_abn_artistry_mega = {
+        name = "Мегахудожественный набор",
+        text = {
+          'Выберите {C:attention}#1#{} из {C:attention}#2#{}',
+          '{C:artistry_cards}Художественных{} карт, чтобы',
+          'использовать сразу',
+        }
+      },
+
+      p_abn_crepuscular_normal = {
+        name = "Сумеречный набор",
+        text = {
+          'Выберите {C:attention}#1#{} из {C:attention}#2#{}',
+          '{C:crepuscular}Сумеречных{} карт, чтобы',
+          'использовать сразу',
+        }
+      },
+
+      p_abn_crepuscular_jumbo = {
+        name = "Сумеречный набор Джамбо",
+        text = {
+          'Выберите {C:attention}#1#{} из {C:attention}#2#{}',
+          '{C:crepuscular}Сумеречных{} карт, чтобы',
+          'использовать сразу',
+        }
+      },
+
+      p_abn_crepuscular_mega = {
+        name = "Мегасумеречный набор",
+        text = {
+          'Выберите {C:attention}#1#{} из {C:attention}#2#{}',
+          '{C:crepuscular}Сумеречных{} карт, чтобы',
+          'использовать сразу',
+        }
+      }
     }
   },
   misc = {
@@ -477,6 +555,9 @@ return {
       k_abn_program_pack = "Программный набор",
       k_abn_calamity_pack = "Набор бедствий",
       k_abn_ram_pack = "RAM набор",
+      k_abn_atomic_pack = "Атомный набор",
+      k_abn_artistry_pack = "Художественный набор",
+      k_abn_crepuscular_pack = "Сумеречный набор",
 
       -- kiddy pack thingys
       k_standard_kiddy = "Детский стандартный набор",

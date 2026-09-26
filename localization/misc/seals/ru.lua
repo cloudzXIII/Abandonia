@@ -101,7 +101,7 @@ return {
             abn_teal_seal = {
                 name = "Бирюзовая печать",
                 text = {
-                    "Создает карту {C:abn_calamity}Бедствия{},",
+                    "Создает карту {C:calamity_cards}Бедствия{},",
                     "если {C:attention}есть{} в руке",
                     "в конце раунда",
                     "{C:inactive}(должно быть место)",
@@ -148,7 +148,6 @@ return {
                     "при {C:attention}сбросе",
                 }
             },
-
             abn_rubicund_seal = {
                 name = "Румяная печать",
                 text = {
@@ -156,6 +155,22 @@ return {
                     "при {C:attention}сбросе",
                     "{C:inactive}(сейчас {C:mult}+#1#{C:inactive} множ.)"
                 },
+            },
+            abn_mirage_seal = {
+                name = "Миражная печать",
+                text = {
+                    "Создает карту {C:illusion}Иллюзий{},",
+                    "если есть {C:attention}в руке{}",
+                    "в конце раунда",
+                    "{C:inactive}(должно быть место)",
+                }
+            },
+            abn_inverse_seal = {
+                name = "Обратная печать",
+                text = {
+                    "Дает {C:chips}фишки{} этой",
+                    "карты как {C:mult}множ.{}"
+                }
             },
         }
     },
@@ -180,7 +195,9 @@ return {
             abn_brine_seal = "Морская печать",
             abn_rainbow_seal = "Радужная печать",
             abn_duality_seal = "Дуальная печать",
-            abn_lime_seal = "Лаймовая печать"
+            abn_lime_seal = "Лаймовая печать",
+            abn_mirage_seal = "Миражная печать",
+            abn_inverse_seal = "Обратная печать",
         }
     }
 }
