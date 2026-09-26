@@ -1,3 +1,76 @@
+local config = SMODS.current_mod.config
+
+SMODS.Sound({
+  key = 'music_newestia_main',
+  path = 'music_newestia_main.ogg',
+  pitch = 1,
+  speed = 1,
+  select_music_track = function(self)
+    -- cool theme made by Vongola
+    if G.GAME.abn_newestia and config.Music ~= false then
+		return 1e09
+    end
+  end
+})
+
+SMODS.Sound({
+  key = 'music_newestia_planet',
+  path = 'music_newestia_planet.ogg',
+  pitch = 1,
+  speed = 1,
+  select_music_track = function(self)
+    -- cool theme made by Vongola
+	local booster = G.pack_cards and G.pack_cards.cards and SMODS.OPENED_BOOSTER
+
+    if booster and booster.config.center_key:find('p_celestial_') and G.GAME.abn_newestia and config.Music ~= false then
+		return 1e10
+    end
+
+  end
+})
+
+SMODS.Sound({
+  key = 'music_newestia_booster',
+  path = 'music_newestia_booster.ogg',
+  pitch = 1,
+  speed = 1,
+  select_music_track = function(self)
+    -- cool theme made by Vongola
+	local booster = G.pack_cards and G.pack_cards.cards and SMODS.OPENED_BOOSTER
+
+    if booster and not booster.config.center_key:find('p_celestial_') and not booster.config.center_key:find('p_fn_LTMBooster') and not booster.config.center_key:find('p_fn_AugmentBooster') and G.GAME.abn_newestia and config.Music ~= false then
+		return 1e10
+    end
+
+  end
+})
+
+SMODS.Sound({
+  key = 'music_newestia_shop',
+  path = 'music_newestia_shop.ogg',
+  pitch = 1,
+  speed = 1,
+  select_music_track = function(self)
+    -- cool theme made by Vongola
+    if G.GAME.abn_newestia and G.STATE == G.STATES.SHOP and config.Music ~= false then
+		return 1e10
+    end
+  end
+})
+
+SMODS.Sound({
+  key = 'music_newestia_boss',
+  path = 'music_newestia_boss.ogg',
+  pitch = 1,
+  speed = 1,
+  select_music_track = function(self)
+    -- cool theme made by Vongola
+    if G.GAME.abn_newestia and G.GAME.blind.boss and config.Music ~= false then
+		return 1e10
+    end
+  end
+})
+
 local size = 0.6
 local ratio = 390 / 58
 local scale = nil
