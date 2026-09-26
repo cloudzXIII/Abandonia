@@ -168,7 +168,7 @@ return {
       credit_abn_noodle = {
         name = "",
         text = {
-          "Added some {C:attention}Jokers{}",
+          "Added a bunch of things",
           "+ helped with {C:green}bugfixing{}",
           "Check out their {C:attention}DreamBBQ{}",
           "and {C:attention}Mewgenics{} mods!"
@@ -212,11 +212,18 @@ return {
           "during a {C:attention}Blind{}"
         }
       },
+      abn_weather_info = {
+        name = "Weather Report",
+        text = {
+          "Can {C:attention}only{} be used",
+          "in {C:attention}Blinds{}"
+        }
+      },
       abn_crimson_info = {
         name = "Crimson Card",
         text = {
           "Can {C:attention}only{} be used",
-          "in {C:attention}blinds{}"
+          "in {C:attention}Blinds{}"
         }
       },
       abn_ultra_ego_info = {

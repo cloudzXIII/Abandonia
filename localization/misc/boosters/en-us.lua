@@ -509,6 +509,33 @@ return {
           '{C:attention}#2#{} {C:artistry_cards}Artistry{} cards to',
           'be used immediately'
         }
+      },
+
+      p_abn_crepuscular_normal = {
+        name = "Crepuscular Pack",
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:crepuscular}Crepuscular{} cards to',
+          'be used immediately'
+        }
+      },
+
+      p_abn_crepuscular_jumbo = {
+        name = "Jumbo Crepuscular Pack",
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:crepuscular}Crepuscular{} cards to',
+          'be used immediately'
+        }
+      },
+
+      p_abn_crepuscular_mega = {
+        name = "Mega Crepuscular Pack",
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:crepuscular}Crepuscular{} cards to',
+          'be used immediately'
+        }
       }
     }
   },
@@ -530,6 +557,7 @@ return {
       k_abn_ram_pack = "RAM Pack",
       k_abn_atomic_pack = "Atomic Pack",
       k_abn_artistry_pack = "Artistry Pack",
+      k_abn_crepuscular_pack = "Crepuscular Pack",
 
       -- kiddy pack thingys
       k_standard_kiddy = "Kiddy Standard Pack",

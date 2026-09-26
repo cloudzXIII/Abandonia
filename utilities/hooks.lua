@@ -200,6 +200,9 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
   if card and card.ability and card.ability.set == "crimson" then
     generate_card_ui_ref({ key = "abn_crimson_info", set = "Other" }, UI_table)
   end
+  if card and card.ability and card.ability.set == "weather_report" then
+    generate_card_ui_ref({ key = "abn_weather_info", set = "Other" }, UI_table)
+  end
 
   return UI_table
 end
@@ -305,7 +308,7 @@ function SMODS.reset_blind_choices(choices)
   G.GAME.abn_newestia_current_blinds = G.GAME.abn_newestia_current_blinds or {}
   for _, k in ipairs(G.GAME.round_resets.blind_order) do
     local rep_k = k
-	if (k == "Small" and G.GAME.used_vouchers.v_abn_carbon_dating) or (k == "Big" and G.GAME.used_vouchers.v_abn_carnival_coupon) then
+    if (k == "Small" and G.GAME.used_vouchers.v_abn_carbon_dating) or (k == "Big" and G.GAME.used_vouchers.v_abn_carnival_coupon) then
       rep_k = "Boss"
     end
     if rep_k == "Small" or rep_k == "Big" then
@@ -313,7 +316,8 @@ function SMODS.reset_blind_choices(choices)
       G.GAME.abn_newestia_current_blinds[k] = "bl_abn_new_" .. k:lower()
     elseif rep_k == "Boss" then
       G.GAME.abn_newestia_original_blinds[k] = k == "Boss" and choices[k] or ABN.new_vanilla_boss(k == "Big")
-      G.GAME.abn_newestia_current_blinds[k] = ABN.new_newestia_boss((k == "Small" and "boss") or (k == "Big" and "showdown"))
+      G.GAME.abn_newestia_current_blinds[k] = ABN.new_newestia_boss((k == "Small" and "boss") or
+        (k == "Big" and "showdown"))
     end
   end
   if G.GAME.abn_newestia then

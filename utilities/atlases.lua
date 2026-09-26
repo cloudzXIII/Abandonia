@@ -260,6 +260,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+  key = "AbandoniaCrepuscularPack",
+  path = "crepuscular_packs.png",
+  px = 71,
+  py = 95,
+})
+
+SMODS.Atlas({
   key = "AbandoniaRAMPack",
   path = "ram_pack.png",
   px = 71,

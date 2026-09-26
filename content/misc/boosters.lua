@@ -583,3 +583,11 @@ ABN.create_boosters_for_set {
   draw_hand = true,
   artist = "Okronix",
 }
+
+ABN.create_boosters_for_set {
+  atlas = "AbandoniaCrepuscularPack",
+  set = "crepuscular",
+  special_colour = G.C.BLUE,
+  draw_hand = true,
+  artist = "Okronix",
+}
