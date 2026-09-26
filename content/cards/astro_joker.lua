@@ -7,6 +7,7 @@ SMODS.Joker {
   cost = 3,
   discovered = false,
   blueprint_compat = true,
+  eternal_compat = false,
   config = { extra = {
     odds = 4,
   } },
