@@ -127,6 +127,37 @@ return {
           "{C:attention}#2# {C:crimson}Crimson{} cards",
         },
       },
+      p_abn_ram_kiddy = {
+        name = "Kiddy RAM Pack",
+        text = {
+          "Choose {C:attention}#1#{} of up to",
+          "{C:attention}#2# {C:ram}RAM{} cards to",
+          "be used immediately",
+        },
+      },
+      p_abn_algebraic_kiddy = {
+        name = 'Kiddy Algebraic Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:abn_algebraic}Algebraic{} cards to',
+          'be used immediately'
+        }
+      },
+      p_abn_atomic_kiddy = {
+        name = 'Kiddy Atomic Pack',
+        text = {
+          'Choose {C:attention}#1#{} of up to',
+          '{C:attention}#2#{} {C:abn_atomic}Atomic{} cards to',
+          'be used immediately'
+        }
+      },
+      p_abn_artistry_kiddy = {
+        name = "Kiddy Artistry Pack",
+        text = {
+          "Choose {C:attention}#1#{} of up to",
+          "{C:attention}#2# {C:artistry_cards}Artistic{} cards",
+        },
+      },
       --#endregion
 
       p_abn_weather_normal = {
@@ -536,7 +567,31 @@ return {
           '{C:attention}#2#{} {C:crepuscular}Crepuscular{} cards to',
           'be used immediately'
         }
-      }
+      },
+      p_abn_algebraic_normal = {
+        name = "Algebraic Pack",
+        text = {
+          "Choose {C:attention}#1#{} of up to",
+          "{C:attention}#2# {C:algebraic}Algebraic{} cards to",
+          "be used immediately",
+        },
+      },
+      p_abn_algebraic_jumbo = {
+        name = "Jumbo Algebraic Pack",
+        text = {
+          "Choose {C:attention}#1#{} of up to",
+          "{C:attention}#2# {C:algebraic}Algebraic{} cards to",
+          "be used immediately",
+        },
+      },
+      p_abn_algebraic_mega = {
+        name = "Mega Algebraic Pack",
+        text = {
+          "Choose {C:attention}#1#{} of up to",
+          "{C:attention}#2# {C:algebraic}Algebraic{} cards to",
+          "be used immediately",
+        },
+      },
     }
   },
   misc = {
@@ -558,7 +613,7 @@ return {
       k_abn_atomic_pack = "Atomic Pack",
       k_abn_artistry_pack = "Artistry Pack",
       k_abn_crepuscular_pack = "Crepuscular Pack",
-
+      k_abn_algebraic_pack = "Algebraic Pack",
       -- kiddy pack thingys
       k_standard_kiddy = "Kiddy Standard Pack",
       k_arcana_kiddy = "Kiddy Arcana Pack",
@@ -575,6 +630,11 @@ return {
       k_glyph_kiddy = "Kiddy Glyph Pack",
       k_calamity_kiddy = "Kiddy Calamity Pack",
       k_crimson_kiddy = "Kiddy Crimson Pack",
+      k_ram_kiddy = "Kiddy RAM Pack",
+      k_atomic_kiddy = "Kiddy Atomic Pack",
+      k_artistry_kiddy = "Kiddy Artistry Pack",
+      k_crepuscular_kiddy = "Kiddy Crepuscular Pack",
+      k_algebraic_kiddy = "Kiddy Algebraic Pack",
     }
   }
 }

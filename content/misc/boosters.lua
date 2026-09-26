@@ -333,6 +333,18 @@ ABN.create_boosters_for_set {
 }
 
 ABN.create_boosters_for_set {
+  atlas = "AbandoniaAlgebraicPack",
+  set = "algebraic",
+  special_colour = G.C.PURPLE,
+  draw_hand = true,
+  artist = "0kronix",
+
+  normal_weight = 0.2,
+  jumbo_weight = 0.2,
+  mega_weight = 0.06,
+}
+
+ABN.create_boosters_for_set {
   atlas = "AbandoniaGlyphPack",
   set = "glyphs",
   key_prefix = "glyph",

@@ -113,6 +113,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+  key = "AbandoniaConsumableTags",
+  path = "tags/consumables.png",
+  px = 34,
+  py = 34,
+})
+
+SMODS.Atlas({
   key = 'AbandoniaBlinds',
   path = 'blinds.png',
   px = 34,
@@ -255,6 +262,12 @@ SMODS.Atlas({
 SMODS.Atlas({
   key = "AbandoniaArtistryPack",
   path = "artistry_packs.png",
+  px = 71,
+  py = 95,
+})
+SMODS.Atlas({
+  key = "AbandoniaAlgebraicPack",
+  path = "math packs.png",
   px = 71,
   py = 95,
 })
