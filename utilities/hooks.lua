@@ -376,7 +376,7 @@ end
 
 local old_calculate_sticker = Card.calculate_sticker
 function Card:calculate_sticker(context, sticker)
-  if G.GAME.blind.disabled or ((not G.GAME.blind.config.blind.abn_disable_stamps or not ABN_is_stamp(sticker)) and (not G.GAME.blind.config.blind.abn_disable_enhancements or not ABN.EnhStickers[sticker])) then
+if not G.GAME.blind or G.GAME.blind.disabled or ((not G.GAME.blind.config.blind.abn_disable_stamps or not ABN_is_stamp(sticker)) and (not G.GAME.blind.config.blind.abn_disable_enhancements or not ABN.EnhStickers[sticker])) then
     return old_calculate_sticker(self, context, sticker)
   end
 end
