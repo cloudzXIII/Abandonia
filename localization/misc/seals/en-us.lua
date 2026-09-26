@@ -164,6 +164,13 @@ return {
           "{C:inactive}(Must have room)",
         }
       },
+      abn_inverse_seal = {
+        name = "Inverse Seal",
+        text = {
+          "Gives this card's total",
+          "{C:chips}Chips{} as {C:mult}Mult{}"
+        }
+      },
       --#endregion
     },
   },
@@ -191,6 +198,7 @@ return {
       abn_duality_seal = "Duality Seal",
       abn_lime_seal = "Lime Seal",
       abn_mirage_seal = "Mirage Seal",
+      abn_inverse_seal = "Inverse Seal",
     }
   }
 }

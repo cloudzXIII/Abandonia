@@ -842,3 +842,32 @@ SMODS.Seal {
     artist = "Vega",
   },
 }
+
+SMODS.Seal {
+  key = "inverse",
+  badge_colour = HEX("de3030"),
+  atlas = "AbandoniaSeals",
+  pos = { x = 5, y = 3 },
+
+  loc_vars = function(self, info_queue, card)
+    return {
+      vars = {
+      }
+    }
+  end,
+
+  config = {
+    extra = {
+    }
+  },
+
+  calculate = function(self, card, context)
+    if context.main_scoring and context.cardarea == G.play then
+      local chips = card:get_chip_bonus()
+      return { mult = chips }
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Vega",
+  },
+}
