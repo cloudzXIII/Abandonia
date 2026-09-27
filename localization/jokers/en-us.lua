@@ -181,7 +181,7 @@ return {
       },
 
       j_abn_all_star_cereal = {
-        name = "All-star Cereal",
+        name = "All-Star Cereal",
         text = {
           "Gives {C:mult}+#1#{} Mult if {C:attention}scoring hand",
           "is only compose of {C:abn_star}Stars{}, {C:attention}consume",
@@ -5160,6 +5160,14 @@ return {
           "If {C:attention}first hand{} of round",
           "has {C:attention}4{} cards, destroy them and",
           "create a {C:dark_edition}summoning{} {C:spectral}Spectral{} card",
+        }
+      },
+
+      j_abn_joker_of_greed = {
+        name = "Joker Of Greed",
+        text = {
+          "Whenever you {C:attention}draw a card{},",
+          "draw {C:attention}#1#{} extra cards"
         }
       },
 

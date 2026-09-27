@@ -40,6 +40,7 @@ function Game:init_game_object(...)
 
     dark_suits_played = 0,
     light_suits_played = 0,
+    modded_suits_played = 0,
   }
   return ret
 end
@@ -239,6 +240,13 @@ ABN.calculate = function(self, context)
     end
     if all_dark then
       G.GAME.abn.dark_suits_played = G.GAME.abn.dark_suits_played + 1
+    end
+    --#endregion
+    --#region Counting number of played modded suits (used for an in pool condition)
+    for _, v in ipairs(context.scoring_hand) do
+      if ABN.is_modded_suit(v) then
+        G.GAME.abn.modded_suits_played = G.GAME.abn.modded_suits_played + 1
+      end
     end
     --#endregion
   end

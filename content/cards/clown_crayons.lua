@@ -46,6 +46,10 @@ SMODS.Joker {
         end
     end,
 
+    in_pool = function(self, args)
+        return G.GAME.abn.modded_suits_played > 0
+    end,
+
     abn_artist_credits = {
         artist = "IIye",
     },
