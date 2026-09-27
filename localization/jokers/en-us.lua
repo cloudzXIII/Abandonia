@@ -10152,8 +10152,7 @@ return {
         "this {C:attention}Joker{} levels up{} the hand instead"},
         {"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult and {C:chips}+#2#{C:inactive} Chips)"}
         }
-      }
-    },
+      },
 
       j_abn_red_hot_chili = {
         name = "Red Hot Chili",
@@ -10197,6 +10196,7 @@ return {
           },
         }
       },
+    },
   },
   misc = {
     dictionary = {
