@@ -3793,10 +3793,9 @@ return {
       j_abn_gimbo = {
         name = "Gimbo",
         text = {
-          "This Joker gains {C:mult}+#2#{} Mult",
+          "This Joker gives {C:mult}+#1#{} Mult",
           "when a {C:attention}2{}, {C:attention}3{},",
           "{C:attention}5{} or {C:attention}7{} is scored",
-          "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult)"
         }
       },
 
