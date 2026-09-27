@@ -3687,6 +3687,15 @@ return {
         }
       },
 
+      j_abn_gavin = {
+      name ="gavin",
+      text = {
+        "Scored {C:attention}Stars{} give {X:chips,C:white}X#1#{} Chips,",
+        "increase by {X:chips,C:white}X#2#{} Chips when Stars scored",
+        "Scoring Stars gain {C:chips}+#3#{} Chips per scoring card"
+        }
+      },
+
       j_abn_genetically_modified_food = {
         name = "Genetically Modified Food",
         text = {
