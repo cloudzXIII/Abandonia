@@ -156,6 +156,14 @@ return {
           "to {V:1}#2#{}",
         },
       },
+	  c_abn_theatre = {
+        name = "Theatre",
+        text = {
+          "Converts up to",
+          "{C:attention}#1#{} selected cards",
+          "to {C:attention}#2#{}",
+        },
+      },
     },
 
     Planet = {
