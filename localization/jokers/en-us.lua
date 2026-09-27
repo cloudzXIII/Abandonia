@@ -9945,6 +9945,17 @@ return {
           "when held in hand",
         }
       },
+
+      j_abn_yulan = {
+       name = "Yulan",
+       text = {
+       "Scored {C:attention}Talons{} give {X:chips,C:white}X#1#{} Chips,",
+       "increase by {X:chips,C:white}X#2#{} Chips when Talons scored",
+       "Scoring Talons gain {X:mult,C:white}X#3#{} Mult",
+       "per highest Planet rank of played hand"
+        }
+      },
+
       j_abn_zack_comic = {
         name = "Zack Comic",
         text = {
