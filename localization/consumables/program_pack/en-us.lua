@@ -4,18 +4,33 @@ return {
       c_abn_png = {
         name = ".PNG",
         text = {
-          "Enhances {C:attention}#1#{} random",
-          "cards in hand into",
-          "{C:dark_edition}Negative{} {C:attention}Lucky Cards{}",
+          {
+            "{s:0.8}Convert held {C:hearts,s:0.8}Hearts{s:0.8} into {C:abn_shield,s:0.8}Shields{}",
+            "{s:0.8}Convert held {C:diamonds,s:0.8}Diamonds{s:0.8} into {C:abn_rose,s:0.8}Roses{}",
+            "{s:0.8}Convert held {C:clubs,s:0.8}Clubs{s:0.8} into {C:abn_arrow,s:0.8}Arrows{}",
+            "{s:0.8}Convert held {C:spades,s:0.8}Spades{s:0.8} into {C:abn_anchor,s:0.8}Anchors{}",
+          },
+          {
+            "Enhance all cards that",
+            "have {C:attention}changed suit{} into",
+            "{C:dark_edition}Collodion{} {C:attention}Mult{} cards"
+          }
         }
       },
       c_abn_mp4 = {
         name = ".MP4",
         text = {
-          "Enhances {C:attention}#1#{} random",
-          "cards in hand into",
-          "{C:dark_edition}Gloss{} {C:attention}Bonus Cards{},",
-          "{C:red}destroy{} all others"
+          {
+            "{s:0.8}Convert held {C:hearts,s:0.8}Hearts{s:0.8} into {C:abn_crown,s:0.8}Crowns{}",
+            "{s:0.8}Convert held {C:diamonds,s:0.8}Diamonds{s:0.8} into {C:abn_talon,s:0.8}Talons{}",
+            "{s:0.8}Convert held {C:clubs,s:0.8}Clubs{s:0.8} into {C:abn_moon,s:0.8}Moons{}",
+            "{s:0.8}Convert held {C:spades,s:0.8}Spades{s:0.8} into {C:abn_star,s:0.8}Stars{}",
+          },
+          {
+            "Enhance all cards that",
+            "have {C:attention}changed suit{} into",
+            "{C:dark_edition}Collodion{} {C:attention}Bonus{} cards"
+          }
         }
       },
       c_abn_exe = {
@@ -53,9 +68,15 @@ return {
       c_abn_obj = {
         name = ".OBJ",
         text = {
-          "Convert all {C:attention}face{} cards",
-          "in hand into",
-          "{C:dark_edition}Abandoned{} {C:attention}Aces"
+          {
+            "{s:0.8}Convert held {C:diamonds,s:0.8}Light Suits{s:0.8} into {C:abn_suitless,s:0.8}Nulls{}",
+            "{s:0.8}Convert held {C:spades,s:0.8}Dark Suits{s:0.8} into {C:abn_Vortex,s:0.8}Vortices{}",
+          },
+          {
+            "Enhance all cards that",
+            "have {C:attention}changed suit{} into",
+            "{C:dark_edition}Polychrome{} {C:attention}Bonus{} cards"
+          }
         }
       },
       c_abn_lua = {
