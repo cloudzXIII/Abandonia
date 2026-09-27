@@ -10083,6 +10083,46 @@ return {
           },
         }
       },
+	  
+	  j_abn_gold_bonus = {
+        name = "Gold Bonus",
+        text = {
+          {
+            "If played hand contains both a {C:attention}Gold{}",
+            "and {C:attention}Bonus{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Gold{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Bonus{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered",
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:mercantile}Mercantile{} card used this run",
+            "{C:inactive}Currently:{} {C:mercantile}#5#{}"
+          }
+        }
+      },
+	  
+	  j_abn_bonus_lucky = {
+        name = "Bonus Lucky",
+        text = {
+          {
+            "If played hand contains both a {C:attention}Bonus{}",
+            "and {C:attention}Lucky{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Bonus{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Lucky{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered",
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:tonal}Tonal{} card used this run",
+            "{C:inactive}Currently:{} {C:tonal}#5#{}"
+          }
+        }
+      },
 
       j_abn_stress_doll = {
         name = "Stress Doll",
