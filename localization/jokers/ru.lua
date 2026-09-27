@@ -719,6 +719,19 @@ return {
                     }
                 }
             },
+            j_abn_balked_up_jimbo = {
+                name = "Подтянутый Джимбо",
+                text = {
+                    {
+                        "Этот Джокер занимает {C:attention}2{} слота",
+                    },
+                    {
+                        "Каждая подсчитываемая карта дает",
+                        "{C:mult}+#1#{} множ. за каждую раз, когда рука",
+                        "была {C:attention}сыграна в этой партии"
+                    }
+                }
+            },
             j_abn_ballistic_glass_joker = {
                 name = "Баллистическое стекло",
                 text = {
@@ -6302,6 +6315,22 @@ return {
                     }
                 }
             },
+            j_abn_okronix = {
+                name = "Okronix",
+                text = {
+                    {
+                        "{C:dark_edition}Модовые{} и {C:inactive}Ванильные{} руки дают",
+                        "{C:white,X:mult}Xмнож.{} или {C:white,X:chips}Xфишки{}, соответственно, равные",
+                        "{C:attention}количеству{}, которое эта рука была {C:attention}сыграна за эту партию",
+                        "{s:0.8,C:attention}Старшая карта{s:0.8} не в счет"
+                    },
+                    {
+                        "Когда {C:attention}секретная покерная рука{} повышает уровень,",
+                        "этот Джокер получает {C:white,X:mult}Xмнож.{}, равный ее {C:attention}уровню",
+                        "{C:inactive}(сейчас {C:white,X:mult}X#1#{C:inactive} множ.)"
+                    }
+                }
+            },
             j_abn_old_as_dirt = {
                 name = 'Стар как мир',
                 text = {
@@ -6394,8 +6423,15 @@ return {
                     "{C:inactive}(сейчас {C:chips}+#3#{} {C:inactive}фишек,{} {C:mult}+#4#{} {C:inactive}множ.){}",
                 }
             },
+            j_abn_overbreach_joker = {
+                name = "Слом четвертой стены",
+                text = {
+                    "{C:attention}Неподсчитанные{} карты дают",
+                    "{C:mult}множ.{} и {C:chips}фишки{} сыгранной руки"
+                }
+            },
             j_abn_owen = {
-                name = "Owen",
+                name = "Оуэн",
                 text = {
                     {
                         "{C:abn_arrow}Стрелы{} дают {X:chips,C:white}X#1#{} фишек",

@@ -757,6 +757,19 @@ return {
         }
       },
 
+      j_abn_balked_up_jimbo = {
+        name = "Bulked Up Jimbo",
+        text = {
+          {
+            "This Joker takes up {C:attention}2{} slots",
+          },
+          {
+            "Each scoring card give {C:mult}+#1#{} Mult per",
+            "time that hand was {C:attention}played this run"
+          }
+        }
+      },
+
       j_abn_ballistic_glass_joker = {
         name = "Ballistic Glass Joker",
         text = {
@@ -6788,6 +6801,23 @@ return {
         }
       },
 
+      j_abn_okronix = {
+        name = "Okronix",
+        text = {
+          {
+            "{C:dark_edition}Modded{} and {C:inactive}Vanilla{} hands gives",
+            "{C:white,X:mult}XMult{} or {C:white,X:chips}XChips{}, respectively equal to",
+            "the {C:attention}time{} that hand has been {C:attention}played this run",
+            "{s:0.8,C:attention}High Card{s:0.8} excluded"
+          },
+          {
+            "When a {C:attention}secret poker hand{} levels up",
+            "this Joker gains {C:white,X:mult}XMult{} equal to its {C:attention}level",
+            "{C:inactive}(Currently {C:white,X:mult}X#1#{C:inactive} Mult)"
+          }
+        }
+      },
+
       j_abn_old_as_dirt = {
         name = 'Old as Dirt',
         text = {
@@ -6889,6 +6919,14 @@ return {
           "{C:mult}+#2#{} Mult when {C:attention}Blind{} is defeated",
           "with an {C:attention}even{} number of cards",
           "{C:inactive}(Currently {C:chips}+#3#{} {C:inactive}Chips,{} {C:mult}+#4#{} {C:inactive}Mult){}",
+        }
+      },
+
+      j_abn_overbreach_joker = {
+        name = "Overbreach Joker",
+        text = {
+          "{C:attention}Unscored{} cards give {C:mult}Mult",
+          "and {C:chips}Chips{} of played hand"
         }
       },
 

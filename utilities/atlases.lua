@@ -589,6 +589,20 @@ SMODS.Atlas({
   py = 95,
 })
 
+SMODS.Atlas({
+  key = "ABNBalkedUpJimbo",
+  path = "jokers/gym_card.png",
+  px = 284,
+  py = 190,
+})
+
+SMODS.Atlas({
+  key = "ABNOverbreachJoker",
+  path = "jokers/overlord_joker.png",
+  px = 99,
+  py = 151,
+})
+
 -- Animated Jokers (Popup Joker and Malware Joker)
 SMODS.Atlas {
   key = "popup_joker_atlas",
