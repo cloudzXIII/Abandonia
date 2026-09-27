@@ -175,7 +175,7 @@ ABN.CalamityCard {
     if G.consumeables and #G.consumeables.cards > 0 then
       local held_consumeables = {}
       for _, v in ipairs(G.consumeables.cards) do
-        if #held_consumeables < 40 then
+        if #held_consumeables < 40 and v ~= card then
           held_consumeables[#held_consumeables + 1] = v
         end
       end
@@ -194,7 +194,7 @@ ABN.CalamityCard {
     }
   end,
   can_use = function(self, card)
-    return G.consumeables and #G.consumeables.cards > 0 and G.playing_cards and #G.playing_cards > 0
+    return G.consumeables and ((#G.consumeables.cards > 0 and G.consumeables.cards[1] ~= card) or #G.consumeables.cards > 1) and G.playing_cards and #G.playing_cards > 0
   end,
 
   use = function(self, card, area, copier)

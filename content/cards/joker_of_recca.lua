@@ -1,20 +1,5 @@
 -- Joker of Recca (code by Noodlemire)
 
---[[
-Darkner/Lightner enhanced Jokers will
-not be destroyed by hands that have
-too many of the opposite suit type
-
-Reversal Darkner cards give +#1# Chips and +#2# Mult
-Reversal Lightner cards give +#3# Chips and +#4# Mult
-
-If this joker is Abandoned, it
-gains X#5# Mult for each scoring
-Darkner card and X#6# Chips for
-each scoring Lightner card
-(Currently X#7# Mult, X#8# Chips)
---]]
-
 SMODS.Joker{
 	key = "joker_of_recca",
 	atlas = "ABNJokerSheet26",

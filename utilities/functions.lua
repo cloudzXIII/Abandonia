@@ -890,6 +890,10 @@ ABN.is_modded_hand = function(handname)
 	return SMODS.PokerHands[handname] and SMODS.PokerHands[handname].original_mod
 end
 
+ABN.is_modded_rarity = function(rarity)
+	return SMODS.Rarities[rarity] and SMODS.Rarities[rarity].original_mod
+end
+
 ABN.is_vanilla_enh = function(enh_key)
   local vanilla = false
   local data = enh_key and ABN.get_enh_sticker(enh_key)

@@ -1,0 +1,39 @@
+[manifest]
+version = "0.1.0"
+dump_lua = true
+priority = 50
+
+# Add in a way to force cards in G.play to score end of round effects as if they were still in G.hand
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "for i, card in ipairs(context.cardarea.cards) do"
+position = "at"
+match_indent = true
+payload = '''
+for i, card in ipairs(context.abn_but_calculate_these_other_cards_instead or context.cardarea.cards) do
+'''
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "percent = (i-0.999)/(#context.cardarea.cards-0.998) + (j-1)*0.1"
+position = "at"
+match_indent = true
+payload = '''
+percent = (i-0.999)/(#(context.abn_but_calculate_these_other_cards_instead or context.cardarea.cards)-0.998) + (j-1)*0.1
+'''
+
+# Custom context for responding directly to a playing card being triggered
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "context.individual = nil"
+position = "after"
+match_indent = true
+payload = '''
+if flags.calculated then
+	context.abn_post_playing_card_trigger = true
+	SMODS.calculate_context(context)
+	context.abn_post_playing_card_trigger = nil
+end
+'''

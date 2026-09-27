@@ -10154,6 +10154,49 @@ return {
         }
       }
     },
+
+      j_abn_red_hot_chili = {
+        name = "Red Hot Chili",
+        text = {
+          "When score catches {C:red}fire,",
+          "level up played {C:attention}poker hand"
+        },
+      },
+	  
+	  j_abn_mime_business = {
+        name = "Mime Business",
+        text = {
+          {
+            "Scoring cards trigger",
+            "{C:attention}held in hand{} abilities",
+          },
+          {
+            "This joker gains {X:mult,C:white}X#1#{} Mult",
+			"every time a scoring card's",
+			"{C:attention}held in hand{} abilties trigger",
+			"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
+          },
+        }
+      },
+	  
+	  j_abn_drama_masks = {
+        name = "Drama Masks",
+        text = {
+          {
+            "When blind is selected,",
+            "all other owned jokers of",
+			"a random rarity are {C:red}debuffed"
+          },
+          {
+            "{X:mult,C:white}X#1#{} Mult per {C:red}debuffed{} joker"
+          },
+          {
+            "This joker gains {C:gold}+#2#{} Ascension Power",
+			"per {C:red}debuffed{} joker with a {C:dark_edition}modded{} rarity",
+			"{C:inactive}(Currently {C:gold}+#3# {C:inactive}Ascension Power)"
+          },
+        }
+      },
   },
   misc = {
     dictionary = {
