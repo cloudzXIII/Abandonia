@@ -537,7 +537,7 @@ SMODS.Atlas({
 })
 
 --#region Jokers
-for i = 1, 26 do
+for i = 1, 27 do
   SMODS.Atlas({
     key = "ABNJokerSheet" .. i,
     path = "jokers/joker" .. i .. ".png",

@@ -170,6 +170,14 @@ return {
                     }
                 }
             },
+            j_abn_all_star_cereal = {
+                name = "Звездный завтрак",
+                text = {
+                    "Дает {C:mult}+#1#{} множ., если {C:attention}подсчитываемая рука",
+                    "содержит только {C:abn_star}Звезды{}, {C:attention}поглощается{},",
+                    "если {C:attention}полная рука{} не содержит {C:abn_star}Звезд"
+                }
+            },
             j_abn_alter_suits = {
                 name = "Альтернативные масти",
                 text = {
@@ -1383,6 +1391,14 @@ return {
                     "Первая сыгранная карта",
                     "навсегда получает {C:mult}+#1#{} множ.",
                     "при подсчете",
+                }
+            },
+            j_abn_clown_crayons = {
+                name = "Клоунские мелки",
+                text = {
+                    "Получает {C:white,X:mult}X#2#{} множ. за каждую уникальную",
+                    "{C:dark_edition}модовую{} масть в {C:attention}сыгранной руке",
+                    "{C:inactive}(сейчас {C:white,X:mult}X#1#{C:inactive} множ.)"
                 }
             },
             j_abn_clown_degree = {

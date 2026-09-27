@@ -180,6 +180,15 @@ return {
         }
       },
 
+      j_abn_all_star_cereal = {
+        name = "All-star Cereal",
+        text = {
+          "Gives {C:mult}+#1#{} Mult if {C:attention}scoring hand",
+          "is only compose of {C:abn_star}Stars{}, {C:attention}consume",
+          "if {C:attention}full hand{} has no {C:abn_star}Stars"
+        }
+      },
+
       j_abn_alter_suits = {
         name = "Alter Suits",
         text = {
@@ -1473,6 +1482,15 @@ return {
           "First played card",
           "permanently gains",
           "{C:mult}+#1#{} Mult when scored",
+        }
+      },
+
+      j_abn_clown_crayons = {
+        name = "Clown Crayons",
+        text = {
+          "Gains {C:white,X:mult}X#2#{} Mult per unique",
+          "{C:dark_edition}modded{} suit in {C:attention}played hand",
+          "{C:inactive}(Currently {C:white,X:mult}X#1#{C:inactive} Mult)"
         }
       },
 
