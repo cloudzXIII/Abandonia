@@ -9213,6 +9213,17 @@ return {
         }
       },
 
+      
+    j_abn_travis = {
+      name = "Travis",
+      text = {
+      "Scored {C:attention}Stars{} give {X:mult,C:white}X#1#{} Mult,",
+      "increase by {X:mult,C:white}X#2#{} Mult when Stars scored",
+      "Scoring Stars gain {C:attention}+10{} Mult per card held in hand"
+        }
+      },
+
+
       j_abn_trevulit = {
         name = "Trevulit",
         text = {
