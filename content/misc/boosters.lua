@@ -210,7 +210,7 @@ ABN.create_boosters_for_set {
   set = "astro_cards",
   special_colour = G.C.PURPLE,
   draw_hand = true,
-  artist = "Vega",
+  artist = "SmoliconBoi",
   key_prefix = "astro",
 }
 
@@ -278,7 +278,7 @@ ABN.create_boosters_for_set {
   atlas = "SigilBoosters",
   set = "sigils",
   special_colour = G.C.RED,
-  artist = "Vega",
+  artist = "SmoliconBoi",
   key_prefix = "sigil",
 
   normal_weight = 0.2,
@@ -358,6 +358,7 @@ ABN.create_boosters_for_set {
   set = "weather_report",
   special_colour = G.C.BLUE,
   key_prefix = "weather",
+  artist = "SmoliconBoi",
 
   booster_pos = {
     normal = {
