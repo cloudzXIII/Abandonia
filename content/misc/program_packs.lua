@@ -22,26 +22,18 @@ SMODS.Consumable {
   pos = { x = 0, y = 0 },
   config = { extra = { amount = 3 } },
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = { key = 'e_negative_playing_card', set = 'Edition', config = { extra = 1 } }
-    info_queue[#info_queue + 1] = G.P_CENTERS.m_lucky
-    return { vars = { card.ability.extra.amount } }
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_collodion
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_bonus
+    return {
+      vars = {
+      }
+    }
   end,
+
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 -- and next(SMODS.Edition:get_edition_cards(G.hand, true))
+    return G.hand and #G.hand.cards > 0
   end,
   use = function(self, card, area, copier)
-    local held = {}
-    for _, c in ipairs(G.hand.cards) do
-      if not c.edition then
-        held[#held + 1] = c
-      end
-    end
-    pseudoshuffle(held, pseudoseed("abn_png"))
-    local to_enhance = {}
-    for i = 1, math.min(card.ability.extra.amount, #held) do
-      to_enhance[#to_enhance + 1] = held[i]
-    end
-
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -51,6 +43,37 @@ SMODS.Consumable {
         return true
       end
     }))
+
+    local suit_mapping = {
+      Hearts = 'abn_Shield',
+      Diamonds = 'abn_Rose',
+      Clubs = 'abn_Arrow',
+      Spades = 'abn_Anchor'
+    }
+
+    local to_enhance = {}
+
+    -- convert to suit
+    for _, hand_card in ipairs(G.hand.cards) do
+      local changed = false
+
+      for base_suit, target_suit in pairs(suit_mapping) do
+        if hand_card:is_suit(base_suit) then
+          hand_card:change_suit(target_suit)
+          to_enhance[#to_enhance + 1] = hand_card
+          changed = true
+          break
+        end
+      end
+
+      if changed then
+        hand_card:juice_up(0.3, 0.3)
+      end
+    end
+
+    delay(0.5)
+
+    -- enhancing
     for i, c in ipairs(to_enhance) do
       local percent = 1.15 - (i - 0.999) / (#to_enhance - 0.998) * 0.3
       G.E_MANAGER:add_event(Event({
@@ -67,8 +90,8 @@ SMODS.Consumable {
     for _, c in ipairs(to_enhance) do
       G.E_MANAGER:add_event(Event({
         func = function()
-          c:set_edition("e_negative", true)
-          c:set_ability("m_lucky")
+          c:set_ability("m_mult")
+          c:set_edition("e_abn_collodion", true)
           return true
         end
       }))
@@ -101,30 +124,18 @@ SMODS.Consumable {
   pos = { x = 1, y = 0 },
   config = { extra = { amount = 4 } },
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_gloss
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_collodion
     info_queue[#info_queue + 1] = G.P_CENTERS.m_bonus
-    return { vars = { card.ability.extra.amount } }
+    return {
+      vars = {
+      }
+    }
   end,
+
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 -- and next(SMODS.Edition:get_edition_cards(G.hand, true))
+    return G.hand and #G.hand.cards > 0
   end,
   use = function(self, card, area, copier)
-    local held = {}
-    for _, c in ipairs(G.hand.cards) do
-      held[#held + 1] = c
-    end
-    pseudoshuffle(held, pseudoseed('abn_mp4'))
-
-    local chosen = {}
-    local destroyed = {}
-    for i, c in ipairs(held) do
-      if i <= card.ability.extra.amount then
-        chosen[#chosen + 1] = c
-      else
-        destroyed[#destroyed + 1] = c
-      end
-    end
-
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -134,26 +145,72 @@ SMODS.Consumable {
         return true
       end
     }))
-    for _, c in ipairs(chosen) do
+
+    local suit_mapping = {
+      Hearts = 'abn_Crown',
+      Diamonds = 'abn_Talon',
+      Clubs = 'abn_Moon',
+      Spades = 'abn_Star'
+    }
+
+    local to_enhance = {}
+
+    -- convert to suit
+    for _, hand_card in ipairs(G.hand.cards) do
+      local changed = false
+
+      for base_suit, target_suit in pairs(suit_mapping) do
+        if hand_card:is_suit(base_suit) then
+          hand_card:change_suit(target_suit)
+          to_enhance[#to_enhance + 1] = hand_card
+          changed = true
+          break
+        end
+      end
+
+      if changed then
+        hand_card:juice_up(0.3, 0.3)
+      end
+    end
+
+    delay(0.5)
+
+    -- enhancing
+    for i, c in ipairs(to_enhance) do
+      local percent = 1.15 - (i - 0.999) / (#to_enhance - 0.998) * 0.3
       G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.15,
         func = function()
-          c:set_edition("e_abn_gloss", true)
-          c:set_ability("m_bonus")
+          c:flip()
+          play_sound('card1', percent)
           c:juice_up(0.3, 0.3)
           return true
         end
       }))
     end
-    G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = 0.2,
-      func = function()
-        if #destroyed > 0 then
-          SMODS.destroy_cards(destroyed)
+    for _, c in ipairs(to_enhance) do
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          c:set_ability("m_bonus")
+          c:set_edition("e_abn_collodion", true)
+          return true
         end
-        return true
-      end
-    }))
+      }))
+    end
+    for i, c in ipairs(to_enhance) do
+      local percent = 0.85 + (i - 0.999) / (#to_enhance - 0.998) * 0.3
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.15,
+        func = function()
+          c:flip()
+          play_sound('tarot2', percent, 0.6)
+          c:juice_up(0.3, 0.3)
+          return true
+        end
+      }))
+    end
     delay(0.5)
   end,
   abn_artist_credits = {
@@ -329,28 +386,20 @@ SMODS.Consumable {
   cost = 4,
   atlas = "abn_AbandoniaProgramPack",
   pos = { x = 2, y = 1 },
-
+  config = { extra = { amount = 4 } },
   loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_abandond
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_bonus
+    return {
+      vars = {}
+    }
   end,
 
   can_use = function(self, card)
-    local thunk = false
-    for _, c in ipairs(G.hand.cards) do
-      if c:is_face() then -- and not c.edition then
-        thunk = true
-      end
-    end
-    return G.hand and #G.hand.cards > 0 and thunk
+    return G.hand and #G.hand.cards > 0
   end,
-  use = function(self, card, area, copier)
-    local to_enhance = {}
-    for _, c in ipairs(G.hand.cards) do
-      if c:is_face() then -- and not c.edition then
-        to_enhance[#to_enhance + 1] = c
-      end
-    end
 
+  use = function(self, card, area, copier)
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -360,6 +409,28 @@ SMODS.Consumable {
         return true
       end
     }))
+
+    local to_enhance = {}
+
+    for _, hand_card in ipairs(G.hand.cards) do
+      local changed = false
+
+      if ABN.is_dark(hand_card) then
+        hand_card:change_suit('abn_suitless')
+        changed = true
+      elseif ABN.is_light(hand_card) then
+        hand_card:change_suit('abn_Vortex')
+        changed = true
+      end
+
+      if changed then
+        hand_card:juice_up(0.3, 0.3)
+        to_enhance[#to_enhance + 1] = hand_card
+      end
+    end
+
+    delay(0.5)
+
     for i, c in ipairs(to_enhance) do
       local percent = 1.15 - (i - 0.999) / (#to_enhance - 0.998) * 0.3
       G.E_MANAGER:add_event(Event({
@@ -373,15 +444,17 @@ SMODS.Consumable {
         end
       }))
     end
+
     for _, c in ipairs(to_enhance) do
       G.E_MANAGER:add_event(Event({
         func = function()
-          assert(SMODS.change_base(c, nil, 'Ace'))
-          c:set_edition("e_abn_abandond")
+          c:set_ability("m_bonus")
+          c:set_edition("e_polychrome", true)
           return true
         end
       }))
     end
+
     for i, c in ipairs(to_enhance) do
       local percent = 0.85 + (i - 0.999) / (#to_enhance - 0.998) * 0.3
       G.E_MANAGER:add_event(Event({
@@ -395,8 +468,10 @@ SMODS.Consumable {
         end
       }))
     end
+
     delay(0.5)
   end,
+
   abn_artist_credits = {
     artist = "Strawberry Cereal",
   },
