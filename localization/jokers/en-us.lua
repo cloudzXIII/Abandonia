@@ -1530,6 +1530,17 @@ return {
           "{C:inactive,s:0.8}(Changes to {C:blue,s:0.8}Odd{C:inactive,s:0.8} next round)",
         }
       },
+
+      j_abn_cazz = {
+        name = "Cazz",
+        text = {
+        "Scored {C:attention}Talons{} give {X:mult,C:white}X#1#{} Mult,",
+        "increase by {X:mult,C:white}X#2#{} Mult when Talons scored",
+        "Scoring Talons gain {C:attention}+#3#{} Ascension Power",
+        "per level of played hand"
+        }
+      },
+
       j_abn_codding_error_odd = {
         name = "Coding Error",
         text = {
