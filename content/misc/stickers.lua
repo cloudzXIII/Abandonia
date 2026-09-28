@@ -699,13 +699,24 @@ SMODS.Sticker {
   pos = { x = 0, y = 3 },
   badge_colour = HEX("eba61c"),
   
-  calculate = function(self, card, context)
+  apply = function(self, card, val)
     for _, _card in ipairs(G.playing_cards or {}) do
-      if ABN.is_dark(_card) then
-        _card:set_debuff(true)
+      if ABN.is_dark(_card, true) then
+        SMODS.debuff_card(_card, val, "abn_daytime_sticker")
       end
     end
-    if context.individual and context.cardarea == G.play then
+  end,
+  
+  calculate = function(self, card, context)
+    if context.playing_card_added then
+      for _, _card in ipairs(context.cards) do
+        if ABN.is_dark(_card, true) then
+          SMODS.debuff_card(_card, true, "abn_daytime_sticker")
+        end
+      end
+    elseif (context.modify_shop_card or context.modify_booster_card) and ABN.is_dark(context.card, true) then
+      SMODS.debuff_card(context.card, true, "abn_daytime_sticker")
+    elseif context.individual and context.cardarea == G.play then
       if ABN.is_light(context.other_card) then
         return {
           chips = context.other_card.base.nominal * 2
@@ -721,13 +732,24 @@ SMODS.Sticker {
   pos = { x = 1, y = 3 },
   badge_colour = HEX("435b8c"),
   
-  calculate = function(self, card, context)
+  apply = function(self, card, val)
     for _, _card in ipairs(G.playing_cards or {}) do
-      if ABN.is_light(_card) then
-        _card:set_debuff(true)
+      if ABN.is_light(_card, true) then
+        SMODS.debuff_card(_card, val, "abn_nighttime_sticker")
       end
     end
-    if context.individual and context.cardarea == G.play then
+  end,
+
+  calculate = function(self, card, context)
+    if context.playing_card_added then
+      for _, _card in ipairs(context.cards) do
+        if ABN.is_light(_card, true) then
+          SMODS.debuff_card(_card, true, "abn_nighttime_sticker")
+        end
+      end
+    elseif (context.modify_shop_card or context.modify_booster_card) and ABN.is_light(context.card, true) then
+      SMODS.debuff_card(context.card, true, "abn_nighttime_sticker")
+    elseif context.individual and context.cardarea == G.play then
       if ABN.is_dark(context.other_card) then
         return {
           chips = context.other_card.base.nominal * 2

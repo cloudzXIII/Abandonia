@@ -825,7 +825,7 @@ ABN.NewestiaBlind({
 	boss = {},
 	boss_colour = HEX("e56a2f"),
 	calculate = function(self, blind, context)
-		if not blind.disabled and context.final_scoring_step and SMODS.calculate_round_score() + G.GAME.chips >= G.GAME.blind.chips then
+		if not blind.disabled and context.final_scoring_step and SMODS.calculate_round_score() >= G.GAME.blind.chips then
 			return {
 				Xmult_mod = 0,
 				Xchip_mod = 0,

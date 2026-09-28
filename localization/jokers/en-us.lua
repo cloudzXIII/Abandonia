@@ -9107,7 +9107,7 @@ return {
         name = "The Joker",
         text = {
           "Scored cards reduce",
-          "{C:attention}blind requirement{} by {C:attention}10%{}",
+          "{C:attention}blind requirement{} by {C:attention}#1#%{}",
         }
       },
 
