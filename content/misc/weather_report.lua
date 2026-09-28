@@ -742,27 +742,10 @@ ABN.WeatherReport {
 ABN.WeatherReport {
   key = "fire_rainbow",
   pos = { x = 3, y = 3 },
-  config = { extra = { triggered = false, spectrum_played = false } },
-
-  can_use = function(self, card)
-    return G.GAME.blind and G.GAME.blind.in_blind and not card.ability.extra.triggered
-  end,
-
-  use = function(self, card, area, copier)
-    G.E_MANAGER:add_event(Event({
-      func = function()
-        play_sound('tarot1')
-        card:juice_up(0.3, 0.5)
-        card.ability.extra.triggered = true
-        SMODS.calculate_effect({ message = localize('k_active_ex'), colour = G.C.FILTER }, card)
-        return true
-      end
-    }))
-    delay(0.4)
-  end,
+  config = { extra = { spectrum_played = false } },
 
   calculate = function(self, card, context)
-    if card.ability.extra.triggered and context.before then
+    if context.before then
       local spectrum_hands = {
         "abn_Spectrum",
         "abn_Specflush",
@@ -781,7 +764,6 @@ ABN.WeatherReport {
       end
 
       if is_spectrum then
-        card.ability.extra.triggered = false
         card.ability.extra.spectrum_played = true
         SMODS.calculate_effect({ message = localize('k_level_up_ex'), colour = G.C.FILTER }, card)
         SMODS.smart_level_up_hand(card, context.scoring_name)
@@ -793,6 +775,15 @@ ABN.WeatherReport {
         remove = true
       }
     end
+
+	if context.after and card.ability.extra.spectrum_played then
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				card:start_dissolve()
+				return true
+			end
+		}))
+	end
 
     self:destroy_at_end_of_round(card, context)
   end,

@@ -222,7 +222,7 @@ ABN.NewestiaBlind({
 	boss = {},
 	boss_colour = HEX("b95b08"),
 	loc_vars = function(self)
-		return {vars = {ABN.most_played_hand()}}
+		return {vars = {localize(ABN.most_played_hand(), 'poker_hands')}}
 	end,
 	collection_loc_vars = function(self)
 		return {key = self.key.."_collection"}
@@ -493,7 +493,7 @@ ABN.NewestiaBlind({
 	boss_colour = HEX("439a4f"),
 	modifies_draw = true,
 	loc_vars = function(self)
-		local ret = {vars = {G.GAME.current_round.hands_played + 1}}
+		local ret = {vars = {(G.GAME.blind.in_blind and G.GAME.blind.boss and G.GAME.current_round.hands_played or 0) + 1}}
 		if ret.vars[1] > 1 then
 			ret.key = self.key.."_plural"
 		end
@@ -545,7 +545,7 @@ ABN.NewestiaBlind({
 		if G.GAME and G.GAME.bl_abn_new_oculus_previous_hand then
 			return {
 				key = self.key..'_'..G.GAME.bl_abn_new_oculus_mode,
-				vars = {G.GAME.bl_abn_new_oculus_previous_hand}
+				vars = {localize(G.GAME.bl_abn_new_oculus_previous_hand, 'poker_hands')}
 			}
 		end
 	end,
@@ -588,7 +588,7 @@ ABN.NewestiaBlind({
 		if G.GAME and G.GAME.bl_abn_new_maw_previous_hand then
 			return {
 				key = self.key.."_change",
-				vars = {G.GAME.bl_abn_new_maw_previous_hand}
+				vars = {localize(G.GAME.bl_abn_new_maw_previous_hand, 'poker_hands')}
 			}
 		end
 	end,
