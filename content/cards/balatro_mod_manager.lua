@@ -1,14 +1,5 @@
 -- Balatro Mod Manager (code by Noodlemire)
 
---[[
-When Boss Blind is defeated,
-each Joker gains a random Enhancement
-
-Whenever a Joker changes
-Enhancement, it gains
-+1 Ascension Power
---]]
-
 SMODS.Joker{
 	key = "balatro_mod_manager",
 	atlas = "ABNJokerSheet8",

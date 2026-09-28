@@ -10196,6 +10196,21 @@ return {
           },
         }
       },
+	  
+	  j_abn_super_horror_mario = {
+        name = "Super Horror Mario",
+        text = {
+          {
+			"{C:red}Destroy{} all played cards with",
+			"{C:attention}vanilla{} suits after scoring"
+          },
+          {
+			"Scoring cards with {C:dark_edition}modded {C:spades}dark{} suits",
+			"give {X:mult,C:white}XMult{} and {X:chips,C:white}XChips{} equal to the",
+			"number of cards destroyed by this"
+          },
+        }
+      },
     },
   },
   misc = {

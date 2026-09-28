@@ -603,6 +603,13 @@ SMODS.Atlas({
   py = 151,
 })
 
+SMODS.Atlas({
+  key = "ABNJoker72by96",
+  path = "jokers/joker72by96.png",
+  px = 72,
+  py = 96,
+})
+
 -- Animated Jokers (Popup Joker and Malware Joker)
 SMODS.Atlas {
   key = "popup_joker_atlas",
