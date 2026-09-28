@@ -113,7 +113,7 @@ SMODS.Sound({
   select_music_track = function(self)
     -- If it's stakes play music
     if G.GAME.modifiers.Honor and config.Music ~= false then
-      return 1e10
+      return 1e09
     end
   end
 })
