@@ -118,6 +118,20 @@ SMODS.Sound({
   end
 })
 
+
+SMODS.Sound({
+  key = 'music_stakes_blind',
+  path = 'music_stakes_blind.ogg',
+  pitch = 1,
+  speed = 1,
+  select_music_track = function(self)
+    -- If it's stakes blind play music
+    if G.GAME.modifiers.Honor and G.GAME.blind.in_blind and not G.GAME.blind.boss and config.Music ~= false then
+      return 1e10
+    end
+  end
+})
+
 SMODS.ObjectType({
   key = "Comedians",
   default = "j_abn_night_comedian",
