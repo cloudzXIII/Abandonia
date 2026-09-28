@@ -387,18 +387,24 @@ function Card.load(self, cardTable, other_card)
         name = center.name,
         set = "Tag",
         config = center.config or {},
+	    loc_vars = center.loc_vars,
+	    generate_ui = center.generate_ui,
         pos = center.pos or { x = 0, y = 0 },
         atlas = center.atlas or 'tags'
       }
     end
   end
   old_card_load(self, cardTable, other_card)
+  if cardTable.is_shop_tag and cardTable.shop_tag_key then
+	self.T.w = self.T.w * 0.4
+    self.T.h = self.T.w
+  end
 end
 
 ABN.add_tag_to_shop = function(key, price, extra)
   extra = extra or {}
-  extra.W = extra.W or 0.8
-  extra.H = extra.H or 0.8
+  extra.W = extra.W or 0.832
+  extra.H = extra.H or 0.832
   extra.area = extra.area or G.shop_vouchers
   local center = G.P_TAGS[key]
   if not center then return end
@@ -410,6 +416,8 @@ ABN.add_tag_to_shop = function(key, price, extra)
       name = center.name,
       set = "Tag",
       config = center.config or {},
+	  loc_vars = center.loc_vars,
+	  generate_ui = center.generate_ui,
       pos = center.pos or { x = 0, y = 0 },
       atlas = center.atlas or 'tags'
     }
