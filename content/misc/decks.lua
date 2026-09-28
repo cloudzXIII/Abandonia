@@ -1115,3 +1115,48 @@ SMODS.Back {
         end
     end,
 }
+
+SMODS.Back {
+    key = 'anaglyphic',
+    name = 'Anaglyphic Deck',
+    atlas = 'AbandoniaDecks',
+    pos = { x = 0, y = 9 },
+
+    calculate = function(self, card, context)
+        if context.modify_shop_card and context.card.edition then
+            context.card.cost = math.max(1, math.floor(context.card.cost / 2))
+        end
+    end,
+}
+
+local effect_keys = {"chips", "h_chips", "chip_mod", "mult", "h_mult", "mult_mod"}
+local old_calc = SMODS.calculate_effect
+function SMODS.calculate_effect(effect, scored_card, from_edition, pre_jokers)
+	if G.GAME.selected_back.effect.center.key == "b_abn_anaglyphic" and not scored_card.edition then
+		for _, eff in ipairs(effect_keys) do
+			if effect[eff] then effect[eff] = math.floor(effect[eff] / 2) end
+		end
+	end
+
+	return old_calc(effect, scored_card, from_edition, pre_jokers)
+end
+
+SMODS.Back {
+    key = 'crumbling',
+    name = 'Crumbling Deck',
+    atlas = 'AbandoniaDecks',
+    pos = { x = 1, y = 9 },
+
+    loc_vars = function(self, info_queue, back)
+		local config = SMODS.Stickers.abn_fragile.config
+		info_queue[#info_queue + 1] = {key = 'abn_fragile', set = 'Other', vars = {SMODS.get_probability_vars(back, config.base, config.odds)}}
+	end,
+
+    calculate = function(self, card, context)
+        if (context.modify_shop_card or context.modify_booster_card) and context.card.ability.set == "Joker" then
+            context.card:add_sticker("abn_fragile", true)
+		elseif context.destroy_card and (context.cardarea == G.play or context.cardarea == "unscored") and G.GAME.current_round.hands_played == 0 then
+			return {remove = true}
+        end
+    end,
+}
