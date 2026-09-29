@@ -323,6 +323,71 @@ return {
           "Unscored cards score instead",
         },
       },
+	  bl_abn_waffling_wager = {
+        name = "Waffling Wager",
+        text = {
+          "+X0.25 Blind requirement",
+		  "per Light Suit in the Deck",
+        },
+      },
+	  bl_abn_guilded_guillemet = {
+        name = "Guilded Guillemet",
+        text = {
+          "Debuff all cards > 6",
+		  "in first played hand",
+		  "Debuff all cards < 5",
+		  "in second hand",
+		  "Repeat this process for following hands",
+        },
+      },
+	  bl_abn_persian_pipe = {
+        name = "Persian Pipe",
+        text = {
+          "Debuff cards with",
+		  "Modded Enhancements",
+        },
+      },
+	  bl_abn_coral_candle = {
+        name = "Coral Candle",
+        text = {
+          "Blind requirement increases by",
+		  "+4% per card played",
+        },
+      },
+	  bl_abn_bright_bulb = {
+        name = "Bright Bulb",
+        text = {
+          "Only Light Suits can score",
+        },
+      },
+	  bl_abn_frozen_fruit = {
+        name = "Frozen Fruit",
+        text = {
+          "Increase Blind by 2% each",
+		  "time a Card/Joker is rearranged",
+        },
+      },
+	  bl_abn_bitter_bowl = {
+        name = "Bitter Bowl",
+        text = {
+          "+X0.25 Blind requirement",
+		  "per Dark Suit in the Deck",
+        },
+      },
+	  bl_abn_magneta_monolith = {
+        name = "Magneta Monolith",
+        text = {
+          "Played hand level",
+		  "must match last one",
+        },
+      },
+	  bl_abn_teal_tower = {
+        name = "Teal Tower",
+        text = {
+          "Hands can only be composed",
+		  "of one single Suit tone",
+        },
+      },
       --#region Hazard Blinds
       bl_abn_hazard_sigil = {
         name = "Hazard Sigil",
