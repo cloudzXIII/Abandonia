@@ -394,12 +394,20 @@ ABN.calculate = function(self, context)
   end
 end
 
-
-
 function ABN.reset_game_globals(run_start)
-  ABN.reset_abn_gerrymandering()
-  ABN.reset_monitor_card()
-  ABN.reset_abn_motocross_card()
+	ABN.reset_abn_gerrymandering()
+	ABN.reset_monitor_card()
+	ABN.reset_abn_motocross_card()
+
+	-- all secret hands
+	if run_start then
+		G.GAME.abn_hidden_hand_list = G.GAME.abn_hidden_hand_list or {}
+		for k, v in pairs(G.GAME.hands) do
+			if not v.visible then
+				G.GAME.abn_hidden_hand_list[#G.GAME.abn_hidden_hand_list + 1] = k
+			end
+		end
+	end
 end
 
 SMODS.Rarity {
