@@ -1551,6 +1551,306 @@ SMODS.Blind({
     end
   end,
 })
+
+SMODS.Blind({
+  key = "waffling_wager",
+  boss = {
+    showdown = true,
+  },
+  atlas = "AbandoniaBlinds2",
+  pos = { x = 0, y = 61 },
+  boss_colour = HEX("b52d2d"),
+  mult = 1,
+
+  calculate = function(self, card, context)
+    if context.setting_blind and not G.GAME.blind.disabled then
+      G.GAME.WaffleChips = G.GAME.blind.chips
+      
+      local light_suit_count = 1
+      if G.playing_cards then
+        for _, c in ipairs(G.playing_cards) do
+          if ABN.is_light(c) then
+            light_suit_count = light_suit_count + 1
+          end
+        end
+      end
+
+      G.GAME.blind.chips = G.GAME.blind.chips * (0.25 * light_suit_count) 
+      G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+    end
+  end,
+  
+  disable = function(self)
+    G.GAME.blind.chips = G.GAME.WaffleChips or G.GAME.blind.chips
+    G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+  end,
+})
+
+SMODS.Blind({
+  key = "guilded_guillemet",
+  boss = {
+    showdown = true,
+  },
+  atlas = "AbandoniaBlinds2",
+  pos = { x = 0, y = 62 },
+  boss_colour = HEX("e29237"),
+
+  press_play = function(self)
+    G.E_MANAGER:add_event(Event({
+      func = function()
+        if not G.GAME.blind.disabled then
+          G.GAME.blind.gg_hand_count = (G.GAME.blind.gg_hand_count or 0) + 1
+          local hand_num = G.GAME.blind.gg_hand_count
+
+          for _, card in ipairs(G.play.cards) do
+            local rank = card.base.nominal or card:get_id()
+            if hand_num % 2 == 1 and rank > 6 then
+              card:set_debuff(true)
+            elseif hand_num % 2 == 0 and rank > 0 and rank < 5 then
+              card:set_debuff(true)
+            end
+          end
+        end
+        return true
+      end
+    }))
+  end,
+})
+
+SMODS.Blind({
+  key = "persian_pipe",
+  boss = {
+    showdown = true,
+  },
+  atlas = "AbandoniaBlinds2",
+  pos = { x = 0, y = 63 },
+  boss_colour = HEX("d24272"),
+
+  recalc_debuff = function(self, card, from_blind)
+    if not G.GAME.blind.disabled and card.area ~= G.jokers then
+      local center = card.config and card.config.center
+      if center and center.set == "Enhanced" then
+        local vanilla_enhancements = {
+          m_bonus = true,
+          m_mult = true,
+          m_wild = true,
+          m_glass = true,
+          m_steel = true,
+          m_stone = true,
+          m_gold = true,
+          m_lucky = true,
+        }
+
+        if center.key and not vanilla_enhancements[center.key] then
+          card:set_debuff(true)
+          return true
+        end
+      end
+    end
+    return false
+  end,
+})
+
+SMODS.Blind({
+  key = "coral_candle",
+  boss = {
+    showdown = true,
+  },
+  atlas = "AbandoniaBlinds2",
+  pos = { x = 0, y = 64 },
+  boss_colour = HEX("e57a10"),
+
+  calculate = function(self, card, context)
+    if context.individual and context.cardarea == G.play and not G.GAME.blind.disabled then
+      G.GAME.blind.chips = math.floor(G.GAME.blind.chips * 1.04)
+      G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+
+      return {
+        message = "+4%",
+        colour = G.C.ATTENTION,
+      }
+    end
+  end,
+})
+
+SMODS.Blind({
+  key = "bright_bulb",
+  boss = {
+    showdown = true,
+  },
+  atlas = "AbandoniaBlinds2",
+  pos = { x = 0, y = 65 },
+  boss_colour = HEX("eab745"),
+
+  debuff_hand = function(self, cards, hand, handname, check)
+    if G.GAME.blind.disabled then return end
+
+    for i = 1, #cards do
+      if not ABN.is_light(cards[i]) then
+        return true
+      end
+    end
+  end,
+})
+
+
+local upd = Game.update
+function Game:update(dt)
+    upd(self, dt)
+
+    if G.STAGE == G.STAGES.RUN and G.GAME and G.GAME.blind and G.GAME.blind.boss and G.STATE == 1 then
+        if G.GAME.blind.config.blind.key == 'bl_abn_frozen_fruit' and not G.GAME.blind.disabled then
+            local check_areas = { G.jokers, G.hand }
+            
+            for _, area in ipairs(check_areas) do
+                if area and area.cards then
+                    for idx, card in ipairs(area.cards) do
+                        if card.ability then
+                            if not card.ability.FrozenPos then
+                                card.ability.FrozenPos = idx
+                            elseif card.ability.FrozenPos ~= idx then
+                                G.GAME.blind.chips = math.floor(G.GAME.blind.chips * 1.02)
+                                G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+                                card.ability.FrozenPos = idx
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end
+
+SMODS.Blind({
+  key = "frozen_fruit",
+  boss = {
+    showdown = true,
+  },
+  atlas = "AbandoniaBlinds2",
+  pos = { x = 0, y = 66 },
+  boss_colour = HEX("4895a7"),
+
+  press_play = function(self)
+    local check_areas = { G.jokers, G.hand }
+    for _, area in ipairs(check_areas) do
+      if area and area.cards then
+        for _, card in ipairs(area.cards) do
+          if card.ability then
+            card.ability.FrozenPos = nil
+          end
+        end
+      end
+    end
+  end,
+})
+
+SMODS.Blind({
+  key = "bitter_bowl",
+  boss = {
+    showdown = true,
+  },
+  atlas = "AbandoniaBlinds2",
+  pos = { x = 0, y = 67 },
+  boss_colour = HEX("30e45d"),
+  mult = 1,
+
+  calculate = function(self, card, context)
+    if context.setting_blind and not G.GAME.blind.disabled then
+      G.GAME.BitterChips = G.GAME.blind.chips
+      
+      local dark_suit_count = 1
+      if G.playing_cards then
+        for _, c in ipairs(G.playing_cards) do
+          if ABN.is_dark(c) then
+            dark_suit_count = dark_suit_count + 1
+          end
+        end
+      end
+
+      G.GAME.blind.chips = G.GAME.blind.chips * (0.25 * dark_suit_count) 
+      G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+    end
+  end,
+  
+  disable = function(self)
+    G.GAME.blind.chips = G.GAME.BitterChips or G.GAME.blind.chips
+    G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+  end,
+})
+
+SMODS.Blind({
+  key = "magneta_monolith",
+  boss = {
+    showdown = true,
+  },
+  atlas = "AbandoniaBlinds2",
+  pos = { x = 0, y = 68 },
+  boss_colour = HEX("9353f2"),
+
+  set_blind = function(self)
+    G.GAME.blind.mm_last_level = nil
+  end,
+
+  debuff_hand = function(self, cards, hand, handname, check)
+    if G.GAME.blind.disabled then return end
+
+    local target_level = G.GAME.blind.mm_last_level
+    if target_level ~= nil then
+      local current_level = G.GAME.hands[handname] and G.GAME.hands[handname].level or 1
+      if current_level ~= target_level then
+        return true
+      end
+    end
+  end,
+
+  calculate = function(self, card, context)
+    if context.before and context.scoring_hand and context.scoring_name then
+		G.GAME.blind.mm_last_level = G.GAME.hands[context.scoring_name].level
+	end
+  end,
+
+  get_loc_debuff_text = function(self)
+    if G.GAME.blind.mm_last_level then
+      return "Hand level must be Level " .. tostring(G.GAME.blind.mm_last_level) .. "!"
+    end
+    return "Hand level must match the previously played hand level!"
+  end,
+
+  disable = function(self)
+    G.GAME.blind.mm_last_level = nil
+  end,
+})
+
+SMODS.Blind({
+  key = "teal_tower",
+  boss = {
+    showdown = true,
+  },
+  atlas = "AbandoniaBlinds2",
+  pos = { x = 0, y = 69 },
+  boss_colour = HEX("5dd8dc"),
+
+  debuff_hand = function(self, cards, hand, handname, check)
+    if G.GAME.blind.disabled or #cards == 0 then return end
+
+    for i = 1, #cards do
+      local c = cards[i]
+      local is_l = ABN.is_light and ABN.is_light(c)
+      local is_d = ABN.is_dark and ABN.is_dark(c)
+
+      if is_l and is_d then
+        return true
+      end
+    end
+
+    local first_is_light = ABN.is_light(cards[1])
+    for i = 2, #cards do
+      if ABN.is_light(cards[i]) ~= first_is_light then
+        return true
+      end
+    end
+  end,
+})
 -- Hazard Blinds
 -- Hazard Heart
 
