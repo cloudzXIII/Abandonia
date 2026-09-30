@@ -923,6 +923,7 @@ return {
       k_abn_plus_crimson = "+1 Crimson",
       k_abn_plus_glyph = "+1 Glyph",
       k_plus_periodic = "+1 Periodic",
+      k_plus_cassette = "+1 Cassette",
       k_abn_plus_solid_state = "+1 Solid State",
       k_abn_plus_atomic = "+1 Atomic",
       k_abn_plus_illusion = "+1 Illusion",
@@ -1028,6 +1029,9 @@ return {
 
       b_atomic_cards = "Atomic Cards",
       k_atomic = "Atomic",
+
+      b_cassette_cards = "Cassettes",
+      k_cassette = "Cassette",
     },
 
     v_dictionary = {
@@ -1060,6 +1064,7 @@ return {
       ram = "RAM",
       crepuscular = "Crepuscular Tarot",
       atomic = "Atomic",
+      cassette = "Cassette",
     },
 
     ranks = {
