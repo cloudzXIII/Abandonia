@@ -71,6 +71,26 @@ SMODS.Consumable {
       end
     end
 
+    -- for Agent of Fate joker effect
+    if next(SMODS.find_card("j_abn_agent_of_fate")) then
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.5,
+        func = function()
+            local wheel = SMODS.create_card({
+                key = 'c_abn_wheel_of_fate',
+                edition = { negative = true },
+                area = G.consumeables
+            })
+            if wheel then
+                wheel:add_to_deck()
+                G.consumeables:emplace(wheel)
+            end
+            return true
+        end
+      }))
+    end
+
     delay(0.5)
 
     -- enhancing
@@ -171,6 +191,26 @@ SMODS.Consumable {
       if changed then
         hand_card:juice_up(0.3, 0.3)
       end
+    end
+
+    -- for Agent of Fate joker effect
+    if next(SMODS.find_card("j_abn_agent_of_fate")) then
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.5,
+        func = function()
+            local wheel = SMODS.create_card({
+                key = 'c_abn_wheel_of_fate',
+                edition = { negative = true },
+                area = G.consumeables
+            })
+            if wheel then
+                wheel:add_to_deck()
+                G.consumeables:emplace(wheel)
+            end
+            return true
+        end
+      }))
     end
 
     delay(0.5)
@@ -429,6 +469,26 @@ SMODS.Consumable {
       end
     end
 
+    -- for Agent of Fate joker effect
+    if next(SMODS.find_card("j_abn_agent_of_fate")) then
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.5,
+        func = function()
+            local wheel = SMODS.create_card({
+                key = 'c_abn_wheel_of_fate',
+                edition = { negative = true },
+                area = G.consumeables
+            })
+            if wheel then
+                wheel:add_to_deck()
+                G.consumeables:emplace(wheel)
+            end
+            return true
+        end
+      }))
+    end
+
     delay(0.5)
 
     for i, c in ipairs(to_enhance) do
@@ -537,6 +597,26 @@ SMODS.Consumable {
       if changed then
         hand_card:juice_up(0.3, 0.3)
       end
+    end
+
+    -- for Agent of Fate joker effect
+    if next(SMODS.find_card("j_abn_agent_of_fate")) then
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.5,
+        func = function()
+            local wheel = SMODS.create_card({
+                key = 'c_abn_wheel_of_fate',
+                edition = { negative = true },
+                area = G.consumeables
+            })
+            if wheel then
+                wheel:add_to_deck()
+                G.consumeables:emplace(wheel)
+            end
+            return true
+        end
+      }))
     end
 
     delay(0.5)
@@ -651,6 +731,26 @@ SMODS.Consumable {
       if changed then
         hand_card:juice_up(0.3, 0.3)
       end
+    end
+
+    -- for Agent of Fate joker effect
+    if next(SMODS.find_card("j_abn_agent_of_fate")) then
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.5,
+        func = function()
+            local wheel = SMODS.create_card({
+                key = 'c_abn_wheel_of_fate',
+                edition = { negative = true },
+                area = G.consumeables
+            })
+            if wheel then
+                wheel:add_to_deck()
+                G.consumeables:emplace(wheel)
+            end
+            return true
+        end
+      }))
     end
 
     delay(0.5)
@@ -770,6 +870,26 @@ SMODS.Consumable {
       if changed then
         hand_card:juice_up(0.3, 0.3)
       end
+    end
+
+    -- for Agent of Fate joker effect
+    if next(SMODS.find_card("j_abn_agent_of_fate")) then
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.5,
+        func = function()
+            local wheel = SMODS.create_card({
+                key = 'c_abn_wheel_of_fate',
+                edition = { negative = true },
+                area = G.consumeables
+            })
+            if wheel then
+                wheel:add_to_deck()
+                G.consumeables:emplace(wheel)
+            end
+            return true
+        end
+      }))
     end
 
     delay(0.5)

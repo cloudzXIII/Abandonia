@@ -1031,7 +1031,10 @@ return {
     },
 
     v_dictionary = {
-      k_abn_more_copies = "+#1# more copies!"
+      k_abn_more_copies = "+#1# more copies!",
+
+      a_abn_mult_equal = "=#1# Mult",
+      a_abn_chips_equal = "=#1# Chips",
     },
 
     labels = {

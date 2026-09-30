@@ -154,6 +154,21 @@ return {
         },
       },
 
+      j_abn_agent_of_fate = {
+        name = "Agent of Fate",
+        text = {
+          {
+            "All {C:attention}listed{} {C:green}probabilities",
+            "are {C:green}guaranteed{} until",
+            "{C:tarot}Wheel of Fate{} is used"
+          },
+          {
+            "When {C:program_pack}Program{} card changes",
+            "card {C:attention}suit{} create a {C:dark_edition}Negative",
+            "{C:tarot}Wheel of Fate"
+          }
+        },
+      },
 
       j_abn_alchemical_joker = {
         name = "Alchemical Joker",
@@ -4289,6 +4304,24 @@ return {
         }
       },
 
+      j_abn_highlander_joker = {
+        name = "Highlander Joker",
+        text = {
+          {
+            "If played hand is {C:attention}#2#{} or {C:attention}#3#{},",
+            "{C:red}destroy{} all cards after scoring {C:attention}except",
+            "the {C:attention}highest rank{} card, that card gains",
+            "{C:chips}Chips{} of all {C:red}destroyed{} cards"
+          },
+          {
+            "If that card is a {C:abn_Sword}#4#{}, this Joker gains",
+            "{C:mult}Mult{} equal {C:attention}twice{} its rank and {C:attention}return{} that",
+            "card to {C:attention}your deck{} for the {C:attention}first{} time per {C:attention}Blind",
+            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+          }
+        }
+      },
+
       j_abn_hipster = {
         name = "Hipster",
         text = {
@@ -5578,6 +5611,14 @@ return {
             "gain {C:money}$#3#{} per {C:abn_coin}Coin{}",
             "in scoring hand"
           }
+        }
+      },
+
+      j_abn_kojer = {
+        name = "Kojer",
+        text = {
+          "Round {C:chips}Chips{} and {C:mult}Mult{} to",
+          "the power of scoring hand {C:attention}size"
         }
       },
 
@@ -10161,7 +10202,17 @@ return {
           "level up played {C:attention}poker hand"
         },
       },
-	  
+
+      j_abn_red_shift = {
+        name = "Red Shift",
+        text = {
+          "If {C:attention}first hand{} of round contain only",
+          "{C:inactive}vanilla {C:diamonds}Light Suits{} and {C:attention}second hand{} of round",
+          "contain only {C:dark_edition}modded {C:diamonds}Light Suits{}, each card in",
+          "scoring hand gains {C:dark_edition}Pearlescent{} and {C:abn_brown_seal}Brown Seal"
+        },
+      },
+
 	  j_abn_mime_business = {
         name = "Mime Business",
         text = {

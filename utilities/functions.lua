@@ -584,10 +584,20 @@ function create_UIBox_used_sigils()
   return t
 end
 
---#region Balance percent stuff
+--#region Balance percent and set mult/chips stuff
 table.insert(SMODS.calculation_keys, "abn_balance_percent")
 if SMODS.other_calculation_keys then
   table.insert(SMODS.other_calculation_keys, "abn_balance_percent")
+end
+table.insert(SMODS.calculation_keys, "abn_set_mult")
+if SMODS.scoring_parameter_keys then
+    table.insert(SMODS.scoring_parameter_keys, "abn_set_mult")
+    table.insert(SMODS.Scoring_Parameters['mult'], "abn_set_mult")
+end
+table.insert(SMODS.calculation_keys, "abn_set_chips")
+if SMODS.scoring_parameter_keys then
+    table.insert(SMODS.scoring_parameter_keys, "abn_set_chips")
+    table.insert(SMODS.Scoring_Parameters['chips'], "abn_set_chips")
 end
 
 function calculate_balance_percent_values(input_hand_chips, input_mult, percent)
@@ -606,64 +616,80 @@ end
 local abn_balance_mixed = false
 local abn_original_smods_calculate_effect = SMODS.calculate_individual_effect
 SMODS.calculate_individual_effect = function(effect, scored_card, key, amount, from_edition)
-  if key ~= "abn_balance_percent" then
-    return abn_original_smods_calculate_effect(effect, scored_card, key, amount, from_edition)
-  end
-  amount = amount / 100
-  if effect.card and effect.card ~= scored_card then
-    juice_card(effect.card)
-  end
-  local new_hand_chips, new_mult = calculate_balance_percent_values(hand_chips, mult, amount)
-  SMODS.Scoring_Parameters.chips:modify(new_hand_chips - hand_chips)
-  SMODS.Scoring_Parameters.mult:modify(new_mult - mult)
-  local text = localize("k_balanced") .. " " .. (amount * 100) .. "%"
+  if key == "abn_balance_percent" then
+    amount = amount / 100
+    if effect.card and effect.card ~= scored_card then
+      juice_card(effect.card)
+    end
+    local new_hand_chips, new_mult = calculate_balance_percent_values(hand_chips, mult, amount)
+    SMODS.Scoring_Parameters.chips:modify(new_hand_chips - hand_chips)
+    SMODS.Scoring_Parameters.mult:modify(new_mult - mult)
+    local text = localize("k_balanced") .. " " .. (amount * 100) .. "%"
 
-  -- Plasma colour
-  G.E_MANAGER:add_event(Event({
-    trigger = "immediate",
-    func = (function()
-      ease_colour(G.C.UI_CHIPS, mix_colours(G.C.ABN_PLASMA, G.C.UI_CHIPS, amount))
-      ease_colour(G.C.UI_MULT, mix_colours(G.C.ABN_PLASMA, G.C.UI_MULT, amount))
-      if not abn_balance_mixed then
-        abn_balance_mixed = true
-        G.E_MANAGER:add_event(Event({
-          trigger = "after",
-          blockable = false,
-          blocking = false,
-          delay = 6.3,
-          func = (function()
-            if G.STATE ~= 2 then
-              ease_colour(G.C.UI_CHIPS, G.C.BLUE, 2)
-              ease_colour(G.C.UI_MULT, G.C.RED, 2)
-              abn_balance_mixed = false
-              return true
-            end
-          end)
-        }))
-      end
-      return true
-    end)
-  }))
-  if not effect.remove_default_message then
-    if from_edition then
-      card_eval_status_text(scored_card, "jokers", nil, percent, nil, {
-        message = text,
-        colour = G.C.ABN_PLASMA,
-        sound = "gong",
-        edition = true
-      })
-    else
-      card_eval_status_text(
-        effect.message_card or effect.juice_card or scored_card or effect.card or effect.focus, "extra", nil, percent,
-        nil, {
+    -- Plasma colour
+    G.E_MANAGER:add_event(Event({
+      trigger = "immediate",
+      func = (function()
+        ease_colour(G.C.UI_CHIPS, mix_colours(G.C.ABN_PLASMA, G.C.UI_CHIPS, amount))
+        ease_colour(G.C.UI_MULT, mix_colours(G.C.ABN_PLASMA, G.C.UI_MULT, amount))
+        if not abn_balance_mixed then
+          abn_balance_mixed = true
+          G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            blockable = false,
+            blocking = false,
+            delay = 6.3,
+            func = (function()
+              if G.STATE ~= 2 then
+                ease_colour(G.C.UI_CHIPS, G.C.BLUE, 2)
+                ease_colour(G.C.UI_MULT, G.C.RED, 2)
+                abn_balance_mixed = false
+                return true
+              end
+            end)
+          }))
+        end
+        return true
+      end)
+    }))
+    if not effect.remove_default_message then
+      if from_edition then
+        card_eval_status_text(scored_card, "jokers", nil, percent, nil, {
           message = text,
           colour = G.C.ABN_PLASMA,
-          sound = "gong"
-        }
-      )
+          sound = "gong",
+          edition = true
+        })
+      else
+        card_eval_status_text(
+          effect.message_card or effect.juice_card or scored_card or effect.card or effect.focus, "extra", nil, percent,
+          nil, {
+            message = text,
+            colour = G.C.ABN_PLASMA,
+            sound = "gong"
+          }
+        )
+      end
     end
   end
-  return true
+  if key == 'abn_set_mult' then
+      if effect.card and effect.card ~= scored_card then juice_card(effect.card) end
+      SMODS.Scoring_Parameters.mult:modify(amount - mult)
+      if not effect.remove_default_message then
+        card_eval_status_text(effect.message_card or effect.juice_card or scored_card or effect.card or effect.focus, 'jokers', nil, percent, nil, {message = localize{type='variable',key='a_abn_mult_equal',vars={amount},colour=G.C.MULT}})
+      end
+      return true
+  end
+  if key == 'abn_set_chips' then
+      if effect.card and effect.card ~= scored_card then juice_card(effect.card) end
+      SMODS.Scoring_Parameters.chips:modify(amount - hand_chips)
+      if not effect.remove_default_message then
+        card_eval_status_text(effect.message_card or effect.juice_card or scored_card or effect.card or effect.focus, 'jokers', nil, percent, nil, {message = localize{type='variable',key='a_abn_chips_equal',vars={amount},colour=G.C.CHIPS}})
+      end
+      return true
+  end
+
+  return abn_original_smods_calculate_effect(effect, scored_card, key, amount, from_edition)
 end
 --#endregion
 
