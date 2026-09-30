@@ -40,9 +40,13 @@ SMODS.Joker {
                 end
             end
 
-            card.ability.extra.xmult = card.ability.extra.xmult
-            + card.ability.extra.xmult_gain * modded_suits_count
-            return { message = localize("k_upgrade_ex"), colour = G.C.MULT }
+            SMODS.scale_card(card, {
+                ref_table = card.ability.extra,
+                ref_value = "xmult",
+                scalar_table = card.ability.extra.xmult_gain * modded_suits_count,
+                operation = '+',
+                message_colour = G.C.MULT
+            })
         end
     end,
 

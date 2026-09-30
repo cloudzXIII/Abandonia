@@ -951,6 +951,7 @@ return {
       k_abn_brewed_ex = "Brewed!",
       k_abn_reduced_ex = "Reduced!",
       k_abn_enhanced_ex = "Enhanced!",
+      k_abn_repeat_ex = "Repeat!",
 
       -- Sides
       abn_hidden_side = "Hidden Scoundral",

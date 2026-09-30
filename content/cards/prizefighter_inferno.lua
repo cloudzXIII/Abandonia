@@ -33,11 +33,21 @@ SMODS.Joker {
 
         if context.tag_triggered and context.tag_triggered.key and not context.blueprint then
             if string.find(context.tag_triggered.key, "hazard") then
-                card.ability.extra.xchips = card.ability.extra.xchips + card.ability.extra.xchips_gain
-                return { message = localize("k_upgrade_ex"), colour = G.C.CHIPS }
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = "xchips",
+                    scalar_table = "xchips_gain",
+                    operation = '+',
+                    message_colour = G.C.CHIPS
+                })
             else
-                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
-                return { message = localize("k_upgrade_ex"), colour = G.C.MULT }
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = "xmult",
+                    scalar_table = "xmult_gain",
+                    operation = '+',
+                    message_colour = G.C.MULT
+                })
             end
         end
     end,

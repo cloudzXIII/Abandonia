@@ -7872,6 +7872,22 @@ return {
         }
       },
 
+      j_abn_retro_aficionado = {
+        name = "Retro Aficionado",
+        text = {
+          {
+            "{C:green}Repeat{} ended {C:cassette}Cassettes{}",
+            "{C:attention}1{} time"
+          },
+          {
+            "If you own {C:attention}Throwback{},",
+            "this Joker gains {X:chips,C:white}X#2#{} Chips",
+            "per {C:attention}Blind{} skipped",
+            "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips)"
+          },
+        }
+      },
+
       j_abn_reversecard_joker = {
         name = "Reversecard Joker",
         text = {

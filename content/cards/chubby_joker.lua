@@ -36,9 +36,20 @@ SMODS.Joker {
             local max_consumables = G.consumeables and G.consumeables.config.card_limit or 0
 
             if current_consumables >= max_consumables and max_consumables > 0 then
-                card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_gain
-                card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
-                return { message = localize("k_upgrade_ex"), colour = G.C.MULT }
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = "chips",
+                    scalar_table = "chips_gain",
+                    operation = '+',
+                    message_colour = G.C.CHIPS
+                })
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = "mult",
+                    scalar_table = "mult_gain",
+                    operation = '+',
+                    message_colour = G.C.MULT
+                })
             end
         end
     end,

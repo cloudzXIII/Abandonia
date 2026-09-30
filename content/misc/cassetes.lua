@@ -9,11 +9,17 @@ SMODS.ConsumableType {
 }
 
 local function abn_end_cassette(self, card)
-  set_consumeable_usage(card)
-  SMODS.calculate_effect({ message = localize('k_extinct_ex'), colour = G.C.MULT, sound = 'tarot1', }, card)
-  SMODS.destroy_cards(card)
-  SMODS.calculate_context({ abn_cassette_end = true })
-  G.GAME.abn_cassettes_ended = (G.GAME.abn_cassettes_ended or 0) + 1
+  if #SMODS.find_card("j_abn_retro_aficionado") == 0 then
+    set_consumeable_usage(card)
+    SMODS.calculate_effect({ message = localize('k_extinct_ex'), colour = G.C.MULT, sound = 'tarot1', }, card)
+    SMODS.destroy_cards(card)
+    SMODS.calculate_context({ abn_cassette_end = true })
+    G.GAME.abn_cassettes_ended = (G.GAME.abn_cassettes_ended or 0) + 1
+  elseif not card.ability.extra.retro_aficionado_trigger then
+    SMODS.calculate_effect({ message = localize('k_abn_repeat_ex'), colour = G.C.GREEN, sound = 'tarot1', }, card)
+    card.ability.extra.count = 8
+    card.ability.extra.retro_aficionado_trigger = true
+  end
 end
 
 ABN.Cassette = SMODS.Consumable:extend({
@@ -22,7 +28,15 @@ ABN.Cassette = SMODS.Consumable:extend({
   atlas = "abn_AbandoniaCassettes",
   pos = { x = 0, y = 0 },
 
-  config = { extra = { suit1 = "Hearts", suit2 = "Spades", count = 8, chips = 10, mult = 10 } },
+  config = {
+    extra = {
+      suit1 = "Hearts",
+      suit2 = "Spades",
+      count = 8,
+      chips = 10,
+      mult = 10
+    }
+  },
 
   loc_vars = function(self, info_queue, card)
     return {
@@ -66,40 +80,88 @@ ABN.Cassette {
   key = "vex",
   pos = { x = 8, y = 1 },
 
-  config = { extra = { suit1 = "Diamonds", suit2 = "Clubs", count = 8, chips = 10, mult = 10 } },
+  config = {
+    extra = {
+      suit1 = "Diamonds",
+      suit2 = "Clubs",
+      count = 8,
+      chips = 10,
+      mult = 10
+    }
+  },
 }
 
 ABN.Cassette {
   key = "lament",
   pos = { x = 9, y = 1 },
 
-  config = { extra = { suit1 = "Hearts", suit2 = "Spades", count = 8, chips = 10, mult = 10 } },
+  config = {
+    extra = {
+      suit1 = "Hearts",
+      suit2 = "Spades",
+      count = 8,
+      chips = 10,
+      mult = 10
+    }
+  },
 }
 
 ABN.Cassette {
   key = "sanguine",
   pos = { x = 0, y = 2 },
 
-  config = { extra = { suit1 = "Hearts", suit2 = "Diamonds", count = 8, chips = 10, mult = 10 } },
+  config = {
+    extra = {
+      suit1 = "Hearts",
+      suit2 = "Diamonds",
+      count = 8,
+      chips = 10,
+      mult = 10
+    }
+  },
 }
 
 ABN.Cassette {
   key = "mastery",
   pos = { x = 1, y = 2 },
 
-  config = { extra = { suit1 = "Clubs", suit2 = "Spades", count = 8, chips = 10, mult = 10 } },
+  config = {
+    extra = {
+      suit1 = "Clubs",
+      suit2 = "Spades",
+      count = 8,
+      chips = 10,
+      mult = 10
+    }
+  },
 }
 
 ABN.Cassette {
   key = "stargazing",
   pos = { x = 2, y = 2 },
 
-  config = { extra = { suit1 = "Hearts", suit2 = "Clubs", count = 8, chips = 10, mult = 10 } },
+  config = {
+    extra = {
+      suit1 = "Hearts",
+      suit2 = "Clubs",
+      count = 8,
+      chips = 10,
+      mult = 10
+    }
+  },
 }
 
 ABN.Cassette {
   key = "kickstart",
   pos = { x = 3, y = 2 },
 
-  config = { extra = { suit1 = "Diamonds", suit2 = "Spades", count = 8, chips = 10, mult = 10 } },
+  config = {
+    extra = {
+      suit1 = "Diamonds",
+      suit2 = "Spades",
+      count = 8,
+      chips = 10,
+      mult = 10
+    }
+  },
 }

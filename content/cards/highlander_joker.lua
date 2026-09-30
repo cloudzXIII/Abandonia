@@ -50,8 +50,13 @@ SMODS.Joker {
                 SMODS.destroy_cards(cards_to_destroy)
 
                 if h_card:is_suit(card.ability.extra.suit) and not G.GAME.highlander_sword then
-                    G.GAME.highlander_sword = true
-                    card.ability.extra.mult = card.ability.extra.mult + h_card.base.nominal * 2
+                    SMODS.scale_card(card, {
+                        ref_table = card.ability.extra,
+                        ref_value = "mult",
+                        scalar_table = h_card.base.nominal * 2,
+                        operation = '+',
+                        message_colour = G.C.MULT
+                    })
 
                     G.E_MANAGER:add_event(Event({
                         trigger = 'after',
@@ -62,11 +67,6 @@ SMODS.Joker {
                             return true
                         end
                     }))
-
-                    return {
-                        message = localize("k_upgrade_ex"),
-                        colour = G.C.MULT
-                    }
                 end
             end
         end
