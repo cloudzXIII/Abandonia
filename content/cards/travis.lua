@@ -25,6 +25,7 @@ SMODS.Joker{
       vars = {
         card.ability.extra.xmult,
         card.ability.extra.gain,
+        card.ability.extra.mult,
         card.ability.extra.mult * hand_count
       }
     }

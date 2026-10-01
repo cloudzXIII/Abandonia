@@ -270,21 +270,26 @@ return {
           "{C:red}Showdown Blinds"
         }
       },
-	  v_abn_masterworks = {
+      v_abn_masterworks = {
         name = "Masterworks",
         text = {
-          "If a consumable is used during the {C:attention}Boss Blind{}",
-		  "After the {C:attention}Boss Blind{}",
-		  "The next {C:green}shop{} will have an additional",
-		  "{C:attention}kiddy pack{} corresponding the your {C:attention}last used{} consumable",
+          "If a consumable is used during the {C:attention}Boss Blind{},",
+          "the next {C:green}shop{} will have an additional",
+          "{C:attention}Kiddy Pack{} corresponding the your {C:attention}last used{} consumable",
         }
       },
-	  v_abn_smelting = {
+      v_abn_smelting = {
         name = "Smelting",
         text = {
-          "All {C:attention}consumables{} sell for {C:money}$#1#{} more",
-		  "When a {C:attention}consumable{} with an {C:dark_edition}Edition{} is sold",
-		  "give that {C:dark_edition}Edition{} to another held {C:attention}consumable{}",
+          {
+            "All {C:attention}consumables{} sell",
+            "for {C:money}$#1#{} more"
+          },
+          {
+            "When a {C:attention}consumable{} with an {C:dark_edition}Edition{}",
+            "is sold give that {C:dark_edition}Edition{}",
+            "to another held {C:attention}consumable{}",
+          }
         }
       },
       --#endregion

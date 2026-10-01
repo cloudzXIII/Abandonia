@@ -508,35 +508,35 @@ return {
         name = "Solid State Tag",
         text = {
           "Gives a free",
-          "Solid State Pack",
+          "{C:solid_state}Solid State Pack",
         }
       },
       tag_abn_illusion = {
         name = "Illusion Tag",
         text = {
           "Gives a free",
-          "{C:attention}Illusion Pack",
+          "{C:illusion}Illusion Pack",
         }
       },
       tag_abn_crimson = {
         name = "Crimson Tag",
         text = {
           "Gives a free",
-          "{C:attention}Crimson Pack",
+          "{C:crimson}Crimson Pack",
         }
       },
       tag_abn_ram = {
         name = "RAM Tag",
         text = {
           "Gives a free",
-          "{C:attention}RAM Pack",
+          "{C:ram}RAM Pack",
         }
       },
       tag_abn_algebraic = {
         name = "Algebraic Tag",
         text = {
           "Gives a free",
-          "{C:attention}Algebraic Pack",
+          "{C:algebraic}Algebraic Pack",
         }
       },
       tag_abn_patch = {

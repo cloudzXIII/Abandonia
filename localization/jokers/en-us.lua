@@ -1618,10 +1618,16 @@ return {
       j_abn_cazz = {
         name = "Cazz",
         text = {
-        "Scored {C:attention}Talons{} give {X:mult,C:white}X#1#{} Mult,",
-        "increase by {X:mult,C:white}X#2#{} Mult when Talons scored",
-        "Scoring Talons gain {C:attention}+#3#{} Ascension Power",
-        "per level of played hand"
+          {
+            "Scored {C:abn_talon}Talons{} give {X:mult,C:white}X#1#{} Mult,",
+            "increase by {X:mult,C:white}X#2#{} Mult",
+            "when {C:abn_talon}Talon{} scored"
+          },
+          {
+            "Scoring {C:abn_talon}Talons{} give",
+            "{C:attention}+#3#{} Ascension Power per",
+            "{C:attention}level{} of played hand"
+          }
         }
       },
 
@@ -3783,11 +3789,17 @@ return {
       },
 
       j_abn_gavin = {
-      name ="gavin",
-      text = {
-        "Scored {C:attention}Stars{} give {X:chips,C:white}X#1#{} Chips,",
-        "increase by {X:chips,C:white}X#2#{} Chips when Stars scored",
-        "Scoring Stars gain {C:chips}+#3#{} Chips per scoring card"
+        name ="Gavin",
+        text = {
+          {
+            "Scored {C:abn_star}Stars{} give {X:chips,C:white}X#1#{} Chips,",
+            "increase by {X:chips,C:white}X#2#{} Chips",
+            "when {C:abn_star}Stars{} scored"
+          },
+          {
+            "Scoring {C:abn_star}Stars{} give",
+            "{C:chips}+#3#{} Chips per scoring card"
+          }
         }
       },
 
@@ -7083,7 +7095,7 @@ return {
         text = {
           "If the {C:attention}full hand{} is a {C:attention}palindromic sequence",
           "and is composed of {C:attention}both {C:diamonds}Light{} and {C:spades}Dark{} suits,",
-          "level up the {C:planet}planet{} {C:attnention}Rank{} of each {C:attention}scoring{} card by",
+          "level up the {C:planet}planet{} {C:attention}Rank{} of each {C:attention}scoring{} card by",
           "the amount of times the {C:attention}rank{} has been {C:attention}repeated{} in hand",
         }
       },
@@ -9391,13 +9403,19 @@ return {
         }
       },
 
-      
-    j_abn_travis = {
-      name = "Travis",
-      text = {
-      "Scored {C:attention}Stars{} give {X:mult,C:white}X#1#{} Mult,",
-      "increase by {X:mult,C:white}X#2#{} Mult when Stars scored",
-      "Scoring Stars gain {C:attention}+10{} Mult per card held in hand"
+      j_abn_travis = {
+        name = "Travis",
+        text = {
+          {
+            "Scored {C:abn_star}Stars{} give {X:mult,C:white}X#1#{} Mult",
+            "increases by {X:mult,C:white}X#2#{} Mult",
+            "when a {C:abn_star}Star{} is scored",
+          },
+          {
+            "{C:abn_star}Stars{} give {C:mult}+#3#{} Mult,",
+            "per card {C:attention}held{} in hand",
+            "{C:inactive}(Will give {C:mult}+#4#{C:inactive} Mult)"
+          }
         }
       },
 
@@ -10105,12 +10123,18 @@ return {
       },
 
       j_abn_yulan = {
-       name = "Yulan",
-       text = {
-       "Scored {C:attention}Talons{} give {X:chips,C:white}X#1#{} Chips,",
-       "increase by {X:chips,C:white}X#2#{} Chips when Talons scored",
-       "Scoring Talons gain {X:mult,C:white}X#3#{} Mult",
-       "per highest Planet rank of played hand"
+        name = "Yulan",
+        text = {
+          {
+            "Scored {C:abn_talon}Talons{} give {X:chips,C:white}X#1#{} Chips,",
+            "increase by {X:chips,C:white}X#2#{} Chips",
+            "when {C:abn_talon}Talon{} scored"
+          },
+          {
+            "Scoring {C:abn_talon}Talons{} give",
+            "{X:mult,C:white}X#3#{} Mult per {C:attention}highest",
+            "{C:planet}Planet Rank{} in played hand"
+          }
         }
       },
 
