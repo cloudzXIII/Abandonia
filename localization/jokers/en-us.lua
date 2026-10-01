@@ -529,6 +529,21 @@ return {
         }
       },
 
+	    j_abn_atomic_joker = {
+        name = "Atomic Joker",
+        text = {
+          {
+            "You get to {C:attention}choose{} which cards",
+            "get {C:attention}bonuses{} from {C:abn_Atomic}Atomic Cards"
+          },
+          {
+            "Each time an {C:abn_Atomic}Atomic Card{} affects a",
+            "card, that same {C:attention}bonus{} will be applied",
+            "to a random {C:attention}other card{} in your deck"
+          }
+        }
+      },
+
       j_abn_attack_777 = {
         name = "Attack 777",
         text = {
@@ -1133,6 +1148,26 @@ return {
         }
       },
 
+	    j_abn_bonus_lucky = {
+        name = "Bonus Lucky",
+        text = {
+          {
+            "If played hand contains both a {C:attention}Bonus{}",
+            "and {C:attention}Lucky{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Bonus{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Lucky{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered",
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:tonal}Tonal{} card used this run",
+            "{C:inactive}(Currently {C:tonal}#5#{C:inactive})"
+          }
+        }
+      },
+
       j_abn_bonus_power_joker = {
         name = "Bonus Power Joker",
         text = {
@@ -1696,6 +1731,24 @@ return {
         text = {
           "All hands are considered",
           "to be a {C:attention}Flush{}",
+        }
+      },
+
+      j_abn_color_dismissal = {
+        name = "Color Dismissal",
+        text = {
+          {
+            "Turns scored {C:attention}even{}",
+            "cards to {C:abn_suitless}Nulls{}",
+            "and permanently adds {C:chips}+#1#{} Chips",
+            "to that card"
+          },
+          {
+            "Turns scored {C:attention}odd{}",
+            "cards to {C:abn_Vortex}Vortices{}",
+            "and permanently adds {C:mult}+#2#{} Mult",
+            "to that card"
+          }
         }
       },
 
@@ -2549,6 +2602,25 @@ return {
             "{C:dark_edition}Negative{} at end of round and",
             "gives {C:mult}+#2#{} Mult per scoring card",
           },
+        }
+      },
+
+	    j_abn_drama_masks = {
+        name = "Drama Masks",
+        text = {
+          {
+            "When {C:attention}Blind{} is selected,",
+            "all other owned Jokers of",
+			      "a random {C:attention}rarity{} are {C:red}debuffed"
+          },
+          {
+            "{X:mult,C:white}X#1#{} Mult per {C:red}debuffed{} Joker"
+          },
+          {
+            "This Joker gains {C:gold}+#2#{} Ascension Power",
+            "per {C:red}debuffed{} Joker with a {C:dark_edition}modded{} {C:attention}rarity",
+            "{C:inactive}(Currently {C:gold}+#3# {C:inactive}Ascension Power)"
+          }
         }
       },
 
@@ -4030,6 +4102,26 @@ return {
             "as {C:mult}Mult{} when scored",
           },
         },
+      },
+
+	    j_abn_gold_bonus = {
+        name = "Gold Bonus",
+        text = {
+          {
+            "If played hand contains both a {C:attention}Gold{}",
+            "and {C:attention}Bonus{} card, they each gain",
+            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
+          },
+          {
+            "{C:enhanced}Gold{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Bonus{}",
+            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered",
+          },
+          {
+            "When {C:attention}Big Blind{} is selected, create",
+            "the last {C:mercantile}Mercantile{} card used this run",
+            "{C:inactive}(Currently {C:mercantile}#5#{C:inactive})"
+          }
+        }
       },
 
       j_abn_gold_lucky = {
@@ -6393,6 +6485,22 @@ return {
         },
       },
 
+	    j_abn_mime_business = {
+        name = "Mime Business",
+        text = {
+          {
+            "Scoring cards trigger",
+            "{C:attention}held in hand{} abilities",
+          },
+          {
+            "This joker gains {X:mult,C:white}X#1#{} Mult",
+            "every time a scoring card's",
+            "{C:attention}held in hand{} abilties trigger",
+            "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
+          }
+        }
+      },
+
       j_abn_mindflayer = {
         name = "Mindflayer",
         text = {
@@ -7854,6 +7962,24 @@ return {
         }
       },
 
+      j_abn_red_hot_chili = {
+        name = "Red Hot Chili",
+        text = {
+          "When score catches {C:red}fire,",
+          "level up played {C:attention}poker hand"
+        }
+      },
+
+      j_abn_red_shift = {
+        name = "Red Shift",
+        text = {
+          "If {C:attention}first hand{} of round contain only",
+          "{C:inactive}vanilla {C:diamonds}Light Suits{} and {C:attention}second hand{} of round",
+          "contain only {C:dark_edition}modded {C:diamonds}Light Suits{}, each card in",
+          "scoring hand gains {C:dark_edition}Pearlescent{} and {C:abn_brown_seal}Brown Seal"
+        }
+      },
+
       j_abn_regalia_joker = {
         name = "Regalia Joker",
         text = {
@@ -8828,6 +8954,32 @@ return {
         }
       },
 
+      j_abn_stress_doll = {
+        name = "Stress Doll",
+        text = {
+          {
+            "If played hand is an {C:attention}Abyss{}",
+            "containing {C:abn_Vortex}Vortices{}, this Joker",
+            "gains {C:mult}Mult{} equal to the sum",
+            "of all ranks"
+          },
+          {
+            "If played hand is an {C:attention}Abyss{}",
+            "containing {C:abn_suitless}Nulls{}, this Joker",
+            "gains {C:chips}Chips{} equal to the sum",
+            "of all ranks"
+          },
+          {
+            "If played hand is an {C:attention}Abyss{}",
+            "containing both {C:abn_Vortex}Vortices{} and {C:abn_suitless}Nulls{},",
+            "this Joker {C:attention}levels up{} the hand instead"
+          },
+          {
+            "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult and {C:chips}+#2#{C:inactive} Chips)"
+          }
+        }
+      },
+
       j_abn_strickland_joker = {
         name = "Strickland Joker",
         text = {
@@ -8937,6 +9089,21 @@ return {
             "containing only {C:attention}face down{} cards,",
             "create a {C:dark_edition}Negative{} copy of this Joker"
           }
+        }
+      },
+
+	    j_abn_super_horror_mario = {
+        name = "Super Horror Mario",
+        text = {
+          {
+            "{C:red}Destroy{} all played cards with",
+            "{C:inactive}vanilla{} suits after scoring"
+          },
+          {
+            "Scoring {C:dark_edition}modded {C:spades}Dark Suits{} give",
+            "{X:mult,C:white}XMult{} and {X:chips,C:white}XChips{} equal to the number",
+            "of cards destroyed this way"
+          },
         }
       },
 
@@ -10191,169 +10358,6 @@ return {
           "an {C:attention}Ace{} and a {C:attention}numbered card{}",
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
         },
-      },
-
-      j_abn_color_dismissal = {
-        name = "Color Dismissal",
-        text = {
-          {
-            "Turns scored {C:attention}even{}",
-            "cards to {C:abn_suitless}Null{}",
-            "and permanently adds {C:chips}+#1#{} Chips",
-            "to that card"
-          },
-          {
-            "Turns scored {C:attention}odd{}",
-            "cards to {C:abn_Vortex}Vortices{}",
-            "and permanently adds {C:mult}+#2#{} Mult",
-            "to that card"
-          },
-        }
-      },
-	  
-	  j_abn_gold_bonus = {
-        name = "Gold Bonus",
-        text = {
-          {
-            "If played hand contains both a {C:attention}Gold{}",
-            "and {C:attention}Bonus{} card, they each gain",
-            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
-          },
-          {
-            "{C:enhanced}Gold{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Bonus{}",
-            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered",
-          },
-          {
-            "When {C:attention}Big Blind{} is selected, create",
-            "the last {C:mercantile}Mercantile{} card used this run",
-            "{C:inactive}Currently:{} {C:mercantile}#5#{}"
-          }
-        }
-      },
-	  
-	  j_abn_bonus_lucky = {
-        name = "Bonus Lucky",
-        text = {
-          {
-            "If played hand contains both a {C:attention}Bonus{}",
-            "and {C:attention}Lucky{} card, they each gain",
-            "{C:gold}+#1#{} Asc. Power and {C:purple}+#2#{} Score",
-          },
-          {
-            "{C:enhanced}Bonus{} {C:attention}Jokers{} gain {X:mult,C:white}X#3#{} Mult, {C:enhanced}Lucky{}",
-            "{C:attention}Jokers{} gain {X:chips,C:white}X#4#{} Chips when triggered",
-          },
-          {
-            "When {C:attention}Big Blind{} is selected, create",
-            "the last {C:tonal}Tonal{} card used this run",
-            "{C:inactive}Currently:{} {C:tonal}#5#{}"
-          }
-        }
-      },
-
-      j_abn_stress_doll = {
-        name = "Stress Doll",
-        text = {
-         { 
-          "If you play an {C:attention}Abyss{},",
-          "using {C:abn_Vortex}Vortices{} this {C:attention}Joker",
-          "gains {C:mult}mult{} equal to the sum",
-          "of all ranks"
-          },
-          { 
-          "If you play an {C:attention}Abyss{},",
-          "using {C:abn_suitless}Nulls{} this {C:attention}Joker",
-          "gains {C:chips}chips{} equal to the sum",
-          "of all ranks"
-        },
-        {"If the {C:attention}Abyss{}","is made of mixed",
-        "{C:abn_Vortex}Vortices{} and {C:abn_suitless}Nulls",
-        "this {C:attention}Joker{} levels up{} the hand instead"},
-        {"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult and {C:chips}+#2#{C:inactive} Chips)"}
-        }
-      },
-
-      j_abn_red_hot_chili = {
-        name = "Red Hot Chili",
-        text = {
-          "When score catches {C:red}fire,",
-          "level up played {C:attention}poker hand"
-        },
-      },
-
-      j_abn_red_shift = {
-        name = "Red Shift",
-        text = {
-          "If {C:attention}first hand{} of round contain only",
-          "{C:inactive}vanilla {C:diamonds}Light Suits{} and {C:attention}second hand{} of round",
-          "contain only {C:dark_edition}modded {C:diamonds}Light Suits{}, each card in",
-          "scoring hand gains {C:dark_edition}Pearlescent{} and {C:abn_brown_seal}Brown Seal"
-        },
-      },
-
-	  j_abn_mime_business = {
-        name = "Mime Business",
-        text = {
-          {
-            "Scoring cards trigger",
-            "{C:attention}held in hand{} abilities",
-          },
-          {
-            "This joker gains {X:mult,C:white}X#1#{} Mult",
-			"every time a scoring card's",
-			"{C:attention}held in hand{} abilties trigger",
-			"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
-          },
-        }
-      },
-	  
-	  j_abn_drama_masks = {
-        name = "Drama Masks",
-        text = {
-          {
-            "When blind is selected,",
-            "all other owned jokers of",
-			"a random rarity are {C:red}debuffed"
-          },
-          {
-            "{X:mult,C:white}X#1#{} Mult per {C:red}debuffed{} joker"
-          },
-          {
-            "This joker gains {C:gold}+#2#{} Ascension Power",
-			"per {C:red}debuffed{} joker with a {C:dark_edition}modded{} rarity",
-			"{C:inactive}(Currently {C:gold}+#3# {C:inactive}Ascension Power)"
-          },
-        }
-      },
-	  
-	  j_abn_super_horror_mario = {
-        name = "Super Horror Mario",
-        text = {
-          {
-			"{C:red}Destroy{} all played cards with",
-			"{C:attention}vanilla{} suits after scoring"
-          },
-          {
-			"Scoring cards with {C:dark_edition}modded {C:spades}dark{} suits",
-			"give {X:mult,C:white}XMult{} and {X:chips,C:white}XChips{} equal to the",
-			"number of cards destroyed by this"
-          },
-        }
-      },
-	  
-	  j_abn_atomic_joker = {
-        name = "Atomic Joker",
-        text = {
-          {
-			"You get to choose which cards",
-			"get bonuses from {C:abn_Atomic}Atomic Cards"
-          },
-          {
-			"Each time an {C:abn_Atomic}Atomic Card{} affects a",
-			"card, that same bonus will be applied",
-			"to a random other card in your deck"
-          },
-        }
       },
     },
   },

@@ -243,10 +243,10 @@ return {
       b_abn_anaglyphic = {
         name = "Anaglyphic Deck",
         text = {
-          "Cards and jokers without",
+          "Cards and Jokers without",
           "{C:dark_edition}editions{} provide half the",
           "usual {C:chips}Chips{} and {C:mult}Mult",
-          "Card and jokers with",
+          "Card and Jokers with",
           "{C:dark_edition}editions{} are {C:gold}50%{} off"
         }
       },
@@ -255,7 +255,7 @@ return {
         text = {
           "First hand each round is",
           "{C:red}destroyed{} after scoring",
-          "Purchased jokers are {C:attention}Fragile"
+          "Purchased Jokers are {C:attention}Fragile"
         }
       },
     },
