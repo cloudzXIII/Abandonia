@@ -1,19 +1,5 @@
 -- Gambit (code by Noodlemire)
 
---[[
-Swaps current Chips with
-current Score and
-multiplies both by X3
-
-Each scoring card has a
-1 in 4 chance to be destroyed
-
-Each destroyed card will
-increase this joker's multiplier
-by 0.2X and draw a copy
-of the destroyed card to hand
---]]
-
 local function face_down_hand(hand)
 	for _, card in ipairs(hand) do
 		if card.facing == "back" then

@@ -22,7 +22,7 @@ local function select_card_menu(self, card)
 	card = copy_card(card, nil, 0.7)
 	local card_map, deck_tables = {}, {}
 	for k, v in ipairs(self:abn_atomic_card_list(card)) do
-		if not card_map[#card_map] or #card_map[#card_map] > math.ceil(math.max(2 * math.sqrt(#G.playing_cards), #G.playing_cards / 5)) then
+		if not card_map[#card_map] or #card_map[#card_map] > math.max(13, math.ceil(math.max(2 * math.sqrt(#self:abn_atomic_card_list(card)), #self:abn_atomic_card_list(card) / 5))) then
 			card_map[#card_map+1] = {}
 		end
 		table.insert(card_map[#card_map], v)
@@ -90,7 +90,7 @@ local function select_card_menu(self, card)
 		}}
 	}}
 end
-local onlyone = false
+
 G.FUNCS.abn_atomic_select_can_press = function(e)
 	local can_use = false
 	if G.GAME.abn_selecting_from_full_deck then
