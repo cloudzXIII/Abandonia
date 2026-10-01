@@ -1,9 +1,9 @@
 -- Coded by Okronix
 SMODS.Joker {
-    key = 'red_shift',
+    key = 'blue_shift',
     rarity = 2,
-    atlas = 'ABNJokerSheet15',
-    pos = { x = 0, y = 5 },
+    atlas = 'ABNJokerSheet26',
+    pos = { x = 6, y = 5 },
     cost = 6,
     discovered = false,
     blueprint_compat = false,
@@ -28,6 +28,10 @@ SMODS.Joker {
                     if ABN.is_modded_suit(scoring_card) or ABN.is_light(scoring_card) then
                         card.ability.extra.active = false
                     end
+                end
+
+                if next(SMODS.find_card("j_abn_red_shift")) and not ABN.is_modded_hand(context.scoring_name) then
+                    SMODS.smart_level_up_hand(card, context.scoring_name, nil, 1)
                 end
             end
 
@@ -63,6 +67,21 @@ SMODS.Joker {
                             end
                         }))
                     end
+
+                    if next(SMODS.find_card("j_abn_red_shift")) then
+                        for _, played_card in ipairs(context.full_hand) do
+                            if not played_card.debuff then
+                                local card_rank = played_card.base.value
+                                if G.GAME.abn_rank_upgrades[card_rank] then
+                                    ABN.level_up_rank(card, card_rank, 1)
+                                    return {
+                                        message = localize('k_level_up_ex'),
+                                        card = played_card
+                                    }
+                                end
+                            end
+                        end
+                    end
                 end
             end
         end
@@ -73,6 +92,6 @@ SMODS.Joker {
     end,
 
     abn_artist_credits = {
-        artist = "Toyrapple",
+        artist = "Toyrapple & Okronix",
     },
 }

@@ -1062,6 +1062,25 @@ return {
         },
       },
 
+      j_abn_blue_shift = {
+        name = "Blue Shift",
+        text = {
+          {
+            "If {C:attention}first hand{} of round contain only",
+            "{C:inactive}vanilla {C:spades}Dark Suits{} and {C:attention}second hand{} of round",
+            "contain only {C:dark_edition}modded {C:spades}Dark Suits{}, each card in",
+            "scoring hand gains {C:dark_edition}Pearlescent{} and {C:abn_violet_seal}Violet Seal"
+          },
+          {
+            "If you own {C:attention}Red Shift{},",
+            "level up {C:attention}first{} {C:inactive}vanilla{} hand of round,",
+            "level up {C:planet}planet {C:attention}rank{} of all cards in",
+            "{C:attention}second{} hand of round if it contains",
+            "only {C:dark_edition}modded{} suits"
+          }
+        }
+      },
+
       j_abn_bodyguard_joker = {
         name = "Bodyguard Joker",
         text = {
@@ -1446,6 +1465,25 @@ return {
             "give their {C:chips}Chips{} as {C:mult}Mult{}",
           }
         },
+      },
+
+      j_abn_chocolate_price = {
+        name = 'Chocolate Price',
+        text = {
+          {
+            "First scored {C:abn_coin}Coin {C:attention}Honey{} card",
+            "each round give its {C:chips}Chips{} as {C:money}$"
+          },
+          {
+            "Scoring {C:abn_coin}Coin{} {C:attention}Gold{} cards",
+            "give their {C:chips}Chips{} as {C:mult}Mult{}",
+          },
+          {
+            "If you own {C:attention}Chocolate Coin{},",
+            "{C:attention}Gold{} and {C:attention}Honey{} cards",
+            "cannot be debuffed"
+          }
+        }
       },
 
       j_abn_chubby_joker = {
