@@ -233,7 +233,7 @@ local function bio_store_button(card)
                 {
                   n = G.UIT.T,
                   config = {
-                    text = card.area == G.hand and "Store" or "Retrieve",
+                    text = card.area == G.hand and localize("k_abn_store") or localize("k_abn_retrieve"),
                     colour = G.C.UI.TEXT_LIGHT,
                     scale = 0.4,
                   }

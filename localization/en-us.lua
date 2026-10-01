@@ -963,6 +963,16 @@ return {
       k_abn_tenalp = "Tenalp",
       k_abn_split = "Split Planet",
 
+	  -- Bio Blueprint button labels
+	  k_abn_store = "Store",
+	  k_abn_retrieve = "Retrieve",
+
+	  -- Atomic Card Selection Menu labels (when using Atomic Joker)
+	  k_abn_chosen_cards = "Chosen Cards:",
+	  k_abn_copy_from = "Copy From:",
+	  k_abn_give_chips_from = "Give Chips From:",
+	  k_abn_into = "Into:",
+
       -- Consumable Types
       b_weather_report_cards = "Weather Reports",
       k_weather_report = "Weather Report",

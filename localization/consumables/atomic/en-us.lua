@@ -36,6 +36,7 @@ return {
                 text = {
                     "Create a copy of",
 					"{C:attention}#1#{} random cards",
+					"held in hand"
                 },
             },
 			c_abn_5b = {

@@ -10278,6 +10278,21 @@ return {
           },
         }
       },
+	  
+	  j_abn_atomic_joker = {
+        name = "Atomic Joker",
+        text = {
+          {
+			"You get to choose which cards",
+			"get bonuses from {C:abn_Atomic}Atomic Cards"
+          },
+          {
+			"Each time an {C:abn_Atomic}Atomic Card{} affects a",
+			"card, that same bonus will be applied",
+			"to a random other card in your deck"
+          },
+        }
+      },
     },
   },
   misc = {
