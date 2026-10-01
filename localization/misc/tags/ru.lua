@@ -514,6 +514,34 @@ return {
                     "{C:solid_state}Твердотельный набор",
                 }
             },
+            tag_abn_illusion = {
+                name = "Тег иллюзий",
+                text = {
+                    "Дает бесплатный",
+                    "{C:illusion}Набор иллюзий",
+                }
+            },
+            tag_abn_crimson = {
+                name = "Багряный тег",
+                text = {
+                    "Дает бесплатный",
+                    "{C:crimson}Багряный набор",
+                }
+            },
+            tag_abn_ram = {
+                name = "RAM тег",
+                text = {
+                    "Дает бесплатный",
+                    "{C:ram}RAM набор",
+                }
+            },
+            tag_abn_algebraic = {
+                name = "Алгебраический тег",
+                text = {
+                    "Дает бесплатный",
+                    "{C:algebraic}Алгебраический набор",
+                }
+            },
             tag_abn_patch = {
                 name = "Заплатка-тег",
                 text = {

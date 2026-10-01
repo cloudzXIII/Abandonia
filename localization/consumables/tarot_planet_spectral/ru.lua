@@ -155,7 +155,15 @@ return {
                     "{C:attention}#1#{} выбранных карт",
                     "в {V:1}#2#{}",
                 }
-            }
+            },
+            c_abn_theatre = {
+                name = "Театр",
+                text = {
+                    "Преобразует до {C:attention}#1#",
+                    "выбранных карт",
+                    "в {C:attention}#2#{}",
+                }
+            },
         },
 
         Planet = {

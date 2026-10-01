@@ -896,6 +896,7 @@ return {
       k_abn_plus_crimson = "+1 Багряная",
       k_abn_plus_glyph = "+1 Глифа",
       k_plus_periodic = "+1 Периодическая",
+      k_plus_cassette = "+1 Кассета",
       k_abn_plus_solid_state = "+1 Твердотельная",
       k_abn_plus_atomic = "+1 Атомная",
       k_abn_plus_illusion = "+1 Иллюзия",
@@ -923,6 +924,7 @@ return {
       k_abn_brewed_ex = "Сварено!",
       k_abn_reduced_ex = "Уменьшено!",
       k_abn_enhanced_ex = "Улучшено!",
+      k_abn_repeat_ex = "Повтор!",
 
       -- Sides
       abn_hidden_side = "Скрытый негодяй",
@@ -933,6 +935,16 @@ return {
       k_abn_asteroid = "Астероид",
       k_abn_tenalp = "Атеналп",
       k_abn_split = "Сплит-планета",
+
+      -- Bio Blueprint button labels
+      k_abn_store = "Сохранить",
+      k_abn_retrieve = "Извлечь",
+
+      -- Atomic Card Selection Menu labels (when using Atomic Joker)
+      k_abn_chosen_cards = "Выбранные карты:",
+      k_abn_copy_from = "Копия из:",
+      k_abn_give_chips_from = "Дает фишки из:",
+      k_abn_into = "Из:",
 
       -- Consumable Types
       b_weather_report_cards = "Прогнозы погоды",
@@ -1001,10 +1013,16 @@ return {
 
       b_atomic_cards = "Атомные карты",
       k_atomic = "Атомная",
+
+      b_cassette_cards = "Кассеты",
+      k_cassette = "Кассета",
     },
 
     v_dictionary = {
-      k_abn_more_copies = "на +#1# больше копий!"
+      k_abn_more_copies = "на +#1# больше копий!",
+
+      a_abn_mult_equal = "=#1# множ.",
+      a_abn_chips_equal = "=#1# фишек",
     },
 
     labels = {
@@ -1030,6 +1048,7 @@ return {
       ram = "RAM",
       crepuscular = "Сумеречное таро",
       atomic = "Атомная",
+      cassette = "Кассета",
     },
 
     ranks = {

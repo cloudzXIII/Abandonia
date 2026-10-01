@@ -128,6 +128,37 @@ return {
           "использовать сразу",
         },
       },
+      p_abn_ram_kiddy = {
+        name = "Детский RAM набор",
+        text = {
+          "Выберите {C:attention}#1#{} из {C:attention}#2#{}",
+          "{C:ram}RAM{} карт, чтобы",
+          "использовать сразу",
+        },
+      },
+      p_abn_algebraic_kiddy = {
+        name = 'Детский алгебраический набор',
+        text = {
+          "Выберите {C:attention}#1#{} из {C:attention}#2#{}",
+          '{C:abn_algebraic}Алгебраических{} карт, чтобы',
+          "использовать сразу",
+        }
+      },
+      p_abn_atomic_kiddy = {
+        name = 'Детский атомный набор',
+        text = {
+          "Выберите {C:attention}#1#{} из {C:attention}#2#{}",
+          '{C:abn_atomic}Атомных{} карт, чтобы',
+          "использовать сразу",
+        }
+      },
+      p_abn_artistry_kiddy = {
+        name = "Детский художественный набор",
+        text = {
+          "Выберите {C:attention}#1#{} из {C:attention}#2#{}",
+          "{C:artistry_cards}Художественных{} карт",
+        },
+      },
       --#endregion
       p_abn_weather_normal = {
         name = 'Набор прогнозов',
@@ -483,7 +514,6 @@ return {
           'использовать сразу',
         }
       },
-
       p_abn_artistry_normal = {
         name = "Художественный набор",
         text = {
@@ -492,7 +522,6 @@ return {
           'использовать сразу',
         }
       },
-
       p_abn_artistry_jumbo = {
         name = "Художественный набор Джамбо",
         text = {
@@ -501,7 +530,6 @@ return {
           'использовать сразу',
         }
       },
-
       p_abn_artistry_mega = {
         name = "Мегахудожественный набор",
         text = {
@@ -510,7 +538,6 @@ return {
           'использовать сразу',
         }
       },
-
       p_abn_crepuscular_normal = {
         name = "Сумеречный набор",
         text = {
@@ -519,7 +546,6 @@ return {
           'использовать сразу',
         }
       },
-
       p_abn_crepuscular_jumbo = {
         name = "Сумеречный набор Джамбо",
         text = {
@@ -528,7 +554,6 @@ return {
           'использовать сразу',
         }
       },
-
       p_abn_crepuscular_mega = {
         name = "Мегасумеречный набор",
         text = {
@@ -536,7 +561,31 @@ return {
           '{C:crepuscular}Сумеречных{} карт, чтобы',
           'использовать сразу',
         }
-      }
+      },
+      p_abn_algebraic_normal = {
+        name = "Алгебраический набор",
+        text = {
+          "Выберите {C:attention}#1#{} из {C:attention}#2#{}",
+          '{C:abn_algebraic}Алгебраических{} карт, чтобы',
+          "использовать сразу",
+        },
+      },
+      p_abn_algebraic_jumbo = {
+        name = "Алгебраический набор Джамбо",
+        text = {
+          "Выберите {C:attention}#1#{} из {C:attention}#2#{}",
+          '{C:abn_algebraic}Алгебраических{} карт, чтобы',
+          "использовать сразу",
+        },
+      },
+      p_abn_algebraic_mega = {
+        name = "Мегаалгебраический набор",
+        text = {
+          "Выберите {C:attention}#1#{} из {C:attention}#2#{}",
+          '{C:abn_algebraic}Алгебраических{} карт, чтобы',
+          "использовать сразу",
+        },
+      },
     }
   },
   misc = {
@@ -558,6 +607,7 @@ return {
       k_abn_atomic_pack = "Атомный набор",
       k_abn_artistry_pack = "Художественный набор",
       k_abn_crepuscular_pack = "Сумеречный набор",
+      k_abn_algebraic_pack = "Алгебраический набор",
 
       -- kiddy pack thingys
       k_standard_kiddy = "Детский стандартный набор",
@@ -575,6 +625,11 @@ return {
       k_glyph_kiddy = "Детский набор глифов",
       k_calamity_kiddy = "Детский набор бедствий",
       k_crimson_kiddy = "Детский багряный набор",
+      k_ram_kiddy = "Детский RAM набор",
+      k_atomic_kiddy = "Детский Атомный набор",
+      k_artistry_kiddy = "Детский Художественный набор",
+      k_crepuscular_kiddy = "Детский Сумеречный набор",
+      k_algebraic_kiddy = "Детский Алгебраический набор",
     }
   }
 }
