@@ -4002,6 +4002,25 @@ return {
         }
       },
 
+      j_abn_glass_ceiling = {
+        name = "Glass Ceiling",
+        text = {
+          {
+            "If played hand contains only {C:attention}Glass{}",
+            "cards, this Joker gains {C:gold}+#3#{} Asc. Power",
+            "per {C:attention}playing card{} destroyed this run",
+            "{C:inactive}(Will gain {C:gold}+#6#{C:inactive} Ascension Power)"
+          },
+          {
+            "{C:attention}+1{} {C:blue}Play{} Limit,",
+            "After playing {C:attention}#2#{} {C:inactive}[#1#]{} hands containing",
+            "{C:attention}6 Glass{} cards, all cards in your",
+            "{C:attention}full deck{} gain {C:chips}+#4#{} Chips and {C:mult}+#5#{}",
+            "Mult, then this Joker {C:red}self-destructs{}"
+          }
+        }
+      },
+
       j_abn_glass_gold = {
         name = "Glass Gold",
         text = {
