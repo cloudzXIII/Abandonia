@@ -529,7 +529,7 @@ return {
         }
       },
 
-	    j_abn_atomic_joker = {
+      j_abn_atomic_joker = {
         name = "Atomic Joker",
         text = {
           {
@@ -1148,7 +1148,7 @@ return {
         }
       },
 
-	    j_abn_bonus_lucky = {
+      j_abn_bonus_lucky = {
         name = "Bonus Lucky",
         text = {
           {
@@ -2608,13 +2608,13 @@ return {
         }
       },
 
-	    j_abn_drama_masks = {
+      j_abn_drama_masks = {
         name = "Drama Masks",
         text = {
           {
             "When {C:attention}Blind{} is selected,",
             "all other owned Jokers of",
-			      "a random {C:attention}rarity{} are {C:red}debuffed"
+            "a random {C:attention}rarity{} are {C:red}debuffed"
           },
           {
             "{X:mult,C:white}X#1#{} Mult per {C:red}debuffed{} Joker"
@@ -3864,7 +3864,7 @@ return {
       },
 
       j_abn_gavin = {
-        name ="Gavin",
+        name = "Gavin",
         text = {
           {
             "Scored {C:abn_star}Stars{} give {X:chips,C:white}X#1#{} Chips,",
@@ -4110,7 +4110,7 @@ return {
         },
       },
 
-	    j_abn_gold_bonus = {
+      j_abn_gold_bonus = {
         name = "Gold Bonus",
         text = {
           {
@@ -6491,7 +6491,7 @@ return {
         },
       },
 
-	    j_abn_mime_business = {
+      j_abn_mime_business = {
         name = "Mime Business",
         text = {
           {
@@ -8152,6 +8152,28 @@ return {
         }
       },
 
+      j_abn_rockstar_joker = {
+        name = "Rockstar Joker",
+        text = {
+          {
+            "Each {C:enhanced}Stone{} Joker gives",
+            "{C:white,X:chips}X#1#{} Chips, increases by {C:white,X:chips}X#2#{}",
+            "when a {C:attention}Stone{} card is scored"
+          },
+          {
+            "Each {C:enhanced}Steel{} Joker gives",
+            "{C:white,X:mult}X#1#{} Mult, increases by {C:white,X:mult}X#2#{}",
+            "when a {C:attention}Steel{} card is scored",
+          },
+          {
+            "If this Joker is {C:enhanced}Steel{}, gains {C:white,X:mult}^#5#{}",
+            "Mult if {C:attention}score catches fire{}, gains",
+            "{C:white,X:chips}^#6#{} Chips if it is {C:enhanced}Stone{}",
+            "{C:inactive}(Currently {C:white,X:mult}^#7#{C:inactive} Mult, {C:white,X:chips}^#8#{C:inactive} Chips)"
+          },
+        }
+      },
+
       j_abn_rom_hack_balatro = {
         name = "ROM Hack Balatro",
         text = {
@@ -9098,7 +9120,7 @@ return {
         }
       },
 
-	    j_abn_super_horror_mario = {
+      j_abn_super_horror_mario = {
         name = "Super Horror Mario",
         text = {
           {
