@@ -1050,6 +1050,8 @@ return {
 
       a_abn_mult_equal = "=#1# Mult",
       a_abn_chips_equal = "=#1# Chips",
+
+	  a_abn_mult_and_chips = "+#1# Mult, +#2# Chips"
     },
 
     labels = {

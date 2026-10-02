@@ -1663,6 +1663,9 @@ return {
             "{C:attention}+#3#{} Ascension Power per",
             "{C:attention}level{} of played hand"
           }
+        },
+        unlock = {
+          "?????",
         }
       },
 
@@ -3872,6 +3875,9 @@ return {
             "Scoring {C:abn_star}Stars{} give",
             "{C:chips}+#3#{} Chips per scoring card"
           }
+        },
+        unlock = {
+          "?????",
         }
       },
 
@@ -9583,6 +9589,9 @@ return {
             "per card {C:attention}held{} in hand",
             "{C:inactive}(Will give {C:mult}+#4#{C:inactive} Mult)"
           }
+        },
+        unlock = {
+          "?????",
         }
       },
 
@@ -10358,6 +10367,85 @@ return {
           "an {C:attention}Ace{} and a {C:attention}numbered card{}",
           "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
         },
+      },
+
+      j_abn_there_and_back_again = {
+        name = "There and Back Again",
+        text = {
+          {
+            "When a Joker would provide {C:chips}+Chips{} or {C:red}+Mult{}, it will",
+            "instead provide the opposite effect, multiplied",
+            "Increases by {X:gold,C:white}X#1#{} per trigger",
+            "{C:inactive}(Currently {X:gold,C:white}X#2#{C:inactive} Chips to Mult, {X:gold,C:white}X#3#{C:inactive} Mult to Chips)"
+          },
+          {
+            "If this Joker has the {C:chips}Bonus",
+            "enhancement, scoring {C:red}Mult{} cards",
+            "give {C:chips}+Chips{} equal to their Rank"
+          },
+          {
+            "If this Joker has the {C:red}Mult",
+            "enhancement, scoring {C:chips}Bonus{} cards",
+            "give {C:red}+Mult{} equal to {X:gold,C:white}X#4#{} their Rank"
+          },
+        }
+      },
+
+      j_abn_genome_codex = {
+        name = "Genome Codex",
+        text = {
+          {
+            "Gains {X:mult,C:white}X#1#{} mult if {C:attention}level{} of played hand",
+            "equals number of {C:blue}hands{} remaining",
+            "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} mult)"
+          },
+          {
+            "Gains {X:chips,C:white}X#3#{} chips if {C:attention}level{} of played hand",
+            "equals number of {C:red}discards{} remaining",
+            "{C:inactive}(Currently {X:chips,C:white}X#4#{C:inactive} chips)"
+          },
+          {
+            "Gains {C:gold}+#5#{} Ascension Power per dollar",
+            "of {C:money}sell value{} of consumables with {C:dark_edition}editions",
+            "{C:inactive}(Currently {C:gold}+#6#{C:inactive} Ascension Power)"
+          },
+        }
+      },
+
+      j_abn_sharp_and_red = {
+        name = "Sharp and Red",
+        text = {
+          {
+            "First scoring {C:attention}even{} card",
+            "each round gains {C:mult}+#1#{} mult",
+            "Increases by {C:mult}+#2#{} for each other",
+            "{C:attention}even{} card scored in first hand"
+          },
+          {
+            "This joker gains {C:gold}+#3#{} Ascension",
+            "Power if played hand contains",
+            "at least {C:attention}#4#{} scoring {C:attention}even{} cards",
+            "{C:inactive}(Currently {C:gold}+#5#{C:inactive} Ascension Power)"
+          },
+        }
+      },
+
+      j_abn_smooth_and_blue = {
+        name = "Smooth and Blue",
+        text = {
+          {
+            "First scoring {C:attention}odd{} card",
+            "each round gains {C:chips}+#1#{} chips",
+            "Increases by {C:chips}+#2#{} for each other",
+            "{C:attention}odd{} card scored in first hand"
+          },
+          {
+            "This joker gains {C:gold}+#3#{} Ascension",
+            "Power if played hand contains",
+            "at least {C:attention}#4#{} scoring {C:attention}odd{} cards",
+            "{C:inactive}(Currently {C:gold}+#5#{C:inactive} Ascension Power)"
+          },
+        }
       },
     },
   },
