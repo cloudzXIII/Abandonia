@@ -14,6 +14,7 @@ SMODS.Joker {
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_chthonian
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_darkner
         return {
             vars = {
                 card.ability.extra.rank,

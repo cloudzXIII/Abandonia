@@ -6478,6 +6478,22 @@ return {
         }
       },
 
+      j_abn_midnight_hour = {
+        name = "Midnight Hour",
+        text = {
+          {
+            "{C:dark_edition}Modded {C:spades}Dark Suits{} with",
+            "{C:dark_edition}Opaque{} edition give",
+            "{C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips"
+          },
+          {
+            "{C:dark_edition}Modded {C:spades}Dark Suits{} with",
+            "{C:attention}Darkner{} enhancement give",
+            "{C:gold}+#3#{} Accession Power"
+          }
+        }
+      },
+
       j_abn_mike_jester = {
         name = "Mike Jester",
         text = {
@@ -8077,8 +8093,8 @@ return {
         name = "Retro Aficionado",
         text = {
           {
-            "{C:green}Repeat{} ended {C:cassette}Cassettes{}",
-            "{C:attention}1{} time"
+            "{C:green}Repeat{} ended",
+            "{C:cassette}Cassettes {C:attention}1{} time"
           },
           {
             "If you own {C:attention}Throwback{},",
@@ -9222,6 +9238,22 @@ return {
           "{C:red}+#1#{} Mult per {C:lexica}Lexica{}",
           "card activated this run",
           "{C:inactive}(Currently {C:red}+#2#{C:inactive})",
+        }
+      },
+
+      j_abn_synthetic_gemstone = {
+        name = "Synthetic Gemstone",
+        text = {
+          {
+            "{C:dark_edition}Modded {C:diamonds}Light Suits{} with",
+            "{C:dark_edition}Bright{} edition give",
+            "{C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips"
+          },
+          {
+            "{C:dark_edition}Modded {C:diamonds}Light Suits{} with",
+            "{C:attention}Lightner{} enhancement give",
+            "{C:gold}+#3#{} Accession Power"
+          }
         }
       },
 

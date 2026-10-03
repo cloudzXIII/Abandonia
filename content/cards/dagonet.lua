@@ -14,6 +14,7 @@ SMODS.Joker {
     },
 
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
         return {
             vars = {
                 card.ability.extra.asc
@@ -24,9 +25,9 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.hand and not context.end_of_round then
             if SMODS.has_enhancement(context.other_card, "m_steel") then
-                local ret = {}
-                ret.asc = card.ability.extra.asc
-                return ret
+                return {
+                    asc = card.ability.extra.asc
+                }
             end
         end
     end,

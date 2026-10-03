@@ -13,6 +13,9 @@ SMODS.Joker {
     },
 
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.j_abn_red_shift
+        info_queue[#info_queue + 1] = { key = "abn_dark_suit", set = "Other" }
+        info_queue[#info_queue + 1] = G.P_CENTERS.abn_violet_seal
         return {
             vars = {}
         }

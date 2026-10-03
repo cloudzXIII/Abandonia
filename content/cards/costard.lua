@@ -14,6 +14,7 @@ SMODS.Joker {
     },
 
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.p_celestial_mega_1
         return {
             vars = {
                 card.ability.extra.echips,
