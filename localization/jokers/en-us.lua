@@ -6489,7 +6489,7 @@ return {
           {
             "{C:dark_edition}Modded {C:spades}Dark Suits{} with",
             "{C:attention}Darkner{} enhancement give",
-            "{C:gold}+#3#{} Accession Power"
+            "{C:gold}+#3#{} Ascension Power"
           }
         }
       },
@@ -9252,7 +9252,7 @@ return {
           {
             "{C:dark_edition}Modded {C:diamonds}Light Suits{} with",
             "{C:attention}Lightner{} enhancement give",
-            "{C:gold}+#3#{} Accession Power"
+            "{C:gold}+#3#{} Ascension Power"
           }
         }
       },
