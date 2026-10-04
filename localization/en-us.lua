@@ -1043,6 +1043,9 @@ return {
 
       b_cassette_cards = "Cassettes",
       k_cassette = "Cassette",
+	  
+	  b_mercantile_cards = "Mercantile Cards",
+      k_mercantile = "Mercantile",
     },
 
     v_dictionary = {
@@ -1078,6 +1081,7 @@ return {
       crepuscular = "Crepuscular Tarot",
       atomic = "Atomic",
       cassette = "Cassette",
+	  mercantile = "Mercantile",
     },
 
     ranks = {
