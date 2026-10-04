@@ -72,7 +72,7 @@ SMODS.Joker {
       -- identify the leftmost Joker
       local leftmost_joker = G.jokers.cards[1]
 
-      if leftmost_joker and not leftmost_joker.getting_sliced and not leftmost_joker.ability.eternal then
+      if leftmost_joker and not leftmost_joker.getting_sliced and not SMODS.is_eternal(leftmost_joker) then
         leftmost_joker.getting_sliced = true
         G.GAME.joker_buffer = G.GAME.joker_buffer - 1
         G.E_MANAGER:add_event(Event({
@@ -86,15 +86,11 @@ SMODS.Joker {
         }))
 
         -- create joker
-        local j = SMODS.create_card({
-          set = 'Joker',
-          key = 'j_abn_computerworm_joker',
-          area = G.jokers
-        })
-
-        j:set_edition({ negative = true }, true)
-        j:add_to_deck()
-        G.jokers:emplace(j)
+        local j = SMODS.copy_card(card)
+		if j then
+        	j:set_edition({ negative = true }, true)
+			j:set_eternal(false)
+		end
       end
     end
 

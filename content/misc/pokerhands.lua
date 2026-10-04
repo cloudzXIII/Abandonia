@@ -645,7 +645,7 @@ SMODS.PokerHand {
 
     local pair_cards = nil
     for _, pair in ipairs(parts._2) do
-      if pair[1]:get_id() ~= four_rank then
+      if pair:get_id() ~= four_rank then
         pair_cards = pair
         break
       end
@@ -684,7 +684,7 @@ SMODS.PokerHand {
 
     local pair_cards = nil
     for _, pair in ipairs(parts._2) do
-      if pair[1]:get_id() ~= four_rank then
+      if pair:get_id() ~= four_rank then
         pair_cards = pair
         break
       end

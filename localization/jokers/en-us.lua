@@ -10557,6 +10557,23 @@ return {
 		  "when a {C:attention}Rankless{} card scores but give {C:attention}double{} their values",
         }
       },
+	  
+	  j_abn_shinigami_joker = {
+        name = "Shinigami Joker",
+        text = {
+          {
+            "Pay {C:money}$#1#{}, and the next time a",
+			"Joker gives {C:chips}+Chips{}/{C:mult}+Mult{}, this Joker copies",
+			"that amount in the form of {X:chips,C:white}XChips{}/{X:mult,C:white}XMult"
+          },
+          {
+			"Each time you activate this ability for a {C:attention}third{} time",
+			"in one round, this Joker will instead permanently",
+			"gains the next activated {C:chips}+Chips{}/{C:mult}+Mult{} as {X:chips,C:white}XChips{}/{X:mult,C:white}XMult",
+			"{C:inactive}(Currently: {C:attention}#2#{C:inactive} activations, {X:chips,C:white}X#3#{C:inactive} Chips, {X:mult,C:white}X#4#{C:inactive} Mult)"
+          },
+        }
+      },
     },
   },
   misc = {

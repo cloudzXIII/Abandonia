@@ -92,11 +92,9 @@ SMODS.Joker {
         return { 
             vars = { 
                 card.ability.extra.cost,
+                card.ability.extra.activations,
                 card.ability.extra.x_chips,
-                card.ability.extra.x_mult,
-                card.ability.extra.chips,
-                card.ability.extra.mult,
-                card.ability.extra.activations
+                card.ability.extra.x_mult
             } 
         }
     end,
