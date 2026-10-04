@@ -94,22 +94,3 @@ function Game:start_run(args)
     SMODS.set_scoring_calculation("abn_amp")
     return ret
 end
-
---[[
-SMODS.Joker {
-  key = 'test_joker',
-  rarity = 1,
-  pos = { x = 0, y = 0 },
-  cost = 8,
-  discovered = false,
-  blueprint_compat = true,
-  calculate = function(self, card, context)
-	if context.joker_main then
-        return {
-			amp = 4,
-            card = self
-		}
-    end
-  end,
-}
---]]
