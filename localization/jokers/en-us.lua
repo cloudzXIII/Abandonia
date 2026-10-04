@@ -10520,6 +10520,27 @@ return {
           },
         }
       },
+
+      j_abn_gamma_ray_joker = {
+        name = "Gamma Ray Joker",
+        text = {
+          {
+            "Scoring {C:attention}Flux{} cards in your",
+            "winning hand gain {X:purple,C:white}X#1#{} the",
+            "{C:purple}+Score{} they would otherwise get"
+          },
+          {
+            "Whenever any joker's {C:dark_edition}Collodion",
+            "edition triggers, resulting {C:chips}Chips",
+            "and {C:mult}Mult{} scores will be raised by {C:abn_plasma}#2#"
+          },
+          {
+            "If this joker has the {C:attention}Flux",
+            "enhancement, each scoring card gives",
+            "{C:purple}+Score{} equal to {X:purple,C:white}X#3#{} its rank"
+          },
+        }
+      },
     },
   },
   misc = {

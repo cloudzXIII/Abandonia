@@ -898,7 +898,7 @@ ABN.CalligraphyCard {
     }
   end,
 
-  config = { extra = { suit_conv = "abn_Bell", mod_conv = "m_abn_bramble", } },
+  config = { extra = { suit_conv = "abn_Bell", mod_conv = "m_abn_hot_iron", } },
   can_use = function(self, card)
     return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,

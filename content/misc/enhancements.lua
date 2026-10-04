@@ -1396,23 +1396,21 @@ SMODS.Enhancement({
     return { vars = { cae.score, cae.scoreadd } }
   end,
   calculate = function(self, card, context)
-    local cae = card.ability.extra
     if context.main_scoring and context.cardarea == G.play then
       return {
-        score = cae.score,
+        score = card.ability.extra.score,
       }
     end
 
-    if context.final_scoring_step and card.area == G.play then
-      if SMODS.calculate_round_score() + G.GAME.chips >= G.GAME.blind.chips then
-        cae.score = cae.score + cae.scoreadd
-        return {
-          message = localize('k_upgrade_ex'),
-          colour = G.C.PURPLE,
-          card = card
-        }
+    if context.final_scoring_step and card.area == G.play and SMODS.calculate_round_score() + G.GAME.chips >= G.GAME.blind.chips then
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "score",
+          scalar_value = "scoreadd",
+		  message_colour = G.C.PURPLE,
+		  abn_flux_scaling = true
+        })
       end
-    end
   end,
   abn_artist_credits = {
     artist = "Super Thing",
