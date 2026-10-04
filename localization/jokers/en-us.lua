@@ -10541,6 +10541,22 @@ return {
           },
         }
       },
+	  
+	  j_abn_joker_portrait = {
+        name = "Joker Portrait",
+        text = {
+          "{C:abn_eternal}+#1#{} Amperage",
+        }
+      },
+	  
+	  j_abn_nightlife_joker = {
+        name = "Nightlife Joker",
+        text = {
+          "Scoring {C:attention}Rankless{} cards give {C:abn_eternal}+#1#{} Amperage",
+		  "If this Joker has {C:dark_edition}Polychrome{} lose {C:money}$#2#{}",
+		  "when a {C:attention}Rankless{} card scores but give {C:attention}double{} their values",
+        }
+      },
     },
   },
   misc = {
