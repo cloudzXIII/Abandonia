@@ -296,6 +296,12 @@ return {
           "depending on the {C:attention}circumstance"
         }
       },
+	  m_abn_amplitude = {
+        name = "Amplitude",
+        text = {
+          "{C:abn_eternal}+#1#{} Amperage",
+        }
+      },
     },
     Other = {
       --#region ENHANCEMENT STICKERS
