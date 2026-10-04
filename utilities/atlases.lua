@@ -552,6 +552,13 @@ SMODS.Atlas({
   py = 95,
 })
 
+SMODS.Atlas({
+  key = "AbandoniaMercantile",
+  path = "mercantile.png",
+  px = 71,
+  py = 95,
+})
+
 --#region Jokers
 for i = 1, 27 do
   SMODS.Atlas({
