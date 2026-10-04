@@ -306,6 +306,7 @@ function SMODS.reset_blind_choices(choices)
   old_reset_blind_choices(choices)
   G.GAME.abn_newestia_original_blinds = G.GAME.abn_newestia_original_blinds or {}
   G.GAME.abn_newestia_current_blinds = G.GAME.abn_newestia_current_blinds or {}
+  local final_showdown = next(SMODS.find_card("j_abn_final_showdown"))
   for _, k in ipairs(G.GAME.round_resets.blind_order) do
     local rep_k = k
     if (k == "Small" and G.GAME.used_vouchers.v_abn_carbon_dating) or (k == "Big" and G.GAME.used_vouchers.v_abn_carnival_coupon) then
@@ -315,9 +316,11 @@ function SMODS.reset_blind_choices(choices)
       G.GAME.abn_newestia_original_blinds[k] = choices[k]
       G.GAME.abn_newestia_current_blinds[k] = "bl_abn_new_" .. k:lower()
     elseif rep_k == "Boss" then
+	  if k == "Boss" and final_showdown then
+		choices[k] = ABN.new_vanilla_boss(true)
+	  end
       G.GAME.abn_newestia_original_blinds[k] = k == "Boss" and choices[k] or ABN.new_vanilla_boss(k == "Big")
-      G.GAME.abn_newestia_current_blinds[k] = ABN.new_newestia_boss((k == "Small" and "boss") or
-        (k == "Big" and "showdown"))
+      G.GAME.abn_newestia_current_blinds[k] = ABN.new_newestia_boss((k == "Small" and "boss") or ((k == "Big" or final_showdown) and "showdown"))
     end
   end
   if G.GAME.abn_newestia then
@@ -336,15 +339,16 @@ end
 
 local get_old_boss = get_new_boss
 function get_new_boss()
+  local final_showdown = next(SMODS.find_card("j_abn_final_showdown"))
   local boss = nil
   if G.GAME.abn_newestia then
-    boss = ABN.new_newestia_boss()
+    boss = ABN.new_newestia_boss(final_showdown and "showdown")
     G.GAME.abn_newestia_current_blinds.Boss = boss
   else
     if ABN.is_hazard_ante() then
       boss = ABN.new_hazard_boss()
     else
-      boss = get_old_boss()
+      boss = final_showdown and ABN.new_vanilla_boss(true) or get_old_boss()
     end
     G.GAME.abn_newestia_original_blinds.Boss = boss
   end

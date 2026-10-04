@@ -1519,8 +1519,7 @@ SMODS.Enhancement {
     }
   end,
   calculate = function(self, card, context)
-    if context.hand_drawn then
-      if card.area == G.deck then
+    if context.hand_drawn and card.area == G.deck then
         G.E_MANAGER:add_event(Event({
           func = function()
             draw_card(G.deck, G.hand, 100, 'up', true, card)
@@ -1528,22 +1527,33 @@ SMODS.Enhancement {
             return true
           end
         }))
-      end
     end
+
+	if context.press_play and card.area == G.hand and not card.highlighted then
+		--card.area.highlighted[#card.area.highlighted+1] = card
+        --card:highlight(true)
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				card.area:remove_card(card)
+				G.play:emplace(card)
+				return true
+			end
+		}))
+	end
 
     -- Transformation logic using config.extra.odds
     if context.before and context.cardarea == G.play then
       for _, played_card in ipairs(G.play.cards) do
-        if played_card.config.center_key ~= self.key then
-          if pseudorandom('honey_transform') < G.GAME.probabilities.normal / card.ability.extra.odds then
+        if played_card.config.center_key ~= self.key and not played_card.abn_transformed_by_honey and pseudorandom('honey_transform') < G.GAME.probabilities.normal / card.ability.extra.odds then
+		  played_card.abn_transformed_by_honey = true
             G.E_MANAGER:add_event(Event({
               func = function()
                 played_card:set_ability(G.P_CENTERS[self.key], nil, true)
                 played_card:juice_up(0.5, 0.5)
+				played_card.abn_transformed_by_honey = nil
                 return true
               end
             }))
-          end
         end
       end
     end
@@ -1552,7 +1562,7 @@ SMODS.Enhancement {
     artist = "th30ne",
   },
 }
-
+--[[
 abandonia.playextracards = function()
   if not G.hand or not G.hand.cards then return end
 
@@ -1574,7 +1584,7 @@ abandonia.playextracards = function()
       draw_card(G.hand, G.play, i * 100 / #honey_in_hand, 'up', nil, card)
     end
   end
-end
+end--]]
 
 SMODS.Enhancement {
   key = "bubble",
