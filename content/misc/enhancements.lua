@@ -1530,8 +1530,6 @@ SMODS.Enhancement {
     end
 
 	if context.press_play and card.area == G.hand and not card.highlighted then
-		--card.area.highlighted[#card.area.highlighted+1] = card
-        --card:highlight(true)
 		G.E_MANAGER:add_event(Event({
 			func = function()
 				card.area:remove_card(card)
@@ -1562,29 +1560,6 @@ SMODS.Enhancement {
     artist = "th30ne",
   },
 }
---[[
-abandonia.playextracards = function()
-  if not G.hand or not G.hand.cards then return end
-
-  local honey_in_hand = {}
-  for i = 1, #G.hand.cards do
-    if not G.hand.cards[i].highlighted and SMODS.has_enhancement(G.hand.cards[i], 'm_abn_honey') then
-      table.insert(honey_in_hand, G.hand.cards[i])
-    end
-  end
-
-  if #honey_in_hand > 0 then
-    for i, card in ipairs(honey_in_hand) do
-      if card:is_face() then
-        inc_career_stat('c_face_cards_played', 1)
-      end
-      card.base.times_played = card.base.times_played + 1
-      G.GAME.round_scores.cards_played.amt = G.GAME.round_scores.cards_played.amt + 1
-
-      draw_card(G.hand, G.play, i * 100 / #honey_in_hand, 'up', nil, card)
-    end
-  end
-end--]]
 
 SMODS.Enhancement {
   key = "bubble",
