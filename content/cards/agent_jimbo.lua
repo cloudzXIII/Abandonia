@@ -25,14 +25,14 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.shop_card_cost and not context.blueprint then
             local shop_card = context.card
-            if shop_card.ability.set ~= 'Jokers' and shop_card.ability.set ~= 'Default' and shop_card.ability.set ~= 'Enhanced' and shop_card.ability.set ~= 'Voucher' then
+            if SMODS.ConsumableTypes[shop_card.ability.set] then
                 return {
                     cost = shop_card.cost * 2
                 }
             end
         end
 
-        if context.buying_card and context.card and context.card.ability.set ~= 'Jokers' and context.card.ability.set ~= 'Default' and context.card.ability.set ~= 'Enhanced' and context.card.ability.set ~= 'Voucher' then
+        if context.buying_card and SMODS.ConsumableTypes[context.card.ability.set] then
             local bought_card = context.card
     
             if not bought_card.edition then
