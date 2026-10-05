@@ -26,70 +26,54 @@ SMODS.Atlas({
   py = 95,
 })
 
+
+--#region Suits
 SMODS.Atlas({
   key = "AbandoniaSuits",
-  path = "suits.png",
+  path = "cards/suits.png",
   px = 71,
   py = 95,
 })
 
 SMODS.Atlas({
   key = "AbandoniaSpanishSuits",
-  path = "spanishsuits.png",
-  px = 71,
-  py = 95,
-})
-
-SMODS.Atlas({
-  key = "AbandoniaSuitsAgain",
-  path = "suits_again.png",
+  path = "cards/spanishsuits.png",
   px = 71,
   py = 95,
 })
 
 SMODS.Atlas({
   key = "AbandoniaGermanSuits",
-  path = "germanysuit.png",
+  path = "cards/germanysuit.png",
   px = 71,
   py = 95,
 })
 
 SMODS.Atlas({
-  key = "AbandoniaMoreSuits",
-  path = "moresuits.png",
+  key = "AbandoniaSuitless",
+  path = "cards/suitless.png",
   px = 71,
   py = 95,
 })
+--#endregion
 
-SMODS.Atlas({
-  key = "AbandoniaOtherSuits",
-  path = "othersuits.png",
-  px = 71,
-  py = 95,
-})
-
+--#region Icons
 SMODS.Atlas({
   key = "AbandoniaSuitIcons",
-  path = "icons.png",
+  path = "cards/icons.png",
   px = 18,
   py = 18,
 })
+--#endregion
 
-SMODS.Atlas({
-  key = "AbandoniaExtraSuitIcons",
-  path = "extra_suit_icons.png",
-  px = 13,
-  py = 13,
-})
-
-
-
+--#region Ranks
 SMODS.Atlas {
   key = "AbandoniaRanks",
-  path = "ranks.png",
+  path = "cards/ranks.png",
   px = 71,
   py = 95
 }
+--#endregion
 
 SMODS.Atlas({
   key = "AbandoniaSeals",
