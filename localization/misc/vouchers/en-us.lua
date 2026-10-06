@@ -292,6 +292,13 @@ return {
           }
         }
       },
+	  v_abn_forbidden_fruit = {
+        name = "Forbidden Fruit",
+        text = {
+          "Unlock Underhands",
+		  "Raise all {C:attention}Blind Requirements{} by {C:attention}10%{} per {C:attention}Ante{}",
+        }
+      },
       --#endregion
     },
   },
