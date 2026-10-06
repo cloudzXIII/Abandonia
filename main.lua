@@ -189,6 +189,9 @@ abn_load_crossmod("paperback")
 --#endregion
 
 ABN.calculate = function(self, context)
+  -- See content/misc/mayhem.lua
+  ABN.calculate_mayhem(self, context)
+
   -- Shadowy Joker
   if #SMODS.find_card("j_abn_shadowy_joker", true) > 0 then
     local card_areas = { G.jokers, G.consumeables, G.shop_jokers, G.pack_cards }

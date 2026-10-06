@@ -35,8 +35,8 @@ return {
         text = {
           "{C:green}#1# in #2#{} chance to",
           "destroy discarded cards",
-          "When {C:attention}Blind{} is selected,",
-          "create a random {C:dark_edition}Negative{} {C:sigils}Sigil{} Card"
+          "When {C:attention}Blind{} is selected, forces",
+          "you to play a random {C:sigils}Sigil{} Card"
         }
       },
       b_abn_cyber = {
@@ -175,7 +175,8 @@ return {
           "{C:attention}#1#{} consumable slots,",
           "increases by {C:attention}+#2#{} when",
           "{C:attention}Boss Blind{} defeated",
-          "Go up to {C:red}-$#3#{} in debt"
+          "Go up to {C:red}-$#3#{} in debt",
+		  "Start with only {C:inactive}Nulls{} and {C:inactive}Vortices",
         }
       },
       b_abn_treaty = {

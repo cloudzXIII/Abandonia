@@ -1119,3 +1119,18 @@ function ABN.new_vanilla_boss(showdown)
 	SMODS.add_boss_to_used_table(ret_boss, "boss")
     return ret_boss
 end
+
+-- Iterate recursively through the entire contents of a UI Definition
+-- in order to edit or add onto specific regions
+-- In the callback, you may 'return true' to end iteration early
+-- This function has no return value otherwise; the callback should be used to edit a table you already have.
+function ABN.iterate_edit_ui(nodes, callback)
+	if not nodes or not callback then return end
+	if nodes.nodes then nodes = nodes.nodes end
+	for _, node in ipairs(nodes) do
+		if callback(node) then return true end
+		if node.nodes then
+			if ABN.iterate_edit_ui(node.nodes, callback) then return true end
+		end
+	end
+end

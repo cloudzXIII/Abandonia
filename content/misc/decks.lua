@@ -5,10 +5,6 @@ SMODS.Back {
     atlas = 'AbandoniaDecks',
     pos = { x = 0, y = 0 },
 
-    config = {
-        hand_size = 0
-    },
-
     apply = function()
         G.E_MANAGER:add_event(Event({
 
@@ -61,10 +57,6 @@ SMODS.Back {
     atlas = 'AbandoniaDecks',
     pos = { x = 1, y = 0 },
 
-    config = {
-        hand_size = 0
-    },
-
     apply = function()
         G.E_MANAGER:add_event(Event({
 
@@ -94,10 +86,6 @@ SMODS.Back {
     atlas = 'AbandoniaDecks',
     pos = { x = 2, y = 0 },
 
-    config = {
-        hand_size = 0
-    },
-
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
             local currentCard = context.other_card
@@ -122,10 +110,6 @@ SMODS.Back {
     key = 'EmeraldDeck',
     atlas = 'AbandoniaDecks',
     pos = { x = 3, y = 0 },
-
-    config = {
-        hand_size = 0
-    },
 
     apply = function()
         G.E_MANAGER:add_event(Event({
@@ -175,10 +159,6 @@ SMODS.Back {
     atlas = 'AbandoniaDecks',
     pos = { x = 4, y = 0 },
 
-    config = {
-        hand_size = 0
-    },
-
     apply = function()
         G.E_MANAGER:add_event(Event({
 
@@ -198,10 +178,6 @@ SMODS.Back {
     key = 'EvenOddDeck',
     atlas = 'AbandoniaDecks',
     pos = { x = 1, y = 2 },
-
-    config = {
-        hand_size = 0
-    },
 
     apply = function(self)
         G.E_MANAGER:add_event(Event({
@@ -253,6 +229,9 @@ SMODS.Back {
             odds = 6,
         }
     },
+    abandonia = {
+        create_snows = true
+    },
 
     loc_vars = function(self, info_queue, back)
         local numerator, denominator = SMODS.get_probability_vars(self, self.config.extra.base, self.config.extra.odds)
@@ -263,32 +242,6 @@ SMODS.Back {
                 denominator
             }
         }
-    end,
-
-    apply = function(self)
-        G.E_MANAGER:add_event(Event({
-            func = function()
-                local diamonds = {}
-                for _, v in pairs(G.playing_cards) do
-                    if v.base.suit == 'Diamonds' then
-                        table.insert(diamonds, v)
-                    end
-                end
-
-                for _, card in ipairs(diamonds) do
-                    local new_card = copy_card(card)
-
-                    new_card:change_suit('abn_Snow')
-
-                    new_card:add_to_deck()
-                    G.deck:emplace(new_card)
-                    table.insert(G.playing_cards, new_card)
-                end
-
-                G.deck.config.card_limit = #G.playing_cards
-                return true
-            end
-        }))
     end,
 
     calculate = function(self, card, context)
@@ -306,35 +259,9 @@ SMODS.Back {
     key = 'PenumbraDeck',
     atlas = 'AbandoniaDecks',
     pos = { x = 0, y = 1 },
-
-    config = {
-        hand_size = 0,
-    },
-    apply = function(self)
-        G.E_MANAGER:add_event(Event({
-            func = function()
-                local diamonds = {}
-                for _, v in pairs(G.playing_cards) do
-                    if v.base.suit == 'Diamonds' then
-                        table.insert(diamonds, v)
-                    end
-                end
-
-                for _, card in ipairs(diamonds) do
-                    local new_card = copy_card(card)
-
-                    new_card:change_suit('abn_Penumbra')
-
-                    new_card:add_to_deck()
-                    G.deck:emplace(new_card)
-                    table.insert(G.playing_cards, new_card)
-                end
-
-                G.deck.config.card_limit = #G.playing_cards
-                return true
-            end
-        }))
-    end
+    abandonia = {
+        create_penumbras = true,
+    }
 }
 
 SMODS.Back {
@@ -342,10 +269,6 @@ SMODS.Back {
     key = 'DarkNebulaDeck',
     atlas = 'AbandoniaDecks',
     pos = { x = 1, y = 1 },
-
-    config = {
-        hand_size = 0
-    },
 
     apply = function()
         G.E_MANAGER:add_event(Event({
@@ -382,10 +305,6 @@ SMODS.Back {
     key = 'PoltergiestDeck',
     atlas = 'AbandoniaDecks',
     pos = { x = 2, y = 1 },
-
-    config = {
-        hand_size = 0
-    },
 
     calculate = function(self, card, context)
         if context.using_consumeable then
@@ -512,10 +431,6 @@ SMODS.Back {
     atlas = 'AbandoniaDecks',
     pos = { x = 4, y = 1 },
 
-    config = {
-        hand_size = 0
-    },
-
     calculate = function(self, card, context)
         if context.final_scoring_step then
             for _, played_card in ipairs(G.play.cards) do
@@ -532,10 +447,6 @@ SMODS.Back {
     key = 'PlatinumDeck',
     atlas = 'AbandoniaDecks',
     pos = { x = 5, y = 1 },
-
-    config = {
-        hand_size = 0
-    },
 
     apply = function()
         G.E_MANAGER:add_event(Event({
@@ -579,10 +490,6 @@ SMODS.Back {
     key = 'ConvergenceDeck',
     atlas = 'AbandoniaDecks',
     pos = { x = 5, y = 3 },
-
-    config = {
-        hand_size = 0
-    },
 
     apply = function()
         G.E_MANAGER:add_event(Event({
@@ -657,6 +564,14 @@ SMODS.Back {
             debt = 10
         }
     },
+	initial_deck = {
+		suits = {"Diamonds", "Hearts", "Spades", "Clubs"},
+		exclude = true
+	},
+    abandonia = {
+		create_suitless = true,
+		create_vortex = true,
+    },
     atlas = "AbandoniaDecks",
     pos = { x = 4, y = 4 },
     loc_vars = function(self, info_queue, card)
@@ -685,43 +600,12 @@ SMODS.Back {
     name = "Treaty Of Colors",
     atlas = 'AbandoniaDecks',
     pos = { x = 5, y = 4 },
-    config = {
-        hand_size = 0,
-    },
-
-    apply = function(self)
-        G.E_MANAGER:add_event(Event({
-            func = function()
-                local original_cards = {}
-                for _, v in pairs(G.playing_cards) do
-                    table.insert(original_cards, v)
-                end
-
-                for _, card in ipairs(original_cards) do
-                    local new_card = copy_card(card)
-
-
-                    if card.base.suit == 'Spades' then
-                        new_card:change_suit('abn_Snow')
-                    elseif card.base.suit == 'Hearts' then
-                        new_card:change_suit('abn_Penumbra')
-                    elseif card.base.suit == 'Diamonds' then
-                        new_card:change_suit('abn_Tie')
-                    elseif card.base.suit == 'Clubs' then
-                        new_card:change_suit('abn_Bow')
-                    end
-
-
-                    new_card:add_to_deck()
-                    G.deck:emplace(new_card)
-                    table.insert(G.playing_cards, new_card)
-                end
-
-                G.deck.config.card_limit = #G.playing_cards
-                return true
-            end
-        }))
-    end
+    abandonia = {
+        create_snows = true,
+        create_penumbras = true,
+        create_ties = true,
+        create_bows = true,
+    }
 }
 
 SMODS.Back {
@@ -729,48 +613,17 @@ SMODS.Back {
     name = "Photometry Deck",
     atlas = 'AbandoniaDecks',
     pos = { x = 0, y = 5 },
-    config = {
-        hand_size = 0,
-    },
-
-    apply = function(self)
-        G.E_MANAGER:add_event(Event({
-            func = function()
-                local suit_map = {
-                    Spades = 'abn_Snow',
-                    Hearts = 'abn_Penumbra',
-                    Diamonds = 'abn_Tie',
-                    Clubs = 'abn_Bow'
-                }
-
-                local original_cards = {}
-                for _, v in pairs(G.playing_cards) do
-                    table.insert(original_cards, v)
-                end
-
-                for _, card in ipairs(original_cards) do
-                    local current_suit = card.base.suit
-                    if suit_map[current_suit] then
-                        card:change_suit(suit_map[current_suit])
-                    end
-                end
-
-                for _, card in ipairs(original_cards) do
-                    if card.base.suit == 'abn_Bow' then
-                        local new_card = copy_card(card)
-
-                        new_card:change_suit('abn_suitless')
-                        new_card:add_to_deck()
-                        G.deck:emplace(new_card)
-                        table.insert(G.playing_cards, new_card)
-                    end
-                end
-
-                G.deck.config.card_limit = #G.playing_cards
-                return true
-            end
-        }))
-    end
+	initial_deck = {
+		suits = {"Diamonds", "Hearts", "Spades", "Clubs"},
+		exclude = true
+	},
+    abandonia = {
+        create_snows = true,
+        create_penumbras = true,
+        create_ties = true,
+        create_bows = true,
+		create_suitless = true
+    }
 }
 
 SMODS.Back {
@@ -778,51 +631,21 @@ SMODS.Back {
     name = "Synesthetic Circle",
     atlas = 'AbandoniaDecks',
     pos = { x = 0, y = 6 },
-    config = {
-        no_faces = true
-    },
+	initial_deck = {
+		suits = {"Diamonds", "Hearts", "Spades", "Clubs"},
+		ranks = {"King", "Queen", "Jack"},
+		exclude = true
+	},
     abandonia = {
         create_bows = true,
         create_ties = true,
         create_penumbras = true,
-        create_snows = true
+        create_snows = true,
+        create_chalices = true,
+        create_batons = true,
+        create_coins = true,
+        create_swords = true,
     },
-
-    apply = function(self, back)
-        G.E_MANAGER:add_event(Event({
-            func = function()
-                for _, playing_card in ipairs(G.playing_cards) do
-                    if playing_card.base.suit == 'Hearts' then
-                        playing_card:change_suit('abn_Chalice')
-                    end
-                    if playing_card.base.suit == 'Diamonds' then
-                        playing_card:change_suit('abn_Baton')
-                    end
-                    if playing_card.base.suit == 'Clubs' then
-                        playing_card:change_suit('abn_Coin')
-                    end
-                    if playing_card.base.suit == 'Spades' then
-                        playing_card:change_suit('abn_Sword')
-                    end
-                end
-                return true
-            end
-        }))
-        G.E_MANAGER:add_event(Event({
-            func = function()
-                local original_cards = {}
-                for _, v in pairs(G.playing_cards) do
-                    table.insert(original_cards, v)
-                end
-                for _, v in ipairs(original_cards) do
-                    if v:is_face() then
-                        SMODS.destroy_cards(v)
-                    end
-                end
-                return true
-            end
-        }))
-    end,
 
     calculate = function(self, card, context)
         if context.end_of_round and context.main_eval and not context.blueprint and G.GAME.blind and G.GAME.blind.boss then
@@ -837,37 +660,12 @@ SMODS.Back {
     atlas = 'AbandoniaDecks',
     pos = { x = 1, y = 6 },
 	
-	apply = function(self)
-        G.E_MANAGER:add_event(Event({
-            func = function()
-				local initial_cards = {}
-                for _, card in ipairs(G.playing_cards) do
-                    table.insert(initial_cards, card)
-                end
-
-                for _, playing_card in ipairs(initial_cards) do
-                    local new_card = copy_card(playing_card)
-                    
-                    if playing_card.base.suit == 'Hearts' then
-                        new_card:change_suit('abn_Talon')
-                    elseif playing_card.base.suit == 'Diamonds' then
-                        new_card:change_suit('abn_Crown')
-                    elseif playing_card.base.suit == 'Clubs' then
-                        new_card:change_suit('abn_Moon')
-                    elseif playing_card.base.suit == 'Spades' then
-                        new_card:change_suit('abn_Star')
-                    end
-
-                    new_card:add_to_deck()
-                    G.deck:emplace(new_card)
-                    table.insert(G.playing_cards, new_card)
-                end
-
-                G.deck.config.card_limit = #G.playing_cards
-                return true
-			end
-		}))
-	end,
+    abandonia = {
+        create_talons = true,
+        create_crowns = true,
+        create_moons = true,
+        create_stars = true,
+    },
 			
 
     calculate = function(self, card, context)
@@ -882,25 +680,22 @@ SMODS.Back {
     name = "Shackle Maniac",
     atlas = 'AbandoniaDecks',
     pos = { x = 5, y = 2 },
-    config = {
-        hand_size = 0,
+	initial_deck = {
+		suits = {"Diamonds", "Hearts"},
+		exclude = true
+	},
+	
+    abandonia = {
+        create_penumbras = true,
+        create_bows = true,
     },
 
     apply = function(self)
         G.E_MANAGER:add_event(Event({
             func = function()
                 for _, card in ipairs(G.playing_cards) do
-                    local current_suit = card.base.suit
-
                     card:set_edition({ abn_chthonian = true }, true, true)
-
-                    if current_suit == 'Hearts' then
-                        card:change_suit('abn_Penumbra')
-                    elseif current_suit == 'Diamonds' then
-                        card:change_suit('abn_Bow')
-                    end
                 end
-                G.deck.config.card_limit = #G.playing_cards
                 return true
             end
         }))
@@ -954,7 +749,17 @@ SMODS.Back {
         if context.setting_blind then
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    SMODS.add_card { set = "sigils", edition = "e_negative" }
+                    local sigil_card = SMODS.add_card { set = "sigils" }
+					sigil_card:use_consumeable()
+					SMODS.calculate_effect({message = localize({ type = 'name_text', key = sigil_card.config.center.key, set = 'sigils' })}, sigil_card)
+					G.E_MANAGER:add_event(Event({
+						trigger = "after",
+						delay = 0.5,
+						func = function()
+							sigil_card:start_dissolve()
+							return true
+						end
+					}))
                     return true
                 end
             }))
@@ -971,6 +776,13 @@ SMODS.Back {
         vouchers = { "v_abn_tarot_master" }
     },
 
+    abandonia = {
+        create_chalices = true,
+        create_batons = true,
+        create_coins = true,
+        create_swords = true,
+    },
+
     loc_vars = function(self, info_queue, back)
         return {
             vars = {
@@ -983,31 +795,6 @@ SMODS.Back {
         G.E_MANAGER:add_event(Event({
             func = function()
                 G.GAME.modifiers.no_interest = true
-                
-                local initial_cards = {}
-                for _, card in ipairs(G.playing_cards) do
-                    table.insert(initial_cards, card)
-                end
-
-                for _, playing_card in ipairs(initial_cards) do
-                    local new_card = copy_card(playing_card)
-                    
-                    if playing_card.base.suit == 'Hearts' then
-                        new_card:change_suit('abn_Chalice')
-                    elseif playing_card.base.suit == 'Diamonds' then
-                        new_card:change_suit('abn_Baton')
-                    elseif playing_card.base.suit == 'Clubs' then
-                        new_card:change_suit('abn_Coin')
-                    elseif playing_card.base.suit == 'Spades' then
-                        new_card:change_suit('abn_Sword')
-                    end
-
-                    new_card:add_to_deck()
-                    G.deck:emplace(new_card)
-                    table.insert(G.playing_cards, new_card)
-                end
-
-                G.deck.config.card_limit = #G.playing_cards
                 return true
             end
         }))
