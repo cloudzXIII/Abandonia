@@ -1095,3 +1095,25 @@ SMODS.Voucher({
         artist = "Superthing",
     },
 })
+
+SMODS.Voucher({
+    key = "forbidden_fruit",
+    atlas = "AbandoniaVouchers",
+    pos = {
+        x = 2,
+        y = 2,
+    },
+    cost = 10,
+    
+    calculate = function(self, card, context)
+        if context.setting_blind then
+            local multiplier = 1 + (0.10 * (G.GAME.round_resets.ante or 1))
+            G.GAME.blind.chips = math.floor(G.GAME.blind.chips * multiplier)
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+        end
+    end,
+
+    abn_artist_credits = {
+        artist = "?",
+    },
+})
