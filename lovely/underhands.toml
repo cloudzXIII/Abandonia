@@ -1,0 +1,62 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = -1   
+
+# ---------- scoring ----------
+[[patches]]
+[patches.regex]
+target = "functions/state_events.lua"
+pattern = '''mult = mod_mult\((?<inner>[^\n]*(?:hands\[text\]\.mult|get_ascended_value)[^\n]*)\)'''
+position = "at"
+payload = '''mult = mod_mult(Abandonia.get_underhand_value($inner, "mult"))'''
+
+[[patches]]
+[patches.regex]
+target = "functions/state_events.lua"
+pattern = '''hand_chips = mod_chips\((?<inner>[^\n]*(?:hands\[text\]\.chips|get_ascended_value)[^\n]*)\)'''
+position = "at"
+payload = '''hand_chips = mod_chips(Abandonia.get_underhand_value($inner, "chips"))'''
+
+# ---------- hand preview ----------
+[[patches]]
+[patches.regex]
+target = "functions/state_events.lua"
+pattern = '''mult = (?<m>[^\n]*?G\.GAME\.hands\[text\]\.mult[^\n]*?), chips = (?<c>[^\n]*?G\.GAME\.hands\[text\]\.chips[^\n]*?)\}\)'''
+position = "at"
+payload = '''mult = Abandonia.get_underhand_value($m, "mult"), chips = Abandonia.get_underhand_value($c, "chips")})'''
+
+[[patches]]
+[patches.regex]
+target = "cardarea.lua"
+pattern = '''mult = (?<m>[^\n]*?G\.GAME\.hands\[text\]\.mult[^\n]*?), chips = (?<c>[^\n]*?G\.GAME\.hands\[text\]\.chips[^\n]*?)\}\)'''
+position = "at"
+payload = '''mult = Abandonia.get_underhand_value($m, "mult"), chips = Abandonia.get_underhand_value($c, "chips")})'''
+
+# ---------- underhand text next to the hand name ----------
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/ui.lua"]'''
+pattern = '''
+{n=G.UIT.O, config={id = 'hand_name', func = 'hand_text_UI_set',object = DynaText({string = {{ref_table = G.GAME.current_round.current_hand, ref_value = "handname_text"}}, colours = {G.C.UI.TEXT_LIGHT}, shadow = true, float = true, scale = scale*1.4})}},
+'''
+position = "after"
+payload = '''
+{n=G.UIT.B, config={w = 0.25, h = 0.1}},
+{n=G.UIT.C, config={align = "cm", padding = 0.03}, nodes = {
+    {n=G.UIT.O, config={id = 'abn_uh', func = 'abn_uh_UI_set', object = DynaText({string = {{ref_table = G.GAME.current_round.current_hand, ref_value = "abn_underhand_text"}}, colours = Abandonia.get_uh_colours(), shadow = true, float = true, scale = scale*1.4})}},
+}},
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+                chip_total_text = '',
+'''
+position = "after"
+payload = '''
+                abn_underhand_text = '',
+'''
+match_indent = true
