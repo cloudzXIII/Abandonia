@@ -672,6 +672,20 @@ return {
           "become {C:attention}flipped{}",
         }
       },
+      c_abn_balatro_illustrious_ritual = {
+        name = "Balatro Illustrious Ritual",
+        text = {
+          "{C:red}Destroy{} all cards held in hand,",
+          "and create {C:attention}#1# {C:abn_megido}Megido{} cards",
+        }
+      },
+      c_abn_raigeki = {
+        name = "Raigeki",
+        text = {
+          "{C:red}Destroy{} all cards held in hand,",
+          "and create {C:attention}#1# {C:abn_musica}Musica{} cards",
+        }
+      },
     },
   }
 }

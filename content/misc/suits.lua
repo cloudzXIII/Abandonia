@@ -639,3 +639,76 @@ function SMODS.localize_perma_bonuses(specific_vars, desc_nodes)
   return ret
 end
 --#endregion
+
+--#region Mayhem Suits
+SMODS.Suit {
+  key = 'megido',
+  card_key = 'MEG',
+  shade = "dark",
+  lc_atlas = "AbandoniaSuits",
+  hc_atlas = "AbandoniaSuits",
+  lc_ui_atlas = "AbandoniaSuitIcons",
+  hc_ui_atlas = "AbandoniaSuitIcons",
+  pos = { y = 12 },
+  ui_pos = { x = 2, y = 5 },
+  lc_colour = HEX("f03464"),
+  in_pool = function(self, args)
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_megido)
+          or (sleeve_config and sleeve_config.create_megido)
+    else
+      return false
+    end
+  end,
+}
+
+SMODS.Suit {
+  key = 'musica',
+  card_key = 'MUS',
+  shade = "light",
+  lc_atlas = "AbandoniaSuits",
+  hc_atlas = "AbandoniaSuits",
+  lc_ui_atlas = "AbandoniaSuitIcons",
+  hc_ui_atlas = "AbandoniaSuitIcons",
+  pos = { y = 13 },
+  ui_pos = { x = 3, y = 5 },
+  lc_colour = HEX("8eaddb"),
+  in_pool = function(self, args)
+    if args and args.initial_deck then
+      -- When creating a deck
+      local back = G.GAME.selected_back
+      local back_config = back and back.effect.center.abandonia
+
+      local sleeve = G.GAME.selected_sleeve
+      local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
+
+      return (back_config and back_config.create_musica)
+          or (sleeve_config and sleeve_config.create_musica)
+    else
+      return false
+    end
+  end,
+}
+
+local old_generate_ui = generate_card_ui
+function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
+	local fut = old_generate_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
+
+	if card and card.base and not SMODS.has_no_suit(card) and (card.base.suit == "abn_megido" or card.base.suit == "abn_musica") and not card.debuff then
+		localize({
+			key = card.base.suit.."_mayhem",
+			type = "other",
+			nodes = fut.main
+		})
+	end
+
+	return fut
+end
+--#endregino

@@ -300,6 +300,15 @@ return {
           "{C:red}Newestia{} is active"
         }
       },
+
+      abn_jimbo_newestia_only = {
+        name = "Limited",
+        text = {
+          "Only spawns while",
+          "{C:red}Newestia{} is active",
+		  "within any {C:attention}Jimbo Stake"
+        }
+      },
       --#endregion
 
       --#region Flypaper Fly Types
@@ -766,6 +775,21 @@ return {
       },
       --#endregion
 
+	  --#region Special Suit text
+	  abn_megido_mayhem = {
+		name = "Megido Suit",
+		text = {
+		  "{C:abn_mayhem_dark}+0.2{} Mayhem"
+		}
+	  },
+	  abn_musica_mayhem = {
+		name = "Musica Suit",
+		text = {
+		  "{C:abn_mayhem_dark}-0.1{} Mayhem"
+		}
+	  },
+	  --#endregion
+
       -- Art Credits displayed in the Credit Tab
       abn_credits = {
         text = {
@@ -1111,7 +1135,8 @@ return {
       abn_Acorn = "Acorn",
       abn_Bell = "Bell",
       abn_Leaf = "Leaf",
-      abn_Megido = "Megido",
+      abn_megido = "Megido",
+      abn_musica = "Musica",
       abn_Talon = "Talon",
       abn_Crown = "Crown",
       abn_Moon = "Moon",
@@ -1137,7 +1162,8 @@ return {
       abn_Acorn = "Acorns",
       abn_Bell = "Bells",
       abn_Leaf = "Leaves",
-      abn_Megido = "Megidos",
+      abn_megido = "Megidos",
+      abn_musica = "Musicas",
       abn_Talon = "Talons",
       abn_Crown = "Crowns",
       abn_Moon = "Moons",

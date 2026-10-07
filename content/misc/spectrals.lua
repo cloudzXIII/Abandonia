@@ -721,3 +721,77 @@ SMODS.Consumable {
     artist = "GM36"
   },
 }
+
+SMODS.Consumable {
+  key = "balatro_illustrious_ritual",
+  set = "Spectral",
+  config = { extra = { cards = 3 } },
+  pos = { x = 2, y = 2 },
+  atlas = "AbandoniaSpectrals",
+  cost = 4,
+  discovered = false,
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_jimbo_newestia_only", set = "Other" }
+    info_queue[#info_queue + 1] = { key = "abn_megido_mayhem", set = "Other" }
+    return { vars = { card.ability.extra.cards } }
+  end,
+
+  can_use = function(self, card)
+    return #G.hand.cards > 0
+  end,
+
+  in_pool = function(self, args)
+    return G.GAME.abn_newestia and G.GAME.modifiers.Honor
+  end,
+
+  use = function(self, card, area, copier)
+    for _, c in ipairs(G.hand.cards) do
+		c:start_dissolve()
+	end
+	for i = 1, card.ability.extra.cards do
+		SMODS.add_card({set = "Base", area = G.hand, suit = "abn_megido"})
+	end
+  end,
+
+  abn_artist_credits = {
+    artist = "Tatsu",
+  },
+}
+
+SMODS.Consumable {
+  key = "raigeki",
+  set = "Spectral",
+  config = { extra = { cards = 3 } },
+  pos = { x = 1, y = 2 },
+  atlas = "AbandoniaSpectrals",
+  cost = 4,
+  discovered = false,
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_jimbo_newestia_only", set = "Other" }
+    info_queue[#info_queue + 1] = { key = "abn_musica_mayhem", set = "Other" }
+    return { vars = { card.ability.extra.cards } }
+  end,
+
+  can_use = function(self, card)
+    return #G.hand.cards > 0
+  end,
+
+  in_pool = function(self, args)
+    return G.GAME.abn_newestia and G.GAME.modifiers.Honor
+  end,
+
+  use = function(self, card, area, copier)
+    for _, c in ipairs(G.hand.cards) do
+		c:start_dissolve()
+	end
+	for i = 1, card.ability.extra.cards do
+		SMODS.add_card({set = "Base", area = G.hand, suit = "abn_musica"})
+	end
+  end,
+
+  abn_artist_credits = {
+    artist = "Tatsu",
+  },
+}

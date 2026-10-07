@@ -1,16 +1,4 @@
-SMODS.Rank {
-  key = '11',
-  card_key = '11',
-  shorthand = '11',
-
-  lc_atlas = 'AbandoniaRanks',
-  hc_atlas = 'AbandoniaRanks',
-  pos = { x = 0 },
-
-  next = { 'abn_12' },
-  nominal = 11,
-
-  suit_map = {
+local suit_map = {
     abn_Snow = 0,
     abn_Penumbra = 1,
     abn_suitless = 2,
@@ -36,8 +24,24 @@ SMODS.Rank {
     abn_Rose = 22,
     abn_Anchor = 23,
     abn_Arrow = 24,
+    abn_megido = 25,
     abn_Vortex = 26,
-  },
+    abn_musica = 27,
+}
+
+SMODS.Rank {
+  key = '11',
+  card_key = '11',
+  shorthand = '11',
+
+  lc_atlas = 'AbandoniaRanks',
+  hc_atlas = 'AbandoniaRanks',
+  pos = { x = 0 },
+
+  next = { 'abn_12' },
+  nominal = 11,
+
+  suit_map = suit_map,
 
   in_pool = function(self, args)
     if args and ((args.suit == '') or (args.initial_deck)) then
@@ -60,34 +64,7 @@ SMODS.Rank {
   next = { 'abn_13' },
   nominal = 12,
 
-  suit_map = {
-    abn_Snow = 0,
-    abn_Penumbra = 1,
-    abn_suitless = 2,
-    Hearts = 3,
-    Clubs = 4,
-    Diamonds = 5,
-    Spades = 6,
-    abn_Tie = 7,
-    abn_Bow = 8,
-    abn_Chalice = 9,
-    abn_Sword = 10,
-    abn_Coin = 11,
-    abn_Baton = 12,
-    abn_Florette = 13,
-    abn_Acorn = 14,
-    abn_Bell = 15,
-    abn_Leaf = 16,
-    abn_Talon = 17,
-    abn_Crown = 18,
-    abn_Moon = 19,
-    abn_Star = 20,
-    abn_Shield = 21,
-    abn_Rose = 22,
-    abn_Anchor = 23,
-    abn_Arrow = 24,
-    abn_Vortex = 26,
-  },
+  suit_map = suit_map,
 
   in_pool = function(self, args)
     if args and ((args.suit == '') or (args.initial_deck)) then
@@ -110,34 +87,7 @@ SMODS.Rank {
   next = { 'abn_14' },
   nominal = 13,
 
-  suit_map = {
-    abn_Snow = 0,
-    abn_Penumbra = 1,
-    abn_suitless = 2,
-    Hearts = 3,
-    Clubs = 4,
-    Diamonds = 5,
-    Spades = 6,
-    abn_Tie = 7,
-    abn_Bow = 8,
-    abn_Chalice = 9,
-    abn_Sword = 10,
-    abn_Coin = 11,
-    abn_Baton = 12,
-    abn_Florette = 13,
-    abn_Acorn = 14,
-    abn_Bell = 15,
-    abn_Leaf = 16,
-    abn_Talon = 17,
-    abn_Crown = 18,
-    abn_Moon = 19,
-    abn_Star = 20,
-    abn_Shield = 21,
-    abn_Rose = 22,
-    abn_Anchor = 23,
-    abn_Arrow = 24,
-    abn_Vortex = 26,
-  },
+  suit_map = suit_map,
 
   in_pool = function(self, args)
     if args and ((args.suit == '') or (args.initial_deck)) then
@@ -161,35 +111,7 @@ SMODS.Rank {
   next = { '2' },
   nominal = 14,
 
-  suit_map = {
-    abn_Snow = 0,
-    abn_Penumbra = 1,
-    abn_suitless = 2,
-    Hearts = 3,
-    Clubs = 4,
-    Diamonds = 5,
-    Spades = 6,
-    abn_Tie = 7,
-    abn_Bow = 8,
-    abn_Chalice = 9,
-    abn_Sword = 10,
-    abn_Coin = 11,
-    abn_Baton = 12,
-    abn_Florette = 13,
-    abn_Acorn = 14,
-    abn_Bell = 15,
-    abn_Leaf = 16,
-    abn_Talon = 17,
-    abn_Crown = 18,
-    abn_Moon = 19,
-    abn_Star = 20,
-    abn_Shield = 21,
-    abn_Rose = 22,
-    abn_Anchor = 23,
-    abn_Arrow = 24,
-    abn_Vortex = 26,
-  },
-
+  suit_map = suit_map,
 
   in_pool = function(self, args)
     if args and ((args.suit == '') or (args.initial_deck)) then

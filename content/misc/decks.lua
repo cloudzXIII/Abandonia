@@ -260,7 +260,7 @@ SMODS.Back {
     atlas = 'AbandoniaDecks',
     pos = { x = 0, y = 1 },
     abandonia = {
-        create_penumbras = true,
+        create_penumbras = true
     }
 }
 
@@ -564,14 +564,6 @@ SMODS.Back {
             debt = 10
         }
     },
-	initial_deck = {
-		suits = {"Diamonds", "Hearts", "Spades", "Clubs"},
-		exclude = true
-	},
-    abandonia = {
-		create_suitless = true,
-		create_vortex = true,
-    },
     atlas = "AbandoniaDecks",
     pos = { x = 4, y = 4 },
     loc_vars = function(self, info_queue, card)
@@ -583,7 +575,20 @@ SMODS.Back {
             }
         }
     end,
-    apply = function(self, card, context)
+    apply = function(self)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'immediate',
+            func = function()
+                for _, card in ipairs(G.playing_cards) do
+                    if card.base.suit == "Hearts" or card.base.suit == "Diamonds" then
+						SMODS.change_base(card, "abn_Vortex")
+					else
+						SMODS.change_base(card, "abn_suitless")
+					end
+                end
+                return true
+            end
+        }))
         G.GAME.starting_params.consumable_slots = self.config.extra.slots
         G.GAME.bankrupt_at = G.GAME.bankrupt_at - self.config.extra.debt
     end,
@@ -646,6 +651,16 @@ SMODS.Back {
         create_coins = true,
         create_swords = true,
     },
+
+	apply = function(self)
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				SMODS.change_play_limit(1)
+				SMODS.change_discard_limit(1)
+				return true
+			end
+		}))
+	end,
 
     calculate = function(self, card, context)
         if context.end_of_round and context.main_eval and not context.blueprint and G.GAME.blind and G.GAME.blind.boss then
