@@ -10,10 +10,14 @@ local hazard_ante_map = {
 	[4] = "Honor",
 	[5] = "Menacing",
 	[6] = "Toxic",
+	[7] = "Noxious",
 	[8] = "Honor",
 	[9] = "Honor",
 	[10] = "Menacing",
 	[11] = "Toxic",
+	[12] = "Lethal",
+	[13] = "Baneful",
+	[14] = "Malicious",
 }
 
 -- See utilities/hooks.lua "Conditional boss replacements", and content/misc/newestia.lua "ABN.new_newestia_boss()" for how hazard bosses are spawned
@@ -38,86 +42,6 @@ local original_game_update = Game.update
 function Game:update(dt)
     original_game_update(self, dt)
 
-    -- Ensure win_ante stays locked based on modifiers
-    if G.GAME then
-        if G.GAME.modifiers.Noxious and G.GAME.win_ante < 12 then
-            G.GAME.win_ante = 12
-        elseif G.GAME.modifiers.Toxic and G.GAME.win_ante < 11 then
-            G.GAME.win_ante = 11
-        elseif G.GAME.modifiers.Menacing and G.GAME.win_ante < 10 then
-            G.GAME.win_ante = 10
-        elseif G.GAME.modifiers.Honor and G.GAME.win_ante < 9 then
-            G.GAME.win_ante = 9
-        end
-    end
-
-	--[[
-    -- Logic for forcing specific Blinds (Hazards/Showdowns - DEPRECATED)
-    if G.STATE == G.STATES.BLIND_SELECT and G.GAME and not G.GAME.abn_newestia then
-        local is_honor = G.GAME.modifiers.Honor
-        local is_menacing = G.GAME.modifiers.Menacing
-        local is_toxic = G.GAME.modifiers.Toxic
-
-        if is_honor or is_menacing or is_toxic then
-            local current_ante = G.GAME.round_resets.ante
-
-            -- Define Hazard Antes based on your new rules
-            local is_hazard_ante = (is_honor and (current_ante == 4 or current_ante == 8 or current_ante == 9)) or
-                (is_menacing and (current_ante == 5 or current_ante == 10)) or
-                (is_toxic and (current_ante == 6 or current_ante == 11))
-
-            -- In your new request, you mentioned these specific antes are Hazards.
-            -- If you still want "Showdowns" elsewhere, add them here, otherwise this focuses on Hazards.
-            if is_hazard_ante then
-                local current_boss_key = G.GAME.round_resets.blind_choices.Boss or ""
-                local is_hazard = current_boss_key:find("bl_abn_hazard")
-
-                if not is_hazard then
-                    G.GAME.HonorShowdownTimer = (G.GAME.HonorShowdownTimer or 0) + 1
-
-                    if G.GAME.HonorShowdownTimer >= 20 then
-                        G.GAME.HonorShowdownTimer = 0
-                        local pool = {}
-
-                        for k, v in pairs(G.P_BLINDS) do
-                            if k:find("bl_abn_hazard") then pool[#pool + 1] = k end
-                        end
-
-                        if #pool > 0 then
-                            local r_count = G.GAME.round_resets.boss_reroll_count or 0
-                            local choice = pool[pseudorandom('Honor_hazard' .. current_ante .. r_count, 1, #pool)]
-                            G.GAME.round_resets.blind_choices.Boss = choice
-
-                            -- UI Refresh
-                            if G.blind_select_opts and G.blind_select_opts.boss then
-                                local par = G.blind_select_opts.boss.parent
-                                G.blind_select_opts.boss:remove()
-                                G.blind_select_opts.boss = UIBox {
-                                    definition = {
-                                        n = G.UIT.ROOT,
-                                        config = { align = "cm", colour = G.C.CLEAR },
-                                        nodes = {
-                                            UIBox_dyn_container({ create_UIBox_blind_choice('Boss') }, false, get_blind_main_colour('Boss'), mix_colours(G.C.BLACK, get_blind_main_colour('Boss'), 0.8))
-                                        }
-                                    },
-                                    config = { align = "bmi", offset = { x = 0, y = G.ROOM.T.y + 9 }, major = par, xy_bond = 'Weak' }
-                                }
-                                par.config.object = G.blind_select_opts.boss
-                                par.config.object:recalculate()
-                                G.blind_select_opts.boss.parent = par
-                                G.blind_select_opts.boss.alignment.offset.y = 0
-                                G.blind_select_opts.boss:juice_up()
-                            end
-                        end
-                    end
-                else
-                    G.GAME.HonorShowdownTimer = 0
-                end
-            end
-        end
-    end
-	--]]
-
     -- Toxic Flip Mechanic
     if not ABN.config.disable_flipped_stakes then
         if G.STATE == G.STATES.SHOP and G.GAME.modifiers.Toxic and G.shop_jokers and G.shop_jokers.cards then
@@ -134,22 +58,46 @@ function Game:update(dt)
     end
 end
 
+local function failure_sound()
+	play_sound('tarot2', 1, 0.4)
+	G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.06 * G.SETTINGS.GAMESPEED,
+        blockable = false,
+        blocking = false,
+        func = function()
+            play_sound('tarot2', 0.76, 0.4)
+			return true
+        end
+    }))
+end
+
 --- STAKES DEFINITIONS ---
 
 SMODS.Stake({
     key = "honor",
     applied_stakes = {},
-    above_stake = "gold",
     atlas = "AbandoniaStakes",
     pos = { x = 0, y = 0 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 1, y = 2 },
     colour = G.C.WHITE,
     modifiers = function()
-        G.GAME.win_ante = 9
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 9)
         G.GAME.modifiers.Honor = true
     end,
+	calculate = function(self, context)
+		if context.end_of_round and context.main_eval and context.beat_boss then
+			G.GAME.abn_honor_inflation = (G.GAME.abn_honor_inflation or 0) + 2
+        end
+	end
 })
+
+local card_cost_ref = Card.set_cost_value
+function Card:set_cost_value()
+	card_cost_ref(self)
+	self.cost = (self.cost + (G.GAME.abn_honor_inflation or 0)) * (G.GAME.abn_baneful_inflation or 1)
+end
 
 SMODS.Stake({
     key = "menacing",
@@ -159,16 +107,45 @@ SMODS.Stake({
     pos = { x = 1, y = 0 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 2, y = 2 },
-    colour = G.C.WHITE,
+    colour = G.C.RED,
+	loc_vars = function(self)
+		return {vars = {SMODS.get_probability_vars("stake_abn_menacing", 1, 10)}}
+	end,
 
     modifiers = function()
-        G.GAME.win_ante = 10
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 10)
         G.GAME.modifiers.Menacing = true
         G.GAME.modifiers.enable_eternals_in_shop = true
         G.GAME.modifiers.enable_perishables_in_shop = true
         G.GAME.modifiers.enable_rentals_in_shop = true
     end,
 })
+
+local reroll_ref = G.FUNCS.reroll_shop
+function G.FUNCS.reroll_shop(e)
+	if G.GAME.modifiers.Menacing and SMODS.pseudorandom_probability("stake_abn_menacing", "stake_abn_menacing", 1, 10) then
+		stop_use()
+		local reroll_cost = G.GAME.current_round.reroll_cost
+		if G.GAME.current_round.reroll_cost > 0 then 
+			inc_career_stat('c_shop_dollars_spent', G.GAME.current_round.reroll_cost)
+			inc_career_stat('c_shop_rerolls', 1)
+			ease_dollars(-G.GAME.current_round.reroll_cost)
+		end
+		G.E_MANAGER:add_event(Event({
+			trigger = 'immediate',
+			func = function()
+				local final_free = G.GAME.current_round.free_rerolls > 0
+				G.GAME.current_round.free_rerolls = math.max(G.GAME.current_round.free_rerolls - 1, 0)
+				G.GAME.round_scores.times_rerolled.amt = G.GAME.round_scores.times_rerolled.amt + 1
+				calculate_reroll_cost(final_free)
+                failure_sound()
+				return true
+			end
+		}))
+	else
+		reroll_ref(e)
+	end
+end
 
 SMODS.Stake({
     key = "toxic",
@@ -178,15 +155,17 @@ SMODS.Stake({
     pos = { x = 2, y = 0 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 3, y = 2 },
-    colour = G.C.WHITE,
+    colour = G.C.GREEN,
 
     modifiers = function()
-        G.GAME.win_ante = 11
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 11)
         G.GAME.modifiers.Toxic = true
-        G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_perishables_in_shop = true
-        G.GAME.modifiers.enable_rentals_in_shop = true
     end,
+	calculate = function(self, context)
+		if context.end_of_round and context.main_eval and G.GAME.blind.boss and G.GAME.blind.config.blind.boss.showdown then
+			G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling * 1.05
+		end
+	end
 })
 
 SMODS.Stake({
@@ -197,17 +176,78 @@ SMODS.Stake({
     pos = { x = 3, y = 0 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 4, y = 2 },
-    colour = G.C.WHITE,
+    colour = G.C.BLUE,
+	loc_vars = function(self)
+		local n1, d1 = SMODS.get_probability_vars("stake_abn_noxious", 1, 8)
+		local n2, d2 = SMODS.get_probability_vars("stake_abn_noxious", 1, 10)
+		return {vars = {n1, d1, n2, d2}}
+	end,
 
     modifiers = function()
-        G.GAME.win_ante = 12
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 12)
         G.GAME.modifiers.Noxious = true
-        G.GAME.modifiers.Toxic = true
-        G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_perishables_in_shop = true
-        G.GAME.modifiers.enable_rentals_in_shop = true
     end,
+
+	calculate = function(self, context)
+		if context.open_booster and SMODS.pseudorandom_probability("stake_abn_noxious", "stake_abn_noxious", 1, 8) then
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					for i = 2, #G.pack_cards.cards do
+						G.E_MANAGER:add_event(Event({
+							trigger = "after",
+							delay = 0.2,
+							func = function()
+								G.pack_cards.cards[i]:start_dissolve()
+								return true
+							end
+						}))
+					end
+					return true
+				end
+			}))
+		end
+	end
 })
+
+local skip_blind_ref = G.FUNCS.skip_blind
+function G.FUNCS.skip_blind(e)
+	local failsound = false
+	if G.GAME.modifiers.Noxious and SMODS.pseudorandom_probability("stake_abn_noxious", "stake_abn_noxious", 1, 10) then
+		failsound = true
+		G.FUNCS.select_blind(G.blind_select_opts[G.GAME.blind_on_deck:lower()]:get_UIE_by_ID("select_blind_button"))
+	end
+	if G.GAME.modifiers.Lethal and SMODS.pseudorandom_probability("stake_abn_lethal", "stake_abn_lethal", 1, 10) then
+		if not failsound then
+			local _tag = e.UIBox:get_UIE_by_ID('tag_container')
+			if _tag then
+				_tag.config.ref_table.abn_lethal_no_tag = true
+			end
+			skip_blind_ref(e)
+		end
+		failsound = true
+	else
+		if failsound then
+			local _tag = e.UIBox:get_UIE_by_ID('tag_container')
+			if _tag then
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						add_tag(_tag.config.ref_table)
+						return true
+					end
+				}))
+			end
+		else
+			skip_blind_ref(e)
+		end
+	end
+	if failsound then failure_sound() end
+end
+
+local add_tag_ref = add_tag
+function add_tag(_tag)
+	if _tag.abn_lethal_no_tag then return end
+	add_tag_ref(_tag)
+end
 
 SMODS.Stake({
     key = "lethal",
@@ -217,15 +257,14 @@ SMODS.Stake({
     pos = { x = 4, y = 0 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 0, y = 3 },
-    colour = G.C.WHITE,
+    colour = G.C.BLACK,
+	loc_vars = function(self)
+		return {vars = {SMODS.get_probability_vars("stake_abn_menacing", 1, 10)}}
+	end,
 
     modifiers = function()
-        G.GAME.win_ante = 13
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 13)
         G.GAME.modifiers.Lethal = true
-        G.GAME.modifiers.Toxic = true
-        G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_perishables_in_shop = true
-        G.GAME.modifiers.enable_rentals_in_shop = true
     end,
 })
 
@@ -237,16 +276,23 @@ SMODS.Stake({
     pos = { x = 0, y = 1 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 1, y = 3 },
-    colour = G.C.WHITE,
+    colour = G.C.PURPLE,
 
     modifiers = function()
-        G.GAME.win_ante = 14
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 14)
         G.GAME.modifiers.Baneful = true
-        G.GAME.modifiers.Toxic = true
-        G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_perishables_in_shop = true
-        G.GAME.modifiers.enable_rentals_in_shop = true
     end,
+
+	calculate = function(self, context)
+		if context.reroll_shop then
+			G.GAME.abn_baneful_inflation = (G.GAME.abn_baneful_inflation or 1) * 1.02
+			for _, area in ipairs({G.shop_jokers, G.shop_booster, G.shop_vouchers}) do
+				for _, card in ipairs(area.cards) do
+					card:set_cost_value()
+				end
+			end
+        end
+	end
 })
 
 SMODS.Stake({
@@ -257,16 +303,22 @@ SMODS.Stake({
     pos = { x = 1, y = 1 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 2, y = 3 },
-    colour = G.C.WHITE,
+    colour = G.C.FILTER,
+
+	loc_vars = function(self)
+		return {vars = {SMODS.get_probability_vars("stake_abn_baneful", 1, 10)}}
+	end,
 
     modifiers = function()
-        G.GAME.win_ante = 15
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 15)
         G.GAME.modifiers.Malicious = true
-        G.GAME.modifiers.Toxic = true
-        G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_perishables_in_shop = true
-        G.GAME.modifiers.enable_rentals_in_shop = true
     end,
+
+	calculate = function(self, context)
+		if context.modify_shop_card and context.card.ability.set == "Joker" and SMODS.pseudorandom_probability("stake_abn_lethal", "stake_abn_baneful", 1, 10) then
+			context.card.cost = context.card.cost * 2
+		end
+	end
 })
 
 SMODS.Stake({
@@ -277,15 +329,11 @@ SMODS.Stake({
     pos = { x = 2, y = 1 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 3, y = 3 },
-    colour = G.C.WHITE,
+    colour = G.C.YELLOW,
 
     modifiers = function()
-        G.GAME.win_ante = 16
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 16)
         G.GAME.modifiers.Malignant = true
-        G.GAME.modifiers.Toxic = true
-        G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_perishables_in_shop = true
-        G.GAME.modifiers.enable_rentals_in_shop = true
     end,
 })
 
@@ -297,15 +345,11 @@ SMODS.Stake({
     pos = { x = 3, y = 1 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 4, y = 3 },
-    colour = G.C.WHITE,
+    colour = G.C.UI.TEXT_INACTIVE,
 
     modifiers = function()
-        G.GAME.win_ante = 17
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 17)
         G.GAME.modifiers.Inhospitable = true
-        G.GAME.modifiers.Toxic = true
-        G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_perishables_in_shop = true
-        G.GAME.modifiers.enable_rentals_in_shop = true
     end,
 })
 
@@ -317,15 +361,11 @@ SMODS.Stake({
     pos = { x = 4, y = 1 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 0, y = 4 },
-    colour = G.C.WHITE,
+    colour = HEX("d2d682"),
 
     modifiers = function()
-        G.GAME.win_ante = 18
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 18)
         G.GAME.modifiers.Unendurable = true
-        G.GAME.modifiers.Toxic = true
-        G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_perishables_in_shop = true
-        G.GAME.modifiers.enable_rentals_in_shop = true
     end,
 })
 
@@ -337,15 +377,11 @@ SMODS.Stake({
     pos = { x = 0, y = 2 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 1, y = 4 },
-    colour = G.C.WHITE,
+    colour = HEX("00ffff"),
 
     modifiers = function()
-        G.GAME.win_ante = 19
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 19)
         G.GAME.modifiers.Torturous = true
-        G.GAME.modifiers.Toxic = true
-        G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_perishables_in_shop = true
-        G.GAME.modifiers.enable_rentals_in_shop = true
     end,
 })
 
@@ -357,15 +393,11 @@ SMODS.Stake({
     pos = { x = 1, y = 2 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 2, y = 4 },
-    colour = G.C.WHITE,
+    colour = HEX("c75985"),
 
     modifiers = function()
-        G.GAME.win_ante = 20
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 20)
         G.GAME.modifiers.Wretched = true
-        G.GAME.modifiers.Toxic = true
-        G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_perishables_in_shop = true
-        G.GAME.modifiers.enable_rentals_in_shop = true
     end,
 })
 
@@ -377,15 +409,11 @@ SMODS.Stake({
     pos = { x = 2, y = 2 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 3, y = 4 },
-    colour = G.C.WHITE,
+    colour = HEX("76baee"),
 
     modifiers = function()
-        G.GAME.win_ante = 21
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 21)
         G.GAME.modifiers.Agonizing = true
-        G.GAME.modifiers.Toxic = true
-        G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_perishables_in_shop = true
-        G.GAME.modifiers.enable_rentals_in_shop = true
     end,
 })
 
@@ -397,15 +425,11 @@ SMODS.Stake({
     pos = { x = 3, y = 2 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 4, y = 4 },
-    colour = G.C.WHITE,
+    colour = HEX("928d89"),
 
     modifiers = function()
-        G.GAME.win_ante = 22
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 22)
         G.GAME.modifiers.Deplorable = true
-        G.GAME.modifiers.Toxic = true
-        G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_perishables_in_shop = true
-        G.GAME.modifiers.enable_rentals_in_shop = true
     end,
 })
 
@@ -417,15 +441,11 @@ SMODS.Stake({
     pos = { x = 4, y = 2 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 0, y = 5 },
-    colour = G.C.WHITE,
+    colour = HEX("f2c255"),
 
     modifiers = function()
-        G.GAME.win_ante = 23
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 23)
         G.GAME.modifiers.Vile = true
-        G.GAME.modifiers.Toxic = true
-        G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_perishables_in_shop = true
-        G.GAME.modifiers.enable_rentals_in_shop = true
     end,
 })
 
@@ -437,15 +457,11 @@ SMODS.Stake({
     pos = { x = 0, y = 3 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 1, y = 5 },
-    colour = G.C.WHITE,
+    colour = HEX("84c5d2"),
 
     modifiers = function()
-        G.GAME.win_ante = 24
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 24)
         G.GAME.modifiers.Revolting = true
-        G.GAME.modifiers.Toxic = true
-        G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_perishables_in_shop = true
-        G.GAME.modifiers.enable_rentals_in_shop = true
     end,
 })
 
@@ -457,15 +473,11 @@ SMODS.Stake({
     pos = { x = 1, y = 3 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 2, y = 5 },
-    colour = G.C.WHITE,
+    colour = HEX("009cfd"),
 
     modifiers = function()
-        G.GAME.win_ante = 25
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 25)
         G.GAME.modifiers.Heinous = true
-        G.GAME.modifiers.Toxic = true
-        G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_perishables_in_shop = true
-        G.GAME.modifiers.enable_rentals_in_shop = true
     end,
 })
 
@@ -477,15 +489,11 @@ SMODS.Stake({
     pos = { x = 2, y = 3 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 3, y = 5 },
-    colour = G.C.WHITE,
+    colour = HEX("61797e"),
 
     modifiers = function()
-        G.GAME.win_ante = 26
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 26)
         G.GAME.modifiers.Abhorent = true
-        G.GAME.modifiers.Toxic = true
-        G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_perishables_in_shop = true
-        G.GAME.modifiers.enable_rentals_in_shop = true
     end,
 })
 
@@ -497,15 +505,11 @@ SMODS.Stake({
     pos = { x = 3, y = 3 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 4, y = 5 },
-    colour = G.C.WHITE,
+    colour = HEX("fd5f55"),
 
     modifiers = function()
-        G.GAME.win_ante = 27
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 27)
         G.GAME.modifiers.Bloodcurdling = true
-        G.GAME.modifiers.Toxic = true
-        G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_perishables_in_shop = true
-        G.GAME.modifiers.enable_rentals_in_shop = true
     end,
 })
 
@@ -517,15 +521,11 @@ SMODS.Stake({
     pos = { x = 4, y = 3 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 0, y = 6 },
-    colour = G.C.WHITE,
+    colour = HEX("ebf6f8"),
 
     modifiers = function()
-        G.GAME.win_ante = 28
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 28)
         G.GAME.modifiers.Repulsive = true
-        G.GAME.modifiers.Toxic = true
-        G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_perishables_in_shop = true
-        G.GAME.modifiers.enable_rentals_in_shop = true
     end,
 })
 
@@ -537,14 +537,10 @@ SMODS.Stake({
     pos = { x = 0, y = 4 },
     sticker_atlas = "AbandoniaStakeStickers",
     sticker_pos = { x = 1, y = 6 },
-    colour = G.C.WHITE,
+    colour = HEX("4f6367"),
 
     modifiers = function()
-        G.GAME.win_ante = 29
+        G.GAME.win_ante = math.max(G.GAME.win_ante, 29)
         G.GAME.modifiers.Hazard = true
-        G.GAME.modifiers.Toxic = true
-        G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_perishables_in_shop = true
-        G.GAME.modifiers.enable_rentals_in_shop = true
     end,
 })
