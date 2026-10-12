@@ -10574,6 +10574,26 @@ return {
           },
         }
       },
+	  
+	  j_abn_twilight_joker = {
+        name = "Twilight Joker",
+        text = {
+          {
+            "When a card is Converted from {C:diamonds}Light Suit{} to a {C:spades}Dark Suit{}",
+			"this Joker gains {C:chips}Chips{} {C:attention}equal{} to its {C:attention}Rank{}",
+          },
+          {
+			"When a card is Converted from {C:spades}Dark Suit{} to a {C:diamonds}Light Suit{}",
+			"this Joker gains {C:mult}Mult{} {C:attention}equal{} to its {C:attention}Rank{}",
+          },
+		  {
+			"If this Joker has {C:dark_edition}Bright Edition{} the {C:attention}First{} scoring {C:diamonds}Light card{} gives it's rank as {C:abn_eternal}Amperage{}",
+			"If this Joker has {C:dark_edition}Opaque Edition{} the {C:attention}First{} scoring {C:spades}Dark card{} gives it's rank as {C:attention}Modulate{}",
+			"{C:inactive}Currently:{} {C:mult}+#2#{} {C:inactive}Mult{} {C:chips}+#1#{} {C:inactive}Chips{}",
+		  },
+        }
+      },
+	  
     },
   },
   misc = {
