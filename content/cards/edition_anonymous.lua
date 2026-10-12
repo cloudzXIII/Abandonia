@@ -71,6 +71,8 @@ function Card:set_edition(edition, immediate, silent)
 
             return ret
         end
+	else
+		return set_edition_ref(self, edition, immediate, silent)
     end
 end
 
