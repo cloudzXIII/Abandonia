@@ -23,16 +23,26 @@ SMODS.Joker {
 
                 -- Get the first suit
                 local flush_suit = context.scoring_hand[1].base.suit
+				local new_context = {}
+
+				for k, v in pairs(context) do
+					new_context[k] = v
+				end
 
                 for i = 1, #G.hand.cards do
                     local hand_card = G.hand.cards[i]
                     if hand_card and hand_card:is_suit(flush_suit) then
-                        SMODS.calculate_effect(hand_card)
-                        SMODS.score_card(hand_card, context)
+                        --SMODS.calculate_effect(hand_card)
+                        SMODS.score_card(hand_card, new_context)
                     end
                 end
 
-                card.ability.extra.stop = false
+				G.E_MANAGER:add_event(Event({
+					func = function()
+                		card.ability.extra.stop = false
+						return true
+					end
+				}))
             end
         end
     end,

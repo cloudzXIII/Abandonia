@@ -934,7 +934,7 @@ SMODS.Back {
 local effect_keys = {"chips", "h_chips", "chip_mod", "mult", "h_mult", "mult_mod"}
 local old_calc = SMODS.calculate_effect
 function SMODS.calculate_effect(effect, scored_card, from_edition, pre_jokers)
-	if G.GAME.selected_back.effect.center.key == "b_abn_anaglyphic" and not scored_card.edition then
+	if scored_card and G.GAME.selected_back.effect.center.key == "b_abn_anaglyphic" and not scored_card.edition then
 		for _, eff in ipairs(effect_keys) do
 			if effect[eff] then effect[eff] = math.floor(effect[eff] / 2) end
 		end
