@@ -83,6 +83,23 @@ return {
           }
         }
       },
+	  c_abn_creep = {
+        name = "Creep",
+        text = {
+		  {
+			"Apply the {C:green}Globetrotter Aura{}",
+			"to {C:attention}#1#{} selected {C:attention}Card{}/{C:attention}Joker{}",
+		  },
+		  {
+			"If it was applied on a {C:attention}Joker{}",
+			"{C:mult}destroy{} all Jokers that share it's {C:attention}rarity{}",
+		  },
+		  {
+			"If it was applied on a {C:attention}Card{}",
+			"{C:mult}destroy{} all cards that share it's {C:attention}rank{}",
+		  }
+        }
+      },
       --#region Newestia
       c_abn_psychosis = {
         name = "Psychosis",
