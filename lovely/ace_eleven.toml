@@ -1,0 +1,23 @@
+[manifest]
+version = "0.1.0"
+dump_lua = true
+priority = 0
+
+# Allow Ace to exist in the middle of a straight, conditionally if the next card is an 11
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = "if not start and not wrap and rank.straight_edge then return ret end"
+position = "before"
+match_indent = true
+payload = '''
+if not start and not wrap and rank.key == "Ace" then
+	ret[1] = "abn_11"
+	if skip then
+		for _, w in ipairs(SMODS.Ranks.abn_11.next) do
+            ret[#ret+1] = w
+        end
+	end
+	return ret
+end
+'''

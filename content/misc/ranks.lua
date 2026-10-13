@@ -125,6 +125,5 @@ SMODS.Rank {
 SMODS.Rank:take_ownership('Ace',
   {
     next = { 'abn_11', '2' },
-    straight_edge = false
   }, true
 )
