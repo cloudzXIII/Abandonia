@@ -477,3 +477,34 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
 
   return old_generate_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
 end
+
+-- Custom contexts for cards changing in various ways
+local old_set_edition = Card.set_edition
+function Card:set_edition(edition, immediate, silent, delay)
+	if self.edition and edition and self.edition.key ~= edition then
+		SMODS.calculate_context({abn_changing_edition = true, card = self, old_edition = self.edition.key, new_edition = edition})
+	end
+	return old_set_edition(self, edition, immediate, silent, delay)
+end
+local old_set_seal = Card.set_seal
+function Card:set_seal(_seal, silent, immediate)
+	if self.seal and _seal and self.seal ~= _seal then
+		SMODS.calculate_context({abn_changing_seal = true, card = self, old_seal = self.seal, new_seal = _seal})
+	end
+	return old_set_seal(self, _seal, silent, immediate)
+end
+local old_set_ability = Card.set_ability
+function Card:set_ability(center, initial, delay_sprites)
+	local center_key = type(center) == "table" and center.key or center
+	if self.ability and self.ability.set == "Enhanced" and center_key and self.config.center.key ~= center_key then
+		SMODS.calculate_context({abn_changing_enhancement = true, card = self, old_enhancement = self.config.center.key, new_enhancement = center_key})
+	end
+	return old_set_ability(self, center, initial, delay_sprites)
+end
+local old_set_base = Card.set_base
+function Card:set_base(base, initial, manual_sprites)
+	if self.base and self.base.suit and not SMODS.has_no_suit(self) and base and base.suit and self.base.suit ~= base.suit then
+		SMODS.calculate_context({abn_changing_suit = true, card = self, old_suit = self.base.suit, new_suit = base.suit})
+	end
+	return old_set_base(self, base, initial, manual_sprites)
+end

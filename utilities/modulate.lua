@@ -1,3 +1,7 @@
+loc_colour()
+G.C.ABN_MODULATE = HEX("ffa300")
+G.ARGS.LOC_COLOURS["abn_modulate"] = G.C.ABN_MODULATE
+
 SMODS.Sound{
     key = "sfx_modulate",
     path = "modulate.ogg",
@@ -7,13 +11,10 @@ SMODS.Sound{
     path = "modulate.ogg",
 }
 
-local MOD_COLOUR = HEX("ffa300")
-
-
 SMODS.Scoring_Parameter({
     key = 'modulate',
     default_value = 1,
-    colour = MOD_COLOUR,
+    colour = G.C.ABN_MODULATE,
     calculation_keys = {'modulate', 'xmodulate'},
     calc_effect = function(self, effect, scored_card, key, amount, from_edition)
         if not SMODS.Calculation_Controls.chips then return end
@@ -64,7 +65,7 @@ SMODS.Scoring_Calculation{
                     }},
                 }},
                 {n = G.UIT.C, config = {align = "cm", id = 'hand_modulate_operator'}, nodes = {
-                    {n = G.UIT.T, config = {text = "X", scale = scale * 1.15 * scaledown, colour = MOD_COLOUR, shadow = true}},
+                    {n = G.UIT.T, config = {text = "X", scale = scale * 1.15 * scaledown, colour = G.C.ABN_MODULATE, shadow = true}},
                 }},
                 {n = G.UIT.C, config = {align = 'cm'}, nodes = { 
                     {n = G.UIT.R, config = {align = 'cm', id = 'hand_chips'}, nodes = {

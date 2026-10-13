@@ -1,3 +1,7 @@
+loc_colour()
+G.C.ABN_AMPERAGE = HEX("ff77a8")
+G.ARGS.LOC_COLOURS["abn_amperage"] = G.C.ABN_AMPERAGE
+
 SMODS.Sound{
     key = "sfx_amp",
     path = "amp.ogg",
@@ -10,7 +14,7 @@ SMODS.Sound{
 SMODS.Scoring_Parameter({
   key = 'amp',
   default_value = G.GAME and G.GAME.ampvalue or 1,
-  colour = HEX("ff77a8"),
+  colour = G.C.ABN_AMPERAGE,
   calculation_keys = {'amp', 'xamp'},
     calc_effect = function(self, effect, scored_card, key, amount, from_edition)
 		if not SMODS.Calculation_Controls.chips then return end
@@ -71,7 +75,7 @@ SMODS.Scoring_Calculation{
                 }},
             }},
 			{n=G.UIT.C, config={align = "cl", id = 'hand_operator_container'}, nodes={
-				{n=G.UIT.T, config={text = "X", scale = scale * 1.25 * scaledown, colour = HEX("ff77a8"), shadow = true}},
+				{n=G.UIT.T, config={text = "X", scale = scale * 1.25 * scaledown, colour = G.C.ABN_AMPERAGE, shadow = true}},
 			}},
             {n=G.UIT.C, config={align = 'cm'}, nodes = { 
 			{n=G.UIT.R, config={align = 'cl', id = 'hand_abn_amp'}, nodes={

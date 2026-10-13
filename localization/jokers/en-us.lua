@@ -10594,40 +10594,121 @@ return {
         }
       },
 	  
-    },
-  },
-  misc = {
-    dictionary = {
-      -- Jevil effects
-      abn_unique_suit_1 = {
-        "{E:1}1 Suit",
-        "Retrigger all cards {C:attention}#5#{} times",
-        "if {C:money}${} is a {C:attention}prime{} number",
-      },
-      abn_unique_suit_2 = {
-        "{E:1}2 Suits",
-        "Scoring cards give {C:white,X:blind}X#2#{} Blind Size"
-      },
-      abn_unique_suit_3 = {
-        "{E:1}3 Suits",
-        "Scoring cards give the {C:attention}rank{}",
-        "of {C:attention}adjacent{} cards as {C:chips}Chips{}"
-      },
-      abn_unique_suit_4 = {
-        "{E:1}4 Suits",
-        "Scoring cards give {C:white,X:mult}X#3#{} Mult",
-      },
-      abn_unique_suit_5 = {
-        "{E:1}5 Suits",
-        "Scoring cards permanently gain {C:gold}+#4#{} Asc. Power",
-      },
-      abn_unique_suit_6 = {
-        "{E:1}6 Suits",
-        "Destroy all {C:attention}Non-Legendary{} Jokers",
-        "and replace them with {C:legendary}Legendary{} Jokers",
-        "{C:abn_j,s:0.8}J{C:abn_e,s:0.8}e{C:abn_v,s:0.8}v{C:abn_i,s:0.8}i{C:abn_l,s:0.8}l{s:0.8} Excluded"
+	  j_abn_retsej_joker = {
+        name = "Retsej Joker",
+        text = {
+          {
+			"Each time a card with a {C:attention}modded {C:dark_edition}edition{} is",
+			"scored, it changes into a random {C:inactive}vanilla",
+			"{C:dark_edition}edition{} and gains {C:gold}+#1#{} Ascension Power"
+          },
+          {
+			"Whenever a card's {C:attention}modded {C:dark_edition}edition",
+			"turns into a {C:inactive}vanilla {C:dark_edition}edition{},",
+			"this joker gains {C:abn_amperage}+#2#{} Amperage",
+			"{C:inactive}(Currently {C:abn_amperage}+#3#{C:inactive} Amperage)"
+          },
+        }
       },
 
+	  j_abn_niuqelrah_joker = {
+        name = "Niuqelrah Joker",
+        text = {
+          {
+			"Each time a card with a {C:attention}modded {C:spectral}seal{} is",
+			"scored, it changes into a random {C:inactive}vanilla",
+			"{C:spectral}seal{} and gains {C:gold}+#1#{} Ascension Power"
+          },
+          {
+			"Whenever a card's {C:attention}modded {C:spectral}seal",
+			"turns into a {C:inactive}vanilla {C:spectral}seal{},",
+			"this joker gains {C:abn_amperage}+#2#{} Amperage",
+			"{C:inactive}(Currently {C:abn_amperage}+#3#{C:inactive} Amperage)"
+          },
+        }
+      },
+
+	  j_abn_ekoj_joker = {
+        name = "Ekoj Joker",
+        text = {
+          {
+			"Each time a card with a {C:attention}modded {C:tarot}enhancement{} is",
+			"scored, it changes into a random {C:inactive}vanilla",
+			"{C:tarot}enhancement{} and gains {C:gold}+#1#{} Ascension Power"
+          },
+          {
+			"Whenever a card's {C:attention}modded {C:tarot}enhancement",
+			"turns into a {C:inactive}vanilla {C:tarot}enhancement{},",
+			"this joker gains {C:abn_amperage}+#2#{} Amperage",
+			"{C:inactive}(Currently {C:abn_amperage}+#3#{C:inactive} Amperage)"
+          },
+        }
+      },
+
+	  j_abn_snart_joker = {
+        name = "Snart Joker",
+        text = {
+          {
+			"Each time a card with a {C:attention}modded {C:blue}suit{} is",
+			"scored, it changes into a random {C:inactive}vanilla",
+			"{C:blue}suit{} and gains {C:gold}+#1#{} Ascension Power"
+          },
+          {
+			"Whenever a card's {C:attention}modded {C:blue}suit",
+			"turns into a {C:inactive}vanilla {C:blue}suit{},",
+			"this joker gains {C:abn_amperage}+#2#{} Amperage",
+			"{C:inactive}(Currently {C:abn_amperage}+#3#{C:inactive} Amperage)"
+          },
+        }
+      },
+
+	  j_abn_double_snare = {
+        name = "Double Snare",
+        text = {
+          {
+			"You are only allowed to play",
+			"{C:attention}Pairs{} or {C:attention}Two Pairs{} with both",
+			"{C:attention}modded{} and {C:inactive}vanilla {C:blue}suits"
+          },
+          {
+			"Cards with {C:attention}modded {C:blue}suits{} give",
+			"{C:abn_amperage}+Amperage{} equal to their nominal",
+          },
+          {
+			"Cards with {C:inactive}vanilla {C:blue}suits{} give",
+			"{C:abn_modulate}+Modulate{} equal to their nominal"
+          },
+        }
+      },
+
+	  j_abn_ultimogeniture_joker = {
+        name = "Ultimogeniture Snare",
+        text = {
+          {
+			"{C:blue}Common{} jokers only cost {C:money}$#1#"
+          },
+          {
+			"{C:blue}Common {C:attention}modded{} jokers give",
+			"their {C:money}sell value{} as {C:abn_amperage}+Amperage"
+          },
+          {
+			"{C:blue}Common {C:inactive}vanilla{} jokers give",
+			"their {C:money}sell value{} as {C:abn_modulate}+Modulate"
+          },
+        }
+      },
+
+	  j_abn_erutinegomirp_joker = {
+        name = "Erutinegomirp Joker",
+        text = {
+          "If you own two consumables of the same type,",
+          "one {C:attention}modded{} and one {C:inactive}vanilla{}, the {C:inactive}vanilla{} consumable",
+          "provides {C:abn_amperage}+Amperage{}, and the {C:attention}modded{} consumable",
+          "provides {C:abn_modulate}+Modulate{}, each equal to their {C:money}sell value"
+        }
+      },
+    },
+	Other = {
       -- Bio Blueprint tooltips
       abn_bio_blueprint_incompatible_norank = {
         name = "Incompatible",
@@ -10738,6 +10819,39 @@ return {
           "end of the round, double Chip rate",
           "{C:inactive}({C:attention}#4#{C:inactive}/#1# #1#s, {C:attention}#7#{C:inactive}/#1# {C:dark_edition}#5# {C:inactive}#1#s, and {C:inactive}#10#/#1# {C:attention}#8# {C:inactive}#1#s scored)"
         }
+      },
+    },
+  },
+  misc = {
+    dictionary = {
+      -- Jevil effects
+      abn_unique_suit_1 = {
+        "{E:1}1 Suit",
+        "Retrigger all cards {C:attention}#5#{} times",
+        "if {C:money}${} is a {C:attention}prime{} number",
+      },
+      abn_unique_suit_2 = {
+        "{E:1}2 Suits",
+        "Scoring cards give {C:white,X:blind}X#2#{} Blind Size"
+      },
+      abn_unique_suit_3 = {
+        "{E:1}3 Suits",
+        "Scoring cards give the {C:attention}rank{}",
+        "of {C:attention}adjacent{} cards as {C:chips}Chips{}"
+      },
+      abn_unique_suit_4 = {
+        "{E:1}4 Suits",
+        "Scoring cards give {C:white,X:mult}X#3#{} Mult",
+      },
+      abn_unique_suit_5 = {
+        "{E:1}5 Suits",
+        "Scoring cards permanently gain {C:gold}+#4#{} Asc. Power",
+      },
+      abn_unique_suit_6 = {
+        "{E:1}6 Suits",
+        "Destroy all {C:attention}Non-Legendary{} Jokers",
+        "and replace them with {C:legendary}Legendary{} Jokers",
+        "{C:abn_j,s:0.8}J{C:abn_e,s:0.8}e{C:abn_v,s:0.8}v{C:abn_i,s:0.8}i{C:abn_l,s:0.8}l{s:0.8} Excluded"
       },
     },
   },
