@@ -31,44 +31,50 @@ function ABN.calculate_mayhem(self, context)
 				ABN.mayhem(0.2)
 			elseif context.other_card.base.suit == "abn_musica" then
 				ABN.mayhem(-0.1)
-			elseif ABN.is_modded_suit(context.other_card) then
-				ABN.mayhem(0.1)
-			else
-				ABN.mayhem(-0.05)
-			end
-		end
-		if next(SMODS.get_enhancements(context.other_card)) then
-			ABN.mayhem(0.5)
-		end
-		if context.other_card.edition then
-			ABN.mayhem(1)
-		end
-		if context.other_card.seal then
-			ABN.mayhem(0.25)
-		end
-	elseif context.playing_card_added or context.remove_playing_cards then
-		local mayhem = 0.1 * #(context.cards or context.removed)
-		local unique_suits = 0
-		local unique_suit_dict = {}
-		local context_cards = {}
-		for _, card in ipairs(context.cards or context.removed) do
-			context_cards[card] = true
-			if not SMODS.has_no_suit(card) and not unique_suit_dict[card.base.suit] then
-				unique_suit_dict[card.base.suit] = true
-				unique_suits = unique_suits + 1
-			end
-		end
-		if unique_suits > 0 then
-			for _, card in ipairs(G.playing_cards) do
-				if not context_cards[card] and not SMODS.has_no_suit(card) and unique_suit_dict[card.base.suit] then
-					unique_suit_dict[card.base.suit] = false
-					unique_suits = unique_suits - 1
-					if unique_suits <= 0 then break end
+			elseif G.GAME.modifiers.Honor then
+				if ABN.is_modded_suit(context.other_card) then
+					ABN.mayhem(0.1)
+				else
+					ABN.mayhem(-0.05)
 				end
 			end
 		end
-		mayhem = mayhem + 0.25 * unique_suits
-		ABN.mayhem(context.playing_card_added and mayhem or -mayhem)
+	end
+	if G.GAME.modifiers.Honor then
+		if context.individual and context.cardarea == G.play and not context.other_card.debuff then
+			if next(SMODS.get_enhancements(context.other_card)) then
+				ABN.mayhem(0.5)
+			end
+			if context.other_card.edition then
+				ABN.mayhem(1)
+			end
+			if context.other_card.seal then
+				ABN.mayhem(0.25)
+			end
+		elseif context.playing_card_added or context.remove_playing_cards then
+			local mayhem = 0.1 * #(context.cards or context.removed)
+			local unique_suits = 0
+			local unique_suit_dict = {}
+			local context_cards = {}
+			for _, card in ipairs(context.cards or context.removed) do
+				context_cards[card] = true
+				if not SMODS.has_no_suit(card) and not unique_suit_dict[card.base.suit] then
+					unique_suit_dict[card.base.suit] = true
+					unique_suits = unique_suits + 1
+				end
+			end
+			if unique_suits > 0 then
+				for _, card in ipairs(G.playing_cards) do
+					if not context_cards[card] and not SMODS.has_no_suit(card) and unique_suit_dict[card.base.suit] then
+						unique_suit_dict[card.base.suit] = false
+						unique_suits = unique_suits - 1
+						if unique_suits <= 0 then break end
+					end
+				end
+			end
+			mayhem = mayhem + 0.25 * unique_suits
+			ABN.mayhem(context.playing_card_added and mayhem or -mayhem)
+		end
 	end
 end
 

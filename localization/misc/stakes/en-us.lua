@@ -6,7 +6,8 @@ return {
         text = {
           "Finish at Ante {C:attention}9{}",
           "Antes {C:attention}4{}, {C:attention}8{}, and {C:attention}9{} are {C:abn_hazard}Hazard Blinds{}",
-		  "Store prices increase by {C:money}$2{} each Ante"
+		  "Store prices increase by {C:money}$2{} each Ante",
+		  "Many more actions increase {C:abn_mayhem_dark}Mayhem"
         },
       },
       stake_abn_menacing = {
