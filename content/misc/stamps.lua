@@ -1,16 +1,17 @@
 ABN.StampPool = {}
 
 -- Create collection entry for Stamps
+local prev_tabs = SMODS.current_mod.custom_collection_tabs
 SMODS.current_mod.custom_collection_tabs = function()
-  return {
-    UIBox_button({
-      button = 'your_collection_abn_stamps',
-      id = 'your_collection_abn_stamps',
-      label = { localize('abn_ui_stamps') },
-      minw = 5,
-      minh = 1
-    })
-  }
+  local tabs = prev_tabs and prev_tabs() or {}
+  tabs[#tabs + 1] = UIBox_button({
+    button = 'your_collection_abn_stamps',
+    id = 'your_collection_abn_stamps',
+    label = { localize('abn_ui_stamps') },
+    minw = 5,
+    minh = 1
+  })
+  return tabs
 end
 
 function ABN_is_stamp(key)
