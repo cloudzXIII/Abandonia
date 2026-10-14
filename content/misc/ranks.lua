@@ -127,3 +127,9 @@ SMODS.Rank:take_ownership('Ace',
     next = { 'abn_11', '2' },
   }, true
 )
+
+SMODS.Rank:take_ownership('10',
+  {
+    next = { 'abn_11', 'Jack' },
+  }, true
+)

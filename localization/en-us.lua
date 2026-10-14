@@ -1207,6 +1207,10 @@ return {
       ['abn_Royal Flush'] = "Royal Flush",
       ['abn_Emperium Spectrum'] = "Emperium Spectrum",
 
+	  ['abn_Skeet Straight'] = "Skeet Straight",
+	  ['abn_Skeet Flush'] = "Skeet Flush",
+	  ['abn_Skeet Spectrum'] = "Skeet Spectrum",
+
       -- Paperback Crossmod
       ['abn_Rapture'] = 'Rapture',
       ['abn_Rapture Spectrum'] = 'Rapture Spectrum',
@@ -1308,6 +1312,19 @@ return {
         "14, 13, 12, 11, Ace and King",
         "all with different suits",
       },
+
+	  ['abn_Skeet Straight'] = {
+        "A Straight containing",
+        "only ranks 10 though 14"
+      },
+	  ['abn_Skeet Flush'] = {
+        "A Straight Flush containing",
+        "only ranks 10 though 14"
+	  },
+	  ['abn_Skeet Spectrum'] = {
+        "A Straight Spectrum containing",
+        "only ranks 10 though 14"
+	  },
 
       -- Paperback Crossmod
       ['abn_Rapture'] = {

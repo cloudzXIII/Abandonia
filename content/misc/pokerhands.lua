@@ -73,7 +73,7 @@ SMODS.PokerHand { -- Straight Spectrum (Copied from Paperback who referenced it 
   l_mult = 4,
   example = {
     { 'S_Q', true },
-    { 'H_3', true, enhancement = "m_wild" },
+    { 'H_J', true, enhancement = "m_wild" },
     { 'C_T', true },
     { 'D_9', true },
     { 'H_8', true }
@@ -846,4 +846,87 @@ SMODS.PokerHand {
 
     return { matched_cards }
   end,
+}
+
+ABN.skeet_ranks = {
+	["10"] = true,
+	abn_11 = true,
+	abn_12 = true,
+	abn_13 = true,
+	abn_14 = true
+}
+
+SMODS.PokerHand {
+  key = 'Skeet Straight',
+  visible = false,
+  chips = 80,
+  mult = 5,
+  l_chips = 35,
+  l_mult = 3,
+  example = {
+    { 'C_abn_14', true },
+    { 'C_abn_13', true },
+    { 'D_abn_12', true },
+    { 'H_abn_11', true },
+    { 'S_T', true }
+  },
+
+  evaluate = function(parts, hand)
+    if not next(parts._straight) then return {} end
+    for j = 1, #hand do
+      local rank = not SMODS.has_no_rank(hand[j]) and SMODS.Ranks[hand[j].base.value]
+      if not rank or not ABN.skeet_ranks[rank.key] then return {} end
+    end
+    return parts._straight
+  end
+}
+
+SMODS.PokerHand {
+  key = 'Skeet Flush',
+  visible = false,
+  chips = 120,
+  mult = 9,
+  l_chips = 45,
+  l_mult = 4,
+  example = {
+    { 'C_abn_14', true },
+    { 'C_abn_13', true },
+    { 'C_abn_12', true },
+    { 'C_abn_11', true },
+    { 'C_T', true }
+  },
+
+  evaluate = function(parts, hand)
+    if not next(parts._straight) or not next(parts._flush) then return {} end
+    for j = 1, #hand do
+      local rank = not SMODS.has_no_rank(hand[j]) and SMODS.Ranks[hand[j].base.value]
+      if not rank or not ABN.skeet_ranks[rank.key] then return {} end
+    end
+    return {SMODS.merge_lists(parts._straight, parts._flush)}
+  end
+}
+
+SMODS.PokerHand {
+  key = 'Skeet Spectrum',
+  visible = false,
+  chips = 130,
+  mult = 11,
+  l_chips = 50,
+  l_mult = 4,
+  example = {
+    { 'S_abn_14', true },
+    { 'S_abn_13', true, enhancement = "m_wild" },
+    { 'H_abn_12', true },
+    { 'D_abn_11', true },
+    { 'C_T', true }
+  },
+
+  evaluate = function(parts, hand)
+    if not next(parts._straight) or not next(parts.abn_spectrum) then return {} end
+    for j = 1, #hand do
+      local rank = not SMODS.has_no_rank(hand[j]) and SMODS.Ranks[hand[j].base.value]
+      if not rank or not ABN.skeet_ranks[rank.key] then return {} end
+    end
+    return {SMODS.merge_lists(parts._straight, parts.abn_spectrum)}
+  end
 }
