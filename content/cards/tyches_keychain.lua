@@ -65,6 +65,7 @@ SMODS.Joker {
         chips_rank_mult = 3,
         index = 1 } },
     loc_vars = function(self, info_queue, card)
+		card.ability.extra.index= ABN.int_gate(1, card.ability.extra.index, #ability_table)
         return {
             vars = {
                 localize(ability_table[card.ability.extra.index].name, 'poker_hands'), -- poker hand
@@ -79,6 +80,9 @@ SMODS.Joker {
     end,
 
     calculate = function(self, card, context)
+		if context.before and not context.blueprint then
+			card.ability.extra.index = ABN.int_gate(1, card.ability.extra.index, #ability_table)
+		end
         if context.individual and context.cardarea == G.play and context.scoring_name == ability_table[card.ability.extra.index].name then
             local index = card.ability.extra.index
             local ability = ability_table[index]

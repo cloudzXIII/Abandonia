@@ -1,3 +1,14 @@
+local quips_pool = {
+  "Hey in other mods I am legendary you know?",
+  "They got Deltarune in Fortlatro yet?",
+  "You got games on that cellphone?",
+  "Yo what up homie. That's what I would say if I had any friends",
+  "You play Off? It's good!",
+  "What's your bank password? - oops not supposed to ask that",
+  "Beep boop I am computer",
+  "Psss you wanna buy some mods?"
+}
+
 SMODS.Joker {
   key = 'ugh_jimbo',
   rarity = 3,
@@ -16,16 +27,7 @@ SMODS.Joker {
 
   calculate = function(self, card, context)
     if context.joker_main then
-      local quips_pool = {
-        "Hey in other mods I am legendary you know?",
-        "They got Deltarune in Fortlatro yet?",
-        "You got games on that cellphone?",
-        "Yo what up homie. That's what I would say if I had any friends",
-        "You play Off? It's good!",
-        "What's your bank password? - oops not supposed to ask that",
-        "Beep boop I am computer",
-        "Psss you wanna buy some mods?"
-      }
+      card.ability.extra.quip_intex = ABN.int_gate(1, card.ability.extra.quip_intex, #quips_pool)
 
       local current_quip = quips_pool[card.ability.extra.quip_index]
 

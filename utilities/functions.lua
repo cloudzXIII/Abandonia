@@ -1134,3 +1134,12 @@ function ABN.iterate_edit_ui(nodes, callback)
 		end
 	end
 end
+
+function ABN.gate(min, num, max)
+	return math.max(min, math.min(num, max))
+end
+
+function ABN.int_gate(min, num, max)
+	num = math.floor(num + 0.5)
+	return ABN.gate(min, num, max)
+end

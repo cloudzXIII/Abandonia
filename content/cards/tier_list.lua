@@ -115,6 +115,10 @@ SMODS.Joker {
       ['abn_ParallelRare'] = "Parallel Rare",
     }
 
+	if type(card.ability.extra.rarity) == "number" then
+		card.ability.extra.rarity = ABN.int_gate(0, card.ability.extra.rarity, 4)
+	end
+
     local raritys = raritys[card.ability.extra.rarity or 0]
 
 
@@ -140,7 +144,7 @@ SMODS.Joker {
     -- Only run during a game run
     if G.STAGE ~= G.STAGES.RUN then return end
 
-    if card.area == G.jokers then
+    if card.area == G.jokers or card.area == G.consumeables then
       if G.GAME.last_joker and G.GAME.last_joker ~= card.ability.extra.last_joker then
         card.ability.extra.last_joker = G.GAME.last_joker
         card.ability.extra.rarity = G.GAME.last_joker_rarity
