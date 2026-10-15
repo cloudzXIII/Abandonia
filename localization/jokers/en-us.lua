@@ -10707,6 +10707,66 @@ return {
           "provides {C:abn_modulate}+Modulate{}, each equal to their {C:money}sell value"
         }
       },
+	  
+	  j_abn_silly_joker = {
+        name = "Silly Joker",
+        text = {
+          "Each {C:attention}Number{} card gives {C:mult}+#1#{} Mult",
+		  "per {C:attention}level{} of played hand",
+        }
+      },
+	  
+	  j_abn_big_nerd = {
+        name = "Big Nerd",
+        text = {
+          "If {C:attention}played hand{} is composed of only {C:attention}even{} cards",
+		  "{C:inactive}(high card excluded){}",
+		  "all held {C:attention}odd{} cards give their {C:chips}Chip{} value",
+		  "as {C:mult}Mult{} and vice versa",
+        }
+      },
+	  
+	  j_abn_oops_wrong_atlas = {
+        name = "Oops! Wrong Atlas",
+        text = {
+          "{C:attention}Vanilla Rankless{} cards scored directly after",
+		  "{C:attention}Modded Rankless{} cards give {X:mult,C:white}X#1#{} Mult",
+        }
+      },
+	  
+	  j_abn_jokers_against_light_suit = {
+        name = "Jokers Against Light Suit",
+        text = {
+          {
+			"Gain {C:chips}Chips{} equal to the value of each Scored {C:attention}Vanilla{} {C:spades}Dark Suit{}",
+			"Gain {C:mult}Mult{} equal to the value of each Scoring {C:attention}Modded{} {C:spades}Dark Suit{}",
+			"Lose {C:money}$#3#{} per scoring {C:diamonds}Light Suit{}",
+		  },
+		  {
+			"If you own {C:attention}Jokers Against Dark Suit{}",
+			"each time a {C:diamonds}Light Suit{} scores give {C:abn_eternal}+2{} Amperage",
+			"{C:inactive}Currently:{} {C:chips}+#1#{} {C:inactive}Chips{} {C:mult}+#2#{} {C:inactive}Mult{}",
+		  },
+		  
+        }
+      },
+	  
+	  j_abn_jokers_against_dark_suit = {
+		name = "Jokers Against Dark Suit",
+		text = {
+		  {
+			"Gain {C:chips}Chips{} equal to the value of each Scored {C:attention}Vanilla{} {C:hearts}Light Suit{}",
+			"Gain {C:mult}Mult{} equal to the value of each Scoring {C:attention}Modded{} {C:hearts}Light Suit{}",
+			"Lose {C:money}$#3#{} per scoring {C:spades}Dark Suit{}",
+		  },
+		  {
+			"If you own {C:attention}Jokers Against Light Suit{}",
+			"each time a {C:spades}Dark Suit{} scores give {C:abn_eternal}+#4#{} Amperage",
+			"{C:inactive}Currently:{} {C:chips}+#1#{} {C:inactive}Chips{} {C:mult}+#2#{} {C:inactive}Mult{}",
+		  },
+		}
+	  },
+	  
     },
 	Other = {
       -- Bio Blueprint tooltips
