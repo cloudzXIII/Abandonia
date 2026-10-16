@@ -1070,6 +1070,9 @@ return {
 	  
 	  b_mercantile_cards = "Mercantile Cards",
       k_mercantile = "Mercantile",
+	  
+	  b_tonality_cards = "Tonality Cards",
+      k_tonality = "Tonality",
     },
 
     v_dictionary = {
@@ -1106,6 +1109,7 @@ return {
       atomic = "Atomic",
       cassette = "Cassette",
 	  mercantile = "Mercantile",
+	  tonality = "Tonality",
     },
 
     ranks = {
