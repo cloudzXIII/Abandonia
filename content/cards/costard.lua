@@ -28,8 +28,7 @@ SMODS.Joker {
             SMODS.scale_card(card, {
                 ref_table = card.ability.extra,
                 ref_value = "echips",
-                scalar_table = "echips_gain",
-                operation = '+',
+                scalar_value = "echips_gain",
                 message_colour = G.C.CHIPS
             })
         end
@@ -45,6 +44,7 @@ SMODS.Joker {
         if context.starting_shop and not context.blueprint then
             if G.shop_booster.cards[1] then
                 G.shop_booster.cards[1]:set_ability(G.P_CENTERS.p_celestial_mega_1)
+				G.shop_booster.cards[1]:set_cost()
             end
         end
     end,
