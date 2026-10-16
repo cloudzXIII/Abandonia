@@ -1,5 +1,5 @@
 loc_colour()
-G.C.ABN_MODULATE = HEX("ffa300")
+G.C.ABN_MODULATE = HEX("ba46ec")
 G.ARGS.LOC_COLOURS["abn_modulate"] = G.C.ABN_MODULATE
 
 SMODS.Sound{
