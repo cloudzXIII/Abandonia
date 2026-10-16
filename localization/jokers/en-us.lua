@@ -10767,6 +10767,24 @@ return {
 		}
 	  },
 	  
+	  j_abn_maestro_joker = {
+		name = "Maestro Joker",
+		text = {
+		  {
+			"{C:tonality}Tonality{} cards have {C:attention}+#1#{} charge",
+		  },
+		  {
+			"Whenever a Joker with {C:attention}Aura{} triggers",
+            "this Joker gains {C:abn_amperage}+#2#{} Amperage",
+		  },
+		  {
+			"Whenever a card with {C:attention}Aura{} triggers",
+            "this Joker gains {C:abn_modulate}+#3#{} Modulate",
+			"{C:inactive}Currently: {C:abn_amperage}+#4#{C:inactive} Amperage {C:abn_modulate}+#5#{C:inactive} Modulate",
+		  },
+		}
+	  },
+	  
     },
 	Other = {
       -- Bio Blueprint tooltips
