@@ -580,6 +580,13 @@ SMODS.Atlas({
   px = 71,
   py = 95,
 })
+
+SMODS.Atlas({
+  key = "AbandoniaTonality",
+  path = "musical.png",
+  px = 71,
+  py = 95,
+})
 --#endregion
 
 SMODS.Atlas({
