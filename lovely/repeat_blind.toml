@@ -1,0 +1,54 @@
+[manifest]
+version = "0.1.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.STATE = G.STATES.SHOP"
+position = "at"
+match_indent = true
+payload = '''
+if G.GAME.abn_second_big_blind == 1 then
+	G.GAME.abn_second_big_blind = 2
+	G.STATE = G.STATES.NEW_ROUND
+	G.GAME.facing_blind = true
+	G.GAME.round_resets.blind_states.Big = "Current"
+	G.GAME.round_resets.blind_states.Boss = "Upcoming"
+	G.E_MANAGER:add_event(Event({
+		trigger = 'immediate',
+		func = function()
+			ease_round(1)
+			inc_career_stat('c_rounds', 1)
+			return true
+		end
+	}))
+	G.E_MANAGER:add_event(Event({
+		trigger = 'immediate',
+		func = function()
+			new_round()
+			return true
+		end
+	}))
+else
+	G.GAME.abn_second_big_blind = nil
+	G.STATE = G.STATES.SHOP
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''
+              G.GAME.shop_d6ed = nil
+              G.STATE_COMPLETE = false
+'''
+position = "at"
+match_indent = true
+payload = '''
+G.GAME.shop_d6ed = nil
+if not G.GAME.abn_second_big_blind then
+	G.STATE_COMPLETE = false
+end
+'''

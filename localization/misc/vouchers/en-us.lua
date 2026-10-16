@@ -1,3 +1,5 @@
+local jimbo_voucher_return_to_ante = "Return to Ante {C:attention}#1#"
+
 return {
   descriptions = {
     Voucher = {
@@ -300,6 +302,81 @@ return {
         }
       },
       --#endregion
+
+	  --#region Jimbo Stakes
+      v_abn_executioner_switch = {
+        name = "Executioner Switch",
+        text = {
+          jimbo_voucher_return_to_ante,
+          "Whenever a joker is destroyed,",
+          "gain {C:money}${} equal to its sell value",
+          "and lower Mayhem by {C:abn_mayhem_dark}#2#"
+        }
+      },
+      v_abn_clockspin = {
+        name = "Clockspin",
+        text = {
+          jimbo_voucher_return_to_ante,
+          "Decrease {C:abn_mayhem_dark}Mayhem{} when a {C:attention}shownown blind{} is",
+          "defeated, equal to number of owned {C:attention}jokers",
+          "Each {C:attention}Big Blind{} must be defeated twice"
+        }
+      },
+      v_abn_amperage_meter = {
+        name = "Amperage Meter",
+        text = {
+          jimbo_voucher_return_to_ante,
+          "{C:abn_amperage}+#2#{} Amperage and {C:abn_mayhem_dark}+#3#{} Mayhem",
+          "when a {C:inactive}vanilla{} joker triggers"
+        }
+      },
+      v_abn_zero_hour = {
+        name = "Zero Hour",
+        text = {
+          jimbo_voucher_return_to_ante,
+          "Each time you return to Ante {C:attention}#1#",
+		  "future vouchers that return you there",
+		  "will instead place you {C:attention}#2#{} Ante further",
+		  "{C:abn_mayhem_dark}+#3#{} Mayhem per Ante change"
+        }
+      },
+      v_abn_rare_vaccine = {
+        name = "Rare Vaccine",
+        text = {
+          jimbo_voucher_return_to_ante,
+		  "{C:abn_mayhem_dark}#2#{} Mayhem per scoring {C:abn_plagued}Plagued{} joker",
+		  "{C:abn_virusrare}Virus Rare{} jokers instead give {C:abn_mayhem_dark}#3#{} Mayhem"
+        }
+      },
+      v_abn_pitch_machine = {
+        name = "Pitch Machine",
+        text = {
+          jimbo_voucher_return_to_ante,
+		  "Levelling {C:inactive}Vanilla{} hands gain",
+		  "{C:abn_amperage}+#2#{} Amperage and {C:abn_mayhem_dark}+#3#{} Mayhem",
+		  "Levelling {C:attention}Modded{} hands gain",
+		  "{C:abn_modulate}+#4#{} Modulate and {C:abn_mayhem_dark}+#5#{} Mayhem",
+        }
+      },
+      v_abn_illegal_glove = {
+        name = "Illegal Glove",
+        text = {
+          jimbo_voucher_return_to_ante,
+        }
+      },
+      v_abn_backdoor_draw = {
+        name = "Backdoor Draw",
+        text = {
+          jimbo_voucher_return_to_ante,
+        }
+      },
+      v_abn_pheromone_perfume = {
+        name = "Pheromone Perfume",
+        text = {
+          jimbo_voucher_return_to_ante,
+        }
+      },
+	  --#endregion
     },
   },
 }

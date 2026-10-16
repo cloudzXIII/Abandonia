@@ -212,6 +212,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+  key = "JimboStakeVouchers",
+  path = "vouchers_another.png",
+  px = 71,
+  py = 95,
+})
+
+SMODS.Atlas({
   key = "AbandoniaCalamity",
   path = "calamity.png",
   px = 71,

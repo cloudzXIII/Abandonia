@@ -162,7 +162,7 @@ SMODS.Stake({
         G.GAME.modifiers.Toxic = true
     end,
 	calculate = function(self, context)
-		if context.end_of_round and context.main_eval and G.GAME.blind.boss and G.GAME.blind.config.blind.boss.showdown then
+		if context.end_of_round and context.main_eval and context.beat_boss and G.GAME.blind.boss and G.GAME.blind.config.blind.boss.showdown then
 			G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling * 1.05
 		end
 	end

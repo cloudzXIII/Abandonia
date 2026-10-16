@@ -271,7 +271,12 @@ SMODS.Sticker {
   loc_vars = function(self, info_queue, card)
     local numerator, denominator = SMODS.get_probability_vars(card, card.ability[self.key].base,
     card.ability[self.key].odds, 'abn_fragile')
+	local key = self.key
+	if card.ability.eternal then
+		key = key.."_eternal"
+	end
     return {
+      key = key,
       vars = {
         numerator,
         denominator
@@ -288,7 +293,7 @@ SMODS.Sticker {
       card.glass_trigger = true
       return { remove = true }
     end
-    if (context.pre_joker or (context.main_scoring and context.cardarea == G.play)) and SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
+    if (context.pre_joker or (context.main_scoring and context.cardarea == G.play)) and not ABN.blackmore_isnt_fragile(card) and SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
       G.E_MANAGER:add_event(Event({
         trigger = 'before',
         delay = 0.0,

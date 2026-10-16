@@ -34,19 +34,19 @@ SMODS.Consumable {
   end,
 
   can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0
+    return ABN.all_jokers(function() return true end)
   end,
 
   use = function(self, card, area, copier)
-    for i = 1, #G.jokers.cards do
-      local joker = G.jokers.cards[i]
-      joker.sell_cost = joker.sell_cost + card.ability.extra.dollars
+	ABN.all_jokers(function(joker)
+	  joker.ability.extra_value = joker.ability.extra_value + card.ability.extra.dollars
+      joker:set_cost()
       card_eval_status_text(joker, 'extra', nil, nil, nil, {
         message = localize('k_val_up'),
         colour = G.C.MONEY
       })
       joker:juice_up(0.5, 0.5)
-    end
+	end)
   end,
 
   abn_artist_credits = {

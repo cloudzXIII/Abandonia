@@ -10785,6 +10785,20 @@ return {
 		}
 	  },
 	  
+	  j_abn_blackmore_joker = {
+		name = "Blackmore Joker",
+		text = {
+		  {
+			"{C:attention}First{} scoring card each hand",
+			"gives {X:mult,C:white}Xmult{} equal to its rank"
+		  },
+		  {
+			"This joker cannot be destroyed",
+			"while you hold a {C:79b5c2}Weather Report"
+		  },
+		}
+	  },
+	  
     },
 	Other = {
       -- Bio Blueprint tooltips

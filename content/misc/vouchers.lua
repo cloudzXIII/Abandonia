@@ -1117,3 +1117,173 @@ SMODS.Voucher({
         artist = "?",
     },
 })
+
+local get_return_ante = function(voucher)
+	return voucher.ability.extra.return_ante + (G.GAME.abn_voucher_return_later or 0)
+end
+
+local redeem_return_ante = function(self, voucher)
+	local ante_change = -G.GAME.round_resets.ante + get_return_ante(voucher)
+	ease_ante(ante_change)
+	G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
+	G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante + ante_change
+end
+
+SMODS.Voucher {
+  key = 'executioner_switch',
+  atlas = 'JimboStakeVouchers',
+  pos = { x = 0, y = 0 },
+  config = {extra = {return_ante = -1, mayhem = -1}},
+  loc_vars = function(self, info_queue, voucher)
+	info_queue[#info_queue + 1] = {key = "abn_jimbo_only", set = "Other"}
+    return { vars = { get_return_ante(voucher), voucher.ability.extra.mayhem } }
+  end,
+
+  redeem = redeem_return_ante,
+  calculate = function(self, voucher, context)
+	if context.joker_type_destroyed and context.card.ability.set == "Joker" then
+	  return {
+		dollars = context.card.sell_cost,
+		func = function()
+		  ABN.mayhem(voucher.ability.extra.mayhem)
+		end
+	  }
+	end
+  end,
+
+    in_pool = function(self, args)
+		return G.GAME.modifiers.Honor
+	end,
+
+  abn_artist_credits = {
+    artist = "0kronix",
+  },
+}
+
+SMODS.Voucher {
+	key = 'clockspin',
+	atlas = 'JimboStakeVouchers',
+	pos = { x = 1, y = 0 },
+	config = {extra = {return_ante = -1, mayhem = -1}},
+	loc_vars = function(self, info_queue, voucher)
+		info_queue[#info_queue + 1] = {key = "abn_jimbo_only", set = "Other"}
+		return { vars = { get_return_ante(voucher), voucher.ability.extra.mayhem } }
+	end,
+
+	redeem = redeem_return_ante,
+	calculate = function(self, voucher, context)
+		if context.end_of_round and context.main_eval and context.beat_boss and G.GAME.blind.boss and G.GAME.blind.config.blind.boss.showdown then
+			local jokers = 0
+			ABN.all_jokers(function() jokers = jokers + 1 end)
+			if jokers > 0 then
+				ABN.mayhem(-jokers, true)
+			end
+		elseif context.end_of_round and context.main_eval and not context.game_over and G.GAME.blind.big and not G.GAME.abn_second_big_blind then
+			G.GAME.abn_second_big_blind = 1
+			-- See lovely/repeat_blind.toml for how repeating the Big Blind works
+		end
+	end,
+
+	in_pool = function(self, args)
+		return G.GAME.modifiers.Honor
+	end,
+
+	abn_artist_credits = {
+		artist = "0kronix",
+	},
+}
+
+SMODS.Voucher {
+	key = 'amperage_meter',
+	atlas = 'JimboStakeVouchers',
+	pos = { x = 3, y = 0 },
+	config = {extra = {return_ante = -1, amp = 2, mayhem = 1.5}},
+	loc_vars = function(self, info_queue, voucher)
+		info_queue[#info_queue + 1] = {key = "abn_jimbo_only", set = "Other"}
+		return { vars = { get_return_ante(voucher), voucher.ability.extra.amp, voucher.ability.extra.mayhem } }
+	end,
+
+	redeem = redeem_return_ante,
+	calculate = function(self, voucher, context)
+		if context.before then
+			voucher.ability.extra.allow_scoring = true
+		elseif context.after then
+			voucher.ability.extra.allow_scoring = false
+		elseif context.post_trigger and context.other_card.ability and context.other_card.ability.set == "Joker" and not context.other_card.config.center.original_mod and voucher.ability.extra.allow_scoring and not context.other_context.before and not context.other_context.after then
+			ABN.mayhem(voucher.ability.extra.mayhem, true)
+			SMODS.calculate_effect({amp = voucher.ability.extra.amp}, context.other_card)
+		end
+	end,
+
+	in_pool = function(self, args)
+		return G.GAME.modifiers.Honor
+	end,
+
+	abn_artist_credits = {
+		artist = "0kronix",
+	},
+}
+
+
+SMODS.Voucher {
+	key = 'zero_hour',
+	atlas = 'JimboStakeVouchers',
+	pos = { x = 5, y = 0 },
+	config = {extra = {return_ante = -1, ante_gain = 1, mayhem = 3}},
+	loc_vars = function(self, info_queue, voucher)
+		info_queue[#info_queue + 1] = {key = "abn_jimbo_only", set = "Other"}
+		return { vars = { get_return_ante(voucher), voucher.ability.extra.ante_gain, voucher.ability.extra.mayhem } }
+	end,
+
+	redeem = redeem_return_ante,
+	calculate = function(self, voucher, context)
+		if context.ante_change then
+			ABN.mayhem(voucher.ability.extra.mayhem, true)
+			if G.GAME.round_resets.ante + context.ante_change <= get_return_ante(voucher) then
+				G.GAME.abn_voucher_return_later = (G.GAME.abn_voucher_return_later or 0) + voucher.ability.extra.ante_gain
+			end
+		end
+	end,
+
+	in_pool = function(self, args)
+		return G.GAME.modifiers.Honor
+	end,
+
+	abn_artist_credits = {
+		artist = "0kronix",
+	},
+}
+
+SMODS.Voucher {
+	key = 'rare_vaccine',
+	atlas = 'JimboStakeVouchers',
+	pos = { x = 6, y = 0 },
+	config = {extra = {return_ante = -1, mayhem_plague = -4, mayhem_virus = -8}},
+	loc_vars = function(self, info_queue, voucher)
+		info_queue[#info_queue + 1] = {key = "abn_jimbo_only", set = "Other"}
+		return { vars = { get_return_ante(voucher), voucher.ability.extra.mayhem_plague, voucher.ability.extra.mayhem_virus } }
+	end,
+
+	redeem = redeem_return_ante,
+	calculate = function(self, voucher, context)
+		if context.before then
+			voucher.ability.extra.allow_scoring = true
+		elseif context.after then
+			voucher.ability.extra.allow_scoring = false
+		elseif context.post_trigger and context.other_card.ability and context.other_card.ability.set == "Joker" and voucher.ability.extra.allow_scoring and not context.other_context.before and not context.other_context.after then
+			if context.other_card.config.center.rarity == "abn_VirusRare" then
+				ABN.mayhem(voucher.ability.extra.mayhem_virus, true)
+			elseif context.other_card.config.center.pools.Plagued then
+				ABN.mayhem(voucher.ability.extra.mayhem_plague, true)
+			end
+		end
+	end,
+
+	in_pool = function(self, args)
+		return G.GAME.modifiers.Honor
+	end,
+
+	abn_artist_credits = {
+		artist = "0kronix",
+	},
+}

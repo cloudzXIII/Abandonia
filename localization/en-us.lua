@@ -301,6 +301,14 @@ return {
         }
       },
 
+      abn_jimbo_only = {
+        name = "Limited",
+        text = {
+          "Only spawns while any",
+          "{C:attention}Jimbo Stake{} is active"
+        }
+      },
+
       abn_jimbo_newestia_only = {
         name = "Limited",
         text = {

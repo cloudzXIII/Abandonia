@@ -1143,3 +1143,14 @@ function ABN.int_gate(min, num, max)
 	num = math.floor(num + 0.5)
 	return ABN.gate(min, num, max)
 end
+
+function ABN.all_jokers(callback)
+	for _, area in ipairs(SMODS.get_card_areas("jokers")) do
+		for index, card in ipairs(area.cards) do
+			if card.ability and card.ability.set == "Joker" then
+				local ret = callback(card, area, index)
+				if ret then return ret end
+			end
+		end
+	end
+end

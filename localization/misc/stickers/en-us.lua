@@ -66,9 +66,16 @@ return {
       abn_fragile = {
         name = "Fragile",
         text = {
-          "{C:green}#1# in #2#{} chance",
-          "this card is {C:red}destroyed",
-          "when scored"
+          "{C:green}#1# in #2#{} chance this card",
+          "is {C:red}destroyed{} when scored"
+        }
+      },
+      abn_fragile_eternal = {
+        name = "Fragile",
+        text = {
+          "{C:green}#1# in #2#{} chance this card",
+          "is {C:red}destroyed{} when scored",
+          "{C:inactive}(Bypasses {C:c75985}Eternal{C:inactive})",
         }
       },
       abn_possibility = {
