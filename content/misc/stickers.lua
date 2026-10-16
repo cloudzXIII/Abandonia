@@ -1,3 +1,29 @@
+local consumable_debuffing_sticker_apply = function(card, val, source, type1, type2)
+  for _, area in ipairs({G.consumeables, G.shop_jokers, G.pack_cards}) do
+    for _, v in ipairs(area and area.cards or {}) do
+      if v.ability and ((type1 and v.ability.set == type1) or (type2 and v.ability.set == type2)) then
+        SMODS.debuff_card(v, val, source)
+      end
+    end
+  end
+end
+
+local consumable_debuffing_sticker_calculate = function(card, context, source, type1, type2)
+  if (context.card_added or context.modify_shop_card or context.modify_booster_card) and context.card.ability and ((type1 and context.card.ability.set == type1) or (type2 and context.card.ability.set == type2)) then
+    SMODS.debuff_card(context.card, true, source)
+  end
+
+  if context.selling_self or ((context.selling_card or context.joker_type_destroyed) and context.card == card) then
+    for _, area in ipairs({G.consumeables, G.shop_jokers, G.pack_cards}) do
+	  for _, v in ipairs(area and area.cards or {}) do
+	    if v.ability and ((type1 and v.ability.set == type1) or (type2 and v.ability.set == type2)) then
+	      SMODS.debuff_card(v, false, source)
+	    end
+	  end
+    end
+  end
+end
+
 SMODS.Sticker {
   key = 'pump_up',
   atlas = "AbandoniaStickers",
@@ -1057,27 +1083,11 @@ SMODS.Sticker {
   },
   apply = function(self, card, val)
     card.ability[self.key] = val
-    if G.consumeables then
-      for _, v in ipairs(G.consumeables.cards) do
-        if v.ability and v.ability.set and v.ability.set == "Spectral" then
-          SMODS.debuff_card(v, val, "spectraldebuff")
-        end
-      end
-    end
+    consumable_debuffing_sticker_apply(card, val, "spectraldebuff", "Spectral")
   end,
   
   calculate = function(self, card, context)
-    if context.card_added and context.card.ability and context.card.ability.set and context.card.ability.set == "Spectral" then
-      SMODS.debuff_card(context.card, true, "spectraldebuff")
-    end
-    
-    if context.selling_self or ((context.selling_card or context.joker_type_destroyed) and context.card == card) and G.consumeables then
-      for _, v in ipairs(G.consumeables.cards) do
-        if v.ability and v.ability.set and v.ability.set == "Spectral" then
-          SMODS.debuff_card(v, false, "spectraldebuff")
-        end
-      end
-    end
+    consumable_debuffing_sticker_calculate(card, context, "spectraldebuff", "Spectral")
   end,
   
 }
@@ -1089,33 +1099,13 @@ SMODS.Sticker {
   pos = { x = 3, y = 11 },
   badge_colour = HEX("6462EC"),
   
-  loc_vars = function(self, info_queue, card)
-  end,
-  config = {
-  },
   apply = function(self, card, val)
     card.ability[self.key] = val
-    if G.consumeables then
-      for _, v in ipairs(G.consumeables.cards) do
-        if v.ability and v.ability.set and v.ability.set == "Tarot" then
-          SMODS.debuff_card(v, val, "tarotdebuff")
-        end
-      end
-    end
+    consumable_debuffing_sticker_apply(card, val, "tarotdebuff", "Tarot")
   end,
   
   calculate = function(self, card, context)
-    if context.card_added and context.card.ability and context.card.ability.set and context.card.ability.set == "Tarot" then
-      SMODS.debuff_card(context.card, true, "tarotdebuff")
-    end
-    
-    if context.selling_self or ((context.selling_card or context.joker_type_destroyed) and context.card == card) and G.consumeables then
-      for _, v in ipairs(G.consumeables.cards) do
-        if v.ability and v.ability.set and v.ability.set == "Tarot" then
-          SMODS.debuff_card(v, false, "tarotdebuff")
-        end
-      end
-    end
+    consumable_debuffing_sticker_calculate(card, context, "tarotdebuff", "Tarot")
   end,
   
 }
@@ -1125,33 +1115,13 @@ SMODS.Sticker {
   pos = { x = 1, y = 11 },
   badge_colour = HEX("DB8B93"),
   
-  loc_vars = function(self, info_queue, card)
-  end,
-  config = {
-  },
   apply = function(self, card, val)
     card.ability[self.key] = val
-    if G.consumeables then
-      for _, v in ipairs(G.consumeables.cards) do
-        if v.ability and v.ability.set and v.ability.set == "Planet" then
-          SMODS.debuff_card(v, val, "planetdebuff")
-        end
-      end
-    end
+    consumable_debuffing_sticker_apply(card, val, "planetdebuff", "Planet")
   end,
   
   calculate = function(self, card, context)
-    if context.card_added and context.card.ability and context.card.ability.set and context.card.ability.set == "Planet" then
-      SMODS.debuff_card(context.card, true, "planetdebuff")
-    end
-    
-    if context.selling_self or ((context.selling_card or context.joker_type_destroyed) and context.card == card) and G.consumeables then
-      for _, v in ipairs(G.consumeables.cards) do
-        if v.ability and v.ability.set and v.ability.set == "Planet" then
-          SMODS.debuff_card(v, false, "planetdebuff")
-        end
-      end
-    end
+    consumable_debuffing_sticker_calculate(card, context, "planetdebuff", "Planet")
   end,
   
 }
@@ -1162,33 +1132,13 @@ SMODS.Sticker {
   pos = { x = 3, y = 4 },
   badge_colour = HEX("34C9EA"),
   
-  loc_vars = function(self, info_queue, card)
-  end,
-  config = {
-  },
   apply = function(self, card, val)
     card.ability[self.key] = val
-    if G.consumeables then
-      for _, v in ipairs(G.consumeables.cards) do
-        if v.ability and v.ability.set and (v.ability.set == "program_pack" or v.ability.set == "solid_state" )then
-          SMODS.debuff_card(v, val, "lightbulbdebuff")
-        end
-      end
-    end
+    consumable_debuffing_sticker_apply(card, val, "lightbulbdebuff", "program_pack", "solid_state")
   end,
   
   calculate = function(self, card, context)
-    if context.card_added and context.card.ability and context.card.ability.set and (context.card.ability.set == "program_pack" or context.card.ability.set == "solid_state" ) then
-      SMODS.debuff_card(context.card, true, "lightbulbdebuff")
-    end
-    
-    if context.selling_self or ((context.selling_card or context.joker_type_destroyed) and context.card == card) and G.consumeables then
-      for _, v in ipairs(G.consumeables.cards) do
-        if v.ability and v.ability.set and (v.ability.set == "program_pack" or v.ability.set == "solid_state" ) then
-          SMODS.debuff_card(v, false, "lightbulbdebuff")
-        end
-      end
-    end
+    consumable_debuffing_sticker_calculate(card, context, "lightbulbdebuff", "program_pack", "solid_state")
   end,
   
 }
@@ -1199,33 +1149,13 @@ SMODS.Sticker {
   pos = { x = 1, y = 10 },
   badge_colour = HEX("C59873"),
   
-  loc_vars = function(self, info_queue, card)
-  end,
-  config = {
-  },
   apply = function(self, card, val)
     card.ability[self.key] = val
-    if G.consumeables then
-      for _, v in ipairs(G.consumeables.cards) do
-        if v.ability and v.ability.set and (v.ability.set == "astro_cards" or v.ability.set == "sigils" )then
-          SMODS.debuff_card(v, val, "pawndebuff")
-        end
-      end
-    end
+    consumable_debuffing_sticker_apply(card, val, "pawndebuff", "astro_cards", "sigils")
   end,
   
   calculate = function(self, card, context)
-    if context.card_added and context.card.ability and context.card.ability.set and (context.card.ability.set == "astro_cards" or context.card.ability.set == "sigils" ) then
-      SMODS.debuff_card(context.card, true, "pawndebuff")
-    end
-    
-    if context.selling_self or ((context.selling_card or context.joker_type_destroyed) and context.card == card) and G.consumeables then
-      for _, v in ipairs(G.consumeables.cards) do
-        if v.ability and v.ability.set and (v.ability.set == "astro_cards" or v.ability.set == "sigils" ) then
-          SMODS.debuff_card(v, false, "pawndebuff")
-        end
-      end
-    end
+    consumable_debuffing_sticker_calculate(card, context, "pawndebuff", "astro_cards", "sigils")
   end,
   
 }
@@ -1418,33 +1348,13 @@ SMODS.Sticker {
   pos = { x = 4, y = 10 },
   badge_colour = HEX("5E5E5E"),
   
-  loc_vars = function(self, info_queue, card)
-  end,
-  config = {
-  },
   apply = function(self, card, val)
     card.ability[self.key] = val
-    if G.consumeables then
-      for _, v in ipairs(G.consumeables.cards) do
-        if v.ability and v.ability.set and (v.ability.set == "ruinous_power" or v.ability.set == "nightshift_cards" )then
-          SMODS.debuff_card(v, val, "unholy_relicdebuff")
-        end
-      end
-    end
+    consumable_debuffing_sticker_apply(card, val, "unholy_relicdebuff", "ruinous_power", "nightshift_cards")
   end,
   
   calculate = function(self, card, context)
-    if context.card_added and context.card.ability and context.card.ability.set and (context.card.ability.set == "ruinous_power" or context.card.ability.set == "nightshift_cards" ) then
-      SMODS.debuff_card(context.card, true, "unholy_relicdebuff")
-    end
-    
-    if context.selling_self or ((context.selling_card or context.joker_type_destroyed) and context.card == card) and G.consumeables then
-      for _, v in ipairs(G.consumeables.cards) do
-        if v.ability and v.ability.set and (v.ability.set == "ruinous_power" or v.ability.set == "nightshift_cards" ) then
-          SMODS.debuff_card(v, false, "unholy_relicdebuff")
-        end
-      end
-    end
+    consumable_debuffing_sticker_calculate(card, context, "unholy_relicdebuff", "ruinous_power", "nightshift_cards")
   end,
   
 }
@@ -1455,33 +1365,13 @@ SMODS.Sticker {
   pos = { x = 0, y = 9 },
   badge_colour = HEX("4B3B3B"),
   
-  loc_vars = function(self, info_queue, card)
-  end,
-  config = {
-  },
   apply = function(self, card, val)
     card.ability[self.key] = val
-    if G.consumeables then
-      for _, v in ipairs(G.consumeables.cards) do
-        if v.ability and v.ability.set and (v.ability.set == "weather_report" or v.ability.set == "lexica" )then
-          SMODS.debuff_card(v, val, "cowboy_hatdebuff")
-        end
-      end
-    end
+    consumable_debuffing_sticker_apply(card, val, "cowboy_hatdebuff", "weather_report", "lexica")
   end,
   
   calculate = function(self, card, context)
-    if context.card_added and context.card.ability and context.card.ability.set and (context.card.ability.set == "weather_report" or context.card.ability.set == "lexica" ) then
-      SMODS.debuff_card(context.card, true, "cowboy_hatdebuff")
-    end
-    
-    if context.selling_self or ((context.selling_card or context.joker_type_destroyed) and context.card == card) and G.consumeables then
-      for _, v in ipairs(G.consumeables.cards) do
-        if v.ability and v.ability.set and (v.ability.set == "weather_report" or v.ability.set == "lexica" ) then
-          SMODS.debuff_card(v, false, "cowboy_hatdebuff")
-        end
-      end
-    end
+    consumable_debuffing_sticker_calculate(card, context, "cowboy_hatdebuff", "weather_report", "lexica")
   end,
   
 }
@@ -1494,33 +1384,13 @@ SMODS.Sticker {
   pos = { x = 0, y = 11 },
   badge_colour = HEX("FFEAA6"),
   
-  loc_vars = function(self, info_queue, card)
-  end,
-  config = {
-  },
   apply = function(self, card, val)
     card.ability[self.key] = val
-    if G.consumeables then
-      for _, v in ipairs(G.consumeables.cards) do
-        if v.ability and v.ability.set and (v.ability.set == "artistry_cards" or v.ability.set == "calligraphy" )then
-          SMODS.debuff_card(v, val, "cactusdebuff")
-        end
-      end
-    end
+    consumable_debuffing_sticker_apply(card, val, "cactusdebuff", "artistry_cards", "calligraphy")
   end,
   
   calculate = function(self, card, context)
-    if context.card_added and context.card.ability and context.card.ability.set and (context.card.ability.set == "artistry_cards" or context.card.ability.set == "calligraphy" ) then
-      SMODS.debuff_card(context.card, true, "cactusdebuff")
-    end
-    
-    if context.selling_self or ((context.selling_card or context.joker_type_destroyed) and context.card == card) and G.consumeables then
-      for _, v in ipairs(G.consumeables.cards) do
-        if v.ability and v.ability.set and (v.ability.set == "artistry_cards" or v.ability.set == "calligraphy" ) then
-          SMODS.debuff_card(v, false, "cactusdebuff")
-        end
-      end
-    end
+    consumable_debuffing_sticker_calculate(card, context, "cactusdebuff", "artistry_cards", "calligraphy")
   end,
   
 }
