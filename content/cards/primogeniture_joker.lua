@@ -12,21 +12,11 @@ SMODS.Joker {
         return { vars = { card.ability.extra.xmult, card.ability.extra.chipsadd, card.ability.extra.chips } }
     end,
     
-    update = function(self, card)
-        if card.area == G.jokers then
-            if G.shop_jokers and G.shop_jokers.cards then
-                for _, j in ipairs(G.shop_jokers.cards) do 
-                    if j.config.center.set == 'Joker' then
-                        if j.config.center.rarity == 1 then
-                            j.cost = 0
-                        end
-                    end
-                end
-            end
-        end
-    end,
-    
     calculate = function(self, card, context)
+		if context.modify_shop_card and context.card.ability and context.card.ability.set == "Joker" and context.card.config.center.rarity == 1 then
+			context.card.cost = 0
+		end
+
         if context.other_joker and not context.other_joker.debuff and context.other_joker.config.center.rarity == 1 and not next(SMODS.find_card('j_joker')) then
             return {
                 xmult = card.ability.extra.xmult

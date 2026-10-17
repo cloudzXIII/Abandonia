@@ -269,31 +269,26 @@ ABN.calculate = function(self, context)
   end
 
   if context.individual and context.cardarea == G.play then
-    if context.other_card.ability.abn_perma_flipped then
-      local target_xmult = 1.25
-
-      if G.jokers and G.jokers.cards then
-        for _, joker in ipairs(G.jokers.cards) do
-          if joker.config.center.key == 'j_abn_reversecard_joker' and joker.facing == 'back' then
-            target_xmult = target_xmult * 2
-            break
-          end
-        end
-      end
-
-      return {
-        x_mult = target_xmult
-      }
-    end
-
     if not G.GAME.abn_13_played_this_run and context.other_card:get_id() == SMODS.Ranks.abn_13.id then
       G.GAME.abn_13_played_this_run = true
     end
 
     if context.other_card.base.suit and not SMODS.has_no_suit(context.other_card) and G.GAME.abn.suits_played_this_blind then
-      G.GAME.abn.suits_played_this_blind[context.other_card.base.suit] = (G.GAME.abn.suits_played_this_blind[context.other_card.base.suit] or 0) +
-          1
+      G.GAME.abn.suits_played_this_blind[context.other_card.base.suit] = (G.GAME.abn.suits_played_this_blind[context.other_card.base.suit] or 0) + 1
     end
+  end
+
+  if ((context.individual and context.cardarea == G.play) or context.other_joker) and (context.other_card or context.other_joker).ability.abn_perma_flipped then
+	local target_xmult = 1.25
+	if G.jokers and G.jokers.cards and context.individual then
+	  for _, joker in ipairs(G.jokers.cards) do
+	    if joker.config.center.key == 'j_abn_reversecard_joker' and joker.facing == 'back' then
+		  target_xmult = target_xmult * 2
+		  break
+	    end
+	  end
+	end
+	SMODS.calculate_effect({x_mult = target_xmult}, context.other_card or context.other_joker)
   end
 
   if context.after and context.main_eval and not context.blueprint then
