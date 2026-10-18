@@ -884,7 +884,7 @@ SMODS.PokerHand {
 SMODS.PokerHand {
   key = 'Skeet Flush',
   visible = false,
-  chips = 120,
+  chips = 140,
   mult = 9,
   l_chips = 45,
   l_mult = 4,
@@ -910,7 +910,7 @@ SMODS.PokerHand {
   key = 'Skeet Spectrum',
   visible = false,
   chips = 130,
-  mult = 11,
+  mult = 8,
   l_chips = 50,
   l_mult = 4,
   example = {
