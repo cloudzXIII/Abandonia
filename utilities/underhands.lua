@@ -15,6 +15,14 @@ local function copy_into(c, src)
     c[1], c[2], c[3], c[4] = src[1], src[2], src[3], src[4] or 1
 end
 
+local function get_stamp(c)
+    if not c.ability then return nil end
+    for key, obj in pairs(SMODS.Stickers) do
+        if obj.set == "stamp" and c.ability[key] then return key end
+    end
+    return nil
+end
+
 local RAINBOW = {
     { 0.95, 0.30, 0.30 }, { 1.00, 0.65, 0.20 }, { 1.00, 0.90, 0.30 }, { 0.40, 0.85, 0.40 },
     { 0.30, 0.85, 0.95 }, { 0.40, 0.50, 1.00 }, { 0.70, 0.40, 0.95 }, { 1.00, 0.45, 0.75 },
@@ -46,6 +54,36 @@ Abandonia.Underhands = {
             if #cards ~= 5 then return false end
             for _, c in ipairs(cards) do
                 if not ABN.is_dark(c) then return false end
+            end
+            return true
+        end,
+    },
+
+    abn_uh_humble = {
+        name = "Humble",
+        priority = 1,
+        paint = function(c) copy_into(c, G.C.BLUE) end,
+        x_mult = 1.10, x_chips = 1.10,
+        l_mult = 0.05, l_chips = 0.05,
+        check_hand = function(cards)
+            if #cards ~= 5 then return false end
+            for _, c in ipairs(cards) do
+                if not (c.base and c.base.nominal < 6) then return false end
+            end
+            return true
+        end,
+    },
+
+    abn_uh_lofty = {
+        name = "Lofty",
+        priority = 1,
+        paint = function(c) copy_into(c, G.C.RED) end,
+        x_mult = 1.10, x_chips = 1.10,
+        l_mult = 0.05, l_chips = 0.05,
+        check_hand = function(cards)
+            if #cards ~= 5 then return false end
+            for _, c in ipairs(cards) do
+                if not (c.base and c.base.nominal >= 7) then return false end
             end
             return true
         end,
@@ -102,6 +140,24 @@ Abandonia.Underhands = {
             return five_unique(cards, function(c)
                 return c.edition and (c.edition.key or c.edition.type)
             end)
+        end,
+    },
+
+    abn_uh_circumnavigation = {
+        name = "Circumnavigation",
+        priority = 2,
+        paint = function(c, i, t)
+            local k = 0.5 + 0.5 * math.sin(t * 2 + i * 0.8)
+            c[1] = 0.25 + 0.2 * k
+            c[2] = 0.60 + 0.30 * k
+            c[3] = 0.85 + 0.15 * k
+            c[4] = 1
+        end,
+        x_mult = 1.15, x_chips = 1.15,
+        l_mult = 0.05, l_chips = 0.05,
+        check_hand = function(cards)
+            -- cards with no stamp return nil, which five_unique rejects
+            return five_unique(cards, get_stamp)
         end,
     },
 }
