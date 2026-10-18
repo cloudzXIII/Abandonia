@@ -47,6 +47,10 @@ function Card:use_consumeable(area, copier)
     return old_use_consumeable(self, area, copier)
 end
 
+SMODS.Sound({
+	key = "click",
+	path = "click.ogg",
+})
 
 
 SMODS.Joker {
@@ -92,6 +96,7 @@ SMODS.Joker {
         if context.open_booster then
             return {
                 message = "Click...",
+				sound = "abn_click",
             }
         end
     end,
