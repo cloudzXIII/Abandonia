@@ -173,7 +173,7 @@ function Game:init_game_object(...)
 end
 
 function Abandonia.get_underhand(cards)
-    if not next(SMODS.find_card('v_abn_forbidden_fruit')) then return nil end
+	if not G.GAME or not G.GAME.abn_underhands_unlocked then return nil end
     local best_key, best_pri
     for key, uh in pairs(Abandonia.Underhands) do
         if uh.check_hand(cards) and (not best_pri or (uh.priority or 0) > best_pri) then

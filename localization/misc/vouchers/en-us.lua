@@ -297,7 +297,7 @@ return {
 	  v_abn_forbidden_fruit = {
         name = "Forbidden Fruit",
         text = {
-          "Unlock Underhands",
+          "Unlock {C:dark_edition}Underhands",
 		  "Raise all {C:attention}Blind Requirements{} by {C:attention}10%{} per {C:attention}Ante{}",
         }
       },
@@ -362,18 +362,28 @@ return {
         name = "Illegal Glove",
         text = {
           jimbo_voucher_return_to_ante,
+          "Unlock {C:dark_edition}Underhands",
+          "Each played {C:dark_edition}Underhand{} gives",
+          "{X:mult,C:white}X#2#{} Mult and {C:abn_mayhem_dark}+#3#{} Mayhem",
         }
       },
       v_abn_backdoor_draw = {
         name = "Backdoor Draw",
         text = {
           jimbo_voucher_return_to_ante,
+          "Each round, after your first",
+          "played {C:dark_edition}Underhand{}, return all cards",
+          "to the deck and gain {C:abn_mayhem_dark}+#2#{} Mayhem",
         }
       },
       v_abn_pheromone_perfume = {
         name = "Pheromone Perfume",
         text = {
           jimbo_voucher_return_to_ante,
+          "At the start of each round,",
+          "Gain {C:abn_mayhem_dark}+#2#{} Mayhem and draw",
+          "your highest level hand",
+          "{C:inactive}(If possible)"
         }
       },
 	  --#endregion

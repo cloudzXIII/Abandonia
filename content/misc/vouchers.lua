@@ -1104,6 +1104,10 @@ SMODS.Voucher({
         y = 2,
     },
     cost = 10,
+
+	redeem = function(self, card)
+		G.GAME.abn_underhands_unlocked = true
+	end,
     
     calculate = function(self, card, context)
         if context.setting_blind then
@@ -1287,3 +1291,267 @@ SMODS.Voucher {
 		artist = "0kronix",
 	},
 }
+
+SMODS.Voucher {
+	key = 'pitch_machine',
+	atlas = 'JimboStakeVouchers',
+	pos = { x = 7, y = 0 },
+	config = {extra = {return_ante = -1, van_amp = 1, van_may = 2, mod_mod = 1, mod_may = 3}},
+	loc_vars = function(self, info_queue, voucher)
+		info_queue[#info_queue + 1] = {key = "abn_jimbo_only", set = "Other"}
+		local vae = voucher.ability.extra
+		return { vars = { get_return_ante(voucher), vae.van_amp, vae.van_may, vae.mod_mod, vae.mod_may } }
+	end,
+
+	redeem = function(self, voucher)
+		redeem_return_ante(self, voucher)
+		for name, hand in pairs(G.GAME.hands) do
+			if ABN.is_modded_hand(name) then
+				hand.abn_modulate = hand.abn_modulate or 1
+				hand.l_abn_modulate = hand.l_abn_modulate or voucher.ability.extra.mod_mod
+				hand.s_abn_modulate = hand.s_abn_modulate or 1
+			else
+				hand.abn_amp = hand.abn_amp or 1
+				hand.l_abn_amp = hand.l_abn_amp or voucher.ability.extra.van_amp
+				hand.s_abn_amp = hand.s_abn_amp or 1
+			end
+		end
+	end,
+	calculate = function(self, voucher, context)
+		if context.poker_hand_changed and context.old_level and context.new_level then
+			local level_change = context.new_level - context.old_level
+			if level_change == 0 then return end
+			local hand = G.GAME.hands[context.scoring_name]
+			--local vae = voucher.ability.extra
+			if ABN.is_modded_hand(context.scoring_name) then
+				--hand.abn_modulate = (hand.abn_modulate or 1) + vae.mod_mod
+				hand.abn_mayhem = (hand.abn_mayhem or 0) + voucher.ability.extra.mod_may * level_change
+			else
+				--hand.abn_amp = (hand.abn_amp or 1) + vae.van_amp
+				hand.abn_mayhem = (hand.abn_mayhem or 0) + voucher.ability.extra.van_may * level_change
+			end
+		elseif context.final_scoring_step and G.GAME.hands[context.scoring_name].abn_mayhem then
+			ABN.mayhem(G.GAME.hands[context.scoring_name].abn_mayhem, true)
+		end
+	end,
+
+	in_pool = function(self, args)
+		return G.GAME.modifiers.Honor
+	end,
+
+	abn_artist_credits = {
+		artist = "0kronix",
+	},
+}
+
+local old_ui_current_hand = create_UIBox_current_hand_row
+function create_UIBox_current_hand_row(handname, simple, in_collection)
+	local ui = old_ui_current_hand(handname, simple, in_collection)
+	if ui and not in_collection and G.GAME then
+		local insert_nodes = {before = {}, after = {}}
+		if G.GAME.hands[handname].abn_modulate and G.GAME.hands[handname].abn_modulate ~= 1 then
+			table.insert(insert_nodes.before, {n=G.UIT.T, config={text = "X", scale = 0.25, colour = G.C.ABN_MODULATE}})
+			table.insert(insert_nodes.before, {n=G.UIT.C, config={align = "cm", padding = 0.01, r = 0.1, colour = G.C.ABN_MODULATE, minw = 1.1}, nodes={
+				{n=G.UIT.T, config={text = number_format(G.GAME.hands[handname].abn_modulate, 1000000), scale = 0.45, colour = G.C.UI.TEXT_LIGHT}},
+				{n=G.UIT.B, config={w = 0.08, h = 0.01}}
+			}})
+		end
+		if G.GAME.hands[handname].abn_amp and G.GAME.hands[handname].abn_amp ~= 1 then
+			table.insert(insert_nodes.after, {n=G.UIT.T, config={text = "X", scale = 0.25, colour = G.C.ABN_AMPERAGE}})
+			table.insert(insert_nodes.after, {n=G.UIT.C, config={align = "cm", padding = 0.01, r = 0.1, colour = G.C.ABN_AMPERAGE, minw = 1.1}, nodes={
+				{n=G.UIT.T, config={text = number_format(G.GAME.hands[handname].abn_amp, 1000000), scale = 0.45, colour = G.C.UI.TEXT_LIGHT}},
+				{n=G.UIT.B, config={w = 0.08, h = 0.01}}
+			}})
+		end
+		if G.GAME.hands[handname].abn_mayhem and G.GAME.hands[handname].abn_mayhem ~= 0 then
+			table.insert(insert_nodes.after, {n=G.UIT.T, config={text = "+", scale = 0.45, colour = G.C.UI.TEXT_LIGHT}})
+			table.insert(insert_nodes.after, {n=G.UIT.C, config={align = "cm", padding = 0.01, r = 0.1, colour = G.C.ABN_MAYHEM_DARK, minw = 1.1}, nodes={
+				{n=G.UIT.T, config={text = number_format(G.GAME.hands[handname].abn_mayhem, 1000000), scale = 0.45, colour = G.C.UI.TEXT_LIGHT}},
+				{n=G.UIT.B, config={w = 0.08, h = 0.01}}
+			}})
+		end
+		local count = #insert_nodes.before + #insert_nodes.after
+		if count > 0 then
+			ABN.iterate_edit_ui(ui, function(node)
+				if node.config and node.config.colour == G.C.BLACK and not node.config.minw then
+					local old_count = 0.1
+					for _, n in ipairs(node.nodes) do
+						if n.n == G.UIT.C then
+							n.config.align = "cm"
+							old_count = old_count + 1
+							count = count + 1
+						end
+					end
+					for _, n in ipairs(insert_nodes.before) do
+						table.insert(node.nodes, 1, n)
+					end
+					for _, n in ipairs(insert_nodes.after) do
+						table.insert(node.nodes, n)
+					end
+					for _, n in ipairs(node.nodes) do
+						if n.config.minw then
+							n.config.minw = n.config.minw * old_count / count
+						end
+					end
+					return true
+				end
+			end)
+		end
+	end
+	return ui
+end
+
+SMODS.Voucher {
+	key = 'illegal_glove',
+	atlas = 'JimboStakeVouchers',
+	pos = { x = 5, y = 1 },
+	config = {extra = {return_ante = -1, xmult = 1.5, mayhem = 5}},
+	loc_vars = function(self, info_queue, voucher)
+		info_queue[#info_queue + 1] = {key = "abn_jimbo_only", set = "Other"}
+		return { vars = { get_return_ante(voucher), voucher.ability.extra.xmult, voucher.ability.extra.mayhem } }
+	end,
+
+	redeem = function(self, voucher)
+		redeem_return_ante(self, voucher)
+		G.GAME.abn_underhands_unlocked = true
+	end,
+
+	calculate = function(self, voucher, context)
+		if context.final_scoring_step and Abandonia.get_underhand(context.full_hand) then
+			ABN.mayhem(voucher.ability.extra.mayhem, true)
+			return {x_mult = voucher.ability.extra.xmult}
+		end
+	end,
+
+	in_pool = function(self, args)
+		return G.GAME.modifiers.Honor
+	end,
+
+	abn_artist_credits = {
+		artist = "0kronix",
+	},
+}
+
+local backdoor_draw_return = false
+SMODS.Voucher {
+	key = 'backdoor_draw',
+	atlas = 'JimboStakeVouchers',
+	pos = { x = 6, y = 1 },
+	config = {extra = {return_ante = -1, mayhem = 5, played_underhand = false}},
+	loc_vars = function(self, info_queue, voucher)
+		info_queue[#info_queue + 1] = {key = "abn_jimbo_only", set = "Other"}
+		return { vars = { get_return_ante(voucher), voucher.ability.extra.mayhem } }
+	end,
+
+	redeem = redeem_return_ante,
+	calculate = function(self, voucher, context)
+		if context.setting_blind then
+			voucher.ability.extra.played_underhand = false
+		elseif context.after and Abandonia.get_underhand(context.full_hand) and not voucher.ability.extra.played_underhand then
+			voucher.ability.extra.played_underhand = true
+			ABN.mayhem(voucher.ability.extra.mayhem, true)
+			backdoor_draw_return = true
+		end
+	end,
+
+	in_pool = function(self, args)
+		return G.GAME.modifiers.Honor and G.GAME.abn_underhands_unlocked
+	end,
+
+	abn_artist_credits = {
+		artist = "0kronix",
+	},
+}
+local old_play_to_discard = G.FUNCS.draw_from_play_to_discard
+G.FUNCS.draw_from_play_to_discard = function(e)
+	if not backdoor_draw_return then
+		old_play_to_discard(e)
+		return
+	end
+	backdoor_draw_return = false
+	local count = #G.play.cards + #G.hand.cards + #G.discard.cards
+	local it = 1
+	for _, area in ipairs({G.play, G.hand, G.discard}) do
+		for k, v in ipairs(area.cards) do
+			if (not v.shattered) and (not v.destroyed) then 
+				draw_card(area,G.deck, it*100/count,'down', false, v)
+				it = it + 1
+			end
+		end
+	end
+end
+--[[
+SMODS.Voucher {
+	key = 'pheromone_perfume',
+	atlas = 'JimboStakeVouchers',
+	pos = { x = 7, y = 1 },
+	config = {extra = {return_ante = -1, mayhem = 10}},
+	loc_vars = function(self, info_queue, voucher)
+		info_queue[#info_queue + 1] = {key = "abn_jimbo_only", set = "Other"}
+		return { vars = { get_return_ante(voucher), voucher.ability.extra.mayhem } }
+	end,
+
+	redeem = redeem_return_ante,
+	calculate = function(self, voucher, context)
+		if context.setting_blind then
+			ABN.mayhem(voucher.ability.extra.mayhem, true)
+		end
+	end,
+
+	in_pool = function(self, args)
+		return G.GAME.modifiers.Honor
+	end,
+
+	abn_artist_credits = {
+		artist = "0kronix",
+	},
+}
+
+local function try_for_hand(cards, handname)
+	for a = 1, 1000 do
+		local checking = {}
+		local card_map = {}
+		local tries = G.hand.config.card_limit * 2
+		local b = 0
+		while #checking < G.GAME.starting_params.play_limit and b < tries do
+			b = b + 1
+			local c = pseudorandom_element(cards, "v_abn_pheromone_perfume")
+			if not card_map[c.sort_id] then
+				table.insert(checking, c)
+				card_map[c.sort_id] = true
+			end
+		end
+		local hand_info = evaluate_poker_hand(checking)[handname][1]
+		if hand_info and #hand_info > 0 then
+			local hand_map = {}
+			for _, card in ipairs(hand_info) do
+				hand_map[card.sort_id] = true
+			end
+			return hand_map
+		end
+	end
+end
+
+local shuffle_ref = CardArea.shuffle
+function CardArea:shuffle(_seed)
+  local g = shuffle_ref(self, _seed)
+  if next(SMODS.find_card("v_abn_pheromone_perfume")) and self == G.deck then
+	local prio_map = try_for_hand(self.cards, ABN.highest_level_hand())
+	if not prio_map then return g end
+    local priorities = {}
+    local others = {}
+    for k, v in pairs(self.cards) do
+      if prio_map[v.sort_id] then
+        table.insert(priorities, v)
+	  else
+        table.insert(others, v)
+      end
+    end
+    for _, card in ipairs(priorities) do
+      table.insert(others, card)
+    end
+    self.cards = others
+    self:set_ranks()
+  end
+  return g
+end--]]

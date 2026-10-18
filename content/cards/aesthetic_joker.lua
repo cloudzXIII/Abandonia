@@ -25,8 +25,8 @@ function Card.add_to_deck(self, from_debuff)
 end
 
 local old_set_ability = Card.set_ability
-function Card:set_ability(ability, silent)
-    local ret = old_set_ability(self, ability, silent)
+function Card:set_ability(ability, silent, delay_sprites)
+    local ret = old_set_ability(self, ability, silent, delay_sprites)
 
     if ability and self.area == G.hand and self.config and self.config.center then
         if self.config.center.set == "Enhanced" then
