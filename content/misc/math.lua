@@ -381,7 +381,7 @@ SMODS.Consumable({
 	cost = 4,
 	atlas = "abn_AbandoniaMath",
 	pos = { x = 3, y = 0 },
-	config = { extra = {xmult = 2, xchips = 2} },
+	config = { extra = { xmult = 2, xchips = 2 } },
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.xmult, card.ability.extra.xchips } }
 	end,
@@ -396,7 +396,7 @@ SMODS.Consumable({
 					number_of_moddeds = number_of_moddeds + 1
 				end
 			end
-			if all_numbered and number_of_moddeds>0 then
+			if all_numbered and number_of_moddeds > 0 then
 				abn_activate_math(self, card, true)
 				card.ability.abn_active = true
 				for k, v in pairs(G.play.cards) do
@@ -406,10 +406,205 @@ SMODS.Consumable({
 		end
 		if context.final_scoring_step and card.ability.abn_active then
 			SMODS.destroy_cards(card)
-			return{
+			return {
 				xmult = card.ability.extra.xmult,
-				xchips = card.ability.extra.xchips
+				xchips = card.ability.extra.xchips,
 			}
+		end
+	end,
+	abn_artist_credits = {
+		artist = "0kronix",
+	},
+})
+
+SMODS.Consumable({
+	key = "plus",
+	set = "algebraic",
+	cost = 4,
+	atlas = "abn_AbandoniaMath",
+	pos = { x = 0, y = 1 },
+	calculate = function(self, card, context)
+		if context.final_scoring_step then
+			local all_numbered, _mult = true, 0
+			for k, v in pairs(context.scoring_hand) do
+				_mult = _mult + v:get_id()
+				if not ABN.is_number(v) then
+					all_numbered = false
+				end
+			end
+
+			if context.scoring_name == "Pair" and all_numbered and _mult > 0 then
+				abn_activate_math(self, card)
+				return {
+					mult = _mult,
+				}
+			end
+		end
+	end,
+	abn_artist_credits = {
+		artist = "0kronix",
+	},
+})
+
+SMODS.Consumable({
+	key = "equal",
+	set = "algebraic",
+	cost = 4,
+	atlas = "abn_AbandoniaMath",
+	pos = { x = 1, y = 1 },
+	config = {
+		extra = {
+			mult_power = 3,
+			chip_power = 6
+		},
+	},
+	loc_vars = function(self, info_queue, card)
+		return{vars={
+			card.ability.extra.mult_power,
+			card.ability.extra.chip_power
+		}}
+	end,
+	calculate = function(self, card, context)
+		if context.final_scoring_step then
+			-- Was taken from All in Jest / Fuzzy
+			local _mult_power = math.ceil(math.log(mult, card.ability.extra.mult_power))
+            local new_mult = card.ability.extra.mult_power ^ _mult_power
+
+			local _chip_power = math.ceil(math.log(hand_chips, card.ability.extra.chip_power))
+            local new_chips = card.ability.extra.chip_power ^ _chip_power
+            if (new_mult - mult) == 0 then 
+                new_mult = new_mult * card.ability.extra.mult_power
+            end
+			if (new_chips - hand_chips) == 0 then 
+                new_chips = new_chips * card.ability.extra.chip_power
+            end
+
+			local final_mult, final_chips = (new_mult-mult), (new_chips-hand_chips)
+			if mult <= 0 then
+				final_mult = 0
+			end
+			if hand_chips <= 0 then
+				final_chips = 0
+			end
+			if context.scoring_name == "Three of a Kind"  then
+				abn_activate_math(self, card)
+				return {
+					mult = final_mult,
+					chips = final_chips
+				}
+			end
+		end
+	end,
+	abn_artist_credits = {
+		artist = "0kronix",
+	},
+})
+
+SMODS.Consumable({
+	key = "multiplication",
+	set = "algebraic",
+	cost = 4,
+	atlas = "abn_AbandoniaMath",
+	pos = { x = 2, y = 1 },
+	calculate = function(self, card, context)
+		if context.final_scoring_step then
+			local all_numbered, highest_rank = true, 0
+			for k, v in pairs(context.scoring_hand) do
+				if highest_rank < v:get_id() then
+					highest_rank = v:get_id()
+				end
+				if not ABN.is_number(v) then
+					all_numbered = false
+				end
+			end
+			if context.scoring_name == "abn_double_triple" and all_numbered and highest_rank>1 then
+				abn_activate_math(self, card)
+				return {
+					xmult = highest_rank,
+				}
+			end
+		end
+	end,
+	abn_artist_credits = {
+		artist = "0kronix",
+	},
+})
+
+SMODS.Consumable({
+	key = "division",
+	set = "algebraic",
+	cost = 4,
+	atlas = "abn_AbandoniaMath",
+	pos = { x = 3, y = 1 },
+	calculate = function(self, card, context)
+		if context.final_scoring_step then
+			local all_numbered, _xmult, _xchips = true, G.GAME.hands["Full House"].level, G.GAME.hands["abn_spectrum"].level
+			for k, v in pairs(context.scoring_hand) do
+				if not ABN.is_number(v) then
+					all_numbered = false
+				end
+			end
+			if context.scoring_name == "abn_Spectrum_House" and all_numbered  then
+				abn_activate_math(self, card)
+				return {
+					xmult = _xmult,
+					xchips = _xchips
+				}
+			end
+		end
+	end,
+	abn_artist_credits = {
+		artist = "0kronix",
+	},
+})
+SMODS.Consumable({
+	key = "less_than",
+	set = "algebraic",
+	cost = 4,
+	atlas = "abn_AbandoniaMath",
+	pos = { x = 4, y = 1 },
+	calculate = function(self, card, context)
+		if context.final_scoring_step then
+			local all_numbered, total_chips = true, 0
+			for k, v in pairs(context.scoring_hand) do
+				total_chips = total_chips + v:get_id()
+				if not ABN.is_number(v) then
+					all_numbered = false
+				end
+			end
+			if context.scoring_name == "abn_6oak" and all_numbered  then
+				abn_activate_math(self, card)
+				return {
+					amp = total_chips
+				}
+			end
+		end
+	end,
+	abn_artist_credits = {
+		artist = "0kronix",
+	},
+})
+SMODS.Consumable({
+	key = "greater_than",
+	set = "algebraic",
+	cost = 4,
+	atlas = "abn_AbandoniaMath",
+	pos = { x = 5, y = 1 },
+	calculate = function(self, card, context)
+		if context.final_scoring_step then
+			local all_numbered, total_chips = true, 0
+			for k, v in pairs(context.scoring_hand) do
+				total_chips = total_chips + G.GAME.abn_rank_upgrades[v.base.oirignal_value].level
+				if not ABN.is_number(v) then
+					all_numbered = false
+				end
+			end
+			if context.scoring_name == "abn_Flush_Six" and all_numbered  then
+				abn_activate_math(self, card)
+				return {
+					modulate = total_planet_rank
+				}
+			end
 		end
 	end,
 	abn_artist_credits = {

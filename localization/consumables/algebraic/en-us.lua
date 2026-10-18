@@ -94,7 +94,64 @@ return {
 					"gives {X:mult,C:white}X#1#{} Mult and",
 					"{X:chips,C:white}X#2#{} Chips"
 				}
-			}
+			},
+			c_abn_plus = {
+				name = "Plus",
+				text = {
+					"The next scoring {C:attention}Pair{}",
+					"with only {C:attention}numbered{} cards",
+					"gives the sum of",
+					"scored cards' ranks as {C:mult}Mult",
+				},
+			},
+			c_abn_equal = {
+				name = "Equal",
+				text = {
+					"The next scoring {C:attention}Three of a Kind{}",
+					"rounds up mult to the next",
+					"power of {C:mult}#1#{}",
+					"and chips to the next",
+					"power of {C:chips}#2#{}"
+				},
+			},
+			c_abn_multiplication = {
+				name = "Multiplication",
+				text = {
+					"The next scoring {C:attention}Double Triple{}",
+					"with only {C:attention}numbered{} cards",
+					"gives {X:mult,C:white}XMult{} where",
+					"X is equal to the highest rank"
+				},
+			},
+			c_abn_division = {
+				name = "Division",
+				text = {
+					"The next scoring {C:attention}Spectrum House{}",
+					"with only {C:attention}numbered{} cards",
+					"gives {X:mult,C:white}XMult{} where",
+					"X is equal to the highest rank"
+				},
+			},
+			c_abn_less_than = {
+				name = "Less Than",
+				text = {
+					"The next scoring {C:attention}Six of a Kind{}",
+					"with only {C:attention}numbered{} cards",
+					"gives {C:abn_amperage}Amperage{} equal",
+					"to the sum of the chips",
+					"of scored cards"
+				},
+			},
+			c_abn_greater_than = {
+				name = "Greater Than",
+				text = {
+					"The next scoring {C:attention}Flush Six{}",
+					"with only {C:attention}numbered{} cards",
+					"gives {C:abn_modulate}Modulate{} equal",
+					"to the sum of the cards'",
+					"planet ranks"
+				},
+			},
 		},
 	},
 }
