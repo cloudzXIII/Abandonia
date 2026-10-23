@@ -379,10 +379,27 @@ function Card:calculate_seal(context)
 end
 
 local old_calculate_sticker = Card.calculate_sticker
+
 function Card:calculate_sticker(context, sticker)
-if not G.GAME.blind or G.GAME.blind.disabled or ((not G.GAME.blind.config.blind.abn_disable_stamps or not ABN_is_stamp(sticker)) and (not G.GAME.blind.config.blind.abn_disable_enhancements or not ABN.EnhStickers[sticker])) then
+    local blind = G.GAME and G.GAME.blind
+    local blind_config = blind and blind.config and blind.config.blind
+
+    if not blind_config or blind.disabled then
+        return old_calculate_sticker(self, context, sticker)
+    end
+
+    local disable_stamp = blind_config.abn_disable_stamps
+        and ABN_is_stamp(sticker)
+
+    local disable_enhancement = blind_config.abn_disable_enhancements
+        and ABN.EnhStickers
+        and ABN.EnhStickers[sticker]
+
+    if disable_stamp or disable_enhancement then
+        return
+    end
+
     return old_calculate_sticker(self, context, sticker)
-  end
 end
 
 --Modify card bonuses depending on Newestia Boss
