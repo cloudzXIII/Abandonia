@@ -1564,6 +1564,20 @@ return {
         }
       },
 
+       j_abn_cracked_joker = {
+        name = "Cracked Joker",
+        text = {
+            "{C:attention}Kinsugi{} cards always",
+            "succeed in their probabilities",
+            "Non-{C:attention}Kinsugi{} cards have a",
+            "{C:green}1 in 4{} chance to be destroyed",
+            "after scoring",
+            "Gains Chips equal to the rank",
+            "of each card destroyed this way",
+            "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
+        }
+    },
+
       j_abn_cloud_screamer = {
         name = "Cloud Screamer",
         text = {
