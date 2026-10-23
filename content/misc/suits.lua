@@ -697,18 +697,36 @@ SMODS.Suit {
   end,
 }
 
+
 local old_generate_ui = generate_card_ui
+
 function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
-	local fut = old_generate_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
+    local fut = old_generate_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
 
-	if card and card.base and not SMODS.has_no_suit(card) and (card.base.suit == "abn_megido" or card.base.suit == "abn_musica") and not card.debuff then
-		localize({
-			key = card.base.suit.."_mayhem",
-			type = "other",
-			nodes = fut.main
-		})
-	end
+    if card
+        and card.base
+        and not SMODS.has_no_suit(card)
+        and (card.base.suit == "abn_megido" or card.base.suit == "abn_musica")
+        and not card.debuff
+        and fut
+        and fut.main
+    then
+        local key = card.base.suit .. "_mayhem"
+        local loc = G.localization
+            and G.localization.descriptions
+            and G.localization.descriptions.Other
+            and G.localization.descriptions.Other[key]
 
-	return fut
+        if loc then
+            localize({
+                key = key,
+                type = "other",
+                nodes = fut.main
+            })
+        end
+    end
+
+    return fut
 end
+
 --#endregino
