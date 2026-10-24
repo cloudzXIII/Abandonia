@@ -257,15 +257,6 @@ SMODS.Sticker {
     end
   end,
 
-  loc_txt = {
-    name = "Globetrotter Aura",
-    label = "Globetrotter Aura",
-    text = {
-      "{C:gold}+#1#{} Asc. Power per {C:attention}unique{} Blind defeated this {C:attention}run{}",
-      "{C:inactive}Currently:{} {C:gold}+#2#{} {C:inactive}Asc. Power",
-    },
-  },
-
   loc_vars = function(self, info_queue, card)
     local extra = card and card.ability and card.ability.globetrotter_aura_extra or self.config.extra
     local n = (G.GAME and G.GAME.abn_unique_bosses) or 0
@@ -328,7 +319,7 @@ SMODS.Sticker {
   end,
 
   abn_artist_credits = {
-    artist = "Tatsu",
+    artist = "Dogg-Fly",
   },
 }
 
@@ -411,5 +402,108 @@ SMODS.Consumable {
 
   abn_artist_credits = {
     artist = "Comykel",
+  },
+}
+
+local valid_joker_types = {
+	{gain = "mult", colour = G.C.RED, check = function(card) return card.ability and card.ability.set == "Joker" end},
+	{gain = "amp", colour = G.C.ABN_AMPERAGE, check = function(card) return card.ability and card.ability.set == "ruinous_power" end},
+	{gain = "asc", colour = G.C.YELLOW, check = function(card) return card.ability and card.ability.consumeable end},
+}
+SMODS.Sticker {
+  key = "mitama_aura",
+  set = "aura",
+  atlas = "AbandoniaAura",
+  pos = { x = 1, y = 0 },
+  badge_colour = G.C.GREEN,
+
+  config = {
+    extra = {
+      chips_gain = 15, mult_gain = 10, asc_gain = 3, amp_gain = 2,
+      chips = 0, mult = 0, asc = 0, amp = 0
+    },
+  },
+
+  apply = function(self, card, val)
+    card.ability[self.key] = val
+    if val then
+      if not card.ability.abn_mitama_aura_extra then
+        card.ability.abn_mitama_aura_extra = {}
+        local cfg = self.config.extra
+        for k, v in pairs(self.config.extra) do
+          card.ability.abn_mitama_aura_extra[k] = v
+        end
+      end
+    else
+      card.ability.abn_mitama_aura_extra = nil
+    end
+  end,
+
+  loc_vars = function(self, info_queue, card)
+    local cfg = card and card.ability and card.ability.abn_mitama_aura_extra or self.config.extra
+    return {vars = {cfg.chips_gain, cfg.mult_gain, cfg.asc_gain, cfg.amp_gain, cfg.chips, cfg.mult, cfg.asc, cfg.amp}}
+  end,
+
+  draw = function(self, card)
+    local notilt = nil
+    if card.area and card.area.config.type == "deck" then
+      notilt = true
+    end
+    if not G.shared_stickers["abn_mitama_aura2"] then
+      G.shared_stickers["abn_mitama_aura2"] =
+          Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["abn_AbandoniaAura"], { x = 999, y = 999 })
+    end
+
+    if G.shared_stickers[self.key] then
+      G.shared_stickers[self.key].role.draw_major = card
+      G.shared_stickers[self.key]:draw_shader("dissolve", nil, nil, notilt, card.children.center)
+    end
+
+    G.shared_stickers["abn_mitama_aura2"].role.draw_major = card
+
+    card.hover_tilt = card.hover_tilt / 2
+    G.shared_stickers["abn_mitama_aura2"]:draw_shader("dissolve", nil, nil, notilt, card.children.center)
+    G.shared_stickers["abn_mitama_aura2"]:draw_shader("holo", nil, card.ARGS.send_to_shader, notilt, card.children.center)
+    card.hover_tilt = card.hover_tilt * 2
+  end,
+
+  calculate = function(self, card, context)
+    if context.remove_playing_cards then
+      local num = #context.removed
+      SMODS.scale_card(card, {
+        ref_table = card.ability.abn_mitama_aura_extra,
+        ref_value = "chips",
+        scalar_value = "chips_gain",
+        message_colour = G.C.BLUE,
+        no_message = card.area == G.deck or card.area == G.discard,
+        operation = function(ref_table, ref_value, initial, change)
+          ref_table[ref_value] = initial + change * num
+        end,
+      })
+    end
+    if context.joker_type_destroyed then
+      local jt = nil
+      for _, info in ipairs(valid_joker_types) do
+        if info.check(context.card) then
+          jt = info
+          break
+        end
+      end
+      if not jt then return end
+      SMODS.scale_card(card, {
+        ref_table = card.ability.abn_mitama_aura_extra,
+        ref_value = jt.gain,
+        scalar_value = jt.gain.."_gain",
+        message_colour = jt.colour,
+        no_message = card.area == G.deck or card.area == G.discard,
+      })
+    elseif context.joker_main or (context.main_scoring and context.cardarea == G.play) then
+      local cfg = card.ability.abn_mitama_aura_extra
+      return {chips = cfg.chips, mult = cfg.mult, asc = cfg.asc, amp = cfg.amp}
+    end
+  end,
+
+  abn_artist_credits = {
+    artist = "0kronix",
   },
 }

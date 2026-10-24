@@ -768,32 +768,13 @@ SMODS.Consumable {
   calculate = function(self, card, context)
     if card.area ~= G.ruinous_powers then return end
 
-    if context.individual and context.cardarea == G.play then
-      if SMODS.has_no_rank(context.other_card) then
-        G.E_MANAGER:add_event(Event({
-          func = function()
-            card:start_dissolve()
-
-            local destroyed_cards = {}
-            for i = #G.playing_cards, 1, -1 do
-              local target_card = G.playing_cards[i]
-              if SMODS.has_no_rank(target_card) then
-                destroyed_cards[#destroyed_cards + 1] = target_card
-                target_card:start_dissolve()
-              end
-            end
-
-            return true
-          end
-        }))
-
-        return {
-          message = localize('k_destroyed'),
-          colour = G.C.RED,
-          card = card
-        }
+    if context.before then
+      for _, c in ipairs(context.scoring_hand) do
+        if SMODS.has_no_rank(c) then
+          card.ability.extra.rankless_played = true
+        end
       end
-
+    elseif context.individual and context.cardarea == G.play and not card.ability.extra.rankless_played then
       local nominal_val = context.other_card.base.nominal or 0
 
       -- Turn played card into a Stone Card after reading nominal value
@@ -802,6 +783,14 @@ SMODS.Consumable {
       return {
         asc = nominal_val,
         card = card
+      }
+    elseif context.destroy_card and SMODS.has_no_rank(context.destroy_card) and card.ability.extra.rankless_played then
+      return {remove = true}
+    elseif context.after and card.ability.extra.rankless_played then
+      SMODS.destroy_cards({card})
+      return {
+        message = localize('k_abn_destroyed'),
+        colour = G.C.RED,
       }
     end
   end,

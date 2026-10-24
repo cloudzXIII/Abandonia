@@ -520,6 +520,34 @@ return {
         },
       },
       --#endregion
+      --#region Underhand Planets
+      c_abn_tira = {
+        name = "Tira",
+        text = {
+          "({V:1}lvl.#1#{}) Level up",
+          "{C:attention}#2#",
+          "{X:mult,C:white}+X#3#{} Mult and",
+          "{X:chips,C:white}+X#4#{} chips",
+        },
+      },
+      c_abn_darwin = {
+        name = "Darwin",
+        text = {
+          "({V:1}lvl.#1#{}) Level up",
+          "{C:attention}#2#",
+          "{X:mult,C:white}+X#3#{} Mult and",
+          "{X:chips,C:white}+X#4#{} chips",
+        },
+      },
+      c_abn_serina = {
+        name = "Serina",
+        text = {
+          "({V:1}lvl.#1#{}) Level up",
+          "{C:attention}#2#",
+          "{X:mult,C:white}+X#3#{} Mult and",
+          "{X:chips,C:white}+X#4#{} chips",
+        },
+      },
     },
 
     Spectral = {

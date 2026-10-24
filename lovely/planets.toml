@@ -11,6 +11,11 @@ pattern = """tab_definition_function = create_UIBox_current_hands,
 },"""
 position = "after"
 payload = '''
+G.GAME.abn_underhands_unlocked and {
+	label = localize('b_abn_underhands'),
+	colour = G.C.SECONDARY_SET.Planet,
+	tab_definition_function = create_UIBox_current_underhand_levels,
+} or "abn_underhands_locked",
 {
 	label = localize('b_abn_planet_ranks'),
 	colour = G.C.SECONDARY_SET.Planet,

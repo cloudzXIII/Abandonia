@@ -862,6 +862,9 @@ return {
       k_abn_rank_planet = "Rank Planet",
       b_abn_planet_ranks = "Planet Ranks",
 
+      k_abn_underhand_planet = "Underhand Planet",
+      b_abn_underhands = "Underhands",
+
       k_abn_superrare = "Super Rare",
       k_abn_parallelrare = "Parallel Rare",
       k_abn_virusrare = "Virus Rare",
@@ -884,6 +887,8 @@ return {
 
       k_abn_device_dark = "DEVICE Joker",
       k_abn_device_light = "ECIVED Joker", -- i think this is DEVICE just backwards
+
+      k_abn_destroyed = "Destroyed!",
 
       -- Credits
       k_abn_lead_dev = "Lead Dev",

@@ -18,18 +18,18 @@ SMODS.Scoring_Parameter({
   calculation_keys = {'amp', 'xamp'},
     calc_effect = function(self, effect, scored_card, key, amount, from_edition)
 		if not SMODS.Calculation_Controls.chips then return end
-	    if key == 'amp' and amount then
+	    if key == 'amp' and amount and amount ~= 0 then
 	        if effect.card and effect.card ~= scored_card then juice_card(effect.card) end
 	        self:modify(amount)
 	        card_eval_status_text(scored_card, 'extra', nil, percent, nil,
 	            {sound = "abn_sfx_amp", message = localize{type = 'variable', key = amount > 0 and 'a_chips' or 'a_chips_minus', vars = {amount..' Amp'}}, colour = self.colour})
 	        return true
         end
-        if key == 'xamp' and amount then
+        if key == 'xamp' and amount and amount ~= 1 then
             if effect.card and effect.card ~= scored_card then juice_card(effect.card) end
             self:modify(self.current * (amount) - self.current)
             card_eval_status_text(scored_card, 'extra', nil, percent, nil,
-                {sound = "abn_sfx_xamp", message = localize{type = 'variable', key = amount > 0 and 'a_chips' or 'a_chips_minus', vars = {'X'..amount..' Amp'}}, colour = self.colour})
+                {sound = "abn_sfx_xamp", message = localize{type = 'variable', key = amount >= 0 and 'a_chips' or 'a_chips_minus', vars = {'X'..amount..' Amp'}}, colour = self.colour})
             return true
         end
     end
