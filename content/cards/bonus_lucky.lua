@@ -1,14 +1,14 @@
 local scu = set_consumeable_usage
 function set_consumeable_usage(card)
   local ret = scu(card)
-  if card.config.center.set == 'tonal' then
+  if card.config.center.set == 'tonality' then
     G.E_MANAGER:add_event(Event({
       trigger = 'immediate',
       func = function()
         G.E_MANAGER:add_event(Event({
           trigger = 'immediate',
           func = function()
-            G.GAME.abn_last_tonal = card.config.center.key
+            G.GAME.abn_last_tonality = card.config.center.key
             return true
           end
         }))
@@ -37,14 +37,14 @@ SMODS.Joker {
   },
 
   loc_vars = function(self, info_queue, card)
-    local last_key = G.GAME and G.GAME.abn_last_tonal
-    local tonal_center = last_key and G.P_CENTERS[last_key] or nil
+    local last_key = G.GAME and G.GAME.abn_last_tonality
+    local tonality_center = last_key and G.P_CENTERS[last_key] or nil
 
-    if tonal_center then
-      info_queue[#info_queue + 1] = tonal_center
+    if tonality_center then
+      info_queue[#info_queue + 1] = tonality_center
     end
 
-    local last_tonal_name = tonal_center and localize({ type = 'name_text', key = tonal_center.key, set = tonal_center.set }) or localize('k_none')
+    local last_tonality_name = tonality_center and localize({ type = 'name_text', key = tonality_center.key, set = tonality_center.set }) or localize('k_none')
 
     return {
       vars = {
@@ -52,7 +52,7 @@ SMODS.Joker {
         card.ability.extra.score_gain,
         card.ability.extra.xmult,
         card.ability.extra.xchips,
-        last_tonal_name
+        last_tonality_name
       },
     }
   end,
@@ -77,18 +77,18 @@ SMODS.Joker {
 
   calculate = function(self, card, context)
     if context.setting_blind and G.GAME.blind.name == 'Big Blind' and not context.blueprint then
-      if G.GAME.abn_last_tonal and #G.consumeables.cards < G.consumeables.config.card_limit then
+      if G.GAME.abn_last_tonality and #G.consumeables.cards < G.consumeables.config.card_limit then
         G.E_MANAGER:add_event(Event({
           func = function()
-            local tonal_card = create_card('tonal', G.consumeables, nil, nil, nil, nil, G.GAME.abn_last_tonal)
-            tonal_card:add_to_deck()
-            G.consumeables:emplace(tonal_card)
+            local tonality_card = create_card('tonality', G.consumeables, nil, nil, nil, nil, G.GAME.abn_last_tonality)
+            tonality_card:add_to_deck()
+            G.consumeables:emplace(tonality_card)
             return true
           end
         }))
         return {
-          message = "+1 Tonal",
-          colour = G.C.SECONDARY_SET.tonal,
+          message = "+1 tonality",
+          colour = G.C.SECONDARY_SET.tonality,
         }
       end
     end
