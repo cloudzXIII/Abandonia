@@ -328,7 +328,7 @@ SMODS.Sticker {
   end,
 
   abn_artist_credits = {
-    artist = "testing testing 123",
+    artist = "Tatsu",
   },
 }
 
