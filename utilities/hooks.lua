@@ -171,16 +171,24 @@ end
 local card_h_popup_ref = G.UIDEF.card_h_popup
 function G.UIDEF.card_h_popup(card, ...)
   local ret = card_h_popup_ref(card, ...)
-  if ABN.config.show_credits and card.config and card.config.center and card.config.center.abn_artist_credits then
-    local credits = card.config.center.abn_artist_credits
-    table.insert(ret.nodes[1].nodes[1].nodes, {
-      n = G.UIT.R,
-      config = { align = "cm", padding = 0.03 },
-      nodes = {
-        { n = G.UIT.T, config = { colour = G.C.UI.TEXT_DARK, scale = 0.3, text = "Art by " } },
-        { n = G.UIT.T, config = { colour = credits.colour or G.C.UI.TEXT_DARK, scale = 0.3, text = credits.artist } }
-      }
-    })
+  if ABN.config.show_credits and card.config and card.config.center then
+    local credits = nil
+    if card.config.center.abn_artist_credits then
+      credits = card.config.center.abn_artist_credits
+    elseif card.ability.abn_artist_credits then
+      credits = card.ability.abn_artist_credits
+    end
+
+    if credits then
+      table.insert(ret.nodes[1].nodes[1].nodes, {
+        n = G.UIT.R,
+        config = { align = "cm", padding = 0.03 },
+        nodes = {
+          { n = G.UIT.T, config = { colour = G.C.UI.TEXT_DARK, scale = 0.3, text = "Art by " } },
+          { n = G.UIT.T, config = { colour = credits.colour or G.C.UI.TEXT_DARK, scale = 0.3, text = credits.artist } }
+        }
+      })
+    end
   end
   return ret
 end
@@ -316,11 +324,12 @@ function SMODS.reset_blind_choices(choices)
       G.GAME.abn_newestia_original_blinds[k] = choices[k]
       G.GAME.abn_newestia_current_blinds[k] = "bl_abn_new_" .. k:lower()
     elseif rep_k == "Boss" then
-	  if k == "Boss" and final_showdown then
-		choices[k] = ABN.new_vanilla_boss(true)
-	  end
+      if k == "Boss" and final_showdown then
+        choices[k] = ABN.new_vanilla_boss(true)
+      end
       G.GAME.abn_newestia_original_blinds[k] = k == "Boss" and choices[k] or ABN.new_vanilla_boss(k == "Big")
-      G.GAME.abn_newestia_current_blinds[k] = ABN.new_newestia_boss((k == "Small" and "boss") or ((k == "Big" or final_showdown) and "showdown"))
+      G.GAME.abn_newestia_current_blinds[k] = ABN.new_newestia_boss((k == "Small" and "boss") or
+        ((k == "Big" or final_showdown) and "showdown"))
     end
   end
   if G.GAME.abn_newestia then
@@ -381,25 +390,25 @@ end
 local old_calculate_sticker = Card.calculate_sticker
 
 function Card:calculate_sticker(context, sticker)
-    local blind = G.GAME and G.GAME.blind
-    local blind_config = blind and blind.config and blind.config.blind
+  local blind = G.GAME and G.GAME.blind
+  local blind_config = blind and blind.config and blind.config.blind
 
-    if not blind_config or blind.disabled then
-        return old_calculate_sticker(self, context, sticker)
-    end
-
-    local disable_stamp = blind_config.abn_disable_stamps
-        and ABN_is_stamp(sticker)
-
-    local disable_enhancement = blind_config.abn_disable_enhancements
-        and ABN.EnhStickers
-        and ABN.EnhStickers[sticker]
-
-    if disable_stamp or disable_enhancement then
-        return
-    end
-
+  if not blind_config or blind.disabled then
     return old_calculate_sticker(self, context, sticker)
+  end
+
+  local disable_stamp = blind_config.abn_disable_stamps
+      and ABN_is_stamp(sticker)
+
+  local disable_enhancement = blind_config.abn_disable_enhancements
+      and ABN.EnhStickers
+      and ABN.EnhStickers[sticker]
+
+  if disable_stamp or disable_enhancement then
+    return
+  end
+
+  return old_calculate_sticker(self, context, sticker)
 end
 
 --Modify card bonuses depending on Newestia Boss
@@ -498,30 +507,45 @@ end
 -- Custom contexts for cards changing in various ways
 local old_set_edition = Card.set_edition
 function Card:set_edition(edition, immediate, silent, delay)
-	if self.edition and edition and self.edition.key ~= edition then
-		SMODS.calculate_context({abn_changing_edition = true, card = self, old_edition = self.edition.key, new_edition = edition})
-	end
-	return old_set_edition(self, edition, immediate, silent, delay)
+  if self.edition and edition and self.edition.key ~= edition then
+    SMODS.calculate_context({
+      abn_changing_edition = true,
+      card = self,
+      old_edition = self.edition.key,
+      new_edition =
+          edition
+    })
+  end
+  return old_set_edition(self, edition, immediate, silent, delay)
 end
+
 local old_set_seal = Card.set_seal
 function Card:set_seal(_seal, silent, immediate)
-	if self.seal and _seal and self.seal ~= _seal then
-		SMODS.calculate_context({abn_changing_seal = true, card = self, old_seal = self.seal, new_seal = _seal})
-	end
-	return old_set_seal(self, _seal, silent, immediate)
+  if self.seal and _seal and self.seal ~= _seal then
+    SMODS.calculate_context({ abn_changing_seal = true, card = self, old_seal = self.seal, new_seal = _seal })
+  end
+  return old_set_seal(self, _seal, silent, immediate)
 end
+
 local old_set_ability = Card.set_ability
 function Card:set_ability(center, initial, delay_sprites)
-	local center_key = type(center) == "table" and center.key or center
-	if self.ability and self.ability.set == "Enhanced" and center_key and self.config.center.key ~= center_key then
-		SMODS.calculate_context({abn_changing_enhancement = true, card = self, old_enhancement = self.config.center.key, new_enhancement = center_key})
-	end
-	return old_set_ability(self, center, initial, delay_sprites)
+  local center_key = type(center) == "table" and center.key or center
+  if self.ability and self.ability.set == "Enhanced" and center_key and self.config.center.key ~= center_key then
+    SMODS.calculate_context({
+      abn_changing_enhancement = true,
+      card = self,
+      old_enhancement = self.config.center.key,
+      new_enhancement =
+          center_key
+    })
+  end
+  return old_set_ability(self, center, initial, delay_sprites)
 end
+
 local old_set_base = Card.set_base
 function Card:set_base(base, initial, manual_sprites)
-	if self.base and self.base.suit and not SMODS.has_no_suit(self) and base and base.suit and self.base.suit ~= base.suit then
-		SMODS.calculate_context({abn_changing_suit = true, card = self, old_suit = self.base.suit, new_suit = base.suit})
-	end
-	return old_set_base(self, base, initial, manual_sprites)
+  if self.base and self.base.suit and not SMODS.has_no_suit(self) and base and base.suit and self.base.suit ~= base.suit then
+    SMODS.calculate_context({ abn_changing_suit = true, card = self, old_suit = self.base.suit, new_suit = base.suit })
+  end
+  return old_set_base(self, base, initial, manual_sprites)
 end
