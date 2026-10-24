@@ -10813,6 +10813,88 @@ return {
 		}
 	  },
 	  
+	  j_abn_full_circle = {
+		name = "Full Circle",
+		text = {
+		  {
+			"Unlock {C:dark_edition}Underhands{}",
+			"If {C:dark_edition}Underhands{} were already unlocked",
+			"they score as if they were {C:attention}+#1#{} levels higher",
+		  },
+		  {
+			"{C:dark_edition}Underhands{} give {X:mult,C:white}X#2#{} Mult",
+			"When an {C:dark_edition}Underhand{} is made with only {C:attention}modded{} suits",
+			"give {C:gold}+#3#{} Asc. Power per scoring card"
+		  },
+		}
+	  },
+	  
+	  j_abn_fruit_of_the_vine = {
+        name = "Fruit of the Vine",
+        text = {
+          "When a {C:attention}Vanilla Food Joker{} scores this Joker gains {C:abn_amperage}+#1#{} Amperage",
+		  "When a {C:attention}Modded Food Joker{} scores this Joker gains {C:abn_modulate}+#2#{} Modulate",
+		  "{C:inactive}Currently:{} {C:abn_amperage}+#3#{} {C:inactive}Amperage{} {C:abn_modulate}+#4#{} {C:inactive}Modulate",
+		}
+      },
+	  
+	  j_abn_nasa_joker = {
+        name = "NASA Joker",
+        text = {
+          "Each hand gives {C:gold}+#1#{} Asc. Power and {C:abn_amperage}+#2#{} Amperage per {C:attention}level{}",
+		  "Each {C:attention}hand type{} can only be played {C:attention}once{} per {C:attention}Ante{}",
+		}
+      },
+	  
+	  j_abn_interplanetary_joker = {
+        name = "Interplanetary Joker",
+        text = {
+          "{C:attention}Equalize{} the {C:chips}Chips{} and {C:mult}Mult{} values in {C:planet}Planet{} cards",
+		  "All hands drop to Level {C:attention}1{} on pickup and at the start of each {C:attention}Ante{}",
+		}
+      },
+	  
+	  j_abn_mephistopheles = {
+        name = "Mephistopheles",
+        text = {
+          "{C:attention}Before{} scoring randomly chose between {C:mult}Mult{} and {C:chips}Chips{}",
+		  "Combine {C:attention}both{} values and add it to the {C:attention}chosen{} value",
+		}
+      },
+	  
+	  j_abn_orbit = {
+        name = "Orbit",
+        text = {
+          "Hands can't {C:mult}level down{}",
+		  "The first time a hand would {C:mult}level down{}",
+		  "{C:attention}level up{} instead"
+		}
+      },
+	  
+	  j_abn_jokerlesness = {
+        name = "Jokerlesness",
+        text = {
+          "Scoring cards give {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult for each {C:attention}empty{} Joker Slot",
+		  "When a Blind is {C:attention}defeated{} gain {C:chips}+#3#{} Chips and {C:mult}+#4#{} Mult",
+		  "If this Joker is {C:attention}Flipped{} level up the {C:attention}winning hand{}",
+		}
+      },
+	  
+	  j_abn_purple_joker_eater = {
+        name = "Purple Joker Eater",
+        text = {
+          "Gives {C:abn_modulate}+#1#{} Modulate per {C:attention}empty{} Joker Slot",
+		  "When a {C:attention}Big Blind{} is {C:attention}defeated{} gain {C:abn_modulate}+#2#{} Modulate",
+		}
+      },
+	  
+	  j_abn_walking_jokerpedia = {
+        name = "Walking Jokerpedia",
+        text = {
+          "Each Scoring card gives {C:chips}+#1#{} Chips {C:mult}+#2#{} Mult per {C:mult}missing{} {C:attention}rarity{} of Joker",
+		}
+      },
+	  
     },
 	Other = {
       -- Bio Blueprint tooltips
