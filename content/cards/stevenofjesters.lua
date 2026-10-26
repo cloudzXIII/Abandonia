@@ -11,9 +11,9 @@ SMODS.Joker {
   config = {
     extra = {
       asc = 0,
-      asc_gain = 0.04,
-      amperage = 1,
-      amperage_gain = 0.4
+      asc_gain = 0.08,
+      amperage = 2,
+      amperage_gain = 0.6
     }
   },
 
