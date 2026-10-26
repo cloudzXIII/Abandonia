@@ -10926,6 +10926,46 @@ return {
 		  },
 		}
 	  },
+	  
+	  j_abn_reverse_canvas = {
+        name = "Reverse Canvas",
+        text = {
+		  {
+			"After Scoring a {C:attention}Vanilla{} {C:diamonds}Light Suit{}",
+			"turn it into a random {C:attention}Modded{} {C:spades}Dark Suit{} and it gains {C:chips}+#1#{} Chips",
+		  },
+		  {
+			"If this Joker has {C:dark_edition}Reversal Edition{}",
+			"each time a {C:attention}Vanilla Suit{} becomes a {C:attention}Modded Suit{}",
+			"this Joker gains that cards value as {C:chips}Chips{}",
+		  },
+		  {
+			"If you own {C:attention}Photograph Canvas{}",
+			"when a Card changes {C:attention}suit{} that card also gains {C:money}+$#3#{}",
+			"{C:inactive}Currently:{} {C:chips}+#2#{} {C:inactive}Chips{}",
+		  },
+		}
+      },
+	  
+	  j_abn_photograph_canvas = {
+        name = "Photograph Canvas",
+        text = {
+		  {
+			"After Scoring a {C:attention}Vanilla{} {C:spades}Dark Suit{}",
+			"turn it into a random {C:attention}Modded{} {C:diamonds}Light Suit{} and it gains {C:mult}+#1#{} Mult",
+		  },
+		  {
+			"If this Joker has {C:dark_edition}Reversal Edition{}",
+			"each time a {C:attention}Vanilla Suit{} becomes a {C:attention}Modded Suit{}",
+			"this Joker gains that cards value as {C:mult}Mult{}",
+		  },
+		  {
+			"If you own {C:attention}Reverse Canvas{}",
+			"when a Card changes {C:attention}suit{} that card also gains {C:money}+$#3#{}",
+			"{C:inactive}Currently:{} {C:mult}+#2#{} {C:inactive}Mult{}",
+		  },
+		}
+      },
     },
 	Other = {
       -- Bio Blueprint tooltips
