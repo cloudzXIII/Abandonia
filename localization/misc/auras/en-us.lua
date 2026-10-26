@@ -22,9 +22,10 @@ return {
       abn_medieval_aura = {
         name = "Medieval Aura",
         text = {
-          "Played hands cannot contain face cards",
-          "+0.1 Modulate per scoring number card,",
-          "Increases by 0.1 when Ante is beaten"
+          "{C:red}Played hands cannot contain face cards",
+          "Each scoring {C:attention}number card{} provides",
+          "{C:abn_modulate}+#1#{} Modulate per {C:attention}number card{} held in hand,",
+          "Increases by {C:abn_modulate}#2#{} when {C:attention}Ante{} is beaten"
         }
       },
       abn_hellenic_aura = {

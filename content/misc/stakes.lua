@@ -192,12 +192,16 @@ SMODS.Stake({
 		if context.open_booster and SMODS.pseudorandom_probability("stake_abn_noxious", "stake_abn_noxious", 1, 8) then
 			G.E_MANAGER:add_event(Event({
 				func = function()
+					local to_destroy = {}
 					for i = 2, #G.pack_cards.cards do
+						table.insert(to_destroy, G.pack_cards.cards[i])
+					end
+					for i = 1, #to_destroy do
 						G.E_MANAGER:add_event(Event({
 							trigger = "after",
 							delay = 0.2,
 							func = function()
-								G.pack_cards.cards[i]:start_dissolve()
+								to_destroy[i]:start_dissolve()
 								return true
 							end
 						}))

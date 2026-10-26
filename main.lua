@@ -268,6 +268,37 @@ ABN.calculate = function(self, context)
     --#endregion
   end
 
+  --Number of vanilla jokers purchased throughout the run, for Jester of Jokers
+  if context.buying_card and context.card.config.center.set == "Joker" and not context.card.config.center.original_mod then
+	G.GAME.abn_vanilla_jokers_bought = (G.GAME.abn_vanilla_jokers_bought or 0) + 1
+  end
+
+  --Playing cards don't get the individual context by default,
+  --but the Medieval aura needs it.
+  --Jokers do get access to individual but it's
+  --easier to have the code for both work the same way
+  if context.before then
+    abn_medieval_auras = {auras = {}, numbers_held = 0}
+    for _, area in ipairs({G.jokers, G.play}) do
+      for _, card in ipairs(area.cards) do
+        if card.ability.abn_medieval_aura then
+          table.insert(abn_medieval_auras.auras, card)
+        end
+      end
+    end
+    for _, card in ipairs(G.hand.cards) do
+      if ABN.is_number(card) then
+        abn_medieval_auras.numbers_held = abn_medieval_auras.numbers_held + 1
+      end
+    end
+  elseif context.individual and context.cardarea == G.play and ABN.is_number(context.other_card) and abn_medieval_auras.numbers_held > 0 then
+    for _, source in ipairs(abn_medieval_auras.auras) do
+      SMODS.calculate_effect({modulate = source.ability.abn_medieval_aura_extra.mod * abn_medieval_auras.numbers_held, card = context.other_card}, source)
+    end
+  elseif context.after then
+    abn_medieval_auras = nil
+  end
+
   if context.individual and context.cardarea == G.play then
     if not G.GAME.abn_13_played_this_run and context.other_card:get_id() == SMODS.Ranks.abn_13.id then
       G.GAME.abn_13_played_this_run = true

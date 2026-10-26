@@ -10894,7 +10894,38 @@ return {
           "Each Scoring card gives {C:chips}+#1#{} Chips {C:mult}+#2#{} Mult per {C:mult}missing{} {C:attention}rarity{} of Joker",
 		}
       },
-	  
+
+	  j_abn_jesterofjokers = {
+		name = "Jester of Jokers",
+		text = {
+		  {
+			"{C:gold}+#1#{} Ascension Power per {C:inactive}Vanilla",
+			"joker purchased during this run",
+			"{C:inactive}(Currently {C:gold}+#2# {C:inactive}Ascension Power)"
+		  },
+		  {
+			"If you own {C:attention}Joker{}, this joker gives",
+			"{X:abn_amperage,C:white}X#3#{} Amperage plus {X:abn_amperage,C:white}X#4#{} Amperage per",
+			"unique scoring {C:attention}suit{} in played hand"
+		  },
+		}
+	  },
+
+	  j_abn_stevenofjesters = {
+		name = "Steven of Jesters",
+		text = {
+		  {
+			"Gains {C:gold}+#1#{} Ascension Power",
+			"per scoring {C:attention}even{} card",
+			"{C:inactive}(Currently {C:gold}+#2# {C:inactive}Ascension Power)"
+		  },
+		  {
+			"If you own {C:attention}Even Steven{}, this joker",
+			"gives {X:abn_amperage,C:white}X#3#{} Amperage plus {X:abn_amperage,C:white}X#4#{} Amperage",
+			"per scoring {C:attention}even{} card in played hand"
+		  },
+		}
+	  },
     },
 	Other = {
       -- Bio Blueprint tooltips

@@ -38,14 +38,14 @@ SMODS.Joker {
                 SMODS.scale_card(card, {
                     ref_table = card.ability.extra,
                     ref_value = "chips",
-                    scalar_table = "chips_gain",
+                    scalar_value = "chips_gain",
                     operation = '+',
                     message_colour = G.C.CHIPS
                 })
                 SMODS.scale_card(card, {
                     ref_table = card.ability.extra,
                     ref_value = "mult",
-                    scalar_table = "mult_gain",
+                    scalar_value = "mult_gain",
                     operation = '+',
                     message_colour = G.C.MULT
                 })

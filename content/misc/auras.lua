@@ -236,6 +236,35 @@ function end_round()
   end
 end
 
+local function draw_aura(self, card)
+    local notilt = nil
+    if card.area and card.area.config.type == "deck" then
+      notilt = true
+    end
+    if not G.shared_stickers[self.key..2] then
+      G.shared_stickers[self.key..2] =
+          Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["abn_AbandoniaAura"], { x = 999, y = 999 })
+    end
+
+    if G.shared_stickers[self.key] then
+      G.shared_stickers[self.key].role.draw_major = card
+      G.shared_stickers[self.key]:draw_shader("dissolve", nil, nil, notilt, card.children.center)
+    end
+
+    G.shared_stickers[self.key..2].role.draw_major = card
+
+    card.hover_tilt = card.hover_tilt / 2
+    G.shared_stickers[self.key..2]:draw_shader("dissolve", nil, nil, notilt, card.children.center)
+    G.shared_stickers[self.key..2]:draw_shader(
+      "holo",
+      nil,
+      card.ARGS.send_to_shader,
+      notilt,
+      card.children.center
+    )
+    card.hover_tilt = card.hover_tilt * 2
+end
+
 SMODS.Sticker {
   key = "globetrotter_aura",
   set = "aura",
@@ -268,34 +297,7 @@ SMODS.Sticker {
     }
   end,
 
-  draw = function(self, card)
-    local notilt = nil
-    if card.area and card.area.config.type == "deck" then
-      notilt = true
-    end
-    if not G.shared_stickers["abn_globetrotter_aura2"] then
-      G.shared_stickers["abn_globetrotter_aura2"] =
-          Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["abn_AbandoniaAura"], { x = 999, y = 999 })
-    end
-
-    if G.shared_stickers[self.key] then
-      G.shared_stickers[self.key].role.draw_major = card
-      G.shared_stickers[self.key]:draw_shader("dissolve", nil, nil, notilt, card.children.center)
-    end
-
-    G.shared_stickers["abn_globetrotter_aura2"].role.draw_major = card
-
-    card.hover_tilt = card.hover_tilt / 2
-    G.shared_stickers["abn_globetrotter_aura2"]:draw_shader("dissolve", nil, nil, notilt, card.children.center)
-    G.shared_stickers["abn_globetrotter_aura2"]:draw_shader(
-      "holo",
-      nil,
-      card.ARGS.send_to_shader,
-      notilt,
-      card.children.center
-    )
-    card.hover_tilt = card.hover_tilt * 2
-  end,
+  draw = draw_aura,
 
   calculate = function(self, card, context)
     if not card.ability.globetrotter_aura_extra then
@@ -444,28 +446,7 @@ SMODS.Sticker {
     return {vars = {cfg.chips_gain, cfg.mult_gain, cfg.asc_gain, cfg.amp_gain, cfg.chips, cfg.mult, cfg.asc, cfg.amp}}
   end,
 
-  draw = function(self, card)
-    local notilt = nil
-    if card.area and card.area.config.type == "deck" then
-      notilt = true
-    end
-    if not G.shared_stickers["abn_mitama_aura2"] then
-      G.shared_stickers["abn_mitama_aura2"] =
-          Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["abn_AbandoniaAura"], { x = 999, y = 999 })
-    end
-
-    if G.shared_stickers[self.key] then
-      G.shared_stickers[self.key].role.draw_major = card
-      G.shared_stickers[self.key]:draw_shader("dissolve", nil, nil, notilt, card.children.center)
-    end
-
-    G.shared_stickers["abn_mitama_aura2"].role.draw_major = card
-
-    card.hover_tilt = card.hover_tilt / 2
-    G.shared_stickers["abn_mitama_aura2"]:draw_shader("dissolve", nil, nil, notilt, card.children.center)
-    G.shared_stickers["abn_mitama_aura2"]:draw_shader("holo", nil, card.ARGS.send_to_shader, notilt, card.children.center)
-    card.hover_tilt = card.hover_tilt * 2
-  end,
+  draw = draw_aura,
 
   calculate = function(self, card, context)
     if context.remove_playing_cards then
@@ -480,8 +461,7 @@ SMODS.Sticker {
           ref_table[ref_value] = initial + change * num
         end,
       })
-    end
-    if context.joker_type_destroyed then
+    elseif context.joker_type_destroyed then
       local jt = nil
       for _, info in ipairs(valid_joker_types) do
         if info.check(context.card) then
@@ -500,6 +480,61 @@ SMODS.Sticker {
     elseif context.joker_main or (context.main_scoring and context.cardarea == G.play) then
       local cfg = card.ability.abn_mitama_aura_extra
       return {chips = cfg.chips, mult = cfg.mult, asc = cfg.asc, amp = cfg.amp}
+    end
+  end,
+
+  abn_artist_credits = {
+    artist = "0kronix",
+  },
+}
+
+SMODS.Sticker {
+  key = "medieval_aura",
+  set = "aura",
+  atlas = "AbandoniaAura",
+  pos = { x = 2, y = 0 },
+  badge_colour = G.C.GREEN,
+
+  config = {extra = {mod = 0.1, mod_gain = 0.1}},
+
+  apply = function(self, card, val)
+    card.ability[self.key] = val
+    if val then
+      if not card.ability.abn_medieval_aura_extra then
+        card.ability.abn_medieval_aura_extra = {}
+        local cfg = self.config.extra
+        for k, v in pairs(self.config.extra) do
+          card.ability.abn_medieval_aura_extra[k] = v
+        end
+      end
+    else
+      card.ability.abn_medieval_aura_extra = nil
+    end
+  end,
+
+  loc_vars = function(self, info_queue, card)
+    local cfg = card and card.ability and card.ability.abn_medieval_aura_extra or self.config.extra
+    return {vars = {cfg.mod, cfg.mod_gain}}
+  end,
+
+  draw = draw_aura,
+
+  calculate = function(self, card, context)
+    if context.debuff_hand then
+      if card.playing_card and card.area ~= G.play and (not card.highlighted or card.area ~= G.hand) then return end
+      for _, card in ipairs(context.scoring_hand) do
+        if card:is_face() then
+          return {debuff = true, debuff_text = "Hands with face cards do not score"}
+        end
+      end
+    elseif context.ante_change and context.ante_end then
+      SMODS.scale_card(card, {
+        ref_table = card.ability.abn_medieval_aura_extra,
+        ref_value = "mod",
+        scalar_value = "mod_gain",
+        message_colour = G.C.ABN_MODULATE,
+        no_message = card.area == G.deck or card.area == G.discard,
+      })
     end
   end,
 

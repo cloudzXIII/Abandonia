@@ -18,9 +18,11 @@ SMODS.Joker {
   },
 
   loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue+1] = G.P_CENTERS.j_even_steven
     return {
       vars = {
         card.ability.extra.asc_gain,
+        card.ability.extra.asc,
         card.ability.extra.amperage,
         card.ability.extra.amperage_gain
       }
@@ -28,48 +30,31 @@ SMODS.Joker {
   end,
 
   calculate = function(self, card, context)
-    if context.individual
-    and context.cardarea == G.play
-    and context.other_card
-    and context.other_card:get_id() ~= 0
-    and context.other_card:get_id() <= 10
-    and context.other_card:get_id() >= 2
-    and context.other_card:get_id() % 2 == 0 then
-      card.ability.extra.asc = card.ability.extra.asc + card.ability.extra.asc_gain
+    if context.individual and context.cardarea == G.play and ABN.is_even(context.other_card) and not context.blueprint then
+	  SMODS.scale_card(card, {
+		ref_table = card.ability.extra,
+		ref_value = "asc",
+		scalar_value = "asc_gain",
+		message_colour = G.C.YELLOW
+	  })
     end
 
     if context.joker_main then
-      local has_even_steven = false
+	  local ret = {asc = card.ability.extra.asc}
 
-      for _, joker in ipairs(G.jokers.cards) do
-        if joker.config.center.key == "j_even_steven" then
-          has_even_steven = true
-          break
-        end
-      end
-
-      if has_even_steven then
+      if next(SMODS.find_card("j_even_steven")) then
         local even_count = 0
 
-        for _, playing_card in ipairs(context.scoring_hand or {}) do
-          local id = playing_card:get_id()
-          if id >= 2 and id <= 10 and id % 2 == 0 then
+        for _, playing_card in ipairs(context.scoring_hand) do
+          if ABN.is_even(playing_card) then
             even_count = even_count + 1
           end
         end
 
-        return {
-          xamp = card.ability.extra.amperage
-              + card.ability.extra.amperage_gain * even_count,
-          colour = G.C.ABN_AMPERAGE
-        }
+        ret.xamp = card.ability.extra.amperage + card.ability.extra.amperage_gain * even_count
       end
-    end
 
-    if context.other_joker then
-      return {
-        asc = card.ability.extra.asc
-      }
+	  return ret
     end
   end,
 

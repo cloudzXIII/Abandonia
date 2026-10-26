@@ -10,7 +10,6 @@ SMODS.Joker {
 
   config = {
     extra = {
-      asc = 0,
       asc_gain = 0.25,
       amperage = 1,
       amperage_gain = 0.4
@@ -18,9 +17,11 @@ SMODS.Joker {
   },
 
   loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue+1] = G.P_CENTERS.j_joker
     return {
       vars = {
         card.ability.extra.asc_gain,
+        G.GAME and (G.GAME.abn_vanilla_jokers_bought or 0) * card.ability.extra.asc_gain or 0,
         card.ability.extra.amperage,
         card.ability.extra.amperage_gain
       }
@@ -28,54 +29,33 @@ SMODS.Joker {
   end,
 
   calculate = function(self, card, context)
-    if context.buying_card
-    and context.card
-    and context.card.config.center.set == "Joker"
-    and not context.card.config.center.mod then
-      card.ability.extra.asc = card.ability.extra.asc + card.ability.extra.asc_gain
+    if context.buying_card and context.card.config.center.set == "Joker" and not context.card.config.center.original_mod and not context.blueprint then
+	  -- See main.lua for how G.GAME.abn_vanilla_jokers_bought is actually scaled
+	  return {message = localize("k_upgrade_ex"), colour = G.C.YELLOW}
     end
 
     if context.joker_main then
-      local has_joker = false
+      local ret = {asc = (G.GAME.abn_vanilla_jokers_bought or 0) * card.ability.extra.asc_gain}
 
-      for _, joker in ipairs(G.jokers.cards) do
-        if joker.config.center.key == "j_joker" then
-          has_joker = true
-          break
-        end
-      end
-
-      if has_joker then
+      if next(SMODS.find_card("j_joker")) then
         local suits = {}
+		local suit_count = 0
 
-        for _, playing_card in ipairs(context.scoring_hand or {}) do
-          if playing_card:is_suit("Hearts", true) then suits.Hearts = true end
-          if playing_card:is_suit("Diamonds", true) then suits.Diamonds = true end
-          if playing_card:is_suit("Clubs", true) then suits.Clubs = true end
-          if playing_card:is_suit("Spades", true) then suits.Spades = true end
+        for _, playing_card in ipairs(context.scoring_hand) do
+          if not SMODS.has_no_suit(playing_card) then
+			if SMODS.has_any_suit(playing_card) then
+			  suit_count = suit_count + 1
+			elseif not suits[playing_card.base.suit] then
+			  suits[playing_card.base.suit] = true
+			  suit_count = suit_count + 1
+			end
+		  end
         end
 
-        local suit_count = 0
-
-        for _, _ in pairs(suits) do
-          suit_count = suit_count + 1
-        end
-
-        local amperage = card.ability.extra.amperage
-            + card.ability.extra.amperage_gain * suit_count
-
-        return {
-          xamp = amperage,
-          colour = G.C.ABN_AMPERAGE
-        }
+        ret.xamp = card.ability.extra.amperage + card.ability.extra.amperage_gain * suit_count
       end
-    end
 
-    if context.other_joker
-    and context.other_joker.config.center.key == "j_joker" then
-      return {
-        asc = card.ability.extra.asc
-      }
+      return ret
     end
   end,
 
