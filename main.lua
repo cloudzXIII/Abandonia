@@ -451,7 +451,8 @@ SMODS.Rarity {
 SMODS.Rarity {
   key = "ParallelRare",
   default_weight = 0,
-  badge_colour = HEX("b26cbb"),
+  badge_colour = HEX("ffffff"),
+  text_colour = HEX("b26cbb"),
   get_weight = function(self, weight, object_type)
     return weight
   end,
