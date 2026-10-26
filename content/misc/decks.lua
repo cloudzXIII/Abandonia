@@ -432,12 +432,17 @@ SMODS.Back {
     pos = { x = 4, y = 1 },
 
     calculate = function(self, card, context)
-        if context.final_scoring_step then
-            for _, played_card in ipairs(G.play.cards) do
-                if played_card.config.center ~= G.P_CENTERS.c_base then
-                    played_card.permadebuff = true
-                end
-            end
+        if context.after then
+			G.E_MANAGER:add_event(Event({
+				func = function()
+				    for _, played_card in ipairs(G.play.cards) do
+				        if played_card.config.center ~= G.P_CENTERS.c_base then
+				            played_card.ability.perma_debuff = true
+				        end
+				    end
+					return true
+				end
+			}))
         end
     end
 }
@@ -887,8 +892,6 @@ SMODS.Back {
             end
         }))
     end,
-    calculate = function(self, card, context)
-    end,
 }
 
 SMODS.Back {
@@ -901,7 +904,6 @@ SMODS.Back {
         vouchers = { "v_abn_satellite", "v_abn_chaos" }
     },
 
-
     loc_vars = function(self, info_queue, back)
         return {
             vars = {
@@ -911,11 +913,7 @@ SMODS.Back {
         }
     end,
 
-    calculate = function(self, card, context)
-        if G.GAME.round_resets.blind_choices.Small then
-            G.GAME.round_resets.blind_choices.Small = 'bl_big'
-        end
-    end,
+    --See SMODS.reset_blind_choices in hooks.lua for how the small blind is turned into a big blind
 }
 
 SMODS.Back {

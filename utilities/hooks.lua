@@ -317,12 +317,18 @@ function SMODS.reset_blind_choices(choices)
   local final_showdown = next(SMODS.find_card("j_abn_final_showdown"))
   for _, k in ipairs(G.GAME.round_resets.blind_order) do
     local rep_k = k
+	if k == "Small" and G.GAME.selected_back.effect.center.key == "b_abn_untamed" then
+	  rep_k = "Big"
+	end
     if (k == "Small" and G.GAME.used_vouchers.v_abn_carbon_dating) or (k == "Big" and G.GAME.used_vouchers.v_abn_carnival_coupon) then
       rep_k = "Boss"
     end
     if rep_k == "Small" or rep_k == "Big" then
-      G.GAME.abn_newestia_original_blinds[k] = choices[k]
-      G.GAME.abn_newestia_current_blinds[k] = "bl_abn_new_" .. k:lower()
+	  if k ~= rep_k then
+		choices[k] = "bl_"..rep_k:lower()
+	  end
+      G.GAME.abn_newestia_original_blinds[k] = choices[rep_k]
+      G.GAME.abn_newestia_current_blinds[k] = "bl_abn_new_" .. rep_k:lower()
     elseif rep_k == "Boss" then
       if k == "Boss" and final_showdown then
         choices[k] = ABN.new_vanilla_boss(true)

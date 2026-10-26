@@ -68,7 +68,7 @@ SMODS.Consumable {
     end
 
     --kill self
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end
@@ -156,7 +156,7 @@ SMODS.Consumable {
     end
 
     -- kill self
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end
@@ -304,7 +304,7 @@ SMODS.Consumable {
     end
 
     -- Kill self
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end
@@ -406,7 +406,7 @@ SMODS.Consumable {
     end
 
     -- Kill self
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end
@@ -505,7 +505,7 @@ SMODS.Consumable {
     end
 
     -- Kill self
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end
@@ -607,7 +607,7 @@ SMODS.Consumable {
     end
 
     -- Cleanup
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end
@@ -707,7 +707,7 @@ SMODS.Consumable {
     end
 
     -- Kill self
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end
@@ -872,7 +872,7 @@ SMODS.Consumable {
       return { level_up = true }
     end
 
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end
@@ -954,7 +954,7 @@ SMODS.Consumable {
     end
 
     -- Cleanup
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end
@@ -1076,7 +1076,7 @@ SMODS.Consumable {
     end
 
     -- Kill self
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end
@@ -1217,7 +1217,7 @@ SMODS.Consumable {
     end
 
     -- Kill self
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end
@@ -1317,7 +1317,7 @@ SMODS.Consumable {
     end
 
     -- Cleanup
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end
@@ -1411,7 +1411,7 @@ SMODS.Consumable {
       return { level_up = true }
     end
 
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end
@@ -1507,7 +1507,7 @@ SMODS.Consumable {
       return { level_up = true }
     end
 
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end
@@ -1626,7 +1626,7 @@ SMODS.Consumable {
       return { level_up = true }
     end
 
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end
@@ -1756,7 +1756,7 @@ SMODS.Consumable {
       return { level_up = true }
     end
 
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end
@@ -1919,7 +1919,7 @@ SMODS.Consumable {
       return { level_up = true }
     end
 
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end
@@ -2013,7 +2013,7 @@ SMODS.Consumable {
       return { level_up = true }
     end
 
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end
@@ -2134,7 +2134,7 @@ SMODS.Consumable {
       return { level_up = true }
     end
 
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end
@@ -2265,7 +2265,7 @@ SMODS.Consumable {
       return { level_up = true }
     end
 
-    if context.final_scoring_step and card.area == G.vouchers and card.ability.extra.used == 1 then
+    if (context.debuffed_hand or context.debuffed_hand) and card.area == G.vouchers and card.ability.extra.used == 1 then
       G.GAME.abn.used_sigils[card.config.center.key] = nil
       card:start_dissolve()
     end

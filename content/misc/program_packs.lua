@@ -959,7 +959,7 @@ SMODS.Consumable {
   use = function(self, card, area, copier)
     for _, v in ipairs(G.playing_cards) do
       if v:is_suit("Diamonds") or v:is_suit("Hearts") or v:is_suit("abn_suitless") then
-        v.permadebuff = true
+        v.ability.perma_debuff = true
       elseif v:is_suit("Spades") or v:is_suit("Clubs") or v:is_suit("abn_Snow") or v:is_suit("abn_Tie") or v:is_suit("abn_Bow") or v:is_suit("abn_Penumbra") then
         v.ability.perma_bonus = (v.ability.perma_bonus or 0) + card.ability.extra.chips
         v.ability.perma_mult = (v.ability.perma_mult or 0) + card.ability.extra.mult
@@ -992,7 +992,7 @@ SMODS.Consumable {
   use = function(self, card, area, copier)
     for _, v in ipairs(G.playing_cards) do
       if v:is_suit("Spades") or v:is_suit("Clubs") or v:is_suit("abn_Snow") or v:is_suit("abn_Tie") or v:is_suit("abn_Bow") or v:is_suit("abn_Penumbra") then
-        v.permadebuff = true
+        v.ability.perma_debuff = true
       elseif v:is_suit("Diamonds") or v:is_suit("Hearts") or v:is_suit("abn_suitless") then
         v.ability.perma_bonus = (v.ability.perma_bonus or 0) + card.ability.extra.chips
         v.ability.perma_mult = (v.ability.perma_mult or 0) + card.ability.extra.mult

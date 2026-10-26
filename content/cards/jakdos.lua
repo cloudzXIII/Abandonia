@@ -28,22 +28,18 @@ SMODS.Joker {
   end,
 
   calculate = function(self, card, context)
-    if context.press_play then
+    if context.after and not context.blueprint then
       G.E_MANAGER:add_event(Event({
         func = function()
-          for i = 1, #G.play.cards do
-            local target_card = G.play.cards[i]
+          for _, target_card in ipairs(G.play.cards) do
             -- Check if card is NOT Chthonian
-            if not target_card.permadebuff then
-              if not (target_card.edition and target_card.edition.key == 'e_abn_chthonian') then
-                target_card.permadebuff = true
-              end
+            if not (target_card.edition and target_card.edition.key == 'e_abn_chthonian') then
+              target_card.ability.perma_debuff = true
             end
           end
           return true
         end
       }))
-      return true
     end
 
     if context.joker_main then

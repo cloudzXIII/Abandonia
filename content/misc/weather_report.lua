@@ -447,14 +447,29 @@ ABN.WeatherReport {
   end,
   add_to_deck = function(self, card, from_debuff)
     if G.GAME.blind.in_blind then
+      ease_hands_played(card.ability.extra.hands)
+	  for _, c in ipairs(G.playing_cards) do
+		SMODS.recalc_debuff(c)
+	  end
+    end
+  end,
+  remove_from_deck = function(self, card, from_debuff)
+    if G.GAME.blind.in_blind then
+      ease_hands_played(-card.ability.extra.hands)
+	  for _, c in ipairs(G.playing_cards) do
+		SMODS.recalc_debuff(c)
+	  end
       G.E_MANAGER:add_event(Event({
         func = function()
-          ease_hands_played(card.ability.extra.hands)
+          if G.GAME.current_round.hands_left == 0 then
+            G.STATE = G.STATES.GAME_OVER
+            G.STATE_COMPLETE = false
+          end
           return true
         end
       }))
     end
-  end
+  end,
 }
 
 ABN.WeatherReport {
@@ -816,13 +831,28 @@ ABN.WeatherReport {
     self:destroy_at_end_of_round(card, context)
   end,
   add_to_deck = function(self, card, from_debuff)
-    if G.GAME.blind and G.GAME.blind.in_blind then
+    if G.GAME.blind.in_blind then
+      ease_hands_played(card.ability.extra.hands)
+	  for _, c in ipairs(G.playing_cards) do
+		SMODS.recalc_debuff(c)
+	  end
+    end
+  end,
+  remove_from_deck = function(self, card, from_debuff)
+    if G.GAME.blind.in_blind then
+      ease_hands_played(-card.ability.extra.hands)
+	  for _, c in ipairs(G.playing_cards) do
+		SMODS.recalc_debuff(c)
+	  end
       G.E_MANAGER:add_event(Event({
         func = function()
-          ease_hands_played(card.ability.extra.hands)
+          if G.GAME.current_round.hands_left == 0 then
+            G.STATE = G.STATES.GAME_OVER
+            G.STATE_COMPLETE = false
+          end
           return true
         end
       }))
     end
-  end
+  end,
 }

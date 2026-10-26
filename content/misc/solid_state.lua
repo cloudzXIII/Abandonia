@@ -747,7 +747,7 @@ ABN.SolidState {
   pos = { x = 4, y = 1 },
 
   can_use = function(self, card)
-    return G.jokers and G.jokers.highlighted and #G.jokers.highlighted == 1
+    return G.jokers and G.jokers.highlighted and #G.jokers.highlighted == 1 and not SMODS.is_eternal(G.jokers.highlighted[1])
   end,
 
   use = function(self, card, area, copier)
