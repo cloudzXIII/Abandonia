@@ -12,7 +12,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { echips = 2, emult = 2 } },
+  config = { extra = { echips = 2, emult = 2, bad_echips = -2, bad_emult = -2 } },
   pools = { ["Plagued"] = true, },
 
   loc_vars = function(self, info_queue, card)
@@ -20,7 +20,9 @@ SMODS.Joker {
     return {
       vars = {
         card.ability.extra.echips,
-        card.ability.extra.emult
+        card.ability.extra.emult,
+        card.ability.extra.bad_echips,
+        card.ability.extra.bad_emult,
       }
     }
   end,
@@ -33,6 +35,21 @@ SMODS.Joker {
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
       if context.other_card and ABN.is_light(context.other_card) then
+        local mayhem_chance = 0
+        if (G.GAME.abn_max_mayhem or 0) > 0 then
+          mayhem_chance = math.min((G.GAME.abn_mayhem or 0) / G.GAME.abn_max_mayhem, 1)
+        end
+
+        if pseudorandom('badformat_mayhem') < mayhem_chance then
+          if pseudorandom('badformat_mayhem_bad') < mayhem_chance then
+            return {
+              emult = card.ability.extra.bad_emult,
+              echips = card.ability.extra.bad_echips,
+            }
+          end
+          return
+        end
+
         return {
           emult = card.ability.extra.emult,
           echips = card.ability.extra.echips,

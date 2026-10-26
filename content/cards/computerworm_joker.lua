@@ -11,7 +11,7 @@ SMODS.Joker {
   cost = 4,
   discovered = false,
   blueprint_compat = true,
-  config = { extra = { emult = 1, echips = 1, emultadd = 1, echipsadd = 1 } },
+  config = { extra = { emult = 1, echips = 1, emultadd = 1, echipsadd = 1, bad_emult = -1, bad_echips = -1 } },
   pools = { ["Plagued"] = true },
 
   loc_vars = function(self, info_queue, card)
@@ -21,6 +21,8 @@ SMODS.Joker {
         card.ability.extra.echips,
         card.ability.extra.emultadd,
         card.ability.extra.echipsadd,
+        card.ability.extra.bad_emult,
+        card.ability.extra.bad_echips,
       }
     }
   end,
@@ -35,10 +37,8 @@ SMODS.Joker {
   end,
 
   update = function(self, card)
-    -- Only run during a game run and after G.jokers is initialized
     if G.STAGE ~= G.STAGES.RUN or not G.jokers or not G.jokers.cards then return end
 
-    -- Count worms
     local count = 0
     for i = 1, #G.jokers.cards do
       local j = G.jokers.cards[i]
@@ -69,7 +69,6 @@ SMODS.Joker {
 
   calculate = function(self, card, context)
     if context.setting_blind and not context.blueprint then
-      -- identify the leftmost Joker
       local leftmost_joker = G.jokers.cards[1]
 
       if leftmost_joker and not leftmost_joker.getting_sliced and not SMODS.is_eternal(leftmost_joker) then
@@ -85,7 +84,6 @@ SMODS.Joker {
           end
         }))
 
-        -- create joker
         local j = SMODS.copy_card(card)
 		if j then
         	j:set_edition({ negative = true }, true)
@@ -95,6 +93,24 @@ SMODS.Joker {
     end
 
     if context.joker_main then
+      local mayhem_chance = 0
+      if (G.GAME.abn_max_mayhem or 0) > 0 then
+        mayhem_chance = math.min((G.GAME.abn_mayhem or 0) / G.GAME.abn_max_mayhem, 1)
+      end
+
+      if pseudorandom('computerworm_mayhem') < mayhem_chance then
+        if pseudorandom('computerworm_mayhem_bad') < mayhem_chance then
+          return {
+            emult = card.ability.extra.bad_emult,
+            echips = card.ability.extra.bad_echips,
+          }
+        end
+        return {
+          message = localize('k_nope_ex'),
+          colour = G.C.RED,
+        }
+      end
+
       return {
         emult = card.ability.extra.emult,
         echips = card.ability.extra.echips,

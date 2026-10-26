@@ -12,7 +12,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { echips = 1.3, selected = 2 } },
+  config = { extra = { echips = 1.3, selected = 2, bad_echips = -1.4 } },
   pools = { ["Plagued"] = true, },
 
   loc_vars = function(self, info_queue, card)
@@ -20,6 +20,7 @@ SMODS.Joker {
       vars = {
         card.ability.extra.echips,
         card.ability.extra.selected,
+        card.ability.extra.bad_echips,
       }
     }
   end,
@@ -30,12 +31,11 @@ SMODS.Joker {
   end,
 
   calculate = function(self, card, context)
-    -- Force select 2 random cards when cards are drawn
+
     if not context.blueprint and context.hand_drawn then
       local current_forced = 0
       local available_cards = {}
 
-      -- Count how many are already forced and gather cards that aren't forced yet
       for _, c in ipairs(G.hand.cards) do
         if c.ability.asylum_selected then
           current_forced = current_forced + 1
@@ -44,12 +44,11 @@ SMODS.Joker {
         end
       end
 
-      -- If we need more forced selections and have cards available
       local target_needed = card.ability.extra.selected - current_forced
-      if target_needed > 0 and #available_cards > 0 then
-        G.hand:unhighlight_all() -- Clean slate for the visual highlight
 
-        -- Pull random cards up to the needed amount
+      if target_needed > 0 and #available_cards > 0 then
+        G.hand:unhighlight_all()
+
         for i = 1, math.min(target_needed, #available_cards) do
           local forced_card, key = pseudorandom_element(available_cards, pseudoseed('asylum_choice'))
 
@@ -57,15 +56,33 @@ SMODS.Joker {
           forced_card.ability.asylum_selected = true
           G.hand:add_to_highlighted(forced_card)
 
-          -- Remove from available list so we don't pick the same card twice
           table.remove(available_cards, key)
         end
       end
     end
 
-    -- give chips
     if context.individual and context.cardarea == G.play then
+
       if context.other_card.ability.asylum_selected then
+        local mayhem_chance = 0
+        if (G.GAME.abn_max_mayhem or 0) > 0 then
+          mayhem_chance = math.min((G.GAME.abn_mayhem or 0) / G.GAME.abn_max_mayhem, 1)
+        end
+
+        local first_roll = pseudorandom('asylum_mayhem')
+
+        if first_roll < mayhem_chance then
+          local second_roll = pseudorandom('asylum_mayhem_bad')
+
+          if second_roll < mayhem_chance then
+            return {
+              echips = card.ability.extra.bad_echips,
+              card = card,
+            }
+          end
+          return
+        end
+
         return {
           echips = card.ability.extra.echips,
           card = card,
@@ -73,13 +90,15 @@ SMODS.Joker {
       end
     end
 
-    -- remove flags
-    if context.after and context.cardarea == G.play then
-      if context.other_card.ability.asylum_selected then
-        context.other_card.ability.forced_selection = nil
-        context.other_card.ability.asylum_selected = nil
-      end
+    if context.after then
     end
+
+    if context.after and not context.blueprint then
+		for _, playing_card in ipairs(G.playing_cards) do
+			playing_card.ability.forced_selection = nil
+			playing_card.ability.asylum_selected = nil
+		end
+	end
   end,
 
   abn_artist_credits = {

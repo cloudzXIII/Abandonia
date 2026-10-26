@@ -12,14 +12,16 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { echips = 1.6, emult = 1.8 } },
+  config = { extra = { echips = 1.6, emult = 1.8, bad_echips = -1, bad_emult = -1 } },
   pools = { ["Plagued"] = true, },
 
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
         card.ability.extra.echips,
-        card.ability.extra.emult
+        card.ability.extra.emult,
+        card.ability.extra.bad_echips,
+        card.ability.extra.bad_emult,
       }
     }
   end,
@@ -31,6 +33,24 @@ SMODS.Joker {
 
   calculate = function(self, card, context)
     if context.joker_main and #context.full_hand == 4 then
+      local mayhem_chance = 0
+      if (G.GAME.abn_max_mayhem or 0) > 0 then
+        mayhem_chance = math.min((G.GAME.abn_mayhem or 0) / G.GAME.abn_max_mayhem, 1)
+      end
+
+      if pseudorandom('fit_to_shape_mayhem') < mayhem_chance then
+        if pseudorandom('fit_to_shape_mayhem_bad') < mayhem_chance then
+          return {
+            emult = card.ability.extra.bad_emult,
+            echips = card.ability.extra.bad_echips,
+          }
+        end
+        return {
+          message = localize('k_nope_ex'),
+          colour = G.C.RED,
+        }
+      end
+
       return {
         emult = card.ability.extra.emult,
         echips = card.ability.extra.echips,

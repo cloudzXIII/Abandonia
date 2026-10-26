@@ -1,12 +1,16 @@
 SMODS.Joker {
     key = 'enigma_comedian',
     
+	set_badges = function(self, card, badges)
+		badges[#badges + 1] = create_badge(localize("k_abn_plagued"), G.C.ABN_PLAGUED, G.C.WHITE, 1.0)
+	end,
+	
     rarity = "abn_SuperRare",
     atlas = 'ABNJokerSheet10',
     pos = { x = 7, y = 0 },
     soul_pos = { x = 8, y = 0 },
     cost = 20,
-    pools = { ["Comedians"] = true, },
+    pools = { ["Comedians"] = true, ["Plagued"] = true, },
     discovered = false,
     blueprint_compat = true,
     abn_coder = "LasagnaFelidae",
@@ -30,6 +34,11 @@ SMODS.Joker {
             }
         }
     end,
+	
+	-- only available on jimbo stakes
+	in_pool = function(self)
+		return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+	end,
     
     calculate = function(self, card, context)
         if context.setting_blind and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then

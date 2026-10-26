@@ -12,7 +12,7 @@ SMODS.Joker {
   discovered = false,
   blueprint_compat = true,
 
-  config = { extra = { xmult = 2, dollars = 1 } },
+  config = { extra = { xmult = 2, dollars = 1, bad_xmult = -1 } },
   pools = { ["Plagued"] = true, },
 
   loc_vars = function(self, info_queue, card)
@@ -20,6 +20,7 @@ SMODS.Joker {
       vars = {
         card.ability.extra.xmult,
         card.ability.extra.dollars,
+        card.ability.extra.bad_xmult,
       }
     }
   end,
@@ -32,6 +33,28 @@ SMODS.Joker {
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
       if context.other_card then
+        local mayhem_chance = 0
+        if (G.GAME.abn_max_mayhem or 0) > 0 then
+          mayhem_chance = math.min((G.GAME.abn_mayhem or 0) / G.GAME.abn_max_mayhem, 1)
+        end
+
+        if pseudorandom('blood_money_mayhem') < mayhem_chance then
+          if pseudorandom('blood_money_mayhem_bad') < mayhem_chance then
+            context.other_card.ability.perma_x_mult = (context.other_card.ability.perma_x_mult or 0) +
+                card.ability.extra.bad_xmult
+            return {
+              message = localize('k_nope_ex'),
+              colour = G.C.RED,
+              dollars = -card.ability.extra.dollars,
+            }
+          end
+          return {
+            message = localize('k_nope_ex'),
+            colour = G.C.RED,
+            dollars = -card.ability.extra.dollars,
+          }
+        end
+
         if context.other_card.ability.perma_x_mult < 1 then
           context.other_card.ability.perma_x_mult = (context.other_card.ability.perma_x_mult or 0) +
               card.ability.extra.xmult - 1
