@@ -189,6 +189,9 @@ ABN.WeatherReport {
   key = "storm",
   pos = { x = 5, y = 0 },
   config = { max_highlighted = 2 },
+  loc_vars = function(self, info_queue, card)
+    return {vars = {card.ability.max_highlighted}}
+  end,
   can_use = function(self, card)
     return G.GAME.blind and G.GAME.blind.in_blind and G.hand and #G.hand.highlighted > 0 and
         #G.hand.highlighted <= card.ability.max_highlighted

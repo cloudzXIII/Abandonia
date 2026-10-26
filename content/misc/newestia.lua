@@ -131,7 +131,7 @@ function ABN.new_newestia_boss(category)
 	if not category then
 		if ABN.is_hazard_ante() then
 			category = "abn_hazard"
-		elseif G.GAME.round_resets.ante % G.GAME.win_ante == 0 then
+		elseif math.floor(G.GAME.round_resets.ante) > 1 and math.floor(G.GAME.round_resets.ante) % G.GAME.win_ante == 0 then
 			category = "showdown"
 		else
 			category = "boss"

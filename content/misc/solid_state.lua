@@ -714,6 +714,31 @@ ABN.SolidState {
   },
 }
 
+local function filter_database_jokers()
+	if G.GAME and G.GAME.dark_web_active then
+		for _, row in ipairs(G.your_collection) do
+			for _, card in ipairs(row.cards) do
+				local center = card.config and card.config.center or {}
+				if center.set == "Joker" and (center.rarity ~= G.GAME.dark_web_active.allowed_rarity or (center.in_pool and not center:in_pool())) then
+					card.debuff = true
+				end
+			end
+		end
+	end
+end
+
+local old_sccuib = SMODS.card_collection_UIBox
+function SMODS.card_collection_UIBox(_pool, rows, args)
+	local t = old_sccuib(_pool, rows, args)
+	filter_database_jokers()
+	local old_gfsccp = G.FUNCS.SMODS_card_collection_page
+	function G.FUNCS.SMODS_card_collection_page(e)
+		old_gfsccp(e)
+		filter_database_jokers()
+	end
+	return t
+end
+
 local original_game_update = Game.update
 function Game:update(dt)
   original_game_update(self, dt)
@@ -723,16 +748,10 @@ function Game:update(dt)
   if G.GAME.dark_web_active and target and target.config and love.mouse.isDown(1) then
     -- Verify the player clicked a valid, discovered Joker card
     if target.config.center and target.config.center.set == 'Joker' and target.config.center.discovered then
-      local rarity = target.config.center.rarity
-      local card_key = target.config.center.key
-      local allowed_rarity = G.GAME.dark_web_active.allowed_rarity
-
       -- Enforce that the clicked card exactly matches the rarity tier of the destroyed Joker
-      if rarity == allowed_rarity then
+      if not target.debuff then
         -- Spawn the chosen Joker directly into your joker slots
-        local card = create_card('Joker', G.jokers, nil, nil, nil, nil, card_key)
-        card:add_to_deck()
-        G.jokers:emplace(card)
+		SMODS.add_card({key = target.config.center.key})
 
         -- Clear tracker data and close out the collection panel safely
         G.GAME.dark_web_active = nil

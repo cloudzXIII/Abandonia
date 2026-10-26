@@ -22,7 +22,7 @@ local hazard_ante_map = {
 
 -- See utilities/hooks.lua "Conditional boss replacements", and content/misc/newestia.lua "ABN.new_newestia_boss()" for how hazard bosses are spawned
 function ABN.is_hazard_ante()
-	return G.GAME and hazard_ante_map[G.GAME.round_resets.ante] and G.GAME.modifiers[hazard_ante_map[G.GAME.round_resets.ante]]
+	return G.GAME and hazard_ante_map[math.floor(G.GAME.round_resets.ante)] and G.GAME.modifiers[hazard_ante_map[math.floor(G.GAME.round_resets.ante)]]
 end
 
 function ABN.new_hazard_boss()

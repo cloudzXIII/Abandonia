@@ -39,7 +39,7 @@ return {
       c_abn_storm = {
         name = "Storm",
         text = {
-          "Give {C:attention}2{} selected cards",
+          "Give {C:attention}#1#{} selected cards",
           "random {C:dark_edition}Editions{}, {C:attention}Seals{},",
           "and {C:attention}Enhancements{}",
           "{C:inactive}(Destroyed at end of round)",

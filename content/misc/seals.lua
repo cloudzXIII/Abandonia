@@ -92,7 +92,7 @@ SMODS.Seal {
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
-        self.config.extra.dollars
+        card.ability.seal.extra.dollars
       }
     }
   end,
@@ -105,7 +105,7 @@ SMODS.Seal {
 
   calculate = function(self, card, context)
     if context.discard and context.other_card == card then
-      return { dollars = self.config.extra.dollars, colour = G.C.MONEY }
+      return { dollars = card.ability.seal.extra.dollars, colour = G.C.MONEY }
     end
   end,
   abn_artist_credits = {
@@ -241,7 +241,7 @@ SMODS.Seal {
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
-        self.config.extra.xmult
+        card.ability.seal.extra.xmult
       }
     }
   end,
@@ -254,7 +254,7 @@ SMODS.Seal {
 
   calculate = function(self, card, context)
     if context.main_scoring and context.cardarea == G.play then
-      return { x_mult = self.config.extra.xmult, colour = G.C.XMULT }
+      return { x_mult = card.ability.seal.extra.xmult, colour = G.C.XMULT }
     end
   end,
   abn_artist_credits = {
@@ -271,7 +271,7 @@ SMODS.Seal {
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
-        self.config.extra.xchips
+        card.ability.seal.extra.xchips
       }
     }
   end,
@@ -284,7 +284,7 @@ SMODS.Seal {
 
   calculate = function(self, card, context)
     if context.main_scoring and context.cardarea == G.play then
-      return { x_chips = self.config.extra.xchips, colour = G.C.CHIPS }
+      return { x_chips = card.ability.seal.extra.xchips, colour = G.C.CHIPS }
     end
   end,
   abn_artist_credits = {
@@ -396,8 +396,8 @@ SMODS.Seal {
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
-        self.config.extra.chips,
-        self.config.extra.chips_gain
+        card.ability.seal.extra.chips,
+        card.ability.seal.extra.chips_gain
       }
     }
   end,
@@ -412,14 +412,14 @@ SMODS.Seal {
   calculate = function(self, card, context)
     if context.discard and context.other_card == card then
       SMODS.scale_card(card, {
-        ref_table = self.config.extra,
+        ref_table = card.ability.seal.extra,
         ref_value = "chips",
         scalar_value = "chips_gain",
         message_colour = G.C.CHIPS,
       })
     end
     if context.main_scoring and context.cardarea == G.play then
-      return { chips = self.config.extra.chips }
+      return { chips = card.ability.seal.extra.chips }
     end
   end,
   abn_artist_credits = {
@@ -661,8 +661,8 @@ SMODS.Seal {
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
-        self.config.extra.mult,
-        self.config.extra.mult_gain
+        card.ability.seal.extra.mult,
+        card.ability.seal.extra.mult_gain
       }
     }
   end,
@@ -677,14 +677,14 @@ SMODS.Seal {
   calculate = function(self, card, context)
     if context.discard and context.other_card == card then
       SMODS.scale_card(card, {
-        ref_table = self.config.extra,
+        ref_table = card.ability.seal.extra,
         ref_value = "mult",
         scalar_value = "mult_gain",
         message_colour = G.C.MULT,
       })
     end
     if context.main_scoring and context.cardarea == G.play then
-      return { mult = self.config.extra.mult }
+      return { mult = card.ability.seal.extra.mult }
     end
   end,
   abn_artist_credits = {
@@ -700,8 +700,8 @@ SMODS.Seal {
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
-        self.config.extra.chips,
-        self.config.extra.mult
+        card.ability.seal.extra.chips,
+        card.ability.seal.extra.mult
       }
     }
   end,
@@ -722,8 +722,8 @@ SMODS.Seal {
         end
       end
       if count > 0 then
-        card.ability.perma_bonus = (card.ability.perma_bonus or 0) + (self.config.extra.chips * count)
-        card.ability.perma_mult = (card.ability.perma_mult or 0) + (self.config.extra.mult * count)
+        card.ability.perma_bonus = (card.ability.perma_bonus or 0) + (card.ability.seal.extra.chips * count)
+        card.ability.perma_mult = (card.ability.perma_mult or 0) + (card.ability.seal.extra.mult * count)
         SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = HEX("a56be6") }, card)
       end
     end
@@ -781,7 +781,7 @@ if next(SMODS.find_mod("Spectrallib")) then
     loc_vars = function(self, info_queue, card)
       return {
         vars = {
-          self.config.extra.asc_power
+          card.ability.seal.extra.asc_power
         }
       }
     end,
@@ -795,7 +795,7 @@ if next(SMODS.find_mod("Spectrallib")) then
     calculate = function(self, card, context)
       if context.main_scoring and context.cardarea == G.play then
         return {
-          plus_asc = self.config.extra.asc_power
+          plus_asc = card.ability.seal.extra.asc_power
         }
       end
     end,

@@ -103,6 +103,8 @@ return {
           "Destroys {C:attention}1{} selected {C:attention}Joker{},",
           "Choose a new Joker of",
           "the same {C:attention}rarity{}",
+		  "{C:inactive}(Must be one capable of",
+		  "{C:inactive}appearing in current run)"
         }
       },
       c_abn_zoom = {
