@@ -10966,6 +10966,84 @@ return {
 		  },
 		}
       },
+	  
+	  j_abn_stargate_joker = {
+        name = "Stargate Joker",
+        text = {
+          "{C:attention}Straights{} can use as many cards as possible",
+		  "For every card above {C:attention}5{} used to form a {C:attention}Straight{}",
+		  "gain {C:gold}+#1#{} Asc. Power and {C:abn_amperage}+#2#{} Amperage",
+		  "{C:inactive}Currently:{} {C:gold}+#3#{} {C:inactive}Asc. Power{} {C:abn_amperage}+#4#{} {C:inactive}Amperage{}",
+		}
+      },
+	  
+	  j_abn_dreamcore_invader = {
+        name = "Dreamcore Invader",
+        text = {
+          "{C:attention}Reduce{} all {C:green}Mayhem{} to {C:attention}0{} it cannot raise",
+		  "Gives {C:gold}Asc. Power{} {C:attention}equal{} to the {C:chips}Chip{} value of {C:attention}played hand{}",
+		}
+      },
+	  
+	  j_abn_mia_joker = {
+        name = "MIA Joker",
+        text = {
+          "Each scoring card gives {C:chips}+#1#{} Chips for each {C:mult}missing{} {C:attention}vanilla{} rank and",
+		  "{C:mult}+#2#{} Mult for each {C:mult}missing{} {C:attention}vanilla{} suit",
+		  "{C:inactive}Currently:{} {C:chips}+#3#{} {C:inactive}Chips{} {C:mult}+#4#{} {C:inactive}Mult{}"
+		}
+      },
+	  
+	  j_abn_hmg_joker = {
+        name = "HMG Joker",
+        text = {
+          "{C:attention}Use{} this Joker to {C:attention}add{}",
+		  "the combined {C:chips}Chips{} and {C:mult}Mult{} of every {C:attention}level{} of the {C:attention}next hand{}",
+		  "This Joker gains {C:attention}+#2#{} use when defeating a {C:attention}Boss Blind{}",
+		  "{C:inactive}Currently:{} {C:attention}#1#{} {C:inactive}uses left{}",
+		}
+      },
+	  
+	  j_abn_visual_illustration_joker = {
+        name = "Visual Illustration Joker",
+        text = {
+          "{C:attention}Use{} this Joker to {C:mult}destroy{} a {C:attention}Modded{} Joker",
+		  "and create {C:attention}#3#{} Vanilla Jokers of a lower {C:attention}rarity{} with {C:dark_edition}Gloss{}",
+		  "Gains {C:attention}+#2#{} use when defeating a {C:attention}Boss Blind{}",
+		  "{C:inactive}Currently:{} {C:attention}#1#{} {C:inactive}uses left",
+		}
+      },
+	  
+	  j_abn_sticker_mania = {
+        name = "Sticker Mania",
+        text = {
+          "When this is {C:attention}used{}",
+		  "next time a {C:attention}Vanilla{} hand {C:inactive}(not High Card){} scores",
+		  "Give {C:chips}+#1#{} Chips per {C:attention}sticker{} on Jokers",
+		  "{C:inactive}Currently:{} {C:attention}#2#{} {C:inactive}uses{} {C:chips}+#3#{} {C:inactive}Chips{}",
+		}
+      },
+	  
+	  j_abn_scrolling_joker = {
+        name = "Scrolling Joker",
+        text = {
+          "Pay {C:money}$#1#{} and next played hand",
+		  "Each card with a {C:attention}unique{} {C:dark_edition}enhancement{}",
+		  "gives {X:abn_modulate,C:white}X1.5{} Modulate per {C:attention}unique{} {C:dark_edition}enhancement",
+		}
+      },
+	  
+	  j_abn_bauhaus_joker = {
+        name = "Bauhaus Joker",
+        text = {
+          "When this Joker is {C:attention}Used",
+		  "Gain {C:abn_amperage}+#1#{} Amperage per {C:attention}vanilla{} card {C:attention}drawn{} this round",
+		  "Gain {C:abn_modulate}+#2#{} Modulate per {C:attention}modded{} card {C:attention}drawn{} this round",
+		  "Gain {C:attention}+#4#{} uses when defeating a {C:attention}Boss Blind{}",
+		  "{C:inactive}Currently:{} {C:attention}#3#{} {C:inactive}uses{} {C:abn_amperage}+#5#{} {C:inactive}Amperage{} {C:abn_modulate}+#6#{} {C:inactive}Modulate{}",
+		}
+      },
+	  
     },
 	Other = {
       -- Bio Blueprint tooltips
