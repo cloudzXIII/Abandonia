@@ -542,3 +542,103 @@ SMODS.Sticker {
     artist = "0kronix",
   },
 }
+
+SMODS.Sticker {
+  key = "hellenic_aura",
+  set = "aura",
+  atlas = "AbandoniaAura",
+  pos = { x = 3, y = 0 },
+  badge_colour = G.C.GREEN,
+
+  config = {extra = {amp = 0.5, amp_gain = 0.5}},
+
+  apply = function(self, card, val)
+    card.ability[self.key] = val
+    if val then
+      if not card.ability.abn_hellenic_aura_extra then
+        card.ability.abn_hellenic_aura_extra = {}
+        local cfg = self.config.extra
+        for k, v in pairs(self.config.extra) do
+          card.ability.abn_hellenic_aura_extra[k] = v
+        end
+      end
+    else
+      card.ability.abn_hellenic_aura_extra = nil
+    end
+  end,
+
+  loc_vars = function(self, info_queue, card)
+    local cfg = card and card.ability and card.ability.abn_hellenic_aura_extra or self.config.extra
+    return {vars = {cfg.amp, cfg.amp_gain}}
+  end,
+
+  draw = draw_aura,
+
+  calculate = function(self, card, context)
+	if context.abn_post_effect and (context.abn_post_effect.chips or context.abn_post_effect.h_chips or context.abn_post_effect.chip_mod) then
+	  return {amp = card.ability.abn_hellenic_aura_extra.amp}
+	elseif context.blind_defeated then
+      SMODS.scale_card(card, {
+        ref_table = card.ability.abn_hellenic_aura_extra,
+        ref_value = "amp",
+        scalar_value = "amp_gain",
+        message_colour = G.C.ABN_AMPERAGE,
+        no_message = card.area == G.deck or card.area == G.discard,
+      })
+	end
+  end,
+
+  abn_artist_credits = {
+    artist = "0kronix",
+  },
+}
+
+SMODS.Sticker {
+  key = "tulum_aura",
+  set = "aura",
+  atlas = "AbandoniaAura",
+  pos = { x = 4, y = 0 },
+  badge_colour = G.C.GREEN,
+
+  config = {extra = {amp = 0.5, amp_gain = 0.5}},
+
+  apply = function(self, card, val)
+    card.ability[self.key] = val
+    if val then
+      if not card.ability.abn_tulum_aura_extra then
+        card.ability.abn_tulum_aura_extra = {}
+        local cfg = self.config.extra
+        for k, v in pairs(self.config.extra) do
+          card.ability.abn_tulum_aura_extra[k] = v
+        end
+      end
+    else
+      card.ability.abn_tulum_aura_extra = nil
+    end
+  end,
+
+  loc_vars = function(self, info_queue, card)
+    local cfg = card and card.ability and card.ability.abn_tulum_aura_extra or self.config.extra
+    return {vars = {cfg.amp, cfg.amp_gain}}
+  end,
+
+  draw = draw_aura,
+
+  calculate = function(self, card, context)
+	if context.abn_post_effect and (context.abn_post_effect.mult or context.abn_post_effect.h_mult or context.abn_post_effect.mult_mod) then
+	  return {amp = card.ability.abn_tulum_aura_extra.amp}
+	elseif context.blind_defeated then
+      SMODS.scale_card(card, {
+        ref_table = card.ability.abn_tulum_aura_extra,
+        ref_value = "amp",
+        scalar_value = "amp_gain",
+        message_colour = G.C.ABN_AMPERAGE,
+        no_message = card.area == G.deck or card.area == G.discard,
+      })
+	end
+  end,
+
+  abn_artist_credits = {
+    artist = "0kronix",
+  },
+}

@@ -555,3 +555,13 @@ function Card:set_base(base, initial, manual_sprites)
   end
   return old_set_base(self, base, initial, manual_sprites)
 end
+
+
+
+--Custom Contexts for specific types of scoring effects
+local old_calculate_effect = SMODS.calculate_effect
+function SMODS.calculate_effect(effect, scored_card, from_edition, pre_jokers)
+	local ret = old_calculate_effect(effect, scored_card, from_edition, pre_jokers)
+	SMODS.calculate_context({ abn_post_effect = effect, card = scored_card, from_edition = from_edition, pre_jokers = pre_jokers })
+	return ret
+end

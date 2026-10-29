@@ -31,15 +31,15 @@ return {
       abn_hellenic_aura = {
         name = "Hellenic Aura",
         text = {
-          "+0.5 Amperage per triggered +Chips effect,",
-          "Increases by 0.5 when Blind is defeated"
+          "{C:abn_amperage}+#1#{} Amperage per triggered {C:chips}+Chips{} effect,",
+          "Increases by {C:abn_amperage}#2#{} when {C:attention}Blind{} is defeated"
         }
       },
       abn_tulum_aura = {
         name = "Tulum Aura",
         text = {
-          "+0.5 Amperage per triggered +Mult effect,",
-          "Increases by 0.5 when Blind is defeated"
+          "{C:abn_amperage}+#1#{} Amperage per triggered {C:mult}+Mult{} effect,",
+          "Increases by {C:abn_amperage}#2#{} when {C:attention}Blind{} is defeated"
         }
       },
       --#endregion
