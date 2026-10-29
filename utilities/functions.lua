@@ -1128,7 +1128,7 @@ function ABN.iterate_edit_ui(nodes, callback)
 	if not nodes or not callback then return end
 	if nodes.nodes then nodes = nodes.nodes end
 	for _, node in ipairs(nodes) do
-		if callback(node) then return true end
+		if callback(node, nodes) then return true end
 		if node.nodes then
 			if ABN.iterate_edit_ui(node.nodes, callback) then return true end
 		end

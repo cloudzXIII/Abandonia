@@ -1480,7 +1480,13 @@ G.FUNCS.draw_from_play_to_discard = function(e)
 		end
 	end
 end
+
 --[[
+Currently disabled because it's infeasible
+to prioritize cards that fit a specific hand type;
+Sure, it works for smaller hands, but anything overly
+specific would take way too long to search for
+
 SMODS.Voucher {
 	key = 'pheromone_perfume',
 	atlas = 'JimboStakeVouchers',
@@ -1555,3 +1561,115 @@ function CardArea:shuffle(_seed)
   end
   return g
 end--]]
+
+SMODS.Voucher {
+	key = 'lever_frame',
+	atlas = 'JimboStakeVouchers',
+	pos = { x = 0, y = 1 },
+	config = {extra = {return_ante = -1, mayhem = 2}},
+	loc_vars = function(self, info_queue, voucher)
+		info_queue[#info_queue + 1] = {key = "abn_jimbo_only", set = "Other"}
+		return { vars = { get_return_ante(voucher), voucher.ability.extra.mayhem } }
+	end,
+
+	redeem = redeem_return_ante,
+
+	calculate = function(self, voucher, context)
+		if context.open_booster then
+			G.GAME.abn_level_frame_prepare_booster = true
+			G.GAME.abn_lever_frame_already_redrawn = false
+			ABN.mayhem(voucher.ability.extra.mayhem, true)
+		elseif context.ending_booster then
+			--Just a failsafe, given that any accidental mass ABN.iterate_edit_ui usage might get laggy.
+			G.GAME.abn_level_frame_prepare_booster = false
+		end
+	end,
+
+	in_pool = function(self, args)
+		return G.GAME.modifiers.Honor
+	end,
+
+	abn_artist_credits = {
+		artist = "0kronix",
+	},
+}
+
+local old_uibox_init = UIBox.init
+function UIBox:init(args)
+	if G.GAME and G.GAME.abn_level_frame_prepare_booster and args.definition then
+		ABN.iterate_edit_ui(args.definition, function(node, nodes)
+			if node.config and node.config.button == "skip_booster" then
+				G.GAME.abn_level_frame_prepare_booster = false
+				for i = 2, #nodes do
+					if node.config and node.config.minh then
+						node.config.minh = node.config.minh * (#nodes - 1) / #nodes
+					end
+				end
+				table.insert(nodes, {n=G.UIT.R,config={align = "tm",padding = 0.2, minh = 1.2 * (#nodes - 1) / #nodes, minw = 1.8, r=0.15,colour = G.C.CHIPS, one_press = true, button = 'abn_lever_frame_redraw', hover = true,shadow = true, func = 'abn_lever_frame_can_redraw'}, nodes = {
+                    {n=G.UIT.T, config={text = localize("k_abn_redraw_cards"), scale = 0.5, colour = G.C.WHITE, shadow = true, focus_args = {button = 'y', orientation = 'bm'}, func = 'set_button_pip'}}}})
+				return true
+			end
+		end)
+	end
+	old_uibox_init(self, args)
+end
+
+G.FUNCS.abn_lever_frame_can_redraw = function(e)
+	if G.pack_cards and (not (G.GAME.STOP_USE and G.GAME.STOP_USE > 0)) and not G.GAME.abn_lever_frame_already_redrawn and G.hand and #G.hand.cards > 0 then 
+		e.config.colour = G.C.CHIPS
+		e.config.button = 'abn_lever_frame_redraw'
+	else
+		e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+		e.config.button = nil
+	end
+end
+
+G.FUNCS.abn_lever_frame_redraw = function(e)
+	G.GAME.abn_lever_frame_already_redrawn = true
+	G.FUNCS.draw_from_hand_to_discard()
+	G.E_MANAGER:add_event(Event({
+		trigger = "after",
+		delay = 0.5,
+		func = function()
+			G.FUNCS.draw_from_deck_to_hand()
+			return true
+		end
+	}))
+end
+
+SMODS.Voucher {
+	key = 'pressure_gauge',
+	atlas = 'JimboStakeVouchers',
+	pos = { x = 1, y = 1 },
+	config = {extra = {return_ante = -1, bs_ratio = 0.25, xpayout = 1.2, js_gain = 1}},
+	loc_vars = function(self, info_queue, voucher)
+		info_queue[#info_queue + 1] = {key = "abn_jimbo_only", set = "Other"}
+		return { vars = { get_return_ante(voucher), voucher.ability.extra.bs_ratio, voucher.ability.extra.xpayout, voucher.ability.extra.js_gain } }
+	end,
+
+	redeem = redeem_return_ante,
+
+	calculate = function(self, voucher, context)
+		if context.setting_blind then
+			G.GAME.blind.chips = G.GAME.blind.chips * (1 + voucher.ability.extra.bs_ratio * ABN.mayhem())
+    		G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+			G.GAME.blind:set_text()
+			G.GAME.blind:wiggle()
+		elseif context.modify_final_cashout and context.amount ~= 0 then
+			return {modify = context.amount * (voucher.ability.extra.xpayout - 1)}
+		elseif context.blind_defeated and G.GAME.blind.boss and G.GAME.blind.config.blind.boss.hazard_blind then
+			voucher.ability.extra.hazard_buffer = not voucher.ability.extra.hazard_buffer
+			if not voucher.ability.extra.hazard_buffer then
+				G.jokers.config.card_limit = G.jokers.config.card_limit + 1
+			end
+		end
+	end,
+
+	in_pool = function(self, args)
+		return G.GAME.modifiers.Honor
+	end,
+
+	abn_artist_credits = {
+		artist = "0kronix",
+	},
+}

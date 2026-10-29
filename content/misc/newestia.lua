@@ -130,7 +130,7 @@ ABN.NewestiaBlind = SMODS.Blind:extend({
 function ABN.new_newestia_boss(category)
 	if not category then
 		if ABN.is_hazard_ante() then
-			category = "abn_hazard"
+			category = "hazard_blind"
 		elseif math.floor(G.GAME.round_resets.ante) > 1 and math.floor(G.GAME.round_resets.ante) % G.GAME.win_ante == 0 then
 			category = "showdown"
 		else
@@ -141,7 +141,7 @@ function ABN.new_newestia_boss(category)
 	if not G.GAME[pool] or #G.GAME[pool] == 0 then
 		G.GAME[pool] = {}
 		for key, def in pairs(ABN.NewestiaBlinds) do
-			if def.boss and ((category == "boss" and not def.boss.showdown and not def.boss.abn_hazard) or (category ~= "boss" and def.boss[category])) and (not def.in_new_pool or def:in_new_pool()) then
+			if def.boss and ((category == "boss" and not def.boss.showdown and not def.boss.hazard_blind) or (category ~= "boss" and def.boss[category])) and (not def.in_new_pool or def:in_new_pool()) then
 				table.insert(G.GAME[pool], key)
 			end
 		end
@@ -1056,7 +1056,7 @@ ABN.NewestiaBlind({
 	mult = 8,
 	atlas = "NewestiaHazards",
 	pos = {x = 0, y = 0},
-	boss = {abn_hazard = true},
+	boss = {showdown = true, hazard_blind = true},
 	boss_colour = HEX("ac3232"),
 	abn_disable_seals = true,
 	abn_disable_editions = true,
@@ -1091,7 +1091,7 @@ ABN.NewestiaBlind({
 	mult = 8,
 	atlas = "NewestiaHazards",
 	pos = {x = 0, y = 1},
-	boss = {abn_hazard = true},
+	boss = {showdown = true, hazard_blind = true},
 	boss_colour = HEX("fdad1f"),
 	abn_disable_enhancements = true,
 	abn_disable_stamps = true,
@@ -1156,7 +1156,7 @@ ABN.NewestiaBlind({
 	mult = 8,
 	atlas = "NewestiaHazards",
 	pos = {x = 0, y = 2},
-	boss = {abn_hazard = true},
+	boss = {showdown = true, hazard_blind = true},
 	boss_colour = HEX("56a786"),
 	abn_disable_enhancements = true,
 	abn_disable_editions = true,
@@ -1202,7 +1202,7 @@ ABN.NewestiaBlind({
 	mult = 8,
 	atlas = "NewestiaHazards",
 	pos = {x = 0, y = 3},
-	boss = {abn_hazard = true},
+	boss = {showdown = true, hazard_blind = true},
 	boss_colour = HEX("009cfd"),
 	abn_disable_seals = true,
 	abn_disable_stamps = true,
@@ -1252,7 +1252,7 @@ ABN.NewestiaBlind({
 	mult = 12,
 	atlas = "NewestiaHazards",
 	pos = {x = 0, y = 4},
-	boss = {abn_hazard = true},
+	boss = {showdown = true, hazard_blind = true},
 	boss_colour = HEX("7963c5"),
 	abn_disable_enhancements = true,
 	abn_disable_stamps = true,

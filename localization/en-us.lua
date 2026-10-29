@@ -889,6 +889,7 @@ return {
       k_abn_device_light = "ECIVED Joker", -- i think this is DEVICE just backwards
 
       k_abn_destroyed = "Destroyed!",
+	  k_abn_redraw_cards = "Redraw Cards",
 
       -- Credits
       k_abn_lead_dev = "Lead Dev",

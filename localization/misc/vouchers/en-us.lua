@@ -386,6 +386,34 @@ return {
           "{C:inactive}(If possible)"
         }
       },
+      v_abn_lever_frame = {
+        name = "Lever Frame",
+        text = {
+          jimbo_voucher_return_to_ante,
+          "Once per opened {C:attention}Booster Pack{},",
+		  "you may discard drawn playing",
+		  "cards and draw a new set",
+		  "{C:abn_mayhem_dark}+#2#{} Mayhem per opened {C:attention}Booster"
+        }
+      },
+      v_abn_pressure_gauge = {
+        name = "Pressure Gauge",
+        text = {
+          jimbo_voucher_return_to_ante,
+          "Increases {C:attention}Blind Size{} by",
+		  "{X:attention,C:white}X#2#{} per unit of {C:abn_mayhem_dark}Mayhem",
+		  "{X:money,C:white}X#3#{} to money earned from {C:money}Payouts",
+		  "{C:attention}+#4#{} Joker Slot with every",
+		  "second {C:abn_hazard}Hazard Blind{} beaten"
+        }
+      },
+      v_abn_esoteric_sign = {
+        name = "Esoteric Sign",
+        text = {
+          jimbo_voucher_return_to_ante,
+          "Blinds may have Editions"
+        }
+      },
 	  --#endregion
     },
   },
