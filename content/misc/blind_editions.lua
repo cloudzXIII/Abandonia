@@ -21,7 +21,7 @@ function ABN.add_edition_to_blind(blind_on_deck, args)
 	G.GAME.abn_blind_edition = G.GAME.abn_blind_edition or {}
 	G.GAME.abn_blind_edition[blind_on_deck] = nil
 	args = args or {}
-	args.chance = args.chance or G.GAME.abn_blind_edition_rate or 1
+	args.chance = args.chance or G.GAME.abn_blind_edition_rate or 0
 	if not args.guaranteed and args.chance <= 0 then return end
 	args.set = "abn_BlindEdition"
 	args.pool = args.pool or ABN.BlindEditionPool
