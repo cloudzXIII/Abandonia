@@ -374,7 +374,7 @@ end
 --Also see lovely/newestia_hazard_blinds.toml for some vanilla card modifiers that ignore these functions
 local old_calculate_enhancement = Card.calculate_enhancement
 function Card:calculate_enhancement(context)
-  if G.GAME.blind.disabled or not G.GAME.blind.config.blind.abn_disable_enhancements then
+  if G.GAME.blind.disabled or not (G.GAME.blind.config and G.GAME.blind.config.blind.abn_disable_enhancements) then
     return old_calculate_enhancement(self, context)
   end
 end
@@ -388,7 +388,7 @@ end
 
 local old_calculate_seal = Card.calculate_seal
 function Card:calculate_seal(context)
-  if G.GAME.blind.disabled or not G.GAME.blind.config.blind.abn_disable_seals then
+  if G.GAME.blind.disabled or not (G.GAME.blind.config and G.GAME.blind.config.blind.abn_disable_seals) then
     return old_calculate_seal(self, context)
   end
 end

@@ -171,7 +171,7 @@ ABN.WeatherReport {
     end
     if context.after and context.main_eval and not context.blueprint then
       for _, v in ipairs(context.full_hand) do
-        if not v:is_suit("abn_Snow") then
+        if not v:is_suit("abn_Snow", nil, true) then
           SMODS.destroy_cards(v)
         end
       end
@@ -481,7 +481,7 @@ ABN.WeatherReport {
   can_use = function(self, card)
     if not (G.GAME.blind and G.GAME.blind.in_blind) then return false end
     for _, c in ipairs(G.hand.cards) do
-      if c:is_suit("Clubs") then return true end
+      if c:is_suit("Clubs", nil, true) then return true end
     end
     return false
   end,
@@ -489,7 +489,7 @@ ABN.WeatherReport {
   use = function(self, card, area, copier)
     local clubs = {}
     for _, c in ipairs(G.hand.cards) do
-      if c:is_suit("Clubs") then
+      if c:is_suit("Clubs", nil, true) then
         clubs[#clubs + 1] = c
       end
     end
@@ -607,7 +607,7 @@ ABN.WeatherReport {
   can_use = function(self, card)
     if not (G.GAME.blind and G.GAME.blind.in_blind) then return false end
     for _, c in ipairs(G.hand.cards) do
-      if c:is_suit("abn_Snow") then return true end
+      if c:is_suit("abn_Snow", nil, true) then return true end
     end
     return false
   end,
@@ -615,7 +615,7 @@ ABN.WeatherReport {
   use = function(self, card, area, copier)
     local snows = {}
     for _, c in ipairs(G.hand.cards) do
-      if c:is_suit("abn_Snow") then
+      if c:is_suit("abn_Snow", nil, true) then
         snows[#snows + 1] = c
       end
     end
@@ -646,7 +646,7 @@ ABN.WeatherReport {
   can_use = function(self, card)
     if not (G.GAME.blind and G.GAME.blind.in_blind) then return false end
     for _, c in ipairs(G.hand.cards) do
-      if c:is_suit("Hearts") then return true end
+      if c:is_suit("Hearts", nil, true) then return true end
     end
     return false
   end,
@@ -654,7 +654,7 @@ ABN.WeatherReport {
   use = function(self, card, area, copier)
     local hearts = {}
     for _, c in ipairs(G.hand.cards) do
-      if c:is_suit("Hearts") then
+      if c:is_suit("Hearts", nil, true) then
         hearts[#hearts + 1] = c
       end
     end
@@ -685,7 +685,7 @@ ABN.WeatherReport {
   can_use = function(self, card)
     if not (G.GAME.blind and G.GAME.blind.in_blind) then return false end
     for _, c in ipairs(G.hand.cards) do
-      if c:is_suit("Spades") then return true end
+      if c:is_suit("Spades", nil, true) then return true end
     end
     return false
   end,
@@ -693,7 +693,7 @@ ABN.WeatherReport {
   use = function(self, card, area, copier)
     local spades = {}
     for _, c in ipairs(G.hand.cards) do
-      if c:is_suit("Spades") then
+      if c:is_suit("Spades", nil, true) then
         spades[#spades + 1] = c
       end
     end
@@ -724,7 +724,7 @@ ABN.WeatherReport {
   can_use = function(self, card)
     if not (G.GAME.blind and G.GAME.blind.in_blind) then return false end
     for _, c in ipairs(G.hand.cards) do
-      if c:is_suit("Diamonds") then return true end
+      if c:is_suit("Diamonds", nil, true) then return true end
     end
     return false
   end,
@@ -732,7 +732,7 @@ ABN.WeatherReport {
   use = function(self, card, area, copier)
     local diamonds = {}
     for _, c in ipairs(G.hand.cards) do
-      if c:is_suit("Diamonds") then
+      if c:is_suit("Diamonds", nil, true) then
         diamonds[#diamonds + 1] = c
       end
     end

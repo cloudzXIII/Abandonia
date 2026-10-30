@@ -252,7 +252,7 @@ SMODS.Consumable {
     end
 
     if G.shop_vouchers and G.shop_vouchers.highlighted then
-      if #G.shop_vouchers.highlighted == card.ability.extra.voucher_max then
+      if #G.shop_vouchers.highlighted >= 1 and #G.shop_vouchers.highlighted <= card.ability.extra.voucher_max then
         return true
       end
     end
