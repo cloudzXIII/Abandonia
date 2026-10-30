@@ -381,7 +381,7 @@ end
 
 local old_calculate_edition = Card.calculate_edition
 function Card:calculate_edition(context)
-  if G.GAME.blind.disabled or not G.GAME.blind.config.blind.abn_disable_editions then
+  if G.GAME.blind.disabled or not (G.GAME.blind.config and G.GAME.blind.config.blind.abn_disable_editions) then
     return old_calculate_edition(self, context)
   end
 end
@@ -556,12 +556,29 @@ function Card:set_base(base, initial, manual_sprites)
   return old_set_base(self, base, initial, manual_sprites)
 end
 
-
-
 --Custom Contexts for specific types of scoring effects
 local old_calculate_effect = SMODS.calculate_effect
 function SMODS.calculate_effect(effect, scored_card, from_edition, pre_jokers)
 	local ret = old_calculate_effect(effect, scored_card, from_edition, pre_jokers)
 	SMODS.calculate_context({ abn_post_effect = effect, card = scored_card, from_edition = from_edition, pre_jokers = pre_jokers })
 	return ret
+end
+
+local old_uibox_blind_choices = create_UIBox_blind_choice
+function create_UIBox_blind_choice(type, run_info)
+	local ty = type or "Small"
+	if G.GAME.abn_blind_edition[ty] then
+		G.GAME.abn_draw_blind_edition = G.GAME.abn_blind_edition[ty].shader
+	end
+	local t = old_uibox_blind_choices(type, run_info)
+	if G.GAME.abn_blind_edition[ty] and (G.GAME.abn_blind_edition[ty].config.add_dollars or 0) > 0 then
+		ABN.iterate_edit_ui(t, function(node)
+			if node.config and node.config.text and node.config.text == string.rep(localize("$"), node.config.text:len()-1).."+" then
+				node.config.text = string.rep(localize("$"), G.GAME.abn_blind_edition[ty].config.add_dollars)..node.config.text
+				return true
+			end
+		end)
+	end
+	ABN.shorten_money_text(t)
+	return t
 end

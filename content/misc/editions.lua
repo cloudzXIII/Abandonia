@@ -3,7 +3,6 @@ SMODS.Shader {
   path = 'chthonian.fs',
 }
 
--- Check utilities/value_manipulation.lua (If anyone finds a better implementation, feel free to change it)
 SMODS.Edition {
   key = 'abn_chthonian',
   shader = "chthonian",

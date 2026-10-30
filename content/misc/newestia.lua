@@ -151,6 +151,7 @@ end
 
 --Also see utilities/hooks.lua for cases where Newestia Bosses tamper with cards' chip bonuses
 
+--Called in utilities/hooks.lua's create_UIBox_blind_choice
 function ABN.shorten_money_text(nodes)
 	if not nodes then return end
 	if nodes.nodes then nodes = nodes.nodes end
@@ -164,13 +165,6 @@ function ABN.shorten_money_text(nodes)
 			ABN.shorten_money_text(node.nodes)
 		end
 	end
-end
-
-local old_ui_blind_choice = create_UIBox_blind_choice
-function create_UIBox_blind_choice(type, run_info)
-	local t = old_ui_blind_choice(type, run_info)
-	ABN.shorten_money_text(t)
-	return t
 end
 
 local old_ui_blind_popup = create_UIBox_blind_popup

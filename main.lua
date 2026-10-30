@@ -192,6 +192,36 @@ ABN.calculate = function(self, context)
   -- See content/misc/mayhem.lua
   ABN.calculate_mayhem(self, context)
 
+  if G.GAME and G.GAME.blind and G.GAME.blind.in_blind then
+    -- See context/misc/blind_editions.lua
+    local blind_edition = G.GAME.abn_blind_edition[G.GAME.blind_on_deck]
+    if blind_edition and ABN.BlindEditions[blind_edition.key].calculate then
+      if context.before then
+		blind_edition.retriggers = 1
+	  elseif context.individual and context.cardarea == G.play and context.other_card.edition and context.other_card.edition.key == ABN.BlindEditions[blind_edition.key].counterpart then
+		blind_edition.retriggers = blind_edition.retriggers + 1
+	  elseif context.after then
+		blind_edition.retriggers = 0
+	  end
+	  if context.final_scoring_step then
+	    local rets = {}
+	    for i = 1, blind_edition.retriggers or 1 do
+          local ret = ABN.BlindEditions[blind_edition.key]:calculate(G.GAME.blind, blind_edition, context)
+          if ret then table.insert(rets, ret) end
+	    end
+	    for i = 1, #rets do
+	      SMODS.calculate_effect(rets[i], G.GAME.blind, true)
+	  	  if i < #rets then
+		    SMODS.calculate_effect({message = localize("k_again_ex")}, G.GAME.blind)
+		  end
+	    end
+	  else
+		local ret = ABN.BlindEditions[blind_edition.key]:calculate(G.GAME.blind, blind_edition, context)
+        if ret then SMODS.calculate_effect(ret, G.GAME.blind, true) end
+	  end
+    end
+  end
+
   -- Shadowy Joker
   if #SMODS.find_card("j_abn_shadowy_joker", true) > 0 then
     local card_areas = { G.jokers, G.consumeables, G.shop_jokers, G.pack_cards }
