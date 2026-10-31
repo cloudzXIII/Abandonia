@@ -160,6 +160,26 @@ Abandonia.Underhands = {
             return five_unique(cards, get_stamp)
         end,
     },
+	
+	    abn_uh_cliptomania = {
+        name = "Cliptomania",
+        priority = 2,
+        paint = function(c, i, t)
+            local k = 0.5 + 0.5 * math.sin(t * 2.5 - i * 0.7)
+            c[1] = 0.35 + 0.20 * k
+            c[2] = 0.30 + 0.55 * k
+            c[3] = 0.82 - 0.50 * k
+            c[4] = 1
+        end,
+        x_mult = 1.15, x_chips = 1.15,
+        l_mult = 0.05, l_chips = 0.05,
+        check_hand = function(cards)
+            if not (PB_UTIL and PB_UTIL.has_paperclip) then return false end
+            return five_unique(cards, function(c)
+                return PB_UTIL.has_paperclip(c) or nil
+            end)
+        end,
+    },
 }
 
 local igo = Game.init_game_object
