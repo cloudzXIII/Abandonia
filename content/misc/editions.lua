@@ -407,7 +407,7 @@ SMODS.Edition {
       for i = 1, #context.scoring_hand do
         local scoring_card = context.scoring_hand[i]
 
-        if ABN.is_light(scoring_card) then
+        if ABN.is_light(scoring_card) and not SMODS.has_no_rank(scoring_card) then
           local rank_key = scoring_card.base.value
           local rank_data = G.GAME.abn_rank_upgrades[rank_key]
 
@@ -443,6 +443,7 @@ SMODS.Edition {
   config = { chips = 20, mult = 8 },
   in_shop = true,
   weight = 1.1,
+  extra_cost = 1,
 
   loc_vars = function(self, info_queue, card)
     if card and card.edition then
@@ -458,7 +459,7 @@ SMODS.Edition {
       for i = 1, #context.scoring_hand do
         local scoring_card = context.scoring_hand[i]
 
-        if ABN.is_dark(scoring_card) then
+        if ABN.is_dark(scoring_card) and not SMODS.has_no_rank(scoring_card) then
           local rank_key = scoring_card.base.value
           local rank_data = G.GAME.abn_rank_upgrades[rank_key]
 

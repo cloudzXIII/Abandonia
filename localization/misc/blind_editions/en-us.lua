@@ -35,95 +35,88 @@ return {
       ble_abn_iridescent = {
         name = "Iridescent",
         text = {
-          "{C:white,X:mult}X#1#{} Mult,",
-          "Earn {C:money}$#2#{}",
-          "when triggered"
+          "{C:white,X:mult}X#1#{C:mult} Mult{}, {C:money}-$#2#{}"
         },
       },
       ble_abn_abandond = {
         name = "Abandoned",
         text = {
-          "{C:attention}+#1#{} Retrigger",
-          "{C:red}-$#2#{} per retrigger"
+          "{C:attention}First Retrigger scores negative values",
+          "{C:inactive}(Edition retriggers per {C:dark_edition}Abandoned{C:inactive} card in scoring hand)"
         },
       },
       ble_abn_sunscourge = {
         name = "Sunscourge",
         text = {
-          "{C:mult}+#1#{} Mult,",
-          "{C:chips}+#2#{} Chips,",
-          "{C:attention}Doubles{} when",
-          "score {C:attention}catches on fire{}"
+          "{C:attention}Double blind requirements the next",
+          "{C:attention}time your score catches fire",
+          "{C:inactive}(Doubles again if the hand that catches",
+          "{C:inactive} fire contains a scoring {C:dark_edition}Sunscourge {C:inactive}card)"
         }
       },
       ble_abn_gloss = {
         name = "Gloss",
         text = {
-          "{C:white,X:chips}X#1#{} Chips,",
-          "Earn {C:money}$#2#{}",
-          "when triggered"
+          "{C:white,X:chips}X#1#{C:chips} Chips{}, {C:money}-$#2#{}"
         }
       },
       ble_abn_pearlescent = {
         name = "Pearlescent",
         text = {
-          "{C:mult}+#1#{} Mult,",
-          "{C:chips}+#2#{} Chips,",
+          "{C:mult}#1# Mult{}, {C:chips}#2# Chips,",
         }
       },
       ble_abn_chromatic = {
         name = "Chromatic",
         text = {
-          "{C:white,X:chips}X#1#{} Chips, {C:white,X:mult}x#2#{} Mult,",
-          "and {C:money}$#3#{} when triggered"
+          "{C:white,X:chips}X#1#{C:chips} Chips{}, {C:white,X:mult}X#2#{C:mult} Mult{}, {C:money}-$#3#{}"
         }
       },
       ble_abn_reversal = {
         name = "Reversal",
         text = {
-          "Swap {C:chips}Chips{} and {C:mult}Mult",
+          "{C:chips}First hand doesn't gain Chips",
+          "{C:inactive}(Applies to next hand if you play and score any {C:dark_edition}Reversal{C:inactive} card)"
         }
       },
       ble_abn_bit_rot = {
         name = "Bit Rot",
         text = {
-          "{X:mult,C:white}^#1#{} Mult",
+          "{X:mult,C:white}^#1#{C:mult} Mult",
         },
       },
       ble_abn_reel = {
         name = "Reel",
         text = {
-          "{X:chips,C:white}^#1#{} Chips",
+          "{X:chips,C:white}^#1#{C:chips} Chips",
         },
       },
       ble_abn_collodion = {
         name = "Collodion",
         text = {
-          "Balances {C:white,X:abn_plasma}#1#%{} of",
-          "{C:chips}Chips{} and {C:mult}Mult{}"
+          "{C:mult}First hand doesn't gain Mult",
+          "{C:inactive}(Applies to next hand if you play and score any {C:dark_edition}Collodion{C:inactive} card)"
         }
       },
       ble_abn_vintage = {
         name = "Vintage",
         text = {
-          "{C:money}+$#3#{}, {C:chips}+#2#{} Chips, and {C:mult}+#1#{} Mult",
-          "per level of played hand"
+          "{C:money}-$#1#{}, {C:chips}#2# Chips{}, {C:mult}#3# Mult",
+          "{C:attention}per level of played hand"
         }
       },
       ble_abn_bright = {
         name = "Bright",
         text = {
-          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
-          "per {C:planet}planet{} {C:attention}rank{}",
-          "in scoring {C:diamonds}Light Suits{}"
+          "{C:chips}#1# Chips{}, {C:mult}#2# Mult {C:planet}per Planet", -- -20, -8
+          "{C:planet}rank in scoring {C:diamonds}Light Suits"
         }
       },
       ble_abn_opaque = {
         name = "Opaque",
         text = {
-          "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
-          "per {C:planet}planet{} {C:attention}rank{}",
-          "in scoring {C:spades}Dark Suits{}"
+          "{C:chips}#1# Chips{}, {C:mult}#2# Mult {C:planet}per Planet", -- -20, -8
+          "{C:planet}rank in scoring {C:spades}Dark Suits"
         }
       },
     },

@@ -86,6 +86,7 @@ function Blind:set_blind(blind, reset, silent)
 	if edition then
 		blind = blind or {}
 		blind.dollars = (blind.dollars or 0) + (edition.config.add_dollars or 0)
+		blind.dollars = blind.dollars * (edition.config.mult_dollars or 1)
 	end
 	old_set_blind(self, blind, reset, silent)
 end
@@ -214,7 +215,7 @@ ABN.BlindEdition {
 	key = "chthonian",
 	blind_shader = "abn_chthonian",
 	counterpart = "e_abn_chthonian",
-	config = {add_dollars = 5, xsize = 2},
+	config = {mult_dollars = 2, xsize = 2},
 	weight = 1.2,
 	loc_vars = function(self, edition)
 		return {vars = {edition.config.xsize}}
@@ -222,6 +223,188 @@ ABN.BlindEdition {
 	calculate = function(self, blind, edition, context)
 		if context.final_scoring_step and not blind.disabled then
 			return {xblindsize = edition.config.xsize}
+		end
+	end
+}
+
+ABN.BlindEdition {
+	key = "iridescent",
+	blind_shader = "abn_iridescent",
+	counterpart = "e_abn_iridescent",
+	config = {xmult = 0.5, money = -3, add_dollars = 6},
+	weight = 0.2,
+	loc_vars = function(self, edition)
+		return {vars = {edition.config.xmult, -edition.config.money}}
+	end,
+	calculate = function(self, blind, edition, context)
+		if context.final_scoring_step and not blind.disabled then
+			return {xmult = edition.config.xmult, dollars = edition.config.money}
+		end
+	end
+}
+
+ABN.BlindEdition {
+	key = "gloss",
+	blind_shader = "abn_gloss",
+	counterpart = "e_abn_gloss",
+	config = {xchips = 0.5, money = -5, add_dollars = 8},
+	weight = 1,
+	loc_vars = function(self, edition)
+		return {vars = {edition.config.xchips, -edition.config.money}}
+	end,
+	calculate = function(self, blind, edition, context)
+		if context.final_scoring_step and not blind.disabled then
+			return {x_chips = edition.config.xchips, dollars = edition.config.money}
+		end
+	end
+}
+
+ABN.BlindEdition {
+	key = "pearlescent",
+	blind_shader = "abn_pearlescent",
+	counterpart = "e_abn_pearlescent",
+	config = {mult = -20, chips = -100, add_dollars = 6},
+	weight = 1,
+	loc_vars = function(self, edition)
+		return {vars = {edition.config.mult, edition.config.chips}}
+	end,
+	calculate = function(self, blind, edition, context)
+		if context.final_scoring_step and not blind.disabled then
+			return {
+				mult = math.max(-mult, edition.config.mult),
+				chips = math.max(-hand_chips, edition.config.chips)
+			}
+		end
+	end
+}
+
+ABN.BlindEdition {
+	key = "chromatic",
+	blind_shader = "abn_chromatic",
+	counterpart = "e_abn_chromatic",
+	config = {xchips = 0.67, xmult = 0.77, money = -4, add_dollars = 10},
+	weight = 0.01,
+	loc_vars = function(self, edition)
+		return {vars = {edition.config.xchips, edition.config.xmult, -edition.config.money}}
+	end,
+	calculate = function(self, blind, edition, context)
+		if context.final_scoring_step and not blind.disabled then
+			return {x_chips = edition.config.xchips, xmult = edition.config.xmult, dollars = edition.config.money}
+		end
+	end
+}
+
+ABN.BlindEdition {
+	key = "bit_rot",
+	blind_shader = "abn_exs",
+	counterpart = "e_abn_bit_rot",
+	config = {emult = 0.77, add_dollars = 2},
+	weight = 0.01,
+	loc_vars = function(self, edition)
+		return {vars = {edition.config.emult}}
+	end,
+	calculate = function(self, blind, edition, context)
+		if context.final_scoring_step and not blind.disabled then
+			return {e_mult = edition.config.emult}
+		end
+	end
+}
+
+ABN.BlindEdition {
+	key = "reel",
+	blind_shader = "abn_cam",
+	counterpart = "e_abn_reel",
+	config = {echips = 0.83, add_dollars = 2},
+	weight = 0.01,
+	loc_vars = function(self, edition)
+		return {vars = {edition.config.echips}}
+	end,
+	calculate = function(self, blind, edition, context)
+		if context.final_scoring_step and not blind.disabled then
+			return {e_chips = edition.config.echips}
+		end
+	end
+}
+
+ABN.BlindEdition {
+	key = "vintage",
+	blind_shader = "abn_plata",
+	counterpart = "e_abn_vintage",
+	config = {money = -1, chips = -1, mult = -1, add_dollars = 4},
+	weight = 1.2,
+	loc_vars = function(self, edition)
+		return {vars = {-edition.config.money, edition.config.chips, edition.config.mult}}
+	end,
+	calculate = function(self, blind, edition, context)
+		if context.final_scoring_step and not blind.disabled then
+			local level = G.GAME.hands[context.scoring_name].level
+			if level > 0 then
+				return {
+					mult = edition.config.mult * level,
+					chips = edition.config.chips * level,
+					dollars = edition.config.money * level
+				}
+			end
+		end
+	end
+}
+
+ABN.BlindEdition {
+	key = "bright",
+	blind_shader = "abn_white",
+	counterpart = "e_abn_bright",
+	config = {chips = -20, mult = -8, add_dollars = 1},
+	weight = 1.1,
+	loc_vars = function(self, edition)
+		return {vars = {edition.config.chips, edition.config.mult}}
+	end,
+	calculate = function(self, blind, edition, context)
+		if context.final_scoring_step and not blind.disabled then
+			local level = 0
+			for _, card in ipairs(context.scoring_hand) do
+				if ABN.is_light(card) and not SMODS.has_no_rank(card) then
+					local rank_data = G.GAME.abn_rank_upgrades[card.base.value]
+					if rank_data and rank_data.level and rank_data.level > 1 then
+						level = level + rank_data.level
+					end
+				end
+			end
+			if level > 0 then
+				return {
+					mult = math.max(-mult, edition.config.mult * level),
+					chips = math.max(-hand_chips, edition.config.chips * level)
+				}
+			end
+		end
+	end
+}
+
+ABN.BlindEdition {
+	key = "opaque",
+	blind_shader = "abn_balablack",
+	counterpart = "e_abn_opaque",
+	config = {chips = -20, mult = -8, add_dollars = 1},
+	weight = 1.1,
+	loc_vars = function(self, edition)
+		return {vars = {edition.config.chips, edition.config.mult}}
+	end,
+	calculate = function(self, blind, edition, context)
+		if context.final_scoring_step and not blind.disabled then
+			local level = 0
+			for _, card in ipairs(context.scoring_hand) do
+				if ABN.is_dark(card) and not SMODS.has_no_rank(card) then
+					local rank_data = G.GAME.abn_rank_upgrades[card.base.value]
+					if rank_data and rank_data.level and rank_data.level > 1 then
+						level = level + rank_data.level
+					end
+				end
+			end
+			if level > 0 then
+				return {
+					mult = math.max(-mult, edition.config.mult * level),
+					chips = math.max(-hand_chips, edition.config.chips * level)
+				}
+			end
 		end
 	end
 }
