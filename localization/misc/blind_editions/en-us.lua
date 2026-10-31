@@ -22,14 +22,14 @@ return {
       ble_abn_negative = {
         name = "Negative",
         text = {
-          "{C:red}Debuffs a random card before scoring,",
-          "{C:red}plus 1 per played {C:dark_edition}Negative {C:red}card"
+          "{C:red}Debuffs a random card before scoring",
+          "{C:inactive}(Edition retriggers per {C:dark_edition}Negative{C:inactive} card in scoring hand)",
         },
       },
       ble_abn_chthonian = {
         name = "Chthonian",
         text = {
-          "{C:attention}X#1# Values",
+          "{C:red}X#1# Blind Size after hand played",
         },
       },
       ble_abn_iridescent = {

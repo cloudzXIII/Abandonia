@@ -1673,3 +1673,46 @@ SMODS.Voucher {
 		artist = "0kronix",
 	},
 }
+
+SMODS.Voucher {
+	key = 'esoteric_sign',
+	atlas = 'JimboStakeVouchers',
+	pos = { x = 2, y = 1 },
+	config = {extra = {return_ante = -1, dark_amp = 1, dark_mayhem = 2, light_asc = 1, light_mayhem = 2}},
+	loc_vars = function(self, info_queue, voucher)
+		info_queue[#info_queue + 1] = {key = "abn_jimbo_only", set = "Other"}
+		info_queue[#info_queue + 1] = {key = "abn_dark_suit", set = "Other"}
+		info_queue[#info_queue + 1] = {key = "abn_light_suit", set = "Other"}
+		local vae = voucher.ability.extra
+		return { vars = { get_return_ante(voucher), vae.dark_amp, vae.dark_mayhem, vae.light_asc, vae.light_mayhem } }
+	end,
+
+	redeem = function(self, voucher)
+		redeem_return_ante(self, voucher)
+		G.GAME.abn_blind_edition_rate = (G.GAME.abn_blind_edition_rate or 0) + 0.2
+	end,
+
+	calculate = function(self, voucher, context)
+		if context.individual and context.cardarea == G.play then
+			local ret = nil
+			if ABN.is_dark(context.other_card) then
+				ABN.mayhem(voucher.ability.extra.dark_mayhem, true)
+				ret = {amp = voucher.ability.extra.dark_amp}
+			end
+			if ABN.is_light(context.other_card) then
+				ABN.mayhem(voucher.ability.extra.light_mayhem, true)
+				ret = ret or {}
+				ret.asc = voucher.ability.extra.light_asc
+			end
+			return ret
+		end
+	end,
+
+	in_pool = function(self, args)
+		return G.GAME.modifiers.Honor
+	end,
+
+	abn_artist_credits = {
+		artist = "0kronix",
+	},
+}

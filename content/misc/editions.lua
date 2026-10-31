@@ -29,6 +29,15 @@ SMODS.Edition {
   },
 }
 
+local old_set_cost = Card.set_cost
+function Card:set_cost()
+	old_set_cost(self)
+	if self.edition and self.edition.key == "e_abn_chthonian" then
+		self.cost = self.cost * 2
+		self.sell_cost = self.sell_cost * 2
+	end
+end
+
 SMODS.Shader {
   key = 'iridescent',
   path = 'iridescent.fs',
@@ -41,6 +50,7 @@ SMODS.Edition {
   config = { x_mult = 2, dollars = 3, },
   in_shop = true,
   weight = 0.2,
+  extra_cost = 8,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.x_mult, card.edition.dollars } }
   end,
@@ -70,6 +80,7 @@ SMODS.Edition {
   config = { repetitions = 1, dollars = 3 },
   in_shop = true,
   weight = 1.7,
+  extra_cost = -1,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.repetitions, card.edition.dollars } }
   end,
@@ -97,6 +108,7 @@ SMODS.Edition {
   config = { chips = 2, mult = 2, multiplier = 2 },
   in_shop = true,
   weight = 0.2,
+  extra_cost = 1,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.chips, card.edition.mult } }
   end,
@@ -143,6 +155,7 @@ SMODS.Edition {
   config = { x_chips = 2, dollars = 5, },
   in_shop = true,
   weight = 1,
+  extra_cost = 6,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.x_chips, card.edition.dollars } }
   end,
@@ -170,6 +183,7 @@ SMODS.Edition {
   config = { chips = 100, mult = 20, },
   in_shop = true,
   weight = 0.4,
+  extra_cost = 7,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.mult, card.edition.chips } }
   end,
@@ -198,6 +212,7 @@ SMODS.Edition {
   config = { x_mult = 1.3, dollars = 4, x_chips = 1.5 },
   in_shop = true,
   weight = 0.01,
+  extra_cost = 10,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.x_chips, card.edition.x_mult, card.edition.dollars } }
   end,
@@ -253,6 +268,7 @@ SMODS.Edition {
   config = { emult = 1.3 },
   in_shop = true,
   weight = 0.01,
+  extra_cost = 1.2,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.emult } }
   end,
@@ -282,6 +298,7 @@ SMODS.Edition {
   config = { echips = 1.2 },
   in_shop = true,
   weight = 0.01,
+  extra_cost = 1.6,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.echips } }
   end,
@@ -340,6 +357,7 @@ SMODS.Edition {
   config = { chips = 2, mult = 1, dollars = 1 },
   in_shop = true,
   weight = 1.2,
+  extra_cost = 4,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.chips, card.edition.mult, card.edition.dollars } }
   end,
@@ -373,6 +391,7 @@ SMODS.Edition {
   config = { chips = 20, mult = 8 },
   in_shop = true,
   weight = 1.1,
+  extra_cost = 1,
 
   loc_vars = function(self, info_queue, card)
     if card and card.edition then

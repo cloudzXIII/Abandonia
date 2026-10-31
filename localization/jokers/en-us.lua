@@ -11039,8 +11039,27 @@ return {
           "When this Joker is {C:attention}Used",
 		  "Gain {C:abn_amperage}+#1#{} Amperage per {C:attention}vanilla{} card {C:attention}drawn{} this round",
 		  "Gain {C:abn_modulate}+#2#{} Modulate per {C:attention}modded{} card {C:attention}drawn{} this round",
-		  "Gain {C:attention}+#4#{} uses when defeating a {C:attention}Boss Blind{}",
-		  "{C:inactive}Currently:{} {C:attention}#3#{} {C:inactive}uses{} {C:abn_amperage}+#5#{} {C:inactive}Amperage{} {C:abn_modulate}+#6#{} {C:inactive}Modulate{}",
+		  "Gain {C:attention}+#4#{} uses when defeating a {C:attention}Boss Blind",
+		  "{C:inactive}Currently: {C:attention}#3# {C:inactive}uses {C:abn_amperage}+#5# {C:inactive}Amperage {C:abn_modulate}+#6# {C:inactive}Modulate",
+		}
+      },
+	  
+	  j_abn_virtual_boy_joker = {
+        name = "Virtual Boy Joker",
+        text = {
+		  {
+			"All {C:attention}blinds{} have the {C:dark_edition}Chthonian{} edition",
+		  },
+		  {
+			"Use this joker to make your next played",
+            "hand gain {C:chips}Chips{} and {C:mult}Mult{} equal to the",
+            "{C:attention}ranks{} of all scoring numbered card",
+            "{C:inactive}({C:attention}High Card {C:inactive}excluded)"
+		  },
+		  {
+			"Gains {C:attention}#1#{} use when {C:attention}boss blind{} is defeated",
+            "{C:inactive}(Currently: {C:attention}#2# {C:inactive}uses)"
+		  },
 		}
       },
 	  

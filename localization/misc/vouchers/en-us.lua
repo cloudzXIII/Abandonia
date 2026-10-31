@@ -411,7 +411,12 @@ return {
         name = "Esoteric Sign",
         text = {
           jimbo_voucher_return_to_ante,
-          "Blinds may have Editions"
+          "{C:attention}Blinds{} may have {C:dark_edition}Editions{} which",
+		  "offer many detrimental effects,",
+		  "{C:abn_amperage}+#2#{} Amperage and {C:abn_mayhem_dark}+#3#{} Mayhem per",
+		  "scoring card with a {C:dark_suit}dark suit{},",
+		  "{C:gold}+#4#{} Ascension Power and {C:abn_mayhem_dark}+#5#{} Mayhem per",
+		  "scoring card with a {C:diamonds}light suit",
         }
       },
 	  --#endregion

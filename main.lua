@@ -196,14 +196,16 @@ ABN.calculate = function(self, context)
     -- See context/misc/blind_editions.lua
     local blind_edition = G.GAME.abn_blind_edition[G.GAME.blind_on_deck]
     if blind_edition and ABN.BlindEditions[blind_edition.key].calculate then
-      if context.before then
-		blind_edition.retriggers = 1
-	  elseif context.individual and context.cardarea == G.play and context.other_card.edition and context.other_card.edition.key == ABN.BlindEditions[blind_edition.key].counterpart then
-		blind_edition.retriggers = blind_edition.retriggers + 1
-	  elseif context.after then
-		blind_edition.retriggers = 0
-	  end
-	  if context.final_scoring_step then
+	  if not ABN.BlindEditions[blind_edition.key].disable_automatic_retrigger then
+        if context.before then
+		  blind_edition.retriggers = 1
+	    elseif context.individual and context.cardarea == G.play and context.other_card.edition and context.other_card.edition.key == ABN.BlindEditions[blind_edition.key].counterpart then
+		  blind_edition.retriggers = blind_edition.retriggers + 1
+	    elseif context.after then
+		  blind_edition.retriggers = 0
+	    end
+      end
+	  if context.final_scoring_step and not ABN.BlindEditions[blind_edition.key].disable_automatic_retrigger then
 	    local rets = {}
 	    for i = 1, blind_edition.retriggers or 1 do
           local ret = ABN.BlindEditions[blind_edition.key]:calculate(G.GAME.blind, blind_edition, context)
