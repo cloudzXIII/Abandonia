@@ -48,10 +48,10 @@ return {
       ble_abn_sunscourge = {
         name = "Sunscourge",
         text = {
-          "{C:attention}Double blind requirements the next",
+          "{C:attention}Double blind requirements the first",
           "{C:attention}time your score catches fire",
-          "{C:inactive}(Doubles again if the hand that catches",
-          "{C:inactive} fire contains a scoring {C:dark_edition}Sunscourge {C:inactive}card)"
+          --"{C:inactive}(Edition applies again for any hand that catches",
+          --"{C:inactive}fire afterwards while contains a scoring {C:dark_edition}Sunscourge {C:inactive}card)"
         }
       },
       ble_abn_gloss = {
@@ -75,8 +75,8 @@ return {
       ble_abn_reversal = {
         name = "Reversal",
         text = {
-          "{C:chips}First hand doesn't gain Chips",
-          "{C:inactive}(Applies to next hand if you play and score any {C:dark_edition}Reversal{C:inactive} card)"
+          "{C:chips}If played hand is the first of the round, or has",
+          "{C:chips}a scoring {C:dark_edition}Reversal {C:chips}card, it offers 0 base Chips",
         }
       },
       ble_abn_bit_rot = {
@@ -94,8 +94,8 @@ return {
       ble_abn_collodion = {
         name = "Collodion",
         text = {
-          "{C:mult}First hand doesn't gain Mult",
-          "{C:inactive}(Applies to next hand if you play and score any {C:dark_edition}Collodion{C:inactive} card)"
+          "{C:chips}If played hand is the first of the round, or has",
+          "{C:chips}a scoring {C:dark_edition}Collodion {C:chips}card, it offers 0 base Mult",
         }
       },
       ble_abn_vintage = {

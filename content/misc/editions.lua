@@ -1,3 +1,17 @@
+local old_set_cost = Card.set_cost
+function Card:set_cost()
+	old_set_cost(self)
+	if self.edition then
+		if self.edition.key == "e_abn_chthonian" then
+			self.cost = self.cost * 2
+			self.sell_cost = self.sell_cost * 2
+		elseif self.edition.key == "e_abn_reversal" then
+			self.cost = -self.cost
+			self.sell_cost = -self.sell_cost
+		end
+	end
+end
+
 SMODS.Shader {
   key = 'chthonian',
   path = 'chthonian.fs',
@@ -28,15 +42,6 @@ SMODS.Edition {
     artist = "Bro-Fly"
   },
 }
-
-local old_set_cost = Card.set_cost
-function Card:set_cost()
-	old_set_cost(self)
-	if self.edition and self.edition.key == "e_abn_chthonian" then
-		self.cost = self.cost * 2
-		self.sell_cost = self.sell_cost * 2
-	end
-end
 
 SMODS.Shader {
   key = 'iridescent',
@@ -328,6 +333,7 @@ SMODS.Edition {
   config = { percent = 20 },
   in_shop = true,
   weight = 1.5,
+  extra_cost = 2,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.edition.percent } }
   end,

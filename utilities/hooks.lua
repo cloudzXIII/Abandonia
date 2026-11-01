@@ -557,10 +557,15 @@ function Card:set_base(base, initial, manual_sprites)
 end
 
 --Custom Contexts for specific types of scoring effects
+local inf_loop_protection = false
 local old_calculate_effect = SMODS.calculate_effect
 function SMODS.calculate_effect(effect, scored_card, from_edition, pre_jokers)
+	if inf_loop_protection then return old_calculate_effect(effect, scored_card, from_edition, pre_jokers) end
+	inf_loop_protection = true
+	SMODS.calculate_context({ abn_alter_effect = effect, card = scored_card, from_edition = from_edition, pre_jokers = pre_jokers })
 	local ret = old_calculate_effect(effect, scored_card, from_edition, pre_jokers)
 	SMODS.calculate_context({ abn_post_effect = effect, card = scored_card, from_edition = from_edition, pre_jokers = pre_jokers })
+	inf_loop_protection = false
 	return ret
 end
 

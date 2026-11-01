@@ -40,7 +40,7 @@ function ABN.force_blind_edition(key, force)
 	if G.GAME.abn_force_blind_edition[key] <= 0 then G.GAME.abn_force_blind_edition[key] = nil end
 	G.GAME.abn_force_blind_edition_pool = {}
 	for k in pairs(G.GAME.abn_force_blind_edition) do
-		table.insert(G.GAME.abn_force_blind_edition_pool, {name = key, weight = ABN.BlindEditions[key].weight})
+		table.insert(G.GAME.abn_force_blind_edition_pool, {name = k, weight = 1})
 	end
 end
 
@@ -64,10 +64,21 @@ end
 local old_sprite_draw_steps = Sprite.define_draw_steps
 function Sprite:define_draw_steps(draw_step_definitions)
 	if G.GAME.abn_draw_blind_edition then
-		table.insert(draw_step_definitions, {shader = G.GAME.abn_draw_blind_edition})
+		self.abn_draw_blind_shader = G.GAME.abn_draw_blind_edition
 		G.GAME.abn_draw_blind_edition = nil
 	end
 	old_sprite_draw_steps(self, draw_step_definitions)
+end
+
+local old_sprite_draw = Sprite.draw
+function Sprite:draw(overlay)
+	old_sprite_draw(self, overlay)
+	if self.abn_draw_blind_shader then
+		local send_to_shader = {}
+		send_to_shader[1] = math.min(self.VT.r*3, 1) + G.TIMERS.REAL/28
+		send_to_shader[2] = G.TIMERS.REAL
+		self:draw_shader(self.abn_draw_blind_shader, nil, send_to_shader)
+	end
 end
 
 local old_blind_draw = Blind.draw
@@ -76,7 +87,10 @@ function Blind:draw()
 	if not self.states.visible then return end
 	local edition = G.GAME.abn_blind_edition[self:get_type()]
 	if edition then
-		self.children.animatedSprite:draw_shader(edition.shader)
+		local send_to_shader = {}
+		send_to_shader[1] = math.min(self.VT.r*3, 1) + G.TIMERS.REAL/28 + (self.juice and self.juice.r*20 or 0) + self.tilt_var.amt
+		send_to_shader[2] = G.TIMERS.REAL
+		self.children.animatedSprite:draw_shader(edition.shader, nil, send_to_shader)
 	end
 end
 
@@ -186,7 +200,7 @@ ABN.BlindEdition {
 			local debuffs = 1
 			local cards = {}
 			for _, card in ipairs(context.scoring_hand) do
-				if card.edition and card.edition.negative then
+				if card.edition and card.edition.key == self.counterpart then
 					debuffs = debuffs + 1
 				end
 				table.insert(cards, card)
@@ -244,6 +258,61 @@ ABN.BlindEdition {
 }
 
 ABN.BlindEdition {
+	key = "abandond",
+	blind_shader = "abn_abandond",
+	counterpart = "e_abn_abandond",
+	config = {inverts = 1, add_dollars = 1},
+	weight = 1.7,
+	disable_automatic_retrigger = true,
+	calculate = function(self, blind, edition, context)
+		if blind.disabled then return end
+		if context.before then
+			edition.config.inverts = 1
+			edition.config.triggers = {}
+			for _, card in ipairs(context.scoring_hand) do
+				if card.edition and card.edition.key == self.counterpart then
+					edition.config.inverts = edition.config.inverts + 1
+				end
+			end
+		elseif context.individual and context.cardarea == G.play then
+			if context.other_card.repetition_trigger and edition.config.inverts > 0 then
+				edition.config.inverts = edition.config.inverts - 1
+				edition.config.triggers[context.other_card.sort_id] = edition.config.triggers[context.other_card.sort_id] or {}
+				edition.config.triggers[context.other_card.sort_id][context.other_card.repetition_trigger] = true
+				return {message = "Invert!"}
+			end
+		elseif context.abn_alter_effect and context.card and edition.config.triggers[context.card.sort_id] and edition.config.triggers[context.card.sort_id][context.card.repetition_trigger] then
+			for k, v in pairs(context.abn_alter_effect) do
+				if Spectrallib.is_number(v) then
+					context.abn_alter_effect[k] = -v
+				end
+			end
+		elseif context.after then
+			edition.config.triggers = {}
+		end
+	end
+}
+
+ABN.BlindEdition {
+	key = "sunscourge",
+	blind_shader = "abn_sunscourge",
+	counterpart = "e_abn_sunscourge",
+	config = {add_dollars = 1},
+	weight = 0.2,
+	calculate = function(self, blind, edition, context)
+		if not blind.disabled and context.final_scoring_step and SMODS.calculate_round_score() >= G.GAME.blind.chips and not edition.config.activated then
+			return {
+				xblindsize = 2,
+				func = function()
+					edition.config.activated = true
+					return true
+				end
+			}
+		end
+	end
+}
+
+ABN.BlindEdition {
 	key = "gloss",
 	blind_shader = "abn_gloss",
 	counterpart = "e_abn_gloss",
@@ -295,6 +364,31 @@ ABN.BlindEdition {
 }
 
 ABN.BlindEdition {
+	key = "reversal",
+	blind_shader = "abn_flash",
+	counterpart = "e_abn_reversal",
+	config = {active = true, add_dollars = 2},
+	weight = 1.3,
+	disable_automatic_retrigger = true,
+	calculate = function(self, blind, edition, context)
+		if blind.disabled then return end
+		if context.initial_scoring_step then
+			local reduce = edition.config.active
+			edition.config.active = false
+			for _, card in ipairs(context.scoring_hand) do
+				if card.edition and card.edition.key == self.counterpart then
+					reduce = true
+					break
+				end
+			end
+			if reduce then
+				return {chips = -hand_chips}
+			end
+		end
+	end
+}
+
+ABN.BlindEdition {
 	key = "bit_rot",
 	blind_shader = "abn_exs",
 	counterpart = "e_abn_bit_rot",
@@ -322,6 +416,31 @@ ABN.BlindEdition {
 	calculate = function(self, blind, edition, context)
 		if context.final_scoring_step and not blind.disabled then
 			return {e_chips = edition.config.echips}
+		end
+	end
+}
+
+ABN.BlindEdition {
+	key = "collodion",
+	blind_shader = "abn_orange",
+	counterpart = "e_abn_collodion",
+	config = {active = true, add_dollars = 2},
+	weight = 1.3,
+	disable_automatic_retrigger = true,
+	calculate = function(self, blind, edition, context)
+		if blind.disabled then return end
+		if context.initial_scoring_step then
+			local reduce = edition.config.active
+			edition.config.active = false
+			for _, card in ipairs(context.scoring_hand) do
+				if card.edition and card.edition.key == self.counterpart then
+					reduce = true
+					break
+				end
+			end
+			if reduce then
+				return {mult = -mult}
+			end
 		end
 	end
 }
