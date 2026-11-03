@@ -2,7 +2,7 @@
 
 # Abandonia - Celebrating the creative minds and artists of Balatro!
 
-A Balatro mod founded by Bunnet focused on expanding the base game with a bunch of content!
+A Balatro mod founded by Bunnet and with the help of the Abandonia Team focused on expanding the base game with a bunch of content!
 
 # Additions
 
@@ -22,7 +22,7 @@ As of 0.1.1-DEV-4c, Abandonia currently adds
 * 75 Boss Blinds
 * 68 Stickers
 * 24 Poker Hands
-* with more to come!
+* New Multipliers
 
 # Installation
 - Requires [Steamodded v26.829.0+](https://github.com/Steamodded/smods/releases)
