@@ -53,7 +53,7 @@ return {
         text = {
           "Converts the {C:attention}leftmost{}",
           "card in hand into a",
-          "{C:attention}Bubbles{} {C:attention}13{} of {V:1}#1#{}"
+          "{C:attention}Amplitude{} {C:attention}13{} of {V:1}#1#{}"
         }
       },
       c_abn_zhe = {
@@ -69,7 +69,7 @@ return {
         text = {
           "Converts the {C:attention}leftmost{}",
           "card in hand into a",
-          "{C:attention}Bramble{} {C:attention}12{} of {V:1}#1#{}"
+          "{C:attention}Honey{} {C:attention}12{} of {V:1}#1#{}"
         }
       },
       c_abn_i_cal = {

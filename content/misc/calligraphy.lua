@@ -493,7 +493,7 @@ ABN.CalligraphyCard {
     }
   end,
 
-  config = { extra = { suit_conv = "Clubs", mod_conv = "m_abn_honey", rank = "abn_13" } },
+  config = { extra = { suit_conv = "Clubs", mod_conv = "m_abn_amplitude", rank = "abn_13" } },
   can_use = function(self, card)
     return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,
@@ -619,7 +619,7 @@ ABN.CalligraphyCard {
     }
   end,
 
-  config = { extra = { suit_conv = "abn_Baton", mod_conv = "m_abn_reinforcement", rank = "abn_12" } },
+  config = { extra = { suit_conv = "abn_Baton", mod_conv = "m_abn_honey", rank = "abn_12" } },
   can_use = function(self, card)
     return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
   end,

@@ -1277,7 +1277,7 @@ SMODS.Voucher {
 		elseif context.post_trigger and context.other_card.ability and context.other_card.ability.set == "Joker" and voucher.ability.extra.allow_scoring and not context.other_context.before and not context.other_context.after then
 			if context.other_card.config.center.rarity == "abn_VirusRare" then
 				ABN.mayhem(voucher.ability.extra.mayhem_virus, true)
-			elseif context.other_card.config.center.pools.Plagued then
+			elseif context.other_card.config.center.pools and context.other_card.config.center.pools.Plagued then
 				ABN.mayhem(voucher.ability.extra.mayhem_plague, true)
 			end
 		end

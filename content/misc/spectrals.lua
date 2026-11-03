@@ -301,7 +301,7 @@ SMODS.Consumable {
   key = 'distortion',
   set = 'Spectral',
   atlas = "AbandoniaSpectrals",
-  pos = { x = 6, y = 3 },
+  pos = { x = 6, y = 2 },
   config = { extra = {} },
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_pearlescent
@@ -333,7 +333,7 @@ SMODS.Consumable {
     return next(SMODS.Edition:get_edition_cards(G.jokers, true))
   end,
   abn_artist_credits = {
-    artist = "Flote"
+    artist = "Inky"
   },
 }
 
