@@ -1568,10 +1568,9 @@ return {
         name = "Cracked Joker",
         text = {
             "{C:attention}Kinsugi{} cards always",
-            "succeed in their probabilities",
-            "Non-{C:attention}Kinsugi{} cards have a",
-            "{C:green}1 in 4{} chance to be destroyed",
-            "after scoring",
+            "succeed in their probabilities,",
+            "Non-{C:attention}Kinsugi{} cards have a {C:green}#2# in #3#",
+            "chance to be destroyed after scoring,",
             "Gains Chips equal to the rank",
             "of each card destroyed this way",
             "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"

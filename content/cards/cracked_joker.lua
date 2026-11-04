@@ -1,59 +1,39 @@
 
 SMODS.Joker({
     key = "cracked_joker",
-    name = "Cracked Joker",
     atlas = "ABNJokerSheet24",
     pos = { x = 4, y = 4 },
     cost = 6,
     rarity = 3,
 
-    config = {
-        extra = {
-            odds = 4,
-            chips = 0
-        }
-    },
+    config = {extra = {odds = 4, chips = 0}},
 
     loc_vars = function(self, info_queue, card)
-        return {
-            vars = {
-                card.ability.extra.chips
-            }
-        }
+		local num, den = SMODS.get_probability_vars(card, 1, card.ability.extra.odds)
+        return {vars = {card.ability.extra.chips, num, den}}
     end,
 
     calculate = function(self, card, context)
-        if context.individual
-        and context.cardarea == G.play
-        and not context.blueprint
-        and context.other_card then
-            local scored_card = context.other_card
+		if context.mod_probability and (
+				context.identifier == "kintsugi_dup_abn" or
+				context.identifier == "kintsugi_db_abn" or
+				context.identifier == "abn_stk_kintsugi_1" or
+				context.identifier == "abn_stk_kintsugi_2") then
+			return {numerator = context.denominator}
+		end
 
-            if not (
-                scored_card.config
-                and scored_card.config.center
-                and scored_card.config.center.key == "m_abn_kintsugi"
-            ) then
-                if pseudorandom("cracked_joker") < G.GAME.probabilities.normal / card.ability.extra.odds then
-                    local rank = scored_card.base and scored_card.base.nominal or 0
-
-                    card.ability.extra.chips = card.ability.extra.chips + rank
-
-                    G.E_MANAGER:add_event(Event({
-                        trigger = "after",
-                        delay = 0.3,
-                        func = function()
-                            if scored_card and not scored_card.destroyed then
-                                scored_card:start_dissolve()
-                            end
-                            return true
-                        end
-                    }))
-                end
-            end
+        if context.destroy_card and context.cardarea == G.play and not context.blueprint and not SMODS.has_enhancement(context.destroy_card, "m_abn_kintsugi") and SMODS.pseudorandom_probability(card, "j_abn_cracked_joker", 1, card.ability.extra.odds) then
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "chips",
+				scalar_table = context.destroy_card.base,
+				scalar_value = "nominal",
+				message_colour = G.C.CHIPS
+			})
+            return {remove = true}
         end
 
-        if context.joker_main and card.ability.extra.chips > 0 then
+        if context.joker_main and card.ability.extra.chips ~= 0 then
             return {
                 chips = card.ability.extra.chips
             }
