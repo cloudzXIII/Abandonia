@@ -1009,10 +1009,8 @@ ABN.EnhSticker {
           scalar_value = "mult_mod",
           operation = function(ref_table, ref_value, initial, change)
             ref_table[ref_value] = initial + (debuffed_count * change)
-          end,
-          no_message = true
+          end
         })
-        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
       end
     end
 
@@ -1025,10 +1023,8 @@ ABN.EnhSticker {
           scalar_value = "chips_mod",
           operation = function(ref_table, ref_value, initial, change)
             ref_table[ref_value] = initial + (destroyed_count * change)
-          end,
-          no_message = true
+          end
         })
-        SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
       end
     end
 

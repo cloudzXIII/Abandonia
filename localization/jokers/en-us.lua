@@ -7139,10 +7139,16 @@ return {
       j_abn_omaha_joker = {
         name = "Omaha Poker",
         text = {
-          "This Joker gains {C:mult}+#2#{} Mult",
-          "for {C:attention}every{} poker hand in a",
-          "hand containing {C:attention}5{} scoring cards",
-          "{C:inactive}(Currently {C:mult}+#1#{} {C:inactive}Mult)"
+          {
+            "Gains {C:gold}+#2#{} Ascension Power",
+            "for {C:attention}every{} poker hand in a",
+            "hand containing {C:attention}5{} scoring cards",
+            "{C:inactive}(Currently {C:gold}+#1#{} {C:inactive}Ascension Power)"
+          },
+          {
+            "If {C:dark_edition}Underhands{} are unlocked,",
+            "playing one will {C:attention}upgrade{} it"
+          },
         },
       },
 

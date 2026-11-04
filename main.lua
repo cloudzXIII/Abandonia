@@ -367,6 +367,11 @@ ABN.calculate = function(self, context)
     G.GAME.pool_flags.abn_cavendish_extinct = true
   end
 
+  --Used for Photodegredation's in_pool
+  if context.after and next(context.poker_hands["abn_Spectrum"]) then
+    G.GAME.abn_any_spectrum_played = true
+  end
+
   -- Perma Bonuses on Jokers
   if context.other_joker and not context.other_joker.debuff then
     local ability = context.other_joker.ability

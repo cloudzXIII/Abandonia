@@ -443,7 +443,7 @@ ABN.WeatherReport {
         end
       }))
     end
-    if context.debuff_card and ABN.is_light(context.debuff_card) then
+    if context.debuff_card and ABN.is_light(context.debuff_card, false, true) then
       return { debuff = true }
     end
     self:destroy_at_end_of_round(card, context)
@@ -828,7 +828,7 @@ ABN.WeatherReport {
         end
       }))
     end
-    if context.debuff_card and ABN.is_dark(context.debuff_card) then
+    if context.debuff_card and ABN.is_dark(context.debuff_card, false, true) then
       return { debuff = true }
     end
     self:destroy_at_end_of_round(card, context)

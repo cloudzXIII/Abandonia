@@ -5,7 +5,7 @@ SMODS.Joker {
 
   loc_vars = function(self, info_queue, card)
     local cae = card.ability.extra
-    return { vars = { cae.mult, cae.mult_gain } }
+    return { vars = { cae.asc, cae.asc_gain } }
   end,
 
   rarity = 3,
@@ -16,27 +16,26 @@ SMODS.Joker {
   blueprint_compat = true,
 
 
-  config = { extra = { mult = 0, mult_gain = 1 } },
+  config = { extra = { asc = 0, asc_gain = 0.25 } },
   calculate = function(self, card, context)
     if context.before and context.poker_hands and #context.scoring_hand == 5 then
-      local cph = {}
+      if G.GAME.abn_underhands_unlocked and G.GAME.current_round.current_hand.abn_underhand then
+        ABN.level_up_underhand(G.GAME.current_round.current_hand.abn_underhand, card)
+      end
+      if context.blueprint then return end
+      local count = 0
       for k, v in pairs(context.poker_hands) do
         if next(v) then
-          cph[k] = true
+          count = count + 1
         end
-      end
-
-      local count = 0
-      for k, v in pairs(cph) do
-        count = count + 1
       end
 
       if count > 0 then
         SMODS.scale_card(card, {
           ref_table = card.ability.extra,
-          ref_value = "mult",
-          scalar_value = "mult_gain",
-          message_colour = G.C.MULT,
+          ref_value = "asc",
+          scalar_value = "asc_gain",
+          message_colour = G.C.YELLOW,
           operation = function(ref_table, ref_value, initial, change)
             ref_table[ref_value] = initial + count * change
           end,
@@ -45,7 +44,7 @@ SMODS.Joker {
     end
     if context.joker_main then
       return {
-        mult = card.ability.extra.mult
+        asc = card.ability.extra.asc
       }
     end
   end,

@@ -14,6 +14,16 @@ function ABN.level_up_underhand(underhand, card, amount, instant)
 	local old_level = uh.level
 	uh.level = math.max(0, uh.level + amount)
 	if not instant then
+		local vals_after_level
+		if SMODS.displaying_scoring then
+			vals_after_level = copy_table(G.GAME.current_round.current_hand)
+			local text, disp_text = G.FUNCS.get_poker_hand_info(G.play.cards)
+			vals_after_level.handname = disp_text or ''
+			vals_after_level.level = (G.GAME.hands[text] or {}).level or ''
+			for name, p in pairs(SMODS.Scoring_Parameters) do
+				vals_after_level[name] = p.current
+			end
+		end
 		update_hand_text(
 			{sound = "button", volume = 0.7, pitch = 0.8, delay = 0.3},
 			{handname = uh_def.name, chips = uh_def.x_chips + old_level * uh_def.l_chips, mult = uh_def.x_mult + old_level * uh_def.l_mult, level = old_level}
@@ -53,7 +63,7 @@ function ABN.level_up_underhand(underhand, card, amount, instant)
 		delay(1.3)
 		update_hand_text(
 			{sound = "button", volume = 0.7, pitch = 1.1, delay = 0},
-			{mult = 0, chips = 0, handname = "", level = ""}
+			vals_after_level or {mult = 0, chips = 0, handname = "", level = ""}
 		)
 	end
 end

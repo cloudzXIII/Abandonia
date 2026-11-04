@@ -32,68 +32,66 @@ SMODS.Joker {
   end,
 
   in_pool = function(self)
-    -- check if any of the spectrum hands have been played this run
-    local hand_played = false
-    local spectrum_hands = {
-      "abn_Spectrum",
-      "abn_Specflush",
-      "abn_Straight Specflush",
-      "abn_Specflush House",
-      "abn_Specflush Five",
-      "abn_Specflush Six"
-    }
-
-    if G.GAME and G.GAME.hands then
-      for _, hand_name in ipairs(spectrum_hands) do
-        if G.GAME.hands[hand_name] and G.GAME.hands[hand_name].played > 0 then
-          hand_played = true
-          break
-        end
-      end
-    end
-
-    return hand_played
+    return G.GAME.abn_any_spectrum_played --See main.lua
   end,
 
   calculate = function(self, card, context)
     -- scaling
-    if context.cardarea == G.jokers and context.before and not context.blueprint then
-      local valid_hands = {
-        ["abn_Spectrum"] = true,
-        ["abn_Specflush"] = true,
-        ["abn_Straight Specflush"] = true,
-        ["abn_Specflush House"] = true,
-        ["abn_Specflush Five"] = true,
-        ["abn_Specflush Six"] = true
-      }
-
-      if valid_hands[context.scoring_name] then
+    if context.before and not context.blueprint and next(context.poker_hands["abn_Spectrum"]) then
         -- count occurrences of each suit in the hand (not played cards)
         local suit_counts = {}
-        local max_count = 0
+        local matches = 0
 
         for _, hc in ipairs(G.hand.cards) do
-          local suit = hc:is_suit()
-          suit_counts[suit] = (suit_counts[suit] or 0) + 1
-          if suit_counts[suit] > max_count then
-            max_count = suit_counts[suit]
+          -- Suitless and wild cards never "match" suits
+          if not SMODS.has_no_suit(hc) and not SMODS.has_any_suit(hc) then
+            local suit = hc.base.suit
+            suit_counts[suit] = (suit_counts[suit] or 0) + 1
           end
         end
 
-        -- scale if we have matching suits (max_count > 1)
-        if max_count > 0 then
-          card.ability.extra.chips = card.ability.extra.chips + (card.ability.extra.chipsadd * max_count)
-          card.ability.extra.mult = card.ability.extra.mult + (card.ability.extra.multadd * max_count)
+        for _, count in pairs(suit_counts) do
+          if count > 1 then
+            matches = matches + count
+          end
+        end
+
+        -- scale if we have matching suits
+        if matches > 0 then
+          SMODS.scale_card(card, {
+            ref_table = card.ability.extra,
+            ref_value = "chips",
+            scalar_value = "chipsadd",
+            no_message = true,
+            operation = function(ref_table, ref_value, initial, change)
+              ref_table[ref_value] = initial + change * matches
+            end
+          })
+          SMODS.scale_card(card, {
+            ref_table = card.ability.extra,
+            ref_value = "mult",
+            scalar_value = "multadd",
+            no_message = true,
+            operation = function(ref_table, ref_value, initial, change)
+              ref_table[ref_value] = initial + change * matches
+            end
+          })
 
           -- edition check
           if card.edition then
-            card.ability.extra.x_mult = card.ability.extra.x_mult + (card.ability.extra.xmultadd * max_count)
+            SMODS.scale_card(card, {
+              ref_table = card.ability.extra,
+              ref_value = "x_mult",
+              scalar_value = "xmultadd",
+              no_message = true,
+              operation = function(ref_table, ref_value, initial, change)
+                ref_table[ref_value] = initial + change * matches
+              end
+            })
           end
 
-          card_eval_status_text(card, 'extra', nil, nil, nil, { message = "Upgrade!", colour = G.C.BLUE })
-          card:juice_up()
+          return {message = localize("k_upgrade_ex")}
         end
-      end
     end
 
     -- SCORING LOGIC
@@ -101,8 +99,7 @@ SMODS.Joker {
       return {
         chips = card.ability.extra.chips,
         mult = card.ability.extra.mult,
-        x_mult = card.ability.extra.x_mult,
-        card = card
+        x_mult = card.ability.extra.x_mult
       }
     end
   end,
