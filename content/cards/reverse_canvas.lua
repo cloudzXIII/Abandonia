@@ -40,11 +40,13 @@ SMODS.Joker {
                 for _, scored_card in ipairs(context.scoring_hand) do
                     if ABN.is_light(scored_card) and ABN.is_vanilla_suit(scored_card) then
                         local new_suit = pseudorandom_element(dark_suits, pseudoseed('abn_reverse_canvas'))
+                        SMODS.change_base(scored_card, new_suit, nil, true)
+						local manual_sprite = copy_table(scored_card.config.card)
                         converted = true
                         G.E_MANAGER:add_event(Event({
                             func = function()
                                 scored_card:juice_up()
-                                SMODS.change_base(scored_card, new_suit)
+                                scored_card:set_sprites(nil, manual_sprite)
                                 scored_card.ability.perma_bonus = (scored_card.ability.perma_bonus or 0) + card.ability.extra.card_chips
                                 return true
                             end

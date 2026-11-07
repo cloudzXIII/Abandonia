@@ -186,6 +186,7 @@ abn_load_crossmod("Spectrallib")
 abn_load_crossmod("Fortlatro")
 abn_load_crossmod("ortalab")
 abn_load_crossmod("paperback")
+abn_load_crossmod("DreamBBQ")
 --#endregion
 
 ABN.calculate = function(self, context)

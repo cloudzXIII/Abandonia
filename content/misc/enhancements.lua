@@ -1155,11 +1155,15 @@ SMODS.Enhancement({
           count = count + 1
         end
       end
+      if count == 0 then return end
       SMODS.scale_card(card, {
         ref_table = card.ability.extra,
         ref_value = "chips",
         scalar_value = "chips_gain",
-        message_key = "a_chips",
+        scaling_message = {
+          message = localize({type = "variable", key = "a_chips", vars = {card.ability.extra.chips_gain * count}}),
+          colour = G.C.BLUE
+        },
         operation = function(ref_table, ref_value, initial, change)
           ref_table[ref_value] = initial + count * change
         end,
@@ -1196,11 +1200,15 @@ SMODS.Enhancement({
           count = count + 1
         end
       end
+      if count == 0 then return end
       SMODS.scale_card(card, {
         ref_table = card.ability.extra,
         ref_value = "mult",
         scalar_value = "mult_gain",
-        message_key = "a_mult",
+        scaling_message = {
+          message = localize({type = "variable", key = "a_mult", vars = {card.ability.extra.mult_gain * count}}),
+          colour = G.C.RED
+        },
         operation = function(ref_table, ref_value, initial, change)
           ref_table[ref_value] = initial + count * change
         end,

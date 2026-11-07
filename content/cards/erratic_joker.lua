@@ -32,7 +32,9 @@ SMODS.Joker {
             end
           end
           if #available_suits > 0 then
-            local new_suit = available_suits[math.random(#available_suits)]
+            local new_suit = pseudorandom_element(available_suits, pseudoseed('abn_erratic_joker'))
+            assert(SMODS.change_base(played_card, new_suit, nil, true))
+			local manual_sprite = copy_table(played_card.config.card)
             G.E_MANAGER:add_event(Event({
               trigger = 'after',
               delay = 0.15,
@@ -47,7 +49,7 @@ SMODS.Joker {
               trigger = 'after',
               delay = 0.15,
               func = function()
-                assert(SMODS.change_base(played_card, new_suit, nil))
+                played_card:set_sprites(nil, manual_sprite)
                 return true
               end
             }))

@@ -122,14 +122,16 @@ SMODS.Rank {
   end,
 }
 
-SMODS.Rank:take_ownership('Ace',
-  {
-    next = { 'abn_11', '2' },
-  }, true
-)
+if not SMODS.find_mod("cutout") then
+  SMODS.Rank:take_ownership('Ace',
+    {
+      next = { 'abn_11', '2' },
+    }, true
+  )
 
-SMODS.Rank:take_ownership('10',
-  {
-    next = { 'abn_11', 'Jack' },
-  }, true
-)
+  SMODS.Rank:take_ownership('10',
+    {
+      next = { 'abn_11', 'Jack' },
+    }, true
+  )
+end

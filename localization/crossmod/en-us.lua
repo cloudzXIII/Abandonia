@@ -291,6 +291,48 @@ return {
         }
       },
       --#region End of Paperback crossmod
+
+      --#region Start of DreamBBQ crossmod
+      j_abn_endless_dreams = {
+        name = "Endless Dreams",
+        text = {
+          {
+            "When {C:attention}Big Blind{} is defeated, create",
+			"a {C:dark_edition}Negative{} joker from {X:e64437,C:a5cdd1}Dream BBQ"
+          },
+          {
+            "{X:mult,C:white}X#1#{} Mult and {C:attention}+#2#{} Win Ante",
+			"per owned {X:e64437,C:a5cdd1}Dream BBQ{} joker"
+          },
+        }
+      },
+
+      j_abn_dream_edition_dreams = {
+        name = "Dream Edition Dreams",
+        text = {
+          "If {C:attention}first{} scoring card has an {C:dark_edition}Edition{},",
+          "it will be spread to the {C:attention}second{} card"
+        }
+      },
+
+      j_abn_dream_wizard = {
+        name = "Dream Wizard",
+        text = {
+		  "{C:000000}Secret{} jokers always come",
+          "with the {C:dark_edition}Unknown{} edition"
+        }
+      },
+
+      j_abn_jinx_dream_eater = {
+        name = "Jinx, Dream Eater",
+        text = {
+		  "Retrigger {C:attention}leftmost{} scoring",
+		  "card once for each other",
+		  "scoring card with a unique rank",
+		  "{C:inactive}(Currently: {C:attention}#1#{C:inactive})",
+        }
+      },
+      --#region End of DreamBBQ crossmod
     },
   },
 }
