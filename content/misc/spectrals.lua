@@ -794,3 +794,103 @@ SMODS.Consumable {
     artist = "Tatsu",
   },
 }
+
+SMODS.Consumable {
+    key = 'promotion',
+    set = 'Spectral',
+    atlas = 'AbandoniaSpectrals',
+    pos = { x = 1, y = 4 },
+    config = { extra = { cards = 3 } },
+
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.cards } }
+    end,
+
+    can_use = function(self, card)
+        if not (G.hand and G.hand.highlighted) then return false end
+        local count = #G.hand.highlighted
+        if count < 1 or count > card.ability.extra.cards then return false end
+
+        local promotions = { Jack = 'abn_11', Queen = 'abn_12', King = 'abn_13', Ace = 'abn_14' }
+        for _, playing_card in ipairs(G.hand.highlighted) do
+            if SMODS.has_no_rank(playing_card) or not promotions[playing_card.base.value] then
+                return false
+            end
+        end
+        return true
+    end,
+
+    use = function(self, card, area, copier)
+        local promotions = { Jack = 'abn_11', Queen = 'abn_12', King = 'abn_13', Ace = 'abn_14' }
+
+        local targets = {}
+        local new_ranks = {}
+        for _, playing_card in ipairs(G.hand.highlighted) do
+            table.insert(targets, playing_card)
+            new_ranks[playing_card] = promotions[playing_card.base.value]
+        end
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+
+        for i, target in ipairs(targets) do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    target:flip()
+                    play_sound('card1', 1.15 - (i - 1) / #targets * 0.3)
+                    target:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+
+        delay(0.2)
+
+        for _, target in ipairs(targets) do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    SMODS.change_base(target, nil, new_ranks[target])
+                    return true
+                end
+            }))
+        end
+
+        for i, target in ipairs(targets) do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    target:flip()
+                    play_sound('tarot2', 0.85 + (i - 1) / #targets * 0.3, 0.6)
+                    target:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)
+    end,
+	
+	abn_artist_credits = {
+		artist = "Okronix",
+	},
+}
