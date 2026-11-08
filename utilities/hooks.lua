@@ -601,7 +601,7 @@ end
 --Enable cards with specific enhancements to retain their ranks while specific jokers are owned.
 local property_ref = SMODS.has_playing_card_property
 function SMODS.has_playing_card_property(card, key)
-	if key == "replace_base_card" or key == "should_hide_front" or key == "no_suit" or key == "no_rank" then
+	if card and card.config and card.config.center and (key == "replace_base_card" or key == "should_hide_front" or key == "no_suit" or key == "no_rank") then
 		if SMODS.has_enhancement(card, "m_stone") and (next(SMODS.find_card('j_abn_streetart_joker')) or next(SMODS.find_card('j_abn_stone_calendar'))) then
 			return false
 		elseif SMODS.has_enhancement(card, "m_abn_polkadot") and next(SMODS.find_card('j_abn_gagman_joker')) then
@@ -615,7 +615,7 @@ end
 
 local generate_old_ui = generate_card_ui
 function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
-	if card and ((SMODS.has_enhancement(card, "m_stone") and (next(SMODS.find_card('j_abn_streetart_joker')) or next(SMODS.find_card('j_abn_stone_calendar')))) or (SMODS.has_enhancement(card, "m_abn_polkadot") and next(SMODS.find_card('j_abn_gagman_joker'))) or (SMODS.has_enhancement(card, "m_abn_petroleum") and next(SMODS.find_card('j_abn_stone_calendar')))) then
+	if card and card.config and card.config.center and ((SMODS.has_enhancement(card, "m_stone") and (next(SMODS.find_card('j_abn_streetart_joker')) or next(SMODS.find_card('j_abn_stone_calendar')))) or (SMODS.has_enhancement(card, "m_abn_polkadot") and next(SMODS.find_card('j_abn_gagman_joker'))) or (SMODS.has_enhancement(card, "m_abn_petroleum") and next(SMODS.find_card('j_abn_stone_calendar')))) then
 		if _c.key == "m_abn_polkadot" then
 			specific_vars.bonus_chips = nil
 		end
