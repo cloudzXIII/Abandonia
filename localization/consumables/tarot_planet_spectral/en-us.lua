@@ -561,10 +561,11 @@ return {
       c_abn_promotion = { -- TO CODE
         name = "Promotion",
         text = {
-          "Convert held {C:attention}Jacks{} to {C:attention}11s{},",
-          "held {C:attention}Queens{} to {C:attention}12s{},",
-          "held {C:attention}Kings{} to {C:attention}13s{},",
-          "held {C:attention}Aces{} to {C:attention}14s{},",
+          "Convert up to {C:attention}#1#{} held",
+		  "{C:attention}Jacks{} to {C:attention}11s{}",
+          "{C:attention}Queens{} to {C:attention}12s{}",
+          "{C:attention}Kings{} to {C:attention}13s{}",
+          "{C:attention}Aces{} to {C:attention}14s{}",
         }
       },
       c_abn_brand = {
