@@ -21,14 +21,12 @@ SMODS.Joker {
   end,
 
   update = function(self, card)
-    if card.area == G.jokers then
-      if G.jokers and G.jokers.cards then
-        for _, j in ipairs(G.jokers.cards) do
-          if not j.config.center.pools or j.config.center.pools and not j.config.center.pools.Brainrot then
-            j:set_debuff(true)
-          end
+    if card.added_to_deck then
+      ABN.all_jokers(function(j)
+        if not j.config.center.pools or j.config.center.pools and not j.config.center.pools.Brainrot then
+          j:set_debuff(true)
         end
-      end
+      end)
     end
   end,
 

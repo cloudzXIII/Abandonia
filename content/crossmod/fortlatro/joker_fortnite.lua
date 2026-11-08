@@ -65,11 +65,11 @@ SMODS.Joker {
     if G.jokers and G.jokers.cards then
       local modded_count = 0
 
-      for _, j in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(j)
         if j.config.center.original_mod then
           modded_count = modded_count + 1
         end
-      end
+      end)
 
       card.ability.extra.xmult = modded_count * card.ability.extra.xmultadd
       card.ability.extra.mult = modded_count * card.ability.extra.multadd

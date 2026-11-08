@@ -34,13 +34,11 @@ function Game:update(dt)
   end
 
   --check for Jokers
-  if G.jokers and G.jokers.cards then
-    for _, card in ipairs(G.jokers.cards) do
+    ABN.all_jokers(function(card)
       if card.antedebuff then
         card:set_debuff(true)
       end
-    end
-  end
+    end)
 end
 
 -- Hook into end of round
@@ -51,7 +49,7 @@ function end_round()
 
   if G.GAME.blind.boss then
     -- Remove antedebuff from all cards
-    for _, area in pairs({ G.hand, G.deck, G.jokers, G.discard }) do
+    for _, area in pairs({ G.hand, G.deck, G.jokers, G.consumeables, G.discard }) do
       if area and area.cards then
         for _, card in ipairs(area.cards) do
           if card.antedebuff then
@@ -144,14 +142,12 @@ SMODS.Consumable {
   end,
 
   can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0
+    return ABN.count_jokers()
   end,
 
   use = function(self, card, area, copier)
     -- Permaflip all current jokers
-    for i = 1, #G.jokers.cards do
-      local j = G.jokers.cards[i]
-
+    ABN.all_jokers(function(j)
       if not j.ability.abn_perma_flipped then
         if j.facing == 'front' then
           j:flip()
@@ -161,7 +157,7 @@ SMODS.Consumable {
       -- Gain chips and mult
       j.ability.abn_perma_bonus = (j.ability.abn_perma_bonus or 0) + card.ability.extra.chips
       j.ability.abn_perma_mult = (j.ability.abn_perma_mult or 0) + card.ability.extra.mult
-    end
+    end)
   end,
 
   abn_artist_credits = {
@@ -287,8 +283,7 @@ SMODS.Consumable {
   end,
 
   use = function(self, card, area, copier)
-    for i = 1, #G.jokers.cards do
-      local j = G.jokers.cards[i]
+    ABN.all_jokers(function(j)
       local rarity = j.config.center.rarity
 
       -- Handle perma-flip removal
@@ -311,7 +306,7 @@ SMODS.Consumable {
         j.ability.abn_perma_mult = (j.ability.abn_perma_mult or 0) + card.ability.extra.mult
         j.ability.abn_perma_bonus = (j.ability.abn_perma_bonus or 0) + card.ability.extra.chips
       end
-    end
+    end)
 
     for i = 1, #G.playing_cards do
       local c = G.playing_cards[i]
@@ -444,14 +439,11 @@ SMODS.Consumable {
   end,
   can_use = function(self, card)
     -- can be used if there is at least one non-plagued Joker to destroy
-    if G.jokers and G.jokers.cards then
-      for _, v in ipairs(G.jokers.cards) do
-        if not (v.config.center.pools and v.config.center.pools["Plagued"]) then
-          return true
-        end
+    return ABN.all_jokers(function(v)
+      if not (v.config.center.pools and v.config.center.pools["Plagued"]) then
+        return true
       end
-    end
-    return false
+    end)
   end,
 
   use = function(self, card, area, copier)
@@ -459,17 +451,15 @@ SMODS.Consumable {
     local owned_jokers = {}
 
     -- Gather owned joker keys and identify non-plagued targets
-    if G.jokers and G.jokers.cards then
-      for _, v in ipairs(G.jokers.cards) do
-        if v.config.center and v.config.center.key then
-          owned_jokers[v.config.center.key] = true
-        end
-
-        if not (v.config.center.pools and v.config.center.pools["Plagued"]) then
-          table.insert(valid_jokers, v)
-        end
+    ABN.all_jokers(function(v)
+      if v.config.center and v.config.center.key then
+        owned_jokers[v.config.center.key] = true
       end
-    end
+
+      if not (v.config.center.pools and v.config.center.pools["Plagued"]) then
+        table.insert(valid_jokers, v)
+      end
+    end)
 
     local successfully_destroyed = 0
 
@@ -544,15 +534,13 @@ SMODS.Consumable {
 
 
   can_use = function(self, card)
+    if #G.jokers.cards >= G.jokers.config.card_limit then return false end
     -- can be used if there is at least one non-plagued Joker
-    if G.jokers and G.jokers.cards then
-      for _, v in ipairs(G.jokers.cards) do
-        if not (v.config.center.pools and v.config.center.pools["Plagued"]) and #G.jokers.cards < G.jokers.config.card_limit then
-          return true
-        end
+    return ABN.all_jokers(function(v)
+      if not (v.config.center.pools and v.config.center.pools["Plagued"]) then
+        return true
       end
-    end
-    return false
+    end)
   end,
 
   use = function(self, card, area, copier)
@@ -560,17 +548,15 @@ SMODS.Consumable {
     local owned_jokers = {}
 
     -- Gather owned joker keys and identify non-plagued targets
-    if G.jokers and G.jokers.cards then
-      for _, v in ipairs(G.jokers.cards) do
-        if v.config.center and v.config.center.key then
-          owned_jokers[v.config.center.key] = true
-        end
-
-        if not (v.config.center.pools and v.config.center.pools["Plagued"]) then
-          table.insert(valid_jokers, v)
-        end
+    ABN.all_jokers(function(v)
+      if v.config.center and v.config.center.key then
+        owned_jokers[v.config.center.key] = true
       end
-    end
+
+      if not (v.config.center.pools and v.config.center.pools["Plagued"]) then
+        table.insert(valid_jokers, v)
+      end
+    end)
 
     local successfully_affected = 0
 

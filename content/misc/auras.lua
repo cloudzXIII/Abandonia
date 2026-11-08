@@ -348,7 +348,7 @@ SMODS.Consumable {
 
   can_use = function(self, card)
     if card.ability and card.ability.extra then
-      local n = (G.hand and #G.hand.highlighted or 0) + (G.jokers and #G.jokers.highlighted or 0)
+      local n = (G.hand and #G.hand.highlighted or 0) + #ABN.highlighted_jokers()
       return n >= 1 and n <= card.ability.extra.cards
     end
     return false
@@ -359,7 +359,7 @@ SMODS.Consumable {
 
     for _, category in ipairs({
       G.hand.highlighted,
-      G.jokers.highlighted,
+      ABN.highlighted_jokers(),
     }) do
       for i = 1, #category do
         table.insert(highlightedCards, category[i])
@@ -372,11 +372,11 @@ SMODS.Consumable {
 
       if c.ability and c.ability.set == 'Joker' then
         local rarity = c.config.center.rarity
-        for _, j in ipairs(G.jokers.cards) do
+        ABN.all_jokers(function(j)
           if j ~= c and j.config.center.rarity == rarity then
             to_destroy[#to_destroy + 1] = j
           end
-        end
+        end)
       elseif not SMODS.has_no_rank(c) then
         local id = c:get_id()
         for _, area_cards in ipairs({ G.hand.cards, G.deck.cards, G.playing_cards }) do

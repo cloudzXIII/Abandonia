@@ -183,10 +183,10 @@ SMODS.Consumable {
   end,
   calculate = function(self, card, context)
     if context.individual and context.other_card.seal and context.other_card.seal == 'Gold' then
-      for _, joker in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(joker)
         joker.ability.abn_perma_xmult = (joker.ability.abn_perma_xmult or 0) + card.ability.extra.xmult
         SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, joker)
-      end
+      end)
       abn_activate_letter(self, card)
     end
   end,
@@ -502,10 +502,10 @@ SMODS.Consumable {
   end,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, 'm_stone') then
-      for _, joker in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(joker)
         joker.ability.abn_perma_bonus = (joker.ability.abn_perma_bonus or 0) + card.ability.extra.chips
         SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, joker)
-      end
+      end)
       abn_activate_letter(self, card)
     end
   end,
@@ -730,11 +730,11 @@ SMODS.Consumable {
   end,
   calculate = function(self, card, context)
     if context.before and context.scoring_name and next(context.poker_hands['abn_Spectrum']) then
-      for _, joker in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(joker)
         joker.ability.abn_perma_mult = (joker.ability.abn_perma_mult or 0) + card.ability.extra.mult
         joker.ability.abn_perma_bonus = (joker.ability.abn_perma_bonus or 0) + card.ability.extra.chips
         SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, joker)
-      end
+      end)
       abn_activate_letter(self, card)
     end
   end,
@@ -824,13 +824,13 @@ SMODS.Consumable {
   end,
   calculate = function(self, card, context)
     if context.using_consumeable and context.consumeable.ability.set == 'nightshift_cards' then
-      for _, joker in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(joker)
         joker.ability.abn_perma_bonus = (joker.ability.abn_perma_bonus or 0) + card.ability.extra.chips
         for _, sticker in ipairs(SMODS.Sticker.obj_buffer) do
           if joker.ability[sticker] then joker:remove_sticker(sticker) end
         end
         SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, joker)
-      end
+      end)
       abn_activate_letter(self, card)
     end
   end,

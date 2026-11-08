@@ -220,13 +220,11 @@ local old_start_run = Game.start_run
 function Game:start_run(args)
 	old_start_run(self, args)
 
-	for _, area in ipairs({G.jokers.cards, G.consumeables.cards}) do
-		for _, joker in ipairs(area) do
-			if joker.ability.abn_weight then
-				joker.states.drag.can = false
-			end
+	ABN.all_jokers(function(joker)
+		if joker.ability.abn_weight then
+			joker.states.drag.can = false
 		end
-	end
+	end)
 end
 
 --region Crown: Card cannot change editions
@@ -852,19 +850,18 @@ SMODS.Sticker {
   calculate = function(self, card, context)
     if context.joker_main then
       local triggered = false
-      for _, v in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(v)
         if v:is_rarity("Common") then
           triggered = true
           SMODS.calculate_effect(
-          { chips = self.config.chips, juice_card = v, message_card = v },
-          card
-        )
-        break
-      end
+            { chips = self.config.chips, juice_card = v, message_card = v },
+          card)
+          return true
+        end
+      end)
     end
     if triggered then return nil, true end
   end
-end,
 }
 
 SMODS.Sticker {
@@ -887,19 +884,18 @@ SMODS.Sticker {
   calculate = function(self, card, context)
     if context.joker_main then
       local triggered = false
-      for _, v in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(v)
         if v:is_rarity("Uncommon") then
           triggered = true
           SMODS.calculate_effect(
-          { chips = self.config.chips, juice_card = v, message_card = v },
-          card
-        )
-        break
-      end
+            { chips = self.config.chips, juice_card = v, message_card = v },
+          card)
+          return true
+        end
+      end)
+      if triggered then return nil, true end
     end
-    if triggered then return nil, true end
-  end
-end,
+  end,
 }
 
 SMODS.Sticker {
@@ -922,19 +918,18 @@ SMODS.Sticker {
   calculate = function(self, card, context)
     if context.joker_main then
       local triggered = false
-      for _, v in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(v)
         if v:is_rarity("Rare") then
           triggered = true
           SMODS.calculate_effect(
-          { mult = self.config.mult, juice_card = v, message_card = v },
-          card
-        )
-        break
-      end
+            { mult = self.config.mult, juice_card = v, message_card = v },
+          card)
+          return true
+        end
+      end)
+      if triggered then return nil, true end
     end
-    if triggered then return nil, true end
-  end
-end,
+  end,
 }
 
 SMODS.Sticker {
@@ -957,19 +952,18 @@ SMODS.Sticker {
   calculate = function(self, card, context)
     if context.joker_main then
       local triggered = false
-      for _, v in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(v)
         if v:is_rarity("abn_SuperRare") then
           triggered = true
           SMODS.calculate_effect(
-          { mult = self.config.mult, juice_card = v, message_card = v },
-          card
-        )
-        break
-      end
+            { mult = self.config.mult, juice_card = v, message_card = v },
+          card)
+          return true
+        end
+      end)
+      if triggered then return nil, true end
     end
-    if triggered then return nil, true end
-  end
-end,
+  end,
 }
 
 SMODS.Sticker {
@@ -1031,15 +1025,15 @@ SMODS.Sticker {
         delay = 0.7,
         func = function()
           local in_use = {}
-          for _, joker in pairs(G.jokers.cards) do
+          for _, joker in pairs(card.area.cards) do
             if joker.ability and joker.ability.extra.aim then
               in_use[joker.ability.extra.aim] = true
             end
           end
-          if #G.jokers.cards == 1 then in_use[1] = false end
-          local position = pseudorandom(pseudoseed('aim_joker'), 1, #G.jokers.cards)
+          if #card.area.cards == 1 then in_use[1] = false end
+          local position = pseudorandom(pseudoseed('aim_joker'), 1, #card.area.cards)
           while in_use[position] do
-            position = pseudorandom(pseudoseed('aim_joker_reroll'), 1, #G.jokers.cards)
+            position = pseudorandom(pseudoseed('aim_joker_reroll'), 1, #card.area.cards)
           end
           card.ability.extra.aim = position
           return true
@@ -1054,15 +1048,15 @@ SMODS.Sticker {
         delay = 0.7,
         func = function()
           local in_use = {}
-          for _, joker in pairs(G.jokers.cards) do
+          for _, joker in pairs(card.area.cards) do
             if joker.ability and joker.ability.extra.aim then
               in_use[joker.ability.extra.aim] = true
             end
           end
-          if #G.jokers.cards == 1 then in_use[1] = false end
-          local position = pseudorandom(pseudoseed('aim_joker'), 1, #G.jokers.cards)
+          if #card.area.cards == 1 then in_use[1] = false end
+          local position = pseudorandom(pseudoseed('aim_joker'), 1, #card.area.cards)
           while in_use[position] do
-            position = pseudorandom(pseudoseed('aim_joker_reroll'), 1, #G.jokers.cards)
+            position = pseudorandom(pseudoseed('aim_joker_reroll'), 1, #card.area.cards)
           end
           card.ability.extra.aim = position
           card.states.drag.can = false
@@ -1333,15 +1327,14 @@ SMODS.Sticker {
       return { emult = self.config.extra.emult }
     end
     if context.after and SMODS.pseudorandom_probability(card,pseudoseed("abn_platano"),self.config.extra.n,self.config.extra.d,"abn_platano") then
-      if G.jokers and G.jokers.cards then
+      if ABN.count_jokers() > 0 then
         G.E_MANAGER:add_event(Event({
           func = function()
-            SMODS.destroy_cards(G.jokers.cards)
+            SMODS.destroy_cards(ABN.all_jokers())
             return true
           end
         }))
       end
-      
     end
   end,
   

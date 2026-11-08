@@ -29,7 +29,7 @@ ABN.CrimsonCard = SMODS.Consumable:extend({
     }
   end,
   can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0 and G.GAME.blind and G.GAME.blind.in_blind
+    return ABN.count_jokers() > 0 and G.GAME.blind and G.GAME.blind.in_blind
   end,
 })
 
@@ -47,7 +47,7 @@ ABN.CrimsonCard {
 
 
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[1]
+    local c = ABN.get_leftmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -92,7 +92,7 @@ ABN.CrimsonCard {
   pos = { x = 1, y = 0 },
   config = { extra = { enh_key = "abn_stk_fossil" } },
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[#G.jokers.cards]
+    local c = ABN.get_rightmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -138,7 +138,7 @@ ABN.CrimsonCard {
   config = { extra = { enh_key = "abn_stk_mercurial" } },
 
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[1]
+    local c = ABN.get_leftmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -184,7 +184,7 @@ ABN.CrimsonCard {
   config = { extra = { enh_key = "abn_stk_petroleum" } },
 
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[#G.jokers.cards]
+    local c = ABN.get_rightmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -230,7 +230,7 @@ ABN.CrimsonCard {
   config = { extra = { enh_key = "abn_stk_kintsugi" } },
 
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[1]
+    local c = ABN.get_leftmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -276,7 +276,7 @@ ABN.CrimsonCard {
   pos = { x = 5, y = 0 },
   config = { extra = { enh_key = "abn_stk_monitor" } },
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[#G.jokers.cards]
+    local c = ABN.get_rightmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -322,7 +322,7 @@ ABN.CrimsonCard {
   pos = { x = 6, y = 0 },
   config = { extra = { enh_key = "abn_stk_wallpaper" } },
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[1]
+    local c = ABN.get_leftmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -367,7 +367,7 @@ ABN.CrimsonCard {
   pos = { x = 7, y = 0 },
   config = { extra = { enh_key = "abn_stk_infra" } },
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[#G.jokers.cards]
+    local c = ABN.get_rightmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -412,7 +412,7 @@ ABN.CrimsonCard {
   pos = { x = 0, y = 1 },
   config = { extra = { enh_key = "abn_stk_reinforcement" } },
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[1]
+    local c = ABN.get_leftmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -457,7 +457,7 @@ ABN.CrimsonCard {
   pos = { x = 6, y = 3 },
   config = { extra = { enh_key = "abn_stk_darkner" } },
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[1]
+    local c = ABN.get_leftmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -502,7 +502,7 @@ ABN.CrimsonCard {
   pos = { x = 5, y = 3 },
   config = { extra = { enh_key = "abn_stk_lightner" } },
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[#G.jokers.cards]
+    local c = ABN.get_rightmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -547,7 +547,7 @@ ABN.CrimsonCard {
   pos = { x = 1, y = 3 },
   config = { extra = { enh_key = "abn_stk_first_aid" } },
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[1]
+    local c = ABN.get_leftmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -592,7 +592,7 @@ ABN.CrimsonCard {
   pos = { x = 7, y = 2 },
   config = { extra = { enh_key = "abn_stk_flux" } },
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[1]
+    local c = ABN.get_leftmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -637,7 +637,7 @@ ABN.CrimsonCard {
   pos = { x = 2, y = 3 },
   config = { extra = { enh_key = "abn_stk_zen" } },
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[1]
+    local c = ABN.get_leftmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -682,7 +682,7 @@ ABN.CrimsonCard {
   pos = { x = 6, y = 2 },
   config = { extra = { enh_key = "abn_stk_plank" } },
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[#G.jokers.cards]
+    local c = ABN.get_rightmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,

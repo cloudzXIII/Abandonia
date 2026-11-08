@@ -20,11 +20,11 @@ SMODS.Joker {
   end,
 
   update = function(self, card)
-    if card.area == G.jokers and G.jokers and G.jokers.cards then
+    if card.added_to_deck then
       local brainrot_count = 0
       local comedian_count = 0
 
-      for _, j in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(j)
         if j.config and j.config.center then
           local center = j.config.center
 
@@ -36,7 +36,7 @@ SMODS.Joker {
             comedian_count = comedian_count + 1
           end
         end
-      end
+      end)
 
       card.ability.extra.brainrot = brainrot_count
       card.ability.extra.comedians = comedian_count

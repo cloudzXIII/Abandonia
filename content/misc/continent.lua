@@ -34,7 +34,7 @@ ABN.ContinentCard = SMODS.Consumable:extend({
   pixel_size = { w = 65, h = 94 },
   display_size = { w = 65, h = 94 },
   can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
+    return G.hand and #G.hand.cards > 0 and ABN.count_jokers() > 0
   end,
   abn_artist_credits = {
     artist = "Muddz"
@@ -52,19 +52,15 @@ ABN.ContinentCard {
     return { vars = { cae.mult } }
   end,
   use = function(self, card, area, copier)
-    local joker = G.jokers.cards[#G.jokers.cards]
+    local joker = ABN.get_rightmost_joker()
     joker:add_sticker("abn_diamond", true)
     joker:juice_up()
-    G.jokers:unhighlight_all()
     for _, c in ipairs(G.hand.cards) do
       if c:is_suit("Diamonds") then
         c.ability.perma_mult = (c.ability.perma_mult or 0) + card.ability.extra.mult
         SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, c)
       end
     end
-  end,
-  can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
   end,
   abn_artist_credits = {
     artist = "HyperReal63"
@@ -81,20 +77,16 @@ ABN.ContinentCard {
     return { vars = { cae.mult } }
   end,
   use = function(self, card, area, copier)
-    local joker = G.jokers.cards[#G.jokers.cards]
+    local joker = ABN.get_rightmost_joker()
     joker:add_sticker("abn_spade", true)
     joker:juice_up()
-    G.jokers:unhighlight_all()
     for _, c in ipairs(G.hand.cards) do
       if c:is_suit("Spades") then
         c.ability.perma_mult = (c.ability.perma_mult or 0) + card.ability.extra.mult
         SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, c)
       end
     end
-  end,
-  can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
-  end,
+  end
 }
 
 ABN.ContinentCard {
@@ -109,19 +101,15 @@ ABN.ContinentCard {
     return { vars = { cae.chips } }
   end,
   use = function(self, card, area, copier)
-    local joker = G.jokers.cards[#G.jokers.cards]
+    local joker = ABN.get_rightmost_joker()
     joker:add_sticker("abn_daytime", true)
     joker:juice_up()
-    G.jokers:unhighlight_all()
     for _, c in ipairs(G.hand.cards) do
       if ABN.is_light(c) then
         c.ability.perma_chips = (c.ability.perma_chips or 0) + card.ability.extra.chips
       end
     end
-  end,
-  can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
-  end,
+  end
 }
 
 ABN.ContinentCard {
@@ -134,19 +122,15 @@ ABN.ContinentCard {
     return { vars = { cae.mult } }
   end,
   use = function(self, card, area, copier)
-    local joker = G.jokers.cards[#G.jokers.cards]
+    local joker = ABN.get_rightmost_joker()
     joker:add_sticker("abn_club", true)
     joker:juice_up()
-    G.jokers:unhighlight_all()
     for _, c in ipairs(G.hand.cards) do
       if c:is_suit("Clubs") then
         c.ability.perma_mult = (c.ability.perma_mult or 0) + card.ability.extra.mult
         SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, c)
       end
     end
-  end,
-  can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
   end,
   abn_artist_credits = {
     artist = "cloudzXIII",
@@ -165,19 +149,15 @@ ABN.ContinentCard {
     return { vars = { cae.chips } }
   end,
   use = function(self, card, area, copier)
-    local joker = G.jokers.cards[#G.jokers.cards]
+    local joker = ABN.get_rightmost_joker()
     joker:add_sticker("abn_nighttime", true)
     joker:juice_up()
-    G.jokers:unhighlight_all()
     for _, c in ipairs(G.hand.cards) do
       if ABN.is_dark(c) then
         c.ability.perma_chips = (c.ability.perma_chips or 0) + card.ability.extra.chips
       end
     end
-  end,
-  can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
-  end,
+  end
 }
 
 ABN.ContinentCard {
@@ -190,19 +170,15 @@ ABN.ContinentCard {
     return { vars = { cae.mult } }
   end,
   use = function(self, card, area, copier)
-    local joker = G.jokers.cards[#G.jokers.cards]
+    local joker = ABN.get_rightmost_joker()
     joker:add_sticker("abn_heart", true)
     joker:juice_up()
-    G.jokers:unhighlight_all()
     for _, c in ipairs(G.hand.cards) do
       if c:is_suit("Hearts") then
         c.ability.perma_mult = (c.ability.perma_mult or 0) + card.ability.extra.mult
         SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, c)
       end
     end
-  end,
-  can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
   end,
 
   abn_artist_credits = {
@@ -220,19 +196,18 @@ ABN.ContinentCard {
     return { vars = { cae.sell_value } }
   end,
   use = function(self, card, area, copier)
-    local joker = G.jokers.cards[#G.jokers.cards]
+    local joker = ABN.get_rightmost_joker()
     joker:add_sticker("abn_jimbo_legacy", true)
     joker:juice_up()
-    G.jokers:unhighlight_all()
-    for _, other_card in ipairs(G.jokers.cards) do
+    ABN.all_jokers(function(other_card)
       other_card.ability.extra_value = (other_card.ability.extra_value or 0) +
           card.ability.extra.sell_value
       SMODS.calculate_effect({ message = localize('k_val_up'), colour = G.C.MONEY }, other_card)
       other_card:set_cost()
-    end
+    end)
   end,
   can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0
+    return ABN.count_jokers() > 0
   end,
 
   abn_artist_credits = {
@@ -251,14 +226,13 @@ ABN.ContinentCard {
     return { vars = { cae.mult, cae.chips } }
   end,
   use = function(self, card, area, copier)
-    local joker = G.jokers.cards[#G.jokers.cards]
+    local joker = ABN.get_rightmost_joker()
     joker:add_sticker("abn_weight", true)
     joker:juice_up()
 
-    local leftmost = G.jokers.cards[1]
+    local leftmost = ABN.get_leftmost_joker()
     leftmost:add_sticker("abn_fragile", true)
     leftmost:juice_up()
-    G.jokers:unhighlight_all()
     for _, c in ipairs(G.hand.cards) do
       if c:is_suit("abn_Penumbra") then
         c.ability.perma_mult = (c.ability.perma_mult or 0) + card.ability.extra.mult
@@ -266,10 +240,7 @@ ABN.ContinentCard {
         SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, c)
       end
     end
-  end,
-  can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
-  end,
+  end
 }
 
 ABN.ContinentCard {
@@ -284,15 +255,14 @@ ABN.ContinentCard {
     return { vars = { cae.mult, cae.chips } }
   end,
   use = function(self, card, area, copier)
-    local joker = G.jokers.cards[#G.jokers.cards]
+    local joker = ABN.get_rightmost_joker()
     joker:add_sticker("abn_even_legacy", true)
     joker:juice_up()
 
-    local leftmost = G.jokers.cards[1]
+    local leftmost = ABN.get_leftmost_joker()
     leftmost:add_sticker("perishable", true)
     leftmost:add_sticker("rental", true)
     leftmost:juice_up()
-    G.jokers:unhighlight_all()
     for _, c in ipairs(G.hand.cards) do
       if c:is_suit("abn_Snow") then
         c.ability.perma_mult = (c.ability.perma_mult or 0) + card.ability.extra.mult
@@ -300,10 +270,7 @@ ABN.ContinentCard {
         SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, c)
       end
     end
-  end,
-  can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
-  end,
+  end
 }
 
 ABN.ContinentCard {
@@ -318,15 +285,14 @@ ABN.ContinentCard {
     return { vars = { cae.mult, cae.chips } }
   end,
   use = function(self, card, area, copier)
-    local joker = G.jokers.cards[#G.jokers.cards]
+    local joker = ABN.get_rightmost_joker()
     joker:add_sticker("abn_odd_legacy", true)
     joker:juice_up()
 
-    local leftmost = G.jokers.cards[1]
+    local leftmost = ABN.get_leftmost_joker()
     leftmost:add_sticker("abn_downgrade", true)
     leftmost:add_sticker("eternal", true)
     leftmost:juice_up()
-    G.jokers:unhighlight_all()
     for _, c in ipairs(G.hand.cards) do
       if c:is_suit("abn_Bow") then
         c.ability.perma_mult = (c.ability.perma_mult or 0) + card.ability.extra.mult
@@ -334,10 +300,7 @@ ABN.ContinentCard {
         SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, c)
       end
     end
-  end,
-  can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
-  end,
+  end
 }
 
 ABN.ContinentCard {
@@ -352,15 +315,14 @@ ABN.ContinentCard {
     return { vars = { cae.mult, cae.chips } }
   end,
   use = function(self, card, area, copier)
-    local joker = G.jokers.cards[#G.jokers.cards]
+    local joker = ABN.get_rightmost_joker()
     joker:add_sticker("abn_rejok_legacy", true)
     joker:juice_up()
 
-    local leftmost = G.jokers.cards[1]
+    local leftmost = ABN.get_leftmost_joker()
     leftmost:add_sticker("rental", true)
     leftmost:add_sticker("eternal", true)
     leftmost:juice_up()
-    G.jokers:unhighlight_all()
     for _, c in ipairs(G.hand.cards) do
       if c:is_suit("abn_Tie") then
         c.ability.perma_mult = (c.ability.perma_mult or 0) + card.ability.extra.mult
@@ -368,10 +330,7 @@ ABN.ContinentCard {
         SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, c)
       end
     end
-  end,
-  can_use = function(self, card)
-    return G.hand and #G.hand.cards > 0 and G.jokers and #G.jokers.cards > 0
-  end,
+  end
 }
 
 
@@ -387,15 +346,14 @@ ABN.ContinentCard {
     return { vars = { cae.mult, cae.chips } }
   end,
   use = function(self, card, area, copier)
-    local joker = G.jokers.cards[#G.jokers.cards]
+    local joker = ABN.get_rightmost_joker()
     joker:add_sticker("abn_obmij_legacy", true)
     joker:juice_up()
 
-    local leftmost = G.jokers.cards[1]
+    local leftmost = ABN.get_leftmost_joker()
     leftmost:add_sticker("rental", true)
     leftmost:add_sticker("abn_fragile", true)
     leftmost:juice_up()
-    G.jokers:unhighlight_all()
     for _, c in ipairs(G.hand.cards) do
       if c:is_suit("abn_Tie") then
         c.ability.perma_mult = (c.ability.perma_mult or 0) + card.ability.extra.mult
@@ -405,7 +363,7 @@ ABN.ContinentCard {
     end
   end,
   can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0
+    return ABN.count_jokers() > 0
   end,
 }
 
@@ -423,7 +381,7 @@ ABN.ContinentCard {
     return { vars = { cae.mult, cae.chips } }
   end,
   use = function(self, card, area, copier)
-    local joker_to_destroy = G.jokers.cards[#G.jokers.cards]
+    local joker_to_destroy = ABN.get_rightmost_joker()
     if joker_to_destroy:is_rarity("Common") then
       joker_to_destroy.getting_sliced = true
       G.E_MANAGER:add_event(Event({
@@ -447,15 +405,13 @@ ABN.ContinentCard {
       }))
     end
 
-    local leftmost = G.jokers.cards[1]
+    local leftmost = ABN.get_leftmost_joker()
     leftmost:add_sticker("eternal", true)
     leftmost:add_sticker("abn_eraser", true)
     leftmost:juice_up()
-    G.jokers:unhighlight_all()
   end,
   can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0 and
-        G.jokers.cards[#G.jokers.cards]:is_rarity("Common")
+    return ABN.count_jokers() > 0 and ABN.get_rightmost_joker():is_rarity("Common")
   end,
 }
 
@@ -472,7 +428,7 @@ ABN.ContinentCard {
     return { vars = { cae.mult, cae.chips } }
   end,
   use = function(self, card, area, copier)
-    local joker_to_destroy = G.jokers.cards[#G.jokers.cards]
+    local joker_to_destroy = ABN.get_rightmost_joker()
     if joker_to_destroy:is_rarity("Uncommon") then
       joker_to_destroy.getting_sliced = true
       G.E_MANAGER:add_event(Event({
@@ -496,15 +452,13 @@ ABN.ContinentCard {
       }))
     end
 
-    local leftmost = G.jokers.cards[1]
+    local leftmost = ABN.get_leftmost_joker()
     leftmost:add_sticker("rental", true)
     leftmost:add_sticker("abn_eraser", true)
     leftmost:juice_up()
-    G.jokers:unhighlight_all()
   end,
   can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0 and
-        G.jokers.cards[#G.jokers.cards]:is_rarity("Uncommon")
+    return ABN.count_jokers() > 0 and ABN.get_rightmost_joker():is_rarity("Uncommon")
   end,
 }
 
@@ -526,7 +480,7 @@ ABN.ContinentCard {
   soul_set = 'continent',
 
   use = function(self, card, area, copier)
-    local joker_to_destroy = G.jokers.cards[#G.jokers.cards]
+    local joker_to_destroy = ABN.get_rightmost_joker()
     if joker_to_destroy:is_rarity("Rare") then
       joker_to_destroy.getting_sliced = true
       G.E_MANAGER:add_event(Event({
@@ -550,15 +504,13 @@ ABN.ContinentCard {
       }))
     end
 
-    local leftmost = G.jokers.cards[1]
+    local leftmost = ABN.get_leftmost_joker()
     leftmost:add_sticker("rental", true)
     leftmost:add_sticker("abn_chain", true)
     leftmost:juice_up()
-    G.jokers:unhighlight_all()
   end,
   can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0 and
-        G.jokers.cards[#G.jokers.cards]:is_rarity("Rare")
+    return ABN.count_jokers() > 0 and ABN.get_rightmost_joker():is_rarity("Rare")
   end,
 }
 
@@ -581,21 +533,20 @@ ABN.ContinentCard {
   soul_set = 'continent',
 
   use = function(self, card, area, copier)
-    local joker = G.jokers.cards[#G.jokers.cards]
+    local joker = ABN.get_rightmost_joker()
     joker:add_sticker("abn_immortal", true)
     joker:add_sticker("abn_odd_legacy", true)
     joker:add_sticker("abn_cat_eye", true)
     joker:juice_up()
 
-    local leftmost = G.jokers.cards[1]
+    local leftmost = ABN.get_leftmost_joker()
     leftmost:add_sticker("eternal", true)
     leftmost:add_sticker("abn_even_legacy", true)
     leftmost:add_sticker("abn_lightning_bolt", true)
     leftmost:juice_up()
-    G.jokers:unhighlight_all()
   end,
   can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0
+    return ABN.count_jokers() > 0
   end,
 }
 
@@ -638,7 +589,7 @@ ABN.ContinentCard {
 	end
   end,
   can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0
+    return ABN.count_jokers() > 0
   end,
   abn_artist_credits = {
     artist = "Pitissaria 2"

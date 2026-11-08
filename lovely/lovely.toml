@@ -10,7 +10,7 @@ target = 'functions/state_events.lua'
 pattern = '''--check the hand first'''
 position = 'after'
 payload = '''
-if G.jokers ~= nil then
+if G.jokers then
     SMODS.calculate_context({abn_play_cards = true})
 end
 '''
@@ -96,13 +96,8 @@ payload = '''
 if G.GAME.abn.cthonian then
     local base_score = get_blind_amount(G.GAME.round_resets.ante) * self.mult * G.GAME.starting_params.ante_scaling
     local tally = 0
-    if G.playing_cards then
-      for _, c in ipairs(G.playing_cards) do
-        if c.edition and c.edition.key == "e_abn_chthonian" then tally = tally + 1 end
-      end
-    end
-    if G.jokers and G.jokers.cards then
-      for _, c in ipairs(G.jokers.cards) do
+    for _, list in ipairs({G.playing_cards or {}, (G.jokers or {}).cards or {}, (G.consumeables or {}).cards or {}) do
+      for _, c in ipairs(list) do
         if c.edition and c.edition.key == "e_abn_chthonian" then tally = tally + 1 end
       end
     end
@@ -130,13 +125,8 @@ position = "after"
 payload = '''
 if G.GAME.abn.cthonian then
     local tally = 0
-    if G.playing_cards then
-      for _, c in ipairs(G.playing_cards) do
-        if c.edition and c.edition.key == "e_abn_chthonian" then tally = tally + 1 end
-      end
-    end
-    if G.jokers and G.jokers.cards then
-      for _, c in ipairs(G.jokers.cards) do
+    for _, list in ipairs({G.playing_cards or {}, (G.jokers or {}).cards or {}, (G.consumeables or {}).cards or {}) do
+      for _, c in ipairs(list) do
         if c.edition and c.edition.key == "e_abn_chthonian" then tally = tally + 1 end
       end
     end

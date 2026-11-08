@@ -18,7 +18,8 @@ SMODS.UndiscoveredSprite {
 }
 
 local function one_select_card_and_one_select_joker_to_destroy()
-	return G.hand and G.hand.highlighted and #G.hand.highlighted == 1 and G.jokers and G.jokers.highlighted and #G.jokers.highlighted == 1 and not G.jokers.highlighted[1].ability.eternal
+	local hjokers = ABN.highlighted_jokers()
+	return G.hand and G.hand.highlighted and #G.hand.highlighted == 1 and #hjokers == 1 and not hjokers[1].ability.eternal
 end
 
 SMODS.Consumable {
@@ -47,7 +48,7 @@ SMODS.Consumable {
 
   use = function(self, card, area, copier)
     local target_card = G.hand.highlighted[1]
-    local target_joker = G.jokers.highlighted[1]
+    local target_joker = ABN.highlighted_jokers()[1]
 
     local rarity_gains = {
       [1] = card.ability.extra.common,
@@ -132,7 +133,7 @@ SMODS.Consumable {
 
   use = function(self, card, area, copier)
     local target_card = G.hand.highlighted[1]
-    local target_joker = G.jokers.highlighted[1]
+    local target_joker = ABN.highlighted_jokers()[1]
 
     local rarity_gains = {
       [1] = card.ability.extra.common,
@@ -233,7 +234,7 @@ SMODS.Consumable {
   end,
 
   use = function(self, card, area, copier)
-    local target_joker = G.jokers.highlighted[1]
+    local target_joker = ABN.highlighted_jokers()[1]
 
     local rarity_gains = {
       [1] = { chips = card.ability.extra.common_chips, mult = card.ability.extra.common_mult },
@@ -329,7 +330,7 @@ SMODS.Consumable {
 
   use = function(self, card, area, copier)
     local target_card = G.hand.highlighted[1]
-    local target_joker = G.jokers.highlighted[1]
+    local target_joker = ABN.highlighted_jokers()[1]
 
     local rarity_gains = {
       [1] = card.ability.extra.common,
@@ -423,7 +424,7 @@ SMODS.Consumable {
 
   use = function(self, card, area, copier)
     local target_card = G.hand.highlighted[1]
-    local target_joker = G.jokers.highlighted[1]
+    local target_joker = ABN.highlighted_jokers()[1]
 
     local rarity_gains = {
       [1] = card.ability.extra.common,
@@ -517,7 +518,7 @@ SMODS.Consumable {
 
   use = function(self, card, area, copier)
     local target_card = G.hand.highlighted[1]
-    local target_joker = G.jokers.highlighted[1]
+    local target_joker = ABN.highlighted_jokers()[1]
 
     local rarity_gains = {
       [1] = card.ability.extra.common,
@@ -611,7 +612,7 @@ SMODS.Consumable {
 
   use = function(self, card, area, copier)
     local target_card = G.hand.highlighted[1]
-    local target_joker = G.jokers.highlighted[1]
+    local target_joker = ABN.highlighted_jokers()[1]
 
     local rarity_gains = {
       [1] = card.ability.extra.common,
@@ -706,7 +707,7 @@ SMODS.Consumable {
 
   use = function(self, card, area, copier)
     local target_card = G.hand.highlighted[1]
-    local target_joker = G.jokers.highlighted[1]
+    local target_joker = ABN.highlighted_jokers()[1]
 
     local rarity_gains = {
       [1] = card.ability.extra.common,
@@ -802,7 +803,7 @@ SMODS.Consumable {
 
     use = function(self, card, area, copier)
         local target_card = G.hand.highlighted[1]
-        local target_joker = G.jokers.highlighted[1]
+        local target_joker = ABN.highlighted_jokers()[1]
 
         local rarity_gains = {
             [1] = card.ability.extra.common,

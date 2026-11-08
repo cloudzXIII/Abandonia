@@ -223,7 +223,7 @@ SMODS.Consumable {
   end,
 
   can_use = function(self, card)
-    return G.jokers and G.jokers.cards and #G.jokers.cards > 0
+    return ABN.count_jokers() > 0
   end,
 
   use = function(self, card, area, copier)
@@ -239,7 +239,7 @@ SMODS.Consumable {
       end
     }))
 
-    for _, j in ipairs(G.jokers.cards) do
+    ABN.all_jokers(function(joker)
       G.E_MANAGER:add_event(Event({
         trigger = 'after',
         delay = 0.1,
@@ -253,7 +253,7 @@ SMODS.Consumable {
           return true
         end
       }))
-    end
+    end)
 
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
@@ -311,17 +311,15 @@ SMODS.Consumable {
           end
         end
       end
-      return has_hand_edition and G.jokers and G.jokers.cards and #G.jokers.cards > 0
+      return has_hand_edition and ABN.count_jokers() > 0
     else
       local has_joker_edition = false
-      if G.jokers and G.jokers.cards then
-        for _, j in ipairs(G.jokers.cards) do
-          if j.edition then
-            has_joker_edition = true
-            break
-          end
+      ABN.all_jokers(function(j)
+        if j.edition then
+          has_joker_edition = true
+          return true
         end
-      end
+      end)
       return has_joker_edition and G.hand and G.hand.cards and #G.hand.cards > 0
     end
   end,
@@ -347,9 +345,9 @@ SMODS.Consumable {
         end
       end
 
-      if #eligible_sources > 0 and #G.jokers.cards > 0 then
+      if #eligible_sources > 0 and ABN.count_jokers() > 0 then
         local source_card = pseudorandom_element(eligible_sources, pseudoseed('zeno_source'))
-        local target_joker = pseudorandom_element(G.jokers.cards, pseudoseed('zeno_target'))
+        local target_joker = pseudorandom_element(ABN.all_jokers(), pseudoseed('zeno_target'))
 
         G.E_MANAGER:add_event(Event({
           trigger = 'after',
@@ -364,11 +362,11 @@ SMODS.Consumable {
       end
     else
       local eligible_sources = {}
-      for _, j in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(j)
         if j.edition then
           eligible_sources[#eligible_sources + 1] = j
         end
-      end
+      end)
 
       if #eligible_sources > 0 and #G.hand.cards > 0 then
         local source_joker = pseudorandom_element(eligible_sources, pseudoseed('zeno_source'))
@@ -609,11 +607,11 @@ SMODS.Consumable {
 
   can_use = function(self, card)
     if not G.hand or #G.hand.cards == 0 then return false end
-    if not G.jokers or #G.jokers.cards == 0 then return false end
+    if ABN.count_jokers() == 0 then return false end
 
     local is_even = (G.GAME.round_resets.ante % 2 == 0)
     local rightmost_card = G.hand.cards[#G.hand.cards]
-    local leftmost_joker = G.jokers.cards[1]
+    local leftmost_joker = ABN.get_leftmost_joker()
 
     if is_even then
       local enh_key = get_card_enhancement_key(rightmost_card)
@@ -634,7 +632,7 @@ SMODS.Consumable {
 
     if is_even then
       local target_card = G.hand.cards[#G.hand.cards]
-      local target_joker = G.jokers.cards[1]
+      local target_joker = ABN.get_leftmost_joker()
       local card_enh = get_card_enhancement_key(target_card)
       local sticker_key = card_to_joker_enh[card_enh]
 
@@ -649,7 +647,7 @@ SMODS.Consumable {
         target_joker:juice_up(0.5, 0.5)
       end
     else
-      local target_joker = G.jokers.cards[1]
+      local target_joker = ABN.get_leftmost_joker()
       local target_card = G.hand.cards[#G.hand.cards]
       local found_sticker = nil
 
@@ -859,7 +857,7 @@ SMODS.Consumable {
     local is_even = (G.GAME.round_resets.ante % 2 == 0)
 
     if is_even then
-      return G.jokers and G.jokers.cards and #G.jokers.cards > 0
+      return ABN.count_jokers() > 0
     else
       return true
     end
@@ -887,11 +885,11 @@ SMODS.Consumable {
         delay = 0.3,
         func = function()
           local jokers_to_destroy = {}
-          for _, j in ipairs(G.jokers.cards) do
+          ABN.all_jokers(function(j)
             if not j.ability.eternal then
               table.insert(jokers_to_destroy, j)
             end
-          end
+          end)
 
           local destroyed_count = #jokers_to_destroy
           for _, j in ipairs(jokers_to_destroy) do
@@ -912,10 +910,10 @@ SMODS.Consumable {
         trigger = 'after',
         delay = 0.3,
         func = function()
-          for _, j in ipairs(G.jokers.cards) do
+          ABN.all_jokers(function(j)
             j:set_eternal(true)
             j:juice_up(0.5, 0.5)
-          end
+          end)
 
           if G.GAME.dollars ~= 0 then
             ease_dollars(-G.GAME.dollars, true)

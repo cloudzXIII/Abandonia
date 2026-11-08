@@ -60,7 +60,7 @@ SMODS.Consumable {
   end,
   use = function(self, card, area, copier)
     if SMODS.pseudorandom_probability(card, 'abn_wheel_of_fate', 1, card.ability.extra.odds) then
-      local eligible_card = pseudorandom_element(G.jokers.cards, 'abn_wheel_of_fate')
+      local eligible_card = pseudorandom_element(ABN.all_jokers(), 'abn_wheel_of_fate')
       local sticker = ABN.random_sticker(eligible_card, 'abn_wheel_of_fate')
       SMODS.Stickers[sticker]:apply(eligible_card, true)
     else
@@ -121,18 +121,17 @@ SMODS.Consumable({
     return { vars = { card.ability.extra.max } }
   end,
   can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0
+    return ABN.count_jokers() > 0
   end,
   use = function(self, card)
-    local joker = G.jokers.cards[#G.jokers.cards]
+    local joker = ABN.get_rightmost_joker()
     joker:add_sticker("abn_immortal", true)
     joker:juice_up()
 
-    local leftmost = G.jokers.cards[1]
+    local leftmost = ABN.get_leftmost_joker()
     local sticker = ABN.random_sticker(leftmost, "abn_cool_beans")
     leftmost:add_sticker(sticker, true)
     leftmost:juice_up()
-    G.jokers:unhighlight_all()
   end,
   abn_artist_credits = {
     artist = "b.b.b.b",

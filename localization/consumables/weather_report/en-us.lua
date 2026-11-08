@@ -15,6 +15,7 @@ return {
           "Destroy {C:attention}1{} selected",
           "{C:attention}Joker{}, copy a",
           "random owned Joker",
+          "{C:inactive}(Must have room)",
           "{C:inactive}(Destroyed at end of round)",
         }
       },

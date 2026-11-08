@@ -19,7 +19,7 @@ SMODS.Joker {
   end,
 
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and context.before and not context.blueprint then
+    if context.before and not context.blueprint then
       if context.scoring_hand and #context.scoring_hand > 0 then
         local gained_chips = 0
 

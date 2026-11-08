@@ -453,6 +453,10 @@ SMODS.Back {
     atlas = 'AbandoniaDecks',
     pos = { x = 5, y = 1 },
 
+	loc_vars = function(self, info_queue, card)
+		return {vars = SMODS.get_probability_vars(card, 1, 5, 'Platinum')}
+	end,
+
     apply = function()
         G.E_MANAGER:add_event(Event({
 
@@ -475,17 +479,16 @@ SMODS.Back {
 
     calculate = function(self, card, context)
         if context.end_of_round and context.main_eval and not context.blueprint then
-            for i = 1, #G.jokers.cards do
-                local jkr = G.jokers.cards[i]
-                if not jkr.edition then
-                    if pseudorandom('Platinum') < G.GAME.probabilities.normal / 5 then
+            ABN.all_jokers(function(jkr)
+                if not jkr.edition and not SMODS.is_eternal(jkr, card) then
+                    if SMODS.pseudorandom_probability(card, 'Platinum', 1, 5) then
                         jkr:start_dissolve()
                     else
                         -- Use status_text to show "Safe!" above the specific joker
                         card_eval_status_text(jkr, 'extra', nil, nil, nil, { message = localize('k_safe_ex') })
                     end
                 end
-            end
+            end)
         end
     end
 }

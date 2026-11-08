@@ -18,10 +18,10 @@ SMODS.Joker {
 
   calculate = function(self, card, context)
     if context.setting_blind then
-      for _, joker in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(joker)
         joker.ability.abn_perma_bonus = (joker.ability.abn_perma_bonus or 0) + card.ability.extra.chips
         SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, joker)
-      end
+      end)
     end
   end,
 

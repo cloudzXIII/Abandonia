@@ -32,8 +32,8 @@ SMODS.Joker {
   end,
 
   update = function(self, card)
-    -- Only run logic if the card is in the Joker slots
-    if card.area == G.jokers then
+    -- Only run logic if the card is owned by the player
+    if card.added_to_deck then
       -- Safety check for Shop Jokers
       if G.shop_jokers and G.shop_jokers.cards then
         for _, j in ipairs(G.shop_jokers.cards) do

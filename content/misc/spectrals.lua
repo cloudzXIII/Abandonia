@@ -250,14 +250,13 @@ SMODS.Consumable {
     }
   end,
   can_use = function(self, card)
-    return G.jokers and G.jokers.cards and #G.jokers.cards >= 1
+    return ABN.count_jokers(function(joker) return not joker.edition or not joker.edition.negative end) > 0
   end,
   use = function(self, card, area, copier)
     if SMODS.pseudorandom_probability(card, "c_abn_chance", 1, card.ability.extra.odds) then
-      for i = 1, #G.jokers.cards do
-        local current = G.jokers.cards[i]
+      ABN.all_jokers(function(current)
         current:set_edition(card.ability.extra.e_conv)
-      end
+      end)
     else
       G.E_MANAGER:add_event(Event({
         trigger = 'after',
@@ -313,7 +312,7 @@ SMODS.Consumable {
       trigger = 'after',
       delay = 0.4,
       func = function()
-        local eligible_card = pseudorandom_element(editionless_jokers, 'vremade_hex')
+        local eligible_card = pseudorandom_element(editionless_jokers, 'c_abn_distortion')
         eligible_card:set_edition("e_abn_pearlescent")
 
         local _first_dissolve = nil
@@ -446,7 +445,6 @@ SMODS.Consumable {
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = { key = "abn_flipped_card", set = "Other" }
     info_queue[#info_queue + 1] = { key = "abn_ultra_ego_info", set = "Other", vars = { G.GAME.abn_ultra_egos_used or 0 } }
-    return { vars = {} }
   end,
   can_use = function(self, card)
     return G.playing_cards and #G.playing_cards > 0 and
@@ -461,14 +459,14 @@ SMODS.Consumable {
     SMODS.change_booster_limit(1)
     G.GAME.abn_ultra_egos_used = (G.GAME.abn_ultra_egos_used or 0) + 1
 
-    for _, joker in ipairs(G.jokers.cards) do
+    ABN.all_jokers(function(joker)
       if not joker.ability.abn_perma_flipped then
         if joker.facing == 'front' then
           joker:flip()
         end
         joker.ability.abn_perma_flipped = true
       end
-    end
+    end)
 
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
@@ -512,16 +510,17 @@ SMODS.Consumable {
     return { vars = {} }
   end,
   can_use = function(self, card)
-    return G.jokers and ABN.count_stickers() > 0
+    return ABN.count_stickers() > 0
   end,
   use = function(self, card)
-    for key, _ in pairs(SMODS.Sticker.obj_table) do
-      for _, joker in pairs(G.jokers.cards) do
+    ABN.all_jokers(function(joker)
+      for key, _ in pairs(SMODS.Sticker.obj_table) do
         if joker.ability and joker.ability[key] then
           SMODS.destroy_cards(joker, { bypass_eternal = true })
+          break
         end
       end
-    end
+    end)
     for i = 1, 2 do
       G.E_MANAGER:add_event(Event({
         trigger = 'after',

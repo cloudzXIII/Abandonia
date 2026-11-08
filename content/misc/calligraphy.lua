@@ -66,7 +66,9 @@ ABN.NumeralCalligraphyCard = SMODS.Consumable:extend({
     }
   end,
   
-  
+  can_use = function(self, card)
+    return ABN.count_jokers() > 0 and ((G.GAME.blind and not G.GAME.blind.in_blind) or next(SMODS.find_card("v_abn_ink_and_quill")))
+  end,
 })
 
 SMODS.UndiscoveredSprite({ -- undiscovered sprite
@@ -1345,11 +1347,11 @@ ABN.AncientCalligraphyCard {
   config = { extra = { suit_conv = "abn_Coin", mod_conv = "m_gold", e_conv = "e_gloss", rank = "abn_13" } },
   can_use = function(self, card)
     return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
-        and G.jokers and #G.jokers.cards > 0
+        and ABN.count_jokers() > 0
   end,
 
   use = function(self, card, area, copier)
-    local leftmost_joker = G.jokers.cards[1]
+    local leftmost_joker = ABN.get_leftmost_joker()
 
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
@@ -1422,11 +1424,11 @@ ABN.AncientCalligraphyCard {
   config = { extra = { suit_conv = "abn_Florette", mod_conv = "m_abn_reinforcement" } },
   can_use = function(self, card)
     return G.hand and #G.hand.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind or G.hand and #G.hand.cards > 0 and next(SMODS.find_card("v_abn_ink_and_quill"))
-        and G.jokers and #G.jokers.cards > 0
+        and ABN.count_jokers() > 0
   end,
 
   use = function(self, card, area, copier)
-    local rightmost_joker = G.jokers.cards[#G.jokers.cards]
+    local rightmost_joker = ABN.get_rightmost_joker()
 
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
@@ -1475,14 +1477,14 @@ ABN.AncientCalligraphyCard {
 
     local rightmost_stickers = ABN.listStickers(rightmost_joker)
     if rightmost_stickers and #rightmost_stickers > 0 then
-      for _, v in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(v)
         if v ~= card then
           for _, sticker in ipairs(rightmost_stickers) do
             v:add_sticker(sticker, true)
             v:juice_up(0.3, 0.5)
           end
         end
-      end
+      end)
     end
 
     delay(0.5)
@@ -2617,12 +2619,8 @@ ABN.NumeralCalligraphyCard {
   pos = { x = 0, y = 0 },
   config = { extra = { enh_key = "abn_stk_gold" } },
   
-  can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
-  end,
-
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[1]
+    local c = ABN.get_leftmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -2667,12 +2665,8 @@ ABN.NumeralCalligraphyCard {
   pos = { x = 1, y = 0 },
   config = { extra = { enh_key = "abn_stk_mult" } },
   
-  can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
-  end,
-
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[#G.jokers.cards]
+    local c = ABN.get_rightmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -2716,12 +2710,8 @@ ABN.NumeralCalligraphyCard {
   pos = { x = 2, y = 0 },
   config = { extra = { enh_key = "abn_stk_bonus" } },
   
-  can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
-  end,
-
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[1]
+    local c = ABN.get_leftmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -2766,12 +2756,8 @@ ABN.NumeralCalligraphyCard {
   pos = { x = 2, y = 0 },
   config = { extra = { enh_key = "abn_stk_lucky" } },
   
-  can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
-  end,
-
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[#G.jokers.cards]
+    local c = ABN.get_rightmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -2816,12 +2802,8 @@ ABN.NumeralCalligraphyCard {
   pos = { x = 4, y = 0 },
   config = { extra = { enh_key = "abn_stk_stone" } },
   
-  can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
-  end,
-
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[1]
+    local c = ABN.get_leftmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -2866,12 +2848,8 @@ ABN.NumeralCalligraphyCard {
   pos = { x = 5, y = 0 },
   config = { extra = { enh_key = "abn_stk_steel" } },
   
-  can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
-  end,
-
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[#G.jokers.cards]
+    local c = ABN.get_rightmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -2915,13 +2893,9 @@ ABN.NumeralCalligraphyCard {
   key = "syem",
   pos = { x = 0, y = 1 },
   config = { extra = { enh_key = "abn_stk_glass" } },
-  
-  can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
-  end,
 
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[1]
+    local c = ABN.get_leftmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
@@ -2966,12 +2940,9 @@ ABN.NumeralCalligraphyCard {
   key = "vosyem",
   pos = { x = 1, y = 1 },
   config = { extra = { enh_key = "abn_stk_wild" } },
-  can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0 and G.GAME.blind and not G.GAME.blind.in_blind
-  end,
 
   use = function(self, card, area, copier)
-    local c = G.jokers.cards[#G.jokers.cards]
+    local c = ABN.get_rightmost_joker()
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,

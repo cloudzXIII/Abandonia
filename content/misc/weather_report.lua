@@ -61,28 +61,28 @@ ABN.WeatherReport {
 ABN.WeatherReport {
   key = "cloudz", -- haha get it cause cloudzXIII :p
   pos = { x = 2, y = 0 },
-  config = { max_highlighted = 1 },
   can_use = function(self, card)
-    return G.GAME.blind and G.GAME.blind.in_blind
-        and G.jokers and #G.jokers.highlighted == 1
-        and not SMODS.is_eternal(G.jokers.highlighted[1])
-        and #G.jokers.cards > 1
-        and #G.jokers.cards <= G.jokers.config.card_limit
+    local hjokers = ABN.highlighted_jokers()
+    if not G.GAME.blind or not G.GAME.blind.in_blind or #hjokers ~= 1 or SMODS.is_eternal(hjokers[1]) then return false end
+    return ABN.all_jokers(function(joker)
+      if joker ~= hjokers[1] and ABN.area_has_space(joker.area, {cards_to_remove = hjokers, cards_to_add = {joker}}) then return true end
+    end)
   end,
   keep_on_use = function(self, card) return false end,
   use = function(self, card, area, copier)
+	local hjokers = ABN.highlighted_jokers()
     local jokers = {}
-    for i = 1, #G.jokers.cards do
-      if G.jokers.cards[i] ~= G.jokers.highlighted[1] then
-        jokers[#jokers + 1] = G.jokers.cards[i]
+    ABN.all_jokers(function(joker)
+      if joker ~= hjokers[1] and ABN.area_has_space(joker.area, {cards_to_remove = hjokers, cards_to_add = {joker}}) then
+        table.insert(jokers, joker)
       end
-    end
+    end)
 
-    G.jokers.highlighted[1].getting_sliced = true
+    hjokers[1].getting_sliced = true
     G.E_MANAGER:add_event(Event({
       func = function()
         card:juice_up(0.8, 0.8)
-        G.jokers.highlighted[1]:start_dissolve({ G.C.RED }, nil, 1.6)
+        hjokers[1]:start_dissolve({ G.C.RED }, nil, 1.6)
         return true
       end
     }))
@@ -91,14 +91,11 @@ ABN.WeatherReport {
       trigger = 'after',
       delay = 0.5,
       func = function()
-        if #G.jokers.cards < G.jokers.config.card_limit + 1 then
-          local chosen_joker = pseudorandom_element(jokers, 'abn_cloudzxiii')
-          local copied_joker = copy_card(chosen_joker)
-          copied_joker:add_to_deck()
-          G.jokers:emplace(copied_joker)
-          SMODS.calculate_effect({ message = localize("k_duplicated_ex") }, card)
-        end
-        G.jokers:unhighlight_all()
+        local chosen_joker = pseudorandom_element(jokers, 'abn_cloudzxiii')
+        local copied_joker = copy_card(chosen_joker)
+        copied_joker:add_to_deck()
+        chosen_joker.area:emplace(copied_joker)
+        SMODS.calculate_effect({ message = localize("k_duplicated_ex") }, card)
         return true
       end
     }))

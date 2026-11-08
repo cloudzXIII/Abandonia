@@ -33,11 +33,11 @@ SMODS.Joker {
       local count = 0
 
 
-      for _, j in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(j)
         if j.config.center.key == context.other_joker.config.center.key then
           count = count + 1
         end
-      end
+      end)
 
 
       if count > 1 then

@@ -43,7 +43,7 @@ SMODS.Blind({
   pos = { x = 0, y = 10 },
   boss_colour = HEX("9facc4"),
   calculate = function(self, blind, context)
-    if not blind.disabled and context.debuff_card and context.debuff_card.area ~= G.jokers and ABN.is_light(context.debuff_card, true) then
+    if not blind.disabled and context.debuff_card and context.debuff_card.playing_card and ABN.is_light(context.debuff_card, true) then
       return {debuff = true}
     end
   end
@@ -482,7 +482,7 @@ SMODS.Blind({
 -- PinkR failure popup helper
 local function show_pinkr_fail_text()
   local triggered = G.GAME.PinkRTriggers or 0
-  local total = G.jokers and #G.jokers.cards or 0
+  local total = ABN.count_jokers()
   local disp_text = triggered .. " / " .. total .. " Jokers triggered"
 
   G.E_MANAGER:add_event(Event({
@@ -515,7 +515,7 @@ SMODS.Blind({
   boss_colour = HEX("e074a2"),
 
   in_pool = function(self)
-    return G.jokers and #G.jokers.cards > 0
+    return ABN.count_jokers() > 0
   end,
 
   calculate = function(self, card, context)
@@ -533,7 +533,7 @@ SMODS.Blind({
 
     -- After scoring: check success
     if context.after then
-      local total_jokers = #G.jokers.cards
+      local total_jokers = ABN.count_jokers()
       local triggered = G.GAME.PinkRTriggers or 0
       G.GAME.PinkRFailed = (triggered < total_jokers)
     end
@@ -609,7 +609,7 @@ SMODS.Blind({
 
   -- Only appears if the player has Jokers
   in_pool = function(self)
-    return G.jokers and #G.jokers.cards > 0
+    return ABN.count_jokers() > 0
   end,
   apply_to_joker = function(self, joker)
     -- Use a unique key for the debuff flag to prevent conflicts with other mods
@@ -687,23 +687,23 @@ SMODS.Blind({
   calculate = function(self, blind, context)
     -- Triggers when the blind is selected
     if context.setting_blind and not G.GAME.blind.disabled then
-      for _, joker in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(joker)
         self:apply_to_joker(joker)
-      end
+      end)
     end
   end,
 
   disable = function(self)
-    for _, joker in ipairs(G.jokers.cards) do
+    ABN.all_jokers(function(joker)
       self:remove_from_joker(joker)
-    end
+    end)
   end,
 
   defeat = function(self)
     if G.GAME.blind.disabled then return end
-    for _, joker in ipairs(G.jokers.cards) do
+    ABN.all_jokers(function(joker)
       self:remove_from_joker(joker)
-    end
+    end)
   end,
 
   abn_artist_credits = {
@@ -792,13 +792,13 @@ SMODS.Blind {
 
                 -- trigger joker callbacks if applicable
                 if selected_card.playing_card then
-                  for j = 1, #G.jokers.cards do
-                    eval_card(G.jokers.cards[j], {
-                      cardarea = G.jokers,
+                  ABN.all_jokers(function(joker)
+                    eval_card(joker, {
+                      cardarea = joker.area,
                       remove_playing_cards = true,
                       removed = { selected_card }
                     })
-                  end
+                  end)
                 end
               end
             end
@@ -822,7 +822,7 @@ SMODS.Blind({
     if G.GAME.blind.disabled then
       return false
     end
-    if (card.area == G.jokers) and card.config.center and card.config.center.rarity and card.config.center.rarity == 3 then
+    if card.config and card.config.center and card.config.center.rarity and card.config.center.rarity == 3 then
       return true
     end
   end,
@@ -935,7 +935,7 @@ SMODS.Blind({
     if G.GAME.blind.disabled then
       return false
     end
-    if (card.area == G.jokers) and card.config.center and card.config.center.rarity and card.config.center.rarity == 4 then
+    if card.config and card.config.center and card.config.center.rarity and card.config.center.rarity == 4 then
       return true
     end
   end,
@@ -1043,15 +1043,11 @@ SMODS.Blind({
   press_play = function(self)
     G.E_MANAGER:add_event(Event({
       func = function()
-        -- Iterate backwards when removing items from a list to avoid indexing issues
-        for i = #G.jokers.cards, 1, -1 do
-          local joker = G.jokers.cards[i]
-          -- Check if the joker has an edition (Foil, Holo, Poly, Neg)
+        ABN.all_jokers(function(joker)
           if joker.edition then
-            -- Dissolve the card
             joker:start_dissolve()
           end
-        end
+        end)
         return true
       end
     }))
@@ -1112,11 +1108,9 @@ SMODS.Blind({
       end
 
       -- Scan Jokers
-      if G.jokers and G.jokers.cards then
-        for _, j in ipairs(G.jokers.cards) do
-          check_card_edition(j)
-        end
-      end
+      ABN.all_jokers(function(j)
+        check_card_edition(j)
+      end)
 
       -- Scan Playing Cards
       if G.playing_cards then
@@ -1347,17 +1341,25 @@ SMODS.Blind({
     if context.after then
       local effect = G.GAME.blind.calamity_effect
 
-      if effect == 1 and #G.jokers.cards > 0 then
+      if effect == 1 and ABN.count_jokers() > 0 then
         local result = SMODS.calculate_round_score()
         if result < G.GAME.blind.chips then
-          local sacrificed_joker = pseudorandom_element(G.jokers.cards, 'calamity_joker')
-          G.E_MANAGER:add_event(Event({
-            trigger = 'immediate',
-            func = function()
-              sacrificed_joker:start_dissolve()
-              return true
+          local jokers_to_destroy = {}
+          ABN.all_jokers(function(joker)
+            if not SMODS.is_eternal(joker, card) then
+              table.insert(jokers_to_destroy, joker)
             end
-          }))
+          end)
+          local sacrificed_joker = pseudorandom_element(jokers_to_destroy, 'calamity_joker')
+          if sacrificed_joker then
+            G.E_MANAGER:add_event(Event({
+              trigger = 'immediate',
+              func = function()
+                sacrificed_joker:start_dissolve()
+                return true
+              end
+            }))
+          end
         end
       end
 
@@ -1426,26 +1428,18 @@ function Game:update(dt)
   if G.STAGE ~= G.STAGES.RUN then return end
 
   if G.GAME.blind and G.GAME.blind.config.blind.key == 'bl_abn_mauve_moth' and not G.GAME.blind.disabled then
-    if G.jokers and G.jokers.cards then
-      for i = 1, #G.jokers.cards do
-        local j = G.jokers.cards[i]
-
-        j.states.drag.can = false
-      end
-    end
+    ABN.all_jokers(function(j)
+      j.states.drag.can = false
+    end)
     for _, c in ipairs(G.playing_cards) do
       c.states.drag.can = false
     end
   end
 
   if G.GAME.blind and G.GAME.blind.config.blind.key == 'bl_abn_mauve_moth' and G.GAME.blind.disabled or G.GAME.blind and G.GAME.blind.config.blind.key == 'bl_abn_mauve_moth' and G.STATE == 8 then
-    if G.jokers and G.jokers.cards then
-      for i = 1, #G.jokers.cards do
-        local j = G.jokers.cards[i]
-
-        j.states.drag.can = true
-      end
-    end
+    ABN.all_jokers(function(j)
+      j.states.drag.can = true
+    end)
     for _, c in ipairs(G.playing_cards) do
       c.states.drag.can = true
     end
@@ -1627,7 +1621,7 @@ SMODS.Blind({
   boss_colour = HEX("d24272"),
 
   recalc_debuff = function(self, card, from_blind)
-    if not G.GAME.blind.disabled and card.area ~= G.jokers then
+    if not G.GAME.blind.disabled and card.playing_card then
       local center = card.config and card.config.center
       if center and center.set == "Enhanced" then
         local vanilla_enhancements = {
@@ -1693,34 +1687,6 @@ SMODS.Blind({
   end,
 })
 
-
-local upd = Game.update
-function Game:update(dt)
-    upd(self, dt)
-
-    if G.STAGE == G.STAGES.RUN and G.GAME and G.GAME.blind and G.GAME.blind.boss and G.STATE == 1 then
-        if G.GAME.blind.config.blind.key == 'bl_abn_frozen_fruit' and not G.GAME.blind.disabled then
-            local check_areas = { G.jokers, G.hand }
-            
-            for _, area in ipairs(check_areas) do
-                if area and area.cards then
-                    for idx, card in ipairs(area.cards) do
-                        if card.ability then
-                            if not card.ability.FrozenPos then
-                                card.ability.FrozenPos = idx
-                            elseif card.ability.FrozenPos ~= idx then
-                                G.GAME.blind.chips = math.floor(G.GAME.blind.chips * 1.02)
-                                G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-                                card.ability.FrozenPos = idx
-                            end
-                        end
-                    end
-                end
-            end
-        end
-    end
-end
-
 SMODS.Blind({
   key = "frozen_fruit",
   boss = {
@@ -1730,18 +1696,12 @@ SMODS.Blind({
   pos = { x = 0, y = 66 },
   boss_colour = HEX("4895a7"),
 
-  press_play = function(self)
-    local check_areas = { G.jokers, G.hand }
-    for _, area in ipairs(check_areas) do
-      if area and area.cards then
-        for _, card in ipairs(area.cards) do
-          if card.ability then
-            card.ability.FrozenPos = nil
-          end
-        end
-      end
+  calculate = function(self, blind, context)
+    if context.abn_playing_cards_rearranged or context.abn_jokers_rearranged then
+      G.GAME.blind.chips = math.floor(G.GAME.blind.chips * 1.02)
+      G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
     end
-  end,
+  end
 })
 
 SMODS.Blind({
@@ -2001,43 +1961,43 @@ SMODS.Blind({
   boss_colour = HEX("c78bb3"),
   calculate = function(self, blind, context)
     if not blind.disabled then
-      if context.debuff_card and context.debuff_card.area == G.jokers then
+      if context.debuff_card and context.debuff_card.ability and context.debuff_card.ability.set == 'Joker' then
         if context.debuff_card.ability.hazard_pin then
           return {
             debuff = true,
           }
         end
       end
-      if context.press_play and G.jokers.cards[1] then
+      if context.press_play and ABN.count_jokers() > 0 then
         blind.triggered = true
         blind.prepped = true
       end
       if context.hand_drawn then
-        if blind.prepped and G.jokers.cards[1] then
+        if blind.prepped and ABN.count_jokers() > 0 then
           local prev_chosen_set = {}
           local fallback_jokers = {}
           local jokers = {}
-          for i = 1, #G.jokers.cards do
-            if G.jokers.cards[i].ability.hazard_pin then
-              prev_chosen_set[G.jokers.cards[i]] = true
-              G.jokers.cards[i].ability.hazard_pin = nil
-              if G.jokers.cards[i].debuff then
-                SMODS.recalc_debuff(G.jokers.cards[i])
+          ABN.all_jokers(function(joker)
+            if joker.ability.hazard_pin then
+              prev_chosen_set[joker] = true
+              joker.ability.hazard_pin = nil
+              if joker.debuff then
+                SMODS.recalc_debuff(joker)
               end
             end
-          end
-          for i = 1, #G.jokers.cards do
-            if not G.jokers.cards[i].debuff then
-              if not prev_chosen_set[G.jokers.cards[i]] then
-                jokers[#jokers + 1] = G.jokers.cards[i]
+          end)
+          ABN.all_jokers(function(joker)
+            if not joker.debuff then
+              if not prev_chosen_set[joker[i]] then
+                jokers[#jokers + 1] = joker
               end
-              table.insert(fallback_jokers, G.jokers.cards[i])
+              table.insert(fallback_jokers, joker)
             end
-          end
+          end)
           if #jokers == 0 then
             jokers = fallback_jokers
           end
-          local _card = G.jokers.cards[#G.jokers.cards]
+          local _card = ABN.get_rightmost_joker()
           if _card then
             _card.ability.hazard_pin = true
             SMODS.recalc_debuff(_card)
@@ -2224,43 +2184,43 @@ SMODS.Blind({
   end,
   calculate = function(self, blind, context)
     if not blind.disabled then
-      if context.debuff_card and context.debuff_card.area == G.jokers then
+      context.debuff_card and context.debuff_card.ability and context.debuff_card.ability.set == 'Joker'
         if context.debuff_card.ability.hazard_pin then
           return {
             debuff = true,
           }
         end
       end
-      if context.press_play and G.jokers.cards[1] then
+      if context.press_play and ABN.count_jokers() then
         blind.triggered = true
         blind.prepped = true
       end
       if context.hand_drawn then
-        if blind.prepped and G.jokers.cards[1] then
+        if blind.prepped and ABN.count_jokers() then
           local prev_chosen_set = {}
           local fallback_jokers = {}
           local jokers = {}
-          for i = 1, #G.jokers.cards do
-            if G.jokers.cards[i].ability.hazard_pin then
-              prev_chosen_set[G.jokers.cards[i]] = true
-              G.jokers.cards[i].ability.hazard_pin = nil
-              if G.jokers.cards[i].debuff then
-                SMODS.recalc_debuff(G.jokers.cards[i])
+          ABN.all_jokers(function(joker)
+            if joker.ability.hazard_pin then
+              prev_chosen_set[joker] = true
+              joker.ability.hazard_pin = nil
+              if joker.debuff then
+                SMODS.recalc_debuff(joker)
               end
             end
-          end
-          for i = 1, #G.jokers.cards do
-            if not G.jokers.cards[i].debuff then
-              if not prev_chosen_set[G.jokers.cards[i]] then
-                jokers[#jokers + 1] = G.jokers.cards[i]
+          end)
+          ABN.all_jokers(function(joker)
+            if not joker.debuff then
+              if not prev_chosen_set[joker] then
+                jokers[#jokers + 1] = joker
               end
-              table.insert(fallback_jokers, G.jokers.cards[i])
+              table.insert(fallback_jokers, joker)
             end
-          end
+          end)
           if #jokers == 0 then
             jokers = fallback_jokers
           end
-          local _card = G.jokers.cards[#G.jokers.cards]
+          local _card = ABN.get_rightmost_joker()
           if _card then
             _card.ability.hazard_pin = true
             SMODS.recalc_debuff(_card)
@@ -2445,22 +2405,22 @@ SMODS.Blind({
   calculate = function(self, blind, context)
     if context.after and not self.triggered and not G.GAME.blind.disabled then
       self.triggered = true
-      for k, v in pairs(G.jokers.cards) do
+      ABN.all_jokers(function(v)
         SMODS.debuff_card(v, true, "hazard_tear_debuff")
-      end
+      end)
     end
   end,
   disable = function(self)
     self.triggered = false
-    for k, v in pairs(G.jokers.cards) do
+    ABN.all_jokers(function(v)
       SMODS.debuff_card(v, false, "hazard_tear_debuff")
-    end
+    end)
   end,
   defeat = function(self)
     self.triggered = false
-    for k, v in pairs(G.jokers.cards) do
+    ABN.all_jokers(function(v)
       SMODS.debuff_card(v, false, "hazard_tear_debuff")
-    end
+    end)
   end
 })
 
@@ -2472,15 +2432,15 @@ SMODS.Blind({
   boss_colour = HEX("4bdbcb"),
   calculate = function(self, blind, context)
 	if blind.disabled then return end
-	if context.debuff_card and ((context.debuff_card.area ~= G.jokers and ABN.is_dark(context.debuff_card, true)) or (context.debuff_card.area == G.jokers and G.GAME.current_round.hands_played > 0)) then
+	if context.debuff_card and ((context.debuff_card.playing_card and ABN.is_dark(context.debuff_card, true)) or (context.debuff_card.ability and context.debuff_card.ability.set == 'Joker' and G.GAME.current_round.hands_played > 0)) then
 	  return {debuff = true}
     elseif context.after and G.GAME.current_round.hands_played == 0 then
       self.triggered = true
 	  G.E_MANAGER:add_event(Event({
 		func = function()
-		  for k, v in pairs(G.jokers.cards) do
+		  ABN.all_jokers(function(v)
 		    SMODS.recalc_debuff(v)
-		  end
+		  end)
 		  return true
 		end
 	  }))
@@ -2519,7 +2479,7 @@ SMODS.Blind({
 
   calculate = function(self, blind, context)
     if not blind.disabled then
-      if context.debuff_card and context.debuff_card.area == G.jokers then
+      context.debuff_card and context.debuff_card.ability and context.debuff_card.ability.set == 'Joker'
         if context.debuff_card.ability.hazard_heart_chosen then
           return {
             debuff = true,
@@ -2539,14 +2499,14 @@ SMODS.Blind({
         if not blind.hazard_heart_prepped then
           blind.hazard_heart_prepped = true
 
-          for _, joker in ipairs(G.jokers.cards) do
+          ABN.all_jokers(function(joker)
             if joker.ability.hazard_heart_chosen then
               joker.ability.hazard_heart_chosen = nil
               if joker.debuff then
                 SMODS.recalc_debuff(joker)
               end
             end
-          end
+          end)
 
           for _, card in ipairs(G.hand.cards) do
             if card.ability.hazard_heart_chosen then
@@ -2558,11 +2518,11 @@ SMODS.Blind({
           end
 
           local joker_pool = {}
-          for _, joker in ipairs(G.jokers.cards) do
+          ABN.all_jokers(function(joker)
             if not joker.debuff then
               joker_pool[#joker_pool + 1] = joker
             end
-          end
+          end)
 
           for i = 1, math.min(2, #joker_pool) do
             local chosen, pos = pseudorandom_element(joker_pool, "hazard_heart_joker_" .. i)
@@ -2597,12 +2557,12 @@ SMODS.Blind({
   end,
 
   disable = function(self)
-    for _, joker in ipairs(G.jokers.cards) do
+    ABN.all_jokers(function(joker)
       joker.ability.hazard_heart_chosen = nil
       if joker.debuff then
         SMODS.recalc_debuff(joker)
       end
-    end
+    end)
     for _, card in ipairs(G.playing_cards) do
       card.ability.hazard_heart_chosen = nil
       if card.debuff then
@@ -2612,12 +2572,12 @@ SMODS.Blind({
   end,
 
   defeat = function(self)
-    for _, joker in ipairs(G.jokers.cards) do
+    ABN.all_jokers(function(joker)
       joker.ability.hazard_heart_chosen = nil
       if joker.debuff then
         SMODS.recalc_debuff(joker)
       end
-    end
+    end)
     for _, card in ipairs(G.playing_cards) do
       card.ability.hazard_heart_chosen = nil
       if card.debuff then
@@ -2674,23 +2634,7 @@ SMODS.Blind({
   end,
 
   recalc_debuff = function(self, card, from_blind)
-    local temp = G.GAME.blind and G.GAME.blind.disabled
-    if temp or not G.jokers then
-      return false
-    end
-    if card.area == G.jokers and #G.jokers.cards > 0 and card == G.jokers.cards[1] and not temp then
-      return true
-    end
-    return false
-  end,
-
-  update = function(self, blind, dt)
-    local temp = G.GAME.blind and G.GAME.blind.disabled
-    if not temp and G.jokers then
-      for _, v in ipairs(G.jokers.cards) do
-        G.GAME.blind:debuff_card(v, true)
-      end
-    end
+    return (not G.GAME.blind or not G.GAME.blind.disabled) and card == ABN.get_leftmost_joker()
   end,
 
   disable = function(self)
@@ -2716,30 +2660,14 @@ SMODS.Blind({
   boss = { showdown = true, hazard_blind = true },
   boss_colour = HEX("fda200"),
   recalc_debuff = function(self, card, from_blind)
-    local temp = G.GAME.blind and G.GAME.blind.disabled
-    if temp or not G.jokers then
-      return false
-    end
-    if card.area == G.jokers and #G.jokers.cards > 0 and card == G.jokers.cards[#G.jokers.cards] and not temp then
-      return true
-    end
-    return false
-  end,
-
-  update = function(self, blind, dt)
-    local temp = G.GAME.blind and G.GAME.blind.disabled
-    if not temp and G.jokers then
-      for _, v in ipairs(G.jokers.cards) do
-        G.GAME.blind:debuff_card(v, true)
-      end
-    end
+    return (not G.GAME.blind or not G.GAME.blind.disabled) and card == ABN.get_rightmost_joker(true)
   end,
   set_blind = function(self)
-    for _, joker in ipairs(G.jokers.cards) do
+    ABN.all_jokers(function(joker)
       if joker.facing == "front" then
         joker:flip()
       end
-    end
+    end)
   end,
   press_play = function(self)
     if #G.jokers.cards > 0 then
@@ -2752,7 +2680,7 @@ SMODS.Blind({
           func = function()
             G.E_MANAGER:add_event(Event({
               func = function()
-                G.jokers:shuffle("aajk")
+                G.jokers:shuffle("abn_hazard_acorn")
                 play_sound("cardSlide1", 0.85)
                 return true
               end,
@@ -2760,7 +2688,7 @@ SMODS.Blind({
             delay(0.15)
             G.E_MANAGER:add_event(Event({
               func = function()
-                G.jokers:shuffle("aajk")
+                G.jokers:shuffle("abn_hazard_acorn")
                 play_sound("cardSlide1", 1.15)
                 return true
               end,
@@ -2768,7 +2696,7 @@ SMODS.Blind({
             delay(0.15)
             G.E_MANAGER:add_event(Event({
               func = function()
-                G.jokers:shuffle("aajk")
+                G.jokers:shuffle("abn_hazard_acorn")
                 play_sound("cardSlide1", 1)
                 return true
               end,
@@ -2798,7 +2726,7 @@ SMODS.Blind({
         blind.hazard_leaf_sold = 0
       end
 
-      if context.debuff_card and context.debuff_card.area ~= G.jokers then
+      if context.debuff_card and context.debuff_card.playing_card then
         if (blind.hazard_leaf_sold or 0) < 2 then
           return {
             debuff = true,
@@ -2916,7 +2844,7 @@ SMODS.Blind({
   boss_colour = HEX("e074a2"),
 
   in_pool = function(self)
-    return G.jokers and #G.jokers.cards > 0
+    return ABN.count_jokers() > 0
   end,
 
   calculate = function(self, blind, context)
@@ -2945,7 +2873,7 @@ SMODS.Blind({
 
     -- After scoring: check success
     if context.after then
-      local total_jokers = #G.jokers.cards
+      local total_jokers = ABN.count_jokers()
       local triggered = G.GAME.PinkRTriggers or 0
       G.GAME.PinkRFailed = (triggered < total_jokers)
     end
@@ -2993,7 +2921,7 @@ SMODS.Blind({
 
   -- Only appears if the player has Jokers
   in_pool = function(self)
-    return G.jokers and #G.jokers.cards > 0
+    return ABN.count_jokers() > 0
   end,
 
   -- APPLY EFFECT
@@ -3072,9 +3000,9 @@ SMODS.Blind({
   calculate = function(self, blind, context)
     -- Triggers when the blind is selected
     if context.setting_blind and not G.GAME.blind.disabled then
-      for _, joker in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(joker)
         self:apply_to_joker(joker)
-      end
+      end)
     end
 
     if not blind.disabled and context.debuff_hand then
@@ -3088,16 +3016,16 @@ SMODS.Blind({
   end,
 
   disable = function(self)
-    for _, joker in ipairs(G.jokers.cards) do
+    ABN.all_jokers(function(joker)
       self:remove_from_joker(joker)
-    end
+    end)
   end,
 
   defeat = function(self)
     if G.GAME.blind.disabled then return end
-    for _, joker in ipairs(G.jokers.cards) do
+    ABN.all_jokers(function(joker)
       self:remove_from_joker(joker)
-    end
+    end)
   end,
 
   abn_artist_credits = {
@@ -3158,13 +3086,13 @@ SMODS.Blind {
 
                 -- trigger joker callbacks if applicable
                 if selected_card.playing_card then
-                  for j = 1, #G.jokers.cards do
-                    eval_card(G.jokers.cards[j], {
-                      cardarea = G.jokers,
+                  ABN.all_jokers(function(joker)
+                    eval_card(joker, {
+                      cardarea = joker.area,
                       remove_playing_cards = true,
                       removed = { selected_card }
                     })
-                  end
+                  end)
                 end
               end
             end
@@ -3186,7 +3114,7 @@ SMODS.Blind({
     if G.GAME.blind.disabled then
       return false
     end
-    if (card.area == G.jokers) and card.config.center and card.config.center.rarity and card.config.center.rarity == 3 then
+    if card.config and card.config.center and card.config.center.rarity and card.config.center.rarity == 3 then
       return true
     end
   end,
@@ -3368,7 +3296,7 @@ SMODS.Blind({
     if G.GAME.blind.disabled then
       return false
     end
-    if (card.area == G.jokers) and card.config.center and card.config.center.rarity and card.config.center.rarity == 4 then
+    if card.config and card.config.center and card.config.center.rarity and card.config.center.rarity == 4 then
       return true
     end
   end,
@@ -3407,17 +3335,17 @@ SMODS.Blind({
       -- Refresh targets every time a hand is drawn
       if context.hand_drawn then
         -- Joker Debuff Logic
-        for i = 1, #G.jokers.cards do
-          if G.jokers.cards[i].ability.hazard_chalice_joker then
-            G.jokers.cards[i].ability.hazard_chalice_joker = nil
-            G.jokers.cards[i].wasdebuffed = false
-            G.jokers.cards[i]:set_debuff(false)
-            SMODS.recalc_debuff(G.jokers.cards[i])
+        ABN.all_jokers(function(joker)
+          if joker.ability.hazard_chalice_joker then
+            joker.ability.hazard_chalice_joker = nil
+            joker.wasdebuffed = false
+            joker:set_debuff(false)
+            SMODS.recalc_debuff(joker)
           end
-        end
+        end)
 
-        if G.jokers.cards[1] then
-          local random_joker = pseudorandom_element(G.jokers.cards, pseudoseed('hazard_joker'))
+        if ABN.count_jokers() > 0 then
+          local random_joker = pseudorandom_element(ABN.all_jokers(), pseudoseed('hazard_joker'))
           random_joker.ability.hazard_chalice_joker = true
           SMODS.recalc_debuff(random_joker)
           random_joker:juice_up()
@@ -3464,22 +3392,22 @@ SMODS.Blind({
     if card.area == G.hand and G.GAME.blind.amaranth_target and card == G.GAME.blind.amaranth_target then
       return true
     end
-    if card.area == G.jokers and card.ability.hazard_chalice_joker then
+    if card.ability.hazard_chalice_joker then
       return true
     end
   end,
 
   disable = function(self)
-    for _, joker in ipairs(G.jokers.cards) do
+    ABN.all_jokers(function(joker)
       joker.ability.hazard_chalice_joker = nil
-    end
+    end)
     G.GAME.blind.amaranth_target = nil
   end,
 
   defeat = function(self)
-    for _, joker in ipairs(G.jokers.cards) do
+    ABN.all_jokers(function(joker)
       joker.ability.hazard_chalice_joker = nil
-    end
+    end)
     G.GAME.blind.amaranth_target = nil
   end
 })
@@ -3558,15 +3486,11 @@ SMODS.Blind({
   press_play = function(self)
     G.E_MANAGER:add_event(Event({
       func = function()
-        -- Iterate backwards when removing items from a list to avoid indexing issues
-        for i = #G.jokers.cards, 1, -1 do
-          local joker = G.jokers.cards[i]
-          -- Check if the joker has an edition (Foil, Holo, Poly, Neg)
+        ABN.all_jokers(function(joker)
           if joker.edition then
-            -- Dissolve the card
             joker:start_dissolve()
           end
-        end
+        end)
         return true
       end
     }))
@@ -3671,11 +3595,9 @@ SMODS.Blind({
       end
 
       -- Scan Jokers
-      if G.jokers and G.jokers.cards then
-        for _, j in ipairs(G.jokers.cards) do
-          check_card_edition(j)
-        end
-      end
+      ABN.all_jokers(function(j)
+        check_card_edition(j)
+      end)
 
       -- Scan Playing Cards
       if G.playing_cards then
@@ -3978,17 +3900,25 @@ SMODS.Blind({
     if context.after then
       local effect = G.GAME.blind.calamity_effect
 
-      if effect == 1 and #G.jokers.cards > 0 then
+      if effect == 1 and ABN.count_jokers() > 0 then
         local result = SMODS.calculate_round_score()
         if result < G.GAME.blind.chips then
-          local sacrificed_joker = pseudorandom_element(G.jokers.cards, 'calamity_joker')
-          G.E_MANAGER:add_event(Event({
-            trigger = 'immediate',
-            func = function()
-              sacrificed_joker:start_dissolve()
-              return true
+          local jokers_to_destroy = {}
+          ABN.all_jokers(function(joker)
+            if not SMODS.is_eternal(joker, card) then
+              table.insert(jokers_to_destroy, joker)
             end
-          }))
+          end)
+          local sacrificed_joker = pseudorandom_element(jokers_to_destroy, 'calamity_joker')
+          if sacrificed_joker then
+            G.E_MANAGER:add_event(Event({
+              trigger = 'immediate',
+              func = function()
+                sacrificed_joker:start_dissolve()
+                return true
+              end
+            }))
+          end
         end
       end
 
@@ -4102,26 +4032,18 @@ function Game:update(dt)
   if G.STAGE ~= G.STAGES.RUN then return end
 
   if G.GAME.blind and G.GAME.blind.config.blind.key == 'bl_abn_hazard_moth' and not G.GAME.blind.disabled then
-    if G.jokers and G.jokers.cards then
-      for i = 1, #G.jokers.cards do
-        local j = G.jokers.cards[i]
-
-        j.states.drag.can = false
-      end
-    end
+    ABN.all_jokers(function(j)
+      j.states.drag.can = false
+    end)
     for _, c in ipairs(G.playing_cards) do
       c.states.drag.can = false
     end
   end
 
   if G.GAME.blind and G.GAME.blind.config.blind.key == 'bl_abn_hazard_moth' and G.GAME.blind.disabled or G.GAME.blind and G.GAME.blind.config.blind.key == 'bl_abn_hazard_moth' and G.STATE == 8 then
-    if G.jokers and G.jokers.cards then
-      for i = 1, #G.jokers.cards do
-        local j = G.jokers.cards[i]
-
-        j.states.drag.can = true
-      end
-    end
+    ABN.all_jokers(function(j)
+      j.states.drag.can = true
+    end)
     for _, c in ipairs(G.playing_cards) do
       c.states.drag.can = true
     end

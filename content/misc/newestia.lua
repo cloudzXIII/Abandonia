@@ -522,7 +522,7 @@ ABN.NewestiaBlind({
 	boss = {},
 	boss_colour = HEX("7e6752"),
 	calculate = function(self, blind, context)
-		if not blind.disabled and context.debuff_card and context.debuff_card.area ~= G.jokers and not context.debuff_card.ability.played_this_ante then
+		if not blind.disabled and context.debuff_card and context.debuff_card.playing_card and not context.debuff_card.ability.played_this_ante then
 			return {debuff = true}
 		end
 	end,
@@ -620,7 +620,7 @@ ABN.NewestiaBlind({
 		end
 	end,
 	calculate = function(self, blind, context)
-		if not blind.disabled and context.debuff_card and context.debuff_card.area ~= G.jokers and context.debuff_card:get_id() == G.GAME.bl_abn_new_flora_id then
+		if not blind.disabled and context.debuff_card and context.debuff_card.playing_card and context.debuff_card:get_id() == G.GAME.bl_abn_new_flora_id then
 			return {debuff = true}
 		elseif not blind.disabled and (context.after or context.pre_discard or context.setting_blind) then
 			local cards = {}
@@ -838,31 +838,31 @@ ABN.NewestiaBlind({
 	boss_colour = HEX("ac3232"),
 	calculate = function(self, blind, context)
 		if context.blind_disabled or context.blind_defeated then
-			for _, joker in ipairs(G.jokers.cards) do
+			ABN.all_jokers(function(joker)
 				joker.ability.abn_new_scarlet_cardiac_chosen = nil
-			end
+			end)
 		end
 		if blind.disabled then return end
-		if context.debuff_card and context.debuff_card.area == G.jokers and context.debuff_card.ability.abn_new_scarlet_cardiac_chosen then
+		if context.debuff_card and context.debuff_card.ability.abn_new_scarlet_cardiac_chosen then
 			return {debuff = true}
-		elseif (context.after or context.setting_blind) and #G.jokers.cards > 0 then
+		elseif (context.after or context.setting_blind) and ABN.count_jokers() > 0 then
 			blind.abn_prepared = true
-			if context.after and #G.jokers.cards >= 2 then
+			if context.after and ABN.count_jokers() >= 2 then
 				blind.triggered = true
 			end
 		elseif context.hand_drawn and blind.abn_prepared then
 			blind.abn_prepared = nil
 			local already_one_safe = false
 			local choices = {}
-			for _, joker in ipairs(G.jokers.cards) do
+			ABN.all_jokers(function(joker)
 				if joker.ability.abn_new_scarlet_cardiac_chosen or already_one_safe or context.first_hand_drawn then
 					table.insert(choices, joker)
 				else
 					already_one_safe = true
 				end
-			end
+			end)
 			local safe = pseudorandom_element(choices, "bl_abn_new_scarlet_cardiac")
-			for _, joker in ipairs(G.jokers.cards) do
+			ABN.all_jokers(function(joker)
 				local v1 = joker.ability.abn_new_scarlet_cardiac_chosen
 				local v2 = joker ~= safe
 				if v1 ~= v2 then
@@ -870,7 +870,7 @@ ABN.NewestiaBlind({
 					SMODS.recalc_debuff(joker)
 					joker:juice_up()
 				end
-			end
+			end)
 			blind:wiggle()
 		end
 	end
@@ -972,11 +972,22 @@ ABN.NewestiaBlind({
 		if context.blind_disabled or context.blind_defeated then
 			--Because the blind still exists for a short period after being defeated, the update hook will re-disable joker dragging if given the opportunity. Setting blind.disabled here prevents this.
 			blind.disabled = true
-			for _, joker in ipairs(G.jokers.cards) do
+			ABN.all_jokers(function(joker)
 				joker.states.drag.can = true
-			end
+			end)
 		elseif context.before and not blind.disabled then
-			for _, area in ipairs({G.jokers, G.play, G.hand}) do
+			local areas = {G.jokers, G.play, G.hand}
+			local jokers_in_consumables_count = 0
+			for _, card in ipairs(G.consumeables.cards) do
+				if card.ability and card.ability.set == "Joker" then
+					jokers_in_consumables_count = jokers_in_consumables_count + 1
+					if jokers_in_consumables_count >= 2 then
+						table.insert(areas, G.consumeables)
+						break
+					end
+				end
+			end
+			for _, area in ipairs(areas) do
 				if #area.cards > 1 then
 					area:shuffle("bl_abn_new_trawl")
 					play_sound('cardSlide1', 0.85)
@@ -996,7 +1007,7 @@ ABN.NewestiaBlind({
 	boss_colour = HEX("56a786"),
 	calculate = function(self, blind, context)
 		if blind.disabled then return end
-		if context.debuff_card and context.debuff_card.area == G.jokers and G.GAME.current_round.discards_left > 0 then
+		if context.debuff_card and not context.debuff_card.playing_card and G.GAME.current_round.discards_left > 0 then
 			return {debuff = true}
 		elseif context.pre_discard and G.GAME.current_round.discards_left <= 1 then
 			G.E_MANAGER:add_event(Event({
@@ -1058,11 +1069,11 @@ ABN.NewestiaBlind({
 		if blind.disabled then return end
 		if context.after then
 			local jokers = {}
-			for _, joker in ipairs(G.jokers.cards) do
+			ABN.all_jokers(function(joker)
 				if not SMODS.is_eternal(joker, blind) and not joker.getting_sliced then
 					table.insert(jokers, joker)
 				end
-			end
+			end)
 			local target = pseudorandom_element(jokers, "bl_abn_new_runic_heart")
 			if target then
 				blind.triggered = true
@@ -1133,8 +1144,19 @@ ABN.NewestiaBlind({
 			}
 		elseif context.before then
 			local any = false
-			for _, area in ipairs({G.jokers, G.play, G.hand}) do
-				if #area.cards > 0 then
+			local areas = {G.jokers, G.play, G.hand}
+			local jokers_in_consumables_count = 0
+			for _, card in ipairs(G.consumeables.cards) do
+				if card.ability and card.ability.set == "Joker" then
+					jokers_in_consumables_count = jokers_in_consumables_count + 1
+					if jokers_in_consumables_count >= 2 then
+						table.insert(areas, G.consumeables)
+						break
+					end
+				end
+			end
+			for _, area in ipairs(areas) do
+				if #area.cards > 1 then
 					area:shuffle("bl_abn_new_runic_acorn")
 					any = true
 				end
@@ -1215,7 +1237,7 @@ ABN.NewestiaBlind({
 		end
 		if blind.disabled then return end
 		if context.hand_drawn then
-			local new_hand_size = math.min(#G.jokers.cards, #G.hand.cards)
+			local new_hand_size = math.min(ABN.count_jokers(), #G.hand.cards)
 			if G.hand.config.highlighted_limit ~= G.GAME.abn_new_azure_chime_original_handsize then
 				G.GAME.abn_new_azure_chime_original_handsize = G.GAME.abn_new_azure_chime_original_handsize + G.GAME.abn_new_azure_chime_original_handsize - G.hand.config.highlighted_limit
 				G.GAME.abn_new_azure_chime_original_handsize = G.hand.config.highlighted_limit
@@ -1231,7 +1253,7 @@ ABN.NewestiaBlind({
 				end
 			end
 			G.hand:unhighlight_all()
-			while #non_forced > 0 and #G.hand.highlighted < #G.jokers.cards do
+			while #non_forced > 0 and #G.hand.highlighted < ABN.count_jokers() do
 				local forced_card = table.remove(non_forced, pseudorandom("bl_abn_new_azure_chime", 1, #non_forced))
 				forced_card.ability.forced_selection = true
 				G.hand:add_to_highlighted(forced_card)

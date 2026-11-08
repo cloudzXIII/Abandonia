@@ -36,15 +36,11 @@ SMODS.Joker {
         end
 
         -- Check for cursed Jokers
-        if G.jokers and G.jokers.cards then
-            for _, joker in ipairs(G.jokers.cards) do
-                if joker and joker.curse then
-                    return true
-                end
+        return ABN.all_jokers(function(joker)
+            if joker.curse then
+                return true
             end
-        end
-
-        return false
+        end)
     end,
 
     calculate = function(self, card, context)
@@ -62,13 +58,13 @@ SMODS.Joker {
             end
 
             -- Check Jokers
-            for _, j in ipairs(G.jokers.cards) do
+            ABN.all_jokers(function(j)
                 if j.curse then
                     j:set_curse() -- Removes the curse
                     card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.multadd
                     removed_any = true
                 end
-            end
+            end)
 
             if removed_any then
                 return {

@@ -48,7 +48,7 @@ return {
         text = {
           "Creates all {C:attention}consumables{}",
           "mentioned by {C:attention}rightmost{} Joker",
-          "{C:inactive}(Must have room)", -- TODO: ask bunnet if this needs room
+          "{C:inactive}(Must have room)",
         },
       },
       c_abn_ram_06 = {
@@ -63,7 +63,7 @@ return {
         text = {
           "Creates all {C:dark_edition}Modded{} {C:attention}consumables{}",
           "mentioned by your {C:attention}Jokers{}",
-          "{C:inactive}(Must have room)", -- TODO: ask bunnet if this needs room
+          "{C:inactive}(Must have room)",
         }
       },
       c_abn_ram_08 = {

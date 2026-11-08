@@ -76,6 +76,8 @@ return {
         name = "Malignant Jimbo",
         text = {
           "Finish at Ante {C:attention}16{}",
+          "One random {C:attention}joker {C:red}destroyed{} upon",
+          "the defeat of any {C:abn_hazard}Hazard Blind",
           "{s:0.8}Applies {C:attention,s:0.8}Malicious Jimbo",
         },
       },
@@ -83,6 +85,8 @@ return {
         name = "Inhospitable Jimbo",
         text = {
           "Finish at Ante {C:attention}17{}",
+          "{C:green}#1# in #2#{} chance to {C:red}level down",
+          "played hand before scoring",
           "{s:0.8}Applies {C:attention,s:0.8}Malignant Jimbo",
         },
       },
@@ -90,6 +94,8 @@ return {
         name = "Unendurable Jimbo",
         text = {
           "Finish at Ante {C:attention}18{}",
+          "Each {C:attention}consumable{} in the shop costs",
+          "{C:money}+$2{} extra to buy per owned {C:attention}Joker",
           "{s:0.8}Applies {C:attention,s:0.8}Inhospitable Jimbo",
         },
       },
@@ -97,6 +103,7 @@ return {
         name = "Torturous Jimbo",
         text = {
           "Finish at Ante {C:attention}19{}",
+          "{C:money}-$3{} at the end of each round",
           "{s:0.8}Applies {C:attention,s:0.8}Unendurable Jimbo",
         },
       },
@@ -104,6 +111,8 @@ return {
         name = "Wretched Jimbo",
         text = {
           "Finish at Ante {C:attention}20{}",
+          "{X:black,C:white}+10%{C:attention} Blind Requirements",
+          "per modded {C:attention}Joker{} owned",
           "{s:0.8}Applies {C:attention,s:0.8}Torturous Jimbo",
         },
       },

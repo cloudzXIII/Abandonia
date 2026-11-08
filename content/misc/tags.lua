@@ -385,12 +385,12 @@ SMODS.Tag {
       local chosen_rarity_str = rarity_map[chosen_rarity_num]
 
       local jokers_in_possession = { 0 }
-      for _, joker in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(joker)
         if joker.config.center.rarity == chosen_rarity_num and not jokers_in_possession[joker.config.center.key] then
           jokers_in_possession[1] = jokers_in_possession[1] + 1
           jokers_in_possession[joker.config.center.key] = true
         end
-      end
+      end)
 
       if #G.P_JOKER_RARITY_POOLS[chosen_rarity_num] > jokers_in_possession[1] then
         local lock = tag.ID
@@ -865,12 +865,12 @@ SMODS.Tag {
       local chosen_rarity_str = rarity_map[chosen_rarity_num]
 
       local jokers_in_possession = { 0 }
-      for _, joker in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(joker)
         if joker.config.center.rarity == chosen_rarity_num and not jokers_in_possession[joker.config.center.key] then
           jokers_in_possession[1] = jokers_in_possession[1] + 1
           jokers_in_possession[joker.config.center.key] = true
         end
-      end
+      end)
 
       if #G.P_JOKER_RARITY_POOLS[chosen_rarity_num] > jokers_in_possession[1] then
         local lock = tag.ID
@@ -923,13 +923,11 @@ SMODS.Tag {
   apply = function(self, tag, context)
     if context.type == 'store_joker_create' then
       local owned_jokers = {}
-      if G.jokers and G.jokers.cards then
-        for _, joker in ipairs(G.jokers.cards) do
-          if joker.config.center and joker.config.center.key then
-            owned_jokers[joker.config.center.key] = true
-          end
+      ABN.all_jokers(function(joker)
+        if joker.config.center and joker.config.center.key then
+          owned_jokers[joker.config.center.key] = true
         end
-      end
+      end)
 
       local uncommons = {
         "j_abn_fit_to_shape", "j_abn_handbook_of_a_conman",
@@ -1000,13 +998,11 @@ SMODS.Tag {
   apply = function(self, tag, context)
     if context.type == 'store_joker_create' then
       local owned_jokers = {}
-      if G.jokers and G.jokers.cards then
-        for _, joker in ipairs(G.jokers.cards) do
-          if joker.config.center and joker.config.center.key then
-            owned_jokers[joker.config.center.key] = true
-          end
+      ABN.all_jokers(function(joker)
+        if joker.config.center and joker.config.center.key then
+          owned_jokers[joker.config.center.key] = true
         end
-      end
+      end)
 
       local base_pool = {}
       for key, center in pairs(G.P_CENTERS) do

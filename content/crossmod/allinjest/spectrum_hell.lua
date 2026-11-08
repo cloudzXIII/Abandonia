@@ -38,19 +38,15 @@ SMODS.Joker {
       end
 
       if catches_fire and is_spectrum then
-        if #G.jokers.cards > 0 then
-          for i = 1, #G.jokers.cards do
-            local target = G.jokers.cards[i]
+        ABN.all_jokers(function(target)
+          target.ability.abn_perma_xmult = (target.ability.abn_perma_xmult or 1) + card.ability.extra.xmultadd
 
-            target.ability.abn_perma_xmult = (target.ability.abn_perma_xmult or 1) + card.ability.extra.xmultadd
-
-            card_eval_status_text(card, 'extra', nil, nil, nil, {
-              message = localize('k_upgrade_ex'),
-              colour = G.C.RED,
-              card = target,
-            })
-          end
-        end
+          card_eval_status_text(card, 'extra', nil, nil, nil, {
+            message = localize('k_upgrade_ex'),
+            colour = G.C.RED,
+            card = target,
+          })
+        end)
       end
     end
   end,

@@ -33,7 +33,7 @@ return {
         name = "Gemini",
         text = {
           "{C:green}#1# in #2#{} chance to",
-          "copy selected {C:attention}Joker",
+          "copy {C:attention}#3#{} selected {C:attention}Joker",
         }
       },
       c_abn_leo = {

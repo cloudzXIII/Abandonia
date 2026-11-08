@@ -364,7 +364,7 @@ return {
         name = "Frozen Fruit",
         text = {
           "Increase Blind requirement by 2% each",
-		      "time a Card/Joker is rearranged",
+		  "time a Card/Joker is rearranged",
         },
       },
 	    bl_abn_bitter_bowl = {

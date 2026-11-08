@@ -33,7 +33,7 @@ SMODS.Joker {
   end,
 
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and context.before and not context.blueprint then
+    if context.before and not context.blueprint then
       local spectrum_hands = {
         "abn_Spectrum",
         "abn_Specflush",

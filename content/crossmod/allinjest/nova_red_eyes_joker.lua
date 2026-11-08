@@ -19,7 +19,7 @@ SMODS.Joker {
   end,
 
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and context.before and not context.blueprint then
+    if context.before and not context.blueprint then
       if G.GAME.current_round.hands_played == 0 then
         local only_dark_suits = true
         for i = 1, #context.scoring_hand do

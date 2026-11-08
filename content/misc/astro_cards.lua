@@ -343,13 +343,12 @@ SMODS.Consumable {
   end,
 
   can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0
+    return ABN.count_jokers() > 0
   end,
 
   use = function(self, card, area, copier)
     if SMODS.pseudorandom_probability(card, 'caprisun', 1, card.ability.extra.odds) then
-      for i = 1, #G.jokers.cards do
-        local j = G.jokers.cards[i]
+      ABN.all_jokers(function(j)
         -- Gain chips
         j.ability.abn_perma_bonus = (j.ability.abn_perma_bonus or 0) + card.ability.extra.chips
 
@@ -358,7 +357,7 @@ SMODS.Consumable {
           message = localize('k_upgrade_ex'),
           colour = G.C.BLUE
         })
-      end
+      end)
     else
       -- Failure case: show Nope!
       G.E_MANAGER:add_event(Event({
@@ -409,28 +408,31 @@ SMODS.Consumable {
 
   loc_vars = function(self, info_queue, card)
     local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds)
-    return { vars = { numerator, denominator, card.ability.extra.odds, card.ability.extra.chips } }
+    return { vars = { numerator, denominator, card.ability.extra.cards } }
   end,
 
   can_use = function(self, card)
-    if G.jokers and G.jokers.highlighted and card.ability and card.ability.extra then
-      local n = #G.jokers.highlighted
-      return n > 0 and n <= card.ability.extra.cards and #G.jokers.cards < G.jokers.config.card_limit
+    if card.ability and card.ability.extra then
+      local hjokers = ABN.highlighted_jokers()
+      for _, j in ipairs(hjokers) do
+        if j.area.cards >= j.area.config.card_limit then
+          return false
+        end
+      end
+      return #hjokers > 0 and #hjokers <= card.ability.extra.cards
     end
     return false
   end,
 
   use = function(self, card, area, copier)
     if SMODS.pseudorandom_probability(card, 'gemini', 1, card.ability.extra.odds) then
-      if G.jokers and G.jokers.highlighted then
-        for _, j in ipairs(G.jokers.highlighted) do
+        for _, j in ipairs(ABN.highlighted_jokers()) do
           --create a copy
           local copy = copy_card(j)
           copy:add_to_deck()
-          G.jokers:emplace(copy)
+          j.area:emplace(copy)
           copy:juice_up(0.3, 0.5)
         end
-      end
     else
       -- Failure case: show Nope!
       G.E_MANAGER:add_event(Event({

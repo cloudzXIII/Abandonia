@@ -29,28 +29,26 @@ ABN.SolidState {
   end,
 
   can_use = function(self, card)
-    return G.jokers and #G.jokers.highlighted == 1 and #G.jokers.cards < G.jokers.config.card_limit
+    local hjokers = ABN.highlighted_jokers()
+    return #hjokers == 1 and #hjokers[1].area.cards < hjokers[1].area.config.card_limit
   end,
 
   use = function(self, card, area, copier)
-    local selected = G.jokers.highlighted[1]
+    local selected = ABN.highlighted_jokers()[1]
 
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.4,
       func = function()
         local copy = SMODS.copy_card(selected)
-        --copy:add_to_deck()
-        --G.jokers:emplace(copy)
-        --copy:start_materialize()
         play_sound('card1', 1.2, 1.2)
 
-        for _, joker in ipairs(G.jokers.cards) do
+        ABN.all_jokers(function(joker)
           if joker ~= selected and joker ~= copy then
             joker:add_sticker("abn_fragile", true)
             joker:juice_up(0.3, 0.3)
           end
-        end
+        end)
 
         return true
       end
@@ -343,15 +341,14 @@ ABN.SolidState {
   pos = { x = 4, y = 0 },
 
   can_use = function(self, card)
-    return G.jokers and #G.jokers.cards > 0
+    return ABN.count_jokers() > 0
   end,
 
   use = function(self, card, area, copier)
     local jokers_to_reroll = {}
-    for _, j in ipairs(G.jokers.cards) do
+    ABN.all_jokers(function(j)
       table.insert(jokers_to_reroll, j)
-    end
-
+    end)
 
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
@@ -430,6 +427,7 @@ ABN.SolidState {
   end,
 
   can_use = function(self, card)
+	local hjokers = ABN.highlighted_jokers()
     local digitization_upgrades = {
       Common = "Uncommon",
       Uncommon = "Rare",
@@ -437,10 +435,10 @@ ABN.SolidState {
       Legendary = "abn_ParallelRare"
     }
 
-    return G.jokers and #G.jokers.highlighted == 1 and digitization_upgrades[ABN.get_rarity(G.jokers.highlighted[1])]
+    return #hjokers == 1 and digitization_upgrades[ABN.get_rarity(hjokers[1])]
   end,
   use = function(self, card, area, copier)
-    local selected = G.jokers.highlighted[1]
+    local selected = ABN.highlighted_jokers()
 
     local digitization_upgrades = {
       Common = "Uncommon",
@@ -766,11 +764,12 @@ ABN.SolidState {
   pos = { x = 4, y = 1 },
 
   can_use = function(self, card)
-    return G.jokers and G.jokers.highlighted and #G.jokers.highlighted == 1 and not SMODS.is_eternal(G.jokers.highlighted[1])
+    local hjokers = ABN.highlighted_jokers()
+    return #hjokers == 1 and not SMODS.is_eternal(hjokers[1])
   end,
 
   use = function(self, card, area, copier)
-    local target_joker = G.jokers.highlighted[1]
+    local target_joker = ABN.highlighted_jokers()[1]
 
     if target_joker then
       local target_rarity = target_joker.config.center.rarity
@@ -1156,31 +1155,32 @@ ABN.SolidState {
         return true
       end
     }))
-    for i = 1, #G.jokers.highlighted do
-      local percent = 0.85 + (i - 0.999) / (#G.jokers.highlighted - 0.998) * 0.3
+    local hjokers = ABN.highlighted_jokers()
+    for i = 1, #hjokers do
+      local percent = 0.85 + (i - 0.999) / (#hjokers - 0.998) * 0.3
       G.E_MANAGER:add_event(Event({
         trigger = 'after',
         delay = 0.15,
         func = function()
           play_sound('tarot2', percent, 0.6)
-          if G.jokers.highlighted[i].ability.extra and type(G.jokers.highlighted[i].ability.extra) == "table" then
-            for _, v in pairs(G.jokers.highlighted[i].ability.extra) do
+          if hjokers[i].ability.extra and type(hjokers[i].ability.extra) == "table" then
+            for _, v in pairs(hjokers[i].ability.extra) do
               if type(v) == "number" and v ~= 0 then
-                G.jokers.highlighted[i].ability.extra[_] = G.jokers.highlighted[i].ability.extra[_] * 2
+                hjokers[i].ability.extra[_] = hjokers[i].ability.extra[_] * 2
               end
             end
           end
-          if G.jokers.highlighted[i].ability and type(G.jokers.highlighted[i].ability) == "table" then
-            for _, v in pairs(G.jokers.highlighted[i].ability) do
+          if hjokers[i].ability and type(hjokers[i].ability) == "table" then
+            for _, v in pairs(hjokers[i].ability) do
               if type(v) == "number" and _ ~= "order" and _ ~= "hands_played_at_create" and v ~= 0 and v ~= 1 then
-                G.jokers.highlighted[i].ability[_] = G.jokers.highlighted[i].ability[_] * 2
+                hjokers[i].ability[_] = hjokers[i].ability[_] * 2
               end
             end
           end
-          G.jokers.highlighted[i].sell_cost = G.jokers.highlighted[i].sell_cost * 2
-          G.jokers.highlighted[i]:add_sticker("abn_bug", true)
+          hjokers[i].sell_cost = hjokers[i].sell_cost * 2
+          hjokers[i]:add_sticker("abn_bug", true)
           play_sound('card1', percent)
-          G.jokers.highlighted[i]:juice_up(0.4, 0.4)
+          hjokers[i]:juice_up(0.4, 0.4)
           return true
         end
       }))
@@ -1203,7 +1203,8 @@ ABN.SolidState {
     end
   end,
   can_use = function(self, card)
-    if not (G.jokers and #G.jokers.highlighted > 0 and #G.jokers.highlighted <= card.ability.max_highlighted) then
+    local hjokers = ABN.highlighted_jokers()
+    if not (#hjokers > 0 and #hjokers <= card.ability.max_highlighted) then
       return false
     end
     return true
@@ -1224,7 +1225,7 @@ ABN.SolidState {
 	if card.area == G.consumeables and (not card.edition or not card.edition.negative) then
 		needed_slots = 1
 	end
-    return G.jokers and #G.jokers.cards >= 2 and G.GAME.round_resets.hands > 1 and #G.consumeables.cards + needed_slots <= G.consumeables.config.card_limit
+    return #G.jokers.cards >= 2 and G.GAME.round_resets.hands > 1 and #G.consumeables.cards + needed_slots <= G.consumeables.config.card_limit
   end,
 
   use = function(self, card, area, copier)

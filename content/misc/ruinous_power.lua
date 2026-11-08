@@ -416,13 +416,12 @@ SMODS.Consumable {
     if card.area ~= G.ruinous_powers then return end
 
     if context.setting_blind then
-      if G.jokers and #G.jokers.cards > 0 then
         local destructible_jokers = {}
-        for _, j in ipairs(G.jokers.cards) do
-          if not j.ability.eternal then
+        ABN.all_jokers(function(j)
+          if not SMODS.is_eternal(j, card) then
             table.insert(destructible_jokers, j)
           end
-        end
+        end)
 
         if #destructible_jokers >= 2 then
           pseudoshuffle(destructible_jokers, pseudoseed('sacrifice_brand_destroy'))
@@ -465,7 +464,6 @@ SMODS.Consumable {
 
           card:juice_up()
         end
-      end
     end
 
     if context.other_joker then
@@ -477,7 +475,7 @@ SMODS.Consumable {
     end
 
     if context.end_of_round and context.main_eval and not context.blueprint and G.GAME.blind and G.GAME.blind.boss then
-      if G.jokers and #G.jokers.cards < 5 then
+      if ABN.count_jokers() < 5 then
         card:start_dissolve()
       end
     end
@@ -533,15 +531,7 @@ SMODS.Consumable {
 
       if consumable_count == 0 then
         -- Search active jokers for ruinous_joker
-        local ruinous = nil
-        if G.jokers and G.jokers.cards then
-          for _, j in ipairs(G.jokers.cards) do
-            if j.config.center.key == "j_abn_ruinous_joker" then
-              ruinous = j
-              break
-            end
-          end
-        end
+        local ruinous = next(SMODS.find_card("j_abn_ruinous_joker"))
 
         if ruinous then
           -- Joker exists: Destroy it and show "Saved!" animation
@@ -667,15 +657,7 @@ SMODS.Consumable {
 
         if not scored_suit then
           -- Search active jokers for ruinous_joker
-          local ruinous = nil
-          if G.jokers and G.jokers.cards then
-            for _, j in ipairs(G.jokers.cards) do
-              if j.config.center.key == "j_abn_ruinous_joker" then
-                ruinous = j
-                break
-              end
-            end
-          end
+        local ruinous = next(SMODS.find_card("j_abn_ruinous_joker"))
 
           if ruinous then
             -- Joker exists: Destroy it and show "Saved!" animation

@@ -253,7 +253,7 @@ ABN.CalamityCard {
     }
   end,
   can_use = function(self, card)
-    return G.playing_cards and #G.playing_cards > 0 and G.jokers and #G.jokers.cards > 0
+    return G.playing_cards and #G.playing_cards > 0 and ABN.count_jokers() > 0
   end,
 
   use = function(self, card, area, copier)
@@ -276,12 +276,12 @@ ABN.CalamityCard {
 
     SMODS.destroy_cards(faces, nil, true)
 
-    for _, v in ipairs(G.jokers.cards) do
+    ABN.all_jokers(function(v)
       for _, bonus in ipairs(card.ability.extra.bonus) do
         v.ability[bonus] = (v.ability[bonus] or 0) + (card.ability.extra[bonus] * count)
       end
       SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, v)
-    end
+    end)
   end,
 
 }
@@ -314,7 +314,7 @@ ABN.CalamityCard {
     }
   end,
   can_use = function(self, card)
-    return G.playing_cards and #G.playing_cards > 0 and G.jokers and #G.jokers.cards > 0
+    return G.playing_cards and #G.playing_cards > 0 and ABN.count_jokers()
   end,
 
   use = function(self, card, area, copier)
@@ -337,12 +337,12 @@ ABN.CalamityCard {
 
     SMODS.destroy_cards(aces, nil, true)
 
-    for _, v in ipairs(G.jokers.cards) do
+    ABN.all_jokers(function(v)
       for _, bonus in ipairs(card.ability.extra.bonus) do
         v.ability[bonus] = (v.ability[bonus] or 0) + (card.ability.extra[bonus] * count)
       end
       SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, v)
-    end
+    end)
   end,
 
 }
@@ -738,13 +738,13 @@ if next(SMODS.find_mod("Spectrallib")) then
       end
 
 
-      for _, v in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(v)
         v:add_sticker("abn_fragile", true)
         v:add_sticker("rental", true)
-      end
+      end)
     end,
     can_use = function(self, card)
-      return (G.jokers and #G.jokers.cards >= 1) and true or false
+      return ABN.count_jokers() > 0
     end,
     abn_artist_credits = {
       artist = "comykel",

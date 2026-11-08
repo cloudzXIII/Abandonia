@@ -149,8 +149,9 @@ return {
         name = "Platinum Deck",
         text = {
           "Start with {C:red}Hone{} and {C:red}Glow Up{}",
-          "{C:green}1 in 5{} chance for Jokers",
+          "{C:green}#1# in #2#{} chance for Jokers",
           "without {C:dark_edition}editions{} to be {C:mult}destroyed",
+          "at the end of each round"
         }
       },
       b_abn_ConvergenceDeck = {

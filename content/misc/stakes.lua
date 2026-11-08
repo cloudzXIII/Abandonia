@@ -96,6 +96,9 @@ SMODS.Stake({
 local card_cost_ref = Card.set_cost_value
 function Card:set_cost_value()
 	card_cost_ref(self)
+	if G.GAME.modifiers.Unendurable and self.ability.consumeable then
+		self.cost = self.cost + ABN.count_jokers() * 2
+	end
 	self.cost = (self.cost + (G.GAME.abn_honor_inflation or 0)) * (G.GAME.abn_baneful_inflation or 1)
 end
 
@@ -339,6 +342,20 @@ SMODS.Stake({
         G.GAME.win_ante = math.max(G.GAME.win_ante, 16)
         G.GAME.modifiers.Malignant = true
     end,
+
+	calculate = function(self, context)
+		if context.end_of_round and context.main_eval and context.beat_boss and G.GAME.blind.boss and G.GAME.blind.config.blind.boss.hazard_blind then
+			local jokers = {}
+			ABN.all_jokers(function(joker)
+				if not SMODS.is_eternal(joker, self) then
+					table.insert(jokers, joker)
+				end
+			end)
+			local joker = pseudorandom_element(jokers, "abn_stake_malignant")
+			if not joker then return end
+			SMODS.destroy_cards(joker)
+		end
+	end
 })
 
 SMODS.Stake({
@@ -351,10 +368,20 @@ SMODS.Stake({
     sticker_pos = { x = 4, y = 3 },
     colour = G.C.UI.TEXT_INACTIVE,
 
+	loc_vars = function(self)
+		return {vars = {SMODS.get_probability_vars("stake_abn_inhospitable", 1, 7)}}
+	end,
+
     modifiers = function()
         G.GAME.win_ante = math.max(G.GAME.win_ante, 17)
         G.GAME.modifiers.Inhospitable = true
     end,
+
+	calculate = function(self, context)
+		if context.before and SMODS.pseudorandom_probability("stake_abn_inhospitable", "stake_abn_inhospitable", 1, 7) then
+			return {level_up = -1}
+		end
+	end
 })
 
 SMODS.Stake({
@@ -371,6 +398,21 @@ SMODS.Stake({
         G.GAME.win_ante = math.max(G.GAME.win_ante, 18)
         G.GAME.modifiers.Unendurable = true
     end,
+
+	calculate = function(self, context)
+		if context.card_added or context.joker_type_destroyed or context.selling_card then
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					for _, area in ipairs({G.shop_jokers, G.shop_booster, G.shop_vouchers}) do
+						for _, card in ipairs(area.cards) do
+							card:set_cost_value()
+						end
+					end
+					return true
+				end
+			}))
+		end
+	end
 })
 
 SMODS.Stake({
@@ -387,6 +429,10 @@ SMODS.Stake({
         G.GAME.win_ante = math.max(G.GAME.win_ante, 19)
         G.GAME.modifiers.Torturous = true
     end,
+
+	calc_dollar_bonus = function(self)
+		return -3
+	end
 })
 
 SMODS.Stake({
@@ -403,6 +449,19 @@ SMODS.Stake({
         G.GAME.win_ante = math.max(G.GAME.win_ante, 20)
         G.GAME.modifiers.Wretched = true
     end,
+
+	calculate = function(self, context)
+		if context.setting_blind then
+			local count = ABN.count_jokers(function(joker)
+				return joker.config.center.original_mod
+			end)
+			if count == 0 then return end
+			G.GAME.blind.chips = G.GAME.blind.chips * (1 + 0.1 * count)
+    		G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+			G.GAME.blind:set_text()
+			G.GAME.blind:wiggle()
+		end
+	end
 })
 
 SMODS.Stake({

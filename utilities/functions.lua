@@ -133,13 +133,13 @@ function ABN.count_rarities()
   end
   local count = 0
   local rarities = {}
-  for _, v in ipairs(G.jokers.cards) do
+  ABN.all_jokers(function(v)
     local rarity = v.config.center.rarity
     if not rarities[rarity] then
       rarities[rarity] = true
       count = count + 1
     end
-  end
+  end)
   return count
 end
 
@@ -149,16 +149,13 @@ function ABN.count_unique_stickers()
     return 0
   end
   local count = 0
-  local stickers = {}
-  for key, _ in pairs(SMODS.Sticker.obj_table) do
-    for _, joker in pairs(G.jokers.cards) do
+  for key in pairs(SMODS.Sticker.obj_table) do
+    ABN.all_jokers(function(joker)
       if joker.ability and joker.ability[key] then
-        if not stickers[key] then
-          stickers[key] = true
-          count = count + 1
-        end
+        count = count + 1
+        return true
       end
-    end
+    end)
   end
   return count
 end
@@ -170,14 +167,14 @@ function ABN.count_stickers()
   local count = 0
   local jokers = {}
   for key, _ in pairs(SMODS.Sticker.obj_table) do
-    for _, joker in pairs(G.jokers.cards) do
+    ABN.all_jokers(function(joker)
       if joker.ability and joker.ability[key] then
         count = count + 1
         if not jokers[key] then
           table.insert(jokers, joker)
         end
       end
-    end
+    end)
   end
   return count, jokers
 end
@@ -1145,12 +1142,90 @@ function ABN.int_gate(min, num, max)
 end
 
 function ABN.all_jokers(callback)
+	local r = nil
+	if not callback then r = {} end
 	for _, area in ipairs(SMODS.get_card_areas("jokers")) do
 		for index, card in ipairs(area.cards) do
 			if card.ability and card.ability.set == "Joker" then
-				local ret = callback(card, area, index)
-				if ret then return ret end
+				if r then
+					table.insert(r, card)
+				else
+					local ret = callback(card, area, index)
+					if ret then return ret end
+				end
 			end
 		end
 	end
+	return r
+end
+
+local ref_shatter = Card.shatter
+function Card:shatter(args)
+	local ret = ref_shatter(self, args)
+	if ret ~= false then
+		self.abn_being_destroyed = true
+	end
+	return ret
+end
+local ref_dissolve = Card.start_dissolve
+function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice)
+	local ret = ref_dissolve(self, args)
+	if ret ~= false then
+		self.abn_being_destroyed = true
+	end
+	return ret
+end
+
+function ABN.count_jokers(filter)
+	local count = 0
+	for _, area in ipairs(SMODS.get_card_areas("jokers")) do
+		for index, card in ipairs(area.cards) do
+			if card.ability and card.ability.set == "Joker" and not card.abn_being_destroyed and (not filter or filter(card, area, index)) then
+				count = count + 1
+			end
+		end
+	end
+	return count
+end
+
+function ABN.highlighted_jokers()
+	local jokers = {}
+	for _, area in ipairs(SMODS.get_card_areas("jokers")) do
+		for index, card in ipairs(area.highlighted) do
+			if card.ability and card.ability.set == "Joker" and not card.abn_being_destroyed then
+				table.insert(jokers, card)
+			end
+		end
+	end
+	return jokers
+end
+
+function ABN.get_leftmost_joker(joker_slots_only)
+	if joker_slots_only then return G.jokers and G.jokers.cards and G.jokers.cards[1] end
+	return ABN.all_jokers(function(joker) return joker end)
+end
+
+function ABN.get_rightmost_joker(joker_slots_only)
+	if joker_slots_only then return G.jokers and G.jokers.cards and G.jokers.cards[#G.jokers.cards] end
+	local joker = nil
+	ABN.all_jokers(function(j)
+		joker = j
+	end)
+	return joker
+end
+
+function ABN.area_has_space(cardarea, args)
+	args = args or {}
+	local limit = cardarea.config.card_limit
+	local cards = #cardarea.cards
+	local margin = args.margin or 0
+	for _, card in ipairs(args.cards_to_remove or {}) do
+		limit = limit - (card.ability.card_limit or 0)
+		cards = cards - 1 - (card.ability.extra_slots_used or 0)
+	end
+	for _, card in ipairs(args.cards_to_add or {}) do
+		limit = limit + (card.ability.card_limit or 0)
+		cards = cards + 1 + (card.ability.extra_slots_used or 0)
+	end
+	return limit - cards >= (margin or 1)
 end

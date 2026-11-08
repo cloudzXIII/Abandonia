@@ -262,7 +262,7 @@ ABN.calculate = function(self, context)
 	if context.blind_defeated and G.GAME.blind_on_deck == "Small" and G.GAME.current_round.hands_left == 0 and G.GAME.current_round.discards_left == 0 then
 		G.GAME.abn_newestia_small_blind_beaten_with_no_hands_discards_left = true
 	end
-	if context.blind_defeated and G.GAME.blind_on_deck == "Big" and #G.jokers.cards > 5 then
+	if context.blind_defeated and G.GAME.blind_on_deck == "Big" and ABN.count_jokers() > 5 then
 		G.GAME.abn_newestia_big_blind_beaten_with_over_five_jokers = true
 	end
   end
@@ -312,9 +312,9 @@ ABN.calculate = function(self, context)
   --easier to have the code for both work the same way
   if context.before then
     abn_medieval_auras = {auras = {}, numbers_held = 0}
-    for _, area in ipairs({G.jokers, G.play}) do
+    for _, area in ipairs({G.jokers, G.consumeables, G.play}) do
       for _, card in ipairs(area.cards) do
-        if card.ability.abn_medieval_aura then
+        if card.ability and card.ability.abn_medieval_aura then
           table.insert(abn_medieval_auras.auras, card)
         end
       end
@@ -344,13 +344,13 @@ ABN.calculate = function(self, context)
 
   if ((context.individual and context.cardarea == G.play) or context.other_joker) and (context.other_card or context.other_joker).ability.abn_perma_flipped then
 	local target_xmult = 1.25
-	if G.jokers and G.jokers.cards and context.individual then
-	  for _, joker in ipairs(G.jokers.cards) do
+	if context.individual then
+	  ABN.all_jokers(function(joker)
 	    if joker.config.center.key == 'j_abn_reversecard_joker' and joker.facing == 'back' then
 		  target_xmult = target_xmult * 2
-		  break
+		  return true
 	    end
-	  end
+	  end)
 	end
 	SMODS.calculate_effect({x_mult = target_xmult}, context.other_card or context.other_joker)
   end

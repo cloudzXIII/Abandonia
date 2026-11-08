@@ -75,12 +75,12 @@ SMODS.Tag {
     if context.type == 'store_joker_create' then
       local cards_created = 0
       local rares_in_posession = { 0 }
-      for _, joker in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(joker)
         if joker.config.center.rarity == 3 and not rares_in_posession[joker.config.center.key] then
           rares_in_posession[1] = rares_in_posession[1] + 1
           rares_in_posession[joker.config.center.key] = true
         end
-      end
+      end)
       if #G.P_JOKER_RARITY_POOLS[3] > rares_in_posession[1] then
         if cards_created < tag.config.count then
           local card = SMODS.create_card {
@@ -232,18 +232,16 @@ SMODS.Tag {
         return true
       end)
 
-      if G.jokers and #G.jokers.cards > 0 then
-        local filtered = {}
-        for _, v in ipairs(G.jokers.cards) do
-          if not v.edition then
-            table.insert(filtered, v)
-          end
+      local filtered = {}
+      ABN.all_jokers(function(v)
+        if not v.edition then
+          table.insert(filtered, v)
         end
-        local joker = pseudorandom_element(filtered)
+      end)
+      local joker = pseudorandom_element(filtered, "abn_negative_hazard")
 
-        if joker then
-          joker:set_edition(tag.config.edition, true)
-        end
+      if joker then
+        joker:set_edition(tag.config.edition, true)
       end
 
       local cards_applied = 0
@@ -283,19 +281,17 @@ SMODS.Tag {
         return true
       end)
 
-      if G.jokers and #G.jokers.cards > 0 then
         local filtered = {}
-        for _, v in ipairs(G.jokers.cards) do
+        ABN.all_jokers(function(v)
           if not v.edition then
             table.insert(filtered, v)
           end
-        end
-        local joker = pseudorandom_element(filtered)
+        end)
+        local joker = pseudorandom_element(filtered, "abn_hazard_foil")
 
         if joker then
           joker:set_edition(tag.config.edition, true)
         end
-      end
 
       local cards_applied = 0
       for _, card in ipairs(G.playing_cards) do
@@ -334,19 +330,17 @@ SMODS.Tag {
         return true
       end)
 
-      if G.jokers and #G.jokers.cards > 0 then
         local filtered = {}
-        for _, v in ipairs(G.jokers.cards) do
+        ABN.all_jokers(function(v)
           if not v.edition then
             table.insert(filtered, v)
           end
-        end
-        local joker = pseudorandom_element(filtered)
+        end)
+        local joker = pseudorandom_element(filtered, "abn_hazard_holo")
 
         if joker then
           joker:set_edition(tag.config.edition, true)
         end
-      end
 
       local cards_applied = 0
       for _, card in ipairs(G.playing_cards) do
@@ -385,19 +379,17 @@ SMODS.Tag {
         return true
       end)
 
-      if G.jokers and #G.jokers.cards > 0 then
         local filtered = {}
-        for _, v in ipairs(G.jokers.cards) do
+        ABN.all_jokers(function(v)
           if not v.edition then
             table.insert(filtered, v)
           end
-        end
-        local joker = pseudorandom_element(filtered)
+        end)
+        local joker = pseudorandom_element(filtered, "abn_hazard_polychrome")
 
         if joker then
           joker:set_edition(tag.config.edition, true)
         end
-      end
 
       local cards_applied = 0
       for _, card in ipairs(G.playing_cards) do
@@ -436,19 +428,17 @@ SMODS.Tag {
         return true
       end)
 
-      if G.jokers and #G.jokers.cards > 0 then
         local filtered = {}
-        for _, v in ipairs(G.jokers.cards) do
+        ABN.all_jokers(function(v)
           if not v.edition then
             table.insert(filtered, v)
           end
-        end
-        local joker = pseudorandom_element(filtered)
+        end)
+        local joker = pseudorandom_element(filtered, "abn_hazard_gloss")
 
         if joker then
           joker:set_edition(tag.config.edition, true)
         end
-      end
 
       local cards_applied = 0
       for _, card in ipairs(G.playing_cards) do
@@ -487,19 +477,17 @@ SMODS.Tag {
         return true
       end)
 
-      if G.jokers and #G.jokers.cards > 0 then
         local filtered = {}
-        for _, v in ipairs(G.jokers.cards) do
+        ABN.all_jokers(function(v)
           if not v.edition then
             table.insert(filtered, v)
           end
-        end
-        local joker = pseudorandom_element(filtered)
+        end)
+        local joker = pseudorandom_element(filtered, "abn_hazard_pearlescent")
 
         if joker then
           joker:set_edition(tag.config.edition, true)
         end
-      end
 
       local cards_applied = 0
       for _, card in ipairs(G.playing_cards) do
@@ -538,19 +526,17 @@ SMODS.Tag {
         return true
       end)
 
-      if G.jokers and #G.jokers.cards > 0 then
         local filtered = {}
-        for _, v in ipairs(G.jokers.cards) do
+        ABN.all_jokers(function(v)
           if not v.edition then
             table.insert(filtered, v)
           end
-        end
-        local joker = pseudorandom_element(filtered)
+        end)
+        local joker = pseudorandom_element(filtered, "abn_hazard_iridescent")
 
         if joker then
           joker:set_edition(tag.config.edition, true)
         end
-      end
 
       local cards_applied = 0
       for _, card in ipairs(G.playing_cards) do
@@ -586,19 +572,17 @@ SMODS.Tag {
         return true
       end)
 
-      if G.jokers and #G.jokers.cards > 0 then
         local filtered = {}
-        for _, v in ipairs(G.jokers.cards) do
+        ABN.all_jokers(function(v)
           if not v.edition then
             table.insert(filtered, v)
           end
-        end
-        local joker = pseudorandom_element(filtered)
+        end)
+        local joker = pseudorandom_element(filtered, "abn_hazard_abandon")
 
         if joker then
           joker:set_edition(tag.config.edition, true)
         end
-      end
 
       local cards_applied = 0
       for _, card in ipairs(G.playing_cards) do
@@ -637,19 +621,17 @@ SMODS.Tag {
         return true
       end)
 
-      if G.jokers and #G.jokers.cards > 0 then
         local filtered = {}
-        for _, v in ipairs(G.jokers.cards) do
+        ABN.all_jokers(function(v)
           if not v.edition then
             table.insert(filtered, v)
           end
-        end
-        local joker = pseudorandom_element(filtered)
+        end)
+        local joker = pseudorandom_element(filtered, "abn_hazard_sunscourge")
 
         if joker then
           joker:set_edition(tag.config.edition, true)
         end
-      end
 
       local cards_applied = 0
       for _, card in ipairs(G.playing_cards) do
@@ -685,19 +667,17 @@ SMODS.Tag {
         return true
       end)
 
-      if G.jokers and #G.jokers.cards > 0 then
         local filtered = {}
-        for _, v in ipairs(G.jokers.cards) do
+        ABN.all_jokers(function(v)
           if not v.edition then
             table.insert(filtered, v)
           end
-        end
-        local joker = pseudorandom_element(filtered)
+        end)
+        local joker = pseudorandom_element(filtered, "abn_hazard_chromatic")
 
         if joker then
           joker:set_edition(tag.config.edition, true)
         end
-      end
 
       local cards_applied = 0
       for _, card in ipairs(G.playing_cards) do
@@ -733,19 +713,17 @@ SMODS.Tag {
         return true
       end)
 
-      if G.jokers and #G.jokers.cards > 0 then
         local filtered = {}
-        for _, v in ipairs(G.jokers.cards) do
+        ABN.all_jokers(function(v)
           if not v.edition then
             table.insert(filtered, v)
           end
-        end
-        local joker = pseudorandom_element(filtered)
+        end)
+        local joker = pseudorandom_element(filtered, "abn_hazard_reversal")
 
         if joker then
           joker:set_edition(tag.config.edition, true)
         end
-      end
 
       local cards_applied = 0
       for _, card in ipairs(G.playing_cards) do
@@ -781,19 +759,17 @@ SMODS.Tag {
         return true
       end)
 
-      if G.jokers and #G.jokers.cards > 0 then
         local filtered = {}
-        for _, v in ipairs(G.jokers.cards) do
+        ABN.all_jokers(function(v)
           if not v.edition then
             table.insert(filtered, v)
           end
-        end
-        local joker = pseudorandom_element(filtered)
+        end)
+        local joker = pseudorandom_element(filtered, "abn_hazard_bit_rot")
 
         if joker then
           joker:set_edition(tag.config.edition, true)
         end
-      end
 
       local cards_applied = 0
       for _, card in ipairs(G.playing_cards) do
@@ -829,19 +805,17 @@ SMODS.Tag {
         return true
       end)
 
-      if G.jokers and #G.jokers.cards > 0 then
         local filtered = {}
-        for _, v in ipairs(G.jokers.cards) do
+        ABN.all_jokers(function(v)
           if not v.edition then
             table.insert(filtered, v)
           end
-        end
-        local joker = pseudorandom_element(filtered)
+        end)
+        local joker = pseudorandom_element(filtered, "abn_hazard_reel")
 
         if joker then
           joker:set_edition(tag.config.edition, true)
         end
-      end
 
       local cards_applied = 0
       for _, card in ipairs(G.playing_cards) do
@@ -877,19 +851,17 @@ SMODS.Tag {
         return true
       end)
 
-      if G.jokers and #G.jokers.cards > 0 then
         local filtered = {}
-        for _, v in ipairs(G.jokers.cards) do
+        ABN.all_jokers(function(v)
           if not v.edition then
             table.insert(filtered, v)
           end
-        end
-        local joker = pseudorandom_element(filtered)
+        end)
+        local joker = pseudorandom_element(filtered, "abn_hazard_collodion")
 
         if joker then
           joker:set_edition(tag.config.edition, true)
         end
-      end
 
       local cards_applied = 0
       for _, card in ipairs(G.playing_cards) do
@@ -925,19 +897,17 @@ SMODS.Tag {
         return true
       end)
 
-      if G.jokers and #G.jokers.cards > 0 then
         local filtered = {}
-        for _, v in ipairs(G.jokers.cards) do
+        ABN.all_jokers(function(v)
           if not v.edition then
             table.insert(filtered, v)
           end
-        end
-        local joker = pseudorandom_element(filtered)
+        end)
+        local joker = pseudorandom_element(filtered, "abn_hazard_vintage")
 
         if joker then
           joker:set_edition(tag.config.edition, true)
         end
-      end
 
       local cards_applied = 0
       for _, card in ipairs(G.playing_cards) do

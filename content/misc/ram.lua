@@ -455,8 +455,8 @@ SMODS.Consumable {
   end,
 
   can_use = function(self, card)
-    if G.jokers then
-      local rightmost = G.jokers.cards[#G.jokers.cards]
+      local rightmost = ABN.get_rightmost_joker()
+      if not rightmost then return end
       local colours = ABN.retrieve_joker_text(rightmost, false, false, true)
 
       local sets = {}
@@ -473,13 +473,12 @@ SMODS.Consumable {
       end
 
       return #sets > 0
-    end
   end,
 
   use = function(self, card, area, copier)
     card:juice_up(0.3, 0.5)
 
-    local rightmost = G.jokers.cards[#G.jokers.cards]
+    local rightmost = ABN.get_rightmost_joker()
 
     local colours = ABN.retrieve_joker_text(rightmost, false, false, true)
 
@@ -501,7 +500,7 @@ SMODS.Consumable {
         trigger = 'after',
         delay = 0.4,
         func = function()
-          if G.consumeables.config.card_limit > #G.consumeables.cards then -- TODO: should this need room?
+          if G.consumeables.config.card_limit > #G.consumeables.cards then
             play_sound('timpani')
             SMODS.add_card({ set = v, key_append = "abn_ram005" })
             card:juice_up(0.3, 0.5)
@@ -592,10 +591,9 @@ SMODS.Consumable {
   end,
 
   can_use = function(self, card)
-    if G.jokers then
       local sets = {}
       local seen = {}
-      for _, joker in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(joker)
         local colours = ABN.retrieve_joker_text(joker, false, false, true)
 
         for _, v in ipairs(colours) do
@@ -607,10 +605,9 @@ SMODS.Consumable {
             sets[#sets + 1] = v
           end
         end
-      end
+      end)
 
       return #sets > 0
-    end
   end,
 
   use = function(self, card, area, copier)
@@ -637,7 +634,7 @@ SMODS.Consumable {
         trigger = 'after',
         delay = 0.4,
         func = function()
-          if G.consumeables.config.card_limit > #G.consumeables.cards then -- TODO: should this need room?
+          if G.consumeables.config.card_limit > #G.consumeables.cards then
             play_sound('timpani')
             SMODS.add_card({ set = v, key_append = "abn_ram007" })
             card:juice_up(0.3, 0.5)

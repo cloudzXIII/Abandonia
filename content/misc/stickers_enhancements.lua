@@ -468,14 +468,14 @@ ABN.EnhSticker {
       card.ability.cloned = true
       local chosen_joker = card
       local is_negative = (card.edition and card.edition.key == "e_negative") and 1 or 0
-      if #G.jokers.cards < G.jokers.config.card_limit + is_negative then
+      if #card.area.cards < card.area.config.card_limit + is_negative then
         
         local copied_joker = copy_card(chosen_joker, nil, nil, nil, chosen_joker.edition and chosen_joker.edition.negative)
         copied_joker.ability.cloned = true
         if copied_joker.ability.invis_rounds then copied_joker.ability.invis_rounds = 0 end
         if type(copied_joker.ability.extra) == "table" and copied_joker.ability.extra.invis_rounds then copied_joker.ability.extra.invis_rounds = 0 end
         copied_joker:add_to_deck()
-        G.jokers:emplace(copied_joker)
+        card.area:emplace(copied_joker)
       end
     end
     
@@ -617,11 +617,11 @@ ABN.EnhSticker {
   calculate = function(self, card, context)
     if context.joker_main then
       local hazard_count = -1
-      for i, v in ipairs(G.jokers.cards) do
+      ABN.all_jokers(function(v)
         if v.ability[self.key] then
           hazard_count = hazard_count + 1
         end
-      end
+      end)
 
       if hazard_count >= 1 then
         SMODS.scale_card(card, {
