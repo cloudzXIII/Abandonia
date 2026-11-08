@@ -96,7 +96,7 @@ payload = '''
 if G.GAME.abn.cthonian then
     local base_score = get_blind_amount(G.GAME.round_resets.ante) * self.mult * G.GAME.starting_params.ante_scaling
     local tally = 0
-    for _, list in ipairs({G.playing_cards or {}, (G.jokers or {}).cards or {}, (G.consumeables or {}).cards or {}) do
+    for _, list in ipairs({G.playing_cards or {}, (G.jokers or {}).cards or {}, (G.consumeables or {}).cards or {}}) do
       for _, c in ipairs(list) do
         if c.edition and c.edition.key == "e_abn_chthonian" then tally = tally + 1 end
       end
@@ -125,7 +125,7 @@ position = "after"
 payload = '''
 if G.GAME.abn.cthonian then
     local tally = 0
-    for _, list in ipairs({G.playing_cards or {}, (G.jokers or {}).cards or {}, (G.consumeables or {}).cards or {}) do
+    for _, list in ipairs({G.playing_cards or {}, (G.jokers or {}).cards or {}, (G.consumeables or {}).cards or {}}) do
       for _, c in ipairs(list) do
         if c.edition and c.edition.key == "e_abn_chthonian" then tally = tally + 1 end
       end
