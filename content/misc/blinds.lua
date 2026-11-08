@@ -2184,7 +2184,7 @@ SMODS.Blind({
   end,
   calculate = function(self, blind, context)
     if not blind.disabled then
-      context.debuff_card and context.debuff_card.ability and context.debuff_card.ability.set == 'Joker'
+      if context.debuff_card and context.debuff_card.ability and context.debuff_card.ability.set == 'Joker' then
         if context.debuff_card.ability.hazard_pin then
           return {
             debuff = true,
@@ -2479,7 +2479,7 @@ SMODS.Blind({
 
   calculate = function(self, blind, context)
     if not blind.disabled then
-      context.debuff_card and context.debuff_card.ability and context.debuff_card.ability.set == 'Joker'
+      if context.debuff_card and context.debuff_card.ability and context.debuff_card.ability.set == 'Joker' then
         if context.debuff_card.ability.hazard_heart_chosen then
           return {
             debuff = true,

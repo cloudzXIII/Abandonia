@@ -454,7 +454,7 @@ SMODS.Back {
     pos = { x = 5, y = 1 },
 
 	loc_vars = function(self, info_queue, card)
-		return {vars = SMODS.get_probability_vars(card, 1, 5, 'Platinum')}
+		return {vars = {SMODS.get_probability_vars(card, 1, 5, 'Platinum')}}
 	end,
 
     apply = function()
