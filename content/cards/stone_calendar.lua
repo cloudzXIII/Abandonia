@@ -9,9 +9,28 @@ SMODS.Joker {
     config = { extra = { xchips = 1, xchips_mod = 1, odds = 5, create = false } },
 
     loc_vars = function(self, info_queue, card)
+    	info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
+    	info_queue[#info_queue + 1] = G.P_CENTERS.m_abn_petroleum
         local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds)
         return { vars = { card.ability.extra.xchips_mod, card.ability.extra.xchips, num, denom } }
     end,
+
+	add_to_deck = function(self, joker, from_debuff)
+		for _, card in ipairs(G.playing_cards) do
+			if SMODS.has_enhancement(card, "m_stone") or SMODS.has_enhancement(card, "m_abn_petroleum") then
+				card:set_sprites(card.config.center, card.config.card)
+			end
+		end
+	end,
+
+	remove_from_deck = function(self, joker, from_debuff)
+		for _, card in ipairs(G.playing_cards) do
+			if SMODS.has_enhancement(card, "m_stone") or SMODS.has_enhancement(card, "m_abn_petroleum") then
+				card:set_sprites(card.config.center, card.config.card)
+			end
+		end
+	end,
+
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
             if SMODS.has_enhancement(context.other_card, "m_abn_petroleum") then
@@ -95,3 +114,5 @@ SMODS.Joker {
         artist = "Sustato",
     },
 }
+
+--See SMODS.has_playing_card_property hook in utilities/hooks.lua

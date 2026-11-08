@@ -302,6 +302,26 @@ return {
           "{C:abn_eternal}+#1#{} Amperage",
         }
       },
+      --Special, used by effects that make specific enhancements retain their ranks and suits
+      m_abn_stone_retained = {
+        name = "Stone Card",
+        text = {}
+      },
+      m_abn_polkadot_retained = {
+        name = "Polkadot Card",
+        text = {
+          "{C:chips}+#1#{} Chips, gains",
+          "{C:chips}+#2#{} Chips when scored",
+        }
+      },
+      m_abn_petroleum_retained = {
+        name = "Petroleum Card",
+        text = {
+          "{C:chips}+#1#{} Chips, {C:gold}+$#2#",
+          "Turns into an {C:attention}Oilfire{} card",
+          "if the score {C:red,E:2}catches fire",
+        },
+      },
     },
     Other = {
       --#region ENHANCEMENT STICKERS

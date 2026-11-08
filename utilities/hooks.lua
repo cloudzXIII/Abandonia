@@ -597,3 +597,46 @@ function create_UIBox_blind_choice(type, run_info)
 	ABN.shorten_money_text(t)
 	return t
 end
+
+--Enable cards with specific enhancements to retain their ranks while specific jokers are owned.
+local property_ref = SMODS.has_playing_card_property
+function SMODS.has_playing_card_property(card, key)
+	if key == "replace_base_card" or key == "should_hide_front" or key == "no_suit" or key == "no_rank" then
+		if SMODS.has_enhancement(card, "m_stone") and (next(SMODS.find_card('j_abn_streetart_joker')) or next(SMODS.find_card('j_abn_stone_calendar'))) then
+			return false
+		elseif SMODS.has_enhancement(card, "m_abn_polkadot") and next(SMODS.find_card('j_abn_gagman_joker')) then
+			return false
+		elseif SMODS.has_enhancement(card, "m_abn_petroleum") and next(SMODS.find_card('j_abn_stone_calendar')) then
+			return false
+		end
+	end
+	return property_ref(card, key)
+end
+
+local generate_old_ui = generate_card_ui
+function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
+	if card and ((SMODS.has_enhancement(card, "m_stone") and (next(SMODS.find_card('j_abn_streetart_joker')) or next(SMODS.find_card('j_abn_stone_calendar')))) or (SMODS.has_enhancement(card, "m_abn_polkadot") and next(SMODS.find_card('j_abn_gagman_joker'))) or (SMODS.has_enhancement(card, "m_abn_petroleum") and next(SMODS.find_card('j_abn_stone_calendar')))) then
+		if _c.key == "m_abn_polkadot" then
+			specific_vars.bonus_chips = nil
+		end
+		local original_c = _c
+		_c = setmetatable({}, {
+			__index = function(self, key)
+				if (key == "name" or key == "effect") and original_c[key] == "Stone Card" then
+					return "Stone_Card"
+				elseif key == "key" then
+					if original_c.key == "m_stone" then
+						return "m_abn_stone_retained"
+					else
+						return original_c.key.."_retained"
+					end
+				elseif key == "replace_base_card" or key == "should_hide_front" or key == "no_suit" or key == "no_rank" then
+					return false
+				else
+					return original_c[key]
+				end
+			end
+		})
+	end
+	return generate_old_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
+end

@@ -20,7 +20,7 @@
   "dependencies": [
     "Steamodded (>=26.829.0)",
     "Amulet | Cryptlib",
-    "Spectrallib"
+    "Spectrallib (>=1.4.0)"
   ],
   "conflicts": []
 }

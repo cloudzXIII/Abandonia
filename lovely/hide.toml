@@ -7,7 +7,7 @@ priority = 214748365
 [[patches]] 
 [patches.pattern]
 target = "functions/UI_definitions.lua"
-pattern = "if not run_info then G.GAME.round_resets.blind_states[G.GAME.blind_on_deck] = 'Select' end"
+pattern = "--if not run_info then G.GAME.round_resets.blind_states[G.GAME.blind_on_deck] = 'Select' end"
 position = "after"
 payload = '''
 local abn_hide_blind = next(SMODS.find_card("j_abn_hard_and_dry")) and type == 'Boss' or next(SMODS.find_card("j_abn_backrooms_joker")) and type == 'Boss'
@@ -20,7 +20,7 @@ match_indent = true
 target = "functions/UI_definitions.lua"
 pattern = '''
 for k, v in ipairs(text_table) do
-    blind_desc_nodes[#blind_desc_nodes+1] = {n=G.UIT.R, config={align = "cm", maxw = 2.8}, nodes=SMODS.localize_box(v, {default_col = disabled and G.C.UI.TEXT_INACTIVE or target.text_colour or G.C.WHITE, shadow = not disabled, vars = target.vars, scale = target.scale})}
+    blind_desc_nodes[#blind_desc_nodes+1] = {n=G.UIT.R, config={align = "cm", maxw = 2.8}, nodes=SMODS.localize_box(v, {default_col = disabled and G.C.UI.TEXT_INACTIVE or target.text_colour or G.C.WHITE, shadow = not disabled, vars = v.edi_vars or target.vars, scale = target.scale, font = Spectrallib.get_blind_font(blind_choice)})}
 end
 '''
 position = "at"
@@ -32,7 +32,7 @@ if abn_hide_blind then
     blind_col = G.C.UI.TEXT_INACTIVE
 else
     for k, v in ipairs(text_table) do
-        blind_desc_nodes[#blind_desc_nodes+1] = {n=G.UIT.R, config={align = "cm", maxw = 2.8}, nodes=SMODS.localize_box(v, {default_col = disabled and G.C.UI.TEXT_INACTIVE or target.text_colour or G.C.WHITE, shadow = not disabled, vars = target.vars, scale = target.scale})}
+        blind_desc_nodes[#blind_desc_nodes+1] = {n=G.UIT.R, config={align = "cm", maxw = 2.8}, nodes=SMODS.localize_box(v, {default_col = disabled and G.C.UI.TEXT_INACTIVE or target.text_colour or G.C.WHITE, shadow = not disabled, vars = v.edi_vars or target.vars, scale = target.scale, font = Spectrallib.get_blind_font(blind_choice)})}
     end
 end
 '''

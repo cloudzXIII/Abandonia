@@ -1,19 +1,3 @@
-local csa = Card.set_ability
-function Card:set_ability(center, initial, delay_sprites)
-  csa(self, center, initial, delay_sprites)
-  if center == G.P_CENTERS.m_abn_polkadot and next(SMODS.find_card('j_abn_gagman_joker')) then
-    self.config.center.replace_base_card = false
-    self.config.center.no_rank = false
-    self.config.center.no_suit = false
-  end
-end
-
-local shf = Card.should_hide_front
-function Card:should_hide_front()
-  if self.config.center == G.P_CENTERS.m_abn_polkadot and next(SMODS.find_card('j_abn_gagman_joker')) then return false end
-  return shf(self)
-end
-
 SMODS.Joker {
   key = 'gagman_joker',
   rarity = 2,
@@ -28,19 +12,31 @@ SMODS.Joker {
   end,
   
   in_pool = function(self)
-	if not G.playing_cards then return false end
-
 	for _, card in ipairs(G.playing_cards) do
-		if card and card.config and card.config.center then
-			if card.config.center == G.P_CENTERS.m_abn_polkadot then
-				return true
-			end
-		end
+		if SMODS.has_enhancement(card, "m_abn_polkadot") then return true end
 	end
 	return false
+  end,
+
+  add_to_deck = function(self, joker, from_debuff)
+    for _, card in ipairs(G.playing_cards) do
+      if SMODS.has_enhancement(card, "m_abn_polkadot") then
+        card:set_sprites(card.config.center, card.config.card)
+      end
+    end
+  end,
+
+  remove_from_deck = function(self, joker, from_debuff)
+    for _, card in ipairs(G.playing_cards) do
+      if SMODS.has_enhancement(card, "m_abn_polkadot") then
+        card:set_sprites(card.config.center, card.config.card)
+      end
+    end
   end,
   
   abn_artist_credits = {
     artist = "B.b.b.b",
   },
 }
+
+--See SMODS.has_playing_card_property hook in utilities/hooks.lua
