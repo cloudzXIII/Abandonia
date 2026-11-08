@@ -4,6 +4,10 @@ G.ARGS.LOC_COLOURS["abn_mayhem"] = G.C.ABN_MAYHEM
 G.C.ABN_MAYHEM_DARK = HEX("5bd7ad")
 G.ARGS.LOC_COLOURS["abn_mayhem_dark"] = G.C.ABN_MAYHEM_DARK
 
+local function format_num(n)
+	return math.floor(n * 100) / 100
+end
+
 function ABN.mayhem(num, delay)
 	if not G.GAME then return 0 end
 	G.GAME.abn_mayhem = G.GAME.abn_mayhem or 0
@@ -32,6 +36,7 @@ function ABN.mayhem(num, delay)
 			align = 'cm',
 		})
 	end
+	G.GAME.abn_mayhem_disp = format_num(G.GAME.abn_mayhem)
 	return G.GAME.abn_mayhem
 end
 
@@ -62,6 +67,7 @@ function ABN.max_mayhem(num, delay)
 			align = 'cm',
 		})
 	end
+	G.GAME.abn_max_mayhem_disp = format_num(G.GAME.abn_max_mayhem)
 	return G.GAME.abn_max_mayhem
 end
 
@@ -137,9 +143,9 @@ function create_UIBox_HUD()
 							{n=G.UIT.T, config={text = "Mayhem", scale = scale, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
 						}},
 						{n=G.UIT.R, config={align = "cm", padding = 0, maxw = 1.4}, nodes={
-							{n=G.UIT.O, config={object = DynaText({string = {{ref_table = G.GAME, ref_value = 'abn_mayhem'}}, font = G.LANGUAGES['en-us'].font, colours = {G.C.UI.TEXT_LIGHT}, shadow = true, rotate = true, scale = scale}), id = 'abn_mayhem_display_current'}},
+							{n=G.UIT.O, config={object = DynaText({string = {{ref_table = G.GAME, ref_value = 'abn_mayhem_disp'}}, font = G.LANGUAGES['en-us'].font, colours = {G.C.UI.TEXT_LIGHT}, shadow = true, rotate = true, scale = scale}), id = 'abn_mayhem_display_current'}},
 							{n=G.UIT.T, config={text = " / ", scale = scale, colour = G.C.UI.TEXT_LIGHT, shadow = true, focus_args = {orientation = 'bm'}}},
-							{n=G.UIT.O, config={object = DynaText({string = {{ref_table = G.GAME, ref_value = 'abn_max_mayhem'}}, font = G.LANGUAGES['en-us'].font, colours = {G.C.UI.TEXT_LIGHT}, shadow = true, rotate = true, scale = scale}), id = 'abn_mayhem_display_max'}},
+							{n=G.UIT.O, config={object = DynaText({string = {{ref_table = G.GAME, ref_value = 'abn_max_mayhem_disp'}}, font = G.LANGUAGES['en-us'].font, colours = {G.C.UI.TEXT_LIGHT}, shadow = true, rotate = true, scale = scale}), id = 'abn_mayhem_display_max'}},
 						}}
 					}}
 				}
