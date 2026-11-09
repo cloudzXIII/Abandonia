@@ -534,46 +534,90 @@ if ABN.config.enable_logo then
   }
 end
 
---[[ this is used to replace the smods logo if y'all want to do that just throw a cat.png into assets and uncomment this code
-local function replaceSmodsCatWithAbandonia()
-    local modsDir = "mods"
-    local abandoniaCatPath = modsDir .. "/abandonia-main/assets/cat.png"
+G.C.ABNRED = HEX("d7665f")
+G.C.ABNBLACK = HEX("5d6969")
+G.C.mid_flash = 0
+G.C.vort_time = 7
+G.C.vort_speed = 0.4
 
-    if not love.filesystem.getInfo(abandoniaCatPath) then
-        return
-    end
-
-    local catData = love.filesystem.read(abandoniaCatPath)
-    if not catData then
-        return
-    end
-
-    local items = love.filesystem.getDirectoryItems(modsDir)
-
-    for _, folder in ipairs(items) do
-		--surely despite the stupid shit smods does for names this will work right?
-        if folder:match("^smods") then
-            local targetCatPath = modsDir .. "/" .. folder .. "/assets/cat.png"
-            love.filesystem.write(targetCatPath, catData)
-        end
-		
-		--bmm compat
-		if folder:match("^Steamodded") then
-            local targetCatPath = modsDir .. "/" .. folder .. "/assets/cat.png"
-            love.filesystem.write(targetCatPath, catData)
-        end
-    end
-end
-
--- runs immediately when this file is loaded
-replaceSmodsCatWithAbandonia()
---]]
-
---Modified Fortlatro Auto Updater for Abandonia you're welcome ~Eric
-------------CHECK FOR UPDATES----------------------
 local oldfunc = Game.main_menu
 Game.main_menu = function(change_context)
   local ret = oldfunc(change_context)
+  
+  -- colors
+  G.SPLASH_BACK:define_draw_steps({
+      {
+          shader = "splash",
+          send = {
+              { name = "time", ref_table = G.TIMERS, ref_value = "REAL_SHADER" },
+              { name = 'vort_speed', val = G.C.vort_speed },
+              { name = 'colour_1', ref_table = G.C, ref_value = 'ABNBLACK' },
+              { name = 'colour_2', ref_table = G.C, ref_value = 'ABNRED' },
+              { name = 'mid_flash', ref_table = G.C, ref_value = 'mid_flash' },
+          },
+      },
+  })
+  
+  local title_logo_card = G.title_top and G.title_top.cards and G.title_top.cards[1]
+  if title_logo_card then
+    math.randomseed(os.time() + math.floor((love.timer and love.timer.getTime() or 0) * 1000))
+    math.random(); math.random(); math.random()
+
+    local allowed_ranks = {"abn_11", "abn_12", "abn_13", "abn_14"}
+    local allowed_suits = {
+      "abn_Snow", "abn_Penumbra", "abn_suitless", "abn_Tie", "abn_Bow",
+      "abn_Chalice", "abn_Sword", "abn_Coin", "abn_Baton", "abn_Florette",
+      "abn_Acorn", "abn_Bell", "abn_Leaf", "abn_Talon", "abn_Crown",
+      "abn_Moon", "abn_Star", "abn_Shield", "abn_Rose", "abn_Anchor",
+      "abn_Arrow", "abn_megido", "abn_Vortex", "abn_musica"
+    }
+
+    local random_rank = allowed_ranks[math.random(#allowed_ranks)]
+    local random_suit = allowed_suits[math.random(#allowed_suits)]
+
+    local custom_card_proto = nil
+    for _, playing_card_prototype in pairs(G.P_CARDS) do
+      if playing_card_prototype.value == random_rank and playing_card_prototype.suit == random_suit then
+        custom_card_proto = playing_card_prototype
+        break
+      end
+    end
+
+    if custom_card_proto then
+      title_logo_card:set_base(custom_card_proto)
+    end
+      
+    local edition_keys = {'e_foil', 'e_holo', 'e_polychrome', 'e_negative'}
+    if SMODS and SMODS.Editions then
+      edition_keys = {}
+      for k, _ in pairs(SMODS.Editions) do
+        table.insert(edition_keys, k)
+      end
+    elseif G.P_CENTERS then
+      edition_keys = {}
+      for k, v in pairs(G.P_CENTERS) do
+        if v.set == 'Edition' then
+          table.insert(edition_keys, k)
+        end
+      end
+    end
+    if #edition_keys > 0 then
+      local random_edition = edition_keys[math.random(#edition_keys)]
+      title_logo_card:set_edition(random_edition, true)
+    end
+
+    local seal_keys = {'Red', 'Blue', 'Gold', 'Purple'}
+    if SMODS and SMODS.Seals then
+      seal_keys = {}
+      for k, _ in pairs(SMODS.Seals) do
+        table.insert(seal_keys, k)
+      end
+    end
+    if #seal_keys > 0 then
+      local random_seal = seal_keys[math.random(#seal_keys)]
+      title_logo_card:set_seal(random_seal, true)
+    end
+  end
 
   if ABN.config.enable_update_popup then
     ----------------------------------------------------------------
