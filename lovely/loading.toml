@@ -1,0 +1,55 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1
+
+# Background: right after the screen is cleared, so it's behind everything
+[[patches]]
+[patches.pattern]
+target = "main.lua"
+pattern = "love.graphics.clear(0, 0, 0, 1)"
+position = "after"
+payload = "if type(abandonia_loading_bg_draw) == 'function' then abandonia_loading_bg_draw() end"
+match_indent = true
+
+# Replace the vanilla progress bar with the Abandonia loading screen
+[[patches]]
+[patches.pattern]
+target = "main.lua"
+pattern = '''if progress > 0 then love.graphics.rectangle('fill', realw / 2 - 150, realh / 2 - 15, progress * 300, 30, 5) end'''
+position = "at"
+payload = '''if type(abandonia_loading_screen_draw) == 'function' then abandonia_loading_screen_draw(progress, _next) elseif progress > 0 then love.graphics.rectangle('fill', realw / 2 - 150, realh / 2 - 15, progress * 300, 30, 5) end'''
+match_indent = true
+
+# Skip the vanilla bar outline when ours is present
+[[patches]]
+[patches.pattern]
+target = "main.lua"
+pattern = '''love.graphics.rectangle('line', realw / 2 - 150, realh / 2 - 15, 300, 30, 5)'''
+position = "at"
+payload = '''if not abandonia_loading_screen_draw then love.graphics.rectangle('line', realw / 2 - 150, realh / 2 - 15, 300, 30, 5) end'''
+match_indent = true
+
+# Skip the vanilla portrait
+[[patches]]
+[patches.pattern]
+target = "main.lua"
+pattern = '''if catimg then love.graphics.draw(catimg, realw/2 - 264, realh/2 - 27, 0, 1, 1); love.graphics.rectangle('line', realw/2 - 264, realh/2 - 27, 96, 96, 5) end'''
+position = "at"
+payload = '''if catimg and not abandonia_loading_screen_draw then love.graphics.draw(catimg, realw/2 - 264, realh/2 - 27, 0, 1, 1); love.graphics.rectangle('line', realw/2 - 264, realh/2 - 27, 96, 96, 5) end'''
+match_indent = true
+
+# Skip the vanilla "LOADING: step" text
+[[patches]]
+[patches.pattern]
+target = "main.lua"
+pattern = '''love.graphics.print("LOADING: " .. _next, realw / 2 - 150, realh / 2 + 40)'''
+position = "at"
+payload = '''if not abandonia_loading_screen_draw then love.graphics.print("LOADING: " .. _next, realw / 2 - 150, realh / 2 + 40) end'''
+match_indent = true
+
+[[patches]]
+[patches.copy]
+target = "main.lua"
+position = "append"
+sources = ["load.lua"]
