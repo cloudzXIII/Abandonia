@@ -54,6 +54,11 @@ SMODS.Sticker {
   pos = { x = 0, y = 0 },
   badge_colour = HEX("daa54e"),
   sets = { Joker = true },
+  loc_vars = function(self, info_queue, card)
+	if card.ability.abn_fragile then
+		return {key = self.key.."_fragile"}
+	end
+  end,
   calculate = function(self, card, context)
     if context.check_eternal and context.other_card == card then
       return {
@@ -286,6 +291,7 @@ SMODS.Sticker {
     odds = 4
   },
   calculate = function(self, card, context)
+    if card.ability.abn_immortal then return end
     if context.destroy_card and context.cardarea == G.play and context.destroy_card == card and
     SMODS.pseudorandom_probability(card, 'abn_fragile', card.ability[self.key].base, card.ability[self.key].odds) then
       card.glass_trigger = true

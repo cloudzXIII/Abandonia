@@ -34,8 +34,8 @@ SMODS.Joker {
   calculate = function(self, card, context)
     if context.joker_main and #context.full_hand == 4 then
       local mayhem_chance = 0
-      if (G.GAME.abn_max_mayhem or 0) > 0 then
-        mayhem_chance = math.min((G.GAME.abn_mayhem or 0) / G.GAME.abn_max_mayhem, 1)
+      if ABN.mayhem() > 0 then
+        mayhem_chance = ABN.mayhem() / ABN.max_mayhem()
       end
 
       if pseudorandom('fit_to_shape_mayhem') < mayhem_chance then

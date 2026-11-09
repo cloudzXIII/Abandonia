@@ -244,7 +244,8 @@ return {
         name = "Plagued Joker",
         text = {
           "Joker type that only",
-          "appears in {C:attention}Jimbo Stakes{}"
+          "appears in {C:attention}Jimbo Stakes{}",
+          "{C:abn_mayhem_dark}Mayhem{} may cause it to {C:red}malfunction{}..."
         }
       },
       abn_comedic_audience_tooltip = {

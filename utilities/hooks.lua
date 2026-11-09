@@ -598,7 +598,7 @@ function create_UIBox_blind_choice(type, run_info)
 	return t
 end
 
---Enable cards with specific enhancements to retain their ranks while specific jokers are owned.
+--Enable cards with specific enhancements to retain their ranks and suits while specific jokers are owned.
 local property_ref = SMODS.has_playing_card_property
 function SMODS.has_playing_card_property(card, key)
 	if card and card.config and card.config.center and (key == "replace_base_card" or key == "should_hide_front" or key == "no_suit" or key == "no_rank") then

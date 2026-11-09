@@ -415,7 +415,7 @@ SMODS.Consumable {
     if card.ability and card.ability.extra then
       local hjokers = ABN.highlighted_jokers()
       for _, j in ipairs(hjokers) do
-        if j.area.cards >= j.area.config.card_limit then
+        if #j.area.cards >= j.area.config.card_limit then
           return false
         end
       end

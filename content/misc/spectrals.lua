@@ -616,15 +616,7 @@ SMODS.Consumable {
         end
 
         for i, source_card in ipairs(cards_to_copy) do
-          local _card = copy_card(source_card)
-
-          _card:add_to_deck()
-          table.insert(G.playing_cards, _card)
-
-          G.deck:emplace(_card)
-
-          _card:start_materialize(nil, i == 1)
-          table.insert(new_cards, _card)
+          SMODS.copy_card(source_card, {area = G.deck})
         end
 
         playing_card_joker_effects(new_cards)

@@ -22,6 +22,15 @@ return {
           "{C:red}debuffed{}"
         }
       },
+      abn_immortal_fragile = {
+        name = "Immortal",
+        text = {
+          "This Joker cannot be",
+          "{C:red}destroyed{} or",
+          "{C:red}debuffed{}",
+          "{C:inactive}(Bypasses {C:917e69}Fragile{C:inactive})",
+        }
+      },
       abn_shovel = {
         name = "Shovel",
         text = {

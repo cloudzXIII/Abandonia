@@ -538,7 +538,7 @@ SMODS.Consumable({
 	pos = { x = 3, y = 1 },
 	calculate = function(self, card, context)
 		if context.final_scoring_step then
-			local all_numbered, _xmult, _xchips = true, G.GAME.hands["Full House"].level, G.GAME.hands["abn_spectrum"].level
+			local all_numbered, _xmult, _xchips = true, G.GAME.hands["Full House"].level, G.GAME.hands["abn_Spectrum"].level
 			for k, v in pairs(context.scoring_hand) do
 				if not ABN.is_number(v) then
 					all_numbered = false
