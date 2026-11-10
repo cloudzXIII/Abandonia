@@ -21,20 +21,21 @@ SMODS.Joker {
       local evens = 0
       local odds = 0
       for k, v in ipairs(context.scoring_hand) do
-        v.scoring = true
+        v.abn_scoring = true
       end
-
       for _, v in ipairs(context.full_hand) do
-        if not v.scoring then
+        if not v.abn_scoring then
           if ABN.is_even(v) then
             evens = evens + 1
-            unscored[#unscored + 1] = v
           end
           if ABN.is_odd(v) then
             odds = odds + 1
-            unscored[#unscored + 1] = v
           end
+          unscored[#unscored + 1] = v
         end
+      end
+      for k, v in ipairs(context.scoring_hand) do
+        v.abn_scoring = nil
       end
       if #unscored > 0 then
         SMODS.destroy_cards(unscored)

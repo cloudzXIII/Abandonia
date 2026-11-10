@@ -486,14 +486,20 @@ SMODS.Rarity {
   end,
 }
 
+SMODS.Gradient {
+  key = "ParralelRareGradient",
+  colours = {HEX("b26cbb"), HEX("fbdfff")},
+  cycle = 5
+}
+
 SMODS.Rarity {
   key = "ParallelRare",
   default_weight = 0,
-  badge_colour = HEX("ffffff"),
+  badge_colour = SMODS.Gradients.abn_ParralelRareGradient,
   text_colour = HEX("b26cbb"),
   get_weight = function(self, weight, object_type)
     return weight
-  end,
+  end
 }
 
 SMODS.Rarity {
