@@ -16,7 +16,7 @@ SMODS.Joker {
   config = { extra = { amount = 1 } },
 
   calculate = function(self, card, context)
-    if context.after and context.main_eval and not context.blueprint and SMODS.last_hand_oneshot and G.GAME.blind.boss then
+    if context.after and SMODS.last_hand_oneshot and G.GAME.blind.boss and G.GAME.current_round.hands_played == 0 then
       SMODS.calculate_effect({ message = localize('k_upgrade_ex'), colour = G.C.FILTER }, card)
       update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
         { handname = localize('k_all_hands'), chips = '...', mult = '...', level = '' })

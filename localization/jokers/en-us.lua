@@ -6794,9 +6794,15 @@ return {
       j_abn_chips_to_mult = {
         name = 'Mult Matthew',
         text = {
-          "Whenever another Joker gives {C:chips}Chips{},",
-          "this Joker gives those Chips as {C:mult}Mult{}",
-          --"{s:0.7,C:inactive}(Does not affect Jokers that give Chips after another Joker triggers){}"
+          {
+            "Whenever another {C:attention}Joker{} gives {C:chips}Chips{},",
+            "this Joker gives those {C:chips}Chips{} as {C:mult}Mult",
+          },
+          {
+            "If this {C:attention}Joker{} has the {C:attention}Mult",
+            "enhancement, {C:mult}Mult{} provided by the",
+            "above effect is boosted by {C:mult}X#1#"
+          },
         }
       },
 
