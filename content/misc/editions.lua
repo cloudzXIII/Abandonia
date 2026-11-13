@@ -489,3 +489,79 @@ SMODS.Edition {
     artist = "Bro-Fly"
   },
 }
+
+SMODS.Shader({key = 'glitter', path = 'glitter.fs'})
+SMODS.Shader({key = 'sparkling', path = 'sparkling.fs'})
+SMODS.Shader({key = 'ultraviolet', path = 'ultraviolet.fs'})
+SMODS.Shader({key = 'rgb', path = 'rgb.fs'})
+SMODS.Shader({key = 'fragmented', path = 'fragmented.fs'})
+
+local is_es = (G.SETTINGS and (G.SETTINGS.language == 'es_419' or G.SETTINGS.language == 'es_ES'))
+SMODS.Edition {
+    key = 'rgb',
+    shader = 'rgb',
+    in_shop = true,
+    weight = 1,
+    extra_cost = 2,
+    loc_txt = {
+        name = "RGB",
+        text = { "shader" }
+    },
+    get_weight = function(self) return G.GAME.edition_rate * self.weight end
+}
+
+local is_es = (G.SETTINGS and (G.SETTINGS.language == 'es_419' or G.SETTINGS.language == 'es_ES'))
+SMODS.Edition {
+    key = 'ultraviolet',
+    shader = 'ultraviolet',
+    in_shop = true,
+    weight = 1,
+    extra_cost = 2,
+    loc_txt = {
+        name = is_es and "Ultravioleta" or "Ultraviolet",
+        text = { "shader" }
+    },
+    get_weight = function(self) return G.GAME.edition_rate * self.weight end
+}
+
+local is_es = (G.SETTINGS and (G.SETTINGS.language == 'es_419' or G.SETTINGS.language == 'es_ES'))
+SMODS.Edition {
+    key = 'fragmented',
+    shader = 'fragmented',
+    in_shop = true,
+    weight = 1,
+    extra_cost = 2,
+    loc_txt = {
+        name = is_es and "Fragmentada" or "Fragmented",
+        text = { "shader" }
+    },
+    get_weight = function(self) return G.GAME.edition_rate * self.weight end
+}
+
+local is_es = (G.SETTINGS and (G.SETTINGS.language == 'es_419' or G.SETTINGS.language == 'es_ES'))
+SMODS.Edition {
+    key = 'sparkling',
+    shader = 'sparkling',
+    in_shop = true,
+    weight = 1,
+    extra_cost = 2,
+    loc_txt = {
+        name = is_es and "Spark" or "Sparkling",
+        text = { "shader" }
+    },
+    get_weight = function(self) return G.GAME.edition_rate * self.weight end
+}
+
+local is_es = (G.SETTINGS and (G.SETTINGS.language == 'es_419' or G.SETTINGS.language == 'es_ES'))
+SMODS.Edition {
+    key = 'glitter',
+    shader = 'glitter',
+    in_shop = true,
+    weight = 1,
+    extra_cost = 2,
+    loc_txt = {
+        name = is_es and "Glitter" or "Glitter",
+        text = { "shader" }
+    },
+    get_weight = function(self) return G.GAME.edition_rate * self.weight end
+}
