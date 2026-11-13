@@ -17,13 +17,14 @@ SMODS.Joker {
   calculate = function(self, card, context)
     if context.hand_drawn then
       local lowest_card = nil
-      local lowest_id = 15
+      local lowest_id = nil
 
       for i = 1, #G.hand.cards do
         local _card = G.hand.cards[i]
         if not SMODS.has_no_rank(_card) then
-          if _card.base.id < lowest_id then
-            lowest_id = _card.base.id
+		  local id = _card.base.id <= 14 and _card.base.id or _card.base.nominal
+          if not lowest_id or id < lowest_id then
+            lowest_id = id
             lowest_card = _card
           end
         end
@@ -45,6 +46,13 @@ SMODS.Joker {
   abn_artist_credits = {
     artist = "HyperReal63"
   },
+  update = function(self, card, dt)
+	for k, v in pairs(G.hand.cards) do
+	  if v.ability.abn_inkblot_forced_selection and not v.highlighted then 
+		G.hand:add_to_highlighted(v)
+	  end
+	end
+  end
 }
 
 local always_scores_ref = SMODS.always_scores
@@ -58,7 +66,6 @@ end
 local discard_cards_from_highlighted_ref = G.FUNCS.discard_cards_from_highlighted
 G.FUNCS.discard_cards_from_highlighted = function(e, hook)
   for k, v in ipairs(G.playing_cards) do
-    v.ability.abn_forced_selection = nil
     v.ability.abn_inkblot_forced_selection = nil
   end
   local ret = discard_cards_from_highlighted_ref(e, hook)

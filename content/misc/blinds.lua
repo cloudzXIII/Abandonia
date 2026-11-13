@@ -431,7 +431,7 @@ SMODS.Blind({
     if G.GAME.blind.disabled then
       return false
     end
-    if ABN.is_dark(card, true) and not card.debuff then --- <- add hre for more debuffs
+    if ABN.is_dark(card, true) then --- <- add hre for more debuffs
       return true
     end
   end,
@@ -1875,7 +1875,7 @@ SMODS.Blind({
     if G.GAME.blind.disabled then
       return false
     end
-    if ABN.is_light(card, true) and not card.debuff then -- <- add hre for more debuffs
+    if ABN.is_light(card, true) then -- <- add hre for more debuffs
       return true
     end
   end,
@@ -3260,28 +3260,27 @@ SMODS.Blind({
   boss_colour = HEX("efc03c"),
   debuff_hand = function(self, cards, hand, handname, check)
     if G.GAME.blind.disabled then return end
+    if G.GAME.current_round.discards_left > 0 then return true end
 
     -- Count unique suits in the current selection
     local suits_found = {}
     local count = 0
-    for i = 1, #cards do
-      local suit = cards[i].base.suit
-      if not suits_found[suit] then
-        suits_found[suit] = true
-        count = count + 1
+    for _, c in ipairs(cards) do
+      if not SMODS.has_no_suit(c) then
+        if SMODS.has_any_suit(c) then
+          count = count + 1
+        else
+		  local suit = c.base.suit
+		  if not suits_found[suit] then
+		    suits_found[suit] = true
+		    count = count + 1
+		  end
+        end
       end
     end
 
     -- Disallow the hand if it has fewer than 3 different suits
-    if count < 3 or G.GAME.current_round.discards_left > 0 then
-      return true
-    end
-  end,
-  get_loc_debuff_text = function(self)
-    return "Must have 3 suits and 0 discards!"
-  end,
-  loc_vars = function(self)
-    return { vars = { 3 } }
+    if count < 3 then return true end
   end
 })
 
@@ -4273,7 +4272,7 @@ SMODS.Blind {
     end
   end,
   recalc_debuff = function(self, card, from_blind)
-    if card:get_id() == 14 and not card.debuff then
+    if card:get_id() == 14 then
       return true
     end
   end,
@@ -4355,7 +4354,7 @@ SMODS.Blind {
     end
   end,
   recalc_debuff = function(self, card, from_blind)
-    if not SMODS.has_no_rank(card) and card:get_id() and card:get_id() > 4 and not card.debuff then
+    if not SMODS.has_no_rank(card) and card:get_id() and card:get_id() > 4 then
       return true
     end
   end,

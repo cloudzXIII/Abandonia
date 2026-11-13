@@ -1018,6 +1018,7 @@ return {
       k_abn_reduced_ex = "Reduced!",
       k_abn_enhanced_ex = "Enhanced!",
       k_abn_repeat_ex = "Repeat!",
+      k_abn_changed = "Changed!",
 
       -- Sides
       abn_hidden_side = "Hidden Scoundral",

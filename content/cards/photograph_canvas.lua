@@ -39,13 +39,15 @@ SMODS.Joker {
             if #light_suits > 0 then
                 local converted = false
                 for _, scored_card in ipairs(context.scoring_hand) do
-                    if ABN.is_dark(scored_card) then
+                    if ABN.is_dark(scored_card) and ABN.is_vanilla_suit(scored_card) then
                         local new_suit = pseudorandom_element(light_suits, pseudoseed('abn_photograph_canvas'))
+                        SMODS.change_base(scored_card, new_suit, nil, true)
+						local manual_sprite = copy_table(scored_card.config.card)
                         converted = true
                         G.E_MANAGER:add_event(Event({
                             func = function()
                                 scored_card:juice_up()
-                                SMODS.change_base(scored_card, new_suit)
+                                scored_card:set_sprites(nil, manual_sprite)
                                 scored_card.ability.perma_mult = (scored_card.ability.perma_mult or 0) + card.ability.extra.card_mult
                                 return true
                             end

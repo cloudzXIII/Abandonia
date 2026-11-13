@@ -20,21 +20,24 @@ SMODS.Joker {
         mult = card.ability.extra.mult,
       }
     end
-    if context.final_scoring_step and not context.blueprint then
+    if context.after and not context.blueprint then
       local suit_mapping = {
         Hearts = 'abn_Coin',
         Diamonds = 'abn_Baton',
         Clubs = 'abn_Chalice',
         Spades = 'abn_Sword'
       }
-
-      for _, scoring_card in ipairs(context.scoring_hand) do
+      local any = false
+      for i, scoring_card in ipairs(context.scoring_hand) do
         for base_suit, target_suit in pairs(suit_mapping) do
           if scoring_card:is_suit(base_suit) then
+            any = true
+            SMODS.change_base(scoring_card, target_suit, nil, true)
+			local manual_sprite = copy_table(scoring_card.config.card)
             G.E_MANAGER:add_event(Event({
               func = function()
-                scoring_card:change_suit(target_suit)
-                scoring_card:juice_up(0.3, 0.3)
+                scoring_card:juice_up()
+                scoring_card:set_sprites(nil, manual_sprite)
                 return true
               end
             }))
@@ -42,6 +45,7 @@ SMODS.Joker {
           end
         end
       end
+      if any then return {message = localize("k_abn_changed")} end
     end
 
     if context.before and not context.blueprint and card.edition and card.edition.key == "e_abn_vintage" then

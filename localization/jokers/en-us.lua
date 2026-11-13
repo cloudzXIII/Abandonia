@@ -9362,7 +9362,7 @@ return {
       },
 
       j_abn_test_crash_dummy = {
-        name = "Test Crash Dummy",
+        name = "Crash Test Dummy",
         text = {
           {
             "Enhance all scoring cards in",
