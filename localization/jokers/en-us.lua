@@ -1535,14 +1535,24 @@ return {
         name = "Classified Joker",
         text = {
           {
-            "All Cards and Jokers become",
-            "{C:attention}flipped{} upon purchase",
+            "When you purchase this joker, all other owned",
+            "jokers and playing cards become {C:attention}Flipped"
           },
           {
-            "Pay {C:money}$#1#{} to {C:attention}unflip{}",
-            "selected Cards and Jokers",
-            "and gain {C:chips}+#2#{} Chips",
-            "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)"
+            "Pay {C:money}$#1#{} to unflip selected playing card, and",
+            "grant this joker {C:mult}+Mult{} equal to twice its rank",
+            "{C:inactive}(Currently: {C:mult}+#2#{C:inactive} Mult)"
+          },
+          {
+            "Pay {C:money}$#3#{} to unflip selected joker, and give",
+            "{C:mult}+Mult{} to all {C:attention}Flipped{} playing cards in your",
+            "full deck equal to selected joker's {C:money}sell value"
+          },
+          {
+            "Each scoring card grants {X:chips,C:white}X#4#",
+            "chips per owned {C:attention}Flipped{} joker,",
+            "When {C:attention}Blind{} is defeated, increases",
+            "by {X:chips,C:white}X#5#{} per owned {C:attention}Flipped{} joker"
           }
         }
       },

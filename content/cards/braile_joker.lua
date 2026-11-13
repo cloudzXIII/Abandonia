@@ -22,7 +22,7 @@ SMODS.Joker {
         stay_flipped = true
       }
     end
-    if context.abn_play_cards then
+    if context.press_play then
       for i = 1, #G.hand.highlighted do
         if G.hand.highlighted[i].facing == 'back' then
           G.hand.highlighted[i].brail_flipped = true

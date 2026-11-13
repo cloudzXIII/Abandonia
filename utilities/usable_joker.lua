@@ -40,6 +40,7 @@ function G.UIDEF.use_and_sell_buttons(card)
     local text = config.text or localize("b_use")
     local text_colour = config.text_colour or G.C.UI.TEXT_LIGHT
     local cost = config.cost
+    local custom_cost = card.ability and card.ability.abn_use_cost
 
     local sell = {
       n = G.UIT.C,
@@ -111,7 +112,9 @@ function G.UIDEF.use_and_sell_buttons(card)
           {
             n = G.UIT.T,
             config = {
-              text = tostring(cost),
+              text = not custom_cost and tostring(cost),
+              ref_table = custom_cost and card.ability,
+              ref_value = custom_cost and "abn_use_cost",
               colour = config.cost_colour or G.C.WHITE,
               scale = 0.55,
               shadow = true
