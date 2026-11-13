@@ -1188,11 +1188,11 @@ function ABN.count_jokers(filter)
 	return count
 end
 
-function ABN.highlighted_jokers()
+function ABN.highlighted_jokers(filter)
 	local jokers = {}
 	for _, area in ipairs(SMODS.get_card_areas("jokers")) do
 		for index, card in ipairs(area.highlighted) do
-			if card.ability and card.ability.set == "Joker" and not card.abn_being_destroyed then
+			if card.ability and card.ability.set == "Joker" and not card.abn_being_destroyed and (not filter or filter(card, area, index)) then
 				table.insert(jokers, card)
 			end
 		end

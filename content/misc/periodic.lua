@@ -40,7 +40,7 @@ ABN.PeriodicCard = SMODS.Consumable:extend({
   end,
 
   calculate = function(self, card, context)
-    if context.abn_play_cards then
+    if context.press_play then
       local poker_hand = G.FUNCS.get_poker_hand_info(G.hand.highlighted)
       if poker_hand == card.ability.extra.hand then
         card.ability.extra.triggered = true
@@ -150,7 +150,7 @@ ABN.PeriodicCard {
   config = { extra = { hand = "Royal Flush", triggered = false } },
 
   calculate = function(self, card, context)
-    if context.abn_play_cards then
+    if context.press_play then
       local _, display_name = G.FUNCS.get_poker_hand_info(G.hand.highlighted)
       if display_name == localize(card.ability.extra.hand, "poker_hands") then
         card.ability.extra.triggered = true
