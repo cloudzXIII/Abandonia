@@ -604,9 +604,10 @@ return {
       c_abn_distortion = {
         name = "Distortion",
         text = {
-          "Add {C:dark_edition}Pearlescent{} to a",
-          "random {C:attention}Joker{}, destroy",
-          "all other Jokers",
+          "Gives {C:dark_edition}Pearlescent Edition{} to the selected {C:attention}Joker{}",
+		  "Reduces the rank of {C:attention}X{} random cards in your deck by {C:attention}#1#{}",
+		  "where {C:attention}X{} is the number of {C:attention}Jokers{} you own",
+		  "If {C:attention}Cut-Out{} is active another {C:attention}random{} Joker gains {C:dark_edition}Distortion Edition{}",
         },
       },
       c_abn_presque_vu = {
@@ -713,6 +714,24 @@ return {
         text = {
           "{C:red}Destroy{} all cards held in hand,",
           "and create {C:attention}#1# {C:abn_musica}Musica{} cards",
+        }
+      },
+	  c_abn_swap = {
+        name = "Swap",
+        text = {
+          "Gives {C:dark_edition}Reversal Edition{} to the selected {C:attention}Joker{}",
+		  "Increases the rank of {C:attention}X{} random cards in your deck by {C:attention}#1#{}",
+		  "where {C:attention}X{} is the number of {C:attention}Jokers{} you own",
+		  "If {C:attention}Cut-Out{} is active another {C:attention}random{} Joker gains {C:dark_edition}Inverted Edition{}",
+        }
+      },
+	  c_abn_ischemia = {
+        name = "Ischemia",
+        text = {
+          "Gives {C:dark_edition}Collodion Edition{} to the selected {C:attention}Joker{}",
+		  "{C:attention}X{} random cards in your deck have their {C:attention}suit{} changed to a random suit",
+		  "where {C:attention}X{} is the number of {C:attention}Jokers{} you own",
+		  "If {C:attention}Cut-Out{} is active another {C:attention}random{} Joker gains {C:dark_edition}Abstract Edition{}",
         }
       },
     },
