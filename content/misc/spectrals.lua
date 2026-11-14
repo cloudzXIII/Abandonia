@@ -297,46 +297,6 @@ SMODS.Consumable {
 }
 
 SMODS.Consumable {
-  key = 'distortion',
-  set = 'Spectral',
-  atlas = "AbandoniaSpectrals",
-  pos = { x = 6, y = 2 },
-  config = { extra = {} },
-  loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_pearlescent
-    return { vars = {} }
-  end,
-  use = function(self, card, area, copier)
-    local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
-    G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = 0.4,
-      func = function()
-        local eligible_card = pseudorandom_element(editionless_jokers, 'c_abn_distortion')
-        eligible_card:set_edition("e_abn_pearlescent")
-
-        local _first_dissolve = nil
-        for _, joker in ipairs(G.jokers.cards) do
-          if joker ~= eligible_card and not SMODS.is_eternal(joker, card) then
-            joker:start_dissolve(nil, _first_dissolve)
-            _first_dissolve = true
-          end
-        end
-
-        card:juice_up(0.3, 0.5)
-        return true
-      end
-    }))
-  end,
-  can_use = function(self, card)
-    return next(SMODS.Edition:get_edition_cards(G.jokers, true))
-  end,
-  abn_artist_credits = {
-    artist = "Inky"
-  },
-}
-
-SMODS.Consumable {
   key = 'super_id',
   set = 'Spectral',
   atlas = "AbandoniaSpectrals",
@@ -885,4 +845,279 @@ SMODS.Consumable {
 	abn_artist_credits = {
 		artist = "Okronix",
 	},
+}
+
+SMODS.Consumable {
+  key = 'swap',
+  set = 'Spectral',
+  atlas = "AbandoniaSpectrals",
+  pos = { x = 4, y = 2 },
+  cost = 4,
+  discovered = false,
+  config = {
+    max_highlighted = 1,
+    extra = { rank_increase = 2 },
+  },
+  
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_reversal
+    if (SMODS.Mods["cutout"] or {}).can_load then
+      info_queue[#info_queue + 1] = G.P_CENTERS.e_cutout_inverted
+    end
+    return { vars = { card.ability.extra.rank_increase } }
+  end,
+
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.highlighted == 1 and not G.jokers.highlighted[1].edition
+  end,
+
+  use = function(self, card, area, copier)
+    local target_joker = G.jokers.highlighted[1]
+    local jokers_owned = #G.jokers.cards
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        target_joker:set_edition("e_abn_reversal", true)
+        return true
+      end
+    }))
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        local candidates = {}
+        for _, playing_card in ipairs(G.playing_cards) do
+          if not SMODS.has_no_rank(playing_card) then candidates[#candidates + 1] = playing_card end
+        end
+        for _ = 1, math.min(jokers_owned, #candidates) do
+          local chosen_card, chosen_index = pseudorandom_element(candidates, pseudoseed('abn_swap'))
+          SMODS.modify_rank(chosen_card, card.ability.extra.rank_increase)
+          chosen_card:juice_up(0.3, 0.3)
+          table.remove(candidates, chosen_index)
+        end
+        return true
+      end
+    }))
+
+    -- Cutout Only
+    if (SMODS.Mods["cutout"] or {}).can_load then
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.4,
+        func = function()
+          local candidates = {}
+          for _, joker in ipairs(SMODS.Edition:get_edition_cards(G.jokers, true)) do
+            if joker ~= target_joker then candidates[#candidates + 1] = joker end
+          end
+          if #candidates > 0 then
+            local chosen_joker = pseudorandom_element(candidates, pseudoseed('abn_swap_inverted'))
+            chosen_joker:set_edition("e_cutout_inverted", true)
+          end
+          return true
+        end
+      }))
+    end
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.2,
+      func = function()
+        G.jokers:unhighlight_all()
+        return true
+      end
+    }))
+    delay(0.6)
+  end,
+
+  abn_artist_credits = {
+    artist = "Okronix",
+  },
+}
+
+SMODS.Consumable {
+  key = 'distortion',
+  set = 'Spectral',
+  atlas = "AbandoniaSpectrals",
+  pos = { x = 6, y = 2 },
+  config = {
+    max_highlighted = 1,
+    extra = { rank_decrease = 2 },
+  },
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_pearlescent
+    if (SMODS.Mods["cutout"] or {}).can_load then
+      info_queue[#info_queue + 1] = G.P_CENTERS.e_cutout_distortion
+    end
+    return { vars = { card.ability.extra.rank_decrease } }
+  end,
+
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.highlighted == 1 and not G.jokers.highlighted[1].edition
+  end,
+
+  use = function(self, card, area, copier)
+    local target_joker = G.jokers.highlighted[1]
+    local jokers_owned = #G.jokers.cards
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        target_joker:set_edition("e_abn_pearlescent", true)
+        return true
+      end
+    }))
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        local candidates = {}
+        for _, playing_card in ipairs(G.playing_cards) do
+          if not SMODS.has_no_rank(playing_card) then candidates[#candidates + 1] = playing_card end
+        end
+        for _ = 1, math.min(jokers_owned, #candidates) do
+          local chosen_card, chosen_index = pseudorandom_element(candidates, pseudoseed('abn_distortion'))
+          SMODS.modify_rank(chosen_card, -card.ability.extra.rank_decrease)
+          chosen_card:juice_up(0.3, 0.3)
+          table.remove(candidates, chosen_index)
+        end
+        return true
+      end
+    }))
+
+    if (SMODS.Mods["cutout"] or {}).can_load then
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.4,
+        func = function()
+          local candidates = {}
+          for _, joker in ipairs(SMODS.Edition:get_edition_cards(G.jokers, true)) do
+            if joker ~= target_joker then candidates[#candidates + 1] = joker end
+          end
+          if #candidates > 0 then
+            local chosen_joker = pseudorandom_element(candidates, pseudoseed('abn_distortion_edition'))
+            chosen_joker:set_edition("e_cutout_distortion", true)
+          end
+          return true
+        end
+      }))
+    end
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.2,
+      func = function()
+        G.jokers:unhighlight_all()
+        return true
+      end
+    }))
+    delay(0.6)
+  end,
+
+  abn_artist_credits = {
+    artist = "Inky",
+  },
+}
+
+SMODS.Consumable {
+  key = 'ischemia',
+  set = 'Spectral',
+  atlas = "AbandoniaSpectrals",
+  pos = { x = 4, y = 3 },
+  cost = 4,
+  discovered = false,
+  config = { max_highlighted = 1 },
+  
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_collodion
+    if (SMODS.Mods["cutout"] or {}).can_load then
+      info_queue[#info_queue + 1] = G.P_CENTERS.e_cutout_abstract
+    end
+    return { vars = {} }
+  end,
+
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.highlighted == 1 and not G.jokers.highlighted[1].edition
+  end,
+
+  use = function(self, card, area, copier)
+    local target_joker = G.jokers.highlighted[1]
+    local jokers_owned = #G.jokers.cards
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        target_joker:set_edition("e_abn_collodion", true)
+        return true
+      end
+    }))
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        local candidates = {}
+        for _, playing_card in ipairs(G.playing_cards) do
+          if not SMODS.has_no_suit(playing_card) then candidates[#candidates + 1] = playing_card end
+        end
+        for _ = 1, math.min(jokers_owned, #candidates) do
+          local chosen_card, chosen_index = pseudorandom_element(candidates, pseudoseed('abn_ischemia'))
+
+          local all_suits = {}
+          for suit_key, _ in pairs(SMODS.Suits) do all_suits[#all_suits + 1] = suit_key end
+          table.sort(all_suits)
+
+          local new_suit = pseudorandom_element(all_suits, pseudoseed('abn_ischemia_suit'))
+          SMODS.change_base(chosen_card, new_suit)
+          chosen_card:juice_up(0.3, 0.3)
+          table.remove(candidates, chosen_index)
+        end
+        return true
+      end
+    }))
+
+    if (SMODS.Mods["cutout"] or {}).can_load then
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.4,
+        func = function()
+          local candidates = {}
+          for _, joker in ipairs(SMODS.Edition:get_edition_cards(G.jokers, true)) do
+            if joker ~= target_joker then candidates[#candidates + 1] = joker end
+          end
+          if #candidates > 0 then
+            local chosen_joker = pseudorandom_element(candidates, pseudoseed('abn_ischemia_edition'))
+            chosen_joker:set_edition("e_cutout_abstract", true)
+          end
+          return true
+        end
+      }))
+    end
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.2,
+      func = function()
+        G.jokers:unhighlight_all()
+        return true
+      end
+    }))
+    delay(0.6)
+  end,
+
+  abn_artist_credits = {
+    artist = "Okronix",
+  },
 }
