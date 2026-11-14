@@ -1,18 +1,12 @@
 SMODS.Joker {
   key = 'inkblot_test',
 
-  loc_vars = function(self, info_queue, card)
-    return { vars = {} }
-  end,
-
   rarity = 1,
   atlas = 'ABNJokerSheet1',
   pos = { x = 4, y = 4 },
   cost = 5,
   discovered = false,
-  blueprint_compat = true,
-
-  config = { extra = {} },
+  blueprint_compat = false,
 
   calculate = function(self, card, context)
     if context.hand_drawn then
@@ -47,6 +41,7 @@ SMODS.Joker {
     artist = "HyperReal63"
   },
   update = function(self, card, dt)
+    if not G.hand then return end
 	for k, v in pairs(G.hand.cards) do
 	  if v.ability.abn_inkblot_forced_selection and not v.highlighted then 
 		G.hand:add_to_highlighted(v)
