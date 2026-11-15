@@ -297,3 +297,199 @@ SMODS.Consumable {
         artist = "SmoliconBoi",
     },
 }
+
+SMODS.Consumable {
+  key = "blacksmith",
+  set = 'crepuscular',
+  cost = 4,
+  atlas = "AbandoniaCrepuscular",
+  pos = { x = 1, y = 0 },  
+  config = { max_highlighted = 2, mod_conv = 'm_abn_kintsugi' },
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+    return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+  end,
+  abn_artist_credits = {
+    artist = "Vega",
+  },
+}
+
+SMODS.Consumable {
+  key = "scholar",
+  set = 'crepuscular',
+  cost = 4,
+  atlas = "AbandoniaCrepuscular",
+  pos = { x = 2, y = 0 },  
+  config = { max_highlighted = 2, mod_conv = 'm_abn_mountain' },
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+    return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+  end,
+  use = function(self, card, area, copier)
+    local targets = {}
+    local planet_keys = {}
+    for _, highlighted_card in ipairs(G.hand.highlighted) do
+      targets[#targets + 1] = highlighted_card
+      if not SMODS.has_no_rank(highlighted_card) then
+        for _, planet_def in ipairs(ABN.rank_planets) do
+          if planet_def.rank == highlighted_card.base.value then
+            planet_keys[#planet_keys + 1] = "c_abn_" .. planet_def.key
+            break
+          end
+        end
+      end
+    end
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        for _, target in ipairs(targets) do
+          target:set_ability(G.P_CENTERS[card.ability.mod_conv])
+          target:juice_up()
+        end
+        return true
+      end
+    }))
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        for _, planet_key in ipairs(planet_keys) do
+          if #G.consumeables.cards < G.consumeables.config.card_limit then
+            SMODS.add_card({ key = planet_key })
+          end
+        end
+        return true
+      end
+    }))
+  end,
+  abn_artist_credits = {
+    artist = "Vega",
+  },
+}
+
+SMODS.Consumable {
+  key = "roysterer",
+  set = 'crepuscular',
+  cost = 4,
+  atlas = "AbandoniaCrepuscular",
+  pos = { x = 1, y = 1 },  
+  config = { max_highlighted = 1, mod_conv = 'm_abn_amplitude', extra = { odds = 4 } },
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+    local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'abn_roysterer')
+    return {
+      vars = {
+        card.ability.max_highlighted,
+        localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv },
+        numerator, denominator,
+      }
+    }
+  end,
+  use = function(self, card, area, copier)
+    local targets = {}
+    for _, highlighted_card in ipairs(G.hand.highlighted) do targets[#targets + 1] = highlighted_card end
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        for _, target in ipairs(targets) do
+          target:set_ability(G.P_CENTERS[card.ability.mod_conv])
+          target:juice_up()
+        end
+        return true
+      end
+    }))
+
+    if #G.jokers.cards > 0 and SMODS.pseudorandom_probability(card, 'abn_roysterer', 1, card.ability.extra.odds, 'abn_roysterer') then
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.4,
+        func = function()
+          local chosen_joker = pseudorandom_element(G.jokers.cards, pseudoseed('abn_roysterer_joker'))
+          chosen_joker.ability.extra_value = (chosen_joker.ability.extra_value or 0) + chosen_joker.sell_cost
+          chosen_joker:set_cost()
+          chosen_joker:juice_up(0.5, 0.5)
+          card_eval_status_text(chosen_joker, 'extra', nil, nil, nil, { message = localize('k_val_up'), colour = G.C.MONEY })
+          return true
+        end
+      }))
+	else
+		return {
+            message = localize('k_nope_ex'),
+			colour = G.C.SECONDARY_SET.Tarot,
+			card = card
+        }
+    end
+  end,
+  abn_artist_credits = {
+    artist = "Vega",
+  },
+}
+
+SMODS.Consumable {
+  key = "ignorance",
+  set = 'crepuscular',
+  cost = 4,
+  atlas = "AbandoniaCrepuscular",
+  pos = { x = 4, y = 2 },  
+  config = { max_highlighted = 1, mod_conv = 'm_abn_first_aid' },
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+    return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+  end,
+  use = function(self, card, area, copier)
+    local targets = {}
+    for _, highlighted_card in ipairs(G.hand.highlighted) do targets[#targets + 1] = highlighted_card end
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        for _, target in ipairs(targets) do
+          target:set_ability(G.P_CENTERS[card.ability.mod_conv])
+          target:juice_up()
+        end
+        return true
+      end
+    }))
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        local candidate_jokers = {}
+        for _, joker in ipairs(G.jokers.cards) do
+          local available_stickers = {}
+          for sticker_key, sticker in pairs(SMODS.Stickers) do
+            if sticker.mod and not joker.ability[sticker_key] then
+              available_stickers[#available_stickers + 1] = sticker_key
+            end
+          end
+          if #available_stickers > 0 then
+            table.sort(available_stickers)
+            candidate_jokers[#candidate_jokers + 1] = { joker = joker, stickers = available_stickers }
+          end
+        end
+
+        if #candidate_jokers > 0 then
+          local chosen = pseudorandom_element(candidate_jokers, pseudoseed('abn_ignorance'))
+          local sticker_key = pseudorandom_element(chosen.stickers, pseudoseed('abn_ignorance_sticker'))
+          SMODS.Stickers[sticker_key]:apply(chosen.joker, true)
+          chosen.joker:juice_up(0.5, 0.5)
+        end
+        return true
+      end
+    }))
+  end,
+  abn_artist_credits = {
+    artist = "Camostar",
+  },
+}
