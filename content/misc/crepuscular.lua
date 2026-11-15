@@ -421,11 +421,10 @@ SMODS.Consumable {
         end
       }))
 	else
-		return {
-            message = localize('k_nope_ex'),
+		card_eval_status_text(card, 'extra', nil, nil, nil, {
+			message = localize('k_nope_ex'),
 			colour = G.C.SECONDARY_SET.Tarot,
-			card = card
-        }
+        })
     end
   end,
   abn_artist_credits = {
