@@ -404,7 +404,7 @@ SMODS.Stake({
 			G.E_MANAGER:add_event(Event({
 				func = function()
 					for _, area in ipairs({G.shop_jokers, G.shop_booster, G.shop_vouchers}) do
-						for _, card in ipairs(area.cards) do
+						for _, card in ipairs(area.cards or {}) do
 							card:set_cost_value()
 						end
 					end
