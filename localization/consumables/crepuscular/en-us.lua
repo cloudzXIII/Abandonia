@@ -73,6 +73,41 @@ return {
           "each one gains {C:attention}#2#{} {C:dark_edition}enhancement{}",
         },
       },
+	  c_abn_blacksmith = {
+        name = "Blacksmith",
+        text = {
+          "Enhances {C:attention}#1#",
+          "selected cards to",
+          "{C:attention}#2#s",
+        },
+      },
+	  c_abn_scholar = {
+        name = "Scholar",
+        text = {
+          "Enhances {C:attention}#1#{} selected cards",
+		  "to {C:attention}#2#{}",
+		  "creates the {C:attention}Rank {C:planet}Planet{} of each enhanced card",
+		  "{C:inactive}(Must have room){}",
+        },
+      },
+	  c_abn_roysterer = {
+        name = "Roysterer",
+        text = {
+          "Enhances {C:attention}#1#{} selected card",
+		  "to {C:attention}#2#",
+		  "{C:green}#3# in #4#{} chance to {C:attention}double{} the",
+		  "{C:money}sell value{} of a random {C:attention}Joker{}",
+        },
+      },
+	  c_abn_ignorance = {
+        name = "Ignorance",
+        text = {
+          "Enhances {C:attention}#1#{} selected card",
+		  "to {C:attention}#2#",
+		  "A random {C:attention}Joker{} gains a",
+		  "{C:attention}modded sticker{}",
+        },
+      },
     },
   },
 }
