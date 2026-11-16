@@ -5,7 +5,7 @@ return {
         name = "Wheel of Fate",
         text = {
           "{C:green}#1# in #2#{} chance to apply",
-          "a random {C:attention}Sticker{}",
+          "a random {C:attention}Sticker",
           "to a random {C:attention}Joker",
         }
       },
@@ -32,13 +32,13 @@ return {
         text = {
           "Converts up to",
           "{C:attention}#1#{} selected cards",
-          "to {V:1}#2#{}",
+          "to {V:1}#2#",
         },
       },
       c_abn_masquerade = {
         name = "Masquerade",
         text = {
-          "Enhances {C:attention}#1#{}",
+          "Enhances {C:attention}#1#",
           "selected cards to",
           "{C:attention}#2#s",
         },
@@ -48,7 +48,7 @@ return {
         text = {
           "Converts up to",
           "{C:attention}#1#{} selected cards",
-          "to {V:1}#2#{}",
+          "to {V:1}#2#",
         },
       },
       c_abn_toxin = {
@@ -136,16 +136,16 @@ return {
         text = {
           "Converts up to",
           "{C:attention}#1#{} selected cards",
-          "to {V:1}#2#{}",
+          "to {V:1}#2#",
         },
       },
       c_abn_crossroad = {
         name = "Crossroad",
         text = {
           "Enhances {C:attention}#1#{} selected",
-          "card into a {C:spades}Darkner{}",
+          "card into a {C:spades}Darkner",
           "or {C:diamonds}Lightner{} card",
-          "{s:0.8}Based on card's {C:attention,s:0.8}suit{}",
+          "{s:0.8}Based on card's {C:attention,s:0.8}suit",
         },
       },
       c_abn_peace = {
@@ -153,7 +153,7 @@ return {
         text = {
           "Converts up to",
           "{C:attention}#1#{} selected cards",
-          "to {V:1}#2#{}",
+          "to {V:1}#2#",
         },
       },
 	  c_abn_theatre = {
@@ -161,7 +161,7 @@ return {
         text = {
           "Converts up to",
           "{C:attention}#1#{} selected cards",
-          "to {C:attention}#2#{}",
+          "to {C:attention}#2#",
         },
       },
     },
@@ -562,17 +562,17 @@ return {
         name = "Promotion",
         text = {
           "Convert up to {C:attention}#1#{} held",
-		  "{C:attention}Jacks{} to {C:attention}11s{}",
-          "{C:attention}Queens{} to {C:attention}12s{}",
-          "{C:attention}Kings{} to {C:attention}13s{}",
-          "{C:attention}Aces{} to {C:attention}14s{}",
+		  "{C:attention}Jacks{} to {C:attention}11s",
+          "{C:attention}Queens{} to {C:attention}12s",
+          "{C:attention}Kings{} to {C:attention}13s",
+          "{C:attention}Aces{} to {C:attention}14s",
         }
       },
       c_abn_brand = {
         name = "Brand",
         text = {
           "{C:red}Destroy{} all {C:attention}Jokers{} with {C:attention}stickers{},",
-          "redeem {C:attention}2{} random {C:attention}Vouchers{}",
+          "redeem {C:attention}2{} random {C:attention}Vouchers",
           "and create {C:attention}2{} random",
           "{C:dark_edition}Negative{} {C:tarot}Tarot{} cards"
         }
@@ -601,14 +601,19 @@ return {
           "{C:attention}#1#{} selected card in hand",
         },
       },
-      c_abn_distortion = {
+	  c_abn_distortion = {
         name = "Distortion",
         text = {
-          "Gives {C:dark_edition}Pearlescent Edition{} to the selected {C:attention}Joker{}",
-		  "Reduces the rank of {C:attention}X{} random cards in your deck by {C:attention}#1#{}",
-		  "where {C:attention}X{} is the number of {C:attention}Jokers{} you own",
-		  "If {C:attention}Cut-Out{} is active another {C:attention}random{} Joker gains {C:dark_edition}Distortion Edition{}",
-        },
+          {
+		    "Selected {C:attention}Joker{} gains {C:dark_edition}Pearlescent{}, and a number",
+		    "of random cards in your full deck have their",
+		    "rank reduced by {C:attention}#1#{}, equal to number of owned jokers"
+          },
+          {
+		    "If the {C:green}Cut-Out{} mod is installed,",
+            "another random {C:attention}Joker{} gains {C:dark_edition}Distortion"
+          },
+        }
       },
       c_abn_presque_vu = {
         name = "Presque Vu",
@@ -629,8 +634,8 @@ return {
       c_abn_deja_reve = {
         name = "Deja Reve",
         text = {
-          "{C:attention}Copy{} all cards in your {C:attention}full deck{}",
-          "Gain {C:attention}#1#{} random {C:abn_hazard}Hazard Tags{}",
+          "{C:attention}Copy{} all cards in your {C:attention}full deck",
+          "Gain {C:attention}#1#{} random {C:abn_hazard}Hazard Tags",
         },
       },
       c_abn_eon2 = {
@@ -645,7 +650,7 @@ return {
         name = "White Hole",
         text = {
           "Upgrade every",
-          "{C:planet,E:1}planet{} {C:attention,E:1}rank{}",
+          "{C:planet,E:1}planet{} {C:attention,E:1}rank",
           "by {C:attention}1{} level",
         },
       },
@@ -659,7 +664,7 @@ return {
       c_abn_flipside = {
         name = "Flipside",
         text = {
-          "Flips up to {C:attention}#1#{}",
+          "Flips up to {C:attention}#1#",
           "selected cards"
         },
       },
@@ -698,8 +703,8 @@ return {
         text = {
           "{C:attention}+1{} Booster Pack slot,",
           "All {C:attention}Jokers{} and cards in",
-          "your {C:attention}full deck{}",
-          "become {C:attention}flipped{}",
+          "your {C:attention}full deck",
+          "become {C:attention}flipped",
         }
       },
       c_abn_balatro_illustrious_ritual = {
@@ -719,19 +724,43 @@ return {
 	  c_abn_swap = {
         name = "Swap",
         text = {
-          "Gives {C:dark_edition}Reversal Edition{} to the selected {C:attention}Joker{}",
-		  "Increases the rank of {C:attention}X{} random cards in your deck by {C:attention}#1#{}",
-		  "where {C:attention}X{} is the number of {C:attention}Jokers{} you own",
-		  "If {C:attention}Cut-Out{} is active another {C:attention}random{} Joker gains {C:dark_edition}Inverted Edition{}",
+          {
+		    "Selected {C:attention}Joker{} gains {C:dark_edition}Reversal{}, and a number",
+		    "of random cards in your full deck have their",
+		    "rank increased by {C:attention}#1#{}, equal to number of owned jokers"
+          },
+          {
+		    "If the {C:green}Cut-Out{} mod is installed,",
+            "another random {C:attention}Joker{} gains {C:dark_edition}Inverted"
+          },
         }
       },
 	  c_abn_ischemia = {
         name = "Ischemia",
         text = {
-          "Gives {C:dark_edition}Collodion Edition{} to the selected {C:attention}Joker{}",
-		  "{C:attention}X{} random cards in your deck have their {C:attention}suit{} changed to a random suit",
-		  "where {C:attention}X{} is the number of {C:attention}Jokers{} you own",
-		  "If {C:attention}Cut-Out{} is active another {C:attention}random{} Joker gains {C:dark_edition}Abstract Edition{}",
+          {
+		    "Selected {C:attention}Joker{} gains {C:dark_edition}Collodion{}, and a number",
+		    "of random cards in your full deck have their",
+		    "{C:attention}suit{} randomized, equal to number of owned jokers"
+          },
+          {
+		    "If the {C:green}Cut-Out{} mod is installed,",
+            "another random {C:attention}Joker{} gains {C:dark_edition}Abstract"
+          },
+        }
+      },
+	  c_abn_shattered = {
+        name = "Shattered",
+        text = {
+          {
+		    "Selected {C:attention}Joker{} gains {C:dark_edition}Bit Rot{}, and a number",
+		    "of random cards in your full deck are",
+		    "{C:attention}destroyed{}, equal to number of owned jokers"
+          },
+          {
+		    "If the {C:green}Cut-Out{} mod is installed,",
+            "another random {C:attention}Joker{} gains {C:dark_edition}Volcanic"
+          },
         }
       },
     },
