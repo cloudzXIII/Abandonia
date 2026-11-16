@@ -84,7 +84,7 @@ function G.UIDEF.shop()
 	scale = #subtable / (#subtable+1)
 	subtable[1].config.minh = subtable[1].config.minh * scale
 	subtable[2].config.minh = subtable[2].config.minh * scale
-	button_cache = {n=G.UIT.R,config={id = 'abn_toggle_newestia', align = "cm", minw = 2.8, minh = 1.5 * scale, r=0.15,colour = G.C.BLACK, button = 'abn_toggle_newestia', hover = true, shadow = true}, nodes = {
+	button_cache = {n=G.UIT.R,config={id = 'abn_toggle_newestia', align = "cm", minw = 2.8, minh = 1.5 * scale, r=0.15,colour = G.C.BLACK, button = 'abn_toggle_newestia', hover = true, shadow = true, detailed_tooltip = {set = "Other", key = "abn_newestia_tooltip"}}, nodes = {
 		{n=G.UIT.R, config={align = "cm", padding = 0.07, focus_args = {button = 'y', orientation = 'cr'}, func = 'set_button_pip'}, nodes={
 			{n=G.UIT.R, config={align = "cm", maxw = 1.3}, nodes={
 				{n=G.UIT.O, config = {object = Sprite(0, 0, size * ratio * scale, size * scale, G.ASSET_ATLAS.abn_Newestia, {x = 0, y = G.GAME.abn_newestia and 0 or 1})}}

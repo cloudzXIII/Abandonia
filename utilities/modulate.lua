@@ -62,7 +62,7 @@ SMODS.Scoring_Calculation{
                         })
                     }},
                 }},
-                {n=G.UIT.R, config={align = 'cr', id = 'hand_abn_modulate'}, nodes={
+                {n=G.UIT.R, config={align = 'cr', id = 'hand_abn_modulate', detailed_tooltip = {set = "Other", key = "abn_modulate_tooltip"}}, nodes={
                     SMODS.GUI.score_container({
                         type = 'abn_modulate',
                         align = 'cr',
@@ -89,9 +89,9 @@ SMODS.Scoring_Calculation{
                         })
                     }},
                 }},
-                {n=G.UIT.R, config={align = 'cl', id = 'hand_abn_modulate'}, nodes={
+                {n=G.UIT.R, config={align = 'cl', id = 'hand_abn_amperage', detailed_tooltip = {set = "Other", key = "abn_amperage_tooltip"}}, nodes={
                     SMODS.GUI.score_container({
-                        type = 'abn_modulate',
+                        type = 'abn_amp',
                         align = 'cl',
                         w = w * scaledown,
                         h = h * scaledown,

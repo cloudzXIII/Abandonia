@@ -137,7 +137,7 @@ function create_UIBox_HUD()
 			for _, n in ipairs(node.nodes) do
 				n.config.minh = minh
 			end
-			table.insert(node.nodes, {n=G.UIT.R, config={id = "abn_mayhem_display", align = "cm", minh = minh, minw = 1.5, padding = 0.05, r = 0.1, colour = G.C.ABN_MAYHEM}, nodes={
+			table.insert(node.nodes, {n=G.UIT.R, config={id = "abn_mayhem_display", align = "cm", minh = minh, minw = 1.5, padding = 0.05, r = 0.1, colour = G.C.ABN_MAYHEM, detailed_tooltip = {set = "Other", key = "abn_mayhem_tooltip"}}, nodes={
 					{n=G.UIT.R, config={align = "cm", r = 0.1, minw = 1.4, minh = minh * 0.9, colour = G.C.DYN_UI.BOSS_DARK }, nodes = {
 						{n=G.UIT.R, config={align = "cm", padding = 0, maxw = 1.4}, nodes={
 							{n=G.UIT.T, config={text = "Mayhem", scale = scale, colour = G.C.UI.TEXT_LIGHT, shadow = true}}

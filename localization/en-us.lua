@@ -58,7 +58,7 @@ return {
         name = "",
         text = {
           "Made so much cool {C:green}art{}!",
-          "{s:0.85}(aswell as these cool credit cards)",
+          "{s:0.855}(aswell as these cool credit cards)",
           "Check out",
           "{C:attention}Inky's Bunch-O-Things{}!"
         }
@@ -826,13 +826,53 @@ return {
 	  },
 	  --#endregion
 
+	  --#region UI Tooltips
+	  abn_mayhem_tooltip = {
+		name = "Mayhem",
+		text = {
+		  "{s:0.85}If {C:abn_mayhem_dark,s:0.85}Mayhem{s:0.85} is {C:attention,s:0.85}3{s:0.85} or greater,",
+		  "{s:0.85}all newly created cards",
+          "{s:0.85}will begin to have their",
+		  "{s:0.85}listed values randomized,",
+          "{s:0.85}when possible. The more",
+		  "{C:abn_mayhem_dark,s:0.85}Mayhem{s:0.85} you have, the greater",
+		  "{s:0.85}the range of effect becomes."
+		}
+	  },
+	  abn_newestia_tooltip = {
+		name = "Newestia",
+		text = {
+		  "{C:red}Newestia{} mode makes all {C:attention}Blinds{} stronger",
+		  "and offer greater {C:money}money{} payouts. It comes",
+		  "with a pool of custom {C:attention}Boss Blinds{}, and",
+		  "enables some exclusive items to appear.",
+          "By default, you may enable or",
+          "disable {C:red}Newestia{} at any time."
+		}
+	  },
+	  abn_amperage_tooltip = {
+		name = "Amperage",
+		text = {
+		  "Acts as an additional",
+          "scoring multiplier"
+		}
+	  },
+	  abn_modulate_tooltip = {
+		name = "Modulate",
+		text = {
+		  "Acts as an additional",
+          "scoring multiplier"
+		}
+	  },
+	  --#endregion
+
       -- Art Credits displayed in the Credit Tab
       abn_credits = {
         text = {
           "{C:green,s:1.5}Art{s:1.5} by people from the Balatro {C:blue,s:1.5}Discord{}{s:1.5}!",
           "{C:inactive,s:1.3}(look under the Jokers :>)"
         }
-      }
+      },
     },
 
     Mod = {
