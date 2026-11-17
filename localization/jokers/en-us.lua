@@ -11084,6 +11084,42 @@ return {
 		}
       },
 	  
+	  j_abn_darkness_approaches = {
+        name = "Darkness Approaches",
+        text = {
+          "All Blinds gain {C:dark_edition}Opaque Edition{}",
+		  "If the Score {C:attention}catches fire{}",
+		  "give {C:dark_edition}Bright Edition{} to all Cards in the {C:attention}winning hand{}",
+		}
+      },
+	  
+	  j_abn_rudimentary_joker = {
+        name = "Rudimentary Joker",
+        text = {
+          "{C:planet}Planet{} packs and {C:planet}Planet{} cards cost {C:attention}twice{} as much",
+		  "but they have a {C:green}#1# in #2#{} chance to spawn with {C:dark_edition}Foil Edition{}",
+		}
+      },
+	  
+	  j_abn_warning_triangle = {
+        name = "Warning Triangle",
+        text = {
+          "All {C:attention}Blinds{} have",
+          "{C:dark_edition}Gloss{}, {C:dark_edition}Pearlescent{} or {C:dark_edition}Iridescent{} Edition",
+          "{C:attention}Shop{} is guaranteed to have a",
+          "{C:money}base price{} {C:dark_edition}Foil{}, {C:dark_edition}Holographic{} or {C:dark_edition}Polychrome{} Joker",
+		}
+      },
+	  
+	  j_abn_discontinued_soda = {
+        name = "Discontinued Soda",
+        text = {
+          "Create a random {C:attention}Tag{} each time a {C:attention}Boss Blind{} is defeated",
+          "If you own {C:attention}Diet Cola{} also create one when a {C:attention}Big Blind{} is defeated",
+          "{C:attention}Discontinued Cards{} trigger their effect while {C:attention}held in hand{}",
+		}
+      },
+	  
     },
 	Other = {
       -- Bio Blueprint tooltips
