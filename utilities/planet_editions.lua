@@ -2,14 +2,20 @@ ABN = ABN or {}
 
 ABN.planet_edition_blacklist = {}
 
-function ABN.apply_planet_edition(source_card, hand, levels, instant)
+function ABN.apply_planet_edition(source_card, target_key, levels, instant, is_rank)
     if not source_card or not source_card.edition then return end
+    if not source_card.ability or source_card.ability.set ~= 'Planet' then return end
     local edition_key = source_card.edition.key
     if ABN.planet_edition_blacklist[edition_key] then return end
 
     local edition_center = G.P_CENTERS[edition_key]
-    local hand_data = G.GAME.hands[hand]
-    if not edition_center or not hand_data then return end
+    local target_data
+    if is_rank then
+        target_data = G.GAME.abn_rank_upgrades[target_key]
+    else
+        target_data = G.GAME.hands[target_key]
+    end
+    if not edition_center or not target_data then return end
 
     levels = (type(levels) == 'number') and levels or 1
     local edition_config = edition_center.config or {}
@@ -28,9 +34,14 @@ function ABN.apply_planet_edition(source_card, hand, levels, instant)
             applied_any_step = true
 
             if step.kind == 'add' then
-                hand_data[step.parameter] = hand_data[step.parameter] + step.amount
+                target_data[step.parameter] = target_data[step.parameter] + step.amount
             else
-                hand_data[step.parameter] = hand_data[step.parameter] * step.amount
+                target_data[step.parameter] = target_data[step.parameter] * step.amount
+            end
+
+            if is_rank then
+                target_data['s_' .. step.parameter] = target_data[step.parameter]
+                    - target_data['l_' .. step.parameter] * (target_data.level - 1)
             end
 
             if not instant then
@@ -56,11 +67,11 @@ function ABN.apply_planet_edition(source_card, hand, levels, instant)
     end
 
     if edition_center.abn_planet_apply then
-        edition_center:abn_planet_apply(source_card, hand, levels, instant)
+        edition_center:abn_planet_apply(source_card, target_key, levels, instant, is_rank)
     end
 
     if applied_any_step and not instant then
-        update_hand_text({ delay = 0 }, { chips = hand_data.chips, mult = hand_data.mult, level = hand_data.level })
+        update_hand_text({ delay = 0 }, { chips = target_data.chips, mult = target_data.mult, level = target_data.level })
     end
 end
 
@@ -70,7 +81,8 @@ for _, edition_name in ipairs({ 'foil', 'holo', 'polychrome' }) do
             local edition_config = self.config or {}
             local main_value = edition_config.chips or edition_config.mult or edition_config.x_mult or edition_config.x_chips
             if card and card.ability and card.ability.set == 'Planet' then
-                return { key = 'e_' .. edition_name .. '_planet', vars = { main_value } }
+                local key_suffix = card.ability.rank and '_rank_planet' or '_planet'
+                return { key = 'e_' .. edition_name .. key_suffix, vars = { main_value } }
             end
             return { vars = { main_value } }
         end
@@ -93,6 +105,18 @@ if SMODS.current_mod then
         SMODS.process_loc_text(G.localization.descriptions.Edition, 'e_polychrome_planet', {
             name = "Polychrome",
             text = { "Leveled hand's Mult is", "multiplied by {X:mult,C:white}X#1#{}" },
+        })
+        SMODS.process_loc_text(G.localization.descriptions.Edition, 'e_foil_rank_planet', {
+            name = "Foil",
+            text = { "Leveled rank", "gains {C:chips}+#1#{} Chips" },
+        })
+        SMODS.process_loc_text(G.localization.descriptions.Edition, 'e_holo_rank_planet', {
+            name = "Holographic",
+            text = { "Leveled rank", "gains {C:mult}+#1#{} Mult" },
+        })
+        SMODS.process_loc_text(G.localization.descriptions.Edition, 'e_polychrome_rank_planet', {
+            name = "Polychrome",
+            text = { "Leveled rank's Mult is", "multiplied by {X:mult,C:white}X#1#{}" },
         })
     end
 end
