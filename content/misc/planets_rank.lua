@@ -191,6 +191,7 @@ function ABN.level_up_rank(card, rank, amount, instant)
     }))
     update_hand_text({ sound = "button", volume = 0.7, pitch = 0.9, delay = 0 },
       { level = G.GAME.abn_rank_upgrades[rank].level })
+    ABN.apply_planet_edition(card, rank, amount, instant, true)
     delay(1.3)
     -- e
     update_hand_text(
@@ -200,6 +201,8 @@ function ABN.level_up_rank(card, rank, amount, instant)
     if over_limit then
       SMODS.calculate_effect({ message = localize("k_abn_limit_reached"), colour = G.C.RED }, card)
     end
+  else
+    ABN.apply_planet_edition(card, rank, amount, instant, true)
   end
 end
 
