@@ -26,13 +26,13 @@ SMODS.Enhancement({
   end,
 
   calculate = function(self, card, context)
-    if context.main_scoring and context.cardarea == G.play then
-      return {
-        asc = card.ability.extra.ascensionadd * (G.GAME.abn_UniqueTags or 0),
-        chips = card.ability.extra.chipsadd * (G.GAME.abn_UniqueTags or 0),
-      }
-    end
-  end,
+     if context.main_scoring and (context.cardarea == G.play or (context.cardarea == G.hand and next(SMODS.find_card('j_abn_discontinued_soda')))) then
+       return {
+         asc = card.ability.extra.ascensionadd * (G.GAME.abn_UniqueTags or 0),
+         chips = card.ability.extra.chipsadd * (G.GAME.abn_UniqueTags or 0),
+       }
+     end
+   end,
   abn_artist_credits = {
     artist = "Creechie",
   },
