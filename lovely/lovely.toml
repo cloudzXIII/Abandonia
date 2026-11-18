@@ -233,3 +233,31 @@ if self.has_attribute and self:has_attribute("abn_double_sided_joker") and not s
 end
 '''
 match_indent = true
+
+# hands and ranks can give money
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "    G.GAME.last_hand_played = text"
+position = "after"
+match_indent = true
+payload = '''
+    -- ABN: Pay recurring Planet edition bonuses
+    local abn_dollar_bonus = G.GAME.hands[text].abn_dollars or 0
+
+    -- Rank bonuses: pay once for every played card of that rank
+    for _, played_card in ipairs(G.play.cards) do
+        if not SMODS.has_no_rank(played_card) then
+            local rank_upgrade = G.GAME.abn_rank_upgrades
+                and G.GAME.abn_rank_upgrades[played_card.base.value]
+
+            if rank_upgrade then
+                abn_dollar_bonus = abn_dollar_bonus + (rank_upgrade.abn_dollars or 0)
+            end
+        end
+    end
+
+    if abn_dollar_bonus ~= 0 then
+        ease_dollars(abn_dollar_bonus)
+    end
+'''
