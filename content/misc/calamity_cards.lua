@@ -757,16 +757,6 @@ ABN.CalamityCard {
   key = "rapture",
   pos = { x = 3, y = 2 },
 
-  loc_txt = {
-    name = "Rapture",
-    text = {
-      "Give a selected Joker {C:green}Mitama Aura{}",
-      "All {C:attention}Blinds{} gain {C:dark_edition}Editions{}",
-      "Before scoring, your first played card gains the {C:dark_edition}Edition{} of the {C:attention}Blind{}",
-      "If {C:attention}Cut-Out{} is active {C:attention}Evolved{} Jokers may appear in the shop",
-    },
-  },
-
   loc_vars = function(self, info_queue, card)
 	info_queue[#info_queue + 1] = { key = "abn_mitama_aura", set = "Other", vars = { 15, 10, 3, 2, 0, 0, 0, 0} }
     return { vars = {} }
