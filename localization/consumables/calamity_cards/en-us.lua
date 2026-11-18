@@ -243,6 +243,15 @@ return {
           },
         }
       },
+	  c_abn_rapture = {
+        name = "Rapture",
+        text = {
+          "Give a selected Joker {C:green}Mitama Aura{}",
+		  "All {C:attention}Blinds{} gain {C:dark_edition}Editions{}",
+		  "Before scoring, your first played card gains the {C:dark_edition}Edition{} of the {C:attention}Blind{}",
+		  "If {C:attention}Cut-Out{} is active {C:attention}Evolved{} Jokers may appear in the shop",
+        }
+      },
     },
   },
 }
