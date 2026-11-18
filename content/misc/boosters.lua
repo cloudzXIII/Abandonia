@@ -604,3 +604,11 @@ ABN.create_boosters_for_set {
   draw_hand = true,
   artist = "Okronix",
 }
+
+ABN.create_boosters_for_set {
+  atlas = "AbandoniaMercantilePack",
+  set = "mercantile",
+  special_colour = G.C.YELLOW,
+  draw_hand = true,
+  artist = "Okronix",
+}

@@ -751,3 +751,89 @@ if next(SMODS.find_mod("Spectrallib")) then
     },
   }
 end
+
+
+ABN.CalamityCard {
+  key = "rapture",
+  pos = { x = 3, y = 2 },
+
+  loc_txt = {
+    name = "Rapture",
+    text = {
+      "Give a selected Joker {C:green}Mitama Aura{}",
+      "All {C:attention}Blinds{} gain {C:dark_edition}Editions{}",
+      "Before scoring, your first played card gains the {C:dark_edition}Edition{} of the {C:attention}Blind{}",
+      "If {C:attention}Cut-Out{} is active {C:attention}Evolved{} Jokers may appear in the shop",
+    },
+  },
+
+  loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue + 1] = { key = "abn_mitama_aura", set = "Other", vars = { 15, 10, 3, 2, 0, 0, 0, 0} }
+    return { vars = {} }
+  end,
+
+  can_use = function(self, card)
+    return G.jokers and #G.jokers.highlighted == 1
+  end,
+
+  use = function(self, card, area, copier)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.1,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+
+        fn_add_aura(G.jokers.highlighted[1], "abn_mitama_aura")
+
+        G.GAME.abn_blind_edition_rate = 1
+        if G.GAME.round_resets and G.GAME.round_resets.blind_states then
+          for _, blind_type in ipairs(G.GAME.round_resets.blind_order or {}) do
+            local state = G.GAME.round_resets.blind_states[blind_type]
+            if state == "Select" or state == "Upcoming" then
+              ABN.add_edition_to_blind(blind_type, { guaranteed = true })
+            end
+          end
+        end
+
+        local has_voucher = false
+        if G.vouchers and G.vouchers.cards then
+          for _, v in ipairs(G.vouchers.cards) do
+            if v.config.center.key == 'c_abn_rapture' then
+              has_voucher = true
+              break
+            end
+          end
+        end
+
+        if not has_voucher then
+          local _card = create_card('Tarot', G.consumeables, nil, nil, nil, nil, 'c_abn_rapture')
+          _card:add_to_deck()
+          G.vouchers:emplace(_card)
+        end
+
+        return true
+      end
+    }))
+  end,
+
+  calculate = function(self, card, context)
+    if card.area == G.vouchers and context.before and G.GAME.blind and not G.GAME.blind.disabled
+        and context.full_hand and context.full_hand[1] then
+      local blind_edition = G.GAME.abn_blind_edition and G.GAME.abn_blind_edition[G.GAME.blind:get_type()]
+      if blind_edition then
+        local counterpart_key = ABN.BlindEditions[blind_edition.key].counterpart
+        local first_played_card = context.full_hand[1]
+        if counterpart_key and G.P_CENTERS[counterpart_key]
+            and not (first_played_card.edition and first_played_card.edition.key == counterpart_key) then
+          first_played_card:set_edition(counterpart_key, true)
+          card:juice_up(0.3, 0.4)
+        end
+      end
+    end
+  end,
+
+  abn_artist_credits = {
+    artist = "Grass"
+  },
+}
