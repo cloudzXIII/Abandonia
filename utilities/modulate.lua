@@ -4,7 +4,7 @@ G.ARGS.LOC_COLOURS["abn_modulate"] = G.C.ABN_MODULATE
 
 SMODS.Sound{
     key = "sfx_modulate",
-    path = "modulate.wav",
+    path = "modulate.ogg",
 }
 SMODS.Sound{
     key = "sfx_xmodulate",

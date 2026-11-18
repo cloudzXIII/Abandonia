@@ -23,9 +23,18 @@ ABN.planet_edition_effects = {
     e_abn_opaque = { chips = 8, mult = 2 },
     e_abn_vintage = { dollars = 1, chips = 2, mult = 2 },
     e_abn_chromatic = { dollars = 2, chips = 100, mult = 80 },
+
+    e_cutout_abstract = { score = 200 },
+    e_cutout_amp = { amp = 0.10, modulate = 0.10 },
+    e_cutout_distortion = { chips = 10, mult = 15, asc = 0.10 },
+    e_cutout_energy = { asc = 0.25 },
+    e_cutout_inverted = { chips = 40, mult = 10 },
 }
 
-ABN.planet_edition_effect_order = { 'dollars', 'chips', 'mult', 'x_mult' }
+ABN.planet_edition_effect_order = {
+    'dollars', 'chips', 'mult', 'x_mult',
+    'score', 'amp', 'modulate', 'asc'
+}
 
 function ABN.planet_edition_loc_vars(edition_key, card)
     if not ABN.has_planet_transfer() then return nil end
@@ -77,6 +86,10 @@ function ABN.apply_planet_edition(source_card, target_key, levels, instant, is_r
     local steps = {
         { parameter = 'chips', kind = 'add', amount = (edition_config.chips or 0) * levels, sound = 'chips1' },
         { parameter = 'mult', kind = 'add', amount = (edition_config.mult or 0) * levels, sound = 'multhit1' },
+        { parameter = 'score', kind = 'add', amount = (edition_config.score or 0) * levels, sound = 'chips1' },
+        { parameter = 'amp', kind = 'add', amount = (edition_config.amp or 0) * levels, sound = 'multhit1' },
+        { parameter = 'modulate', kind = 'add', amount = (edition_config.modulate or 0) * levels, sound = 'multhit1' },
+        { parameter = 'asc', kind = 'add', amount = (edition_config.asc or 0) * levels, sound = 'multhit1' },
         { parameter = 'chips', kind = 'times', amount = (edition_config.x_chips or 1) ^ levels, sound = 'xchips' },
         { parameter = 'mult', kind = 'times', amount = (edition_config.x_mult or 1) ^ levels, sound = 'multhit2' },
     }
@@ -90,14 +103,15 @@ function ABN.apply_planet_edition(source_card, target_key, levels, instant, is_r
             applied_any_step = true
 
             if step.kind == 'add' then
-                target_data[step.parameter] = target_data[step.parameter] + step.amount
+                target_data[step.parameter] = (target_data[step.parameter] or 0) + step.amount
             else
-                target_data[step.parameter] = target_data[step.parameter] * step.amount
+                target_data[step.parameter] = (target_data[step.parameter] or 0) * step.amount
             end
 
             if is_rank then
+                local level_base = target_data['l_' .. step.parameter] or 0
                 target_data['s_' .. step.parameter] = target_data[step.parameter]
-                    - target_data['l_' .. step.parameter] * (target_data.level - 1)
+                    - level_base * (target_data.level - 1)
             end
 
             if not instant then
@@ -120,10 +134,12 @@ function ABN.apply_planet_edition(source_card, target_key, levels, instant, is_r
                     end
                 }))
 
-                update_hand_text({ delay = 0.9 }, {
-                    [step.parameter] = status_text,
-                    StatusText = true
-                })
+                if step.parameter == 'chips' or step.parameter == 'mult' then
+                    update_hand_text({ delay = 0.9 }, {
+                        [step.parameter] = status_text,
+                        StatusText = true
+                    })
+                end
             end
         end
     end
@@ -147,7 +163,6 @@ function ABN.apply_planet_edition(source_card, target_key, levels, instant, is_r
     end
 end
 
--- Vanilla edition tooltip overrides.
 for _, edition_name in ipairs({ 'foil', 'holo', 'polychrome' }) do
     SMODS.Edition:take_ownership(edition_name, {
         loc_vars = function(self, info_queue, card)
@@ -194,8 +209,16 @@ if SMODS.current_mod then
                         effect_texts[#effect_texts + 1] = '{C:chips}+' .. placeholder .. '{} Chips'
                     elseif effect_name == 'mult' then
                         effect_texts[#effect_texts + 1] = '{C:mult}+' .. placeholder .. '{} Mult'
-					elseif effect_name == 'x_mult' then
-						effect_texts[#effect_texts + 1] = '{X:mult,C:white}X' .. placeholder .. '{} Mult'
+                    elseif effect_name == 'x_mult' then
+                        effect_texts[#effect_texts + 1] = '{X:mult,C:white}X' .. placeholder .. '{} Mult'
+                    elseif effect_name == 'score' then
+                        effect_texts[#effect_texts + 1] = '{C:purple}+' .. placeholder .. '{} Score'
+                    elseif effect_name == 'amp' then
+                        effect_texts[#effect_texts + 1] = '{C:abn_amperage}+' .. placeholder .. '{} Amperage'
+                    elseif effect_name == 'modulate' then
+                        effect_texts[#effect_texts + 1] = '{C:abn_modulate}+' .. placeholder .. '{} Modulate'
+                    elseif effect_name == 'asc' then
+                        effect_texts[#effect_texts + 1] = '{C:gold}+' .. placeholder .. '{} Asc. Power'
                     end
                 end
             end
@@ -211,7 +234,6 @@ if SMODS.current_mod then
             })
         end
 
-        -- Vanilla editions
         register_planet_tooltip('e_foil_planet', 'Foil', 'hand', { chips = 50 })
         register_planet_tooltip('e_holo_planet', 'Holographic', 'hand', { mult = 10 })
         register_planet_tooltip('e_polychrome_planet', 'Polychrome', 'hand', { x_mult = 1.5 })
@@ -220,7 +242,6 @@ if SMODS.current_mod then
         register_planet_tooltip('e_holo_rank_planet', 'Holographic', 'rank', { mult = 10 })
         register_planet_tooltip('e_polychrome_rank_planet', 'Polychrome', 'rank', { x_mult = 1.5 })
 
-        -- ABN editions
         local edition_names = {
             e_negative = 'Negative',
             e_abn_gloss = 'Gloss',
@@ -237,6 +258,12 @@ if SMODS.current_mod then
             e_abn_opaque = 'Opaque',
             e_abn_vintage = 'Vintage',
             e_abn_chromatic = 'Chromatic',
+
+            e_cutout_abstract = 'Abstract',
+            e_cutout_amp = 'Transduced',
+            e_cutout_distortion = 'Distortion',
+            e_cutout_energy = 'Volcanic',
+            e_cutout_inverted = 'Inverted',
         }
 
         for edition_key, effect in pairs(ABN.planet_edition_effects) do
