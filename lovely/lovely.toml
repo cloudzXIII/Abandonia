@@ -234,7 +234,9 @@ end
 '''
 match_indent = true
 
-# hands and ranks can give money
+
+
+# hands and ranks can have effects
 [[patches]]
 [patches.pattern]
 target = "functions/state_events.lua"
@@ -242,22 +244,57 @@ pattern = "    G.GAME.last_hand_played = text"
 position = "after"
 match_indent = true
 payload = '''
-    -- ABN: Pay recurring Planet edition bonuses
-    local abn_dollar_bonus = G.GAME.hands[text].abn_dollars or 0
+    -- ABN: Apply recurring Planet edition bonuses
+    local function abn_apply_planet_effects(data, scored_card)
+        if not data or not scored_card then return end
 
-    -- Rank bonuses: pay once for every played card of that rank
+        local effects = {}
+
+        if data.score and data.score ~= 0 then
+            effects.score = data.score
+        end
+        if data.amp and data.amp ~= 0 then
+            effects.amp = data.amp
+        end
+        if data.modulate and data.modulate ~= 0 then
+            effects.modulate = data.modulate
+        end
+        if data.asc and data.asc ~= 0 then
+            effects.asc = data.asc
+        end
+
+        if next(effects) then
+            SMODS.calculate_effect(effects, scored_card)
+        end
+    end
+
+    -- Hand bonuses
+    local hand_data = G.GAME.hands[text]
+    local hand_card = scoring_hand and scoring_hand[1] or G.play.cards[1]
+
+    if hand_data then
+        abn_apply_planet_effects(hand_data, hand_card)
+
+        local dollars = hand_data.abn_dollars or 0
+        if dollars ~= 0 then
+            ease_dollars(dollars)
+        end
+    end
+
+    -- Rank bonuses: apply once for every played card of that rank
     for _, played_card in ipairs(G.play.cards) do
         if not SMODS.has_no_rank(played_card) then
             local rank_upgrade = G.GAME.abn_rank_upgrades
                 and G.GAME.abn_rank_upgrades[played_card.base.value]
 
             if rank_upgrade then
-                abn_dollar_bonus = abn_dollar_bonus + (rank_upgrade.abn_dollars or 0)
+                abn_apply_planet_effects(rank_upgrade, played_card)
+
+                local dollars = rank_upgrade.abn_dollars or 0
+                if dollars ~= 0 then
+                    ease_dollars(dollars)
+                end
             end
         end
-    end
-
-    if abn_dollar_bonus ~= 0 then
-        ease_dollars(abn_dollar_bonus)
     end
 '''
