@@ -11098,6 +11098,7 @@ return {
         text = {
           "{C:planet}Planet{} packs and {C:planet}Planet{} cards cost {C:attention}twice{} as much",
 		  "but they have a {C:green}#1# in #2#{} chance to spawn with {C:dark_edition}Foil Edition{}",
+		  "Unlock {C:attention}Planet Transfer{}",
 		}
       },
 	  
@@ -11119,6 +11120,32 @@ return {
           "{C:attention}Discontinued Cards{} trigger their effect while {C:attention}held in hand{}",
 		}
       },
+	  
+	  j_abn_educated_joker = {
+        name = "Educated Joker",
+        text = {
+          {
+			"Gives the hand's {C:chips}Chips{} as {C:mult}Mult{}",
+			"and its {C:mult}Mult{} as {C:chips}Chips{}",
+		  },
+		  {
+			"Scoring cards with {C:dark_edition}Reversal{} Edition give",
+			"half of their {C:chips}Chip{} value as {C:mult}Mult{}",
+		  },
+		  {
+			"If this Joker has {C:dark_edition}Reversal{} Edition",
+			"each Joker gives its {C:money}sell value{} {C:attention}X#1#{} as {C:purple}Score{} when it triggers",
+		  }
+		}
+      },
+	  
+	  j_abn_extra_support = {
+        name = "Extra Support",
+        text = {
+          "{C:attention}+1{} hand size and card selection",
+          "for every {C:attention}#1#{} Jokers owned",
+		}
+      }
 	  
     },
 	Other = {
