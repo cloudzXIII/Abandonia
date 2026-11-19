@@ -1716,3 +1716,344 @@ SMODS.Voucher {
 		artist = "0kronix",
 	},
 }
+
+local new_frontier_set_cost_ref = Card.set_cost
+function Card:set_cost()
+    new_frontier_set_cost_ref(self)
+
+    if self.ability and G.jokers and G.GAME.used_vouchers then
+        local has_new_frontier = G.GAME.used_vouchers.v_abn_new_frontier
+        local has_dangerous_voyage = G.GAME.used_vouchers.v_abn_dangerous_voyage
+
+        local is_planet = self.ability.set == "Planet"
+        local is_celestial_pack = self.ability.set == "Booster"
+            and self.config and self.config.center
+            and self.config.center.kind == "Celestial"
+
+        if is_planet or is_celestial_pack then
+            if has_new_frontier then
+                self.cost = self.cost * 2
+            end
+
+            if has_dangerous_voyage then
+                self.cost = self.cost + 5
+            end
+        end
+    end
+end
+
+local vanilla_editions = {
+    "e_foil",
+    "e_holo",
+    "e_polychrome",
+    "e_negative",
+}
+
+local function get_modded_editions()
+    local editions = {}
+
+    for _, edition in ipairs(G.P_CENTER_POOLS.Edition) do
+        if edition.key ~= "e_foil"
+            and edition.key ~= "e_holo"
+            and edition.key ~= "e_polychrome"
+            and edition.key ~= "e_negative"
+            and edition.in_shop then
+            editions[#editions + 1] = edition.key
+        end
+    end
+
+    return editions
+end
+
+local function new_frontier_apply_edition(card, seed)
+    if not card or card.edition or not G.GAME.used_vouchers then
+        return
+    end
+
+    local dangerous_voyage = SMODS.find_card('v_abn_dangerous_voyage')[1]
+
+    if dangerous_voyage then
+        local modded_odds = dangerous_voyage.ability.extra.modded_odds
+        local vanilla_odds = dangerous_voyage.ability.extra.vanilla_odds
+
+        local roll = pseudorandom(seed)
+
+        if roll < 1 / modded_odds then
+            local modded_editions = get_modded_editions()
+
+            if #modded_editions > 0 then
+                local edition = SMODS.poll_edition({
+                    key = seed .. '_modded',
+                    guaranteed = true,
+                    options = modded_editions,
+                })
+
+                if edition then
+                    card:set_edition(edition, true, true)
+                end
+            end
+
+        elseif roll < (1 / modded_odds) + (1 / vanilla_odds) then
+            local edition = SMODS.poll_edition({
+                key = seed .. '_vanilla',
+                guaranteed = true,
+                options = vanilla_editions,
+            })
+
+            if edition then
+                card:set_edition(edition, true, true)
+            end
+        end
+
+    else
+        local new_frontier = SMODS.find_card('v_abn_new_frontier')[1]
+
+        if new_frontier and SMODS.pseudorandom_probability(
+            new_frontier,
+            'new_frontier',
+            1,
+            new_frontier.ability.extra.odds,
+            'new_frontier'
+        ) then
+            local edition = SMODS.poll_edition({
+                key = seed .. '_vanilla',
+                guaranteed = true,
+                options = vanilla_editions,
+            })
+
+            if edition then
+                card:set_edition(edition, true, true)
+            end
+        end
+    end
+end
+
+local new_frontier_create_card_ref = create_card
+function create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
+    local ret = new_frontier_create_card_ref(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
+
+    if ret and ret.ability and ret.ability.set == "Planet"
+        and G.GAME.used_vouchers
+        and G.GAME.used_vouchers.v_abn_new_frontier then
+
+        new_frontier_apply_edition(ret, 'new_frontier_planet')
+    end
+
+    return ret
+end
+
+local new_frontier_create_shop_card_ui_ref = create_shop_card_ui
+function create_shop_card_ui(card, type, area)
+    if card and card.ability and card.ability.set == "Booster"
+        and not card.edition
+        and card.config and card.config.center
+        and card.config.center.kind == "Celestial"
+        and G.GAME.used_vouchers
+        and G.GAME.used_vouchers.v_abn_new_frontier then
+
+        new_frontier_apply_edition(card, 'new_frontier_pack')
+    end
+
+    return new_frontier_create_shop_card_ui_ref(card, type, area)
+end
+
+
+SMODS.Voucher {
+    key = 'new_frontier',
+    atlas = 'AbandoniaVouchers',
+    pos = { x = 1, y = 4 },
+    config = {
+        extra = {
+            odds = 6,
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(
+            card, 1, card.ability.extra.odds, 'new_frontier'
+        )
+
+        return {
+            vars = { numerator, denominator }
+        }
+    end,
+
+    abn_artist_credits = {
+        artist = "Littlesamu",
+    },
+}
+
+SMODS.Voucher {
+    key = 'dangerous_voyage',
+    atlas = 'AbandoniaVouchers',
+    pos = { x = 2, y = 4 },
+    requires = { 'v_abn_new_frontier' },
+
+    config = {
+        extra = {
+            cost = 5,
+            vanilla_odds = 3,
+            modded_odds = 6,
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        local vanilla_num, vanilla_den = SMODS.get_probability_vars(
+            card, 1, card.ability.extra.vanilla_odds, 'dangerous_voyage_vanilla'
+        )
+
+        local modded_num, modded_den = SMODS.get_probability_vars(
+            card, 1, card.ability.extra.modded_odds, 'dangerous_voyage_modded'
+        )
+
+        return {
+            vars = {
+                card.ability.extra.cost,
+                vanilla_num,
+                vanilla_den,
+                modded_num,
+                modded_den,
+            }
+        }
+    end,
+
+    abn_artist_credits = {
+        artist = "Littlesamu",
+    },
+}
+
+local perpetuity_set_cost_ref = Card.set_cost
+function Card:set_cost()
+    perpetuity_set_cost_ref(self)
+
+    if self.ability and self.ability.set == "Voucher" and G.GAME and G.GAME.used_vouchers then
+        if G.GAME.used_vouchers.v_abn_perpetuity then
+            self.cost = math.max(1, math.floor(self.cost * (1 - G.P_CENTERS.v_abn_perpetuity.config.extra.discount / 100)))
+        end
+        if G.GAME.used_vouchers.v_abn_recursion then
+            self.cost = math.max(1, math.floor(self.cost * (1 - G.P_CENTERS.v_abn_recursion.config.extra.discount / 100)))
+        end
+    end
+end
+
+function ABN.spawn_shop_vouchers(amount)
+    if not G.shop_vouchers then return end
+    G.shop_vouchers.config.card_limit = G.shop_vouchers.config.card_limit + amount
+
+    for _ = 1, amount do
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                if not G.shop_vouchers then return true end
+                local voucher_key = get_next_voucher_key()
+                if G.GAME.current_round.voucher and G.GAME.current_round.voucher.spawn then
+                    G.GAME.current_round.voucher.spawn[voucher_key] = true
+                end
+
+                local voucher_card = Card(G.shop_vouchers.T.x + G.shop_vouchers.T.w / 2, G.shop_vouchers.T.y,
+                    G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[voucher_key],
+                    { bypass_discovery_center = true, bypass_discovery_ui = true })
+                voucher_card.shop_voucher = true
+                create_shop_card_ui(voucher_card, 'Voucher', G.shop_vouchers)
+                voucher_card:start_materialize()
+                G.shop_vouchers:emplace(voucher_card)
+                return true
+            end
+        }))
+    end
+end
+
+function ABN.reprice_shop_vouchers()
+    if not G.shop_vouchers then return end
+    for _, shop_card in ipairs(G.shop_vouchers.cards) do
+        shop_card:set_cost()
+    end
+end
+
+SMODS.Voucher {
+    key = 'perpetuity',
+    atlas = 'AbandoniaVouchers',
+    pos = { x = 3, y = 4 },
+
+    config = {
+        extra = {
+            discount = 25,
+            vouchers = 1,
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.discount,
+                card.ability.extra.vouchers,
+            }
+        }
+    end,
+
+    redeem = function(self, card)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                ABN.reprice_shop_vouchers()
+                if G.shop_vouchers then
+                    ABN.spawn_shop_vouchers(card.ability.extra.vouchers)
+                end
+                return true
+            end
+        }))
+    end,
+
+    calculate = function(self, card, context)
+        if context.starting_shop then
+            ABN.spawn_shop_vouchers(card.ability.extra.vouchers)
+        end
+    end,
+
+    abn_artist_credits = {
+        artist = "Littlesamu",
+    },
+}
+
+SMODS.Voucher {
+    key = 'recursion',
+    atlas = 'AbandoniaVouchers',
+    pos = { x = 4, y = 4 },
+
+    requires = { 'v_abn_perpetuity' },
+
+    config = {
+        extra = {
+            discount = 30,
+            vouchers = 2,
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.discount,
+                card.ability.extra.vouchers,
+            }
+        }
+    end,
+
+    redeem = function(self, card)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                ABN.reprice_shop_vouchers()
+                return true
+            end
+        }))
+    end,
+
+    calculate = function(self, card, context)
+        if context.reroll_shop and G.shop_vouchers and #G.shop_vouchers.cards == 0 then
+            ABN.spawn_shop_vouchers(card.ability.extra.vouchers)
+        end
+    end,
+
+    abn_artist_credits = {
+        artist = "Littlesamu",
+    },
+}
