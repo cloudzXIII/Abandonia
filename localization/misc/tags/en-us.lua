@@ -539,6 +539,13 @@ return {
           "{C:algebraic}Algebraic Pack",
         }
       },
+      tag_abn_mercantile = {
+        name = "Mercantile Tag",
+        text = {
+          "Gives a free",
+          "{C:mercantile}Mercantile Pack",
+        }
+      },
       tag_abn_patch = {
         name = "Patch Tag",
         text = {
