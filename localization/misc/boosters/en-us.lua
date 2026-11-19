@@ -592,6 +592,30 @@ return {
           "be used immediately",
         },
       },
+      p_abn_mercantile_normal = {
+        name = "Mercantile Pack",
+        text = {
+          "Choose {C:attention}#1#{} of up to",
+          "{C:attention}#2# {C:mercantile}Mercantile{} cards to",
+          "be used immediately",
+        },
+      },
+      p_abn_mercantile_jumbo = {
+        name = "Jumbo Mercantile Pack",
+        text = {
+          "Choose {C:attention}#1#{} of up to",
+          "{C:attention}#2# {C:mercantile}Mercantile{} cards to",
+          "be used immediately",
+        },
+      },
+      p_abn_mercantile_mega = {
+        name = "Mega Mercantile Pack",
+        text = {
+          "Choose {C:attention}#1#{} of up to",
+          "{C:attention}#2# {C:mercantile}Mercantile{} cards to",
+          "be used immediately",
+        },
+      },
     }
   },
   misc = {
@@ -614,6 +638,7 @@ return {
       k_abn_artistry_pack = "Artistry Pack",
       k_abn_crepuscular_pack = "Crepuscular Pack",
       k_abn_algebraic_pack = "Algebraic Pack",
+      k_abn_mercantile_pack = "Mercantile Pack",
       -- kiddy pack thingys
       k_standard_kiddy = "Kiddy Standard Pack",
       k_arcana_kiddy = "Kiddy Arcana Pack",

@@ -103,6 +103,61 @@ return {
           "in scoring {C:spades}Dark Suits{}"
         }
       },
+      e_abn_glitter = {
+        name = "Glitter",
+        text = {
+          "Gives {C:purple}+Score{} equal to the sum",
+          "of played {C:attention}poker hand{}'s base {C:chips}Chips",
+          "and {C:mult}Mult{}, multiplied by {C:purple}X#1#"
+        }
+      },
+      e_abn_sparkling = {
+        name = "Sparkling",
+        text = {
+          "{C:mult}+#1#{} Mult per hand type that",
+          "played {C:attention}poker hand{} contains"
+        }
+      },
+      e_abn_rgb = {
+        name = "RGB",
+        text = {
+          "Gives {X:chips,C:white}XChips{} and {X:mult,C:white}XMult{} equal to the",
+          "played {C:attention}poker hand{}'s base {C:chips}Chips{} and {C:mult}Mult",
+        }
+      },
+      e_abn_ultraviolet = {
+        name = "Ultraviolet",
+        text = {
+          "Gives {C:chips}Chips{} and {C:mult}Mult{} equal",
+          "to the highest level {C:attention}poker",
+          "{C:attention}hand{}'s base {C:chips}Chips{} and {C:mult}Mult",
+          "{C:inactive}(Pulls from {C:attention}Flush{C:inactive} if all are tied)"
+        }
+      },
+      e_abn_fragmented = {
+        name = "Fragmented",
+        text = {
+          "This card grants {C:chips}#1#%{} more Chips",
+          "if it is the {C:attention}leftmost{} card, and",
+          "{C:mult}#2#%{} more Mult if it is the {C:attention}rightmost"
+        }
+      },
+      e_abn_fragmented_pc = {
+        name = "Fragmented",
+        text = {
+          "This playing card grants {C:chips}#1#%{} more Chips",
+          "if it is the {C:attention}leftmost{} scoring card, and",
+          "{C:mult}#2#%{} more Mult if it is the {C:attention}rightmost"
+        }
+      },
+      e_abn_fragmented_joker = {
+        name = "Fragmented",
+        text = {
+          "This joker grants {C:chips}#1#%{} more Chips",
+          "if it is the {C:attention}leftmost{} joker, and",
+          "{C:mult}#2#%{} more Mult if it is the {C:attention}rightmost"
+        }
+      },
     },
   },
   misc = {
@@ -122,6 +177,11 @@ return {
       abn_vintage = "Vintage",
       abn_bright = "Bright",
       abn_opaque = "Opaque",
+      abn_rgb = "RGB",
+      abn_ultraviolet = "Ultraviolet",
+      abn_fragmented = "Fragmented",
+      abn_sparkling = "Sparkling",
+      abn_glitter = "Glitter",
     }
   }
 }

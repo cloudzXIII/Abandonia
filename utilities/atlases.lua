@@ -265,6 +265,7 @@ SMODS.Atlas({
   px = 71,
   py = 95,
 })
+
 SMODS.Atlas({
   key = "AbandoniaAlgebraicPack",
   path = "math packs.png",
@@ -292,6 +293,7 @@ SMODS.Atlas({
   px = 71,
   py = 95,
 })
+
 SMODS.Atlas({
   key = "AbandoniaCrimsonPack",
   path = "crimson_packs.png",
@@ -300,8 +302,8 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
-  key = "AbandoniaCrimsonPack",
-  path = "crimson_packs.png",
+  key = "AbandoniaMercantilePack",
+  path = "mercantile_packs.png",
   px = 71,
   py = 95,
 })
@@ -312,12 +314,14 @@ SMODS.Atlas({
   px = 71,
   py = 95,
 })
+
 SMODS.Atlas({
   key = "AbandoniaNumeralCalligraphy",
   path = "caligraphy_numbers.png",
   px = 71,
   py = 95,
 })
+
 SMODS.Atlas({
   key = "AbandoniaCalligraphyPack",
   path = "caligraphy_booster.png",
@@ -338,12 +342,14 @@ SMODS.Atlas({
   px = 71,
   py = 95,
 })
+
 SMODS.Atlas({
   key = "AbandoniaAtomic",
   path = "atomic.png",
   px = 71,
   py = 95,
 })
+
 SMODS.Atlas({
   key = "AbandoniaAtomicPack",
   path = "atomic_packs.png",
@@ -385,7 +391,6 @@ SMODS.Atlas({
   px = 71,
   py = 95,
 })
-
 
 SMODS.Atlas({
   key = "AbandoniaWeatherPack",

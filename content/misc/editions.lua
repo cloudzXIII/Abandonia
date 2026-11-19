@@ -568,75 +568,175 @@ SMODS.Shader({key = 'ultraviolet', path = 'ultraviolet.fs'})
 SMODS.Shader({key = 'rgb', path = 'rgb.fs'})
 SMODS.Shader({key = 'fragmented', path = 'fragmented.fs'})
 
-local is_es = (G.SETTINGS and (G.SETTINGS.language == 'es_419' or G.SETTINGS.language == 'es_ES'))
 SMODS.Edition {
     key = 'rgb',
     shader = 'rgb',
     in_shop = true,
-    weight = 1,
-    extra_cost = 2,
-    loc_txt = {
-        name = "RGB",
-        text = { "shader" }
-    },
-    get_weight = function(self) return G.GAME.edition_rate * self.weight end
+    weight = 1.3,
+    extra_cost = 5,
+    calculate = function(self, card, context)
+        if context.post_joker or (context.main_scoring and context.cardarea == G.play) then
+			local h = G.GAME.hands[context.scoring_name]
+        	return {
+				xmult = h.mult,
+				xchips = h.chips
+			}
+		end
+	end
 }
 
-local is_es = (G.SETTINGS and (G.SETTINGS.language == 'es_419' or G.SETTINGS.language == 'es_ES'))
+SMODS.Sound({
+	key = "ultraviolet",
+	path = "ultraviolet.ogg",
+})
+
 SMODS.Edition {
     key = 'ultraviolet',
     shader = 'ultraviolet',
     in_shop = true,
-    weight = 1,
-    extra_cost = 2,
-    loc_txt = {
-        name = is_es and "Ultravioleta" or "Ultraviolet",
-        text = { "shader" }
-    },
-    get_weight = function(self) return G.GAME.edition_rate * self.weight end
+    weight = 1.1,
+    extra_cost = 6,
+	sound = {sound = "abn_ultraviolet", percent = 0.6, volume = 1},
+    calculate = function(self, card, context)
+        if context.post_joker or (context.main_scoring and context.cardarea == G.play) then
+            local default = G.GAME.hands["High Card"].level
+			for k, v in pairs(G.GAME.hands) do
+				if SMODS.is_poker_hand_visible(k) and v.level ~= default then
+					default = nil
+					break
+				end
+			end
+			local h = G.GAME.hands[default and "Flush" or ABN.highest_level_hand()]
+        	return {
+				mult = h.mult,
+				chips = h.chips
+			}
+		end
+	end
 }
 
-local is_es = (G.SETTINGS and (G.SETTINGS.language == 'es_419' or G.SETTINGS.language == 'es_ES'))
+local function fragment_card(card, effect, context)
+	local c, m = false, false
+	if card.ability and card.ability.set == "Joker" then
+		if card == ABN.get_leftmost_joker() then
+			c = true
+		end
+		if card == ABN.get_rightmost_joker() then
+			m = true
+		end
+	elseif card.playing_card and context.scoring_hand then
+		if card == context.scoring_hand[1] then
+			c = true
+		end
+		if card == context.scoring_hand[#context.scoring_hand] then
+			m = true
+		end
+	elseif card.area then
+		if card == card.area.cards[1] then
+			c = true
+		end
+		if card == card.area.cards[#card.area.cards] then
+			m = true
+		end
+	end
+	if not c and not m then return end
+	local ret_num_cache = {}
+	for k, v in pairs(effect) do
+		if (c and ABN.chips_to_mult[k]) or (m and ABN.mult_to_chips[k]) then
+			ret_num_cache[k] = tostring(v):gsub("%.", "%%.")
+			effect[k] = v * (100 + card.edition.pchips) / 100
+		end
+	end
+	if effect.message then
+		for k, v in pairs(ret_num_cache) do
+			effect.message = effect.message:gsub(v, tostring(effect[k]))
+		end
+	end
+end
+
+local old_eval_card = eval_card
+function eval_card(card, context)
+    local ret, post = old_eval_card(card, context)
+	if card and card.edition and card.edition.key == "e_abn_fragmented" then
+		for cat, effect in pairs(ret or {}) do
+			if cat ~= "jokers" and cat ~= "retriggers" then
+				fragment_card(card, effect, context)
+			end
+		end
+	end
+    return ret, post
+end
+
 SMODS.Edition {
     key = 'fragmented',
     shader = 'fragmented',
     in_shop = true,
     weight = 1,
     extra_cost = 2,
-    loc_txt = {
-        name = is_es and "Fragmentada" or "Fragmented",
-        text = { "shader" }
-    },
-    get_weight = function(self) return G.GAME.edition_rate * self.weight end
+	config = { pchips = 20, pmult = 20 },
+    loc_vars = function(self, info_queue, card)
+        local cfg = card and card.edition or self.config
+		local ret = {vars = {cfg.pchips, cfg.pmult}}
+		if card and card.playing_card then
+			ret.key = self.key.."_pc"
+		elseif card and card.ability and card.ability.set == "Joker" then
+			ret.key = self.key.."_joker"
+		end
+		return ret
+    end,
+    calculate = function(self, card, context)
+		if context.abn_alter_effect and (not card.playing_card and (context.card == card or context.abn_alter_effect.card == card or context.abn_alter_effect.juice_card == card)) then
+			fragment_card(card, context.abn_alter_effect, context)
+		end
+	end
 }
 
-local is_es = (G.SETTINGS and (G.SETTINGS.language == 'es_419' or G.SETTINGS.language == 'es_ES'))
 SMODS.Edition {
     key = 'sparkling',
     shader = 'sparkling',
     in_shop = true,
-    weight = 1,
-    extra_cost = 2,
+    weight = 1.5,
+    extra_cost = 4,
+	config = { mult = 20 },
     loc_vars = function(self, info_queue, card)
-        return { vars = {} }
+        local cfg = card and card.edition or self.config
+		return {vars = {cfg.mult}}
     end,
-    loc_txt = {
-        name = is_es and "Spark" or "Sparkling",
-        text = { "shader" }
-    },
-    get_weight = function(self) return G.GAME.edition_rate * self.weight end
+    calculate = function(self, card, context)
+        if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+			local count = 0
+			local _, _, hands = G.FUNCS.get_poker_hand_info(#G.play.cards > 0 and G.play.cards or G.hand.highlighted)
+			for _, h in pairs(hands) do
+				if next(h) then
+					count = count + 1
+				end
+			end
+        	return {mult = card.edition.mult * count}
+		end
+	end
 }
 
-local is_es = (G.SETTINGS and (G.SETTINGS.language == 'es_419' or G.SETTINGS.language == 'es_ES'))
+SMODS.Sound({
+	key = "glitter",
+	path = "glitter.ogg",
+})
+
 SMODS.Edition {
     key = 'glitter',
     shader = 'glitter',
     in_shop = true,
-    weight = 1,
+    weight = 1.7,
     extra_cost = 2,
-    loc_txt = {
-        name = is_es and "Glitter" or "Glitter",
-        text = { "shader" }
-    },
-    get_weight = function(self) return G.GAME.edition_rate * self.weight end
+	sound = {sound = "abn_glitter", percent = 1, volume = 1},
+	config = { score_mult = 100 },
+    loc_vars = function(self, info_queue, card)
+        local cfg = card and card.edition or self.config
+		return {vars = {cfg.score_mult}}
+    end,
+    calculate = function(self, card, context)
+        if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+			local h = G.GAME.hands[context.scoring_name]
+        	return {score = (h.mult + h.chips) * card.edition.score_mult}
+		end
+	end
 }

@@ -41,55 +41,7 @@ SMODS.Scoring_Calculation{
 	    return chips * mult * SMODS.get_scoring_parameter(self.mod.prefix..'_amp', flames)
 	end,
     parameters = {'chips', 'mult', SMODS.current_mod.prefix..'_amp'},
-    replace_ui = function (self) 
-        local scaledown = 0.75
-        local w = 2
-        local h = 1
-		local scale = 0.4
-        return
-        {n=G.UIT.R, config={align = "cm", minh = 1, padding = 0.1}, nodes={
-            {n=G.UIT.C, config={align = 'cm'}, nodes = { 
-                {n=G.UIT.R, config={align = 'cm', id = 'hand_chips'}, nodes={
-                    SMODS.GUI.score_container({
-                        type = 'chips',
-                        text = 'chip_text',
-                        align = 'cr',
-                        w = w * scaledown,
-                        h = h * scaledown,
-						scale = scale * scaledown,
-                    })
-                }},
-            }},
-            {n=G.UIT.C, config={align = 'cm'}, nodes = { 
-                SMODS.GUI.operator(scale * scaledown)
-            }},
-            {n=G.UIT.C, config={align = 'cm'}, nodes = { 
-                {n=G.UIT.R, config={align = 'cm', id = 'hand_mult'}, nodes={
-                    SMODS.GUI.score_container({
-                        type = 'mult',
-                        align = 'cl',
-                        w = w * scaledown,
-                        h = h * scaledown,
-						scale = scale * scaledown,
-                    })
-                }},
-            }},
-			{n=G.UIT.C, config={align = "cl", id = 'hand_operator_container'}, nodes={
-				{n=G.UIT.T, config={text = "X", scale = scale * 1.25 * scaledown, colour = G.C.ABN_AMPERAGE, shadow = true}},
-			}},
-            {n=G.UIT.C, config={align = 'cm'}, nodes = { 
-			{n=G.UIT.R, config={align = 'cl', id = 'hand_abn_amp'}, nodes={
-				SMODS.GUI.score_container({
-					type = 'abn_amp',
-					align = 'cl',
-					w = 0.75,
-					h = h * scaledown,
-					scale = scale * 0.75 * scaledown
-				})
-			}},
-        }},
-	}}
-    end
+    -- See utilities/modulate.lua for how the UI is defined.
 }
 
 local start_run_ref = Game.start_run
