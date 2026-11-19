@@ -2,7 +2,7 @@
 ABN = ABN or {}
 
 function ABN.has_planet_transfer()
-    return next(SMODS.find_card('j_abn_rudimentary_joker')) ~= nil
+    return next(SMODS.find_card('j_abn_rudimentary_joker')) or next(SMODS.find_card('v_abn_new_frontier'))
 end
 
 ABN.planet_edition_blacklist = {}
