@@ -301,6 +301,35 @@ return {
 		  "Raise all {C:attention}Blind Requirements{} by {C:attention}10%{} per {C:attention}Ante{}",
         }
       },
+	  v_abn_new_frontier = {
+        name = "New Frontier",
+        text = {
+          "Unlock {C:attention}Planet Transfer",
+		  "{C:planet}Planets{} and {C:planet}Planet{} Packs cost {C:attention}twice{} as much",
+		  "{C:green}#1# in #2#{} for them to have {C:attention}Vanilla{} {C:dark_edition}Editions{}",
+        }
+      },
+	  v_abn_dangerous_voyage = {
+        name = "Dangerous Voyage",
+        text = {
+          "Increases the {C:money}cost{} of all {C:planet}Planet{} cards and {C:planet}Planet{} packs by {C:money}$#1#{}",
+		  "{C:green}#2# in #3#{} have {C:attention}Modded{} {C:dark_edition}Editions{} and {C:green}#4# in #5#{} have {C:attention}Vanilla{} {C:dark_edition}Editions{}",
+        }
+      },
+	  v_abn_perpetuity = {
+        name = "Perpetuity",
+        text = {
+          "Reduce the {C:money}price{} of all Vouchers by {C:attention}#1#%{}",
+		  "add {C:attention}1{} extra Voucher Slot to the shop",
+        }
+      },
+	  v_abn_recursion = {
+        name = "Recursion",
+        text = {
+          "Reduce the {C:money}price{} of all Vouchers by {C:attention}#1#%{}",
+		  "after shop is {C:green}rerolled{} with no Vouchers spawn {C:attention}#2#{} Vouchers",
+        }
+      },
       --#endregion
 
 	  --#region Jimbo Stakes
