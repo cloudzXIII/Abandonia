@@ -667,12 +667,18 @@ function eval_card(card, context)
     return ret, post
 end
 
+SMODS.Sound({
+	key = "fragmented",
+	path = "fragmented.ogg",
+})
+
 SMODS.Edition {
     key = 'fragmented',
     shader = 'fragmented',
     in_shop = true,
-    weight = 1,
-    extra_cost = 2,
+    weight = 1.2,
+    extra_cost = 4,
+	sound = {sound = "abn_fragmented", percent = 1, volume = 1},
 	config = { pchips = 20, pmult = 20 },
     loc_vars = function(self, info_queue, card)
         local cfg = card and card.edition or self.config
