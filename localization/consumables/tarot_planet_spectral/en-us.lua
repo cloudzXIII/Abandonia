@@ -763,6 +763,52 @@ return {
           },
         }
       },
+      c_abn_dualism = {
+        name = "Dualism",
+        text = {
+          "{C:attention}Leftmost{} Joker gains {C:dark_edition}Bright{},",
+          "{C:attention}Rightmost{} Joker gains {C:dark_edition}Opaque",
+        }
+      },
+      c_abn_spiral = {
+        name = "Spiral",
+        text = {
+		  "Selected {C:attention}Joker{} gains {C:dark_edition}Reel{}, and a number",
+		  "of random cards in your full deck become",
+		  "{C:red}debuffed{}, equal to number of owned jokers"
+        }
+      },
+      c_abn_super_ego = {
+        name = "Super Ego",
+        text = {
+		  "Selected {C:attention}Joker{} gains {C:dark_edition}Fragmented{}, and a",
+		  "number of random cards held in hand are",
+		  "{C:attention}destroyed{}, equal to number of owned jokers"
+        }
+      },
+      c_abn_minus_id = {
+        name = "Minus ID",
+        text = {
+		  "Selected {C:attention}Joker{} gains {C:dark_edition}Glitter{}, and a",
+		  "number of random cards held in hand become",
+		  "{C:attention}Flipped{}, equal to number of owned jokers"
+        }
+      },
+      c_abn_jamais_vu = {
+        name = "Jamais Vu",
+        text = {
+		  "Selected {C:attention}Joker{} gains {C:dark_edition}Ultraviolet{}, and a",
+		  "number of random cards held in hand become",
+		  "{C:red}debuffed{}, equal to number of owned jokers"
+        }
+      },
+      c_abn_entendu = {
+        name = "Entendu",
+        text = {
+		  "Selected {C:attention}Joker{} gains {C:dark_edition}RGB{},",
+		  "all other jokers become {C:attention}Flipped"
+        }
+      },
     },
   }
 }
