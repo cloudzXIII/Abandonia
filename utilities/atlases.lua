@@ -105,7 +105,7 @@ SMODS.Atlas({
 
 SMODS.Atlas({
   key = 'AbandoniaBlinds',
-  path = 'blinds.png',
+  path = 'blinds/blinds.png',
   px = 34,
   py = 34,
   frames = 21,
@@ -114,7 +114,7 @@ SMODS.Atlas({
 
 SMODS.Atlas({
   key = 'AbandoniaBlinds2',
-  path = 'blinds2.png',
+  path = 'blinds/blinds2.png',
   px = 34,
   py = 34,
   frames = 21,
@@ -123,7 +123,7 @@ SMODS.Atlas({
 
 SMODS.Atlas({
   key = 'InvasionBlinds',
-  path = 'blindstwo.png',
+  path = 'blinds/blindstwo.png',
   px = 34,
   py = 34,
   frames = 21,
@@ -132,14 +132,14 @@ SMODS.Atlas({
 
 SMODS.Atlas({
   key = 'NewestiaBlinds',
-  path = 'square_blinds_2.png',
+  path = 'blinds/square_blinds_2.png',
   px = 66,
   py = 66,
 })
 
 SMODS.Atlas({
   key = 'NewestiaHazards',
-  path = 'runic_blinds.png',
+  path = 'blinds/runic_blinds.png',
   px = 71,
   py = 71,
   frames = 40,
@@ -436,7 +436,7 @@ SMODS.Atlas({
 
 SMODS.Atlas({
   key = "abn_hidden_blind",
-  path = "hidden_blind.png",
+  path = "blinds/hidden_blind.png",
   px = 34,
   py = 34,
 })
