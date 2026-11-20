@@ -295,7 +295,7 @@ SMODS.Stake({
 			G.GAME.abn_baneful_inflation = (G.GAME.abn_baneful_inflation or 1) * 1.02
 			for _, area in ipairs({G.shop_jokers, G.shop_booster, G.shop_vouchers}) do
 				for _, card in ipairs(area.cards) do
-					card:set_cost_value()
+					if card.cost ~= 0 then card:set_cost_value() end
 				end
 			end
         end
@@ -405,7 +405,7 @@ SMODS.Stake({
 				func = function()
 					for _, area in ipairs({G.shop_jokers, G.shop_booster, G.shop_vouchers}) do
 						for _, card in ipairs(area.cards or {}) do
-							card:set_cost_value()
+							if card.cost ~= 0 then card:set_cost_value() end
 						end
 					end
 					return true

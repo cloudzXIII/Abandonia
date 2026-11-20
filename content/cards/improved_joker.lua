@@ -1,4 +1,4 @@
--- Improved Joker
+-- Shaded Joker, formerly named Improved Joker
 SMODS.Joker {
   key = 'improved_joker',
 

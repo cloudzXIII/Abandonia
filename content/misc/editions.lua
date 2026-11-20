@@ -558,7 +558,7 @@ SMODS.Edition:take_ownership('negative', {
             }
         end
 
-        return { vars = {} }
+        return { vars = {card.edition.card_limit} }
     end
 }, true)
 

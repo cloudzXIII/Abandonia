@@ -625,7 +625,7 @@ SMODS.Enhancement({
   always_scores = false,
 
   in_pool = function(self)
-    return G.GAME.modifiers.Toxic or G.GAME.modifiers.Menacing or G.GAME.modifiers.Honor
+    return G.GAME.modifiers.Honor
   end,
 
   calculate = function(self, card, context)
@@ -635,7 +635,7 @@ SMODS.Enhancement({
       for i = 1, #G.hand.cards do
         local hand_card = G.hand.cards[i]
 
-        if not hand_card.debuff and hand_card.config.center ~= G.P_CENTERS.m_abn_cotton then
+        if not hand_card.debuff and SMODS.has_enhancement(hand_card, "m_abn_cotton") then
           local rank_key = hand_card.base.value
 
           if G.GAME.abn_rank_upgrades and G.GAME.abn_rank_upgrades[rank_key] then

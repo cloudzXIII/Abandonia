@@ -4680,7 +4680,7 @@ return {
       },
 
       j_abn_improved_joker = {
-        name = "Improved Joker",
+        name = "Shaded Joker",
         text = {
           {
             "{X:mult,C:white}X#1#{} Mult {C:attention}before{} scoring",
