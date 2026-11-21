@@ -330,6 +330,40 @@ return {
 		  "after shop is {C:green}rerolled{} with no Vouchers spawn {C:attention}#2#{} Vouchers",
         }
       },
+	  v_abn_broken_abacus = {
+        name = "Broken Abacus",
+        text = {
+          "{C:attention}+#1#{} pick to all {C:attention}modded{} packs",
+		  "{C:green}#2# in #3#{} chance for {C:attention}modded suits{} to",
+		  "give {C:green}+#4#{} Mayhem upon scoring",
+        }
+      },
+	  v_abn_calculation_error = {
+        name = "Calculation Error",
+        text = {
+          "{C:attention}Reroll{} the contents of {C:attention}Booster Packs{}",
+		  "{C:attention}1{} time per pack",
+		  "{C:green}#1# in #2#{} chance for any {C:attention}scoring{} card",
+		  "to give {C:green}+#3#{} Mayhem",
+        }
+      },
+	  v_abn_portable_generator = {
+        name = "Portable Generator",
+        text = {
+          "All {C:attention}Blinds{} gain {C:attention}Vanilla{} {C:dark_edition}Editions{}",
+		  "{C:attention}Consumables{} in {C:attention}Booster Packs{} have a",
+		  "{C:green}#1# in #2#{} chance to appear with {C:attention}Vanilla{} {C:dark_edition}Editions{}",
+        }
+      },
+	  v_abn_industrial_generator = {
+        name = "Industrial Generator",
+        text = {
+          "All {C:attention}Blinds{} gain {C:attention}Modded{} {C:dark_edition}Editions{}",
+		  "All {C:attention}consumables{} in {C:attention}Booster Packs{}",
+		  "will appear with {C:attention}Modded{} {C:dark_edition}Editions{}",
+        }
+      },
+	  
       --#endregion
 
 	  --#region Jimbo Stakes
