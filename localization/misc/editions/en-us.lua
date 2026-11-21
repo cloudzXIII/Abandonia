@@ -158,6 +158,17 @@ return {
           "{C:mult}#2#%{} more Mult if it is the {C:attention}rightmost"
         }
       },
+      e_abn_thermal = {
+        name = "Thermal",
+        text = {
+          "Grants {C:chips}Chips{} and {C:mult}Mult{} equal to the",
+          "played {C:attention}poker hand{}'s combined total",
+          "{C:chips}Chips{} and {C:mult}Mult{} at every level,",
+          "between {C:attention}1{} and its {C:attention}current level",
+          "If its {C:attention}current level{} is {C:attention}1{}, it'll",
+          "add the base {C:mult}Mult{} and {C:chips}Chips{} twice",
+        }
+      },
     },
   },
   misc = {
@@ -182,6 +193,7 @@ return {
       abn_fragmented = "Fragmented",
       abn_sparkling = "Sparkling",
       abn_glitter = "Glitter",
+      abn_thermal = "Thermal",
     }
   }
 }

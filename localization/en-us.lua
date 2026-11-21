@@ -226,8 +226,8 @@ return {
           "in {C:attention}Blinds{}"
         }
       },
-      abn_ultra_ego_info = {
-        name = "Ultra Ego",
+      abn_reach_info = {
+        name = "Reach",
         text = {
           "Can only be used up to",
           "{C:attention}4{} times in a run",

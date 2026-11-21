@@ -42,17 +42,16 @@ SMODS.Joker {
                   set = "Consumeables",
                   seed = "j_abn_abysmal_joker",
                   filter = function(pool)
-                    local filtered = {}
                     for _, obj in ipairs(pool) do
                       if G.P_CENTERS[obj.key] and G.P_CENTERS[obj.key].original_mod then
-                        table.insert(filtered, obj)
+                        obj.key = "UNAVAILABLE"
                       end
                     end
-                    return filtered
+                    return pool
                   end
                 })
               })
-              card:set_edition("e_negative")
+              if card then card:set_edition("e_negative") end
               return true
             end
           }))

@@ -31,6 +31,7 @@ ABN.EnhSticker {
   atlas = "AbandoniaStickers",
   pos = { x = 0, y = 13 },
   badge_colour = HEX("1FAEFF"),
+  abn_vanilla = true,
   
   loc_vars = function(self, info_queue, card)
     return { vars = {self.config.extra.chips}}
@@ -40,7 +41,6 @@ ABN.EnhSticker {
       chips = 30,
     }
   },
-  
   
   calculate = function(self, card, context)
     if context.joker_main then
@@ -56,6 +56,7 @@ ABN.EnhSticker {
   atlas = "AbandoniaStickers",
   pos = { x = 1, y = 13 },
   badge_colour = HEX("FE5F55"),
+  abn_vanilla = true,
   
   loc_vars = function(self, info_queue, card)
     return { vars = {self.config.extra.mult}}
@@ -82,6 +83,7 @@ ABN.EnhSticker {
   atlas = "AbandoniaStickers",
   pos = { x = 2, y = 13 },
   badge_colour = HEX("4F6367"),
+  abn_vanilla = true,
   
   loc_vars = function(self, info_queue, card)
     return { vars = {}}
@@ -99,6 +101,7 @@ ABN.EnhSticker {
   atlas = "AbandoniaStickers",
   pos = { x = 3, y = 13 },
   badge_colour = HEX("CCA757"),
+  abn_vanilla = true,
   
   loc_vars = function(self, info_queue, card)
     return { vars = {self.config.extra.dollars}}
@@ -125,6 +128,7 @@ ABN.EnhSticker {
   atlas = "AbandoniaStickers",
   pos = { x = 4, y = 13 },
   badge_colour = HEX("ADBDD7"),
+  abn_vanilla = true,
   
   loc_vars = function(self, info_queue, card)
     return { vars = {self.config.extra.xmult}}
@@ -150,6 +154,7 @@ ABN.EnhSticker {
   atlas = "AbandoniaStickers",
   pos = { x = 0, y = 14 },
   badge_colour = HEX("B9BDC2"),
+  abn_vanilla = true,
   
   loc_vars = function(self, info_queue, card)
     return { vars = {self.config.extra.chips}}
@@ -180,6 +185,7 @@ ABN.EnhSticker {
   atlas = "AbandoniaStickers",
   pos = { x = 1, y = 14 },
   badge_colour = HEX("89D4E5"),
+  abn_vanilla = true,
   
   loc_vars = function(self, info_queue, card)
     local n, d = SMODS.get_probability_vars(card,self.config.extra.n,self.config.extra.d,"abn_stk_glass",pseudoseed("abn_stk_glass"))
@@ -219,6 +225,7 @@ ABN.EnhSticker {
   atlas = "AbandoniaStickers",
   pos = { x = 2, y = 14 },
   badge_colour = HEX("5EA07D"),
+  abn_vanilla = true,
   
   loc_vars = function(self, info_queue, card)
     local n, d = SMODS.get_probability_vars(card,self.config.extra.n,self.config.extra.d,"abn_stk_lucky",pseudoseed("abn_stk_lucky"))

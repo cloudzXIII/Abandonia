@@ -100,6 +100,19 @@ return {
 		  }
         }
       },
+      c_abn_reach = {
+        name = "Reach",
+        text = {
+          {
+            "All shops have {C:attention}#1#{} extra Booster Pack Slot,",
+            "{C:attention}#2#{} extra Card Slot, and {C:attention}#3#{} extra Voucher Slot"
+          },
+          {
+            "All jokers and playing cards in",
+            "your full deck become {C:attention}Flipped"
+          }
+        }
+      },
       --#region Newestia
       c_abn_psychosis = {
         name = "Psychosis",

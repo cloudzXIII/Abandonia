@@ -613,6 +613,73 @@ SMODS.Consumable {
 }
 
 SMODS.Consumable {
+  key = "reach",
+  set = "nightshift_cards",
+  config = { extra = { bs = 1, cs = 1, vs = 1 } },
+  pos = { x = 1, y = 2 },
+  atlas = "AbandoniaNightshift",
+  cost = 4,
+  discovered = false,
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = "abn_flipped_card", set = "Other" }
+    info_queue[#info_queue + 1] = { key = "abn_reach_info", set = "Other", vars = { G.GAME.abn_reaches_used or 0 } }
+    local cae = card.ability.extra
+    return {vars = {cae.bs, cae.cs, cae.vs}}
+  end,
+  can_use = function(self, card)
+    return G.playing_cards and #G.playing_cards > 0 and (G.GAME.abn_reaches_used or 0) < 4
+  end,
+  in_pool = function(self, args)
+    return (G.GAME.abn_reaches_used or 0) < 4
+  end,
+  use = function(self, card, area, copier)
+    local used_tarot = copier or card
+
+    local cae = card.ability.extra
+    SMODS.change_booster_limit(cae.bs)
+    change_shop_size(cae.cs)
+    SMODS.change_voucher_limit(cae.vs)
+    G.GAME.abn_reaches_used = (G.GAME.abn_reaches_used or 0) + 1
+
+    ABN.all_jokers(function(joker)
+      if not joker.ability.abn_perma_flipped then
+        if joker.facing == 'front' then
+          joker:flip()
+        end
+        joker.ability.abn_perma_flipped = true
+      end
+    end)
+
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        used_tarot:juice_up(0.3, 0.5)
+
+        for i = 1, #G.playing_cards do
+          local v = G.playing_cards[i]
+
+          v:juice_up(0.3, 0.3)
+
+          if not v.ability.abn_perma_flipped then
+            if v.facing == 'front' then
+              v:flip()
+            end
+            v.ability.abn_perma_flipped = true
+          end
+        end
+
+        return true
+      end
+    }))
+  end,
+  abn_artist_credits = {
+    artist = "Heisenburger",
+  },
+}
+
+SMODS.Consumable {
   key = "psychosis",
   set = "nightshift_cards",
   pos = { x = 0, y = 1 },

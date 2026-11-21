@@ -829,14 +829,12 @@ SMODS.Voucher({
 				type = "Voucher",
 				seed = "v_abn_out_of_stock",
 				filter = function(pool)
-					local filtered = {}
 					for _, obj in pairs(pool) do
 						if G.P_CENTERS[obj.key] and G.P_CENTERS[obj.key].original_mod then
-                        	table.insert(filtered, obj)
+                        	obj.key = "UNAVAILABLE"
                     	end
 					end
-					if #filtered == 0 then filtered[1] = "v_blank" end --Prevents crash from returning an empty pool
-					return filtered
+					return pool
 				end
 			})
 			if voucher and voucher ~= "v_blank" then

@@ -593,7 +593,8 @@ return {
           "{C:dark_edition}Editions{} and {C:attention}seals{}"
         }
       },
-      c_abn_super_id = {
+--[[
+      c_abn_super_id = { --This effect will be given to a different consumable
         name = "Super ID",
         text = {
           "Add {C:dark_edition}Gloss{}, {C:dark_edition}Iridescent{},",
@@ -601,6 +602,7 @@ return {
           "{C:attention}#1#{} selected card in hand",
         },
       },
+--]]
 	  c_abn_distortion = {
         name = "Distortion",
         text = {
@@ -698,15 +700,6 @@ return {
           "your {C:attention}most played{} hand",
         }
       },
-      c_abn_ultra_ego = {
-        name = "Ultra Ego",
-        text = {
-          "{C:attention}+1{} Booster Pack slot,",
-          "All {C:attention}Jokers{} and cards in",
-          "your {C:attention}full deck",
-          "become {C:attention}flipped",
-        }
-      },
       c_abn_balatro_illustrious_ritual = {
         name = "Balatro Illustrious Ritual",
         text = {
@@ -778,14 +771,6 @@ return {
 		  "{C:red}debuffed{}, equal to number of owned jokers"
         }
       },
-      c_abn_super_ego = {
-        name = "Super Ego",
-        text = {
-		  "Selected {C:attention}Joker{} gains {C:dark_edition}Fragmented{}, and a",
-		  "number of random cards held in hand are",
-		  "{C:attention}destroyed{}, equal to number of owned jokers"
-        }
-      },
       c_abn_minus_id = {
         name = "Minus ID",
         text = {
@@ -808,6 +793,72 @@ return {
 		  "Selected {C:attention}Joker{} gains {C:dark_edition}RGB{},",
 		  "all other jokers become {C:attention}Flipped"
         }
+      },
+      c_abn_paramenal = {
+        name = "Paramenal",
+        text = {
+		  "Selected {C:attention}Joker{} gains {C:dark_edition}Fragmented{}, and a",
+		  "number of random cards held in hand are",
+		  "{C:attention}destroyed{}, equal to number of owned jokers"
+        }
+      },
+      c_abn_sapience = {
+        name = "Sapience",
+        text = {
+		  "Selected {C:attention}Joker{} gains {C:dark_edition}Iridescent{}, and a number",
+		  "of random cards held in hand will be given a",
+		  "{C:money}#1#${} penalty, equal to number of owned jokers"
+        }
+      },
+      c_abn_ultra_ego = {
+        name = "Ultra Ego",
+        text = {
+		  "Selected {C:attention}Joker{} gains {C:dark_edition}Pearlescent{}, and a number",
+		  "of random cards held in hand have their {C:chips}Chips",
+		  "reduced to {C:chips}#1#{}, equal to number of owned jokers"
+        }
+      },
+      c_abn_substitute = {
+        name = "Substitute",
+        text = {
+		  "Select a {C:attention}Joker{} with a {C:attention}Modded {C:dark_edition}Edition{},",
+		  "and replace that with {C:dark_edition}Chromatic",
+		  "If the selected {C:attention}Joker{} is from a {C:attention}Mod{},",
+		  "a random {C:attention}playing card{} from your",
+		  "full deck will also gain {C:dark_edition}Chromatic"
+        }
+      },
+      c_abn_apotheosis = {
+        name = "Apotheosis",
+        text = {
+		  "{C:red}Sacrifice{} a {C:dark_edition}Negative {C:attention}Joker",
+		  "All other jokers gain {C:attention}Modded",
+		  "{C:dark_edition}Editions and {C:inactive}Vanilla {C:attention}Enhancements"
+        }
+      },
+      c_abn_paradigm = {
+        name = "Paradigm",
+        text = {
+		  "{C:red}Sacrifice{} a {C:dark_edition}Polychrome {C:attention}Joker",
+		  "All other jokers gain {C:inactive}Vanilla",
+		  "{C:dark_edition}Editions and {C:attention}Modded {C:attention}Enhancements"
+        }
+      },
+      c_abn_super_id = {
+        name = "Super ID",
+        text = {
+		  "Selected {C:attention}Joker{} gains {C:dark_edition}Gloss{}, and a number of",
+		  "the top cards remaining in your deck are",
+		  "{C:attention}destroyed{}, equal to number of owned jokers"
+        },
+      },
+      c_abn_pendulum = {
+        name = "Pendulum",
+        text = {
+		  "Selected {C:attention}Joker{} gains {C:dark_edition}Thermal{},",
+		  "and the {C:attention}Win Ante{} is increased",
+		  "by the number of owned jokers"
+        },
       },
     },
   }

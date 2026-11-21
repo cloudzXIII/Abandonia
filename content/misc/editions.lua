@@ -746,3 +746,56 @@ SMODS.Edition {
 		end
 	end
 }
+
+SMODS.Shader({key = 'bunnet_heat', path = 'bunnet_heat.fs'})
+
+SMODS.Edition {
+    key = 'thermal',
+    shader = 'bunnet_heat',
+    in_shop = true,
+    weight = 0.5,
+    extra_cost = 7,
+    calculate = function(self, card, context)
+        if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
+			local h = G.GAME.hands[context.scoring_name]
+			local l = math.floor(h.level)
+			if l <= 0 then return end
+			if l == 1 then
+				for i = 1, 2 do
+					SMODS.calculate_effect({
+						message = localize("k_level_prefix")..' 1',
+					}, card)
+					SMODS.calculate_effect({
+						mult = h.mult,
+						chips = h.chips
+					}, card, true)
+				end
+			elseif l <= 6 then
+				local _h = SMODS.PokerHands[context.scoring_name]
+				local i = 0
+				while i < l do
+					SMODS.calculate_effect({
+						message = localize("k_level_prefix")..' '..(i+1),
+					}, card)
+					SMODS.calculate_effect({
+						mult = _h.mult + _h.l_mult*i,
+						chips = _h.chips + _h.l_chips*i,
+					}, card, true)
+					i = i + 1
+				end
+			else
+				local _h = SMODS.PokerHands[context.scoring_name]
+				local c, m, i = 0, 0, 0
+				while i < l do
+					c = c + _h.chips + _h.l_chips*i
+					m = m + _h.mult + _h.l_mult*i
+					i = i + 1
+				end
+				SMODS.calculate_effect({
+					mult = m,
+					chips = c,
+				}, card, true)
+			end
+		end
+	end
+}

@@ -297,8 +297,8 @@ SMODS.Consumable {
     artist = "Shepcicle"
   },
 }
-
-SMODS.Consumable {
+--[[
+SMODS.Consumable { --This effect will be given to a different consumable
   key = 'super_id',
   set = 'Spectral',
   atlas = "AbandoniaSpectrals",
@@ -335,7 +335,7 @@ SMODS.Consumable {
     artist = "Da Gorbage Rat"
   },
 }
-
+--]]
 SMODS.Consumable {
   key = 'whitehole',
   set = 'Spectral',
@@ -397,76 +397,12 @@ SMODS.Consumable {
 }
 
 SMODS.Consumable {
-  key = "ultra_ego",
-  set = "Spectral",
-  config = { extra = { tags = 1 } },
-  pos = { x = 3, y = 2 },
-  atlas = "AbandoniaSpectrals",
-  cost = 4,
-  discovered = false,
-  loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = { key = "abn_flipped_card", set = "Other" }
-    info_queue[#info_queue + 1] = { key = "abn_ultra_ego_info", set = "Other", vars = { G.GAME.abn_ultra_egos_used or 0 } }
-  end,
-  can_use = function(self, card)
-    return G.playing_cards and #G.playing_cards > 0 and
-        (G.GAME.abn_ultra_egos_used or 0) < 4
-  end,
-  in_pool = function(self, args)
-    return (G.GAME.abn_ultra_egos_used or 0) < 4
-  end,
-  use = function(self, card, area, copier)
-    local used_tarot = copier or card
-
-    SMODS.change_booster_limit(1)
-    G.GAME.abn_ultra_egos_used = (G.GAME.abn_ultra_egos_used or 0) + 1
-
-    ABN.all_jokers(function(joker)
-      if not joker.ability.abn_perma_flipped then
-        if joker.facing == 'front' then
-          joker:flip()
-        end
-        joker.ability.abn_perma_flipped = true
-      end
-    end)
-
-    G.E_MANAGER:add_event(Event({
-      trigger = 'after',
-      delay = 0.4,
-      func = function()
-        play_sound('tarot1')
-        used_tarot:juice_up(0.3, 0.5)
-
-        for i = 1, #G.playing_cards do
-          local v = G.playing_cards[i]
-
-          v:juice_up(0.3, 0.3)
-
-          if not v.ability.abn_perma_flipped then
-            if v.facing == 'front' then
-              v:flip()
-            end
-            v.ability.abn_perma_flipped = true
-          end
-        end
-
-        return true
-      end
-    }))
-  end,
-  abn_artist_credits = {
-    artist = "Grass",
-  },
-}
-
-SMODS.Consumable {
   key = "brand",
   set = "Spectral",
   config = { extra = {} },
   pos = { x = 2, y = 0 },
   atlas = "AbandoniaSpectrals",
   cost = 4,
-  discovered = false,
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = { key = 'e_negative_consumable', set = 'Edition', config = { extra = 1 } }
   end,
@@ -538,7 +474,6 @@ SMODS.Consumable {
   pos = { x = 1, y = 1 },
   atlas = "AbandoniaSpectrals",
   cost = 4,
-  discovered = false,
 
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.tags } }
@@ -599,7 +534,6 @@ SMODS.Consumable {
   pos = { x = 7, y = 4 },
   atlas = "AbandoniaSpectrals",
   cost = 4,
-  discovered = false,
 
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = { key = "abn_newestia_only", set = "Other" }
@@ -681,7 +615,6 @@ SMODS.Consumable {
   pos = { x = 2, y = 2 },
   atlas = "AbandoniaSpectrals",
   cost = 4,
-  discovered = false,
 
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = { key = "abn_jimbo_newestia_only", set = "Other" }
@@ -718,7 +651,6 @@ SMODS.Consumable {
   pos = { x = 1, y = 2 },
   atlas = "AbandoniaSpectrals",
   cost = 4,
-  discovered = false,
 
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = { key = "abn_jimbo_newestia_only", set = "Other" }
@@ -928,7 +860,6 @@ SMODS.Consumable {
   atlas = "AbandoniaSpectrals",
   pos = { x = 4, y = 2 },
   cost = 4,
-  discovered = false,
   config = {
     extra = { rank_increase = 2 },
   },
@@ -998,7 +929,6 @@ SMODS.Consumable {
   atlas = "AbandoniaSpectrals",
   pos = { x = 4, y = 3 },
   cost = 4,
-  discovered = false,
   
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_collodion
@@ -1036,7 +966,6 @@ SMODS.Consumable {
   atlas = "AbandoniaSpectrals",
   pos = { x = 3, y = 3 },
   cost = 4,
-  discovered = false,
   
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_bit_rot
@@ -1067,7 +996,6 @@ SMODS.Consumable {
   atlas = "AbandoniaSpectrals",
   pos = { x = 6, y = 3 },
   cost = 4,
-  discovered = false,
   
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_bright
@@ -1105,7 +1033,6 @@ SMODS.Consumable {
   atlas = "AbandoniaSpectrals",
   pos = { x = 7, y = 1 },
   cost = 4,
-  discovered = false,
   
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = { key = "abn_jimbo_only", set = "Other" }
@@ -1133,41 +1060,12 @@ SMODS.Consumable {
   },
 }
 
---[[SMODS.Consumable {
-  key = 'super_ego',
-  set = 'Spectral',
-  atlas = "AbandoniaSpectrals",
-  pos = { x = 3, y = 3 },
-  cost = 4,
-  discovered = false,
-  
-  loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_bit_rot
-  end,
-
-  can_use = function(self, card)
-    local h_jokers = ABN.highlighted_jokers()
-    return #h_jokers == 1 and not h_jokers[1].edition
-  end,
-
-  use = function(self, card, area, copier)
-    joker_edition_at_cost_of_cards(self, card, "e_abn_bit_rot", G.playing_cards,
-      function(c) SMODS.destroy_cards(c) end
-    )
-  end,
-
-  abn_artist_credits = {
-    artist = "Okronix",
-  },
-}--]]
-
 SMODS.Consumable {
   key = 'minus_id',
   set = 'Spectral',
   atlas = "AbandoniaSpectrals",
   pos = { x = 6, y = 4 },
   cost = 4,
-  discovered = false,
   
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_glitter
@@ -1191,7 +1089,7 @@ SMODS.Consumable {
   end,
 
   abn_artist_credits = {
-    artist = "Dogg-Fly",
+    artist = "Da Gorbage Rat",
   },
 }
 
@@ -1201,7 +1099,6 @@ SMODS.Consumable {
   atlas = "AbandoniaSpectrals",
   pos = { x = 4, y = 1 },
   cost = 4,
-  discovered = false,
   
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_ultraviolet
@@ -1221,7 +1118,7 @@ SMODS.Consumable {
   end,
 
   abn_artist_credits = {
-    artist = "Dogg-Fly",
+    artist = "Da Gorbage Rat",
   },
 }
 
@@ -1231,7 +1128,6 @@ SMODS.Consumable {
   atlas = "AbandoniaSpectrals",
   pos = { x = 0, y = 2 },
   cost = 4,
-  discovered = false,
   
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_rgb
@@ -1260,6 +1156,424 @@ SMODS.Consumable {
   end,
 
   abn_artist_credits = {
-    artist = "Dogg-Fly",
+    artist = "Da Gorbage Rat",
+  },
+}
+
+SMODS.Consumable {
+  key = 'paramenal',
+  set = 'Spectral',
+  atlas = "AbandoniaSpectrals",
+  pos = { x = 2, y = 1 },
+  cost = 4,
+  
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_fragmented
+  end,
+
+  can_use = function(self, card)
+    if not G.hand or not G.hand.cards or #G.hand.cards == 0 then return false end
+    local h_jokers = ABN.highlighted_jokers()
+    return #h_jokers == 1 and not h_jokers[1].edition
+  end,
+
+  use = function(self, card, area, copier)
+    joker_edition_at_cost_of_cards(self, card, "e_abn_fragmented", G.hand.cards,
+      function(c) SMODS.destroy_cards(c) end
+    )
+  end,
+
+  abn_artist_credits = {
+    artist = "Da Gorbage Rat",
+  },
+}
+
+SMODS.Consumable {
+  key = 'sapience',
+  set = 'Spectral',
+  atlas = "AbandoniaSpectrals",
+  pos = { x = 3, y = 1 },
+  cost = 4,
+  config = {extra = {cost = -4}},
+  
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_iridescent
+    return {vars = {card.ability.extra.cost}}
+  end,
+
+  can_use = function(self, card)
+    if not G.hand or not G.hand.cards or #G.hand.cards == 0 then return false end
+    local h_jokers = ABN.highlighted_jokers()
+    return #h_jokers == 1 and not h_jokers[1].edition
+  end,
+
+  use = function(self, card, area, copier)
+    joker_edition_at_cost_of_cards(self, card, "e_abn_iridescent", G.hand.cards,
+      function(c) c.ability.perma_p_dollars = (c.ability.perma_p_dollars or 0) + card.ability.extra.cost end
+    )
+  end,
+
+  abn_artist_credits = {
+    artist = "Da Gorbage Rat",
+  },
+}
+
+SMODS.Consumable {
+  key = 'ultra_ego',
+  set = 'Spectral',
+  atlas = "AbandoniaSpectrals",
+  pos = { x = 3, y = 2 },
+  cost = 4,
+  config = {extra = {chip = 1}},
+  
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_pearlescent
+    return {vars = {card.ability.extra.chip}}
+  end,
+
+  can_use = function(self, card)
+    if not G.hand or not G.hand.cards or #G.hand.cards == 0 then return false end
+    local h_jokers = ABN.highlighted_jokers()
+    return #h_jokers == 1 and not h_jokers[1].edition
+  end,
+
+  use = function(self, card, area, copier)
+    joker_edition_at_cost_of_cards(self, card, "e_abn_pearlescent", G.hand.cards,
+      function(c) c.ability.perma_bonus = (c.ability.perma_bonus or 0) - c:get_chip_bonus() + card.ability.extra.chip end,
+      function(c) return c:get_chip_bonus() ~= 1 end
+    )
+  end,
+
+  abn_artist_credits = {
+    artist = "Da Gorbage Rat",
+  },
+}
+
+SMODS.Consumable {
+  key = 'substitute',
+  set = 'Spectral',
+  atlas = "AbandoniaSpectrals",
+  pos = { x = 3, y = 4 },
+  cost = 4,
+  
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_chromatic
+  end,
+
+  can_use = function(self, card)
+    local h_jokers = ABN.highlighted_jokers()
+    return #h_jokers == 1 and h_jokers[1].edition and SMODS.Centers[h_jokers[1].edition.key].original_mod
+  end,
+
+  use = function(self, card, area, copier)
+    local target_joker = ABN.highlighted_jokers()[1]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        target_joker:set_edition("e_abn_chromatic", true)
+        return true
+      end
+    }))
+    if target_joker.config.center.original_mod then
+      local candidates = {}
+      for _, c in ipairs(G.playing_cards) do
+        if not c.edition then table.insert(candidates, c) end
+      end
+      local target_card = pseudorandom_element(candidates, self.key)
+      if target_card then
+		G.E_MANAGER:add_event(Event({
+		  trigger = 'after',
+		  delay = 0.4,
+		  func = function()
+		    target_card:set_edition("e_abn_chromatic", true)
+		    return true
+		  end
+		}))
+      end
+    end
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.2,
+      func = function()
+        G.jokers:unhighlight_all()
+        return true
+      end
+    }))
+    delay(0.6)
+  end,
+
+  abn_artist_credits = {
+    artist = "Okronix",
+  },
+}
+
+SMODS.Consumable {
+  key = 'apotheosis',
+  set = 'Spectral',
+  atlas = "AbandoniaSpectrals",
+  pos = { x = 0, y = 3 },
+  cost = 4,
+  hidden = true,
+  
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+    info_queue[#info_queue + 1] = { key = "abn_newestia_only", set = "Other" }
+  end,
+
+  can_use = function(self, card)
+    local h_jokers = ABN.highlighted_jokers()
+    return #h_jokers == 1 and h_jokers[1].edition and h_jokers[1].edition.key == "e_negative" and not SMODS.is_eternal(h_jokers[1], card)
+  end,
+
+  use = function(self, card, area, copier)
+    local target_joker = ABN.highlighted_jokers()[1]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        SMODS.destroy_cards(target_joker)
+        return true
+      end
+    }))
+	G.E_MANAGER:add_event(Event({
+	  trigger = 'after',
+	  delay = 0.4,
+	  func = function()
+	    ABN.all_jokers(function(joker)
+          if joker ~= target_joker then
+            if not joker.edition then
+              local edi = SMODS.poll_object({
+                type = "Edition",
+                seed = self.key.."_edition",
+                guaranteed = true,
+                filter = function(pool)
+                  for _, obj in ipairs(pool) do
+                    if not G.P_CENTERS[obj.key] or not G.P_CENTERS[obj.key].original_mod then
+                      obj.key = "UNAVAILABLE"
+                    end
+                  end
+		  		  return pool
+		  	    end
+              })
+              if edi then joker:set_edition(edi, true) end
+            end
+            local enh = SMODS.poll_object({
+              pool = ABN.EnhStickerPool,
+              seed = self.key.."_enhancement",
+              filter = function(pool)
+                for k, obj in ipairs(pool) do
+                  if not ABN.EnhStickers[obj] or not ABN.EnhStickers[obj].abn_vanilla then
+                    pool[k] = "UNAVAILABLE"
+                  end
+                end
+			    return pool
+		  	  end
+            })
+            if enh then joker:add_sticker(enh, true) end
+          end
+        end)
+	    return true
+	  end
+	}))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.2,
+      func = function()
+        G.jokers:unhighlight_all()
+        return true
+      end
+    }))
+    delay(0.6)
+  end,
+
+  in_pool = function(self, args)
+    if not G.GAME.abn_newestia then return end
+    return ABN.all_jokers(function(joker)
+      if joker.edition and joker.edition.key == "e_negative" then
+        return true
+      end
+    end)
+  end,
+
+  abn_artist_credits = {
+    artist = "Muddz",
+  },
+}
+
+SMODS.Consumable {
+  key = 'paradigm',
+  set = 'Spectral',
+  atlas = "AbandoniaSpectrals",
+  pos = { x = 7, y = 2 },
+  cost = 4,
+  hidden = true,
+  
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
+    info_queue[#info_queue + 1] = { key = "abn_newestia_only", set = "Other" }
+  end,
+
+  can_use = function(self, card)
+    local h_jokers = ABN.highlighted_jokers()
+    return #h_jokers == 1 and h_jokers[1].edition and h_jokers[1].edition.key == "e_polychrome" and not SMODS.is_eternal(h_jokers[1], card)
+  end,
+
+  use = function(self, card, area, copier)
+    local target_joker = ABN.highlighted_jokers()[1]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        SMODS.destroy_cards(target_joker)
+        return true
+      end
+    }))
+	G.E_MANAGER:add_event(Event({
+	  trigger = 'after',
+	  delay = 0.4,
+	  func = function()
+	    ABN.all_jokers(function(joker)
+          if joker ~= target_joker then
+            if not joker.edition then
+              local edi = SMODS.poll_object({
+                type = "Edition",
+                seed = self.key.."_edition",
+                guaranteed = true,
+                filter = function(pool)
+                  for _, obj in ipairs(pool) do
+                    if not G.P_CENTERS[obj.key] or G.P_CENTERS[obj.key].original_mod then
+                      obj.key = "UNAVAILABLE"
+                    end
+                  end
+		  		  return pool
+		  	    end
+              })
+              if edi then joker:set_edition(edi, true) end
+            end
+            local enh = SMODS.poll_object({
+              pool = ABN.EnhStickerPool,
+              seed = self.key.."_enhancement",
+              filter = function(pool)
+                for k, obj in ipairs(pool) do
+                  if not ABN.EnhStickers[obj] or ABN.EnhStickers[obj].abn_vanilla then
+                    pool[k] = "UNAVAILABLE"
+                  end
+                end
+			    return pool
+		  	  end
+            })
+            if enh then joker:add_sticker(enh, true) end
+          end
+        end)
+	    return true
+	  end
+	}))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.2,
+      func = function()
+        G.jokers:unhighlight_all()
+        return true
+      end
+    }))
+    delay(0.6)
+  end,
+
+  in_pool = function(self, args)
+    if not G.GAME.abn_newestia then return end
+    return ABN.all_jokers(function(joker)
+      if joker.edition and joker.edition.key == "e_polychrome" then
+        return true
+      end
+    end)
+  end,
+
+  abn_artist_credits = {
+    artist = "Muddz",
+  },
+}
+
+SMODS.Consumable {
+  key = 'super_id',
+  set = 'Spectral',
+  atlas = "AbandoniaSpectrals",
+  pos = { x = 6, y = 1 },
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_gloss
+  end,
+
+  can_use = function(self, card)
+    if not G.deck or not G.deck.cards or #G.deck.cards == 0 then return false end
+    local h_jokers = ABN.highlighted_jokers()
+    return #h_jokers == 1 and not h_jokers[1].edition
+  end,
+
+  use = function(self, card, area, copier)
+    local jcount = ABN.count_jokers()
+    local top_cards = {}
+    for i = #G.deck.cards, math.max(1, #G.deck.cards - jcount + 1), -1 do
+      table.insert(top_cards, G.deck.cards[i])
+    end
+    joker_edition_at_cost_of_cards(self, card, "e_abn_gloss", top_cards,
+      function(c)
+        SMODS.destroy_cards(c, {immediate = true})
+      end
+    )
+  end,
+
+  abn_artist_credits = {
+    artist = "Da Gorbage Rat"
+  },
+}
+
+SMODS.Consumable {
+  key = 'pendulum',
+  set = 'Spectral',
+  atlas = "AbandoniaSpectrals",
+  pos = { x = 7, y = 3 },
+
+  loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_thermal
+  end,
+
+  can_use = function(self, card)
+    local h_jokers = ABN.highlighted_jokers()
+    return #h_jokers == 1 and not h_jokers[1].edition
+  end,
+
+  use = function(self, card, area, copier)
+    local target_joker = ABN.highlighted_jokers()[1]
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.4,
+      func = function()
+        play_sound('tarot1')
+        card:juice_up(0.3, 0.5)
+        target_joker:set_edition("e_abn_thermal", true)
+        G.GAME.win_ante = G.GAME.win_ante + ABN.count_jokers()
+        return true
+      end
+    }))
+    G.E_MANAGER:add_event(Event({
+      trigger = 'after',
+      delay = 0.2,
+      func = function()
+        G.jokers:unhighlight_all()
+        return true
+      end
+    }))
+    delay(0.6)
+  end,
+
+  abn_artist_credits = {
+    artist = "TriangleSnack"
   },
 }
