@@ -829,12 +829,14 @@ SMODS.Voucher({
 				type = "Voucher",
 				seed = "v_abn_out_of_stock",
 				filter = function(pool)
+					local filtered = {}
 					for _, obj in pairs(pool) do
 						if G.P_CENTERS[obj.key] and G.P_CENTERS[obj.key].original_mod then
-                        	obj.key = "UNAVAILABLE"
+                        	table.insert(filtered, obj)
                     	end
 					end
-					return pool
+					if #filtered == 0 then filtered[1] = "v_blank" end --Prevents crash from returning an empty pool
+					return filtered
 				end
 			})
 			if voucher and voucher ~= "v_blank" then
@@ -2054,4 +2056,208 @@ SMODS.Voucher {
     abn_artist_credits = {
         artist = "Littlesamu",
     },
+}
+
+SMODS.Voucher {
+  key = "broken_abacus",
+  atlas = "AbandoniaVouchers",
+  pos = { x = 5, y = 4 },
+  cost = 10,
+  config = { extra = { extra_choices = 1, odds = 4, mayhem = 1 } },
+
+  abn_artist_credits = {
+    artist = "Littlesamu"
+  },
+
+  loc_vars = function(self, info_queue, card)
+    local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "abn_broken_abacus")
+    return {
+      vars = {
+        card.ability.extra.extra_choices,
+        numerator,
+        denominator,
+        card.ability.extra.mayhem,
+      }
+    }
+  end,
+
+  redeem = function(self, card)
+    G.GAME.abn_modded_pack_choices = (G.GAME.abn_modded_pack_choices or 0) + card.ability.extra.extra_choices
+  end,
+
+  calculate = function(self, card, context)
+    if context.individual and context.cardarea == G.play
+      and not ABN.is_vanilla_suit(context.other_card)
+      and SMODS.pseudorandom_probability(card, "abn_broken_abacus", 1, card.ability.extra.odds, "abn_broken_abacus") then
+      return {
+        func = function()
+          ABN.mayhem(card.ability.extra.mayhem, true)
+        end
+      }
+    end
+  end,
+}
+
+
+SMODS.Voucher {
+  key = "calculation_error",
+  atlas = "AbandoniaVouchers",
+  pos = { x = 6, y = 4 },
+  cost = 10,
+  requires = { "v_abn_broken_abacus" },
+  config = { extra = { odds = 6, mayhem = 1 } },
+
+  abn_artist_credits = {
+    artist = "Littlesamu"
+  },
+
+  loc_vars = function(self, info_queue, card)
+    local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "abn_calculation_error")
+    return { vars = { numerator, denominator, card.ability.extra.mayhem } }
+  end,
+
+  calculate = function(self, card, context)
+    if context.individual and context.cardarea == G.play
+      and SMODS.pseudorandom_probability(card, "abn_calculation_error", 1, card.ability.extra.odds, "abn_calculation_error") then
+      return {
+        func = function()
+          ABN.mayhem(card.ability.extra.mayhem, true)
+        end
+      }
+    end
+  end,
+}
+
+
+local abn_vanilla_editions = {
+  e_foil = true,
+  e_holo = true,
+  e_polychrome = true,
+  e_negative = true,
+}
+
+local function abn_is_vanilla_blind_edition(blind_edition)
+  return abn_vanilla_editions[blind_edition.counterpart] == true
+end
+
+local function abn_force_blind_editions(modded, force)
+  for key, blind_edition in pairs(ABN.BlindEditions) do
+    if abn_is_vanilla_blind_edition(blind_edition) ~= modded then
+      ABN.force_blind_edition(key, false)
+    else
+      ABN.force_blind_edition(key, force)
+    end
+  end
+end
+
+local function abn_roll_pending_blind_editions()
+  local blind_states = G.GAME.round_resets.blind_states or {}
+  G.GAME.abn_blind_edition = G.GAME.abn_blind_edition or {}
+
+  for _, blind_type in ipairs(G.GAME.round_resets.blind_order or {}) do
+    local state = blind_states[blind_type]
+
+    if (state == 'Select' or state == 'Upcoming') and not G.GAME.abn_blind_edition[blind_type] then
+      ABN.add_edition_to_blind(blind_type)
+    end
+  end
+end
+
+local function abn_pick_edition(modded, seed)
+  local options, total_weight = {}, 0
+
+  for _, center in ipairs(G.P_CENTER_POOLS.Edition or {}) do
+    if center.key ~= 'e_base' and (not modded) == (abn_vanilla_editions[center.key] == true) then
+      local weight = center.weight or 1
+
+      table.insert(options, {
+        key = center.key,
+        weight = weight
+      })
+
+      total_weight = total_weight + weight
+    end
+  end
+
+  if #options == 0 then return nil end
+
+  local roll = pseudorandom(seed) * total_weight
+
+  for _, option in ipairs(options) do
+    roll = roll - option.weight
+
+    if roll <= 0 then
+      return option.key
+    end
+  end
+
+  return options[#options].key
+end
+
+local abn_old_cardarea_emplace = CardArea.emplace
+
+function CardArea:emplace(card, location, stay_flipped)
+  abn_old_cardarea_emplace(self, card, location, stay_flipped)
+
+  if self ~= G.pack_cards or not card.ability or not card.ability.consumeable or card.edition then return end
+  if not (G.GAME and G.GAME.used_vouchers) then return end
+
+  local edition_key
+
+  if G.GAME.used_vouchers.v_abn_industrial_generator then
+    edition_key = abn_pick_edition(true, "abn_industrial_generator")
+
+  elseif G.GAME.used_vouchers.v_abn_portable_generator then
+    local odds = G.P_CENTERS.v_abn_portable_generator.config.extra.odds
+
+    if SMODS.pseudorandom_probability(card, "abn_portable_generator", 1, odds, "abn_portable_generator") then
+      edition_key = abn_pick_edition(false, "abn_portable_generator_edition")
+    end
+  end
+
+  if edition_key then
+    card:set_edition(edition_key, true, true)
+  end
+end
+
+SMODS.Voucher {
+  key = "portable_generator",
+  atlas = "AbandoniaVouchers",
+  pos = { x = 7, y = 4 },
+  cost = 10,
+  config = { extra = { odds = 3 } },
+
+  abn_artist_credits = {
+    artist = "Littlesamu"
+  },
+
+  loc_vars = function(self, info_queue, card)
+    local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "abn_portable_generator")
+    return {
+      vars = { numerator, denominator }
+    }
+  end,
+
+  redeem = function(self, card)
+    abn_force_blind_editions(false, true)
+    abn_roll_pending_blind_editions()
+  end,
+}
+
+SMODS.Voucher {
+  key = "industrial_generator",
+  atlas = "AbandoniaVouchers",
+  pos = { x = 0, y = 5 },
+  cost = 10,
+  requires = { "v_abn_portable_generator" },
+  config = { extra = {} },
+
+  abn_artist_credits = {
+    artist = "Littlesamu"
+  },
+
+  redeem = function(self, card)
+    abn_force_blind_editions(true, true)
+    abn_roll_pending_blind_editions()
+  end,
 }
