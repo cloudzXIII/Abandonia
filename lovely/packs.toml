@@ -1,9 +1,10 @@
+
 [manifest]
 version = "1.0.0"
 dump_lua = true
 priority = -1
 
-# patch for packs
+# Pack choice modifications
 [[patches]]
 [patches.pattern]
 target = 'card.lua'
@@ -13,34 +14,224 @@ pattern = '''
 booster_obj = self.config.center
 '''
 payload = '''
---[[
-if self.config.center and self.config.center.key and not string.find(self.config.center.key, "buffoon") and not string.find(self.config.center.key, "standard") and next(SMODS.find_card('j_abn_jolly_roger')) then
-    self.ability.choose = self.ability.choose + 1
-end
---]]
-
--- Mardi Gras logic: Extra choose count in Arcana packs (Scales with multiple)
+-- Mardi Gras: Extra choices in Arcana packs
 if self.config.center and self.config.center.key and string.find(self.config.center.key, "arcana") then
-	local mardi_gras = SMODS.find_card("j_abn_mardi_gras")
-	if mardi_gras and next(mardi_gras) then
-		for _, joker in ipairs(mardi_gras) do
-			self.ability.choose = (self.ability.choose or 0) + 1
-		end
-	end
+    local mardi_gras = SMODS.find_card("j_abn_mardi_gras")
+    if mardi_gras and next(mardi_gras) then
+        for _, joker in ipairs(mardi_gras) do
+            self.ability.choose = (self.ability.choose or 0) + 1
+        end
+    end
 end
 
--- Stop Sign logic: Force 2 choices in all Buffoon packs
+-- Stop Sign: Force 2 choices in Buffoon packs
 if self.config.center and self.config.center.key and string.find(self.config.center.key, "buffoon") then
-	local stop_sign = SMODS.find_card("j_abn_stop_sign")
-	if stop_sign and next(stop_sign) then
-		if (self.ability.choose or 1) < 2 then
-			self.ability.choose = 2
-		end
-	end
+    local stop_sign = SMODS.find_card("j_abn_stop_sign")
+    if stop_sign and next(stop_sign) then
+        if (self.ability.choose or 1) < 2 then
+            self.ability.choose = 2
+        end
+    end
 end
 
--- Fountain Pen logic: Extra pick count in Calligraphy packs
+-- Fountain Pen: Extra choice in Calligraphy packs
 if self.config.center and self.config.center.key and string.find(self.config.center.key, "calligraphy") and next(SMODS.find_card('v_abn_fountain_pen')) then
-	self.ability.choose = (self.ability.choose or 0) + 1
+    self.ability.choose = (self.ability.choose or 0) + 1
+end
+
+-- Broken Abacus +1 picks in modded packs
+if self.config.center and self.config.center.original_mod then
+    if next(SMODS.find_card("v_abn_broken_abacus")) then
+        self.ability.choose = (self.ability.choose or 0) + (G.GAME.abn_modded_pack_choices or 0)
+    end
+end
+
+G.GAME.calculation_error_rerolled = false
+'''
+
+# Calculation Error (1/3): Vanilla Booster UI
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = '''{n=G.UIT.R,config={align = "tm",padding = 0.2, minh = 1.2, minw = 1.8, r=0.15,colour = G.C.GREY, one_press = true, button = 'skip_booster', hover = true,shadow = true, func = 'can_skip_booster'}, nodes = {'''
+position = 'at'
+match_indent = true
+payload = '''
+(G.GAME.used_vouchers['v_abn_calculation_error'] and not G.GAME.calculation_error_rerolled and
+UIBox_button({label = {localize('k_reroll')}, padding = 0.07, minh = 0.7, minw = 1.8, r = 0.15, one_press = true, button = 'reroll_booster_pack', func = 'reroll_booster_pack_button'}) or nil),
+G.GAME.used_vouchers['v_abn_calculation_error'] and {n=G.UIT.R,config = {minh = 0.07}, nodes={}},
+{n=G.UIT.R, config = {align = G.GAME.used_vouchers['v_abn_calculation_error'] and 'cm' or 'tm', padding = G.GAME.used_vouchers['v_abn_calculation_error'] and 0.07 or 0.2, minh = G.GAME.used_vouchers['v_abn_calculation_error'] and 0.7 or 1.2, minw = 1.8, r = 0.15, colour = G.C.GREY, one_press = true, button = 'skip_booster', hover = true, shadow = true, func = 'can_skip_booster'}, nodes = {
+'''
+
+# Calculation Error (2/3): Steamodded Booster UI
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = '''{n=G.UIT.R,config={align = "tm",padding = 0.2, minh = 1.2, minw = 1.8, r=0.15,colour = G.C.GREY, one_press = true, button = 'skip_booster', hover = true,shadow = true, func = 'can_skip_booster'}, nodes = {'''
+position = 'at'
+match_indent = true
+payload = '''
+(G.GAME.used_vouchers['v_abn_calculation_error'] and not G.GAME.calculation_error_rerolled and
+UIBox_button({label = {localize('k_reroll')}, padding = 0.07, minh = 0.7, minw = 1.8, r = 0.15, one_press = true, button = 'reroll_booster_pack', func = 'reroll_booster_pack_button'}) or nil),
+G.GAME.used_vouchers['v_abn_calculation_error'] and {n=G.UIT.R,config = {minh = 0.07}, nodes={}},
+{n=G.UIT.R, config = {align = G.GAME.used_vouchers['v_abn_calculation_error'] and 'cm' or 'tm', padding = G.GAME.used_vouchers['v_abn_calculation_error'] and 0.07 or 0.2, minh = G.GAME.used_vouchers['v_abn_calculation_error'] and 0.7 or 1.2, minw = 1.8, r = 0.15, colour = G.C.GREY, one_press = true, button = 'skip_booster', hover = true, shadow = true, func = 'can_skip_booster'}, nodes = {
+'''
+
+# Calculation Error (3/3): Reroll callbacks
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+pattern = 'G.FUNCS.reroll_boss_button = function(e)'
+position = 'before'
+match_indent = true
+payload = '''
+G.FUNCS.reroll_booster_pack_button = function(e)
+    if not G.GAME.calculation_error_rerolled
+    and G.GAME.used_vouchers['v_abn_calculation_error']
+    and G.pack_cards
+    and (
+        G.STATE == G.STATES.SMODS_BOOSTER_OPENED
+        or G.STATE == G.STATES.PLANET_PACK
+        or G.STATE == G.STATES.STANDARD_PACK
+        or G.STATE == G.STATES.BUFFOON_PACK
+    ) then
+        e.config.colour = G.C.GREEN
+        e.config.button = 'reroll_booster_pack'
+        e.children[1].children[1].config.shadow = true
+        if e.children[2] then
+            e.children[2].children[1].config.shadow = true
+        end
+    else
+        e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+        e.config.button = nil
+        e.children[1].children[1].config.shadow = false
+        if e.children[2] then
+            e.children[2].children[1].config.shadow = false
+        end
+    end
+end
+
+G.FUNCS.reroll_booster_pack = function(e)
+    if not G.pack_cards
+    or G.GAME.calculation_error_rerolled
+    or not G.GAME.used_vouchers['v_abn_calculation_error'] then
+        return
+    end
+
+    local last_pack = G.GAME.last_booster_pack
+    if not last_pack then return end
+
+    stop_use()
+
+    G.GAME.calculation_error_rerolled = true
+    G.GAME.calculation_error_reopening = true
+
+    last_pack.cost = 0
+    last_pack.rerolled = true
+
+    for i = #G.pack_cards.cards, 1, -1 do
+        local c = G.pack_cards:remove_card(G.pack_cards.cards[i])
+        c:remove()
+    end
+
+    G.E_MANAGER:add_event(Event({
+        blocking = false,
+        trigger = 'after',
+        func = function()
+            play_sound('other1')
+            last_pack:open()
+            G.GAME.calculation_error_reopening = nil
+            return true
+        end
+    }))
+end
+
+'''
+
+# Track last opened booster pack
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = 'function Card:open()'
+position = 'after'
+match_indent = true
+payload = '''
+    if self.config.center and self.config.center.set == "Booster" then
+        G.GAME.last_booster_pack = self
+        if not G.GAME.calculation_error_reopening then
+            G.GAME.calculation_error_rerolled = false
+        end
+    end
+'''
+
+# Prevent duplicate generation during the replacement opening
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = 'if self.ability.set == "Booster" then'
+position = 'after'
+match_indent = true
+payload = '''
+    if not G.GAME.calculation_error_reopening then
+'''
+
+# Close duplicate-generation condition
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = 'G.GAME.pack_choices = *'
+times = 1
+position = 'after'
+match_indent = true
+payload = '''
+    end
+    local skip_animation = G.GAME.calculation_error_reopening and 0 or nil
+'''
+
+# Skip opening delay on reroll
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()'''
+position = 'at'
+match_indent = true
+payload = '''
+G.E_MANAGER:add_event(Event({trigger = 'after', delay = skip_animation or 0.4, func = function()
+'''
+
+# Prevent pack explosion on reroll
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''self:explode()'''
+position = 'at'
+match_indent = true
+payload = '''
+if not G.GAME.calculation_error_reopening then self:explode() end
+'''
+
+# Skip closing delay on reroll
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''G.E_MANAGER:add_event(Event({trigger = 'after', delay = 1.3*math.sqrt(G.SETTINGS.GAMESPEED), blockable = false, blocking = false, func = function()'''
+position = 'at'
+match_indent = true
+payload = '''
+G.E_MANAGER:add_event(Event({trigger = 'after', delay = skip_animation or (1.3*math.sqrt(G.SETTINGS.GAMESPEED)), blockable = false, blocking = false, func = function()
+'''
+
+# Skip materialization animation on reroll
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = 'card:start_materialize({G.C.WHITE, G.C.WHITE}, nil, 1.5*G.SETTINGS.GAMESPEED)'
+position = 'at'
+match_indent = true
+payload = '''
+if not G.GAME.calculation_error_reopening then
+    card:start_materialize({G.C.WHITE, G.C.WHITE}, nil, 1.5*G.SETTINGS.GAMESPEED)
+else
+    card:juice_up()
 end
 '''
