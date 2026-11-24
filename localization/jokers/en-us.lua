@@ -9949,6 +9949,27 @@ return {
           "a {C:attention}Mult Card{}"
         }
       },
+      j_abn_unnumbered_entity = {
+        name = "Unnumbered Entity",
+        text = {
+          {
+            "At the start of each {C:attention}Blind{},",
+            "increase the Blind score by {X:blind,C:white}X#1#{}",
+            "per {C:attention}Boss Blind{} defeated while {C:attention}held",
+            "{C:inactive}(Currently {X:blind,C:white}X#2#{C:inactive})"
+          },
+          {
+            "When a {C:attention}Boss Blind{} is defeated,",
+            "create a {C:abn_superrare}Super Rare{} {C:red}Hazard Tag",
+            "If the score {C:red, E:1}caught fire{}, create a {C:legendary}Legendary{}",
+            "{C:red}Hazard Tag{} instead",
+          },
+          {
+          "While this card is {C:attention}held,",
+          "all the {C:gold}free{} Shop Jokers become {C:attention}perishable"
+          }
+        }
+      },
 
       j_abn_usury_joker = {
         name = "Usury Joker",
