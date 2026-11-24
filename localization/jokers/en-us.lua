@@ -11145,7 +11145,118 @@ return {
           "{C:attention}+1{} hand size and card selection",
           "for every {C:attention}#1#{} Jokers owned",
 		}
-      }
+      },
+	  
+	  j_abn_crayon_mishap_joker = {
+        name = "Crayon Mishap Joker",
+        text = {
+          {
+			"{C:attention}Spectrum{} hands give {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+			"If you play a {C:attention}Specflush{} this Joker gains {C:chips}+#3#{} Chips and {C:mult}+#4#{} Mult",
+		  },
+		  {
+			"If this Joker has an {C:attention}Edition{}",
+			"create a {C:attention}Juggle Tag{} when {C:attention}Boss Blind{} is {C:mult}defeated{}",
+		  },
+		}
+      },
+	  
+	  j_abn_colorimetry_joker = {
+        name = "Colorimetry Joker",
+        text = {
+          {
+			"Scoring cards in {C:attention}Spectrum{} hands give",
+			"{C:chips}+#1#{} Chips if {C:attention}Vanilla{} Suit or {C:mult}+#2#{} Mult if {C:attention}Modded{} Suit",
+		  },
+		  {
+			"If the hand is a {C:attention}Specflush Five{}",
+			"give {C:dark_edition}RGB Edition{} to the {C:attention}first{} scoring card",
+		  },
+		  {
+			"If this Joker has an {C:attention}Edition{}",
+			"gain {C:gold}+#3#{} Asc. Power each time an {C:attention}RGB{} card scores",
+			"{C:inactive}Currently:{} {C:gold}+#4#{}{C:inactive} Asc. Power{}",
+		  },
+		}
+      },
+	  
+	  j_abn_photopic_efficiency_joker = {
+        name = "Photopic Efficiency Joker",
+        text = {
+          {
+			"Scoring {C:dark_edition}Foil{} cards become {C:dark_edition}Gloss{} if {C:attention}Even{} or {C:dark_edition}Glitter{} if {C:attention}Odd{}",
+			"Scoring {C:dark_edition}Holographic{} cards become {C:dark_edition}Iridescent{} if {C:attention}Even{} or {C:dark_edition}Sparkling{} if {C:attention}Odd{}",
+			"Scoring {C:dark_edition}Polychrome{} cards become {C:dark_edition}Pearlescent{} if {C:attention}Even{} or {C:dark_edition}RGB{} if {C:attention}Odd{}",
+		  },
+		  {
+			"If this Joker has an {C:attention}Edition{}",
+			"{C:attention}Spectrum{} hands give {C:purple}+#1#{} Score",
+			"per time that hand has been {C:attention}played{}",
+		  },
+		}
+      },
+	  
+	  j_abn_uv_castrophe = {
+        name = "UV Castrophe",
+        text = {
+          {
+			"Destroys all {C:attention}Vanilla{} Suit scoring cards of the",
+			"{C:attention}first{} and {C:attention}last{} hand after scoring",
+			"Gain {C:purple}Score{} equal to their {C:chips}Chip{} value {C:attention}X#1#{}",
+		  },
+		  {
+			"If you play a {C:attention}Spectrum Six{}", 
+			"the last scoring card gains {C:dark_edition}Ultraviolet Edition{}",
+		  },
+		  {
+			"If this Joker has an {C:attention}Edition{}",
+			"give the {C:chips}Chips{} and {C:mult}Mult{} of the {C:attention}last hand type played{}",
+			"plus this hand",
+			"{C:inactive}Currently:{} {C:purple}+#2#{C:inactive} Score{}",
+		  },
+		}
+      },
+	  
+	  j_abn_illuminated_joker = {
+        name = "Illuminated Joker",
+        text = {
+          {
+			"When a {C:attention}Spectrum{} hand scores",
+			"scoring {C:attention}Vanilla{} {C:diamonds}Light{} Suits gain {C:dark_edition}Sparkling{} and",
+			"scoring {C:attention}Modded{} {C:diamonds}Light{} Suits gain {C:dark_edition}Gloss{}",
+		  },
+		  {
+			"If the scoring hand is a {C:attention}Straight Specflush{}",
+			"reduce the {C:attention}blind requirement{} by {C:attention}#1#%{}",
+			"per {C:attention}Modded{} Suit in the scoring hand",
+		  },
+		  {
+			"If this Joker has an {C:attention}Edition{}",
+			"{C:attention}Sparkling{} cards also give {C:chips}+#2#{} Chips",
+			"per different {C:attention}poker hand{} within the played hand",
+		  },
+		}
+      },
+	  
+	  j_abn_childhood_drawing = {
+        name = "Childhood Drawing",
+        text = {
+          {
+			"Create a {C:attention}Polychrome Tag{} if the winning hand was a {C:attention}Flush{}",
+			"If that {C:attention}Flush{} was made of {C:attention}Modded{} Suits",
+			"create a {C:attention}Hazard Polychrome Tag{} instead",
+		  },
+		  {
+			"If you play a {C:attention}Specflush House{}",
+			"give the {C:attention}first{} and {C:attention}last{} scoring card",
+			"{C:dark_edition}Discontinued{} Enhancement",
+		  },
+		  {
+			"If this Joker has an {C:attention}Edition{}",
+			"scoring {C:attention}Flushes{} give {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+		  },
+		}
+      }, 
 	  
     },
 	Other = {
