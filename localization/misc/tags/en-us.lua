@@ -265,7 +265,7 @@ return {
         }
       },
       tag_abn_hazard_calamity = {
-        name = "Calmity Hazard",
+        name = "Calamity Hazard",
         text = {
           "Gives {C:attention}2{} free",
           "{C:abn_calamity}Mega Calamity Packs{}",

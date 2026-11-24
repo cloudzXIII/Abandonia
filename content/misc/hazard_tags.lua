@@ -1024,6 +1024,7 @@ SMODS.Tag {
     config = { hazard = true, rerolls = 2 },
     
     loc_vars = function(self, info_queue, tag)
+      info_queue[#info_queue + 1] = G.P_CENTERS.p_standard_mega_1
         return { vars = { tag.config.rerolls } }
     end,
     
@@ -1061,6 +1062,7 @@ SMODS.Tag {
     config = { hazard = true, rerolls = 2 },
     
     loc_vars = function(self, info_queue, tag)
+      info_queue[#info_queue + 1] = G.P_CENTERS.p_arcana_mega_1
         return { vars = { tag.config.rerolls } }
     end,
     
@@ -1098,6 +1100,7 @@ SMODS.Tag {
     config = { hazard = true, rerolls = 2 },
     
     loc_vars = function(self, info_queue, tag)
+      info_queue[#info_queue + 1] = G.P_CENTERS.p_celestial_mega_1
         return { vars = { tag.config.rerolls } }
     end,
     
@@ -1135,6 +1138,7 @@ SMODS.Tag {
     config = { hazard = true, rerolls = 2 },
     
     loc_vars = function(self, info_queue, tag)
+      info_queue[#info_queue + 1] = G.P_CENTERS.p_buffoon_mega_1
         return { vars = { tag.config.rerolls } }
     end,
     
@@ -1172,6 +1176,7 @@ SMODS.Tag {
   config = { hazard = true, rerolls = 2 },
   
   loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = G.P_CENTERS.p_spectral_mega_1
     return { vars = { tag.config.rerolls } }
   end,
   
@@ -1209,6 +1214,7 @@ SMODS.Tag {
   config = { hazard = true, rerolls = 2 },
   
   loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = G.P_CENTERS.p_abn_weather_mega_1
     return { vars = { tag.config.rerolls } }
   end,
   
@@ -1217,7 +1223,7 @@ SMODS.Tag {
             local lock = tag.ID
             G.CONTROLLER.locks[lock] = true
             tag:yep('+', G.C.SECONDARY_SET.Spectral, function()
-                local booster = SMODS.create_card { key = 'p_abn_weather_mega', area = G.play }
+                local booster = SMODS.create_card { key = 'p_abn_weather_mega_1', area = G.play }
                 booster.T.x = G.play.T.x + G.play.T.w / 2 - G.CARD_W * 1.27 / 2
                 booster.T.y = G.play.T.y + G.play.T.h / 2 - G.CARD_H * 1.27 / 2
                 booster.T.w = G.CARD_W * 1.27
@@ -1246,7 +1252,7 @@ SMODS.Tag {
   config = { hazard = true, rerolls = 2 },
   
   loc_vars = function(self, info_queue, tag)
-	info_queue[#info_queue + 1] = G.P_CENTERS.p_abn_calamity_mega
+	info_queue[#info_queue + 1] = G.P_CENTERS.p_abn_calamity_mega_1
     return { vars = { tag.config.rerolls } }
   end,
   
@@ -1255,7 +1261,7 @@ SMODS.Tag {
             local lock = tag.ID
             G.CONTROLLER.locks[lock] = true
             tag:yep('+', G.C.SECONDARY_SET.Spectral, function()
-                local booster = SMODS.create_card { key = 'p_abn_calamity_mega', area = G.play }
+                local booster = SMODS.create_card { key = 'p_abn_calamity_mega_1', area = G.play }
                 booster.T.x = G.play.T.x + G.play.T.w / 2 - G.CARD_W * 1.27 / 2
                 booster.T.y = G.play.T.y + G.play.T.h / 2 - G.CARD_H * 1.27 / 2
                 booster.T.w = G.CARD_W * 1.27
@@ -1284,6 +1290,7 @@ SMODS.Tag {
   config = { hazard = true, rerolls = 2 },
   
   loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = G.P_CENTERS.p_abn_sigil_mega_1
     return { vars = { tag.config.rerolls } }
   end,
   
@@ -1292,7 +1299,7 @@ SMODS.Tag {
             local lock = tag.ID
             G.CONTROLLER.locks[lock] = true
             tag:yep('+', G.C.SECONDARY_SET.Spectral, function()
-                local booster = SMODS.create_card { key = 'p_abn_sigil_mega_2', area = G.play }
+                local booster = SMODS.create_card { key = 'p_abn_sigil_mega_' .. math.random(1, 2), area = G.play }
                 booster.T.x = G.play.T.x + G.play.T.w / 2 - G.CARD_W * 1.27 / 2
                 booster.T.y = G.play.T.y + G.play.T.h / 2 - G.CARD_H * 1.27 / 2
                 booster.T.w = G.CARD_W * 1.27
@@ -1321,6 +1328,7 @@ SMODS.Tag {
   config = { hazard = true, rerolls = 2 },
   
   loc_vars = function(self, info_queue, tag)
+    info_queue[#info_queue + 1] = G.P_CENTERS.p_abn_astro_mega_1
     return { vars = { tag.config.rerolls } }
   end,
   
@@ -1329,7 +1337,7 @@ SMODS.Tag {
             local lock = tag.ID
             G.CONTROLLER.locks[lock] = true
             tag:yep('+', G.C.SECONDARY_SET.Spectral, function()
-                local booster = SMODS.create_card { key = 'p_abn_astro_mega_2', area = G.play }
+                local booster = SMODS.create_card { key = 'p_abn_astro_mega_' .. math.random(1, 2), area = G.play }
                 booster.T.x = G.play.T.x + G.play.T.w / 2 - G.CARD_W * 1.27 / 2
                 booster.T.y = G.play.T.y + G.play.T.h / 2 - G.CARD_H * 1.27 / 2
                 booster.T.w = G.CARD_W * 1.27
