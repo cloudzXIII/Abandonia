@@ -11217,8 +11217,8 @@ return {
 		}
       },
 	  
-	  j_abn_uv_castrophe = {
-        name = "UV Castrophe",
+	  j_abn_uv_castrophe_joker = {
+        name = "UV Castrophe Joker",
         text = {
           {
 			"Destroys all {C:attention}Vanilla{} Suit scoring cards of the",
@@ -11259,7 +11259,7 @@ return {
 		}
       },
 	  
-	  j_abn_childhood_drawing = {
+	  j_abn_childhood_drawing_joker = {
         name = "Childhood Drawing",
         text = {
           {
