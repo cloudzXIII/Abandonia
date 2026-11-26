@@ -116,8 +116,8 @@ return {
       b_abn_DarkNebulaDeck = {
         name = "Dark Nebula Deck",
         text = {
-          "{C:planet}Celestial{} Packs don't appear in the shop",
-          "{C:astro_cards}Astro{} Cards appear {C:attention}2X{} more often",
+          "Start with the {C:attention,T:v_abn_new_frontier}New Frontier{} voucher",
+          "All {C:attention}Blinds{} are {C:red}Obscured"
         }
       },
       b_abn_PoltergiestDeck = {
@@ -148,10 +148,8 @@ return {
       b_abn_PlatinumDeck = {
         name = "Platinum Deck",
         text = {
-          "Start with {C:red}Hone{} and {C:red}Glow Up{}",
-          "{C:green}#1# in #2#{} chance for Jokers",
-          "without {C:dark_edition}editions{} to be {C:mult}destroyed",
-          "at the end of each round"
+          "{C:attention}+5{} Hand Size, {C:red}-1{} Discard",
+          "All {C:attention}Blinds{} come with {C:inactive}Vanilla {C:dark_edition}Editions"
         }
       },
       b_abn_ConvergenceDeck = {
@@ -191,9 +189,11 @@ return {
       b_abn_photometry = {
         name = "Photometry Deck",
         text = {
-          "Start with {C:abn_snow}Snows{}, {C:abn_penumbra}Penumbras{},",
-          "{C:abn_tie}Ties{}, {C:abn_bow}Bows{} and {C:inactive}Nulls{}",
+          "Start with {C:abn_arrow}Arrows{}, {C:abn_anchor}Anchors{},",
+          "{C:abn_rose}Roses{}, {C:abn_shield}Shields{}, {C:abn_snow}Snows{},",
+          "{C:abn_penumbra}Penumbras{}, {C:abn_tie}Ties{}, and {C:abn_bow}Bows",
           "No {C:inactive}Vanilla{} suits",
+          "{C:attention}Blinds{} cannot be {C:red}Skipped"
         }
       },
       b_abn_synesthic = {
@@ -258,6 +258,15 @@ return {
           "First hand each round is",
           "{C:red}destroyed{} after scoring",
           "Purchased Jokers are {C:attention}Fragile"
+        }
+      },
+      b_abn_mission_success = {
+        name = "Mission Success",
+        text = {
+          "{C:planet}Celestial{} Packs don't appear in the shop",
+          "{C:astro_cards}Astro{} Cards appear {C:attention}2X{} more often",
+          "After defeating each {C:attention}Boss Blind,",
+          "Gain an {C:planet,T:tag_orbital}Orbital Tag"
         }
       },
     },

@@ -22,7 +22,22 @@ function ABN.add_edition_to_blind(blind_on_deck, args)
 	args.guaranteed = args.guaranteed or forced_pool
 	if not args.guaranteed and args.chance <= 0 then return end
 	args.set = "abn_BlindEdition"
-	args.pool = args.pool or forced_pool or ABN.BlindEditionPool
+	local modified_pool = nil
+	if not args.pool and not forced_pool then
+		local cret = {}
+		SMODS.calculate_context({abn_modify_blind_edition_pool = ABN.BlindEditionPool, blind = blind_on_deck, args = args}, cret)
+		if next(cret) then
+			modified_pool = {}
+			for _, eval in pairs(cret) do
+				for _, pool in pairs(eval) do
+					for _, obj in ipairs(pool) do
+						table.insert(modified_pool, obj)
+					end
+				end
+			end
+		end
+	end
+	args.pool = args.pool or forced_pool or modified_pool or ABN.BlindEditionPool
 	local ble = SMODS.poll_object(args)
 	if not ble then return end
 	ble = ABN.BlindEditions[ble]
@@ -146,6 +161,7 @@ ABN.BlindEdition {
 	counterpart = "e_foil",
 	config = {chips = -50, add_dollars = 2},
 	weight = 20,
+	vanilla = true,
 	loc_vars = function(self, edition)
 		return {vars = {edition.config.chips}}
 	end,
@@ -162,6 +178,7 @@ ABN.BlindEdition {
 	counterpart = "e_holo",
 	config = {mult = -10, add_dollars = 3},
 	weight = 14,
+	vanilla = true,
 	loc_vars = function(self, edition)
 		return {vars = {edition.config.mult}}
 	end,
@@ -178,6 +195,7 @@ ABN.BlindEdition {
 	counterpart = "e_polychrome",
 	config = {xmult = 0.67, add_dollars = 5},
 	weight = 3,
+	vanilla = true,
 	loc_vars = function(self, edition)
 		return {vars = {edition.config.xmult}}
 	end,
@@ -195,6 +213,7 @@ ABN.BlindEdition {
 	disable_automatic_retrigger = true,
 	config = {add_dollars = 5},
 	weight = 3,
+	vanilla = true,
 	calculate = function(self, blind, edition, context)
 		if context.before and not blind.disabled then
 			local debuffs = 1

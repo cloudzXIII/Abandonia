@@ -14,22 +14,6 @@ SMODS.Joker {
     }
   },
 
-  abn_spectrum_hands = {
-    ['abn_Spectrum'] = true,
-    ['abn_Straight Spectrum'] = true,
-    ['abn_Spectrum House'] = true,
-    ['abn_Spectrum Five'] = true,
-    ['abn_Spectrum Six'] = true,
-    ['abn_Inverse Spectrum'] = true,
-    ['abn_Emperium Spectrum'] = true,
-    ['abn_Skeet Spectrum'] = true,
-    ['abn_Specflush'] = true,
-    ['abn_Straight Specflush'] = true,
-    ['abn_Specflush House'] = true,
-    ['abn_Specflush Five'] = true,
-    ['abn_Specflush Six'] = true,
-  },
-
   loc_vars = function(self, info_queue, card)
     return {
       vars = {
@@ -79,7 +63,7 @@ SMODS.Joker {
       end
     end
 
-    if context.joker_main and card.edition and self.abn_spectrum_hands[context.scoring_name] then
+    if context.joker_main and card.edition and next(context.poker_hands["abn_Spectrum"]) then
       local times_played = G.GAME.hands[context.scoring_name].played
       return {
         score = card.ability.extra.score * times_played,

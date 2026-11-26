@@ -269,35 +269,7 @@ SMODS.Back {
     key = 'DarkNebulaDeck',
     atlas = 'AbandoniaDecks',
     pos = { x = 1, y = 1 },
-
-    apply = function()
-        G.E_MANAGER:add_event(Event({
-
-            func = function()
-                G.GAME.astro_cards_rate = 2
-
-                return true
-            end
-        }))
-    end,
-
-    calculate = function(self, card, context)
-        -- Check if a booster pack is currently open and has cards
-        if G.shop_booster and G.shop_booster.cards and #G.shop_booster.cards >= 2 then
-            for _, booster_card in ipairs(G.shop_booster.cards) do
-                if booster_card.config.center.key and string.find(booster_card.config.center.key, "celestial") then
-                    booster_card:start_dissolve()
-
-                    local new_card = SMODS.create_card {
-                        key = 'p_abn_sigil_normal_1',
-                        area = G.shop_booster
-                    }
-                    G.shop_booster:emplace(new_card)
-                    create_shop_card_ui(new_card)
-                end
-            end
-        end
-    end
+	config = {vouchers = {"v_abn_new_frontier"}},
 }
 
 SMODS.Back {
@@ -452,43 +424,21 @@ SMODS.Back {
     key = 'PlatinumDeck',
     atlas = 'AbandoniaDecks',
     pos = { x = 5, y = 1 },
-
-	loc_vars = function(self, info_queue, card)
-		return {vars = {SMODS.get_probability_vars(card, 1, 5, 'Platinum')}}
-	end,
+	config = {hand_size = 5, discards = -1},
 
     apply = function()
-        G.E_MANAGER:add_event(Event({
-
-            func = function()
-                --give vouchers
-                local _card = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'v_hone')
-                _card:add_to_deck()
-                G.vouchers:emplace(_card)
-
-                local _card2 = create_card('Voucher', G.vouchers, nil, nil, nil, nil, 'v_glow_up')
-                _card2:add_to_deck()
-                G.vouchers:emplace(_card2)
-
-                G.GAME.edition_rate = 4
-
-                return true
-            end
-        }))
+        G.GAME.abn_blind_edition_rate = 1
     end,
 
     calculate = function(self, card, context)
-        if context.end_of_round and context.main_eval and not context.blueprint then
-            ABN.all_jokers(function(jkr)
-                if not jkr.edition and not SMODS.is_eternal(jkr, card) then
-                    if SMODS.pseudorandom_probability(card, 'Platinum', 1, 5) then
-                        jkr:start_dissolve()
-                    else
-                        -- Use status_text to show "Safe!" above the specific joker
-                        card_eval_status_text(jkr, 'extra', nil, nil, nil, { message = localize('k_safe_ex') })
-                    end
-                end
-            end)
+		if context.abn_modify_blind_edition_pool then
+			local rep_pool = {}
+			for _, obj in pairs(context.abn_modify_blind_edition_pool) do
+				if ABN.BlindEditions[obj.name].vanilla then
+					table.insert(rep_pool, obj)
+				end
+			end
+			return rep_pool
         end
     end
 }
@@ -631,13 +581,23 @@ SMODS.Back {
 		exclude = true
 	},
     abandonia = {
+        create_arrows = true,
+        create_anchors = true,
+        create_roses = true,
+        create_shields = true,
         create_snows = true,
         create_penumbras = true,
         create_ties = true,
-        create_bows = true,
-		create_suitless = true
+        create_bows = true
     }
 }
+
+local old_uibox_blind_tag = create_UIBox_blind_tag
+function create_UIBox_blind_tag(blind_choice, run_info)
+	if G.GAME.selected_back_key.key ~= "b_abn_photometry" then
+		return old_uibox_blind_tag(blind_choice, run_info)
+	end
+end
 
 SMODS.Back {
     key = 'synesthic',
@@ -963,3 +923,42 @@ SMODS.Back {
         end
     end,
 }
+
+SMODS.Back {
+    key = 'mission_success',
+    atlas = 'AbandoniaDecks',
+    pos = { x = 3, y = 6 },
+
+    apply = function()
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.GAME.astro_cards_rate = 2
+                return true
+            end
+        }))
+    end,
+
+    calculate = function(self, card, context)
+        if context.round_eval and G.GAME.last_blind and G.GAME.last_blind.boss then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    add_tag({ key = 'tag_orbital' })
+                    play_sound('generic1', 0.9 + math.random() * 0.1, 0.8)
+                    play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
+                    return true
+                end
+            }))
+        end
+    end
+}
+
+local ref_pack = get_pack
+function get_pack(_key, _type)
+	local pack_center = ref_pack(_key, _type)
+
+	while G.GAME.selected_back_key.key == "b_abn_mission_success" and string.find(pack_center.key, "celestial") do
+		pack_center = ref_pack()
+	end
+
+	return pack_center
+end

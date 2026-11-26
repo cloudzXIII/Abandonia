@@ -187,8 +187,8 @@ SMODS.Suit {
       local sleeve = G.GAME.selected_sleeve
       local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
 
-      return (back_config and back_config.create_Anchors)
-          or (sleeve_config and sleeve_config.create_Anchors)
+      return (back_config and back_config.create_anchors)
+          or (sleeve_config and sleeve_config.create_anchors)
     else
       return false
     end
@@ -215,8 +215,8 @@ SMODS.Suit {
       local sleeve = G.GAME.selected_sleeve
       local sleeve_config = (G.P_CENTERS[sleeve] or {}).abandonia
 
-      return (back_config and back_config.create_Arrows)
-          or (sleeve_config and sleeve_config.create_Arrows)
+      return (back_config and back_config.create_arrows)
+          or (sleeve_config and sleeve_config.create_arrows)
     else
       return false
     end

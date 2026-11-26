@@ -2128,28 +2128,6 @@ SMODS.Voucher {
   end,
 }
 
-
-local abn_vanilla_editions = {
-  e_foil = true,
-  e_holo = true,
-  e_polychrome = true,
-  e_negative = true,
-}
-
-local function abn_is_vanilla_blind_edition(blind_edition)
-  return abn_vanilla_editions[blind_edition.counterpart] == true
-end
-
-local function abn_force_blind_editions(modded, force)
-  for key, blind_edition in pairs(ABN.BlindEditions) do
-    if abn_is_vanilla_blind_edition(blind_edition) ~= modded then
-      ABN.force_blind_edition(key, false)
-    else
-      ABN.force_blind_edition(key, force)
-    end
-  end
-end
-
 local function abn_roll_pending_blind_editions()
   local blind_states = G.GAME.round_resets.blind_states or {}
   G.GAME.abn_blind_edition = G.GAME.abn_blind_edition or {}
@@ -2239,9 +2217,20 @@ SMODS.Voucher {
   end,
 
   redeem = function(self, card)
-    abn_force_blind_editions(false, true)
     abn_roll_pending_blind_editions()
   end,
+
+  calculate = function(self, card, context)
+    if context.abn_modify_blind_edition_pool then
+      local rep_pool = {}
+      for _, obj in pairs(context.abn_modify_blind_edition_pool) do
+        if ABN.BlindEditions[obj.name].vanilla then
+          table.insert(rep_pool, obj)
+        end
+      end
+      return rep_pool
+    end
+  end
 }
 
 SMODS.Voucher {
@@ -2257,7 +2246,18 @@ SMODS.Voucher {
   },
 
   redeem = function(self, card)
-    abn_force_blind_editions(true, true)
     abn_roll_pending_blind_editions()
   end,
+
+  calculate = function(self, card, context)
+    if context.abn_modify_blind_edition_pool then
+      local rep_pool = {}
+      for _, obj in pairs(context.abn_modify_blind_edition_pool) do
+        if not ABN.BlindEditions[obj.name].vanilla then
+          table.insert(rep_pool, obj)
+        end
+      end
+      return rep_pool
+    end
+  end
 }

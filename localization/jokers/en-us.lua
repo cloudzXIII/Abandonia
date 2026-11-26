@@ -662,7 +662,7 @@ return {
         name = "Backrooms Joker",
         text = {
           {
-            "Blinds are {C:attention}obscured{},",
+            "All {C:attention}Blinds{} are {C:red}obscured{},",
             "When {C:attention}Blind{} is defeated, create",
             "a {C:purple}Parallel Rare{} Joker with",
             "{C:abn_perishable}Perishable{} and {C:money}Rental{}",
@@ -4379,7 +4379,7 @@ return {
       j_abn_hard_and_dry = {
         name = "Hard and Dry",
         text = {
-          "Blinds are {C:attention}obscured{},",
+          "All {C:attention}Blinds{} are {C:red}obscured{},",
           "{C:attention}Double{} values of {C:attention}leftmost{} Joker",
           "when {C:attention}Blind{} is defeated",
         }

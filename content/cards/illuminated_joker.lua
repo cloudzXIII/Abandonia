@@ -15,22 +15,6 @@ SMODS.Joker {
     }
   },
 
-  abn_spectrum_hands = {
-    ['abn_Spectrum'] = true,
-    ['abn_Straight Spectrum'] = true,
-    ['abn_Spectrum House'] = true,
-    ['abn_Spectrum Five'] = true,
-    ['abn_Spectrum Six'] = true,
-    ['abn_Inverse Spectrum'] = true,
-    ['abn_Emperium Spectrum'] = true,
-    ['abn_Skeet Spectrum'] = true,
-    ['abn_Specflush'] = true,
-    ['abn_Straight Specflush'] = true,
-    ['abn_Specflush House'] = true,
-    ['abn_Specflush Five'] = true,
-    ['abn_Specflush Six'] = true,
-  },
-
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_sparkling
     info_queue[#info_queue + 1] = G.P_CENTERS.e_abn_gloss
@@ -43,17 +27,12 @@ SMODS.Joker {
   end,
 
   in_pool = function(self, args)
-    for hand_key, _ in pairs(self.abn_spectrum_hands) do
-      if G.GAME.hands[hand_key] and G.GAME.hands[hand_key].played > 0 then
-        return true
-      end
-    end
-    return false
+    return G.GAME.abn_any_spectrum_played --See main.lua
   end,
 
   calculate = function(self, card, context)
     if context.before and not context.blueprint then
-      if self.abn_spectrum_hands[context.scoring_name] then
+      if next(context.poker_hands["abn_Spectrum"]) then
         for _, scored_card in ipairs(context.scoring_hand) do
           if not scored_card.debuff and not SMODS.has_no_suit(scored_card) and ABN.is_light(scored_card) then
             local suit_object = SMODS.Suits[scored_card.base.suit]

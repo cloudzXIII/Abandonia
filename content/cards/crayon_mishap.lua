@@ -17,31 +17,6 @@ SMODS.Joker {
     }
   },
 
-
-  abn_spectrum_hands = {
-    ['abn_Spectrum'] = true,
-    ['abn_Straight Spectrum'] = true,
-    ['abn_Spectrum House'] = true,
-    ['abn_Spectrum Five'] = true,
-    ['abn_Spectrum Six'] = true,
-    ['abn_Inverse Spectrum'] = true,
-    ['abn_Emperium Spectrum'] = true,
-    ['abn_Skeet Spectrum'] = true,
-    ['abn_Specflush'] = true,
-    ['abn_Straight Specflush'] = true,
-    ['abn_Specflush House'] = true,
-    ['abn_Specflush Five'] = true,
-    ['abn_Specflush Six'] = true,
-  },
-
-  abn_specflush_hands = {
-    ['abn_Specflush'] = true,
-    ['abn_Straight Specflush'] = true,
-    ['abn_Specflush House'] = true,
-    ['abn_Specflush Five'] = true,
-    ['abn_Specflush Six'] = true,
-  },
-
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_TAGS.tag_juggle
     return {
@@ -55,16 +30,11 @@ SMODS.Joker {
   end,
 
   in_pool = function(self, args)
-    for hand_key, _ in pairs(self.abn_spectrum_hands) do
-      if G.GAME.hands[hand_key] and G.GAME.hands[hand_key].played > 0 then
-        return true
-      end
-    end
-    return false
+    return G.GAME.abn_any_spectrum_played --See main.lua
   end,
 
   calculate = function(self, card, context)
-    if context.before and not context.blueprint and self.abn_specflush_hands[context.scoring_name] then
+    if context.before and not context.blueprint and next(context.poker_hands["abn_SpecFlush"]) then
       card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_add
       card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_add
       return {
@@ -73,7 +43,7 @@ SMODS.Joker {
       }
     end
 
-    if context.joker_main and self.abn_spectrum_hands[context.scoring_name] then
+    if context.joker_main and next(context.poker_hands["abn_Spectrum"]) then
       return {
         chips = card.ability.extra.chips,
         mult = card.ability.extra.mult,
